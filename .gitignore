@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/Application/obj
+/Domain/obj
+/Domain.Core/obj
+/Infrastructure.CrossCutting/obj
+/Infrastructure.Data/obj
+/Resources/obj

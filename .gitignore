@@ -9,3 +9,6 @@
 /Infrastructure.CrossCutting/obj
 /Infrastructure.Data/obj
 /Resources/obj
+/Web/bin/Debug/netcoreapp3.1
+/Web/obj
+/Web/Web.csproj.user

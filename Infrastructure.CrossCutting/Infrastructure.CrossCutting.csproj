@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>TaskoMask.Infrastructure.CrossCutting</AssemblyName>
+    <RootNamespace>TaskoMask.Infrastructure.CrossCutting</RootNamespace>
   </PropertyGroup>
 
 </Project>

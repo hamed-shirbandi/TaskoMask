@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>TaskoMask.Infrastructure.Data</AssemblyName>
+    <RootNamespace>TaskoMask.Infrastructure.Data</RootNamespace>
   </PropertyGroup>
 
 </Project>

@@ -5,6 +5,8 @@
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <UserSecretsId>b786f536-e1c4-49fe-9d06-7247aedebda8</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <AssemblyName>TaskoMask.web</AssemblyName>
+    <RootNamespace>TaskoMask.web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

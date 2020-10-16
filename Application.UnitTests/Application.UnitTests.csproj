@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>TaskoMask.Application.UnitTests</AssemblyName>
+
+    <RootNamespace>TaskoMask.Application.UnitTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

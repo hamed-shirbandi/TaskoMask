@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>TaskoMask.Domain.Core</AssemblyName>
+    <RootNamespace>TaskoMask.Domain.Core</RootNamespace>
   </PropertyGroup>
 
 </Project>

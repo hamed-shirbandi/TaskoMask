@@ -5,7 +5,7 @@
     <IsPackable>false</IsPackable>
     <AssemblyName>TaskoMask.UnitTests.Base</AssemblyName>
     <RootNamespace>TaskoMask.UnitTests.Base</RootNamespace>
-    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+     <RuntimeIdentifiers>win-x86;win-x64;win-arm;linux-x64;linux-arm</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>

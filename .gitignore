@@ -3,14 +3,6 @@
 ################################################################################
 
 /.vs
-/Application/obj
-/Domain/obj
-/Domain.Core/obj
-/Infrastructure.CrossCutting/obj
-/Infrastructure.Data/obj
-/Resources/obj
-/Web/bin/Debug/netcoreapp3.1
-/Web/obj
+/*/obj
+/*/bin
 /Web/Web.csproj.user
-/Application.UnitTests/obj/Debug/netcoreapp3.1
-/UnitTests.Base/obj/Debug/netcoreapp3.1

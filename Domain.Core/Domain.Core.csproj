@@ -6,4 +6,8 @@
     <RootNamespace>TaskoMask.Domain.Core</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="mongocsharpdriver" Version="2.11.3" />
+  </ItemGroup>
+
 </Project>

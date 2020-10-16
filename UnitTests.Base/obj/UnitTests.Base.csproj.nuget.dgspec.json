@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\CodeBlock\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\UnitTests.Base\\UnitTests.Base.csproj",
-        "projectName": "UnitTests.Base",
+        "projectName": "TaskoMask.UnitTests.Base",
         "projectPath": "C:\\Users\\CodeBlock\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\UnitTests.Base\\UnitTests.Base.csproj",
         "packagesPath": "C:\\Users\\CodeBlock\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\CodeBlock\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\UnitTests.Base\\obj\\",

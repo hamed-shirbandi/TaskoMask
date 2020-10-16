@@ -6,4 +6,8 @@
     <RootNamespace>TaskoMask.Domain</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -5,7 +5,7 @@
     <IsPackable>false</IsPackable>
     <AssemblyName>TaskoMask.Application.UnitTests</AssemblyName>
     <RootNamespace>TaskoMask.Application.UnitTests</RootNamespace>
-     <RuntimeIdentifiers>win-x86;win-x64;win-arm;linux-x64;linux-arm</RuntimeIdentifiers>
+     
   </PropertyGroup>
 
   <ItemGroup>

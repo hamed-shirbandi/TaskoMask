@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>TaskoMask.Infrastructure.CrossCutting</AssemblyName>
     <RootNamespace>TaskoMask.Infrastructure.CrossCutting</RootNamespace>
-     <RuntimeIdentifiers>win-x86;win-x64;win-arm;linux-x64;linux-arm</RuntimeIdentifiers>
+     
   </PropertyGroup>
 
 </Project>

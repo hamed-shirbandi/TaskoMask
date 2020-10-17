@@ -6,7 +6,7 @@
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <AssemblyName>TaskoMask.Web.Api</AssemblyName>
     <RootNamespace>TaskoMask.Web.Api</RootNamespace>
-     <RuntimeIdentifiers>win-x86;win-x64;win-arm;linux-x64;linux-arm</RuntimeIdentifiers>
+     
   </PropertyGroup>
 
   <ItemGroup>

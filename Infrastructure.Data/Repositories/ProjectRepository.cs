@@ -7,13 +7,13 @@ using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class TaskRepository : Repository<Domain.Models.Task>, ITaskRepository
+    public class ProjectRepository : Repository<Domain.Models.Project>, IProjectRepository
     {
-        public TaskRepository()
+        public ProjectRepository()
         {
 
         }
-        public Task<IEnumerable<Domain.Models.Task>> GetListByBoardIdAsync(string boardId)
+        public Task<IEnumerable<Domain.Models.Project>> GetListByOrganizationIdAsync(string organizationId)
         {
             throw new NotImplementedException();
         }

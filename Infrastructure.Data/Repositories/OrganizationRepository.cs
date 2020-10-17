@@ -4,16 +4,17 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Data;
+using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class TaskRepository : Repository<Domain.Models.Task>, ITaskRepository
+    public class OrganizationRepository : Repository<Domain.Models.Organization>, IOrganizationRepository
     {
-        public TaskRepository()
+        public OrganizationRepository()
         {
 
         }
-        public Task<IEnumerable<Domain.Models.Task>> GetListByBoardIdAsync(string boardId)
+        public Task<IEnumerable<Organization>> GetListByUserIdAsync(string userId)
         {
             throw new NotImplementedException();
         }

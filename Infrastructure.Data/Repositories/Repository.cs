@@ -7,7 +7,7 @@ using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         public Repository()
         {

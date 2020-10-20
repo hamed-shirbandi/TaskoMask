@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace TaskoMask.Infrastructure.Data.DbContext
 {
-    public class MongoDbContext : IMongoDbContext
+    public class MainDbContext : IMainDbContext
     {
         #region Fields
 
@@ -21,7 +21,7 @@ namespace TaskoMask.Infrastructure.Data.DbContext
         #region Ctor
 
 
-        public MongoDbContext(IConfiguration configuration)
+        public MainDbContext(IConfiguration configuration)
         {
             _dbName = configuration["Mongo:Database"];
             _connectionString = configuration["Mongo:Connection"];

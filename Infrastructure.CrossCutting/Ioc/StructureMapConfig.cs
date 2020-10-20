@@ -18,7 +18,7 @@ namespace Infrastructure.CrossCutting.Ioc
             var container = new Container();
             container.Configure(config =>
             {
-                config.For<IMongoDbContext>().Use<MongoDbContext>();
+                config.For<IMainDbContext>().Use<MainDbContext>();
                 config.For<ITaskRepository>().Use<TaskRepository>();
                 config.For<IBoardRepository>().Use<BoardRepository>();
                 config.For<IOrganizationRepository>().Use<OrganizationRepository>();

@@ -1,9 +1,11 @@
 ﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace TaskoMask.Infrastructure.Data.DbContext
+namespace TaskoMask.Domain.Core.Data
 {
-    public interface IMongoDbContext
+    public interface IDbContext
     {
         /// <summary>
         /// get collection by entity type or by its name when the name of collection not "{entity name}"+s

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using TaskoMask.Domain.Core.Extensions;
+using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Models;
 using TaskoMask.Infrastructure.Data.DbContext;
 
@@ -16,7 +17,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         {
             using (var serviceScope = scopeFactory.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetService<IMainDbContext>();
 
                 CreateCollections(dbContext);
 
@@ -29,7 +30,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         /// <summary>
         /// Ensure collections created
         /// </summary>
-        private static void CreateCollections(IMongoDbContext dbContext)
+        private static void CreateCollections(IMainDbContext dbContext)
         {
             var collections = dbContext.Collections();
 
@@ -44,6 +45,12 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
             if (!collections.Has<Project>())
                 dbContext.CreateCollection<Project>();
+
+            if (!collections.Has<User>())
+                dbContext.CreateCollection<User>();
+
+            if (!collections.Has<ApplicationRole>(name: "Roles"))
+                dbContext.CreateCollection<ApplicationRole>(name:"Roles");
         }
 
 
@@ -51,7 +58,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         /// <summary>
         /// Create index for collections
         /// </summary>
-        private static void CreateIndexes(IMongoDbContext dbContext)
+        private static void CreateIndexes(IMainDbContext dbContext)
         {
             #region Task Indexs
 
@@ -82,6 +89,25 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
             dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.UserId), new CreateIndexOptions() { Name = "UserId" }));
 
+
+            #endregion
+
+            #region User Indexs
+
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber",Unique=true }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.NormalizedEmail), new CreateIndexOptions() { Name = "NormalizedEmail" }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.NormalizedUserName), new CreateIndexOptions() { Name = "NormalizedUserName", Unique = true }));
+
+
+            #endregion
+
+            #region ApplicationRole Indexs
+
+            dbContext.GetCollection<ApplicationRole>(name:"Roles").Indexes.CreateOneAsync(new CreateIndexModel<ApplicationRole>(Builders<ApplicationRole>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
 
             #endregion
         }

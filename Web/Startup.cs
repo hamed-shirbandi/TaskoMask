@@ -47,8 +47,8 @@ namespace Web
             }
 
 
-            serviceScopeFactory.InitialDatabase();
-            serviceScopeFactory.SeedDatabase();
+            serviceScopeFactory.InitialMongoDb();
+            serviceScopeFactory.MongoDbSeedData();
 
 
             app.UseHttpsRedirection();

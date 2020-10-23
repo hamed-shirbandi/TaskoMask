@@ -13,10 +13,10 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
 {
-    public static class DbContextSeedData
+    public static class DbSeedData
     {
 
-        public static void SeedDatabase(this IServiceScopeFactory scopeFactory)
+        public static void MongoDbSeedData(this IServiceScopeFactory scopeFactory)
         {
             using (var serviceScope = scopeFactory.CreateScope())
             {

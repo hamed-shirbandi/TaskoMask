@@ -13,7 +13,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         /// <summary>
         /// initial db and create collections and set indexes
         /// </summary>
-        public static void InitialDatabase(this IServiceScopeFactory scopeFactory)
+        public static void InitialMongoDb(this IServiceScopeFactory scopeFactory)
         {
             using (var serviceScope = scopeFactory.CreateScope())
             {

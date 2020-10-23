@@ -42,8 +42,8 @@ namespace Web.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            serviceScopeFactory.InitialDatabase();
-            serviceScopeFactory.SeedDatabase();
+            serviceScopeFactory.InitialMongoDb();
+            serviceScopeFactory.MongoDbSeedData();
 
             app.UseHttpsRedirection();
 

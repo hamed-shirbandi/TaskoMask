@@ -16,8 +16,7 @@ namespace TaskoMask.Domain.Core.Extensions
             {
                 collection = typeof(T).Name;
 
-                if (!collection.EndsWith("s"))
-                    collection = collection + "s";
+                if (!collection.EndsWith("s"))  collection += "s";
             }
 
             return collections.Contains(collection);

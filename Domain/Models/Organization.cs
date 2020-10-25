@@ -7,8 +7,15 @@ namespace TaskoMask.Domain.Models
 {
     public class Organization : BaseEntity
     {
-        public string  Name { get; set; }
-        public string  Description { get; set; }
-        public string UserId { get; set; }
+        public Organization(string name, string description, string userId)
+        {
+            Name = name;
+            Description = description;
+            UserId = userId;
+        }
+
+        public string  Name { get; private set; }
+        public string  Description { get; private set; }
+        public string UserId { get; private set; }
     }
 }

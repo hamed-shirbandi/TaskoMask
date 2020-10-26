@@ -7,6 +7,9 @@ using System.Globalization;
 using System.Collections.Generic;
 using TaskoMask.Application.Services.Organizations;
 using TaskoMask.Application.Services.Organizations.Dto;
+using TaskoMask.Domain.Core.Data;
+using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Core.Events;
 
 namespace CorMon.Web.Controllers
 {
@@ -15,14 +18,16 @@ namespace CorMon.Web.Controllers
         #region Fields
 
         private readonly IOrganizationService _organizationService;
+        private readonly IEventStore _eventStore;
 
         #endregion
 
         #region Ctor
 
-        public HomeController(IOrganizationService organizationService)
+        public HomeController(IEventStore eventStore, IOrganizationService organizationService)
         {
             _organizationService = organizationService;
+            _eventStore = eventStore;
         }
 
         #endregion
@@ -37,13 +42,18 @@ namespace CorMon.Web.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            var organization = new OrganizationInput 
-            { 
-                Name="test name from home controller",
-                Description= "test Description from home controller",
+            var organization = new OrganizationInput
+            {
+                Name = "test name from home controller",
+                Description = "test Description from home controller",
                 UserId = "test UserId from home controller",
             };
             await _organizationService.CreateAsync(organization);
+
+
+            var theEvent = new StoredEvent("test type", "test user", "test request json", "test response json");
+            _eventStore.Save(theEvent);
+
             return View();
         }
 

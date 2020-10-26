@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
+using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
     public class OrganizationRepository : Repository<Domain.Models.Organization>, IOrganizationRepository
     {
-        public OrganizationRepository()
+        public OrganizationRepository(IMainDbContext dbContext) : base(dbContext)
         {
 
         }

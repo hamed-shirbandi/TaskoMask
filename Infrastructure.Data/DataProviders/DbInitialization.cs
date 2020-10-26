@@ -99,8 +99,6 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
             dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber",Unique=true }));
             dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
-            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.NormalizedEmail), new CreateIndexOptions() { Name = "NormalizedEmail" }));
-            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.NormalizedUserName), new CreateIndexOptions() { Name = "NormalizedUserName", Unique = true }));
 
 
             #endregion

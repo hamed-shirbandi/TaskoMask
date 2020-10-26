@@ -20,7 +20,7 @@ namespace TaskoMask.Domain.CommandHandlers.Organizations
 
         public async Task<Result> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            //TODO Validation
+            //TODO request validation
 
             var organization = new Organization(request.Name,request.Description,request.UserId);
             await _organizationRepository.CreateAsync(organization);

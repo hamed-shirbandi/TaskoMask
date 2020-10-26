@@ -1,21 +1,25 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public Repository()
+        private readonly IMongoCollection<TEntity> _entity;
+        public Repository(IMainDbContext dbContext)
         {
-
+            _entity = dbContext.GetCollection<TEntity>(); ;
         }
-        public Task CreateAsync(TEntity entity)
+
+        public async Task CreateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+           await _entity.InsertOneAsync(entity);
         }
 
         public Task DeleteAsync(string id)

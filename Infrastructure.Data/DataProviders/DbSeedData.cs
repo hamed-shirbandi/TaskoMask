@@ -68,12 +68,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                 if (!organizations.AsQueryable().Any())
                 {
                     var user = userManager.Users.FirstOrDefault();
-                    var organization = new Organization
-                    {
-                        UserId = user.Id.ToString(),
-                        Name = "Organization number 1",
-                        Description = "Organization number 1 Description"
-                    };
+                    var organization = new Organization("Organization number 1", "Organization number 1 Description", user.Id.ToString());
                     organizations.InsertOne(organization);
                 }
 

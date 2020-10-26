@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TaskoMask.Application.Services.Organizations;
+using TaskoMask.Domain.CommandHandlers.Organizations;
 using TaskoMask.Infrastructure.CrossCutting.Identity;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
@@ -28,7 +30,7 @@ namespace Web
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(Startup), typeof(CreateOrganizationCommandHandler));
             services.AddIdentityConfiguration(_configuration);
             return services.ConfigureIocContainer(_configuration);
 

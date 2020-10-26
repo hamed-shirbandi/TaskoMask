@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using StructureMap;
 using System;
+using TaskoMask.Application.Services.Organizations;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Data;
 using TaskoMask.Infrastructure.Data.DbContext;
@@ -26,6 +27,7 @@ namespace Infrastructure.CrossCutting.Ioc
                 config.For<IOrganizationRepository>().Use<OrganizationRepository>();
                 config.For<IProjectRepository>().Use<ProjectRepository>();
                 config.For<IEventStore>().Use<RedisEventStore>();
+                config.For<IOrganizationService>().Use<OrganizationService>();
                 
             });
             

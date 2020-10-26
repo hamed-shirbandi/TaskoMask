@@ -4,12 +4,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Data;
+using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
     public class UserRepository : Repository<Domain.Models.User>, IUserRepository
     {
-        public UserRepository()
+        public UserRepository(IMainDbContext dbContext) : base(dbContext)
         {
 
         }

@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using System.Globalization;
 using System.Collections.Generic;
+using TaskoMask.Application.Services.Organizations;
+using TaskoMask.Application.Services.Organizations.Dto;
 
 namespace CorMon.Web.Controllers
 {
@@ -12,14 +14,15 @@ namespace CorMon.Web.Controllers
     {
         #region Fields
 
+        private readonly IOrganizationService _organizationService;
 
         #endregion
 
         #region Ctor
 
-        public HomeController()
+        public HomeController(IOrganizationService organizationService)
         {
-
+            _organizationService = organizationService;
         }
 
         #endregion
@@ -34,11 +37,18 @@ namespace CorMon.Web.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
+            var organization = new OrganizationInput 
+            { 
+                Name="test name from home controller",
+                Description= "test Description from home controller",
+                UserId = "test UserId from home controller",
+            };
+            await _organizationService.CreateAsync(organization);
             return View();
         }
 
 
-        
+
 
 
         #endregion

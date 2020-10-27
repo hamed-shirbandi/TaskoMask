@@ -1,10 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Http;
-using System.Globalization;
-using System.Collections.Generic;
 using TaskoMask.Application.Services.Organizations;
 using TaskoMask.Application.Services.Organizations.Dto;
 using TaskoMask.Domain.Core.Data;
@@ -51,9 +46,9 @@ namespace CorMon.Web.Controllers
             await _organizationService.CreateAsync(organization);
 
 
-            var theEvent = new StoredEvent("testid000asda55555asd5555", "test type", "test user", "test request json", "test response json");
+            var theEvent = new StoredEvent("testTaskId2", "task", "test user", "CreateTaskCommand", "test request json", "test response json");
             await _eventStore.SaveAsync(theEvent);
-            var data = await _eventStore.GetListAsync<StoredEvent>(theEvent.Id);
+            var data = await _eventStore.GetListAsync<StoredEvent>(theEvent.EntityId,theEvent.EntityType);
            
             return View();
         }

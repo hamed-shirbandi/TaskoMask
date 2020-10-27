@@ -10,6 +10,6 @@ namespace TaskoMask.Domain.Core.Data
     {
         void Save<T>(T eventData) where T : StoredEvent;
         Task SaveAsync<T>(T eventData) where T : StoredEvent;
-        Task<List<T>> GetListAsync<T>(string key) where T : StoredEvent;
+        Task<List<T>> GetListAsync<T>(string entityId, string entityType) where T : StoredEvent;
     }
 }

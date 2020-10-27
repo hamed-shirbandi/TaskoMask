@@ -38,7 +38,7 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         public void Save<T>(T eventData) where T : StoredEvent
         {
             string jsonData = ConvertDataToJson(eventData);
-            _redisDb.StringSet(MakeKey(eventData.Id), jsonData);
+            _redisDb.StringSet(MakeKey(eventData.EntityId,eventData.EntityType), jsonData);
         }
 
 
@@ -50,17 +50,17 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         public async Task SaveAsync<T>(T eventData) where T : StoredEvent
         {
             string jsonData = ConvertDataToJson(eventData);
-            await _redisDb.ListLeftPushAsync(MakeKey(eventData.Id), jsonData);
+            await _redisDb.ListLeftPushAsync(MakeKey(eventData.EntityId,eventData.EntityType), jsonData);
         }
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<List<T>> GetListAsync<T>(string key) where T : StoredEvent
+        public async Task<List<T>> GetListAsync<T>(string entityId,string entityType) where T : StoredEvent
         {
             var data = new List<T>();
-            var jsonList = await _redisDb.ListRangeAsync(MakeKey(key));
+            var jsonList = await _redisDb.ListRangeAsync(MakeKey(entityId, entityType));
             foreach (var item in jsonList)
             {
                 var itemData = JsonConvert.DeserializeObject<T>(item);
@@ -74,16 +74,16 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        private string MakeKey(string id)
+        private string MakeKey(string entityId,string entityType)
         {
             var keyNamespace = _configuration["Redis:KeyNamespace"];
-            if (!id.StartsWith(keyNamespace))
+            if (!entityId.StartsWith(keyNamespace))
             {
                 ////Key is already prefixed with namespace
-                id = keyNamespace + ":" + id;
+                entityId = keyNamespace + ":" + entityType + ":" + entityId;
             }
 
-            return id;
+            return entityId;
         }
 
         /// <summary>

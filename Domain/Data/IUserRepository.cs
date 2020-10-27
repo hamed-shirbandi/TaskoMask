@@ -6,7 +6,7 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.Data
 {
-    public interface IUserRepository : IRepository<Models.User>
+    public interface IUserRepository : IBaseRepository<Models.User>
     {
     }
 }

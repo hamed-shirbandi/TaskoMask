@@ -6,7 +6,7 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.Data
 {
-    public interface IProjectRepository : IRepository<Models.Project>
+    public interface IProjectRepository : IBaseRepository<Models.Project>
     {
         Task<IEnumerable<Models.Project>> GetListByOrganizationIdAsync(string organizationId);
     }

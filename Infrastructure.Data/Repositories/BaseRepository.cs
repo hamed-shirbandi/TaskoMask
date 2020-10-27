@@ -9,10 +9,10 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         private readonly IMongoCollection<TEntity> _entity;
-        public Repository(IMainDbContext dbContext)
+        public BaseRepository(IMainDbContext dbContext)
         {
             _entity = dbContext.GetCollection<TEntity>(); ;
         }

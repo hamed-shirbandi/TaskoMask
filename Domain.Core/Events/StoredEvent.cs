@@ -4,8 +4,9 @@ namespace TaskoMask.Domain.Core.Events
 {
    public class StoredEvent
     {
-        public StoredEvent(string type, string userId, string requerst, string response )
+        public StoredEvent(string id, string type, string userId, string requerst, string response )
         {
+            Id = id;
             Type = type;
             UserId = userId;
             Requerst = requerst;
@@ -13,6 +14,7 @@ namespace TaskoMask.Domain.Core.Events
             CreateDateTime = DateTime.Now;
         }
 
+        public string Id { get; private set; }
         public string Type { get; private set; }
         public object Requerst { get; private set; }
         public object Response { get; private set; }

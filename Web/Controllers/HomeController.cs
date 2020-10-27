@@ -51,9 +51,10 @@ namespace CorMon.Web.Controllers
             await _organizationService.CreateAsync(organization);
 
 
-            var theEvent = new StoredEvent("test type", "test user", "test request json", "test response json");
-            _eventStore.Save(theEvent);
-
+            var theEvent = new StoredEvent("testid000asda55555asd5555", "test type", "test user", "test request json", "test response json");
+            await _eventStore.SaveAsync(theEvent);
+            var data = await _eventStore.GetListAsync<StoredEvent>(theEvent.Id);
+           
             return View();
         }
 

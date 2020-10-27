@@ -8,7 +8,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class ProjectRepository : Repository<Domain.Models.Project>, IProjectRepository
+    public class ProjectRepository : BaseRepository<Domain.Models.Project>, IProjectRepository
     {
         public ProjectRepository(IMainDbContext dbContext) : base(dbContext)
         {

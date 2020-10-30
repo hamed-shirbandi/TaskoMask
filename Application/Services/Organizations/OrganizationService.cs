@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Services.Organizations.Dto;
-using TaskoMask.Domain.Commands.Organizations;
+using TaskoMask.Application.Commands.Organizations;
 
 namespace TaskoMask.Application.Services.Organizations
 {

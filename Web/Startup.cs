@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TaskoMask.Application.CommandHandlers.Organizations;
 using TaskoMask.Application.Services.Organizations;
-using TaskoMask.Domain.CommandHandlers.Organizations;
 using TaskoMask.Infrastructure.CrossCutting.Identity;
 using TaskoMask.Infrastructure.Data.DataProviders;
 

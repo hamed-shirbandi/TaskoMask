@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TaskoMask.Domain.Core.Commands;
-
-namespace TaskoMask.Domain.Commands.Organizations
+﻿
+namespace TaskoMask.Application.Commands.Organizations
 {
    public class CreateOrganizationCommand : OrganizationCommand
     {

@@ -12,4 +12,26 @@
     <PackageReference Include="AspNetCore.Identity.Mongo" Version="6.7.2" />
 
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Core.Messages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Core.Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core.Metadata.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Core.Metadata.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Core.Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Core.Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core.Metadata.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Core.Metadata.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

@@ -2,11 +2,11 @@
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Commands.Organizations;
+using TaskoMask.Application.Commands.Organizations;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Domain.CommandHandlers.Organizations
+namespace TaskoMask.Application.CommandHandlers.Organizations
 {
     public class CreateOrganizationCommandHandler : IRequestHandler<CreateOrganizationCommand, Result>
     {

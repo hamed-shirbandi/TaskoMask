@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TaskoMask.Domain.Core.Commands;
+﻿using CSharpFunctionalExtensions;
+using MediatR;
 
-namespace TaskoMask.Domain.Commands.Organizations
+namespace TaskoMask.Application.Commands.Organizations
 {
-   public abstract class OrganizationCommand : Command
+   public abstract class OrganizationCommand : IRequest<Result>
     {
         public OrganizationCommand()
         {

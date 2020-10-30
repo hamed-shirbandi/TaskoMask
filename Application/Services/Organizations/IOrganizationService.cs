@@ -10,5 +10,6 @@ namespace TaskoMask.Application.Services.Organizations
     public interface IOrganizationService
     {
         Task<Result> CreateAsync(OrganizationInput input);
+        Task<long> CountAsync();
     }
 }

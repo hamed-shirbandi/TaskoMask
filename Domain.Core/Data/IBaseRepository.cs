@@ -13,5 +13,6 @@ namespace TaskoMask.Domain.Core.Data
         Task DeleteAsync(string id);
         Task<TEntity> GetByIdAsync(string id);
         Task<IEnumerable<TEntity>> GetListAsync();
+        Task<long> CountAsync();
     }
 }

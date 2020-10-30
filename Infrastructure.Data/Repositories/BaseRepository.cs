@@ -42,6 +42,12 @@ namespace TaskoMask.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
+
+        public async Task<long> CountAsync()
+        {
+            return await _entity.CountDocumentsAsync(f => true);
+        }
+
         public void Dispose()
         {
          //   Db.Dispose();

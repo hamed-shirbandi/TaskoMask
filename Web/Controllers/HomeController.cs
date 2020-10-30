@@ -5,6 +5,7 @@ using TaskoMask.Application.Services.Organizations.Dto;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Models;
 using TaskoMask.Domain.Core.Events;
+using TaskoMask.web.Models;
 
 namespace CorMon.Web.Controllers
 {
@@ -37,20 +38,15 @@ namespace CorMon.Web.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            var organization = new OrganizationInput
+            var model = new HomeIndexViewModel
             {
-                Name = "test name from home controller",
-                Description = "test Description from home controller",
-                UserId = "test UserId from home controller",
+                OrganizationsCount = await _organizationService.CountAsync(),
+                ProjectsCount = 0,
+                BoardsCount = 0,
+                TasksCount = 0,
             };
-            await _organizationService.CreateAsync(organization);
 
-
-            var theEvent = new StoredEvent("testTaskId2", "task", "test user", "CreateTaskCommand", "test request json", "test response json");
-            await _eventStore.SaveAsync(theEvent);
-            var data = await _eventStore.GetListAsync<StoredEvent>(theEvent.EntityId,theEvent.EntityType);
-           
-            return View();
+            return View(model);
         }
 
 

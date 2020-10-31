@@ -1,4 +1,5 @@
-﻿using CSharpFunctionalExtensions;
+﻿using AutoMapper;
+using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,10 +12,11 @@ namespace TaskoMask.Application.CommandHandlers.Organizations
     public class CreateOrganizationCommandHandler : IRequestHandler<CreateOrganizationCommand, Result>
     {
         private readonly IOrganizationRepository _organizationRepository;
-
-        public CreateOrganizationCommandHandler(IOrganizationRepository organizationRepository)
+        private readonly IMapper _mapper;
+        public CreateOrganizationCommandHandler(IOrganizationRepository organizationRepository, IMapper mapper)
         {
             _organizationRepository = organizationRepository;
+            _mapper = mapper;
         }
 
 
@@ -22,7 +24,7 @@ namespace TaskoMask.Application.CommandHandlers.Organizations
         {
             //TODO request validation
 
-            var organization = new Organization(request.Name,request.Description,request.UserId);
+            var organization = _mapper.Map<Organization>(request); 
             await _organizationRepository.CreateAsync(organization);
             return Result.Success();
         }

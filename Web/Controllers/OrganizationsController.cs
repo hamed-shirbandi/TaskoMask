@@ -9,7 +9,7 @@ using TaskoMask.web.Models;
 
 namespace CorMon.Web.Controllers
 {
-    public class HomeController : BaseController
+    public class OrganizationsController : BaseController
     {
         #region Fields
 
@@ -19,7 +19,7 @@ namespace CorMon.Web.Controllers
 
         #region Ctor
 
-        public HomeController(IOrganizationService organizationService)
+        public OrganizationsController(IOrganizationService organizationService)
         {
             _organizationService = organizationService;
         }
@@ -36,15 +36,9 @@ namespace CorMon.Web.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            var model = new HomeIndexViewModel
-            {
-                OrganizationsCount = await _organizationService.CountAsync(),
-                ProjectsCount = 0,
-                BoardsCount = 0,
-                TasksCount = 0,
-            };
-
-            return View(model);
+            var userid = "5f960ffd65702c25e513159c";
+            var organizations = await _organizationService.GetListByUserIdAsync(userid);
+            return View(organizations);
         }
 
 

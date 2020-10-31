@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskoMask.Application.CommandHandlers.Organizations;
+using TaskoMask.Application.Mapper;
 using TaskoMask.Application.Services.Organizations;
 using TaskoMask.Infrastructure.CrossCutting.Identity;
 using TaskoMask.Infrastructure.Data.DataProviders;
@@ -32,6 +33,7 @@ namespace Web
             services.AddControllersWithViews();
             services.AddMediatR(typeof(Startup), typeof(CreateOrganizationCommandHandler));
             services.AddIdentityConfiguration(_configuration);
+            services.AddAutoMapperSetup();
             return services.ConfigureIocContainer(_configuration);
 
         }

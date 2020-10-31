@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Commands.Organizations;
+using TaskoMask.Application.Commands.Models.Organizations;
 using TaskoMask.Application.Services.Organizations.Dto;
 using TaskoMask.Domain.Models;
 

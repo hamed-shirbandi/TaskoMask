@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TaskoMask.Application.Commands.Models.Organizations;
+using TaskoMask.Application.Queries.Models.Organizations;
 using TaskoMask.Application.Services.Organizations.Dto;
-using TaskoMask.Application.Commands.Organizations;
 using TaskoMask.Domain.Data;
-using TaskoMask.Application.Queries.Organizations;
 
 namespace TaskoMask.Application.Services.Organizations
 {

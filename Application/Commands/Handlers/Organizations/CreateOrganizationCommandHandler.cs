@@ -3,11 +3,11 @@ using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Organizations;
+using TaskoMask.Application.Commands.Models.Organizations;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.CommandHandlers.Organizations
+namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
     public class CreateOrganizationCommandHandler : IRequestHandler<CreateOrganizationCommand, Result>
     {

@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Organizations;
+using TaskoMask.Application.Queries.Models.Organizations;
 using TaskoMask.Domain.Data;
 
-namespace TaskoMask.Application.QueryHandlers.Organizations
+namespace TaskoMask.Application.Queries.Handlers.Organizations
 {
     public class GetOrganizationsCountQueryHandler : IRequestHandler<GetOrganizationsCountQuery, long>
     {

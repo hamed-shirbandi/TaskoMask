@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Infrastructure.CrossCutting.Ioc;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TaskoMask.Application.Commands.Handlers.Organizations;
+using TaskoMask.Application.Mapper;
+using TaskoMask.Infrastructure.CrossCutting.Identity;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace Web.Api
@@ -30,6 +34,9 @@ namespace Web.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMediatR(typeof(Startup), typeof(CreateOrganizationCommandHandler));
+            services.AddIdentityConfiguration(_configuration);
+            services.AddAutoMapperSetup();
             return services.ConfigureIocContainer(_configuration);
 
         }

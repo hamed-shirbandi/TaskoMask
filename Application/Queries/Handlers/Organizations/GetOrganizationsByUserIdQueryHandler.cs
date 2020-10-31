@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Organizations;
+using TaskoMask.Application.Queries.Models.Organizations;
 using TaskoMask.Application.Services.Organizations.Dto;
 using TaskoMask.Domain.Data;
 
-namespace TaskoMask.Application.QueryHandlers.Organizations
+namespace TaskoMask.Application.Queries.Handlers.Organizations
 {
     public class GetOrganizationsByUserIdQueryHandler : IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>
     {

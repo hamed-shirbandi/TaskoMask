@@ -3,7 +3,7 @@ using MediatR;
 using System.Collections.Generic;
 using TaskoMask.Application.Services.Organizations.Dto;
 
-namespace TaskoMask.Application.Queries.Organizations
+namespace TaskoMask.Application.Queries.Models.Organizations
 {
    
     public class GetOrganizationsByUserIdQuery : IRequest<IEnumerable<OrganizationOutput>>

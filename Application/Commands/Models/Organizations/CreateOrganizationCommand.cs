@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Application.Commands.Organizations
+namespace TaskoMask.Application.Commands.Models.Organizations
 {
    public class CreateOrganizationCommand : OrganizationCommand
     {

@@ -22,12 +22,12 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Compile Update="Resorces\Application.Messages.Designer.cs">
+    <Compile Update="Resources\Application.Messages.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.Messages.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resorces\Application.Metadata.Designer.cs">
+    <Compile Update="Resources\Application.Metadata.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.Metadata.resx</DependentUpon>
@@ -35,11 +35,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <EmbeddedResource Update="Resorces\Application.Messages.resx">
+    <EmbeddedResource Update="Resources\Application.Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Application.Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resorces\Application.Metadata.resx">
+    <EmbeddedResource Update="Resources\Application.Metadata.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Application.Metadata.Designer.cs</LastGenOutput>
     </EmbeddedResource>

@@ -1,9 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
 
-namespace TaskoMask.Application.Commands.Organizations
+namespace TaskoMask.Application.Commands.Models.Organizations
 {
-   public abstract class OrganizationCommand : IRequest<Result>
+    public abstract class OrganizationCommand : IRequest<Result>
     {
         public OrganizationCommand()
         {

@@ -10,6 +10,8 @@ namespace TaskoMask.Application.Services.Organizations
     public interface IOrganizationService
     {
         Task<Result> CreateAsync(OrganizationInput input);
+        Task<IEnumerable<OrganizationOutput>> GetListByUserIdAsync(string userId);
         Task<long> CountAsync();
+
     }
 }

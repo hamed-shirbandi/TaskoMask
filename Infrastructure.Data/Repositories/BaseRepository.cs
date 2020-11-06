@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using AspNetCore.Identity.Mongo.Mongo;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,17 +11,17 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly IMongoCollection<TEntity> _entity;
+        private readonly IMongoCollection<TEntity> _collection;
         public BaseRepository(IMainDbContext dbContext)
         {
-            _entity = dbContext.GetCollection<TEntity>(); ;
+            _collection = dbContext.GetCollection<TEntity>(); ;
         }
 
         public async Task CreateAsync(TEntity entity)
         {
-           await _entity.InsertOneAsync(entity);
+           await _collection.InsertOneAsync(entity);
         }
 
         public Task DeleteAsync(string id)
@@ -27,9 +29,9 @@ namespace TaskoMask.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
     
-        public Task<TEntity> GetByIdAsync(string id)
+        public async Task<TEntity> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return await _collection.Find(e=>e.Id==id).FirstOrDefaultAsync();
         }
 
         public Task<IEnumerable<TEntity>> GetListAsync()
@@ -45,7 +47,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public async Task<long> CountAsync()
         {
-            return await _entity.CountDocumentsAsync(f => true);
+            return await _collection.CountDocumentsAsync(f => true);
         }
 
         public void Dispose()

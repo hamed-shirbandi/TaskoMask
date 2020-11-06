@@ -6,7 +6,7 @@ using TaskoMask.Application.Services.Projects.Dto;
 
 namespace TaskoMask.Application.ViewMoldes
 {
-   public class OrganizationDetailsViewModel
+   public class ProjectListViewModel
     {
         public OrganizationOutput Organization { get; set; }
         public IEnumerable<ProjectOutput> Projects { get; set; }

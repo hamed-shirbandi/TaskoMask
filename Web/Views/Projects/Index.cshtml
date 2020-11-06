@@ -1,11 +1,11 @@
-﻿@model IEnumerable<TaskoMask.Application.Services.Projects.Dto.ProjectOutput>
+﻿@model TaskoMask.Application.ViewMoldes.ProjectListViewModel
 @{
     ViewData["Title"] = "Projects list";
 }
 
-<h2>Projects list</h2>
+<h2>Projects list for @Model.Organization.Name</h2>
 <div>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Projects)
     {
         <a href="#">@item.Name</a>
         <br />

@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Projects;
+using TaskoMask.Application.Queries.Models.Organizations;
 using TaskoMask.Application.Queries.Models.Projects;
 using TaskoMask.Application.Services.Projects.Dto;
+using TaskoMask.Application.ViewMoldes;
 using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Services.Projects
@@ -30,10 +32,19 @@ namespace TaskoMask.Application.Services.Projects
         }
 
 
-        public async Task<IEnumerable<ProjectOutput>> GetListByOrganizationIdAsync(string organizationId)
+        public async Task<ProjectListViewModel> GetListByOrganizationIdAsync(string organizationId)
         {
-            var query = new GetProjectsByOrganizationIdQuery(organizationId: organizationId);
-            return await _mediator.Send(query);
+            var projectsQuery = new GetProjectsByOrganizationIdQuery(organizationId: organizationId);
+            var projects= await _mediator.Send(projectsQuery);
+
+            var organizationQuery = new GetOrganizationByIdQuery(id: organizationId);
+            var organization = await _mediator.Send(organizationQuery);
+
+            return new ProjectListViewModel
+            {
+                Organization= organization,
+                Projects = projects,
+            };
         }
 
 

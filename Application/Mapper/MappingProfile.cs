@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Commands.Models.Organizations;
 using TaskoMask.Application.Services.Organizations.Dto;
+using TaskoMask.Application.Services.Projects.Dto;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Mapper
@@ -18,6 +19,9 @@ namespace TaskoMask.Application.Mapper
 
             CreateMap<Organization, OrganizationOutput>();
             CreateMap<Organization, OrganizationInput>();
+
+            CreateMap<Project, ProjectOutput>();
+            CreateMap<Project, ProjectInput>();
         }
     }
 }

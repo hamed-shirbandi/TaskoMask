@@ -7,7 +7,7 @@
 <div>
     @foreach (var item in Model)
     {
-        <a href="#">@item.Name</a>
+        <a href="@Url.Action(action:"index",controller:"projects",values:new { organizationId=item.Id})">@item.Name</a>
         <br />
     }
 </div>

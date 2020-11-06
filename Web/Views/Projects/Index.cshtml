@@ -1,0 +1,13 @@
+﻿@model IEnumerable<TaskoMask.Application.Services.Projects.Dto.ProjectOutput>
+@{
+    ViewData["Title"] = "Projects list";
+}
+
+<h2>Projects list</h2>
+<div>
+    @foreach (var item in Model)
+    {
+        <a href="#">@item.Name</a>
+        <br />
+    }
+</div>

@@ -27,11 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Api", "Web.Api\Web.Api.csproj", "{ECA0FDD7-251C-47A4-8A3D-C1C6F022E1C5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Application", ".Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Application", "1-Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Domain", ".Domain", "{CC5F6FB4-4140-4427-8CD5-741363DE08F5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{CC5F6FB4-4140-4427-8CD5-741363DE08F5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Infrastructure", ".Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Infrastructure", "2-Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

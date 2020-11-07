@@ -1,15 +1,11 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Projects;
 using TaskoMask.Application.Queries.Models.Organizations;
 using TaskoMask.Application.Queries.Models.Projects;
 using TaskoMask.Application.Services.Projects.Dto;
 using TaskoMask.Application.ViewMoldes;
-using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Services.Projects
 {

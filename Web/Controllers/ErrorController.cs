@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using System.Globalization;
 
-namespace CorMon.Web.Controllers
+namespace TaskoMask.Web.Controllers
 {
     public class ErrorController : BaseController
     {

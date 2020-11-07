@@ -7,7 +7,7 @@ using TaskoMask.Domain.Models;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.web.Models;
 
-namespace CorMon.Web.Controllers
+namespace TaskoMask.Web.Controllers
 {
     public class HomeController : BaseController
     {

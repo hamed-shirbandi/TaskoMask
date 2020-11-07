@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace TaskoMask.Web.Controllers
 {
     [Authorize]
-    public class OrganizationsController : BaseController
+    public class DashboardController : BaseController
     {
         #region Fields
 
@@ -21,7 +21,7 @@ namespace TaskoMask.Web.Controllers
 
         #region Ctor
 
-        public OrganizationsController(IOrganizationService organizationService)
+        public DashboardController(IOrganizationService organizationService)
         {
             _organizationService = organizationService;
         }

@@ -39,8 +39,13 @@ namespace TaskoMask.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = GetCurrentUserId();
-            var organizations = await _organizationService.GetListByUserIdAsync(userId);
-            return View(organizations);
+            var model = new DashboardIndexViewModel
+            {
+                Organizations = await _organizationService.GetListByUserIdAsync(userId),
+                //TODO get user
+                  User=new Application.Services.Users.Dto.UserOutput(),
+            };
+            return View(model);
         }
 
 

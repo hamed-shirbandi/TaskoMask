@@ -1,4 +1,5 @@
-﻿using CSharpFunctionalExtensions;
+﻿using AutoMapper;
+using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Projects;
@@ -12,18 +13,20 @@ namespace TaskoMask.Application.Services.Projects
     public class ProjectService : IProjectService
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public ProjectService(IMediator mediator)
+        public ProjectService(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
 
 
 
         public async Task<Result> CreateAsync(ProjectInput input)
         {
-            //TODO replace with AutoMapper
-            var project = new CreateProjectCommand(input.Name, input.Description, input.OrganizationId);
+            var project = _mapper.Map<CreateProjectCommand>(input);
+
             return await _mediator.Send(project);
         }
 

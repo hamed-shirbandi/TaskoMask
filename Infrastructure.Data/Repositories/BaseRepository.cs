@@ -39,9 +39,9 @@ namespace TaskoMask.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            await _collection.ReplaceOneAsync(p => p.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false });
         }
 
 

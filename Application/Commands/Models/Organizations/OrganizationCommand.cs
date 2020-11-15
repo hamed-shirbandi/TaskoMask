@@ -12,6 +12,5 @@ namespace TaskoMask.Application.Commands.Models.Organizations
 
         public string Name { get; protected set; }
         public string Description { get; protected set; }
-        public string UserId { get; protected set; }
     }
 }

@@ -8,6 +8,9 @@ namespace TaskoMask.Application.Commands.Models.Organizations
             Name = name;
             Description = description;
             UserId = userId;
-        }  
+        }
+
+        public string UserId { get; private set; }
+
     }
 }

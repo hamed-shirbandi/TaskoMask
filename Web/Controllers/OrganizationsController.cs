@@ -36,6 +36,7 @@ namespace TaskoMask.Web.Controllers
         /// <summary>
         /// 
         /// </summary>
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var userId = GetCurrentUserId();
@@ -44,6 +45,57 @@ namespace TaskoMask.Web.Controllers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> Create(OrganizationInput input)
+        {
+            if (!ModelState.IsValid)
+                return View(input);
+
+            input.UserId = GetCurrentUserId();
+            var result = await _organizationService.CreateAsync(input);
+            return View(input);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> Update(string id)
+        {
+            var organization = await _organizationService.GetByIdAsync(id);
+            return View(organization);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> Update(OrganizationInput input)
+        {
+            if (!ModelState.IsValid)
+                return View(input);
+
+            var result = await _organizationService.UpdateAsync(input);
+            return View(input);
+        }
 
 
 

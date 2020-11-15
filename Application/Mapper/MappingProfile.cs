@@ -13,6 +13,8 @@ namespace TaskoMask.Application.Mapper
         {
             CreateMap<OrganizationInput, CreateOrganizationCommand>()
                .ConstructUsing(c => new CreateOrganizationCommand(c.Name, c.Description, c.UserId));
+
+ 
             CreateMap<CreateOrganizationCommand, Organization>()
               .ConstructUsing(c => new Organization(c.Name, c.Description, c.UserId));
             CreateMap<OrganizationInput, CreateOrganizationCommand>()

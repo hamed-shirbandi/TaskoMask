@@ -12,6 +12,7 @@ namespace TaskoMask.Application.Services.Organizations
         Task<Result> CreateAsync(OrganizationInput input);
         Task<IEnumerable<OrganizationOutput>> GetListByUserIdAsync(string userId);
         Task<long> CountAsync();
-
+        Task<OrganizationOutput> GetByIdAsync(string id);
+        Task<Result> UpdateAsync(OrganizationInput input);
     }
 }

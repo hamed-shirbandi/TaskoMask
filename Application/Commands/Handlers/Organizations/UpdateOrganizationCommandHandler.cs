@@ -24,7 +24,9 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         {
             //TODO request validation
 
-            var organization = _mapper.Map<Organization>(request);
+            var organization = await _organizationRepository.GetByIdAsync(request.Id);
+            organization.SetName(request.Name);
+            organization.SetDescription(request.Description);
             await _organizationRepository.UpdateAsync(organization);
             return Result.Success();
         }

@@ -14,7 +14,11 @@ namespace TaskoMask.Application.Mapper
             CreateMap<OrganizationInput, CreateOrganizationCommand>()
                .ConstructUsing(c => new CreateOrganizationCommand(c.Name, c.Description, c.UserId));
 
- 
+            CreateMap<OrganizationInput, UpdateOrganizationCommand>()
+                        .ConstructUsing(c => new UpdateOrganizationCommand(c.Id,c.Name, c.Description));
+
+
+
             CreateMap<CreateOrganizationCommand, Organization>()
               .ConstructUsing(c => new Organization(c.Name, c.Description, c.UserId));
             CreateMap<OrganizationInput, CreateOrganizationCommand>()
@@ -23,6 +27,7 @@ namespace TaskoMask.Application.Mapper
               .ConstructUsing(c => new Organization(c.Name, c.Description, c.UserId));
             CreateMap<Organization, OrganizationOutput>();
             CreateMap<Organization, OrganizationInput>();
+            CreateMap<OrganizationOutput, OrganizationInput>();
 
 
 

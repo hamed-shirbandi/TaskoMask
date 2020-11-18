@@ -79,7 +79,7 @@ namespace TaskoMask.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var organization = await _organizationService.GetByIdAsync(id);
+            var organization = await _organizationService.GetByIdToUpdateAsync(id);
             return View(organization);
         }
 

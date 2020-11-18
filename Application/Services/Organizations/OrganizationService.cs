@@ -27,25 +27,28 @@ namespace TaskoMask.Application.Services.Organizations
 
         public async Task<Result> CreateAsync(OrganizationInput input)
         {
-            var organization = _mapper.Map<CreateOrganizationCommand>(input);
-            return await _mediator.Send(organization);
+            var createCommand = _mapper.Map<CreateOrganizationCommand>(input);
+            return await _mediator.Send(createCommand);
         }
 
 
         public async Task<Result> UpdateAsync(OrganizationInput input)
         {
-            //var organization = GetByIdAsync(input.Id);
-
-            //var organization = _mapper.Map<UpdateOrganizationCommand>(input);
-            //return await _mediator.Send(organization);
-
-            return Result.Success();
+            var updateCommand = _mapper.Map<UpdateOrganizationCommand>(input);
+            return await _mediator.Send(updateCommand);
         }
 
         public async Task<OrganizationOutput> GetByIdAsync(string id)
         {
             var query = new GetOrganizationByIdQuery(id);
             return await _mediator.Send(query);
+        }
+
+
+        public async Task<OrganizationInput> GetByIdToUpdateAsync(string id)
+        {
+            var organization=await GetByIdAsync(id);
+            return _mapper.Map<OrganizationInput>(organization);
         }
 
 

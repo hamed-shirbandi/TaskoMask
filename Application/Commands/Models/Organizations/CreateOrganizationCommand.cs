@@ -1,4 +1,6 @@
 ﻿
+using TaskoMask.Application.Validations.Organizations;
+
 namespace TaskoMask.Application.Commands.Models.Organizations
 {
    public class CreateOrganizationCommand : OrganizationCommand
@@ -12,5 +14,10 @@ namespace TaskoMask.Application.Commands.Models.Organizations
 
         public string UserId { get; private set; }
 
+        public bool IsValid()
+        {
+            ValidationResult = new CreateOrganizationCommandValidation().Validate(this);
+            return ValidationResult.IsValid;
+        }
     }
 }

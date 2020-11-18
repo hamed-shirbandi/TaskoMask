@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskoMask.Domain.Core.Resources {
+namespace TaskoMask.Application.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace TaskoMask.Domain.Core.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Core_Messages {
+    internal class ApplicationMetadata {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Core_Messages() {
+        internal ApplicationMetadata() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TaskoMask.Domain.Core.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Domain.Core.Resources.Core.Messages", typeof(Core_Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Application.Resources.ApplicationMetadata", typeof(ApplicationMetadata).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,51 @@ namespace TaskoMask.Domain.Core.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Description must have between {0} and {1} characters.
+        /// </summary>
+        internal static string Description_Length_Error {
+            get {
+                return ResourceManager.GetString("Description_Length_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description Required.
+        /// </summary>
+        internal static string Description_Required {
+            get {
+                return ResourceManager.GetString("Description_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Name must have between {0} and {1} characters.
+        /// </summary>
+        internal static string Name_Length_Error {
+            get {
+                return ResourceManager.GetString("Name_Length_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name Required.
+        /// </summary>
+        internal static string Name_Required {
+            get {
+                return ResourceManager.GetString("Name_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserId Required.
+        /// </summary>
+        internal static string UserId_Required {
+            get {
+                return ResourceManager.GetString("UserId_Required", resourceCulture);
             }
         }
     }

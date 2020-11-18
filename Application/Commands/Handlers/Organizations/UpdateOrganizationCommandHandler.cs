@@ -4,6 +4,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Organizations;
+using TaskoMask.Application.Resources;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
@@ -22,13 +23,19 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
         public async Task<Result> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            //TODO request validation
+            if (!request.IsValid())
+            {
+                //TODO add error to domain notifications
+
+                return Result.Failure(ApplicationMessages.Update_Failed);
+            }
+
 
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
             organization.SetName(request.Name);
             organization.SetDescription(request.Description);
             await _organizationRepository.UpdateAsync(organization);
-            return Result.Success();
+            return Result.Success(ApplicationMessages.Update_Success);
         }
     }
 }

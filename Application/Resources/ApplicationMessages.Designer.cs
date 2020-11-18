@@ -22,14 +22,14 @@ namespace TaskoMask.Application.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Application_Metadata {
+    internal class ApplicationMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Application_Metadata() {
+        internal ApplicationMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TaskoMask.Application.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Application.Resources.Application.Metadata", typeof(Application_Metadata).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Application.Resources.ApplicationMessages", typeof(ApplicationMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,42 @@ namespace TaskoMask.Application.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Failed.
+        /// </summary>
+        internal static string Create_Failed {
+            get {
+                return ResourceManager.GetString("Create_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Success.
+        /// </summary>
+        internal static string Create_Success {
+            get {
+                return ResourceManager.GetString("Create_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Failed.
+        /// </summary>
+        internal static string Update_Failed {
+            get {
+                return ResourceManager.GetString("Update_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Success.
+        /// </summary>
+        internal static string Update_Success {
+            get {
+                return ResourceManager.GetString("Update_Success", resourceCulture);
             }
         }
     }

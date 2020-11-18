@@ -10,6 +10,7 @@
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.12.0" />
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
   
@@ -32,26 +33,26 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Compile Update="Resources\Application.Messages.Designer.cs">
+    <Compile Update="Resources\ApplicationMessages.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Application.Messages.resx</DependentUpon>
+      <DependentUpon>ApplicationMessages.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Application.Metadata.Designer.cs">
+    <Compile Update="Resources\ApplicationMetadata.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Application.Metadata.resx</DependentUpon>
+      <DependentUpon>ApplicationMetadata.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Application.Messages.resx">
+    <EmbeddedResource Update="Resources\ApplicationMessages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Application.Messages.Designer.cs</LastGenOutput>
+      <LastGenOutput>ApplicationMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Application.Metadata.resx">
+    <EmbeddedResource Update="Resources\ApplicationMetadata.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Application.Metadata.Designer.cs</LastGenOutput>
+      <LastGenOutput>ApplicationMetadata.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

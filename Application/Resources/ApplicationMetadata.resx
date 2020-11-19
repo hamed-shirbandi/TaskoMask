@@ -129,6 +129,9 @@
   <data name="Name_Required" xml:space="preserve">
     <value>Name Required</value>
   </data>
+  <data name="OrganizationId_Required" xml:space="preserve">
+    <value>OrganizationId Required</value>
+  </data>
   <data name="UserId_Required" xml:space="preserve">
     <value>UserId Required</value>
   </data>

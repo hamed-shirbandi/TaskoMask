@@ -1,9 +1,10 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
+using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Commands.Models.Projects
 {
-    public abstract class ProjectCommand : IRequest<Result>
+    public abstract class ProjectCommand : Command
     {
         public ProjectCommand()
         {

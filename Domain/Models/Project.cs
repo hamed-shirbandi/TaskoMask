@@ -17,5 +17,16 @@ namespace TaskoMask.Domain.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string OrganizationId { get; set; }
+
+
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+
+        public void SetDescription(string description)
+        {
+            Description = description;
+        }
     }
 }

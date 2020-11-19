@@ -9,8 +9,8 @@ namespace TaskoMask.Application.Services.Organizations
 {
     public interface IOrganizationService
     {
-        Task<Result> CreateAsync(OrganizationInput input);
-        Task<Result> UpdateAsync(OrganizationInput input);
+        Task<Result<string>> CreateAsync(OrganizationInput input);
+        Task<Result<string>> UpdateAsync(OrganizationInput input);
         Task<OrganizationOutput> GetByIdAsync(string id);
         Task<OrganizationInput> GetByIdToUpdateAsync(string id);
         Task<IEnumerable<OrganizationOutput>> GetListByUserIdAsync(string userId);

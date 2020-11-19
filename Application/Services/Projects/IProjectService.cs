@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Services.Projects
 {
     public interface IProjectService
     {
-        Task<Result> CreateAsync(ProjectInput input);
+        Task<Result<string>> CreateAsync(ProjectInput input);
         Task<ProjectListViewModel> GetListByOrganizationIdAsync(string organizationId);
         Task<long> CountAsync();
 

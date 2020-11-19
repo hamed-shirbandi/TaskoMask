@@ -4,18 +4,21 @@ using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Commands.Models.Projects
 {
-   public class CreateProjectCommand : ProjectCommand, ICommandValidaion
+   public class UpdateProjectCommand : ProjectCommand, ICommandValidaion
     {
-        public CreateProjectCommand(string name, string description, string organizationId)
+        public UpdateProjectCommand(string id, string name, string description )
         {
+            Id = id;
             Name = name;
             Description = description;
-            OrganizationId = organizationId;
         }
+
+        public string Id { get; private set; }
+
 
         public bool IsValid()
         {
-            ValidationResult = new CreateProjectCommandValidation().Validate(this);
+            ValidationResult = new UpdateProjectCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

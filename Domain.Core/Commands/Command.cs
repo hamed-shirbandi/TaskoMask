@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace TaskoMask.Domain.Core.Commands
 {
-   public class Command: IRequest<Result>
+    public class Command : IRequest<Result<string>>
     {
         public ValidationResult ValidationResult { get; set; }
-
     }
+
 }

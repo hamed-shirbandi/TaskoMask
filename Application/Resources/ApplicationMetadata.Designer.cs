@@ -97,6 +97,15 @@ namespace TaskoMask.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OrganizationId Required.
+        /// </summary>
+        internal static string OrganizationId_Required {
+            get {
+                return ResourceManager.GetString("OrganizationId_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UserId Required.
         /// </summary>
         internal static string UserId_Required {

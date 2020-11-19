@@ -1,9 +1,10 @@
 ﻿
 using TaskoMask.Application.Validations.Organizations;
+using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Commands.Models.Organizations
 {
-   public class CreateOrganizationCommand : OrganizationCommand
+   public class CreateOrganizationCommand : OrganizationCommand, ICommandValidaion
     {
         public CreateOrganizationCommand(string name, string description, string userId)
         {

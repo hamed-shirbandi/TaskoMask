@@ -9,6 +9,9 @@
 <h4>Organization</h4>
 <hr />
 <div class="row">
+
+    @await Component.InvokeAsync(nameof(DomainValidationSummary))
+
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

@@ -23,7 +23,7 @@ namespace TaskoMask.Application.Services.Projects
 
 
 
-        public async Task<Result> CreateAsync(ProjectInput input)
+        public async Task<Result<string>> CreateAsync(ProjectInput input)
         {
             var project = _mapper.Map<CreateProjectCommand>(input);
 

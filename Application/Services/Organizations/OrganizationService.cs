@@ -25,14 +25,14 @@ namespace TaskoMask.Application.Services.Organizations
 
 
 
-        public async Task<Result> CreateAsync(OrganizationInput input)
+        public async Task<Result<string>> CreateAsync(OrganizationInput input)
         {
             var createCommand = _mapper.Map<CreateOrganizationCommand>(input);
             return await _mediator.Send(createCommand);
         }
 
 
-        public async Task<Result> UpdateAsync(OrganizationInput input)
+        public async Task<Result<string>> UpdateAsync(OrganizationInput input)
         {
             var updateCommand = _mapper.Map<UpdateOrganizationCommand>(input);
             return await _mediator.Send(updateCommand);

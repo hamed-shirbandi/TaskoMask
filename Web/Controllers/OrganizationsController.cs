@@ -66,7 +66,10 @@ namespace TaskoMask.Web.Controllers
                 return View(input);
 
             input.UserId = GetCurrentUserId();
+
             var result = await _organizationService.CreateAsync(input);
+            ValidateResult(result);
+
             return View(input);
         }
 
@@ -94,6 +97,9 @@ namespace TaskoMask.Web.Controllers
                 return View(input);
 
             var result = await _organizationService.UpdateAsync(input);
+
+            ValidateResult(result);
+
             return View(input);
         }
 

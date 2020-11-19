@@ -11,7 +11,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class OrganizationRepository : BaseRepository<Domain.Models.Organization>, IOrganizationRepository
+    public class OrganizationRepository : BaseRepository<Organization>, IOrganizationRepository
     {
 
         private readonly IMongoCollection<Organization> _organizations;
@@ -19,7 +19,12 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         {
             _organizations = dbContext.GetCollection<Organization>(); ;
         }
-      
+
+        public async Task<bool> ExistByNameAsync(string id, string name)
+        {
+            var organization= await _organizations.Find(e => e.Name == name).FirstOrDefaultAsync();
+            return organization != null && organization.Id != id;
+        }
 
         public async Task<IEnumerable<Organization>> GetListByUserIdAsync(string userId)
         {

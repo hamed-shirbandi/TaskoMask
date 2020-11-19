@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Projects;
 using TaskoMask.Application.Resources;
 using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Commands.Handlers.Projects
 {
-    public class CreateProjectCommandHandler :CommandHandler, IRequestHandler<CreateProjectCommand, Result<CommandResult>>
+    public class CreateProjectCommandHandler : CommandHandler, IRequestHandler<CreateProjectCommand, Result<CommandResult>>
     {
         private readonly IProjectRepository _projectRepository;
         private readonly IMapper _mapper;
@@ -33,9 +34,16 @@ namespace TaskoMask.Application.Commands.Handlers.Projects
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 
-            //TODO check if name is exist and add error to DomainNotification
 
-            var project = _mapper.Map<Project>(request); 
+            var project = _mapper.Map<Project>(request);
+
+            var exist = await _projectRepository.ExistByNameAsync(project.Id, project.Name);
+            if (exist)
+            {
+                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+            }
+
             await _projectRepository.CreateAsync(project);
             return Result.Success(new CommandResult(project.Id, ApplicationMessages.Create_Success));
 

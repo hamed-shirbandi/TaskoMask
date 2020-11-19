@@ -23,7 +23,7 @@ namespace TaskoMask.Application.Mapper
             #region Command To Domain Model
 
             CreateMap<CreateProjectCommand, Project>()
-             .ConstructUsing(c => new Project(c.Name, c.Description, c.OrganizationId));
+             .ConstructUsing(c => new Project(c.Name.Trim(), c.Description, c.OrganizationId));
 
             #endregion
 

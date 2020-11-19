@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Organizations;
 using TaskoMask.Application.Resources;
 using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
@@ -33,6 +34,13 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             //TODO check if name is exist and add error to DomainNotification
 
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
+
+            var exist = await _organizationRepository.ExistByNameAsync(organization.Id, request.Name);
+            if (exist)
+            {
+                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+            }
 
             organization.SetName(request.Name);
             organization.SetDescription(request.Description);

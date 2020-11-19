@@ -24,19 +24,20 @@ namespace TaskoMask.Infrastructure.Data.Repositories
            await _collection.InsertOneAsync(entity);
         }
 
-        public Task DeleteAsync(string id)
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            await _collection.DeleteOneAsync(p => p.Id == id);
         }
-    
+
         public async Task<TEntity> GetByIdAsync(string id)
         {
             return await _collection.Find(e=>e.Id==id).FirstOrDefaultAsync();
         }
 
-        public Task<IEnumerable<TEntity>> GetListAsync()
+        public async Task<IEnumerable<TEntity>> GetListAsync()
         {
-            throw new NotImplementedException();
+            return await _collection.AsQueryable().ToListAsync();
+
         }
 
         public async Task UpdateAsync(TEntity entity)

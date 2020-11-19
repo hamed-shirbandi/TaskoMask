@@ -79,6 +79,15 @@ namespace TaskoMask.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name Already Exist.
+        /// </summary>
+        internal static string Name_Already_Exist {
+            get {
+                return ResourceManager.GetString("Name_Already_Exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Failed.
         /// </summary>
         internal static string Update_Failed {

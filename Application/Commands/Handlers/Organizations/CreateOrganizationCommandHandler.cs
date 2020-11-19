@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Organizations;
 using TaskoMask.Application.Resources;
 using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
-    public class CreateOrganizationCommandHandler : CommandHandler,IRequestHandler<CreateOrganizationCommand, Result<CommandResult>>
+    public class CreateOrganizationCommandHandler : CommandHandler, IRequestHandler<CreateOrganizationCommand, Result<CommandResult>>
     {
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public CreateOrganizationCommandHandler(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator):base(mediator)
+        public CreateOrganizationCommandHandler(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _organizationRepository = organizationRepository;
             _mediator = mediator;
@@ -33,12 +34,18 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 
-            //TODO check if name is exist and add error to DomainNotification
+            var organization = _mapper.Map<Organization>(request);
 
-            var organization = _mapper.Map<Organization>(request); 
+            var exist = await _organizationRepository.ExistByNameAsync(organization.Id,organization.Name);
+            if (exist)
+            {
+                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+            }
+
             await _organizationRepository.CreateAsync(organization);
 
-            return Result.Success(new CommandResult(organization.Id,ApplicationMessages.Create_Success));
+            return Result.Success(new CommandResult(organization.Id, ApplicationMessages.Create_Success));
         }
     }
 }

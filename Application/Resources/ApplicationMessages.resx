@@ -123,6 +123,9 @@
   <data name="Create_Success" xml:space="preserve">
     <value>Create Success</value>
   </data>
+  <data name="Name_Already_Exist" xml:space="preserve">
+    <value>Name Already Exist</value>
+  </data>
   <data name="Update_Failed" xml:space="preserve">
     <value>Update Failed</value>
   </data>

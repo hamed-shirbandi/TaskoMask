@@ -19,6 +19,15 @@ namespace TaskoMask.Infrastructure.Data.Repositories
             _projects = dbContext.GetCollection<Project>(); ;
         }
 
+
+
+        public async Task<bool> ExistByNameAsync(string id, string name)
+        {
+            var project = await _projects.Find(e => e.Name == name).FirstOrDefaultAsync();
+            return project != null && project.Id != id;
+        }
+
+
         public async Task<IEnumerable<Domain.Models.Project>> GetListByOrganizationIdAsync(string organizationId)
         {
             return await _projects.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();

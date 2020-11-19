@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Organizations;
 using TaskoMask.Application.Queries.Models.Organizations;
 using TaskoMask.Application.Services.Organizations.Dto;
+using TaskoMask.Domain.Core.Commands;
 using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Services.Organizations
@@ -25,14 +26,14 @@ namespace TaskoMask.Application.Services.Organizations
 
 
 
-        public async Task<Result<string>> CreateAsync(OrganizationInput input)
+        public async Task<Result<CommandResult>> CreateAsync(OrganizationInput input)
         {
             var createCommand = _mapper.Map<CreateOrganizationCommand>(input);
             return await _mediator.Send(createCommand);
         }
 
 
-        public async Task<Result<string>> UpdateAsync(OrganizationInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(OrganizationInput input)
         {
             var updateCommand = _mapper.Map<UpdateOrganizationCommand>(input);
             return await _mediator.Send(updateCommand);

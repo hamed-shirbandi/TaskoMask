@@ -7,6 +7,7 @@ using TaskoMask.Application.Queries.Models.Organizations;
 using TaskoMask.Application.Queries.Models.Projects;
 using TaskoMask.Application.Services.Projects.Dto;
 using TaskoMask.Application.ViewMoldes;
+using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Services.Projects
 {
@@ -23,7 +24,7 @@ namespace TaskoMask.Application.Services.Projects
 
 
 
-        public async Task<Result<string>> CreateAsync(ProjectInput input)
+        public async Task<Result<CommandResult>> CreateAsync(ProjectInput input)
         {
             var project = _mapper.Map<CreateProjectCommand>(input);
 

@@ -11,7 +11,7 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Commands.Handlers.Projects
 {
-    public class CreateProjectCommandHandler :CommandHandler, IRequestHandler<CreateProjectCommand, Result<string>>
+    public class CreateProjectCommandHandler :CommandHandler, IRequestHandler<CreateProjectCommand, Result<CommandResult>>
     {
         private readonly IProjectRepository _projectRepository;
         private readonly IMapper _mapper;
@@ -25,19 +25,20 @@ namespace TaskoMask.Application.Commands.Handlers.Projects
         }
 
 
-        public async Task<Result<string>> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
+        public async Task<Result<CommandResult>> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return Result.Failure<string>(ApplicationMessages.Create_Failed);
+                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 
             //TODO check if name is exist and add error to DomainNotification
 
             var project = _mapper.Map<Project>(request); 
             await _projectRepository.CreateAsync(project);
-            return Result.Success(ApplicationMessages.Create_Success);
+            return Result.Success(new CommandResult(project.Id, ApplicationMessages.Create_Success));
+
         }
     }
 }

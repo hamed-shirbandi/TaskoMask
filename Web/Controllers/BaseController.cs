@@ -1,6 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -46,10 +47,10 @@ namespace TaskoMask.Web.Controllers
         /// <summary>
         /// 
         /// </summary>
-        protected void ValidateResult(Result<string> result)
+        protected void ValidateResult(Result<CommandResult> result)
         {
             if (result.IsSuccess)
-                ViewBag.SuccessMessage = result.Value;
+                ViewBag.SuccessMessage = result.Value.SuccessMessage;
             else
                 ViewBag.ErrorMessage = result.Error;
         }

@@ -11,7 +11,7 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
-    public class UpdateOrganizationCommandHandler : CommandHandler, IRequestHandler<UpdateOrganizationCommand, Result<string>>
+    public class UpdateOrganizationCommandHandler : CommandHandler, IRequestHandler<UpdateOrganizationCommand, Result<CommandResult>>
     {
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMediator _mediator;
@@ -22,12 +22,12 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             _mediator = mediator;
         }
 
-        public async Task<Result<string>> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
+        public async Task<Result<CommandResult>> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return Result.Failure<string>(ApplicationMessages.Update_Failed);
+                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
             }
 
             //TODO check if name is exist and add error to DomainNotification
@@ -38,7 +38,8 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             organization.SetDescription(request.Description);
 
             await _organizationRepository.UpdateAsync(organization);
-            return Result.Success(ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(organization.Id, ApplicationMessages.Update_Success));
+
         }
     }
 }

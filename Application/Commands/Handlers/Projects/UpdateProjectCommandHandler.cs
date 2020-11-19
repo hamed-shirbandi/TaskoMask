@@ -11,7 +11,7 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Commands.Handlers.Projects
 {
-    public class UpdateProjectCommandHandler : CommandHandler, IRequestHandler<UpdateProjectCommand, Result<string>>
+    public class UpdateProjectCommandHandler : CommandHandler, IRequestHandler<UpdateProjectCommand, Result<CommandResult>>
     {
         private readonly IProjectRepository _projectRepository;
         private readonly IMediator _mediator;
@@ -22,12 +22,12 @@ namespace TaskoMask.Application.Commands.Handlers.Projects
             _mediator = mediator;
         }
 
-        public async Task<Result<string>> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
+        public async Task<Result<CommandResult>> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return Result.Failure<string>(ApplicationMessages.Update_Failed);
+                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
             }
 
             //TODO check if name is exist and add error to DomainNotification
@@ -38,7 +38,8 @@ namespace TaskoMask.Application.Commands.Handlers.Projects
             project.SetDescription(request.Description);
 
             await _projectRepository.UpdateAsync(project);
-            return Result.Success(ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(project.Id, ApplicationMessages.Update_Success));
+
         }
     }
 }

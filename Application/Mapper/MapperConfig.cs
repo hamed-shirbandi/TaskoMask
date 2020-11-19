@@ -12,7 +12,8 @@ namespace TaskoMask.Application.Mapper
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddAutoMapper(typeof(OrganizationMappingProfile));
+            services.AddAutoMapper(typeof(ProjectMappingProfile));
 
         }
     }

@@ -15,8 +15,12 @@ namespace TaskoMask.Application.Validations.Organizations
         {
             ValidateName();
             ValidateDescription();
+            ValidateId();
         }
 
-    
+        private void ValidateId()
+        {
+            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.OrganizationId_Required);
+        }
     }
 }

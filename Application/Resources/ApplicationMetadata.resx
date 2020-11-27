@@ -132,6 +132,12 @@
   <data name="OrganizationId_Required" xml:space="preserve">
     <value>OrganizationId Required</value>
   </data>
+  <data name="Organization_Required" xml:space="preserve">
+    <value>OrganizationId Required</value>
+  </data>
+  <data name="ProjectId_Required" xml:space="preserve">
+    <value>ProjectId Required</value>
+  </data>
   <data name="UserId_Required" xml:space="preserve">
     <value>UserId Required</value>
   </data>

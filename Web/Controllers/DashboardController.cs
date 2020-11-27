@@ -7,6 +7,7 @@ using TaskoMask.Domain.Models;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.web.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -16,14 +17,16 @@ namespace TaskoMask.Web.Controllers
         #region Fields
 
         private readonly IOrganizationService _organizationService;
+        private readonly UserManager<User> _userManager;
 
         #endregion
 
         #region Ctor
 
-        public DashboardController(IOrganizationService organizationService)
+        public DashboardController(IOrganizationService organizationService, UserManager<User> userManager)
         {
             _organizationService = organizationService;
+            _userManager = userManager;
         }
 
         #endregion
@@ -42,8 +45,7 @@ namespace TaskoMask.Web.Controllers
             var model = new DashboardIndexViewModel
             {
                 Organizations = await _organizationService.GetListByUserIdAsync(userId),
-                //TODO get user
-                  User=new Application.Services.Users.Dto.UserOutput(),
+                User =await _userManager.FindByIdAsync(userId),
             };
             return View(model);
         }

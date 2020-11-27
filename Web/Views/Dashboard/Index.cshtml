@@ -3,60 +3,65 @@
     ViewData["Title"] = "Dashboard";
 }
 
+<h5>Hi @Model.User.DisplayName, This is your dashboard!</h5>
 
-
-<div class="row">
-    <h2>Hi @Model.User.DisplayName, This is your dashboard!</h2>
-</div>
 <hr />
 
-<h2>Organizations</h2>
-<a href="@Url.Action(action: "create", controller: "organizations", values: new {  })" >
+<h3>Organizations</h3>
+<a href="@Url.Action(action: "create", controller: "organizations", values: new {  })">
     Create new
 </a>
 
 <hr />
-<div>
-    @foreach (var item in Model.Organizations)
-    {
-        <div class="card">
-            <div class="card-header">
-                @item.Name
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Organizations)
+        {
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h6><strong>@item.Name</strong></h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            @item.Description
+                        </p>
+                        <table>
+                            <tr>
+                                <td>all projects: </td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>all tasks: </td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>pending tasks: </td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>assigned users: </td>
+                                <td>0</td>
+                            </tr>
+                        </table>
+                        <hr />
+                        <a href="@Url.Action(action: "index", controller: "projects", values: new { organizationId = item.Id })" class="btn btn-sm btn-primary">
+                            projects
+                        </a>
+                        <a href="@Url.Action(action: "update", controller: "organizations", values: new { id = item.Id })" class="btn btn-sm btn-warning">
+                            update
+                        </a>
+                        <a href="@Url.Action(action: "delete", controller: "organizations", values: new { id = item.Id })" class="btn btn-sm btn-danger">
+                            delete
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <p class="card-text">
-                    @item.Description
-                </p>
-                <table>
-                    <tr>
-                        <td>projects: </td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>tasks: </td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>users: </td>
-                        <td>0</td>
-                    </tr>
-                </table>
-                <a href="@Url.Action(action: "index", controller: "projects", values: new { organizationId = item.Id })" class="btn btn-primary">
-                    see projects
-                </a>
-                <a href="@Url.Action(action: "update", controller: "organizations", values: new { id = item.Id })" class="btn btn-warning">
-                    update
-                </a>
-                <a href="@Url.Action(action: "delete", controller: "organizations", values: new { id = item.Id })" class="btn btn-danger">
-                    delete
-                </a>
-            </div>
-        </div>
-
-    }
+        }
+    </div>
 </div>
 
-<h2>Pending Tasks</h2>
+<h3>Pending Tasks</h3>
 <hr />
-<h2>Profile Info</h2>
+<h3>Profile Info</h3>
 <hr />

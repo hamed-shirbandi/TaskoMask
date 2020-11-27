@@ -3,16 +3,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-
-</div>
 
 <div class="row">
     <h2>Welcome to TaskMask !!!</h2>
 </div>
 <hr />
 <div>
-    <h4><a href="@Url.Action(action:"index",controller:"organizations")">Organizations</a> : @Model.OrganizationsCount</h4>
+    <h4>Organizations : @Model.OrganizationsCount</h4>
     <h4>Projects : @Model.ProjectsCount</h4>
     <h4>Boards : @Model.BoardsCount</h4>
     <h4>Tasks : @Model.TasksCount</h4>

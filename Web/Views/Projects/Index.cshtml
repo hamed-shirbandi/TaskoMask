@@ -4,10 +4,53 @@
 }
 
 <h2>Projects list for @Model.Organization.Name</h2>
-<div>
-    @foreach (var item in Model.Projects)
-    {
-        <a href="#">@item.Name</a>
-        <br />
-    }
+<a href="@Url.Action(action: "create", controller: "projects", values: new {  })">
+    Create new
+</a>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Projects)
+        {
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>@item.Name</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        @item.Description
+                    </p>
+                    <table>
+                        <tr>
+                            <td><strong>all projects</strong>: </td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>all tasks</strong>: </td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>pending tasks</strong>: </td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>assigned users</strong>: </td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                    <hr />
+                    <a href="@Url.Action(action: "index", controller: "tasks", values: new { organizationId = item.Id })" class="btn btn-sm btn-primary">
+                        tasks
+                    </a>
+                    <a href="@Url.Action(action: "update", controller: "projects", values: new { id = item.Id })" class="btn btn-sm btn-warning">
+                        update
+                    </a>
+                    <a href="@Url.Action(action: "delete", controller: "projects", values: new { id = item.Id })" class="btn btn-sm btn-danger">
+                        delete
+                    </a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
 </div>

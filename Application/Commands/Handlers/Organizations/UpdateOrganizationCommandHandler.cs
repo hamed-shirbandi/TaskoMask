@@ -31,10 +31,8 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
             }
 
-            //TODO check if name is exist and add error to DomainNotification
-
+           
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
-
             var exist = await _organizationRepository.ExistByNameAsync(organization.Id, request.Name);
             if (exist)
             {

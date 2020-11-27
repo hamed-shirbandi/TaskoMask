@@ -13,11 +13,11 @@ using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Queries.Handlers.Organizations
 {
-    public class GetOrganizationsByIdQueryHandler : IRequestHandler<GetOrganizationByIdQuery, OrganizationOutput>
+    public class GetOrganizationByIdQueryHandler : IRequestHandler<GetOrganizationByIdQuery, OrganizationOutput>
     {
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMapper _mapper;
-        public GetOrganizationsByIdQueryHandler(IOrganizationRepository organizationRepository, IMapper mapper)
+        public GetOrganizationByIdQueryHandler(IOrganizationRepository organizationRepository, IMapper mapper)
         {
             _organizationRepository = organizationRepository;
             _mapper = mapper;

@@ -15,8 +15,13 @@ namespace TaskoMask.Application.Validations.Projects
         {
             ValidateName();
             ValidateDescription();
+            ValidateId();
         }
 
-    
+        private void ValidateId()
+        {
+            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.ProjectId_Required);
+        }
+
     }
 }

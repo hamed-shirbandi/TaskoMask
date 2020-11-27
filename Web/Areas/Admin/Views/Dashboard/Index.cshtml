@@ -3,65 +3,113 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<h5>Hi @Model.User.DisplayName, This is your dashboard!</h5>
 
-<hr />
-
-<h3>Organizations</h3>
-<a href="@Url.Action(action: "create", controller: "organizations", values: new {  })">
-    Create new
-</a>
-
-<hr />
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model.Organizations)
-        {
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h6><strong>@item.Name</strong></h6>
+<ul class="nav nav-tabs">
+    <li class='nav-item'>
+        <a class='nav-link active' data-toggle='tab' href='#organizations'>organizations</a>
+    </li>
+    <li class='nav-item'>
+        <a class='nav-link ' data-toggle='tab' href='#tasks'>pending tasks</a>
+    </li>
+</ul>
+<br />
+<div class="tab-content">
+    <div class='tab-pane container fade in show active' id='organizations'>
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Organizations)
+                {
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6><strong>@item.Name</strong></h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    @item.Description
+                                </p>
+                                <table>
+                                    <tr>
+                                        <td>all projects: </td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>all tasks: </td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pending tasks: </td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>assigned users: </td>
+                                        <td>0</td>
+                                    </tr>
+                                </table>
+                                <hr />
+                                <a href="@Url.Action(action: "index", controller: "projects", values: new { organizationId = item.Id })" class="btn btn-sm btn-outline-primary">
+                                    projects
+                                </a>
+                                <a href="@Url.Action(action: "update", controller: "organizations", values: new { id = item.Id })" class="btn btn-sm btn-outline-warning">
+                                    update
+                                </a>
+                                <a href="@Url.Action(action: "delete", controller: "organizations", values: new { id = item.Id })" class="btn btn-sm btn-outline-danger">
+                                    delete
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            @item.Description
-                        </p>
-                        <table>
-                            <tr>
-                                <td>all projects: </td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>all tasks: </td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>pending tasks: </td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>assigned users: </td>
-                                <td>0</td>
-                            </tr>
-                        </table>
-                        <hr />
-                        <a href="@Url.Action(action: "index", controller: "projects", values: new { organizationId = item.Id })" class="btn btn-sm btn-primary">
-                            projects
-                        </a>
-                        <a href="@Url.Action(action: "update", controller: "organizations", values: new { id = item.Id })" class="btn btn-sm btn-warning">
-                            update
-                        </a>
-                        <a href="@Url.Action(action: "delete", controller: "organizations", values: new { id = item.Id })" class="btn btn-sm btn-danger">
-                            delete
-                        </a>
+                }
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6><strong>Create New Organization</strong></h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <a href="@Url.Action(action: "create", controller: "organizations", values: new {  })">
+                                    click here to create new organization
+                                </a>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>all projects: </td>
+                                    <td>?</td>
+                                </tr>
+                                <tr>
+                                    <td>all tasks: </td>
+                                    <td>?</td>
+                                </tr>
+                                <tr>
+                                    <td>pending tasks: </td>
+                                    <td>?</td>
+                                </tr>
+                                <tr>
+                                    <td>assigned users: </td>
+                                    <td>?</td>
+                                </tr>
+                            </table>
+                            <hr />
+                            <a href="#" class="btn btn-sm btn-outline-dark">
+                                projects
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline-dark">
+                                update
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline-dark">
+                                delete
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        }
+        </div>
+    </div>
+    <div class='tab-pane container fade' id='tasks'>
+        <h3>pending tasks </h3>
+        <p>Some content in menu .</p>
     </div>
 </div>
 
-<h3>Pending Tasks</h3>
-<hr />
-<h3>Profile Info</h3>
-<hr />
+

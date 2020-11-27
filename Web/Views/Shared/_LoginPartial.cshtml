@@ -2,8 +2,8 @@
 @inject SignInManager<TaskoMask.Domain.Models.User> SignInManager
 @if (SignInManager.IsSignedIn(User))
 {
-    <a class="nav-link" href="@Url.Action(action: "index",controller:"dashboard",values:new {Area="admin"})">Dashboard</a>
-    <a class="nav-link" href="@Url.Action(action: "logout",controller:"account")">Logout</a>
+    <a class="nav-link text-success" href="@Url.Action(action: "index",controller:"dashboard",values:new {Area="admin"})">Dashboard</a>
+    <a class="nav-link text-danger" href="@Url.Action(action: "logout",controller:"account")">Logout</a>
 }
 else
 {

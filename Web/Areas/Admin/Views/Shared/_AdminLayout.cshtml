@@ -8,27 +8,38 @@
     <link href="~/content/admin/css/site.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            </ul>
-            @await Html.PartialAsync("_LoginPartial")
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand btn btn-outline-light text-dark-hover" href="@Url.Action(action: "index",controller:"home",values:new { Area=""})">TaskoMask</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action(action: "index",controller:"home",values:new { Area=""})">home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action(action: "index",controller:"dashboard",values:new { Area="admin"})">dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action(action: "update",controller:"user",values:new { Area="admin"})">profile</a>
+                </li>
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+                <a class="btn btn-sm btn-danger my-2 my-sm-0" href="@Url.Action(action: "logout",controller:"account")">Logout</a>
+            </div>
         </div>
     </nav>
 
-
-    <div class="container body-content">
+    <main role="main" class="container">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - TaskMask</p>
-        </footer>
-    </div>
+    </main><!-- /.container -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/content/public/js/popper.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/content/admin/js/site.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -4,14 +4,12 @@
     ViewData["Title"] = "Update";
 }
 
-<h1>Update</h1>
-
-<h4>OrganizationInput</h4>
+<h4>Update Organization</h4>
 <hr />
 <div class="row">
     @await Component.InvokeAsync(nameof(DomainValidationSummary))
 
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-12">
         <form asp-action="Update">
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -30,9 +28,6 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

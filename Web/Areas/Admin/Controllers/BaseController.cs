@@ -1,0 +1,59 @@
+﻿using CSharpFunctionalExtensions;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using TaskoMask.Domain.Core.Commands;
+
+namespace TaskoMask.web.Area.Admin.Controllers
+{
+    public class BaseController : Controller
+    {
+        public BaseController()
+        {
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected string GetCurrentUserName()
+        {
+            if (this.User != null)
+                return this.User.Identity.Name;
+
+            return "";
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected string GetCurrentUserId()
+        {
+            if (this.User != null)
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (!string.IsNullOrEmpty(userId))
+                    return userId;
+            }
+
+            return "";
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected void ValidateResult(Result<CommandResult> result)
+        {
+            if (result.IsSuccess)
+                ViewBag.SuccessMessage = result.Value.SuccessMessage;
+            else
+                ViewBag.ErrorMessage = result.Error;
+        }
+
+    }
+}

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Services.Organizations.Dto;
 using TaskoMask.Application.Services.Users.Dto;
 
-namespace TaskoMask.web.Models
+namespace TaskoMask.web.Area.Admin.Models
 {
     public class DashboardIndexViewModel
     {

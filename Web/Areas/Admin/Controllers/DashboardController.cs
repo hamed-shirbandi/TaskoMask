@@ -1,18 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Services.Organizations;
-using TaskoMask.Application.Services.Organizations.Dto;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Models;
-using TaskoMask.Domain.Core.Events;
-using TaskoMask.web.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using TaskoMask.Application.Services.Users;
+using TaskoMask.web.Area.Admin.Models;
 
-namespace TaskoMask.Web.Controllers
+namespace TaskoMask.web.Area.Admin.Controllers
 {
     [Authorize]
+     [Area("admin")]
     public class DashboardController : BaseController
     {
         #region Fields

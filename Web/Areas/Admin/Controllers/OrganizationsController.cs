@@ -8,9 +8,10 @@ using TaskoMask.Domain.Core.Events;
 using TaskoMask.web.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace TaskoMask.Web.Controllers
+namespace TaskoMask.web.Area.Admin.Controllers
 {
     [Authorize]
+     [Area("admin")]
     public class OrganizationsController : BaseController
     {
         #region Fields

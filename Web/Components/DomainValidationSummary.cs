@@ -9,7 +9,7 @@ using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.web.Components
 {
-    public class DomainValidationSummary :ViewComponent
+    public class DomainValidationSummary : ViewComponent
     {
         private readonly DomainNotificationHandler _notifications;
         public DomainValidationSummary(INotificationHandler<DomainNotification> notifications)

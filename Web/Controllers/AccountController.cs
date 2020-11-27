@@ -10,6 +10,7 @@ using TaskoMask.Application.Resources;
 using TaskoMask.Application.Services.Users;
 using TaskoMask.Application.ViewMoldes.Account;
 using TaskoMask.Domain.Models;
+using TaskoMask.web.Area.Admin.Controllers;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -128,7 +129,8 @@ namespace TaskoMask.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction(nameof(DashboardController.Index), "Dashboard");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+
         }
 
 
@@ -138,13 +140,9 @@ namespace TaskoMask.Web.Controllers
         private IActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
-            {
                 return Redirect(returnUrl);
-            }
             else
-            {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            }
+                return RedirectToAction(actionName: nameof(DashboardController.Index), controllerName: "Dashboard", routeValues: new { Area = "admin" });
         }
 
         #endregion

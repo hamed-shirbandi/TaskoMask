@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Users;
 using TaskoMask.Application.Queries.Models.Users;
 using TaskoMask.Application.Services.Users.Dto;
+using TaskoMask.Application.ViewMoldes.Account;
 using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Services.Users
@@ -26,7 +27,7 @@ namespace TaskoMask.Application.Services.Users
 
 
 
-        public async Task<Result<CommandResult>> CreateAsync(UserInput input)
+        public async Task<Result<CommandResult>> CreateAsync(RegisterViewModel input)
         {
             var createCommand = _mapper.Map<CreateUserCommand>(input);
             return await _mediator.Send(createCommand);

@@ -18,9 +18,15 @@ namespace TaskoMask.Application.Validations.Users
 
         protected void ValidateDisplayName()
         {
-            RuleFor(o => o.DisplayName).NotEmpty().WithMessage(ApplicationMetadata.Name_Required);
+            RuleFor(o => o.DisplayName).NotEmpty().WithMessage(ApplicationMetadata.User_DisplayName_Required);
             RuleFor(o => o.DisplayName).Length(minDisplayNameLenth, maxDisplayNameLenth).WithMessage(string.Format(ApplicationMetadata.Name_Length_Error, minDisplayNameLenth, maxDisplayNameLenth));
         }
+
+        protected void ValidateEmail()
+        {
+            RuleFor(o => o.Email).NotEmpty().WithMessage(ApplicationMetadata.User_Email_Required);
+        }
+
     }
-       
+
 }

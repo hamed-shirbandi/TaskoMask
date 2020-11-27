@@ -25,8 +25,8 @@ namespace TaskoMask.Application.Queries.Handlers.Organizations
 
         public async Task<OrganizationOutput> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)
         {
-            var organizations = await _organizationRepository.GetByIdAsync(request.Id);
-            return _mapper.Map<OrganizationOutput>(organizations);
+            var organization = await _organizationRepository.GetByIdAsync(request.Id);
+            return _mapper.Map<OrganizationOutput>(organization);
         }
     }
 }

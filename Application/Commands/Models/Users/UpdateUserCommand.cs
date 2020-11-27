@@ -6,10 +6,11 @@ namespace TaskoMask.Application.Commands.Models.Users
 {
     public class UpdateUserCommand : UserCommand, ICommandValidaion
     {
-        public UpdateUserCommand(string id, string displayName)
+        public UpdateUserCommand(string id, string displayName,string email)
         {
             Id = id;
             DisplayName = displayName;
+            Email = email;
         }
 
         public string Id { get; private set; }

@@ -6,6 +6,7 @@ using System;
 using TaskoMask.Application.NotificationHandler;
 using TaskoMask.Application.Services.Organizations;
 using TaskoMask.Application.Services.Projects;
+using TaskoMask.Application.Services.Users;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
@@ -25,16 +26,35 @@ namespace Infrastructure.CrossCutting.Ioc
             var container = new Container();
             container.Configure(config =>
             {
+                #region Infrastructure.Date
+
+                //DbContext
                 config.For<IMainDbContext>().Use<MongoDbContext>();
+
+                //EventSourcing
+                config.For<IEventStore>().Use<RedisEventStore>();
+
+                //Repositories
                 config.For<ITaskRepository>().Use<TaskRepository>();
                 config.For<IBoardRepository>().Use<BoardRepository>();
                 config.For<IOrganizationRepository>().Use<OrganizationRepository>();
                 config.For<IProjectRepository>().Use<ProjectRepository>();
-                config.For<IEventStore>().Use<RedisEventStore>();
+
+                #endregion
+
+                #region Application
+
+                //Notification
+                services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+
+
+                //Sevices
                 config.For<IOrganizationService>().Use<OrganizationService>();
                 config.For<IProjectService>().Use<ProjectService>();
+                config.For<IUserService>().Use<UserService>();
 
-                services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+
+                #endregion
 
             });
             

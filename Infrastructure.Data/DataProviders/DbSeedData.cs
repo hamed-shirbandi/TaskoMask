@@ -42,13 +42,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                 if (!userManager.Users.Any())
                 {
-                    var user = new User
-                    {
-                        DisplayName="Super User",
-                        UserName = configuration["Identity:SuperUser:UserName"],
-                        Email = configuration["Identity:SuperUser:Email"],
-                        PhoneNumber = configuration["Identity:SuperUser:PhoneNumber"],
-                    };
+                    var user = new User(displayName: configuration["Identity:SuperUser:UserName"], email: configuration["Identity:SuperUser:Email"], userName: configuration["Identity:SuperUser:Email"]) ;
                     var result = userManager.CreateAsync(user, configuration["Identity:SuperUser:Password"]).Result;
 
                     //add user to admin role

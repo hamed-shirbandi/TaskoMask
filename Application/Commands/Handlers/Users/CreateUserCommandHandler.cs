@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Users;
@@ -14,15 +15,15 @@ namespace TaskoMask.Application.Commands.Handlers.Users
 {
     public class CreateUserCommandHandler : CommandHandler, IRequestHandler<CreateUserCommand, Result<CommandResult>>
     {
-        private readonly IUserRepository _userRepository;
+        private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public CreateUserCommandHandler(IUserRepository userRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public CreateUserCommandHandler(IMapper mapper, IMediator mediator, UserManager<User> userManager) : base(mediator)
         {
-            _userRepository = userRepository;
             _mediator = mediator;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
 
@@ -34,18 +35,25 @@ namespace TaskoMask.Application.Commands.Handlers.Users
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 
-            var user = _mapper.Map<User>(request);
 
-            var exist = await _userRepository.ExistByNameAsync(user.Id,user.Name);
-            if (exist)
+            var existUser = await _userManager.FindByNameAsync(request.Email);
+            if (existUser!=null)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                await _mediator.Publish(new DomainNotification("", ApplicationMessages.User_Email_Already_Exist));
+                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+            }
+        
+            var user = _mapper.Map<User>(request);
+            var result = await _userManager.CreateAsync(user, request.Password);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                    await _mediator.Publish(new DomainNotification(error.Code, error.Description));
+
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 
-            await _userRepository.CreateAsync(user);
-
-            return Result.Success(new CommandResult(user.Id, ApplicationMessages.Create_Success));
+            return Result.Success(new CommandResult(user.Id.ToString(), ApplicationMessages.Create_Success));
         }
     }
 }

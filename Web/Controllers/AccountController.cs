@@ -6,30 +6,24 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TaskoMask.Application.Resources;
+using TaskoMask.Application.Services.Users;
 using TaskoMask.Application.ViewMoldes.Account;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
-        private readonly UserManager<User> _userManager;
+        private readonly IUserService _userService;
         private readonly SignInManager<User> _signInManager;
-        private readonly ILogger _logger;
 
-        public AccountController(
-            UserManager<User> userManager,
-            SignInManager<User> signInManager,
-            ILogger<AccountController> logger)
+        public AccountController(SignInManager<User> signInManager, IUserService userService)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger;
+            _userService = userService;
         }
-
-        [TempData]
-        public string ErrorMessage { get; set; }
 
 
 
@@ -56,37 +50,28 @@ namespace TaskoMask.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Login(LoginViewModel input, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
-                }
-          
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToAction(nameof(Lockout));
-                }
-                else
-                {
-                    ModelState.AddModelError(nameof(LoginViewModel.Password), "Invalid login attempt.");
-                    return View(model);
-                }
-            }
+            if (!ModelState.IsValid)
+                return View(input);
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+            var result = await _signInManager.PasswordSignInAsync(input.Email, input.Password, input.RememberMe, lockoutOnFailure: false);
+            if (result.Succeeded)
+                return RedirectToLocal(returnUrl);
+
+            if (result.IsLockedOut)
+                return RedirectToAction(nameof(Lockout));
+
+            ModelState.AddModelError(nameof(LoginViewModel.Password), ApplicationMessages.User_Login_failed);
+            return View(input);
+
+
         }
 
-   
+
 
 
         /// <summary>
@@ -122,25 +107,15 @@ namespace TaskoMask.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel input)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
-                var user = new User { UserName = model.Email, Email = model.Email };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
-                    
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToLocal(returnUrl);
-                }
-                AddErrors(result);
-            }
+            if (!ModelState.IsValid)
+                return View(input);
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            var result = await _userService.CreateAsync(input);
+            ValidateResult(result);
+
+            return View(input);
         }
 
 
@@ -153,20 +128,12 @@ namespace TaskoMask.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(DashboardController.Index), "Dashboard");
         }
 
 
         #region Helpers
 
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
-        }
 
         private IActionResult RedirectToLocal(string returnUrl)
         {

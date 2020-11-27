@@ -6,9 +6,11 @@ namespace TaskoMask.Application.Commands.Models.Users
 {
    public class CreateUserCommand : UserCommand, ICommandValidaion
     {
-        public CreateUserCommand(string displayName)
+        public CreateUserCommand(string displayName,string email,string password)
         {
             DisplayName = displayName;
+            Email = email;
+            Password = password;
         }
 
 

@@ -8,11 +8,28 @@ namespace TaskoMask.Domain.Models
 {
     public class User : ApplicationUser
     {
-        public User()
+        public User(string displayName,string email,string userName)
         {
-
+            DisplayName = displayName;
+            Email = email;
+            UserName = userName;
         }
 
-        public string DisplayName { get; set; }
+        public string DisplayName { get; private set; }
+
+        public void SetDisplayName(string displayName)
+        {
+            DisplayName = displayName;
+        }
+
+        public void SetEmail(string email)
+        {
+            Email = email;
+        }
+
+        public void SetUserName(string userName)
+        {
+            UserName = userName;
+        }
     }
 }

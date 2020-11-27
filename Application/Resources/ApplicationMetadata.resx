@@ -141,4 +141,10 @@
   <data name="UserId_Required" xml:space="preserve">
     <value>UserId Required</value>
   </data>
+  <data name="User_DisplayName_Required" xml:space="preserve">
+    <value>User DisplayName Required</value>
+  </data>
+  <data name="User_Email_Required" xml:space="preserve">
+    <value>User Email Required</value>
+  </data>
 </root>

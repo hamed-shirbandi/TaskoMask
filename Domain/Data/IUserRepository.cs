@@ -9,7 +9,6 @@ namespace TaskoMask.Domain.Data
 {
     public interface IUserRepository
     {
-        Task<long> CountAsync();
-        Task<User> GetByIdAsync(string id);
+       
     }
 }

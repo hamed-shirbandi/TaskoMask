@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ApplicationMessages {
+    public class ApplicationMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TaskoMask.Application.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Application.Resources.ApplicationMessages", typeof(ApplicationMessages).Assembly);
@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Create Failed.
         /// </summary>
-        internal static string Create_Failed {
+        public static string Create_Failed {
             get {
                 return ResourceManager.GetString("Create_Failed", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Create Success.
         /// </summary>
-        internal static string Create_Success {
+        public static string Create_Success {
             get {
                 return ResourceManager.GetString("Create_Success", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name Already Exist.
         /// </summary>
-        internal static string Name_Already_Exist {
+        public static string Name_Already_Exist {
             get {
                 return ResourceManager.GetString("Name_Already_Exist", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Update Failed.
         /// </summary>
-        internal static string Update_Failed {
+        public static string Update_Failed {
             get {
                 return ResourceManager.GetString("Update_Failed", resourceCulture);
             }
@@ -99,9 +99,27 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Update Success.
         /// </summary>
-        internal static string Update_Success {
+        public static string Update_Success {
             get {
                 return ResourceManager.GetString("Update_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Email Already Exist.
+        /// </summary>
+        public static string User_Email_Already_Exist {
+            get {
+                return ResourceManager.GetString("User_Email_Already_Exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid login attempt.
+        /// </summary>
+        public static string User_Login_failed {
+            get {
+                return ResourceManager.GetString("User_Login_failed", resourceCulture);
             }
         }
     }

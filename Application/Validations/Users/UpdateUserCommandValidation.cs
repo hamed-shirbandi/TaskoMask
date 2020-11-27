@@ -14,8 +14,13 @@ namespace TaskoMask.Application.Validations.Users
         public UpdateUserCommandValidation()
         {
             ValidateDisplayName();
+            ValidateEmail();
+            ValidateId();
         }
 
-    
+        private void ValidateId()
+        {
+            RuleFor(c=>c.Id).NotEmpty().WithMessage(ApplicationMetadata.UserId_Required);
+        }
     }
 }

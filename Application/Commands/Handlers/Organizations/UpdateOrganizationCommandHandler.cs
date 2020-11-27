@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             if (exist)
             {
                 await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
             }
 
             organization.SetName(request.Name);

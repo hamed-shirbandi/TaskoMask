@@ -47,11 +47,11 @@
   
   <ItemGroup>
     <EmbeddedResource Update="Resources\ApplicationMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\ApplicationMetadata.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationMetadata.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ApplicationMetadata {
+    public class ApplicationMetadata {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TaskoMask.Application.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Application.Resources.ApplicationMetadata", typeof(ApplicationMetadata).Assembly);
@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The Description must have between {0} and {1} characters.
         /// </summary>
-        internal static string Description_Length_Error {
+        public static string Description_Length_Error {
             get {
                 return ResourceManager.GetString("Description_Length_Error", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Description Required.
         /// </summary>
-        internal static string Description_Required {
+        public static string Description_Required {
             get {
                 return ResourceManager.GetString("Description_Required", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The Name must have between {0} and {1} characters.
         /// </summary>
-        internal static string Name_Length_Error {
+        public static string Name_Length_Error {
             get {
                 return ResourceManager.GetString("Name_Length_Error", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name Required.
         /// </summary>
-        internal static string Name_Required {
+        public static string Name_Required {
             get {
                 return ResourceManager.GetString("Name_Required", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to OrganizationId Required.
         /// </summary>
-        internal static string Organization_Required {
+        public static string Organization_Required {
             get {
                 return ResourceManager.GetString("Organization_Required", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to OrganizationId Required.
         /// </summary>
-        internal static string OrganizationId_Required {
+        public static string OrganizationId_Required {
             get {
                 return ResourceManager.GetString("OrganizationId_Required", resourceCulture);
             }
@@ -117,16 +117,34 @@ namespace TaskoMask.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to ProjectId Required.
         /// </summary>
-        internal static string ProjectId_Required {
+        public static string ProjectId_Required {
             get {
                 return ResourceManager.GetString("ProjectId_Required", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User DisplayName Required.
+        /// </summary>
+        public static string User_DisplayName_Required {
+            get {
+                return ResourceManager.GetString("User_DisplayName_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Email Required.
+        /// </summary>
+        public static string User_Email_Required {
+            get {
+                return ResourceManager.GetString("User_Email_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UserId Required.
         /// </summary>
-        internal static string UserId_Required {
+        public static string UserId_Required {
             get {
                 return ResourceManager.GetString("UserId_Required", resourceCulture);
             }

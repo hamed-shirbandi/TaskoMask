@@ -132,4 +132,10 @@
   <data name="Update_Success" xml:space="preserve">
     <value>Update Success</value>
   </data>
+  <data name="User_Email_Already_Exist" xml:space="preserve">
+    <value>User Email Already Exist</value>
+  </data>
+  <data name="User_Login_failed" xml:space="preserve">
+    <value>Invalid login attempt</value>
+  </data>
 </root>

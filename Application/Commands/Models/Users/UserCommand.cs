@@ -13,6 +13,7 @@ namespace TaskoMask.Application.Commands.Models.Users
         }
 
         public string DisplayName { get; protected set; }
-
+        public string Email { get; protected set; }
+        public string Password { get; protected set; }
     }
 }

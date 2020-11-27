@@ -5,6 +5,10 @@ namespace TaskoMask.Application.ViewMoldes.Account
     public class RegisterViewModel
     {
         [Required]
+        public string DisplayName { get;  set; }
+
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

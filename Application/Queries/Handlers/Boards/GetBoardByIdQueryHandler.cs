@@ -20,8 +20,8 @@ namespace TaskoMask.Application.Queries.Handlers.Boards
 
         public async Task<BoardOutput> Handle(GetBoardByIdQuery request, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetByIdAsync(request.Id);
-            return _mapper.Map<BoardOutput>(project);
+            var board = await _projectRepository.GetByIdAsync(request.Id);
+            return _mapper.Map<BoardOutput>(board);
         }
     }
 }

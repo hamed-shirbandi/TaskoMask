@@ -61,6 +61,15 @@ namespace TaskoMask.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BoardId Required.
+        /// </summary>
+        public static string BoardId_Required {
+            get {
+                return ResourceManager.GetString("BoardId_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Description must have between {0} and {1} characters.
         /// </summary>
         public static string Description_Length_Error {

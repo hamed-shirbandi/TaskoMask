@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using StructureMap;
 using System;
 using TaskoMask.Application.NotificationHandler;
+using TaskoMask.Application.Services.Boards;
 using TaskoMask.Application.Services.Organizations;
 using TaskoMask.Application.Services.Projects;
 using TaskoMask.Application.Services.Users;
@@ -52,6 +53,7 @@ namespace Infrastructure.CrossCutting.Ioc
                 config.For<IOrganizationService>().Use<OrganizationService>();
                 config.For<IProjectService>().Use<ProjectService>();
                 config.For<IUserService>().Use<UserService>();
+                config.For<IBoardService>().Use<BoardService>();
 
 
                 #endregion

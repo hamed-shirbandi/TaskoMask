@@ -8,6 +8,7 @@ namespace TaskoMask.Domain.Data
 {
     public interface IBoardRepository : IBaseRepository<Models.Board>
     {
-        Task<IEnumerable<Models.Board>> GetListByBoardIdAsync(string boardId);
+        Task<IEnumerable<Models.Board>> GetListByProjectIdAsync(string projectId);
+        Task<bool> ExistByNameAsync(string id, string name);
     }
 }

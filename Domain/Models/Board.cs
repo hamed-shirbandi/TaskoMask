@@ -7,9 +7,25 @@ namespace TaskoMask.Domain.Models
 {
     public class Board: BaseEntity
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ProjectId { get; set; }
+        public Board(string name, string description, string projectId)
+        {
+            Name = name;
+            Description = description;
+            ProjectId = projectId;
+        }
 
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public string ProjectId { get; private set; }
+
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+
+        public void SetDescription(string description)
+        {
+            Description = description;
+        }
     }
 }

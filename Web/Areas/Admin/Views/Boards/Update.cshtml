@@ -1,0 +1,16 @@
+﻿@model TaskoMask.Application.Services.Boards.Dto.BoardInput
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h4>Update Board</h4>
+<hr />
+
+@await Html.PartialAsync("_SaveForm", Model)
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

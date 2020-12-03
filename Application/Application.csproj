@@ -19,16 +19,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Commands\Handlers\Boards\" />
     <Folder Include="Commands\Handlers\Tasks\" />
-    <Folder Include="Commands\Models\Boards\" />
     <Folder Include="Commands\Models\Tasks\" />
     <Folder Include="EventHandlers\" />
-    <Folder Include="Queries\Handlers\Boards\" />
     <Folder Include="Queries\Handlers\Tasks\" />
-    <Folder Include="Queries\Models\Boards\" />
     <Folder Include="Queries\Models\Tasks\" />
-    <Folder Include="Services\Boards\" />
     <Folder Include="Services\Tasks\" />
   </ItemGroup>
   

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,15 +11,27 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class BoardRepository : BaseRepository<Domain.Models.Board>, IBoardRepository
+    public class BoardRepository : BaseRepository<Board>, IBoardRepository
     {
-        public BoardRepository(IMainDbContext dbContext):base(dbContext)
+        private readonly IMongoCollection<Board> _boards;
+        public BoardRepository(IMainDbContext dbContext) : base(dbContext)
         {
+            _boards = dbContext.GetCollection<Board>(); ;
+        }
+
+
+        public async Task<IEnumerable<Board>> GetListByProjectIdAsync(string projectId)
+        {
+            return await _boards.AsQueryable().Where(o => o.ProjectId == projectId).ToListAsync();
 
         }
-        public Task<IEnumerable<Board>> GetListByBoardIdAsync(string boardId)
+
+
+        public async Task<bool> ExistByNameAsync(string id, string name)
         {
-            throw new NotImplementedException();
+            var organization = await _boards.Find(e => e.Name == name).FirstOrDefaultAsync();
+            return organization != null && organization.Id != id;
         }
+
     }
 }

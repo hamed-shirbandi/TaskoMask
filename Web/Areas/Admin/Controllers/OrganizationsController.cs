@@ -53,7 +53,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            return View();
+            return View(new OrganizationInput());
         }
 
 

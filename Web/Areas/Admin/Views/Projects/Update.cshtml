@@ -1,0 +1,16 @@
+﻿@model TaskoMask.Application.Services.Projects.Dto.ProjectInput
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h4>Update Project</h4>
+<hr />
+
+@await Html.PartialAsync("_SaveForm", Model)
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

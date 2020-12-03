@@ -45,6 +45,66 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> Create(string organizationId)
+        {
+            var model = new ProjectInput
+            {
+                OrganizationId=organizationId,
+            };
+
+            return View(model);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> Create(ProjectInput input)
+        {
+            if (!ModelState.IsValid)
+                return View(input);
+
+            var result = await _projectService.CreateAsync(input);
+            ValidateResult(result);
+
+            return View(input);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> Update(string id)
+        {
+            var project = await _projectService.GetByIdToUpdateAsync(id);
+            return View(project);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> Update(ProjectInput input)
+        {
+            if (!ModelState.IsValid)
+                return View(input);
+
+            var result = await _projectService.UpdateAsync(input);
+
+            ValidateResult(result);
+
+            return View(input);
+        }
+
+
 
 
         #endregion

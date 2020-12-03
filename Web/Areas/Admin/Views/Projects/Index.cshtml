@@ -3,54 +3,102 @@
     ViewData["Title"] = "Projects list";
 }
 
-<h2>Projects list for @Model.Organization.Name</h2>
-<a href="@Url.Action(action: "create", controller: "projects", values: new {  })">
-    Create new
-</a>
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model.Projects)
-        {
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header">
-                    <h4>@item.Name</h4>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        @item.Description
-                    </p>
-                    <table>
-                        <tr>
-                            <td><strong>all projects</strong>: </td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td><strong>all tasks</strong>: </td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td><strong>pending tasks</strong>: </td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td><strong>assigned users</strong>: </td>
-                            <td>0</td>
-                        </tr>
-                    </table>
-                    <hr />
-                    <a href="@Url.Action(action: "index", controller: "tasks", values: new { organizationId = item.Id })" class="btn btn-sm btn-primary">
-                        tasks
-                    </a>
-                    <a href="@Url.Action(action: "update", controller: "projects", values: new { id = item.Id })" class="btn btn-sm btn-warning">
-                        update
-                    </a>
-                    <a href="@Url.Action(action: "delete", controller: "projects", values: new { id = item.Id })" class="btn btn-sm btn-danger">
-                        delete
-                    </a>
+<ul class="nav nav-tabs">
+    <li class='nav-item'>
+        <a class='nav-link active' data-toggle='tab' href='#projects'>@Model.Organization.Name projects</a>
+    </li>
+    <li class='nav-item'>
+        <a class='nav-link ' data-toggle='tab' href='#boards'>pending boards</a>
+    </li>
+</ul>
+<br />
+<div class="tab-content">
+    <div class='tab-pane container fade in show active' id='projects'>
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Projects)
+                {
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6><strong>@item.Name</strong></h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    @item.Description
+                                </p>
+                                <table>
+                                    <tr>
+                                        <td>all boards: </td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pending boards: </td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>assigned users: </td>
+                                        <td>0</td>
+                                    </tr>
+                                </table>
+                                <hr />
+                                <a href="@Url.Action(action: "index", controller: "boards", values: new { projectId = item.Id })" class="btn btn-sm btn-outline-primary">
+                                    boards
+                                </a>
+                                <a href="@Url.Action(action: "update", controller: "projects", values: new { id = item.Id })" class="btn btn-sm btn-outline-warning">
+                                    update
+                                </a>
+                                <a href="@Url.Action(action: "delete", controller: "projects", values: new { id = item.Id })" class="btn btn-sm btn-outline-danger">
+                                    delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6><strong>Create New Project</strong></h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <a href="@Url.Action(action: "create", controller: "projects", values: new { organizationId=Model.Organization.Id })">
+                                    click here to create new project
+                                </a>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>all boards: </td>
+                                    <td>?</td>
+                                </tr>
+                                <tr>
+                                    <td>pending boards: </td>
+                                    <td>?</td>
+                                </tr>
+                                <tr>
+                                    <td>assigned users: </td>
+                                    <td>?</td>
+                                </tr>
+                            </table>
+                            <hr />
+                            <a href="#" class="btn btn-sm btn-outline-dark">
+                                boards
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline-dark">
+                                update
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline-dark">
+                                delete
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        }
+    </div>
+    <div class='tab-pane container fade' id='boards'>
+        <h3>pending boards </h3>
+        <p>list of all pending boards from all projects.</p>
     </div>
 </div>

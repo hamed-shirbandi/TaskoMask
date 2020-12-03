@@ -32,6 +32,27 @@ namespace TaskoMask.Application.Services.Projects
         }
 
 
+        public async Task<Result<CommandResult>> UpdateAsync(ProjectInput input)
+        {
+            var updateCommand = _mapper.Map<UpdateProjectCommand>(input);
+            return await _mediator.Send(updateCommand);
+        }
+
+        public async Task<ProjectOutput> GetByIdAsync(string id)
+        {
+            var query = new GetProjectByIdQuery(id);
+            return await _mediator.Send(query);
+        }
+
+
+        public async Task<ProjectInput> GetByIdToUpdateAsync(string id)
+        {
+            var organization = await GetByIdAsync(id);
+            return _mapper.Map<ProjectInput>(organization);
+        }
+
+
+
         public async Task<ProjectListViewModel> GetListByOrganizationIdAsync(string organizationId)
         {
             var projectsQuery = new GetProjectsByOrganizationIdQuery(organizationId: organizationId);

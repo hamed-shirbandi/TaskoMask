@@ -40,7 +40,8 @@ namespace Infrastructure.CrossCutting.Ioc
                 config.For<IBoardRepository>().Use<BoardRepository>();
                 config.For<IOrganizationRepository>().Use<OrganizationRepository>();
                 config.For<IProjectRepository>().Use<ProjectRepository>();
-
+                config.For<ICardRepository>().Use<CardRepository>();
+                
                 #endregion
 
                 #region Application

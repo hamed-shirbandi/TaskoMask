@@ -120,6 +120,9 @@
   <data name="BoardId_Required" xml:space="preserve">
     <value>BoardId Required</value>
   </data>
+  <data name="CardId_Required" xml:space="preserve">
+    <value>CardId Required</value>
+  </data>
   <data name="Description_Length_Error" xml:space="preserve">
     <value>The Description must have between {0} and {1} characters</value>
   </data>

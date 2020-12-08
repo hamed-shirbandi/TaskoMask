@@ -70,6 +70,15 @@ namespace TaskoMask.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CardId Required.
+        /// </summary>
+        public static string CardId_Required {
+            get {
+                return ResourceManager.GetString("CardId_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Description must have between {0} and {1} characters.
         /// </summary>
         public static string Description_Length_Error {

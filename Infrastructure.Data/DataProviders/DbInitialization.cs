@@ -37,6 +37,9 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             if (!collections.Has<Board>())
                 dbContext.CreateCollection<Board>();
 
+            if (!collections.Has<Card>())
+                dbContext.CreateCollection<Card>();
+
             if (!collections.Has<Task>())
                 dbContext.CreateCollection<Task>();
 
@@ -64,6 +67,14 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.BoardId), new CreateIndexOptions() { Name = "BoardId" }));
+
+
+            #endregion
+
+            #region Card Indexs
+
+            dbContext.GetCollection<Card>().Indexes.CreateOneAsync(new CreateIndexModel<Card>(Builders<Card>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Card>().Indexes.CreateOneAsync(new CreateIndexModel<Card>(Builders<Card>.IndexKeys.Ascending(x => x.BoardId), new CreateIndexOptions() { Name = "BoardId" }));
 
 
             #endregion

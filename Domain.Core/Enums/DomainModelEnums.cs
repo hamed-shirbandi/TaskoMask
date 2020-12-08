@@ -4,10 +4,12 @@ using System.Text;
 
 namespace TaskoMask.Domain.Core.Enums
 {
-    public enum TaskState
+
+    public enum CardType
     {
-        ToDo=0,
-        Doing=1,
+        ToDo = 0,
+        Doing = 1,
         Done = 2,
     }
+   
 }

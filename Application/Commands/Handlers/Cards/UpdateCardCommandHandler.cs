@@ -43,6 +43,7 @@ namespace TaskoMask.Application.Commands.Handlers.Cards
 
             project.SetName(request.Name);
             project.SetDescription(request.Description);
+            project.SetType(request.Type);
 
             await _projectRepository.UpdateAsync(project);
             return Result.Success(new CommandResult(project.Id, ApplicationMessages.Update_Success));

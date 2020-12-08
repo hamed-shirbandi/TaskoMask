@@ -12,10 +12,10 @@ namespace TaskoMask.Application.Mapper.Profiles
             #region Dto To Command
 
             CreateMap<CardInput, CreateCardCommand>()
-              .ConstructUsing(c => new CreateCardCommand(c.Name, c.Description, c.BoardId));
+              .ConstructUsing(c => new CreateCardCommand(c.Name, c.Description, c.BoardId,c.Type));
 
             CreateMap<CardInput, UpdateCardCommand>()
-              .ConstructUsing(c => new UpdateCardCommand(c.Id, c.Name, c.Description));
+              .ConstructUsing(c => new UpdateCardCommand(c.Id, c.Name, c.Description, c.Type));
 
 
             #endregion
@@ -23,7 +23,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             #region Command To Domain Model
 
             CreateMap<CreateCardCommand, Card>()
-             .ConstructUsing(c => new Card(c.Name.Trim(), c.Description, c.BoardId));
+             .ConstructUsing(c => new Card(c.Name.Trim(), c.Description, c.BoardId, c.Type));
 
             #endregion
 

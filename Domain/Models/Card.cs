@@ -8,11 +8,12 @@ namespace TaskoMask.Domain.Models
 {
     public class Card : BaseEntity
     {
-        public Card(string name, string description, string boardId)
+        public Card(string name, string description, string boardId,CardType type)
         {
             Name = name;
             Description = description;
             BoardId = boardId;
+            Type = type;
         }
 
         public string Name { get; set; }
@@ -29,6 +30,11 @@ namespace TaskoMask.Domain.Models
         public void SetDescription(string description)
         {
             Description = description;
+        }
+
+        public void SetType(CardType type)
+        {
+            Type = type;
         }
     }
 }

@@ -3,8 +3,8 @@ using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Cards;
+using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Queries.Models.Cards;
-using TaskoMask.Application.Queries.Models.Projects;
 using TaskoMask.Application.Services.Cards.Dto;
 using TaskoMask.Application.ViewMoldes;
 using TaskoMask.Domain.Core.Commands;
@@ -38,6 +38,8 @@ namespace TaskoMask.Application.Services.Cards
             return await _mediator.Send(updateCommand);
         }
 
+
+
         public async Task<CardOutput> GetByIdAsync(string id)
         {
             var query = new GetCardByIdQuery(id);
@@ -53,7 +55,23 @@ namespace TaskoMask.Application.Services.Cards
 
 
 
-    
+
+        public async Task<CardListViewModel> GetListByBoardIdAsync(string boardId)
+        {
+            var cardsQuery = new GetCardsByBoardIdQuery(boardId: boardId);
+            var cards = await _mediator.Send(cardsQuery);
+
+            var boardQuery = new GetBoardByIdQuery(id: boardId);
+            var board = await _mediator.Send(boardQuery);
+
+            return new CardListViewModel
+            {
+                Board = board,
+                Cards = cards,
+            };
+        }
+
+
         public async Task<long> CountAsync()
         {
             var query = new GetCardsCountQuery();

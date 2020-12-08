@@ -1,0 +1,18 @@
+﻿@model TaskoMask.Application.Services.Cards.Dto.CardInput
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Create Card</h4>
+<hr />
+
+@await Html.PartialAsync("_SaveForm", Model)
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

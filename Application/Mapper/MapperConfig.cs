@@ -15,6 +15,7 @@ namespace TaskoMask.Application.Mapper
             services.AddAutoMapper(typeof(OrganizationMappingProfile));
             services.AddAutoMapper(typeof(ProjectMappingProfile));
             services.AddAutoMapper(typeof(UserMappingProfile));
+            services.AddAutoMapper(typeof(CardMappingProfile));
             
         }
     }

@@ -1,11 +1,11 @@
-﻿@model TaskoMask.Application.ViewMoldes.BoardListViewModel
+﻿@model TaskoMask.Application.ViewMoldes.CardListViewModel
 @{
     ViewData["Title"] = "boards list";
 }
 
 <ul class="nav nav-tabs">
     <li class='nav-item'>
-        <a class='nav-link active' data-toggle='tab' href='#boards'>@Model.Project.Name boards</a>
+        <a class='nav-link active' data-toggle='tab' href='#cards'>@Model.Board.Name cards</a>
     </li>
     <li class='nav-item'>
         <a class='nav-link ' data-toggle='tab' href='#tasks'>pending tasks</a>
@@ -13,10 +13,10 @@
 </ul>
 <br />
 <div class="tab-content">
-    <div class='tab-pane container fade in show active' id='boards'>
+    <div class='tab-pane container fade in show active' id='cards'>
         <div class="container">
             <div class="row">
-                @foreach (var item in Model.Boards)
+                @foreach (var item in Model.Cards)
                 {
                     <div class="col-md-4 col-sm-12">
                         <div class="card">
@@ -42,13 +42,13 @@
                                     </tr>
                                 </table>
                                 <hr />
-                                <a href="@Url.Action(action: "index", controller: "cards", values: new { boardId = item.Id })" class="btn btn-sm btn-outline-primary">
-                                    cards
+                                <a href="@Url.Action(action: "index", controller: "tasks", values: new { cardId = item.Id })" class="btn btn-sm btn-outline-primary">
+                                    tasks
                                 </a>
-                                <a href="@Url.Action(action: "update", controller: "boards", values: new { id = item.Id })" class="btn btn-sm btn-outline-warning">
+                                <a href="@Url.Action(action: "update", controller: "cards", values: new { id = item.Id })" class="btn btn-sm btn-outline-warning">
                                     update
                                 </a>
-                                <a href="@Url.Action(action: "delete", controller: "boards", values: new { id = item.Id })" class="btn btn-sm btn-outline-danger">
+                                <a href="@Url.Action(action: "delete", controller: "cards", values: new { id = item.Id })" class="btn btn-sm btn-outline-danger">
                                     delete
                                 </a>
                             </div>
@@ -59,12 +59,12 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h6><strong>Create New Board</strong></h6>
+                            <h6><strong>Create New Card</strong></h6>
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                <a href="@Url.Action(action: "create", controller: "boards", values: new { projectId=Model.Project.Id })">
-                                    click here to create new Board
+                                <a href="@Url.Action(action: "create", controller: "cards", values: new { boardId=Model.Board.Id })">
+                                    click here to create new card
                                 </a>
                             </p>
                             <table>
@@ -83,7 +83,7 @@
                             </table>
                             <hr />
                             <a href="#" class="btn btn-sm btn-outline-dark">
-                                cards
+                                tasks
                             </a>
                             <a href="#" class="btn btn-sm btn-outline-dark">
                                 update
@@ -99,6 +99,6 @@
     </div>
     <div class='tab-pane container fade' id='tasks'>
         <h3>pending tasks </h3>
-        <p>list of all pending tasks from all boards.</p>
+        <p>list of all pending tasks from all cards.</p>
     </div>
 </div>

@@ -4,7 +4,7 @@ using TaskoMask.Application.Services.Users.Dto;
 using TaskoMask.Application.ViewMoldes.Account;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.Mapper
+namespace TaskoMask.Application.Mapper.Profiles
 {
     public class UserMappingProfile : Profile
     {

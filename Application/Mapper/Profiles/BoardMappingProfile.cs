@@ -3,7 +3,7 @@ using TaskoMask.Application.Commands.Models.Boards;
 using TaskoMask.Application.Services.Boards.Dto;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.Mapper
+namespace TaskoMask.Application.Mapper.Profiles
 {
     public class BoardMappingProfile : Profile
     {

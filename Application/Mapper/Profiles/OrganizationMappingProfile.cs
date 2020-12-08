@@ -3,7 +3,7 @@ using TaskoMask.Application.Commands.Models.Organizations;
 using TaskoMask.Application.Services.Organizations.Dto;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.Mapper
+namespace TaskoMask.Application.Mapper.Profiles
 {
     public class OrganizationMappingProfile : Profile
     {

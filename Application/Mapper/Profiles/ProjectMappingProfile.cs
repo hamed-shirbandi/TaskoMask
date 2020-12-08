@@ -3,7 +3,7 @@ using TaskoMask.Application.Commands.Models.Projects;
 using TaskoMask.Application.Services.Projects.Dto;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.Mapper
+namespace TaskoMask.Application.Mapper.Profiles
 {
     public class ProjectMappingProfile : Profile
     {

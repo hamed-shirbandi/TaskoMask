@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TaskoMask.Application.Mapper.Profiles;
 
 namespace TaskoMask.Application.Mapper
 {

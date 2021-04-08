@@ -1,5 +1,5 @@
 ﻿
-using TaskoMask.Application.Validations.Cards;
+using TaskoMask.Application.Commands.Validations.Cards;
 using TaskoMask.Domain.Core.Commands;
 using TaskoMask.Domain.Core.Enums;
 

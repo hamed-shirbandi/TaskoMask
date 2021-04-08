@@ -1,5 +1,5 @@
 ﻿
-using TaskoMask.Application.Validations.Projects;
+using TaskoMask.Application.Commands.Validations.Projects;
 using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Commands.Models.Projects

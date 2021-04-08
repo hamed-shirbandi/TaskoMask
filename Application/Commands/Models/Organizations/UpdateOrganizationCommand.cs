@@ -1,5 +1,5 @@
 ﻿
-using TaskoMask.Application.Validations.Organizations;
+using TaskoMask.Application.Commands.Validations.Organizations;
 using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Commands.Models.Organizations

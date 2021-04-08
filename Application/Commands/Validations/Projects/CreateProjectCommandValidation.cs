@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Projects;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Projects
+namespace TaskoMask.Application.Commands.Validations.Projects
 {
    public class CreateProjectCommandValidation:ProjectValidation<CreateProjectCommand>
     {

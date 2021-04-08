@@ -1,5 +1,5 @@
 ﻿
-using TaskoMask.Application.Validations.Users;
+using TaskoMask.Application.Commands.Validations.Users;
 using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Commands.Models.Users

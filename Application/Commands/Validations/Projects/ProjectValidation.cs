@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Boards;
+using TaskoMask.Application.Commands.Models.Projects;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Boards
+namespace TaskoMask.Application.Commands.Validations.Projects
 {
-    public abstract class BoardValidation<T> : AbstractValidator<T> where T : BoardCommand
+    public abstract class ProjectValidation<T> : AbstractValidator<T> where T : ProjectCommand
     {
         private const int minNameLenth = 5;
         private const int maxNameLenth = 50;

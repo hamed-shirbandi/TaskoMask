@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Organizations;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Organizations
+namespace TaskoMask.Application.Commands.Validations.Organizations
 {
    public class UpdateOrganizationCommandValidation : OrganizationValidation<UpdateOrganizationCommand>
     {

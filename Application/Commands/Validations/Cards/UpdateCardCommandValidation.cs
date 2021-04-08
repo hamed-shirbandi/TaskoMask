@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Projects;
+using TaskoMask.Application.Commands.Models.Cards;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Projects
+namespace TaskoMask.Application.Commands.Validations.Cards
 {
-   public class UpdateProjectCommandValidation : ProjectValidation<UpdateProjectCommand>
+   public class UpdateCardCommandValidation : CardValidation<UpdateCardCommand>
     {
-        public UpdateProjectCommandValidation()
+        public UpdateCardCommandValidation()
         {
             ValidateName();
             ValidateDescription();
@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Validations.Projects
 
         private void ValidateId()
         {
-            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.ProjectId_Required);
+            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.CardId_Required);
         }
 
     }

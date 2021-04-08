@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Boards;
+using TaskoMask.Application.Commands.Models.Projects;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Boards
+namespace TaskoMask.Application.Commands.Validations.Projects
 {
-   public class UpdateBoardCommandValidation : BoardValidation<UpdateBoardCommand>
+   public class UpdateProjectCommandValidation : ProjectValidation<UpdateProjectCommand>
     {
-        public UpdateBoardCommandValidation()
+        public UpdateProjectCommandValidation()
         {
             ValidateName();
             ValidateDescription();
@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Validations.Boards
 
         private void ValidateId()
         {
-            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.BoardId_Required);
+            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.ProjectId_Required);
         }
 
     }

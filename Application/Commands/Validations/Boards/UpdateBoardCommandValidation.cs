@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Cards;
+using TaskoMask.Application.Commands.Models.Boards;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Cards
+namespace TaskoMask.Application.Commands.Validations.Boards
 {
-   public class UpdateCardCommandValidation : CardValidation<UpdateCardCommand>
+   public class UpdateBoardCommandValidation : BoardValidation<UpdateBoardCommand>
     {
-        public UpdateCardCommandValidation()
+        public UpdateBoardCommandValidation()
         {
             ValidateName();
             ValidateDescription();
@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Validations.Cards
 
         private void ValidateId()
         {
-            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.CardId_Required);
+            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.BoardId_Required);
         }
 
     }

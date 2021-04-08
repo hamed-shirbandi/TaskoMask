@@ -1,5 +1,5 @@
 ﻿
-using TaskoMask.Application.Validations.Boards;
+using TaskoMask.Application.Commands.Validations.Boards;
 using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Commands.Models.Boards

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Projects;
+using TaskoMask.Application.Commands.Models.Cards;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Projects
+namespace TaskoMask.Application.Commands.Validations.Cards
 {
-    public abstract class ProjectValidation<T> : AbstractValidator<T> where T : ProjectCommand
+    public abstract class CardValidation<T> : AbstractValidator<T> where T : CardCommand
     {
         private const int minNameLenth = 5;
         private const int maxNameLenth = 50;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Cards;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Cards
+namespace TaskoMask.Application.Commands.Validations.Cards
 {
    public class CreateCardCommandValidation:CardValidation<CreateCardCommand>
     {

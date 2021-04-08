@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Commands.Models.Boards;
 using TaskoMask.Application.Resources;
 
-namespace TaskoMask.Application.Validations.Boards
+namespace TaskoMask.Application.Commands.Validations.Boards
 {
    public class CreateBoardCommandValidation:BoardValidation<CreateBoardCommand>
     {

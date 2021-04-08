@@ -16,12 +16,23 @@ namespace TaskoMask.Application.Services.Users
 {
     public class UserService : BaseApplicationService, IUserService
     {
+        #region Fields
+
+        #endregion
+
+        #region Ctor
+
         public UserService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
         { }
 
 
+        #endregion
 
+        #region Command Services
 
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(RegisterViewModel input)
         {
             var createCommand = _mapper.Map<CreateUserCommand>(input);
@@ -29,12 +40,25 @@ namespace TaskoMask.Application.Services.Users
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(UserInput input)
         {
             var updateCommand = _mapper.Map<UpdateUserCommand>(input);
             return await _mediator.Send(updateCommand);
         }
 
+
+        #endregion
+
+        #region Query Services
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<UserOutput> GetByIdAsync(string id)
         {
             var query = new GetUserByIdQuery(id);
@@ -42,6 +66,9 @@ namespace TaskoMask.Application.Services.Users
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<UserInput> GetByIdToUpdateAsync(string id)
         {
             var user = await GetByIdAsync(id);
@@ -50,12 +77,17 @@ namespace TaskoMask.Application.Services.Users
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<long> CountAsync()
         {
             var query = new GetUsersCountQuery();
             return await _mediator.Send(query);
         }
 
+
+        #endregion
 
     }
 

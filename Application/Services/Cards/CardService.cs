@@ -13,10 +13,26 @@ namespace TaskoMask.Application.Services.Cards
 {
     public class CardService : BaseApplicationService,ICardService
     {
+
+
+        #region Fields
+
+
+        #endregion
+
+        #region Ctor
+
         public CardService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
         { }
 
+        #endregion
 
+
+        #region Command Services
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(CardInput input)
         {
             var project = _mapper.Map<CreateCardCommand>(input);
@@ -25,6 +41,10 @@ namespace TaskoMask.Application.Services.Cards
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(CardInput input)
         {
             var updateCommand = _mapper.Map<UpdateCardCommand>(input);
@@ -32,7 +52,14 @@ namespace TaskoMask.Application.Services.Cards
         }
 
 
+        #endregion
 
+        #region Query Services
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CardOutput> GetByIdAsync(string id)
         {
             var query = new GetCardByIdQuery(id);
@@ -40,6 +67,10 @@ namespace TaskoMask.Application.Services.Cards
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CardInput> GetByIdToUpdateAsync(string id)
         {
             var organization = await GetByIdAsync(id);
@@ -48,7 +79,9 @@ namespace TaskoMask.Application.Services.Cards
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CardListViewModel> GetListByBoardIdAsync(string boardId)
         {
             var cardsQuery = new GetCardsByBoardIdQuery(boardId: boardId);
@@ -65,12 +98,20 @@ namespace TaskoMask.Application.Services.Cards
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<long> CountAsync()
         {
             var query = new GetCardsCountQuery();
-            return  await _mediator.Send(query);
+            return await _mediator.Send(query);
         }
 
+
+        #endregion
+
+     
        
     }
 }

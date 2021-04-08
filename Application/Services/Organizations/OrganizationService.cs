@@ -13,18 +13,10 @@ using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Services.Organizations
 {
-    public class OrganizationService : IOrganizationService
+    public class OrganizationService : BaseApplicationService, IOrganizationService
     {
-        private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
-
-        public OrganizationService(IMediator mediator, IMapper mapper)
-        {
-            _mediator = mediator;
-            _mapper = mapper;
-        }
-
-
+        public OrganizationService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
+        { }
 
         public async Task<Result<CommandResult>> CreateAsync(OrganizationInput input)
         {

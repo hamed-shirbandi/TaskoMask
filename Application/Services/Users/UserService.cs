@@ -14,16 +14,11 @@ using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Services.Users
 {
-    public class UserService : IUserService
+    public class UserService : BaseApplicationService, IUserService
     {
-        private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
+        public UserService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
+        { }
 
-        public UserService(IMediator mediator, IMapper mapper)
-        {
-            _mediator = mediator;
-            _mapper = mapper;
-        }
 
 
 

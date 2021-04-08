@@ -11,16 +11,12 @@ using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Services.Boards
 {
-    public class BoardService : IBoardService
+    public class BoardService : BaseApplicationService, IBoardService
     {
-        private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
+       
 
-        public BoardService(IMediator mediator, IMapper mapper)
-        {
-            _mediator = mediator;
-            _mapper = mapper;
-        }
+        public BoardService(IMediator mediator, IMapper mapper):base(mediator,mapper)
+        { }
 
 
 

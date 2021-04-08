@@ -4,7 +4,7 @@ using System.Text;
 using TaskoMask.Application.Services.Boards.Dto;
 using TaskoMask.Application.Services.Cards.Dto;
 
-namespace TaskoMask.Application.ViewMoldes
+namespace TaskoMask.Application.Queries.ViewMoldes
 {
    public class CardListViewModel
     {

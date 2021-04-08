@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TaskoMask.Application.ViewMoldes.Account
+namespace TaskoMask.Application.Queries.ViewMoldes.Account
 {
     public class LoginWithRecoveryCodeViewModel
     {

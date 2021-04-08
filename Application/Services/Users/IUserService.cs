@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Services.Users.Dto;
-using TaskoMask.Application.ViewMoldes.Account;
+using TaskoMask.Application.Queries.ViewMoldes.Account;
 using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Services.Users

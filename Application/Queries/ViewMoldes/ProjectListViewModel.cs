@@ -4,7 +4,7 @@ using System.Text;
 using TaskoMask.Application.Services.Organizations.Dto;
 using TaskoMask.Application.Services.Projects.Dto;
 
-namespace TaskoMask.Application.ViewMoldes
+namespace TaskoMask.Application.Queries.ViewMoldes
 {
    public class ProjectListViewModel
     {

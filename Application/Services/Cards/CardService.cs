@@ -6,7 +6,7 @@ using TaskoMask.Application.Commands.Models.Cards;
 using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Queries.Models.Cards;
 using TaskoMask.Application.Services.Cards.Dto;
-using TaskoMask.Application.ViewMoldes;
+using TaskoMask.Application.Queries.ViewMoldes;
 using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Services.Cards

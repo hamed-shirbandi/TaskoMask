@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using TaskoMask.Domain.Core.Notifications;
 
-namespace TaskoMask.Application.NotificationHandler
+namespace TaskoMask.Domain.Core.Notifications
 {
     public class DomainNotificationHandler : INotificationHandler<DomainNotification>
     {

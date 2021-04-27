@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.NotificationHandler;
+using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.web.Components

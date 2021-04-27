@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StructureMap;
 using System;
-using TaskoMask.Application.NotificationHandler;
+using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Application.Services.Boards;
 using TaskoMask.Application.Services.Cards;
 using TaskoMask.Application.Services.Organizations;

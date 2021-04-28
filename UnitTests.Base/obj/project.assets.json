@@ -5633,6 +5633,7 @@
       "MSTest.TestAdapter >= 2.1.0",
       "MSTest.TestFramework >= 2.1.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
+      "Newtonsoft.Json >= 9.0.1",
       "coverlet.collector >= 1.2.0"
     ]
   },
@@ -5691,6 +5692,10 @@
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[16.5.0, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[9.0.1, )"
           },
           "coverlet.collector": {
             "target": "Package",

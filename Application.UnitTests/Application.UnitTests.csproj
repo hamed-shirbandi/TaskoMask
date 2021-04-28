@@ -15,4 +15,8 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UnitTests.Base\UnitTests.Base.csproj" />
+  </ItemGroup>
+
 </Project>

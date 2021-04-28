@@ -1634,6 +1634,23 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "TaskoMask.UnitTests.Base/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "MSTest.TestAdapter": "2.1.0",
+          "MSTest.TestFramework": "2.1.0",
+          "Microsoft.NET.Test.Sdk": "16.5.0",
+          "Newtonsoft.Json": "9.0.1",
+          "coverlet.collector": "1.2.0"
+        },
+        "compile": {
+          "bin/placeholder/TaskoMask.UnitTests.Base.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TaskoMask.UnitTests.Base.dll": {}
+        }
       }
     }
   },
@@ -5626,6 +5643,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "TaskoMask.UnitTests.Base/1.0.0": {
+      "type": "project",
+      "path": "../UnitTests.Base/UnitTests.Base.csproj",
+      "msbuildProject": "../UnitTests.Base/UnitTests.Base.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5633,6 +5655,7 @@
       "MSTest.TestAdapter >= 2.1.0",
       "MSTest.TestFramework >= 2.1.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
+      "TaskoMask.UnitTests.Base >= 1.0.0",
       "coverlet.collector >= 1.2.0"
     ]
   },
@@ -5667,7 +5690,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\CodeBlock\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\UnitTests.Base\\UnitTests.Base.csproj": {
+              "projectPath": "C:\\Users\\CodeBlock\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\UnitTests.Base\\UnitTests.Base.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

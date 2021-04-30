@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StructureMap.AspNetCore;
 
-namespace Web
+namespace TaskoMask.Web
 {
     public class Program
     {

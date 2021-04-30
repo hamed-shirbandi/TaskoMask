@@ -12,7 +12,7 @@ using TaskoMask.Application.Mapper;
 using TaskoMask.Infrastructure.CrossCutting.Identity;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
-namespace Web
+namespace TaskoMask.Web
 {
     public class Startup
     {

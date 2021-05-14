@@ -10,17 +10,17 @@ namespace TaskoMask.Application.Queries.Handlers.Boards
 {
     public class GetBoardByIdQueryHandler : IRequestHandler<GetBoardByIdQuery, BoardOutput>
     {
-        private readonly IBoardRepository _projectRepository;
+        private readonly IBoardRepository _boardRepository;
         private readonly IMapper _mapper;
-        public GetBoardByIdQueryHandler(IBoardRepository projectRepository, IMapper mapper)
+        public GetBoardByIdQueryHandler(IBoardRepository boardRepository, IMapper mapper)
         {
-            _projectRepository = projectRepository;
+            _boardRepository = boardRepository;
             _mapper = mapper;
         }
 
         public async Task<BoardOutput> Handle(GetBoardByIdQuery request, CancellationToken cancellationToken)
         {
-            var board = await _projectRepository.GetByIdAsync(request.Id);
+            var board = await _boardRepository.GetByIdAsync(request.Id);
             return _mapper.Map<BoardOutput>(board);
         }
     }

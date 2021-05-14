@@ -14,13 +14,13 @@ namespace TaskoMask.Application.Commands.Handlers.Boards
 {
     public class CreateBoardCommandHandler : CommandHandler, IRequestHandler<CreateBoardCommand, Result<CommandResult>>
     {
-        private readonly IBoardRepository _projectRepository;
+        private readonly IBoardRepository _boardRepository;
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public CreateBoardCommandHandler(IBoardRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public CreateBoardCommandHandler(IBoardRepository boardRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
-            _projectRepository = projectRepository;
+            _boardRepository = boardRepository;
             _mediator = mediator;
             _mapper = mapper;
         }
@@ -35,17 +35,17 @@ namespace TaskoMask.Application.Commands.Handlers.Boards
             }
 
 
-            var project = _mapper.Map<Board>(request);
+            var board = _mapper.Map<Board>(request);
 
-            var exist = await _projectRepository.ExistByNameAsync(project.Id, project.Name);
+            var exist = await _boardRepository.ExistByNameAsync(board.Id, board.Name);
             if (exist)
             {
                 await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 
-            await _projectRepository.CreateAsync(project);
-            return Result.Success(new CommandResult(project.Id, ApplicationMessages.Create_Success));
+            await _boardRepository.CreateAsync(board);
+            return Result.Success(new CommandResult(board.Id, ApplicationMessages.Create_Success));
 
         }
     }

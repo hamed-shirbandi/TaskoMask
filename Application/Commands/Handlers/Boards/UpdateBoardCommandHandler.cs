@@ -14,12 +14,12 @@ namespace TaskoMask.Application.Commands.Handlers.Boards
 {
     public class UpdateBoardCommandHandler : CommandHandler, IRequestHandler<UpdateBoardCommand, Result<CommandResult>>
     {
-        private readonly IBoardRepository _projectRepository;
+        private readonly IBoardRepository _boardRepository;
         private readonly IMediator _mediator;
 
-        public UpdateBoardCommandHandler(IBoardRepository projectRepository, IMediator mediator) : base(mediator)
+        public UpdateBoardCommandHandler(IBoardRepository boardRepository, IMediator mediator) : base(mediator)
         {
-            _projectRepository = projectRepository;
+            _boardRepository = boardRepository;
             _mediator = mediator;
         }
 
@@ -32,20 +32,20 @@ namespace TaskoMask.Application.Commands.Handlers.Boards
             }
 
            
-            var project = await _projectRepository.GetByIdAsync(request.Id);
+            var board = await _boardRepository.GetByIdAsync(request.Id);
 
-            var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
+            var exist = await _boardRepository.ExistByNameAsync(board.Id, request.Name);
             if (exist)
             {
                 await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
                 return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
             }
 
-            project.SetName(request.Name);
-            project.SetDescription(request.Description);
+            board.SetName(request.Name);
+            board.SetDescription(request.Description);
 
-            await _projectRepository.UpdateAsync(project);
-            return Result.Success(new CommandResult(project.Id, ApplicationMessages.Update_Success));
+            await _boardRepository.UpdateAsync(board);
+            return Result.Success(new CommandResult(board.Id, ApplicationMessages.Update_Success));
 
         }
     }

@@ -2,16 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Services.Boards;
 using TaskoMask.Application.Services.Boards.Dto;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Models;
-using TaskoMask.Domain.Core.Events;
-using TaskoMask.web.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
     [Authorize]
-     [Area("admin")]
+    [Area("admin")]
     public class BoardsController : BaseController
     {
         #region Fields

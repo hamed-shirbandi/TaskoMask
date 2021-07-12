@@ -19,35 +19,41 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Folder Include="Boards\EventHandlers\" />
+    <Folder Include="Cards\Commands\Handlers\" />
+    <Folder Include="Cards\Commands\Models\" />
+    <Folder Include="Cards\Commands\Validations\" />
+    <Folder Include="Cards\EventHandlers\" />
+    <Folder Include="Cards\Queries\Handlers\" />
+    <Folder Include="Cards\Queries\Models\" />
     <Folder Include="Commands\Handlers\Tasks\" />
     <Folder Include="Commands\Models\Tasks\" />
-    <Folder Include="EventHandlers\" />
+    <Folder Include="Organizations\Commands\Handlers\" />
+    <Folder Include="Organizations\Commands\Models\" />
+    <Folder Include="Organizations\Commands\Validations\" />
+    <Folder Include="Organizations\EventHandlers\" />
+    <Folder Include="Organizations\Queries\Handlers\" />
+    <Folder Include="Organizations\Queries\Models\" />
+    <Folder Include="Projects\Commands\Handlers\" />
+    <Folder Include="Projects\Commands\Models\" />
+    <Folder Include="Projects\Commands\Validations\" />
+    <Folder Include="Projects\EventHandlers\" />
+    <Folder Include="Projects\Queries\Handlers\" />
+    <Folder Include="Projects\Queries\Models\" />
     <Folder Include="Queries\Handlers\Tasks\" />
     <Folder Include="Queries\Models\Tasks\" />
     <Folder Include="Services\Tasks\" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Compile Update="Resources\ApplicationMessages.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ApplicationMessages.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\ApplicationMetadata.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ApplicationMetadata.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\ApplicationMessages.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ApplicationMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\ApplicationMetadata.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ApplicationMetadata.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Folder Include="Tasks\Commands\Handlers\" />
+    <Folder Include="Tasks\Commands\Models\" />
+    <Folder Include="Tasks\Commands\Validations\" />
+    <Folder Include="Tasks\EventHandlers\" />
+    <Folder Include="Tasks\Queries\Handlers\" />
+    <Folder Include="Tasks\Queries\Models\" />
+    <Folder Include="Users\Commands\Handlers\" />
+    <Folder Include="Users\Commands\Models\" />
+    <Folder Include="Users\Commands\Validations\" />
+    <Folder Include="Users\EventHandlers\" />
+    <Folder Include="Users\Queries\Handlers\" />
+    <Folder Include="Users\Queries\Models\" />
   </ItemGroup>
 </Project>

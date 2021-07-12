@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>TaskoMask.Application.Core</AssemblyName>
+    <RootNamespace>TaskoMask.Application.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Services\" />
+    <Folder Include="Notifications\" />
+    <Folder Include="Queries\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Resources\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+</Project>

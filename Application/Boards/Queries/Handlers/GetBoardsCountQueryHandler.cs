@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Models.Boards;
+using TaskoMask.Application.Boards.Queries.Models;
 using TaskoMask.Domain.Data;
 
-namespace TaskoMask.Application.Queries.Handlers.Boards
+namespace TaskoMask.Application.Boards.Queries.Handlers
 {
     public class GetBoardsCountQueryHandler : IRequestHandler<GetBoardsCountQuery, long>
     {

@@ -1,9 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
 using System.Collections.Generic;
-using TaskoMask.Application.Services.Projects.Dto;
+using TaskoMask.Application.Core.Dtos.Projects;
 
-namespace TaskoMask.Application.Queries.Models.Projects
+namespace TaskoMask.Application.Projects.Queries.Models
 {
    
     public class GetProjectByIdQuery : IRequest<ProjectOutput>

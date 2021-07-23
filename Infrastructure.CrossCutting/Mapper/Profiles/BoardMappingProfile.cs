@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Commands.Models.Boards;
-using TaskoMask.Application.Services.Boards.Dto;
+using TaskoMask.Application.Boards.Commands.Models;
+using TaskoMask.Application.Core.Dtos.Boards;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Mapper.Profiles

@@ -3,11 +3,11 @@ using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Models.Projects;
-using TaskoMask.Application.Services.Projects.Dto;
+using TaskoMask.Application.Projects.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Domain.Data;
 
-namespace TaskoMask.Application.Queries.Handlers.Projects
+namespace TaskoMask.Application.Projects.Queries.Handlers
 {
     public class GetProjectsByOrganizationIdQueryHandler : IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutput>>
     {

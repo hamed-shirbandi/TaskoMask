@@ -6,13 +6,23 @@
     <RootNamespace>TaskoMask.Application.Core</RootNamespace>
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <!--<PackageReference Include="CSharpFunctionalExtensions" Version="2.12.0" />
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />-->
+  </ItemGroup>
+  
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="Services\" />
     <Folder Include="Notifications\" />
     <Folder Include="Queries\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

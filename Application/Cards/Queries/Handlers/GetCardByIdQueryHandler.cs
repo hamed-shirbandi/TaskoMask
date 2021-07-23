@@ -2,11 +2,11 @@
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Models.Cards;
-using TaskoMask.Application.Services.Cards.Dto;
+using TaskoMask.Application.Cards.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Domain.Data;
 
-namespace TaskoMask.Application.Queries.Handlers.Cards
+namespace TaskoMask.Application.Cards.Queries.Handlers
 {
     public class GetCardByIdQueryHandler : IRequestHandler<GetCardByIdQuery, CardOutput>
     {

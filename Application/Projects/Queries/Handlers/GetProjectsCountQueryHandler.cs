@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Models.Projects;
+using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Domain.Data;
 
-namespace TaskoMask.Application.Queries.Handlers.Projects
+namespace TaskoMask.Application.Projects.Queries.Handlers
 {
     public class GetProjectsCountQueryHandler : IRequestHandler<GetProjectsCountQuery, long>
     {

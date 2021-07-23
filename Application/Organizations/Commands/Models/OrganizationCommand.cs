@@ -1,11 +1,11 @@
 ﻿using CSharpFunctionalExtensions;
 using FluentValidation.Results;
 using MediatR;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Commands.Models.Organizations
+namespace TaskoMask.Application.Organizations.Commands.Models
 {
-    public abstract class OrganizationCommand : Command
+    public abstract class OrganizationCommand : BaseCommand
     {
         public OrganizationCommand()
         {

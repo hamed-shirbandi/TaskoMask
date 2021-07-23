@@ -1,10 +1,8 @@
-﻿using CSharpFunctionalExtensions;
-using MediatR;
-using TaskoMask.Domain.Core.Commands;
+﻿using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Commands.Models.Boards
+namespace TaskoMask.Application.Boards.Commands.Models
 {
-    public abstract class BoardCommand : Command
+    public abstract class BoardCommand : BaseCommand
     {
         public BoardCommand()
         {

@@ -1,10 +1,9 @@
 ﻿
-using TaskoMask.Application.Commands.Validations.Boards;
-using TaskoMask.Domain.Core.Commands;
 
-namespace TaskoMask.Application.Commands.Models.Boards
+
+namespace TaskoMask.Application.Boards.Commands.Models
 {
-   public class CreateBoardCommand : BoardCommand, ICommandValidaion
+   public class CreateBoardCommand : BoardCommand
     {
         public CreateBoardCommand(string name, string description, string projectId)
         {
@@ -13,10 +12,6 @@ namespace TaskoMask.Application.Commands.Models.Boards
             ProjectId = projectId;
         }
 
-        public bool IsValid()
-        {
-            ValidationResult = new CreateBoardCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
+      
     }
 }

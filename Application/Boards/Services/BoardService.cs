@@ -2,14 +2,16 @@
 using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Boards;
+using TaskoMask.Application.Boards.Commands.Models;
+using TaskoMask.Application.Boards.Queries.Models;
+using TaskoMask.Application.Projects.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.ViewMoldes;
+using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Queries.Models.Boards;
-using TaskoMask.Application.Queries.Models.Projects;
-using TaskoMask.Application.Services.Boards.Dto;
-using TaskoMask.Application.Queries.ViewMoldes;
-using TaskoMask.Domain.Core.Commands;
 
-namespace TaskoMask.Application.Services.Boards
+namespace TaskoMask.Application.Boards.Services
 {
     public class BoardService : BaseApplicationService, IBoardService
     {

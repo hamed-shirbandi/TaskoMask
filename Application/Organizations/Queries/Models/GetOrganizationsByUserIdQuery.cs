@@ -1,9 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
 using System.Collections.Generic;
-using TaskoMask.Application.Services.Organizations.Dto;
+using TaskoMask.Application.Core.Dtos.Organizations;
 
-namespace TaskoMask.Application.Queries.Models.Organizations
+namespace TaskoMask.Application.Organizations.Queries.Models
 {
    
     public class GetOrganizationsByUserIdQuery : IRequest<IEnumerable<OrganizationOutput>>

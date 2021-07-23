@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Models.Cards;
+using TaskoMask.Application.Cards.Queries.Models;
 using TaskoMask.Domain.Data;
 
-namespace TaskoMask.Application.Queries.Handlers.Cards
+namespace TaskoMask.Application.Cards.Queries.Handlers
 {
     public class GetCardsCountQueryHandler : IRequestHandler<GetCardsCountQuery, long>
     {

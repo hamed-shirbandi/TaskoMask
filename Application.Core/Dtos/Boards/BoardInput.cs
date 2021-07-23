@@ -1,6 +1,6 @@
 ﻿
 
-namespace TaskoMask.Application.Services.Boards.Dto
+namespace TaskoMask.Application.Core.Dtos.Boards
 {
     public class BoardInput
     {

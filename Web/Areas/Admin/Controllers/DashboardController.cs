@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Services.Organizations;
+using TaskoMask.Application.Organizations.Services;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Application.Services.Users;
+using TaskoMask.Application.Users.Services;
 using TaskoMask.web.Area.Admin.Models;
 
 namespace TaskoMask.web.Area.Admin.Controllers

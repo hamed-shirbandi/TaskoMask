@@ -3,16 +3,16 @@ using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Cards;
-using TaskoMask.Application.Resources;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Cards.Commands.Models;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.Commands.Handlers.Cards
+namespace TaskoMask.Application.Cards.Commands.Handlers
 {
-    public class CreateCardCommandHandler : CommandHandler, IRequestHandler<CreateCardCommand, Result<CommandResult>>
+    public class CreateCardCommandHandler : BaseCommandHandler, IRequestHandler<CreateCardCommand, Result<CommandResult>>
     {
         private readonly ICardRepository _projectRepository;
         private readonly IMapper _mapper;
@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Commands.Handlers.Cards
         {
             if (!request.IsValid())
             {
-                NotifyValidationErrors(request);
+                 await PublishValidationErrorsAsync(request);
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 

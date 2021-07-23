@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Commands;
 
 namespace TaskoMask.Web.Controllers
 {

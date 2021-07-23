@@ -4,16 +4,16 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Users;
-using TaskoMask.Application.Resources;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Users.Commands.Models;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.Commands.Handlers.Users
+namespace TaskoMask.Application.Users.Commands.Handlers
 {
-    public class CreateUserCommandHandler : CommandHandler, IRequestHandler<CreateUserCommand, Result<CommandResult>>
+    public class CreateUserCommandHandler : BaseCommandHandler, IRequestHandler<CreateUserCommand, Result<CommandResult>>
     {
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
@@ -31,7 +31,7 @@ namespace TaskoMask.Application.Commands.Handlers.Users
         {
             if (!request.IsValid())
             {
-                NotifyValidationErrors(request);
+                 await PublishValidationErrorsAsync(request);
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 

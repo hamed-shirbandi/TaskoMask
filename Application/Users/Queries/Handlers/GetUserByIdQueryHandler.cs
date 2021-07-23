@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Models.Users;
-using TaskoMask.Application.Services.Users.Dto;
+using TaskoMask.Application.Users.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.Queries.Handlers.Users
+namespace TaskoMask.Application.Users.Queries.Handlers
 {
     public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserOutput>
     {

@@ -1,11 +1,11 @@
 ﻿
-using TaskoMask.Application.Commands.Validations.Cards;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Cards.Commands.Validations;
+using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Enums;
 
-namespace TaskoMask.Application.Commands.Models.Cards
+namespace TaskoMask.Application.Cards.Commands.Models
 {
-   public class CreateCardCommand : CardCommand, ICommandValidaion
+   public class CreateCardCommand : CardCommand
     {
         public CreateCardCommand(string name, string description, string projectId,CardType type)
         {

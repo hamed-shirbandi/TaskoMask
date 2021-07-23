@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TaskoMask.Application.Services.Organizations.Dto;
-using TaskoMask.Application.Services.Projects.Dto;
+using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Dtos.Projects;
 
-namespace TaskoMask.Application.Queries.ViewMoldes
+namespace TaskoMask.Application.Core.ViewMoldes
 {
    public class ProjectListViewModel
     {

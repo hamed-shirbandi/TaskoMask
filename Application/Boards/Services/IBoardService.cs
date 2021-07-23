@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Services.Boards.Dto;
-using TaskoMask.Application.Queries.ViewMoldes;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.ViewMoldes;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Services.Boards
+namespace TaskoMask.Application.Boards.Services
 {
     public interface IBoardService
     {

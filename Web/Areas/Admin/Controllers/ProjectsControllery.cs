@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Services.Projects;
-using TaskoMask.Application.Services.Projects.Dto;
+using TaskoMask.Application.Projects.Services;
+using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Models;
 using TaskoMask.Domain.Core.Events;

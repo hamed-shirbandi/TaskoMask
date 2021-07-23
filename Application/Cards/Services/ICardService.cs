@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Services.Cards.Dto;
-using TaskoMask.Application.Queries.ViewMoldes;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.ViewMoldes;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Services.Cards
+namespace TaskoMask.Application.Cards.Services
 {
     public interface ICardService
     {

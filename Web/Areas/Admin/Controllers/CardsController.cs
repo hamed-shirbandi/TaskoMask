@@ -1,11 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Services.Cards;
-using TaskoMask.Application.Services.Cards.Dto;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Models;
-using TaskoMask.Domain.Core.Events;
-using TaskoMask.web.Models;
+using TaskoMask.Application.Cards.Services;
+using TaskoMask.Application.Core.Dtos.Cards;
 using Microsoft.AspNetCore.Authorization;
 
 namespace TaskoMask.web.Area.Admin.Controllers

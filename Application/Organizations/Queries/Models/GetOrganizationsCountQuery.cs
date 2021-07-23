@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskoMask.Application.Queries.Models.Organizations
+namespace TaskoMask.Application.Organizations.Queries.Models
 {
     public class GetOrganizationsCountQuery:IRequest<long>
     {

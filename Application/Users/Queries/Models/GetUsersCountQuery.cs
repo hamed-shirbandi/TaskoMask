@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskoMask.Application.Queries.Models.Users
+namespace TaskoMask.Application.Users.Queries.Models
 {
     public class GetUsersCountQuery:IRequest<long>
     {

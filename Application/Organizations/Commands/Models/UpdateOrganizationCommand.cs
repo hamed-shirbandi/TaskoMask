@@ -1,10 +1,10 @@
 ﻿
-using TaskoMask.Application.Commands.Validations.Organizations;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Organizations.Commands.Validations;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Commands.Models.Organizations
+namespace TaskoMask.Application.Organizations.Commands.Models
 {
-    public class UpdateOrganizationCommand : OrganizationCommand, ICommandValidaion
+    public class UpdateOrganizationCommand : OrganizationCommand
     {
         public UpdateOrganizationCommand(string id, string name, string description)
         {

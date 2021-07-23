@@ -3,11 +3,11 @@ using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Queries.Models.Boards;
-using TaskoMask.Application.Services.Boards.Dto;
+using TaskoMask.Application.Boards.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Boards;
 using TaskoMask.Domain.Data;
 
-namespace TaskoMask.Application.Queries.Handlers.Boards
+namespace TaskoMask.Application.Boards.Queries.Handlers
 {
     public class GetBoardsByProjectIdQueryHandler : IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardOutput>>
     {

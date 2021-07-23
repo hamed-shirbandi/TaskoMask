@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Services.Users.Dto;
-using TaskoMask.Application.Queries.ViewMoldes.Account;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.ViewMoldes.Account;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Services.Users
+namespace TaskoMask.Application.Users.Services
 {
     public interface IUserService
     {

@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Users;
-using TaskoMask.Application.Queries.Models.Users;
-using TaskoMask.Application.Services.Users.Dto;
-using TaskoMask.Application.Queries.ViewMoldes.Account;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Users.Commands.Models;
+using TaskoMask.Application.Users.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.ViewMoldes.Account;
+using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Services;
 
-namespace TaskoMask.Application.Services.Users
+namespace TaskoMask.Application.Users.Services
 {
     public class UserService : BaseApplicationService, IUserService
     {

@@ -1,10 +1,10 @@
 ﻿
-using TaskoMask.Application.Commands.Validations.Users;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Users.Commands.Validations;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Commands.Models.Users
+namespace TaskoMask.Application.Users.Commands.Models
 {
-   public class CreateUserCommand : UserCommand, ICommandValidaion
+   public class CreateUserCommand : UserCommand
     {
         public CreateUserCommand(string displayName,string email,string password)
         {

@@ -1,10 +1,10 @@
 ﻿
-using TaskoMask.Application.Commands.Validations.Projects;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Projects.Commands.Validations;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Commands.Models.Projects
+namespace TaskoMask.Application.Projects.Commands.Models
 {
-   public class CreateProjectCommand : ProjectCommand, ICommandValidaion
+   public class CreateProjectCommand : ProjectCommand
     {
         public CreateProjectCommand(string name, string description, string organizationId)
         {

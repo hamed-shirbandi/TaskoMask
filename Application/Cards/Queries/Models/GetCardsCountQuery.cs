@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskoMask.Application.Queries.Models.Cards
+namespace TaskoMask.Application.Cards.Queries.Models
 {
     public class GetCardsCountQuery:IRequest<long>
     {

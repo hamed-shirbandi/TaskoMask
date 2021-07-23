@@ -2,14 +2,15 @@
 using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Projects;
-using TaskoMask.Application.Queries.Models.Organizations;
-using TaskoMask.Application.Queries.Models.Projects;
-using TaskoMask.Application.Services.Projects.Dto;
-using TaskoMask.Application.Queries.ViewMoldes;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Projects.Commands.Models;
+using TaskoMask.Application.Organizations.Queries.Models;
+using TaskoMask.Application.Projects.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.ViewMoldes;
+using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Services;
 
-namespace TaskoMask.Application.Services.Projects
+namespace TaskoMask.Application.Projects.Services
 {
     public class ProjectService : BaseApplicationService, IProjectService
     {

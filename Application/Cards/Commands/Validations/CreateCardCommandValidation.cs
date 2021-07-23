@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Cards;
-using TaskoMask.Application.Resources;
+using TaskoMask.Application.Cards.Commands.Models;
+using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Commands.Validations.Cards
+namespace TaskoMask.Application.Cards.Commands.Validations
 {
    public class CreateCardCommandValidation:CardValidation<CreateCardCommand>
     {

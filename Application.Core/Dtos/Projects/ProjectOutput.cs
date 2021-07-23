@@ -1,12 +1,13 @@
 ﻿
 
-namespace TaskoMask.Application.Services.Projects.Dto
+namespace TaskoMask.Application.Core.Dtos.Projects
 {
-    public class ProjectInput
+    public class ProjectOutput
     {
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string OrganizationId { get; set; }
+        public string CreateDateTime { get; set; }
     }
 }

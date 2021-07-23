@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Services.Projects.Dto;
-using TaskoMask.Application.Queries.ViewMoldes;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.ViewMoldes;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Services.Projects
+namespace TaskoMask.Application.Projects.Services
 {
     public interface IProjectService
     {

@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Services.Organizations.Dto;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Services.Organizations
+namespace TaskoMask.Application.Organizations.Services
 {
     public interface IOrganizationService
     {

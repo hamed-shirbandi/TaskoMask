@@ -1,9 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
 using System.Collections.Generic;
-using TaskoMask.Application.Services.Users.Dto;
+using TaskoMask.Application.Core.Dtos.Users;
 
-namespace TaskoMask.Application.Queries.Models.Users
+namespace TaskoMask.Application.Users.Queries.Models
 {
    
     public class GetUserByIdQuery : IRequest<UserOutput>

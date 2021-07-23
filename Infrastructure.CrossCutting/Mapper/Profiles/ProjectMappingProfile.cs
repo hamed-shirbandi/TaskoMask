@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Commands.Models.Projects;
-using TaskoMask.Application.Services.Projects.Dto;
+using TaskoMask.Application.Projects.Commands.Models;
+using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Mapper.Profiles

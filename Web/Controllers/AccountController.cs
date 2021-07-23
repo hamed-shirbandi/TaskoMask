@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TaskoMask.Application.Resources;
-using TaskoMask.Application.Services.Users;
-using TaskoMask.Application.Queries.ViewMoldes.Account;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Users.Services;
+using TaskoMask.Application.Core.ViewMoldes.Account;
 using TaskoMask.Domain.Models;
 using TaskoMask.web.Area.Admin.Controllers;
 

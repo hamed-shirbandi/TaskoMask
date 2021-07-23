@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Projects;
-using TaskoMask.Application.Resources;
+using TaskoMask.Application.Projects.Commands.Models;
+using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Commands.Validations.Projects
+namespace TaskoMask.Application.Projects.Commands.Validations
 {
    public class UpdateProjectCommandValidation : ProjectValidation<UpdateProjectCommand>
     {

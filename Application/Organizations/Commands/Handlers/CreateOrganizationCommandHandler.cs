@@ -3,16 +3,16 @@ using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Organizations;
-using TaskoMask.Application.Resources;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Organizations.Commands.Models;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
-    public class CreateOrganizationCommandHandler : CommandHandler, IRequestHandler<CreateOrganizationCommand, Result<CommandResult>>
+    public class CreateOrganizationCommandHandler : BaseCommandHandler, IRequestHandler<CreateOrganizationCommand, Result<CommandResult>>
     {
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMapper _mapper;
@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         {
             if (!request.IsValid())
             {
-                NotifyValidationErrors(request);
+                 await PublishValidationErrorsAsync(request);
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 

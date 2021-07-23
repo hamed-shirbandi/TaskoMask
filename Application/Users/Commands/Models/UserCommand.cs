@@ -1,11 +1,11 @@
 ﻿using CSharpFunctionalExtensions;
 using FluentValidation.Results;
 using MediatR;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Commands.Models.Users
+namespace TaskoMask.Application.Users.Commands.Models
 {
-    public abstract class UserCommand : Command
+    public abstract class UserCommand : BaseCommand
     {
         public UserCommand()
         {

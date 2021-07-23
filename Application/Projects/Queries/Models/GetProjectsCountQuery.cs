@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskoMask.Application.Queries.Models.Projects
+namespace TaskoMask.Application.Projects.Queries.Models
 {
     public class GetProjectsCountQuery:IRequest<long>
     {

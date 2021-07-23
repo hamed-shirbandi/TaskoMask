@@ -1,10 +1,10 @@
 ﻿
-using TaskoMask.Application.Commands.Validations.Boards;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Boards.Commands.Validations;
+using TaskoMask.Application.Core.Commands;
 
-namespace TaskoMask.Application.Commands.Models.Boards
+namespace TaskoMask.Application.Boards.Commands.Models
 {
-   public class UpdateBoardCommand : BoardCommand, ICommandValidaion
+   public class UpdateBoardCommand : BoardCommand
     {
         public UpdateBoardCommand(string id, string name, string description )
         {
@@ -16,10 +16,6 @@ namespace TaskoMask.Application.Commands.Models.Boards
         public string Id { get; private set; }
 
 
-        public bool IsValid()
-        {
-            ValidationResult = new UpdateBoardCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
+       
     }
 }

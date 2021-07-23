@@ -126,6 +126,12 @@
   <data name="Name_Already_Exist" xml:space="preserve">
     <value>Name Already Exist</value>
   </data>
+  <data name="Operation_Failed" xml:space="preserve">
+    <value>Operation failed</value>
+  </data>
+  <data name="Operation_Success" xml:space="preserve">
+    <value>Operation success</value>
+  </data>
   <data name="Update_Failed" xml:space="preserve">
     <value>Update Failed</value>
   </data>

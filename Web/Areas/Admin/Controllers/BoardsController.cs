@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Services.Boards;
-using TaskoMask.Application.Services.Boards.Dto;
+using TaskoMask.Application.Boards.Services;
+using TaskoMask.Application.Core.Dtos.Boards;
 using Microsoft.AspNetCore.Authorization;
 
 namespace TaskoMask.web.Area.Admin.Controllers

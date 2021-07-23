@@ -1,9 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
 using System.Collections.Generic;
-using TaskoMask.Application.Services.Cards.Dto;
+using TaskoMask.Application.Core.Dtos.Cards;
 
-namespace TaskoMask.Application.Queries.Models.Cards
+namespace TaskoMask.Application.Cards.Queries.Models
 {
    
     public class GetCardsByBoardIdQuery : IRequest<IEnumerable<CardOutput>>

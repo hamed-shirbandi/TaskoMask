@@ -2,7 +2,7 @@
 
 using TaskoMask.Domain.Core.Enums;
 
-namespace TaskoMask.Application.Services.Cards.Dto
+namespace TaskoMask.Application.Core.Dtos.Cards
 {
     public class CardInput
     {

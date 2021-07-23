@@ -1,6 +1,6 @@
 ﻿
 
-namespace TaskoMask.Application.Services.Organizations.Dto
+namespace TaskoMask.Application.Core.Dtos.Organizations
 {
     public class OrganizationOutput
     {

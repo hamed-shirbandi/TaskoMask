@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Boards;
-using TaskoMask.Application.Resources;
+using TaskoMask.Application.Boards.Commands.Models;
+using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Commands.Validations.Boards
+namespace TaskoMask.Application.Boards.Commands.Validations
 {
    public class UpdateBoardCommandValidation : BoardValidation<UpdateBoardCommand>
     {

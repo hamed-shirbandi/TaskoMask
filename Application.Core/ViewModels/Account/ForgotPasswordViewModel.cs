@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TaskoMask.Application.Queries.ViewMoldes.Account
+namespace TaskoMask.Application.Core.ViewMoldes.Account
 {
     public class ForgotPasswordViewModel
     {

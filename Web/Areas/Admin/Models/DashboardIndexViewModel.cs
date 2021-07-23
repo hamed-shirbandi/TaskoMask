@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Services.Organizations.Dto;
-using TaskoMask.Application.Services.Users.Dto;
+using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Dtos.Users;
 
 namespace TaskoMask.web.Area.Admin.Models
 {

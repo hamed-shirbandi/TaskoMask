@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Commands.Models.Organizations;
-using TaskoMask.Application.Services.Organizations.Dto;
+using TaskoMask.Application.Organizations.Commands.Models;
+using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Mapper.Profiles

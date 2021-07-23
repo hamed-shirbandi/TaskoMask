@@ -3,16 +3,16 @@ using CSharpFunctionalExtensions;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Boards;
-using TaskoMask.Application.Resources;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Boards.Commands.Models;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Models;
 
-namespace TaskoMask.Application.Commands.Handlers.Boards
+namespace TaskoMask.Application.Boards.Commands.Handlers
 {
-    public class CreateBoardCommandHandler : CommandHandler, IRequestHandler<CreateBoardCommand, Result<CommandResult>>
+    public class CreateBoardCommandHandler : BaseCommandHandler, IRequestHandler<CreateBoardCommand, Result<CommandResult>>
     {
         private readonly IBoardRepository _boardRepository;
         private readonly IMapper _mapper;
@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Commands.Handlers.Boards
         {
             if (!request.IsValid())
             {
-                NotifyValidationErrors(request);
+               await PublishValidationErrorsAsync(request);
                 return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
             }
 

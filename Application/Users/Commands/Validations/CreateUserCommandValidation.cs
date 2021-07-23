@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Commands.Models.Users;
-using TaskoMask.Application.Resources;
+using TaskoMask.Application.Users.Commands.Models;
+using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Commands.Validations.Users
+namespace TaskoMask.Application.Users.Commands.Validations
 {
    public class CreateUserCommandValidation:UserValidation<CreateUserCommand>
     {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Commands.Models.Cards;
-using TaskoMask.Application.Services.Cards.Dto;
+using TaskoMask.Application.Cards.Commands.Models;
+using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Mapper.Profiles

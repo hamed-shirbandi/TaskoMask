@@ -5,21 +5,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Boards.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Boards.Queries.Handlers
 {
-    public class BoardsQueryHandlers :
+    public class BoardsQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetBoardByIdQuery, BoardOutput>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardOutput>>
     {
         private readonly IBoardRepository _boardRepository;
-        private readonly IMapper _mapper;
-        public BoardsQueryHandlers(IBoardRepository boardRepository, IMapper mapper)
+        public BoardsQueryHandlers(IBoardRepository boardRepository, IMapper mapper, IMediator mediator) :base(mediator, mapper)
         {
             _boardRepository = boardRepository;
-            _mapper = mapper;
         }
 
         public async Task<BoardOutput> Handle(GetBoardByIdQuery request, CancellationToken cancellationToken)

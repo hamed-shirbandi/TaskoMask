@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Domain.Data;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Projects.Queries.Handlers
 {
-    public class ProjectssQueryHandlers :
+    public class ProjectssQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetProjectByIdQuery, ProjectOutput>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutput>>
     {
         private readonly IProjectRepository _projectRepository;
-        private readonly IMapper _mapper;
-        public ProjectssQueryHandlers(IProjectRepository projectRepository, IMapper mapper)
+        public ProjectssQueryHandlers(IProjectRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
         {
             _projectRepository = projectRepository;
-            _mapper = mapper;
         }
 
         public async Task<IEnumerable<ProjectOutput>> Handle(GetProjectsByOrganizationIdQuery request, CancellationToken cancellationToken)

@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Domain.Data;
+using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Organizations.Queries.Handlers
 {
-    public class OrganizationsQueryHandlers : 
+    public class OrganizationsQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOrganizationByIdQuery, OrganizationOutput>,
         IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>
     {
         private readonly IOrganizationRepository _organizationRepository;
-        private readonly IMapper _mapper;
-        public OrganizationsQueryHandlers(IOrganizationRepository organizationRepository, IMapper mapper)
+        public OrganizationsQueryHandlers(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
         {
             _organizationRepository = organizationRepository;
-            _mapper = mapper;
         }
 
         public async Task<OrganizationOutput> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)

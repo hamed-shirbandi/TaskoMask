@@ -5,20 +5,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Cards.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Queries;
 using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Cards.Queries.Handlers
 {
-    public class CardsQueryHandlers : 
+    public class CardsQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetCardByIdQuery, CardOutput>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardOutput>>
     {
         private readonly ICardRepository _projectRepository;
-        private readonly IMapper _mapper;
-        public CardsQueryHandlers(ICardRepository projectRepository, IMapper mapper)
+        public CardsQueryHandlers(ICardRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
         {
             _projectRepository = projectRepository;
-            _mapper = mapper;
         }
 
         public async Task<CardOutput> Handle(GetCardByIdQuery request, CancellationToken cancellationToken)

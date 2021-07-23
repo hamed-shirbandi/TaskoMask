@@ -11,10 +11,12 @@ using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Data;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Organizations.Services
 {
-    public class OrganizationService : BaseApplicationService, IOrganizationService
+    public class OrganizationService : BaseEntityService<Organization>, IOrganizationService
     {
         public OrganizationService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
         { }
@@ -22,20 +24,20 @@ namespace TaskoMask.Application.Organizations.Services
         public async Task<Result<CommandResult>> CreateAsync(OrganizationInput input)
         {
             var createCommand = _mapper.Map<CreateOrganizationCommand>(input);
-            return await _mediator.Send(createCommand);
+            return await SendCommandAsync(createCommand);
         }
 
 
         public async Task<Result<CommandResult>> UpdateAsync(OrganizationInput input)
         {
             var updateCommand = _mapper.Map<UpdateOrganizationCommand>(input);
-            return await _mediator.Send(updateCommand);
+            return await SendCommandAsync(updateCommand);
         }
 
         public async Task<OrganizationOutput> GetByIdAsync(string id)
         {
             var query = new GetOrganizationByIdQuery(id);
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetOrganizationByIdQuery, OrganizationOutput>(query);
         }
 
 
@@ -49,14 +51,14 @@ namespace TaskoMask.Application.Organizations.Services
         public async Task<IEnumerable<OrganizationOutput>> GetListByUserIdAsync(string userId)
         {
             var query = new GetOrganizationsByUserIdQuery(userId: userId);
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>(query);
         }
 
 
         public async Task<long> CountAsync()
         {
             var query = new GetOrganizationsCountQuery();
-            return  await _mediator.Send(query);
+            return  await SendQueryAsync<GetOrganizationsCountQuery, long>(query);
         }
 
        

@@ -9,10 +9,14 @@ using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
+using System.Collections.Generic;
+using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Projects.Services
 {
-    public class ProjectService : BaseApplicationService, IProjectService
+    public class ProjectService : BaseEntityService<Project>, IProjectService
     {
 
         #region Fields
@@ -38,7 +42,7 @@ namespace TaskoMask.Application.Projects.Services
         {
             var project = _mapper.Map<CreateProjectCommand>(input);
 
-            return await _mediator.Send(project);
+            return await SendCommandAsync(project);
         }
 
 
@@ -49,7 +53,7 @@ namespace TaskoMask.Application.Projects.Services
         public async Task<Result<CommandResult>> UpdateAsync(ProjectInput input)
         {
             var updateCommand = _mapper.Map<UpdateProjectCommand>(input);
-            return await _mediator.Send(updateCommand);
+            return await SendCommandAsync(updateCommand);
         }
 
 
@@ -64,7 +68,7 @@ namespace TaskoMask.Application.Projects.Services
         public async Task<ProjectOutput> GetByIdAsync(string id)
         {
             var query = new GetProjectByIdQuery(id);
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetProjectByIdQuery, ProjectOutput>(query);
         }
 
 
@@ -87,10 +91,10 @@ namespace TaskoMask.Application.Projects.Services
         public async Task<ProjectListViewModel> GetListByOrganizationIdAsync(string organizationId)
         {
             var projectsQuery = new GetProjectsByOrganizationIdQuery(organizationId: organizationId);
-            var projects = await _mediator.Send(projectsQuery);
+            var projects = await SendQueryAsync<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutput>>(projectsQuery);
 
             var organizationQuery = new GetOrganizationByIdQuery(id: organizationId);
-            var organization = await _mediator.Send(organizationQuery);
+            var organization = await SendQueryAsync<GetOrganizationByIdQuery, OrganizationOutput>(organizationQuery);
 
             return new ProjectListViewModel
             {
@@ -107,7 +111,7 @@ namespace TaskoMask.Application.Projects.Services
         public async Task<long> CountAsync()
         {
             var query = new GetProjectsCountQuery();
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetProjectsCountQuery, long>(query);
         }
 
 

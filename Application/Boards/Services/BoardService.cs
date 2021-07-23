@@ -10,10 +10,14 @@ using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Queries.Models.Boards;
+using TaskoMask.Application.Core.Dtos.Projects;
+using System.Collections.Generic;
+using TaskoMask.Domain.Models;
+using TaskoMask.Application.BaseEntities.Services;
 
 namespace TaskoMask.Application.Boards.Services
 {
-    public class BoardService : BaseApplicationService, IBoardService
+    public class BoardService : BaseEntityService<Board>, IBoardService
     {
         #region Fields
 
@@ -37,7 +41,7 @@ namespace TaskoMask.Application.Boards.Services
         {
             var project = _mapper.Map<CreateBoardCommand>(input);
 
-            return await _mediator.Send(project);
+            return await SendCommandAsync(project);
         }
 
 
@@ -48,7 +52,7 @@ namespace TaskoMask.Application.Boards.Services
         public async Task<Result<CommandResult>> UpdateAsync(BoardInput input)
         {
             var updateCommand = _mapper.Map<UpdateBoardCommand>(input);
-            return await _mediator.Send(updateCommand);
+            return await SendCommandAsync(updateCommand);
         }
 
 
@@ -64,7 +68,7 @@ namespace TaskoMask.Application.Boards.Services
         public async Task<BoardOutput> GetByIdAsync(string id)
         {
             var query = new GetBoardByIdQuery(id);
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetBoardByIdQuery,BoardOutput>(query);
         }
 
 
@@ -87,10 +91,10 @@ namespace TaskoMask.Application.Boards.Services
         public async Task<BoardListViewModel> GetListByProjectIdAsync(string projectId)
         {
             var boardsQuery = new GetBoardsByProjectIdQuery(projectId: projectId);
-            var boards = await _mediator.Send(boardsQuery);
+            var boards = await SendQueryAsync<GetBoardsByProjectIdQuery, IEnumerable<BoardOutput>>(boardsQuery);
 
             var projectQuery = new GetProjectByIdQuery(id: projectId);
-            var project = await _mediator.Send(projectQuery);
+            var project = await SendQueryAsync<GetProjectByIdQuery, ProjectOutput>(projectQuery);
 
             return new BoardListViewModel
             {
@@ -107,7 +111,7 @@ namespace TaskoMask.Application.Boards.Services
         public async Task<long> CountAsync()
         {
             var query = new GetBoardsCountQuery();
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetBoardsCountQuery, long>(query);
         }
 
 

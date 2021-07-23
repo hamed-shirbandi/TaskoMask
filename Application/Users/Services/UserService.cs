@@ -12,6 +12,8 @@ using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.ViewMoldes.Account;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Users.Services
 {
@@ -37,7 +39,7 @@ namespace TaskoMask.Application.Users.Services
         public async Task<Result<CommandResult>> CreateAsync(RegisterViewModel input)
         {
             var createCommand = _mapper.Map<CreateUserCommand>(input);
-            return await _mediator.Send(createCommand);
+            return await SendCommandAsync(createCommand);
         }
 
 
@@ -48,7 +50,7 @@ namespace TaskoMask.Application.Users.Services
         public async Task<Result<CommandResult>> UpdateAsync(UserInput input)
         {
             var updateCommand = _mapper.Map<UpdateUserCommand>(input);
-            return await _mediator.Send(updateCommand);
+            return await SendCommandAsync(updateCommand);
         }
 
 
@@ -63,7 +65,7 @@ namespace TaskoMask.Application.Users.Services
         public async Task<UserOutput> GetByIdAsync(string id)
         {
             var query = new GetUserByIdQuery(id);
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetUserByIdQuery, UserOutput>(query);
         }
 
 
@@ -84,7 +86,7 @@ namespace TaskoMask.Application.Users.Services
         public async Task<long> CountAsync()
         {
             var query = new GetUsersCountQuery();
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetUsersCountQuery, long>(query);
         }
 
 

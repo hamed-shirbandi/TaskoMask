@@ -18,7 +18,6 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Notifications\" />
-    <Folder Include="Queries\" />
   </ItemGroup>
 
   <ItemGroup>

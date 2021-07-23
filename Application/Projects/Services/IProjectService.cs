@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.BaseEntities.Services;
 
 namespace TaskoMask.Application.Projects.Services
 {
-    public interface IProjectService
+    public interface IProjectService : IBaseEntityService
     {
         #region Command Services
 

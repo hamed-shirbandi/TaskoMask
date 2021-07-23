@@ -15,10 +15,14 @@ using TaskoMask.Infrastructure.Data.DbContext;
 using TaskoMask.Infrastructure.Data.EventSourcing;
 using TaskoMask.Infrastructure.Data.Repositories;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.BaseEntities.Queries.Handlers;
+using TaskoMask.Domain.Models;
+using TaskoMask.Application.BaseEntities.Queries.Models;
+using TaskoMask.Domain.Core.Models;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
-   public static class StructureMapConfig
+    public static class StructureMapConfig
     {
         public static IServiceProvider ConfigureIocContainer(this IServiceCollection services, IConfiguration configuration)
         {
@@ -30,13 +34,29 @@ namespace Infrastructure.CrossCutting.Ioc
             {
                 config.For<IEventStore>().Use<RedisEventStore>();
                 services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+
+                #region Generic Query Handlers
+
+                //TODO Handel Generic Command And Queries
+                //services.AddScoped(typeof(IRequestHandler<GetEntitiesCountQuery<T>,long>), typeof(BaseEntitiesQueryHandlers<>));
+               
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Project>, long>, BaseEntitiesQueryHandlers<Project>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Board>, long>, BaseEntitiesQueryHandlers<Board>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Card>, long>, BaseEntitiesQueryHandlers<Card>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Organization>, long>, BaseEntitiesQueryHandlers<Organization>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Task>, long>, BaseEntitiesQueryHandlers<Task>> ();
+
+
+                #endregion
+
+
                 //automatic resolve dependency by default conventions where we have SomeService : ISomeService
                 config.Scan(s =>
                 {
                     //scan application dll
                     s.AssemblyContainingType<IProjectService>();
                     //scan application.Core dll
-                    s.AssemblyContainingType<IBaseApplicationService>();
+                    s.AssemblyContainingType<BaseApplicationService>();
                     //scan Domain dll
                     s.AssemblyContainingType<IProjectRepository>();
                     //Scan Infrastructre.Data dll
@@ -45,7 +65,7 @@ namespace Infrastructure.CrossCutting.Ioc
                 });
 
             });
-            
+
 
             container.Populate(services);
 

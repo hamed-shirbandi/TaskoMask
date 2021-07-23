@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.BaseEntities.Services;
 
 namespace TaskoMask.Application.Organizations.Services
 {
-    public interface IOrganizationService
+    public interface IOrganizationService : IBaseEntityService
     {
         #region Command Services
 

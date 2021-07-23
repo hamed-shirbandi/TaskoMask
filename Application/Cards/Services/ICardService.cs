@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.BaseEntities.Services;
 
 namespace TaskoMask.Application.Cards.Services
 {
-    public interface ICardService
+    public interface ICardService : IBaseEntityService
     {
         #region Command Services
 

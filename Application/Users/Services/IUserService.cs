@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.ViewMoldes.Account;
 using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.BaseEntities.Services;
 
 namespace TaskoMask.Application.Users.Services
 {
-    public interface IUserService
+    public interface IUserService 
     {
         #region Command Services
 

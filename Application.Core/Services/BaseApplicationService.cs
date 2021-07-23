@@ -3,19 +3,17 @@ using MediatR;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Resources;
 using CSharpFunctionalExtensions;
 using AutoMapper;
-using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Services
 {
-    public class BaseApplicationService : IBaseApplicationService
+    public abstract class BaseApplicationService
     {
         #region Fields
 
 
-        protected readonly IMediator _mediator;
+        private readonly IMediator _mediator;
         protected readonly IMapper _mapper;
 
 
@@ -35,13 +33,14 @@ namespace TaskoMask.Application.Core.Services
         #endregion
 
 
-        #region Public Methods
+        #region Protected Methods
+
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> RunCommandAsync<T>(T cmd) where T : BaseCommand
+        protected async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
             return await _mediator.Send(cmd);
         }
@@ -50,14 +49,23 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<U>> RunQueryAsync<T, U>(T query) where T : IBaseRequest
+        protected async Task<U> SendQueryAsync<T, U>(T query) where T : IBaseRequest
         {
             return (U)await _mediator.Send(query);
 
         }
 
 
-     
+
+
+
+        #endregion
+
+
+        #region Public Methods
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -68,5 +76,7 @@ namespace TaskoMask.Application.Core.Services
 
 
         #endregion
+
+
     }
 }

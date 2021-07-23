@@ -10,10 +10,14 @@ using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Queries.Models.Boards;
+using TaskoMask.Application.Core.Dtos.Boards;
+using System.Collections.Generic;
+using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Cards.Services
 {
-    public class CardService : BaseApplicationService,ICardService
+    public class CardService : BaseEntityService<Card>, ICardService
     {
 
 
@@ -39,7 +43,7 @@ namespace TaskoMask.Application.Cards.Services
         {
             var project = _mapper.Map<CreateCardCommand>(input);
 
-            return await _mediator.Send(project);
+            return await SendCommandAsync(project);
         }
 
 
@@ -50,7 +54,7 @@ namespace TaskoMask.Application.Cards.Services
         public async Task<Result<CommandResult>> UpdateAsync(CardInput input)
         {
             var updateCommand = _mapper.Map<UpdateCardCommand>(input);
-            return await _mediator.Send(updateCommand);
+            return await SendCommandAsync(updateCommand);
         }
 
 
@@ -65,7 +69,7 @@ namespace TaskoMask.Application.Cards.Services
         public async Task<CardOutput> GetByIdAsync(string id)
         {
             var query = new GetCardByIdQuery(id);
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetCardByIdQuery, CardOutput>(query);
         }
 
 
@@ -87,10 +91,10 @@ namespace TaskoMask.Application.Cards.Services
         public async Task<CardListViewModel> GetListByBoardIdAsync(string boardId)
         {
             var cardsQuery = new GetCardsByBoardIdQuery(boardId: boardId);
-            var cards = await _mediator.Send(cardsQuery);
+            var cards = await SendQueryAsync<GetCardsByBoardIdQuery, IEnumerable<CardOutput>>(cardsQuery);
 
             var boardQuery = new GetBoardByIdQuery(id: boardId);
-            var board = await _mediator.Send(boardQuery);
+            var board = await SendQueryAsync<GetBoardByIdQuery, BoardOutput>(boardQuery);
 
             return new CardListViewModel
             {
@@ -107,7 +111,7 @@ namespace TaskoMask.Application.Cards.Services
         public async Task<long> CountAsync()
         {
             var query = new GetCardsCountQuery();
-            return await _mediator.Send(query);
+            return await SendQueryAsync<GetCardsCountQuery,long>(query);
         }
 
 

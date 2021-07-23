@@ -1,7 +1,6 @@
 using System;
 using Infrastructure.CrossCutting.Ioc;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using TaskoMask.Application.Commands.Handlers.Organizations;
 using TaskoMask.Application.Mapper;
 using TaskoMask.Infrastructure.CrossCutting.Identity;
+using TaskoMask.Infrastructure.CrossCutting.Mvc.Configuration;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Web
@@ -27,10 +27,8 @@ namespace TaskoMask.Web
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMediatR(typeof(Startup), typeof(CreateOrganizationCommandHandler));
-            services.AddIdentityConfiguration(_configuration);
-            services.AddAutoMapperSetup();
-            return services.ConfigureIocContainer(_configuration);
+
+            return services.MvcConfigureServices(_configuration);
 
         }
 
@@ -49,8 +47,7 @@ namespace TaskoMask.Web
             }
 
 
-            serviceScopeFactory.InitialMongoDb();
-            serviceScopeFactory.MongoDbSeedData();
+            app.MvcConfigure(serviceScopeFactory);
 
 
             app.UseHttpsRedirection();

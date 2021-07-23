@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using TaskoMask.Application.Commands.Handlers.Organizations;
 using TaskoMask.Application.Mapper;
 using TaskoMask.Infrastructure.CrossCutting.Identity;
+using TaskoMask.Infrastructure.CrossCutting.Mvc.Configuration;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace Web.Api
@@ -34,23 +35,17 @@ namespace Web.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddMediatR(typeof(Startup), typeof(CreateOrganizationCommandHandler));
-            services.AddIdentityConfiguration(_configuration);
-            services.AddAutoMapperSetup();
-            return services.ConfigureIocContainer(_configuration);
-
+            return services.WebApiConfigureServices(_configuration);
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceScopeFactory serviceScopeFactory)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
-            serviceScopeFactory.InitialMongoDb();
-            serviceScopeFactory.MongoDbSeedData();
+            app.WebApiConfigure(serviceScopeFactory);
 
             app.UseHttpsRedirection();
 

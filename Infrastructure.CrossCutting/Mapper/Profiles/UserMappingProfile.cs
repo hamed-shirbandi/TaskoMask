@@ -3,6 +3,7 @@ using TaskoMask.Application.Users.Commands.Models;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.ViewMoldes.Account;
 using TaskoMask.Domain.Models;
+using TaskoMask.Application.Mapper.MappingActions;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {
@@ -37,8 +38,8 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Domain Model To Dto
 
-            CreateMap<User, UserOutput>();
-            CreateMap<User, UserInput>();
+            CreateMap<User, UserOutput>().AfterMap<UserMappingAction>();
+            CreateMap<User, UserInput>().AfterMap<UserMappingAction>();
 
 
             #endregion

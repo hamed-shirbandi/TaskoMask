@@ -14,6 +14,7 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Infrastructure.Data.DbContext;
 using TaskoMask.Infrastructure.Data.EventSourcing;
 using TaskoMask.Infrastructure.Data.Repositories;
+using TaskoMask.Application.Core.Services;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
@@ -22,43 +23,26 @@ namespace Infrastructure.CrossCutting.Ioc
         public static IServiceProvider ConfigureIocContainer(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddSingleton<IConfiguration>(provider => { return configuration; });
+            services.AddSingleton(provider => { return configuration; });
 
             var container = new Container();
             container.Configure(config =>
             {
-                #region Infrastructure.Date
-
-                //DbContext
-                config.For<IMainDbContext>().Use<MongoDbContext>();
-
-                //EventSourcing
                 config.For<IEventStore>().Use<RedisEventStore>();
-
-                //Repositories
-                config.For<ITaskRepository>().Use<TaskRepository>();
-                config.For<IBoardRepository>().Use<BoardRepository>();
-                config.For<IOrganizationRepository>().Use<OrganizationRepository>();
-                config.For<IProjectRepository>().Use<ProjectRepository>();
-                config.For<ICardRepository>().Use<CardRepository>();
-                
-                #endregion
-
-                #region Application
-
-                //Notification
                 services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
-
-
-                //Sevices
-                config.For<IOrganizationService>().Use<OrganizationService>();
-                config.For<IProjectService>().Use<ProjectService>();
-                config.For<IUserService>().Use<UserService>();
-                config.For<IBoardService>().Use<BoardService>();
-                config.For<ICardService>().Use<CardService>();
-                
-
-                #endregion
+                //automatic resolve dependency by default conventions where we have SomeService : ISomeService
+                config.Scan(s =>
+                {
+                    //scan application dll
+                    s.AssemblyContainingType<IProjectService>();
+                    //scan application.Core dll
+                    s.AssemblyContainingType<IBaseApplicationService>();
+                    //scan Domain dll
+                    s.AssemblyContainingType<IProjectRepository>();
+                    //Scan Infrastructre.Data dll
+                    s.AssemblyContainingType<ProjectRepository>();
+                    s.WithDefaultConventions();
+                });
 
             });
             

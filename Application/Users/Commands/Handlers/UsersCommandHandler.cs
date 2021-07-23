@@ -13,13 +13,15 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Users.Commands.Handlers
 {
-    public class CreateUserCommandHandler : BaseCommandHandler, IRequestHandler<CreateUserCommand, Result<CommandResult>>
+    public class UsersCommandHandler : BaseCommandHandler, 
+        IRequestHandler<CreateUserCommand, Result<CommandResult>>,
+        IRequestHandler<UpdateUserCommand, Result<CommandResult>>
     {
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public CreateUserCommandHandler(IMapper mapper, IMediator mediator, UserManager<User> userManager) : base(mediator)
+        public UsersCommandHandler(IMapper mapper, IMediator mediator, UserManager<User> userManager) : base(mediator)
         {
             _mediator = mediator;
             _mapper = mapper;
@@ -55,5 +57,43 @@ namespace TaskoMask.Application.Users.Commands.Handlers
 
             return Result.Success(new CommandResult(user.Id.ToString(), ApplicationMessages.Create_Success));
         }
+
+
+
+
+        public async Task<Result<CommandResult>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        {
+            if (!request.IsValid())
+            {
+                await PublishValidationErrorsAsync(request);
+                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+            }
+
+
+            var existUser = await _userManager.FindByNameAsync(request.Email);
+            if (existUser != null && existUser.Id.ToString() != request.Id)
+            {
+                await _mediator.Publish(new DomainNotification("", ApplicationMessages.User_Email_Already_Exist));
+                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+            }
+
+            var user = await _userManager.FindByIdAsync(request.Id);
+
+            user.SetDisplayName(request.DisplayName);
+            user.SetEmail(request.Email);
+            user.SetUserName(request.Email);
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                    await _mediator.Publish(new DomainNotification(error.Code, error.Description));
+
+                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+            }
+
+            return Result.Success(new CommandResult(user.Id.ToString(), ApplicationMessages.Update_Success));
+        }
+
     }
 }

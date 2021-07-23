@@ -12,26 +12,57 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Projects.Commands.Handlers
 {
-    public class UpdateProjectCommandHandler : BaseCommandHandler, IRequestHandler<UpdateProjectCommand, Result<CommandResult>>
+    public class ProjectsCommandHandler : BaseCommandHandler,
+        IRequestHandler<CreateProjectCommand, Result<CommandResult>>,
+         IRequestHandler<UpdateProjectCommand, Result<CommandResult>>
     {
         private readonly IProjectRepository _projectRepository;
+        private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public UpdateProjectCommandHandler(IProjectRepository projectRepository, IMediator mediator) : base(mediator)
+        public ProjectsCommandHandler(IProjectRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _projectRepository = projectRepository;
             _mediator = mediator;
+            _mapper = mapper;
         }
+
+
+        public async Task<Result<CommandResult>> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
+        {
+            if (!request.IsValid())
+            {
+                 await PublishValidationErrorsAsync(request);
+                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+            }
+
+
+            var project = _mapper.Map<Project>(request);
+
+            var exist = await _projectRepository.ExistByNameAsync(project.Id, project.Name);
+            if (exist)
+            {
+                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+            }
+
+            await _projectRepository.CreateAsync(project);
+            return Result.Success(new CommandResult(project.Id, ApplicationMessages.Create_Success));
+
+        }
+
+
+
 
         public async Task<Result<CommandResult>> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-                 await PublishValidationErrorsAsync(request);
+                await PublishValidationErrorsAsync(request);
                 return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
             }
 
-           
+
             var project = await _projectRepository.GetByIdAsync(request.Id);
 
             var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
@@ -48,5 +79,6 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
             return Result.Success(new CommandResult(project.Id, ApplicationMessages.Update_Success));
 
         }
+
     }
 }

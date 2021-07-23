@@ -15,11 +15,13 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Users.Queries.Handlers
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserOutput>
+    public class UsersQueryHandlers : 
+        IRequestHandler<GetUserByIdQuery, UserOutput>,
+        IRequestHandler<GetUsersCountQuery, long>
     {
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
-        public GetUserByIdQueryHandler(IMapper mapper, UserManager<User> userManager)
+        public UsersQueryHandlers(IMapper mapper, UserManager<User> userManager)
         {
             _mapper = mapper;
             _userManager = userManager;
@@ -30,5 +32,12 @@ namespace TaskoMask.Application.Users.Queries.Handlers
             var user = await _userManager.FindByIdAsync(request.Id);
             return _mapper.Map<UserOutput>(user);
         }
+
+
+        public async Task<long> Handle(GetUsersCountQuery request, CancellationToken cancellationToken)
+        {
+            return _userManager.Users.Count();
+        }
+
     }
 }

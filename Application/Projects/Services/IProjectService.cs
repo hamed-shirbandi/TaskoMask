@@ -24,7 +24,6 @@ namespace TaskoMask.Application.Projects.Services
         Task<ProjectOutput> GetByIdAsync(string id);
         Task<ProjectInput> GetByIdToUpdateAsync(string id);
         Task<ProjectListViewModel> GetListByOrganizationIdAsync(string organizationId);
-        Task<long> CountAsync();
 
         #endregion
 

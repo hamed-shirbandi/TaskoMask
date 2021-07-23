@@ -24,7 +24,6 @@ namespace TaskoMask.Application.Organizations.Services
         Task<OrganizationOutput> GetByIdAsync(string id);
         Task<OrganizationInput> GetByIdToUpdateAsync(string id);
         Task<IEnumerable<OrganizationOutput>> GetListByUserIdAsync(string userId);
-        Task<long> CountAsync();
 
 
         #endregion

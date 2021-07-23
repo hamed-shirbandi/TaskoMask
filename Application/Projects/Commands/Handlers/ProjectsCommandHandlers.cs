@@ -12,7 +12,7 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Projects.Commands.Handlers
 {
-    public class ProjectsCommandHandler : BaseCommandHandler,
+    public class ProjectsCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateProjectCommand, Result<CommandResult>>,
          IRequestHandler<UpdateProjectCommand, Result<CommandResult>>
     {
@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public ProjectsCommandHandler(IProjectRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public ProjectsCommandHandlers(IProjectRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _projectRepository = projectRepository;
             _mediator = mediator;

@@ -105,14 +105,6 @@ namespace TaskoMask.Application.Boards.Services
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> CountAsync()
-        {
-            var query = new GetBoardsCountQuery();
-            return await SendQueryAsync<GetBoardsCountQuery, long>(query);
-        }
 
 
         #endregion

@@ -13,20 +13,30 @@ using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Organizations.Queries.Handlers
 {
-    public class GetOrganizationsByUserIdQueryHandler : IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>
+    public class OrganizationsQueryHandlers : 
+        IRequestHandler<GetOrganizationByIdQuery, OrganizationOutput>,
+        IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>
     {
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMapper _mapper;
-        public GetOrganizationsByUserIdQueryHandler(IOrganizationRepository organizationRepository, IMapper mapper)
+        public OrganizationsQueryHandlers(IOrganizationRepository organizationRepository, IMapper mapper)
         {
             _organizationRepository = organizationRepository;
             _mapper = mapper;
         }
+
+        public async Task<OrganizationOutput> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)
+        {
+            var organization = await _organizationRepository.GetByIdAsync(request.Id);
+            return _mapper.Map<OrganizationOutput>(organization);
+        }
+
 
         public async Task<IEnumerable<OrganizationOutput>> Handle(GetOrganizationsByUserIdQuery request, CancellationToken cancellationToken)
         {
             var organizations = await _organizationRepository.GetListByUserIdAsync(request.UserId);
             return _mapper.Map<IEnumerable<OrganizationOutput>>(organizations);
         }
+
     }
 }

@@ -13,7 +13,7 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Users.Commands.Handlers
 {
-    public class UsersCommandHandler : BaseCommandHandler, 
+    public class UsersCommandHandlers : BaseCommandHandler, 
         IRequestHandler<CreateUserCommand, Result<CommandResult>>,
         IRequestHandler<UpdateUserCommand, Result<CommandResult>>
     {
@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public UsersCommandHandler(IMapper mapper, IMediator mediator, UserManager<User> userManager) : base(mediator)
+        public UsersCommandHandlers(IMapper mapper, IMediator mediator, UserManager<User> userManager) : base(mediator)
         {
             _mediator = mediator;
             _mapper = mapper;

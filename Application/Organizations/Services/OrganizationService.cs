@@ -54,13 +54,6 @@ namespace TaskoMask.Application.Organizations.Services
             return await SendQueryAsync<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>(query);
         }
 
-
-        public async Task<long> CountAsync()
-        {
-            var query = new GetOrganizationsCountQuery();
-            return  await SendQueryAsync<GetOrganizationsCountQuery, long>(query);
-        }
-
        
     }
 }

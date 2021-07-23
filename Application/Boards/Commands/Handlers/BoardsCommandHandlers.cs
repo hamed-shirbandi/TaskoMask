@@ -12,7 +12,7 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Boards.Commands.Handlers
 {
-    public class BoardsCommandHandler : BaseCommandHandler,
+    public class BoardsCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateBoardCommand, Result<CommandResult>>,
         IRequestHandler<UpdateBoardCommand, Result<CommandResult>>
     {
@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public BoardsCommandHandler(IBoardRepository boardRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public BoardsCommandHandlers(IBoardRepository boardRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _boardRepository = boardRepository;
             _mediator = mediator;

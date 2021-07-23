@@ -105,16 +105,6 @@ namespace TaskoMask.Application.Cards.Services
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> CountAsync()
-        {
-            var query = new GetCardsCountQuery();
-            return await SendQueryAsync<GetCardsCountQuery,long>(query);
-        }
-
-
         #endregion
 
      

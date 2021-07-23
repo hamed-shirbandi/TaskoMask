@@ -9,11 +9,13 @@ using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Projects.Queries.Handlers
 {
-    public class GetProjectsByOrganizationIdQueryHandler : IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutput>>
+    public class ProjectssQueryHandlers :
+        IRequestHandler<GetProjectByIdQuery, ProjectOutput>,
+        IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutput>>
     {
         private readonly IProjectRepository _projectRepository;
         private readonly IMapper _mapper;
-        public GetProjectsByOrganizationIdQueryHandler(IProjectRepository projectRepository, IMapper mapper)
+        public ProjectssQueryHandlers(IProjectRepository projectRepository, IMapper mapper)
         {
             _projectRepository = projectRepository;
             _mapper = mapper;
@@ -23,6 +25,12 @@ namespace TaskoMask.Application.Projects.Queries.Handlers
         {
             var projects = await _projectRepository.GetListByOrganizationIdAsync(request.OrganizationId);
             return _mapper.Map<IEnumerable<ProjectOutput>>(projects);
+        }
+
+        public async Task<ProjectOutput> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
+        {
+            var project = await _projectRepository.GetByIdAsync(request.Id);
+            return _mapper.Map<ProjectOutput>(project);
         }
     }
 }

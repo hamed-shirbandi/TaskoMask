@@ -12,7 +12,7 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Cards.Commands.Handlers
 {
-    public class CardsCommandHandler : BaseCommandHandler,
+    public class CardsCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateCardCommand, Result<CommandResult>>,
          IRequestHandler<UpdateCardCommand, Result<CommandResult>>
     {
@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public CardsCommandHandler(ICardRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public CardsCommandHandlers(ICardRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _projectRepository = projectRepository;
             _mediator = mediator;

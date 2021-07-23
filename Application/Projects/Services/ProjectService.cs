@@ -105,15 +105,6 @@ namespace TaskoMask.Application.Projects.Services
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> CountAsync()
-        {
-            var query = new GetProjectsCountQuery();
-            return await SendQueryAsync<GetProjectsCountQuery, long>(query);
-        }
-
 
         #endregion
 

@@ -23,7 +23,6 @@ namespace TaskoMask.Application.Cards.Services
 
         Task<CardOutput> GetByIdAsync(string id);
         Task<CardInput> GetByIdToUpdateAsync(string id);
-        Task<long> CountAsync();
         Task<CardListViewModel> GetListByBoardIdAsync(string boardId);
 
         #endregion

@@ -25,7 +25,6 @@ namespace TaskoMask.Application.Boards.Services
         Task<BoardOutput> GetByIdAsync(string id);
         Task<BoardInput> GetByIdToUpdateAsync(string id);
         Task<BoardListViewModel> GetListByProjectIdAsync(string projectId);
-        Task<long> CountAsync();
 
         #endregion
 

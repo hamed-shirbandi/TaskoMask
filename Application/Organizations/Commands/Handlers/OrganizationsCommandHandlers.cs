@@ -12,7 +12,7 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
-    public class OrganizationsCommandHandler : BaseCommandHandler, 
+    public class OrganizationsCommandHandlers : BaseCommandHandler, 
         IRequestHandler<CreateOrganizationCommand, Result<CommandResult>>,
         IRequestHandler<UpdateOrganizationCommand, Result<CommandResult>>
     {
@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public OrganizationsCommandHandler(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _organizationRepository = organizationRepository;
             _mediator = mediator;

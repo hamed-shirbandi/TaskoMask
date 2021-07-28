@@ -14,6 +14,7 @@ using TaskoMask.Application.Core.Dtos.Boards;
 using System.Collections.Generic;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Cards.Services
 {
@@ -28,7 +29,7 @@ namespace TaskoMask.Application.Cards.Services
 
         #region Ctor
 
-        public CardService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
+        public CardService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
         { }
 
         #endregion
@@ -39,7 +40,7 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> CreateAsync(CardInput input)
+        public async Task<Result<CommandResult>> CreateAsync(CardInput input)
         {
             var project = _mapper.Map<CreateCardCommand>(input);
 
@@ -51,7 +52,7 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> UpdateAsync(CardInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(CardInput input)
         {
             var updateCommand = _mapper.Map<UpdateCardCommand>(input);
             return await SendCommandAsync(updateCommand);

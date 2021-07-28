@@ -14,6 +14,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Users.Services
 {
@@ -25,7 +26,7 @@ namespace TaskoMask.Application.Users.Services
 
         #region Ctor
 
-        public UserService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
+        public UserService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
         { }
 
 
@@ -36,7 +37,7 @@ namespace TaskoMask.Application.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> CreateAsync(RegisterViewModel input)
+        public async Task<Result<CommandResult>> CreateAsync(RegisterViewModel input)
         {
             var createCommand = _mapper.Map<CreateUserCommand>(input);
             return await SendCommandAsync(createCommand);
@@ -47,7 +48,7 @@ namespace TaskoMask.Application.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> UpdateAsync(UserInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(UserInput input)
         {
             var updateCommand = _mapper.Map<UpdateUserCommand>(input);
             return await SendCommandAsync(updateCommand);

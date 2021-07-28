@@ -12,7 +12,7 @@ namespace TaskoMask.Application.Boards.Services
     {
         #region Command Services
 
-        Task<CommandResult> CreateAsync(BoardInput input);
+        Task<Result<CommandResult>> CreateAsync(BoardInput input);
         Task<Result<CommandResult>> UpdateAsync(BoardInput input);
 
         #endregion

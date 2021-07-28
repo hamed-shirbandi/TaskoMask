@@ -15,8 +15,8 @@ namespace TaskoMask.Application.Users.Services
     {
         #region Command Services
 
-        Task<CommandResult> CreateAsync(RegisterViewModel input);
-        Task<CommandResult> UpdateAsync(UserInput input);
+        Task<Result<CommandResult>> CreateAsync(RegisterViewModel input);
+        Task<Result<CommandResult>> UpdateAsync(UserInput input);
 
         #endregion
 

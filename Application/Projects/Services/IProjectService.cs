@@ -14,8 +14,8 @@ namespace TaskoMask.Application.Projects.Services
     {
         #region Command Services
 
-        Task<CommandResult> CreateAsync(ProjectInput input);
-        Task<CommandResult> UpdateAsync(ProjectInput input);
+        Task<Result<CommandResult>> CreateAsync(ProjectInput input);
+        Task<Result<CommandResult>> UpdateAsync(ProjectInput input);
 
         #endregion
 

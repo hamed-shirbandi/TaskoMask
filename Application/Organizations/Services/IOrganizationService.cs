@@ -13,8 +13,8 @@ namespace TaskoMask.Application.Organizations.Services
     {
         #region Command Services
 
-        Task<CommandResult> CreateAsync(OrganizationInput input);
-        Task<CommandResult> UpdateAsync(OrganizationInput input);
+        Task<Result<CommandResult>> CreateAsync(OrganizationInput input);
+        Task<Result<CommandResult>> UpdateAsync(OrganizationInput input);
 
 
         #endregion

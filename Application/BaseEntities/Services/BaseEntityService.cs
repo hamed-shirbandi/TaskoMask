@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.BaseEntities.Queries.Models;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.BaseEntities.Services
 {
@@ -19,7 +20,7 @@ namespace TaskoMask.Application.BaseEntities.Services
         #region Ctor
 
 
-        public BaseEntityService(IMediator mediator, IMapper mapper): base(mediator, mapper)
+        public BaseEntityService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
         {
         }
 

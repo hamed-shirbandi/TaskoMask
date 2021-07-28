@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Projects.Services
 {
@@ -26,7 +27,7 @@ namespace TaskoMask.Application.Projects.Services
 
         #region Ctor
 
-        public ProjectService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
+        public ProjectService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
         { }
 
 
@@ -38,11 +39,11 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> CreateAsync(ProjectInput input)
+        public async Task<Result<CommandResult>> CreateAsync(ProjectInput input)
         {
-            var project = _mapper.Map<CreateProjectCommand>(input);
+            var createCommand = _mapper.Map<CreateProjectCommand>(input);
 
-            return await SendCommandAsync(project);
+            return await SendCommandAsync(createCommand);
         }
 
 
@@ -50,7 +51,7 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> UpdateAsync(ProjectInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(ProjectInput input)
         {
             var updateCommand = _mapper.Map<UpdateProjectCommand>(input);
             return await SendCommandAsync(updateCommand);

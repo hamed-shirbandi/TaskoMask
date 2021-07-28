@@ -13,26 +13,45 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Organizations.Services
 {
     public class OrganizationService : BaseEntityService<Organization>, IOrganizationService
     {
-        public OrganizationService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
+        #region Fields
+
+        #endregion
+
+        #region Ctor
+
+        public OrganizationService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
         { }
 
-        public async Task<CommandResult> CreateAsync(OrganizationInput input)
+        #endregion
+
+        #region Command Services
+
+
+
+        public async Task<Result<CommandResult>> CreateAsync(OrganizationInput input)
         {
             var createCommand = _mapper.Map<CreateOrganizationCommand>(input);
             return await SendCommandAsync(createCommand);
         }
 
 
-        public async Task<CommandResult> UpdateAsync(OrganizationInput input)
+
+        public async Task<Result<CommandResult>> UpdateAsync(OrganizationInput input)
         {
             var updateCommand = _mapper.Map<UpdateOrganizationCommand>(input);
             return await SendCommandAsync(updateCommand);
         }
+
+
+        #endregion
+
+        #region Query Services
 
         public async Task<OrganizationOutput> GetByIdAsync(string id)
         {
@@ -43,7 +62,7 @@ namespace TaskoMask.Application.Organizations.Services
 
         public async Task<OrganizationInput> GetByIdToUpdateAsync(string id)
         {
-            var organization=await GetByIdAsync(id);
+            var organization = await GetByIdAsync(id);
             return _mapper.Map<OrganizationInput>(organization);
         }
 
@@ -54,6 +73,7 @@ namespace TaskoMask.Application.Organizations.Services
             return await SendQueryAsync<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>(query);
         }
 
-       
+
+        #endregion
     }
 }

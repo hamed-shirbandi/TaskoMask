@@ -14,6 +14,8 @@ using TaskoMask.Application.Core.Dtos.Projects;
 using System.Collections.Generic;
 using TaskoMask.Domain.Models;
 using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Domain.Core.Notifications;
+using System.Linq;
 
 namespace TaskoMask.Application.Boards.Services
 {
@@ -26,7 +28,7 @@ namespace TaskoMask.Application.Boards.Services
 
         #region Ctor
 
-        public BoardService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
+        public BoardService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
         { }
 
         #endregion
@@ -37,11 +39,11 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> CreateAsync(BoardInput input)
+        public async Task<Result<CommandResult>> CreateAsync(BoardInput input)
         {
-            var project = _mapper.Map<CreateBoardCommand>(input);
+            var createCommand = _mapper.Map<CreateBoardCommand>(input);
 
-            return await SendCommandAsync(project);
+            return await SendCommandAsync(createCommand);
         }
 
 
@@ -49,7 +51,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> UpdateAsync(BoardInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(BoardInput input)
         {
             var updateCommand = _mapper.Map<UpdateBoardCommand>(input);
             return await SendCommandAsync(updateCommand);
@@ -68,7 +70,7 @@ namespace TaskoMask.Application.Boards.Services
         public async Task<BoardOutput> GetByIdAsync(string id)
         {
             var query = new GetBoardByIdQuery(id);
-            return await SendQueryAsync<GetBoardByIdQuery,BoardOutput>(query);
+            return await SendQueryAsync<GetBoardByIdQuery, BoardOutput>(query);
         }
 
 

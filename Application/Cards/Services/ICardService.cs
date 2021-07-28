@@ -14,8 +14,8 @@ namespace TaskoMask.Application.Cards.Services
     {
         #region Command Services
 
-        Task<CommandResult> CreateAsync(CardInput input);
-        Task<CommandResult> UpdateAsync(CardInput input);
+        Task<Result<CommandResult>> CreateAsync(CardInput input);
+        Task<Result<CommandResult>> UpdateAsync(CardInput input);
 
         #endregion
 

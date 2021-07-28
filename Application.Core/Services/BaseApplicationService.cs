@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Helpers;
 using AutoMapper;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Services
 {
@@ -15,6 +16,7 @@ namespace TaskoMask.Application.Core.Services
 
         private readonly IMediator _mediator;
         protected readonly IMapper _mapper;
+        protected readonly DomainNotificationHandler _notifications;
 
 
         #endregion
@@ -23,10 +25,12 @@ namespace TaskoMask.Application.Core.Services
         #region Ctor
 
 
-        public BaseApplicationService(IMediator mediator, IMapper mapper)
+        public BaseApplicationService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications)
         {
             _mediator = mediator;
             _mapper = mapper;
+            _notifications = (DomainNotificationHandler)notifications;
+
         }
 
 
@@ -40,9 +44,12 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        protected async Task<CommandResult> SendCommandAsync<T>(T cmd) where T : BaseCommand
+        protected async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
-            return await _mediator.Send(cmd);
+            var result = await _mediator.Send(cmd);
+            if (_notifications.HasNotifications())
+                return Result.Failure<CommandResult>(result.Message, _notifications.GetNotifications().Select(n => n.Value).ToList());
+            return Result.Success(result.Message, result);
         }
 
 

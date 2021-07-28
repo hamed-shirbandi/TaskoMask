@@ -1,4 +1,4 @@
-﻿using CSharpFunctionalExtensions;
+﻿using TaskoMask.Application.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +15,8 @@ namespace TaskoMask.Application.Users.Services
     {
         #region Command Services
 
-        Task<Result<CommandResult>> CreateAsync(RegisterViewModel input);
-        Task<Result<CommandResult>> UpdateAsync(UserInput input);
+        Task<CommandResult> CreateAsync(RegisterViewModel input);
+        Task<CommandResult> UpdateAsync(UserInput input);
 
         #endregion
 

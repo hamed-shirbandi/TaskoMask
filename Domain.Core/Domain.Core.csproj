@@ -6,7 +6,7 @@
     <RootNamespace>TaskoMask.Domain.Core</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CSharpFunctionalExtensions" Version="2.12.0" />
+    
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="mongocsharpdriver" Version="2.11.3" />
     <PackageReference Include="AspNetCore.Identity.Mongo" Version="6.7.2" />

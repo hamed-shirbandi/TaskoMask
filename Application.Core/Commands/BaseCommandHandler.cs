@@ -1,4 +1,4 @@
-﻿using CSharpFunctionalExtensions;
+﻿using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,13 +33,21 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
-     
 
-        protected async Task PublishValidationErrorsAsync(BaseCommand message)
+
+        protected async Task PublishValidationErrorAsync(BaseCommand message)
         {
             foreach (var error in message.ValidationResult.Errors)
-               await _mediator.Publish(new DomainNotification(error.PropertyName, error.ErrorMessage));
+                await _mediator.Publish(new DomainNotification(error.PropertyName, error.ErrorMessage));
         }
+
+
+
+        protected async Task PublishValidationErrorAsync(DomainNotification message)
+        {
+            await _mediator.Publish(message);
+        }
+
 
 
         #endregion

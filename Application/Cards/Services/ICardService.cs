@@ -1,4 +1,4 @@
-﻿using CSharpFunctionalExtensions;
+﻿using TaskoMask.Application.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,8 +14,8 @@ namespace TaskoMask.Application.Cards.Services
     {
         #region Command Services
 
-        Task<Result<CommandResult>> CreateAsync(CardInput input);
-        Task<Result<CommandResult>> UpdateAsync(CardInput input);
+        Task<CommandResult> CreateAsync(CardInput input);
+        Task<CommandResult> UpdateAsync(CardInput input);
 
         #endregion
 

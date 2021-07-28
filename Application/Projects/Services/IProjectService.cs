@@ -1,4 +1,4 @@
-﻿using CSharpFunctionalExtensions;
+﻿using TaskoMask.Application.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,8 +14,8 @@ namespace TaskoMask.Application.Projects.Services
     {
         #region Command Services
 
-        Task<Result<CommandResult>> CreateAsync(ProjectInput input);
-        Task<Result<CommandResult>> UpdateAsync(ProjectInput input);
+        Task<CommandResult> CreateAsync(ProjectInput input);
+        Task<CommandResult> UpdateAsync(ProjectInput input);
 
         #endregion
 

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Threading;
@@ -13,9 +13,9 @@ using TaskoMask.Domain.Models;
 
 namespace TaskoMask.Application.Users.Commands.Handlers
 {
-    public class UsersCommandHandlers : BaseCommandHandler, 
-        IRequestHandler<CreateUserCommand, Result<CommandResult>>,
-        IRequestHandler<UpdateUserCommand, Result<CommandResult>>
+    public class UsersCommandHandlers : BaseCommandHandler,
+        IRequestHandler<CreateUserCommand, CommandResult>,
+        IRequestHandler<UpdateUserCommand, CommandResult>
     {
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
@@ -29,52 +29,51 @@ namespace TaskoMask.Application.Users.Commands.Handlers
         }
 
 
-        public async Task<Result<CommandResult>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-                 await PublishValidationErrorsAsync(request);
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                await PublishValidationErrorAsync(request);
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
-
 
             var existUser = await _userManager.FindByNameAsync(request.Email);
-            if (existUser!=null)
+            if (existUser != null)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.User_Email_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.User_Email_Already_Exist));
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
-        
+
             var user = _mapper.Map<User>(request);
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
-                    await _mediator.Publish(new DomainNotification(error.Code, error.Description));
+                    await PublishValidationErrorAsync(new DomainNotification("", error.Description));
 
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            return Result.Success(new CommandResult(user.Id.ToString(), ApplicationMessages.Create_Success));
+            return new CommandResult(ApplicationMessages.Create_Success,user.Id.ToString());
         }
 
 
 
 
-        public async Task<Result<CommandResult>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-                await PublishValidationErrorsAsync(request);
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                await PublishValidationErrorAsync(request);
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
 
             var existUser = await _userManager.FindByNameAsync(request.Email);
             if (existUser != null && existUser.Id.ToString() != request.Id)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.User_Email_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.User_Email_Already_Exist));
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
             var user = await _userManager.FindByIdAsync(request.Id);
@@ -87,12 +86,12 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
-                    await _mediator.Publish(new DomainNotification(error.Code, error.Description));
+                    await PublishValidationErrorAsync(new DomainNotification("", error.Description));
 
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 
-            return Result.Success(new CommandResult(user.Id.ToString(), ApplicationMessages.Update_Success));
+            return new CommandResult(ApplicationMessages.Update_Success,user.Id.ToString());
         }
 
     }

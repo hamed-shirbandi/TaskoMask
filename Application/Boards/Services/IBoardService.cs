@@ -1,7 +1,4 @@
-﻿using CSharpFunctionalExtensions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Boards;
 using TaskoMask.Application.Core.ViewMoldes;
@@ -15,7 +12,7 @@ namespace TaskoMask.Application.Boards.Services
     {
         #region Command Services
 
-        Task<Result<CommandResult>> CreateAsync(BoardInput input);
+        Task<CommandResult> CreateAsync(BoardInput input);
         Task<Result<CommandResult>> UpdateAsync(BoardInput input);
 
         #endregion

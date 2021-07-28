@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.Application.Cards.Commands.Models;
@@ -39,7 +39,7 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(CardInput input)
+        public async Task<CommandResult> CreateAsync(CardInput input)
         {
             var project = _mapper.Map<CreateCardCommand>(input);
 
@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(CardInput input)
+        public async Task<CommandResult> UpdateAsync(CardInput input)
         {
             var updateCommand = _mapper.Map<UpdateCardCommand>(input);
             return await SendCommandAsync(updateCommand);

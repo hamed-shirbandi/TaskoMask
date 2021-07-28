@@ -1,4 +1,4 @@
-﻿using CSharpFunctionalExtensions;
+﻿using TaskoMask.Application.Core.Helpers;
 using FluentValidation.Results;
 using MediatR;
 using System.Linq;
@@ -7,7 +7,7 @@ using TaskoMask.Application.Core.Extensions;
 
 namespace TaskoMask.Application.Core.Commands
 {
-    public abstract class BaseCommand : IRequest<Result<CommandResult>>
+    public abstract class BaseCommand : IRequest<CommandResult>
     {
         #region Properties
 

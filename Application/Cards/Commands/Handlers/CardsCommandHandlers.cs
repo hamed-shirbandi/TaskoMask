@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,27 +13,25 @@ using TaskoMask.Domain.Models;
 namespace TaskoMask.Application.Cards.Commands.Handlers
 {
     public class CardsCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateCardCommand, Result<CommandResult>>,
-         IRequestHandler<UpdateCardCommand, Result<CommandResult>>
+        IRequestHandler<CreateCardCommand, CommandResult>,
+         IRequestHandler<UpdateCardCommand, CommandResult>
     {
         private readonly ICardRepository _projectRepository;
         private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
 
         public CardsCommandHandlers(ICardRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _projectRepository = projectRepository;
-            _mediator = mediator;
             _mapper = mapper;
         }
 
 
-        public async Task<Result<CommandResult>> Handle(CreateCardCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(CreateCardCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-                 await PublishValidationErrorsAsync(request);
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                 await PublishValidationErrorAsync(request);
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
 
@@ -42,24 +40,25 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             var exist = await _projectRepository.ExistByNameAsync(project.Id, project.Name);
             if (exist)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
             await _projectRepository.CreateAsync(project);
-            return Result.Success(new CommandResult(project.Id, ApplicationMessages.Create_Success));
+            return new CommandResult(ApplicationMessages.Create_Success,project.Id);
 
         }
 
 
 
-        public async Task<Result<CommandResult>> Handle(UpdateCardCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(UpdateCardCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-                await PublishValidationErrorsAsync(request);
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                await PublishValidationErrorAsync(request);
+                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
+
 
 
             var project = await _projectRepository.GetByIdAsync(request.Id);
@@ -67,8 +66,8 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
             if (exist)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 
             project.SetName(request.Name);
@@ -76,8 +75,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             project.SetType(request.Type);
 
             await _projectRepository.UpdateAsync(project);
-            return Result.Success(new CommandResult(project.Id, ApplicationMessages.Update_Success));
-
+            return new CommandResult(ApplicationMessages.Update_Success,project.Id);
         }
 
     }

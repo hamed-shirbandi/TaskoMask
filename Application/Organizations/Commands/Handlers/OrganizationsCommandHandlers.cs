@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,27 +13,25 @@ using TaskoMask.Domain.Models;
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
     public class OrganizationsCommandHandlers : BaseCommandHandler, 
-        IRequestHandler<CreateOrganizationCommand, Result<CommandResult>>,
-        IRequestHandler<UpdateOrganizationCommand, Result<CommandResult>>
+        IRequestHandler<CreateOrganizationCommand, CommandResult>,
+        IRequestHandler<UpdateOrganizationCommand, CommandResult>
     {
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
 
         public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _organizationRepository = organizationRepository;
-            _mediator = mediator;
             _mapper = mapper;
         }
 
 
-        public async Task<Result<CommandResult>> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-                 await PublishValidationErrorsAsync(request);
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                await PublishValidationErrorAsync(request);
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
             var organization = _mapper.Map<Organization>(request);
@@ -41,40 +39,39 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             var exist = await _organizationRepository.ExistByNameAsync(organization.Id,organization.Name);
             if (exist)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
-
             await _organizationRepository.CreateAsync(organization);
 
-            return Result.Success(new CommandResult(organization.Id, ApplicationMessages.Create_Success));
+            return new CommandResult(ApplicationMessages.Create_Success,organization.Id);
+
         }
 
 
 
 
-        public async Task<Result<CommandResult>> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-                await PublishValidationErrorsAsync(request);
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                await PublishValidationErrorAsync(request);
+                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
-
 
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
             var exist = await _organizationRepository.ExistByNameAsync(organization.Id, request.Name);
             if (exist)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 
             organization.SetName(request.Name);
             organization.SetDescription(request.Description);
 
             await _organizationRepository.UpdateAsync(organization);
-            return Result.Success(new CommandResult(organization.Id, ApplicationMessages.Update_Success));
+            return new CommandResult(ApplicationMessages.Update_Success,organization.Id );
 
         }
 

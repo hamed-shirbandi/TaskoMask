@@ -3,7 +3,7 @@ using MediatR;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using AutoMapper;
 
 namespace TaskoMask.Application.Core.Services
@@ -40,7 +40,7 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        protected async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
+        protected async Task<CommandResult> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
             return await _mediator.Send(cmd);
         }

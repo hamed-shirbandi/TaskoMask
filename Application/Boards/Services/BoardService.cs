@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.Application.Boards.Commands.Models;
@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(BoardInput input)
+        public async Task<CommandResult> CreateAsync(BoardInput input)
         {
             var project = _mapper.Map<CreateBoardCommand>(input);
 
@@ -49,7 +49,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(BoardInput input)
+        public async Task<CommandResult> UpdateAsync(BoardInput input)
         {
             var updateCommand = _mapper.Map<UpdateBoardCommand>(input);
             return await SendCommandAsync(updateCommand);

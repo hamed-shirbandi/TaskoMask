@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,68 +13,68 @@ using TaskoMask.Domain.Models;
 namespace TaskoMask.Application.Boards.Commands.Handlers
 {
     public class BoardsCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateBoardCommand, Result<CommandResult>>,
-        IRequestHandler<UpdateBoardCommand, Result<CommandResult>>
+        IRequestHandler<CreateBoardCommand, CommandResult>,
+        IRequestHandler<UpdateBoardCommand, CommandResult>
     {
         private readonly IBoardRepository _boardRepository;
         private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
 
         public BoardsCommandHandlers(IBoardRepository boardRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
             _boardRepository = boardRepository;
-            _mediator = mediator;
             _mapper = mapper;
         }
 
 
-        public async Task<Result<CommandResult>> Handle(CreateBoardCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(CreateBoardCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-               await PublishValidationErrorsAsync(request);
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                await PublishValidationErrorAsync(request);
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
 
             var board = _mapper.Map<Board>(request);
 
+            //TODO move this validations type to domain
             var exist = await _boardRepository.ExistByNameAsync(board.Id, board.Name);
             if (exist)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Create_Failed);
+                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
+
             await _boardRepository.CreateAsync(board);
-            return Result.Success(new CommandResult(board.Id, ApplicationMessages.Create_Success));
+            return new CommandResult(ApplicationMessages.Create_Success,board.Id);
 
         }
-    
-    
-        public async Task<Result<CommandResult>> Handle(UpdateBoardCommand request, CancellationToken cancellationToken)
+
+
+        public async Task<CommandResult> Handle(UpdateBoardCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
-                 await PublishValidationErrorsAsync(request);
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                await PublishValidationErrorAsync(request);
+                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 
-           
+
             var board = await _boardRepository.GetByIdAsync(request.Id);
 
             var exist = await _boardRepository.ExistByNameAsync(board.Id, request.Name);
             if (exist)
             {
-                await _mediator.Publish(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return Result.Failure<CommandResult>(ApplicationMessages.Update_Failed);
+                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
+                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 
             board.SetName(request.Name);
             board.SetDescription(request.Description);
 
             await _boardRepository.UpdateAsync(board);
-            return Result.Success(new CommandResult(board.Id, ApplicationMessages.Update_Success));
+            return  new CommandResult(ApplicationMessages.Update_Success,board.Id);
 
         }
 

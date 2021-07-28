@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -36,7 +36,7 @@ namespace TaskoMask.Application.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(RegisterViewModel input)
+        public async Task<CommandResult> CreateAsync(RegisterViewModel input)
         {
             var createCommand = _mapper.Map<CreateUserCommand>(input);
             return await SendCommandAsync(createCommand);
@@ -47,7 +47,7 @@ namespace TaskoMask.Application.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(UserInput input)
+        public async Task<CommandResult> UpdateAsync(UserInput input)
         {
             var updateCommand = _mapper.Map<UpdateUserCommand>(input);
             return await SendCommandAsync(updateCommand);

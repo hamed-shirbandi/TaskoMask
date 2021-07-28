@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpFunctionalExtensions;
+using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -21,14 +21,14 @@ namespace TaskoMask.Application.Organizations.Services
         public OrganizationService(IMediator mediator, IMapper mapper) : base(mediator, mapper)
         { }
 
-        public async Task<Result<CommandResult>> CreateAsync(OrganizationInput input)
+        public async Task<CommandResult> CreateAsync(OrganizationInput input)
         {
             var createCommand = _mapper.Map<CreateOrganizationCommand>(input);
             return await SendCommandAsync(createCommand);
         }
 
 
-        public async Task<Result<CommandResult>> UpdateAsync(OrganizationInput input)
+        public async Task<CommandResult> UpdateAsync(OrganizationInput input)
         {
             var updateCommand = _mapper.Map<UpdateOrganizationCommand>(input);
             return await SendCommandAsync(updateCommand);

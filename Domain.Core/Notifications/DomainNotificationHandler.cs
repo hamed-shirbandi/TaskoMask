@@ -23,14 +23,28 @@ namespace TaskoMask.Domain.Core.Notifications
             return Task.CompletedTask;
         }
 
-        public  List<DomainNotification> GetNotifications()
+        public IEnumerable<DomainNotification> GetList()
         {
             return _notifications;
         }
 
-        public bool HasNotifications()
+        public IEnumerable<DomainNotification> GetListAndReset()
         {
-            return GetNotifications().Any();
+            var notifications=  _notifications;
+            Reset();
+            return notifications;
+        }
+
+
+        public bool HasAny()
+        {
+            return _notifications.Any();
+        }
+
+
+        public void Reset()
+        {
+            _notifications = new List<DomainNotification>();
         }
 
         public void Dispose()

@@ -19,7 +19,7 @@ namespace TaskoMask.web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var notificacoes = _notifications.GetNotifications();
+            var notificacoes = _notifications.GetList().ToList();
             notificacoes.ForEach(c => ViewData.ModelState.AddModelError(string.Empty, c.Value));
 
             return View();

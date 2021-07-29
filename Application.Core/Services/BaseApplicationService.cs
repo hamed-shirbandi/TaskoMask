@@ -47,8 +47,8 @@ namespace TaskoMask.Application.Core.Services
         protected async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
             var result = await _mediator.Send(cmd);
-            if (_notifications.HasNotifications())
-                return Result.Failure<CommandResult>(result.Message, _notifications.GetNotifications().Select(n => n.Value).ToList());
+            if (_notifications.HasAny())
+                return Result.Failure<CommandResult>(result.Message, _notifications.GetListAndReset().Select(n => n.Value).ToList());
             return Result.Success(result.Message, result);
         }
 

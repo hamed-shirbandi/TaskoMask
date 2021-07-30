@@ -9,7 +9,7 @@ using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Services
 {
-    public abstract class BaseApplicationService
+    public abstract class BaseApplicationService: IBaseApplicationService
     {
         #region Fields
 
@@ -51,6 +51,8 @@ namespace TaskoMask.Application.Core.Services
                 return Result.Failure<CommandResult>(result.Message, _notifications.GetListAndReset().Select(n => n.Value).ToList());
             return Result.Success(result.Message, result);
         }
+
+
 
 
         /// <summary>

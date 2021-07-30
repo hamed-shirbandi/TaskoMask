@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Models
+namespace TaskoMask.Domain.Entities
 {
     public class Board: BaseEntity
     {

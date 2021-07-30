@@ -4,7 +4,7 @@ using System.Text;
 using TaskoMask.Domain.Core.Enums;
 using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Models
+namespace TaskoMask.Domain.Entities
 {
     public class Task : BaseEntity
     {

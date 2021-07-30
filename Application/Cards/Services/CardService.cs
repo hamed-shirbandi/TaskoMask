@@ -13,7 +13,7 @@ using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Core.Dtos.Boards;
 using System.Collections.Generic;
 using TaskoMask.Application.BaseEntities.Services;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Cards.Services

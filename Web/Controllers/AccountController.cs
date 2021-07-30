@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Users.Services;
 using TaskoMask.Application.Core.ViewMoldes.Account;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.web.Area.Admin.Controllers;
 
 namespace TaskoMask.Web.Controllers

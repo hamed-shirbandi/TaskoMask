@@ -12,7 +12,7 @@ using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Core.Dtos.Projects;
 using System.Collections.Generic;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Core.Notifications;
 using System.Linq;

@@ -2,7 +2,7 @@
 using TaskoMask.Application.Users.Commands.Models;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.ViewMoldes.Account;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Mapper.MappingActions;
 
 namespace TaskoMask.Application.Mapper.Profiles

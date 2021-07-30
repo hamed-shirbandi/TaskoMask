@@ -13,7 +13,7 @@ using TaskoMask.Application.Core.ViewMoldes.Account;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.BaseEntities.Services;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Users.Services

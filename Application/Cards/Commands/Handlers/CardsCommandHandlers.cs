@@ -8,7 +8,7 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Cards.Commands.Handlers
 {

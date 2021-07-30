@@ -4,7 +4,7 @@ using TaskoMask.Application.Core.Dtos.Boards;
 using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.BaseEntities.Services;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Boards.Services
 {

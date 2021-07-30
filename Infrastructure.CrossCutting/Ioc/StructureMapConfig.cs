@@ -16,7 +16,7 @@ using TaskoMask.Infrastructure.Data.EventSourcing;
 using TaskoMask.Infrastructure.Data.Repositories;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.BaseEntities.Queries.Handlers;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Application.BaseEntities.Queries.Models;
 using TaskoMask.Domain.Core.Models;
 

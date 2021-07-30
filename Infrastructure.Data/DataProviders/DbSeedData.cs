@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.Domain.Core.Enums;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders

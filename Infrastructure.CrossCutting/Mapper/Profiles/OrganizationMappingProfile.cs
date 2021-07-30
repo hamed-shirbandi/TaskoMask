@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Organizations.Commands.Models;
 using TaskoMask.Application.Core.Dtos.Organizations;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {

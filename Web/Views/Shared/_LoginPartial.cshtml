@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<TaskoMask.Domain.Models.User> SignInManager
+@inject SignInManager<TaskoMask.Domain.Entities.User> SignInManager
 @if (SignInManager.IsSignedIn(User))
 {
     <a class="nav-link text-success" href="@Url.Action(action: "index",controller:"dashboard",values:new {Area="admin"})">Dashboard</a>

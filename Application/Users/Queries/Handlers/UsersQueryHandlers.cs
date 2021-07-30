@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Users.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Domain.Data;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Users.Queries.Handlers

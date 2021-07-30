@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Projects.Services;
 using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.web.Models;
 using Microsoft.AspNetCore.Authorization;

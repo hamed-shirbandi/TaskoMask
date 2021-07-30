@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using TaskoMask.Domain.Core.Extensions;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Models;
+using TaskoMask.Domain.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders

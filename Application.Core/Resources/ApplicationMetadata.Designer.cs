@@ -61,110 +61,20 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BoardId Required.
+        ///   Looks up a localized string similar to The {0} length must be between {1} and {2} characters.
         /// </summary>
-        public static string BoardId_Required {
+        public static string Length_Error {
             get {
-                return ResourceManager.GetString("BoardId_Required", resourceCulture);
+                return ResourceManager.GetString("Length_Error", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CardId Required.
+        ///   Looks up a localized string similar to {0} is required.
         /// </summary>
-        public static string CardId_Required {
+        public static string Required {
             get {
-                return ResourceManager.GetString("CardId_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Description must have between {0} and {1} characters.
-        /// </summary>
-        public static string Description_Length_Error {
-            get {
-                return ResourceManager.GetString("Description_Length_Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Description Required.
-        /// </summary>
-        public static string Description_Required {
-            get {
-                return ResourceManager.GetString("Description_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Name must have between {0} and {1} characters.
-        /// </summary>
-        public static string Name_Length_Error {
-            get {
-                return ResourceManager.GetString("Name_Length_Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name Required.
-        /// </summary>
-        public static string Name_Required {
-            get {
-                return ResourceManager.GetString("Name_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OrganizationId Required.
-        /// </summary>
-        public static string Organization_Required {
-            get {
-                return ResourceManager.GetString("Organization_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OrganizationId Required.
-        /// </summary>
-        public static string OrganizationId_Required {
-            get {
-                return ResourceManager.GetString("OrganizationId_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ProjectId Required.
-        /// </summary>
-        public static string ProjectId_Required {
-            get {
-                return ResourceManager.GetString("ProjectId_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User DisplayName Required.
-        /// </summary>
-        public static string User_DisplayName_Required {
-            get {
-                return ResourceManager.GetString("User_DisplayName_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User Email Required.
-        /// </summary>
-        public static string User_Email_Required {
-            get {
-                return ResourceManager.GetString("User_Email_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to UserId Required.
-        /// </summary>
-        public static string UserId_Required {
-            get {
-                return ResourceManager.GetString("UserId_Required", resourceCulture);
+                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
     }

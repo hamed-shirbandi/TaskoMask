@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Cards.Commands.Validations
 
         private void ValidateId()
         {
-            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.CardId_Required);
+            RuleFor(o => o.Id).NotEmpty().WithMessage(ApplicationMetadata.Required);
         }
 
     }

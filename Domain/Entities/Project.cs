@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Domain.Entities
 {
+    [Display(Name = nameof(DomainMetadata.Project), ResourceType = typeof(DomainMetadata))]
     public class Project : BaseEntity
     {
         public Project(string name, string description, string organizationId)

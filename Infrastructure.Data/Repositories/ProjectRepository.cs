@@ -11,7 +11,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class ProjectRepository : BaseRepository<Domain.Models.Project>, IProjectRepository
+    public class ProjectRepository : BaseRepository<Domain.Entities.Project>, IProjectRepository
     {
         private readonly IMongoCollection<Project> _projects;
         public ProjectRepository(IMainDbContext dbContext) : base(dbContext)
@@ -28,7 +28,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         }
 
 
-        public async Task<IEnumerable<Domain.Models.Project>> GetListByOrganizationIdAsync(string organizationId)
+        public async Task<IEnumerable<Domain.Entities.Project>> GetListByOrganizationIdAsync(string organizationId)
         {
             return await _projects.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();
 

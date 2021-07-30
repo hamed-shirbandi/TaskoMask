@@ -79,6 +79,24 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Requested data for {0} not exist in DB.
+        /// </summary>
+        public static string Data_Not_exist {
+            get {
+                return ResourceManager.GetString("Data_Not_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is invalid.
+        /// </summary>
+        public static string Invalid_ForeignKey {
+            get {
+                return ResourceManager.GetString("Invalid_ForeignKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name Already Exist.
         /// </summary>
         public static string Name_Already_Exist {

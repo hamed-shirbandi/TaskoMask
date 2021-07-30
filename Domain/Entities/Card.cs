@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using TaskoMask.Domain.Core.Enums;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Domain.Entities
 {
+    [Display(Name = nameof(DomainMetadata.Card), ResourceType = typeof(DomainMetadata))]
     public class Card : BaseEntity
     {
         public Card(string name, string description, string boardId,CardType type)

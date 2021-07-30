@@ -14,25 +14,25 @@
 
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Resources\CoreMessages.Designer.cs">
+    <Compile Update="Resources\DomainMessages.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>CoreMessages.resx</DependentUpon>
+      <DependentUpon>DomainMessages.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\CoreMetadata.Designer.cs">
+    <Compile Update="Resources\DomainMetadata.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>CoreMetadata.resx</DependentUpon>
+      <DependentUpon>DomainMetadata.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Resources\CoreMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CoreMessages.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resources\DomainMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DomainMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\CoreMetadata.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CoreMetadata.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resources\DomainMetadata.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DomainMetadata.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

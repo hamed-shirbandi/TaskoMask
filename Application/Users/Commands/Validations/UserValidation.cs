@@ -18,13 +18,13 @@ namespace TaskoMask.Application.Users.Commands.Validations
 
         protected void ValidateDisplayName()
         {
-            RuleFor(o => o.DisplayName).NotEmpty().WithMessage(ApplicationMetadata.User_DisplayName_Required);
-            RuleFor(o => o.DisplayName).Length(minDisplayNameLenth, maxDisplayNameLenth).WithMessage(string.Format(ApplicationMetadata.Name_Length_Error, minDisplayNameLenth, maxDisplayNameLenth));
+            RuleFor(o => o.DisplayName).NotEmpty().WithMessage(ApplicationMetadata.Required);
+            RuleFor(o => o.DisplayName).Length(minDisplayNameLenth, maxDisplayNameLenth).WithMessage(string.Format(ApplicationMetadata.Length_Error, minDisplayNameLenth, maxDisplayNameLenth));
         }
 
         protected void ValidateEmail()
         {
-            RuleFor(o => o.Email).NotEmpty().WithMessage(ApplicationMetadata.User_Email_Required);
+            RuleFor(o => o.Email).NotEmpty().WithMessage(ApplicationMetadata.Required);
         }
 
     }

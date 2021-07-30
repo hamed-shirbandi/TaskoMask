@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
+using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Domain.Entities
 {
+    [Display(Name = nameof(DomainMetadata.Board), ResourceType = typeof(DomainMetadata))]
     public class Board: BaseEntity
     {
         public Board(string name, string description, string projectId)
@@ -12,6 +16,10 @@ namespace TaskoMask.Domain.Entities
             Name = name;
             Description = description;
             ProjectId = projectId;
+
+            if (string.IsNullOrEmpty(projectId))
+                throw new DomainException(string.Format(DomainMessages.Required,nameof(ProjectId)));
+
         }
 
         public string Name { get; private set; }

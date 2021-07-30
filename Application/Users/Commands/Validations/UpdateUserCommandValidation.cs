@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Users.Commands.Validations
 
         private void ValidateId()
         {
-            RuleFor(c=>c.Id).NotEmpty().WithMessage(ApplicationMetadata.UserId_Required);
+            RuleFor(c=>c.Id).NotEmpty().WithMessage(ApplicationMetadata.Required);
         }
     }
 }

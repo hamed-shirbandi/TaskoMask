@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Projects.Commands.Validations
 
         private void ValidateOrganizationId()
         {
-            RuleFor(o => o.OrganizationId).NotEmpty().WithMessage(ApplicationMetadata.OrganizationId_Required);
+            RuleFor(o => o.OrganizationId).NotEmpty().WithMessage(ApplicationMetadata.Required);
         }
     }
 }

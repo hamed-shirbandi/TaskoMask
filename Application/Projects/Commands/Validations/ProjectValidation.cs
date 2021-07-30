@@ -20,14 +20,14 @@ namespace TaskoMask.Application.Projects.Commands.Validations
 
         protected void ValidateName()
         {
-            RuleFor(o => o.Name).NotEmpty().WithMessage(ApplicationMetadata.Name_Required);
-            RuleFor(o => o.Name).Length(minNameLenth, maxNameLenth).WithMessage(string.Format(ApplicationMetadata.Name_Length_Error, minNameLenth, maxNameLenth));
+            RuleFor(o => o.Name).NotEmpty().WithMessage(ApplicationMetadata.Required);
+            RuleFor(o => o.Name).Length(minNameLenth, maxNameLenth).WithMessage(string.Format(ApplicationMetadata.Length_Error, minNameLenth, maxNameLenth));
         }
 
         protected void ValidateDescription()
         {
-            RuleFor(o => o.Description).NotEmpty().WithMessage(ApplicationMetadata.Description_Required);
-            RuleFor(o => o.Description).Length(minDescriptionLenth, maxDescriptionLenth).WithMessage(string.Format(ApplicationMetadata.Description_Length_Error, minDescriptionLenth, maxDescriptionLenth));
+            RuleFor(o => o.Description).NotEmpty().WithMessage(ApplicationMetadata.Required);
+            RuleFor(o => o.Description).Length(minDescriptionLenth, maxDescriptionLenth).WithMessage(string.Format(ApplicationMetadata.Length_Error, minDescriptionLenth, maxDescriptionLenth));
         }
     }
 }

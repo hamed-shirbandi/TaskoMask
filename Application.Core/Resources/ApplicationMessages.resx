@@ -123,6 +123,12 @@
   <data name="Create_Success" xml:space="preserve">
     <value>Create Success</value>
   </data>
+  <data name="Data_Not_exist" xml:space="preserve">
+    <value>Requested data for {0} not exist in DB</value>
+  </data>
+  <data name="Invalid_ForeignKey" xml:space="preserve">
+    <value>{0} is invalid</value>
+  </data>
   <data name="Name_Already_Exist" xml:space="preserve">
     <value>Name Already Exist</value>
   </data>

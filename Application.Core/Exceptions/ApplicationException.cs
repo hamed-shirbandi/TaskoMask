@@ -1,21 +1,13 @@
 ﻿using System;
-using TaskoMask.Domain.Core.Extensions;
+using TaskoMask.Application.Core.Extensions;
+using TaskoMask.Domain.Core.Exceptions;
 
 namespace TaskoMask.Application.Core.Exceptions
 {
-    public class ApplicationException : Exception
+    public class ApplicationException : DomainException
     {
-        public ApplicationException()
-        {
-        }
-
-
+ 
         public ApplicationException(string message): base(message)
-        {
-        }
-
-
-        public ApplicationException(string message, Exception inner): base(message, inner)
         {
         }
 
@@ -23,7 +15,5 @@ namespace TaskoMask.Application.Core.Exceptions
         public ApplicationException(string message, Type objectType): base(string.Format(message, objectType.GetDisplayName()))
         {
         }
-
-
     }
 }

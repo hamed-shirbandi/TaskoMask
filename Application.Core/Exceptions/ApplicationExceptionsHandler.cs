@@ -3,12 +3,13 @@ using MediatR;
 using MediatR.Pipeline;
 using System.Threading;
 using System.Threading.Tasks;
+using TaskoMask.Domain.Core.Exceptions;
 
 namespace TaskoMask.Application.Core.Exceptions
 {
     public class ApplicationExceptionsHandler<TRequest, TResponse, TException>
         : IRequestExceptionHandler<TRequest, TResponse, TException>
-        where TException : ApplicationException
+        where TException : DomainException
     {
         #region Fields
 

@@ -9,6 +9,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Core.Exceptions;
 
 namespace TaskoMask.Application.Boards.Commands.Handlers
 {
@@ -37,6 +38,11 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
 
             var board = _mapper.Map<Board>(request);
 
+            //TODO check by repository
+            var hasProjectId = true;
+            if (!hasProjectId)
+                throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey,nameof(request.ProjectId)));
+
             //TODO move this validations type to domain
             var exist = await _boardRepository.ExistByNameAsync(board.Id, board.Name);
             if (exist)
@@ -47,7 +53,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
 
 
             await _boardRepository.CreateAsync(board);
-            return new CommandResult(ApplicationMessages.Create_Success,board.Id);
+            return new CommandResult(ApplicationMessages.Create_Success, board.Id);
 
         }
 
@@ -57,7 +63,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
             if (!request.IsValid())
             {
                 await PublishValidationErrorAsync(request);
-                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
+                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
 
@@ -67,14 +73,14 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
             if (exist)
             {
                 await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
+                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
             board.SetName(request.Name);
             board.SetDescription(request.Description);
 
             await _boardRepository.UpdateAsync(board);
-            return  new CommandResult(ApplicationMessages.Update_Success,board.Id);
+            return new CommandResult(ApplicationMessages.Update_Success, board.Id);
 
         }
 

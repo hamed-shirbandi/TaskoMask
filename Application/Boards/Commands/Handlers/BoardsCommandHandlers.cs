@@ -36,20 +36,22 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
             }
 
 
-            var board = _mapper.Map<Board>(request);
-
+            //TODO move this validations type in all handlers to domain
             //TODO check by repository
-            var hasProjectId = true;
-            if (!hasProjectId)
+            var existProjectId = true;
+            if (!existProjectId)
                 throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey,nameof(request.ProjectId)));
 
-            //TODO move this validations type to domain
-            var exist = await _boardRepository.ExistByNameAsync(board.Id, board.Name);
+            //TODO move this validations type in all handlers to domain
+            var exist = await _boardRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
                 await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
+
+            var board = _mapper.Map<Board>(request);
+            //TODO check domain notification
 
 
             await _boardRepository.CreateAsync(board);
@@ -68,6 +70,8 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
 
 
             var board = await _boardRepository.GetByIdAsync(request.Id);
+            if (board == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Board));
 
             var exist = await _boardRepository.ExistByNameAsync(board.Id, request.Name);
             if (exist)

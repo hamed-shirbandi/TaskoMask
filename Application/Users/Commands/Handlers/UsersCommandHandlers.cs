@@ -10,6 +10,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Core.Exceptions;
 
 namespace TaskoMask.Application.Users.Commands.Handlers
 {
@@ -19,11 +20,9 @@ namespace TaskoMask.Application.Users.Commands.Handlers
     {
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
 
         public UsersCommandHandlers(IMapper mapper, IMediator mediator, UserManager<User> userManager) : base(mediator)
         {
-            _mediator = mediator;
             _mapper = mapper;
             _userManager = userManager;
         }
@@ -77,6 +76,8 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             }
 
             var user = await _userManager.FindByIdAsync(request.Id);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(User));
 
             user.SetDisplayName(request.DisplayName);
             user.SetEmail(request.Email);

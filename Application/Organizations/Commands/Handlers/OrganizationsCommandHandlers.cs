@@ -9,6 +9,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Core.Exceptions;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
@@ -34,14 +35,21 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var organization = _mapper.Map<Organization>(request);
+            var existUserId = true;
+            if (!existUserId)
+                throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey, nameof(request.UserId)));
 
-            var exist = await _organizationRepository.ExistByNameAsync(organization.Id,organization.Name);
+
+
+            var exist = await _organizationRepository.ExistByNameAsync("",request.Name);
             if (exist)
             {
                 await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
+
+            var organization = _mapper.Map<Organization>(request);
+
             await _organizationRepository.CreateAsync(organization);
 
             return new CommandResult(ApplicationMessages.Create_Success,organization.Id);
@@ -60,6 +68,11 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             }
 
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
+            if (organization == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Organization));
+
+
+
             var exist = await _organizationRepository.ExistByNameAsync(organization.Id, request.Name);
             if (exist)
             {

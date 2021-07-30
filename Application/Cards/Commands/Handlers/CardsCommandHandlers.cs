@@ -9,6 +9,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Core.Exceptions;
 
 namespace TaskoMask.Application.Cards.Commands.Handlers
 {
@@ -16,12 +17,12 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
         IRequestHandler<CreateCardCommand, CommandResult>,
          IRequestHandler<UpdateCardCommand, CommandResult>
     {
-        private readonly ICardRepository _projectRepository;
+        private readonly ICardRepository _cardRepository;
         private readonly IMapper _mapper;
 
-        public CardsCommandHandlers(ICardRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public CardsCommandHandlers(ICardRepository cardRepository, IMapper mapper, IMediator mediator) : base(mediator)
         {
-            _projectRepository = projectRepository;
+            _cardRepository = cardRepository;
             _mapper = mapper;
         }
 
@@ -35,17 +36,21 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             }
 
 
-            var project = _mapper.Map<Card>(request);
+            var existBoardId = true;
+            if (!existBoardId)
+                throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey, nameof(request.BoardId)));
 
-            var exist = await _projectRepository.ExistByNameAsync(project.Id, project.Name);
+            var exist = await _cardRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
                 await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            await _projectRepository.CreateAsync(project);
-            return new CommandResult(ApplicationMessages.Create_Success,project.Id);
+            var card = _mapper.Map<Card>(request);
+
+            await _cardRepository.CreateAsync(card);
+            return new CommandResult(ApplicationMessages.Create_Success,card.Id);
 
         }
 
@@ -61,21 +66,23 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
 
 
 
-            var project = await _projectRepository.GetByIdAsync(request.Id);
+            var card = await _cardRepository.GetByIdAsync(request.Id);
+            if (card == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Card));
 
-            var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
+            var exist = await _cardRepository.ExistByNameAsync(card.Id, request.Name);
             if (exist)
             {
                 await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
                 return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 
-            project.SetName(request.Name);
-            project.SetDescription(request.Description);
-            project.SetType(request.Type);
+            card.SetName(request.Name);
+            card.SetDescription(request.Description);
+            card.SetType(request.Type);
 
-            await _projectRepository.UpdateAsync(project);
-            return new CommandResult(ApplicationMessages.Update_Success,project.Id);
+            await _cardRepository.UpdateAsync(card);
+            return new CommandResult(ApplicationMessages.Update_Success,card.Id);
         }
 
     }

@@ -5,8 +5,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Cards.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
+using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Data;
+using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Cards.Queries.Handlers
 {
@@ -14,23 +17,26 @@ namespace TaskoMask.Application.Cards.Queries.Handlers
         IRequestHandler<GetCardByIdQuery, CardOutput>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardOutput>>
     {
-        private readonly ICardRepository _projectRepository;
-        public CardsQueryHandlers(ICardRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
+        private readonly ICardRepository _cardRepository;
+        public CardsQueryHandlers(ICardRepository cardRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
         {
-            _projectRepository = projectRepository;
+            _cardRepository = cardRepository;
         }
 
         public async Task<CardOutput> Handle(GetCardByIdQuery request, CancellationToken cancellationToken)
         {
-            var board = await _projectRepository.GetByIdAsync(request.Id);
-            return _mapper.Map<CardOutput>(board);
+            var card = await _cardRepository.GetByIdAsync(request.Id);
+            if (card == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Card));
+
+            return _mapper.Map<CardOutput>(card);
         }
 
 
         public async Task<IEnumerable<CardOutput>> Handle(GetCardsByBoardIdQuery request, CancellationToken cancellationToken)
         {
-            var projects = await _projectRepository.GetListByBoardIdAsync(request.BoardId);
-            return _mapper.Map<IEnumerable<CardOutput>>(projects);
+            var cards = await _cardRepository.GetListByBoardIdAsync(request.BoardId);
+            return _mapper.Map<IEnumerable<CardOutput>>(cards);
         }
     }
 }

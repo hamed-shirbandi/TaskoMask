@@ -2,7 +2,6 @@
 using TaskoMask.Application.Core.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +12,8 @@ using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Queries;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Core.Exceptions;
 
 namespace TaskoMask.Application.Users.Queries.Handlers
 {
@@ -30,6 +31,9 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         public async Task<UserOutput> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByIdAsync(request.Id);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(User));
+
             return _mapper.Map<UserOutput>(user);
         }
 

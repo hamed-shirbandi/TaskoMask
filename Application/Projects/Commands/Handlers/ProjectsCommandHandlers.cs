@@ -9,6 +9,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Core.Exceptions;
 
 namespace TaskoMask.Application.Projects.Commands.Handlers
 {
@@ -34,15 +35,20 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
+            var existOrganizationId = true;
+            if (!existOrganizationId)
+                throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey, nameof(request.OrganizationId)));
 
-            var project = _mapper.Map<Project>(request);
 
-            var exist = await _projectRepository.ExistByNameAsync(project.Id, project.Name);
+
+            var exist = await _projectRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
                 await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
+
+            var project = _mapper.Map<Project>(request);
 
             await _projectRepository.CreateAsync(project);
             return new CommandResult(ApplicationMessages.Create_Success,project.Id);
@@ -63,6 +69,9 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
 
 
             var project = await _projectRepository.GetByIdAsync(request.Id);
+            if (project == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Project));
+
 
             var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
             if (exist)

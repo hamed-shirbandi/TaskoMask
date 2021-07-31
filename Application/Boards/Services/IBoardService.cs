@@ -12,16 +12,15 @@ namespace TaskoMask.Application.Boards.Services
     {
         #region Command Services
 
-        Task<Result<CommandResult>> CreateAsync(BoardInput input);
-        Task<Result<CommandResult>> UpdateAsync(BoardInput input);
+        Task<Result<CommandResult>> CreateAsync(BoardInputDto input);
+        Task<Result<CommandResult>> UpdateAsync(BoardInputDto input);
 
         #endregion
 
         #region Query Services
 
-        Task<BoardOutput> GetByIdAsync(string id);
-        Task<BoardInput> GetByIdToUpdateAsync(string id);
-        Task<BoardListViewModel> GetListByProjectIdAsync(string projectId);
+        Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id);
+        Task<Result<BoardListViewModel>> GetListByProjectIdAsync(string projectId);
 
         #endregion
 

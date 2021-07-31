@@ -39,7 +39,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(BoardInput input)
+        public async Task<Result<CommandResult>> CreateAsync(BoardInputDto input)
         {
             var createCommand = _mapper.Map<CreateBoardCommand>(input);
 
@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(BoardInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(BoardInputDto input)
         {
             var updateCommand = _mapper.Map<UpdateBoardCommand>(input);
             return await SendCommandAsync(updateCommand);
@@ -67,7 +67,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<BoardOutput> GetByIdAsync(string id)
+        public async Task<Result<BoardOutput>> GetByIdAsync(string id)
         {
             var query = new GetBoardByIdQuery(id);
             return await SendQueryAsync<GetBoardByIdQuery, BoardOutput>(query);
@@ -78,10 +78,10 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<BoardInput> GetByIdToUpdateAsync(string id)
+        public async Task<Result<BoardInputDto>> GetByIdToUpdateAsync(string id)
         {
             var organization = await GetByIdAsync(id);
-            return _mapper.Map<BoardInput>(organization);
+            return _mapper.Map<BoardInputDto>(organization);
         }
 
 
@@ -90,7 +90,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<BoardListViewModel> GetListByProjectIdAsync(string projectId)
+        public async Task<Result<BoardListViewModel>> GetListByProjectIdAsync(string projectId)
         {
             var boardsQuery = new GetBoardsByProjectIdQuery(projectId: projectId);
             var boards = await SendQueryAsync<GetBoardsByProjectIdQuery, IEnumerable<BoardOutput>>(boardsQuery);
@@ -100,8 +100,8 @@ namespace TaskoMask.Application.Boards.Services
 
             return new BoardListViewModel
             {
-                Project = project,
-                Boards = boards,
+                Project = project.Value,
+                Boards = boards.Value,
             };
         }
 

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Helpers;
 using AutoMapper;
 using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Core.Services
 {
-    public abstract class BaseApplicationService: IBaseApplicationService
+    public abstract class BaseApplicationService : IBaseApplicationService
     {
         #region Fields
 
@@ -47,8 +48,16 @@ namespace TaskoMask.Application.Core.Services
         protected async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
             var result = await _mediator.Send(cmd);
+            var errors = _notifications.GetListAndReset().Select(n => n.Value).ToList();
+
+            //when throw application or domain Exception
+            if (result == null)
+                return Result.Failure<CommandResult>(ApplicationMessages.Operation_Failed, errors);
+
+
             if (_notifications.HasAny())
-                return Result.Failure<CommandResult>(result.Message, _notifications.GetListAndReset().Select(n => n.Value).ToList());
+                return Result.Failure<CommandResult>(result.Message, errors);
+           
             return Result.Success(result.Message, result);
         }
 
@@ -58,9 +67,12 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        protected async Task<U> SendQueryAsync<T, U>(T query) where T : IBaseRequest
+        protected async Task<Result<U>> SendQueryAsync<T, U>(T query) where T : IBaseRequest
         {
-            return (U)await _mediator.Send(query);
+            var result = (U)await _mediator.Send(query);
+            if (_notifications.HasAny())
+                return Result.Failure<U>(ApplicationMessages.Operation_Failed, _notifications.GetListAndReset().Select(n => n.Value).ToList());
+            return Result.Success(ApplicationMessages.Operation_Success, result);
 
         }
 

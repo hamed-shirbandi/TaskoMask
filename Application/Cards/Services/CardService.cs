@@ -89,7 +89,7 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CardListViewModel> GetListByBoardIdAsync(string boardId)
+        public async Task<CardDetailViewModel> GetListByBoardIdAsync(string boardId)
         {
             var cardsQuery = new GetCardsByBoardIdQuery(boardId: boardId);
             var cards = await SendQueryAsync<GetCardsByBoardIdQuery, IEnumerable<CardOutputDto>>(cardsQuery);
@@ -97,7 +97,7 @@ namespace TaskoMask.Application.Cards.Services
             var boardQuery = new GetBoardByIdQuery(id: boardId);
             var board = await SendQueryAsync<GetBoardByIdQuery, BoardOutput>(boardQuery);
 
-            return new CardListViewModel
+            return new CardDetailViewModel
             {
                 Board = board,
                 Cards = cards,

@@ -89,7 +89,7 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<ProjectListViewModel> GetListByOrganizationIdAsync(string organizationId)
+        public async Task<ProjectDetailViewModel> GetListByOrganizationIdAsync(string organizationId)
         {
             var projectsQuery = new GetProjectsByOrganizationIdQuery(organizationId: organizationId);
             var projects = await SendQueryAsync<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutputDto>>(projectsQuery);
@@ -97,7 +97,7 @@ namespace TaskoMask.Application.Projects.Services
             var organizationQuery = new GetOrganizationByIdQuery(id: organizationId);
             var organization = await SendQueryAsync<GetOrganizationByIdQuery, OrganizationOutputDto>(organizationQuery);
 
-            return new ProjectListViewModel
+            return new ProjectDetailViewModel
             {
                 Organization = organization,
                 Projects = projects,

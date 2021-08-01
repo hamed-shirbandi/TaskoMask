@@ -90,7 +90,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardListViewModel>> GetListByProjectIdAsync(string projectId)
+        public async Task<Result<BoardDetailViewModel>> GetListByProjectIdAsync(string projectId)
         {
             var boardsQuery = new GetBoardsByProjectIdQuery(projectId: projectId);
             var boards = await SendQueryAsync<GetBoardsByProjectIdQuery, IEnumerable<BoardOutput>>(boardsQuery);
@@ -98,7 +98,7 @@ namespace TaskoMask.Application.Boards.Services
             var projectQuery = new GetProjectByIdQuery(id: projectId);
             var project = await SendQueryAsync<GetProjectByIdQuery, ProjectOutputDto>(projectQuery);
 
-            return new BoardListViewModel
+            return new BoardDetailViewModel
             {
                 Project = project.Value,
                 Boards = boards.Value,

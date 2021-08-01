@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Boards.Services
         #region Query Services
 
         Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id);
-        Task<Result<BoardListViewModel>> GetListByProjectIdAsync(string projectId);
+        Task<Result<BoardDetailViewModel>> GetListByProjectIdAsync(string projectId);
 
         #endregion
 

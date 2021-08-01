@@ -123,6 +123,9 @@
   <data name="BoardsCount" xml:space="preserve">
     <value>Boards Count</value>
   </data>
+  <data name="CardId" xml:space="preserve">
+    <value>CardId</value>
+  </data>
   <data name="CardsCount" xml:space="preserve">
     <value>Cards Count</value>
   </data>

@@ -79,6 +79,15 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CardId.
+        /// </summary>
+        public static string CardId {
+            get {
+                return ResourceManager.GetString("CardId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cards Count.
         /// </summary>
         public static string CardsCount {

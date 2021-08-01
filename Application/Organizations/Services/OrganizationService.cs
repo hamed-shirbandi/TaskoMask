@@ -34,7 +34,7 @@ namespace TaskoMask.Application.Organizations.Services
 
 
 
-        public async Task<Result<CommandResult>> CreateAsync(OrganizationInput input)
+        public async Task<Result<CommandResult>> CreateAsync(OrganizationInputDto input)
         {
             var createCommand = _mapper.Map<CreateOrganizationCommand>(input);
             return await SendCommandAsync(createCommand);
@@ -42,7 +42,7 @@ namespace TaskoMask.Application.Organizations.Services
 
 
 
-        public async Task<Result<CommandResult>> UpdateAsync(OrganizationInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(OrganizationInputDto input)
         {
             var updateCommand = _mapper.Map<UpdateOrganizationCommand>(input);
             return await SendCommandAsync(updateCommand);
@@ -53,24 +53,24 @@ namespace TaskoMask.Application.Organizations.Services
 
         #region Query Services
 
-        public async Task<OrganizationOutput> GetByIdAsync(string id)
+        public async Task<OrganizationOutputDto> GetByIdAsync(string id)
         {
             var query = new GetOrganizationByIdQuery(id);
-            return await SendQueryAsync<GetOrganizationByIdQuery, OrganizationOutput>(query);
+            return await SendQueryAsync<GetOrganizationByIdQuery, OrganizationOutputDto>(query);
         }
 
 
-        public async Task<OrganizationInput> GetByIdToUpdateAsync(string id)
+        public async Task<OrganizationInputDto> GetByIdToUpdateAsync(string id)
         {
             var organization = await GetByIdAsync(id);
-            return _mapper.Map<OrganizationInput>(organization);
+            return _mapper.Map<OrganizationInputDto>(organization);
         }
 
 
-        public async Task<IEnumerable<OrganizationOutput>> GetListByUserIdAsync(string userId)
+        public async Task<IEnumerable<OrganizationOutputDto>> GetListByUserIdAsync(string userId)
         {
             var query = new GetOrganizationsByUserIdQuery(userId: userId);
-            return await SendQueryAsync<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>(query);
+            return await SendQueryAsync<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutputDto>>(query);
         }
 
 

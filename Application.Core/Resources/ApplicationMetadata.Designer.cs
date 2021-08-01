@@ -61,6 +61,123 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BoardId.
+        /// </summary>
+        public static string BoardId {
+            get {
+                return ResourceManager.GetString("BoardId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Boards Count.
+        /// </summary>
+        public static string BoardsCount {
+            get {
+                return ResourceManager.GetString("BoardsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cards Count.
+        /// </summary>
+        public static string CardsCount {
+            get {
+                return ResourceManager.GetString("CardsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Card Type.
+        /// </summary>
+        public static string CardType {
+            get {
+                return ResourceManager.GetString("CardType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Date Time.
+        /// </summary>
+        public static string CreateDateTime {
+            get {
+                return ResourceManager.GetString("CreateDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Day.
+        /// </summary>
+        public static string CreateDay {
+            get {
+                return ResourceManager.GetString("CreateDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Month.
+        /// </summary>
+        public static string CreateMonth {
+            get {
+                return ResourceManager.GetString("CreateMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Year.
+        /// </summary>
+        public static string CreateYear {
+            get {
+                return ResourceManager.GetString("CreateYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Name.
+        /// </summary>
+        public static string DisplayName {
+            get {
+                return ResourceManager.GetString("DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doing Tasks Count.
+        /// </summary>
+        public static string DoingTasksCount {
+            get {
+                return ResourceManager.GetString("DoingTasksCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done Tasks Count.
+        /// </summary>
+        public static string DoneTasksCount {
+            get {
+                return ResourceManager.GetString("DoneTasksCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} length must be between {1} and {2} characters.
         /// </summary>
         public static string Length_Error {
@@ -70,11 +187,92 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Modified Date Time.
+        /// </summary>
+        public static string ModifiedDateTime {
+            get {
+                return ResourceManager.GetString("ModifiedDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OrganizationId.
+        /// </summary>
+        public static string OrganizationId {
+            get {
+                return ResourceManager.GetString("OrganizationId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Organizations Count.
+        /// </summary>
+        public static string OrganizationsCount {
+            get {
+                return ResourceManager.GetString("OrganizationsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ProjectId.
+        /// </summary>
+        public static string ProjectId {
+            get {
+                return ResourceManager.GetString("ProjectId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projects Count.
+        /// </summary>
+        public static string ProjectsCount {
+            get {
+                return ResourceManager.GetString("ProjectsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is required.
         /// </summary>
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tasks Count.
+        /// </summary>
+        public static string TasksCount {
+            get {
+                return ResourceManager.GetString("TasksCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Do Tasks Count.
+        /// </summary>
+        public static string ToDoTasksCount {
+            get {
+                return ResourceManager.GetString("ToDoTasksCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserId.
+        /// </summary>
+        public static string UserId {
+            get {
+                return ResourceManager.GetString("UserId", resourceCulture);
             }
         }
     }

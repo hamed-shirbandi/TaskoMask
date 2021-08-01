@@ -14,15 +14,15 @@ namespace TaskoMask.Application.Projects.Services
     {
         #region Command Services
 
-        Task<Result<CommandResult>> CreateAsync(ProjectInput input);
-        Task<Result<CommandResult>> UpdateAsync(ProjectInput input);
+        Task<Result<CommandResult>> CreateAsync(ProjectInputDto input);
+        Task<Result<CommandResult>> UpdateAsync(ProjectInputDto input);
 
         #endregion
 
         #region Query Services
 
-        Task<ProjectOutput> GetByIdAsync(string id);
-        Task<ProjectInput> GetByIdToUpdateAsync(string id);
+        Task<ProjectOutputDto> GetByIdAsync(string id);
+        Task<ProjectInputDto> GetByIdToUpdateAsync(string id);
         Task<ProjectListViewModel> GetListByOrganizationIdAsync(string organizationId);
 
         #endregion

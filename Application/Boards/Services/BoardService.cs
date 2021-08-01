@@ -96,7 +96,7 @@ namespace TaskoMask.Application.Boards.Services
             var boards = await SendQueryAsync<GetBoardsByProjectIdQuery, IEnumerable<BoardOutput>>(boardsQuery);
 
             var projectQuery = new GetProjectByIdQuery(id: projectId);
-            var project = await SendQueryAsync<GetProjectByIdQuery, ProjectOutput>(projectQuery);
+            var project = await SendQueryAsync<GetProjectByIdQuery, ProjectOutputDto>(projectQuery);
 
             return new BoardListViewModel
             {

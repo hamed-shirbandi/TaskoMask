@@ -47,7 +47,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create(string boardId)
         {
-            var model = new CardInput
+            var model = new CardInputDto
             {
                 BoardId = boardId,
             };
@@ -60,7 +60,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create(CardInput input)
+        public async Task<IActionResult> Create(CardInputDto input)
         {
             if (!ModelState.IsValid)
                 return View(input);
@@ -88,7 +88,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Update(CardInput input)
+        public async Task<IActionResult> Update(CardInputDto input)
         {
             if (!ModelState.IsValid)
                 return View(input);

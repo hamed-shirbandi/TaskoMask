@@ -11,10 +11,10 @@ namespace TaskoMask.Application.Mapper.Profiles
         {
             #region Dto To Command
 
-            CreateMap<OrganizationInput, CreateOrganizationCommand>()
+            CreateMap<OrganizationInputDto, CreateOrganizationCommand>()
               .ConstructUsing(c => new CreateOrganizationCommand(c.Name, c.Description, c.UserId));
 
-            CreateMap<OrganizationInput, UpdateOrganizationCommand>()
+            CreateMap<OrganizationInputDto, UpdateOrganizationCommand>()
               .ConstructUsing(c => new UpdateOrganizationCommand(c.Id, c.Name, c.Description));
 
 
@@ -29,15 +29,15 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Domain Model To Dto
 
-            CreateMap<Organization, OrganizationOutput>();
-            CreateMap<Organization, OrganizationInput>();
+            CreateMap<Organization, OrganizationOutputDto>();
+            CreateMap<Organization, OrganizationInputDto>();
 
 
             #endregion
 
             #region Dto To Dto
 
-            CreateMap<OrganizationOutput, OrganizationInput>();
+            CreateMap<OrganizationOutputDto, OrganizationInputDto>();
 
 
             #endregion

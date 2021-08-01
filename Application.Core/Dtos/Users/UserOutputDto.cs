@@ -4,9 +4,8 @@ using System.Text;
 
 namespace TaskoMask.Application.Core.Dtos.Users
 {
-   public class UserOutput
+   public class UserOutputDto : UserBasicInfoDto
     {
-        public string Id { get; set; }
-        public string DisplayName { get; set; }
+        public UserReportDto Reports { get; set; }
     }
 }

@@ -48,7 +48,7 @@ namespace TaskoMask.Application.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(UserInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(UserInputDto input)
         {
             var updateCommand = _mapper.Map<UpdateUserCommand>(input);
             return await SendCommandAsync(updateCommand);
@@ -63,20 +63,20 @@ namespace TaskoMask.Application.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<UserOutput> GetByIdAsync(string id)
+        public async Task<UserOutputDto> GetByIdAsync(string id)
         {
             var query = new GetUserByIdQuery(id);
-            return await SendQueryAsync<GetUserByIdQuery, UserOutput>(query);
+            return await SendQueryAsync<GetUserByIdQuery, UserOutputDto>(query);
         }
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<UserInput> GetByIdToUpdateAsync(string id)
+        public async Task<UserInputDto> GetByIdToUpdateAsync(string id)
         {
             var user = await GetByIdAsync(id);
-            return _mapper.Map<UserInput>(user);
+            return _mapper.Map<UserInputDto>(user);
         }
 
 

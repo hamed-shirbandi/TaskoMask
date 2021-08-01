@@ -18,7 +18,7 @@ using TaskoMask.Application.Core.Exceptions;
 namespace TaskoMask.Application.Users.Queries.Handlers
 {
     public class UsersQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetUserByIdQuery, UserOutput>,
+        IRequestHandler<GetUserByIdQuery, UserOutputDto>,
         IRequestHandler<GetUsersCountQuery, long>
     {
         private readonly UserManager<User> _userManager;
@@ -28,13 +28,13 @@ namespace TaskoMask.Application.Users.Queries.Handlers
             _userManager = userManager;
         }
 
-        public async Task<UserOutput> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserOutputDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByIdAsync(request.Id);
             if (user == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(User));
 
-            return _mapper.Map<UserOutput>(user);
+            return _mapper.Map<UserOutputDto>(user);
         }
 
 

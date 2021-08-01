@@ -14,15 +14,15 @@ namespace TaskoMask.Application.Cards.Services
     {
         #region Command Services
 
-        Task<Result<CommandResult>> CreateAsync(CardInput input);
-        Task<Result<CommandResult>> UpdateAsync(CardInput input);
+        Task<Result<CommandResult>> CreateAsync(CardInputDto input);
+        Task<Result<CommandResult>> UpdateAsync(CardInputDto input);
 
         #endregion
 
         #region Query Services
 
-        Task<CardOutput> GetByIdAsync(string id);
-        Task<CardInput> GetByIdToUpdateAsync(string id);
+        Task<CardOutputDto> GetByIdAsync(string id);
+        Task<CardInputDto> GetByIdToUpdateAsync(string id);
         Task<CardListViewModel> GetListByBoardIdAsync(string boardId);
 
         #endregion

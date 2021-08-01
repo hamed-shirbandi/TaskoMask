@@ -6,7 +6,7 @@ using TaskoMask.Application.Core.Dtos.Users;
 namespace TaskoMask.Application.Users.Queries.Models
 {
    
-    public class GetUserByIdQuery : IRequest<UserOutput>
+    public class GetUserByIdQuery : IRequest<UserOutputDto>
     {
         public GetUserByIdQuery(string id)
         {

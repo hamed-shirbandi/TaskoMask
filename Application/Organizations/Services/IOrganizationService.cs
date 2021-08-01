@@ -13,20 +13,21 @@ namespace TaskoMask.Application.Organizations.Services
     {
         #region Command Services
 
-        Task<Result<CommandResult>> CreateAsync(OrganizationInput input);
-        Task<Result<CommandResult>> UpdateAsync(OrganizationInput input);
+        Task<Result<CommandResult>> CreateAsync(OrganizationInputDto input);
+        Task<Result<CommandResult>> UpdateAsync(OrganizationInputDto input);
 
 
         #endregion
 
         #region Query Services
 
-        Task<OrganizationOutput> GetByIdAsync(string id);
-        Task<OrganizationInput> GetByIdToUpdateAsync(string id);
-        Task<IEnumerable<OrganizationOutput>> GetListByUserIdAsync(string userId);
+        Task<OrganizationOutputDto> GetByIdAsync(string id);
+        Task<OrganizationInputDto> GetByIdToUpdateAsync(string id);
+        Task<IEnumerable<OrganizationOutputDto>> GetListByUserIdAsync(string userId);
+        Task GetList(string userId);
 
 
         #endregion
-       
+
     }
 }

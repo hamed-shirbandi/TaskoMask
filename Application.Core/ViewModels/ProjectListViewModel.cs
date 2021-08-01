@@ -8,7 +8,7 @@ namespace TaskoMask.Application.Core.ViewMoldes
 {
    public class ProjectListViewModel
     {
-        public OrganizationOutput Organization { get; set; }
-        public IEnumerable<ProjectOutput> Projects { get; set; }
+        public OrganizationOutputDto Organization { get; set; }
+        public IEnumerable<ProjectOutputDto> Projects { get; set; }
     }
 }

@@ -2,10 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Organizations.Services;
 using TaskoMask.Application.Core.Dtos.Organizations;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Entities;
-using TaskoMask.Domain.Core.Events;
-using TaskoMask.web.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace TaskoMask.web.Area.Admin.Controllers
@@ -53,7 +49,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            return View(new OrganizationInput());
+            return View(new OrganizationInputDto());
         }
 
 
@@ -61,7 +57,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create(OrganizationInput input)
+        public async Task<IActionResult> Create(OrganizationInputDto input)
         {
             if (!ModelState.IsValid)
                 return View(input);
@@ -92,7 +88,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Update(OrganizationInput input)
+        public async Task<IActionResult> Update(OrganizationInputDto input)
         {
             if (!ModelState.IsValid)
                 return View(input);

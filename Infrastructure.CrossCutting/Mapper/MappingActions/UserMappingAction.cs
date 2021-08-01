@@ -6,7 +6,7 @@ using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Mapper.MappingActions
 {
-    public class UserMappingAction : IMappingAction<User, UserInput>, IMappingAction<User, UserOutput>
+    public class UserMappingAction : IMappingAction<User, UserInputDto>, IMappingAction<User, UserOutputDto>
     {
         private readonly IConfiguration _configuration;
         public UserMappingAction(IConfiguration configuration)
@@ -14,13 +14,13 @@ namespace TaskoMask.Application.Mapper.MappingActions
             _configuration = configuration;
         }
 
-        public void Process(User source, UserInput destination, ResolutionContext context)
+        public void Process(User source, UserInputDto destination, ResolutionContext context)
         {
           //  destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
         }
 
 
-        public void Process(User source, UserOutput destination, ResolutionContext context)
+        public void Process(User source, UserOutputDto destination, ResolutionContext context)
         {
             //  destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
         }

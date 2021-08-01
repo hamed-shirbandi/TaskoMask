@@ -11,10 +11,10 @@ namespace TaskoMask.Application.Mapper.Profiles
         {
             #region Dto To Command
 
-            CreateMap<CardInput, CreateCardCommand>()
+            CreateMap<CardInputDto, CreateCardCommand>()
               .ConstructUsing(c => new CreateCardCommand(c.Name, c.Description, c.BoardId,c.Type));
 
-            CreateMap<CardInput, UpdateCardCommand>()
+            CreateMap<CardInputDto, UpdateCardCommand>()
               .ConstructUsing(c => new UpdateCardCommand(c.Id, c.Name, c.Description, c.Type));
 
 
@@ -29,15 +29,15 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Domain Model To Dto
 
-            CreateMap<Card, CardOutput>();
-            CreateMap<Card, CardInput>();
+            CreateMap<Card, CardOutputDto>();
+            CreateMap<Card, CardInputDto>();
 
 
             #endregion
 
             #region Dto To Dto
 
-            CreateMap<CardOutput, CardInput>();
+            CreateMap<CardOutputDto, CardInputDto>();
 
 
             #endregion

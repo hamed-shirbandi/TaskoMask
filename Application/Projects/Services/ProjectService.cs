@@ -39,7 +39,7 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(ProjectInput input)
+        public async Task<Result<CommandResult>> CreateAsync(ProjectInputDto input)
         {
             var createCommand = _mapper.Map<CreateProjectCommand>(input);
 
@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(ProjectInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(ProjectInputDto input)
         {
             var updateCommand = _mapper.Map<UpdateProjectCommand>(input);
             return await SendCommandAsync(updateCommand);
@@ -66,10 +66,10 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<ProjectOutput> GetByIdAsync(string id)
+        public async Task<ProjectOutputDto> GetByIdAsync(string id)
         {
             var query = new GetProjectByIdQuery(id);
-            return await SendQueryAsync<GetProjectByIdQuery, ProjectOutput>(query);
+            return await SendQueryAsync<GetProjectByIdQuery, ProjectOutputDto>(query);
         }
 
 
@@ -77,10 +77,10 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<ProjectInput> GetByIdToUpdateAsync(string id)
+        public async Task<ProjectInputDto> GetByIdToUpdateAsync(string id)
         {
             var organization = await GetByIdAsync(id);
-            return _mapper.Map<ProjectInput>(organization);
+            return _mapper.Map<ProjectInputDto>(organization);
         }
 
 
@@ -92,10 +92,10 @@ namespace TaskoMask.Application.Projects.Services
         public async Task<ProjectListViewModel> GetListByOrganizationIdAsync(string organizationId)
         {
             var projectsQuery = new GetProjectsByOrganizationIdQuery(organizationId: organizationId);
-            var projects = await SendQueryAsync<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutput>>(projectsQuery);
+            var projects = await SendQueryAsync<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutputDto>>(projectsQuery);
 
             var organizationQuery = new GetOrganizationByIdQuery(id: organizationId);
-            var organization = await SendQueryAsync<GetOrganizationByIdQuery, OrganizationOutput>(organizationQuery);
+            var organization = await SendQueryAsync<GetOrganizationByIdQuery, OrganizationOutputDto>(organizationQuery);
 
             return new ProjectListViewModel
             {

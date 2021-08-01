@@ -8,7 +8,7 @@ namespace TaskoMask.Application.Core.ViewMoldes
 {
    public class BoardListViewModel
     {
-        public ProjectOutput Project { get; set; }
+        public ProjectOutputDto Project { get; set; }
         public IEnumerable<BoardBasicInfoDto> Boards { get; set; }
     }
 }

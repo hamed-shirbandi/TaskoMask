@@ -6,7 +6,7 @@ using TaskoMask.Application.Core.Dtos.Projects;
 namespace TaskoMask.Application.Projects.Queries.Models
 {
    
-    public class GetProjectByIdQuery : IRequest<ProjectOutput>
+    public class GetProjectByIdQuery : IRequest<ProjectOutputDto>
     {
         public GetProjectByIdQuery(string id)
         {

@@ -40,7 +40,7 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(CardInput input)
+        public async Task<Result<CommandResult>> CreateAsync(CardInputDto input)
         {
             var project = _mapper.Map<CreateCardCommand>(input);
 
@@ -52,7 +52,7 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(CardInput input)
+        public async Task<Result<CommandResult>> UpdateAsync(CardInputDto input)
         {
             var updateCommand = _mapper.Map<UpdateCardCommand>(input);
             return await SendCommandAsync(updateCommand);
@@ -67,10 +67,10 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CardOutput> GetByIdAsync(string id)
+        public async Task<CardOutputDto> GetByIdAsync(string id)
         {
             var query = new GetCardByIdQuery(id);
-            return await SendQueryAsync<GetCardByIdQuery, CardOutput>(query);
+            return await SendQueryAsync<GetCardByIdQuery, CardOutputDto>(query);
         }
 
 
@@ -78,10 +78,10 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CardInput> GetByIdToUpdateAsync(string id)
+        public async Task<CardInputDto> GetByIdToUpdateAsync(string id)
         {
             var organization = await GetByIdAsync(id);
-            return _mapper.Map<CardInput>(organization);
+            return _mapper.Map<CardInputDto>(organization);
         }
 
 
@@ -92,7 +92,7 @@ namespace TaskoMask.Application.Cards.Services
         public async Task<CardListViewModel> GetListByBoardIdAsync(string boardId)
         {
             var cardsQuery = new GetCardsByBoardIdQuery(boardId: boardId);
-            var cards = await SendQueryAsync<GetCardsByBoardIdQuery, IEnumerable<CardOutput>>(cardsQuery);
+            var cards = await SendQueryAsync<GetCardsByBoardIdQuery, IEnumerable<CardOutputDto>>(cardsQuery);
 
             var boardQuery = new GetBoardByIdQuery(id: boardId);
             var board = await SendQueryAsync<GetBoardByIdQuery, BoardOutput>(boardQuery);

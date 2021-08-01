@@ -11,10 +11,10 @@ namespace TaskoMask.Application.Mapper.Profiles
         {
             #region Dto To Command
 
-            CreateMap<ProjectInput, CreateProjectCommand>()
+            CreateMap<ProjectInputDto, CreateProjectCommand>()
               .ConstructUsing(c => new CreateProjectCommand(c.Name, c.Description, c.OrganizationId));
 
-            CreateMap<ProjectInput, UpdateProjectCommand>()
+            CreateMap<ProjectInputDto, UpdateProjectCommand>()
               .ConstructUsing(c => new UpdateProjectCommand(c.Id, c.Name, c.Description));
 
 
@@ -29,15 +29,15 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Domain Model To Dto
 
-            CreateMap<Project, ProjectOutput>();
-            CreateMap<Project, ProjectInput>();
+            CreateMap<Project, ProjectOutputDto>();
+            CreateMap<Project, ProjectInputDto>();
 
 
             #endregion
 
             #region Dto To Dto
 
-            CreateMap<ProjectOutput, ProjectInput>();
+            CreateMap<ProjectOutputDto, ProjectInputDto>();
 
 
             #endregion

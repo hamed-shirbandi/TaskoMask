@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaskoMask.Application.Core.Resources;
+﻿
 
-namespace TaskoMask.Application.Core.Dtos.Boards
+using System.ComponentModel.DataAnnotations;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Enums;
+
+namespace TaskoMask.Application.Core.Dtos.Cards
 {
-    public class BoardBasicInfoDto: BoardBaseDto
+    public class CardBasicInfoDto: CardBaseDto
     {
         public CreationTimeDto CreationTime { get; set; }
 
     }
 
-
-    public abstract class BoardBaseDto
+    public abstract class CardBaseDto
     {
         public string Id { get; set; }
 
@@ -30,8 +27,14 @@ namespace TaskoMask.Application.Core.Dtos.Boards
         public string Description { get; set; }
 
 
-        [Display(Name = nameof(ApplicationMetadata.ProjectId), ResourceType = typeof(ApplicationMetadata))]
+        [Display(Name = nameof(ApplicationMetadata.BoardId), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public string ProjectId { get; set; }
+        public string BoardId { get; set; }
+
+
+        [Display(Name = nameof(ApplicationMetadata.CardType), ResourceType = typeof(ApplicationMetadata))]
+        [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.CardType), ErrorMessageResourceType = typeof(ApplicationMetadata))]
+        public CardType Type { get; set; }
     }
+
 }

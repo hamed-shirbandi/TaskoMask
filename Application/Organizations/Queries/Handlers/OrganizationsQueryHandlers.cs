@@ -18,8 +18,8 @@ using TaskoMask.Application.Core.Exceptions;
 namespace TaskoMask.Application.Organizations.Queries.Handlers
 {
     public class OrganizationsQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetOrganizationByIdQuery, OrganizationOutput>,
-        IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutput>>
+        IRequestHandler<GetOrganizationByIdQuery, OrganizationOutputDto>,
+        IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutputDto>>
     {
         private readonly IOrganizationRepository _organizationRepository;
         public OrganizationsQueryHandlers(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
@@ -27,20 +27,20 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
             _organizationRepository = organizationRepository;
         }
 
-        public async Task<OrganizationOutput> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)
+        public async Task<OrganizationOutputDto> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)
         {
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
             if (organization == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Organization));
 
-            return _mapper.Map<OrganizationOutput>(organization);
+            return _mapper.Map<OrganizationOutputDto>(organization);
         }
 
 
-        public async Task<IEnumerable<OrganizationOutput>> Handle(GetOrganizationsByUserIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<OrganizationOutputDto>> Handle(GetOrganizationsByUserIdQuery request, CancellationToken cancellationToken)
         {
             var organizations = await _organizationRepository.GetListByUserIdAsync(request.UserId);
-            return _mapper.Map<IEnumerable<OrganizationOutput>>(organizations);
+            return _mapper.Map<IEnumerable<OrganizationOutputDto>>(organizations);
         }
 
     }

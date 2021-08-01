@@ -9,7 +9,8 @@ namespace TaskoMask.web.Area.Admin.Models
 {
     public class DashboardIndexViewModel
     {
-        public IEnumerable<OrganizationOutput> Organizations { get; set; }
-        public UserOutput User { get; set; }
+        public IEnumerable<OrganizationOutputDto> Organizations { get; set; }
+
+        public UserOutputDto User { get; set; }
     }
 }

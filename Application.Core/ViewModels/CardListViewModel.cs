@@ -9,6 +9,6 @@ namespace TaskoMask.Application.Core.ViewMoldes
    public class CardListViewModel
     {
         public BoardOutput Board { get; set; }
-        public IEnumerable<CardOutput> Cards { get; set; }
+        public IEnumerable<CardOutputDto> Cards { get; set; }
     }
 }

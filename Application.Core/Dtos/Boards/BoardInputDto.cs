@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Application.Core.Dtos.Boards
 {
-    public class BoardInputDto : BoardBasicInfoDto
+    public class BoardInputDto : BoardBaseDto
     {
        
     }

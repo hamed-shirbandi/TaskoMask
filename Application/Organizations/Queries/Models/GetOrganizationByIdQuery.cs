@@ -6,7 +6,7 @@ using TaskoMask.Application.Core.Dtos.Organizations;
 namespace TaskoMask.Application.Organizations.Queries.Models
 {
    
-    public class GetOrganizationByIdQuery : IRequest<OrganizationOutput>
+    public class GetOrganizationByIdQuery : IRequest<OrganizationOutputDto>
     {
         public GetOrganizationByIdQuery(string id)
         {

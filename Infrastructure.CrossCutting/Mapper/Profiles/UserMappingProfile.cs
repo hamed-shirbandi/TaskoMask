@@ -23,7 +23,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             //CreateMap<UserInput, CreateUserCommand>()
             //  .ConstructUsing(c => new CreateUserCommand(c.DisplayName,c.Email));
 
-            CreateMap<UserInput, UpdateUserCommand>()
+            CreateMap<UserInputDto, UpdateUserCommand>()
               .ConstructUsing(c => new UpdateUserCommand(c.Id, c.DisplayName,c.Email));
 
 
@@ -38,15 +38,15 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Domain Model To Dto
 
-            CreateMap<User, UserOutput>().AfterMap<UserMappingAction>();
-            CreateMap<User, UserInput>().AfterMap<UserMappingAction>();
+            CreateMap<User, UserOutputDto>().AfterMap<UserMappingAction>();
+            CreateMap<User, UserInputDto>().AfterMap<UserMappingAction>();
 
 
             #endregion
 
             #region Dto To Dto
 
-            CreateMap<UserOutput, UserInput>();
+            CreateMap<UserOutputDto, UserInputDto>();
 
 
             #endregion

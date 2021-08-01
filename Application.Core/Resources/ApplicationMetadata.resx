@@ -117,10 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BoardId" xml:space="preserve">
+    <value>BoardId</value>
+  </data>
+  <data name="BoardsCount" xml:space="preserve">
+    <value>Boards Count</value>
+  </data>
+  <data name="CardsCount" xml:space="preserve">
+    <value>Cards Count</value>
+  </data>
+  <data name="CardType" xml:space="preserve">
+    <value>Card Type</value>
+  </data>
+  <data name="CreateDateTime" xml:space="preserve">
+    <value>Create Date Time</value>
+  </data>
+  <data name="CreateDay" xml:space="preserve">
+    <value>Create Day</value>
+  </data>
+  <data name="CreateMonth" xml:space="preserve">
+    <value>Create Month</value>
+  </data>
+  <data name="CreateYear" xml:space="preserve">
+    <value>Create Year</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="DoingTasksCount" xml:space="preserve">
+    <value>Doing Tasks Count</value>
+  </data>
+  <data name="DoneTasksCount" xml:space="preserve">
+    <value>Done Tasks Count</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="Length_Error" xml:space="preserve">
     <value>The {0} length must be between {1} and {2} characters</value>
   </data>
+  <data name="ModifiedDateTime" xml:space="preserve">
+    <value>Modified Date Time</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="OrganizationId" xml:space="preserve">
+    <value>OrganizationId</value>
+  </data>
+  <data name="OrganizationsCount" xml:space="preserve">
+    <value>Organizations Count</value>
+  </data>
+  <data name="ProjectId" xml:space="preserve">
+    <value>ProjectId</value>
+  </data>
+  <data name="ProjectsCount" xml:space="preserve">
+    <value>Projects Count</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>{0} is required</value>
+  </data>
+  <data name="TasksCount" xml:space="preserve">
+    <value>Tasks Count</value>
+  </data>
+  <data name="ToDoTasksCount" xml:space="preserve">
+    <value>To Do Tasks Count</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>UserId</value>
   </data>
 </root>

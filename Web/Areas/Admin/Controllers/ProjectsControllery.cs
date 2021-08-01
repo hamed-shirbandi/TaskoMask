@@ -51,7 +51,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create(string organizationId)
         {
-            var model = new ProjectInput
+            var model = new ProjectInputDto
             {
                 OrganizationId=organizationId,
             };
@@ -64,7 +64,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create(ProjectInput input)
+        public async Task<IActionResult> Create(ProjectInputDto input)
         {
             if (!ModelState.IsValid)
                 return View(input);
@@ -92,7 +92,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Update(ProjectInput input)
+        public async Task<IActionResult> Update(ProjectInputDto input)
         {
             if (!ModelState.IsValid)
                 return View(input);

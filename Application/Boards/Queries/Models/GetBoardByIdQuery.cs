@@ -6,7 +6,7 @@ using TaskoMask.Application.Core.Dtos.Boards;
 namespace TaskoMask.Application.Queries.Models.Boards
 {
    
-    public class GetBoardByIdQuery : IRequest<BoardOutput>
+    public class GetBoardByIdQuery : IRequest<BoardBasicInfoDto>
     {
         public GetBoardByIdQuery(string id)
         {

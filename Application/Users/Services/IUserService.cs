@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Users.Services
 
         #region Query Services
 
-        Task<UserOutputDto> GetByIdAsync(string id);
+        Task<UserBasicInfoDto> GetByIdAsync(string id);
         Task<UserInputDto> GetByIdToUpdateAsync(string id);
         Task<long> CountAsync();
 

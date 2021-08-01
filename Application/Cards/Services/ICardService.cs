@@ -21,8 +21,7 @@ namespace TaskoMask.Application.Cards.Services
 
         #region Query Services
 
-        Task<CardOutputDto> GetByIdAsync(string id);
-        Task<CardInputDto> GetByIdToUpdateAsync(string id);
+        Task<CardBasicInfoDto> GetByIdAsync(string id);
         Task<CardDetailViewModel> GetListByBoardIdAsync(string boardId);
 
         #endregion

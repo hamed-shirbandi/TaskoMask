@@ -21,10 +21,9 @@ namespace TaskoMask.Application.Organizations.Services
 
         #region Query Services
 
-        Task<OrganizationOutputDto> GetByIdAsync(string id);
+        Task<OrganizationBasicInfoDto> GetByIdAsync(string id);
         Task<OrganizationInputDto> GetByIdToUpdateAsync(string id);
-        Task<IEnumerable<OrganizationOutputDto>> GetListByUserIdAsync(string userId);
-        Task GetList(string userId);
+        Task<IEnumerable<OrganizationBasicInfoDto>> GetListByUserIdAsync(string userId);
 
 
         #endregion

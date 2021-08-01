@@ -3,6 +3,7 @@ using MediatR;
 using System;
 using System.Threading.Tasks;
 using TaskoMask.Application.BaseEntities.Queries.Models;
+using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Notifications;
@@ -41,7 +42,7 @@ namespace TaskoMask.Application.BaseEntities.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> CountAsync()
+        public async Task<Result<long>> CountAsync()
         {
             return await SendQueryAsync<GetEntitiesCountQuery<TEntity>, long>(new ());
         }

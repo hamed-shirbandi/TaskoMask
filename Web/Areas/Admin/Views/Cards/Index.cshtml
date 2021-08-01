@@ -1,4 +1,4 @@
-﻿@model TaskoMask.Application.Core.ViewMoldes.CardListViewModel
+﻿@model TaskoMask.Application.Core.ViewMoldes.CardDetailViewModel
 @{
     ViewData["Title"] = "boards list";
 }
@@ -16,7 +16,7 @@
     <div class='tab-pane container fade in show active' id='cards'>
         <div class="container">
             <div class="row">
-                @foreach (var item in Model.Cards)
+                @foreach (var item in Model.Tasks)
                 {
                     <div class="col-md-4 col-sm-12">
                         <div class="card">

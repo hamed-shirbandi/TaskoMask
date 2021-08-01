@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Domain Model To Dto
 
-            CreateMap<Card, CardOutputDto>();
+            CreateMap<Card, CardBasicInfoDto>();
             CreateMap<Card, CardInputDto>();
 
 
@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Dto To Dto
 
-            CreateMap<CardOutputDto, CardInputDto>();
+            CreateMap<CardBasicInfoDto, CardInputDto>();
 
 
             #endregion

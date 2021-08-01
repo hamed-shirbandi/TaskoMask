@@ -30,16 +30,6 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<IActionResult> Index(string projectId)
-        {
-            var boards = await _boardService.GetListByProjectIdAsync(projectId);
-            return View(boards);
-        }
-
-
 
         /// <summary>
         /// 
@@ -79,7 +69,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var board = await _boardService.GetByIdToUpdateAsync(id);
+            var board = await _boardService.GetByIdAsync(id);
             return View(board);
         }
 

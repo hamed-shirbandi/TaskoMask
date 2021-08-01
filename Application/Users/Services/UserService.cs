@@ -63,10 +63,12 @@ namespace TaskoMask.Application.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<UserOutputDto> GetByIdAsync(string id)
+        public async Task<UserBasicInfoDto> GetByIdAsync(string id)
         {
             var query = new GetUserByIdQuery(id);
-            return await SendQueryAsync<GetUserByIdQuery, UserOutputDto>(query);
+           // return await SendQueryAsync<GetUserByIdQuery, UserBasicInfoDto>(query);
+            return null;
+
         }
 
 
@@ -87,7 +89,9 @@ namespace TaskoMask.Application.Users.Services
         public async Task<long> CountAsync()
         {
             var query = new GetUsersCountQuery();
-            return await SendQueryAsync<GetUsersCountQuery, long>(query);
+           // return await SendQueryAsync<GetUsersCountQuery, long>(query);
+            return 0;
+
         }
 
 

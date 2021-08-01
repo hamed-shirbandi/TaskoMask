@@ -16,6 +16,7 @@ using TaskoMask.Domain.Entities;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Core.Notifications;
 using System.Linq;
+using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Boards.Services
 {
@@ -67,22 +68,13 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardOutput>> GetByIdAsync(string id)
+        public async Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id)
         {
             var query = new GetBoardByIdQuery(id);
-            return await SendQueryAsync<GetBoardByIdQuery, BoardOutput>(query);
+            return await SendQueryAsync<GetBoardByIdQuery, BoardBasicInfoDto>(query);
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<BoardInputDto>> GetByIdToUpdateAsync(string id)
-        {
-            var organization = await GetByIdAsync(id);
-            return _mapper.Map<BoardInputDto>(organization);
-        }
 
 
 
@@ -90,19 +82,21 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardDetailViewModel>> GetListByProjectIdAsync(string projectId)
+        public async Task<Result<BoardDetailViewModel>> GetDetailByIdAsync(string id)
         {
-            var boardsQuery = new GetBoardsByProjectIdQuery(projectId: projectId);
-            var boards = await SendQueryAsync<GetBoardsByProjectIdQuery, IEnumerable<BoardOutput>>(boardsQuery);
+            var boardsQuery = new GetBoardsByProjectIdQuery(projectId: id);
+            var boards = await SendQueryAsync<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>(boardsQuery);
 
-            var projectQuery = new GetProjectByIdQuery(id: projectId);
-            var project = await SendQueryAsync<GetProjectByIdQuery, ProjectOutputDto>(projectQuery);
+            var projectQuery = new GetProjectByIdQuery(id: id);
+            var project = await SendQueryAsync<GetProjectByIdQuery, ProjectBasicInfoDto>(projectQuery);
 
-            return new BoardDetailViewModel
+            var model= new BoardDetailViewModel
             {
                 Project = project.Value,
-                Boards = boards.Value,
+               // Cards = boards.Value,
             };
+
+            return Result.Success(ApplicationMessages.Operation_Success,model);
         }
 
 

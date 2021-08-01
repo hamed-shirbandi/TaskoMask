@@ -38,8 +38,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            var organizations = await _organizationService.GetList(GetCurrentUserId()); 
-            return View(organizations);
+           // var organizations = await _organizationService.get(GetCurrentUserId()); 
+            return View();
         }
 
 

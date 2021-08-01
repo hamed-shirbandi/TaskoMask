@@ -34,7 +34,7 @@ namespace TaskoMask.Web.Controllers
         {
             var model = new HomeIndexViewModel
             {
-                OrganizationsCount = await _organizationService.CountAsync(),
+               // OrganizationsCount = await _organizationService.CountAsync(),
                 ProjectsCount = 0,
                 BoardsCount = 0,
                 TasksCount = 0,

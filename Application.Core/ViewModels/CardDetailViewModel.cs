@@ -9,6 +9,7 @@ namespace TaskoMask.Application.Core.ViewMoldes
 {
    public class CardDetailViewModel
     {
+        public BoardBasicInfoDto Board { get; set; }
         public CardBasicInfoDto Card { get; set; }
         public TaskReportDto Reports { get; set; }
         public IEnumerable<TaskBasicInfoDto> Tasks { get; set; }

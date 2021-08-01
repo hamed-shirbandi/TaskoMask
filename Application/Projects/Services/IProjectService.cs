@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Projects.Services
 
         #region Query Services
 
-        Task<ProjectOutputDto> GetByIdAsync(string id);
+        Task<ProjectBasicInfoDto> GetByIdAsync(string id);
         Task<ProjectInputDto> GetByIdToUpdateAsync(string id);
         Task<ProjectDetailViewModel> GetListByOrganizationIdAsync(string organizationId);
 

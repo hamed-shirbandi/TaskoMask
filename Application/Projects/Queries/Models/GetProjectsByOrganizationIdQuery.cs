@@ -6,7 +6,7 @@ using TaskoMask.Application.Core.Dtos.Projects;
 namespace TaskoMask.Application.Projects.Queries.Models
 {
    
-    public class GetProjectsByOrganizationIdQuery : IRequest<IEnumerable<ProjectOutputDto>>
+    public class GetProjectsByOrganizationIdQuery : IRequest<IEnumerable<ProjectBasicInfoDto>>
     {
         public GetProjectsByOrganizationIdQuery(string organizationId)
         {

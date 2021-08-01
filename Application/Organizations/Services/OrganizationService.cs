@@ -53,10 +53,12 @@ namespace TaskoMask.Application.Organizations.Services
 
         #region Query Services
 
-        public async Task<OrganizationOutputDto> GetByIdAsync(string id)
+        public async Task<OrganizationBasicInfoDto> GetByIdAsync(string id)
         {
             var query = new GetOrganizationByIdQuery(id);
-            return await SendQueryAsync<GetOrganizationByIdQuery, OrganizationOutputDto>(query);
+           // return await SendQueryAsync<GetOrganizationByIdQuery, OrganizationBasicInfoDto>(query);
+            return null;
+
         }
 
 
@@ -67,10 +69,12 @@ namespace TaskoMask.Application.Organizations.Services
         }
 
 
-        public async Task<IEnumerable<OrganizationOutputDto>> GetListByUserIdAsync(string userId)
+        public async Task<IEnumerable<OrganizationBasicInfoDto>> GetListByUserIdAsync(string userId)
         {
             var query = new GetOrganizationsByUserIdQuery(userId: userId);
-            return await SendQueryAsync<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationOutputDto>>(query);
+          //  return await SendQueryAsync<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationBasicInfoDto>>(query);
+            return null;
+
         }
 
 

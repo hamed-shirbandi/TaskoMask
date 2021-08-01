@@ -22,30 +22,14 @@ namespace TaskoMask.Domain.Core.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-<<<<<<< HEAD
     public class DomainMessages {
-=======
-<<<<<<< HEAD:Domain.Core/Resources/DomainMetadata.Designer.cs
-    public class DomainMetadata {
-=======
-    public class DomainMessages {
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770:Domain.Core/Resources/DomainMessages.Designer.cs
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-<<<<<<< HEAD
         internal DomainMessages() {
-=======
-<<<<<<< HEAD:Domain.Core/Resources/DomainMetadata.Designer.cs
-        internal DomainMetadata() {
-=======
-        internal DomainMessages() {
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770:Domain.Core/Resources/DomainMessages.Designer.cs
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770
         }
         
         /// <summary>
@@ -55,15 +39,7 @@ namespace TaskoMask.Domain.Core.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-<<<<<<< HEAD
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Domain.Core.Resources.DomainMessages", typeof(DomainMessages).Assembly);
-=======
-<<<<<<< HEAD:Domain.Core/Resources/DomainMetadata.Designer.cs
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Domain.Core.Resources.DomainMetadata", typeof(DomainMetadata).Assembly);
-=======
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Domain.Core.Resources.DomainMessages", typeof(DomainMessages).Assembly);
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770:Domain.Core/Resources/DomainMessages.Designer.cs
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -85,84 +61,11 @@ namespace TaskoMask.Domain.Core.Resources {
         }
         
         /// <summary>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:Domain.Core/Resources/DomainMetadata.Designer.cs
-        ///   Looks up a localized string similar to Board.
-        /// </summary>
-        public static string Board {
-            get {
-                return ResourceManager.GetString("Board", resourceCulture);
-=======
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770
-        ///   Looks up a localized string similar to the {0} is required!.
+        ///   Looks up a localized string similar to {0} is required.
         /// </summary>
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
-<<<<<<< HEAD
-=======
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770:Domain.Core/Resources/DomainMessages.Designer.cs
-            }
-        }
-        
-        /// <summary>
-<<<<<<< HEAD:Domain.Core/Resources/DomainMetadata.Designer.cs
-        ///   Looks up a localized string similar to Card.
-        /// </summary>
-        public static string Card {
-            get {
-                return ResourceManager.GetString("Card", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Organization.
-        /// </summary>
-        public static string Organization {
-            get {
-                return ResourceManager.GetString("Organization", resourceCulture);
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770
-            }
-        }
-        
-        /// <summary>
-<<<<<<< HEAD
-=======
-        ///   Looks up a localized string similar to Project.
-        /// </summary>
-        public static string Project {
-            get {
-                return ResourceManager.GetString("Project", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Task.
-        /// </summary>
-        public static string Task {
-            get {
-                return ResourceManager.GetString("Task", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User.
-        /// </summary>
-        public static string User {
-            get {
-                return ResourceManager.GetString("User", resourceCulture);
-=======
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
-<<<<<<< HEAD
-=======
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770:Domain.Core/Resources/DomainMessages.Designer.cs
->>>>>>> 57872b367fb284da5cfb8ea7a532eb64779ca770
             }
         }
     }

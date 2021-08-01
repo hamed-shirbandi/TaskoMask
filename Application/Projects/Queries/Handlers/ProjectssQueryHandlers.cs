@@ -14,8 +14,8 @@ using TaskoMask.Domain.Entities;
 namespace TaskoMask.Application.Projects.Queries.Handlers
 {
     public class ProjectssQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetProjectByIdQuery, ProjectOutputDto>,
-        IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectOutputDto>>
+        IRequestHandler<GetProjectByIdQuery, ProjectBasicInfoDto>,
+        IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>
     {
         private readonly IProjectRepository _projectRepository;
         public ProjectssQueryHandlers(IProjectRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
@@ -24,20 +24,20 @@ namespace TaskoMask.Application.Projects.Queries.Handlers
         }
 
 
-        public async Task<ProjectOutputDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ProjectBasicInfoDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
             if (project == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Project));
 
-            return _mapper.Map<ProjectOutputDto>(project);
+            return _mapper.Map<ProjectBasicInfoDto>(project);
         }
 
 
-        public async Task<IEnumerable<ProjectOutputDto>> Handle(GetProjectsByOrganizationIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProjectBasicInfoDto>> Handle(GetProjectsByOrganizationIdQuery request, CancellationToken cancellationToken)
         {
             var projects = await _projectRepository.GetListByOrganizationIdAsync(request.OrganizationId);
-            return _mapper.Map<IEnumerable<ProjectOutputDto>>(projects);
+            return _mapper.Map<IEnumerable<ProjectBasicInfoDto>>(projects);
         }
 
        

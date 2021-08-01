@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Domain Model To Dto
 
-            CreateMap<Organization, OrganizationOutputDto>();
+            CreateMap<Organization, OrganizationBasicInfoDto>();
             CreateMap<Organization, OrganizationInputDto>();
 
 
@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Dto To Dto
 
-            CreateMap<OrganizationOutputDto, OrganizationInputDto>();
+            CreateMap<OrganizationBasicInfoDto, OrganizationInputDto>();
 
 
             #endregion

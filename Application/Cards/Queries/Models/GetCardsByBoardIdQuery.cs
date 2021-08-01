@@ -6,7 +6,7 @@ using TaskoMask.Application.Core.Dtos.Cards;
 namespace TaskoMask.Application.Cards.Queries.Models
 {
    
-    public class GetCardsByBoardIdQuery : IRequest<IEnumerable<CardOutputDto>>
+    public class GetCardsByBoardIdQuery : IRequest<IEnumerable<CardBasicInfoDto>>
     {
         public GetCardsByBoardIdQuery(string boardId)
         {

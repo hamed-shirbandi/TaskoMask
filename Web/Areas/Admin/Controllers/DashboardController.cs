@@ -8,7 +8,7 @@ using TaskoMask.web.Area.Admin.Models;
 namespace TaskoMask.web.Area.Admin.Controllers
 {
     [Authorize]
-     [Area("admin")]
+    [Area("admin")]
     public class DashboardController : BaseController
     {
         #region Fields
@@ -38,8 +38,16 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-           // var organizations = await _organizationService.get(GetCurrentUserId()); 
-            return View();
+            var organizationsDetail = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
+            if (!organizationsDetail.IsSuccess)
+                //TODO redirect to custom error page
+                throw new System.Exception(organizationsDetail.Message);
+
+            var model = new DashboardIndexViewModel
+            {
+                Organizations= organizationsDetail.Value,
+            };
+            return View(model);
         }
 
 

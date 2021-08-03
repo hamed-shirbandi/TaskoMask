@@ -46,13 +46,24 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// <summary>
         /// 
         /// </summary>
-        protected void ValidateResult(Result<CommandResult> result)
+        protected void ValidateCommandResult(Result<CommandResult> result)
         {
             if (result.IsSuccess)
                 ViewBag.SuccessMessage = result.Value.Message;
             else
                 ViewBag.ErrorMessage = string.Join("<br/>", result.Errors);
         }
+
+
+
+        protected void ValidateQueryResult(Result result)
+        {
+            if (result.IsSuccess)
+                ViewBag.SuccessMessage = result.Message;
+            else
+                ViewBag.ErrorMessage = result.Message;
+        }
+
 
     }
 }

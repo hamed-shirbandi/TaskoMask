@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Core.Helpers
 {
@@ -34,6 +35,9 @@ namespace TaskoMask.Application.Core.Helpers
 
         public Result(bool isSuccess, string message, List<string> errors)
         {
+            if (message == "")
+                message = isSuccess?ApplicationMessages.Operation_Success: ApplicationMessages.Operation_Failed;
+
             IsSuccess = isSuccess;
             Message = message;
             Errors = errors ?? new List<string>();
@@ -52,34 +56,27 @@ namespace TaskoMask.Application.Core.Helpers
         }
 
 
-        public static Result Failure(string message = "")
-        {
-            return new Result(false, message, default);
-        }
 
-
-        public static Result Failure(string message, List<string> errors)
+        public static Result Failure( List<string> errors = default, string message = "")
         {
             return new Result(false, message, errors);
         }
 
 
-        public static Result<T> Success<T>(string message = "", T value = default)
+
+        public static Result<T> Success<T>(T value = default,string message = "" )
         {
             return new Result<T>(true, message, value, default);
         }
 
 
-        public static Result<T> Failure<T>(string message)
-        {
-            return new Result<T>(false, message, default, default);
-        }
 
-
-        public static Result<T> Failure<T>(string message, List<string> errors)
+        public static Result<T> Failure<T>(List<string> errors= default, string message= "")
         {
             return new Result<T>(false, message, default, errors);
         }
+
+
 
 
         public static Result AddError(Result result, string error)
@@ -133,6 +130,9 @@ namespace TaskoMask.Application.Core.Helpers
 
         public Result(bool isSuccess, string message, T value, List<string> errors)
         {
+            if (message == "")
+                message = isSuccess ? ApplicationMessages.Operation_Success : ApplicationMessages.Operation_Failed;
+
             IsSuccess = isSuccess;
             Message = message;
             Value = value;

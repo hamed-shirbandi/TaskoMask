@@ -2,6 +2,7 @@
 using MediatR;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Organizations.Queries.Models
 {

@@ -19,6 +19,7 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
 {
     public class OrganizationsQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,
+        IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
         IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationBasicInfoDto>>
     {
         private readonly IOrganizationRepository _organizationRepository;
@@ -43,5 +44,11 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
             return _mapper.Map<IEnumerable<OrganizationBasicInfoDto>>(organizations);
         }
 
+
+
+        public Task<OrganizationReportDto> Handle(GetOrganizationReportQuery request, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

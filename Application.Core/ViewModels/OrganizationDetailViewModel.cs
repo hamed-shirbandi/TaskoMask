@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Boards;
+﻿using System.Collections.Generic;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.Core.Dtos.Projects;
 

@@ -45,20 +45,19 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        protected async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
+        public async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
             var result = await _mediator.Send(cmd);
             var errors = _notifications.GetListAndReset().Select(n => n.Value).ToList();
 
             //when throw application or domain Exception
             if (result == null)
-                return Result.Failure<CommandResult>(ApplicationMessages.Operation_Failed, errors);
-
+                return Result.Failure<CommandResult>(errors);
 
             if (_notifications.HasAny())
-                return Result.Failure<CommandResult>(result.Message, errors);
+                return Result.Failure<CommandResult>(errors,result.Message);
            
-            return Result.Success(result.Message, result);
+            return Result.Success(result,result.Message);
         }
 
 
@@ -67,12 +66,16 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        protected async Task<Result<U>> SendQueryAsync<T, U>(T query) where T : IBaseRequest
+        public async Task<Result<T>> SendQueryAsync<T>(IRequest<T> query)
         {
-            var result = (U)await _mediator.Send(query);
+            if (query.GetType() == typeof(BaseCommand))
+                return Result.Failure<T>();
+
+            var result =await _mediator.Send(query);
             if (_notifications.HasAny())
-                return Result.Failure<U>(ApplicationMessages.Operation_Failed, _notifications.GetListAndReset().Select(n => n.Value).ToList());
-            return Result.Success(ApplicationMessages.Operation_Success, result);
+                return Result.Failure<T>(_notifications.GetListAndReset().Select(n => n.Value).ToList());
+          
+            return Result.Success(result);
 
         }
 

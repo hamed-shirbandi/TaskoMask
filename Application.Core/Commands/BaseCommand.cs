@@ -19,14 +19,20 @@ namespace TaskoMask.Application.Core.Commands
         #endregion
 
 
-        #region Public Methods => Validation
+        #region Public Methods 
 
-
+        /// <summary>
+        /// validating command models must validate fluent and data annotation validation
+        /// command models can have both or one of validation types (fluent - data annotation)
+        /// </summary>
         public virtual bool IsValid()
         {
-            ValidationResult = new BaseCommandValidation().Validate(this); //Fluent Validation
+            //Step1: Check fluent validation
+            ValidationResult = new BaseCommandValidation().Validate(this);
 
+            //Sterp 2: Add data annotation validation to ValidationResult
             GetAnnotationValidation();
+
 
             return ValidationResult.IsValid;
         }
@@ -40,11 +46,13 @@ namespace TaskoMask.Application.Core.Commands
 
         protected void GetAnnotationValidation()
         {
+            //try validate data annotations 
             if (this.Validate(out var results))
                 return;
+
+            //add data annotation validations to ValidationResult
             foreach (var result in results)
-                ValidationResult.Errors.Add(
-                    new ValidationFailure(result.MemberNames.FirstOrDefault(), result.ErrorMessage));
+                ValidationResult.Errors.Add(new ValidationFailure(result.MemberNames.FirstOrDefault(), result.ErrorMessage));
         }
 
 

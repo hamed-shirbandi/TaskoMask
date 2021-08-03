@@ -7,11 +7,11 @@ namespace TaskoMask.Application.Cards.Commands.Models
 {
    public class CreateCardCommand : CardCommand
     {
-        public CreateCardCommand(string name, string description, string projectId,CardType type)
+        public CreateCardCommand(string boardId,string name, string description,CardType type)
         {
             Name = name;
             Description = description;
-            BoardId = projectId;
+            BoardId = boardId;
             Type = type;
         }
 

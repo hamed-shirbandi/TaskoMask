@@ -4,6 +4,9 @@ using TaskoMask.Application.Cards.Services;
 using TaskoMask.Application.Core.Dtos.Cards;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Application.Core.Services;
+using AutoMapper;
+using TaskoMask.Application.Cards.Commands.Models;
+using TaskoMask.Application.Cards.Queries.Models;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -14,14 +17,16 @@ namespace TaskoMask.web.Area.Admin.Controllers
         #region Fields
 
         private readonly ICardService _cardService;
+        protected readonly IMapper _mapper;
 
         #endregion
 
         #region Ctor
 
-        public CardsController(ICardService cardService, IBaseApplicationService baseApplicationService) : base(baseApplicationService)
+        public CardsController(ICardService cardService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService)
         {
             _cardService = cardService;
+            _mapper = mapper;
         }
 
         #endregion
@@ -34,10 +39,14 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IActionResult> Index(string boardId)
+        [HttpGet]
+        public async Task<IActionResult> Index(string id)
         {
-            var cards = await _cardService.GetListByBoardIdAsync(boardId);
-            return View(cards);
+            var cardDetailQueryResult = await _cardService.GetDetailAsync(id);
+            if (!cardDetailQueryResult.IsSuccess)
+                return RedirectToErrorPage(cardDetailQueryResult);
+
+            return View(cardDetailQueryResult.Value);
         }
 
 
@@ -52,9 +61,9 @@ namespace TaskoMask.web.Area.Admin.Controllers
             {
                 BoardId = boardId,
             };
-
             return View(model);
         }
+
 
 
         /// <summary>
@@ -66,11 +75,12 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var result = await _cardService.CreateAsync(input);
-            ValidateResult(result);
+            var cmd = new CreateCardCommand(boardId: input.BoardId, name: input.Name, description: input.Description, type:input.Type);
+            await SendCommandAsync(cmd);
 
             return View(input);
         }
+
 
 
 
@@ -80,7 +90,11 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var card = await _cardService.GetByIdAsync(id);
+            var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(id));
+            if (!cardQueryResult.IsSuccess)
+                return RedirectToErrorPage(cardQueryResult);
+
+            var card = _mapper.Map<CardInputDto>(cardQueryResult.Value);
             return View(card);
         }
 
@@ -94,13 +108,11 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var result = await _cardService.UpdateAsync(input);
-
-            ValidateResult(result);
+            var cmd = new UpdateCardCommand(id: input.Id, name: input.Name, description: input.Description, type: input.Type);
+            await SendCommandAsync(cmd);
 
             return View(input);
         }
-
 
 
 

@@ -4,6 +4,9 @@ using TaskoMask.Application.Projects.Services;
 using TaskoMask.Application.Core.Dtos.Projects;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Application.Core.Services;
+using AutoMapper;
+using TaskoMask.Application.Projects.Commands.Models;
+using TaskoMask.Application.Projects.Queries.Models;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -14,14 +17,16 @@ namespace TaskoMask.web.Area.Admin.Controllers
         #region Fields
 
         private readonly IProjectService _projectService;
+        protected readonly IMapper _mapper;
 
         #endregion
 
         #region Ctor
 
-        public ProjectsController(IProjectService projectService, IBaseApplicationService baseApplicationService) : base(baseApplicationService)
+        public ProjectsController(IProjectService projectService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService)
         {
             _projectService = projectService;
+            _mapper = mapper;
         }
 
         #endregion
@@ -34,10 +39,14 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IActionResult> Index(string organizationId)
+        [HttpGet]
+        public async Task<IActionResult> Index(string id)
         {
-            var projects = await _projectService.GetListByOrganizationIdAsync(organizationId);
-            return View(projects);
+            var projectDetailQueryResult = await _projectService.GetDetailAsync(id);
+            if (!projectDetailQueryResult.IsSuccess)
+                return RedirectToErrorPage(projectDetailQueryResult);
+
+            return View(projectDetailQueryResult.Value);
         }
 
 
@@ -52,9 +61,9 @@ namespace TaskoMask.web.Area.Admin.Controllers
             {
                 OrganizationId=organizationId,
             };
-
             return View(model);
         }
+
 
 
         /// <summary>
@@ -66,11 +75,12 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var result = await _projectService.CreateAsync(input);
-            ValidateResult(result);
+            var cmd = new CreateProjectCommand(organizationId: input.OrganizationId, name: input.Name, description: input.Description);
+            await SendCommandAsync(cmd);
 
             return View(input);
         }
+
 
 
 
@@ -80,7 +90,11 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var project = await _projectService.GetByIdToUpdateAsync(id);
+            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(id));
+            if (!projectQueryResult.IsSuccess)
+                return RedirectToErrorPage(projectQueryResult);
+
+            var project = _mapper.Map<ProjectInputDto>(projectQueryResult.Value);
             return View(project);
         }
 
@@ -94,13 +108,11 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var result = await _projectService.UpdateAsync(input);
-
-            ValidateResult(result);
+            var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description);
+            await SendCommandAsync(cmd);
 
             return View(input);
         }
-
 
 
 

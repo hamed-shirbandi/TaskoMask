@@ -103,6 +103,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         {
             if (!ModelState.IsValid)
                 return View(input);
+
             var cmd = new UpdateOrganizationCommand(id: input.Id, name: input.Name, description: input.Description);
             await SendCommandAsync(cmd);
 

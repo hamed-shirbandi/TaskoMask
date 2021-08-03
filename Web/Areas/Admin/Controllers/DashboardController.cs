@@ -41,7 +41,12 @@ namespace TaskoMask.web.Area.Admin.Controllers
         {
             var organizationsDetail = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
             if (!organizationsDetail.IsSuccess)
+<<<<<<< HEAD
                 return RedirectToErrorPage(organizationsDetail.Message, organizationsDetail.Errors);
+=======
+                //TODO redirect to custom error page
+                throw new System.Exception(organizationsDetail.Message);
+>>>>>>> a5cd8dabf271a65f386a73488f35d52cdd64c1e8
 
             var model = new DashboardIndexViewModel
             {

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Boards.Services;
 using TaskoMask.Application.Core.Dtos.Boards;
 using Microsoft.AspNetCore.Authorization;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -18,7 +19,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #region Ctor
 
-        public BoardsController(IBoardService boardService)
+        public BoardsController(IBoardService boardService, IBaseApplicationService baseApplicationService) : base(baseApplicationService)
         {
             _boardService = boardService;
         }

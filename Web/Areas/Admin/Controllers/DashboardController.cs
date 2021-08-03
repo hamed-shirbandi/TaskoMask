@@ -4,26 +4,27 @@ using TaskoMask.Application.Organizations.Services;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Application.Users.Services;
 using TaskoMask.web.Area.Admin.Models;
+using TaskoMask.Application.Organizations.Queries.Models;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
     [Authorize]
-     [Area("admin")]
+    [Area("admin")]
     public class DashboardController : BaseController
     {
         #region Fields
 
         private readonly IOrganizationService _organizationService;
-        private readonly IUserService _userService;
+
 
         #endregion
 
         #region Ctor
 
-        public DashboardController(IOrganizationService organizationService, IUserService userService)
+        public DashboardController(IOrganizationService organizationService, IBaseApplicationService baseApplicationService):base(baseApplicationService)
         {
             _organizationService = organizationService;
-            _userService = userService;
         }
 
         #endregion
@@ -38,8 +39,15 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-           // var organizations = await _organizationService.get(GetCurrentUserId()); 
-            return View();
+            var organizationsDetail = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
+            if (!organizationsDetail.IsSuccess)
+                return RedirectToErrorPage(organizationsDetail.Message, organizationsDetail.Errors);
+
+            var model = new DashboardIndexViewModel
+            {
+                Organizations= organizationsDetail.Value,
+            };
+            return View(model);
         }
 
 

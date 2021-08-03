@@ -13,5 +13,6 @@ namespace TaskoMask.Application.Organizations.Services
     public interface IOrganizationService : IBaseEntityService
     {
         Task<Result<OrganizationDetailViewModel>> GetDetailAsync(string id);
+        Task<Result<IEnumerable<OrganizationDetailViewModel>>> GetUserOrganizationsDetailAsync(string userId);
     }
 }

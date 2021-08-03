@@ -1,14 +1,16 @@
 ﻿@model TaskoMask.Application.Core.Dtos.Organizations.OrganizationInputDto
 @{ 
-    string actionName =string.IsNullOrEmpty(Model.Id) ? "create" : "update";
+  
 }
 
 <div class="row">
     @await Component.InvokeAsync(nameof(DomainValidationSummary))
 
     <div class="col-md-4 col-sm-12">
-        <form asp-action="@actionName">
+        <form asp-action="@ViewContext.RouteData.Values["action"]">
+
             @Html.HiddenFor(model=>model.Id)
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -20,9 +22,8 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="@actionName" class="btn btn-warning" />
+                <input type="submit" value="@ViewContext.RouteData.Values["action"]" class="btn btn-warning" />
                 <a href="@Url.Action(action:"index",controller:"dashboard",values:new {})" class="btn btn-primary">Back</a>
-
             </div>
         </form>
     </div>

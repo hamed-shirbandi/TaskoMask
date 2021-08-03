@@ -17,6 +17,7 @@ using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Projects;
+using System.Linq;
 
 namespace TaskoMask.Application.Organizations.Services
 {
@@ -71,6 +72,31 @@ namespace TaskoMask.Application.Organizations.Services
 
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<OrganizationDetailViewModel>>> GetUserOrganizationsDetailAsync(string userId)
+        {
+            var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByUserIdQuery(userId));
+            if (!organizationQueryResult.IsSuccess)
+                return Result.Failure<IEnumerable<OrganizationDetailViewModel>> (organizationQueryResult.Errors);
+
+            var organizationsDetail = new List<OrganizationDetailViewModel>();
+
+            foreach (var organization in organizationQueryResult.Value)
+            {
+                var organizationDetailResult = await GetDetailAsync(organization.Id);
+                if (!organizationDetailResult.IsSuccess)
+                    return Result.Failure<IEnumerable<OrganizationDetailViewModel>>(organizationDetailResult.Errors);
+
+                organizationsDetail.Add(organizationDetailResult.Value);
+            }
+
+            return Result.Success(organizationsDetail.AsEnumerable());
+        }
 
 
         #endregion

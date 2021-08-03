@@ -2,11 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Projects.Services;
 using TaskoMask.Application.Core.Dtos.Projects;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Entities;
-using TaskoMask.Domain.Core.Events;
-using TaskoMask.web.Models;
 using Microsoft.AspNetCore.Authorization;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -22,7 +19,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #region Ctor
 
-        public ProjectsController(IProjectService projectService)
+        public ProjectsController(IProjectService projectService, IBaseApplicationService baseApplicationService) : base(baseApplicationService)
         {
             _projectService = projectService;
         }

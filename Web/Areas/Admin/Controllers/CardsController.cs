@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Cards.Services;
 using TaskoMask.Application.Core.Dtos.Cards;
 using Microsoft.AspNetCore.Authorization;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -18,7 +19,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #region Ctor
 
-        public CardsController(ICardService cardService)
+        public CardsController(ICardService cardService, IBaseApplicationService baseApplicationService) : base(baseApplicationService)
         {
             _cardService = cardService;
         }

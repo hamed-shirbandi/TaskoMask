@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using System.Globalization;
+using TaskoMask.web.Models;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -25,6 +26,21 @@ namespace TaskoMask.Web.Controllers
         #endregion
 
         #region Public Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IActionResult> known(string message )
+        {
+            var model = new ErrorViewModel
+            {
+                Message = message,
+            };
+
+            return View(model);
+        }
 
 
 

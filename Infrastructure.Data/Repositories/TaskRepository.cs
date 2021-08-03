@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +12,21 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 {
     public class TaskRepository : BaseRepository<Domain.Entities.Task>, ITaskRepository
     {
+        private readonly IMongoCollection<Domain.Entities.Task> _tasks;
+
         public TaskRepository(IMainDbContext dbContext) : base(dbContext)
         {
+            _tasks = dbContext.GetCollection<Domain.Entities.Task>(); ;
+        }
+
+
+        public async Task<IEnumerable<Domain.Entities.Task>> GetListByCardIdAsync(string cardId)
+        {
+            return await _tasks.AsQueryable().Where(o => o.CardId == cardId).ToListAsync();
 
         }
-        public Task<IEnumerable<Domain.Entities.Task>> GetListByBoardIdAsync(string boardId)
-        {
-            throw new NotImplementedException();
-        }
+
+
+
     }
 }

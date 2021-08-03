@@ -15,6 +15,9 @@ using System.Collections.Generic;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Projects.Queries.Models;
+using TaskoMask.Application.Organizations.Queries.Models;
+using TaskoMask.Application.Tasks.Queries.Models;
 
 namespace TaskoMask.Application.Cards.Services
 {
@@ -35,79 +38,64 @@ namespace TaskoMask.Application.Cards.Services
         #endregion
 
 
-        #region Command Services
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(CardInputDto input)
-        {
-            var project = _mapper.Map<CreateCardCommand>(input);
 
-            return await SendCommandAsync(project);
-        }
-
+        #region Public Methods
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(CardInputDto input)
+        public async Task<Result<CardDetailViewModel>> GetDetailAsync(string id)
         {
-            var updateCommand = _mapper.Map<UpdateCardCommand>(input);
-            return await SendCommandAsync(updateCommand);
-        }
 
-
-        #endregion
-
-        #region Query Services
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<CardBasicInfoDto> GetByIdAsync(string id)
-        {
-            var query = new GetCardByIdQuery(id);
-            //  return await SendQueryAsync<GetCardByIdQuery, CardBasicInfoDto>(query);
-            return null;
-        }
+            var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(id));
+            if (!cardQueryResult.IsSuccess)
+                return Result.Failure<CardDetailViewModel>(cardQueryResult.Errors);
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<CardInputDto> GetByIdToUpdateAsync(string id)
-        {
-            var organization = await GetByIdAsync(id);
-            return _mapper.Map<CardInputDto>(organization);
-        }
+            var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(cardQueryResult.Value.BoardId));
+            if (!boardQueryResult.IsSuccess)
+                return Result.Failure<CardDetailViewModel>(boardQueryResult.Errors);
+
+
+            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(boardQueryResult.Value.ProjectId));
+            if (!projectQueryResult.IsSuccess)
+                return Result.Failure<CardDetailViewModel>(projectQueryResult.Errors);
+
+
+            var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
+            if (!organizationQueryResult.IsSuccess)
+                return Result.Failure<CardDetailViewModel>(organizationQueryResult.Errors);
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<CardDetailViewModel> GetListByBoardIdAsync(string boardId)
-        {
-            var cardsQuery = new GetCardsByBoardIdQuery(boardId: boardId);
-            var cards = await SendQueryAsync<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>(cardsQuery);
 
-            var boardQuery = new GetBoardByIdQuery(id: boardId);
-            var board = await SendQueryAsync<GetBoardByIdQuery, BoardBasicInfoDto>(boardQuery);
+            var cardReportQueryResult = await SendQueryAsync(new GetCardReportQuery(id));
+            if (!cardReportQueryResult.IsSuccess)
+                return Result.Failure<CardDetailViewModel>(cardReportQueryResult.Errors);
 
-            //return new CardDetailViewModel
-            //{
-            //    Board = board,
-            //    Cards = cards,
-            //};
-            return null;
+
+            var taskQueryResult = await SendQueryAsync(new GetTasksByCardIdQuery(id));
+            if (!taskQueryResult.IsSuccess)
+                return Result.Failure<CardDetailViewModel>(taskQueryResult.Errors);
+
+
+
+            var cardDetail = new CardDetailViewModel
+            {
+                Organization = organizationQueryResult.Value,
+                Project = projectQueryResult.Value,
+                Board = boardQueryResult.Value,
+                Reports = cardReportQueryResult.Value,
+                Card = cardQueryResult.Value,
+                Tasks = taskQueryResult.Value,
+            };
+
+            return Result.Success(cardDetail);
 
         }
-
-
 
         #endregion
 

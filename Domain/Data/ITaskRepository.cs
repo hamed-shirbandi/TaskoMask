@@ -8,6 +8,6 @@ namespace TaskoMask.Domain.Data
 {
     public interface ITaskRepository : IBaseRepository<Entities.Task>
     {
-        Task<IEnumerable<Entities.Task>> GetListByBoardIdAsync(string boardId);
+        Task<IEnumerable<Entities.Task>> GetListByCardIdAsync(string cardId);
     }
 }

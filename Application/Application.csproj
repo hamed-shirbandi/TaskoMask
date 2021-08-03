@@ -28,8 +28,6 @@
     <Folder Include="Tasks\Commands\Models\" />
     <Folder Include="Tasks\Commands\Validations\" />
     <Folder Include="Tasks\EventHandlers\" />
-    <Folder Include="Tasks\Queries\Handlers\" />
-    <Folder Include="Tasks\Queries\Models\" />
     <Folder Include="Tasks\Services\" />
     <Folder Include="Users\EventHandlers\" />
   </ItemGroup>

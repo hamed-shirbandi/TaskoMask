@@ -16,6 +16,7 @@ namespace TaskoMask.Application.Boards.Queries.Handlers
 {
     public class BoardsQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetBoardByIdQuery, BoardBasicInfoDto>,
+        IRequestHandler<GetBoardReportQuery, BoardReportDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>
     {
         private readonly IBoardRepository _boardRepository;
@@ -40,7 +41,9 @@ namespace TaskoMask.Application.Boards.Queries.Handlers
             return _mapper.Map<IEnumerable<BoardBasicInfoDto>>(boards);
         }
 
-
-
+        public Task<BoardReportDto> Handle(GetBoardReportQuery request, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -13,21 +13,6 @@ namespace TaskoMask.Application.Users.Services
 {
     public interface IUserService 
     {
-        #region Command Services
-
-        Task<Result<CommandResult>> CreateAsync(RegisterViewModel input);
-        Task<Result<CommandResult>> UpdateAsync(UserInputDto input);
-
-        #endregion
-
-        #region Query Services
-
-        Task<UserBasicInfoDto> GetByIdAsync(string id);
-        Task<UserInputDto> GetByIdToUpdateAsync(string id);
-        Task<long> CountAsync();
-
-        #endregion
-
 
     }
 }

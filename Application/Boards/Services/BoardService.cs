@@ -17,6 +17,8 @@ using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Core.Notifications;
 using System.Linq;
 using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Organizations.Queries.Models;
+using TaskoMask.Application.Cards.Queries.Models;
 
 namespace TaskoMask.Application.Boards.Services
 {
@@ -34,71 +36,55 @@ namespace TaskoMask.Application.Boards.Services
 
         #endregion
 
-        #region Command Services
+
+
+        #region Public Methods
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(BoardInputDto input)
+        public async Task<Result<BoardDetailViewModel>> GetDetailAsync(string id)
         {
-            var createCommand = _mapper.Map<CreateBoardCommand>(input);
-
-            return await SendCommandAsync(createCommand);
-        }
-
+            var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(id));
+            if (!boardQueryResult.IsSuccess)
+                return Result.Failure<BoardDetailViewModel>(boardQueryResult.Errors);
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(BoardInputDto input)
-        {
-            var updateCommand = _mapper.Map<UpdateBoardCommand>(input);
-            return await SendCommandAsync(updateCommand);
-        }
+            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(boardQueryResult.Value.ProjectId));
+            if (!projectQueryResult.IsSuccess)
+                return Result.Failure<BoardDetailViewModel>(projectQueryResult.Errors);
 
 
-        #endregion
-
-        #region Query Services
+            var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
+            if (!organizationQueryResult.IsSuccess)
+                return Result.Failure<BoardDetailViewModel>(organizationQueryResult.Errors);
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id)
-        {
-            var query = new GetBoardByIdQuery(id);
-            return await SendQueryAsync<GetBoardByIdQuery, BoardBasicInfoDto>(query);
-        }
+            var cardQueryResult = await SendQueryAsync(new GetCardsByBoardIdQuery(id));
+            if (!cardQueryResult.IsSuccess)
+                return Result.Failure<BoardDetailViewModel>(cardQueryResult.Errors);
+
+
+            var boardReportQueryResult = await SendQueryAsync(new GetBoardReportQuery(id));
+            if (!boardReportQueryResult.IsSuccess)
+                return Result.Failure<BoardDetailViewModel>(boardReportQueryResult.Errors);
 
 
 
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<BoardDetailViewModel>> GetDetailByIdAsync(string id)
-        {
-            var boardsQuery = new GetBoardsByProjectIdQuery(projectId: id);
-            var boards = await SendQueryAsync<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>(boardsQuery);
-
-            var projectQuery = new GetProjectByIdQuery(id: id);
-            var project = await SendQueryAsync<GetProjectByIdQuery, ProjectBasicInfoDto>(projectQuery);
-
-            var model= new BoardDetailViewModel
+            var boardDetail = new BoardDetailViewModel
             {
-                Project = project.Value,
-               // Cards = boards.Value,
+                Organization = organizationQueryResult.Value,
+                Project = projectQueryResult.Value,
+                Board = boardQueryResult.Value,
+                Reports = boardReportQueryResult.Value,
+                Cards = cardQueryResult.Value,
             };
 
-            return Result.Success(ApplicationMessages.Operation_Success,model);
-        }
+            return Result.Success(boardDetail);
 
+        }
 
 
 

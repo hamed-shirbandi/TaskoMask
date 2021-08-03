@@ -13,12 +13,13 @@ using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Projects.Queries.Handlers
 {
-    public class ProjectssQueryHandlers : BaseQueryHandler,
+    public class ProjectsQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetProjectByIdQuery, ProjectBasicInfoDto>,
+        IRequestHandler<GetProjectReportQuery, ProjectReportDto>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>
     {
         private readonly IProjectRepository _projectRepository;
-        public ProjectssQueryHandlers(IProjectRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
+        public ProjectsQueryHandlers(IProjectRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
         {
             _projectRepository = projectRepository;
         }
@@ -40,6 +41,9 @@ namespace TaskoMask.Application.Projects.Queries.Handlers
             return _mapper.Map<IEnumerable<ProjectBasicInfoDto>>(projects);
         }
 
-       
+        public Task<ProjectReportDto> Handle(GetProjectReportQuery request, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

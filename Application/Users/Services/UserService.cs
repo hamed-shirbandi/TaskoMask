@@ -31,68 +31,10 @@ namespace TaskoMask.Application.Users.Services
 
 
         #endregion
-
-        #region Command Services
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(RegisterViewModel input)
-        {
-            var createCommand = _mapper.Map<CreateUserCommand>(input);
-            return await SendCommandAsync(createCommand);
-        }
+       
+        #region Public Methods
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(UserInputDto input)
-        {
-            var updateCommand = _mapper.Map<UpdateUserCommand>(input);
-            return await SendCommandAsync(updateCommand);
-        }
-
-
-        #endregion
-
-        #region Query Services
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<UserBasicInfoDto> GetByIdAsync(string id)
-        {
-            var query = new GetUserByIdQuery(id);
-           // return await SendQueryAsync<GetUserByIdQuery, UserBasicInfoDto>(query);
-            return null;
-
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<UserInputDto> GetByIdToUpdateAsync(string id)
-        {
-            var user = await GetByIdAsync(id);
-            return _mapper.Map<UserInputDto>(user);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> CountAsync()
-        {
-            var query = new GetUsersCountQuery();
-           // return await SendQueryAsync<GetUsersCountQuery, long>(query);
-            return 0;
-
-        }
 
 
         #endregion

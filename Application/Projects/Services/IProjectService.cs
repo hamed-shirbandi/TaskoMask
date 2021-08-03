@@ -12,20 +12,7 @@ namespace TaskoMask.Application.Projects.Services
 {
     public interface IProjectService : IBaseEntityService
     {
-        #region Command Services
-
-        Task<Result<CommandResult>> CreateAsync(ProjectInputDto input);
-        Task<Result<CommandResult>> UpdateAsync(ProjectInputDto input);
-
-        #endregion
-
-        #region Query Services
-
-        Task<ProjectBasicInfoDto> GetByIdAsync(string id);
-        Task<ProjectInputDto> GetByIdToUpdateAsync(string id);
-        Task<ProjectDetailViewModel> GetListByOrganizationIdAsync(string organizationId);
-
-        #endregion
+        Task<Result<ProjectDetailViewModel>> GetDetailAsync(string id);
 
     }
 }

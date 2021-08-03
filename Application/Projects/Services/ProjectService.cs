@@ -14,6 +14,7 @@ using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Boards.Queries.Models;
 
 namespace TaskoMask.Application.Projects.Services
 {
@@ -33,80 +34,48 @@ namespace TaskoMask.Application.Projects.Services
 
         #endregion
 
-        #region Command Services
+
+        #region Public Methods
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(ProjectInputDto input)
+        public async Task<Result<ProjectDetailViewModel>> GetDetailAsync(string id)
         {
-            var createCommand = _mapper.Map<CreateProjectCommand>(input);
-
-            return await SendCommandAsync(createCommand);
-        }
-
+            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(id));
+            if (!projectQueryResult.IsSuccess)
+                return Result.Failure<ProjectDetailViewModel>(projectQueryResult.Errors);
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(ProjectInputDto input)
-        {
-            var updateCommand = _mapper.Map<UpdateProjectCommand>(input);
-            return await SendCommandAsync(updateCommand);
-        }
+            var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
+            if (!organizationQueryResult.IsSuccess)
+                return Result.Failure<ProjectDetailViewModel>(organizationQueryResult.Errors);
+
+           
+
+            var boardQueryResult = await SendQueryAsync(new GetBoardsByProjectIdQuery(id));
+            if (!boardQueryResult.IsSuccess)
+                return Result.Failure<ProjectDetailViewModel>(boardQueryResult.Errors);
 
 
-        #endregion
-
-        #region Query Services
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<ProjectBasicInfoDto> GetByIdAsync(string id)
-        {
-            var query = new GetProjectByIdQuery(id);
-            // return await SendQueryAsync<GetProjectByIdQuery, ProjectBasicInfoDto>(query);
-            return null;
-        }
+            var projectReportQueryResult = await SendQueryAsync(new GetProjectReportQuery(id));
+            if (!projectReportQueryResult.IsSuccess)
+                return Result.Failure<ProjectDetailViewModel>(projectReportQueryResult.Errors);
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<ProjectInputDto> GetByIdToUpdateAsync(string id)
-        {
-            var organization = await GetByIdAsync(id);
-            return _mapper.Map<ProjectInputDto>(organization);
-        }
+            var projectDetail = new ProjectDetailViewModel
+            {
+                Organization = organizationQueryResult.Value,
+                Project = projectQueryResult.Value,
+                Reports = projectReportQueryResult.Value,
+                Boards= boardQueryResult.Value,
+            };
 
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<ProjectDetailViewModel> GetListByOrganizationIdAsync(string organizationId)
-        {
-            var projectsQuery = new GetProjectsByOrganizationIdQuery(organizationId: organizationId);
-            var projects = await SendQueryAsync<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>(projectsQuery);
-
-            var organizationQuery = new GetOrganizationByIdQuery(id: organizationId);
-            var organization = await SendQueryAsync<GetOrganizationByIdQuery, OrganizationBasicInfoDto>(organizationQuery);
-
-            //return new ProjectDetailViewModel
-            //{
-            //    Organization = organization,
-            //    Projects = projects,
-            //};
-            return null;
+            return Result.Success(projectDetail);
 
         }
-
 
 
 

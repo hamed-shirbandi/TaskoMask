@@ -15,6 +15,7 @@ namespace TaskoMask.Application.Cards.Queries.Handlers
 {
     public class CardsQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetCardByIdQuery, CardBasicInfoDto>,
+        IRequestHandler<GetCardReportQuery, CardReportDto>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>
     {
         private readonly ICardRepository _cardRepository;
@@ -37,6 +38,11 @@ namespace TaskoMask.Application.Cards.Queries.Handlers
         {
             var cards = await _cardRepository.GetListByBoardIdAsync(request.BoardId);
             return _mapper.Map<IEnumerable<CardBasicInfoDto>>(cards);
+        }
+
+        public Task<CardReportDto> Handle(GetCardReportQuery request, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

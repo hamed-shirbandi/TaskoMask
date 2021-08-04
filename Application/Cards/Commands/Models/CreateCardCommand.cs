@@ -1,7 +1,4 @@
-﻿
-using TaskoMask.Application.Cards.Commands.Validations;
-using TaskoMask.Application.Core.Commands;
-using TaskoMask.Domain.Core.Enums;
+﻿using TaskoMask.Domain.Core.Enums;
 
 namespace TaskoMask.Application.Cards.Commands.Models
 {

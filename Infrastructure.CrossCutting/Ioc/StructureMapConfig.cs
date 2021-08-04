@@ -19,6 +19,8 @@ using TaskoMask.Application.BaseEntities.Queries.Handlers;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.BaseEntities.Queries.Models;
 using TaskoMask.Domain.Core.Models;
+using MediatR.Pipeline;
+using TaskoMask.Application.Core.Exceptions;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
@@ -32,14 +34,16 @@ namespace Infrastructure.CrossCutting.Ioc
             var container = new Container();
             container.Configure(config =>
             {
+                config.For<IMainDbContext>().Use<MongoDbContext>();
                 config.For<IEventStore>().Use<RedisEventStore>();
                 services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+                services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
 
                 #region Generic Query Handlers
 
                 //TODO Handel Generic Command And Queries
                 //services.AddScoped(typeof(IRequestHandler<GetEntitiesCountQuery<T>,long>), typeof(BaseEntitiesQueryHandlers<>));
-               
+
                 services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Project>, long>, BaseEntitiesQueryHandlers<Project>> ();
                 services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Board>, long>, BaseEntitiesQueryHandlers<Board>> ();
                 services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Card>, long>, BaseEntitiesQueryHandlers<Card>> ();
@@ -50,7 +54,7 @@ namespace Infrastructure.CrossCutting.Ioc
                 #endregion
 
 
-                //automatic resolve dependency by default conventions where we have SomeService : ISomeService
+                //Automatic resolve dependency by default conventions where we have SomeService : ISomeService
                 config.Scan(s =>
                 {
                     //scan application dll

@@ -13,14 +13,8 @@ namespace TaskoMask.Application.Organizations.Commands.Validations
     {
         public CreateOrganizationCommandValidation()
         {
-            ValidateName();
             ValidateDescription();
-            ValidateUserId();
         }
 
-        private void ValidateUserId()
-        {
-            RuleFor(o => o.UserId).NotEmpty().WithMessage(ApplicationMetadata.Required);
-        }
     }
 }

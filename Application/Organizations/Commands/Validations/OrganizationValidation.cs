@@ -11,23 +11,10 @@ namespace TaskoMask.Application.Organizations.Commands.Validations
 {
     public abstract class OrganizationValidation<T> : AbstractValidator<T> where T : OrganizationCommand
     {
-        private const int minNameLenth = 5;
-        private const int maxNameLenth = 50;
-
-        private const int minDescriptionLenth = 5;
-        private const int maxDescriptionLenth = 250;
-
-
-        protected void ValidateName()
-        {
-            RuleFor(o => o.Name).NotEmpty().WithMessage(ApplicationMetadata.Required);
-            RuleFor(o => o.Name).Length(minNameLenth, maxNameLenth).WithMessage(string.Format(ApplicationMetadata.Length_Error, minNameLenth, maxNameLenth));
-        }
 
         protected void ValidateDescription()
         {
-            RuleFor(o => o.Description).NotEmpty().WithMessage(ApplicationMetadata.Required);
-            RuleFor(o => o.Description).Length(minDescriptionLenth, maxDescriptionLenth).WithMessage(string.Format(ApplicationMetadata.Length_Error, minDescriptionLenth, maxDescriptionLenth));
+            RuleFor(o => o.Description).NotEqual(o=>o.Name).WithMessage(ApplicationMetadata.Equal_Name_And_Description_Error);
         }
     }
 }

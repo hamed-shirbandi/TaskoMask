@@ -6,6 +6,7 @@ using TaskoMask.Application.Users.Services;
 using TaskoMask.web.Area.Admin.Models;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Organizations.Commands.Models;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -41,18 +42,16 @@ namespace TaskoMask.web.Area.Admin.Controllers
         {
             var organizationsDetail = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
             if (!organizationsDetail.IsSuccess)
-<<<<<<< HEAD
-                return RedirectToErrorPage(organizationsDetail.Message, organizationsDetail.Errors);
-=======
-                //TODO redirect to custom error page
-                throw new System.Exception(organizationsDetail.Message);
->>>>>>> a5cd8dabf271a65f386a73488f35d52cdd64c1e8
+                return RedirectToErrorPage(organizationsDetail);
+
 
             var model = new DashboardIndexViewModel
             {
-                Organizations= organizationsDetail.Value,
+                Organizations = organizationsDetail.Value,
             };
+
             return View(model);
+
         }
 
 

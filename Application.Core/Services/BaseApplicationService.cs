@@ -10,7 +10,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Core.Services
 {
-    public abstract class BaseApplicationService : IBaseApplicationService
+    public class BaseApplicationService : IBaseApplicationService
     {
         #region Fields
 

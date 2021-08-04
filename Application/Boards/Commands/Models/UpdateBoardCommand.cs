@@ -1,7 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Boards.Commands.Validations;
-using TaskoMask.Application.Core.Commands;
+﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Boards.Commands.Models

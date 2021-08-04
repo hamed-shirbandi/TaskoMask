@@ -20,15 +20,19 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Folder Include="Boards\Commands\Validations\" />
     <Folder Include="Boards\EventHandlers\" />
+    <Folder Include="Cards\Commands\Validations\" />
     <Folder Include="Cards\EventHandlers\" />
     <Folder Include="Organizations\EventHandlers\" />
+    <Folder Include="Projects\Commands\Validations\" />
     <Folder Include="Projects\EventHandlers\" />
     <Folder Include="Tasks\Commands\Handlers\" />
     <Folder Include="Tasks\Commands\Models\" />
     <Folder Include="Tasks\Commands\Validations\" />
     <Folder Include="Tasks\EventHandlers\" />
     <Folder Include="Tasks\Services\" />
+    <Folder Include="Users\Commands\Validations\" />
     <Folder Include="Users\EventHandlers\" />
   </ItemGroup>
 </Project>

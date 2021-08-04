@@ -11,6 +11,7 @@ using TaskoMask.Application.Users.Services;
 using TaskoMask.Application.Core.ViewMoldes.Account;
 using TaskoMask.Domain.Entities;
 using TaskoMask.web.Area.Admin.Controllers;
+using TaskoMask.Application.Users.Commands.Models;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -113,7 +114,8 @@ namespace TaskoMask.Web.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var result = await _userService.CreateAsync(input);
+            var createUserCommand = new CreateUserCommand(displayName:input.DisplayName,email:input.Email,password:input.Password);
+            var result = await _userService.SendCommandAsync(createUserCommand);
             ValidateResult(result);
 
             return View(input);

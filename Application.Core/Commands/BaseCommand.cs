@@ -4,6 +4,7 @@ using MediatR;
 using System.Linq;
 using System.Text.Json.Serialization;
 using TaskoMask.Application.Core.Extensions;
+using FluentValidation;
 
 namespace TaskoMask.Application.Core.Commands
 {
@@ -12,7 +13,6 @@ namespace TaskoMask.Application.Core.Commands
         #region Properties
 
 
-        [JsonIgnore]
         public ValidationResult ValidationResult { get; protected set; }
 
 
@@ -27,8 +27,9 @@ namespace TaskoMask.Application.Core.Commands
         /// </summary>
         public virtual bool IsValid()
         {
-            //Step1: Check fluent validation
-            ValidationResult = new BaseCommandValidation().Validate(this);
+            //Step1: Check if caller has no fluent validation and init ValidationResult for Sterp 2 
+            if (ValidationResult==null)
+                ValidationResult = new BaseCommandValidation().Validate(this);
 
             //Sterp 2: Add data annotation validation to ValidationResult
             GetAnnotationValidation();
@@ -36,6 +37,8 @@ namespace TaskoMask.Application.Core.Commands
 
             return ValidationResult.IsValid;
         }
+
+
 
 
         #endregion

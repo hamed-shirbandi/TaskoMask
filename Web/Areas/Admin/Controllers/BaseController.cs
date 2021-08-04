@@ -56,7 +56,6 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// <summary>
         /// use this when an ajax call made the command request and you want to show an alert message on the view by js
         /// </summary>
-<<<<<<< HEAD
         protected async Task<JavaScriptResult> AjaxSendCommandAsync<T>(T cmd, bool reloadPage = false, string redirectUrl = "") where T : BaseCommand
         {
             var cmdResult = await _baseApplicationService.SendCommandAsync(cmd);
@@ -95,8 +94,6 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// <summary>
         /// Adding command result message to show in DomainValidationSummary component
         /// </summary>
-=======
->>>>>>> a5cd8dabf271a65f386a73488f35d52cdd64c1e8
         protected void ValidateCommandResult(Result<CommandResult> result)
         {
             if (result.IsSuccess)
@@ -106,8 +103,6 @@ namespace TaskoMask.web.Area.Admin.Controllers
         }
 
 
-
-<<<<<<< HEAD
 
         /// <summary>
         /// use this when you just need get data and directly send it to view as view model
@@ -148,17 +143,5 @@ namespace TaskoMask.web.Area.Admin.Controllers
         }
 
 
-
-=======
-        protected void ValidateQueryResult(Result result)
-        {
-            if (result.IsSuccess)
-                ViewBag.SuccessMessage = result.Message;
-            else
-                ViewBag.ErrorMessage = result.Message;
-        }
-
-
->>>>>>> a5cd8dabf271a65f386a73488f35d52cdd64c1e8
     }
 }

@@ -1,7 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Cards.Commands.Validations;
-using TaskoMask.Application.Core.Commands;
+﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Enums;
 

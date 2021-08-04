@@ -159,6 +159,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="Equal_Name_And_Description_Error" xml:space="preserve">
+    <value>Description can not be same of name</value>
+  </data>
   <data name="Length_Error" xml:space="preserve">
     <value>The {0} length must be between {1} and {2} characters</value>
   </data>

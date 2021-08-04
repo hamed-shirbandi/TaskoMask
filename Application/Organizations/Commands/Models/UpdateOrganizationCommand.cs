@@ -19,5 +19,10 @@ namespace TaskoMask.Application.Organizations.Commands.Models
         public string Id { get; private set; }
 
 
+        public override bool IsValid()
+        {
+            ValidationResult = new UpdateOrganizationCommandValidation().Validate(this);
+            return base.IsValid();
+        }
     }
 }

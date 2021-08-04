@@ -44,7 +44,7 @@ namespace TaskoMask.Application.BaseEntities.Services
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync<GetEntitiesCountQuery<TEntity>, long>(new ());
+            return await SendQueryAsync(new GetEntitiesCountQuery<TEntity>());
         }
 
 

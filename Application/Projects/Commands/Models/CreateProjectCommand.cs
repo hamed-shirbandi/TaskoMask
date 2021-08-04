@@ -1,7 +1,4 @@
 ﻿
-using TaskoMask.Application.Projects.Commands.Validations;
-using TaskoMask.Application.Core.Commands;
-
 namespace TaskoMask.Application.Projects.Commands.Models
 {
    public class CreateProjectCommand : ProjectCommand

@@ -15,10 +15,5 @@ namespace TaskoMask.Application.Organizations.Commands.Models
 
         public string UserId { get; private set; }
 
-        public bool IsValid()
-        {
-            ValidationResult = new CreateOrganizationCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
     }
 }

@@ -15,10 +15,6 @@ namespace TaskoMask.Application.Cards.Commands.Models
             Type = type;
         }
 
-        public bool IsValid()
-        {
-            ValidationResult = new CreateCardCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
+  
     }
 }

@@ -13,10 +13,5 @@ namespace TaskoMask.Application.Projects.Commands.Models
             OrganizationId = organizationId;
         }
 
-        public bool IsValid()
-        {
-            ValidationResult = new CreateProjectCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
     }
 }

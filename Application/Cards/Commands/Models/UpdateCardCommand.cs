@@ -1,6 +1,8 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Cards.Commands.Validations;
 using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Enums;
 
 namespace TaskoMask.Application.Cards.Commands.Models
@@ -15,13 +17,10 @@ namespace TaskoMask.Application.Cards.Commands.Models
             Type = type;
         }
 
+        [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string Id { get; private set; }
 
 
-        public bool IsValid()
-        {
-            ValidationResult = new UpdateCardCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
+     
     }
 }

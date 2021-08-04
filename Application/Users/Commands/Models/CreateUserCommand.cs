@@ -14,10 +14,5 @@ namespace TaskoMask.Application.Users.Commands.Models
         }
 
 
-        public bool IsValid()
-        {
-            ValidationResult = new CreateUserCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
     }
 }

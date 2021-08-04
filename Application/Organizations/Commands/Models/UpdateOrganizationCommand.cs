@@ -1,6 +1,8 @@
 ﻿
 using TaskoMask.Application.Organizations.Commands.Validations;
 using TaskoMask.Application.Core.Commands;
+using System.ComponentModel.DataAnnotations;
+using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Organizations.Commands.Models
 {
@@ -13,12 +15,9 @@ namespace TaskoMask.Application.Organizations.Commands.Models
             Description = description;
         }
 
+        [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string Id { get; private set; }
 
-        public bool IsValid()
-        {
-             ValidationResult = new UpdateOrganizationCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
+
     }
 }

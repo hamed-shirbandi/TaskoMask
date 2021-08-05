@@ -50,7 +50,7 @@ namespace TaskoMask.Application.Core.Exceptions
 
             state.SetHandled(default);
 
-            await _mediator.Publish(new DomainNotification("", exception.Message), cancellationToken);
+            await _mediator.Publish(new DomainNotification(exceptionType.Name, exception.Message), cancellationToken);
         }
 
 

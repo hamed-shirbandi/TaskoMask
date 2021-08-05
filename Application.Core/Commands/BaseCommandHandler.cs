@@ -35,17 +35,17 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
-        protected async Task PublishValidationErrorAsync(BaseCommand message)
+        protected async Task PublishValidationErrorAsync(BaseCommand request)
         {
-            foreach (var error in message.ValidationResult.Errors)
-                await _mediator.Publish(new DomainNotification(error.PropertyName, error.ErrorMessage));
+            foreach (var error in request.ValidationResult.Errors)
+                await _mediator.Publish(new DomainNotification(request.GetType().Name, error.ErrorMessage));
         }
 
 
 
-        protected async Task PublishValidationErrorAsync(DomainNotification message)
+        protected async Task PublishValidationErrorAsync(DomainNotification notification)
         {
-            await _mediator.Publish(message);
+            await _mediator.Publish(notification);
         }
 
 

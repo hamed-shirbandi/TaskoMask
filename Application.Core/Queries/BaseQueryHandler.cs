@@ -35,9 +35,9 @@ namespace TaskoMask.Application.Core.Queries
         #region Protected Methods
 
 
-        protected Task PublishErrorAsync(string errorMessage, CancellationToken cancellationToken, string key = "")
+        protected  async Task PublishErrorAsync(string message, string key )
         {
-            return _mediator.Publish(new DomainNotification(key, errorMessage), cancellationToken);
+            await _mediator.Publish(new DomainNotification(key, message));
         }
 
 

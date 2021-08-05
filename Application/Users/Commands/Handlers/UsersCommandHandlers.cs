@@ -40,7 +40,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             var existUser = await _userManager.FindByNameAsync(request.Email);
             if (existUser != null)
             {
-                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.User_Email_Already_Exist));
+                await PublishValidationErrorAsync(new DomainNotification(request.GetType().Name, ApplicationMessages.User_Email_Already_Exist));
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -49,7 +49,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
-                    await PublishValidationErrorAsync(new DomainNotification("", error.Description));
+                    await PublishValidationErrorAsync(new DomainNotification(request.GetType().Name, error.Description));
 
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
@@ -72,7 +72,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             var existUser = await _userManager.FindByNameAsync(request.Email);
             if (existUser != null && existUser.Id.ToString() != request.Id)
             {
-                await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.User_Email_Already_Exist));
+                await PublishValidationErrorAsync(new DomainNotification(request.GetType().Name, ApplicationMessages.User_Email_Already_Exist));
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -88,7 +88,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
-                    await PublishValidationErrorAsync(new DomainNotification("", error.Description));
+                    await PublishValidationErrorAsync(new DomainNotification(request.GetType().Name, error.Description));
 
                 return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }

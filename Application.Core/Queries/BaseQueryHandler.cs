@@ -6,6 +6,7 @@ using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Queries
 {
+
     public abstract class BaseQueryHandler
     {
         #region Fields

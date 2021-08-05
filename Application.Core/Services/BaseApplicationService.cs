@@ -7,6 +7,7 @@ using TaskoMask.Application.Core.Helpers;
 using AutoMapper;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Core.Services
 {
@@ -66,12 +67,8 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<T>> SendQueryAsync<T>(IRequest<T> query)
+        public async Task<Result<T>> SendQueryAsync<T>(BaseQuery<T> query)
         {
-            //prevent command
-            if (query.GetType().Name.EndsWith("Command"))
-                return Result.Failure<T>();
-
             var result = await _mediator.Send(query);
             if (_notifications.HasAny())
                 return Result.Failure<T>(_notifications.GetListAndReset().Select(n => n.Value).ToList());
@@ -79,6 +76,7 @@ namespace TaskoMask.Application.Core.Services
             return Result.Success(result);
 
         }
+
 
 
 

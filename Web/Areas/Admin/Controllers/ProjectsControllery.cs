@@ -17,16 +17,14 @@ namespace TaskoMask.web.Area.Admin.Controllers
         #region Fields
 
         private readonly IProjectService _projectService;
-        protected readonly IMapper _mapper;
 
         #endregion
 
         #region Ctor
 
-        public ProjectsController(IProjectService projectService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService)
+        public ProjectsController(IProjectService projectService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
         {
             _projectService = projectService;
-            _mapper = mapper;
         }
 
         #endregion
@@ -43,10 +41,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         public async Task<IActionResult> Index(string id)
         {
             var projectDetailQueryResult = await _projectService.GetDetailAsync(id);
-            if (!projectDetailQueryResult.IsSuccess)
-                return RedirectToErrorPage(projectDetailQueryResult);
+            return ReturnDataToViewAsync(projectDetailQueryResult);
 
-            return View(projectDetailQueryResult.Value);
         }
 
 
@@ -90,12 +86,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(id));
-            if (!projectQueryResult.IsSuccess)
-                return RedirectToErrorPage(projectQueryResult);
-
-            var project = _mapper.Map<ProjectInputDto>(projectQueryResult.Value);
-            return View(project);
+            return await SendQueryAndReturnMappedDataToViewAsync<ProjectBasicInfoDto, ProjectInputDto>(new GetProjectByIdQuery(id));
         }
 
 

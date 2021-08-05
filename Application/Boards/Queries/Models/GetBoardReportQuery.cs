@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Boards.Queries.Models
 {
-   public class GetBoardReportQuery : IRequest<BoardReportDto>
+   public class GetBoardReportQuery : BaseQuery<BoardReportDto>
     {
         public GetBoardReportQuery(string boardId)
         {

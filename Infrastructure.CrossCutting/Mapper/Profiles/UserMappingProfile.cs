@@ -38,7 +38,11 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Domain Model To Dto
 
-            CreateMap<User, UserBasicInfoDto>().AfterMap<UserMappingAction>();
+            CreateMap<User, UserBasicInfoDto>()
+                   .ForMember(dest => dest.Id, opt =>
+                         opt.MapFrom(src => src.Id.ToString()))
+                .AfterMap<UserMappingAction>();
+
             CreateMap<User, UserInputDto>().AfterMap<UserMappingAction>();
 
 

@@ -10,16 +10,21 @@ using MediatR;
 using System.Collections.Generic;
 using TaskoMask.Web.Helpers;
 using TaskoMask.web.Area.Admin.Models;
+using TaskoMask.Application.Core.Queries;
+using System;
+using AutoMapper;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
     public class BaseController : Controller
     {
         private readonly IBaseApplicationService _baseApplicationService;
+        protected readonly IMapper _mapper;
 
-        public BaseController(IBaseApplicationService baseApplicationService)
+        public BaseController(IBaseApplicationService baseApplicationService, IMapper mapper)
         {
             _baseApplicationService = baseApplicationService;
+            _mapper = mapper;
         }
 
 
@@ -106,16 +111,28 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
 
         /// <summary>
-        /// use this when you just need get data and directly send it to view as view model
+        /// use when you just need get data and directly send it to view as view model
         /// </summary>
-        protected async Task<IActionResult> SendQueryAndReturnViewAsync<T>(IRequest<T> query)
+        protected async Task<IActionResult> SendQueryAndReturnDataToViewAsync<T>(BaseQuery<T> query)
         {
             var queryResult = await SendQueryAsync(query);
-            if (!queryResult.IsSuccess)
-                return RedirectToErrorPage(queryResult);
+            return ReturnDataToViewAsync(queryResult);
+        }
 
-            return View(queryResult.Value);
 
+
+      
+
+
+        /// <summary>
+        /// use when you need to map data beafor return it to view
+        /// </summary>
+        /// <typeparam name="T">type of data returned by query</typeparam>
+        /// <typeparam name="E">type of model to map from T</typeparam>
+        protected async Task<IActionResult> SendQueryAndReturnMappedDataToViewAsync<T, E>(BaseQuery<T> query)
+        {
+            var queryResult = await SendQueryAsync(query);
+            return ReturnMappedDataToViewAsync<T, E>(queryResult);
         }
 
 
@@ -124,14 +141,45 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// <summary>
         /// use this when you just need get data and pass it to caller to continue processing
         /// </summary>
-        protected async Task<Result<T>> SendQueryAsync<T>(IRequest<T> query)
+        protected async Task<Result<T>> SendQueryAsync<T>(BaseQuery<T> query)
         {
             return await _baseApplicationService.SendQueryAsync(query);
         }
 
 
-      
 
+        /// <summary>
+        /// return data to view if result is success
+        /// return redirect to error page if result is failed
+        /// </summary>
+        protected IActionResult ReturnDataToViewAsync<T>(Result<T> queryResult)
+        {
+            if (!queryResult.IsSuccess)
+                return RedirectToErrorPage(queryResult);
+
+            return View(queryResult.Value);
+        }
+
+
+
+
+        /// <summary>
+        /// return mapped data to view if result is success
+        /// return redirect to error page if result is failed
+        /// </summary>
+        protected IActionResult ReturnMappedDataToViewAsync<T,E>(Result<T> queryResult)
+        {
+            if (!queryResult.IsSuccess)
+                return RedirectToErrorPage(queryResult);
+
+            var model = _mapper.Map<E>(queryResult.Value);
+            return View(model);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected IActionResult RedirectToErrorPage<T>(Result<T> result)
         {
             var model = new ErrorViewModel

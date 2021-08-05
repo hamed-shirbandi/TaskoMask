@@ -17,16 +17,14 @@ namespace TaskoMask.web.Area.Admin.Controllers
         #region Fields
 
         private readonly IOrganizationService _organizationService;
-        protected readonly IMapper _mapper;
 
         #endregion
 
         #region Ctor
 
-        public OrganizationsController(IOrganizationService organizationService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService)
+        public OrganizationsController(IOrganizationService organizationService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
         {
             _organizationService = organizationService;
-            _mapper = mapper;
         }
 
         #endregion
@@ -43,10 +41,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         public async Task<IActionResult> Index(string id)
         {
             var organizationDetailQueryResult = await _organizationService.GetDetailAsync(id);
-            if (!organizationDetailQueryResult.IsSuccess)
-                return RedirectToErrorPage(organizationDetailQueryResult);
-
-            return View(organizationDetailQueryResult.Value);
+            return ReturnDataToViewAsync(organizationDetailQueryResult);
+      
         }
 
 
@@ -86,12 +82,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(id));
-            if (!organizationQueryResult.IsSuccess)
-                return RedirectToErrorPage(organizationQueryResult);
-
-            var organization = _mapper.Map<OrganizationInputDto>(organizationQueryResult.Value);
-            return View(organization);
+            return await SendQueryAndReturnMappedDataToViewAsync<OrganizationBasicInfoDto,OrganizationInputDto>(new GetOrganizationByIdQuery(id));
         }
 
 

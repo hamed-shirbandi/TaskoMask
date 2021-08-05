@@ -23,7 +23,6 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         IRequestHandler<GetUsersCountQuery, long>
     {
         private readonly UserManager<User> _userManager;
-        private readonly IMapper _mapper;
         public UsersQueryHandlers(IMapper mapper, UserManager<User> userManager, IMediator mediator) : base(mediator, mapper)
         {
             _userManager = userManager;
@@ -34,7 +33,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
             var user = await _userManager.FindByIdAsync(request.Id);
             if (user == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
-
+          
             return _mapper.Map<UserBasicInfoDto>(user);
         }
 

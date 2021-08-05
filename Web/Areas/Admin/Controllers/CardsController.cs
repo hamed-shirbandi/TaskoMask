@@ -17,16 +17,14 @@ namespace TaskoMask.web.Area.Admin.Controllers
         #region Fields
 
         private readonly ICardService _cardService;
-        protected readonly IMapper _mapper;
 
         #endregion
 
         #region Ctor
 
-        public CardsController(ICardService cardService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService)
+        public CardsController(ICardService cardService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
         {
             _cardService = cardService;
-            _mapper = mapper;
         }
 
         #endregion
@@ -43,10 +41,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         public async Task<IActionResult> Index(string id)
         {
             var cardDetailQueryResult = await _cardService.GetDetailAsync(id);
-            if (!cardDetailQueryResult.IsSuccess)
-                return RedirectToErrorPage(cardDetailQueryResult);
+            return ReturnDataToViewAsync(cardDetailQueryResult);
 
-            return View(cardDetailQueryResult.Value);
         }
 
 
@@ -90,12 +86,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(id));
-            if (!cardQueryResult.IsSuccess)
-                return RedirectToErrorPage(cardQueryResult);
-
-            var card = _mapper.Map<CardInputDto>(cardQueryResult.Value);
-            return View(card);
+            return await SendQueryAndReturnMappedDataToViewAsync<CardBasicInfoDto, CardInputDto>(new GetCardByIdQuery(id));
         }
 
 

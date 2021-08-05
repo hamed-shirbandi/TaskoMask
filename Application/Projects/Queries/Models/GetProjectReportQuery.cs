@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Projects.Queries.Models
 {
-   public class GetProjectReportQuery : IRequest<ProjectReportDto>
+   public class GetProjectReportQuery : BaseQuery<ProjectReportDto>
     {
         public GetProjectReportQuery(string projectId)
         {

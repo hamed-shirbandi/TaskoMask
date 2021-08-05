@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using TaskoMask.Application.Core.Dtos.Tasks;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Tasks.Queries.Models
 {
    
-    public class GetTaskByIdQuery : IRequest<TaskBasicInfoDto>
+    public class GetTaskByIdQuery : BaseQuery<TaskBasicInfoDto>
     {
         public GetTaskByIdQuery(string id)
         {

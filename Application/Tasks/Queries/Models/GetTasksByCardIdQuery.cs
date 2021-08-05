@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Tasks;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Tasks.Queries.Models
 {
-    public class GetTasksByCardIdQuery : IRequest<IEnumerable<TaskBasicInfoDto>>
+    public class GetTasksByCardIdQuery : BaseQuery<IEnumerable<TaskBasicInfoDto>>
     {
         public GetTasksByCardIdQuery(string cardId)
         {

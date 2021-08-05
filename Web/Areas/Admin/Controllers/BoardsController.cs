@@ -17,16 +17,14 @@ namespace TaskoMask.web.Area.Admin.Controllers
         #region Fields
 
         private readonly IBoardService _boardService;
-        protected readonly IMapper _mapper;
 
         #endregion
 
         #region Ctor
 
-        public BoardsController(IBoardService boardService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService)
+        public BoardsController(IBoardService boardService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
         {
             _boardService = boardService;
-            _mapper = mapper;
         }
 
         #endregion
@@ -43,10 +41,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         public async Task<IActionResult> Index(string id)
         {
             var boardDetailQueryResult = await _boardService.GetDetailAsync(id);
-            if (!boardDetailQueryResult.IsSuccess)
-                return RedirectToErrorPage(boardDetailQueryResult);
-
-            return View(boardDetailQueryResult.Value);
+            return ReturnDataToViewAsync(boardDetailQueryResult);
         }
 
 
@@ -90,12 +85,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(id));
-            if (!boardQueryResult.IsSuccess)
-                return RedirectToErrorPage(boardQueryResult);
-
-            var board = _mapper.Map<BoardInputDto>(boardQueryResult.Value);
-            return View(board);
+            return await SendQueryAndReturnMappedDataToViewAsync<BoardBasicInfoDto, BoardInputDto>(new GetBoardByIdQuery(id));
         }
 
 

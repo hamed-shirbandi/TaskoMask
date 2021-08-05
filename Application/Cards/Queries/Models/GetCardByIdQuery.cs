@@ -2,11 +2,12 @@
 using MediatR;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Cards.Queries.Models
 {
    
-    public class GetCardByIdQuery : IRequest<CardBasicInfoDto>
+    public class GetCardByIdQuery : BaseQuery<CardBasicInfoDto>
     {
         public GetCardByIdQuery(string id)
         {

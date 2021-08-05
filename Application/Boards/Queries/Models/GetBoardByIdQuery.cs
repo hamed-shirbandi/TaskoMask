@@ -2,11 +2,12 @@
 using MediatR;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Queries.Models.Boards
 {
    
-    public class GetBoardByIdQuery : IRequest<BoardBasicInfoDto>
+    public class GetBoardByIdQuery : BaseQuery<BoardBasicInfoDto>
     {
         public GetBoardByIdQuery(string id)
         {

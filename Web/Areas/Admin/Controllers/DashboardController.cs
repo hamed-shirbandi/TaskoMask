@@ -7,6 +7,10 @@ using TaskoMask.web.Area.Admin.Models;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Organizations.Commands.Models;
+using AutoMapper;
+using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Users.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Users;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -23,7 +27,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #region Ctor
 
-        public DashboardController(IOrganizationService organizationService, IBaseApplicationService baseApplicationService):base(baseApplicationService)
+        public DashboardController(IOrganizationService organizationService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
         {
             _organizationService = organizationService;
         }
@@ -40,19 +44,16 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            return await SendQueryAndReturnViewAsync(new CreateOrganizationCommand("1","",""));
-            
 
-            //var organizationsDetail = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
-            //if (!organizationsDetail.IsSuccess)
-            //    return RedirectToErrorPage(organizationsDetail);
+            var organizationsDetail = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
+            if (!organizationsDetail.IsSuccess)
+                return RedirectToErrorPage(organizationsDetail);
 
-
-            //var model = new DashboardIndexViewModel
-            //{
-            //    Organizations = organizationsDetail.Value,
-            //};
-            //return View(model);
+            var model = new DashboardIndexViewModel
+            {
+                Organizations = organizationsDetail.Value,
+            };
+            return View(model);
         }
 
 

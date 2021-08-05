@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Organizations.Queries.Models
 {
 
-    public class GetOrganizationReportQuery : IRequest<OrganizationReportDto>
+    public class GetOrganizationReportQuery : BaseQuery<OrganizationReportDto>
     {
         public GetOrganizationReportQuery(string organizationId)
         {

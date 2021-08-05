@@ -10,6 +10,7 @@ using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Boards.Commands.Handlers
 {
@@ -71,7 +72,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
 
             var board = await _boardRepository.GetByIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Board));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist,  DomainMetadata.Board);
 
             var exist = await _boardRepository.ExistByNameAsync(board.Id, request.Name);
             if (exist)

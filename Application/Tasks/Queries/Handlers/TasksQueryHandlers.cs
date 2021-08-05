@@ -11,6 +11,7 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Tasks.Queries.Models;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Tasks.Queries.Handlers
 {
@@ -29,7 +30,7 @@ namespace TaskoMask.Application.Tasks.Queries.Handlers
         {
             var task = await _taskRepository.GetByIdAsync(request.Id);
             if (task == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Domain.Entities.Task));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
             return _mapper.Map<TaskBasicInfoDto>(task);
         }

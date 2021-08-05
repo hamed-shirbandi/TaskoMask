@@ -12,7 +12,7 @@ namespace TaskoMask.Application.Core.Exceptions
         }
 
 
-        public ApplicationException(string message, Type objectType): base(string.Format(message, objectType.GetDisplayName()))
+        public ApplicationException(string message, string metadata): base(string.Format(message, metadata))
         {
         }
     }

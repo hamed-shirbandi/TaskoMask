@@ -16,10 +16,6 @@ namespace TaskoMask.Domain.Entities
             Name = name;
             Description = description;
             ProjectId = projectId;
-
-            if (string.IsNullOrEmpty(projectId))
-                throw new DomainException(string.Format(DomainMessages.Required,nameof(ProjectId)));
-
         }
 
         public string Name { get; private set; }

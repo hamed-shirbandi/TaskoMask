@@ -14,6 +14,7 @@ using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Users.Queries.Handlers
 {
@@ -32,7 +33,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         {
             var user = await _userManager.FindByIdAsync(request.Id);
             if (user == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(User));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
             return _mapper.Map<UserBasicInfoDto>(user);
         }

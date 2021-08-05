@@ -10,6 +10,7 @@ using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Cards.Commands.Handlers
 {
@@ -68,7 +69,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
 
             var card = await _cardRepository.GetByIdAsync(request.Id);
             if (card == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Card));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);
 
             var exist = await _cardRepository.ExistByNameAsync(card.Id, request.Name);
             if (exist)

@@ -8,6 +8,7 @@ using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 
@@ -28,7 +29,7 @@ namespace TaskoMask.Application.Cards.Queries.Handlers
         {
             var card = await _cardRepository.GetByIdAsync(request.Id);
             if (card == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Card));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);
 
             return _mapper.Map<CardBasicInfoDto>(card);
         }

@@ -11,10 +11,12 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Organizations.Commands.Validations;
+using TaskoMask.Application.Core.Extensions;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
-    public class OrganizationsCommandHandlers : BaseCommandHandler, 
+    public class OrganizationsCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateOrganizationCommand, CommandResult>,
         IRequestHandler<UpdateOrganizationCommand, CommandResult>
     {
@@ -42,7 +44,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
 
 
-            var exist = await _organizationRepository.ExistByNameAsync("",request.Name);
+            var exist = await _organizationRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
                 await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
@@ -53,7 +55,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
             await _organizationRepository.CreateAsync(organization);
 
-            return new CommandResult(ApplicationMessages.Create_Success,organization.Id);
+            return new CommandResult(ApplicationMessages.Create_Success, organization.Id);
 
         }
 
@@ -65,12 +67,12 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             if (!request.IsValid())
             {
                 await PublishValidationErrorAsync(request);
-                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
+                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
             if (organization == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Organization));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Organization);
 
 
 
@@ -78,14 +80,14 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             if (exist)
             {
                 await PublishValidationErrorAsync(new DomainNotification("", ApplicationMessages.Name_Already_Exist));
-                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
+                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
             organization.SetName(request.Name);
             organization.SetDescription(request.Description);
 
             await _organizationRepository.UpdateAsync(organization);
-            return new CommandResult(ApplicationMessages.Update_Success,organization.Id );
+            return new CommandResult(ApplicationMessages.Update_Success, organization.Id);
 
         }
 

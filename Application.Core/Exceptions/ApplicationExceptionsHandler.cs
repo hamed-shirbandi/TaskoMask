@@ -8,8 +8,7 @@ using TaskoMask.Domain.Core.Exceptions;
 namespace TaskoMask.Application.Core.Exceptions
 {
     public class ApplicationExceptionsHandler<TRequest, TResponse, TException>
-        : IRequestExceptionHandler<TRequest, TResponse, TException>
-        where TException : DomainException
+        : IRequestExceptionHandler<TRequest, TResponse, TException> where TException : DomainException
     {
         #region Fields
 
@@ -37,6 +36,18 @@ namespace TaskoMask.Application.Core.Exceptions
 
         public async Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
         {
+            var exceptionType = exception.GetType();
+
+            if (exceptionType == typeof(DomainException))
+            {
+                //log DomainException or ...
+            }
+
+            if (exceptionType == typeof(ApplicationException))
+            {
+                //log ApplicationException or ...
+            }
+
             state.SetHandled(default);
 
             await _mediator.Publish(new DomainNotification("", exception.Message), cancellationToken);

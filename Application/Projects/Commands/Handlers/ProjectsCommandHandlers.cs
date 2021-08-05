@@ -10,6 +10,7 @@ using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Projects.Commands.Handlers
 {
@@ -70,7 +71,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
 
             var project = await _projectRepository.GetByIdAsync(request.Id);
             if (project == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Project));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
 
             var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);

@@ -10,6 +10,7 @@ using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Entities;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Projects.Queries.Handlers
 {
@@ -29,7 +30,7 @@ namespace TaskoMask.Application.Projects.Queries.Handlers
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
             if (project == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Project));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
             return _mapper.Map<ProjectBasicInfoDto>(project);
         }

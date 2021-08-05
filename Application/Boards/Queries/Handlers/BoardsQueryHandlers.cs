@@ -9,6 +9,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Queries.Models.Boards;
+using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 
@@ -29,7 +30,7 @@ namespace TaskoMask.Application.Boards.Queries.Handlers
         {
             var board = await _boardRepository.GetByIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Board));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
             return _mapper.Map<BoardBasicInfoDto>(board);
         }

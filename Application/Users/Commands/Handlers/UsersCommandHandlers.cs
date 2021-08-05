@@ -11,6 +11,7 @@ using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Users.Commands.Handlers
 {
@@ -77,7 +78,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
 
             var user = await _userManager.FindByIdAsync(request.Id);
             if (user == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(User));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
             user.SetDisplayName(request.DisplayName);
             user.SetEmail(request.Email);

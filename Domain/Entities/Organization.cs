@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
 
@@ -15,6 +17,11 @@ namespace TaskoMask.Domain.Entities
             Name = name;
             Description = description;
             UserId = userId;
+
+            //example of using DomainException
+            if (string.IsNullOrEmpty(UserId))
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(userId)));
+
         }
 
         public string  Name { get; private set; }

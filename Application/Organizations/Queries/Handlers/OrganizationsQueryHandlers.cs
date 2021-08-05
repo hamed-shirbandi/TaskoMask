@@ -14,6 +14,7 @@ using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Organizations.Queries.Handlers
 {
@@ -32,7 +33,7 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
         {
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
             if (organization == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, typeof(Organization));
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Organization);
 
             return _mapper.Map<OrganizationBasicInfoDto>(organization);
         }

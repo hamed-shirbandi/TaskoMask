@@ -50,9 +50,6 @@ namespace TaskoMask.web.Area.Admin.Controllers
                 Organizations = organizationsDetail.Value,
             };
             return View(model);
-
-
-            return View();
         }
 
 

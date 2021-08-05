@@ -28,14 +28,12 @@ namespace TaskoMask.Domain.Entities
         public string  Description { get; private set; }
         public string UserId { get; private set; }
 
-        public void SetName(string name)
-        {
-            Name = name;
-        }
-
-        public void SetDescription(string description)
+      
+        public void Update(string name, string description)
         {
             Description = description;
+            Name = name;
+
         }
     }
 }

@@ -18,21 +18,18 @@ namespace TaskoMask.Domain.Entities
             UserName = userName;
         }
 
+
+        
+        public string AvatarUrl { get; private set; }
         public string DisplayName { get; private set; }
 
-        public void SetDisplayName(string displayName)
+
+        public void Update(string displayName, string email, string userName)
         {
             DisplayName = displayName;
-        }
-
-        public void SetEmail(string email)
-        {
             Email = email;
-        }
-
-        public void SetUserName(string userName)
-        {
             UserName = userName;
+
         }
     }
 }

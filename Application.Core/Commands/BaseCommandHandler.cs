@@ -12,6 +12,7 @@ namespace TaskoMask.Application.Core.Commands
 
 
         private readonly IMediator _mediator;
+        protected readonly DomainNotificationHandler _notifications;
 
 
         #endregion
@@ -20,9 +21,11 @@ namespace TaskoMask.Application.Core.Commands
         #region constructors
 
 
-        protected BaseCommandHandler(IMediator mediator)
+        protected BaseCommandHandler(IMediator mediator, INotificationHandler<DomainNotification> notifications)
         {
             _mediator = mediator;
+            _notifications = (DomainNotificationHandler)notifications;
+
         }
 
 
@@ -47,6 +50,7 @@ namespace TaskoMask.Application.Core.Commands
         {
             await _mediator.Publish(notification);
         }
+
 
 
 

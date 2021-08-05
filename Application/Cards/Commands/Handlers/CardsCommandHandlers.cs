@@ -19,12 +19,10 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
          IRequestHandler<UpdateCardCommand, CommandResult>
     {
         private readonly ICardRepository _cardRepository;
-        private readonly IMapper _mapper;
 
-        public CardsCommandHandlers(ICardRepository cardRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public CardsCommandHandlers(ICardRepository cardRepository, IMediator mediator, INotificationHandler<DomainNotification> notifications) : base(mediator, notifications)
         {
             _cardRepository = cardRepository;
-            _mapper = mapper;
         }
 
 
@@ -48,7 +46,9 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var card = _mapper.Map<Card>(request);
+            var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId,type:request.Type);
+            if (_notifications.HasAny())
+                return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _cardRepository.CreateAsync(card);
             return new CommandResult(ApplicationMessages.Create_Success,card.Id);
@@ -78,9 +78,10 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 
-            card.SetName(request.Name);
-            card.SetDescription(request.Description);
-            card.SetType(request.Type);
+            card.Update(request.Name, request.Description, request.Type);
+            if (_notifications.HasAny())
+                return new CommandResult(ApplicationMessages.Update_Failed);
+
 
             await _cardRepository.UpdateAsync(card);
             return new CommandResult(ApplicationMessages.Update_Success,card.Id);

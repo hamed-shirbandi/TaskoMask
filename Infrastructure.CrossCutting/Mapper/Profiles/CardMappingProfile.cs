@@ -9,39 +9,9 @@ namespace TaskoMask.Application.Mapper.Profiles
     {
         public CardMappingProfile()
         {
-            #region Dto To Command
-
-            CreateMap<CardInputDto, CreateCardCommand>()
-              .ConstructUsing(c => new CreateCardCommand(c.Name, c.Description, c.BoardId,c.Type));
-
-            CreateMap<CardInputDto, UpdateCardCommand>()
-              .ConstructUsing(c => new UpdateCardCommand(c.Id, c.Name, c.Description, c.Type));
-
-
-            #endregion
-
-            #region Command To Domain Model
-
-            CreateMap<CreateCardCommand, Card>()
-             .ConstructUsing(c => new Card(c.Name.Trim(), c.Description, c.BoardId, c.Type));
-
-            #endregion
-
-            #region Domain Model To Dto
-
             CreateMap<Card, CardBasicInfoDto>();
             CreateMap<Card, CardInputDto>();
-
-
-            #endregion
-
-            #region Dto To Dto
-
             CreateMap<CardBasicInfoDto, CardInputDto>();
-
-
-            #endregion
-
         }
     }
 }

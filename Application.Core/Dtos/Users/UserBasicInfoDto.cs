@@ -17,6 +17,8 @@ namespace TaskoMask.Application.Core.Dtos.Users
     {
         public string Id { get; set; }
 
+        public string AvatarUrl { get; set; }
+
 
         [Display(Name = nameof(ApplicationMetadata.DisplayName), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]

@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using TaskoMask.Application.Mapper.Profiles;
 
 namespace TaskoMask.Application.Mapper
@@ -13,11 +11,8 @@ namespace TaskoMask.Application.Mapper
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
+            //this will find all profiles in this layer (Infrastructure.CrossCutting)
             services.AddAutoMapper(typeof(OrganizationMappingProfile));
-            services.AddAutoMapper(typeof(ProjectMappingProfile));
-            services.AddAutoMapper(typeof(UserMappingProfile));
-            services.AddAutoMapper(typeof(CardMappingProfile));
-            
         }
     }
 }

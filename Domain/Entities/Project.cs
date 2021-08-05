@@ -22,14 +22,11 @@ namespace TaskoMask.Domain.Entities
         public string OrganizationId { get; set; }
 
 
-        public void SetName(string name)
+        public void Update(string name, string description)
         {
+            Description = description;
             Name = name;
         }
 
-        public void SetDescription(string description)
-        {
-            Description = description;
-        }
     }
 }

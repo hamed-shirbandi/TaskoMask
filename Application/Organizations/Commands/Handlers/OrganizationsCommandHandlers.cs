@@ -18,12 +18,10 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         IRequestHandler<UpdateOrganizationCommand, CommandResult>
     {
         private readonly IOrganizationRepository _organizationRepository;
-        private readonly IMapper _mapper;
 
-        public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IMediator mediator, INotificationHandler<DomainNotification> notifications) : base(mediator, notifications)
         {
             _organizationRepository = organizationRepository;
-            _mapper = mapper;
         }
 
 
@@ -48,7 +46,9 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var organization = _mapper.Map<Organization>(request);
+            var organization = new Organization(name: request.Name, description: request.Description, userId: request.UserId);
+            if (_notifications.HasAny())
+                return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _organizationRepository.CreateAsync(organization);
 
@@ -80,8 +80,11 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            organization.SetName(request.Name);
-            organization.SetDescription(request.Description);
+            organization.Update(request.Name, request.Description);
+
+            if (_notifications.HasAny())
+                return new CommandResult(ApplicationMessages.Update_Failed);
+
 
             await _organizationRepository.UpdateAsync(organization);
             return new CommandResult(ApplicationMessages.Update_Success, organization.Id);

@@ -19,12 +19,9 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
          IRequestHandler<UpdateProjectCommand, CommandResult>
     {
         private readonly IProjectRepository _projectRepository;
-        private readonly IMapper _mapper;
-
-        public ProjectsCommandHandlers(IProjectRepository projectRepository, IMediator mediator, IMapper mapper) : base(mediator)
+        public ProjectsCommandHandlers(IProjectRepository projectRepository, IMediator mediator, INotificationHandler<DomainNotification> notifications) : base(mediator, notifications)
         {
             _projectRepository = projectRepository;
-            _mapper = mapper;
         }
 
 
@@ -49,7 +46,9 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var project = _mapper.Map<Project>(request);
+            var project = new Project(name: request.Name, description: request.Description, organizationId: request.OrganizationId);
+            if (_notifications.HasAny())
+                return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _projectRepository.CreateAsync(project);
             return new CommandResult(ApplicationMessages.Create_Success,project.Id);
@@ -81,8 +80,11 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 
-            project.SetName(request.Name);
-            project.SetDescription(request.Description);
+            project.Update(request.Name, request.Description);
+        
+            if (_notifications.HasAny())
+                return new CommandResult(ApplicationMessages.Update_Failed);
+
 
             await _projectRepository.UpdateAsync(project);
             return new CommandResult(ApplicationMessages.Update_Success,project.Id);

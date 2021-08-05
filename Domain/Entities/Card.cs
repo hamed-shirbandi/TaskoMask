@@ -25,19 +25,11 @@ namespace TaskoMask.Domain.Entities
         public string BoardId { get; set; }
 
 
-        public void SetName(string name)
+        public void Update(string name, string description, CardType type)
         {
             Name = name;
-        }
-
-        public void SetDescription(string description)
-        {
-            Description = description;
-        }
-
-        public void SetType(CardType type)
-        {
             Type = type;
+            Description = description;
         }
     }
 }

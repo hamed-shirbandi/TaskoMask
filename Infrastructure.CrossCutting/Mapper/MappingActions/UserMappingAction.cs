@@ -16,13 +16,13 @@ namespace TaskoMask.Application.Mapper.MappingActions
 
         public void Process(User source, UserInputDto destination, ResolutionContext context)
         {
-          //  destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
+            destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
         }
 
 
         public void Process(User source, UserBasicInfoDto destination, ResolutionContext context)
         {
-            //  destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
+              destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
         }
 
     }

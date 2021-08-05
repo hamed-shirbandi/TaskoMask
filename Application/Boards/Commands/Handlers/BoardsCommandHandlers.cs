@@ -19,12 +19,10 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         IRequestHandler<UpdateBoardCommand, CommandResult>
     {
         private readonly IBoardRepository _boardRepository;
-        private readonly IMapper _mapper;
 
-        public BoardsCommandHandlers(IBoardRepository boardRepository, IMapper mapper, IMediator mediator) : base(mediator)
+        public BoardsCommandHandlers(IBoardRepository boardRepository,IMediator mediator, INotificationHandler<DomainNotification> notifications) : base(mediator, notifications)
         {
             _boardRepository = boardRepository;
-            _mapper = mapper;
         }
 
 
@@ -51,8 +49,9 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var board = _mapper.Map<Board>(request);
-            //TODO check domain notification
+            var board = new Board(name:request.Name,description:request.Description,projectId:request.ProjectId);
+            if (_notifications.HasAny())
+                return new CommandResult(ApplicationMessages.Create_Failed);
 
 
             await _boardRepository.CreateAsync(board);
@@ -81,8 +80,11 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            board.SetName(request.Name);
-            board.SetDescription(request.Description);
+            board.Update(request.Name, request.Description);
+
+            if (_notifications.HasAny())
+                return new CommandResult(ApplicationMessages.Update_Failed);
+
 
             await _boardRepository.UpdateAsync(board);
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);

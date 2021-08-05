@@ -9,6 +9,7 @@ using TaskoMask.Application.Core.Services;
 using MediatR;
 using System.Collections.Generic;
 using TaskoMask.Web.Helpers;
+using TaskoMask.web.Area.Admin.Models;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -109,7 +110,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// </summary>
         protected async Task<IActionResult> SendQueryAndReturnViewAsync<T>(IRequest<T> query)
         {
-            var queryResult = await _baseApplicationService.SendQueryAsync(query);
+            var queryResult = await SendQueryAsync(query);
             if (!queryResult.IsSuccess)
                 return RedirectToErrorPage(queryResult);
 

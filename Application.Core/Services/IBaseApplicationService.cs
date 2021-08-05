@@ -12,6 +12,6 @@ namespace TaskoMask.Application.Core.Services
     public interface IBaseApplicationService
     {
         Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand;
-          Task<Result<T>> SendQueryAsync<T>(IRequest<T> query); 
+        Task<Result<T>> SendQueryAsync<T>(IRequest<T> query);
     }
 }

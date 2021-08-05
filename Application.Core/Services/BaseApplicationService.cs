@@ -55,9 +55,9 @@ namespace TaskoMask.Application.Core.Services
                 return Result.Failure<CommandResult>(errors);
 
             if (_notifications.HasAny())
-                return Result.Failure<CommandResult>(errors,result.Message);
-           
-            return Result.Success(result,result.Message);
+                return Result.Failure<CommandResult>(errors, result.Message);
+
+            return Result.Success(result, result.Message);
         }
 
 
@@ -68,13 +68,14 @@ namespace TaskoMask.Application.Core.Services
         /// </summary>
         public async Task<Result<T>> SendQueryAsync<T>(IRequest<T> query)
         {
-            if (query.GetType() == typeof(BaseCommand))
+            //prevent command
+            if (query.GetType().Name.EndsWith("Command"))
                 return Result.Failure<T>();
 
-            var result =await _mediator.Send(query);
+            var result = await _mediator.Send(query);
             if (_notifications.HasAny())
                 return Result.Failure<T>(_notifications.GetListAndReset().Select(n => n.Value).ToList());
-          
+
             return Result.Success(result);
 
         }

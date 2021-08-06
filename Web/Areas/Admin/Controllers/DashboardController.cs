@@ -44,9 +44,6 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            var cmd = new CreateOrganizationCommand(userId: GetCurrentUserId(), name: "", description: "");
-            var res = await SendCommandAsync(cmd);
-
             var organizationsDetail = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
             if (!organizationsDetail.IsSuccess)
                 return RedirectToErrorPage(organizationsDetail);

@@ -44,13 +44,13 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            var organizationsDetail = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
-            if (!organizationsDetail.IsSuccess)
-                return RedirectToErrorPage(organizationsDetail);
+            var organizationsDetailQueryResult = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
+            if (!organizationsDetailQueryResult.IsSuccess)
+                return RedirectToErrorPage(organizationsDetailQueryResult);
 
             var model = new DashboardIndexViewModel
             {
-                Organizations = organizationsDetail.Value,
+                Organizations = organizationsDetailQueryResult.Value,
             };
             return View(model);
         }

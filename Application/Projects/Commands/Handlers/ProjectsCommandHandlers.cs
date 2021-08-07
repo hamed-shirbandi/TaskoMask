@@ -42,7 +42,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
             var exist = await _projectRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
-                await PublishValidationErrorAsync(new DomainNotification(request.GetType().Name, ApplicationMessages.Name_Already_Exist));
+                await PublishValidationErrorAsync(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -76,7 +76,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
             var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
             if (exist)
             {
-                await PublishValidationErrorAsync(new DomainNotification(request.GetType().Name, ApplicationMessages.Name_Already_Exist));
+                await PublishValidationErrorAsync(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 

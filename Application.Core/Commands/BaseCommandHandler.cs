@@ -1,6 +1,4 @@
-﻿using TaskoMask.Application.Core.Helpers;
-using MediatR;
-using System.Threading;
+﻿using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Notifications;
 
@@ -46,9 +44,9 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
-        protected async Task PublishValidationErrorAsync(DomainNotification notification)
+        protected async Task PublishValidationErrorAsync(BaseCommand request,string error)
         {
-            await _mediator.Publish(notification);
+            await _mediator.Publish(new DomainNotification(request.GetType().Name, error));
         }
 
 

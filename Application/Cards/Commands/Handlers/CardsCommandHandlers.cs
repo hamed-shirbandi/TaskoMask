@@ -42,7 +42,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             var exist = await _cardRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
-                await PublishValidationErrorAsync(new DomainNotification(request.GetType().Name, ApplicationMessages.Name_Already_Exist));
+                await PublishValidationErrorAsync(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -74,7 +74,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             var exist = await _cardRepository.ExistByNameAsync(card.Id, request.Name);
             if (exist)
             {
-                await PublishValidationErrorAsync(new DomainNotification(request.GetType().Name, ApplicationMessages.Name_Already_Exist));
+                await PublishValidationErrorAsync(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 

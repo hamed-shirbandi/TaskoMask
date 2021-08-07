@@ -28,7 +28,7 @@ namespace TaskoMask.Application.Projects.Services
 
         #region Ctor
 
-        public ProjectService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
+        public ProjectService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
         { }
 
 

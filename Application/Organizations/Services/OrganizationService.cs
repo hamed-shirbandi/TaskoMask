@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Organizations.Services
 
         #region Ctor
 
-        public OrganizationService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
+        public OrganizationService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
         { }
 
         #endregion

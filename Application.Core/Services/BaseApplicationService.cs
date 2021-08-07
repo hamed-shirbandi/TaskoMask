@@ -18,7 +18,7 @@ namespace TaskoMask.Application.Core.Services
 
         private readonly IMediator _mediator;
         protected readonly IMapper _mapper;
-        protected readonly DomainNotificationHandler _notifications;
+        protected readonly IDomainNotificationHandler _notifications;
 
 
         #endregion
@@ -27,11 +27,11 @@ namespace TaskoMask.Application.Core.Services
         #region Ctor
 
 
-        public BaseApplicationService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications)
+        public BaseApplicationService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications)
         {
             _mediator = mediator;
             _mapper = mapper;
-            _notifications = (DomainNotificationHandler)notifications;
+            _notifications = notifications;
 
         }
 
@@ -49,13 +49,15 @@ namespace TaskoMask.Application.Core.Services
         public async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
             var result = await _mediator.Send(cmd);
-            var errors = _notifications.GetListAndReset().Select(n => n.Value).ToList();
+
+            //get and reset notifications for each command
+            var errors = _notifications.GetErrors();
 
             //when throw application or domain Exception
             if (result == null)
                 return Result.Failure<CommandResult>(errors);
 
-            if (_notifications.HasAny())
+            if (errors.Count>0)
                 return Result.Failure<CommandResult>(errors, result.Message);
 
             return Result.Success(result, result.Message);

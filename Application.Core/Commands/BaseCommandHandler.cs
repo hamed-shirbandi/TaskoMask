@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Core.Commands
 
 
         private readonly IMediator _mediator;
-        protected readonly DomainNotificationHandler _notifications;
+        protected readonly IDomainNotificationHandler _notifications;
 
 
         #endregion
@@ -19,10 +19,10 @@ namespace TaskoMask.Application.Core.Commands
         #region constructors
 
 
-        protected BaseCommandHandler(IMediator mediator, INotificationHandler<DomainNotification> notifications)
+        protected BaseCommandHandler(IMediator mediator, IDomainNotificationHandler notifications)
         {
             _mediator = mediator;
-            _notifications = (DomainNotificationHandler)notifications;
+            _notifications = notifications;
 
         }
 
@@ -36,17 +36,17 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
-        protected async Task PublishValidationErrorAsync(BaseCommand request)
+        protected void PublishValidationError(BaseCommand request)
         {
             foreach (var error in request.ValidationResult.Errors)
-                await _mediator.Publish(new DomainNotification(request.GetType().Name, error.ErrorMessage));
+                _notifications.Add(request.GetType().Name, error.ErrorMessage);
         }
 
 
 
-        protected async Task PublishValidationErrorAsync(BaseCommand request,string error)
+        protected void PublishValidationError(BaseCommand request, string error)
         {
-            await _mediator.Publish(new DomainNotification(request.GetType().Name, error));
+            _notifications.Add(request.GetType().Name, error);
         }
 
 

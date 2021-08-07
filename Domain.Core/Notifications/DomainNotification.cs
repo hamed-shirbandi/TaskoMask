@@ -1,9 +1,8 @@
 ﻿using System;
-using TaskoMask.Domain.Core.Events;
 
 namespace TaskoMask.Domain.Core.Notifications
 {
-    public class DomainNotification : Event
+    public class DomainNotification
     {
         public Guid Id { get; private set; }
         

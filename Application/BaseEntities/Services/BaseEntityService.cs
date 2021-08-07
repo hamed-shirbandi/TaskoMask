@@ -21,7 +21,7 @@ namespace TaskoMask.Application.BaseEntities.Services
         #region Ctor
 
 
-        public BaseEntityService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
+        public BaseEntityService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
         {
         }
 

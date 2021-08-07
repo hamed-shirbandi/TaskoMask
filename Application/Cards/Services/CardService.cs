@@ -32,7 +32,7 @@ namespace TaskoMask.Application.Cards.Services
 
         #region Ctor
 
-        public CardService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
+        public CardService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
         { }
 
         #endregion

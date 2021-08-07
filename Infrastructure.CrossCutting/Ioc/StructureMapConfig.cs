@@ -36,7 +36,6 @@ namespace Infrastructure.CrossCutting.Ioc
             {
                 config.For<IMainDbContext>().Use<MongoDbContext>();
                 config.For<IEventStore>().Use<RedisEventStore>();
-                services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
                 services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
 
                 #region Generic Query Handlers
@@ -60,11 +59,14 @@ namespace Infrastructure.CrossCutting.Ioc
                     //scan application dll
                     s.AssemblyContainingType<IProjectService>();
                     //scan application.Core dll
-                    s.AssemblyContainingType<BaseApplicationService>();
+                    s.AssemblyContainingType<IBaseApplicationService>();
                     //scan Domain dll
                     s.AssemblyContainingType<IProjectRepository>();
+                    //scan Domain.Core dll
+                    s.AssemblyContainingType<IDomainNotificationHandler>();
                     //Scan Infrastructre.Data dll
-                    s.AssemblyContainingType<ProjectRepository>();
+                    s.AssemblyContainingType<IMainDbContext>();
+                    
                     s.WithDefaultConventions();
                 });
 

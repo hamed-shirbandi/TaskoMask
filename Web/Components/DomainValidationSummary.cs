@@ -10,18 +10,16 @@ namespace TaskoMask.web.Components
 {
     public class DomainValidationSummary : ViewComponent
     {
-        private readonly DomainNotificationHandler _notifications;
-        public DomainValidationSummary(INotificationHandler<DomainNotification> notifications)
+        private readonly IDomainNotificationHandler _notifications;
+        public DomainValidationSummary(IDomainNotificationHandler notifications)
         {
-            _notifications = (DomainNotificationHandler)notifications;
+            _notifications = notifications;
         }
 
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var notificacoes = _notifications.GetList().ToList();
-            notificacoes.ForEach(c => ViewData.ModelState.AddModelError(string.Empty, c.Value));
-
+            _notifications.GetErrors().ForEach(error => ViewData.ModelState.AddModelError(string.Empty, error));
             return View();
         }
     }

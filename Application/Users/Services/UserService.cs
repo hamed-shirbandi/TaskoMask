@@ -26,7 +26,7 @@ namespace TaskoMask.Application.Users.Services
 
         #region Ctor
 
-        public UserService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
+        public UserService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
         { }
 
 

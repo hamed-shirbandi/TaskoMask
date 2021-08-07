@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
-using TaskoMask.Domain.Core.Notifications;
+
 
 namespace TaskoMask.Domain.Core.Notifications
 {
-    public class DomainNotificationHandler : INotificationHandler<DomainNotification>
+    public class DomainNotificationHandler : IDomainNotificationHandler
     {
         private List<DomainNotification> _notifications;
 
@@ -16,19 +13,24 @@ namespace TaskoMask.Domain.Core.Notifications
             _notifications = new List<DomainNotification>();
         }
 
-        public Task Handle(DomainNotification message, CancellationToken cancellationToken)
+        public void Add(string key, string value)
         {
-            _notifications.Add(message);
-
-            return Task.CompletedTask;
+            var notification = new DomainNotification(key,value);
+            _notifications.Add(notification);
         }
 
-        public IEnumerable<DomainNotification> GetList()
+        public List<string> GetErrors()
+        {
+            return _notifications.Select(n=>n.Value).ToList();
+        }
+
+
+        public List<DomainNotification> GetList()
         {
             return _notifications;
         }
 
-        public IEnumerable<DomainNotification> GetListAndReset()
+        public List<DomainNotification> GetListAndReset()
         {
             var notifications=  _notifications;
             Reset();
@@ -47,9 +49,6 @@ namespace TaskoMask.Domain.Core.Notifications
             _notifications = new List<DomainNotification>();
         }
 
-        public void Dispose()
-        {
-            _notifications = new List<DomainNotification>();
-        }
+        
     }
 }

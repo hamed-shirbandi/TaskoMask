@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
     {
         private readonly IBoardRepository _boardRepository;
 
-        public BoardsCommandHandlers(IBoardRepository boardRepository,IMediator mediator, INotificationHandler<DomainNotification> notifications) : base(mediator, notifications)
+        public BoardsCommandHandlers(IBoardRepository boardRepository,IMediator mediator, IDomainNotificationHandler notifications) : base(mediator, notifications)
         {
             _boardRepository = boardRepository;
         }
@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         {
             if (!request.IsValid())
             {
-                await PublishValidationErrorAsync(request);
+                PublishValidationError(request);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -45,7 +45,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
             var exist = await _boardRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
-                await PublishValidationErrorAsync(request, ApplicationMessages.Name_Already_Exist);
+                PublishValidationError(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -64,7 +64,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         {
             if (!request.IsValid())
             {
-                await PublishValidationErrorAsync(request);
+                PublishValidationError(request);
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
@@ -76,7 +76,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
             var exist = await _boardRepository.ExistByNameAsync(board.Id, request.Name);
             if (exist)
             {
-                await PublishValidationErrorAsync(request, ApplicationMessages.Name_Already_Exist);
+                PublishValidationError(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 

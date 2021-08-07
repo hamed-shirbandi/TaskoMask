@@ -52,7 +52,7 @@ namespace TaskoMask.Web.Controllers
             if (result.IsSuccess)
                 ViewBag.SuccessMessage = result.Value.Message;
             else
-                ViewBag.ErrorMessage = string.Join("<br/>", result.Errors);
+                ViewBag.ErrorMessage = result.Value.Message;
         }
 
     }

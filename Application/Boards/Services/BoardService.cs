@@ -31,7 +31,7 @@ namespace TaskoMask.Application.Boards.Services
 
         #region Ctor
 
-        public BoardService(IMediator mediator, IMapper mapper, INotificationHandler<DomainNotification> notifications) : base(mediator, mapper, notifications)
+        public BoardService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
         { }
 
         #endregion

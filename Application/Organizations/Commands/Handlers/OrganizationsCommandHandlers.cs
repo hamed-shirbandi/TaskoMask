@@ -19,7 +19,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
     {
         private readonly IOrganizationRepository _organizationRepository;
 
-        public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IMediator mediator, INotificationHandler<DomainNotification> notifications) : base(mediator, notifications)
+        public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IMediator mediator, IDomainNotificationHandler notifications ) : base(mediator, notifications)
         {
             _organizationRepository = organizationRepository;
         }
@@ -27,9 +27,10 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
         public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
+           
             if (!request.IsValid())
             {
-                await PublishValidationErrorAsync(request);
+                PublishValidationError(request);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -42,7 +43,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             var exist = await _organizationRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
-                await PublishValidationErrorAsync(request, ApplicationMessages.Name_Already_Exist);
+                PublishValidationError(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -63,7 +64,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         {
             if (!request.IsValid())
             {
-                await PublishValidationErrorAsync(request);
+                PublishValidationError(request);
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
@@ -76,7 +77,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             var exist = await _organizationRepository.ExistByNameAsync(organization.Id, request.Name);
             if (exist)
             {
-                await PublishValidationErrorAsync(request, ApplicationMessages.Name_Already_Exist);
+                PublishValidationError(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 

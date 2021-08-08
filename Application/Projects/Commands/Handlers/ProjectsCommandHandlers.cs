@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
-using MediatR;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Projects.Commands.Models;
@@ -11,7 +9,7 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Domain.Core.Commands;
+
 
 namespace TaskoMask.Application.Projects.Commands.Handlers
 {

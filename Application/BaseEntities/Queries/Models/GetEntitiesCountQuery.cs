@@ -1,5 +1,4 @@
-﻿using MediatR;
-using TaskoMask.Application.Core.Queries;using TaskoMask.Domain.Core.Queries;
+﻿using TaskoMask.Application.Core.Queries;
 using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.BaseEntities.Queries.Models

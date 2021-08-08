@@ -2,7 +2,7 @@
 using MediatR;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Dtos.Projects;
-using TaskoMask.Domain.Core.Queries;
+using TaskoMask.Application.Core.Queries;
 
 
 namespace TaskoMask.Application.Projects.Queries.Models

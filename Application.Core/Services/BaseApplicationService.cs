@@ -1,5 +1,4 @@
 ﻿using TaskoMask.Application.Core.Commands;
-using MediatR;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,8 +7,8 @@ using AutoMapper;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Domain.Core.Commands;
-using TaskoMask.Domain.Core.Queries;
+using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Core.Services

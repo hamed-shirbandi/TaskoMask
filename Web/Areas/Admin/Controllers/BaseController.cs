@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 using TaskoMask.Web.Controllers;
 using TaskoMask.web.Models;
 using TaskoMask.Application.Core.Services;
-using MediatR;
 using System.Collections.Generic;
 using TaskoMask.Web.Helpers;
 using TaskoMask.web.Area.Admin.Models;
 using TaskoMask.Application.Core.Queries;
 using System;
 using AutoMapper;
-using TaskoMask.Domain.Core.Commands;
-using TaskoMask.Domain.Core.Queries;
+using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {

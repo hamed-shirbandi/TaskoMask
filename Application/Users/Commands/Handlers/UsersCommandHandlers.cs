@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,11 +6,9 @@ using TaskoMask.Application.Users.Commands.Models;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
-using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Domain.Core.Commands;
 using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Users.Commands.Handlers

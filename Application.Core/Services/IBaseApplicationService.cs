@@ -1,14 +1,7 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Domain.Core.Commands;
-using TaskoMask.Domain.Core.Queries;
 
 namespace TaskoMask.Application.Core.Services
 {

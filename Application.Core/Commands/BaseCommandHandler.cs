@@ -4,7 +4,7 @@ using FluentValidation.Results;
 using System;
 using System.Linq;
 using TaskoMask.Application.Core.Extensions;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Commands

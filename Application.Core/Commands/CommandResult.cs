@@ -1,4 +1,4 @@
-﻿namespace TaskoMask.Domain.Core.Commands
+﻿namespace TaskoMask.Application.Core.Commands
 {
     public class CommandResult
     {

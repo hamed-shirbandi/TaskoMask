@@ -2,7 +2,7 @@
 using TaskoMask.Application.Core.Commands;
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
-using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Commands;
 
 namespace TaskoMask.Application.Users.Commands.Models
 {

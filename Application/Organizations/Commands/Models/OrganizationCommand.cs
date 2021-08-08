@@ -1,10 +1,8 @@
 ﻿using TaskoMask.Application.Core.Helpers;
 using FluentValidation.Results;
-using MediatR;
 using TaskoMask.Application.Core.Commands;
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
-using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Organizations.Commands.Models
 {

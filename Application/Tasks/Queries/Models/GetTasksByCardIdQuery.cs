@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Tasks;
-using TaskoMask.Domain.Core.Queries;
+using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Tasks.Queries.Models
 {

@@ -28,30 +28,23 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
 
         public async Task<CommandResult> Handle(CreateCardCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid())
-            {
-                 PublishValidationError(request);
+            if (!IsValid(request))
                 return new CommandResult(ApplicationMessages.Create_Failed);
-            }
 
-
-            var existBoardId = true;
-            if (!existBoardId)
-                throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey, nameof(request.BoardId)));
 
             var exist = await _cardRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
-                PublishValidationError(request, ApplicationMessages.Name_Already_Exist);
+                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId,type:request.Type);
+            var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId, type: request.Type);
             if (_notifications.HasAny())
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _cardRepository.CreateAsync(card);
-            return new CommandResult(ApplicationMessages.Create_Success,card.Id);
+            return new CommandResult(ApplicationMessages.Create_Success, card.Id);
 
         }
 
@@ -59,11 +52,8 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
 
         public async Task<CommandResult> Handle(UpdateCardCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid())
-            {
-                PublishValidationError(request);
-                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
-            }
+            if (!IsValid(request))
+                return new CommandResult(ApplicationMessages.Update_Failed);
 
 
 
@@ -74,8 +64,8 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             var exist = await _cardRepository.ExistByNameAsync(card.Id, request.Name);
             if (exist)
             {
-                PublishValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
+                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
+                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
             card.Update(request.Name, request.Description, request.Type);
@@ -84,7 +74,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
 
 
             await _cardRepository.UpdateAsync(card);
-            return new CommandResult(ApplicationMessages.Update_Success,card.Id);
+            return new CommandResult(ApplicationMessages.Update_Success, card.Id);
         }
 
     }

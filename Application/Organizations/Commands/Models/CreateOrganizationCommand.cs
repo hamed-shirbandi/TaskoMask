@@ -17,13 +17,5 @@ namespace TaskoMask.Application.Organizations.Commands.Models
 
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string UserId { get; private set; }
-
-        
-        public override bool IsValid()
-        {
-            ValidationResult = new CreateOrganizationCommandValidation().Validate(this);
-            return base.IsValid();
-        }
- 
     }
 }

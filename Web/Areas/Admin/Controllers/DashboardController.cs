@@ -44,8 +44,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            //var cmd = new CreateOrganizationCommand(userId: GetCurrentUserId(), name: "", description: "");
-            //await SendCommandAsync(cmd);
+            var cmd = new CreateOrganizationCommand(userId: GetCurrentUserId(), name: "", description: "");
+            await SendCommandAsync(cmd);
 
 
             var organizationsDetailQueryResult = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());

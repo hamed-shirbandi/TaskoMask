@@ -27,22 +27,14 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
 
         public async Task<CommandResult> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid())
-            {
-                PublishValidationError(request);
+            if (!IsValid(request))
                 return new CommandResult(ApplicationMessages.Create_Failed);
-            }
-
-            var existOrganizationId = true;
-            if (!existOrganizationId)
-                throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey, nameof(request.OrganizationId)));
-
 
 
             var exist = await _projectRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
-                PublishValidationError(request, ApplicationMessages.Name_Already_Exist);
+                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -60,12 +52,8 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
 
         public async Task<CommandResult> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid())
-            {
-                PublishValidationError(request);
-                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
-            }
-
+            if (!IsValid(request))
+                return new CommandResult(ApplicationMessages.Update_Failed);
 
 
             var project = await _projectRepository.GetByIdAsync(request.Id);
@@ -76,7 +64,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
             var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
             if (exist)
             {
-                PublishValidationError(request, ApplicationMessages.Name_Already_Exist);
+                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
                 return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
             }
 

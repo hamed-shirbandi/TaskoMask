@@ -34,7 +34,7 @@ namespace TaskoMask.Application.Core.Queries
         #region Protected Methods
 
 
-        protected void PublishValidationError(string key, string error)
+        protected void NotifyValidationError(string key, string error)
         {
             _notifications.Add(key, error);
         }

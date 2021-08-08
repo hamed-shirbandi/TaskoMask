@@ -29,18 +29,13 @@ namespace TaskoMask.Application.Users.Commands.Handlers
 
         public async Task<CommandResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            PublishValidationError(request, ApplicationMessages.User_Email_Already_Exist);
-
-            if (!request.IsValid())
-            {
-                PublishValidationError(request);
+            if (!IsValid(request))
                 return new CommandResult(ApplicationMessages.Create_Failed);
-            }
 
             var existUser = await _userManager.FindByNameAsync(request.Email);
             if (existUser != null)
             {
-                PublishValidationError(request, ApplicationMessages.User_Email_Already_Exist);
+                NotifyValidationError(request, ApplicationMessages.User_Email_Already_Exist);
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
@@ -52,7 +47,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
-                    PublishValidationError(request, error.Description);
+                    NotifyValidationError(request, error.Description);
 
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
@@ -65,17 +60,14 @@ namespace TaskoMask.Application.Users.Commands.Handlers
 
         public async Task<CommandResult> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid())
-            {
-                PublishValidationError(request);
+            if (!IsValid(request))
                 return new CommandResult(ApplicationMessages.Update_Failed);
-            }
 
 
             var existUser = await _userManager.FindByNameAsync(request.Email);
             if (existUser != null && existUser.Id.ToString() != request.Id)
             {
-                PublishValidationError(request, ApplicationMessages.User_Email_Already_Exist);
+                NotifyValidationError(request, ApplicationMessages.User_Email_Already_Exist);
                 return new CommandResult(ApplicationMessages.Update_Failed);
             }
 
@@ -94,7 +86,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
-                    PublishValidationError(request, error.Description);
+                    NotifyValidationError(request, error.Description);
 
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }

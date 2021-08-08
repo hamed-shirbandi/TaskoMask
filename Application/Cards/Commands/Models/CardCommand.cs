@@ -4,6 +4,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Enums;
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Cards.Commands.Models
 {

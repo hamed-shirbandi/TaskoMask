@@ -8,6 +8,8 @@ using AutoMapper;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Queries;
+using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Domain.Core.Queries;
 
 namespace TaskoMask.Application.Core.Services
 {

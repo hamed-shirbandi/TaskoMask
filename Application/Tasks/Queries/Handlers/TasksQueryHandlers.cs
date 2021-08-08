@@ -10,7 +10,6 @@ using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Entities;
-using TaskoMask.Application.Tasks.Queries.Models;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Core.Notifications;
 

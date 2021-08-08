@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace TaskoMask.Application.Core.Commands
+namespace TaskoMask.Domain.Core.Commands
 {
     public abstract class BaseCommand : IRequest<CommandResult>
     {

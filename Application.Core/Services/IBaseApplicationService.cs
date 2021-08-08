@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Application.Core.Queries;
+using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Domain.Core.Queries;
 
 namespace TaskoMask.Application.Core.Services
 {

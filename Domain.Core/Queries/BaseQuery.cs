@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace TaskoMask.Application.Core.Queries
+namespace TaskoMask.Domain.Core.Queries
 {
     public abstract class BaseQuery<T> : IRequest<T> 
     {

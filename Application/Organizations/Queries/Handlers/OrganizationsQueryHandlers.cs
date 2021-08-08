@@ -10,7 +10,7 @@ using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Domain.Data;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Queries;
+using TaskoMask.Application.Core.Queries;using TaskoMask.Domain.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;

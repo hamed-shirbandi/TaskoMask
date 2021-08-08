@@ -3,6 +3,7 @@ using MediatR;
 using TaskoMask.Application.Core.Commands;
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Commands;
 
 namespace TaskoMask.Application.Projects.Commands.Models
 {

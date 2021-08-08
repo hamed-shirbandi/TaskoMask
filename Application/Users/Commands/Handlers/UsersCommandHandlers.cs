@@ -13,6 +13,7 @@ using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Users.Commands.Handlers
 {
@@ -22,7 +23,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
     {
         private readonly UserManager<User> _userManager;
 
-        public UsersCommandHandlers(IMediator mediator, UserManager<User> userManager, IDomainNotificationHandler notifications) : base(notifications)
+        public UsersCommandHandlers(IInMemoryBus inMemoryBus, UserManager<User> userManager, IDomainNotificationHandler notifications) : base(notifications)
         {
             _userManager = userManager;
         }

@@ -10,6 +10,7 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Domain.Core.Commands;
 using TaskoMask.Domain.Core.Queries;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Core.Services
 {
@@ -18,7 +19,7 @@ namespace TaskoMask.Application.Core.Services
         #region Fields
 
 
-        private readonly IMediator _mediator;
+        private readonly IInMemoryBus _inMemoryBus;
         protected readonly IMapper _mapper;
         protected readonly IDomainNotificationHandler _notifications;
 
@@ -29,9 +30,9 @@ namespace TaskoMask.Application.Core.Services
         #region Ctor
 
 
-        public BaseApplicationService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications)
+        public BaseApplicationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications)
         {
-            _mediator = mediator;
+            _inMemoryBus = inMemoryBus;
             _mapper = mapper;
             _notifications = notifications;
 
@@ -50,7 +51,7 @@ namespace TaskoMask.Application.Core.Services
         /// </summary>
         public async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
-            var result = await _mediator.Send(cmd);
+            var result = await _inMemoryBus.Send(cmd);
 
             //get and reset notifications for each command
             var errors = _notifications.GetErrors();
@@ -73,7 +74,7 @@ namespace TaskoMask.Application.Core.Services
         /// </summary>
         public async Task<Result<T>> SendQueryAsync<T>(BaseQuery<T> query)
         {
-            var result = await _mediator.Send(query);
+            var result = await _inMemoryBus.Send(query);
             if (_notifications.HasAny())
                 return Result.Failure<T>(_notifications.GetErrors());
 

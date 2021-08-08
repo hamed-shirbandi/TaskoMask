@@ -13,7 +13,7 @@ namespace TaskoMask.Application.Core.Exceptions
         #region Fields
 
 
-        private readonly IMediator _mediator;
+        private readonly IDomainNotificationHandler _notifications;
 
 
         #endregion
@@ -22,9 +22,9 @@ namespace TaskoMask.Application.Core.Exceptions
         #region Ctor
 
 
-        public ApplicationExceptionsHandler(IMediator mediator)
+        public ApplicationExceptionsHandler(IDomainNotificationHandler notifications)
         {
-            _mediator = mediator;
+            _notifications = notifications;
         }
 
 
@@ -50,7 +50,7 @@ namespace TaskoMask.Application.Core.Exceptions
 
             state.SetHandled(default);
 
-            await _mediator.Publish(new DomainNotification(exceptionType.Name, exception.Message), cancellationToken);
+            _notifications.Add(exceptionType.Name, exception.Message);
         }
 
 

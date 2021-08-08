@@ -19,6 +19,7 @@ using System.Linq;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Cards.Queries.Models;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Boards.Services
 {
@@ -31,12 +32,10 @@ namespace TaskoMask.Application.Boards.Services
 
         #region Ctor
 
-        public BoardService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
+        public BoardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
         #endregion
-
-
 
         #region Public Methods
 

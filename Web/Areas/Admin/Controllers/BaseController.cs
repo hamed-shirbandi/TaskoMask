@@ -13,6 +13,8 @@ using TaskoMask.web.Area.Admin.Models;
 using TaskoMask.Application.Core.Queries;
 using System;
 using AutoMapper;
+using TaskoMask.Domain.Core.Commands;
+using TaskoMask.Domain.Core.Queries;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {

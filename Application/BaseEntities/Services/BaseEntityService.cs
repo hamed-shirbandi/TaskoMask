@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using MediatR;
-using System;
 using System.Threading.Tasks;
 using TaskoMask.Application.BaseEntities.Queries.Models;
+using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Domain.Core.Models;
@@ -21,7 +20,7 @@ namespace TaskoMask.Application.BaseEntities.Services
         #region Ctor
 
 
-        public BaseEntityService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
+        public BaseEntityService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         {
         }
 

@@ -18,6 +18,7 @@ using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Projects;
 using System.Linq;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Organizations.Services
 {
@@ -29,7 +30,7 @@ namespace TaskoMask.Application.Organizations.Services
 
         #region Ctor
 
-        public OrganizationService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
+        public OrganizationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
         #endregion

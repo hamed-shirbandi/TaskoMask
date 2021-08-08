@@ -18,12 +18,12 @@ using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Tasks.Queries.Models;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Cards.Services
 {
     public class CardService : BaseEntityService<Card>, ICardService
     {
-
 
         #region Fields
 
@@ -32,13 +32,10 @@ namespace TaskoMask.Application.Cards.Services
 
         #region Ctor
 
-        public CardService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
+        public CardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
         #endregion
-
-
-
 
         #region Public Methods
 
@@ -48,11 +45,9 @@ namespace TaskoMask.Application.Cards.Services
         /// </summary>
         public async Task<Result<CardDetailViewModel>> GetDetailAsync(string id)
         {
-
             var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(id));
             if (!cardQueryResult.IsSuccess)
                 return Result.Failure<CardDetailViewModel>(cardQueryResult.Errors);
-
 
 
             var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(cardQueryResult.Value.BoardId));
@@ -98,7 +93,6 @@ namespace TaskoMask.Application.Cards.Services
         }
 
         #endregion
-
 
 
     }

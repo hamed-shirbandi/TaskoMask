@@ -15,6 +15,7 @@ using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Application.Boards.Queries.Models;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Projects.Services
 {
@@ -28,7 +29,7 @@ namespace TaskoMask.Application.Projects.Services
 
         #region Ctor
 
-        public ProjectService(IMediator mediator, IMapper mapper, IDomainNotificationHandler notifications) : base(mediator, mapper, notifications)
+        public ProjectService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
 

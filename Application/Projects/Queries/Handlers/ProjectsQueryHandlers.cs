@@ -11,6 +11,7 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Projects.Queries.Handlers
 {
@@ -20,7 +21,7 @@ namespace TaskoMask.Application.Projects.Queries.Handlers
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>
     {
         private readonly IProjectRepository _projectRepository;
-        public ProjectsQueryHandlers(IProjectRepository projectRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
+        public ProjectsQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _projectRepository = projectRepository;
         }

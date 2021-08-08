@@ -8,6 +8,7 @@ using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
@@ -20,7 +21,7 @@ namespace TaskoMask.Application.Cards.Queries.Handlers
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>
     {
         private readonly ICardRepository _cardRepository;
-        public CardsQueryHandlers(ICardRepository cardRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
+        public CardsQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _cardRepository = cardRepository;
         }

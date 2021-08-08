@@ -9,7 +9,6 @@ namespace TaskoMask.Application.Core.Commands
         #region Fields
 
 
-        private readonly IMediator _mediator;
         protected readonly IDomainNotificationHandler _notifications;
 
 
@@ -19,11 +18,9 @@ namespace TaskoMask.Application.Core.Commands
         #region constructors
 
 
-        protected BaseCommandHandler(IMediator mediator, IDomainNotificationHandler notifications)
+        protected BaseCommandHandler(IDomainNotificationHandler notifications)
         {
-            _mediator = mediator;
             _notifications = notifications;
-
         }
 
 

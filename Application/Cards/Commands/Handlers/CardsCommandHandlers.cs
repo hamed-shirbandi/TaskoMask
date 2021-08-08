@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
     {
         private readonly ICardRepository _cardRepository;
 
-        public CardsCommandHandlers(ICardRepository cardRepository, IMediator mediator, IDomainNotificationHandler notifications) : base(mediator, notifications)
+        public CardsCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _cardRepository = cardRepository;
         }

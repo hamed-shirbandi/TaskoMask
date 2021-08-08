@@ -73,7 +73,7 @@ namespace TaskoMask.Application.Core.Services
         {
             var result = await _mediator.Send(query);
             if (_notifications.HasAny())
-                return Result.Failure<T>(_notifications.GetListAndReset().Select(n => n.Value).ToList());
+                return Result.Failure<T>(_notifications.GetErrors());
 
             return Result.Success(result);
 

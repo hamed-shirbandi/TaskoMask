@@ -15,6 +15,7 @@ using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Users.Queries.Handlers
 {
@@ -23,7 +24,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         IRequestHandler<GetUsersCountQuery, long>
     {
         private readonly UserManager<User> _userManager;
-        public UsersQueryHandlers(IMapper mapper, UserManager<User> userManager, IMediator mediator) : base(mediator, mapper)
+        public UsersQueryHandlers(UserManager<User> userManager, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _userManager = userManager;
         }

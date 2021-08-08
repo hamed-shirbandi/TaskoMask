@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
     {
         private readonly UserManager<User> _userManager;
 
-        public UsersCommandHandlers(IMediator mediator, UserManager<User> userManager, IDomainNotificationHandler notifications) : base(mediator, notifications)
+        public UsersCommandHandlers(IMediator mediator, UserManager<User> userManager, IDomainNotificationHandler notifications) : base(notifications)
         {
             _userManager = userManager;
         }

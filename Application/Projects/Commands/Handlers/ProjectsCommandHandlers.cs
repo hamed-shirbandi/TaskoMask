@@ -19,7 +19,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
          IRequestHandler<UpdateProjectCommand, CommandResult>
     {
         private readonly IProjectRepository _projectRepository;
-        public ProjectsCommandHandlers(IProjectRepository projectRepository, IMediator mediator, IDomainNotificationHandler notifications) : base(mediator, notifications)
+        public ProjectsCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _projectRepository = projectRepository;
         }

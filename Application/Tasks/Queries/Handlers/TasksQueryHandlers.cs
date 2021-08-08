@@ -12,6 +12,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Tasks.Queries.Models;
 using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Tasks.Queries.Handlers
 {
@@ -20,7 +21,7 @@ namespace TaskoMask.Application.Tasks.Queries.Handlers
         IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>
     {
         private readonly ITaskRepository _taskRepository;
-        public TasksQueryHandlers(ITaskRepository taskRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
+        public TasksQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _taskRepository = taskRepository;
         }

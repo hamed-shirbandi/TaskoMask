@@ -19,7 +19,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
     {
         private readonly IOrganizationRepository _organizationRepository;
 
-        public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IMediator mediator, IDomainNotificationHandler notifications ) : base(mediator, notifications)
+        public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _organizationRepository = organizationRepository;
         }

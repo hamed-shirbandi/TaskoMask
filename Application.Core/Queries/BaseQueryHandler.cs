@@ -11,8 +11,7 @@ namespace TaskoMask.Application.Core.Queries
     {
         #region Fields
 
-
-        protected readonly IMediator _mediator;
+        protected readonly IDomainNotificationHandler _notifications;
         protected readonly IMapper _mapper;
 
 
@@ -22,10 +21,10 @@ namespace TaskoMask.Application.Core.Queries
         #region constructors
 
 
-        protected BaseQueryHandler(IMediator mediator, IMapper mapper)
+        protected BaseQueryHandler(IMapper mapper, IDomainNotificationHandler notifications)
         {
-            _mediator = mediator;
             _mapper = mapper;
+            _notifications = notifications;
         }
 
 
@@ -35,9 +34,9 @@ namespace TaskoMask.Application.Core.Queries
         #region Protected Methods
 
 
-        protected  async Task PublishErrorAsync(string message, string key )
+        protected void PublishValidationError(string key, string error)
         {
-            await _mediator.Publish(new DomainNotification(key, message));
+            _notifications.Add(key, error);
         }
 
 

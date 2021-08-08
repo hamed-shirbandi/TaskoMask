@@ -9,6 +9,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Queries.Models.Boards;
+using TaskoMask.Domain.Core.Notifications;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
@@ -21,7 +22,7 @@ namespace TaskoMask.Application.Boards.Queries.Handlers
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>
     {
         private readonly IBoardRepository _boardRepository;
-        public BoardsQueryHandlers(IBoardRepository boardRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
+        public BoardsQueryHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _boardRepository = boardRepository;
         }

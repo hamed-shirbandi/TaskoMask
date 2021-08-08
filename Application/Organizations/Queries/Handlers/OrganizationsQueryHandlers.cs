@@ -15,6 +15,7 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Organizations.Queries.Handlers
 {
@@ -24,7 +25,7 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
         IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationBasicInfoDto>>
     {
         private readonly IOrganizationRepository _organizationRepository;
-        public OrganizationsQueryHandlers(IOrganizationRepository organizationRepository, IMapper mapper, IMediator mediator) : base(mediator, mapper)
+        public OrganizationsQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
         }

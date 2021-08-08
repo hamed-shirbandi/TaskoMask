@@ -6,6 +6,7 @@ using TaskoMask.Application.BaseEntities.Queries.Models;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.BaseEntities.Queries.Handlers
 {
@@ -25,8 +26,7 @@ namespace TaskoMask.Application.BaseEntities.Queries.Handlers
         #region Ctor
 
 
-        public BaseEntitiesQueryHandlers(IBaseRepository<TEntity>baseRepository, IMediator mediator, IMapper mapper)
-            : base(mediator, mapper)
+        public BaseEntitiesQueryHandlers(IBaseRepository<TEntity>baseRepository, IDomainNotificationHandler notifications, IMapper mapper): base(mapper,notifications)
         {
             _baseRepository = baseRepository;
         }

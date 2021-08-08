@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
     {
         private readonly IBoardRepository _boardRepository;
 
-        public BoardsCommandHandlers(IBoardRepository boardRepository,IMediator mediator, IDomainNotificationHandler notifications) : base(mediator, notifications)
+        public BoardsCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _boardRepository = boardRepository;
         }

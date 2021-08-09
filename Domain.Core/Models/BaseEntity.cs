@@ -1,7 +1,6 @@
 ﻿using MongoDB.Bson;
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace TaskoMask.Domain.Core.Models
 {
@@ -10,13 +9,9 @@ namespace TaskoMask.Domain.Core.Models
         public BaseEntity()
         {
             id = ObjectId.GenerateNewId().ToString();
-            CreateDateTime = DateTime.Now;
-            ModifiedDateTime = DateTime.Now;
         }
 
-        public DateTime CreateDateTime { get; set; }
-
-        public DateTime ModifiedDateTime { get; set; }
+        public CreationTime CreationTime { get; private set; }
 
 
         public string Id

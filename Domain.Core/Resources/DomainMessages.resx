@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Operation_Failed" xml:space="preserve">
+    <value>Operation failed</value>
+  </data>
+  <data name="Operation_Success" xml:space="preserve">
+    <value>Operation success</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>{0} is required</value>
   </data>

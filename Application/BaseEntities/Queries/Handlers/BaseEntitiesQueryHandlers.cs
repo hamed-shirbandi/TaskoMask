@@ -6,7 +6,7 @@ using TaskoMask.Application.BaseEntities.Queries.Models;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Core.Notifications;
 
 namespace TaskoMask.Application.BaseEntities.Queries.Handlers
 {

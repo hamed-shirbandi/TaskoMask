@@ -1,10 +1,10 @@
 ﻿
 using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Linq;
 using TaskoMask.Application.Core.Extensions;
-using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Notifications;
+using System.Collections.Generic;
+using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Commands
@@ -19,8 +19,6 @@ namespace TaskoMask.Application.Core.Commands
 
         #endregion
 
-
-
         #region constructors
 
 
@@ -31,7 +29,6 @@ namespace TaskoMask.Application.Core.Commands
 
 
         #endregion
-
 
         #region Protected Methods
 
@@ -44,6 +41,15 @@ namespace TaskoMask.Application.Core.Commands
             _notifications.Add(request.GetType().Name, error);
         }
 
+
+
+        /// <summary>
+        /// add errors list to notifications
+        /// </summary>
+        protected void NotifyValidationError(List<DomainNotification> errors)
+        {
+            _notifications.AddRange(errors);
+        }
 
 
         /// <summary>

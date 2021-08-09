@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Cards.Commands.Models;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;

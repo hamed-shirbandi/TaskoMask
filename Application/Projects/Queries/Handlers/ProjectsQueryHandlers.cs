@@ -11,7 +11,7 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Core.Notifications;
 
 namespace TaskoMask.Application.Projects.Queries.Handlers
 {

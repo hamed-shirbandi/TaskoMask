@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Domain.Core.Helpers;
 using FluentValidation.Results;
 using TaskoMask.Application.Core.Commands;
 using System.ComponentModel.DataAnnotations;

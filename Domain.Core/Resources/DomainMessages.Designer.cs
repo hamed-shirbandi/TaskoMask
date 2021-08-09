@@ -61,6 +61,24 @@ namespace TaskoMask.Domain.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation failed.
+        /// </summary>
+        public static string Operation_Failed {
+            get {
+                return ResourceManager.GetString("Operation_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation success.
+        /// </summary>
+        public static string Operation_Success {
+            get {
+                return ResourceManager.GetString("Operation_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is required.
         /// </summary>
         public static string Required {

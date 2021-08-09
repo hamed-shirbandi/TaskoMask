@@ -1,4 +1,4 @@
-﻿using TaskoMask.Domain.Core.Notifications;
+﻿using TaskoMask.Application.Core.Notifications;
 using MediatR;
 using MediatR.Pipeline;
 using System.Threading;

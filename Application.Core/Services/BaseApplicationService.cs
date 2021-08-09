@@ -1,13 +1,9 @@
 ﻿using TaskoMask.Application.Core.Commands;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Domain.Core.Helpers;
 using AutoMapper;
-using TaskoMask.Domain.Core.Notifications;
-using TaskoMask.Application.Core.Resources;
-using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Bus;
 

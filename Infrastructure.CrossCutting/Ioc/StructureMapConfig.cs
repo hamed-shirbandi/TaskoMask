@@ -21,6 +21,7 @@ using TaskoMask.Application.BaseEntities.Queries.Models;
 using TaskoMask.Domain.Core.Models;
 using MediatR.Pipeline;
 using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Application.Core.Notifications;
 
 namespace Infrastructure.CrossCutting.Ioc
 {

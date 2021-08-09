@@ -2,7 +2,7 @@
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Queries
 {

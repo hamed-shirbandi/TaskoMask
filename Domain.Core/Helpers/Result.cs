@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Resources;
 
-namespace TaskoMask.Application.Core.Helpers
+namespace TaskoMask.Domain.Core.Helpers
 {
     public interface IResult
     {
@@ -36,7 +36,7 @@ namespace TaskoMask.Application.Core.Helpers
         public Result(bool isSuccess, string message, List<string> errors)
         {
             if (message == "")
-                message = isSuccess?ApplicationMessages.Operation_Success: ApplicationMessages.Operation_Failed;
+                message = isSuccess?DomainMessages.Operation_Success: DomainMessages.Operation_Failed;
 
             IsSuccess = isSuccess;
             Message = message;
@@ -131,7 +131,7 @@ namespace TaskoMask.Application.Core.Helpers
         public Result(bool isSuccess, string message, T value, List<string> errors)
         {
             if (message == "")
-                message = isSuccess ? ApplicationMessages.Operation_Success : ApplicationMessages.Operation_Failed;
+                message = isSuccess ? DomainMessages.Operation_Success : DomainMessages.Operation_Failed;
 
             IsSuccess = isSuccess;
             Message = message;

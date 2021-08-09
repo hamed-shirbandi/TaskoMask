@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TaskoMask.Application.Core.Notifications;
+using TaskoMask.Domain.Core.Notifications;
 
-
-namespace TaskoMask.Domain.Core.Notifications
+namespace TaskoMask.Application.Core.Notifications
 {
     public class DomainNotificationHandler : IDomainNotificationHandler
     {
@@ -17,6 +18,11 @@ namespace TaskoMask.Domain.Core.Notifications
         {
             var notification = new DomainNotification(key,value);
             _notifications.Add(notification);
+        }
+
+        public void AddRange(List<DomainNotification> notifications)
+        {
+            _notifications.AddRange(notifications);
         }
 
         public List<string> GetErrors()

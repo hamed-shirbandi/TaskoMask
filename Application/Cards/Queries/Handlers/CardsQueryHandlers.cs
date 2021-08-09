@@ -8,7 +8,7 @@ using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;

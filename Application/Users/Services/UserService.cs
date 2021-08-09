@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Domain.Core.Helpers;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Entities;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Users.Services

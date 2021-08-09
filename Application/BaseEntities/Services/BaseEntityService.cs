@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.BaseEntities.Queries.Models;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Domain.Core.Helpers;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Application.Core.Notifications;
 
 namespace TaskoMask.Application.BaseEntities.Services
 {

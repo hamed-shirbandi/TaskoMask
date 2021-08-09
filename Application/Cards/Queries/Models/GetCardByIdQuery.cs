@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Domain.Core.Helpers;
 using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.Queries;
 

@@ -3,9 +3,9 @@ using FluentValidation;
 using FluentValidation.Results;
 using TaskoMask.Application.Core.Extensions;
 using TaskoMask.Application.Core.Notifications;
-using System.Collections.Generic;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Domain.Core.Models;
+using System.Linq;
+using TaskoMask.Domain.Core.Helpers;
 
 namespace TaskoMask.Application.Core.Commands
 {
@@ -14,7 +14,7 @@ namespace TaskoMask.Application.Core.Commands
         #region Fields
 
 
-        protected readonly IDomainNotificationHandler _notifications;
+        private readonly IDomainNotificationHandler _notifications;
 
 
         #endregion
@@ -43,14 +43,6 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
-        /// <summary>
-        /// add errors list to notifications
-        /// </summary>
-        protected void NotifyValidationError(List<DomainNotification> errors)
-        {
-            _notifications.AddRange(errors);
-        }
-
 
         /// <summary>
         /// validate both fluent and data annotation validation and add errors to notifications
@@ -75,6 +67,29 @@ namespace TaskoMask.Application.Core.Commands
             return !_notifications.HasAny();
         }
 
+
+
+        protected bool IsValid(BaseEntity entity)
+        {
+            if (!entity.ValidationErrors.Any())
+                return true;
+
+            _notifications.AddRange(entity.ValidationErrors.ToList());
+            return false;
+        }
+
+
+
+        protected bool IsValid(BaseCommand request, Result result)
+        {
+            if (result.IsSuccess)
+                return true;
+
+            foreach (var error in result.Errors)
+                NotifyValidationError(request, error);
+
+            return false;
+        }
 
 
         #endregion

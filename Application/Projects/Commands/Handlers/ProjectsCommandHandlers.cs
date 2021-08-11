@@ -38,7 +38,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
             }
 
             var project = new Project(name: request.Name, description: request.Description, organizationId: request.OrganizationId);
-            if (_notifications.HasAny())
+            if (!IsValid(project))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _projectRepository.CreateAsync(project);
@@ -68,8 +68,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
             }
 
             project.Update(request.Name, request.Description);
-        
-            if (_notifications.HasAny())
+            if (!IsValid(project))
                 return new CommandResult(ApplicationMessages.Update_Failed);
 
 

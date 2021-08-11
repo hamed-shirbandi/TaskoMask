@@ -38,7 +38,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             }
 
             var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId, type: request.Type);
-            if (_notifications.HasAny())
+            if (!IsValid(card))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _cardRepository.CreateAsync(card);
@@ -67,7 +67,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             }
 
             card.Update(request.Name, request.Description, request.Type);
-            if (_notifications.HasAny())
+            if (!IsValid(card))
                 return new CommandResult(ApplicationMessages.Update_Failed);
 
 

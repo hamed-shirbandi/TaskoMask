@@ -9,7 +9,7 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-
+using System.Linq;
 
 namespace TaskoMask.Application.Boards.Commands.Handlers
 {
@@ -40,7 +40,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
             }
 
             var board = new Board(name:request.Name,description:request.Description,projectId:request.ProjectId);
-            if (_notifications.HasAny())
+            if (!IsValid(board))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
 
@@ -69,7 +69,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
 
             board.Update(request.Name, request.Description);
 
-            if (_notifications.HasAny())
+            if (!IsValid(board))
                 return new CommandResult(ApplicationMessages.Update_Failed);
 
 

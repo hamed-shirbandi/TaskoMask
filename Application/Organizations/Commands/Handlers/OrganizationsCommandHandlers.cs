@@ -49,7 +49,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             }
 
             var organization = new Organization(name: request.Name, description: request.Description, userId: request.UserId);
-            if (_notifications.HasAny())
+            if (!IsValid(organization))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _organizationRepository.CreateAsync(organization);
@@ -80,8 +80,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             }
 
             organization.Update(request.Name, request.Description);
-
-            if (_notifications.HasAny())
+            if (!IsValid(organization))
                 return new CommandResult(ApplicationMessages.Update_Failed);
 
 

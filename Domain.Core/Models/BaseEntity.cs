@@ -7,7 +7,6 @@ namespace TaskoMask.Domain.Core.Models
 {
     public class BaseEntity
     {
-
         #region Fields
 
         private string id { get; set; }
@@ -25,9 +24,6 @@ namespace TaskoMask.Domain.Core.Models
 
 
         #endregion
-
-
-
 
         #region Properties
 
@@ -50,9 +46,6 @@ namespace TaskoMask.Domain.Core.Models
 
 
         #endregion
-
-
-
 
         #region Public Methods
 

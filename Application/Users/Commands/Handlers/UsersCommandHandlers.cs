@@ -38,8 +38,8 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             }
 
             var user = new User(displayName: request.DisplayName, email: request.Email, userName: request.Email);
-            if (_notifications.HasAny())
-                return new CommandResult(ApplicationMessages.Create_Failed);
+            //if (!IsValid(user))
+            //    return new CommandResult(ApplicationMessages.Create_Failed);
 
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
@@ -75,9 +75,8 @@ namespace TaskoMask.Application.Users.Commands.Handlers
 
 
             user.Update(request.DisplayName, request.Email, request.Email);
-
-            if (_notifications.HasAny())
-                return new CommandResult(ApplicationMessages.Update_Failed);
+            //if (!IsValid(user))
+            //    return new CommandResult(ApplicationMessages.Update_Failed);
 
 
             var result = await _userManager.UpdateAsync(user);

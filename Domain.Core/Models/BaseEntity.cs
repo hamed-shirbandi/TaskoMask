@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using TaskoMask.Domain.Core.Notifications;
@@ -41,7 +42,8 @@ namespace TaskoMask.Domain.Core.Models
 
         public CreationTime CreationTime { get; private set; }
 
-        public IReadOnlyCollection<DomainNotification> ValidationErrors => validationErrors?.AsReadOnly();
+        [BsonIgnore]
+        public IReadOnlyCollection<DomainNotification> ValidationErrors => validationErrors ?? new List<DomainNotification>();
 
 
 
@@ -53,6 +55,8 @@ namespace TaskoMask.Domain.Core.Models
 
         public void AddValidationError(string errorMessage)
         {
+            validationErrors ??= new List<DomainNotification>();
+
             validationErrors.Add(new DomainNotification(key: this.GetType().Name, value: errorMessage));
         }
 

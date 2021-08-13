@@ -71,7 +71,6 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Organization);
 
 
-
             var exist = await _organizationRepository.ExistByNameAsync(organization.Id, request.Name);
             if (exist)
             {
@@ -80,6 +79,8 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             }
 
             organization.Update(request.Name, request.Description);
+
+
             if (!IsValid(organization))
                 return new CommandResult(ApplicationMessages.Update_Failed);
 

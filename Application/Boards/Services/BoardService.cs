@@ -35,9 +35,46 @@ namespace TaskoMask.Application.Boards.Services
         public BoardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
+
+
         #endregion
 
         #region Public Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> CreateAsync(BoardInputDto input)
+        {
+            var cmd = new CreateBoardCommand(projectId: input.ProjectId, name: input.Name, description: input.Description);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> UpdateAsync(BoardInputDto input)
+        {
+            var cmd = new UpdateBoardCommand(id: input.Id, name: input.Name, description: input.Description);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<BoardBasicInfoDto>> GetAsync(string id)
+        {
+            return await SendQueryAsync(new GetBoardByIdQuery(id));
+
+        }
+
 
 
         /// <summary>
@@ -84,6 +121,28 @@ namespace TaskoMask.Application.Boards.Services
             return Result.Success(boardDetail);
 
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<BoardBasicInfoDto>>> GetListByProjectIdAsync(string projectId)
+        {
+            return await SendQueryAsync(new GetBoardsByProjectIdQuery(projectId));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<BoardReportDto>> GetReportAsync(string id)
+        {
+            return await SendQueryAsync(new GetBoardReportQuery(id));
+
+        }
+
 
 
 

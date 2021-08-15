@@ -12,7 +12,6 @@ namespace TaskoMask.Application.Boards.Services
     {
         Task<Result<CommandResult>> CreateAsync(BoardInputDto input);
         Task<Result<CommandResult>> UpdateAsync(BoardInputDto input);
-
         Task<Result<BoardDetailViewModel>> GetDetailAsync(string id);
         Task<Result<BoardBasicInfoDto>> GetAsync(string id);
         Task<Result<BoardReportDto>> GetReportAsync(string id);

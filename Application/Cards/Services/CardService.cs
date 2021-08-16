@@ -40,6 +40,42 @@ namespace TaskoMask.Application.Cards.Services
         #region Public Methods
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> CreateAsync(CardInputDto input)
+        {
+            var cmd = new CreateCardCommand(boardId: input.BoardId, name: input.Name, description: input.Description, type: input.Type);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> UpdateAsync(CardInputDto input)
+        {
+            var cmd = new UpdateCardCommand(id: input.Id, name: input.Name, description: input.Description,type:input.Type);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CardBasicInfoDto>> GetAsync(string id)
+        {
+            return await SendQueryAsync(new GetCardByIdQuery(id));
+
+        }
+
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -91,6 +127,31 @@ namespace TaskoMask.Application.Cards.Services
             return Result.Success(cardDetail);
 
         }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<CardBasicInfoDto>>> GetListByBoardIdAsync(string boardId)
+        {
+            return await SendQueryAsync(new GetCardsByBoardIdQuery(boardId));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CardReportDto>> GetReportAsync(string id)
+        {
+            return await SendQueryAsync(new GetCardReportQuery(id));
+
+        }
+
+
 
         #endregion
 

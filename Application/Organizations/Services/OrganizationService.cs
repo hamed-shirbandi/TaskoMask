@@ -38,7 +38,31 @@ namespace TaskoMask.Application.Organizations.Services
         #region Public Methods
 
 
-   
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> CreateAsync(OrganizationInputDto input)
+        {
+            var cmd = new CreateOrganizationCommand(userId: input.UserId, name: input.Name, description: input.Description);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> UpdateAsync(OrganizationInputDto input)
+        {
+            var cmd = new UpdateOrganizationCommand(id: input.Id, name: input.Name, description: input.Description);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
 
 
         /// <summary>
@@ -97,6 +121,41 @@ namespace TaskoMask.Application.Organizations.Services
             }
 
             return Result.Success(organizationsDetail.AsEnumerable());
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<OrganizationBasicInfoDto>> GetAsync(string id)
+        {
+            return await SendQueryAsync(new GetOrganizationByIdQuery(id));
+
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByUserIdAsync(string userId)
+        {
+            return await SendQueryAsync(new GetOrganizationsByUserIdQuery(userId));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<OrganizationReportDto>> GetReportAsync(string id)
+        {
+            return await SendQueryAsync(new GetOrganizationReportQuery(id));
+
         }
 
 

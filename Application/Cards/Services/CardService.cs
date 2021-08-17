@@ -67,18 +67,6 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CardBasicInfoDto>> GetAsync(string id)
-        {
-            return await SendQueryAsync(new GetCardByIdQuery(id));
-
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public async Task<Result<CardDetailViewModel>> GetDetailAsync(string id)
         {
             var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(id));
@@ -128,6 +116,19 @@ namespace TaskoMask.Application.Cards.Services
 
         }
 
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CardBasicInfoDto>> GetAsync(string id)
+        {
+            return await SendQueryAsync(new GetCardByIdQuery(id));
+
+        }
 
 
 

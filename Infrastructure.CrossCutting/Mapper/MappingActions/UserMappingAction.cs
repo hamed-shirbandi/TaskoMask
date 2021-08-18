@@ -16,7 +16,6 @@ namespace TaskoMask.Application.Mapper.MappingActions
 
         public void Process(User source, UserInputDto destination, ResolutionContext context)
         {
-            destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
         }
 
 

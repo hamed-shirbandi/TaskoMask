@@ -132,6 +132,12 @@
   <data name="CardType" xml:space="preserve">
     <value>Card Type</value>
   </data>
+  <data name="ComparePasswords" xml:space="preserve">
+    <value>The password and confirmation password do not match</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>ConfirmPassword</value>
+  </data>
   <data name="CreateDateTime" xml:space="preserve">
     <value>Create Date Time</value>
   </data>
@@ -176,6 +182,9 @@
   </data>
   <data name="OrganizationsCount" xml:space="preserve">
     <value>Organizations Count</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="ProjectId" xml:space="preserve">
     <value>ProjectId</value>

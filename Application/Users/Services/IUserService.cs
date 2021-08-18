@@ -14,6 +14,10 @@ namespace TaskoMask.Application.Users.Services
 {
     public interface IUserService : IBaseApplicationService
     {
+        Task<Result<CommandResult>> CreateAsync(UserInputDto input);
+        Task<Result<CommandResult>> UpdateAsync(UserInputDto input);
+        Task<Result<UserBasicInfoDto>> GetAsync(string id);
+        Task<Result<long>> CountAsync();
 
     }
 }

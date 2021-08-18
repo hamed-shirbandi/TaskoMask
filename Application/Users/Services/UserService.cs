@@ -32,9 +32,52 @@ namespace TaskoMask.Application.Users.Services
 
 
         #endregion
-       
+
         #region Public Methods
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> CreateAsync(UserInputDto input)
+        {
+            var cmd = new CreateUserCommand(displayName: input.DisplayName, email: input.Email,password:input.Password);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> UpdateAsync(UserInputDto input)
+        {
+            var cmd = new UpdateUserCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<UserBasicInfoDto>> GetAsync(string id)
+        {
+            return await SendQueryAsync(new GetUserByIdQuery(id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<long>> CountAsync()
+        {
+            return await SendQueryAsync(new GetUsersCountQuery());
+        }
 
 
 

@@ -106,6 +106,24 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The password and confirmation password do not match.
+        /// </summary>
+        public static string ComparePasswords {
+            get {
+                return ResourceManager.GetString("ComparePasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ConfirmPassword.
+        /// </summary>
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Date Time.
         /// </summary>
         public static string CreateDateTime {
@@ -237,6 +255,15 @@ namespace TaskoMask.Application.Core.Resources {
         public static string OrganizationsCount {
             get {
                 return ResourceManager.GetString("OrganizationsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         

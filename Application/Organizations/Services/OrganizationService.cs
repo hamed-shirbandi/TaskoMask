@@ -1,22 +1,16 @@
 ﻿using AutoMapper;
 using TaskoMask.Domain.Core.Helpers;
-using MediatR;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Organizations.Commands.Models;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Domain.Data;
-using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Projects.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Projects;
 using System.Linq;
 using TaskoMask.Application.Core.Bus;
 

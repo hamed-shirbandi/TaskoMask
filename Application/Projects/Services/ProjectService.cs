@@ -39,6 +39,31 @@ namespace TaskoMask.Application.Projects.Services
         #region Public Methods
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> CreateAsync(ProjectInputDto input)
+        {
+            var cmd = new CreateProjectCommand(organizationId: input.OrganizationId, name: input.Name, description: input.Description);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> UpdateAsync(ProjectInputDto input)
+        {
+            var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -75,6 +100,43 @@ namespace TaskoMask.Application.Projects.Services
             };
 
             return Result.Success(projectDetail);
+
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<ProjectBasicInfoDto>> GetAsync(string id)
+        {
+            return await SendQueryAsync(new GetProjectByIdQuery(id));
+
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId)
+        {
+            return await SendQueryAsync(new GetProjectsByOrganizationIdQuery(organizationId));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<ProjectReportDto>> GetReportAsync(string id)
+        {
+            return await SendQueryAsync(new GetProjectReportQuery(id));
 
         }
 

@@ -1,12 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <UserSecretsId>b786f536-e1c4-49fe-9d06-7247aedebda8</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    <AssemblyName>TaskoMask.web</AssemblyName>
-    <RootNamespace>TaskoMask.web</RootNamespace>
+    <AssemblyName>TaskoMask.Web</AssemblyName>
+    <RootNamespace>TaskoMask.Web</RootNamespace>
     
   </PropertyGroup>
 
@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Web.Common\Web.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

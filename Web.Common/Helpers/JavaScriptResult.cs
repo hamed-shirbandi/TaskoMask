@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TaskoMask.Web.Helpers
+namespace TaskoMask.Web.Common.Helpers
 {
     public class JavaScriptResult : ContentResult
     {

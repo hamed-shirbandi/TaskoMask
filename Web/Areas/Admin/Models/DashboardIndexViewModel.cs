@@ -6,7 +6,7 @@ using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.ViewModels;
 
-namespace TaskoMask.web.Area.Admin.Models
+namespace TaskoMask.Web.Area.Admin.Models
 {
     public class DashboardIndexViewModel
     {

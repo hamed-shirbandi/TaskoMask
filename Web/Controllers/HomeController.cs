@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Organizations.Services;
-using TaskoMask.web.Models;
+using TaskoMask.Web.Models;
+using TaskoMask.Web.Common.Controllers;
 
 namespace TaskoMask.Web.Controllers
 {

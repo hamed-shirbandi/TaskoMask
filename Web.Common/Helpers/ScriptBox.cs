@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace TaskoMask.Web.Helpers
+namespace TaskoMask.Web.Common.Helpers
 {
 
     /// <summary>

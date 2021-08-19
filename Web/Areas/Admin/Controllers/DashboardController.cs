@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Organizations.Services;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.web.Area.Admin.Models;
+using TaskoMask.Web.Area.Admin.Models;
 using AutoMapper;
+using TaskoMask.Web.Common.Controllers;
 
-namespace TaskoMask.web.Area.Admin.Controllers
+namespace TaskoMask.Web.Area.Admin.Controllers
 {
     [Authorize]
     [Area("admin")]

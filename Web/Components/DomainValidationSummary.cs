@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Notifications;
 
-namespace TaskoMask.web.Components
+namespace TaskoMask.Web.Components
 {
     public class DomainValidationSummary : ViewComponent
     {

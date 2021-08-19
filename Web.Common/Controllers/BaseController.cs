@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.web.Models;
-using TaskoMask.Web.Helpers;
 using AutoMapper;
+using TaskoMask.Web.Common.Helpers;
+using TaskoMask.Web.Common.Models;
 
-namespace TaskoMask.web.Area.Admin.Controllers
+namespace TaskoMask.Web.Common.Controllers
 {
     public class BaseController : Controller
     {
@@ -17,6 +17,11 @@ namespace TaskoMask.web.Area.Admin.Controllers
         #endregion
 
         #region Ctors
+
+        public BaseController( )
+        {
+        }
+
 
         public BaseController(IMapper mapper)
         {
@@ -133,7 +138,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
             var model = new ErrorViewModel
             {
                 Message = result.Message,
-                Errors = result.Errors.ToArray(),
+                Errors = result.Errors,
             };
 
             return View(viewName: "KnownError", model: model);

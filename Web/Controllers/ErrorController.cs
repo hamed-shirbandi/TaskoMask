@@ -1,11 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Http;
-using System.Globalization;
-using TaskoMask.web.Models;
+using TaskoMask.Web.Common.Controllers;
+using TaskoMask.Web.Common.Models;
 
 namespace TaskoMask.Web.Controllers
 {

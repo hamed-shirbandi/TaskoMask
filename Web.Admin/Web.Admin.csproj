@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>TaskoMask.Web.Admin</AssemblyName>
+    <RootNamespace>TaskoMask.Web.Admin</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Web.Common\Web.Common.csproj" />
+  </ItemGroup>
 
 </Project>

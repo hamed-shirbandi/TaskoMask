@@ -4,8 +4,9 @@ using TaskoMask.Application.Boards.Services;
 using TaskoMask.Application.Core.Dtos.Boards;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
+using TaskoMask.Web.Common.Controllers;
 
-namespace TaskoMask.web.Area.Admin.Controllers
+namespace TaskoMask.Web.Area.Admin.Controllers
 {
     [Authorize]
     [Area("admin")]

@@ -6,8 +6,9 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Users.Services;
 using TaskoMask.Application.Core.ViewMoldes.Account;
 using TaskoMask.Domain.Entities;
-using TaskoMask.web.Area.Admin.Controllers;
+using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Web.Common.Controllers;
 
 namespace TaskoMask.Web.Controllers
 {

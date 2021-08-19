@@ -1,22 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Infrastructure.CrossCutting.Ioc;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TaskoMask.Application.Commands.Handlers.Organizations;
-using TaskoMask.Application.Mapper;
-using TaskoMask.Infrastructure.CrossCutting.Identity;
-using TaskoMask.Infrastructure.CrossCutting.Mvc.Configuration;
-using TaskoMask.Infrastructure.Data.DataProviders;
+using TaskoMask.Web.Common.Configuration;
 
 namespace Web.Api
 {
@@ -28,13 +15,10 @@ namespace Web.Api
             _configuration = configuration;
         }
 
-
-        public IConfiguration Configuration { get; }
-
+   
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
             return services.WebApiConfigureServices(_configuration);
         }
 
@@ -42,17 +26,8 @@ namespace Web.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceScopeFactory serviceScopeFactory)
         {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-
-            app.WebApiConfigure(serviceScopeFactory);
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
+            app.WebApiConfigure(serviceScopeFactory, env);
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

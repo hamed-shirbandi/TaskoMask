@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mvc\Binders\" />
-    <Folder Include="Mvc\Filters\" />
-  </ItemGroup>
 </Project>

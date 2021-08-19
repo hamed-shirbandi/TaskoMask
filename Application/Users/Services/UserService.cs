@@ -8,10 +8,12 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
+using TaskoMask.Domain.Entities;
+using TaskoMask.Application.BaseEntities.Services;
 
 namespace TaskoMask.Application.Users.Services
 {
-    public class UserService : BaseApplicationService, IUserService
+    public class UserService : BaseEntityService<User>, IUserService
     {
         #region Fields
 
@@ -68,16 +70,6 @@ namespace TaskoMask.Application.Users.Services
         public async Task<Result<UserBasicInfoDto>> GetByUserNameAsync(string userName)
         {
             return await SendQueryAsync(new GetUserByUserNameQuery(userName));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<long>> CountAsync()
-        {
-            return await SendQueryAsync(new GetUsersCountQuery());
         }
 
 

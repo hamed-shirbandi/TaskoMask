@@ -8,7 +8,7 @@ using TaskoMask.Web.Common.Controllers;
 
 namespace TaskoMask.Web.Area.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Area("admin")]
     public class DashboardController : BaseController
     {

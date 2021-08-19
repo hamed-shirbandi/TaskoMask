@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Users.Commands.Models;
@@ -10,6 +9,7 @@ using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Bus;
+using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Users.Commands.Handlers
 {
@@ -19,16 +19,16 @@ namespace TaskoMask.Application.Users.Commands.Handlers
     {
         #region Fields
 
-        private readonly UserManager<User> _userManager;
+        private readonly IUserRepository _userRepository;
 
         #endregion
 
         #region Ctors
 
 
-        public UsersCommandHandlers(IInMemoryBus inMemoryBus, UserManager<User> userManager, IDomainNotificationHandler notifications) : base(notifications)
+        public UsersCommandHandlers(IUserRepository userRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
-            _userManager = userManager;
+            _userRepository = userRepository;
         }
 
         #endregion
@@ -45,7 +45,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             if (!IsValid(request))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
-            var existUser = await _userManager.FindByNameAsync(request.Email);
+            var existUser = await _userRepository.GetByUserNameAsync(request.Email);
             if (existUser != null)
             {
                 NotifyValidationError(request, ApplicationMessages.User_Email_Already_Exist);
@@ -53,18 +53,11 @@ namespace TaskoMask.Application.Users.Commands.Handlers
             }
 
             var user = new User(displayName: request.DisplayName, email: request.Email, userName: request.Email);
-            //if (!IsValid(user))
-            //    return new CommandResult(ApplicationMessages.Create_Failed);
-
-            var result = await _userManager.CreateAsync(user, request.Password);
-            if (!result.Succeeded)
-            {
-                foreach (var error in result.Errors)
-                    NotifyValidationError(request, error.Description);
-
+            if (!IsValid(user))
                 return new CommandResult(ApplicationMessages.Create_Failed);
-            }
 
+            await _userRepository.CreateAsync(user);
+          
             return new CommandResult(ApplicationMessages.Create_Success, user.Id.ToString());
         }
 
@@ -79,31 +72,23 @@ namespace TaskoMask.Application.Users.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed);
 
 
-            var existUser = await _userManager.FindByNameAsync(request.Email);
+            var existUser = await _userRepository.GetByUserNameAsync(request.Email);
             if (existUser != null && existUser.Id.ToString() != request.Id)
             {
                 NotifyValidationError(request, ApplicationMessages.User_Email_Already_Exist);
                 return new CommandResult(ApplicationMessages.Update_Failed);
             }
 
-            var user = await _userManager.FindByIdAsync(request.Id);
+            var user = await _userRepository.GetByIdAsync(request.Id);
             if (user == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
 
             user.Update(request.DisplayName, request.Email, request.Email);
-            //if (!IsValid(user))
-            //    return new CommandResult(ApplicationMessages.Update_Failed);
+            if (!IsValid(user))
+                return new CommandResult(ApplicationMessages.Update_Failed);
 
-
-            var result = await _userManager.UpdateAsync(user);
-            if (!result.Succeeded)
-            {
-                foreach (var error in result.Errors)
-                    NotifyValidationError(request, error.Description);
-
-                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
-            }
+            await _userRepository.UpdateAsync(user);
 
             return new CommandResult(ApplicationMessages.Update_Success, user.Id.ToString());
         }

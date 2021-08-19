@@ -1,5 +1,4 @@
-﻿using AspNetCore.Identity.Mongo.Mongo;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public BaseRepository(IMainDbContext dbContext)
         {
-            _collection = dbContext.GetCollection<TEntity>(); ;
+            _collection = dbContext.GetCollection<TEntity>();
         }
 
         #endregion

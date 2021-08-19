@@ -56,8 +56,6 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             if (!collections.Has<User>())
                 dbContext.CreateCollection<User>();
 
-            if (!collections.Has<ApplicationRole>(name: "Roles"))
-                dbContext.CreateCollection<ApplicationRole>(name: "Roles");
         }
 
 
@@ -118,11 +116,6 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
             #endregion
 
-            #region ApplicationRole Indexs
-
-            dbContext.GetCollection<ApplicationRole>(name: "Roles").Indexes.CreateOneAsync(new CreateIndexModel<ApplicationRole>(Builders<ApplicationRole>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-
-            #endregion
         }
 
     }

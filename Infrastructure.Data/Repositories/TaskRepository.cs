@@ -19,7 +19,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public TaskRepository(IMainDbContext dbContext) : base(dbContext)
         {
-            _tasks = dbContext.GetCollection<Domain.Entities.Task>(); ;
+            _tasks = dbContext.GetCollection<Domain.Entities.Task>();
         }
 
         #endregion

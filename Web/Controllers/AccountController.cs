@@ -1,11 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Users.Services;
 using TaskoMask.Application.Core.ViewMoldes.Account;
-using TaskoMask.Domain.Entities;
 using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
@@ -59,31 +57,21 @@ namespace TaskoMask.Web.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+     //   [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel input, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (!ModelState.IsValid)
                 return View(input);
 
-            //var userQueryResult = await _userService.GetByUserNameAsync(input.Email);
-            //if (!userQueryResult.IsSuccess)
-            //{
-            //    ModelState.AddModelError(nameof(LoginViewModel.Email), ApplicationMessages.User_Login_failed);
-            //    return View(input);
-            //}
-
-            var user = new UserBasicInfoDto
+            var userQueryResult = await _userService.GetByUserNameAsync(input.Email);
+            if (!userQueryResult.IsSuccess)
             {
-                Id = "asdasdasdasdasd",
-                Email = "aa@gg.com",
-            };
+                ModelState.AddModelError(nameof(LoginViewModel.Email), ApplicationMessages.User_Login_failed);
+                return View(input);
+            }
 
-           // var result = await _cookieAuthenticationService.SignIn(userQueryResult.Value, isPersistent: true);
-            var result = await _cookieAuthenticationService.SignIn(user, isPersistent: true);
-
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
-
+            var result = await _cookieAuthenticationService.SignIn(userQueryResult.Value, isPersistent: true);
             if (result)
                 return RedirectToLocal(returnUrl);
 

@@ -1,17 +1,6 @@
 ﻿using DNTCaptcha.Core;
-using Infrastructure.CrossCutting.Ioc;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System;
-using TaskoMask.Application.Boards.Commands.Models;
-using TaskoMask.Application.Mapper;
-using TaskoMask.Infrastructure.CrossCutting.Identity;
-using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Web.Common.Configuration
 {

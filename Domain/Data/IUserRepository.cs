@@ -5,8 +5,8 @@ using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Domain.Data
 {
-    public interface IUserRepository
+    public interface IUserRepository : IBaseRepository<User>
     {
-       
+      Task<User> GetByUserNameAsync(string userName);
     }
 }

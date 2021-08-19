@@ -20,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public CardRepository(IMainDbContext dbContext) : base(dbContext)
         {
-            _cards = dbContext.GetCollection<Card>(); ;
+            _cards = dbContext.GetCollection<Card>();
         }
 
         #endregion

@@ -20,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public OrganizationRepository(IMainDbContext dbContext) : base(dbContext)
         {
-            _organizations = dbContext.GetCollection<Organization>(); ;
+            _organizations = dbContext.GetCollection<Organization>();
         }
 
         #endregion

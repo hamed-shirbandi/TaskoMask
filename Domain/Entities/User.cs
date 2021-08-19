@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Resources;
 namespace TaskoMask.Domain.Entities
 {
     [Display(Name = nameof(DomainMetadata.User), ResourceType = typeof(DomainMetadata))]
-    public class User : ApplicationUser
+    public class User : BaseEntity
     {
         #region Fields
 
@@ -27,7 +27,10 @@ namespace TaskoMask.Domain.Entities
 
         public string AvatarUrl { get; private set; }
         public string DisplayName { get; private set; }
-
+        public string UserName { get; private set; }
+        public string Email { get; private set; }
+        public string PhoneNumber { get; private set; }
+        
 
         #endregion
 

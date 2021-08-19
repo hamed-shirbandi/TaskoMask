@@ -9,7 +9,6 @@
     
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="mongocsharpdriver" Version="2.11.3" />
-    <PackageReference Include="AspNetCore.Identity.Mongo" Version="6.7.2" />
     <PackageReference Include="FluentValidation" Version="9.3.0" />
 
   </ItemGroup>

@@ -20,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public BoardRepository(IMainDbContext dbContext) : base(dbContext)
         {
-            _boards = dbContext.GetCollection<Board>(); ;
+            _boards = dbContext.GetCollection<Board>(); 
         }
 
         #endregion

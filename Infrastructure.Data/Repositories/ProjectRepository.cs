@@ -20,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public ProjectRepository(IMainDbContext dbContext) : base(dbContext)
         {
-            _projects = dbContext.GetCollection<Project>(); ;
+            _projects = dbContext.GetCollection<Project>();
         }
 
         #endregion

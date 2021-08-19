@@ -1,36 +1,33 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Users.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Users;
-using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
+using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Users.Queries.Handlers
 {
     public class UsersQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetUserByIdQuery, UserBasicInfoDto>,
-        IRequestHandler<GetUserByUserNameQuery, UserBasicInfoDto>,
-        IRequestHandler<GetUsersCountQuery, long>
+        IRequestHandler<GetUserByUserNameQuery, UserBasicInfoDto>
     {
         #region Fields
 
-        private readonly UserManager<User> _userManager;
+        private readonly IUserRepository _userRepository;
 
         #endregion
 
         #region Ctors
 
-        public UsersQueryHandlers(UserManager<User> userManager, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public UsersQueryHandlers(IUserRepository userRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
-            _userManager = userManager;
+            _userRepository = userRepository;
         }
 
         #endregion
@@ -44,7 +41,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         /// </summary>
         public async Task<UserBasicInfoDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userManager.FindByIdAsync(request.Id);
+            var user = await _userRepository.GetByIdAsync(request.Id);
             if (user == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
@@ -58,23 +55,12 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         /// </summary>
         public async Task<UserBasicInfoDto> Handle(GetUserByUserNameQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userManager.FindByNameAsync(request.UserName);
+            var user = await _userRepository.GetByUserNameAsync(request.UserName);
             if (user == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
             return _mapper.Map<UserBasicInfoDto>(user);
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> Handle(GetUsersCountQuery request, CancellationToken cancellationToken)
-        {
-            return  _userManager.Users.Count();
-        }
-
 
 
         #endregion

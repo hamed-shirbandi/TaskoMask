@@ -1,12 +1,12 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<TaskoMask.Domain.Entities.User> SignInManager
-@if (SignInManager.IsSignedIn(User))
+﻿
+@*@if (.IsSignedIn(User))*@
+@if (false)
 {
     <a class="nav-link text-success" href="@Url.Action(action: "index",controller:"dashboard",values:new {Area="admin"})">Dashboard</a>
     <a class="nav-link text-danger" href="@Url.Action(action: "logout",controller:"account")">Logout</a>
 }
 else
 {
-<a class="nav-link" href="@Url.Action(action: "register",controller:"account")">Register</a>
-<a class="nav-link" href="@Url.Action(action: "login",controller:"account")">Login</a>
+    <a class="nav-link" href="@Url.Action(action: "register",controller:"account")">Register</a>
+    <a class="nav-link" href="@Url.Action(action: "login",controller:"account")">Login</a>
 }

@@ -10,6 +10,8 @@
 </p>
 <hr />
 
+@await Component.InvokeAsync(nameof(DomainValidationSummary))
+
 <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
     <div class="form-group">
         <input asp-for="Email" class="form-control" placeholder="Email" />

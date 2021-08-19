@@ -1,12 +1,8 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Notifications;
 
-namespace TaskoMask.Web.Components
+namespace TaskoMask.Web.Common.Components
 {
     public class DomainValidationSummary : ViewComponent
     {

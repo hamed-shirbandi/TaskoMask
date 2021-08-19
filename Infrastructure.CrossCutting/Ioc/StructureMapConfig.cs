@@ -15,6 +15,9 @@ using TaskoMask.Application.BaseEntities.Queries.Models;
 using MediatR.Pipeline;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Notifications;
+using TaskoMask.Application.Core.Bus;
+using TaskoMask.Infrastructure.CrossCutting.Bus;
+using TaskoMask.Domain.Core.Events;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
@@ -62,14 +65,16 @@ namespace Infrastructure.CrossCutting.Ioc
                     //scan application dll
                     s.AssemblyContainingType<IProjectService>();
                     //scan application.Core dll
-                    s.AssemblyContainingType<IBaseApplicationService>();
+                    s.AssemblyContainingType<IInMemoryBus>();
                     //scan Domain dll
                     s.AssemblyContainingType<IProjectRepository>();
                     //scan Domain.Core dll
-                    s.AssemblyContainingType<IDomainNotificationHandler>();
+                    s.AssemblyContainingType<Event>();
                     //Scan Infrastructre.Data dll
                     s.AssemblyContainingType<IMainDbContext>();
-                    
+                    //Scan Infrastructure.CrossCutting dll
+                    s.AssemblyContainingType<InMemoryBus>();
+
                     s.WithDefaultConventions();
                 });
 

@@ -24,36 +24,36 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             using (var serviceScope = scopeFactory.CreateScope())
             {
                 string adminRoleName = "admin";
-                var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<ApplicationRole>>();
-                var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
+               // var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<ApplicationRole>>();
+               // var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
 
-                #region Add some Roles
+                //#region Add some Roles
 
-                if (!roleManager.Roles.Any())
-                {
-                    var role = new ApplicationRole
-                    {
-                        Name = adminRoleName,
-                    };
-                    var result = roleManager.CreateAsync(role).Result;
-                }
+                //if (!roleManager.Roles.Any())
+                //{
+                //    var role = new ApplicationRole
+                //    {
+                //        Name = adminRoleName,
+                //    };
+                //    var result = roleManager.CreateAsync(role).Result;
+                //}
 
-                #endregion
+                //#endregion
 
-                #region Add some Users
+                //#region Add some Users
 
-                if (!userManager.Users.Any())
-                {
-                    var user = new User(displayName: configuration["Identity:SuperUser:UserName"], email: configuration["Identity:SuperUser:Email"], userName: configuration["Identity:SuperUser:Email"]);
-                    var result = userManager.CreateAsync(user, configuration["Identity:SuperUser:Password"]).Result;
+                //if (!userManager.Users.Any())
+                //{
+                //    var user = new User(displayName: configuration["Identity:SuperUser:UserName"], email: configuration["Identity:SuperUser:Email"], userName: configuration["Identity:SuperUser:Email"]);
+                //    var result = userManager.CreateAsync(user, configuration["Identity:SuperUser:Password"]).Result;
 
-                    //add user to admin role
-                    if (result.Succeeded)
-                        result = userManager.AddToRoleAsync(user, adminRoleName).Result;
-                }
+                //    //add user to admin role
+                //    if (result.Succeeded)
+                //        result = userManager.AddToRoleAsync(user, adminRoleName).Result;
+                //}
 
-                #endregion
+                //#endregion
             }
         }
 

@@ -30,7 +30,6 @@ namespace TaskoMask.Web.Common.Configuration
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddMediatR(typeof(BoardCommand));
-            services.AddIdentityConfiguration(configuration);
             services.AddAutoMapperSetup();
 
             // If using Kestrel:

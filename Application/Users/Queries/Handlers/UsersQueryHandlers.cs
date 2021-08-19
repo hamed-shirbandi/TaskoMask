@@ -17,6 +17,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
 {
     public class UsersQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetUserByIdQuery, UserBasicInfoDto>,
+        IRequestHandler<GetUserByUserNameQuery, UserBasicInfoDto>,
         IRequestHandler<GetUsersCountQuery, long>
     {
         #region Fields
@@ -55,9 +56,23 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
+        public async Task<UserBasicInfoDto> Handle(GetUserByUserNameQuery request, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByNameAsync(request.UserName);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+
+            return _mapper.Map<UserBasicInfoDto>(user);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<long> Handle(GetUsersCountQuery request, CancellationToken cancellationToken)
         {
-            return _userManager.Users.Count();
+            return  _userManager.Users.Count();
         }
 
 

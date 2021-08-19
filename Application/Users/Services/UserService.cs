@@ -65,6 +65,16 @@ namespace TaskoMask.Application.Users.Services
         /// <summary>
         /// 
         /// </summary>
+        public async Task<Result<UserBasicInfoDto>> GetByUserNameAsync(string userName)
+        {
+            return await SendQueryAsync(new GetUserByUserNameQuery(userName));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Result<long>> CountAsync()
         {
             return await SendQueryAsync(new GetUsersCountQuery());

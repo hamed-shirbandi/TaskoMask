@@ -16,6 +16,9 @@ namespace TaskoMask.Application.Core.Dtos.Users
         [Display(Name = nameof(ApplicationMetadata.Email), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string Email { get; set; }
+
+
+
     }
 
 }

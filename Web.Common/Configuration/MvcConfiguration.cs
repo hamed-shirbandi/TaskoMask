@@ -1,10 +1,13 @@
 ﻿using DNTCaptcha.Core;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using TaskoMask.Web.Common.Services.Authentication;
 
 namespace TaskoMask.Web.Common.Configuration
 {
@@ -25,6 +28,11 @@ namespace TaskoMask.Web.Common.Configuration
 
             services.AddControllersWithViews();
             services.AddDNTCaptchaPreConfigured();
+
+            services.AddScoped<ICookieAuthenticationService,CookieAuthenticationService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             return services.AddCommonConfigureServices(configuration);
         }
 

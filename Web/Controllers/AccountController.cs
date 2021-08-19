@@ -9,6 +9,9 @@ using TaskoMask.Domain.Entities;
 using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using TaskoMask.Web.Common.Services.Authentication;
+using System.Security.Claims;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -17,17 +20,17 @@ namespace TaskoMask.Web.Controllers
         #region Fields
 
         private readonly IUserService _userService;
-        private readonly SignInManager<User> _signInManager;
+        private readonly ICookieAuthenticationService _cookieAuthenticationService;
 
         #endregion
 
         #region Ctors
 
 
-        public AccountController(SignInManager<User> signInManager, IUserService userService)
+        public AccountController(IUserService userService, ICookieAuthenticationService cookieAuthenticationService)
         {
-            _signInManager = signInManager;
             _userService = userService;
+            _cookieAuthenticationService = cookieAuthenticationService;
         }
 
         #endregion
@@ -44,7 +47,7 @@ namespace TaskoMask.Web.Controllers
         public async Task<IActionResult> Login(string returnUrl = null)
         {
             // Clear the existing external cookie to ensure a clean login process
-            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            await _cookieAuthenticationService.SignOut();
 
             ViewData["ReturnUrl"] = returnUrl;
             return View();
@@ -63,19 +66,29 @@ namespace TaskoMask.Web.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-            var result = await _signInManager.PasswordSignInAsync(input.Email, input.Password, input.RememberMe, lockoutOnFailure: false);
-            if (result.Succeeded)
-                return RedirectToLocal(returnUrl);
+            //var userQueryResult = await _userService.GetByUserNameAsync(input.Email);
+            //if (!userQueryResult.IsSuccess)
+            //{
+            //    ModelState.AddModelError(nameof(LoginViewModel.Email), ApplicationMessages.User_Login_failed);
+            //    return View(input);
+            //}
 
-            if (result.IsLockedOut)
-                return RedirectToAction(nameof(Lockout));
+            var user = new UserBasicInfoDto
+            {
+                Id = "asdasdasdasdasd",
+                Email = "aa@gg.com",
+            };
+
+           // var result = await _cookieAuthenticationService.SignIn(userQueryResult.Value, isPersistent: true);
+            var result = await _cookieAuthenticationService.SignIn(user, isPersistent: true);
+
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+
+            if (result)
+                return RedirectToLocal(returnUrl);
 
             ModelState.AddModelError(nameof(LoginViewModel.Password), ApplicationMessages.User_Login_failed);
             return View(input);
-
-
         }
 
 
@@ -125,7 +138,7 @@ namespace TaskoMask.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction(nameof(HomeController.Index), "Home");
 
         }

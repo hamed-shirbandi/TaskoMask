@@ -4,8 +4,6 @@ using TaskoMask.Application.Projects.Services;
 using TaskoMask.Application.Core.Dtos.Projects;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
-using TaskoMask.Application.Projects.Commands.Models;
-using TaskoMask.Application.Projects.Queries.Models;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {

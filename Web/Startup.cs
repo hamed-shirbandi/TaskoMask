@@ -1,16 +1,10 @@
 using System;
-using Infrastructure.CrossCutting.Ioc;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TaskoMask.Application.Commands.Handlers.Organizations;
-using TaskoMask.Application.Mapper;
-using TaskoMask.Infrastructure.CrossCutting.Identity;
 using TaskoMask.Infrastructure.CrossCutting.Mvc.Configuration;
-using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Web
 {
@@ -23,16 +17,21 @@ namespace TaskoMask.Web
         }
 
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
             return services.MvcConfigureServices(_configuration);
-
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceScopeFactory serviceScopeFactory)
         {
             if (env.IsDevelopment())
@@ -48,7 +47,6 @@ namespace TaskoMask.Web
 
 
             app.MvcConfigure(serviceScopeFactory);
-
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

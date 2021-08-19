@@ -7,10 +7,22 @@ namespace TaskoMask.Web.Controllers
 {
     public class BaseController : Controller
     {
+        #region Fields
+
+
+        #endregion
+
+        #region Ctors
+
         public BaseController()
         {
 
         }
+
+        #endregion
+
+
+        #region Protected Methods
 
 
         /// <summary>
@@ -60,7 +72,13 @@ namespace TaskoMask.Web.Controllers
 
 
 
+        #endregion
 
+        #region Private Methods
+
+
+
+        #endregion
 
     }
 }

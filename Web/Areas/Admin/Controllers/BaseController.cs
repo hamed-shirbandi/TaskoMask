@@ -10,13 +10,22 @@ namespace TaskoMask.web.Area.Admin.Controllers
 {
     public class BaseController : Controller
     {
+        #region Fields
+
         protected readonly IMapper _mapper;
+
+        #endregion
+
+        #region Ctors
 
         public BaseController(IMapper mapper)
         {
             _mapper = mapper;
         }
 
+        #endregion
+
+        #region Protected Methods
 
         /// <summary>
         /// 
@@ -26,7 +35,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (this.User == null)
                 return "";
 
-            return this.User.Identity.Name??"";
+            return this.User.Identity.Name ?? "";
         }
 
 
@@ -38,7 +47,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         {
             if (this.User == null)
                 return "";
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier)??"";
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
             return userId;
         }
 
@@ -71,13 +80,13 @@ namespace TaskoMask.web.Area.Admin.Controllers
         /// use this when a http post call made the request
         /// Adding command result message to SuccessMessage or ErrorMessage ViewBags to show in DomainValidationSummary component
         /// </summary>
-        protected IActionResult View<T>(Result<CommandResult> result,T model)
+        protected IActionResult View<T>(Result<CommandResult> result, T model)
         {
             if (result.IsSuccess)
                 ViewBag.SuccessMessage = result.Message;
             else
                 ViewBag.ErrorMessage = result.Message;
-          
+
             return View(model);
         }
 
@@ -130,6 +139,13 @@ namespace TaskoMask.web.Area.Admin.Controllers
             return View(viewName: "KnownError", model: model);
         }
 
+        #endregion
 
+        #region Private Methods
+
+
+
+        #endregion
+      
     }
 }

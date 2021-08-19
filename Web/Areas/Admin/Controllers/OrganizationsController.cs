@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Organizations.Services;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Application.Organizations.Queries.Models;
-using TaskoMask.Application.Organizations.Commands.Models;
 using AutoMapper;
 
 namespace TaskoMask.web.Area.Admin.Controllers

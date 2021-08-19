@@ -9,7 +9,7 @@ using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Core.Services
 {
-    public class BaseApplicationService : IBaseApplicationService
+    public abstract class BaseApplicationService : IBaseApplicationService
     {
         #region Fields
 
@@ -20,7 +20,6 @@ namespace TaskoMask.Application.Core.Services
 
 
         #endregion
-
 
         #region Ctor
 
@@ -36,7 +35,6 @@ namespace TaskoMask.Application.Core.Services
 
         #endregion
 
-
         #region Protected Methods
 
 
@@ -44,7 +42,7 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
+        protected async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
         {
             var result = await _inMemoryBus.Send(cmd);
 
@@ -67,7 +65,7 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<T>> SendQueryAsync<T>(BaseQuery<T> query)
+        protected async Task<Result<T>> SendQueryAsync<T>(BaseQuery<T> query)
         {
             var result = await _inMemoryBus.Send(query);
             if (_notifications.HasAny())
@@ -84,7 +82,6 @@ namespace TaskoMask.Application.Core.Services
 
         #endregion
 
-
         #region Public Methods
 
 
@@ -99,7 +96,5 @@ namespace TaskoMask.Application.Core.Services
 
 
         #endregion
-
-
     }
 }

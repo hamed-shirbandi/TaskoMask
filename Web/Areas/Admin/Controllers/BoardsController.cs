@@ -3,10 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Boards.Services;
 using TaskoMask.Application.Core.Dtos.Boards;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Application.Core.Services;
 using AutoMapper;
-using TaskoMask.Application.Boards.Commands.Models;
-using TaskoMask.Application.Queries.Models.Boards;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
@@ -22,7 +19,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #region Ctor
 
-        public BoardsController(IBoardService boardService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
+        public BoardsController(IBoardService boardService, IMapper mapper) : base(mapper)
         {
             _boardService = boardService;
         }
@@ -41,7 +38,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         public async Task<IActionResult> Index(string id)
         {
             var boardDetailQueryResult = await _boardService.GetDetailAsync(id);
-            return ReturnDataToViewAsync(boardDetailQueryResult);
+            return View(boardDetailQueryResult);
         }
 
 
@@ -70,10 +67,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmd = new CreateBoardCommand(projectId: input.ProjectId, name: input.Name, description: input.Description);
-            await SendCommandAsync(cmd);
-
-            return View(input);
+            var cmdResult = await _boardService.CreateAsync(input);
+            return View(cmdResult, input);
         }
 
 
@@ -85,7 +80,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            return await SendQueryAndReturnMappedDataToViewAsync<BoardBasicInfoDto, BoardInputDto>(new GetBoardByIdQuery(id));
+            var boardQueryResult = await _boardService.GetAsync(id);
+            return View<BoardBasicInfoDto, BoardInputDto>(boardQueryResult);
         }
 
 
@@ -98,10 +94,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmd = new UpdateBoardCommand(id: input.Id, name: input.Name, description: input.Description);
-            await SendCommandAsync(cmd);
-
-            return View(input);
+            var cmdResult = await _boardService.UpdateAsync(input);
+            return View(cmdResult, input);
         }
 
 

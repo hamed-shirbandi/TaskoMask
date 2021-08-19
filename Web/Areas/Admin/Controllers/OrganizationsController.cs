@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Organizations.Services;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Organizations.Commands.Models;
 using AutoMapper;
@@ -22,7 +21,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #region Ctor
 
-        public OrganizationsController(IOrganizationService organizationService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
+        public OrganizationsController(IOrganizationService organizationService, IMapper mapper) : base(mapper)
         {
             _organizationService = organizationService;
         }
@@ -41,7 +40,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         public async Task<IActionResult> Index(string id)
         {
             var organizationDetailQueryResult = await _organizationService.GetDetailAsync(id);
-            return ReturnDataToViewAsync(organizationDetailQueryResult);
+            return View(organizationDetailQueryResult);
       
         }
 
@@ -67,10 +66,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmd = new CreateOrganizationCommand(userId: GetCurrentUserId(), name: input.Name, description: input.Description);
-            await SendCommandAsync(cmd);
-
-            return View(input);
+            var cmdResult = await _organizationService.CreateAsync(input);
+            return View(cmdResult, input);
         }
 
 
@@ -82,7 +79,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            return await SendQueryAndReturnMappedDataToViewAsync<OrganizationBasicInfoDto,OrganizationInputDto>(new GetOrganizationByIdQuery(id));
+            var organizationQueryResult = await _organizationService.GetAsync(id);
+            return View<OrganizationBasicInfoDto, OrganizationInputDto>(organizationQueryResult);
         }
 
 
@@ -95,10 +93,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmd = new UpdateOrganizationCommand(id: input.Id, name: input.Name, description: input.Description);
-            await SendCommandAsync(cmd);
-
-            return View(input);
+            var cmdResult = await _organizationService.UpdateAsync(input);
+            return View(cmdResult, input);
         }
 
 

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Projects.Services;
 using TaskoMask.Application.Core.Dtos.Projects;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Application.Core.Services;
 using AutoMapper;
 using TaskoMask.Application.Projects.Commands.Models;
 using TaskoMask.Application.Projects.Queries.Models;
@@ -11,7 +10,7 @@ using TaskoMask.Application.Projects.Queries.Models;
 namespace TaskoMask.web.Area.Admin.Controllers
 {
     [Authorize]
-     [Area("admin")]
+    [Area("admin")]
     public class ProjectsController : BaseController
     {
         #region Fields
@@ -22,7 +21,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #region Ctor
 
-        public ProjectsController(IProjectService projectService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
+        public ProjectsController(IProjectService projectService, IMapper mapper) : base(mapper)
         {
             _projectService = projectService;
         }
@@ -41,7 +40,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         public async Task<IActionResult> Index(string id)
         {
             var projectDetailQueryResult = await _projectService.GetDetailAsync(id);
-            return ReturnDataToViewAsync(projectDetailQueryResult);
+            return View(projectDetailQueryResult);
 
         }
 
@@ -55,7 +54,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         {
             var model = new ProjectInputDto
             {
-                OrganizationId=organizationId,
+                OrganizationId = organizationId,
             };
             return View(model);
         }
@@ -71,10 +70,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmd = new CreateProjectCommand(organizationId: input.OrganizationId, name: input.Name, description: input.Description);
-            await SendCommandAsync(cmd);
-
-            return View(input);
+            var cmdResult = await _projectService.CreateAsync(input);
+            return View(cmdResult, input);
         }
 
 
@@ -86,7 +83,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            return await SendQueryAndReturnMappedDataToViewAsync<ProjectBasicInfoDto, ProjectInputDto>(new GetProjectByIdQuery(id));
+            var projectQueryResult = await _projectService.GetAsync(id);
+            return View<ProjectBasicInfoDto, ProjectInputDto>(projectQueryResult);
         }
 
 
@@ -99,10 +97,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description);
-            await SendCommandAsync(cmd);
-
-            return View(input);
+            var cmdResult = await _projectService.UpdateAsync(input);
+            return View(cmdResult, input);
         }
 
 

@@ -3,15 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Cards.Services;
 using TaskoMask.Application.Core.Dtos.Cards;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Application.Core.Services;
 using AutoMapper;
-using TaskoMask.Application.Cards.Commands.Models;
-using TaskoMask.Application.Cards.Queries.Models;
 
 namespace TaskoMask.web.Area.Admin.Controllers
 {
     [Authorize]
-     [Area("admin")]
+    [Area("admin")]
     public class CardsController : BaseController
     {
         #region Fields
@@ -22,7 +19,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #region Ctor
 
-        public CardsController(ICardService cardService, IBaseApplicationService baseApplicationService, IMapper mapper) : base(baseApplicationService, mapper)
+        public CardsController(ICardService cardService, IMapper mapper) : base(mapper)
         {
             _cardService = cardService;
         }
@@ -41,7 +38,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
         public async Task<IActionResult> Index(string id)
         {
             var cardDetailQueryResult = await _cardService.GetDetailAsync(id);
-            return ReturnDataToViewAsync(cardDetailQueryResult);
+            return View(cardDetailQueryResult);
 
         }
 
@@ -71,10 +68,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmd = new CreateCardCommand(boardId: input.BoardId, name: input.Name, description: input.Description, type:input.Type);
-            await SendCommandAsync(cmd);
-
-            return View(input);
+            var cmdResult = await _cardService.CreateAsync(input);
+            return View(cmdResult, input);
         }
 
 
@@ -86,7 +81,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            return await SendQueryAndReturnMappedDataToViewAsync<CardBasicInfoDto, CardInputDto>(new GetCardByIdQuery(id));
+            var cardQueryResult = await _cardService.GetAsync(id);
+            return View<CardBasicInfoDto, CardInputDto>(cardQueryResult);
         }
 
 
@@ -99,10 +95,8 @@ namespace TaskoMask.web.Area.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmd = new UpdateCardCommand(id: input.Id, name: input.Name, description: input.Description, type: input.Type);
-            await SendCommandAsync(cmd);
-
-            return View(input);
+            var cmdResult = await _cardService.UpdateAsync(input);
+            return View(cmdResult, input);
         }
 
 

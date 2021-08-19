@@ -1,7 +1,5 @@
 ﻿using TaskoMask.Domain.Core.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Application.Core.ViewMoldes;
@@ -18,6 +16,5 @@ namespace TaskoMask.Application.Projects.Services
         Task<Result<ProjectBasicInfoDto>> GetAsync(string id);
         Task<Result<ProjectReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId);
-
     }
 }

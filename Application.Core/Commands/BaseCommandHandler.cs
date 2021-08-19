@@ -1,5 +1,4 @@
-﻿
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Results;
 using TaskoMask.Application.Core.Extensions;
 using TaskoMask.Application.Core.Notifications;
@@ -9,6 +8,10 @@ using TaskoMask.Domain.Core.Helpers;
 
 namespace TaskoMask.Application.Core.Commands
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BaseCommandHandler
     {
         #region Fields
@@ -19,7 +22,7 @@ namespace TaskoMask.Application.Core.Commands
 
         #endregion
 
-        #region constructors
+        #region Ctors
 
 
         protected BaseCommandHandler(IDomainNotificationHandler notifications)
@@ -40,7 +43,6 @@ namespace TaskoMask.Application.Core.Commands
         {
             _notifications.Add(request.GetType().Name, error);
         }
-
 
 
 
@@ -69,6 +71,9 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected bool IsValid(BaseEntity entity)
         {
             if (!entity.ValidationErrors.Any())
@@ -80,6 +85,9 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected bool IsValid(BaseCommand request, Result result)
         {
             if (result.IsSuccess)
@@ -94,10 +102,13 @@ namespace TaskoMask.Application.Core.Commands
 
         #endregion
 
-
         #region Private Methods
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void NotifyFluentValidationErrors(BaseCommand request, ValidationResult validationResult)
         {
             foreach (var error in validationResult.Errors)
@@ -106,6 +117,9 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void NotifyDataAnnotationValidationErrors(BaseCommand request)
         {
             //try validate data annotations 
@@ -116,8 +130,6 @@ namespace TaskoMask.Application.Core.Commands
             foreach (var result in results)
                 NotifyValidationError(request, result.ErrorMessage);
         }
-
-
 
 
 

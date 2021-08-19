@@ -4,16 +4,31 @@ using TaskoMask.Domain.Core.Exceptions;
 
 namespace TaskoMask.Application.Core.Exceptions
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class ApplicationException : DomainException
     {
- 
-        public ApplicationException(string message): base(message)
+        #region Ctors
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ApplicationException(string message) : base(message)
         {
         }
 
 
-        public ApplicationException(string message, string metadata): base(string.Format(message, metadata))
+        /// <summary>
+        /// 
+        /// </summary>
+        public ApplicationException(string message, string metadata) : base(string.Format(message, metadata))
         {
         }
+
+
+        #endregion
     }
 }

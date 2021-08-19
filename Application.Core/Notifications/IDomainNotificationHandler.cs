@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Notifications

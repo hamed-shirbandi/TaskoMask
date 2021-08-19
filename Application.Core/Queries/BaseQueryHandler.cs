@@ -7,6 +7,10 @@ using TaskoMask.Application.Core.Notifications;
 namespace TaskoMask.Application.Core.Queries
 {
 
+
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BaseQueryHandler
     {
         #region Fields
@@ -18,7 +22,7 @@ namespace TaskoMask.Application.Core.Queries
         #endregion
 
 
-        #region constructors
+        #region Ctors
 
 
         protected BaseQueryHandler(IMapper mapper, IDomainNotificationHandler notifications)
@@ -34,6 +38,9 @@ namespace TaskoMask.Application.Core.Queries
         #region Protected Methods
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected void NotifyValidationError(string key, string error)
         {
             _notifications.Add(key, error);

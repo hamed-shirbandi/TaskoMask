@@ -17,7 +17,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public BoardsController(IBoardService boardService, IMapper mapper) : base(mapper)
         {

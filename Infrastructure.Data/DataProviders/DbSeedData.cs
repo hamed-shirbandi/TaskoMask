@@ -2,20 +2,23 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Domain.Core.Enums;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Entities;
-using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static class DbSeedData
     {
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void MongoDbSeedData(this IServiceScopeFactory scopeFactory)
         {
             using (var serviceScope = scopeFactory.CreateScope())
@@ -42,7 +45,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                 if (!userManager.Users.Any())
                 {
-                    var user = new User(displayName: configuration["Identity:SuperUser:UserName"], email: configuration["Identity:SuperUser:Email"], userName: configuration["Identity:SuperUser:Email"]) ;
+                    var user = new User(displayName: configuration["Identity:SuperUser:UserName"], email: configuration["Identity:SuperUser:Email"], userName: configuration["Identity:SuperUser:Email"]);
                     var result = userManager.CreateAsync(user, configuration["Identity:SuperUser:Password"]).Result;
 
                     //add user to admin role
@@ -53,5 +56,6 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                 #endregion
             }
         }
+
     }
 }

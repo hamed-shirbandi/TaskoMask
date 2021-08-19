@@ -30,7 +30,7 @@ namespace TaskoMask.Domain.Core.Helpers
         #endregion
 
 
-        #region Ctor
+        #region Ctors
 
 
         public Result(bool isSuccess, string message, List<string> errors)
@@ -125,7 +125,7 @@ namespace TaskoMask.Domain.Core.Helpers
         #endregion
 
 
-        #region ctor
+        #region Ctors
 
 
         public Result(bool isSuccess, string message, T value, List<string> errors)

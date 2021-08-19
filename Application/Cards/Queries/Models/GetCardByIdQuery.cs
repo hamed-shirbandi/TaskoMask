@@ -1,5 +1,4 @@
-﻿using TaskoMask.Domain.Core.Helpers;
-using TaskoMask.Application.Core.Dtos.Cards;
+﻿using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Cards.Queries.Models

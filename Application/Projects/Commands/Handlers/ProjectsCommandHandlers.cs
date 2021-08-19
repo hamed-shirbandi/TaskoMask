@@ -17,13 +17,28 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
         IRequestHandler<CreateProjectCommand, CommandResult>,
          IRequestHandler<UpdateProjectCommand, CommandResult>
     {
+        #region Fields
+
         private readonly IProjectRepository _projectRepository;
+
+
+        #endregion
+
+        #region Ctors
+
         public ProjectsCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _projectRepository = projectRepository;
         }
 
+        #endregion
 
+        #region Handlers
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request))
@@ -42,13 +57,15 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _projectRepository.CreateAsync(project);
-            return new CommandResult(ApplicationMessages.Create_Success,project.Id);
+            return new CommandResult(ApplicationMessages.Create_Success, project.Id);
 
         }
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request))
@@ -64,7 +81,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
             if (exist)
             {
                 NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Update_Failed,request.Id);
+                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
             project.Update(request.Name, request.Description);
@@ -73,9 +90,12 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
 
 
             await _projectRepository.UpdateAsync(project);
-            return new CommandResult(ApplicationMessages.Update_Success,project.Id);
+            return new CommandResult(ApplicationMessages.Update_Success, project.Id);
 
         }
+
+
+        #endregion
 
     }
 }

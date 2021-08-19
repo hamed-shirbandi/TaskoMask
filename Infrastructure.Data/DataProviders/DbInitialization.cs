@@ -7,6 +7,10 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static class DbInitialization
     {
 
@@ -53,7 +57,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                 dbContext.CreateCollection<User>();
 
             if (!collections.Has<ApplicationRole>(name: "Roles"))
-                dbContext.CreateCollection<ApplicationRole>(name:"Roles");
+                dbContext.CreateCollection<ApplicationRole>(name: "Roles");
         }
 
 
@@ -108,7 +112,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
             dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
             dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
-            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber",Unique=false }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber", Unique = false }));
             dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
 
 
@@ -116,7 +120,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
             #region ApplicationRole Indexs
 
-            dbContext.GetCollection<ApplicationRole>(name:"Roles").Indexes.CreateOneAsync(new CreateIndexModel<ApplicationRole>(Builders<ApplicationRole>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<ApplicationRole>(name: "Roles").Indexes.CreateOneAsync(new CreateIndexModel<ApplicationRole>(Builders<ApplicationRole>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
 
             #endregion
         }

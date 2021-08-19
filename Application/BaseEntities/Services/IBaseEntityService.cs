@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Helpers;
 using TaskoMask.Application.Core.Services;
-using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.BaseEntities.Services
 {

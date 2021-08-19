@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Organizations.Services
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public OrganizationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
@@ -30,7 +30,6 @@ namespace TaskoMask.Application.Organizations.Services
         #endregion
 
         #region Public Methods
-
 
 
 
@@ -57,8 +56,6 @@ namespace TaskoMask.Application.Organizations.Services
 
 
 
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -77,7 +74,6 @@ namespace TaskoMask.Application.Organizations.Services
             var organizationReportQueryResult = await SendQueryAsync(new GetOrganizationReportQuery(id));
             if (!organizationReportQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailViewModel>(organizationReportQueryResult.Errors);
-
 
 
             var organizationDetail = new OrganizationDetailViewModel
@@ -119,15 +115,12 @@ namespace TaskoMask.Application.Organizations.Services
 
 
 
-
-
         /// <summary>
         /// 
         /// </summary>
         public async Task<Result<OrganizationBasicInfoDto>> GetAsync(string id)
         {
             return await SendQueryAsync(new GetOrganizationByIdQuery(id));
-
         }
 
 
@@ -149,7 +142,6 @@ namespace TaskoMask.Application.Organizations.Services
         public async Task<Result<OrganizationReportDto>> GetReportAsync(string id)
         {
             return await SendQueryAsync(new GetOrganizationReportQuery(id));
-
         }
 
 

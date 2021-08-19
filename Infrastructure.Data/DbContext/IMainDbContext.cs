@@ -1,6 +1,4 @@
-﻿using MongoDB.Driver;
-using System.Collections.Generic;
-using TaskoMask.Domain.Core.Data;
+﻿using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Infrastructure.Data.DbContext
 {

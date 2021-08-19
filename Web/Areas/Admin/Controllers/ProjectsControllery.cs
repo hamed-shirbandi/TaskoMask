@@ -19,7 +19,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public ProjectsController(IProjectService projectService, IMapper mapper) : base(mapper)
         {

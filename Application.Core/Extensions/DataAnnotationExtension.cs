@@ -4,10 +4,17 @@ using System.Linq;
 
 namespace TaskoMask.Application.Core.Extensions
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static class DataAnnotationExtension
     {
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static bool Validate<T>(this T obj, out ICollection<ValidationResult> results)
         {
             results = new List<ValidationResult>();
@@ -16,6 +23,10 @@ namespace TaskoMask.Application.Core.Extensions
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static object GetDisplayName<T>(this T obj) where T : class
         {
             return typeof(T).CustomAttributes.Any() ?

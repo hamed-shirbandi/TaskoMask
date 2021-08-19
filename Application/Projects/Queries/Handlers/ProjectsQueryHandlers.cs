@@ -20,13 +20,28 @@ namespace TaskoMask.Application.Projects.Queries.Handlers
         IRequestHandler<GetProjectReportQuery, ProjectReportDto>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>
     {
+        #region Fields
+
         private readonly IProjectRepository _projectRepository;
+
+        #endregion
+
+        #region Ctors
+
         public ProjectsQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _projectRepository = projectRepository;
         }
 
+        #endregion
 
+        #region Handlers
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<ProjectBasicInfoDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
@@ -37,15 +52,28 @@ namespace TaskoMask.Application.Projects.Queries.Handlers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<IEnumerable<ProjectBasicInfoDto>> Handle(GetProjectsByOrganizationIdQuery request, CancellationToken cancellationToken)
         {
             var projects = await _projectRepository.GetListByOrganizationIdAsync(request.OrganizationId);
             return _mapper.Map<IEnumerable<ProjectBasicInfoDto>>(projects);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Task<ProjectReportDto> Handle(GetProjectReportQuery request, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
+
+
+        #endregion
+
     }
 }

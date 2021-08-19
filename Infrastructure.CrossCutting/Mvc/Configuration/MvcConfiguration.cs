@@ -1,5 +1,4 @@
-﻿
-using Infrastructure.CrossCutting.Ioc;
+﻿using Infrastructure.CrossCutting.Ioc;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -12,13 +11,20 @@ using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Infrastructure.CrossCutting.Mvc.Configuration
 {
-   public static  class MvcConfiguration
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static  class MvcConfiguration
     {
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static IServiceProvider MvcConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
-
          
             services.AddMediatR(typeof(BoardCommand));
             services.AddIdentityConfiguration(configuration);
@@ -28,11 +34,14 @@ namespace TaskoMask.Infrastructure.CrossCutting.Mvc.Configuration
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void MvcConfigure(this IApplicationBuilder app, IServiceScopeFactory serviceScopeFactory)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 
-  
             serviceScopeFactory.InitialMongoDb();
             serviceScopeFactory.MongoDbSeedData();
 

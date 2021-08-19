@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using TaskoMask.Domain.Core.Helpers;
-using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.Application.Boards.Commands.Models;
 using TaskoMask.Application.Boards.Queries.Models;
@@ -8,15 +7,11 @@ using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Boards;
 using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Queries.Models.Boards;
-using TaskoMask.Application.Core.Dtos.Projects;
 using System.Collections.Generic;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Application.Core.Notifications;
-using System.Linq;
-using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Cards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
@@ -30,7 +25,7 @@ namespace TaskoMask.Application.Boards.Services
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public BoardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }

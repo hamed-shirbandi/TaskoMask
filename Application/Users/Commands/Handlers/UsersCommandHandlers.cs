@@ -17,14 +17,29 @@ namespace TaskoMask.Application.Users.Commands.Handlers
         IRequestHandler<CreateUserCommand, CommandResult>,
         IRequestHandler<UpdateUserCommand, CommandResult>
     {
+        #region Fields
+
         private readonly UserManager<User> _userManager;
+
+        #endregion
+
+        #region Ctors
+
 
         public UsersCommandHandlers(IInMemoryBus inMemoryBus, UserManager<User> userManager, IDomainNotificationHandler notifications) : base(notifications)
         {
             _userManager = userManager;
         }
 
+        #endregion
 
+        #region Handlers
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request))
@@ -55,7 +70,9 @@ namespace TaskoMask.Application.Users.Commands.Handlers
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request))
@@ -90,6 +107,9 @@ namespace TaskoMask.Application.Users.Commands.Handlers
 
             return new CommandResult(ApplicationMessages.Update_Success, user.Id.ToString());
         }
+
+
+        #endregion
 
     }
 }

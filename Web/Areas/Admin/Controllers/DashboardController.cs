@@ -19,7 +19,7 @@ namespace TaskoMask.web.Area.Admin.Controllers
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public DashboardController(IOrganizationService organizationService, IMapper mapper) : base(mapper)
         {

@@ -7,6 +7,9 @@ using TaskoMask.Domain.Core.Exceptions;
 
 namespace TaskoMask.Application.Core.Exceptions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ApplicationExceptionsHandler<TRequest, TResponse, TException>
         : IRequestExceptionHandler<TRequest, TResponse, TException> where TException : DomainException
     {
@@ -19,7 +22,7 @@ namespace TaskoMask.Application.Core.Exceptions
         #endregion
 
 
-        #region Ctor
+        #region Ctors
 
 
         public ApplicationExceptionsHandler(IDomainNotificationHandler notifications)
@@ -34,6 +37,10 @@ namespace TaskoMask.Application.Core.Exceptions
         #region Handler
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
         {
             var exceptionType = exception.GetType();

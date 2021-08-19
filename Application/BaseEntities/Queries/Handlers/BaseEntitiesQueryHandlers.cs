@@ -22,8 +22,7 @@ namespace TaskoMask.Application.BaseEntities.Queries.Handlers
 
         #endregion
 
-
-        #region Ctor
+        #region Ctors
 
 
         public BaseEntitiesQueryHandlers(IBaseRepository<TEntity>baseRepository, IDomainNotificationHandler notifications, IMapper mapper): base(mapper,notifications)
@@ -33,7 +32,6 @@ namespace TaskoMask.Application.BaseEntities.Queries.Handlers
 
 
         #endregion
-
 
         #region Handlers
 

@@ -16,7 +16,14 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
         IRequestHandler<CreateCardCommand, CommandResult>,
          IRequestHandler<UpdateCardCommand, CommandResult>
     {
+        #region Fields
+
         private readonly ICardRepository _cardRepository;
+
+
+        #endregion
+
+        #region Ctors
 
         public CardsCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
@@ -24,6 +31,15 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
         }
 
 
+        #endregion
+
+        #region Handlers
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(CreateCardCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request))
@@ -48,6 +64,9 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(UpdateCardCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request))
@@ -74,6 +93,9 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
             await _cardRepository.UpdateAsync(card);
             return new CommandResult(ApplicationMessages.Update_Success, card.Id);
         }
+
+
+        #endregion
 
     }
 }

@@ -1,9 +1,5 @@
-﻿using TaskoMask.Domain.Core.Helpers;
-using MediatR;
-using System.Collections.Generic;
-using TaskoMask.Application.Core.Dtos.Users;
+﻿using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Queries;
-
 
 namespace TaskoMask.Application.Users.Queries.Models
 {

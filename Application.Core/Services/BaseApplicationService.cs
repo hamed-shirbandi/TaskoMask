@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Core.Services
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
 
         public BaseApplicationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications)
@@ -46,13 +46,14 @@ namespace TaskoMask.Application.Core.Services
         {
             var result = await _inMemoryBus.Send(cmd);
 
-            //get and reset notifications for each command
+            //get notification errors
             var errors = _notifications.GetErrors();
 
-            //when throw application or domain Exception
+            //result is null when throw application or domain exception 
             if (result == null)
                 return Result.Failure<CommandResult>(errors);
 
+            //if there is any notification error so result is failed
             if (errors.Count>0)
                 return Result.Failure<CommandResult>(errors, result.Message);
 
@@ -72,7 +73,6 @@ namespace TaskoMask.Application.Core.Services
                 return Result.Failure<T>(_notifications.GetErrors());
 
             return Result.Success(result);
-
         }
 
 

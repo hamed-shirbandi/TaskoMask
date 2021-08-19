@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using TaskoMask.Domain.Core.Helpers;
-using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.Application.Projects.Commands.Models;
 using TaskoMask.Application.Organizations.Queries.Models;
@@ -8,9 +7,7 @@ using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Services;
 using System.Collections.Generic;
-using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Notifications;
@@ -21,20 +18,18 @@ namespace TaskoMask.Application.Projects.Services
 {
     public class ProjectService : BaseEntityService<Project>, IProjectService
     {
-
         #region Fields
 
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public ProjectService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
 
         #endregion
-
 
         #region Public Methods
 
@@ -59,8 +54,6 @@ namespace TaskoMask.Application.Projects.Services
             var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
         }
-
-
 
 
 
@@ -105,19 +98,13 @@ namespace TaskoMask.Application.Projects.Services
 
 
 
-
-
-
-
         /// <summary>
         /// 
         /// </summary>
         public async Task<Result<ProjectBasicInfoDto>> GetAsync(string id)
         {
             return await SendQueryAsync(new GetProjectByIdQuery(id));
-
         }
-
 
 
 
@@ -137,12 +124,10 @@ namespace TaskoMask.Application.Projects.Services
         public async Task<Result<ProjectReportDto>> GetReportAsync(string id)
         {
             return await SendQueryAsync(new GetProjectReportQuery(id));
-
         }
 
 
 
         #endregion
-
     }
 }

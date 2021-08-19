@@ -16,8 +16,7 @@ namespace TaskoMask.Application.BaseEntities.Services
 
         #endregion
 
-
-        #region Ctor
+        #region Ctors
 
 
         public BaseEntityService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
@@ -27,13 +26,11 @@ namespace TaskoMask.Application.BaseEntities.Services
 
         #endregion
 
-
         #region Command Services
 
 
 
         #endregion
-
 
         #region Query Services
 

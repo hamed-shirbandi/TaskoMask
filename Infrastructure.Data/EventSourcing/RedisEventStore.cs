@@ -1,26 +1,31 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using StackExchange.Redis;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Events;
 
 namespace TaskoMask.Infrastructure.Data.EventSourcing
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class RedisEventStore : IEventStore
     {
+        #region Fields
+
         private readonly IConnectionMultiplexer _redisConnection;
         private readonly IConfiguration _configuration;
         private readonly IDatabase _redisDb;
         private readonly ConfigurationOptions _options;
 
+        #endregion
 
-        /// <summary>
-        /// 
-        /// </summary>
+        #region Ctors
+
+
         public RedisEventStore(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -30,6 +35,10 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         }
 
 
+        #endregion
+
+        #region Public Methods
+
 
 
         /// <summary>
@@ -38,9 +47,8 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         public void Save<T>(T eventData) where T : StoredEvent
         {
             string jsonData = ConvertDataToJson(eventData);
-            _redisDb.StringSet(MakeKey(eventData.EntityId,eventData.EntityType), jsonData);
+            _redisDb.StringSet(MakeKey(eventData.EntityId, eventData.EntityType), jsonData);
         }
-
 
 
 
@@ -50,14 +58,15 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         public async Task SaveAsync<T>(T eventData) where T : StoredEvent
         {
             string jsonData = ConvertDataToJson(eventData);
-            await _redisDb.ListLeftPushAsync(MakeKey(eventData.EntityId,eventData.EntityType), jsonData);
+            await _redisDb.ListLeftPushAsync(MakeKey(eventData.EntityId, eventData.EntityType), jsonData);
         }
+
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<List<T>> GetListAsync<T>(string entityId,string entityType) where T : StoredEvent
+        public async Task<List<T>> GetListAsync<T>(string entityId, string entityType) where T : StoredEvent
         {
             var data = new List<T>();
             var jsonList = await _redisDb.ListRangeAsync(MakeKey(entityId, entityType));
@@ -66,15 +75,22 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
                 var itemData = JsonConvert.DeserializeObject<T>(item);
                 data.Add(itemData);
             }
-             
+
             return data;
         }
+
+
+
+        #endregion
+
+        #region Private Methods
+
 
 
         /// <summary>
         /// 
         /// </summary>
-        private string MakeKey(string entityId,string entityType)
+        private string MakeKey(string entityId, string entityType)
         {
             var keyNamespace = _configuration["Redis:KeyNamespace"];
             if (!entityId.StartsWith(keyNamespace))
@@ -86,6 +102,8 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
             return entityId;
         }
 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -93,6 +111,7 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         {
             return JsonConvert.SerializeObject(eventData);
         }
+
 
 
         /// <summary>
@@ -109,5 +128,7 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         }
 
 
+        #endregion
+        
     }
 }

@@ -1,16 +1,12 @@
 ﻿using AutoMapper;
 using TaskoMask.Domain.Core.Helpers;
-using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.Application.Cards.Commands.Models;
-using TaskoMask.Application.Boards.Queries.Models;
 using TaskoMask.Application.Cards.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.ViewMoldes;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Queries.Models.Boards;
-using TaskoMask.Application.Core.Dtos.Boards;
 using System.Collections.Generic;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Domain.Entities;
@@ -24,16 +20,17 @@ namespace TaskoMask.Application.Cards.Services
 {
     public class CardService : BaseEntityService<Card>, ICardService
     {
-
         #region Fields
 
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public CardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
-        { }
+        { 
+
+        }
 
         #endregion
 
@@ -63,7 +60,6 @@ namespace TaskoMask.Application.Cards.Services
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -89,8 +85,6 @@ namespace TaskoMask.Application.Cards.Services
                 return Result.Failure<CardDetailViewModel>(organizationQueryResult.Errors);
 
 
-
-
             var cardReportQueryResult = await SendQueryAsync(new GetCardReportQuery(id));
             if (!cardReportQueryResult.IsSuccess)
                 return Result.Failure<CardDetailViewModel>(cardReportQueryResult.Errors);
@@ -99,7 +93,6 @@ namespace TaskoMask.Application.Cards.Services
             var taskQueryResult = await SendQueryAsync(new GetTasksByCardIdQuery(id));
             if (!taskQueryResult.IsSuccess)
                 return Result.Failure<CardDetailViewModel>(taskQueryResult.Errors);
-
 
 
             var cardDetail = new CardDetailViewModel
@@ -113,11 +106,7 @@ namespace TaskoMask.Application.Cards.Services
             };
 
             return Result.Success(cardDetail);
-
         }
-
-
-
 
 
 
@@ -127,9 +116,7 @@ namespace TaskoMask.Application.Cards.Services
         public async Task<Result<CardBasicInfoDto>> GetAsync(string id)
         {
             return await SendQueryAsync(new GetCardByIdQuery(id));
-
         }
-
 
 
 
@@ -149,13 +136,10 @@ namespace TaskoMask.Application.Cards.Services
         public async Task<Result<CardReportDto>> GetReportAsync(string id)
         {
             return await SendQueryAsync(new GetCardReportQuery(id));
-
         }
 
 
 
         #endregion
-
-
     }
 }

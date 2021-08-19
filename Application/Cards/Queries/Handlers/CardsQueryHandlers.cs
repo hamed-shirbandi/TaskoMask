@@ -11,7 +11,6 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Data;
-using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Cards.Queries.Handlers
 {
@@ -20,12 +19,29 @@ namespace TaskoMask.Application.Cards.Queries.Handlers
         IRequestHandler<GetCardReportQuery, CardReportDto>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>
     {
+        #region Fields
+
         private readonly ICardRepository _cardRepository;
+
+
+        #endregion
+
+        #region Ctors
+
         public CardsQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _cardRepository = cardRepository;
         }
 
+        #endregion
+
+        #region Handlers
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CardBasicInfoDto> Handle(GetCardByIdQuery request, CancellationToken cancellationToken)
         {
             var card = await _cardRepository.GetByIdAsync(request.Id);
@@ -36,15 +52,28 @@ namespace TaskoMask.Application.Cards.Queries.Handlers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<IEnumerable<CardBasicInfoDto>> Handle(GetCardsByBoardIdQuery request, CancellationToken cancellationToken)
         {
             var cards = await _cardRepository.GetListByBoardIdAsync(request.BoardId);
             return _mapper.Map<IEnumerable<CardBasicInfoDto>>(cards);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Task<CardReportDto> Handle(GetCardReportQuery request, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
+
+
+
+        #endregion
     }
 }

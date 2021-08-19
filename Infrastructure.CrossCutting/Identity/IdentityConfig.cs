@@ -7,8 +7,16 @@ using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Infrastructure.CrossCutting.Identity
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static class IdentityConfig
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void AddIdentityConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));

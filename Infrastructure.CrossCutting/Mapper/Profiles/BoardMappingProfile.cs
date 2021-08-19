@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Boards.Commands.Models;
 using TaskoMask.Application.Core.Dtos.Boards;
 using TaskoMask.Domain.Entities;
 

@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TaskoMask.Application.Core.Dtos.Boards;
 using TaskoMask.Application.Core.Queries;
 

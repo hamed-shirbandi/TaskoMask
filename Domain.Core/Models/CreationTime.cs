@@ -15,7 +15,7 @@ namespace TaskoMask.Domain.Core.Models
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public CreationTime()
         {

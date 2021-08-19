@@ -1,18 +1,13 @@
 ﻿using AutoMapper;
-using TaskoMask.Domain.Core.Helpers;
 using MediatR;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Domain.Data;
-using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Queries;using TaskoMask.Application.Core.Queries;
+using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
-using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
@@ -24,12 +19,28 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
         IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationBasicInfoDto>>
     {
+        #region Fields
+
         private readonly IOrganizationRepository _organizationRepository;
+
+        #endregion
+
+        #region Ctors
+
         public OrganizationsQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
         }
 
+        #endregion
+
+        #region Handlers
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<OrganizationBasicInfoDto> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)
         {
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
@@ -40,6 +51,10 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<IEnumerable<OrganizationBasicInfoDto>> Handle(GetOrganizationsByUserIdQuery request, CancellationToken cancellationToken)
         {
             var organizations = await _organizationRepository.GetListByUserIdAsync(request.UserId);
@@ -48,9 +63,16 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Task<OrganizationReportDto> Handle(GetOrganizationReportQuery request, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
+
+
+        #endregion
+
     }
 }

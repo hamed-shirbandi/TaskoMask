@@ -5,6 +5,10 @@ using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Application.Core.Notifications
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class DomainNotificationHandler : IDomainNotificationHandler
     {
         private List<DomainNotification> _notifications;

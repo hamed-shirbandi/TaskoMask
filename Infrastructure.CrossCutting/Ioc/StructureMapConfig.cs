@@ -3,30 +3,32 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StructureMap;
 using System;
-using TaskoMask.Domain.Core.Notifications;
-using TaskoMask.Application.Boards.Services;
-using TaskoMask.Application.Cards.Services;
-using TaskoMask.Application.Organizations.Services;
 using TaskoMask.Application.Projects.Services;
-using TaskoMask.Application.Users.Services;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Data;
 using TaskoMask.Infrastructure.Data.DbContext;
 using TaskoMask.Infrastructure.Data.EventSourcing;
-using TaskoMask.Infrastructure.Data.Repositories;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.BaseEntities.Queries.Handlers;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.BaseEntities.Queries.Models;
-using TaskoMask.Domain.Core.Models;
 using MediatR.Pipeline;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Notifications;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static class StructureMapConfig
     {
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static IServiceProvider ConfigureIocContainer(this IServiceCollection services, IConfiguration configuration)
         {
 

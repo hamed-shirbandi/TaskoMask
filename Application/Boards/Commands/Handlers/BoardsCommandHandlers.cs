@@ -9,7 +9,6 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-using System.Linq;
 
 namespace TaskoMask.Application.Boards.Commands.Handlers
 {
@@ -17,7 +16,14 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         IRequestHandler<CreateBoardCommand, CommandResult>,
         IRequestHandler<UpdateBoardCommand, CommandResult>
     {
+        #region Fields
+
         private readonly IBoardRepository _boardRepository;
+
+        #endregion
+
+        #region Ctors
+
 
         public BoardsCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
@@ -25,6 +31,15 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         }
 
 
+        #endregion
+
+        #region Handlers
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(CreateBoardCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request))
@@ -39,7 +54,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var board = new Board(name:request.Name,description:request.Description,projectId:request.ProjectId);
+            var board = new Board(name: request.Name, description: request.Description, projectId: request.ProjectId);
             if (!IsValid(board))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
@@ -50,6 +65,10 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(UpdateBoardCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request))
@@ -58,7 +77,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
 
             var board = await _boardRepository.GetByIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist,  DomainMetadata.Board);
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
             var exist = await _boardRepository.ExistByNameAsync(board.Id, request.Name);
             if (exist)
@@ -77,6 +96,9 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);
 
         }
+
+
+        #endregion
 
     }
 }

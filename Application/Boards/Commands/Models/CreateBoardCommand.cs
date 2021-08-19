@@ -1,6 +1,5 @@
 ﻿
 
-
 namespace TaskoMask.Application.Boards.Commands.Models
 {
    public class CreateBoardCommand : BoardCommand
@@ -11,7 +10,6 @@ namespace TaskoMask.Application.Boards.Commands.Models
             Description = description;
             ProjectId = projectId;
         }
-
       
     }
 }

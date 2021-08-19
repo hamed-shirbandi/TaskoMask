@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 
 namespace TaskoMask.Infrastructure.Data.DbContext
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class MongoDbContext : IMainDbContext
     {
         #region Fields
@@ -18,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.DbContext
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
 
         public MongoDbContext(IConfiguration configuration)
@@ -38,8 +40,6 @@ namespace TaskoMask.Infrastructure.Data.DbContext
 
 
 
-         
-
         /// <summary>
         /// 
         /// </summary>
@@ -53,8 +53,6 @@ namespace TaskoMask.Infrastructure.Data.DbContext
 
 
 
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -65,7 +63,6 @@ namespace TaskoMask.Infrastructure.Data.DbContext
 
             _database.CreateCollection(name);
         }
-
 
 
 

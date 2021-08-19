@@ -1,5 +1,4 @@
-﻿
-using Infrastructure.CrossCutting.Ioc;
+﻿using Infrastructure.CrossCutting.Ioc;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -12,8 +11,16 @@ using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Infrastructure.CrossCutting.Mvc.Configuration
 {
-   public static class WebApiConfiguration
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class WebApiConfiguration
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static IServiceProvider WebApiConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
@@ -26,6 +33,10 @@ namespace TaskoMask.Infrastructure.CrossCutting.Mvc.Configuration
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void WebApiConfigure(this IApplicationBuilder app, IServiceScopeFactory serviceScopeFactory)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));

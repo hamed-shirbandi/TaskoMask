@@ -18,14 +18,28 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         IRequestHandler<CreateOrganizationCommand, CommandResult>,
         IRequestHandler<UpdateOrganizationCommand, CommandResult>
     {
+        #region Fields
+
         private readonly IOrganizationRepository _organizationRepository;
+
+
+        #endregion
+
+        #region Ctors
 
         public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _organizationRepository = organizationRepository;
         }
 
+        #endregion
 
+        #region Handlers
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request, new CreateOrganizationCommandValidation()))
@@ -60,7 +74,9 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<CommandResult> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
         {
             if (!IsValid(request, new UpdateOrganizationCommandValidation()))
@@ -89,6 +105,9 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             return new CommandResult(ApplicationMessages.Update_Success, organization.Id);
 
         }
+
+
+        #endregion
 
     }
 }

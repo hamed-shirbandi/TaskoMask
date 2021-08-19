@@ -5,8 +5,17 @@ using TaskoMask.Application.Mapper.Profiles;
 
 namespace TaskoMask.Application.Mapper
 {
-   public static class MapperConfig
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class MapperConfig
     {
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void AddAutoMapperSetup(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));

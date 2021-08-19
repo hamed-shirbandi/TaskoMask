@@ -13,7 +13,7 @@ namespace TaskoMask.Web.Controllers
 
         #endregion
 
-        #region Ctor
+        #region Ctors
 
         public HomeController(IOrganizationService organizationService)
         {

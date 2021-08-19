@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace TaskoMask.Domain.Core.Models
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class CreationTime : ValueObject
     {
         #region Properties

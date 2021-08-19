@@ -2,7 +2,10 @@
 
 namespace TaskoMask.Domain.Core.Events
 {
-   public class StoredEvent
+    /// <summary>
+    /// 
+    /// </summary>
+    public class StoredEvent
     {
         public StoredEvent(string entityId, string entityType, string eventType, string userId, string requerst, string response )
         {

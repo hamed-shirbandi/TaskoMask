@@ -3,8 +3,16 @@ using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Domain.Core.Helpers
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IResult
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsSuccess { get; }
 
         /// <summary>
@@ -12,10 +20,17 @@ namespace TaskoMask.Domain.Core.Helpers
         /// </summary>
         public string Message { get; }
 
+
+        /// <summary>
+        ///
+        /// </summary>
         public List<string> Errors { get; }
     }
 
 
+    /// <summary>
+    /// 
+    /// </summary>
     public struct Result : IResult
     {
         #region Properties
@@ -28,7 +43,6 @@ namespace TaskoMask.Domain.Core.Helpers
 
 
         #endregion
-
 
         #region Ctors
 
@@ -45,7 +59,6 @@ namespace TaskoMask.Domain.Core.Helpers
 
 
         #endregion
-
 
         #region Public Methods
 
@@ -111,6 +124,10 @@ namespace TaskoMask.Domain.Core.Helpers
     }
 
 
+
+    /// <summary>
+    /// 
+    /// </summary>
     public struct Result<T> : IResult
     {
         #region Properties
@@ -123,7 +140,6 @@ namespace TaskoMask.Domain.Core.Helpers
 
 
         #endregion
-
 
         #region Ctors
 

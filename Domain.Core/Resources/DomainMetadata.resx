@@ -123,6 +123,15 @@
   <data name="Card" xml:space="preserve">
     <value>Card</value>
   </data>
+  <data name="CardType_Doing" xml:space="preserve">
+    <value>Doing</value>
+  </data>
+  <data name="CardType_Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="CardType_ToDo" xml:space="preserve">
+    <value>To Do</value>
+  </data>
   <data name="Organization" xml:space="preserve">
     <value>Organization</value>
   </data>

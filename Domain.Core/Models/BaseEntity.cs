@@ -1,11 +1,14 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
 using System.Collections.Generic;
 using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Domain.Core.Models
 {
+
+    /// <summary>
+    ///
+    /// </summary>
     public class BaseEntity
     {
         #region Fields

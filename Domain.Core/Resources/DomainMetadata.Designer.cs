@@ -79,6 +79,33 @@ namespace TaskoMask.Domain.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Doing.
+        /// </summary>
+        public static string CardType_Doing {
+            get {
+                return ResourceManager.GetString("CardType_Doing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        public static string CardType_Done {
+            get {
+                return ResourceManager.GetString("CardType_Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Do.
+        /// </summary>
+        public static string CardType_ToDo {
+            get {
+                return ResourceManager.GetString("CardType_ToDo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Organization.
         /// </summary>
         public static string Organization {

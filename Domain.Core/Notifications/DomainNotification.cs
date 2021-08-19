@@ -2,8 +2,22 @@
 
 namespace TaskoMask.Domain.Core.Notifications
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DomainNotification
     {
+
+        public DomainNotification(string key, string value)
+        {
+            Id = Guid.NewGuid();
+            Key = key;
+            Value = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Guid Id { get; private set; }
         
         
@@ -17,11 +31,6 @@ namespace TaskoMask.Domain.Core.Notifications
         /// </summary>
         public string Value { get; private set; }
 
-        public DomainNotification(string key, string value)
-        {
-            Id = Guid.NewGuid();
-            Key = key;
-            Value = value;
-        }
+       
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
@@ -12,6 +8,13 @@ namespace TaskoMask.Domain.Entities
     [Display(Name = nameof(DomainMetadata.Organization), ResourceType = typeof(DomainMetadata))]
     public class Organization : BaseEntity
     {
+        #region Fields
+
+
+        #endregion
+
+        #region Ctors
+
         public Organization(string name, string description, string userId)
         {
             Name = name;
@@ -24,16 +27,39 @@ namespace TaskoMask.Domain.Entities
 
         }
 
-        public string  Name { get; private set; }
-        public string  Description { get; private set; }
+
+        #endregion
+
+        #region Properties
+
+        public string Name { get; private set; }
+        public string Description { get; private set; }
         public string UserId { get; private set; }
 
-      
+        #endregion
+
+        #region Public Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Update(string name, string description)
         {
             Description = description;
             Name = name;
-
         }
+
+
+
+        #endregion
+
+        #region Private Methods
+
+
+
+        #endregion
+
     }
 }

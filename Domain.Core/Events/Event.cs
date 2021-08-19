@@ -2,7 +2,11 @@
 
 namespace TaskoMask.Domain.Core.Events
 {
-   public class Event :INotification
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class Event :INotification
     {
     }
 }

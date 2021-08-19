@@ -1,25 +1,27 @@
-﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Users.Services;
 using TaskoMask.Application.Core.ViewMoldes.Account;
 using TaskoMask.Domain.Entities;
 using TaskoMask.web.Area.Admin.Controllers;
-using TaskoMask.Application.Users.Commands.Models;
+using TaskoMask.Application.Core.Dtos.Users;
 
 namespace TaskoMask.Web.Controllers
 {
-    [Authorize]
     public class AccountController : BaseController
     {
+        #region Fields
+
         private readonly IUserService _userService;
         private readonly SignInManager<User> _signInManager;
+
+        #endregion
+
+        #region Ctors
+
 
         public AccountController(SignInManager<User> signInManager, IUserService userService)
         {
@@ -27,6 +29,10 @@ namespace TaskoMask.Web.Controllers
             _userService = userService;
         }
 
+        #endregion
+
+
+        #region Public Methods
 
 
 
@@ -34,7 +40,6 @@ namespace TaskoMask.Web.Controllers
         /// 
         /// </summary>
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
         {
             // Clear the existing external cookie to ensure a clean login process
@@ -50,7 +55,6 @@ namespace TaskoMask.Web.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel input, string returnUrl = null)
         {
@@ -75,12 +79,10 @@ namespace TaskoMask.Web.Controllers
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Lockout()
         {
             return View();
@@ -88,12 +90,10 @@ namespace TaskoMask.Web.Controllers
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -102,25 +102,19 @@ namespace TaskoMask.Web.Controllers
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel input)
+        public async Task<IActionResult> Register(UserInputDto input)
         {
             if (!ModelState.IsValid)
                 return View(input);
 
-            var createUserCommand = new CreateUserCommand(displayName:input.DisplayName,email:input.Email,password:input.Password);
-            var result = await _userService.SendCommandAsync(createUserCommand);
-            ValidateResult(result);
-
-            return View(input);
+            var cmdResult = await _userService.CreateAsync(input);
+            return View(cmdResult, input);
         }
-
 
 
 
@@ -136,9 +130,14 @@ namespace TaskoMask.Web.Controllers
         }
 
 
-        #region Helpers
+        #endregion
+
+        #region Private Methods
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         private IActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -147,6 +146,10 @@ namespace TaskoMask.Web.Controllers
                 return RedirectToAction(actionName: nameof(DashboardController.Index), controllerName: "Dashboard", routeValues: new { Area = "admin" });
         }
 
+
+
         #endregion
+
+
     }
 }

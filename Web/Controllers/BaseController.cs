@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Commands;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -46,15 +45,22 @@ namespace TaskoMask.Web.Controllers
 
 
         /// <summary>
-        /// 
+        /// use this when a http post call made the request
+        /// Adding command result message to SuccessMessage or ErrorMessage ViewBags to show in DomainValidationSummary component
         /// </summary>
-        protected void ValidateResult(Result<CommandResult> result)
+        protected IActionResult View<T>(Result<CommandResult> result, T model)
         {
             if (result.IsSuccess)
-                ViewBag.SuccessMessage = result.Value.Message;
+                ViewBag.SuccessMessage = result.Message;
             else
-                ViewBag.ErrorMessage = result.Value.Message;
+                ViewBag.ErrorMessage = result.Message;
+
+            return View(model);
         }
+
+
+
+
 
     }
 }

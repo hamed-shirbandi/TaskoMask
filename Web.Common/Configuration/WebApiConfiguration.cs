@@ -1,15 +1,9 @@
-﻿using Infrastructure.CrossCutting.Ioc;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using TaskoMask.Application.Boards.Commands.Models;
-using TaskoMask.Application.Mapper;
-using TaskoMask.Infrastructure.CrossCutting.Identity;
-using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Web.Common.Configuration
 {
@@ -20,6 +14,7 @@ namespace TaskoMask.Web.Common.Configuration
     public static class WebApiConfiguration
     {
 
+
         /// <summary>
         /// 
         /// </summary>
@@ -28,12 +23,7 @@ namespace TaskoMask.Web.Common.Configuration
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddControllers();
-
-            services.AddMediatR(typeof(BoardCommand));
-            services.AddIdentityConfiguration(configuration);
-            services.AddAutoMapperSetup();
-
-            return services.ConfigureIocContainer(configuration);
+            return services.AddCommonConfigureServices(configuration);
         }
 
 
@@ -48,13 +38,9 @@ namespace TaskoMask.Web.Common.Configuration
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            serviceScopeFactory.InitialMongoDb();
-            serviceScopeFactory.MongoDbSeedData();
-
-            app.UseHttpsRedirection();
+            app.UseCommonConfigure(serviceScopeFactory, env);
 
             app.UseRouting();
-
             app.UseAuthorization();
         }
 

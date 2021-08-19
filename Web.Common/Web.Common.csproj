@@ -9,6 +9,10 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DNTCaptcha.Core" Version="4.1.0" />
+  </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />

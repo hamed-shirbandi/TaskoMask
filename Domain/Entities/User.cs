@@ -16,7 +16,7 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public User(string displayName, string email, string userName,string password, IEncryptionService encryptionService)
+        public User(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
         {
             DisplayName = displayName;
             Email = email;
@@ -24,7 +24,7 @@ namespace TaskoMask.Domain.Entities
             ResetPassword(password, encryptionService);
         }
 
-       
+
 
         #endregion
 
@@ -62,11 +62,8 @@ namespace TaskoMask.Domain.Entities
         public bool ValidatePassword(string password, IEncryptionService encryptionService)
         {
             var passwordHash = encryptionService.CreatePasswordHash(password, this.PasswordSalt);
-            var isValid = passwordHash == this.PasswordHash;
-            if (isValid)
-                AddValidationError(DomainMessages.Incorrect_Password);
+            return passwordHash == this.PasswordHash;
 
-            return isValid;
         }
 
 
@@ -87,9 +84,12 @@ namespace TaskoMask.Domain.Entities
         /// </summary>
         public void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
         {
-            var isvalid = ValidatePassword(oldPassword, encryptionService);
-            if (isvalid)
+            var isvalidOldPassword = ValidatePassword(oldPassword, encryptionService);
+            if (isvalidOldPassword)
+            {
+                AddValidationError(DomainMessages.Incorrect_Password);
                 return;
+            }
 
             ResetPassword(newPassword, encryptionService);
         }

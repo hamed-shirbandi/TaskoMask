@@ -78,8 +78,11 @@ namespace TaskoMask.Application.Users.Queries.Handlers
             if (user == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
+            var isValid = user.ValidatePassword(request.Password, _encryptionService);
+            if (!isValid)
+                NotifyValidationError(request, ApplicationMessages.User_Login_failed);
 
-            return user.ValidatePassword(request.Password,_encryptionService);
+            return isValid;
         }
 
 
@@ -88,7 +91,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
 
         #region Private Methods
 
-   
+
 
 
         #endregion

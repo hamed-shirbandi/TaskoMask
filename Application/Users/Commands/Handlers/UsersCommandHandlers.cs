@@ -19,7 +19,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
     {
         #region Fields
 
-        private readonly IUserRepository _userRepository;
+        private readonly IUserBaseRepository _userRepository;
         private readonly IEncryptionService _encryptionService;
 
         #endregion
@@ -27,7 +27,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
         #region Ctors
 
 
-        public UsersCommandHandlers(IUserRepository userRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService) : base(notifications)
+        public UsersCommandHandlers(IUserBaseRepository userRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService) : base(notifications)
         {
             _userRepository = userRepository;
             _encryptionService = encryptionService;

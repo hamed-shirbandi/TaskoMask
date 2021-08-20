@@ -21,14 +21,14 @@ namespace TaskoMask.Application.Users.Queries.Handlers
     {
         #region Fields
 
-        private readonly IUserRepository _userRepository;
+        private readonly IUserBaseRepository _userRepository;
         private readonly IEncryptionService _encryptionService;
 
         #endregion
 
         #region Ctors
 
-        public UsersQueryHandlers(IUserRepository userRepository, IDomainNotificationHandler notifications, IMapper mapper, IEncryptionService encryptionService) : base(mapper, notifications)
+        public UsersQueryHandlers(IUserBaseRepository userRepository, IDomainNotificationHandler notifications, IMapper mapper, IEncryptionService encryptionService) : base(mapper, notifications)
         {
             _userRepository = userRepository;
             _encryptionService = encryptionService;

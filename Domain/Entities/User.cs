@@ -1,11 +1,14 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Domain.Entities
 {
+    /// <summary>
+    /// base class for users
+    /// </summary>
+    [BsonKnownTypes(typeof(Manager), typeof(Operator))]
     public abstract class User : BaseEntity
     {
         #region Fields
@@ -15,7 +18,7 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public User(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
+        protected User(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
         {
             DisplayName = displayName;
             Email = email;
@@ -46,7 +49,7 @@ namespace TaskoMask.Domain.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(string displayName, string email, string userName)
+        public virtual void Update(string displayName, string email, string userName)
         {
             DisplayName = displayName;
             Email = email;
@@ -58,7 +61,7 @@ namespace TaskoMask.Domain.Entities
         /// <summary>
         /// 
         /// </summary>
-        public bool ValidatePassword(string password, IEncryptionService encryptionService)
+        public virtual bool ValidatePassword(string password, IEncryptionService encryptionService)
         {
             var passwordHash = encryptionService.CreatePasswordHash(password, this.PasswordSalt);
             return passwordHash == this.PasswordHash;
@@ -70,7 +73,7 @@ namespace TaskoMask.Domain.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void ResetPassword(string password, IEncryptionService encryptionService)
+        public virtual void ResetPassword(string password, IEncryptionService encryptionService)
         {
             PasswordSalt = encryptionService.CreateSaltKey(5);
             PasswordHash = encryptionService.CreatePasswordHash(password, PasswordSalt);
@@ -81,7 +84,7 @@ namespace TaskoMask.Domain.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
+        public virtual void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
         {
             var isvalidOldPassword = ValidatePassword(oldPassword, encryptionService);
             if (isvalidOldPassword)

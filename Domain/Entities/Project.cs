@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Resources;
+﻿using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Domain.Entities
 {

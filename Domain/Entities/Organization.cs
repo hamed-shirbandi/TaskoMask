@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Domain.Core.Exceptions;
+﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
 

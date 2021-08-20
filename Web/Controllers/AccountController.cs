@@ -8,8 +8,7 @@ using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using TaskoMask.Web.Common.Services.Authentication;
-using System.Security.Claims;
+using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -45,7 +44,7 @@ namespace TaskoMask.Web.Controllers
         public async Task<IActionResult> Login(string returnUrl = null)
         {
             // Clear the existing external cookie to ensure a clean login process
-            await _cookieAuthenticationService.SignOut();
+            await _cookieAuthenticationService.SignOutAsync();
 
             ViewData["ReturnUrl"] = returnUrl;
             return View();
@@ -54,29 +53,29 @@ namespace TaskoMask.Web.Controllers
 
 
         /// <summary>
-        /// 
+        ///  
         /// </summary>
         [HttpPost]
-     //   [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel input, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+
             if (!ModelState.IsValid)
                 return View(input);
 
+            //validate user password
+
+
+
+            //get user
             var userQueryResult = await _userService.GetByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
-            {
-                ModelState.AddModelError(nameof(LoginViewModel.Email), ApplicationMessages.User_Login_failed);
-                return View(input);
-            }
+                return View(userQueryResult,input);
 
-            var result = await _cookieAuthenticationService.SignIn(userQueryResult.Value, isPersistent: true);
-            if (result)
-                return RedirectToLocal(returnUrl);
+            await _cookieAuthenticationService.SignInAsync(userQueryResult.Value, isPersistent: true);
 
-            ModelState.AddModelError(nameof(LoginViewModel.Password), ApplicationMessages.User_Login_failed);
-            return View(input);
+            return RedirectToLocal(returnUrl);
         }
 
 

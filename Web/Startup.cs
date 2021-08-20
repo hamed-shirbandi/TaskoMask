@@ -10,9 +10,11 @@ namespace TaskoMask.Web
     public class Startup
     {
         private readonly IConfiguration _configuration;
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             _configuration = configuration;
+            _env = env;
         }
 
 
@@ -22,7 +24,7 @@ namespace TaskoMask.Web
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            return services.MvcConfigureServices(_configuration);
+            return services.MvcConfigureServices(_configuration, _env);
         }
 
 
@@ -30,11 +32,9 @@ namespace TaskoMask.Web
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// </summary>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceScopeFactory serviceScopeFactory)
+        public void Configure(IApplicationBuilder app, IServiceScopeFactory serviceScopeFactory)
         {
-
-            app.MvcConfigure(serviceScopeFactory, env);
-
+            app.MvcConfigure(serviceScopeFactory, _env);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -46,7 +46,6 @@ namespace TaskoMask.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
             });
-
         }
     }
 

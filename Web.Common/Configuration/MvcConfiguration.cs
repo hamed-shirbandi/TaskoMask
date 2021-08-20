@@ -1,13 +1,10 @@
-﻿using DNTCaptcha.Core;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using TaskoMask.Web.Common.Services.Authentication;
+using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
 
 namespace TaskoMask.Web.Common.Configuration
 {
@@ -18,21 +15,19 @@ namespace TaskoMask.Web.Common.Configuration
     public static  class MvcConfiguration
     {
 
-
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceProvider MvcConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceProvider MvcConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddControllersWithViews();
             services.AddDNTCaptchaPreConfigured();
-
-            services.AddScoped<ICookieAuthenticationService,CookieAuthenticationService>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            services.AddCookieAuthentication(env,options =>
+            {
+                configuration.GetSection("Authentication").Bind(options);
+            });
             return services.AddCommonConfigureServices(configuration);
         }
 
@@ -58,8 +53,6 @@ namespace TaskoMask.Web.Common.Configuration
             app.UseAuthentication();
             app.UseAuthorization();
         }
-
-
 
     }
 }

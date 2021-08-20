@@ -12,6 +12,9 @@
 @await Component.InvokeAsync(nameof(DomainValidationSummary))
 
 <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+
+    @Html.AntiForgeryToken()
+
     <div class="form-group">
         <input asp-for="Email" class="form-control" placeholder="Email" />
         <span asp-validation-for="Email" class="text-danger"></span>

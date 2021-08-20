@@ -12,6 +12,9 @@
 @await Component.InvokeAsync(nameof(DomainValidationSummary))
 
 <form asp-action="Register">
+
+    @Html.AntiForgeryToken()
+
     <div class="form-group">
         <input asp-for="DisplayName" class="form-control" placeholder="DisplayName" />
         <span asp-validation-for="DisplayName" class="text-danger"></span>

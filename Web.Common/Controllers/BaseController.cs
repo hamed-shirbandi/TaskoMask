@@ -18,7 +18,7 @@ namespace TaskoMask.Web.Common.Controllers
 
         #region Ctors
 
-        public BaseController( )
+        public BaseController()
         {
         }
 
@@ -78,23 +78,27 @@ namespace TaskoMask.Web.Common.Controllers
 
 
 
-
-
-
         /// <summary>
-        /// use this when a http post call made the request
-        /// Adding command result message to SuccessMessage or ErrorMessage ViewBags to show in DomainValidationSummary component
+        /// use this when a http post call made the command request
         /// </summary>
         protected IActionResult View<T>(Result<CommandResult> result, T model)
         {
-            if (result.IsSuccess)
-                ViewBag.SuccessMessage = result.Message;
-            else
-                ViewBag.ErrorMessage = result.Message;
+            CreateMessageViewBags(result);
 
             return View(model);
         }
 
+
+
+        /// <summary>
+        /// use this when a http post call made the query request
+        /// </summary>
+        protected IActionResult View<T,E>(Result<T> result, E model)
+        {
+            CreateMessageViewBags(result);
+
+            return View(model);
+        }
 
 
 
@@ -111,7 +115,6 @@ namespace TaskoMask.Web.Common.Controllers
 
             return View(queryResult.Value);
         }
-
 
 
 
@@ -133,16 +136,19 @@ namespace TaskoMask.Web.Common.Controllers
         /// <summary>
         /// 
         /// </summary>
-        protected IActionResult RedirectToErrorPage<T>(Result<T> result)
+        protected IActionResult RedirectToErrorPage<T>(Result<T> queryResult)
         {
             var model = new ErrorViewModel
             {
-                Message = result.Message,
-                Errors = result.Errors,
+                Message = queryResult.Message,
+                Errors = queryResult.Errors,
             };
 
             return View(viewName: "KnownError", model: model);
         }
+
+
+
 
         #endregion
 
@@ -150,7 +156,20 @@ namespace TaskoMask.Web.Common.Controllers
 
 
 
+        /// <summary>
+        /// Adding application service result message to SuccessMessage or ErrorMessage ViewBags to show in DomainValidationSummary component
+        /// </summary>
+        private void CreateMessageViewBags<T>(Result<T> result)
+        {
+            if (result.IsSuccess)
+                ViewBag.SuccessMessage = result.Message;
+            else
+                ViewBag.ErrorMessage = result.Message;
+        }
+
+
+
         #endregion
-      
+
     }
 }

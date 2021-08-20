@@ -46,7 +46,6 @@ namespace TaskoMask.Domain.Entities
             DisplayName = displayName;
             Email = email;
             UserName = userName;
-
         }
 
 

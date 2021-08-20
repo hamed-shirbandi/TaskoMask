@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using System.Linq;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Entities;
+using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
 {
@@ -22,8 +23,16 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         {
             using (var serviceScope = scopeFactory.CreateScope())
             {
-                var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
-                //TODO seed some data
+                var _dbContext = serviceScope.ServiceProvider.GetService<IMainDbContext>();
+                var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
+                var _users = _dbContext.GetCollection<User>();
+
+                if (!_users.AsQueryable().Any())
+                {
+                    var user = new User(_configuration["SuperUser:DisplayName"], _configuration["SuperUser:Email"],_configuration["SuperUser:Email"]);
+                    _users.InsertOne(user);
+                }
+
             }
         }
 

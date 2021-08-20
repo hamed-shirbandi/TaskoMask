@@ -5,7 +5,6 @@ using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Domain.Entities
 {
-    [Display(Name = nameof(DomainMetadata.Organization), ResourceType = typeof(DomainMetadata))]
     public class Organization : BaseEntity
     {
         #region Fields
@@ -49,6 +48,8 @@ namespace TaskoMask.Domain.Entities
         {
             Description = description;
             Name = name;
+            base.Update();
+
         }
 
 

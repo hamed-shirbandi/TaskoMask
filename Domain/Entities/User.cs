@@ -6,8 +6,7 @@ using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Domain.Entities
 {
-    [Display(Name = nameof(DomainMetadata.User), ResourceType = typeof(DomainMetadata))]
-    public class User : BaseEntity
+    public abstract class User : BaseEntity
     {
         #region Fields
 

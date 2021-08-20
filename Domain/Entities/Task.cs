@@ -4,7 +4,6 @@ using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Domain.Entities
 {
-    [Display(Name = nameof(DomainMetadata.Task), ResourceType = typeof(DomainMetadata))]
     public class Task : BaseEntity
     {
         #region Fields

@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using TaskoMask.Domain.Core.Notifications;
 
@@ -56,7 +57,31 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
-        public void AddValidationError(string errorMessage)
+
+
+
+        #endregion
+
+
+        #region Protected Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void Update()
+        {
+           CreationTime.UpdateModifiedDateTime();
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected void AddValidationError(string errorMessage)
         {
             validationErrors ??= new List<DomainNotification>();
 
@@ -64,10 +89,7 @@ namespace TaskoMask.Domain.Core.Models
         }
 
 
-
-
         #endregion
-
 
         #region Private Methods
 

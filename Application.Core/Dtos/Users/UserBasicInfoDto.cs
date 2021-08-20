@@ -1,4 +1,6 @@
-﻿namespace TaskoMask.Application.Core.Dtos.Users
+﻿using TaskoMask.Application.Core.Dtos.Base;
+
+namespace TaskoMask.Application.Core.Dtos.Users
 {
     public class UserBasicInfoDto: UserBaseDto
     {

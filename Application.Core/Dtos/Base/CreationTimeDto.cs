@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Core.Dtos
+namespace TaskoMask.Application.Core.Dtos.Base
 {
     public class CreationTimeDto
     {

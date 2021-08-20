@@ -192,6 +192,9 @@
   <data name="ProjectsCount" xml:space="preserve">
     <value>Projects Count</value>
   </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>{0} is required</value>
   </data>

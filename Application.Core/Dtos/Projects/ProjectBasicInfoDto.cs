@@ -1,4 +1,6 @@
-﻿namespace TaskoMask.Application.Core.Dtos.Projects
+﻿using TaskoMask.Application.Core.Dtos.Base;
+
+namespace TaskoMask.Application.Core.Dtos.Projects
 {
     public class ProjectBasicInfoDto: ProjectBaseDto
     {

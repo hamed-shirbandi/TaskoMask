@@ -13,4 +13,9 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Email\" />
+    <Folder Include="Services\Logging\" />
+    <Folder Include="Services\Sms\" />
+  </ItemGroup>
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace TaskoMask.Application.Core.Dtos.Cards
+﻿using TaskoMask.Application.Core.Dtos.Base;
+
+namespace TaskoMask.Application.Core.Dtos.Cards
 {
     public class CardBasicInfoDto: CardBaseDto
     {

@@ -8,8 +8,8 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Data;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Application.Users.Commands.Handlers
 {
@@ -20,15 +20,17 @@ namespace TaskoMask.Application.Users.Commands.Handlers
         #region Fields
 
         private readonly IUserRepository _userRepository;
+        private readonly IEncryptionService _encryptionService;
 
         #endregion
 
         #region Ctors
 
 
-        public UsersCommandHandlers(IUserRepository userRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public UsersCommandHandlers(IUserRepository userRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService) : base(notifications)
         {
             _userRepository = userRepository;
+            _encryptionService = encryptionService;
         }
 
         #endregion
@@ -52,7 +54,7 @@ namespace TaskoMask.Application.Users.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var user = new User(displayName: request.DisplayName, email: request.Email, userName: request.Email);
+            var user = new User(displayName: request.DisplayName, email: request.Email, userName: request.Email,password: request.Password, encryptionService:_encryptionService);
             if (!IsValid(user))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 

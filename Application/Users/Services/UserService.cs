@@ -10,6 +10,10 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.BaseEntities.Services;
+using System.Security.Cryptography;
+using System.Text;
+using System;
+using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Users.Services
 {
@@ -37,7 +41,7 @@ namespace TaskoMask.Application.Users.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(UserInputDto input)
         {
-            var cmd = new CreateUserCommand(displayName: input.DisplayName, email: input.Email,password:input.Password);
+            var cmd = new CreateUserCommand(displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);
         }
 
@@ -74,8 +78,18 @@ namespace TaskoMask.Application.Users.Services
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<bool>> ValidateUserPasswordAsync(string userName, string password)
+        {
+            return await SendQueryAsync(new ValidateUserPasswordQuery(userName, password));
+        }
+
+
         #endregion
 
-    }
 
+
+    }
 }

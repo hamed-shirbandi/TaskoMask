@@ -1,6 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Domain.Entities
 {
@@ -14,12 +16,15 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public User(string displayName, string email, string userName)
+        public User(string displayName, string email, string userName,string password, IEncryptionService encryptionService)
         {
             DisplayName = displayName;
             Email = email;
             UserName = userName;
+            ResetPassword(password, encryptionService);
         }
+
+       
 
         #endregion
 
@@ -30,7 +35,8 @@ namespace TaskoMask.Domain.Entities
         public string UserName { get; private set; }
         public string Email { get; private set; }
         public string PhoneNumber { get; private set; }
-        
+        public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
 
         #endregion
 
@@ -49,6 +55,44 @@ namespace TaskoMask.Domain.Entities
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool ValidatePassword(string password, IEncryptionService encryptionService)
+        {
+            var passwordHash = encryptionService.CreatePasswordHash(password, this.PasswordSalt);
+            var isValid = passwordHash == this.PasswordHash;
+            if (isValid)
+                AddValidationError(DomainMessages.Incorrect_Password);
+
+            return isValid;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ResetPassword(string password, IEncryptionService encryptionService)
+        {
+            PasswordSalt = encryptionService.CreateSaltKey(5);
+            PasswordHash = encryptionService.CreatePasswordHash(password, PasswordSalt);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
+        {
+            var isvalid = ValidatePassword(oldPassword, encryptionService);
+            if (isvalid)
+                return;
+
+            ResetPassword(newPassword, encryptionService);
+        }
 
         #endregion
 

@@ -1,4 +1,6 @@
-﻿namespace TaskoMask.Application.Core.Dtos.Tasks
+﻿using TaskoMask.Application.Core.Dtos.Base;
+
+namespace TaskoMask.Application.Core.Dtos.Tasks
 {
     public class TaskBasicInfoDto: TaskBaseDto
     {

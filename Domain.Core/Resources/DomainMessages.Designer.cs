@@ -61,6 +61,15 @@ namespace TaskoMask.Domain.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect password or username.
+        /// </summary>
+        public static string Incorrect_Password {
+            get {
+                return ResourceManager.GetString("Incorrect_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation failed.
         /// </summary>
         public static string Operation_Failed {

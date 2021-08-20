@@ -9,7 +9,7 @@ namespace TaskoMask.Application.Mapper.Profiles
     {
         public UserMappingProfile()
         {
-            CreateMap<User, UserBasicInfoDto>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id.ToString()))
+            CreateMap<User, UserBasicInfoDto>()
               .AfterMap<UserMappingAction>();
 
             CreateMap<User, UserInputDto>()

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Users.Services;
-using TaskoMask.Application.Core.ViewMoldes.Account;
+using TaskoMask.Application.Core.ViewMoldes.Users;
 using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
@@ -12,6 +12,7 @@ using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
 
 namespace TaskoMask.Web.Controllers
 {
+    //TODO adding forget password- 2fa - external login
     public class AccountController : BaseController
     {
         #region Fields
@@ -57,21 +58,24 @@ namespace TaskoMask.Web.Controllers
         /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel input, string returnUrl = null)
+        public async Task<IActionResult> Login(UserLoginViewModel input, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
 
             if (!ModelState.IsValid)
                 return View(input);
 
-            //validate user password
-
-
-
+           
             //get user
             var userQueryResult = await _userService.GetByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
                 return View(userQueryResult,input);
+
+
+            //validate user password
+            var validateQueryResult = await _userService.ValidateUserPasswordAsync(input.Email,input.Password);
+            if (!validateQueryResult.IsSuccess)
+                return View(userQueryResult, input);
 
             await _cookieAuthenticationService.SignInAsync(userQueryResult.Value, isPersistent: true);
 
@@ -125,7 +129,7 @@ namespace TaskoMask.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await _cookieAuthenticationService.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
 
         }

@@ -8,10 +8,9 @@ namespace TaskoMask.Application.Users.Services
 {
     public interface IUserService : IBaseEntityService
     {
-        Task<Result<CommandResult>> CreateAsync(UserInputDto input);
-        Task<Result<CommandResult>> UpdateAsync(UserInputDto input);
-        Task<Result<UserBasicInfoDto>> GetAsync(string id);
-        Task<Result<UserBasicInfoDto>> GetByUserNameAsync(string userName);
+        Task<Result<UserBasicInfoDto>> GetBaseUserByIdAsync(string id);
+        Task<Result<UserBasicInfoDto>> GetBaseUserByUserNameAsync(string userName);
+        Task<Result<UserBasicInfoDto>> GetBaseUserByPhoneNumberAsync(string phoneNumber);
         Task<Result<bool>> ValidateUserPasswordAsync(string userName,string password);
     }
 }

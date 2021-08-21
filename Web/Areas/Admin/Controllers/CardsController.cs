@@ -82,7 +82,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var cardQueryResult = await _cardService.GetAsync(id);
+            var cardQueryResult = await _cardService.GetByIdAsync(id);
             return View<CardBasicInfoDto, CardInputDto>(cardQueryResult);
         }
 

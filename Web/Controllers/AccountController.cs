@@ -1,14 +1,12 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Users.Services;
 using TaskoMask.Application.Core.ViewMoldes.Users;
 using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
+using TaskoMask.Application.Managers.Services;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -17,7 +15,7 @@ namespace TaskoMask.Web.Controllers
     {
         #region Fields
 
-        private readonly IUserService _userService;
+        private readonly IManagerService _managerService;
         private readonly ICookieAuthenticationService _cookieAuthenticationService;
 
         #endregion
@@ -25,14 +23,13 @@ namespace TaskoMask.Web.Controllers
         #region Ctors
 
 
-        public AccountController(IUserService userService, ICookieAuthenticationService cookieAuthenticationService)
+        public AccountController(IManagerService managerService, ICookieAuthenticationService cookieAuthenticationService)
         {
-            _userService = userService;
+            _managerService = managerService;
             _cookieAuthenticationService = cookieAuthenticationService;
         }
 
         #endregion
-
 
         #region Public Methods
 
@@ -67,13 +64,13 @@ namespace TaskoMask.Web.Controllers
 
            
             //get user
-            var userQueryResult = await _userService.GetByUserNameAsync(input.Email);
+            var userQueryResult = await _managerService.GetBaseUserByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
                 return View(userQueryResult,input);
 
 
             //validate user password
-            var validateQueryResult = await _userService.ValidateUserPasswordAsync(input.Email,input.Password);
+            var validateQueryResult = await _managerService.ValidateUserPasswordAsync(input.Email,input.Password);
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
                 return View(userQueryResult, input);
 
@@ -117,7 +114,7 @@ namespace TaskoMask.Web.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmdResult = await _userService.CreateAsync(input);
+            var cmdResult = await _managerService.CreateAsync(input);
             return View(cmdResult, input);
         }
 

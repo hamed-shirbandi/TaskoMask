@@ -24,6 +24,8 @@
     <Folder Include="Boards\EventHandlers\" />
     <Folder Include="Cards\Commands\Validations\" />
     <Folder Include="Cards\EventHandlers\" />
+    <Folder Include="Managers\Commands\Validations\" />
+    <Folder Include="Managers\EventHandlers\" />
     <Folder Include="Organizations\EventHandlers\" />
     <Folder Include="Projects\Commands\Validations\" />
     <Folder Include="Projects\EventHandlers\" />
@@ -32,6 +34,10 @@
     <Folder Include="Tasks\Commands\Validations\" />
     <Folder Include="Tasks\EventHandlers\" />
     <Folder Include="Tasks\Services\" />
+    <Folder Include="Operators\Commands\Validations\" />
+    <Folder Include="Operators\EventHandlers\" />
+    <Folder Include="Users\Commands\Handlers\" />
+    <Folder Include="Users\Commands\Models\" />
     <Folder Include="Users\Commands\Validations\" />
     <Folder Include="Users\EventHandlers\" />
   </ItemGroup>

@@ -81,7 +81,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var boardQueryResult = await _boardService.GetAsync(id);
+            var boardQueryResult = await _boardService.GetByIdAsync(id);
             return View<BoardBasicInfoDto, BoardInputDto>(boardQueryResult);
         }
 

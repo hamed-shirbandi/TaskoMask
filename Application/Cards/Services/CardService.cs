@@ -113,7 +113,7 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CardBasicInfoDto>> GetAsync(string id)
+        public async Task<Result<CardBasicInfoDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetCardByIdQuery(id));
         }

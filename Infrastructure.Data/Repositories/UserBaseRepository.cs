@@ -10,7 +10,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
     {
 
         #region Fields
-        private readonly IMongoCollection<TEntity> _users;
+
+        private readonly IMongoCollection<User> _users;
 
 
         #endregion
@@ -19,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public UserBaseRepository(IMainDbContext dbContext) : base(dbContext)
         {
-            _users = dbContext.GetCollection<TEntity>(); 
+            _users = dbContext.GetCollection<User>(); 
 
         }
 
@@ -33,7 +34,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<TEntity> GetByUserNameAsync(string userName)
         {
-            return await _users.Find(e => e.UserName == userName).FirstOrDefaultAsync();
+            return await _users.OfType<TEntity>().Find(e => e.UserName == userName).FirstOrDefaultAsync();
         }
 
 
@@ -43,8 +44,9 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<TEntity> GetByPhoneNumberAsync(string phoneNumber)
         {
-            return await _users.Find(e => e.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
+            return await _users.OfType<TEntity>().Find(e => e.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
         }
+
 
 
         #endregion

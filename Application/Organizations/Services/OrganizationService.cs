@@ -118,7 +118,7 @@ namespace TaskoMask.Application.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OrganizationBasicInfoDto>> GetAsync(string id)
+        public async Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetOrganizationByIdQuery(id));
         }

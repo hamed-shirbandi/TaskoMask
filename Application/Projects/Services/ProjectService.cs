@@ -101,7 +101,7 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectBasicInfoDto>> GetAsync(string id)
+        public async Task<Result<ProjectBasicInfoDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetProjectByIdQuery(id));
         }

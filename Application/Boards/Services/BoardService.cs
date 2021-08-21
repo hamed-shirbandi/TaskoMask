@@ -64,7 +64,7 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardBasicInfoDto>> GetAsync(string id)
+        public async Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetBoardByIdQuery(id));
 

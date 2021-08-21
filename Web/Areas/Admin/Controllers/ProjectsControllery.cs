@@ -82,7 +82,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var projectQueryResult = await _projectService.GetAsync(id);
+            var projectQueryResult = await _projectService.GetByIdAsync(id);
             return View<ProjectBasicInfoDto, ProjectInputDto>(projectQueryResult);
         }
 

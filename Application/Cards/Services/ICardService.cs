@@ -13,7 +13,7 @@ namespace TaskoMask.Application.Cards.Services
         Task<Result<CommandResult>> CreateAsync(CardInputDto input);
         Task<Result<CommandResult>> UpdateAsync(CardInputDto input);
         Task<Result<CardDetailViewModel>> GetDetailAsync(string id);
-        Task<Result<CardBasicInfoDto>> GetAsync(string id);
+        Task<Result<CardBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<CardReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<CardBasicInfoDto>>> GetListByBoardIdAsync(string boardId);
     }

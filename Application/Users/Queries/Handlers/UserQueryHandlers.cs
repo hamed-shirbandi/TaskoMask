@@ -11,24 +11,25 @@ using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Users.Queries.Handlers
 {
-    public class UsersQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetUserByIdQuery, UserBasicInfoDto>,
-        IRequestHandler<ValidateUserPasswordQuery, bool>,
-        IRequestHandler<GetUserByUserNameQuery, UserBasicInfoDto>
+    public class UserQueryHandlers<TEnitity> : BaseQueryHandler,
+        IRequestHandler<GetUserByIdQuery<TEnitity>, UserBasicInfoDto>,
+        IRequestHandler<ValidateUserPasswordQuery<TEnitity>, bool>,
+        IRequestHandler<GetUserByUserNameQuery<TEnitity>, UserBasicInfoDto> where TEnitity :User
     {
         #region Fields
 
-        private readonly IUserBaseRepository _userRepository;
+        private readonly IUserBaseRepository<TEnitity> _userRepository;
         private readonly IEncryptionService _encryptionService;
 
         #endregion
 
         #region Ctors
 
-        public UsersQueryHandlers(IUserBaseRepository userRepository, IDomainNotificationHandler notifications, IMapper mapper, IEncryptionService encryptionService) : base(mapper, notifications)
+        public UserQueryHandlers(IUserBaseRepository<TEnitity> userRepository, IDomainNotificationHandler notifications, IMapper mapper, IEncryptionService encryptionService) : base(mapper, notifications)
         {
             _userRepository = userRepository;
             _encryptionService = encryptionService;
@@ -43,7 +44,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<UserBasicInfoDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserBasicInfoDto> Handle(GetUserByIdQuery<TEnitity> request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByIdAsync(request.Id);
             if (user == null)
@@ -57,9 +58,23 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<UserBasicInfoDto> Handle(GetUserByUserNameQuery request, CancellationToken cancellationToken)
+        public async Task<UserBasicInfoDto> Handle(GetUserByUserNameQuery<TEnitity> request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByUserNameAsync(request.UserName);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+
+            return _mapper.Map<UserBasicInfoDto>(user);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<UserBasicInfoDto> Handle(GetUserByPhoneNumberQuery<TEnitity> request, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetByPhoneNumberAsync(request.PhoneNumber);
             if (user == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
@@ -72,7 +87,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<bool> Handle(ValidateUserPasswordQuery request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(ValidateUserPasswordQuery<TEnitity> request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByUserNameAsync(request.UserName);
             if (user == null)

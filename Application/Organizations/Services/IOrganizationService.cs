@@ -14,7 +14,7 @@ namespace TaskoMask.Application.Organizations.Services
         Task<Result<CommandResult>> UpdateAsync(OrganizationInputDto input);
         Task<Result<OrganizationDetailViewModel>> GetDetailAsync(string id);
         Task<Result<IEnumerable<OrganizationDetailViewModel>>> GetUserOrganizationsDetailAsync(string userId);
-        Task<Result<OrganizationBasicInfoDto>> GetAsync(string id);
+        Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<OrganizationReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByUserIdAsync(string userId);
     }

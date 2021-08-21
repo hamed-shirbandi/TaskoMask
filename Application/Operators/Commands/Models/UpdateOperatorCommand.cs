@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Users.Commands.Models
+namespace TaskoMask.Application.Operators.Commands.Models
 {
-    public class UpdateUserCommand : UserCommand
+    public class UpdateOperatorCommand : OperatorCommand
     {
-        public UpdateUserCommand(string id, string displayName,string email)
+        public UpdateOperatorCommand(string id, string displayName,string email)
         {
             Id = id;
             DisplayName = displayName;

@@ -132,6 +132,12 @@
   <data name="CardType_ToDo" xml:space="preserve">
     <value>To Do</value>
   </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="Operator" xml:space="preserve">
+    <value>Operator</value>
+  </data>
   <data name="Organization" xml:space="preserve">
     <value>Organization</value>
   </data>

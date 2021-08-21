@@ -14,7 +14,7 @@ namespace TaskoMask.Application.Core.Dtos.Users
         [DataType(DataType.Password)]
         [Display(Name = nameof(ApplicationMetadata.ConfirmPassword), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        [Compare(nameof(Password), ErrorMessageResourceName  = nameof(ApplicationMetadata.ComparePasswords))]
+        [Compare(nameof(Password), ErrorMessageResourceName  = nameof(ApplicationMetadata.ComparePasswords), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string ConfirmPassword { get; set; }
 
     }

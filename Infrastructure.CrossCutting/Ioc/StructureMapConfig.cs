@@ -18,6 +18,9 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Infrastructure.CrossCutting.Bus;
 using TaskoMask.Domain.Core.Events;
+using TaskoMask.Application.Users.Queries.Models;
+using TaskoMask.Application.Users.Queries.Handlers;
+using TaskoMask.Application.Core.Dtos.Users;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
@@ -54,6 +57,24 @@ namespace Infrastructure.CrossCutting.Ioc
                 services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Card>, long>, BaseEntityQueryHandlers<Card>> ();
                 services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Organization>, long>, BaseEntityQueryHandlers<Organization>> ();
                 services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Task>, long>, BaseEntityQueryHandlers<Task>> ();
+
+
+                services.AddScoped<IRequestHandler<GetUserByIdQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
+                services.AddScoped<IRequestHandler<GetUserByIdQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
+
+
+
+                services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
+                services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
+
+
+                services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
+                services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
+
+
+
+                services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Operator>, bool>, UserQueryHandlers<Operator>>();
+                services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Manager>, bool>, UserQueryHandlers<Manager>>();
 
 
                 #endregion

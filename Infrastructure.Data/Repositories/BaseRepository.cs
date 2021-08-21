@@ -31,7 +31,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task CreateAsync(TEntity entity)
+        public virtual async Task CreateAsync(TEntity entity)
         {
             await _collection.InsertOneAsync(entity);
         }
@@ -41,7 +41,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task DeleteAsync(string id)
+        public virtual async Task DeleteAsync(string id)
         {
             await _collection.DeleteOneAsync(p => p.Id == id);
         }
@@ -51,7 +51,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<TEntity> GetByIdAsync(string id)
+        public virtual async Task<TEntity> GetByIdAsync(string id)
         {
             return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
         }
@@ -61,7 +61,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<TEntity>> GetListAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetListAsync()
         {
             return await _collection.AsQueryable().ToListAsync();
 
@@ -72,7 +72,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task UpdateAsync(TEntity entity)
+        public virtual async Task UpdateAsync(TEntity entity)
         {
             await _collection.ReplaceOneAsync(p => p.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false });
         }
@@ -82,7 +82,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> CountAsync()
+        public virtual async Task<long> CountAsync()
         {
             return await _collection.CountDocumentsAsync(f => true);
         }

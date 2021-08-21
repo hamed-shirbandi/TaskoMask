@@ -2,6 +2,8 @@
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Mapper.MappingActions;
+using TaskoMask.Application.Core.Dtos.Operators;
+using TaskoMask.Application.Core.Dtos.Managers;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {
@@ -16,6 +18,12 @@ namespace TaskoMask.Application.Mapper.Profiles
                 .AfterMap<UserMappingAction>();
 
             CreateMap<UserBasicInfoDto, UserInputDto>();
+
+            CreateMap<Manager, UserBasicInfoDto>();
+            CreateMap<Operator, UserBasicInfoDto>();
+
+            CreateMap<Manager, ManagerBasicInfoDto>();
+            CreateMap<Operator, OperatorBasicInfoDto>();
         }
     }
 }

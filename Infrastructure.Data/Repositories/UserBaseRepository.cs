@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
@@ -27,6 +28,73 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         #endregion
 
         #region Public Methods
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual async System.Threading.Tasks.Task CreateAsync(TEntity entity)
+        {
+            await _users.OfType<TEntity>().InsertOneAsync(entity);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual async System.Threading.Tasks.Task UpdateAsync(TEntity entity)
+        {
+            await _users.OfType<TEntity>().ReplaceOneAsync(p => p.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false });
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual async System.Threading.Tasks.Task DeleteAsync(string id)
+        {
+            await _users.OfType<TEntity>().DeleteOneAsync(p => p.Id == id);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual async Task<TEntity> GetByIdAsync(string id)
+        {
+            return await _users.OfType<TEntity>().Find(e => e.Id == id).FirstOrDefaultAsync();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual async Task<IEnumerable<TEntity>> GetListAsync()
+        {
+            return await _users.OfType<TEntity>().AsQueryable().ToListAsync();
+
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual async Task<long> CountAsync()
+        {
+            return await _users.OfType<TEntity>().CountDocumentsAsync(f => true);
+        }
+
+
 
 
         /// <summary>

@@ -15,12 +15,12 @@ using TaskoMask.Application.Core.Notifications;
 
 namespace TaskoMask.Application.Tasks.Queries.Handlers
 {
-    public class TasksQueryHandlers : BaseQueryHandler,
+    public class TaskQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,
         IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>
     {
         private readonly ITaskRepository _taskRepository;
-        public TasksQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public TaskQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _taskRepository = taskRepository;
         }

@@ -14,7 +14,7 @@ using TaskoMask.Application.Core.Notifications;
 
 namespace TaskoMask.Application.Organizations.Queries.Handlers
 {
-    public class OrganizationsQueryHandlers : BaseQueryHandler,
+    public class OrganizationQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
         IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationBasicInfoDto>>
@@ -27,7 +27,7 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
 
         #region Ctors
 
-        public OrganizationsQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
         }

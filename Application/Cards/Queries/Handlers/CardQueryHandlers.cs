@@ -14,7 +14,7 @@ using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Cards.Queries.Handlers
 {
-    public class CardsQueryHandlers : BaseQueryHandler,
+    public class CardQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetCardByIdQuery, CardBasicInfoDto>,
         IRequestHandler<GetCardReportQuery, CardReportDto>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>
@@ -28,7 +28,7 @@ namespace TaskoMask.Application.Cards.Queries.Handlers
 
         #region Ctors
 
-        public CardsQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public CardQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _cardRepository = cardRepository;
         }

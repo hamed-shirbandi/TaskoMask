@@ -14,7 +14,7 @@ using TaskoMask.Application.Organizations.Commands.Validations;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
-    public class OrganizationsCommandHandlers : BaseCommandHandler,
+    public class OrganizationCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateOrganizationCommand, CommandResult>,
         IRequestHandler<UpdateOrganizationCommand, CommandResult>
     {
@@ -27,7 +27,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
         #region Ctors
 
-        public OrganizationsCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public OrganizationCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _organizationRepository = organizationRepository;
         }

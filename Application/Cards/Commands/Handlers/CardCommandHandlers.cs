@@ -12,7 +12,7 @@ using MediatR;
 
 namespace TaskoMask.Application.Cards.Commands.Handlers
 {
-    public class CardsCommandHandlers : BaseCommandHandler,
+    public class CardCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateCardCommand, CommandResult>,
          IRequestHandler<UpdateCardCommand, CommandResult>
     {
@@ -25,7 +25,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
 
         #region Ctors
 
-        public CardsCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public CardCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _cardRepository = cardRepository;
         }

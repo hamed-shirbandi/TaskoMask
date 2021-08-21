@@ -15,7 +15,7 @@ using TaskoMask.Application.Core.Notifications;
 
 namespace TaskoMask.Application.Projects.Queries.Handlers
 {
-    public class ProjectsQueryHandlers : BaseQueryHandler,
+    public class ProjectQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetProjectByIdQuery, ProjectBasicInfoDto>,
         IRequestHandler<GetProjectReportQuery, ProjectReportDto>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>
@@ -28,7 +28,7 @@ namespace TaskoMask.Application.Projects.Queries.Handlers
 
         #region Ctors
 
-        public ProjectsQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public ProjectQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _projectRepository = projectRepository;
         }

@@ -13,7 +13,7 @@ using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Projects.Commands.Handlers
 {
-    public class ProjectsCommandHandlers : BaseCommandHandler,
+    public class ProjectCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateProjectCommand, CommandResult>,
          IRequestHandler<UpdateProjectCommand, CommandResult>
     {
@@ -26,7 +26,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
 
         #region Ctors
 
-        public ProjectsCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public ProjectCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _projectRepository = projectRepository;
         }

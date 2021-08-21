@@ -15,7 +15,7 @@ using TaskoMask.Domain.Data;
 
 namespace TaskoMask.Application.Boards.Queries.Handlers
 {
-    public class BoardsQueryHandlers : BaseQueryHandler,
+    public class BoardQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetBoardByIdQuery, BoardBasicInfoDto>,
         IRequestHandler<GetBoardReportQuery, BoardReportDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>
@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Boards.Queries.Handlers
         #region Ctors
 
 
-        public BoardsQueryHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public BoardQueryHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _boardRepository = boardRepository;
         }

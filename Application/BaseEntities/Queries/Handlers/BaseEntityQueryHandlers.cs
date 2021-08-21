@@ -10,7 +10,7 @@ using TaskoMask.Application.Core.Notifications;
 
 namespace TaskoMask.Application.BaseEntities.Queries.Handlers
 {
-    public class BaseEntitiesQueryHandlers<TEntity> : BaseQueryHandler,
+    public class BaseEntityQueryHandlers<TEntity> : BaseQueryHandler,
         IRequestHandler<GetEntitiesCountQuery<TEntity>, long>
         where TEntity : BaseEntity
     {
@@ -25,7 +25,7 @@ namespace TaskoMask.Application.BaseEntities.Queries.Handlers
         #region Ctors
 
 
-        public BaseEntitiesQueryHandlers(IBaseRepository<TEntity>baseRepository, IDomainNotificationHandler notifications, IMapper mapper): base(mapper,notifications)
+        public BaseEntityQueryHandlers(IBaseRepository<TEntity>baseRepository, IDomainNotificationHandler notifications, IMapper mapper): base(mapper,notifications)
         {
             _baseRepository = baseRepository;
         }

@@ -49,11 +49,11 @@ namespace Infrastructure.CrossCutting.Ioc
                 //TODO Handel Generic Command And Queries
                 //services.AddScoped(typeof(IRequestHandler<GetEntitiesCountQuery<T>,long>), typeof(BaseEntitiesQueryHandlers<>));
 
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Project>, long>, BaseEntitiesQueryHandlers<Project>> ();
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Board>, long>, BaseEntitiesQueryHandlers<Board>> ();
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Card>, long>, BaseEntitiesQueryHandlers<Card>> ();
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Organization>, long>, BaseEntitiesQueryHandlers<Organization>> ();
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Task>, long>, BaseEntitiesQueryHandlers<Task>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Project>, long>, BaseEntityQueryHandlers<Project>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Board>, long>, BaseEntityQueryHandlers<Board>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Card>, long>, BaseEntityQueryHandlers<Card>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Organization>, long>, BaseEntityQueryHandlers<Organization>> ();
+                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Task>, long>, BaseEntityQueryHandlers<Task>> ();
 
 
                 #endregion

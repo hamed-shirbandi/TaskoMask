@@ -12,7 +12,7 @@ using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Boards.Commands.Handlers
 {
-    public class BoardsCommandHandlers : BaseCommandHandler,
+    public class BoardCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateBoardCommand, CommandResult>,
         IRequestHandler<UpdateBoardCommand, CommandResult>
     {
@@ -25,7 +25,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         #region Ctors
 
 
-        public BoardsCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications) : base(notifications)
         {
             _boardRepository = boardRepository;
         }

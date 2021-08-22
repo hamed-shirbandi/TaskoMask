@@ -18,6 +18,7 @@ namespace TaskoMask.Application.Mapper.Profiles
                 .AfterMap<UserMappingAction>();
 
             CreateMap<UserBasicInfoDto, UserInputDto>();
+            CreateMap<UserBasicInfoDto, UserBaseDto>();
 
             CreateMap<Manager, UserBasicInfoDto>();
             CreateMap<Operator, UserBasicInfoDto>();

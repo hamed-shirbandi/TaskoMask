@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Web.Common.Configuration.Helpers
+namespace TaskoMask.Web.Common.Configuration.Swagger
 {
     public class SwaggerOptions
     {

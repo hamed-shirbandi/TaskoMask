@@ -4,8 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using TaskoMask.Web.Common.Configuration.Swagger;
+using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
+using TaskoMask.Web.Common.Services.Authentication.JwtAuthentication;
 
-namespace TaskoMask.Web.Common.Configuration
+namespace TaskoMask.Web.Common.Configuration.Startup
 {
 
     /// <summary>
@@ -27,7 +30,10 @@ namespace TaskoMask.Web.Common.Configuration
             {
                 configuration.GetSection("Swagger").Bind(options);
             });
-
+            services.AddJwtAuthentication(options =>
+            {
+                configuration.GetSection("Jwt").Bind(options);
+            });
             return services.AddCommonConfigureServices(configuration);
         }
 
@@ -47,6 +53,7 @@ namespace TaskoMask.Web.Common.Configuration
             app.UseCommonConfigure(serviceScopeFactory, env);
 
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
         }
 

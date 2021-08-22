@@ -11,7 +11,7 @@ using TaskoMask.Application.Boards.Commands.Models;
 using TaskoMask.Application.Mapper;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
-namespace TaskoMask.Web.Common.Configuration
+namespace TaskoMask.Web.Common.Configuration.Startup
 {
 
     /// <summary>

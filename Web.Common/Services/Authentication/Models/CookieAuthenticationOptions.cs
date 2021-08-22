@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Web.Common.Services.Authentication.Models
 {
-    public class CustomAuthenticationOptions
+    public class CookieAuthenticationOptions
     {
         public string CookieName { get; set; }
         public bool CookieHttpOnly { get; set; }

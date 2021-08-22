@@ -8,10 +8,11 @@ using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Helpers;
 using TaskoMask.Application.Core.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace TaskoMask.Web.Api.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrganizationsController : BaseController
     {
         #region Fields

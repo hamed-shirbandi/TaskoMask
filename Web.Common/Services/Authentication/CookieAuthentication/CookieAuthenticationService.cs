@@ -19,14 +19,14 @@ namespace TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
         #region Fields
 
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly CustomAuthenticationOptions _options;
+        private readonly Models.CookieAuthenticationOptions _options;
 
 
         #endregion
 
         #region Ctors
 
-        public CookieAuthenticationService(IHttpContextAccessor httpContextAccessor, IOptions<CustomAuthenticationOptions> options)
+        public CookieAuthenticationService(IHttpContextAccessor httpContextAccessor, IOptions<Models.CookieAuthenticationOptions> options)
         {
             _options = options != null ? options.Value : throw new ArgumentNullException(nameof(options));
             _httpContextAccessor = httpContextAccessor;

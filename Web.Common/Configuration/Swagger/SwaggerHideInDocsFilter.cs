@@ -2,7 +2,7 @@
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Linq;
 
-namespace TaskoMask.Web.Common.Configuration.Helpers
+namespace TaskoMask.Web.Common.Configuration.Swagger
 {
     /// <summary>
     /// Hide methods from sowagger documentation

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TaskoMask.Web.Common.Enums;
 
 namespace TaskoMask.Web.Common.Helpers
 {
@@ -9,30 +10,30 @@ namespace TaskoMask.Web.Common.Helpers
     /// </summary>
     public static class ScriptBox
     {
-        
+
         /// <summary>
         /// 
         /// </summary>
         public static JavaScriptResult ShowMessage(string message, MessageType type = MessageType.alert, bool modal = true, MessageAlignment layout = MessageAlignment.top, bool dismissQueue = false)
         {
-            string script = GetMessageScript( message,  type ,  modal,  layout,  dismissQueue ); 
+            string script = GetMessageScript(message, type, modal, layout, dismissQueue);
             return new JavaScriptResult(script: script);
         }
 
- 
+
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        public static JavaScriptResult RedirectToUrl(string url, object values=null, string message = "", MessageType messageType=MessageType.success)
+        public static JavaScriptResult RedirectToUrl(string url, object values = null, string message = "", MessageType messageType = MessageType.success)
         {
             var script = string.Empty;
             var @params = string.Empty;
 
             if (!string.IsNullOrEmpty(message))
-                 script = GetMessageScript(message: message, type:messageType, modal:true,layout:MessageAlignment.topCenter,dismissQueue:false);
+                script = GetMessageScript(message: message, type: messageType, modal: true, layout: MessageAlignment.topCenter, dismissQueue: false);
 
             if (values != null)
             {

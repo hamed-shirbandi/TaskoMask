@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Web.Common.Helpers
+namespace TaskoMask.Web.Common.Enums
 {
     public enum MessageType
     {

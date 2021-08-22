@@ -4,9 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using TaskoMask.Web.Common.Configuration.Captcha;
 using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
 
-namespace TaskoMask.Web.Common.Configuration
+namespace TaskoMask.Web.Common.Configuration.Startup
 {
 
     /// <summary>

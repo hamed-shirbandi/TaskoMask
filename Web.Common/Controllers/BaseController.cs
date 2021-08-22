@@ -5,6 +5,7 @@ using TaskoMask.Application.Core.Commands;
 using AutoMapper;
 using TaskoMask.Web.Common.Helpers;
 using TaskoMask.Web.Common.Models;
+using TaskoMask.Web.Common.Enums;
 
 namespace TaskoMask.Web.Common.Controllers
 {

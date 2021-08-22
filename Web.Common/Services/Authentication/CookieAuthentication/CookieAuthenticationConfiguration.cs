@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,23 +9,21 @@ using TaskoMask.Web.Common.Services.Authentication.Models;
 
 namespace TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
 {
-    public static class SwaggerExtensions
+    public static class CookieAuthenticationConfiguration
     {
 
         /// <summary>
         /// 
         /// </summary>
-        public static void AddCookieAuthentication(this IServiceCollection services, IWebHostEnvironment env, Action<CustomAuthenticationOptions> setupAction)
+        public static void AddCookieAuthentication(this IServiceCollection services, IWebHostEnvironment env, Action<Models.CookieAuthenticationOptions> setupAction)
         {
-            if (services == null)
-                throw new ArgumentNullException(nameof(services));
+            if (services == null) throw new ArgumentNullException(nameof(services));
 
-            if (setupAction == null)
-                throw new ArgumentNullException(nameof(setupAction));
+            if (setupAction == null) throw new ArgumentNullException(nameof(setupAction));
 
             services.Configure(setupAction);
 
-            var options = services.BuildServiceProvider().GetRequiredService<IOptions<CustomAuthenticationOptions>>();
+            var options = services.BuildServiceProvider().GetRequiredService<IOptions<Models.CookieAuthenticationOptions>>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ICookieAuthenticationService, CookieAuthenticationService>();

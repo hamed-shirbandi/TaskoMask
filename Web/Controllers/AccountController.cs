@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Users.Services;
-using TaskoMask.Application.Core.ViewMoldes.Users;
+using TaskoMask.Application.Core.ViewModels.Users;
 using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;

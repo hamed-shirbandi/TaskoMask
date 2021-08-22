@@ -21,9 +21,5 @@
     <ProjectReference Include="..\Web.Common\Web.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 
 </Project>

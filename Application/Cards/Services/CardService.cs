@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Cards.Commands.Models;
 using TaskoMask.Application.Cards.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Cards;
-using TaskoMask.Application.Core.ViewMoldes;
+using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Queries.Models.Boards;
 using System.Collections.Generic;

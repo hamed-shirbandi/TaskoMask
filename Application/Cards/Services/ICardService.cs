@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Domain.Core.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.ViewMoldes;
+using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.BaseEntities.Services;
 using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.Commands;

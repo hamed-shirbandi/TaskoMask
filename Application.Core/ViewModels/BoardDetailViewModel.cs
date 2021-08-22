@@ -4,7 +4,7 @@ using TaskoMask.Application.Core.Dtos.Cards;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.Core.Dtos.Projects;
 
-namespace TaskoMask.Application.Core.ViewMoldes
+namespace TaskoMask.Application.Core.ViewModels
 {
    public class BoardDetailViewModel
     {

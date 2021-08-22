@@ -5,7 +5,7 @@ using TaskoMask.Application.Boards.Commands.Models;
 using TaskoMask.Application.Boards.Queries.Models;
 using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Boards;
-using TaskoMask.Application.Core.ViewMoldes;
+using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Queries.Models.Boards;
 using System.Collections.Generic;

@@ -31,7 +31,7 @@ namespace TaskoMask.Web.Common.Configuration
                 // Or if you want to use a custom font, make sure that font is present in the wwwroot/fonts folder and also use a good and complete font!
                 .AbsoluteExpiration(minutes: 7)
                 .ShowThousandsSeparators(false)
-                .WithEncryptionKey("This is my secure key!")
+                .WithEncryptionKey("TaskoMask!")
                 .InputNames(// This is optional. Change it if you don't like the default names.
                     new DNTCaptchaComponent
                     {

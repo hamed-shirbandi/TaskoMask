@@ -13,27 +13,23 @@ namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
     public static class JwtAuthenticationConfiguration
     {
 
-        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services,Action<JwtAuthenticationOptions> setupAction)
+        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, Action<JwtAuthenticationOptions> setupAction)
         {
             if (services == null)
-            {
                 throw new ArgumentNullException(nameof(services));
-            }
 
             if (setupAction == null)
-            {
                 throw new ArgumentNullException(nameof(setupAction));
-            }
 
-            
+
             services.Configure(setupAction);
             services.TryAddSingleton<IJwtAuthenticationService, JwtAuthenticationService>();
 
             var jwtOptions = services.BuildServiceProvider().GetRequiredService<IOptions<JwtAuthenticationOptions>>();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
-            services
-                .AddAuthentication(options =>
+
+            services.AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -52,8 +48,6 @@ namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
                         ClockSkew = TimeSpan.Zero // remove delay of token when expire
                     };
                 });
-
-
 
             return services;
         }

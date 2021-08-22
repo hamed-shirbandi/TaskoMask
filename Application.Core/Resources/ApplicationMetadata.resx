@@ -207,4 +207,7 @@
   <data name="UserId" xml:space="preserve">
     <value>UserId</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
 </root>

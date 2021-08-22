@@ -329,5 +329,14 @@ namespace TaskoMask.Application.Core.Resources {
                 return ResourceManager.GetString("UserId", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserName.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
     }
 }

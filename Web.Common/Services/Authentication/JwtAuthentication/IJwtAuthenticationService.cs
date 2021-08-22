@@ -1,4 +1,4 @@
-﻿
+﻿using TaskoMask.Web.Common.Services.Authentication.Models;
 
 namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
 {

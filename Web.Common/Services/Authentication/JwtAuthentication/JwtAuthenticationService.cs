@@ -35,7 +35,7 @@ namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
         /// <summary>
         /// 
         /// </summary>
-        public  string GenerateJwtToken<T>(string userName,string id, T user)
+        public  string GenerateJwtToken<T>(string userName,string id, T jwtModel)
         {
             var claims = new List<Claim>
             {
@@ -45,11 +45,11 @@ namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
             };
 
 
-            var properties = new List<PropertyInfo>(user.GetType().GetProperties());
+            var properties = new List<PropertyInfo>(jwtModel.GetType().GetProperties());
 
             foreach (PropertyInfo property in properties)
             {
-                object propValue = property.GetValue(user, property.GetIndexParameters());
+                object propValue = property.GetValue(jwtModel, property.GetIndexParameters());
 
                 string name = property.Name.ToString().ToLowerFirst();
                 string value = propValue != null ? propValue.ToString() : "";

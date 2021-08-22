@@ -14,6 +14,8 @@ namespace TaskoMask.Web.Common.Controllers
     {
         #region Fields
 
+        protected readonly IMapper _mapper;
+
 
         #endregion
 
@@ -21,6 +23,12 @@ namespace TaskoMask.Web.Common.Controllers
 
         public BaseApiController()
         {
+
+        }
+
+        public BaseApiController(IMapper mapper)
+        {
+            _mapper = mapper;
         }
 
         #endregion
@@ -61,7 +69,7 @@ namespace TaskoMask.Web.Common.Controllers
 
 
 
-
+    
         #endregion
 
         #region Private Methods

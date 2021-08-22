@@ -18,6 +18,10 @@ namespace TaskoMask.Application.Core.ViewModels.Users
         public string Password { get; set; }
 
 
+       
+        /// <summary>
+        /// use in cookie authentication
+        /// </summary>
         [Display(Name = nameof(ApplicationMetadata.RememberMe), ResourceType = typeof(ApplicationMetadata))]
         public bool RememberMe { get; set; }
 

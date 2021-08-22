@@ -89,7 +89,7 @@ namespace TaskoMask.Web.Common.Controllers
             return View(model);
         }
 
-
+         
 
         /// <summary>
         /// use this when a http post call made the query request

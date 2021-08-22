@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Dtos.Users;
@@ -23,7 +24,7 @@ namespace TaskoMask.Web.Api.Controllers
 
         #region Ctor
 
-        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IManagerService managerService)
+        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IManagerService managerService, IMapper mapper):base(mapper)
         {
             _jwtAuthenticationService = jwtAuthenticationService;
             _managerService = managerService;
@@ -55,8 +56,11 @@ namespace TaskoMask.Web.Api.Controllers
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
                 return Result.Failure<string>(userQueryResult.Errors, validateQueryResult.Message);
 
+            //model to add its prop to jwt claims
+            var jwtModel = _mapper.Map<UserBaseDto>(userQueryResult.Value);
+
             //generate and return jwt token
-            var token = _jwtAuthenticationService.GenerateJwtToken(userQueryResult.Value.UserName, userQueryResult.Value.Id, userQueryResult.Value);
+            var token = _jwtAuthenticationService.GenerateJwtToken(userQueryResult.Value.UserName, userQueryResult.Value.Id, jwtModel);
             return Result.Success(value: token);
 
         }

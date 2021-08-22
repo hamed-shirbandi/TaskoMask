@@ -64,7 +64,7 @@ namespace TaskoMask.Web.Common.Controllers
         protected JavaScriptResult AjaxResult(Result<CommandResult> cmdResult, bool reloadPage = false, string redirectUrl = "")
         {
             if (!cmdResult.IsSuccess)
-                return ScriptBox.ShowMessage(string.Join("<br/>", cmdResult.Errors.ToArray()), MsgType.error);
+                return ScriptBox.ShowMessage(string.Join("<br/>", cmdResult.Errors.ToArray()), MessageType.error);
 
             if (reloadPage)
                 return ScriptBox.ReloadPage();
@@ -73,7 +73,7 @@ namespace TaskoMask.Web.Common.Controllers
             if (!string.IsNullOrEmpty(redirectUrl))
                 return ScriptBox.RedirectToUrl(url: redirectUrl.Replace("EntityId", cmdResult.Value.EntityId));
 
-            return ScriptBox.ShowMessage(cmdResult.Message, MsgType.success);
+            return ScriptBox.ShowMessage(cmdResult.Message, MessageType.success);
         }
 
 

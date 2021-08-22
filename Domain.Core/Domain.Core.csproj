@@ -5,6 +5,14 @@
     <AssemblyName>TaskoMask.Domain.Core</AssemblyName>
     <RootNamespace>TaskoMask.Domain.Core</RootNamespace>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Domain.Core\bin\Release\net5.0\TaskoMask.Domain.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Domain.Core\bin\Debug\net5.0\TaskoMask.Domain.Core.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     
     <PackageReference Include="MediatR" Version="9.0.0" />

@@ -23,6 +23,11 @@ namespace TaskoMask.Web.Common.Configuration
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddControllers();
+            services.AddSwaggerPreConfigured(options =>
+            {
+                configuration.GetSection("Swagger").Bind(options);
+            });
+
             return services.AddCommonConfigureServices(configuration);
         }
 
@@ -38,6 +43,7 @@ namespace TaskoMask.Web.Common.Configuration
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseSwaggerPreConfigured();
             app.UseCommonConfigure(serviceScopeFactory, env);
 
             app.UseRouting();

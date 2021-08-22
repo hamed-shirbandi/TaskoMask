@@ -13,7 +13,7 @@ namespace TaskoMask.Web.Common.Helpers
         /// <summary>
         /// 
         /// </summary>
-        public static JavaScriptResult ShowMessage(string message, MsgType type = MsgType.alert, bool modal = true, MessageAlignment layout = MessageAlignment.top, bool dismissQueue = false)
+        public static JavaScriptResult ShowMessage(string message, MessageType type = MessageType.alert, bool modal = true, MessageAlignment layout = MessageAlignment.top, bool dismissQueue = false)
         {
             string script = GetMessageScript( message,  type ,  modal,  layout,  dismissQueue ); 
             return new JavaScriptResult(script: script);
@@ -26,7 +26,7 @@ namespace TaskoMask.Web.Common.Helpers
         /// <summary>
         /// 
         /// </summary>
-        public static JavaScriptResult RedirectToUrl(string url, object values=null, string message = "", MsgType messageType=MsgType.success)
+        public static JavaScriptResult RedirectToUrl(string url, object values=null, string message = "", MessageType messageType=MessageType.success)
         {
             var script = string.Empty;
             var @params = string.Empty;
@@ -52,7 +52,7 @@ namespace TaskoMask.Web.Common.Helpers
         /// <summary>
         /// 
         /// </summary>
-        public static JavaScriptResult ReloadPage(string message = "", MsgType messageType = MsgType.success)
+        public static JavaScriptResult ReloadPage(string message = "", MessageType messageType = MessageType.success)
         {
             var script = string.Empty;
 
@@ -69,7 +69,7 @@ namespace TaskoMask.Web.Common.Helpers
         /// <summary>
         /// 
         /// </summary>
-        private static string GetMessageScript(string message, MsgType type, bool modal, MessageAlignment layout, bool dismissQueue)
+        private static string GetMessageScript(string message, MessageType type, bool modal, MessageAlignment layout, bool dismissQueue)
         {
             return "noty({ text: \"" + message + "\", type: \"" + type.ToString() + "\", layout: \"" + layout + "\", dismissQueue: " + dismissQueue.ToString().ToLower() + ", modal: " + modal.ToString().ToLower() + " });";
         }

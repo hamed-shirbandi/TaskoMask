@@ -5,6 +5,14 @@
     <AssemblyName>TaskoMask.Infrastructure.CrossCutting</AssemblyName>
     <RootNamespace>TaskoMask.Infrastructure.CrossCutting</RootNamespace>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Infrastructure.CrossCutting\bin\Release\net5.0\TaskoMask.Infrastructure.CrossCutting.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Infrastructure.CrossCutting\bin\Debug\net5.0\TaskoMask.Infrastructure.CrossCutting.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="StructureMap.AspNetCore" Version="1.3.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />

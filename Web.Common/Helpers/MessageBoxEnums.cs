@@ -1,7 +1,7 @@
 ﻿
 namespace TaskoMask.Web.Common.Helpers
 {
-    public enum MsgType
+    public enum MessageType
     {
         success,
         error,

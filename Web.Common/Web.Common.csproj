@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="DNTCaptcha.Core" Version="4.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
   </ItemGroup>
   
   <ItemGroup>

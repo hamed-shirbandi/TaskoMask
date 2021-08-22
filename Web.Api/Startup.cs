@@ -15,15 +15,20 @@ namespace Web.Api
             _configuration = configuration;
         }
 
-   
-        // This method gets called by the runtime. Use this method to add services to the container.
+
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             return services.WebApiConfigureServices(_configuration);
         }
 
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceScopeFactory serviceScopeFactory)
         {
             app.WebApiConfigure(serviceScopeFactory, env);

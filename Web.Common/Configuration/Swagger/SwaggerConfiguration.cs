@@ -30,13 +30,12 @@ namespace TaskoMask.Web.Common.Configuration.Swagger
             {
                 //Hide some unwanted methods from documentation
                 c.DocumentFilter<SwaggerHideInDocsFilter>();
-
+                //swagger doc info
                 c.SwaggerDoc(options.Value.Version, new OpenApiInfo { Title = options.Value.Title, Version = options.Value.Version });
-
+                //include xml comments from xml files referred in appsetting
                 foreach (var includeXmlComment in options.Value.IncludeXmlComments.Split(","))
                     c.IncludeXmlComments(string.Format(@"{0}\{1}", AppDomain.CurrentDomain.BaseDirectory, includeXmlComment));
-
-
+                //define Bearer security
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     Name = "Authorization",
@@ -46,6 +45,7 @@ namespace TaskoMask.Web.Common.Configuration.Swagger
                     In = ParameterLocation.Header,
                     Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
                 });
+                //add Bearer input to swagger ui to authorize by a jwt token that get from login api
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -57,18 +57,10 @@ namespace TaskoMask.Web.Common.Configuration.Swagger
                                     Id = "Bearer"
                                 }
                             },
-                            new string[] {}
-
+                            Array.Empty<string>()
                     }
                 });
-                //            c.AddSecurityRequirement(new Dictionary<OpenApiSecurityScheme, IEnumerable<string>>
-                //{
-                //{"Bearer",new string[]{}}
-                //});
-
             });
-
-
             return services;
         }
 

@@ -6,7 +6,7 @@ using TaskoMask.Web.Common.Controllers;
 
 namespace TaskoMask.Web.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : BaseMvcController
     {
         #region Fields
 

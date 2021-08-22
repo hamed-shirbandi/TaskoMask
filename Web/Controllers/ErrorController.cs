@@ -5,7 +5,7 @@ using TaskoMask.Web.Common.Models;
 
 namespace TaskoMask.Web.Controllers
 {
-    public class ErrorController : BaseController
+    public class ErrorController : BaseMvcController
     {
         #region Fields
 

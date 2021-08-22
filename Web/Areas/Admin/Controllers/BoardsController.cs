@@ -10,7 +10,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
 {
     [Authorize]
     [Area("admin")]
-    public class BoardsController : BaseController
+    public class BoardsController : BaseMvcController
     {
         #region Fields
 

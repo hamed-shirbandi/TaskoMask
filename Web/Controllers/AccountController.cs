@@ -11,7 +11,7 @@ using DNTCaptcha.Core;
 namespace TaskoMask.Web.Controllers
 {
     //TODO adding forget password- 2fa - external login
-    public class AccountController : BaseController
+    public class AccountController : BaseMvcController
     {
         #region Fields
 

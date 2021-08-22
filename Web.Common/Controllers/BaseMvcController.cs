@@ -9,7 +9,7 @@ using TaskoMask.Web.Common.Enums;
 
 namespace TaskoMask.Web.Common.Controllers
 {
-    public class BaseController : Controller
+    public class BaseMvcController : Controller
     {
         #region Fields
 
@@ -19,12 +19,12 @@ namespace TaskoMask.Web.Common.Controllers
 
         #region Ctors
 
-        public BaseController()
+        public BaseMvcController()
         {
         }
 
 
-        public BaseController(IMapper mapper)
+        public BaseMvcController(IMapper mapper)
         {
             _mapper = mapper;
         }

@@ -10,7 +10,7 @@ using TaskoMask.Web.Common.Services.Authentication.JwtAuthentication;
 
 namespace TaskoMask.Web.Api.Controllers
 {
-    public class AccountController : BaseController
+    public class AccountController : BaseApiController
     {
         #region Fields
 
@@ -37,7 +37,7 @@ namespace TaskoMask.Web.Api.Controllers
 
 
         /// <summary>
-        /// 
+        /// login managgers
         /// </summary>
         [HttpPost]
         [Route("account/login")]
@@ -65,7 +65,7 @@ namespace TaskoMask.Web.Api.Controllers
 
 
         /// <summary>
-        /// 
+        /// register new manager
         /// </summary>
         [HttpPost]
         [Route("account/register")]

@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace TaskoMask.Web.Api.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class ProjectsController : BaseController
+    public class ProjectsController : BaseApiController
     {
         #region Fields
 
@@ -23,7 +23,7 @@ namespace TaskoMask.Web.Api.Controllers
 
         #region Ctors
 
-        public ProjectsController(IProjectService projectService, IMapper mapper) : base(mapper)
+        public ProjectsController(IProjectService projectService)
         {
             _projectService = projectService;
         }

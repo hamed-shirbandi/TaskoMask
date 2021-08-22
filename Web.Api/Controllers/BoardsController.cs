@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace TaskoMask.Web.Api.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class BoardsController : BaseController
+    public class BoardsController : BaseApiController
     {
         #region Fields
 
@@ -23,7 +23,7 @@ namespace TaskoMask.Web.Api.Controllers
 
         #region Ctors
 
-        public BoardsController(IBoardService boardService, IMapper mapper) : base(mapper)
+        public BoardsController(IBoardService boardService)
         {
             _boardService = boardService;
         }

@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace TaskoMask.Web.Api.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class CardsController : BaseController
+    public class CardsController : BaseApiController
     {
         #region Fields
 
@@ -23,7 +23,7 @@ namespace TaskoMask.Web.Api.Controllers
 
         #region Ctors
 
-        public CardsController(ICardService cardService, IMapper mapper) : base(mapper)
+        public CardsController(ICardService cardService)
         {
             _cardService = cardService;
         }

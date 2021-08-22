@@ -59,24 +59,24 @@ namespace TaskoMask.Application.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OrganizationDetailViewModel>> GetDetailAsync(string id)
+        public async Task<Result<OrganizationDetailsViewModel>> GetDetailsAsync(string id)
         {
             var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(id));
             if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<OrganizationDetailViewModel>(organizationQueryResult.Errors);
+                return Result.Failure<OrganizationDetailsViewModel>(organizationQueryResult.Errors);
 
 
             var projectQueryResult = await SendQueryAsync(new GetProjectsByOrganizationIdQuery(id));
             if (!projectQueryResult.IsSuccess)
-                return Result.Failure<OrganizationDetailViewModel>(projectQueryResult.Errors);
+                return Result.Failure<OrganizationDetailsViewModel>(projectQueryResult.Errors);
 
 
             var organizationReportQueryResult = await SendQueryAsync(new GetOrganizationReportQuery(id));
             if (!organizationReportQueryResult.IsSuccess)
-                return Result.Failure<OrganizationDetailViewModel>(organizationReportQueryResult.Errors);
+                return Result.Failure<OrganizationDetailsViewModel>(organizationReportQueryResult.Errors);
 
 
-            var organizationDetail = new OrganizationDetailViewModel
+            var organizationDetail = new OrganizationDetailsViewModel
             {
                 Organization = organizationQueryResult.Value,
                 Projects = projectQueryResult.Value,
@@ -93,19 +93,19 @@ namespace TaskoMask.Application.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<OrganizationDetailViewModel>>> GetUserOrganizationsDetailAsync(string userId)
+        public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetUserOrganizationsDetailAsync(string userId)
         {
             var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByUserIdQuery(userId));
             if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<IEnumerable<OrganizationDetailViewModel>> (organizationQueryResult.Errors);
+                return Result.Failure<IEnumerable<OrganizationDetailsViewModel>> (organizationQueryResult.Errors);
 
-            var organizationsDetail = new List<OrganizationDetailViewModel>();
+            var organizationsDetail = new List<OrganizationDetailsViewModel>();
 
             foreach (var organization in organizationQueryResult.Value)
             {
-                var organizationDetailResult = await GetDetailAsync(organization.Id);
+                var organizationDetailResult = await GetDetailsAsync(organization.Id);
                 if (!organizationDetailResult.IsSuccess)
-                    return Result.Failure<IEnumerable<OrganizationDetailViewModel>>(organizationDetailResult.Errors);
+                    return Result.Failure<IEnumerable<OrganizationDetailsViewModel>>(organizationDetailResult.Errors);
 
                 organizationsDetail.Add(organizationDetailResult.Value);
             }

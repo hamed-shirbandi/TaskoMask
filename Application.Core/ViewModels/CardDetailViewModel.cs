@@ -7,7 +7,7 @@ using TaskoMask.Application.Core.Dtos.Tasks;
 
 namespace TaskoMask.Application.Core.ViewModels
 {
-   public class CardDetailViewModel
+   public class CardDetailsViewModel
     {
         public OrganizationBasicInfoDto Organization { get; set; }
         public ProjectBasicInfoDto Project { get; set; }

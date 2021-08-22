@@ -36,9 +36,9 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Index(string id)
+        public async Task<IActionResult> Details(string id)
         {
-            var organizationDetailQueryResult = await _organizationService.GetDetailAsync(id);
+            var organizationDetailQueryResult = await _organizationService.GetDetailsAsync(id);
             return View(organizationDetailQueryResult);
       
         }

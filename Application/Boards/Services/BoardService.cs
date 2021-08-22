@@ -75,36 +75,36 @@ namespace TaskoMask.Application.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardDetailViewModel>> GetDetailAsync(string id)
+        public async Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id)
         {
             var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(id));
             if (!boardQueryResult.IsSuccess)
-                return Result.Failure<BoardDetailViewModel>(boardQueryResult.Errors);
+                return Result.Failure<BoardDetailsViewModel>(boardQueryResult.Errors);
 
 
             var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(boardQueryResult.Value.ProjectId));
             if (!projectQueryResult.IsSuccess)
-                return Result.Failure<BoardDetailViewModel>(projectQueryResult.Errors);
+                return Result.Failure<BoardDetailsViewModel>(projectQueryResult.Errors);
 
 
             var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
             if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<BoardDetailViewModel>(organizationQueryResult.Errors);
+                return Result.Failure<BoardDetailsViewModel>(organizationQueryResult.Errors);
 
 
 
             var cardQueryResult = await SendQueryAsync(new GetCardsByBoardIdQuery(id));
             if (!cardQueryResult.IsSuccess)
-                return Result.Failure<BoardDetailViewModel>(cardQueryResult.Errors);
+                return Result.Failure<BoardDetailsViewModel>(cardQueryResult.Errors);
 
 
             var boardReportQueryResult = await SendQueryAsync(new GetBoardReportQuery(id));
             if (!boardReportQueryResult.IsSuccess)
-                return Result.Failure<BoardDetailViewModel>(boardReportQueryResult.Errors);
+                return Result.Failure<BoardDetailsViewModel>(boardReportQueryResult.Errors);
 
 
 
-            var boardDetail = new BoardDetailViewModel
+            var boardDetail = new BoardDetailsViewModel
             {
                 Organization = organizationQueryResult.Value,
                 Project = projectQueryResult.Value,

@@ -60,31 +60,31 @@ namespace TaskoMask.Application.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectDetailViewModel>> GetDetailAsync(string id)
+        public async Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id)
         {
             var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(id));
             if (!projectQueryResult.IsSuccess)
-                return Result.Failure<ProjectDetailViewModel>(projectQueryResult.Errors);
+                return Result.Failure<ProjectDetailsViewModel>(projectQueryResult.Errors);
 
 
             var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
             if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<ProjectDetailViewModel>(organizationQueryResult.Errors);
+                return Result.Failure<ProjectDetailsViewModel>(organizationQueryResult.Errors);
 
            
 
             var boardQueryResult = await SendQueryAsync(new GetBoardsByProjectIdQuery(id));
             if (!boardQueryResult.IsSuccess)
-                return Result.Failure<ProjectDetailViewModel>(boardQueryResult.Errors);
+                return Result.Failure<ProjectDetailsViewModel>(boardQueryResult.Errors);
 
 
             var projectReportQueryResult = await SendQueryAsync(new GetProjectReportQuery(id));
             if (!projectReportQueryResult.IsSuccess)
-                return Result.Failure<ProjectDetailViewModel>(projectReportQueryResult.Errors);
+                return Result.Failure<ProjectDetailsViewModel>(projectReportQueryResult.Errors);
 
 
 
-            var projectDetail = new ProjectDetailViewModel
+            var projectDetail = new ProjectDetailsViewModel
             {
                 Organization = organizationQueryResult.Value,
                 Project = projectQueryResult.Value,

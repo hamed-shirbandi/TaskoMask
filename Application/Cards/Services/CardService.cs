@@ -63,39 +63,39 @@ namespace TaskoMask.Application.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CardDetailViewModel>> GetDetailAsync(string id)
+        public async Task<Result<CardDetailsViewModel>> GetDetailsAsync(string id)
         {
             var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(id));
             if (!cardQueryResult.IsSuccess)
-                return Result.Failure<CardDetailViewModel>(cardQueryResult.Errors);
+                return Result.Failure<CardDetailsViewModel>(cardQueryResult.Errors);
 
 
             var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(cardQueryResult.Value.BoardId));
             if (!boardQueryResult.IsSuccess)
-                return Result.Failure<CardDetailViewModel>(boardQueryResult.Errors);
+                return Result.Failure<CardDetailsViewModel>(boardQueryResult.Errors);
 
 
             var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(boardQueryResult.Value.ProjectId));
             if (!projectQueryResult.IsSuccess)
-                return Result.Failure<CardDetailViewModel>(projectQueryResult.Errors);
+                return Result.Failure<CardDetailsViewModel>(projectQueryResult.Errors);
 
 
             var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
             if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<CardDetailViewModel>(organizationQueryResult.Errors);
+                return Result.Failure<CardDetailsViewModel>(organizationQueryResult.Errors);
 
 
             var cardReportQueryResult = await SendQueryAsync(new GetCardReportQuery(id));
             if (!cardReportQueryResult.IsSuccess)
-                return Result.Failure<CardDetailViewModel>(cardReportQueryResult.Errors);
+                return Result.Failure<CardDetailsViewModel>(cardReportQueryResult.Errors);
 
 
             var taskQueryResult = await SendQueryAsync(new GetTasksByCardIdQuery(id));
             if (!taskQueryResult.IsSuccess)
-                return Result.Failure<CardDetailViewModel>(taskQueryResult.Errors);
+                return Result.Failure<CardDetailsViewModel>(taskQueryResult.Errors);
 
 
-            var cardDetail = new CardDetailViewModel
+            var cardDetail = new CardDetailsViewModel
             {
                 Organization = organizationQueryResult.Value,
                 Project = projectQueryResult.Value,

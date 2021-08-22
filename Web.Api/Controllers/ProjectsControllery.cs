@@ -39,9 +39,9 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpGet]
         [Route("projects/{id}")]
-        public async Task<Result<ProjectDetailViewModel>> Get(string id)
+        public async Task<Result<ProjectDetailsViewModel>> Get(string id)
         {
-            return await _projectService.GetDetailAsync(id);
+            return await _projectService.GetDetailsAsync(id);
         }
 
 

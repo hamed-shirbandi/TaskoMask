@@ -7,6 +7,7 @@ using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
 using TaskoMask.Application.Managers.Services;
+using DNTCaptcha.Core;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -55,6 +56,9 @@ namespace TaskoMask.Web.Controllers
         /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateDNTCaptcha(ErrorMessage = "Please enter the text inside the image numerically",
+                    CaptchaGeneratorLanguage = Language.English,
+                    CaptchaGeneratorDisplayMode = DisplayMode.NumberToWord)]
         public async Task<IActionResult> Login(UserLoginViewModel input, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -109,6 +113,9 @@ namespace TaskoMask.Web.Controllers
         /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateDNTCaptcha(ErrorMessage = "Please enter the text inside the image numerically",
+                    CaptchaGeneratorLanguage = Language.English,
+                    CaptchaGeneratorDisplayMode = DisplayMode.NumberToWord)]
         public async Task<IActionResult> Register(UserInputDto input)
         {
             if (!ModelState.IsValid)

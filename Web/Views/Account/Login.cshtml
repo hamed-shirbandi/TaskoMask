@@ -24,6 +24,24 @@
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="form-group">
+        <dnt-captcha asp-captcha-generator-max="2000"
+                     asp-captcha-generator-min="1"
+                     asp-captcha-generator-language="English"
+                     asp-captcha-generator-display-mode="NumberToWord"
+                     asp-use-relative-urls="true"
+                     asp-placeholder="input the Number"
+                     asp-validation-error-message="Please enter the text inside the image numerically"
+                     asp-font-name="Tahoma"
+                     asp-font-size="20"
+                     asp-fore-color="#333333"
+                     asp-back-color="#ccc"
+                     asp-text-box-class="form-control"
+                     asp-text-box-template="{0}"
+                     asp-validation-message-class="text-danger"
+                     asp-refresh-button-class="btn refresh-btn bg-light m-1" />
+
+    </div>
+    <div class="form-group">
         <div class="checkbox">
             <label asp-for="RememberMe">
                 <input asp-for="RememberMe" />

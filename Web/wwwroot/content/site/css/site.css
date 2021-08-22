@@ -110,3 +110,11 @@ body {
 .mastfoot {
     color: rgba(255, 255, 255, .5);
 }
+
+.refresh-btn {
+    color: #ff0000;
+    background-image: url(/content/public/img/refresh.svg);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}

@@ -12,8 +12,11 @@ namespace TaskoMask.Application.Core.Queries
     public interface ICacheableQuery
     {
         /// <summary>
-        /// set it true to bypass the cache
+        ///for prevent caching set it true beafor send query to bus as below:
+        /// var query=new GetSomeQuery()
+        /// query.BypassCache = true;
+        /// _inMemoryBus.Send(query)
         /// </summary>
-        bool BypassCache { get; }
+        bool BypassCache { get; set; }
     }
 }

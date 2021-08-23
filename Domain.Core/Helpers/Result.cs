@@ -91,35 +91,6 @@ namespace TaskoMask.Domain.Core.Helpers
 
 
 
-
-        public static Result AddError(Result result, string error)
-        {
-            result.Errors.Add(error);
-            return result;
-        }
-
-
-        public static Result<T> AddError<T>(Result<T> result, string error)
-        {
-            result.Errors.Add(error);
-            return result;
-        }
-
-
-        public static Result AddErrors(Result result, List<string> error)
-        {
-            result.Errors.AddRange(error);
-            return result;
-        }
-
-
-        public static Result<T> AddErrors<T>(Result<T> result, List<string> error)
-        {
-            result.Errors.AddRange(error);
-            return result;
-        }
-
-
         #endregion
     }
 

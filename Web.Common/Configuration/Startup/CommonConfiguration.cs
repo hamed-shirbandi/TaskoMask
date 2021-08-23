@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RedisCache.Core;
 using System;
 using TaskoMask.Application.Boards.Commands.Models;
 using TaskoMask.Application.Mapper;
@@ -29,7 +30,13 @@ namespace TaskoMask.Web.Common.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddMediatR(typeof(BoardCommand));
+
             services.AddAutoMapperSetup();
+
+            services.AddRedisCache(options =>
+            {
+                configuration.GetSection("RedisCache").Bind(options);
+            });
 
             // If using Kestrel:
             services.Configure<KestrelServerOptions>(options =>

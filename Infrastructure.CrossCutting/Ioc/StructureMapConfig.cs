@@ -17,6 +17,7 @@ using TaskoMask.Domain.Core.Events;
 using TaskoMask.Application.Users.Queries.Models;
 using TaskoMask.Application.Users.Queries.Handlers;
 using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Behaviors;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
@@ -33,15 +34,15 @@ namespace Infrastructure.CrossCutting.Ioc
         /// </summary>
         public static IServiceProvider ConfigureIocContainer(this IServiceCollection services, IConfiguration configuration)
         {
-
-            services.AddSingleton(provider => { return configuration; });
-
             var container = new Container();
             container.Configure(config =>
             {
+                services.AddSingleton(provider => { return configuration; });
                 config.For<IMainDbContext>().Use<MongoDbContext>();
                 config.For<IEventStore>().Use<RedisEventStore>();
+               
                 services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
+                services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
 
                 #region Generic Query Handlers
 

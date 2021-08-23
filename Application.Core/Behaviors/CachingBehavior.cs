@@ -75,7 +75,7 @@ namespace TaskoMask.Application.Core.Behaviors
 
                 string name = property.Name;
                 string value = propValue != null ? propValue.ToString() : "";
-                key += "_{name}:{value}";
+                key += $"_{name}:{value}";
             }
 
             return key;

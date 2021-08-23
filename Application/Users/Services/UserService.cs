@@ -6,12 +6,12 @@ using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Entities;
-using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Application.Core.Services;
 
 
 namespace TaskoMask.Application.Users.Services
 {
-    public class UserService<TEntity> : BaseEntityService<TEntity>, IUserService where TEntity:User
+    public class UserService<TEntity> : BaseApplicationService, IUserService where TEntity:User
     {
         #region Fields
 
@@ -70,8 +70,6 @@ namespace TaskoMask.Application.Users.Services
 
 
         #endregion
-
-
 
     }
 }

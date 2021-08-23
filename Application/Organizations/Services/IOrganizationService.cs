@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Core.ViewModels;
 
 namespace TaskoMask.Application.Organizations.Services
 {
-    public interface IOrganizationService : IBaseEntityService
+    public interface IOrganizationService : IBaseApplicationService
     {
         Task<Result<CommandResult>> CreateAsync(OrganizationInputDto input);
         Task<Result<CommandResult>> UpdateAsync(OrganizationInputDto input);

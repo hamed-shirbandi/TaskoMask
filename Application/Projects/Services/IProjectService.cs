@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Projects.Services
 {
-    public interface IProjectService : IBaseEntityService
+    public interface IProjectService : IBaseApplicationService
     {
         Task<Result<CommandResult>> CreateAsync(ProjectInputDto input);
         Task<Result<CommandResult>> UpdateAsync(ProjectInputDto input);

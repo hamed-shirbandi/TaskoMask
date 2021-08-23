@@ -8,8 +8,7 @@ using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Queries.Models.Boards;
 using System.Collections.Generic;
-using TaskoMask.Application.BaseEntities.Services;
-using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Organizations.Queries.Models;
@@ -18,7 +17,7 @@ using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Cards.Services
 {
-    public class CardService : BaseEntityService<Card>, ICardService
+    public class CardService : BaseApplicationService, ICardService
     {
         #region Fields
 

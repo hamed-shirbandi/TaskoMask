@@ -8,13 +8,9 @@ using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Data;
 using TaskoMask.Infrastructure.Data.DbContext;
 using TaskoMask.Infrastructure.Data.EventSourcing;
-using TaskoMask.Application.Core.Services;
-using TaskoMask.Application.BaseEntities.Queries.Handlers;
 using TaskoMask.Domain.Entities;
-using TaskoMask.Application.BaseEntities.Queries.Models;
 using MediatR.Pipeline;
 using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Infrastructure.CrossCutting.Bus;
 using TaskoMask.Domain.Core.Events;
@@ -51,27 +47,14 @@ namespace Infrastructure.CrossCutting.Ioc
 
                 //TODO Handel Generic Command And Queries
                 //services.AddScoped(typeof(IRequestHandler<GetEntitiesCountQuery<T>,long>), typeof(BaseEntitiesQueryHandlers<>));
-
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Project>, long>, BaseEntityQueryHandlers<Project>> ();
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Board>, long>, BaseEntityQueryHandlers<Board>> ();
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Card>, long>, BaseEntityQueryHandlers<Card>> ();
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Organization>, long>, BaseEntityQueryHandlers<Organization>> ();
-                services.AddScoped<IRequestHandler<GetEntitiesCountQuery<Task>, long>, BaseEntityQueryHandlers<Task>> ();
-
-
                 services.AddScoped<IRequestHandler<GetUserByIdQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
                 services.AddScoped<IRequestHandler<GetUserByIdQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
-
-
 
                 services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
                 services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
 
-
                 services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
                 services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
-
-
 
                 services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Operator>, bool>, UserQueryHandlers<Operator>>();
                 services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Manager>, bool>, UserQueryHandlers<Manager>>();

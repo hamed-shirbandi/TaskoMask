@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.BaseEntities.Services;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Users.Services
 {
-    public interface IUserService : IBaseEntityService
+    public interface IUserService : IBaseApplicationService
     {
         Task<Result<UserBasicInfoDto>> GetBaseUserByIdAsync(string id);
         Task<Result<UserBasicInfoDto>> GetBaseUserByUserNameAsync(string userName);

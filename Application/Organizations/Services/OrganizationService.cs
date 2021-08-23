@@ -6,8 +6,7 @@ using TaskoMask.Application.Organizations.Commands.Models;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.BaseEntities.Services;
-using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Projects.Queries.Models;
@@ -16,7 +15,7 @@ using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Organizations.Services
 {
-    public class OrganizationService : BaseEntityService<Organization>, IOrganizationService
+    public class OrganizationService : BaseApplicationService, IOrganizationService
     {
         #region Fields
 

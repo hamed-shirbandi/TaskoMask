@@ -8,15 +8,14 @@ using TaskoMask.Application.Core.Dtos.Projects;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
-using TaskoMask.Application.BaseEntities.Services;
-using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Projects.Services
 {
-    public class ProjectService : BaseEntityService<Project>, IProjectService
+    public class ProjectService : BaseApplicationService, IProjectService
     {
         #region Fields
 

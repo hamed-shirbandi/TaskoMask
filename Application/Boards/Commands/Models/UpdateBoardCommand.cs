@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Boards.Commands.Models
 {
-   public class UpdateBoardCommand : BoardCommand
+   public class UpdateBoardCommand : BoardBaseCommand
     {
         public UpdateBoardCommand(string id, string name, string description )
         {

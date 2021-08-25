@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Operators.Commands.Models
 {
-    public class UpdateOperatorCommand : OperatorCommand
+    public class UpdateOperatorCommand : OperatorBaseCommand
     {
         public UpdateOperatorCommand(string id, string displayName,string email)
         {

@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Application.Cards.Commands.Models
 {
-   public class CreateCardCommand : CardCommand
+   public class CreateCardCommand : CardBaseCommand
     {
         public CreateCardCommand(string boardId,string name, string description,CardType type)
         {

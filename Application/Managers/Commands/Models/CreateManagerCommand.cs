@@ -1,7 +1,7 @@
 ﻿
 namespace TaskoMask.Application.Managers.Commands.Models
 {
-   public class CreateManagerCommand : ManagerCommand
+   public class CreateManagerCommand : ManagerBaseCommand
     {
         public CreateManagerCommand(string displayName,string email,string password)
         {

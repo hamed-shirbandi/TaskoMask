@@ -31,7 +31,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddMediatR(typeof(BoardCommand));
+            services.AddMediatR(typeof(BoardBaseCommand));
 
             services.AddValidatorsFromAssembly(typeof(CreateOrganizationCommandValidation).Assembly);
 

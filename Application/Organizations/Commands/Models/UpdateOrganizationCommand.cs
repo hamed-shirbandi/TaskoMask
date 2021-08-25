@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Organizations.Commands.Models
 {
-    public class UpdateOrganizationCommand : OrganizationCommand
+    public class UpdateOrganizationCommand : OrganizationBaseCommand
     {
         public UpdateOrganizationCommand(string id, string name, string description)
         {

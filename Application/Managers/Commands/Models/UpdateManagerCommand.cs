@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Managers.Commands.Models
 {
-    public class UpdateManagerCommand : ManagerCommand
+    public class UpdateManagerCommand : ManagerBaseCommand
     {
         public UpdateManagerCommand(string id, string displayName,string email)
         {

@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Application.Boards.Commands.Models
 {
-   public class CreateBoardCommand : BoardCommand
+   public class CreateBoardCommand : BoardBaseCommand
     {
         public CreateBoardCommand(string name, string description, string projectId)
         {

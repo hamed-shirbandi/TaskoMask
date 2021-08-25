@@ -1,14 +1,12 @@
-﻿using TaskoMask.Application.Core.Commands;
-using TaskoMask.Domain.Core.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Resources;
 
-
-namespace TaskoMask.Application.Cards.Commands.Models
+namespace TaskoMask.Application.Boards.Commands.Models
 {
-  
-    public abstract class CardCommand : BaseCommand
+    public abstract class BoardBaseCommand : BaseCommand
     {
+
 
         [StringLength(50, MinimumLength = 5, ErrorMessageResourceName = nameof(ApplicationMetadata.Length_Error), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
@@ -18,13 +16,9 @@ namespace TaskoMask.Application.Cards.Commands.Models
         [StringLength(250, MinimumLength = 5, ErrorMessageResourceName = nameof(ApplicationMetadata.Length_Error), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string Description { get; protected set; }
-       
-        
-        [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public CardType Type { get; protected set; }
-        
+
 
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public string BoardId { get; protected set; }
+        public string ProjectId { get; protected set; }
     }
 }

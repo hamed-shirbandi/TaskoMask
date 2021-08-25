@@ -4,7 +4,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Projects.Commands.Models
 {
-    public abstract class ProjectCommand : BaseCommand
+    public abstract class ProjectBaseCommand : BaseCommand
     {
 
         [StringLength(50, MinimumLength = 5, ErrorMessageResourceName = nameof(ApplicationMetadata.Length_Error), ErrorMessageResourceType = typeof(ApplicationMetadata))]

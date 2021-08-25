@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Organizations.Commands.Models
 {
-   public class CreateOrganizationCommand : OrganizationCommand
+   public class CreateOrganizationCommand : OrganizationBaseCommand
     {
         public CreateOrganizationCommand(string name, string description, string userId)
         {

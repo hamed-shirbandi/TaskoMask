@@ -1,7 +1,7 @@
 ﻿
 namespace TaskoMask.Application.Operators.Commands.Models
 {
-   public class CreateOperatorCommand : OperatorCommand
+   public class CreateOperatorCommand : OperatorBaseCommand
     {
         public CreateOperatorCommand(string displayName,string email,string password)
         {

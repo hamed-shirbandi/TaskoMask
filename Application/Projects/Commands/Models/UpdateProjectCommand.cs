@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Projects.Commands.Models
 {
-   public class UpdateProjectCommand : ProjectCommand
+   public class UpdateProjectCommand : ProjectBaseCommand
     {
         public UpdateProjectCommand(string id, string name, string description )
         {

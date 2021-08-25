@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Enums;
 
 namespace TaskoMask.Application.Cards.Commands.Models
 {
-   public class UpdateCardCommand : CardCommand
+   public class UpdateCardCommand : CardBaseCommand
     {
         public UpdateCardCommand(string id, string name, string description, CardType type)
         {

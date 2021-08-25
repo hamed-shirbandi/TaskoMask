@@ -9,7 +9,7 @@ using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Organizations.Commands.Validations
 {
-    public abstract class OrganizationValidation<T> : AbstractValidator<T> where T : OrganizationCommand
+    public abstract class OrganizationValidation<T> : AbstractValidator<T> where T : OrganizationBaseCommand
     {
 
         protected void ValidateDescription()

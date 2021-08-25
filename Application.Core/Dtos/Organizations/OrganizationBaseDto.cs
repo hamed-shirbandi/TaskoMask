@@ -16,9 +16,6 @@ namespace TaskoMask.Application.Core.Dtos.Organizations
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string Description { get; set; }
 
-
-        [Display(Name = nameof(ApplicationMetadata.UserId), ResourceType = typeof(ApplicationMetadata))]
-        [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string UserId { get; set; }
     }
 }

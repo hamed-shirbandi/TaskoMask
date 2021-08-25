@@ -38,13 +38,6 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            var asdas = await _organizationService.CreateAsync(new Application.Core.Dtos.Organizations.OrganizationInputDto
-            {
-                Description="1",
-                Name="1",
-                UserId="",
-            });
-
             var organizationsDetailQueryResult = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
             if (!organizationsDetailQueryResult.IsSuccess)
                 return RedirectToErrorPage(organizationsDetailQueryResult);

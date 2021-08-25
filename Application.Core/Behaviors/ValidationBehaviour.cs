@@ -15,7 +15,7 @@ namespace TaskoMask.Application.Core.Behaviors
     /// <summary>
     /// 
     /// </summary>
-    public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<CommandResult> where TResponse : CommandResult
+    public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : BaseCommand where TResponse : CommandResult
     {
         #region Fields
 
@@ -68,7 +68,7 @@ namespace TaskoMask.Application.Core.Behaviors
         /// <summary>
         /// 
         /// </summary>
-        private bool ValidateDataAnnotationValidation(IRequest<CommandResult> request)
+        private bool ValidateDataAnnotationValidation(BaseCommand request)
         {
             //try validate data annotations 
             if (request.Validate(out var results))
@@ -107,7 +107,7 @@ namespace TaskoMask.Application.Core.Behaviors
         /// <summary>
         /// add error to notifications
         /// </summary>
-        protected void NotifyValidationError(IRequest<CommandResult> request, string error)
+        protected void NotifyValidationError(BaseCommand request, string error)
         {
             _notifications.Add(request.GetType().Name, error);
         }

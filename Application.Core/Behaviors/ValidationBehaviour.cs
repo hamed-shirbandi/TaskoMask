@@ -13,7 +13,7 @@ using TaskoMask.Application.Core.Notifications;
 namespace TaskoMask.Application.Core.Behaviors
 {
     /// <summary>
-    /// 
+    /// automatic command validation by check annotation and fluent validation (if exist)
     /// </summary>
     public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : BaseCommand where TResponse : CommandResult
     {

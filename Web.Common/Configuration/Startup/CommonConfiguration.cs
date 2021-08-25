@@ -33,6 +33,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
 
             services.AddMediatR(typeof(BoardBaseCommand));
 
+            //Load all fluent validation to use in ValidationBehaviour
             services.AddValidatorsFromAssembly(typeof(CreateOrganizationCommandValidation).Assembly);
 
             services.AddAutoMapperSetup();

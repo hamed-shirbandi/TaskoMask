@@ -17,7 +17,7 @@
     
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="mongocsharpdriver" Version="2.11.3" />
-    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="FluentValidation" Version="10.3.3" />
 
   </ItemGroup>
   <ItemGroup>

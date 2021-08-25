@@ -1,4 +1,5 @@
-﻿using Infrastructure.CrossCutting.Ioc;
+﻿using FluentValidation;
+using Infrastructure.CrossCutting.Ioc;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using RedisCache.Core;
 using System;
 using TaskoMask.Application.Boards.Commands.Models;
 using TaskoMask.Application.Mapper;
+using TaskoMask.Application.Organizations.Commands.Validations;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Web.Common.Configuration.Startup
@@ -31,7 +33,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
 
             services.AddMediatR(typeof(BoardCommand));
 
-            services.AddValidatorsFromAssembly(typeof(BoardCommand).Assembly);
+            services.AddValidatorsFromAssembly(typeof(CreateOrganizationCommandValidation).Assembly);
 
             services.AddAutoMapperSetup();
 

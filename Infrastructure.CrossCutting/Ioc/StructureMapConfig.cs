@@ -43,6 +43,7 @@ namespace Infrastructure.CrossCutting.Ioc
                
                 services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
                 services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
+                services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
                 #region Generic Query Handlers
 

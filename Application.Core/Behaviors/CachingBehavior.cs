@@ -12,7 +12,7 @@ namespace TaskoMask.Application.Core.Behaviors
     /// <summary>
     /// Caching response of queries mareked with ICacheableQuery
     /// </summary>
-    public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+    public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest :notnull
     {
         #region Fields
 

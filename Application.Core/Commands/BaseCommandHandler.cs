@@ -34,7 +34,7 @@ namespace TaskoMask.Application.Core.Commands
         #endregion
 
         #region Protected Methods
-
+         
 
         /// <summary>
         /// add error to notifications

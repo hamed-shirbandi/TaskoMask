@@ -42,8 +42,8 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// </summary>
         public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request, new CreateOrganizationCommandValidation()))
-                return new CommandResult(ApplicationMessages.Create_Failed);
+            //if (!IsValid(request, new CreateOrganizationCommandValidation()))
+            //    return new CommandResult(ApplicationMessages.Create_Failed);
 
 
             //TODO chck foreign key for all other commands

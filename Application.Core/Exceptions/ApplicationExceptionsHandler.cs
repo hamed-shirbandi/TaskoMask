@@ -45,19 +45,28 @@ namespace TaskoMask.Application.Core.Exceptions
         {
             var exceptionType = exception.GetType();
 
+            //notification exception error message if exist
+            if (!string.IsNullOrEmpty(exception.Message))
+                _notifications.Add(exceptionType.Name, exception.Message);
+
+
             if (exceptionType == typeof(DomainException))
             {
                 //log DomainException or ...
             }
 
-            if (exceptionType == typeof(ApplicationException))
+            else if (exceptionType == typeof(ApplicationException))
             {
                 //log ApplicationException or ...
             }
 
+            else if (exceptionType == typeof(ValidationException))
+            {
+                //log ValidationException or ...
+            }
+
             state.SetHandled(default);
 
-            _notifications.Add(exceptionType.Name, exception.Message);
         }
 
 

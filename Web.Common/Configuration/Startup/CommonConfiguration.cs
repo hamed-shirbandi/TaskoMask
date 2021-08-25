@@ -31,6 +31,8 @@ namespace TaskoMask.Web.Common.Configuration.Startup
 
             services.AddMediatR(typeof(BoardCommand));
 
+            services.AddValidatorsFromAssembly(typeof(BoardCommand).Assembly);
+
             services.AddAutoMapperSetup();
 
             services.AddRedisCache(options =>

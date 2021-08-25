@@ -11,7 +11,7 @@ using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Users.Services
 {
-    public class UserService<TEntity> : BaseApplicationService, IUserService where TEntity:User
+    public class UserService<TEntity> : BaseApplicationService, IUserService where TEntity : User
     {
         #region Fields
 
@@ -65,7 +65,12 @@ namespace TaskoMask.Application.Users.Services
         /// </summary>
         public async Task<Result<bool>> ValidateUserPasswordAsync(string userName, string password)
         {
-            return await SendQueryAsync(new ValidateUserPasswordQuery<TEntity>(userName, password));
+            var query = new ValidateUserPasswordQuery<TEntity>(userName, password)
+            {
+                BypassCache = true
+            };
+
+            return await SendQueryAsync(query);
         }
 
 

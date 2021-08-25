@@ -41,10 +41,6 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request))
-                return new CommandResult(ApplicationMessages.Create_Failed);
-
-
             var exist = await _projectRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
@@ -68,14 +64,9 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request))
-                return new CommandResult(ApplicationMessages.Update_Failed);
-
-
             var project = await _projectRepository.GetByIdAsync(request.Id);
             if (project == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
-
 
             var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
             if (exist)

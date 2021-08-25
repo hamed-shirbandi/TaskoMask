@@ -42,10 +42,6 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// </summary>
         public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            //if (!IsValid(request, new CreateOrganizationCommandValidation()))
-            //    return new CommandResult(ApplicationMessages.Create_Failed);
-
-
             //TODO chck foreign key for all other commands
             //TODO move this type of validations to domain
             //TODO check by repository
@@ -79,9 +75,6 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// </summary>
         public async Task<CommandResult> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request, new UpdateOrganizationCommandValidation()))
-                return new CommandResult(ApplicationMessages.Create_Failed);
-
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
             if (organization == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Organization);

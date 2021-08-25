@@ -42,10 +42,6 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateCardCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request))
-                return new CommandResult(ApplicationMessages.Create_Failed);
-
-
             var exist = await _cardRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
@@ -69,11 +65,6 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateCardCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request))
-                return new CommandResult(ApplicationMessages.Update_Failed);
-
-
-
             var card = await _cardRepository.GetByIdAsync(request.Id);
             if (card == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);

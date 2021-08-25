@@ -44,9 +44,6 @@ namespace TaskoMask.Application.Managers.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateManagerCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request))
-                return new CommandResult(ApplicationMessages.Create_Failed);
-
             var existManager = await _managerRepository.GetByUserNameAsync(request.Email);
             if (existManager != null)
             {
@@ -70,10 +67,6 @@ namespace TaskoMask.Application.Managers.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateManagerCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request))
-                return new CommandResult(ApplicationMessages.Update_Failed);
-
-
             var existManager = await _managerRepository.GetByUserNameAsync(request.Email);
             if (existManager != null && existManager.Id.ToString() != request.Id)
             {

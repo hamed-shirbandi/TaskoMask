@@ -44,9 +44,6 @@ namespace TaskoMask.Application.Operators.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateOperatorCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request))
-                return new CommandResult(ApplicationMessages.Create_Failed);
-
             var existOperator = await _operatorRepository.GetByUserNameAsync(request.Email);
             if (existOperator != null)
             {
@@ -70,10 +67,6 @@ namespace TaskoMask.Application.Operators.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateOperatorCommand request, CancellationToken cancellationToken)
         {
-            if (!IsValid(request))
-                return new CommandResult(ApplicationMessages.Update_Failed);
-
-
             var existOperator = await _operatorRepository.GetByUserNameAsync(request.Email);
             if (existOperator != null && existOperator.Id.ToString() != request.Id)
             {

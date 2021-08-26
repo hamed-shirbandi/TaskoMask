@@ -8,7 +8,6 @@ namespace TaskoMask.Domain.Entities
     /// <summary>
     /// base class for users
     /// </summary>
-    [BsonKnownTypes(typeof(Manager), typeof(Operator))]
     public abstract class User : BaseEntity
     {
         #region Fields

@@ -53,8 +53,12 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             if (!collections.Has<Project>())
                 dbContext.CreateCollection<Project>();
 
-            if (!collections.Has<User>())
-                dbContext.CreateCollection<User>();
+            if (!collections.Has<Manager>())
+                dbContext.CreateCollection<Manager>();
+
+
+            if (!collections.Has<Operator>())
+                dbContext.CreateCollection<Operator>();
 
         }
 

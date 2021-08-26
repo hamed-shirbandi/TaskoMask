@@ -1,5 +1,4 @@
 ﻿using MongoDB.Driver;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
@@ -12,7 +11,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Fields
 
-        private readonly IMongoCollection<User> _users;
+        private readonly IMongoCollection<TEntity> _users;
 
 
         #endregion
@@ -21,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public UserBaseRepository(IMainDbContext dbContext) : base(dbContext)
         {
-            _users = dbContext.GetCollection<User>(); 
+            _users = dbContext.GetCollection<TEntity>(); 
 
         }
 
@@ -31,78 +30,14 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
 
 
-
         /// <summary>
-        /// 
-        /// </summary>
-        public virtual async System.Threading.Tasks.Task CreateAsync(TEntity entity)
-        {
-            await _users.OfType<TEntity>().InsertOneAsync(entity);
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual async System.Threading.Tasks.Task UpdateAsync(TEntity entity)
-        {
-            await _users.OfType<TEntity>().ReplaceOneAsync(p => p.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false });
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual async System.Threading.Tasks.Task DeleteAsync(string id)
-        {
-            await _users.OfType<TEntity>().DeleteOneAsync(p => p.Id == id);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual async Task<TEntity> GetByIdAsync(string id)
-        {
-            return await _users.OfType<TEntity>().Find(e => e.Id == id).FirstOrDefaultAsync();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual async Task<IEnumerable<TEntity>> GetListAsync()
-        {
-            return await _users.OfType<TEntity>().AsQueryable().ToListAsync();
-
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual async Task<long> CountAsync()
-        {
-            return await _users.OfType<TEntity>().CountDocumentsAsync(f => true);
-        }
-
-
-
 
         /// <summary>
         /// 
         /// </summary>
         public async Task<TEntity> GetByUserNameAsync(string userName)
         {
-            return await _users.OfType<TEntity>().Find(e => e.UserName == userName).FirstOrDefaultAsync();
+            return await _users.Find(e => e.UserName == userName).FirstOrDefaultAsync();
         }
 
 
@@ -112,7 +47,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<TEntity> GetByPhoneNumberAsync(string phoneNumber)
         {
-            return await _users.OfType<TEntity>().Find(e => e.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
+            return await _users.Find(e => e.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
         }
 
 

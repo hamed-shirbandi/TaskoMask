@@ -10,15 +10,15 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Queries.Models.Boards;
 using System.Collections.Generic;
 using TaskoMask.Domain.Entities;
-using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Cards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
+using TaskoMask.Application.Base.Services;
 
 namespace TaskoMask.Application.Boards.Services
 {
-    public class BoardService : BaseApplicationService, IBoardService
+    public class BoardService :BaseService<Board>, IBoardService
     {
         #region Fields
 

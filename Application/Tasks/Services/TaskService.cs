@@ -6,14 +6,13 @@ using TaskoMask.Application.Tasks.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Tasks;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
-using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
+using TaskoMask.Application.Base.Services;
 
 namespace TaskoMask.Application.Tasks.Services
 {
-    public class TaskService : BaseApplicationService, ITaskService
+    public class TaskService : BaseService<Domain.Entities.Task>, ITaskService
     {
         #region Fields
 

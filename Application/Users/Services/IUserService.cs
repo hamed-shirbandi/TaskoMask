@@ -1,12 +1,12 @@
 ﻿using TaskoMask.Domain.Core.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Users;
-using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Base.Services;
 
 namespace TaskoMask.Application.Users.Services
 {
-    public interface IUserService : IBaseApplicationService
+    public interface IUserService : IBaseService
     {
         Task<Result<UserBasicInfoDto>> GetBaseUserByIdAsync(string id);
         Task<Result<UserBasicInfoDto>> GetBaseUserByUserNameAsync(string userName);

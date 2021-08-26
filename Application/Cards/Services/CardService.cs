@@ -8,16 +8,17 @@ using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Queries.Models.Boards;
 using System.Collections.Generic;
-using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Projects.Queries.Models;
 using TaskoMask.Application.Organizations.Queries.Models;
 using TaskoMask.Application.Tasks.Queries.Models;
 using TaskoMask.Application.Core.Bus;
+using TaskoMask.Application.Base.Services;
+using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Cards.Services
 {
-    public class CardService : BaseApplicationService, ICardService
+    public class CardService : BaseService<Card>, ICardService
     {
         #region Fields
 

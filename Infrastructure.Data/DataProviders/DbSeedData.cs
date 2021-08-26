@@ -26,12 +26,12 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                 var _dbContext = serviceScope.ServiceProvider.GetService<IMainDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
                 var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
-                var _users = _dbContext.GetCollection<User>();
+                var _operators = _dbContext.GetCollection<Operator>();
 
-                if (!_users.OfType<Operator>().AsQueryable().Any())
+                if (!_operators.AsQueryable().Any())
                 {
-                    //var user = new Operator(_configuration["SuperUser:DisplayName"], _configuration["SuperUser:Email"], _configuration["SuperUser:Email"], _configuration["SuperUser:Password"], _encryptionService);
-                    //_users.OfType<Operator>().InsertOne(user);
+                    var user = new Operator(_configuration["SuperUser:DisplayName"], _configuration["SuperUser:Email"], _configuration["SuperUser:Email"], _configuration["SuperUser:Password"], _encryptionService);
+                    _operators.InsertOne(user);
                 }
 
             }

@@ -8,7 +8,6 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Users.Services;
 using TaskoMask.Application.Managers.Commands.Models;
-using TaskoMask.Application.Core.Dtos.Operators;
 using TaskoMask.Application.Managers.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Managers;
 

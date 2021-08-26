@@ -6,10 +6,11 @@ using AutoMapper;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Bus;
+using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.Core.Services
 {
-    public abstract class BaseApplicationService : IBaseApplicationService
+    public abstract class ApplicationService : IApplicationService
     {
         #region Fields
 
@@ -24,7 +25,7 @@ namespace TaskoMask.Application.Core.Services
         #region Ctors
 
 
-        public BaseApplicationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications)
+        public ApplicationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications)
         {
             _inMemoryBus = inMemoryBus;
             _mapper = mapper;
@@ -35,7 +36,9 @@ namespace TaskoMask.Application.Core.Services
 
         #endregion
 
+        
         #region Protected Methods
+
 
 
 
@@ -94,6 +97,7 @@ namespace TaskoMask.Application.Core.Services
             GC.SuppressFinalize(this);
         }
 
+   
 
         #endregion
     }

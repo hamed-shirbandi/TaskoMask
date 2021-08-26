@@ -8,9 +8,9 @@ namespace TaskoMask.Application.Core.Dtos.Tasks
         public string Id { get; set; }
 
 
-        [Display(Name = nameof(ApplicationMetadata.Name), ResourceType = typeof(ApplicationMetadata))]
+        [Display(Name = nameof(ApplicationMetadata.Title), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
 
         [Display(Name = nameof(ApplicationMetadata.Description), ResourceType = typeof(ApplicationMetadata))]

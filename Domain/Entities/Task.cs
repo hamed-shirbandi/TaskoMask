@@ -11,9 +11,11 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public Task()
+        public Task(string title, string description, string cardId)
         {
-
+            Title = title;
+            Description = description;
+            CardId = cardId;
         }
 
         #endregion
@@ -28,6 +30,16 @@ namespace TaskoMask.Domain.Entities
 
         #region Public Methods
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Update(string title, string description)
+        {
+            Description = description;
+            Title = title;
+            base.Update();
+        }
 
 
         #endregion

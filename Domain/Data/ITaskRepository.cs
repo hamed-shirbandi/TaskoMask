@@ -7,5 +7,6 @@ namespace TaskoMask.Domain.Data
     public interface ITaskRepository : IBaseRepository<Entities.Task>
     {
         Task<IEnumerable<Entities.Task>> GetListByCardIdAsync(string cardId);
+        Task<bool> ExistByTitleAsync(string v, string title);
     }
 }

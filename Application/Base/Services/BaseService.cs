@@ -40,7 +40,11 @@ namespace TaskoMask.Application.Base.Services
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync(new GetCountQuery<TEntity>());
+            var query = new GetCountQuery<TEntity>()
+            {
+                BypassCache = true
+            };
+            return await SendQueryAsync(query);
         }
 
 

@@ -24,12 +24,13 @@ namespace TaskoMask.Web.Controllers
 
         #region Ctors
 
-        public HomeController(IOrganizationService organizationService, ITaskService taskService, IBoardService boardService, IManagerService managerService)
+        public HomeController(IOrganizationService organizationService, ITaskService taskService, IBoardService boardService, IManagerService managerService, IProjectService projectService)
         {
             _organizationService = organizationService;
             _taskService = taskService;
             _boardService = boardService;
             _managerService = managerService;
+            _projectService = projectService;
         }
 
         #endregion

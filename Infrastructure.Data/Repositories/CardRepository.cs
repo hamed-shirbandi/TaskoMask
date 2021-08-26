@@ -43,8 +43,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<bool> ExistByNameAsync(string id, string name)
         {
-            var organization = await _cards.Find(e => e.Name == name).FirstOrDefaultAsync();
-            return organization != null && organization.Id != id;
+            var card = await _cards.Find(e => e.Name == name).FirstOrDefaultAsync();
+            return card != null && card.Id != id;
         }
 
         #endregion

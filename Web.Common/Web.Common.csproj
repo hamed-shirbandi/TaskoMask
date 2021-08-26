@@ -16,8 +16,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
     <PackageReference Include="RedisCache.Core" Version="1.0.2" />
-    <!--<PackageReference Include="FluentValidation" Version="10.3.3" />-->
-    
   </ItemGroup>
   
   <ItemGroup>

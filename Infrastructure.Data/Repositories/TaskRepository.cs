@@ -26,6 +26,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Public Methods
 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -36,6 +38,16 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<bool> ExistByTitleAsync(string id, string title)
+        {
+            var task = await _tasks.Find(e => e.Title == title).FirstOrDefaultAsync();
+            return task != null && task.Id != id;
+        }
+
         #endregion
 
         #region Private Methods
@@ -43,6 +55,6 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
 
         #endregion
-       
+
     }
 }

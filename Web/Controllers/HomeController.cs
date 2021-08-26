@@ -46,10 +46,11 @@ namespace TaskoMask.Web.Controllers
         {
             var model = new HomeIndexViewModel
             {
-                //OrganizationsCount = await _organizationService.CountAsync(),
-                //ProjectsCount = await _projectService.CountAsync(),
-                //BoardsCount = await _boardService.CountAsync(),
-                //TasksCount = await _taskService.CountAsync(),
+                OrganizationsCount = (await _organizationService.CountAsync()).Value,
+                ProjectsCount = (await _projectService.CountAsync()).Value,
+                BoardsCount = (await _boardService.CountAsync()).Value,
+                TasksCount = (await _taskService.CountAsync()).Value,
+                UsersCount= (await _managerService.CountAsync()).Value,
             };
 
             return View(model);

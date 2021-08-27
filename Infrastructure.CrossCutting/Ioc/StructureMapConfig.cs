@@ -20,6 +20,11 @@ using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Behaviors;
 using TaskoMask.Application.Base.Queries.Models;
 using TaskoMask.Application.Base.Queries.Handlers;
+using StructureMap.Graph.Scanning;
+using StructureMap.Graph;
+using TaskoMask.Application.Core.Queries;
+using System.Linq;
+using TaskoMask.Domain.Core.Models;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
@@ -36,21 +41,36 @@ namespace Infrastructure.CrossCutting.Ioc
         /// </summary>
         public static IServiceProvider ConfigureIocContainer(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton(provider => { return configuration; });
-
             var container = new Container();
             container.Configure(config =>
             {
+                //Automatic resolve dependency by default conventions where we have SomeService : ISomeService
+                config.Scan(s =>
+                {
+                    //scan application dll
+                    s.AssemblyContainingType<IProjectService>();
+                    //scan application.Core dll
+                    s.AssemblyContainingType<IInMemoryBus>();
+                    //scan Domain dll
+                    s.AssemblyContainingType<IProjectRepository>();
+                    //scan Domain.Core dll
+                    s.AssemblyContainingType<Event>();
+                    //Scan Infrastructre.Data dll
+                    s.AssemblyContainingType<IMainDbContext>();
+                    //Scan Infrastructure.CrossCutting dll
+                    s.AssemblyContainingType<InMemoryBus>();
+                    s.WithDefaultConventions().OnAddedPluginTypes(c => c.ContainerScoped());
+                });
+
+                config.For<IConfiguration>().Use(()=> configuration).Singleton();
                 config.For<IMainDbContext>().Use<MongoDbContext>().ContainerScoped();
                 config.For<IEventStore>().Use<RedisEventStore>().ContainerScoped();
-                config.For(typeof(IRequestExceptionHandler<,,>)).Use(typeof(ApplicationExceptionsHandler<,,>)).ContainerScoped();
-                config.For(typeof(IPipelineBehavior<,>)).Use(typeof(CachingBehavior<,>)).ContainerScoped();
-                config.For(typeof(IPipelineBehavior<,>)).Use(typeof(ValidationBehaviour<,>)).ContainerScoped();
 
+              
                 #region Generic Query Handlers
 
                 //TODO Handel Generic Command And Queries
-                // config.For(typeof(IRequestHandler<,>)).Use(typeof(BaseQueryHandlers<>)).ContainerScoped();
+                //  config.For(typeof(IRequestHandler<GetCountQuery<Operator>, long>)).Use(typeof(BaseQueryHandlers<Operator>)).ContainerScoped();
 
                 services.AddScoped<IRequestHandler<GetCountQuery<Operator>, long>, BaseQueryHandlers<Operator>>();
                 services.AddScoped<IRequestHandler<GetCountQuery<Manager>, long>, BaseQueryHandlers<Manager>>();
@@ -76,24 +96,7 @@ namespace Infrastructure.CrossCutting.Ioc
 
                 #endregion
 
-                //Automatic resolve dependency by default conventions where we have SomeService : ISomeService
-                config.Scan(s =>
-                {
-                    //scan application dll
-                    s.AssemblyContainingType<IProjectService>();
-                    //scan application.Core dll
-                    s.AssemblyContainingType<IInMemoryBus>();
-                    //scan Domain dll
-                    s.AssemblyContainingType<IProjectRepository>();
-                    //scan Domain.Core dll
-                    s.AssemblyContainingType<Event>();
-                    //Scan Infrastructre.Data dll
-                    s.AssemblyContainingType<IMainDbContext>();
-                    //Scan Infrastructure.CrossCutting dll
-                    s.AssemblyContainingType<InMemoryBus>();
-
-                    s.WithDefaultConventions().OnAddedPluginTypes(c => c.ContainerScoped());
-                });
+              
 
             });
 
@@ -102,6 +105,5 @@ namespace Infrastructure.CrossCutting.Ioc
 
             return container.GetInstance<IServiceProvider>();
         }
-
     }
 }

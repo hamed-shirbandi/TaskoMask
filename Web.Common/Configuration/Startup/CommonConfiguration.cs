@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Infrastructure.CrossCutting.Ioc;
 using MediatR;
+using MediatR.Pipeline;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -10,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using RedisCache.Core;
 using System;
 using TaskoMask.Application.Boards.Commands.Models;
+using TaskoMask.Application.Core.Behaviors;
+using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Mapper;
 using TaskoMask.Application.Organizations.Commands.Validations;
 using TaskoMask.Infrastructure.Data.DataProviders;
@@ -32,6 +35,12 @@ namespace TaskoMask.Web.Common.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddMediatR(typeof(BoardBaseCommand));
+
+            services.AddExceptionHandlers();
+
+            services.AddBehaviors();
+
+            services.AddAutoMapperSetup();
 
             //Load all fluent validation to use in ValidationBehaviour
             services.AddValidatorsFromAssembly(typeof(CreateOrganizationCommandValidation).Assembly);
@@ -56,6 +65,27 @@ namespace TaskoMask.Web.Common.Configuration.Startup
             });
 
             return services.ConfigureIocContainer(configuration);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddBehaviors(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddExceptionHandlers(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
         }
 
 

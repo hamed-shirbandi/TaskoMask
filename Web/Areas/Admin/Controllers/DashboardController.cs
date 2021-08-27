@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Web.Area.Admin.Models;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
+using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Web.Area.Admin.Controllers
 {
@@ -38,13 +41,14 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
+
             var organizationsDetailQueryResult = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
             if (!organizationsDetailQueryResult.IsSuccess)
                 return RedirectToErrorPage(organizationsDetailQueryResult);
 
             var model = new DashboardIndexViewModel
             {
-                Organizations = organizationsDetailQueryResult.Value,
+                OrganizationsDetailsList = organizationsDetailQueryResult.Value,
             };
             return View(model);
         }

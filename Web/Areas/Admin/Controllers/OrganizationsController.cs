@@ -64,7 +64,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         {
             if (!ModelState.IsValid)
                 return View(input);
-
+          //  input.UserId = GetCurrentUserId();
             var cmdResult = await _organizationService.CreateAsync(input);
             return View(cmdResult, input);
         }

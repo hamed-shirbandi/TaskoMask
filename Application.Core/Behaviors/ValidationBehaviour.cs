@@ -15,7 +15,7 @@ namespace TaskoMask.Application.Core.Behaviors
     /// <summary>
     /// automatic command validation by check annotation and fluent validation (if exist)
     /// </summary>
-    public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : BaseCommand where TResponse : CommandResult
+    public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : BaseCommand
     {
         #region Fields
 
@@ -43,7 +43,6 @@ namespace TaskoMask.Application.Core.Behaviors
         /// </summary>
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
-
             //Check fluent validations
             var isValidFluentValidation = !_validators.Any() || await ValidateFluentValidation(request, cancellationToken);
 

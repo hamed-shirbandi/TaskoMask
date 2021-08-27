@@ -13,96 +13,99 @@
     </li>
 </ul>
 <br />
-@*<div class="tab-content">
+<div class="tab-content">
     <div class='tab-pane container fade in show active' id='organizations'>
         <div class="container">
             <div class="row">
-                @foreach (var item in Model.Organizations)
+                @foreach (var item in Model.OrganizationsDetailsList)
                 {
-                    <div class="col-md-4 col-sm-12">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h6><strong>@item.Name</strong></h6>
+                                <h6><strong>@item.Organization.Name</strong></h6>
                             </div>
                             <div class="card-body">
-                                <p class="card-text">
-                                    @item.Description
-                                </p>
-                                <table>
-                                    <tr>
-                                        <td>all projects: </td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>all tasks: </td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>pending tasks: </td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>assigned users: </td>
-                                        <td>0</td>
-                                    </tr>
-                                </table>
-                                <hr />
-                                <a href="@Url.Action(action: "index", controller: "projects", values: new { organizationId = item.Id })" class="btn btn-sm btn-outline-primary">
-                                    projects
-                                </a>
-                                <a href="@Url.Action(action: "update", controller: "organizations", values: new { id = item.Id })" class="btn btn-sm btn-outline-warning">
-                                    update
-                                </a>
-                                <a href="@Url.Action(action: "delete", controller: "organizations", values: new { id = item.Id })" class="btn btn-sm btn-outline-danger">
-                                    delete
-                                </a>
+
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6><strong>Reports</strong></h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <table>
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => item.Reports.ProjectsCount) </td>
+                                                    <td>@item.Reports.ProjectsCount</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => item.Reports.TasksCount) </td>
+                                                    <td>@item.Reports.TasksCount</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => item.Reports.ToDoTasksCount) </td>
+                                                    <td>@item.Reports.ToDoTasksCount</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => item.Reports.DoingTasksCount) </td>
+                                                    <td>@item.Reports.DoingTasksCount</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => item.Reports.DoneTasksCount) </td>
+                                                    <td>@item.Reports.DoneTasksCount</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6><strong>Projects</strong></h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <table>
+
+                                                @foreach (var Project in item.Projects)
+                                                {
+                                                    <tr>
+                                                        <td>@Html.DisplayNameFor(model => Project.Name) </td>
+                                                        <td>@Project.Name</td>
+                                                    </tr>
+                                                }
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6><strong>Last Tasks</strong></h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <table>
+
+                                                @foreach (var tasks in item.LastTasks)
+                                                {
+                                                    <tr>
+                                                        <td>@Html.DisplayNameFor(model => tasks.Title) </td>
+                                                        <td>@tasks.Title</td>
+                                                    </tr>
+                                                }
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 }
 
-                <div class="col-md-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h6><strong>Create New Organization</strong></h6>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                <a href="@Url.Action(action: "create", controller: "organizations", values: new {  })">
-                                    click here to create new organization
-                                </a>
-                            </p>
-                            <table>
-                                <tr>
-                                    <td>all projects: </td>
-                                    <td>?</td>
-                                </tr>
-                                <tr>
-                                    <td>all tasks: </td>
-                                    <td>?</td>
-                                </tr>
-                                <tr>
-                                    <td>pending tasks: </td>
-                                    <td>?</td>
-                                </tr>
-                                <tr>
-                                    <td>assigned users: </td>
-                                    <td>?</td>
-                                </tr>
-                            </table>
-                            <hr />
-                            <a href="#" class="btn btn-sm btn-outline-dark">
-                                projects
-                            </a>
-                            <a href="#" class="btn btn-sm btn-outline-dark">
-                                update
-                            </a>
-                            <a href="#" class="btn btn-sm btn-outline-dark">
-                                delete
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -110,6 +113,6 @@
         <h3>pending tasks </h3>
         <p>list of all pending tasks from all organizations.</p>
     </div>
-</div>*@
+</div>
 
 

@@ -10,7 +10,7 @@ namespace TaskoMask.Web.Area.Admin.Models
 {
     public class DashboardIndexViewModel
     {
-        public IEnumerable<OrganizationDetailsViewModel> Organizations { get; set; }
+        public IEnumerable<OrganizationDetailsViewModel> OrganizationsDetailsList { get; set; }
 
     }
 }

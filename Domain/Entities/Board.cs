@@ -11,11 +11,12 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public Board(string name, string description, string projectId)
+        public Board(string name, string description, string projectId, string organizationId)
         {
             Name = name;
             Description = description;
             ProjectId = projectId;
+            OrganizationId = organizationId;
         }
 
         #endregion
@@ -25,6 +26,7 @@ namespace TaskoMask.Domain.Entities
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string ProjectId { get; private set; }
+        public string OrganizationId { get; private set; }
 
 
         #endregion

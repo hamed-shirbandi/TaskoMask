@@ -20,7 +20,9 @@ namespace TaskoMask.Application.Tasks.Commands.Handlers
         #region Fields
 
         private readonly ITaskRepository _taskRepository;
-
+        private readonly ICardRepository _cardRepository;
+        private readonly IBoardRepository _boardRepository;
+        private readonly IProjectRepository _projectRepository;
 
         #endregion
 
@@ -48,7 +50,22 @@ namespace TaskoMask.Application.Tasks.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var task = new Domain.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId);
+            var card = await _cardRepository.GetByIdAsync(request.CardId);
+            if (card == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);
+
+
+            var board = await _boardRepository.GetByIdAsync(card.BoardId);
+            if (board == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+
+
+            var project = await _projectRepository.GetByIdAsync(board.ProjectId);
+            if (project == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
+
+
+            var task = new Domain.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: card.BoardId, projectId: project.Id, organizationId: project.OrganizationId);
             if (!IsValid(task))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 

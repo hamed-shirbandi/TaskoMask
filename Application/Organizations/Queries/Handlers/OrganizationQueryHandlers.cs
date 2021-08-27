@@ -66,9 +66,9 @@ namespace TaskoMask.Application.Organizations.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public Task<OrganizationReportDto> Handle(GetOrganizationReportQuery request, CancellationToken cancellationToken)
+        public async Task<OrganizationReportDto> Handle(GetOrganizationReportQuery request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            return new OrganizationReportDto();
         }
 
 

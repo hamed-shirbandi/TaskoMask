@@ -11,11 +11,14 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public Task(string title, string description, string cardId)
+        public Task(string title, string description, string cardId, string boardId, string organizationId, string projectId)
         {
             Title = title;
             Description = description;
             CardId = cardId;
+            BoardId = boardId;
+            ProjectId = projectId;
+            OrganizationId = organizationId;
         }
 
         #endregion
@@ -25,6 +28,9 @@ namespace TaskoMask.Domain.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public string CardId { get; set; }
+        public string BoardId { get; set; }
+        public string ProjectId { get; private set; }
+        public string OrganizationId { get; private set; }
 
         #endregion
 

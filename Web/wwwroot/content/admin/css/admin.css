@@ -31,3 +31,17 @@ body {
     background-color: #f5f5f5;
 }
 
+.nav .nav-item .nav-link {
+    color:black !important;
+    font-size:medium;
+}
+
+a{
+    text-decoration:none !important;
+}
+.card{
+    margin-bottom:6px !important;
+}
+.card-body small{
+    font-size:13px;
+}

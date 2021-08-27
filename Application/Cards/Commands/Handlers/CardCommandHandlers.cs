@@ -19,15 +19,19 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
         #region Fields
 
         private readonly ICardRepository _cardRepository;
+        private readonly IBoardRepository _boardRepository;
+        private readonly IProjectRepository _projectRepository;
 
 
         #endregion
 
         #region Ctors
 
-        public CardCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public CardCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IBoardRepository boardRepository) : base(notifications)
         {
             _cardRepository = cardRepository;
+            _projectRepository = projectRepository;
+            _boardRepository = boardRepository;
         }
 
 
@@ -49,7 +53,18 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId, type: request.Type);
+
+            var board = await _boardRepository.GetByIdAsync(request.BoardId);
+            if (board == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+
+
+            var project = await _projectRepository.GetByIdAsync(board.ProjectId);
+            if (project == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
+
+
+            var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId, type: request.Type,projectId:project.Id,organizationId:project.OrganizationId);
             if (!IsValid(card))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 

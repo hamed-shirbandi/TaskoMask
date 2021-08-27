@@ -34,7 +34,16 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         public async Task<IEnumerable<Domain.Entities.Task>> GetListByCardIdAsync(string cardId)
         {
             return await _tasks.AsQueryable().Where(o => o.CardId == cardId).ToListAsync();
+        }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<Domain.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount)
+        {
+            return await _tasks.AsQueryable().Where(o => o.OrganizationId == organizationId).OrderByDescending(o=> o.CreationTime.CreateDateTime).Take(takeCount).ToListAsync();
         }
 
 

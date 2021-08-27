@@ -18,7 +18,9 @@ namespace TaskoMask.Application.Boards.Queries.Handlers
     public class BoardQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetBoardByIdQuery, BoardBasicInfoDto>,
         IRequestHandler<GetBoardReportQuery, BoardReportDto>,
-        IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>
+        IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
+        IRequestHandler<GetBoardsByOrganizationIdQuery, IEnumerable<BoardBasicInfoDto>>
+        
     {
         #region Fields
 
@@ -63,6 +65,17 @@ namespace TaskoMask.Application.Boards.Queries.Handlers
             return _mapper.Map<IEnumerable<BoardBasicInfoDto>>(boards);
         }
 
+        
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<BoardBasicInfoDto>> Handle(GetBoardsByOrganizationIdQuery request, CancellationToken cancellationToken)
+        {
+            var boards = await _boardRepository.GetListByOrganizationIdAsync(request.OrganizationId);
+            return _mapper.Map<IEnumerable<BoardBasicInfoDto>>(boards);
+        }
 
 
         /// <summary>

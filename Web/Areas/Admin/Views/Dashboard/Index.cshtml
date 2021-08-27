@@ -3,116 +3,305 @@
     ViewData["Title"] = "Dashboard";
 }
 
-
-<ul class="nav nav-tabs">
-    <li class='nav-item'>
-        <a class='nav-link active' data-toggle='tab' href='#organizations'>organizations</a>
-    </li>
-    <li class='nav-item'>
-        <a class='nav-link ' data-toggle='tab' href='#tasks'>pending tasks</a>
-    </li>
-</ul>
-<br />
-<div class="tab-content">
-    <div class='tab-pane container fade in show active' id='organizations'>
-        <div class="container">
-            <div class="row">
-                @foreach (var item in Model.OrganizationsDetailsList)
-                {
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h6><strong>@item.Organization.Name</strong></h6>
+<div class="container py-3">
+    <div class="row">
+        @foreach (var item in Model.OrganizationsDetailsList)
+        {
+            <div class="col-10 mx-auto">
+                <h5 data-toggle="tooltip" data-placement="left" title="@item.Organization.Description">
+                    <i class="bi bi-building"></i>
+                    @item.Organization.Name
+                </h5>
+                <ul class="nav nav-tabs small justify-content-end" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#boards-@item.Organization.Id" role="tab">
+                            <i class="bi bi-clipboard-plus"></i>
+                            Boards
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#projects-@item.Organization.Id" role="tab">
+                            <i class="bi bi-kanban"></i>
+                            Projects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tasks-@item.Organization.Id" role="tab">
+                            <i class="bi bi-list-task"></i>
+                            Last Tasks
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#reports-@item.Organization.Id" role="tab">
+                            <i class="bi bi-pie-chart"></i>
+                            Reports
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content py-4">
+                    <div class="tab-pane active" id="boards-@item.Organization.Id" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12 ">
+                                <a href="#">
+                                    <div class="card bg-primary text-white">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Board Name</h5>
+                                            <small>Description test ...</small>
+                                            <hr />
+                                            <small>
+                                                <i class="bi bi-kanban"></i>: project name
+                                            </small>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="card-body">
 
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h6><strong>Reports</strong></h6>
-                                        </div>
+                            <div class="col-md-4 col-sm-12 ">
+                                <a href="#">
+                                    <div class="card bg-primary text-white">
                                         <div class="card-body">
-                                            <table>
-                                                <tr>
-                                                    <td>@Html.DisplayNameFor(model => item.Reports.ProjectsCount) </td>
-                                                    <td>@item.Reports.ProjectsCount</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>@Html.DisplayNameFor(model => item.Reports.TasksCount) </td>
-                                                    <td>@item.Reports.TasksCount</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>@Html.DisplayNameFor(model => item.Reports.ToDoTasksCount) </td>
-                                                    <td>@item.Reports.ToDoTasksCount</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>@Html.DisplayNameFor(model => item.Reports.DoingTasksCount) </td>
-                                                    <td>@item.Reports.DoingTasksCount</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>@Html.DisplayNameFor(model => item.Reports.DoneTasksCount) </td>
-                                                    <td>@item.Reports.DoneTasksCount</td>
-                                                </tr>
-                                            </table>
+                                            <h5 class="card-title">Board Name</h5>
+                                            <small>Description test ...</small>
+                                            <hr />
+                                            <small>
+                                                <i class="bi bi-kanban"></i>: project name
+                                            </small>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
+                            </div>
 
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h6><strong>Projects</strong></h6>
-                                        </div>
+                            <div class="col-md-4 col-sm-12 ">
+                                <a href="#">
+                                    <div class="card bg-primary text-white">
                                         <div class="card-body">
-                                            <table>
-
-                                                @foreach (var Project in item.Projects)
-                                                {
-                                                    <tr>
-                                                        <td>@Html.DisplayNameFor(model => Project.Name) </td>
-                                                        <td>@Project.Name</td>
-                                                    </tr>
-                                                }
-
-                                            </table>
+                                            <h5 class="card-title">Board Name</h5>
+                                            <small>Description test ...</small>
+                                            <hr />
+                                            <small>
+                                                <i class="bi bi-kanban"></i>: project name
+                                            </small>
                                         </div>
                                     </div>
-                                </div>
-
-
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h6><strong>Last Tasks</strong></h6>
-                                        </div>
-                                        <div class="card-body">
-                                            <table>
-
-                                                @foreach (var tasks in item.LastTasks)
-                                                {
-                                                    <tr>
-                                                        <td>@Html.DisplayNameFor(model => tasks.Title) </td>
-                                                        <td>@tasks.Title</td>
-                                                    </tr>
-                                                }
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                </div>
-
+                                </a>
                             </div>
                         </div>
-                    </div>
-                }
 
+
+                        @foreach (var board in item.Boards)
+                        {
+                            <div class="col-md-4 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@board.Name</h5>
+                                        <p class="card-text">@board.Description</p>
+                                        <a href="#" class="btn btn-primary">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="tab-pane" id="projects-@item.Organization.Id" role="tabpanel">
+
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12 ">
+                                <a href="#">
+                                    <div class="card bg-success text-white">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Project Name</h5>
+                                            <hr />
+                                            <small>Description test ...</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-4 col-sm-12 ">
+                                <a href="#">
+                                    <div class="card bg-success text-white">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Project Name</h5>
+                                            <hr />
+                                            <small>Description test ...</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-4 col-sm-12 ">
+                                <a href="#">
+                                    <div class="card bg-success text-white">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Project Name</h5>
+                                            <hr />
+                                            <small>Description test ...</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        @foreach (var board in item.Projects)
+                        {
+                            <div class="col-md-4 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@board.Name</h5>
+                                        <p class="card-text">@board.Description</p>
+                                        <a href="#" class="btn btn-primary">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="tab-pane" id="tasks-@item.Organization.Id" role="tabpanel">
+
+                        <div class="col-md-12 col-sm-12 ">
+                            <a href="#">
+                                <div class="card bg-warning text-dark">
+                                    <div class="card-body">
+                                        <strong> this is a test task title ...</strong>
+                                        <hr />
+                                        <small class="btn btn-outline-dark">test board</small>
+                                        <small class="btn btn-outline-dark">test project</small>
+                                        <small class="btn btn-outline-dark">2021/7/9 23:59:32</small>
+                                        <small class="btn btn-outline-dark">hamed shirbandi</small>
+                                        <small class="btn btn-outline-dark">to do card</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 ">
+                            <a href="#">
+                                <div class="card bg-warning text-dark">
+                                    <div class="card-body">
+                                        <strong> this is a test task title ...</strong>
+                                        <hr />
+                                        <small class="btn btn-outline-dark">test board</small>
+                                        <small class="btn btn-outline-dark">test project</small>
+                                        <small class="btn btn-outline-dark">2021/7/9 23:59:32</small>
+                                        <small class="btn btn-outline-dark">hamed shirbandi</small>
+                                        <small class="btn btn-outline-dark">to do card</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 ">
+                            <a href="#">
+                                <div class="card bg-warning text-dark">
+                                    <div class="card-body">
+                                        <strong> this is a test task title ...</strong>
+                                        <hr />
+                                        <small class="btn btn-outline-dark">test board</small>
+                                        <small class="btn btn-outline-dark">test project</small>
+                                        <small class="btn btn-outline-dark">2021/7/9 23:59:32</small>
+                                        <small class="btn btn-outline-dark">hamed shirbandi</small>
+                                        <small class="btn btn-outline-dark">to do card</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        @foreach (var task in item.LastTasks)
+                        {
+                            <div class="alert alert-dark" role="alert">
+                                @task.Title
+                            </div>
+                        }
+                    </div>
+
+                    <div class="tab-pane" id="reports-@item.Organization.Id" role="tabpanel">
+
+
+                        <div class="row">
+
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Reports.ManagersCount</h5>
+                                        <p class="card-text">
+                                            <i class="bi bi-bar-chart"></i>
+                                            @Html.DisplayNameFor(model => item.Reports.ManagersCount)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Reports.ProjectsCount</h5>
+                                        <p class="card-text">
+                                            <i class="bi bi-bar-chart"></i>
+                                            @Html.DisplayNameFor(model => item.Reports.ProjectsCount)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Reports.TasksCount</h5>
+                                        <p class="card-text">
+                                            <i class="bi bi-bar-chart"></i>
+                                            @Html.DisplayNameFor(model => item.Reports.TasksCount)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Reports.ToDoTasksCount</h5>
+                                        <p class="card-text">
+                                            <i class="bi bi-bar-chart"></i>
+                                            @Html.DisplayNameFor(model => item.Reports.ToDoTasksCount)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Reports.DoingTasksCount</h5>
+                                        <p class="card-text">
+                                            <i class="bi bi-bar-chart"></i>
+                                            @Html.DisplayNameFor(model => item.Reports.DoingTasksCount)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Reports.DoneTasksCount</h5>
+                                        <p class="card-text">
+                                            <i class="bi bi-bar-chart"></i>
+                                            @Html.DisplayNameFor(model => item.Reports.DoneTasksCount)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class='tab-pane container fade' id='tasks'>
-        <h3>pending tasks </h3>
-        <p>list of all pending tasks from all organizations.</p>
+        }
     </div>
 </div>
+
+
+
+
+
 
 

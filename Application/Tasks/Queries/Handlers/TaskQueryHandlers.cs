@@ -17,7 +17,9 @@ namespace TaskoMask.Application.Tasks.Queries.Handlers
 {
     public class TaskQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,
-        IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>
+        IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>,
+        IRequestHandler<GetTasksByOrganizationIdQuery, IEnumerable<TaskBasicInfoDto>>
+        
     {
         private readonly ITaskRepository _taskRepository;
         public TaskQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
@@ -26,6 +28,10 @@ namespace TaskoMask.Application.Tasks.Queries.Handlers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<TaskBasicInfoDto> Handle(GetTaskByIdQuery request, CancellationToken cancellationToken)
         {
             var task = await _taskRepository.GetByIdAsync(request.Id);
@@ -38,12 +44,25 @@ namespace TaskoMask.Application.Tasks.Queries.Handlers
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<IEnumerable<TaskBasicInfoDto>> Handle(GetTasksByCardIdQuery request, CancellationToken cancellationToken)
         {
             var tasks = await _taskRepository.GetListByCardIdAsync(request.CardId);
             return _mapper.Map<IEnumerable<TaskBasicInfoDto>>(tasks);
         }
 
-      
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<TaskBasicInfoDto>> Handle(GetTasksByOrganizationIdQuery request, CancellationToken cancellationToken)
+        {
+            var tasks = await _taskRepository.GetListByOrganizationIdAsync(request.OrganizationId,request.TakeCount);
+            return _mapper.Map<IEnumerable<TaskBasicInfoDto>>(tasks);
+        }
+
     }
 }

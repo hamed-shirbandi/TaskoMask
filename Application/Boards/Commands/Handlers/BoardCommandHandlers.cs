@@ -19,15 +19,17 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         #region Fields
 
         private readonly IBoardRepository _boardRepository;
+        private readonly IBoardRepository _projectRepository;
 
         #endregion
 
         #region Ctors
 
 
-        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IBoardRepository projectRepository) : base(notifications)
         {
             _boardRepository = boardRepository;
+            _projectRepository = projectRepository;
         }
 
 
@@ -50,7 +52,12 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var board = new Board(name: request.Name, description: request.Description, projectId: request.ProjectId);
+            var project = await _projectRepository.GetByIdAsync(request.ProjectId);
+            if (project == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
+
+
+            var board = new Board(name: request.Name, description: request.Description, projectId: request.ProjectId,organizationId: project.OrganizationId);
             if (!IsValid(board))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 

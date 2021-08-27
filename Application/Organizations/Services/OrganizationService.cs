@@ -13,6 +13,8 @@ using System.Linq;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Base.Services;
 using TaskoMask.Domain.Entities;
+using TaskoMask.Application.Boards.Queries.Models;
+using TaskoMask.Application.Tasks.Queries.Models;
 
 namespace TaskoMask.Application.Organizations.Services
 {
@@ -76,11 +78,22 @@ namespace TaskoMask.Application.Organizations.Services
                 return Result.Failure<OrganizationDetailsViewModel>(organizationReportQueryResult.Errors);
 
 
+            var boardQueryResult = await SendQueryAsync(new GetBoardsByOrganizationIdQuery(id));
+            if (!boardQueryResult.IsSuccess)
+                return Result.Failure<OrganizationDetailsViewModel>(boardQueryResult.Errors);
+
+
+            var taskQueryResult = await SendQueryAsync(new GetTasksByOrganizationIdQuery(id,takeCount:20));
+            if (!taskQueryResult.IsSuccess)
+                return Result.Failure<OrganizationDetailsViewModel>(taskQueryResult.Errors);
+
             var organizationDetail = new OrganizationDetailsViewModel
             {
                 Organization = organizationQueryResult.Value,
                 Projects = projectQueryResult.Value,
-                Reports = organizationReportQueryResult.Value
+                Boards = boardQueryResult.Value,
+                LastTasks = taskQueryResult.Value,
+                Reports = organizationReportQueryResult.Value,
             };
 
             return Result.Success(organizationDetail);

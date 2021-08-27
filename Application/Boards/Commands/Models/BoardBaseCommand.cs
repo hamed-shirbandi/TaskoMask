@@ -20,5 +20,6 @@ namespace TaskoMask.Application.Boards.Commands.Models
 
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string ProjectId { get; protected set; }
+
     }
 }

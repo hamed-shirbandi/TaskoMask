@@ -41,6 +41,16 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
+        public async Task<IEnumerable<Board>> GetListByOrganizationIdAsync(string organizationId)
+        {
+            return await _boards.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<bool> ExistByNameAsync(string id, string name)
         {
             var board = await _boards.Find(e => e.Name == name).FirstOrDefaultAsync();

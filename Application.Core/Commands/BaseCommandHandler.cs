@@ -4,7 +4,7 @@ using TaskoMask.Application.Core.Extensions;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Core.Models;
 using System.Linq;
-using TaskoMask.Domain.Core.Helpers;
+using TaskoMask.Application.Core.Helpers;
 
 namespace TaskoMask.Application.Core.Commands
 {

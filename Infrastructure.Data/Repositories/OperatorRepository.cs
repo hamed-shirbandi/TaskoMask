@@ -17,7 +17,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public OperatorRepository(IMainDbContext dbContext) : base(dbContext)
+        public OperatorRepository(IMongoDbContext dbContext) : base(dbContext)
         {
         }
 

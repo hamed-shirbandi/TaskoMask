@@ -3,8 +3,7 @@ using Newtonsoft.Json;
 using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Core.Events;
+
 
 namespace TaskoMask.Infrastructure.Data.EventSourcing
 {

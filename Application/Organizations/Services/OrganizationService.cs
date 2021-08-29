@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Domain.Core.Helpers;
+using TaskoMask.Application.Core.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Organizations.Commands.Models;

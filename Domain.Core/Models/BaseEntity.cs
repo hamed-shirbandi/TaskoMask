@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
+using TaskoMask.Domain.Core.Events;
 using TaskoMask.Domain.Core.Notifications;
 
 namespace TaskoMask.Domain.Core.Models
@@ -15,6 +16,7 @@ namespace TaskoMask.Domain.Core.Models
 
         private string id { get; set; }
         private List<DomainNotification> validationErrors;
+        private List<IDomainEvent> domainEvents;
 
         #endregion
 
@@ -47,6 +49,8 @@ namespace TaskoMask.Domain.Core.Models
 
         [BsonIgnore]
         public IReadOnlyCollection<DomainNotification> ValidationErrors => validationErrors ?? new List<DomainNotification>();
+        [BsonIgnore]
+        public IReadOnlyCollection<IDomainEvent> DomainEvents => domainEvents?.AsReadOnly();
 
 
 
@@ -55,7 +59,13 @@ namespace TaskoMask.Domain.Core.Models
         #region Public Methods
 
 
-
+        /// <summary>
+        /// Clear domain events
+        /// </summary>
+        public void ClearDomainEvents()
+        {
+            domainEvents?.Clear();
+        }
 
 
 
@@ -88,6 +98,21 @@ namespace TaskoMask.Domain.Core.Models
         }
 
 
+
+
+        /// <summary>
+        /// Add domain event
+        /// </summary>
+        protected void AddDomainEvent(IDomainEvent domainEvent)
+        {
+            domainEvents = domainEvents ?? new List<IDomainEvent>();
+            this.domainEvents.Add(domainEvent);
+        }
+
+
+
+
+       
         #endregion
 
         #region Private Methods

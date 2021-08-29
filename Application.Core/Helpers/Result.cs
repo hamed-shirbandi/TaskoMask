@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Domain.Core.Resources;
 
-namespace TaskoMask.Domain.Core.Helpers
+namespace TaskoMask.Application.Core.Helpers
 {
 
     /// <summary>

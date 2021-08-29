@@ -21,7 +21,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         {
             using (var serviceScope = scopeFactory.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetService<IMainDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
 
                 CreateCollections(dbContext);
 
@@ -34,7 +34,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         /// <summary>
         /// Ensure collections created
         /// </summary>
-        private static void CreateCollections(IMainDbContext dbContext)
+        private static void CreateCollections(IMongoDbContext dbContext)
         {
             var collections = dbContext.Collections();
 
@@ -67,7 +67,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         /// <summary>
         /// Create index for collections
         /// </summary>
-        private static void CreateIndexes(IMainDbContext dbContext)
+        private static void CreateIndexes(IMongoDbContext dbContext)
         {
             #region Task Indexs
 

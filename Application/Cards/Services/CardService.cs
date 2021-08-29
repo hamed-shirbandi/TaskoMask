@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Domain.Core.Helpers;
+using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Cards.Commands.Models;
 using TaskoMask.Application.Cards.Queries.Models;

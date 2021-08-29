@@ -8,7 +8,7 @@ using TaskoMask.Application.Base.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Services;
-using TaskoMask.Domain.Core.Helpers;
+using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.Base.Services

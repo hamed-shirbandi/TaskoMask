@@ -9,7 +9,7 @@ namespace TaskoMask.Infrastructure.Data.DbContext
     /// <summary>
     /// 
     /// </summary>
-    public class MongoDbContext : IMainDbContext
+    public class MongoDbContext : IMongoDbContext
     {
         #region Fields
 

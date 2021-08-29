@@ -54,18 +54,16 @@ namespace Infrastructure.CrossCutting.Ioc
                     //scan Domain dll
                     s.AssemblyContainingType<IProjectRepository>();
                     //scan Domain.Core dll
-                    s.AssemblyContainingType<Event>();
+                    s.AssemblyContainingType<IDomainEvent>();
                     //Scan Infrastructre.Data dll
-                    s.AssemblyContainingType<IMainDbContext>();
+                    s.AssemblyContainingType<IMongoDbContext>();
                     //Scan Infrastructure.CrossCutting dll
                     s.AssemblyContainingType<InMemoryBus>();
                     s.WithDefaultConventions().OnAddedPluginTypes(c => c.ContainerScoped());
                 });
 
                 config.For<IConfiguration>().Use(()=> configuration).Singleton();
-                config.For<IMainDbContext>().Use<MongoDbContext>().ContainerScoped();
                 config.For<IEventStore>().Use<RedisEventStore>().ContainerScoped();
-
               
                 #region Generic Query Handlers
 
@@ -95,8 +93,6 @@ namespace Infrastructure.CrossCutting.Ioc
 
 
                 #endregion
-
-              
 
             });
 

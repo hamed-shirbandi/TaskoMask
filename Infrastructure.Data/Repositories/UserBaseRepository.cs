@@ -18,7 +18,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public UserBaseRepository(IMainDbContext dbContext) : base(dbContext)
+        public UserBaseRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _users = dbContext.GetCollection<TEntity>(); 
 

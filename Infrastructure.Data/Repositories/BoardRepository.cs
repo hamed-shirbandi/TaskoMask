@@ -18,7 +18,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public BoardRepository(IMainDbContext dbContext) : base(dbContext)
+        public BoardRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _boards = dbContext.GetCollection<Board>(); 
         }

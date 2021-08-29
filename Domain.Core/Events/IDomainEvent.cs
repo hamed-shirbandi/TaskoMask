@@ -6,7 +6,7 @@ namespace TaskoMask.Domain.Core.Events
     /// <summary>
     /// 
     /// </summary>
-    public class Event :INotification
+    public interface IDomainEvent :INotification
     {
     }
 }

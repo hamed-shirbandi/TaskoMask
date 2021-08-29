@@ -23,7 +23,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         {
             using (var serviceScope = scopeFactory.CreateScope())
             {
-                var _dbContext = serviceScope.ServiceProvider.GetService<IMainDbContext>();
+                var _dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
                 var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
                 var _operators = _dbContext.GetCollection<Operator>();

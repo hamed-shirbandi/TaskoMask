@@ -18,7 +18,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public ProjectRepository(IMainDbContext dbContext) : base(dbContext)
+        public ProjectRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _projects = dbContext.GetCollection<Project>();
         }

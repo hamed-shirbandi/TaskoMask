@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Events;
 
-namespace TaskoMask.Domain.Core.Data
+namespace TaskoMask.Infrastructure.Data.EventSourcing
 {
     public interface IEventStore
     {

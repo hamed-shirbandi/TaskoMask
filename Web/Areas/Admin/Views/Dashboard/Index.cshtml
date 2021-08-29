@@ -1,6 +1,7 @@
 ﻿@model TaskoMask.Web.Area.Admin.Models.DashboardIndexViewModel
 @{
     ViewData["Title"] = "Dashboard";
+    var defaultUserImgUrl = "/content/admin/img/default-user.png";
 }
 
 <div class="container py-3">
@@ -29,6 +30,12 @@
                         <a class="nav-link" data-toggle="tab" href="#tasks-@item.Organization.Id" role="tab">
                             <i class="bi bi-list-task"></i>
                             Last Tasks
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#members-@item.Organization.Id" role="tab">
+                            <i class="bi bi-people"></i>
+                            Members
                         </a>
                     </li>
                     <li class="nav-item">
@@ -160,7 +167,7 @@
 
                         <div class="col-md-12 col-sm-12 ">
                             <a href="#">
-                                <div class="card bg-warning text-dark">
+                                <div class="card bg-warning text-dark" style="background-color: #ebcc02!important ">
                                     <div class="card-body">
                                         <strong> this is a test task title ...</strong>
                                         <hr />
@@ -212,6 +219,47 @@
                                 @task.Title
                             </div>
                         }
+                    </div>
+
+                    <div class="tab-pane" id="members-@item.Organization.Id" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="@defaultUserImgUrl" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Test user</h5>
+                                        <p class="card-text">Test@mail.com</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Email</a>
+                                        <a href="#" class="btn btn-sm btn-warning">Permissions</a>
+                                        <a href="#" class="btn btn-sm btn-danger">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="@defaultUserImgUrl" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Test user</h5>
+                                        <p class="card-text">Test@mail.com</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Email</a>
+                                        <a href="#" class="btn btn-sm btn-warning">Permissions</a>
+                                        <a href="#" class="btn btn-sm btn-danger">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="@defaultUserImgUrl" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Test user</h5>
+                                        <p class="card-text">Test@mail.com</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Email</a>
+                                        <a href="#" class="btn btn-sm btn-warning">Permissions</a>
+                                        <a href="#" class="btn btn-sm btn-danger">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="tab-pane" id="reports-@item.Organization.Id" role="tabpanel">

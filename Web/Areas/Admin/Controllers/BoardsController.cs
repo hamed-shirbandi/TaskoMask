@@ -65,9 +65,6 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BoardInputDto input)
         {
-            if (!ModelState.IsValid)
-                return View(input);
-
             var cmdResult = await _boardService.CreateAsync(input);
             return View(cmdResult, input);
         }

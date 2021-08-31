@@ -66,9 +66,6 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ProjectInputDto input)
         {
-            if (!ModelState.IsValid)
-                return View(input);
-
             var cmdResult = await _projectService.CreateAsync(input);
             return View(cmdResult, input);
         }
@@ -93,9 +90,6 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(ProjectInputDto input)
         {
-            if (!ModelState.IsValid)
-                return View(input);
-
             var cmdResult = await _projectService.UpdateAsync(input);
             return View(cmdResult, input);
         }

@@ -63,8 +63,6 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(OrganizationInputDto input)
         {
-            if (!ModelState.IsValid)
-                return View(input);
             input.UserId = GetCurrentUserId();
             var cmdResult = await _organizationService.CreateAsync(input);
             return View(cmdResult, input);
@@ -82,6 +80,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
             var organizationQueryResult = await _organizationService.GetByIdAsync(id);
             return View<OrganizationBasicInfoDto, OrganizationInputDto>(organizationQueryResult);
         }
+
 
 
         /// <summary>

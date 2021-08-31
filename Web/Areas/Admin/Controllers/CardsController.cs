@@ -66,9 +66,6 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CardInputDto input)
         {
-            if (!ModelState.IsValid)
-                return View(input);
-
             var cmdResult = await _cardService.CreateAsync(input);
             return View(cmdResult, input);
         }

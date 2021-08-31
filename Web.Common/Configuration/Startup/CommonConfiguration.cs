@@ -78,7 +78,6 @@ namespace TaskoMask.Web.Common.Configuration.Startup
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             services.AddScoped<INotificationHandler<IDomainEvent>, EventStoringBehavior>();
-
         }
 
 

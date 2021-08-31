@@ -45,7 +45,7 @@ namespace TaskoMask.Application.Core.Behaviors
         /// </summary>
         public async Task Handle(IDomainEvent request, CancellationToken cancellationToken)
         {
-            var @event = new StoredEvent(entityId: request.EntityId, entityType: request.EntityType, eventType: request.GetType().Name, userId: "USERIDGETFROMCURRENTCONTEXT", data: request);
+            var @event = new StoredEvent(entityId: "612e4a2dc47955a7738f9205", entityType: request.EntityType, eventType: request.GetType().Name, userId: "USERIDGETFROMCURRENTCONTEXT", data: request);
             await _eventStore.SaveAsync(@event);
         }
 

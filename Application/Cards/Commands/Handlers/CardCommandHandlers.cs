@@ -9,6 +9,7 @@ using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using MediatR;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Cards.Commands.Handlers
 {
@@ -27,7 +28,7 @@ namespace TaskoMask.Application.Cards.Commands.Handlers
 
         #region Ctors
 
-        public CardCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IBoardRepository boardRepository) : base(notifications)
+        public CardCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IBoardRepository boardRepository, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
         {
             _cardRepository = cardRepository;
             _projectRepository = projectRepository;

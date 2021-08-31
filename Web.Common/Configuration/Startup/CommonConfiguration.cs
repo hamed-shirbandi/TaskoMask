@@ -15,6 +15,7 @@ using TaskoMask.Application.Core.Behaviors;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Mapper;
 using TaskoMask.Application.Organizations.Commands.Validations;
+using TaskoMask.Domain.Core.Events;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Web.Common.Configuration.Startup
@@ -75,7 +76,9 @@ namespace TaskoMask.Web.Common.Configuration.Startup
         public static void AddBehaviors(this IServiceCollection services)
         {
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
+            services.AddScoped<INotificationHandler<IDomainEvent>, EventStoringBehavior>();
+
         }
 
 

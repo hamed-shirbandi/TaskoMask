@@ -10,7 +10,7 @@ using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Organizations.Commands.Validations;
-
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
@@ -27,7 +27,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
         #region Ctors
 
-        public OrganizationCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public OrganizationCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
         {
             _organizationRepository = organizationRepository;
         }

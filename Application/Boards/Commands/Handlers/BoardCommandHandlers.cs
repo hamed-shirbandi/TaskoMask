@@ -9,6 +9,7 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Boards.Commands.Handlers
 {
@@ -26,7 +27,7 @@ namespace TaskoMask.Application.Boards.Commands.Handlers
         #region Ctors
 
 
-        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IBoardRepository projectRepository) : base(notifications)
+        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IBoardRepository projectRepository, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
         {
             _boardRepository = boardRepository;
             _projectRepository = projectRepository;

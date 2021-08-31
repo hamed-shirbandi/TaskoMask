@@ -1,4 +1,5 @@
 ﻿using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Events;
 
 namespace TaskoMask.Domain.Entities
 {
@@ -17,7 +18,7 @@ namespace TaskoMask.Domain.Entities
         public Manager(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
         :base(displayName, email, userName, password,encryptionService)
         {
-        
+            AddDomainEvent(new ManagerCreatedEvent(Id));
         }
 
 

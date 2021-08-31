@@ -10,6 +10,9 @@ using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Managers.Commands.Models;
+using System.Collections.Generic;
+using TaskoMask.Domain.Core.Events;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Managers.Commands.Handlers
 {
@@ -27,7 +30,7 @@ namespace TaskoMask.Application.Managers.Commands.Handlers
         #region Ctors
 
 
-        public ManagerCommandHandlers(IManagerRepository managerRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService) : base(notifications)
+        public ManagerCommandHandlers(IManagerRepository managerRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
         {
             _managerRepository = managerRepository;
             _encryptionService = encryptionService;
@@ -51,14 +54,17 @@ namespace TaskoMask.Application.Managers.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var manager = new Manager(displayName: request.DisplayName, email: request.Email, userName: request.Email,password: request.Password, encryptionService:_encryptionService);
+            var manager = new Manager(displayName: request.DisplayName, email: request.Email, userName: request.Email, password: request.Password, encryptionService: _encryptionService);
             if (!IsValid(manager))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
+            await PublishDomainEventsAsync(manager.DomainEvents);
+
             await _managerRepository.CreateAsync(manager);
-          
+
             return new CommandResult(ApplicationMessages.Create_Success, manager.Id.ToString());
         }
+
 
 
 

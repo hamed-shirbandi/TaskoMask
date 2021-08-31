@@ -10,6 +10,7 @@ using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Operators.Commands.Models;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Operators.Commands.Handlers
 {
@@ -27,7 +28,7 @@ namespace TaskoMask.Application.Operators.Commands.Handlers
         #region Ctors
 
 
-        public OperatorCommandHandlers(IOperatorRepository operatorRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService) : base(notifications)
+        public OperatorCommandHandlers(IOperatorRepository operatorRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
         {
             _operatorRepository = operatorRepository;
             _encryptionService = encryptionService;

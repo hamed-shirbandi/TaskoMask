@@ -9,7 +9,7 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Projects.Commands.Handlers
 {
@@ -26,7 +26,7 @@ namespace TaskoMask.Application.Projects.Commands.Handlers
 
         #region Ctors
 
-        public ProjectCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public ProjectCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
         {
             _projectRepository = projectRepository;
         }

@@ -9,7 +9,7 @@ using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Tasks.Commands.Handlers
 {
@@ -28,7 +28,7 @@ namespace TaskoMask.Application.Tasks.Commands.Handlers
 
         #region Ctors
 
-        public TaskCommandHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications) : base(notifications)
+        public TaskCommandHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
         {
             _taskRepository = taskRepository;
         }

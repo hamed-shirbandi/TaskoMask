@@ -1,10 +1,10 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using TaskoMask.Application.Core.Extensions;
-using TaskoMask.Application.Core.Notifications;
+﻿using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Core.Models;
 using System.Linq;
-using TaskoMask.Application.Core.Helpers;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using TaskoMask.Domain.Core.Events;
+using TaskoMask.Application.Core.Bus;
 
 namespace TaskoMask.Application.Core.Commands
 {
@@ -17,6 +17,7 @@ namespace TaskoMask.Application.Core.Commands
 
 
         private readonly IDomainNotificationHandler _notifications;
+        private readonly IInMemoryBus _inMemoryBus;
 
 
         #endregion
@@ -24,16 +25,17 @@ namespace TaskoMask.Application.Core.Commands
         #region Ctors
 
 
-        protected BaseCommandHandler(IDomainNotificationHandler notifications)
+        protected BaseCommandHandler(IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus)
         {
             _notifications = notifications;
+            _inMemoryBus = inMemoryBus;
         }
 
 
         #endregion
 
         #region Protected Methods
-         
+
 
         /// <summary>
         /// add error to notifications
@@ -48,7 +50,7 @@ namespace TaskoMask.Application.Core.Commands
 
 
         /// <summary>
-        /// 
+        /// add domain validation errors to notifications
         /// </summary>
         protected bool IsValid(BaseEntity entity)
         {
@@ -61,19 +63,14 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //protected bool IsValid(BaseCommand request, Result result)
-        //{
-        //    if (result.IsSuccess)
-        //        return true;
-
-        //    foreach (var error in result.Errors)
-        //        NotifyValidationError(request, error);
-
-        //    return false;
-        //}
+        /// <summary>
+        /// publish domain events
+        /// </summary>
+        protected async Task PublishDomainEventsAsync(IReadOnlyCollection<IDomainEvent> domainEvents)
+        {
+            foreach (var domainEvent in domainEvents)
+                await _inMemoryBus.Publish(domainEvent);
+        }
 
 
         #endregion
@@ -82,7 +79,7 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
-      
+
 
 
         #endregion

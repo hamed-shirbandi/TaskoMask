@@ -14,9 +14,9 @@ namespace TaskoMask.Application.Core.Behaviors
 {
 
     /// <summary>
-    /// Store each event changes to event store
-    /// Each event must have at least one handler to save it in event store
+    /// Each command must have at least one event to save changes in event store
     /// So this notification handler act as a behavior and makes it easy to store events without repeating the creation of event handler
+    /// However events can have another handlers to do another things like sending an email or update some other entities
     /// </summary>
     public class EventStoringBehavior : INotificationHandler<IDomainEvent>
     {

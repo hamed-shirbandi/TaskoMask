@@ -25,7 +25,10 @@ namespace TaskoMask.Web.Common.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddControllers();
+            services.AddControllers()
+                //prevent auto validate on model binding
+                .ConfigureApiBehaviorOptions(options => { options.SuppressModelStateInvalidFilter = true; });
+
             services.AddSwaggerPreConfigured(options =>
             {
                 configuration.GetSection("Swagger").Bind(options);

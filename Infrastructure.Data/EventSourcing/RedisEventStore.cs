@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using TaskoMask.Domain.Core.Events;
 
 namespace TaskoMask.Infrastructure.Data.EventSourcing
 {
@@ -43,21 +43,24 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        public void Save<T>(T eventData) where T : StoredEvent
+        public void Save<T>(T @event) where T : IDomainEvent
         {
-            string jsonData = ConvertDataToJson(eventData);
-            _redisDb.StringSet(MakeKey(eventData.EntityId, eventData.EntityType), jsonData);
+            var storedEvent = GetEventDataToStore(@event);
+            string jsonData = ConvertDataToJson(storedEvent);
+            _redisDb.ListLeftPush(MakeKey(@event.EntityId, @event.EntityType), jsonData);
         }
+
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task SaveAsync<T>(T eventData) where T : StoredEvent
+        public async Task SaveAsync<T>(T @event) where T : IDomainEvent
         {
-            string jsonData = ConvertDataToJson(eventData);
-            await _redisDb.ListLeftPushAsync(MakeKey(eventData.EntityId, eventData.EntityType), jsonData);
+            var storedEvent = GetEventDataToStore(@event);
+            string jsonData = ConvertDataToJson(storedEvent);
+            await _redisDb.ListLeftPushAsync(MakeKey(@event.EntityId, @event.EntityType), jsonData);
         }
 
 
@@ -70,10 +73,7 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
             var data = new List<T>();
             var jsonList = await _redisDb.ListRangeAsync(MakeKey(entityId, entityType));
             foreach (var item in jsonList)
-            {
-                var itemData = JsonConvert.DeserializeObject<T>(item);
-                data.Add(itemData);
-            }
+                data.Add(JsonConvert.DeserializeObject<T>(item));
 
             return data;
         }
@@ -127,7 +127,16 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private StoredEvent GetEventDataToStore<T>(T @event) where T : IDomainEvent
+        {
+            return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.GetType().Name, data: @event, userId: "");
+        }
+
         #endregion
-        
+
     }
 }

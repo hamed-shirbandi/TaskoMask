@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using System;
+using System.Text.Json.Serialization;
 
 namespace TaskoMask.Domain.Core.Events
 {
@@ -16,8 +17,14 @@ namespace TaskoMask.Domain.Core.Events
             OccurredOn = DateTime.Now;
         }
 
+        [JsonIgnore]
         public string EntityId { get;  }
+
+        [JsonIgnore]
+
         public string EntityType { get;  }
+
+
         public DateTime OccurredOn { get; }
     }
 }

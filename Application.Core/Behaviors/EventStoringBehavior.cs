@@ -16,7 +16,7 @@ namespace TaskoMask.Application.Core.Behaviors
     /// <summary>
     /// Store each event changes to event store
     /// Each event must have at least one handler to save it in event store
-    /// So this behavior makes it easy to do without repeating the creation of event handler
+    /// So this notification handler act as a behavior and makes it easy to store events without repeating the creation of event handler
     /// </summary>
     public class EventStoringBehavior : INotificationHandler<IDomainEvent>
     {
@@ -45,8 +45,7 @@ namespace TaskoMask.Application.Core.Behaviors
         /// </summary>
         public async Task Handle(IDomainEvent request, CancellationToken cancellationToken)
         {
-            var @event = new StoredEvent(entityId: "612e4a2dc47955a7738f9205", entityType: request.EntityType, eventType: request.GetType().Name, userId: "USERIDGETFROMCURRENTCONTEXT", data: request);
-            await _eventStore.SaveAsync(@event);
+            await _eventStore.SaveAsync(request);
         }
 
 

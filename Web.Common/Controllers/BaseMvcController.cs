@@ -1,11 +1,11 @@
 ﻿using TaskoMask.Application.Core.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using TaskoMask.Application.Core.Commands;
 using AutoMapper;
 using TaskoMask.Web.Common.Helpers;
 using TaskoMask.Web.Common.Models;
 using TaskoMask.Web.Common.Enums;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Web.Common.Controllers
 {
@@ -13,14 +13,17 @@ namespace TaskoMask.Web.Common.Controllers
     {
         #region Fields
 
+        private readonly IAuthenticatedUserService _authenticatedUserService;
         protected readonly IMapper _mapper;
 
         #endregion
 
         #region Ctors
 
+
         public BaseMvcController()
         {
+
         }
 
 
@@ -29,19 +32,26 @@ namespace TaskoMask.Web.Common.Controllers
             _mapper = mapper;
         }
 
+
+        public BaseMvcController(IMapper mapper, IAuthenticatedUserService authenticatedUserService)
+        {
+            _mapper = mapper;
+            _authenticatedUserService = authenticatedUserService;
+        }
+
+
         #endregion
 
         #region Protected Methods
+
+
 
         /// <summary>
         /// 
         /// </summary>
         protected string GetCurrentUserName()
         {
-            if (this.User == null)
-                return "";
-
-            return this.User.Identity.Name ?? "";
+            return _authenticatedUserService.GetUserName();
         }
 
 
@@ -51,10 +61,7 @@ namespace TaskoMask.Web.Common.Controllers
         /// </summary>
         protected string GetCurrentUserId()
         {
-            if (this.User == null)
-                return "";
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
-            return userId;
+            return _authenticatedUserService.GetUserId();
         }
 
 

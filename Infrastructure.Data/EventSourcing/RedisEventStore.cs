@@ -4,6 +4,7 @@ using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Events;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Infrastructure.Data.EventSourcing
 {
@@ -18,6 +19,8 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         private readonly IConnectionMultiplexer _redisConnection;
         private readonly IConfiguration _configuration;
         private readonly IDatabase _redisDb;
+        private readonly IAuthenticatedUserService _authenticatedUserService;
+
         private readonly ConfigurationOptions _options;
 
         #endregion
@@ -25,12 +28,13 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         #region Ctors
 
 
-        public RedisEventStore(IConfiguration configuration)
+        public RedisEventStore(IConfiguration configuration, IAuthenticatedUserService authenticatedUserService)
         {
             _configuration = configuration;
             _options = GetRedisConfigurationOptions();
             _redisConnection = ConnectionMultiplexer.Connect(_options);
             _redisDb = _redisConnection.GetDatabase();
+            _authenticatedUserService = authenticatedUserService;
         }
 
 
@@ -92,11 +96,10 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         private string MakeKey(string entityId, string entityType)
         {
             var keyNamespace = _configuration["Redis:KeyNamespace"];
+
+            ////Key is already prefixed with namespace
             if (!entityId.StartsWith(keyNamespace))
-            {
-                ////Key is already prefixed with namespace
                 entityId = keyNamespace + ":" + entityType + ":" + entityId;
-            }
 
             return entityId;
         }
@@ -133,7 +136,8 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         /// </summary>
         private StoredEvent GetEventDataToStore<T>(T @event) where T : IDomainEvent
         {
-            return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.GetType().Name, data: @event, userId: "");
+            var userId = _authenticatedUserService.GetUserId();
+            return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.GetType().Name, data: @event, userId: userId);
         }
 
         #endregion

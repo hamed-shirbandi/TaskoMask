@@ -5,6 +5,7 @@ using TaskoMask.Application.Core.Dtos.Organizations;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Web.Area.Admin.Controllers
 {
@@ -20,7 +21,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
 
         #region Ctors
 
-        public OrganizationsController(IOrganizationService organizationService, IMapper mapper) : base(mapper)
+        public OrganizationsController(IOrganizationService organizationService, IMapper mapper, IAuthenticatedUserService authenticatedUserService) : base(mapper, authenticatedUserService)
         {
             _organizationService = organizationService;
         }

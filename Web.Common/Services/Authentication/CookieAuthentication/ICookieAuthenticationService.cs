@@ -1,16 +1,13 @@
 ﻿using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Users;
-using TaskoMask.Web.Common.Services.Authentication.Models;
+using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
 {
-    public interface ICookieAuthenticationService
+    public interface ICookieAuthenticationService: IAuthenticatedUserService
     {
-        Task SignInAsync(UserBasicInfoDto user, bool isPersistent);
+        Task SignInAsync(AuthenticatedUser user, bool isPersistent);
         Task SignOutAsync();
-        bool IsAuthenticated();
-        AuthenticatedUserModel GetAuthenticatedUser();
-
         //TODO adding tow factore and external login
     }
 }

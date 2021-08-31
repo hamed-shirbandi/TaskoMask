@@ -7,6 +7,7 @@ using TaskoMask.Web.Common.Helpers;
 using TaskoMask.Web.Common.Models;
 using TaskoMask.Web.Common.Enums;
 using System.Linq;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Web.Common.Controllers
 {
@@ -14,8 +15,8 @@ namespace TaskoMask.Web.Common.Controllers
     {
         #region Fields
 
+        private readonly IAuthenticatedUserService _authenticatedUserService;
         protected readonly IMapper _mapper;
-
 
         #endregion
 
@@ -26,15 +27,30 @@ namespace TaskoMask.Web.Common.Controllers
 
         }
 
+
         public BaseApiController(IMapper mapper)
         {
             _mapper = mapper;
         }
 
+
+
+        public BaseApiController(IMapper mapper, IAuthenticatedUserService authenticatedUserService)
+        {
+            _mapper = mapper;
+            _authenticatedUserService = authenticatedUserService;
+        }
+
+
+        public BaseApiController(IAuthenticatedUserService authenticatedUserService)
+        {
+            _authenticatedUserService = authenticatedUserService;
+        }
+
+
         #endregion
 
         #region Protected Methods
-
 
 
 
@@ -43,12 +59,7 @@ namespace TaskoMask.Web.Common.Controllers
         /// </summary>
         protected string GetCurrentUserName()
         {
-            if (this.User == null)
-                return "";
-            var claimsIdentity = this.User.Identity as ClaimsIdentity;
-            if (!claimsIdentity.Claims.Any())
-                return "";
-            return claimsIdentity.Claims.FirstOrDefault(c => c.Type == "userName").Value;
+            return _authenticatedUserService.GetUserName();
         }
 
 
@@ -58,18 +69,11 @@ namespace TaskoMask.Web.Common.Controllers
         /// </summary>
         protected string GetCurrentUserId()
         {
-            if (this.User == null)
-                return "";
-
-            ClaimsIdentity claimsIdentity = this.User.Identity as ClaimsIdentity;
-            if (!claimsIdentity.Claims.Any())
-                return "";
-            return  claimsIdentity.Claims.FirstOrDefault(c => c.Type == "id").Value;
+            return _authenticatedUserService.GetUserId();
         }
 
 
 
-    
         #endregion
 
         #region Private Methods

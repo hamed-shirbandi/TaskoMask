@@ -8,6 +8,7 @@ using TaskoMask.Application.Managers.Services;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.JwtAuthentication;
+using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Web.Api.Controllers
 {
@@ -57,10 +58,10 @@ namespace TaskoMask.Web.Api.Controllers
                 return Result.Failure<string>(userQueryResult.Errors, validateQueryResult.Message);
 
             //model to add its prop to jwt claims
-            var jwtModel = _mapper.Map<UserBaseDto>(userQueryResult.Value);
+            var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
 
             //generate and return jwt token
-            var token = _jwtAuthenticationService.GenerateJwtToken(userQueryResult.Value.UserName, userQueryResult.Value.Id, jwtModel);
+            var token = _jwtAuthenticationService.GenerateJwtToken(user);
             return Result.Success(value: token);
 
         }

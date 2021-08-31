@@ -7,6 +7,8 @@ using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
 using TaskoMask.Application.Managers.Services;
 using DNTCaptcha.Core;
+using TaskoMask.Domain.Core.Models;
+using AutoMapper;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -22,12 +24,14 @@ namespace TaskoMask.Web.Controllers
 
         #region Ctors
 
+       
 
-        public AccountController(IManagerService managerService, ICookieAuthenticationService cookieAuthenticationService)
+        public AccountController(IManagerService managerService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper):base(mapper)
         {
             _managerService = managerService;
             _cookieAuthenticationService = cookieAuthenticationService;
         }
+
 
         #endregion
 
@@ -65,19 +69,20 @@ namespace TaskoMask.Web.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-           
+
             //get user
             var userQueryResult = await _managerService.GetBaseUserByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
-                return View(userQueryResult,input);
+                return View(userQueryResult, input);
 
 
             //validate user password
-            var validateQueryResult = await _managerService.ValidateUserPasswordAsync(input.Email,input.Password);
+            var validateQueryResult = await _managerService.ValidateUserPasswordAsync(input.Email, input.Password);
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
                 return View(userQueryResult, input);
 
-            await _cookieAuthenticationService.SignInAsync(userQueryResult.Value, isPersistent: true);
+            var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
+            await _cookieAuthenticationService.SignInAsync(user, isPersistent: true);
 
             return RedirectToLocal(returnUrl);
         }

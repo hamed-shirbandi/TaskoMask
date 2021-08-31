@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Web.Area.Admin.Models;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Application.Core.Resources;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Web.Area.Admin.Controllers
 {
@@ -24,7 +22,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
 
         #region Ctors
 
-        public DashboardController(IOrganizationService organizationService, IMapper mapper) : base(mapper)
+        public DashboardController(IOrganizationService organizationService, IMapper mapper, IAuthenticatedUserService authenticatedUserService) : base(mapper, authenticatedUserService)
         {
             _organizationService = organizationService;
         }
@@ -41,7 +39,6 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-
             var organizationsDetailQueryResult = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
             if (!organizationsDetailQueryResult.IsSuccess)
                 return RedirectToErrorPage(organizationsDetailQueryResult);

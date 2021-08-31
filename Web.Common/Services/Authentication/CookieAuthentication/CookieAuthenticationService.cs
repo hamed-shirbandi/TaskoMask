@@ -7,14 +7,16 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Users;
-using TaskoMask.Web.Common.Services.Authentication.Models;
+using TaskoMask.Domain.Core.Models;
+using TaskoMask.Infrastructure.CrossCutting.Services.Security;
+using TaskoMask.Web.Common.Extensions;
 
 namespace TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
 {
     /// <summary>
     /// Represents service using cookie for the authentication
     /// </summary>
-    public class CookieAuthenticationService : ICookieAuthenticationService
+    public class CookieAuthenticationService : AuthenticatedUserService, ICookieAuthenticationService
     {
         #region Fields
 
@@ -26,7 +28,7 @@ namespace TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
 
         #region Ctors
 
-        public CookieAuthenticationService(IHttpContextAccessor httpContextAccessor, IOptions<Models.CookieAuthenticationOptions> options)
+        public CookieAuthenticationService(IHttpContextAccessor httpContextAccessor, IOptions<Models.CookieAuthenticationOptions> options) : base(httpContextAccessor)
         {
             _options = options != null ? options.Value : throw new ArgumentNullException(nameof(options));
             _httpContextAccessor = httpContextAccessor;
@@ -41,21 +43,15 @@ namespace TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
         /// <summary>
         /// 
         /// </summary>
-        public async Task SignInAsync(UserBasicInfoDto user, bool isPersistent)
+        public async Task SignInAsync(AuthenticatedUser user, bool isPersistent)
         {
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
 
-            //create claims for user's username and email
+            //create claims for user
             var claims = new List<Claim>();
+            claims.AddList(user);
 
-            if (!string.IsNullOrEmpty(user.Email))
-            {
-                claims.Add(new Claim(ClaimTypes.Name, user.Email, ClaimValueTypes.String));
-                claims.Add(new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email));
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id, ClaimValueTypes.String));
-                claims.Add(new Claim(nameof(AuthenticatedUserModel.DisplayName), user.DisplayName, ClaimValueTypes.String));
-            }
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
@@ -82,35 +78,6 @@ namespace TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public AuthenticatedUserModel GetAuthenticatedUser()
-        {
-            var user = _httpContextAccessor.HttpContext.User;
-            if (user == null)
-                return null;
-
-            return new AuthenticatedUserModel
-            {
-                Id = user.FindFirstValue(ClaimTypes.NameIdentifier) ?? "",
-                Email = user.FindFirstValue(ClaimTypes.Email) ?? "",
-                UserName = user.FindFirstValue(ClaimTypes.Name) ?? "",
-                DisplayName = user.FindFirstValue(nameof(AuthenticatedUserModel.DisplayName)) ?? "",
-            };
-
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool IsAuthenticated()
-        {
-            return _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated;
-        }
 
         #endregion
 

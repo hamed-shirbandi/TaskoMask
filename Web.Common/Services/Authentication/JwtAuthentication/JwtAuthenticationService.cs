@@ -8,23 +8,27 @@ using TaskoMask.Web.Common.Services.Authentication.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using TaskoMask.Application.Core.Extensions;
+using TaskoMask.Domain.Core.Models;
+using TaskoMask.Web.Common.Extensions;
+using TaskoMask.Infrastructure.CrossCutting.Services.Security;
+using Microsoft.AspNetCore.Http;
 
 namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
 {
-    public class JwtAuthenticationService : IJwtAuthenticationService
+    public class JwtAuthenticationService : AuthenticatedUserService, IJwtAuthenticationService
     {
         #region Fields
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly JwtAuthenticationOptions _options;
 
         #endregion
 
         #region Ctor
 
-        public JwtAuthenticationService(IOptions<JwtAuthenticationOptions> options)
+        public JwtAuthenticationService(IOptions<JwtAuthenticationOptions> options, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _options = options != null ? options.Value : throw new ArgumentNullException(nameof(options));
-
         }
 
         #endregion
@@ -35,27 +39,16 @@ namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
         /// <summary>
         /// 
         /// </summary>
-        public  string GenerateJwtToken<T>(string userName,string id, T jwtModel)
+        public  string GenerateJwtToken(AuthenticatedUser user)
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, id)
             };
 
-
-            var properties = new List<PropertyInfo>(jwtModel.GetType().GetProperties());
-
-            foreach (PropertyInfo property in properties)
-            {
-                object propValue = property.GetValue(jwtModel, property.GetIndexParameters());
-
-                string name = property.Name.ToString().ToLowerFirst();
-                string value = propValue != null ? propValue.ToString() : "";
-                claims.Add(new Claim(name, value));
-            }
-
+            //create claims for user
+            claims.AddList(user);
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Key));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

@@ -1,9 +1,10 @@
-﻿using TaskoMask.Web.Common.Services.Authentication.Models;
+﻿using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
 {
-    public interface IJwtAuthenticationService
+    public interface IJwtAuthenticationService: IAuthenticatedUserService
     {
-        string GenerateJwtToken<T>(string userName, string id, T jwtModel);
+        string GenerateJwtToken(AuthenticatedUser user);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
@@ -24,6 +25,7 @@ namespace TaskoMask.Web.Common.Services.Authentication.JwtAuthentication
 
             services.Configure(setupAction);
             services.TryAddSingleton<IJwtAuthenticationService, JwtAuthenticationService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             var jwtOptions = services.BuildServiceProvider().GetRequiredService<IOptions<JwtAuthenticationOptions>>();
 

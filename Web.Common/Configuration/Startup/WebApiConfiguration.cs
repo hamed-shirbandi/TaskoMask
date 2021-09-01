@@ -27,7 +27,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
 
             services.AddControllers()
                 //prevent auto validate on model binding
-                .ConfigureApiBehaviorOptions(options => { options.SuppressModelStateInvalidFilter = true; });
+               .ConfigureApiBehaviorOptions(options => { options.SuppressModelStateInvalidFilter = true; });
 
             services.AddSwaggerPreConfigured(options =>
             {

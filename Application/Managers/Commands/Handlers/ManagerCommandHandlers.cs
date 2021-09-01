@@ -54,7 +54,7 @@ namespace TaskoMask.Application.Managers.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var manager = new Manager(displayName: request.DisplayName, email: request.Email, userName: request.Email, password: request.Password, encryptionService: _encryptionService);
+            var manager = new Manager(displayName: request.DisplayName, email: request.Email, password: request.Password, encryptionService: _encryptionService);
             if (!IsValid(manager))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 

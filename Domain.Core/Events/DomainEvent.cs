@@ -1,6 +1,6 @@
 ﻿using MediatR;
+using Newtonsoft.Json;
 using System;
-using System.Text.Json.Serialization;
 
 namespace TaskoMask.Domain.Core.Events
 {

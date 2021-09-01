@@ -53,7 +53,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPost]
         [Route("boards")]
-        public async Task<Result<CommandResult>> Create( BoardInputDto input)
+        public async Task<Result<CommandResult>> Create(BoardInputDto input)
         {
             return await _boardService.CreateAsync(input);
         }
@@ -65,7 +65,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPut]
         [Route("boards")]
-        public async Task<Result<CommandResult>> Update( BoardInputDto input)
+        public async Task<Result<CommandResult>> Update(BoardInputDto input)
         {
             return await _boardService.UpdateAsync(input);
         }

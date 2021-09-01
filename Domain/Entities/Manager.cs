@@ -15,10 +15,10 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public Manager(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
-        :base(displayName, email, userName, password,encryptionService)
+        public Manager(string displayName, string email,  string password, IEncryptionService encryptionService)
+        :base(displayName, email, email, password,encryptionService)
         {
-            AddDomainEvent(new ManagerCreatedEvent(Id));
+            AddDomainEvent(new ManagerCreatedEvent(Id,DisplayName,Email,UserName));
         }
 
 

@@ -5,7 +5,7 @@ namespace TaskoMask.Domain.Events
 {
     public class OperatorCreatedEvent : DomainEvent
     {
-        public OperatorCreatedEvent(string id, string displayName, string email, string userName) : base(entityId: id, entityType: nameof(Manager))
+        public OperatorCreatedEvent(string id, string displayName, string email, string userName) : base(entityId: id, entityType: nameof(Operator))
         {
             Id = id;
             DisplayName = displayName;

@@ -1,4 +1,5 @@
 ﻿using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Events;
 
 namespace TaskoMask.Domain.Entities
 {
@@ -17,6 +18,9 @@ namespace TaskoMask.Domain.Entities
             Description = description;
             ProjectId = projectId;
             OrganizationId = organizationId;
+
+            AddDomainEvent(new BoardCreatedEvent(Id, name, description, projectId, organizationId));
+
         }
 
         #endregion

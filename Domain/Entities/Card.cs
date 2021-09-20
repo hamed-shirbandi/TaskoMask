@@ -1,5 +1,6 @@
 ﻿using TaskoMask.Domain.Core.Enums;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Events;
 
 namespace TaskoMask.Domain.Entities
 {
@@ -20,6 +21,8 @@ namespace TaskoMask.Domain.Entities
             ProjectId = projectId;
             OrganizationId = organizationId;
             Type = type;
+
+            AddDomainEvent(new CardCreatedEvent(Id, name, description, boardId, projectId, organizationId));
         }
 
         #endregion

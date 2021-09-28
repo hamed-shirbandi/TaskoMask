@@ -1,6 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Events;
 
 namespace TaskoMask.Domain.Entities
 {
@@ -22,6 +23,8 @@ namespace TaskoMask.Domain.Entities
             //example of using DomainException
             if (string.IsNullOrEmpty(UserId))
                 throw new DomainException(string.Format(DomainMessages.Required, nameof(userId)));
+
+            AddDomainEvent(new OrganizationCreatedEvent(Id, name, description, userId));
 
         }
 

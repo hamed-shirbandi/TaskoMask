@@ -25,6 +25,10 @@ using StructureMap.Graph;
 using TaskoMask.Application.Core.Queries;
 using System.Linq;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Team.Data;
+using TaskoMask.Domain.Administration.Entities;
+using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.TaskManagement.Entities;
 
 namespace Infrastructure.CrossCutting.Ioc
 {

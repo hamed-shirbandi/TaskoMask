@@ -5,6 +5,8 @@ using TaskoMask.Application.Mapper.MappingActions;
 using TaskoMask.Application.Core.Dtos.Operators;
 using TaskoMask.Application.Core.Dtos.Managers;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.Administration.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {

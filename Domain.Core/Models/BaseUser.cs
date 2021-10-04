@@ -2,7 +2,7 @@
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Core.Services;
 
-namespace TaskoMask.Domain.Entities
+namespace TaskoMask.Domain.Core.Models
 {
     /// <summary>
     /// base class for users

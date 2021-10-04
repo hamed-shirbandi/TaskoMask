@@ -1,7 +1,8 @@
-﻿using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Events;
+﻿using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Team.Events;
 
-namespace TaskoMask.Domain.Entities
+namespace TaskoMask.Domain.Team.Entities
 {
     /// <summary>
     /// Managers are those who manage their tasks in this system

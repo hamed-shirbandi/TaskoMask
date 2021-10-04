@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Entities
+namespace TaskoMask.Domain.Boards.Entities
 {
     public class Task : BaseEntity
     {

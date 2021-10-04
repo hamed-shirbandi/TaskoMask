@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Domain.Events;
+using TaskoMask.Domain.Projects.Events;
 
-namespace TaskoMask.Domain.Entities
+namespace TaskoMask.Domain.Projects.Entities
 {
     public class Organization : BaseEntity
     {

@@ -1,9 +1,8 @@
 ﻿using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Events;
 
-namespace TaskoMask.Domain.Entities
+namespace TaskoMask.Domain.Projects.Entities
 {
-    public class Board: BaseEntity
+    public class Project : BaseEntity
     {
         #region Fields
 
@@ -12,31 +11,26 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public Board(string name, string description, string projectId, string organizationId)
+        public Project(string name, string description, string organizationId)
         {
             Name = name;
             Description = description;
-            ProjectId = projectId;
             OrganizationId = organizationId;
-
-            AddDomainEvent(new BoardCreatedEvent(Id, name, description, projectId, organizationId));
-
         }
 
+      
         #endregion
 
         #region Properties
 
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public string ProjectId { get; private set; }
-        public string OrganizationId { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string OrganizationId { get; set; }
 
 
         #endregion
 
         #region Public Methods
-
 
 
         /// <summary>
@@ -47,9 +41,7 @@ namespace TaskoMask.Domain.Entities
             Description = description;
             Name = name;
             base.Update();
-
         }
-
 
 
         #endregion
@@ -59,5 +51,7 @@ namespace TaskoMask.Domain.Entities
 
 
         #endregion
+
+
     }
 }

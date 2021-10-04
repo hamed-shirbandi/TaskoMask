@@ -1,7 +1,9 @@
-﻿using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Events;
+﻿using TaskoMask.Domain.Administration.Events;
+using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Services;
 
-namespace TaskoMask.Domain.Entities
+
+namespace TaskoMask.Domain.Administration.Entities
 {
     /// <summary>
     /// opertors of admin panel

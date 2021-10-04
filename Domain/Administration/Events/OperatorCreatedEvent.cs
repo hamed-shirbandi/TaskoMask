@@ -1,7 +1,7 @@
-﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Entities;
+﻿using TaskoMask.Domain.Administration.Entities;
+using TaskoMask.Domain.Core.Events;
 
-namespace TaskoMask.Domain.Events
+namespace TaskoMask.Domain.Administration.Events
 {
     public class OperatorCreatedEvent : DomainEvent
     {

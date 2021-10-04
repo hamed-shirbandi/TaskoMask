@@ -1,8 +1,9 @@
-﻿using TaskoMask.Domain.Core.Enums;
+﻿using TaskoMask.Domain.Boards.Events;
+using TaskoMask.Domain.Core.Enums;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Events;
 
-namespace TaskoMask.Domain.Entities
+
+namespace TaskoMask.Domain.Boards.Entities
 {
     public class Card : BaseEntity
     {

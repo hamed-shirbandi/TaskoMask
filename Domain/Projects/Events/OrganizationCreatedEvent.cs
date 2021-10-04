@@ -1,11 +1,11 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Entities;
+using TaskoMask.Domain.Projects.Entities;
 
-namespace TaskoMask.Domain.Events
+namespace TaskoMask.Domain.Projects.Events
 {
     public class OrganizationCreatedEvent : DomainEvent
     {
-        public OrganizationCreatedEvent(string id, string name, string description, string userId) : base(entityId: id, entityType: nameof(Operator))
+        public OrganizationCreatedEvent(string id, string name, string description, string userId) : base(entityId: id, entityType: nameof(Organization))
         {
             Id = id;
             Name = name;

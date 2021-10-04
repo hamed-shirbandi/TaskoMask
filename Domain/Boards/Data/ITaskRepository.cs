@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 
-namespace TaskoMask.Domain.Data
+namespace TaskoMask.Domain.Boards.Data
 {
     public interface ITaskRepository : IBaseRepository<Entities.Task>
     {

@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Entities;
+using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Data
+namespace TaskoMask.Domain.Core.Data
 {
     public interface IUserBaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity:BaseUser
     {

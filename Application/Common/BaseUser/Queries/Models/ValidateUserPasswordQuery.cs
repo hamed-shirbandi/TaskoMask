@@ -3,7 +3,7 @@ using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Application.Users.Queries.Models
 {
-    public class ValidateUserPasswordQuery<TEntity> : BaseQuery<bool> where TEntity : User
+    public class ValidateUserPasswordQuery<TEntity> : BaseQuery<bool> where TEntity : BaseUser
     {
         public ValidateUserPasswordQuery(string userName, string password)
         {

@@ -19,7 +19,7 @@ namespace TaskoMask.Application.Users.Queries.Handlers
         IRequestHandler<GetUserByIdQuery<TEnitity>, UserBasicInfoDto>,
         IRequestHandler<GetUserByPhoneNumberQuery<TEnitity>, UserBasicInfoDto>,
         IRequestHandler<ValidateUserPasswordQuery<TEnitity>, bool>,
-        IRequestHandler<GetUserByUserNameQuery<TEnitity>, UserBasicInfoDto> where TEnitity :User
+        IRequestHandler<GetUserByUserNameQuery<TEnitity>, UserBasicInfoDto> where TEnitity :BaseUser
     {
         #region Fields
 

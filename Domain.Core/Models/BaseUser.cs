@@ -1,5 +1,4 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Core.Services;
 
@@ -8,7 +7,7 @@ namespace TaskoMask.Domain.Entities
     /// <summary>
     /// base class for users
     /// </summary>
-    public abstract class User : BaseEntity
+    public abstract class BaseUser : BaseEntity
     {
         #region Fields
 
@@ -17,7 +16,7 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        protected User(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
+        protected BaseUser(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
         {
             DisplayName = displayName;
             Email = email;

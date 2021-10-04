@@ -5,7 +5,7 @@ using TaskoMask.Domain.Entities;
 namespace TaskoMask.Application.Users.Queries.Models
 {
    
-    public class GetUserByPhoneNumberQuery<TEntity> : BaseQuery<UserBasicInfoDto> where TEntity : User
+    public class GetUserByPhoneNumberQuery<TEntity> : BaseQuery<UserBasicInfoDto> where TEntity : BaseUser
     {
         public GetUserByPhoneNumberQuery(string phoneNumber)
         {

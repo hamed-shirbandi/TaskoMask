@@ -13,12 +13,12 @@ namespace TaskoMask.Application.Mapper.Profiles
         public UserMappingProfile()
         {
 
-            CreateMap<User, UserBasicInfoDto>()
+            CreateMap<BaseUser, UserBasicInfoDto>()
               .AfterMap<UserMappingAction>();
 
             CreateMap<UserBasicInfoDto, AuthenticatedUser>();
 
-            CreateMap<User, UserInputDto>()
+            CreateMap<BaseUser, UserInputDto>()
                 .AfterMap<UserMappingAction>();
 
             CreateMap<UserBasicInfoDto, UserInputDto>();

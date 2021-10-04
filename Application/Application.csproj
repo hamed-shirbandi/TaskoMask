@@ -20,23 +20,23 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Base\Commands\" />
-    <Folder Include="Boards\Commands\Validations\" />
-    <Folder Include="Boards\EventHandlers\" />
-    <Folder Include="Cards\Commands\Validations\" />
-    <Folder Include="Cards\EventHandlers\" />
-    <Folder Include="Managers\Commands\Validations\" />
-    <Folder Include="Managers\EventHandlers\" />
-    <Folder Include="Organizations\EventHandlers\" />
-    <Folder Include="Projects\Commands\Validations\" />
-    <Folder Include="Projects\EventHandlers\" />
-    <Folder Include="Tasks\Commands\Validations\" />
-    <Folder Include="Tasks\EventHandlers\" />
-    <Folder Include="Operators\Commands\Validations\" />
-    <Folder Include="Operators\EventHandlers\" />
-    <Folder Include="Users\Commands\Handlers\" />
-    <Folder Include="Users\Commands\Models\" />
-    <Folder Include="Users\Commands\Validations\" />
-    <Folder Include="Users\EventHandlers\" />
+    <Folder Include="Common\BaseEntity\Commands\" />
+    <Folder Include="Board\Boards\Commands\Validations\" />
+    <Folder Include="Board\Boards\EventHandlers\" />
+    <Folder Include="Board\Cards\Commands\Validations\" />
+    <Folder Include="Board\Cards\EventHandlers\" />
+    <Folder Include="Team\Managers\Commands\Validations\" />
+    <Folder Include="Team\Managers\EventHandlers\" />
+    <Folder Include="Project\Organizations\EventHandlers\" />
+    <Folder Include="Project\Projects\Commands\Validations\" />
+    <Folder Include="Project\Projects\EventHandlers\" />
+    <Folder Include="Board\Tasks\Commands\Validations\" />
+    <Folder Include="Board\Tasks\EventHandlers\" />
+    <Folder Include="Administration\Operators\Commands\Validations\" />
+    <Folder Include="Administration\Operators\EventHandlers\" />
+    <Folder Include="Common\BaseUser\Commands\Handlers\" />
+    <Folder Include="Common\BaseUser\Commands\Models\" />
+    <Folder Include="Common\BaseUser\Commands\Validations\" />
+    <Folder Include="Common\BaseUser\EventHandlers\" />
   </ItemGroup>
 </Project>

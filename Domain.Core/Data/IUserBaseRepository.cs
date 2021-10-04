@@ -4,7 +4,7 @@ using TaskoMask.Domain.Entities;
 
 namespace TaskoMask.Domain.Data
 {
-    public interface IUserBaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity:User
+    public interface IUserBaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity:BaseUser
     {
       Task<TEntity> GetByUserNameAsync(string userName);
       Task<TEntity> GetByPhoneNumberAsync(string phoneNumber);

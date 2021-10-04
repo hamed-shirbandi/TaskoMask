@@ -4,9 +4,9 @@ using TaskoMask.Domain.Events;
 namespace TaskoMask.Domain.Entities
 {
     /// <summary>
-    /// Managers are those who manage their tasks in this system
+    /// opertors of admin panel
     /// </summary>
-    public class Manager : User
+   public class Operator :BaseUser
     {
         #region Fields
 
@@ -15,10 +15,11 @@ namespace TaskoMask.Domain.Entities
 
         #region Ctors
 
-        public Manager(string displayName, string email,  string password, IEncryptionService encryptionService)
-        :base(displayName, email, email, password,encryptionService)
+        public Operator(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
+        :base(displayName, email, userName, password,encryptionService)
         {
-            AddDomainEvent(new ManagerCreatedEvent(Id,DisplayName,Email,UserName));
+            AddDomainEvent(new OperatorCreatedEvent(Id,DisplayName,Email,UserName));
+
         }
 
 
@@ -27,7 +28,7 @@ namespace TaskoMask.Domain.Entities
 
         #region Properties
 
-       
+
 
         #endregion
 

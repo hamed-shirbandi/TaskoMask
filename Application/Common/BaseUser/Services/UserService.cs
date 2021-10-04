@@ -11,7 +11,7 @@ using TaskoMask.Application.Base.Services;
 
 namespace TaskoMask.Application.Users.Services
 {
-    public class UserService<TEntity> : BaseService<TEntity>, IUserService where TEntity : User
+    public class UserService<TEntity> : BaseService<TEntity>, IUserService where TEntity : BaseUser
     {
         #region Fields
 

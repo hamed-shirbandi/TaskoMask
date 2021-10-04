@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Core.Dtos.Organizations;
-using TaskoMask.Domain.Entities;
+
 
 namespace TaskoMask.Application.Mapper.Profiles
 {

@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Application.Operators.Commands.Models
+namespace TaskoMask.Application.Administration.Operators.Commands.Models
 {
    public class CreateOperatorCommand : OperatorBaseCommand
     {

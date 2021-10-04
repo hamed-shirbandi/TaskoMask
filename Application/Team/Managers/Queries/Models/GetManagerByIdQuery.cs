@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Application.Core.Dtos.Managers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Domain.Entities;
 
-namespace TaskoMask.Application.Managers.Queries.Models
+
+namespace TaskoMask.Application.Team.Managers.Queries.Models
 {
    
     public class GetManagerByIdQuery : BaseQuery<ManagerBasicInfoDto>

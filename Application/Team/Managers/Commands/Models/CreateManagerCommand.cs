@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Application.Managers.Commands.Models
+namespace TaskoMask.Application.Team.Managers.Commands.Models
 {
    public class CreateManagerCommand : ManagerBaseCommand
     {

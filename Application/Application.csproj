@@ -20,23 +20,23 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Common\BaseEntity\Commands\" />
-    <Folder Include="Board\Boards\Commands\Validations\" />
-    <Folder Include="Board\Boards\EventHandlers\" />
-    <Folder Include="Board\Cards\Commands\Validations\" />
-    <Folder Include="Board\Cards\EventHandlers\" />
+    <Folder Include="Common\BaseEntities\Commands\" />
+    <Folder Include="TaskManagement\Boards\Commands\Validations\" />
+    <Folder Include="TaskManagement\Boards\EventHandlers\" />
+    <Folder Include="TaskManagement\Cards\Commands\Validations\" />
+    <Folder Include="TaskManagement\Cards\EventHandlers\" />
     <Folder Include="Team\Managers\Commands\Validations\" />
     <Folder Include="Team\Managers\EventHandlers\" />
-    <Folder Include="Project\Organizations\EventHandlers\" />
-    <Folder Include="Project\Projects\Commands\Validations\" />
-    <Folder Include="Project\Projects\EventHandlers\" />
-    <Folder Include="Board\Tasks\Commands\Validations\" />
-    <Folder Include="Board\Tasks\EventHandlers\" />
+    <Folder Include="Team\Organizations\EventHandlers\" />
+    <Folder Include="Team\Projects\Commands\Validations\" />
+    <Folder Include="Team\Projects\EventHandlers\" />
+    <Folder Include="TaskManagement\Tasks\Commands\Validations\" />
+    <Folder Include="TaskManagement\Tasks\EventHandlers\" />
     <Folder Include="Administration\Operators\Commands\Validations\" />
     <Folder Include="Administration\Operators\EventHandlers\" />
-    <Folder Include="Common\BaseUser\Commands\Handlers\" />
-    <Folder Include="Common\BaseUser\Commands\Models\" />
-    <Folder Include="Common\BaseUser\Commands\Validations\" />
-    <Folder Include="Common\BaseUser\EventHandlers\" />
+    <Folder Include="Common\BaseUsers\Commands\Handlers\" />
+    <Folder Include="Common\BaseUsers\Commands\Models\" />
+    <Folder Include="Common\BaseUsers\Commands\Validations\" />
+    <Folder Include="Common\BaseUsers\EventHandlers\" />
   </ItemGroup>
 </Project>

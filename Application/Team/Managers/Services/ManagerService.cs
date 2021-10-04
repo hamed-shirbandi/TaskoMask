@@ -5,15 +5,15 @@ using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Domain.Entities;
-using TaskoMask.Application.Users.Services;
-using TaskoMask.Application.Managers.Commands.Models;
-using TaskoMask.Application.Managers.Queries.Models;
+using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
+using TaskoMask.Application.Team.Managers.Commands.Models;
+using TaskoMask.Application.Team.Managers.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Managers;
+using TaskoMask.Domain.Team.Entities;
 
-namespace TaskoMask.Application.Managers.Services
+namespace TaskoMask.Application.Team.Managers.Services
 {
-    public class ManagerService : UserService<Manager>, IManagerService
+    public class ManagerService : BaseUserService<Manager>, IManagerService
     {
         #region Fields
 

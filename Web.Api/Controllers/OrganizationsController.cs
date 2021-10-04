@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Organizations.Services;
+using TaskoMask.Application.Team.Organizations.Services;
 using TaskoMask.Application.Core.Dtos.Organizations;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;

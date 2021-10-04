@@ -2,8 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System.Linq;
+using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Entities;
+
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders

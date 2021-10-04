@@ -2,8 +2,8 @@
 using MongoDB.Driver.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Data;
-using TaskoMask.Domain.Entities;
+using TaskoMask.Domain.TaskManagement.Data;
+using TaskoMask.Domain.TaskManagement.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
@@ -27,14 +27,17 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Public Methods
 
+
+
         /// <summary>
         /// 
         /// </summary>
         public async Task<IEnumerable<Board>> GetListByProjectIdAsync(string projectId)
         {
             return await _boards.AsQueryable().Where(o => o.ProjectId == projectId).ToListAsync();
-
         }
+
+
 
 
 

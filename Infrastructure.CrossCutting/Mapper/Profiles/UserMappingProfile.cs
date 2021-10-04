@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Core.Dtos.Users;
-using TaskoMask.Domain.Entities;
+
 using TaskoMask.Application.Mapper.MappingActions;
 using TaskoMask.Application.Core.Dtos.Operators;
 using TaskoMask.Application.Core.Dtos.Managers;

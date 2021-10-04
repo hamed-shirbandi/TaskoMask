@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Data;
-using TaskoMask.Domain.Entities;
+using TaskoMask.Domain.Core.Data;
+using TaskoMask.Domain.Core.Models;
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories

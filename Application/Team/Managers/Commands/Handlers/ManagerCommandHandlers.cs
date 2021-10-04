@@ -4,17 +4,17 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Application.Managers.Commands.Models;
+using TaskoMask.Application.Team.Managers.Commands.Models;
 using System.Collections.Generic;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Application.Core.Bus;
+using TaskoMask.Domain.Team.Data;
+using TaskoMask.Domain.Team.Entities;
 
-namespace TaskoMask.Application.Managers.Commands.Handlers
+namespace TaskoMask.Application.Team.Managers.Commands.Handlers
 {
     public class ManagerCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateManagerCommand, CommandResult>,

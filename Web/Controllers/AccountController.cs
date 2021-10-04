@@ -5,7 +5,7 @@ using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
-using TaskoMask.Application.Managers.Services;
+using TaskoMask.Application.Team.Managers.Services;
 using DNTCaptcha.Core;
 using TaskoMask.Domain.Core.Models;
 using AutoMapper;

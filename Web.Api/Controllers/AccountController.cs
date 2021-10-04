@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.ViewModels.Users;
-using TaskoMask.Application.Managers.Services;
+using TaskoMask.Application.Team.Managers.Services;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.JwtAuthentication;

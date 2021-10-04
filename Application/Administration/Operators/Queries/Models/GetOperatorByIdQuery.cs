@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Application.Core.Dtos.Operators;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Domain.Entities;
 
-namespace TaskoMask.Application.Operators.Queries.Models
+
+namespace TaskoMask.Application.Administration.Operators.Queries.Models
 {
    
     public class GetOperatorByIdQuery : BaseQuery<OperatorBasicInfoDto>

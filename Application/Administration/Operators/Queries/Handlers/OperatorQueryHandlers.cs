@@ -8,11 +8,11 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.Data;
-using TaskoMask.Application.Operators.Queries.Models;
+using TaskoMask.Application.Administration.Operators.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Operators;
+using TaskoMask.Domain.Administration.Data;
 
-namespace TaskoMask.Application.Operators.Queries.Handlers
+namespace TaskoMask.Application.Administration.Operators.Queries.Handlers
 {
     public class OperatorQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOperatorByIdQuery, OperatorBasicInfoDto>

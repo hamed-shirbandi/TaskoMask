@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Managers.Commands.Models
+namespace TaskoMask.Application.Team.Managers.Commands.Models
 {
     public abstract class ManagerBaseCommand : BaseCommand
     {

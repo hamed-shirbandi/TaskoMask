@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Users.Services;
+using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
 using TaskoMask.Application.Core.Dtos.Managers;
 
-namespace TaskoMask.Application.Managers.Services
+namespace TaskoMask.Application.Team.Managers.Services
 {
-    public interface IManagerService : IUserService
+    public interface IManagerService : IBaseUserService
     {
         Task<Result<CommandResult>> CreateAsync(UserInputDto input);
         Task<Result<CommandResult>> UpdateAsync(UserInputDto input);

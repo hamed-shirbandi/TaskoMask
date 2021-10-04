@@ -2,17 +2,16 @@
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.Data;
-using TaskoMask.Application.Managers.Queries.Models;
+using TaskoMask.Application.Team.Managers.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Managers;
+using TaskoMask.Domain.Team.Data;
 
-namespace TaskoMask.Application.Managers.Queries.Handlers
+namespace TaskoMask.Application.Team.Managers.Queries.Handlers
 {
     public class ManagerQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetManagerByIdQuery, ManagerBasicInfoDto>

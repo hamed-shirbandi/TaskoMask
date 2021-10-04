@@ -4,15 +4,15 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.Entities;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Domain.Data;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Application.Operators.Commands.Models;
+using TaskoMask.Application.Administration.Operators.Commands.Models;
 using TaskoMask.Application.Core.Bus;
+using TaskoMask.Domain.Administration.Data;
+using TaskoMask.Domain.Administration.Entities;
 
-namespace TaskoMask.Application.Operators.Commands.Handlers
+namespace TaskoMask.Application.Administration.Operators.Commands.Handlers
 {
     public class OperatorCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateOperatorCommand, CommandResult>,

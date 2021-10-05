@@ -5,7 +5,7 @@ using TaskoMask.Web.Models;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Team.Projects.Services;
 using TaskoMask.Application.TaskManagement.Boards.Services;
-using TaskoMask.Application.Team.Managers.Services;
+using TaskoMask.Application.Team.Members.Services;
 using TaskoMask.Application.TaskManagement.Tasks.Services;
 
 namespace TaskoMask.Web.Controllers
@@ -18,18 +18,18 @@ namespace TaskoMask.Web.Controllers
         private readonly IProjectService _projectService;
         private readonly ITaskService _taskService;
         private readonly IBoardService _boardService;
-        private readonly IManagerService _managerService;
+        private readonly IMemberService _memberService;
 
         #endregion
 
         #region Ctors
 
-        public HomeController(IOrganizationService organizationService, ITaskService taskService, IBoardService boardService, IManagerService managerService, IProjectService projectService)
+        public HomeController(IOrganizationService organizationService, ITaskService taskService, IBoardService boardService, IMemberService memberService, IProjectService projectService)
         {
             _organizationService = organizationService;
             _taskService = taskService;
             _boardService = boardService;
-            _managerService = managerService;
+            _memberService = memberService;
             _projectService = projectService;
         }
 
@@ -51,7 +51,7 @@ namespace TaskoMask.Web.Controllers
                 ProjectsCount = (await _projectService.CountAsync()).Value,
                 BoardsCount = (await _boardService.CountAsync()).Value,
                 TasksCount = (await _taskService.CountAsync()).Value,
-                UsersCount= (await _managerService.CountAsync()).Value,
+                MembersCount= (await _memberService.CountAsync()).Value,
             };
 
             return View(model);

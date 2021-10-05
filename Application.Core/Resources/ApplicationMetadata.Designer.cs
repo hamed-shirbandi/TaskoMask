@@ -223,11 +223,11 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Managers Count.
+        ///   Looks up a localized string similar to Members Count.
         /// </summary>
-        public static string ManagersCount {
+        public static string MembersCount {
             get {
-                return ResourceManager.GetString("ManagersCount", resourceCulture);
+                return ResourceManager.GetString("MembersCount", resourceCulture);
             }
         }
         

@@ -171,8 +171,8 @@
   <data name="Length_Error" xml:space="preserve">
     <value>The {0} length must be between {1} and {2} characters</value>
   </data>
-  <data name="ManagersCount" xml:space="preserve">
-    <value>Managers Count</value>
+  <data name="MembersCount" xml:space="preserve">
+    <value>Members Count</value>
   </data>
   <data name="ModifiedDateTime" xml:space="preserve">
     <value>Modified Date Time</value>

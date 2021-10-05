@@ -8,7 +8,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class ManagerRepository : UserBaseRepository<Manager>, IManagerRepository
+    public class MemberRepository : UserBaseRepository<Member>, IMemberRepository
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public ManagerRepository(IMongoDbContext dbContext) : base(dbContext)
+        public MemberRepository(IMongoDbContext dbContext) : base(dbContext)
         {
         }
 

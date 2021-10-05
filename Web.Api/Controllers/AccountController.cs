@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.ViewModels.Users;
-using TaskoMask.Application.Team.Managers.Services;
+using TaskoMask.Application.Team.Members.Services;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.JwtAuthentication;
@@ -16,7 +16,7 @@ namespace TaskoMask.Web.Api.Controllers
     {
         #region Fields
 
-        private readonly IManagerService _managerService;
+        private readonly IMemberService _memberService;
         private readonly IJwtAuthenticationService _jwtAuthenticationService;
 
 
@@ -25,10 +25,10 @@ namespace TaskoMask.Web.Api.Controllers
 
         #region Ctor
 
-        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IManagerService managerService, IMapper mapper):base(mapper)
+        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IMemberService memberService, IMapper mapper):base(mapper)
         {
             _jwtAuthenticationService = jwtAuthenticationService;
-            _managerService = managerService;
+            _memberService = memberService;
         }
 
 
@@ -47,13 +47,13 @@ namespace TaskoMask.Web.Api.Controllers
         {
 
             //get user
-            var userQueryResult = await _managerService.GetBaseUserByUserNameAsync(input.Email);
+            var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
                 return Result.Failure<string>(userQueryResult.Errors, userQueryResult.Message);
 
 
             //validate user password
-            var validateQueryResult = await _managerService.ValidateUserPasswordAsync(input.Email, input.Password);
+            var validateQueryResult = await _memberService.ValidateUserPasswordAsync(input.Email, input.Password);
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
                 return Result.Failure<string>(userQueryResult.Errors, validateQueryResult.Message);
 
@@ -70,13 +70,13 @@ namespace TaskoMask.Web.Api.Controllers
 
 
         /// <summary>
-        /// register new manager
+        /// register new member
         /// </summary>
         [HttpPost]
         [Route("account/register")]
         public async Task<Result<CommandResult>> Register(UserInputDto input)
         {
-            return await _managerService.CreateAsync(input);
+            return await _memberService.CreateAsync(input);
         }
 
 

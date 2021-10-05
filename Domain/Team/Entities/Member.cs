@@ -5,9 +5,9 @@ using TaskoMask.Domain.Team.Events;
 namespace TaskoMask.Domain.Team.Entities
 {
     /// <summary>
-    /// Managers are those who manage their tasks in this system
+    /// Members are those who manage their tasks in this system
     /// </summary>
-    public class Manager : BaseUser
+    public class Member : BaseUser
     {
         #region Fields
 
@@ -16,10 +16,10 @@ namespace TaskoMask.Domain.Team.Entities
 
         #region Ctors
 
-        public Manager(string displayName, string email,  string password, IEncryptionService encryptionService)
+        public Member(string displayName, string email,  string password, IEncryptionService encryptionService)
         :base(displayName, email, email, password,encryptionService)
         {
-            AddDomainEvent(new ManagerCreatedEvent(Id,DisplayName,Email,UserName));
+            AddDomainEvent(new MemberCreatedEvent(Id,DisplayName,Email,UserName));
         }
 
 

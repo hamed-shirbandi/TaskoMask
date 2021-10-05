@@ -6,14 +6,14 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
-using TaskoMask.Application.Team.Managers.Commands.Models;
-using TaskoMask.Application.Team.Managers.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Managers;
+using TaskoMask.Application.Team.Members.Commands.Models;
+using TaskoMask.Application.Team.Members.Queries.Models;
+using TaskoMask.Application.Core.Dtos.Members;
 using TaskoMask.Domain.Team.Entities;
 
-namespace TaskoMask.Application.Team.Managers.Services
+namespace TaskoMask.Application.Team.Members.Services
 {
-    public class ManagerService : BaseUserService<Manager>, IManagerService
+    public class MemberService : BaseUserService<Member>, IMemberService
     {
         #region Fields
 
@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Team.Managers.Services
 
         #region Ctors
 
-        public ManagerService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
+        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
 
@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Team.Managers.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(UserInputDto input)
         {
-            var cmd = new CreateManagerCommand(displayName: input.DisplayName, email: input.Email, password: input.Password);
+            var cmd = new CreateMemberCommand(displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);
         }
 
@@ -48,7 +48,7 @@ namespace TaskoMask.Application.Team.Managers.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(UserInputDto input)
         {
-            var cmd = new UpdateManagerCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
+            var cmd = new UpdateMemberCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
             return await SendCommandAsync(cmd);
         }
 
@@ -57,9 +57,9 @@ namespace TaskoMask.Application.Team.Managers.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ManagerBasicInfoDto>> GetByIdAsync(string id)
+        public async Task<Result<MemberBasicInfoDto>> GetByIdAsync(string id)
         {
-            return await SendQueryAsync(new GetManagerByIdQuery(id));
+            return await SendQueryAsync(new GetMemberByIdQuery(id));
         }
 
 

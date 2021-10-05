@@ -5,7 +5,7 @@ using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
-using TaskoMask.Application.Team.Managers.Services;
+using TaskoMask.Application.Team.Members.Services;
 using DNTCaptcha.Core;
 using TaskoMask.Domain.Core.Models;
 using AutoMapper;
@@ -17,7 +17,7 @@ namespace TaskoMask.Web.Controllers
     {
         #region Fields
 
-        private readonly IManagerService _managerService;
+        private readonly IMemberService _memberService;
         private readonly ICookieAuthenticationService _cookieAuthenticationService;
 
         #endregion
@@ -26,9 +26,9 @@ namespace TaskoMask.Web.Controllers
 
        
 
-        public AccountController(IManagerService managerService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper):base(mapper)
+        public AccountController(IMemberService memberService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper):base(mapper)
         {
-            _managerService = managerService;
+            _memberService = memberService;
             _cookieAuthenticationService = cookieAuthenticationService;
         }
 
@@ -71,13 +71,13 @@ namespace TaskoMask.Web.Controllers
 
 
             //get user
-            var userQueryResult = await _managerService.GetBaseUserByUserNameAsync(input.Email);
+            var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
                 return View(userQueryResult, input);
 
 
             //validate user password
-            var validateQueryResult = await _managerService.ValidateUserPasswordAsync(input.Email, input.Password);
+            var validateQueryResult = await _memberService.ValidateUserPasswordAsync(input.Email, input.Password);
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
                 return View(userQueryResult, input);
 
@@ -125,7 +125,7 @@ namespace TaskoMask.Web.Controllers
             if (!ModelState.IsValid)
                 return View(input);
 
-            var cmdResult = await _managerService.CreateAsync(input);
+            var cmdResult = await _memberService.CreateAsync(input);
             return View(cmdResult, input);
         }
 

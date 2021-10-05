@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Dtos.Users;
 
 using TaskoMask.Application.Mapper.MappingActions;
 using TaskoMask.Application.Core.Dtos.Operators;
-using TaskoMask.Application.Core.Dtos.Managers;
+using TaskoMask.Application.Core.Dtos.Members;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Administration.Entities;
@@ -26,10 +26,10 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<UserBasicInfoDto, UserInputDto>();
             CreateMap<UserBasicInfoDto, UserBaseDto>();
 
-            CreateMap<Manager, UserBasicInfoDto>();
+            CreateMap<Member, UserBasicInfoDto>();
             CreateMap<Operator, UserBasicInfoDto>();
 
-            CreateMap<Manager, ManagerBasicInfoDto>();
+            CreateMap<Member, MemberBasicInfoDto>();
             CreateMap<Operator, OperatorBasicInfoDto>();
         }
     }

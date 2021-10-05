@@ -3,7 +3,7 @@ using TaskoMask.Domain.Team.Entities;
 
 namespace TaskoMask.Domain.Team.Data
 {
-    public interface IManagerRepository : IUserBaseRepository<Manager>
+    public interface IMemberRepository : IUserBaseRepository<Member>
     {
     }
 }

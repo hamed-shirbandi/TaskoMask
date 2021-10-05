@@ -3,9 +3,9 @@ using TaskoMask.Domain.Team.Entities;
 
 namespace TaskoMask.Domain.Team.Events
 {
-    public class ManagerCreatedEvent : DomainEvent
+    public class MemberCreatedEvent : DomainEvent
     {
-        public ManagerCreatedEvent(string id, string displayName, string email, string userName) : base(entityId: id, entityType: nameof(Manager))
+        public MemberCreatedEvent(string id, string displayName, string email, string userName) : base(entityId: id, entityType: nameof(Member))
         {
             Id = id;
             DisplayName = displayName;

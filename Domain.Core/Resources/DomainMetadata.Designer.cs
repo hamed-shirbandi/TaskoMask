@@ -106,11 +106,11 @@ namespace TaskoMask.Domain.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manager.
+        ///   Looks up a localized string similar to Member.
         /// </summary>
-        public static string Manager {
+        public static string Member {
             get {
-                return ResourceManager.GetString("Manager", resourceCulture);
+                return ResourceManager.GetString("Member", resourceCulture);
             }
         }
         

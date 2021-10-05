@@ -55,8 +55,8 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             if (!collections.Has<Project>())
                 dbContext.CreateCollection<Project>();
 
-            if (!collections.Has<Manager>())
-                dbContext.CreateCollection<Manager>();
+            if (!collections.Has<Member>())
+                dbContext.CreateCollection<Member>();
 
 
             if (!collections.Has<Operator>())
@@ -111,13 +111,24 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
             #endregion
 
-            #region User Indexs
+            #region Member Indexs
 
-            dbContext.GetCollection<BaseUser>().Indexes.CreateOneAsync(new CreateIndexModel<BaseUser>(Builders<BaseUser>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<BaseUser>().Indexes.CreateOneAsync(new CreateIndexModel<BaseUser>(Builders<BaseUser>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
-            dbContext.GetCollection<BaseUser>().Indexes.CreateOneAsync(new CreateIndexModel<BaseUser>(Builders<BaseUser>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
-            dbContext.GetCollection<BaseUser>().Indexes.CreateOneAsync(new CreateIndexModel<BaseUser>(Builders<BaseUser>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber", Unique = false }));
-            dbContext.GetCollection<BaseUser>().Indexes.CreateOneAsync(new CreateIndexModel<BaseUser>(Builders<BaseUser>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber", Unique = false }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
+
+
+            #endregion
+
+            #region Operator Indexs
+
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber", Unique = false }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
 
 
             #endregion

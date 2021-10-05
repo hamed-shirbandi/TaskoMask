@@ -25,8 +25,8 @@
     <Folder Include="TaskManagement\Boards\EventHandlers\" />
     <Folder Include="TaskManagement\Cards\Commands\Validations\" />
     <Folder Include="TaskManagement\Cards\EventHandlers\" />
-    <Folder Include="Team\Managers\Commands\Validations\" />
-    <Folder Include="Team\Managers\EventHandlers\" />
+    <Folder Include="Team\Members\Commands\Validations\" />
+    <Folder Include="Team\Members\EventHandlers\" />
     <Folder Include="Team\Organizations\EventHandlers\" />
     <Folder Include="Team\Projects\Commands\Validations\" />
     <Folder Include="Team\Projects\EventHandlers\" />

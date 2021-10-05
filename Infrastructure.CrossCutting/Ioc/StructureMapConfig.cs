@@ -75,7 +75,7 @@ namespace Infrastructure.CrossCutting.Ioc
                 //  config.For(typeof(IRequestHandler<GetCountQuery<Operator>, long>)).Use(typeof(BaseQueryHandlers<Operator>)).ContainerScoped();
 
                 services.AddScoped<IRequestHandler<GetCountQuery<Operator>, long>, BaseQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<GetCountQuery<Manager>, long>, BaseQueryHandlers<Manager>>();
+                services.AddScoped<IRequestHandler<GetCountQuery<Member>, long>, BaseQueryHandlers<Member>>();
                 services.AddScoped<IRequestHandler<GetCountQuery<Organization>, long>, BaseQueryHandlers<Organization>>();
                 services.AddScoped<IRequestHandler<GetCountQuery<Project>, long>, BaseQueryHandlers<Project>>();
                 services.AddScoped<IRequestHandler<GetCountQuery<Board>, long>, BaseQueryHandlers<Board>>();
@@ -84,16 +84,16 @@ namespace Infrastructure.CrossCutting.Ioc
 
 
                 services.AddScoped<IRequestHandler<GetUserByIdQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<GetUserByIdQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
+                services.AddScoped<IRequestHandler<GetUserByIdQuery<Member>, UserBasicInfoDto>, UserQueryHandlers<Member>>();
 
                 services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
+                services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Member>, UserBasicInfoDto>, UserQueryHandlers<Member>>();
 
                 services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Manager>, UserBasicInfoDto>, UserQueryHandlers<Manager>>();
+                services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Member>, UserBasicInfoDto>, UserQueryHandlers<Member>>();
 
                 services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Operator>, bool>, UserQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Manager>, bool>, UserQueryHandlers<Manager>>();
+                services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Member>, bool>, UserQueryHandlers<Member>>();
 
 
                 #endregion

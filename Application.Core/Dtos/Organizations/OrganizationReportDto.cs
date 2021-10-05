@@ -9,8 +9,8 @@ namespace TaskoMask.Application.Core.Dtos.Organizations
         [Display(Name = nameof(ApplicationMetadata.ProjectsCount), ResourceType = typeof(ApplicationMetadata))]
         public int ProjectsCount { get; set; }
        
-        [Display(Name = nameof(ApplicationMetadata.ManagersCount), ResourceType = typeof(ApplicationMetadata))]
-        public int ManagersCount { get; set; }
+        [Display(Name = nameof(ApplicationMetadata.MembersCount), ResourceType = typeof(ApplicationMetadata))]
+        public int MembersCount { get; set; }
 
     }
 }

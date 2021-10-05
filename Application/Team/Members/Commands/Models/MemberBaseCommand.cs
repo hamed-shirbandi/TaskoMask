@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Team.Managers.Commands.Models
+namespace TaskoMask.Application.Team.Members.Commands.Models
 {
-    public abstract class ManagerBaseCommand : BaseCommand
+    public abstract class MemberBaseCommand : BaseCommand
     {
       
         [StringLength(50, MinimumLength = 5, ErrorMessageResourceName = nameof(ApplicationMetadata.Length_Error), ErrorMessageResourceType = typeof(ApplicationMetadata))]

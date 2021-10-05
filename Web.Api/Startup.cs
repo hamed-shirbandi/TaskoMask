@@ -35,7 +35,9 @@ namespace TaskoMask.Web.Api
            
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "swagger");
             });
         }
     }

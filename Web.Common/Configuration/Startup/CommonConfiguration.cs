@@ -104,7 +104,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
 
             serviceScopeFactory.InitialMongoDb();
             serviceScopeFactory.MongoDbSeedData();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
   
         }

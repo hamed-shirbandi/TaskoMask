@@ -44,12 +44,13 @@ namespace TaskoMask.Application.Core.Behaviors
             if (request is not ICacheableQuery cacheableQuery)
                 return await next();
 
-            if (cacheableQuery.BypassCache)
+            var configurationCacheEnabled = bool.Parse(_configuration["RedisCache:Enabled"]);
+            if (!configurationCacheEnabled)
                 return await next();
 
-            var cacheEnabled = bool.Parse(_configuration["RedisCache:Enabled"]);
-            if (!cacheEnabled)
+            if (!cacheableQuery.EnableCache)
                 return await next();
+
 
             var cacheKey = GenerateKeyFromRequest(request);
             if (!_redisCacheService.TryGetValue(key: cacheKey, result: out TResponse response))

@@ -45,6 +45,7 @@ namespace TaskoMask.Web.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
+            //TODO cache this queries
             var model = new HomeIndexViewModel
             {
                 OrganizationsCount = (await _organizationService.CountAsync()).Value,

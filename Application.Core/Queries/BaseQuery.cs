@@ -4,16 +4,17 @@ namespace TaskoMask.Application.Core.Queries
 {
 
     /// <summary>
-    /// Mark BaseQuery with ICacheableQuery to catche all queries.
-    /// if need to prevent caching a query just set the BypassCache to true beafore send query to bus
+    /// Mark BaseQuery with ICacheableQuery to catche the queries by CachingBehavior.
+    /// If you need to cache a query just set the EnableCache to true beafore sending the query to bus
     /// </summary>
     public abstract class BaseQuery<T> : ICacheableQuery, IRequest<T>
     {
         protected BaseQuery()
         {
-            BypassCache = false;
+            //By default cache is disabled
+            EnableCache = false;
         }
 
-        public bool BypassCache { get; set; }
+        public bool EnableCache { get; set; }
     }
 }

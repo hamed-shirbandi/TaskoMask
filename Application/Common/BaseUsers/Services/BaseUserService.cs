@@ -64,11 +64,7 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// </summary>
         public async Task<Result<bool>> ValidateUserPasswordAsync(string userName, string password)
         {
-            var query = new ValidateUserPasswordQuery<TEntity>(userName, password)
-            {
-                BypassCache = true
-            };
-
+            var query = new ValidateUserPasswordQuery<TEntity>(userName, password);
             return await SendQueryAsync(query);
         }
 

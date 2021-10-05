@@ -86,6 +86,8 @@ namespace TaskoMask.Web.Common.Configuration.Swagger
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/" + options.Value.Version + "/swagger.json", options.Value.Version);
+                //redirect root url to swagger ui
+                c.RoutePrefix = "";
             });
 
 

@@ -39,7 +39,7 @@ namespace TaskoMask.Web.Api.Controllers
 
 
         /// <summary>
-        /// login managgers - return jwt token if result is success
+        /// login member - return jwt token if result is success
         /// </summary>
         [HttpPost]
         [Route("account/login")]

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Configuration;
 using RedisCache.Core;
 using System.Collections.Generic;
 using System.Reflection;
@@ -17,15 +18,17 @@ namespace TaskoMask.Application.Core.Behaviors
         #region Fields
 
         private readonly IRedisCacheService _redisCacheService;
+        private readonly IConfiguration _configuration;
 
         #endregion
 
         #region Ctors
 
 
-        public CachingBehavior(IRedisCacheService redisCacheService)
+        public CachingBehavior(IRedisCacheService redisCacheService, IConfiguration configuration)
         {
             _redisCacheService = redisCacheService;
+            _configuration = configuration;
         }
 
 
@@ -44,11 +47,16 @@ namespace TaskoMask.Application.Core.Behaviors
             if (cacheableQuery.BypassCache)
                 return await next();
 
+            var cacheEnabled = bool.Parse(_configuration["RedisCache:Enabled"]);
+            if (!cacheEnabled)
+                return await next();
+
             var cacheKey = GenerateKeyFromRequest(request);
             if (!_redisCacheService.TryGetValue(key: cacheKey, result: out TResponse response))
             {
                 response = await next();
-                await _redisCacheService.SetAsync(key: cacheKey, data: response, cacheTimeInMinutes: 60);
+                var cacheTimeInMinutes = int.Parse(_configuration["RedisCache:CacheTimeInMinutes"]);
+                await _redisCacheService.SetAsync(key: cacheKey, data: response, cacheTimeInMinutes: cacheTimeInMinutes);
             }
 
             return response;

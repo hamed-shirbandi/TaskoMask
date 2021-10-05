@@ -5,5 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Web\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-10-05T19:01:36.7656448Z;</History>
   </PropertyGroup>
 </Project>

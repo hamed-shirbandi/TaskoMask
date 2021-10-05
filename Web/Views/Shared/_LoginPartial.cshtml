@@ -1,6 +1,8 @@
-﻿
-@*@if (.IsSignedIn(User))*@
-@if (false)
+﻿@using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
+@inject ICookieAuthenticationService cookieAuthenticationService
+
+
+@if (cookieAuthenticationService.IsAuthenticated())
 {
     <a class="nav-link text-success" href="@Url.Action(action: "index",controller:"dashboard",values:new {Area="admin"})">Dashboard</a>
     <a class="nav-link text-danger" href="@Url.Action(action: "logout",controller:"account")">Logout</a>

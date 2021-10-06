@@ -14,7 +14,7 @@ namespace TaskoMask.Domain.Core.Models
     {
         #region Fields
 
-        private string id { get; set; }
+        private string id;
         private List<DomainNotification> validationErrors;
         private List<IDomainEvent> domainEvents;
 
@@ -26,6 +26,7 @@ namespace TaskoMask.Domain.Core.Models
         {
             id = ObjectId.GenerateNewId().ToString();
             validationErrors = new List<DomainNotification>();
+            CreationTime = new CreationTime();
         }
 
 

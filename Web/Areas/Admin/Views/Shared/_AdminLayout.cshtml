@@ -39,21 +39,21 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="@Url.Action(action: "create",controller:"organizations",values:new { Area="admin"})">
                             <i class="bi bi-building"></i>
                             New Organization
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="@Url.Action(action: "create",controller:"projects",values:new { Area="admin"})">
                             <i class="bi bi-kanban"></i>
                             New Project
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="@Url.Action(action: "create",controller:"boards",values:new { Area="admin"})">
                             <i class="bi bi-clipboard-plus"></i>
                             New Board
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="@Url.Action(action: "add",controller:"members",values:new { Area="admin"})">
                             <i class="bi bi-people"></i>
-                            New Member
+                            Add Member
                         </a>
                     </div>
                 </div>

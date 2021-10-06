@@ -31,7 +31,7 @@ namespace TaskoMask.Web.Common.Services.Authentication.CookieAuthentication
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(option =>
             {
-                option.Cookie.SecurePolicy = env.IsDevelopment() ? CookieSecurePolicy.None : CookieSecurePolicy.Always;
+                option.Cookie.SecurePolicy = CookieSecurePolicy.None;// env.IsDevelopment() ? CookieSecurePolicy.None : CookieSecurePolicy.Always;
                 option.Cookie.Name = options.Value.CookieName;
                 option.Cookie.HttpOnly = options.Value.CookieHttpOnly;
                 option.Cookie.SameSite = SameSiteMode.Lax;

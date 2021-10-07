@@ -74,7 +74,7 @@ Please check the [issues](https://github.com/hamed-shirbandi/TaskoMask/issues) a
 This project exists thanks to all the people who [contribute](http://taskomask.ir/).
 
 # Supporting
-We work hard to make something useful to you so please give a star if this project helped you!
+We work hard to make something useful to you so please give a star ⭐ if this project helped you!
 We need your support by giving a star or by contributing or telling about us to your friends.
 
 # Author & License

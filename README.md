@@ -81,11 +81,12 @@ We need your support by giving a star or by contributing or telling about us to 
 This project is developed by [Hamed Shirbandi](https://github.com/hamed-shirbandi) under MIT licensed.
 Find Hamed around the web and feel free to ask your question.
 
-[![personal blog](http://www.codeblock.ir/Content/site/images/blog/Blog.png)](http://www.codeblock.ir/)
+[![personal blog](http://www.codeblock.ir/Content/site/images/blog/Blog.png)](http://www.codeblock.ir)
 [![linkedin](http://www.codeblock.ir/Content/site/images/blog/linkedin_ic.png)](https://www.linkedin.com/in/hamed-shirbandi)
 [![nuget](http://www.codeblock.ir/Content/site/images/blog/nuget_ic.png)](https://www.nuget.org/profiles/hamed-shirbandi)
 [![email](http://www.codeblock.ir/Content/site/images/blog/Gmail-ic.png)](mailto:hamed.shirbandi@gmail.com)
-[![github](http://www.codeblock.ir/Content/site/images/blog/github_ic.jpg?v=1)](https://github.com/hamed-shirbandi)
+[![github](http://www.codeblock.ir/Content/site/images/blog/github_ic.jpg)](https://github.com/hamed-shirbandi)
+[![instagram](http://www.codeblock.ir/Content/site/images/blog/instagram.png)](https://www.instagram.com/hamedshirbandi)
 
 # Change Logs
 

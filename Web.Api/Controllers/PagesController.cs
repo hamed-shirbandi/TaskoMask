@@ -49,8 +49,8 @@ namespace TaskoMask.Web.Api.Controllers
         /// <summary>
         /// Get site's home page data 
         /// </summary>
-        [HttpPost]
-        [Route("boards")]
+        [HttpGet]
+        [Route("pages/home")]
         public async Task<Result<HomeIndexViewModel>> Home()
         {
             //TODO cache this queries (also can cache the action)

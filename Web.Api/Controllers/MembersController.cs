@@ -76,7 +76,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpDelete]
         [Route("members")]
-        public async Task<Result<CommandResult>> Delete( )
+        public async Task<Result<CommandResult>> Delete(string id )
         {
             //TODO implement members Delete
             return Result.Failure<CommandResult>(message: "not implemented yet");

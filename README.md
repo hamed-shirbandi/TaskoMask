@@ -71,14 +71,14 @@ Please check the [issues](https://github.com/hamed-shirbandi/TaskoMask/issues) a
   > 5. Push to Developer Branch
   > 6. Open a Pull Request
 
-This project exists thanks to all the people who [contribute](http://taskomask.ir/).
+This project exists thanks to all the people who [contribute](https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors).
 
 # Supporting
 We work hard to make something useful to you so please give a star ⭐ if this project helped you!
 We need your support by giving a star or by contributing or telling about us to your friends.
 
 # Author & License
-This project is developed by [Hamed Shirbandi](https://github.com/hamed-shirbandi) under MIT licensed.
+This project is developed by [Hamed Shirbandi](https://github.com/hamed-shirbandi) under [MIT](https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE) licensed.
 Find Hamed around the web and feel free to ask your question.
 
 [![personal blog](http://www.codeblock.ir/Content/site/images/blog/Blog.png)](http://www.codeblock.ir)

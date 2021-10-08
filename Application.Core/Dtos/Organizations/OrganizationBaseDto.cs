@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Core.Dtos.Organizations
@@ -16,6 +17,7 @@ namespace TaskoMask.Application.Core.Dtos.Organizations
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         public string Description { get; set; }
 
+        [JsonIgnore]
         public string UserId { get; set; }
     }
 }

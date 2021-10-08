@@ -11,7 +11,7 @@ We are trying to document all important information so you can use them to get m
 There is a list of our documentation:
 
   - ### [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation):
-    This is for the end users how want to use the TaskoMask application to manage their project's tasks or can be used by developers to see or test the features.
+    This is for the end users who want to use the TaskoMask application to manage their project's tasks or can be used by developers to see or test the features.
   - ### [Domain Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Domain-Documentation):
     This is for developers to know about the domain model and understand the entities and relations and rules and variants and so on. By reading this doc you can understand the business of this project.
   - ### [Architecture Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation):

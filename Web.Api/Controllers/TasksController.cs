@@ -65,7 +65,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// change task's card
         /// </summary>
         [HttpPut]
-        [Route("tasks")]
+        [Route("tasks/{taskId}/{cardId}")]
         public async Task<Result<CommandResult>> SetCardId( string taskId,string cardId)
         {
             //TODO implement tasks SetCardId

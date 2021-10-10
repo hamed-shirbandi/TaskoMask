@@ -1,4 +1,5 @@
-﻿using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Domain.Administration.Events;
+using TaskoMask.Domain.Core.Models;
 
 
 namespace TaskoMask.Domain.Administration.Entities
@@ -19,6 +20,8 @@ namespace TaskoMask.Domain.Administration.Entities
         {
             Name = name;
             Description = description;
+
+            AddDomainEvent(new RoleCreatedEvent(Id,name,description));
         }
 
 

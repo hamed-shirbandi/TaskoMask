@@ -21,7 +21,6 @@ namespace TaskoMask.Domain.Administration.Entities
         :base(displayName, email, userName, password,encryptionService)
         {
             AddDomainEvent(new OperatorCreatedEvent(Id,DisplayName,Email,UserName));
-
         }
 
 
@@ -30,7 +29,7 @@ namespace TaskoMask.Domain.Administration.Entities
 
         #region Properties
 
-
+        public string[] RolesId { get; set; }
 
         #endregion
 

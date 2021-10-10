@@ -144,6 +144,9 @@
   <data name="Project" xml:space="preserve">
     <value>Project</value>
   </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
   <data name="Task" xml:space="preserve">
     <value>Task</value>
   </data>

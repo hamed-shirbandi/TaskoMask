@@ -46,6 +46,18 @@ namespace TaskoMask.Domain.Administration.Entities
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void UpdateRoles(string[] rolesId)
+        {
+            RolesId = rolesId;
+            base.Update();
+        }
+
+
+
         #endregion
 
         #region Private Methods

@@ -16,7 +16,9 @@ namespace TaskoMask.Application.Administration.Operators.Commands.Handlers
 {
     public class OperatorCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateOperatorCommand, CommandResult>,
-        IRequestHandler<UpdateOperatorCommand, CommandResult>
+        IRequestHandler<UpdateOperatorCommand, CommandResult>,
+        IRequestHandler<UpdateOperatorRolesCommand, CommandResult>
+
     {
         #region Fields
 
@@ -87,6 +89,28 @@ namespace TaskoMask.Application.Administration.Operators.Commands.Handlers
             await _operatorRepository.UpdateAsync(@operator);
 
             return new CommandResult(ApplicationMessages.Update_Success, @operator.Id.ToString());
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(UpdateOperatorRolesCommand request, CancellationToken cancellationToken)
+        {
+            var @operator = await _operatorRepository.GetByIdAsync(request.Id);
+            if (@operator == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator);
+
+
+            @operator.UpdateRoles(request.RolesId);
+            if (!IsValid(@operator))
+                return new CommandResult(ApplicationMessages.Update_Failed);
+
+            await _operatorRepository.UpdateAsync(@operator);
+
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
         }
 
 

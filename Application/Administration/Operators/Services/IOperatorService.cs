@@ -14,5 +14,6 @@ namespace TaskoMask.Application.Administration.Operators.Services
         Task<Result<CommandResult>> UpdateAsync(UserInputDto input);
         Task<Result<OperatorBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<bool>> ValidateUserPasswordAsync(string userName,string password);
+        Task<Result<CommandResult>> UpdateRolesAsync(string id, string[] rolesId);
     }
 }

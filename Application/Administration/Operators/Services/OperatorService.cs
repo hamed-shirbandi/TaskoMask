@@ -57,6 +57,17 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// <summary>
         /// 
         /// </summary>
+        public async Task<Result<CommandResult>> UpdateRolesAsync(string id, string[] rolesId)
+        {
+            var cmd = new UpdateOperatorRolesCommand(id, rolesId);
+            return await SendCommandAsync(cmd);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Result<OperatorBasicInfoDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetOperatorByIdQuery(id));

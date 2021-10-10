@@ -20,6 +20,8 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Folder Include="Administration\Roles\Commands\Validations\" />
+    <Folder Include="Administration\Roles\EventHandlers\" />
     <Folder Include="Common\BaseEntities\Commands\" />
     <Folder Include="TaskManagement\Boards\Commands\Validations\" />
     <Folder Include="TaskManagement\Boards\EventHandlers\" />

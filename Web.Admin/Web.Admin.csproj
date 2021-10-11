@@ -21,4 +21,9 @@
     <ProjectReference Include="..\Web.Common\Web.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\" />
+  </ItemGroup>
+
 </Project>

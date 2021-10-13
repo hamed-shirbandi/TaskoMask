@@ -1,0 +1,23 @@
+﻿@model TaskoMask.Application.Core.Dtos.Roles.RoleInputDto
+@{
+}
+<form class="form" asp-action="@ViewContext.RouteData.Values["action"]" data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post">
+
+    <fieldset>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-input-1" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "form-message is-error" })
+
+        <hr />
+        
+        <button type="submit" class="btn btn-primary">
+            ذخیره تغییرات
+        </button>
+        <a href="@Url.Action("Index", "Roles", new { })" class="btn btn-default">
+            بازگشت
+        </a>
+    </fieldset>
+</form>

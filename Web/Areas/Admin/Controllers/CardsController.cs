@@ -90,9 +90,6 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(CardInputDto input)
         {
-            if (!ModelState.IsValid)
-                return View(input);
-
             var cmdResult = await _cardService.UpdateAsync(input);
             return View(cmdResult, input);
         }

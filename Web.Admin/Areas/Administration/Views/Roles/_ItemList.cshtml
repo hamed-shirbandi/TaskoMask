@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TaskoMask.Application.Core.Dtos.Roles.RoleBasicInfoDto>
+﻿@model IEnumerable<TaskoMask.Application.Core.Dtos.Roles.RoleOutputDto>
 @{
 }
 @if (Model.Count() == 0)
@@ -18,6 +18,7 @@ else
                     <tr>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().Name)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().CreationTime)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().OperatorsCount)</th>
                         <th><label>عملیات</label></th>
                     </tr>
                 </thead>
@@ -25,17 +26,18 @@ else
                     @foreach (var item in Model)
                     {
 
-                        <tr data-table-row-id="@item.Id">
-                            <td> @item.Name </td>
-                            <td> @item.CreationTime </td>
-                            <td>
-                                <div class="btn-group-xs">
-                                    <a href="@Url.Action( "update", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                    <tr data-table-row-id="@item.Id">
+                        <td> @item.Name </td>
+                        <td> @item.CreationTime </td>
+                        <td> @item.OperatorsCount </td>
+                        <td>
+                            <div class="btn-group-xs">
+                                <a href="@Url.Action( "update", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
                     }
 
                 </tbody>

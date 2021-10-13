@@ -17,19 +17,21 @@ namespace TaskoMask.Application.Administration.Roles.Queries.Handlers
 {
     public class RoleQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetRoleByIdQuery, RoleBasicInfoDto>,
-         IRequestHandler<GetRolesListQuery, IEnumerable<RoleBasicInfoDto>>
+         IRequestHandler<GetRolesListQuery, IEnumerable<RoleOutputDto>>
     {
         #region Fields
 
         private readonly IRoleRepository _roleRepository;
+        private readonly IOperatorRepository _operatorRepository;
 
         #endregion
 
         #region Ctors
 
-        public RoleQueryHandlers(IRoleRepository roleRepository, IDomainNotificationHandler notifications, IMapper mapper ) : base(mapper, notifications)
+        public RoleQueryHandlers(IRoleRepository roleRepository, IDomainNotificationHandler notifications, IMapper mapper, IOperatorRepository operatorRepository) : base(mapper, notifications)
         {
             _roleRepository = roleRepository;
+            _operatorRepository = operatorRepository;
         }
 
         #endregion
@@ -56,10 +58,15 @@ namespace TaskoMask.Application.Administration.Roles.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<RoleBasicInfoDto>> Handle(GetRolesListQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<RoleOutputDto>> Handle(GetRolesListQuery request, CancellationToken cancellationToken)
         {
             var roles = await _roleRepository.GetListAsync();
-            return _mapper.Map<IEnumerable<RoleBasicInfoDto>>(roles);
+            var rolesDto = _mapper.Map<IEnumerable<RoleOutputDto>>(roles);
+
+            foreach (var item in rolesDto)
+                item.OperatorsCount = await _operatorRepository.CountByRoleIdAsync(item.Id);
+
+            return rolesDto;
         }
 
 

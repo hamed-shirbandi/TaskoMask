@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Core.ViewModels.Users
+namespace TaskoMask.Application.Core.ViewModels
 {
     public class UserLoginViewModel
     {

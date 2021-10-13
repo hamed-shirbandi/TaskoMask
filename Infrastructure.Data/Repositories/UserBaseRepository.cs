@@ -11,7 +11,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Fields
 
-        private readonly IMongoCollection<TEntity> _users;
+        protected readonly IMongoCollection<TEntity> _users;
 
 
         #endregion

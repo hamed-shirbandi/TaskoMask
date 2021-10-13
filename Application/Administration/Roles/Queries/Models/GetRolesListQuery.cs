@@ -5,7 +5,7 @@ using TaskoMask.Application.Core.Queries;
 namespace TaskoMask.Application.Administration.Roles.Queries.Models
 {
 
-    public class GetRolesListQuery : BaseQuery<IEnumerable<RoleBasicInfoDto>>
+    public class GetRolesListQuery : BaseQuery<IEnumerable<RoleOutputDto>>
     {
         public GetRolesListQuery()
         {

@@ -10,6 +10,8 @@ using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Application.Common.BaseEntities.Services;
 using TaskoMask.Application.Core.Dtos.Roles;
 using System.Collections.Generic;
+using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Administration.Operators.Queries.Models;
 
 namespace TaskoMask.Application.Administration.Roles.Services
 {
@@ -67,9 +69,34 @@ namespace TaskoMask.Application.Administration.Roles.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<RoleBasicInfoDto>>> GetListAsync()
+        public async Task<Result<IEnumerable<RoleOutputDto>>> GetListAsync()
         {
             return await SendQueryAsync(new GetRolesListQuery());
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<RoleDetailViewModel>> GetDetailsAsync(string id)
+        {
+            var operatorsQueryResult = await SendQueryAsync(new GetOperatorsByRoleIdQuery(roleId: id));
+            if (!operatorsQueryResult.IsSuccess)
+                return Result.Failure<RoleDetailViewModel>(operatorsQueryResult.Errors);
+
+            var roleQueryResult = await SendQueryAsync(new GetRoleByIdQuery(id));
+            if (!roleQueryResult.IsSuccess)
+                return Result.Failure<RoleDetailViewModel>(roleQueryResult.Errors);
+
+            var model = new RoleDetailViewModel
+            {
+                Role = roleQueryResult.Value,
+                Operators = operatorsQueryResult.Value,
+            };
+
+            return Result.Success(model);
+
         }
 
 

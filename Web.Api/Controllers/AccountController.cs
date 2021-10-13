@@ -3,7 +3,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Dtos.Users;
-using TaskoMask.Application.Core.ViewModels.Users;
+using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Team.Members.Services;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Web.Common.Controllers;

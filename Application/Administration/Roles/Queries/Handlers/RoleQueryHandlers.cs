@@ -17,7 +17,8 @@ namespace TaskoMask.Application.Administration.Roles.Queries.Handlers
 {
     public class RoleQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetRoleByIdQuery, RoleBasicInfoDto>,
-         IRequestHandler<GetRolesListQuery, IEnumerable<RoleOutputDto>>
+         IRequestHandler<GetRolesListQuery, IEnumerable<RoleOutputDto>>,
+         IRequestHandler<SearchRolesQuery, IEnumerable<RoleBasicInfoDto>>
     {
         #region Fields
 
@@ -67,6 +68,17 @@ namespace TaskoMask.Application.Administration.Roles.Queries.Handlers
                 item.OperatorsCount = await _operatorRepository.CountByRoleIdAsync(item.Id);
 
             return rolesDto;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<RoleBasicInfoDto>> Handle(SearchRolesQuery request, CancellationToken cancellationToken)
+        {
+            var roles = await _roleRepository.GetListByIdAsync( request.RolesId);
+            return _mapper.Map<IEnumerable<RoleBasicInfoDto>>(roles);
         }
 
 

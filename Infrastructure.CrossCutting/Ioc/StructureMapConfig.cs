@@ -4,27 +4,16 @@ using Microsoft.Extensions.DependencyInjection;
 using StructureMap;
 using System;
 using TaskoMask.Application.Team.Projects.Services;
-using TaskoMask.Domain.Core.Data;
-
 using TaskoMask.Infrastructure.Data.DbContext;
 using TaskoMask.Infrastructure.Data.EventSourcing;
-
-using MediatR.Pipeline;
-using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Infrastructure.CrossCutting.Bus;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Application.Common.BaseEntitiesUsers.Queries.Models;
 using TaskoMask.Application.Common.BaseEntitiesUsers.Queries.Handlers;
 using TaskoMask.Application.Core.Dtos.Users;
-using TaskoMask.Application.Core.Behaviors;
 using TaskoMask.Application.Common.BaseEntities.Queries.Models;
 using TaskoMask.Application.Common.BaseEntities.Queries.Handlers;
-using StructureMap.Graph.Scanning;
-using StructureMap.Graph;
-using TaskoMask.Application.Core.Queries;
-using System.Linq;
-using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Team.Entities;
@@ -106,6 +95,12 @@ namespace Infrastructure.CrossCutting.Ioc
                 services.AddScoped<IRequestHandler<SetUserIsActiveCommand<Member>, CommandResult>, UserCommandHandlers<Member>>();
                 services.AddScoped<IRequestHandler<SetUserIsActiveCommand<Operator>, CommandResult>, UserCommandHandlers<Operator>>();
 
+                services.AddScoped<IRequestHandler<ChangeUserPasswordCommand<Member>, CommandResult>, UserCommandHandlers<Member>>();
+                services.AddScoped<IRequestHandler<ChangeUserPasswordCommand<Operator>, CommandResult>, UserCommandHandlers<Operator>>();
+
+
+                services.AddScoped<IRequestHandler<ResetUserPasswordCommand<Member>, CommandResult>, UserCommandHandlers<Member>>();
+                services.AddScoped<IRequestHandler<ResetUserPasswordCommand<Operator>, CommandResult>, UserCommandHandlers<Operator>>();
 
 
                 #endregion

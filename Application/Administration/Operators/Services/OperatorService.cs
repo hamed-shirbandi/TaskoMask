@@ -10,6 +10,8 @@ using TaskoMask.Application.Administration.Operators.Commands.Models;
 using TaskoMask.Application.Core.Dtos.Operators;
 using TaskoMask.Application.Administration.Operators.Queries.Models;
 using TaskoMask.Domain.Administration.Entities;
+using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Administration.Roles.Queries.Models;
 
 namespace TaskoMask.Application.Administration.Operators.Services
 {
@@ -74,6 +76,28 @@ namespace TaskoMask.Application.Administration.Operators.Services
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<OperatorDetailViewModel>> GetDetailsAsync(string id)
+        {
+            var operatorQueryResult = await SendQueryAsync(new GetOperatorByIdQuery(id));
+            if (!operatorQueryResult.IsSuccess)
+                return Result.Failure<OperatorDetailViewModel>(operatorQueryResult.Errors);
+
+            var rolesQueryResult = await SendQueryAsync(new SearchRolesQuery(operatorQueryResult.Value.RolesId));
+            if (!rolesQueryResult.IsSuccess)
+                return Result.Failure<OperatorDetailViewModel>(rolesQueryResult.Errors);
+
+            var model = new OperatorDetailViewModel
+            {
+                Operator = operatorQueryResult.Value,
+                Roles = rolesQueryResult.Value,
+            };
+
+            return Result.Success(model);
+        }
 
 
         #endregion

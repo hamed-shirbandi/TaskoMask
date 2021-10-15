@@ -216,4 +216,16 @@
   <data name="UserName" xml:space="preserve">
     <value>UserName</value>
   </data>
+  <data name="User_ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm New Password</value>
+  </data>
+  <data name="User_ConfirmPassword_Not_Match" xml:space="preserve">
+    <value>password and Confirm not match</value>
+  </data>
+  <data name="User_NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="User_OldPassword" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
 </root>

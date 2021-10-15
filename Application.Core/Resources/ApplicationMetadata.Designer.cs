@@ -340,6 +340,42 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm New Password.
+        /// </summary>
+        public static string User_ConfirmNewPassword {
+            get {
+                return ResourceManager.GetString("User_ConfirmNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to password and Confirm not match.
+        /// </summary>
+        public static string User_ConfirmPassword_Not_Match {
+            get {
+                return ResourceManager.GetString("User_ConfirmPassword_Not_Match", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Password.
+        /// </summary>
+        public static string User_NewPassword {
+            get {
+                return ResourceManager.GetString("User_NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Password.
+        /// </summary>
+        public static string User_OldPassword {
+            get {
+                return ResourceManager.GetString("User_OldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UserId.
         /// </summary>
         public static string UserId {

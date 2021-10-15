@@ -17,16 +17,14 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         #region Fields
 
         private readonly IOperatorService _operatorService;
-        private readonly IRoleService _roleService;
 
         #endregion
 
         #region Ctor
 
-        public OperatorsController(IOperatorService operatorService, IRoleService roleService, IMapper mapper) : base(mapper)
+        public OperatorsController(IOperatorService operatorService , IMapper mapper) : base(mapper)
         {
             _operatorService = operatorService;
-            _roleService = roleService;
         }
 
         #endregion

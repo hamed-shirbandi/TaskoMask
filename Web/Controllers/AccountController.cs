@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Web.Area.Admin.Controllers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Web.Common.Controllers;
@@ -62,7 +61,7 @@ namespace TaskoMask.Web.Controllers
         [ValidateDNTCaptcha(ErrorMessage = "Please enter the text inside the image numerically",
                     CaptchaGeneratorLanguage = Language.English,
                     CaptchaGeneratorDisplayMode = DisplayMode.NumberToWord)]
-        public async Task<IActionResult> Login(UserLoginViewModel input, string returnUrl = null)
+        public async Task<IActionResult> Login(UserLoginDto input, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
 

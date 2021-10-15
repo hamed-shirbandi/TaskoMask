@@ -3,7 +3,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Dtos.Users;
-using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Team.Members.Services;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Web.Common.Controllers;
@@ -43,7 +42,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPost]
         [Route("account/login")]
-        public async Task<Result<string>> Login([FromBody] UserLoginViewModel input)
+        public async Task<Result<string>> Login([FromBody] UserLoginDto input)
         {
 
             //get user
@@ -83,7 +82,6 @@ namespace TaskoMask.Web.Api.Controllers
 
 
         #endregion
-
 
         #region  Private Methods
 

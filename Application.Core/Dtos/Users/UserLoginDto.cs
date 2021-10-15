@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Core.Resources;
 
-namespace TaskoMask.Application.Core.ViewModels
+namespace TaskoMask.Application.Core.Dtos.Users
 {
-    public class UserLoginViewModel
+    public class UserLoginDto
     {
 
         [Display(Name = nameof(ApplicationMetadata.Email), ResourceType = typeof(ApplicationMetadata))]

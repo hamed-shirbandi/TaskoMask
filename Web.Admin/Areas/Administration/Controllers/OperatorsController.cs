@@ -1,15 +1,11 @@
-﻿using TaskoMask.Application.Administration.Operators.Commands.Models;
-using TaskoMask.Application.Administration.Operators.Queries.Models;
-using TaskoMask.Application.Administration.Operators.Services;
+﻿using TaskoMask.Application.Administration.Operators.Services;
 using TaskoMask.Application.Administration.Roles.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Web.Common.Controllers;
+using TaskoMask.Application.Core.Dtos.Operators;
 
 namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 {
@@ -36,6 +32,74 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         #endregion
 
         #region Public Methods
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var rolesListQueryResult = await _operatorService.GetListAsync();
+            return View(rolesListQueryResult);
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpGet]
+        public async Task<ActionResult> Create()
+        {
+            return View();
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(OperatorInputDto input)
+        {
+            var cmdResult = await _operatorService.CreateAsync(input);
+            return View(cmdResult, input);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> Update(string id)
+        {
+            var role = await _operatorService.GetDetailsAsync(id);
+            return View(role);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(OperatorInputDto input)
+        {
+            var cmdResult = await _operatorService.UpdateAsync(input);
+            return View(cmdResult, input);
+        }
 
 
 

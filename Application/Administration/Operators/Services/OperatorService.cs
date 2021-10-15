@@ -38,7 +38,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(UserInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(OperatorInputDto input)
         {
             var cmd = new CreateOperatorCommand(displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);
@@ -49,7 +49,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(UserInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(OperatorInputDto input)
         {
             var cmd = new UpdateOperatorCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
             return await SendCommandAsync(cmd);

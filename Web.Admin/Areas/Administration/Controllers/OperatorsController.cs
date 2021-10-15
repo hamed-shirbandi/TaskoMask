@@ -117,6 +117,19 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        [IgnoreAntiforgeryToken]
+        public async Task<JavaScriptResult> UpdateRoles(string id, string[]rolesId)
+        {
+            var cmdResult = await _operatorService.UpdateRolesAsync(id, rolesId);
+            return AjaxResult(cmdResult);
+        }
+
+
+
 
         #endregion
 

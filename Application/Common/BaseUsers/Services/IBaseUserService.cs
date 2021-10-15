@@ -13,8 +13,8 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         Task<Result<UserBasicInfoDto>> GetBaseUserByPhoneNumberAsync(string phoneNumber);
         Task<Result<bool>> ValidateUserPasswordAsync(string userName,string password);
         Task<Result<CommandResult>> SetIsActiveAsync(string id, bool isActive);
-        Task<Result<CommandResult>> ChangePasswordAsync(string id, string oldPassword, string newPassword, string confirmPassword);
-        Task<Result<CommandResult>> ResetPasswordAsync(string id, string newPassword, string confirmPassword);
+        Task<Result<CommandResult>> ChangePasswordAsync(string id, string oldPassword, string newPassword);
+        Task<Result<CommandResult>> ResetPasswordAsync(string id, string newPassword);
 
     }
 }

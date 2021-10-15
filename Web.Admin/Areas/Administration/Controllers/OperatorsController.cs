@@ -7,6 +7,7 @@ using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Dtos.Operators;
 using TaskoMask.Web.Common.Helpers;
+using TaskoMask.Application.Core.Dtos.Users;
 
 namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 {
@@ -100,6 +101,32 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
             return View(cmdResult, input);
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(UserResetPasswordDto input)
+        {
+            var cmdResult = await _operatorService.ResetPasswordAsync(input.Id,input.NewPassword);
+            return View(cmdResult, input);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(UserChangePasswordDto input)
+        {
+            var cmdResult = await _operatorService.ChangePasswordAsync(input.Id, input.OldPassword, input.NewPassword);
+            return View(cmdResult, input);
+        }
 
 
 

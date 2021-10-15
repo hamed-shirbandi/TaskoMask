@@ -85,9 +85,9 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> ChangePasswordAsync(string id, string oldPassword, string newPassword, string confirmPassword)
+        public async Task<Result<CommandResult>> ChangePasswordAsync(string id, string oldPassword, string newPassword)
         {
-            return await SendCommandAsync<ChangeUserPasswordCommand<TEntity>>(new(id, oldPassword,newPassword,confirmPassword));
+            return await SendCommandAsync<ChangeUserPasswordCommand<TEntity>>(new(id, oldPassword,newPassword));
         }
 
 
@@ -95,9 +95,9 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> ResetPasswordAsync(string id, string newPassword, string confirmPassword)
+        public async Task<Result<CommandResult>> ResetPasswordAsync(string id, string newPassword)
         {
-            return await SendCommandAsync<ResetUserPasswordCommand<TEntity>>(new(id, newPassword,confirmPassword));
+            return await SendCommandAsync<ResetUserPasswordCommand<TEntity>>(new(id, newPassword));
         }
 
 

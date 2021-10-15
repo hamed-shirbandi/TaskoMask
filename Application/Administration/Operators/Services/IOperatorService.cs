@@ -5,6 +5,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
 using TaskoMask.Application.Core.Dtos.Operators;
 using TaskoMask.Application.Core.ViewModels;
+using System.Collections.Generic;
 
 namespace TaskoMask.Application.Administration.Operators.Services
 {
@@ -13,6 +14,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
         Task<Result<CommandResult>> CreateAsync(UserInputDto input);
         Task<Result<CommandResult>> UpdateAsync(UserInputDto input);
         Task<Result<OperatorBasicInfoDto>> GetByIdAsync(string id);
+        Task<Result<IEnumerable<OperatorBasicInfoDto>>> GetListAsync();
         Task<Result<OperatorDetailViewModel>> GetDetailsAsync(string id);
         Task<Result<CommandResult>> UpdateRolesAsync(string id, string[] rolesId);
     }

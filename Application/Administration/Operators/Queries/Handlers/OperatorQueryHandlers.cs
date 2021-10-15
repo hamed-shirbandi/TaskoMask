@@ -17,7 +17,9 @@ namespace TaskoMask.Application.Administration.Operators.Queries.Handlers
 {
     public class OperatorQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOperatorByIdQuery, OperatorBasicInfoDto>,
-        IRequestHandler<GetOperatorsByRoleIdQuery, IEnumerable<OperatorBasicInfoDto>>
+        IRequestHandler<GetOperatorsByRoleIdQuery, IEnumerable<OperatorBasicInfoDto>>,
+        IRequestHandler<GetOperatorsListQuery, IEnumerable<OperatorBasicInfoDto>>
+        
 
     {
         #region Fields
@@ -62,6 +64,16 @@ namespace TaskoMask.Application.Administration.Operators.Queries.Handlers
             return _mapper.Map<IEnumerable<OperatorBasicInfoDto>>(@operators);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<OperatorBasicInfoDto>> Handle(GetOperatorsListQuery request, CancellationToken cancellationToken)
+        {
+            var @operators = await _operatorRepository.GetListAsync();
+            return _mapper.Map<IEnumerable<OperatorBasicInfoDto>>(@operators);
+        }
 
 
         #endregion

@@ -12,6 +12,7 @@ using TaskoMask.Application.Administration.Operators.Queries.Models;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Administration.Roles.Queries.Models;
+using System.Collections.Generic;
 
 namespace TaskoMask.Application.Administration.Operators.Services
 {
@@ -97,6 +98,16 @@ namespace TaskoMask.Application.Administration.Operators.Services
             };
 
             return Result.Success(model);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<OperatorBasicInfoDto>>> GetListAsync()
+        {
+            return await SendQueryAsync(new GetOperatorsListQuery());
         }
 
 

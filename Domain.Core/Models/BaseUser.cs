@@ -22,6 +22,7 @@ namespace TaskoMask.Domain.Core.Models
             Email = email;
             UserName = userName;
             ResetPassword(password, encryptionService);
+            IsActive = true;
         }
 
 
@@ -37,6 +38,7 @@ namespace TaskoMask.Domain.Core.Models
         public string PhoneNumber { get; private set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
+        public bool IsActive { get; set; }
 
         #endregion
 
@@ -92,6 +94,16 @@ namespace TaskoMask.Domain.Core.Models
             }
 
             ResetPassword(newPassword, encryptionService);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SetActive(bool isActive)
+        {
+            IsActive = isActive;
         }
 
         #endregion

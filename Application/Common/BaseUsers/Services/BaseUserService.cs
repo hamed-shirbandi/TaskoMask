@@ -7,6 +7,8 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.BaseEntities.Services;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Common.BaseUsers.Commands.Models;
 
 namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
 {
@@ -67,6 +69,17 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
             var query = new ValidateUserPasswordQuery<TEntity>(userName, password);
             return await SendQueryAsync(query);
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> SetIsActiveAsync(string id, bool isActive)
+        {
+            return await SendCommandAsync<SetUserIsActiveCommand<TEntity>>(new(id, isActive));
+        }
+
 
 
         #endregion

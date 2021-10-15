@@ -29,6 +29,9 @@ using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.TaskManagement.Entities;
+using TaskoMask.Application.Common.BaseUsers.Commands.Models;
+using TaskoMask.Application.Core.Commands;
+using Aghoosh.Application.Common.BaseUsers.Commands.Handlers;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
@@ -94,6 +97,15 @@ namespace Infrastructure.CrossCutting.Ioc
 
                 services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Operator>, bool>, UserQueryHandlers<Operator>>();
                 services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Member>, bool>, UserQueryHandlers<Member>>();
+
+
+                #endregion
+
+                #region Generic Command Handlers
+
+                services.AddScoped<IRequestHandler<SetUserIsActiveCommand<Member>, CommandResult>, UserCommandHandlers<Member>>();
+                services.AddScoped<IRequestHandler<SetUserIsActiveCommand<Operator>, CommandResult>, UserCommandHandlers<Operator>>();
+
 
 
                 #endregion

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Dtos.Operators;
+using TaskoMask.Web.Common.Helpers;
 
 namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 {
@@ -98,6 +99,22 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
             var cmdResult = await _operatorService.UpdateAsync(input);
             return View(cmdResult, input);
         }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        [IgnoreAntiforgeryToken]
+        public async Task<JavaScriptResult> SetIsActive(string id, bool isActive)
+        {
+            var cmdResult = await _operatorService.SetIsActiveAsync(id, isActive);
+            return AjaxResult(cmdResult);
+
+        }
+
 
 
 

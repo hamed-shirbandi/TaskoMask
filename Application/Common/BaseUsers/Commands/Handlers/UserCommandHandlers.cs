@@ -11,11 +11,14 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Core.Services;
 
 namespace Aghoosh.Application.Common.BaseUsers.Commands.Handlers
 {
     public class UserCommandHandlers<TEntity> : BaseCommandHandler,
-        IRequestHandler<SetUserIsActiveCommand<TEntity>, CommandResult> where TEntity : BaseUser
+        IRequestHandler<SetUserIsActiveCommand<TEntity>, CommandResult>,
+        IRequestHandler<ResetUserPasswordCommand<TEntity>, CommandResult>,
+        IRequestHandler<ChangeUserPasswordCommand<TEntity>, CommandResult> where TEntity : BaseUser
 
     {
         #region Fields
@@ -23,6 +26,7 @@ namespace Aghoosh.Application.Common.BaseUsers.Commands.Handlers
 
         private readonly IUserBaseRepository<TEntity> _userRepository;
         private readonly IMapper _mapper;
+        private readonly IEncryptionService _encryptionService;
 
 
         #endregion
@@ -31,10 +35,11 @@ namespace Aghoosh.Application.Common.BaseUsers.Commands.Handlers
         #region Ctor
 
 
-        public UserCommandHandlers(IUserBaseRepository<TEntity> userRepository, IMapper mapper, IDomainNotificationHandler notifications, IInMemoryBus _inMemoryBu) : base(notifications, _inMemoryBu)
+        public UserCommandHandlers(IUserBaseRepository<TEntity> userRepository, IMapper mapper, IDomainNotificationHandler notifications, IInMemoryBus _inMemoryBu, IEncryptionService encryptionService) : base(notifications, _inMemoryBu)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _encryptionService = encryptionService;
         }
 
 
@@ -64,10 +69,50 @@ namespace Aghoosh.Application.Common.BaseUsers.Commands.Handlers
         }
 
 
-     
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(ResetUserPasswordCommand<TEntity> request, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetByIdAsync(request.Id);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+
+            user.ResetPassword(request.NewPassword,_encryptionService);
+            if (!IsValid(user))
+                return new CommandResult(ApplicationMessages.Update_Failed);
+
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(ChangeUserPasswordCommand<TEntity> request, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetByIdAsync(request.Id);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+
+            user.ChangePassword(request.OldPassword, request.NewPassword, _encryptionService);
+            if (!IsValid(user))
+                return new CommandResult(ApplicationMessages.Update_Failed);
+
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+        }
+
+
+
+
 
         #endregion
 
-        
+
     }
 }

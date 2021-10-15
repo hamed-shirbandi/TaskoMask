@@ -57,6 +57,7 @@ There is a list of our documentation:
       -	In Memory Bus
       -	Cookie Authentication
       -	JWT Authentication
+      -	Role Permission Base User Management
       -	Swagger UI with JWT Support
       -	Combined Validation (Fluent, Data Annotation)
       -	Automatic DB Logger

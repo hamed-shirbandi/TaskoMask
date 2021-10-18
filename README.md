@@ -3,7 +3,7 @@
 </p>
 
 [TaskoMask](http://taskomask.ir/) is an open source .Net project about managing tasks. This project is [online](http://taskomask.ir/) and everyone can use it as a team member or project owner.
-But the main goal of this project is to be an effort to show how can we clearly implement software technologies and patterns by .Net so this can be used by developers how look for a real example project with real challenges.
+But the main goal of this project is to be an effort to show how can we clearly implement software technologies and patterns by .Net so this can be used by developers how look for a real example project with real challenges. Take a look at it's [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki)!
 
 ![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/taskomask-website-1.jpg)
 # Documentation

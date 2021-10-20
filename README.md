@@ -41,8 +41,8 @@ There is a list of our documentation:
       -	Java Script 
       -	JQuery
       -	Bootstrap
-      -	signalr.js
-      -	jquery.noty
+      -	Signalr.js
+      -	Jquery.noty
   * ### Architecture items:
       -	Onion Architecture
       -	DDD

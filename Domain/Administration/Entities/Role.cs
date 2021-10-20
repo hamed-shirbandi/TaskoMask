@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Models;
 namespace TaskoMask.Domain.Administration.Entities
 {
     /// <summary>
-    ///roles to determine operator access level
+    /// Roles to determine operator's access level
     /// </summary>
     public class Role : BaseEntity
     {

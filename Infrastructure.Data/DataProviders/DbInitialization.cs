@@ -58,9 +58,17 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             if (!collections.Has<Member>())
                 dbContext.CreateCollection<Member>();
 
+            if (!collections.Has<Invitation>())
+                dbContext.CreateCollection<Invitation>();
 
             if (!collections.Has<Operator>())
                 dbContext.CreateCollection<Operator>();
+
+            if (!collections.Has<Role>())
+                dbContext.CreateCollection<Role>();
+
+            if (!collections.Has<Permission>())
+                dbContext.CreateCollection<Permission>();
 
         }
 

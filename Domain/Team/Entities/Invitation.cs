@@ -14,10 +14,11 @@ namespace TaskoMask.Domain.Team.Entities
 
         #region Ctors
 
-        public Invitation(string inviterMemberId, string invitedMemberId)
+        public Invitation(string inviterMemberId, string invitedMemberId, string[] boardsId)
         {
             InviterMemberId = inviterMemberId;
             InvitedMemberId = invitedMemberId;
+            BoardsId = boardsId;
         }
 
 
@@ -28,6 +29,11 @@ namespace TaskoMask.Domain.Team.Entities
 
         public string InviterMemberId { get; private set; }
         public string InvitedMemberId { get; private set; }
+
+        /// <summary>
+        /// bords id to give access to invited member
+        /// </summary>
+        public string[] BoardsId { get; private set; }
 
 
         #endregion

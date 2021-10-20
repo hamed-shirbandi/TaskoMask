@@ -1,6 +1,4 @@
 ﻿using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Team.Events;
 
 namespace TaskoMask.Domain.Team.Entities
 {
@@ -16,9 +14,10 @@ namespace TaskoMask.Domain.Team.Entities
 
         #region Ctors
 
-        public Invitation(string displayName, string email,  string password)
+        public Invitation(string inviterMemberId, string invitedMemberId)
         {
-
+            InviterMemberId = inviterMemberId;
+            InvitedMemberId = invitedMemberId;
         }
 
 

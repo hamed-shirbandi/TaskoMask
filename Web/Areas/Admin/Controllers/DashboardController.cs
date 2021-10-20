@@ -39,7 +39,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            var organizationsDetailQueryResult = await _organizationService.GetUserOrganizationsDetailAsync(GetCurrentUserId());
+            var organizationsDetailQueryResult = await _organizationService.GetListWithDetailsByOwnerMemberIdAsync(GetCurrentUserId());
             if (!organizationsDetailQueryResult.IsSuccess)
                 return RedirectToErrorPage(organizationsDetailQueryResult);
 

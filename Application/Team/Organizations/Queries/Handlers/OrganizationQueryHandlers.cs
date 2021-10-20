@@ -18,7 +18,7 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
     public class OrganizationQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
-        IRequestHandler<GetOrganizationsByUserIdQuery, IEnumerable<OrganizationBasicInfoDto>>
+        IRequestHandler<GetOrganizationsByOwnerMemberIdQuery, IEnumerable<OrganizationBasicInfoDto>>
     {
         #region Fields
 
@@ -56,9 +56,9 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<OrganizationBasicInfoDto>> Handle(GetOrganizationsByUserIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<OrganizationBasicInfoDto>> Handle(GetOrganizationsByOwnerMemberIdQuery request, CancellationToken cancellationToken)
         {
-            var organizations = await _organizationRepository.GetListByUserIdAsync(request.UserId);
+            var organizations = await _organizationRepository.GetListByOwnerMemberIdAsync(request.OwnerMemberId);
             return _mapper.Map<IEnumerable<OrganizationBasicInfoDto>>(organizations);
         }
 

@@ -63,7 +63,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(OrganizationInputDto input)
         {
-            input.UserId = GetCurrentUserId();
+            input.OwnerMemberId = GetCurrentUserId();
             var cmdResult = await _organizationService.CreateAsync(input);
             return View(cmdResult, input);
         }

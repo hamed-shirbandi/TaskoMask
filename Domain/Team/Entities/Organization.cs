@@ -14,17 +14,17 @@ namespace TaskoMask.Domain.Team.Entities
 
         #region Ctors
 
-        public Organization(string name, string description, string userId)
+        public Organization(string name, string description, string ownerMemberId)
         {
             Name = name;
             Description = description;
-            UserId = userId;
+            OwnerMemberId = ownerMemberId;
 
             //example of using DomainException
-            if (string.IsNullOrEmpty(UserId))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(userId)));
+            if (string.IsNullOrEmpty(OwnerMemberId))
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(ownerMemberId)));
 
-            AddDomainEvent(new OrganizationCreatedEvent(Id, name, description, userId));
+            AddDomainEvent(new OrganizationCreatedEvent(Id, name, description, ownerMemberId));
 
         }
 
@@ -35,7 +35,7 @@ namespace TaskoMask.Domain.Team.Entities
 
         public string Name { get; private set; }
         public string Description { get; private set; }
-        public string UserId { get; private set; }
+        public string OwnerMemberId { get; private set; }
 
         #endregion
 

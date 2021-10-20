@@ -7,7 +7,7 @@ namespace TaskoMask.Domain.Team.Data
 {
     public interface IOrganizationRepository : IBaseRepository<Organization>
     {
-        Task<IEnumerable<Organization>> GetListByUserIdAsync(string userId);
+        Task<IEnumerable<Organization>> GetListByOwnerMemberIdAsync(string ownerMemberId);
         Task<bool> ExistByNameAsync(string id, string name);
     }
 }

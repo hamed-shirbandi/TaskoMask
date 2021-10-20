@@ -41,7 +41,7 @@ namespace TaskoMask.Application.Team.Organizations.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(OrganizationInputDto input)
         {
-            var cmd = new CreateOrganizationCommand(userId: input.UserId, name: input.Name, description: input.Description);
+            var cmd = new CreateOrganizationCommand(ownerMemberId: input.OwnerMemberId, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
         }
 
@@ -106,9 +106,9 @@ namespace TaskoMask.Application.Team.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetUserOrganizationsDetailAsync(string userId)
+        public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListWithDetailsByOwnerMemberIdAsync(string ownerMemberId)
         {
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByUserIdQuery(userId));
+            var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByOwnerMemberIdQuery(ownerMemberId));
             if (!organizationQueryResult.IsSuccess)
                 return Result.Failure<IEnumerable<OrganizationDetailsViewModel>> (organizationQueryResult.Errors);
 
@@ -142,9 +142,9 @@ namespace TaskoMask.Application.Team.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByUserIdAsync(string userId)
+        public async Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByOwnerMemberIdAsync(string ownerMemberId)
         {
-            return await SendQueryAsync(new GetOrganizationsByUserIdQuery(userId));
+            return await SendQueryAsync(new GetOrganizationsByOwnerMemberIdQuery(ownerMemberId));
         }
 
 

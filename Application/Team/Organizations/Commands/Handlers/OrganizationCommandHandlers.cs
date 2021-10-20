@@ -44,9 +44,9 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             //TODO chck foreign key for all other commands
             //TODO move this type of validations to domain
             //TODO check by repository
-            var existUserId = true;
-            if (!existUserId)
-                throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey, nameof(request.UserId)));
+            var existOwnerMemberId = true;
+            if (!existOwnerMemberId)
+                throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey, nameof(request.OwnerMemberId)));
 
 
 
@@ -57,7 +57,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var organization = new Organization(name: request.Name, description: request.Description, userId: request.UserId);
+            var organization = new Organization(name: request.Name, description: request.Description, ownerMemberId: request.OwnerMemberId);
             if (!IsValid(organization))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 

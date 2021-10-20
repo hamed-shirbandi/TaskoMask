@@ -18,6 +18,6 @@ namespace TaskoMask.Application.Core.Dtos.Organizations
         public string Description { get; set; }
 
         [JsonIgnore]
-        public string UserId { get; set; }
+        public string OwnerMemberId { get; set; }
     }
 }

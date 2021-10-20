@@ -13,9 +13,9 @@ namespace TaskoMask.Application.Team.Organizations.Services
         Task<Result<CommandResult>> CreateAsync(OrganizationInputDto input);
         Task<Result<CommandResult>> UpdateAsync(OrganizationInputDto input);
         Task<Result<OrganizationDetailsViewModel>> GetDetailsAsync(string id);
-        Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetUserOrganizationsDetailAsync(string userId);
+        Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListWithDetailsByOwnerMemberIdAsync(string ownerMemberId);
         Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<OrganizationReportDto>> GetReportAsync(string id);
-        Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByUserIdAsync(string userId);
+        Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByOwnerMemberIdAsync(string ownerMemberId);
     }
 }

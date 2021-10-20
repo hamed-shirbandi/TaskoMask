@@ -5,9 +5,9 @@ using TaskoMask.Domain.Core.Models;
 namespace TaskoMask.Domain.Administration.Entities
 {
     /// <summary>
-    /// operator's role
+    ///roles to determine operator access level
     /// </summary>
-   public class Role : BaseEntity
+    public class Role : BaseEntity
     {
         #region Fields
 
@@ -32,6 +32,8 @@ namespace TaskoMask.Domain.Administration.Entities
 
         public string Name { get; private set; }
         public string Description { get; private set; }
+        public string[] PermissionsId { get; set; }
+
 
         #endregion
 

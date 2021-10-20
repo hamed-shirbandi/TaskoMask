@@ -28,6 +28,7 @@ There is a list of our documentation:
       -	AutoMapper
       -	FluentValidation
       -	StructureMap
+      -	SignalR
       -	Swagger
       -	MsTest
       -	Selenium
@@ -40,6 +41,8 @@ There is a list of our documentation:
       -	Java Script 
       -	JQuery
       -	Bootstrap
+      -	Signalr.js
+      -	Jquery.noty
   * ### Architecture items:
       -	Onion Architecture
       -	DDD
@@ -47,6 +50,7 @@ There is a list of our documentation:
       -	Event Sourcing
       -	Notification
       -	Repository
+      -	CRUD,Anemic Model (for less important subdomains)
       -	Unit Test
       -	UI Test
   * ### Some technical features:

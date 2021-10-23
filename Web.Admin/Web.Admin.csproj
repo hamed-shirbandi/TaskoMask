@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\Operators\" />
+    <Folder Include="Areas\Administration\Views\Permissions\" />
   </ItemGroup>
 
 </Project>

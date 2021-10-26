@@ -18,6 +18,15 @@ namespace TaskoMask.Application.Core.Dtos.Users
         public string Email { get; set; }
 
 
+        [Display(Name = nameof(ApplicationMetadata.PhoneNumber), ResourceType = typeof(ApplicationMetadata))]
+        [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
+        public string PhoneNumber { get; private set; }
+
+
+        [Display(Name = nameof(ApplicationMetadata.UserName), ResourceType = typeof(ApplicationMetadata))]
+        [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
+        public string UserName { get; private set; }
+
 
     }
 

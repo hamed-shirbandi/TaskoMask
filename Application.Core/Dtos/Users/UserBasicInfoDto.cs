@@ -13,5 +13,8 @@ namespace TaskoMask.Application.Core.Dtos.Users
         public CreationTimeDto CreationTime { get; set; }
        
         public string AvatarUrl { get; set; }
+
+        public bool IsActive { get; set; }
+
     }
 }

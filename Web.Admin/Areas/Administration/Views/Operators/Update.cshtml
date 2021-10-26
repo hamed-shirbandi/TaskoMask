@@ -1,0 +1,109 @@
+﻿@model TaskoMask.Application.Core.ViewModels.OperatorDetailViewModel
+@using TaskoMask.Application.Core.Dtos.Users
+ 
+@{
+    ViewBag.Title = "Update operator";
+}
+
+<div class="grid-50 tablet-grid-50 mobile-grid-100">
+    <div class="block">
+        <div class="block-content no-pad">
+            <ul class="tabs">
+                <li class="tab"><a href="#tab-1" class="active">Basic Info</a></li>
+                @if (User.Identity.Name == Model.Operator.UserName)
+                {
+                    <li class="tab"><a href="#tab-2" class="">Change Password</a></li>
+                }
+                @if (true)//TODO check permission
+                {
+                    <li class="tab"><a href="#tab-3" class="">Reset Password</a></li>
+                }
+
+                @if (true)//TODO check permission
+                {
+                    <li class="tab"><a href="#tab-4" class="">Account Setting</a></li>
+                }
+            </ul>
+        </div>
+
+        <div id="tab-1">
+            <div class="block-content">
+                @await Html.PartialAsync("_SaveForm",Model.Operator))
+            </div>
+        </div>
+        @if (User.Identity.Name == Model.Operator.UserName)
+        {
+            <div id="tab-2">
+                <div class="block-content">
+                    @await Html.PartialAsync("_ChangePassword", new UserChangePasswordDto { Id = Model.Operator.Id })
+                </div>
+            </div>
+        }
+
+        @if (true)//check permission
+        {
+            <div id="tab-3">
+                <div class="block-content">
+                    @await Html.PartialAsync("_ResetPassword", new UserResetPasswordDto {Id=Model.Operator.Id })
+                </div>
+            </div>
+        }
+
+
+        @if (true)//check permission
+        {
+            <div id="tab-4">
+                <div class="block-content">
+                    @await Html.PartialAsync("_SetUserIsActive", new User { Id = Model.Operator.Id })
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<div class="grid-50 tablet-grid-50 mobile-grid-100">
+    <div class="block">
+        <div class="block-header">
+            <h4> لیست نقش ها</h4>
+        </div>
+        <div class="block-content  has-table">
+            <div class="table-responsive">
+                <form class="form" asp-action="UpdateRoles" data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post">
+                    <input type="hidden" name="id" value="@Model.Operator.Id" />
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><label>نام نقش</label></th>
+                                <th width="50"><label>مجاز</label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var role in Model.Roles)
+                            {
+                                <tr>
+                                    <td>@role.Text</td>
+                                    <td><input type="checkbox" name="RolesId" value="@role.Value" checked=@(role.Selected == true ? "checked" : null ) /></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <button type="submit" class="btn btn-primary">
+                        ذخیره نقش ها
+                    </button>
+                    <hr />
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+
+}

@@ -43,7 +43,7 @@ namespace TaskoMask.Web.Admin
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=login}/{id?}");
 
             });
         }

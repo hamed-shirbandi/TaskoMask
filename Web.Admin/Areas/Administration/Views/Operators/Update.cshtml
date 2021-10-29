@@ -54,7 +54,7 @@
         {
             <div id="tab-4">
                 <div class="block-content">
-                    @await Html.PartialAsync("_SetUserIsActive", new User { Id = Model.Operator.Id })
+                 
                 </div>
             </div>
         }
@@ -65,7 +65,7 @@
 <div class="grid-50 tablet-grid-50 mobile-grid-100">
     <div class="block">
         <div class="block-header">
-            <h4> لیست نقش ها</h4>
+            <h4> Roles List</h4>
         </div>
         <div class="block-content  has-table">
             <div class="table-responsive">
@@ -74,23 +74,23 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th><label>نام نقش</label></th>
-                                <th width="50"><label>مجاز</label></th>
+                                <th><label> </label></th>
+                                <th width="50"><label></label></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var role in Model.Roles)
                             {
                                 <tr>
-                                    <td>@role.Text</td>
-                                    <td><input type="checkbox" name="RolesId" value="@role.Value" checked=@(role.Selected == true ? "checked" : null ) /></td>
+                                    <td>@role.Name</td>
+                                    <td><input type="checkbox" name="RolesId" value="@role.Id" /></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
 
                     <button type="submit" class="btn btn-primary">
-                        ذخیره نقش ها
+                      Save
                     </button>
                     <hr />
                 </form>

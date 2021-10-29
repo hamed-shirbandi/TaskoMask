@@ -1,7 +1,7 @@
 ﻿@model TaskoMask.Application.Core.Dtos.Operators.OperatorInputDto
 @{
 }
-<form class="form" asp-action="update" data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post">
+<form class="form" asp-action="@ViewContext.RouteData.Values["action"]" data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post">
 
     <fieldset>
         @Html.AntiForgeryToken()

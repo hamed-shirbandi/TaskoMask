@@ -35,7 +35,7 @@ namespace TaskoMask.Web.Controllers
                 Message = message,
             };
 
-            return View(model);
+            return View("KnownError", model);
         }
 
 

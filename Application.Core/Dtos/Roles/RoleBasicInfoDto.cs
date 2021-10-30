@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Application.Core.Dtos.Roles
 {
-    public class RoleBasicInfoDto: BoardBaseDto
+    public class RoleBasicInfoDto: RoleBaseDto
     {
         public CreationTimeDto CreationTime { get; set; }
     }

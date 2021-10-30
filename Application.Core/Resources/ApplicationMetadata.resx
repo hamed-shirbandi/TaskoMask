@@ -189,6 +189,12 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Permission_GroupName" xml:space="preserve">
+    <value>GroupName</value>
+  </data>
+  <data name="Permission_SystemName" xml:space="preserve">
+    <value>SystemName</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>

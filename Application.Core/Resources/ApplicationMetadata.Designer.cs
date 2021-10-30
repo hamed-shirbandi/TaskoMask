@@ -277,6 +277,24 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GroupName.
+        /// </summary>
+        public static string Permission_GroupName {
+            get {
+                return ResourceManager.GetString("Permission_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SystemName.
+        /// </summary>
+        public static string Permission_SystemName {
+            get {
+                return ResourceManager.GetString("Permission_SystemName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone Number.
         /// </summary>
         public static string PhoneNumber {

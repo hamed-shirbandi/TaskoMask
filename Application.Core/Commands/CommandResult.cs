@@ -2,7 +2,7 @@
 {
     public class CommandResult
     {
-        public CommandResult(string message, string id = "")
+        public CommandResult(string message="", string id = "")
         {
             EntityId = id;
             Message = message;

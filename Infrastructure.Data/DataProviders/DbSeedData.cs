@@ -31,7 +31,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                 if (!_operators.AsQueryable().Any())
                 {
-                    var user = new Operator(_configuration["SuperUser:DisplayName"], _configuration["SuperUser:Email"], _configuration["SuperUser:Email"], _configuration["SuperUser:Password"], _encryptionService);
+                    var user = new Operator(_configuration["SuperUser:DisplayName"],"", _configuration["SuperUser:Email"], _configuration["SuperUser:Email"], _configuration["SuperUser:Password"], _encryptionService);
                     _operators.InsertOne(user);
                 }
 

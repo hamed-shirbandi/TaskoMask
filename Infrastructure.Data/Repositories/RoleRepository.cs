@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Administration.Data;
 using TaskoMask.Domain.Administration.Entities;
@@ -44,7 +45,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Role>> GetListByIdAsync(string[] selectedRolesId)
+        public async Task<IEnumerable<Role>> GetListByIdsAsync(string[] selectedRolesId)
         {
             var builders = new List<FilterDefinition<Role>>();
             foreach (var roleId in selectedRolesId)
@@ -53,6 +54,29 @@ namespace TaskoMask.Infrastructure.Data.Repositories
             var filter = Builders<Role>.Filter.Or(builders);
             return await _roles.Find(filter).ToListAsync();
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> CountByPermissionIdAsync(string permissionId)
+        {
+            return await _roles.CountDocumentsAsync(e => e.PermissionsId.Contains(permissionId));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<Role>> GetListByPermissionIdAsync(string permissionId)
+        {
+            return await _roles.Find(r => r.PermissionsId.Contains(permissionId)).ToListAsync();
+        }
+
+
+
 
 
         #endregion

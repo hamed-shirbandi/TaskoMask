@@ -5,7 +5,7 @@
 {
     <div id="no-item-alert-area" class="grid-container">
         <div class="alert alert-info">
-            <h4>هیچ موردی برای نمایش وجود ندارد</h4>
+            <h4>No item to show!</h4>
         </div>
     </div>
 }
@@ -19,7 +19,7 @@ else
                         <th>@Html.LabelFor(model => model.FirstOrDefault().Name)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().CreationTime)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().OperatorsCount)</th>
-                        <th><label>عملیات</label></th>
+                        <th><label></label></th>
                     </tr>
                 </thead>
                 <tbody>

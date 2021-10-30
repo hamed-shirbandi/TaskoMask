@@ -5,6 +5,10 @@ using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Roles;
+using TaskoMask.Web.Common.Filters;
+using TaskoMask.Web.Common.Extensions;
+using TaskoMask.Web.Common.Enums;
+using TaskoMask.Web.Common.Helpers;
 
 namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 {
@@ -21,7 +25,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 
         #region Ctor
 
-        public RolesController(IRoleService roleService , IMapper mapper) : base(mapper)
+        public RolesController(IRoleService roleService, IMapper mapper) : base(mapper)
         {
             _roleService = roleService;
         }
@@ -43,10 +47,6 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 
 
 
-
-
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -63,11 +63,19 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
+        [AjaxOnly]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RoleInputDto input)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.GetErrors();
+                return ScriptBox.ShowMessage(errors, MessageType.error);
+            }
+
             var cmdResult = await _roleService.CreateAsync(input);
-            return View(cmdResult, input);
+            var redirectUrl = $"/administration/roles/update/EntityId";
+            return AjaxResult(cmdResult,redirectUrl: redirectUrl);
         }
 
 
@@ -89,14 +97,35 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
+        [AjaxOnly]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(RoleInputDto input)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.GetErrors();
+                return ScriptBox.ShowMessage(errors, MessageType.error);
+            }
+
             var cmdResult = await _roleService.UpdateAsync(input);
-            return View(cmdResult, input);
+            return AjaxResult(cmdResult);
         }
 
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpPost]
+        [AjaxOnly]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UpdatePermissions(string id, string[] PermissionsId)
+        {
+            var cmdResult = await _roleService.UpdatePermissionsAsync(id, PermissionsId);
+            return AjaxResult(cmdResult);
+        }
 
 
 

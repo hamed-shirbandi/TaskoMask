@@ -1,10 +1,14 @@
-﻿using TaskoMask.Application.Administration.Roles.Services;
+﻿using TaskoMask.Application.Administration.Permissions.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
-using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Roles;
+using TaskoMask.Web.Common.Extensions;
+using TaskoMask.Application.Core.Dtos.Permissions;
+using TaskoMask.Web.Common.Helpers;
+using TaskoMask.Web.Common.Enums;
+using TaskoMask.Web.Common.Filters;
 
 namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 {
@@ -15,21 +19,26 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
     {
         #region Fields
 
-        private readonly IRoleService _roleService;
+        private readonly IPermissionService _permissionService;
+        protected int recordsPerPage;
+        protected int pageSize;
+        protected int totalItemCount;
 
         #endregion
 
         #region Ctor
 
-        public PermissionsController(IRoleService roleService , IMapper mapper) : base(mapper)
+        public PermissionsController(IPermissionService permissionService, IMapper mapper) : base(mapper)
         {
-            _roleService = roleService;
+            _permissionService = permissionService;
+            pageSize = 0;
+            recordsPerPage = 15;
+            totalItemCount = 0;
         }
 
         #endregion
 
         #region Public Methods
-
 
         /// <summary>
         /// 
@@ -37,9 +46,45 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return null;
+            var permissionQueryResult = await _permissionService.SearchAsync(page: 1, recordsPerPage: recordsPerPage, term: "", groupName: "");
+
+            #region ViewBags
+
+            ViewBag.PageSize = permissionQueryResult.Value.PageNumber;
+            ViewBag.CurrentPage = 1;
+            ViewBag.TotalItemCount = permissionQueryResult.Value.TotalCount;
+            ViewBag.GroupName = (await _permissionService.GetGroupedSelectListAsync()).Value.ToMvcSelectList();
+
+            #endregion
+
+            return View(permissionQueryResult);
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [HttpGet]
+        [AjaxOnly]
+        public async Task<IActionResult> Search(int page = 1, string term = "", string groupName = "")
+        {
+            var permissionQueryResult = await _permissionService.SearchAsync(page: page, recordsPerPage: recordsPerPage, term: term, groupName: groupName);
+
+            if (!permissionQueryResult.IsSuccess)
+                return RedirectToErrorPage(permissionQueryResult);
+
+            #region ViewBags
+
+            ViewBag.PageSize = permissionQueryResult.Value.PageNumber;
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalItemCount = permissionQueryResult.Value.TotalCount;
+
+            #endregion
+
+            return PartialView("_ItemList", permissionQueryResult.Value.Items);
+        }
 
 
 
@@ -50,8 +95,9 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpGet]
-        public async Task<ActionResult> Create()
+        public async Task<IActionResult> Create()
         {
+
             return View();
         }
 
@@ -63,10 +109,17 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(RoleInputDto input)
+        [AjaxOnly]
+        public async Task<JavaScriptResult> Create(PermissionInputDto input)
         {
-            return null;
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.GetErrors();
+                return ScriptBox.ShowMessage(errors, MessageType.error);
+            }
 
+            var cmdResult = await _permissionService.CreateAsync(input);
+            return AjaxResult(cmdResult);
         }
 
 
@@ -77,7 +130,9 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            return null;
+            var permissionQueryResult = await _permissionService.GetDetailsAsync(id);
+
+            return View(permissionQueryResult);
 
         }
 
@@ -89,10 +144,17 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(RoleInputDto input)
+        [AjaxOnly]
+        public async Task<JavaScriptResult> Update(PermissionInputDto input)
         {
-            return null;
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.GetErrors();
+                return ScriptBox.ShowMessage(errors, MessageType.error);
+            }
 
+            var cmdResult = await _permissionService.UpdateAsync(input);
+            return AjaxResult(cmdResult);
         }
 
 
@@ -101,12 +163,12 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 
         #endregion
 
+
         #region Private Methods
 
 
 
         #endregion
-
 
     }
 }

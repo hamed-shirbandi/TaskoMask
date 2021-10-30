@@ -1,6 +1,6 @@
 ﻿@model TaskoMask.Application.Core.ViewModels.OperatorDetailViewModel
 @using TaskoMask.Application.Core.Dtos.Users
- 
+
 @{
     ViewBag.Title = "Update operator";
 }
@@ -10,66 +10,45 @@
         <div class="block-content no-pad">
             <ul class="tabs">
                 <li class="tab"><a href="#tab-1" class="active">Basic Info</a></li>
-                @if (User.Identity.Name == Model.Operator.UserName)
-                {
-                    <li class="tab"><a href="#tab-2" class="">Change Password</a></li>
-                }
-                @if (true)//TODO check permission
-                {
-                    <li class="tab"><a href="#tab-3" class="">Reset Password</a></li>
-                }
-
-                @if (true)//TODO check permission
-                {
-                    <li class="tab"><a href="#tab-4" class="">Account Setting</a></li>
-                }
+                <li class="tab"><a href="#tab-2" class="">Change Password</a></li>
+                <li class="tab"><a href="#tab-3" class="">Reset Password</a></li>
+                <li class="tab"><a href="#tab-4" class="">Account Setting</a></li>
             </ul>
         </div>
 
         <div id="tab-1">
             <div class="block-content">
-                @await Html.PartialAsync("_SaveForm",Model.Operator))
+                @await Html.PartialAsync("_SaveForm", Model.Operator))
             </div>
         </div>
-        @if (User.Identity.Name == Model.Operator.UserName)
-        {
-            <div id="tab-2">
-                <div class="block-content">
-                    @await Html.PartialAsync("_ChangePassword", new UserChangePasswordDto { Id = Model.Operator.Id })
-                </div>
+        <div id="tab-2">
+            <div class="block-content">
+                @await Html.PartialAsync("_ChangePassword", new UserChangePasswordDto { Id = Model.Operator.Id })
             </div>
-        }
-
-        @if (true)//check permission
-        {
-            <div id="tab-3">
-                <div class="block-content">
-                    @await Html.PartialAsync("_ResetPassword", new UserResetPasswordDto {Id=Model.Operator.Id })
-                </div>
+        </div>
+        <div id="tab-3">
+            <div class="block-content">
+                @await Html.PartialAsync("_ResetPassword", new UserResetPasswordDto { Id = Model.Operator.Id })
             </div>
-        }
-
-
-        @if (true)//check permission
-        {
-            <div id="tab-4">
-                <div class="block-content">
-                 
-                </div>
+        </div>
+        <div id="tab-4">
+            <div class="block-content">
+                @await Html.PartialAsync("_SetUserIsActive", new TaskoMask.web.Admin.Models.SetUserActiveViewModel(id: Model.Operator.Id, isActive: Model.Operator.IsActive))
             </div>
-        }
-
+        </div>
     </div>
 </div>
 
 <div class="grid-50 tablet-grid-50 mobile-grid-100">
     <div class="block">
         <div class="block-header">
-            <h4> Roles List</h4>
+            <h4> Roles</h4>
         </div>
         <div class="block-content  has-table">
             <div class="table-responsive">
                 <form class="form" asp-action="UpdateRoles" data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post">
+                    @Html.AntiForgeryToken()
+
                     <input type="hidden" name="id" value="@Model.Operator.Id" />
                     <table class="table">
                         <thead>
@@ -90,7 +69,7 @@
                     </table>
 
                     <button type="submit" class="btn btn-primary">
-                      Save
+                        Save Roles
                     </button>
                     <hr />
                 </form>

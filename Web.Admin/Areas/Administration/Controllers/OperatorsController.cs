@@ -1,5 +1,4 @@
 ﻿using TaskoMask.Application.Administration.Operators.Services;
-using TaskoMask.Application.Administration.Roles.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,6 +7,9 @@ using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Dtos.Operators;
 using TaskoMask.Web.Common.Helpers;
 using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Web.Common.Filters;
+using TaskoMask.Web.Common.Enums;
+using TaskoMask.Web.Common.Extensions;
 
 namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 {
@@ -68,11 +70,19 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
+        [AjaxOnly]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(OperatorInputDto input)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.GetErrors();
+                return ScriptBox.ShowMessage(errors, MessageType.error);
+            }
+
             var cmdResult = await _operatorService.CreateAsync(input);
-            return View(cmdResult, input);
+            var redirectUrl = $"/administration/operators/update/EntityId";
+            return AjaxResult(cmdResult, redirectUrl: redirectUrl);
         }
 
 
@@ -94,11 +104,18 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
+        [AjaxOnly]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(OperatorInputDto input)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.GetErrors();
+                return ScriptBox.ShowMessage(errors, MessageType.error);
+            }
+
             var cmdResult = await _operatorService.UpdateAsync(input);
-            return View(cmdResult, input);
+            return AjaxResult(cmdResult);
         }
 
 
@@ -108,11 +125,18 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
+        [AjaxOnly]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(UserResetPasswordDto input)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.GetErrors();
+                return ScriptBox.ShowMessage(errors, MessageType.error);
+            }
+
             var cmdResult = await _operatorService.ResetPasswordAsync(input.Id,input.NewPassword);
-            return View(cmdResult, input);
+            return AjaxResult(cmdResult);
         }
 
 
@@ -121,11 +145,18 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
+        [AjaxOnly]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(UserChangePasswordDto input)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.GetErrors();
+                return ScriptBox.ShowMessage(errors, MessageType.error);
+            }
+
             var cmdResult = await _operatorService.ChangePasswordAsync(input.Id, input.OldPassword, input.NewPassword);
-            return View(cmdResult, input);
+            return AjaxResult(cmdResult);
         }
 
 
@@ -134,6 +165,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
+        [AjaxOnly]
         [IgnoreAntiforgeryToken]
         public async Task<JavaScriptResult> SetIsActive(string id, bool isActive)
         {
@@ -148,16 +180,13 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        [IgnoreAntiforgeryToken]
+        [AjaxOnly]
+        [ValidateAntiForgeryToken]
         public async Task<JavaScriptResult> UpdateRoles(string id, string[]rolesId)
         {
             var cmdResult = await _operatorService.UpdateRolesAsync(id, rolesId);
             return AjaxResult(cmdResult);
         }
-
-
-
-
 
 
 

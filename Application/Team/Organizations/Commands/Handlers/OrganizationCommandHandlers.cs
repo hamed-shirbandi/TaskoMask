@@ -26,7 +26,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
         #region Ctors
 
-        public OrganizationCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
+        public OrganizationCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _organizationRepository = organizationRepository;
         }

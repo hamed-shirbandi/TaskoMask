@@ -12,6 +12,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
     {
         Task<Result<CommandResult>> CreateAsync(RoleInputDto input);
         Task<Result<CommandResult>> UpdateAsync(RoleInputDto input);
+        Task<Result<CommandResult>> UpdatePermissionsAsync(string id, string[]permissionsId);
         Task<Result<RoleDetailViewModel>> GetDetailsAsync(string id);
         Task<Result<RoleBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<IEnumerable<RoleOutputDto>>> GetListAsync();

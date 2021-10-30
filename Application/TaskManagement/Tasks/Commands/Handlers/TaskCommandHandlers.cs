@@ -30,7 +30,7 @@ namespace TaskoMask.Application.TaskManagement.Tasks.Commands.Handlers
 
         #region Ctors
 
-        public TaskCommandHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
+        public TaskCommandHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _taskRepository = taskRepository;
         }

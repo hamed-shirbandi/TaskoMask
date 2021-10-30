@@ -26,7 +26,7 @@ namespace TaskoMask.Application.Team.Projects.Commands.Handlers
 
         #region Ctors
 
-        public ProjectCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
+        public ProjectCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _projectRepository = projectRepository;
         }

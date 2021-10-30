@@ -1,18 +1,19 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
-using TaskoMask.Application.Administration.Operators.Commands.Models;
 using TaskoMask.Application.Core.Dtos.Operators;
-using TaskoMask.Application.Administration.Operators.Queries.Models;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Application.Core.ViewModels;
-using TaskoMask.Application.Administration.Roles.Queries.Models;
 using System.Collections.Generic;
+using TaskoMask.Domain.Administration.Data;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Application.Core.Dtos.Roles;
 
 namespace TaskoMask.Application.Administration.Operators.Services
 {
@@ -20,12 +21,21 @@ namespace TaskoMask.Application.Administration.Operators.Services
     {
         #region Fields
 
+        private readonly IOperatorRepository _operatorRepository;
+        private readonly IEncryptionService _encryptionService;
+        private readonly IRoleRepository _roleRepository;
+
+
         #endregion
 
         #region Ctors
 
-        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
-        { }
+        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IEncryptionService encryptionService, IRoleRepository roleRepository) : base(inMemoryBus, mapper, notifications)
+        {
+            _operatorRepository = operatorRepository;
+            _encryptionService = encryptionService;
+            _roleRepository = roleRepository;
+        }
 
 
         #endregion
@@ -34,14 +44,22 @@ namespace TaskoMask.Application.Administration.Operators.Services
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(OperatorInputDto input)
         {
-            var cmd = new CreateOperatorCommand(displayName: input.DisplayName, email: input.Email, password: input.Password);
-            return await SendCommandAsync(cmd);
+            var existOperator = await _operatorRepository.GetByUserNameAsync(input.Email);
+            if (existOperator != null)
+                return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
+          
+
+            var @operator = new Operator(displayName: input.DisplayName, phoneNumber: input.PhoneNumber, userName: input.UserName, email: input.Email,password:input.Password, encryptionService: _encryptionService);
+
+            await _operatorRepository.CreateAsync(@operator);
+
+            return Result.Success(new CommandResult(id: @operator.Id), ApplicationMessages.Create_Success);
+
         }
 
 
@@ -51,8 +69,19 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(OperatorInputDto input)
         {
-            var cmd = new UpdateOperatorCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
-            return await SendCommandAsync(cmd);
+            var existOperator = await _operatorRepository.GetByUserNameAsync(input.Email);
+            if (existOperator != null && existOperator.Id.ToString() != input.Id)
+                return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
+
+            var @operator = await _operatorRepository.GetByIdAsync(input.Id);
+            if (@operator == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+
+            @operator.Update(input.DisplayName, input.Email, input.Email);
+
+            await _operatorRepository.UpdateAsync(@operator);
+
+            return Result.Success(new CommandResult(id: @operator.Id), ApplicationMessages.Update_Success);
         }
 
 
@@ -62,8 +91,16 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateRolesAsync(string id, string[] rolesId)
         {
-            var cmd = new UpdateOperatorRolesCommand(id, rolesId);
-            return await SendCommandAsync(cmd);
+            var @operator = await _operatorRepository.GetByIdAsync(id);
+            if (@operator == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+
+            @operator.RolesId = rolesId;
+
+            await _operatorRepository.UpdateAsync(@operator);
+
+            return Result.Success(new CommandResult(id: @operator.Id), ApplicationMessages.Update_Success);
+
         }
 
 
@@ -73,7 +110,27 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// </summary>
         public async Task<Result<OperatorBasicInfoDto>> GetByIdAsync(string id)
         {
-            return await SendQueryAsync(new GetOperatorByIdQuery(id));
+            var @operator = await _operatorRepository.GetByIdAsync(id);
+            if (@operator == null)
+                return Result.Failure<OperatorBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+
+            return Result.Success(_mapper.Map<OperatorBasicInfoDto>(@operator));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<OperatorOutputDto>>> GetListAsync()
+        {
+            var operators = await _operatorRepository.GetListAsync();
+            var operatorsDto = _mapper.Map<IEnumerable<OperatorOutputDto>>(operators);
+
+            foreach (var item in operatorsDto)
+                item.RolesCount = item.RolesId.Length;
+
+            return Result.Success(operatorsDto);
         }
 
 
@@ -83,31 +140,19 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// </summary>
         public async Task<Result<OperatorDetailViewModel>> GetDetailsAsync(string id)
         {
-            var operatorQueryResult = await SendQueryAsync(new GetOperatorByIdQuery(id));
-            if (!operatorQueryResult.IsSuccess)
-                return Result.Failure<OperatorDetailViewModel>(operatorQueryResult.Errors);
+            var @operator = await _operatorRepository.GetByIdAsync(id);
+            if (@operator == null)
+                return Result.Failure<OperatorDetailViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
-            var rolesQueryResult = await SendQueryAsync(new SearchRolesQuery(operatorQueryResult.Value.RolesId));
-            if (!rolesQueryResult.IsSuccess)
-                return Result.Failure<OperatorDetailViewModel>(rolesQueryResult.Errors);
+            var roles = await _roleRepository.GetListByIdsAsync(@operator.RolesId);
 
             var model = new OperatorDetailViewModel
             {
-                Operator = operatorQueryResult.Value,
-                Roles = rolesQueryResult.Value,
+                Operator = _mapper.Map<OperatorBasicInfoDto>(@operator),
+                Roles = _mapper.Map<IEnumerable<RoleBasicInfoDto>>(roles),
             };
 
             return Result.Success(model);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<IEnumerable<OperatorBasicInfoDto>>> GetListAsync()
-        {
-            return await SendQueryAsync(new GetOperatorsListQuery());
         }
 
 

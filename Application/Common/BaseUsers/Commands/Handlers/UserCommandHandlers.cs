@@ -13,7 +13,7 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Core.Services;
 
-namespace Aghoosh.Application.Common.BaseUsers.Commands.Handlers
+namespace TaskoMask.Application.Common.BaseUsers.Commands.Handlers
 {
     public class UserCommandHandlers<TEntity> : BaseCommandHandler,
         IRequestHandler<SetUserIsActiveCommand<TEntity>, CommandResult>,

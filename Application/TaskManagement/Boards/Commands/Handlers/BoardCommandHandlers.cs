@@ -27,7 +27,7 @@ namespace TaskoMask.Application.TaskManagement.Boards.Commands.Handlers
         #region Ctors
 
 
-        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IBoardRepository projectRepository, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
+        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IBoardRepository projectRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _boardRepository = boardRepository;
             _projectRepository = projectRepository;

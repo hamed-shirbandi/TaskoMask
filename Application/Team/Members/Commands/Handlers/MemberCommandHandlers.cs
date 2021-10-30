@@ -8,8 +8,6 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Team.Members.Commands.Models;
-using System.Collections.Generic;
-using TaskoMask.Domain.Core.Events;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Team.Entities;
@@ -30,7 +28,7 @@ namespace TaskoMask.Application.Team.Members.Commands.Handlers
         #region Ctors
 
 
-        public MemberCommandHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService, IInMemoryBus _inMemoryBus) : base(notifications, _inMemoryBus)
+        public MemberCommandHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _memberRepository = memberRepository;
             _encryptionService = encryptionService;

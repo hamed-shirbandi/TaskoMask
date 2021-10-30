@@ -135,7 +135,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
 
             var model = new PermissionDetailViewModel
             {
-                Permission = _mapper.Map<PermissionBasicInfoDto>(permission),
+                Permission = _mapper.Map<PermissionInputDto>(permission),
                 Roles = _mapper.Map<IEnumerable<RoleBasicInfoDto>>(roles)
             };
             return Result.Success(model);

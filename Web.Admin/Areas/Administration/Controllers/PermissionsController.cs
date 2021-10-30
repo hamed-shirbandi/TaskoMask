@@ -108,8 +108,8 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [AjaxOnly]
+        [ValidateAntiForgeryToken]
         public async Task<JavaScriptResult> Create(PermissionInputDto input)
         {
             if (!ModelState.IsValid)
@@ -143,8 +143,8 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [AjaxOnly]
+        [ValidateAntiForgeryToken]
         public async Task<JavaScriptResult> Update(PermissionInputDto input)
         {
             if (!ModelState.IsValid)

@@ -11,6 +11,10 @@
         @Html.TextBoxFor(model => model.Name, new { @class = "form-input-1" })
         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "form-message is-error" })
 
+        @Html.LabelFor(model => model.Description)
+        @Html.TextBoxFor(model => model.Description, new { @class = "form-input-1" })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-message is-error" })
+
         <hr />
 
         <button type="submit" class="btn btn-primary">

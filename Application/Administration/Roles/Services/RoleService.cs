@@ -157,7 +157,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
 
             var model = new RoleDetailViewModel
             {
-                Role = _mapper.Map<RoleBasicInfoDto>(role),
+                Role = _mapper.Map<RoleInputDto>(role),
                 Operators = _mapper.Map<IEnumerable<OperatorBasicInfoDto>>(operators),
                 Permissions = permissions.GroupBy(p => p.GroupName)
                     .ToDictionary(p => p.Key, p => p.ToList().Select(d => new SelectListItem

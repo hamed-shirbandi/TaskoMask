@@ -10,6 +10,7 @@ namespace TaskoMask.Application.Mapper.Profiles
         {
             CreateMap<Permission, PermissionBasicInfoDto>();
             CreateMap<Permission, PermissionInputDto>();
+            CreateMap<Permission, PermissionOutputDto>();
             CreateMap<PermissionBasicInfoDto, PermissionInputDto>();
         }
     }

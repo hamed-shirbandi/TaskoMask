@@ -13,7 +13,7 @@ namespace TaskoMask.Application.Core.ViewModels
             Permissions = new Dictionary<string, List<SelectListItem>>();
         }
 
-        public RoleBasicInfoDto Role { get; set; }
+        public RoleInputDto Role { get; set; }
         public IEnumerable<OperatorBasicInfoDto> Operators { get; set; }
         public Dictionary<string, List<SelectListItem>> Permissions { get; set; }
 

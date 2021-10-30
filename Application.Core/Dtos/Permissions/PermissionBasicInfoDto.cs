@@ -11,14 +11,14 @@ namespace TaskoMask.Application.Core.Dtos.Permissions
         public string Id { get; set; }
 
         [Display(Name = nameof(ApplicationMetadata.Name), ResourceType = typeof(ApplicationMetadata))]
-        public string DisplayName { get; protected set; }
+        public string DisplayName { get; set; }
 
 
         [Display(Name = nameof(ApplicationMetadata.Permission_SystemName), ResourceType = typeof(ApplicationMetadata))]
-        public string SystemName { get; protected set; }
+        public string SystemName { get; set; }
 
 
         [Display(Name = nameof(ApplicationMetadata.Permission_GroupName), ResourceType = typeof(ApplicationMetadata))]
-        public string GroupName { get; protected set; }
+        public string GroupName { get; set; }
     }
 }

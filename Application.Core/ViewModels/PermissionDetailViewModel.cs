@@ -8,11 +8,11 @@ namespace TaskoMask.Application.Core.ViewModels
     {
         public PermissionDetailViewModel()
         {
-            Permission = new PermissionBasicInfoDto();
+            Permission = new PermissionInputDto();
             Roles = new List<RoleBasicInfoDto>();
         }
 
-        public PermissionBasicInfoDto Permission { get; set; }
+        public PermissionInputDto Permission { get; set; }
         public IEnumerable<RoleBasicInfoDto> Roles { get; set; }
     }
 }

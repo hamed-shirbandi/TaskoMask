@@ -20,7 +20,7 @@ using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.TaskManagement.Entities;
 using TaskoMask.Application.Common.BaseUsers.Commands.Models;
 using TaskoMask.Application.Core.Commands;
-using Aghoosh.Application.Common.BaseUsers.Commands.Handlers;
+using TaskoMask.Application.Common.BaseUsers.Commands.Handlers;
 
 namespace Infrastructure.CrossCutting.Ioc
 {

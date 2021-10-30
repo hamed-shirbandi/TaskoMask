@@ -31,6 +31,9 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             CreateMap<Member, MemberBasicInfoDto>();
             CreateMap<Operator, OperatorBasicInfoDto>();
+
+            CreateMap<Operator, OperatorOutputDto>();
+
         }
     }
 }

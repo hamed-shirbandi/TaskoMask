@@ -141,6 +141,9 @@
   <data name="Organization" xml:space="preserve">
     <value>Organization</value>
   </data>
+  <data name="Permission" xml:space="preserve">
+    <value>Permission</value>
+  </data>
   <data name="Project" xml:space="preserve">
     <value>Project</value>
   </data>

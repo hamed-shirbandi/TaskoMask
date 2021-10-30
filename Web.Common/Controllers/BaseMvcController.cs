@@ -6,6 +6,7 @@ using TaskoMask.Web.Common.Helpers;
 using TaskoMask.Web.Common.Models;
 using TaskoMask.Web.Common.Enums;
 using TaskoMask.Domain.Core.Services;
+using System;
 
 namespace TaskoMask.Web.Common.Controllers
 {
@@ -72,7 +73,7 @@ namespace TaskoMask.Web.Common.Controllers
         protected JavaScriptResult AjaxResult(Result<CommandResult> cmdResult, bool reloadPage = false, string redirectUrl = "")
         {
             if (!cmdResult.IsSuccess)
-                return ScriptBox.ShowMessage(string.Join("<br/>", cmdResult.Errors.ToArray()), MessageType.error);
+                return ScriptBox.ShowMessage(GetErrorMessageFromCmdResult(cmdResult), MessageType.error);
 
             if (reloadPage)
                 return ScriptBox.ReloadPage();
@@ -175,6 +176,17 @@ namespace TaskoMask.Web.Common.Controllers
                 ViewBag.ErrorMessage = result.Message;
         }
 
+
+
+
+
+        /// <summary>
+        /// Combine message and errors in a html template
+        /// </summary>
+        private string GetErrorMessageFromCmdResult(Result<CommandResult> cmdResult)
+        {
+            return cmdResult.Message + "<br/>" + string.Join("<br/>", cmdResult.Errors.ToArray());
+        }
 
 
         #endregion

@@ -16,9 +16,10 @@ namespace TaskoMask.Domain.Core.Models
 
         #region Ctors
 
-        protected BaseUser(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
+        protected BaseUser(string displayName,string phoneNumber, string email, string userName, string password, IEncryptionService encryptionService)
         {
             DisplayName = displayName;
+            PhoneNumber = phoneNumber;
             Email = email;
             UserName = userName;
             ResetPassword(password, encryptionService);
@@ -36,9 +37,9 @@ namespace TaskoMask.Domain.Core.Models
         public string UserName { get; private set; }
         public string Email { get; private set; }
         public string PhoneNumber { get; private set; }
-        public string PasswordHash { get; set; }
-        public string PasswordSalt { get; set; }
-        public bool IsActive { get; set; }
+        public string PasswordHash { get; private set; }
+        public string PasswordSalt { get; private set; }
+        public bool IsActive { get; private set; }
 
         #endregion
 

@@ -1,5 +1,4 @@
-﻿using TaskoMask.Domain.Administration.Events;
-using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Services;
 
 
@@ -17,10 +16,9 @@ namespace TaskoMask.Domain.Administration.Entities
 
         #region Ctors
 
-        public Operator(string displayName, string email, string userName, string password, IEncryptionService encryptionService)
-        :base(displayName, email, userName, password,encryptionService)
+        public Operator(string displayName,string phoneNumber, string email, string userName, string password, IEncryptionService encryptionService)
+        :base(displayName, phoneNumber, email, userName, password,encryptionService)
         {
-            AddDomainEvent(new OperatorCreatedEvent(Id,DisplayName,Email,UserName));
         }
 
 

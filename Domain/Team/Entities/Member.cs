@@ -17,7 +17,7 @@ namespace TaskoMask.Domain.Team.Entities
         #region Ctors
 
         public Member(string displayName, string email,  string password, IEncryptionService encryptionService)
-        :base(displayName, email, email, password,encryptionService)
+        :base(displayName,"", email, email, password,encryptionService)
         {
             AddDomainEvent(new MemberCreatedEvent(Id,DisplayName,Email,UserName));
         }

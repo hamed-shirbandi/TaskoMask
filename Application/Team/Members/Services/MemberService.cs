@@ -10,6 +10,8 @@ using TaskoMask.Application.Team.Members.Commands.Models;
 using TaskoMask.Application.Team.Members.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Members;
 using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Team.Data;
 
 namespace TaskoMask.Application.Team.Members.Services
 {
@@ -17,11 +19,12 @@ namespace TaskoMask.Application.Team.Members.Services
     {
         #region Fields
 
+
         #endregion
 
         #region Ctors
 
-        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
+        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberRepository memberRepository, IEncryptionService encryptionService) : base(inMemoryBus, mapper, notifications, memberRepository, encryptionService)
         { }
 
 

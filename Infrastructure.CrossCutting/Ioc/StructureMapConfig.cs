@@ -9,8 +9,6 @@ using TaskoMask.Infrastructure.Data.EventSourcing;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Infrastructure.CrossCutting.Bus;
 using TaskoMask.Domain.Core.Events;
-using TaskoMask.Application.Common.BaseEntitiesUsers.Queries.Models;
-using TaskoMask.Application.Common.BaseEntitiesUsers.Queries.Handlers;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Common.BaseEntities.Queries.Models;
 using TaskoMask.Application.Common.BaseEntities.Queries.Handlers;
@@ -18,9 +16,7 @@ using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.TaskManagement.Entities;
-using TaskoMask.Application.Common.BaseUsers.Commands.Models;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Common.BaseUsers.Commands.Handlers;
 
 namespace Infrastructure.CrossCutting.Ioc
 {
@@ -75,35 +71,8 @@ namespace Infrastructure.CrossCutting.Ioc
                 services.AddScoped<IRequestHandler<GetCountQuery<Card>, long>, BaseQueryHandlers<Card>>();
 
 
-                services.AddScoped<IRequestHandler<GetUserByIdQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<GetUserByIdQuery<Member>, UserBasicInfoDto>, UserQueryHandlers<Member>>();
-
-                services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<GetUserByPhoneNumberQuery<Member>, UserBasicInfoDto>, UserQueryHandlers<Member>>();
-
-                services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Operator>, UserBasicInfoDto>, UserQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<GetUserByUserNameQuery<Member>, UserBasicInfoDto>, UserQueryHandlers<Member>>();
-
-                services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Operator>, bool>, UserQueryHandlers<Operator>>();
-                services.AddScoped<IRequestHandler<ValidateUserPasswordQuery<Member>, bool>, UserQueryHandlers<Member>>();
-
-
                 #endregion
 
-                #region Generic Command Handlers
-
-                services.AddScoped<IRequestHandler<SetUserIsActiveCommand<Member>, CommandResult>, UserCommandHandlers<Member>>();
-                services.AddScoped<IRequestHandler<SetUserIsActiveCommand<Operator>, CommandResult>, UserCommandHandlers<Operator>>();
-
-                services.AddScoped<IRequestHandler<ChangeUserPasswordCommand<Member>, CommandResult>, UserCommandHandlers<Member>>();
-                services.AddScoped<IRequestHandler<ChangeUserPasswordCommand<Operator>, CommandResult>, UserCommandHandlers<Operator>>();
-
-
-                services.AddScoped<IRequestHandler<ResetUserPasswordCommand<Member>, CommandResult>, UserCommandHandlers<Member>>();
-                services.AddScoped<IRequestHandler<ResetUserPasswordCommand<Operator>, CommandResult>, UserCommandHandlers<Operator>>();
-
-
-                #endregion
 
             });
 

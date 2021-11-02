@@ -1,14 +1,16 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Common.BaseEntitiesUsers.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Users;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.BaseEntities.Services;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Common.BaseUsers.Commands.Models;
+using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Core.Data;
+using TaskoMask.Application.Core.Resources;
+using TaskoMask.Domain.Core.Resources;
 
 namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
 {
@@ -16,12 +18,18 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
     {
         #region Fields
 
+        private readonly IUserBaseRepository<TEntity> _userRepository;
+        private readonly IEncryptionService _encryptionService;
+
         #endregion
 
         #region Ctors
 
-        public BaseUserService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
-        { }
+        public BaseUserService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IUserBaseRepository<TEntity> userRepository, IEncryptionService encryptionService) : base(inMemoryBus, mapper, notifications)
+        {
+            _userRepository = userRepository;
+            _encryptionService = encryptionService;
+        }
 
 
         #endregion
@@ -36,7 +44,11 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// </summary>
         public async Task<Result<UserBasicInfoDto>> GetBaseUserByIdAsync(string id)
         {
-            return await SendQueryAsync(new GetUserByIdQuery<TEntity>(id));
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null)
+                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
         }
 
 
@@ -46,7 +58,11 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// </summary>
         public async Task<Result<UserBasicInfoDto>> GetBaseUserByUserNameAsync(string userName)
         {
-            return await SendQueryAsync(new GetUserByUserNameQuery<TEntity>(userName));
+            var user = await _userRepository.GetByUserNameAsync(userName);
+            if (user == null)
+                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
         }
 
 
@@ -55,7 +71,11 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// </summary>
         public async Task<Result<UserBasicInfoDto>> GetBaseUserByPhoneNumberAsync(string phoneNumber)
         {
-            return await SendQueryAsync(new GetUserByPhoneNumberQuery<TEntity>(phoneNumber));
+            var user = await _userRepository.GetByPhoneNumberAsync(phoneNumber);
+            if (user == null)
+                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
         }
 
 
@@ -66,8 +86,12 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// </summary>
         public async Task<Result<bool>> ValidateUserPasswordAsync(string userName, string password)
         {
-            var query = new ValidateUserPasswordQuery<TEntity>(userName, password);
-            return await SendQueryAsync(query);
+            var user = await _userRepository.GetByUserNameAsync(userName);
+            if (user == null)
+                return Result.Failure<bool>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            var isValid = user.ValidatePassword(password, _encryptionService);
+            return Result.Success(isValid);
         }
 
 
@@ -77,7 +101,16 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// </summary>
         public async Task<Result<CommandResult>> SetIsActiveAsync(string id, bool isActive)
         {
-            return await SendCommandAsync<SetUserIsActiveCommand<TEntity>>(new(id, isActive));
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            user.SetActive(isActive);
+
+            await _userRepository.UpdateAsync(user);
+
+            return Result.Success(new CommandResult(id: user.Id), ApplicationMessages.Update_Success);
+
         }
 
 
@@ -87,7 +120,19 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// </summary>
         public async Task<Result<CommandResult>> ChangePasswordAsync(string id, string oldPassword, string newPassword)
         {
-            return await SendCommandAsync<ChangeUserPasswordCommand<TEntity>>(new(id, oldPassword,newPassword));
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            var validOldPass = await ValidateUserPasswordAsync(user.UserName, oldPassword);
+            if (validOldPass.IsSuccess == false || validOldPass.Value == false)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.User_Login_failed, DomainMetadata.User));
+
+            user.ResetPassword(newPassword, _encryptionService);
+
+            await _userRepository.UpdateAsync(user);
+
+            return Result.Success(new CommandResult(id: user.Id), ApplicationMessages.Update_Success);
         }
 
 
@@ -97,7 +142,15 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
         /// </summary>
         public async Task<Result<CommandResult>> ResetPasswordAsync(string id, string newPassword)
         {
-            return await SendCommandAsync<ResetUserPasswordCommand<TEntity>>(new(id, newPassword));
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            user.ResetPassword(newPassword, _encryptionService);
+
+            await _userRepository.UpdateAsync(user);
+
+            return Result.Success(new CommandResult(id: user.Id), ApplicationMessages.Update_Success);
         }
 
 

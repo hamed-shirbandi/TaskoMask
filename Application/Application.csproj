@@ -32,7 +32,5 @@
     <Folder Include="Team\Projects\EventHandlers\" />
     <Folder Include="TaskManagement\Tasks\Commands\Validations\" />
     <Folder Include="TaskManagement\Tasks\EventHandlers\" />
-    <Folder Include="Common\BaseUsers\Commands\Validations\" />
-    <Folder Include="Common\BaseUsers\EventHandlers\" />
   </ItemGroup>
 </Project>

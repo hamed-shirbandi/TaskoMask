@@ -11,7 +11,8 @@ namespace TaskoMask.Application.Mapper.Profiles
         {
             CreateMap<Role, RoleBasicInfoDto>();
             CreateMap<Role, RoleInputDto>();
-            CreateMap<RoleBasicInfoDto, RoleInputDto>();
+            CreateMap<Role, RoleOutputDto>();
+            CreateMap<RoleBasicInfoDto, RoleInputDto>(); 
         }
     }
 }

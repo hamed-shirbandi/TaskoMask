@@ -20,6 +20,7 @@ namespace TaskoMask.Application.Core.Dtos.Roles
         public string Description { get;  set; }
 
 
+        [Display(Name = nameof(ApplicationMetadata.PermissionsId), ResourceType = typeof(ApplicationMetadata))]
         public string[] PermissionsId { get; set; }
 
 

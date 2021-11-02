@@ -47,6 +47,10 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<IEnumerable<Role>> GetListByIdsAsync(string[] selectedRolesId)
         {
+
+            if (selectedRolesId == null || selectedRolesId.Any() == false)
+                return new List<Role>();
+
             var builders = new List<FilterDefinition<Role>>();
             foreach (var roleId in selectedRolesId)
                 builders.Add(Builders<Role>.Filter.Where(p => p.Id == roleId));

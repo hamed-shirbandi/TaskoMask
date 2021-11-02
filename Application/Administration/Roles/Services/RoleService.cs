@@ -152,7 +152,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
 
 
             var operators = await _operatorRepository.GetListByRoleIdAsync(id);
-            var permissions = await _permissionRepository.GetListByIdsAsync(role.PermissionsId);
+            var permissions = await _permissionRepository.GetListAsync();
 
 
             var model = new RoleDetailViewModel
@@ -162,10 +162,10 @@ namespace TaskoMask.Application.Administration.Roles.Services
                 Permissions = permissions.GroupBy(p => p.GroupName)
                     .ToDictionary(p => p.Key, p => p.ToList().Select(d => new SelectListItem
                     {
-                        Selected = role.PermissionsId.Contains(d.Id),
+                        Selected = role.PermissionsId != null && role.PermissionsId.Contains(d.Id),
                         Text = d.DisplayName,
                         Value = d.Id,
-                    }).ToList()),
+                    }).AsEnumerable()),
             };
 
             return Result.Success(model);

@@ -22,41 +22,7 @@
             <h4>Operators</h4>
         </div>
         <div class="block-content has-table">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>@Html.LabelFor(model => model.Operators.FirstOrDefault().DisplayName)</th>
-                            <th>@Html.LabelFor(model => model.Operators.FirstOrDefault().RolesId)</th>
-                            <th><label></label></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Operators)
-                        {
-
-                            <tr data-table-row-id="@item.Id">
-                                <td>
-                                    @item.DisplayName
-                                </td>
-                                <td>
-                                    @item.RolesId.Count()
-                                </td>
-
-                                <td>
-                                    <div class="btn-group-xs">
-                                        <a href="@Url.Action( "update","operators", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-
-                    </tbody>
-                </table>
-            </div>
-
+            @await Html.PartialAsync("_Operators", Model.Operators)
         </div>
     </div>
 </div>
@@ -67,45 +33,7 @@
             <h4>Permissions</h4>
         </div>
         <div class="block-content has-table">
-            <div class="table-responsive">
-                <form class="form" asp-action="UpdatePermissions" data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post">
-
-                    @Html.AntiForgeryToken()
-
-                    <input type="hidden" name="id" value="@Model.Role.Id" />
-
-                    @foreach (var group in Model.Permissions)
-                    {
-                        <div class="alert alert-info no-pad-tb">
-                            <h3>@group.Key</h3>
-                        </div>
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th><label></label></th>
-                                    <th width="50"><label></label></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var permission in group.Value)
-                                {
-                                    <tr>
-                                        <td>@permission.Text</td>
-                                        <td><input type="checkbox" name="PermissionsId" value="@permission.Value" checked=@(permission.Selected == true ? "checked" : null ) /></td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    }
-
-                    <button type="submit" class="btn btn-primary">
-                        Save Permissions
-                    </button>
-                    <hr />
-                </form>
-
-            </div>
-
+            @await Html.PartialAsync("_UpdatePermissions", Model)
         </div>
     </div>
 </div>

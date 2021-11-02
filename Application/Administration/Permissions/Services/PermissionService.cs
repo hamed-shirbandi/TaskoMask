@@ -94,18 +94,6 @@ namespace TaskoMask.Application.Administration.Permissions.Services
 
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<long>> CountAsync()
-        {
-            var permissionsCount = await _permissionRepository.CountAsync();
-            return Result.Success(permissionsCount);
-        }
-
-
-
         /// <summary>
         /// 
         /// </summary>

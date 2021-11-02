@@ -93,8 +93,8 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var role = await _operatorService.GetDetailsAsync(id);
-            return View(role);
+            var @operator = await _operatorService.GetDetailsAsync(id);
+            return View(@operator);
         }
 
 
@@ -108,6 +108,9 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(OperatorInputDto input)
         {
+            ModelState.Remove(nameof(OperatorInputDto.Password));
+            ModelState.Remove(nameof(OperatorInputDto.ConfirmPassword));
+
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.GetErrors();
@@ -170,7 +173,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         public async Task<JavaScriptResult> SetIsActive(string id, bool isActive)
         {
             var cmdResult = await _operatorService.SetIsActiveAsync(id, isActive);
-            return AjaxResult(cmdResult);
+            return AjaxResult(cmdResult,reloadPage:true);
 
         }
 

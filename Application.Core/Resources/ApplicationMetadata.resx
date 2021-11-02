@@ -180,6 +180,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="OperatorsCount" xml:space="preserve">
+    <value>Operators Count</value>
+  </data>
   <data name="OrganizationId" xml:space="preserve">
     <value>OrganizationId</value>
   </data>
@@ -188,6 +191,12 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PermissionsCount" xml:space="preserve">
+    <value>Permissions Count</value>
+  </data>
+  <data name="PermissionsId" xml:space="preserve">
+    <value>Permissions Count</value>
   </data>
   <data name="Permission_GroupName" xml:space="preserve">
     <value>GroupName</value>
@@ -209,6 +218,12 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>{0} is required</value>
+  </data>
+  <data name="RolesCount" xml:space="preserve">
+    <value>Roles Count</value>
+  </data>
+  <data name="RolesId" xml:space="preserve">
+    <value>Roles Count</value>
   </data>
   <data name="TasksCount" xml:space="preserve">
     <value>Tasks Count</value>

@@ -21,6 +21,7 @@ else
                         <th>@Html.LabelFor(model => model.FirstOrDefault().UserName)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().RolesId)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().IsActive)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().CreationTime.CreateDateTimeString)</th>
                         <th><label></label></th>
                     </tr>
                 </thead>
@@ -28,19 +29,20 @@ else
                     @foreach (var item in Model)
                     {
 
-                        <tr data-table-row-id="@item.Id">
-                            <td> @item.DisplayName </td>
-                            <td> @item.UserName </td>
-                            <td> @item.RolesId.Count() </td>
-                            <td> @(item.IsActive?"active":"inactive") </td>
-                            <td>
-                                <div class="btn-group-xs">
-                                    <a href="@Url.Action( "update", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                    <tr data-table-row-id="@item.Id">
+                        <td> @item.DisplayName </td>
+                        <td> @item.UserName </td>
+                        <td> @item.RolesId.Count() </td>
+                        <td> @(item.IsActive?"active":"inactive") </td>
+                        <td> @item.CreationTime.CreateDateTimeString </td>
+                        <td>
+                            <div class="btn-group-xs">
+                                <a href="@Url.Action( "update", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
                     }
 
                 </tbody>

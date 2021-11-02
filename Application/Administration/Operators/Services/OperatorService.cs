@@ -14,6 +14,7 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Dtos.Roles;
+using System.Linq;
 
 namespace TaskoMask.Application.Administration.Operators.Services
 {
@@ -52,9 +53,9 @@ namespace TaskoMask.Application.Administration.Operators.Services
             var existOperator = await _operatorRepository.GetByUserNameAsync(input.Email);
             if (existOperator != null)
                 return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
-          
 
-            var @operator = new Operator(displayName: input.DisplayName, phoneNumber: input.PhoneNumber, userName: input.UserName, email: input.Email,password:input.Password, encryptionService: _encryptionService);
+
+            var @operator = new Operator(displayName: input.DisplayName, phoneNumber: input.PhoneNumber, userName: input.UserName, email: input.Email, password: input.Password, encryptionService: _encryptionService);
 
             await _operatorRepository.CreateAsync(@operator);
 
@@ -144,12 +145,17 @@ namespace TaskoMask.Application.Administration.Operators.Services
             if (@operator == null)
                 return Result.Failure<OperatorDetailViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
-            var roles = await _roleRepository.GetListByIdsAsync(@operator.RolesId);
+            var roles = await _roleRepository.GetListAsync();
 
             var model = new OperatorDetailViewModel
             {
-                Operator = _mapper.Map<OperatorBasicInfoDto>(@operator),
-                Roles = _mapper.Map<IEnumerable<RoleBasicInfoDto>>(roles),
+                Operator = _mapper.Map<OperatorInputDto>(@operator),
+                Roles = roles.Select(role => new SelectListItem
+                {
+                    Selected = @operator.RolesId != null && @operator.RolesId.Contains(role.Id),
+                    Text = role.Name,
+                    Value = role.Id,
+                }).AsEnumerable(),
             };
 
             return Result.Success(model);

@@ -20,13 +20,15 @@ namespace TaskoMask.Application.Core.Dtos.Users
 
         [Display(Name = nameof(ApplicationMetadata.PhoneNumber), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public string PhoneNumber { get; private set; }
+        public string PhoneNumber { get; set; }
 
 
         [Display(Name = nameof(ApplicationMetadata.UserName), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public string UserName { get; private set; }
+        public string UserName { get; set; }
 
+
+        public bool IsActive { get; set; }
 
     }
 

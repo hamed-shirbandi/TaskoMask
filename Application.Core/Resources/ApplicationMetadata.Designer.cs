@@ -250,6 +250,15 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operators Count.
+        /// </summary>
+        public static string OperatorsCount {
+            get {
+                return ResourceManager.GetString("OperatorsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OrganizationId.
         /// </summary>
         public static string OrganizationId {
@@ -295,6 +304,24 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permissions Count.
+        /// </summary>
+        public static string PermissionsCount {
+            get {
+                return ResourceManager.GetString("PermissionsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permissions Count.
+        /// </summary>
+        public static string PermissionsId {
+            get {
+                return ResourceManager.GetString("PermissionsId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone Number.
         /// </summary>
         public static string PhoneNumber {
@@ -336,6 +363,24 @@ namespace TaskoMask.Application.Core.Resources {
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roles Count.
+        /// </summary>
+        public static string RolesCount {
+            get {
+                return ResourceManager.GetString("RolesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roles Count.
+        /// </summary>
+        public static string RolesId {
+            get {
+                return ResourceManager.GetString("RolesId", resourceCulture);
             }
         }
         

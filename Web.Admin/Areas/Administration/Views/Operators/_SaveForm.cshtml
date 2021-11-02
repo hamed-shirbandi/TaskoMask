@@ -1,7 +1,8 @@
 ﻿@model TaskoMask.Application.Core.Dtos.Operators.OperatorInputDto
 @{
+    var actionName = ViewContext.RouteData.Values["action"].ToString();
 }
-<form class="form" asp-action="@ViewContext.RouteData.Values["action"]" data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post">
+<form class="form" asp-action="@actionName" data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post">
 
     <fieldset>
         @Html.AntiForgeryToken()
@@ -12,6 +13,7 @@
         @Html.LabelFor(model => model.DisplayName)
         @Html.TextBoxFor(model => model.DisplayName, new { @class = "form-input-1" })
         @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "form-message is-error" })
+
 
         @Html.LabelFor(model => model.PhoneNumber)
         @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-input-1" })
@@ -24,10 +26,22 @@
         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-message is-error" })
 
 
+
         @Html.LabelFor(model => model.UserName)
         @Html.TextBoxFor(model => model.UserName, new { @class = "form-input-1" })
         @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "form-message is-error" })
 
+
+        @if (actionName.ToLower() == "Create")
+        {
+            @Html.LabelFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password, new { @class = "form-input-1" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "form-message is-error" })
+
+            @Html.LabelFor(model => model.ConfirmPassword)
+            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-input-1" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "form-message is-error" })
+        }
 
 
         <hr />

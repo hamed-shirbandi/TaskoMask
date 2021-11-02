@@ -2,21 +2,20 @@
 
 @if (Model.IsActive)
 {
-<div class="alert alert-warning">
-    This user is currently active and can log in to the panel
-    <a data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post" href="@Url.Action( "SetIsActive", new { id = Model.Id, isActive = false }) " data-ajax-confirm="you sure about that?" class=" btn btn-danger">
-        Inactivate
-    </a>
-</div>
+    <div class="alert alert-warning">
+        <a data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post" href="@Url.Action( "SetIsActive", new { id = Model.Id, isActive = false }) " data-ajax-confirm="you sure about that?" class=" btn btn-danger">
+            Inactivate
+        </a>
+        This user is currently active and can log in to the panel
+    </div>
 }
 else
 {
-<div class="alert alert-warning">
-    This user is currently active and can log in to the panel
-
-    <a data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post" href="@Url.Action( "SetIsActive", new { id = Model.Id, isActive = true }) " data-ajax-confirm="you sure about that?" class=" btn btn-success">
-        Activate
-    </a>
-</div>
+    <div class="alert alert-warning">
+        <a data-ajax="true" data-ajax-loading="#global-ajax-loading" data-ajax-method="Post" href="@Url.Action( "SetIsActive", new { id = Model.Id, isActive = true }) " data-ajax-confirm="you sure about that?" class=" btn btn-success">
+            Activate
+        </a>
+        This user is currently active and can log in to the panel
+    </div>
 }
 

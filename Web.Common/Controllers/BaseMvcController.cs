@@ -92,18 +92,20 @@ namespace TaskoMask.Web.Common.Controllers
         /// </summary>
         protected IActionResult View<T>(Result<CommandResult> result, T model)
         {
+            //to define ViewBag messages before return view
             CreateMessageViewBags(result);
 
             return View(model);
         }
 
-         
+
 
         /// <summary>
         /// use this when a http post call made the query request
         /// </summary>
-        protected IActionResult View<T,E>(Result<T> result, E model)
+        protected IActionResult View<T, E>(Result<T> result, E model)
         {
+            //to define ViewBag messages before return view
             CreateMessageViewBags(result);
 
             return View(model);
@@ -127,6 +129,7 @@ namespace TaskoMask.Web.Common.Controllers
 
 
 
+
         /// <summary>
         /// return mapped data to view if result is success
         /// return redirect to error page if result is failed
@@ -140,6 +143,18 @@ namespace TaskoMask.Web.Common.Controllers
             return View(model);
         }
 
+
+        /// <summary>
+        /// return RedirectToAction if result is success
+        /// return redirect to error page if result is failed
+        /// </summary>
+        protected IActionResult RedirectToAction<T>(Result<T> queryResult, string actionName, string controllerName, object routeValues=null)
+        {
+            if (!queryResult.IsSuccess)
+                return RedirectToErrorPage(queryResult);
+
+            return RedirectToAction(actionName, controllerName, routeValues);
+        }
 
 
         /// <summary>

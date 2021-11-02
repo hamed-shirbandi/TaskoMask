@@ -5,6 +5,11 @@ using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Web.Admin.Area.Admin.Models;
+using TaskoMask.Application.Team.Members.Services;
+using TaskoMask.Application.Team.Projects.Services;
+using TaskoMask.Application.TaskManagement.Tasks.Services;
+using TaskoMask.Application.TaskManagement.Boards.Services;
 
 namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 {
@@ -15,15 +20,22 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         #region Fields
 
         private readonly IOrganizationService _organizationService;
-
+        private readonly IProjectService _projectService;
+        private readonly ITaskService _taskService;
+        private readonly IBoardService _boardService;
+        private readonly IMemberService _memberService;
 
         #endregion
 
         #region Ctors
 
-        public DashboardController(IOrganizationService organizationService, IMapper mapper, IAuthenticatedUserService authenticatedUserService) : base(mapper, authenticatedUserService)
+        public DashboardController(IOrganizationService organizationService, IMapper mapper, IAuthenticatedUserService authenticatedUserService, IProjectService projectService, ITaskService taskService, IBoardService boardService, IMemberService memberService) : base(mapper, authenticatedUserService)
         {
             _organizationService = organizationService;
+            _projectService = projectService;
+            _taskService = taskService;
+            _boardService = boardService;
+            _memberService = memberService;
         }
 
         #endregion
@@ -38,8 +50,15 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            
-            return View();
+            var model = new DashboardIndexViewModel
+            {
+                OrganizationsCount = (await _organizationService.CountAsync()).Value,
+                ProjectsCount = (await _projectService.CountAsync()).Value,
+                BoardsCount = (await _boardService.CountAsync()).Value,
+                TasksCount = (await _taskService.CountAsync()).Value,
+                MembersCount = (await _memberService.CountAsync()).Value,
+            };
+            return View(model);
         }
 
 

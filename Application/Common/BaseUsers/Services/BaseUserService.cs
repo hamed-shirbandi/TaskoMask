@@ -91,6 +91,9 @@ namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
                 return Result.Failure<bool>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
 
             var isValid = user.ValidatePassword(password, _encryptionService);
+            if (!isValid)
+                return Result.Failure<bool>(message: ApplicationMessages.User_Login_failed);
+
             return Result.Success(isValid);
         }
 

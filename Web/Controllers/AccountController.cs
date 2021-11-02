@@ -77,8 +77,8 @@ namespace TaskoMask.Web.Controllers
 
             //validate user password
             var validateQueryResult = await _memberService.ValidateUserPasswordAsync(input.Email, input.Password);
-            if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
-                return View(userQueryResult, input);
+            if (!validateQueryResult.IsSuccess)
+                return View(validateQueryResult, input);
 
             var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
             await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.RememberMe);

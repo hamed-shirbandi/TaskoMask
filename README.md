@@ -28,7 +28,6 @@ There is a list of our documentation:
   * ### Back-end important tools:
       - .Net 5 
       - C#
-      - Blazor (soon)
       - ASP.NET Web API
       - ASP.NET MVC
       -	MongoDB
@@ -45,6 +44,7 @@ There is a list of our documentation:
       -	[RedisCache.Core](https://www.nuget.org/packages/RedisCache.Core/)
       -	[DbLogger.Core](https://www.nuget.org/packages/DbLogger.Core/)
   * ### Front-end important tools:
+      - Blazor (soon)
       -	.HTML
       -	CSS
       -	Java Script 
@@ -53,7 +53,7 @@ There is a list of our documentation:
       -	Signalr.js
       -	Jquery.noty
       -	Chart.js
-  * ### Architecture items:
+  * ### Patterns, Methodologies، Approaches:
       -	Onion Architecture
       -	DDD
       -	CQRS

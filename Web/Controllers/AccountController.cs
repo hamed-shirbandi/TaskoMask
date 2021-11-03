@@ -8,6 +8,7 @@ using TaskoMask.Application.Team.Members.Services;
 using DNTCaptcha.Core;
 using TaskoMask.Domain.Core.Models;
 using AutoMapper;
+using TaskoMask.Application.Core.Dtos.Members;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -119,13 +120,25 @@ namespace TaskoMask.Web.Controllers
         [ValidateDNTCaptcha(ErrorMessage = "Please enter the text inside the image numerically",
                     CaptchaGeneratorLanguage = Language.English,
                     CaptchaGeneratorDisplayMode = DisplayMode.NumberToWord)]
-        public async Task<IActionResult> Register(UserInputDto input)
+        public async Task<IActionResult> Register(MemberRegisterDto input)
         {
+            ModelState.Remove(nameof(UserInputDto.UserName));
             if (!ModelState.IsValid)
                 return View(input);
 
             var cmdResult = await _memberService.CreateAsync(input);
-            return View(cmdResult, input);
+            if (!cmdResult.IsSuccess)
+                return View(cmdResult, input);
+
+            var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
+            if (!userQueryResult.IsSuccess)
+                return View(userQueryResult, input);
+
+            var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
+            await _cookieAuthenticationService.SignInAsync(user, isPersistent: false);
+
+            return RedirectToLocal();
+
         }
 
 
@@ -150,7 +163,7 @@ namespace TaskoMask.Web.Controllers
         /// <summary>
         /// 
         /// </summary>
-        private IActionResult RedirectToLocal(string returnUrl)
+        private IActionResult RedirectToLocal(string returnUrl="")
         {
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);

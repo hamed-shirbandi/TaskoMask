@@ -144,18 +144,7 @@ namespace TaskoMask.Web.Common.Controllers
         }
 
 
-        /// <summary>
-        /// return RedirectToAction if result is success
-        /// return redirect to error page if result is failed
-        /// </summary>
-        protected IActionResult RedirectToAction<T>(Result<T> queryResult, string actionName, string controllerName, object routeValues=null)
-        {
-            if (!queryResult.IsSuccess)
-                return RedirectToErrorPage(queryResult);
-
-            return RedirectToAction(actionName, controllerName, routeValues);
-        }
-
+      
 
         /// <summary>
         /// 

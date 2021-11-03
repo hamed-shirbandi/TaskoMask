@@ -8,6 +8,7 @@ using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.JwtAuthentication;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Application.Core.Dtos.Members;
 
 namespace TaskoMask.Web.Api.Controllers
 {
@@ -73,7 +74,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPost]
         [Route("account/register")]
-        public async Task<Result<CommandResult>> Register(UserInputDto input)
+        public async Task<Result<CommandResult>> Register(MemberRegisterDto input)
         {
             return await _memberService.CreateAsync(input);
         }

@@ -9,7 +9,7 @@ namespace TaskoMask.Application.Team.Members.Services
 {
     public interface IMemberService : IBaseUserService
     {
-        Task<Result<CommandResult>> CreateAsync(UserInputDto input);
+        Task<Result<CommandResult>> CreateAsync(MemberRegisterDto input);
         Task<Result<CommandResult>> UpdateAsync(UserInputDto input);
         Task<Result<MemberBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<bool>> ValidateUserPasswordAsync(string userName,string password);

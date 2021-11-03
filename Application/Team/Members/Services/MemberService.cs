@@ -38,7 +38,7 @@ namespace TaskoMask.Application.Team.Members.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(UserInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(MemberRegisterDto input)
         {
             var cmd = new CreateMemberCommand(displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);

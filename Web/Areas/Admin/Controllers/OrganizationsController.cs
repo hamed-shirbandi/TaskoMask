@@ -65,7 +65,10 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         {
             input.OwnerMemberId = GetCurrentUserId();
             var cmdResult = await _organizationService.CreateAsync(input);
-            return RedirectToAction(cmdResult, actionName:"index",controllerName:"dashboard");
+            if (!cmdResult.IsSuccess)
+                return View(cmdResult, input);
+
+            return RedirectToAction(actionName:"index",controllerName:"dashboard");
         }
 
 

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Dtos.Team.Organizations;
 using TaskoMask.Domain.Team.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
@@ -10,8 +10,8 @@ namespace TaskoMask.Application.Mapper.Profiles
         {
 
             CreateMap<Organization, OrganizationBasicInfoDto>();
-            CreateMap<Organization, OrganizationInputDto>();
-            CreateMap<OrganizationBasicInfoDto, OrganizationInputDto>();
+            CreateMap<Organization, OrganizationUpsertDto>();
+            CreateMap<OrganizationBasicInfoDto, OrganizationUpsertDto>();
 
         }
     }

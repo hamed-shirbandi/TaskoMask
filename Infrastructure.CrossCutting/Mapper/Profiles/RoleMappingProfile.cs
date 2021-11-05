@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Boards;
-using TaskoMask.Application.Core.Dtos.Roles;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Boards;
+using TaskoMask.Application.Core.Dtos.Administration.Roles;
 using TaskoMask.Domain.Administration.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
@@ -10,9 +10,9 @@ namespace TaskoMask.Application.Mapper.Profiles
         public RoleMappingProfile()
         {
             CreateMap<Role, RoleBasicInfoDto>();
-            CreateMap<Role, RoleInputDto>();
+            CreateMap<Role, RoleUpsertDto>();
             CreateMap<Role, RoleOutputDto>();
-            CreateMap<RoleBasicInfoDto, RoleInputDto>(); 
+            CreateMap<RoleBasicInfoDto, RoleUpsertDto>(); 
         }
     }
 }

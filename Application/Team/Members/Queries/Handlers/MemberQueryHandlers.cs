@@ -8,7 +8,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Team.Members.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Members;
+using TaskoMask.Application.Core.Dtos.Team.Members;
 using TaskoMask.Domain.Team.Data;
 
 namespace TaskoMask.Application.Team.Members.Queries.Handlers

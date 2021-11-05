@@ -2,13 +2,13 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Application.Team.Members.Services;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.JwtAuthentication;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Application.Core.Dtos.Members;
+using TaskoMask.Application.Core.Dtos.Team.Members;
 
 namespace TaskoMask.Web.Api.Controllers
 {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Team.Organizations.Commands.Models;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Dtos.Team.Organizations;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.ViewModels;
@@ -39,7 +39,7 @@ namespace TaskoMask.Application.Team.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(OrganizationInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(OrganizationUpsertDto input)
         {
             var cmd = new CreateOrganizationCommand(ownerMemberId: input.OwnerMemberId, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
@@ -50,7 +50,7 @@ namespace TaskoMask.Application.Team.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(OrganizationInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(OrganizationUpsertDto input)
         {
             var cmd = new UpdateOrganizationCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);

@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Application.Common.BaseEntities.Services;
 using TaskoMask.Application.Core.Commands;
 

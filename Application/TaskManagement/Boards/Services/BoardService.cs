@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.TaskManagement.Boards.Commands.Models;
 using TaskoMask.Application.TaskManagement.Boards.Queries.Models;
 using TaskoMask.Application.Team.Projects.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Boards;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Queries.Models.Boards;
@@ -41,7 +41,7 @@ namespace TaskoMask.Application.TaskManagement.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(BoardInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(BoardUpsertDto input)
         {
             var cmd = new CreateBoardCommand(projectId: input.ProjectId, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
@@ -52,7 +52,7 @@ namespace TaskoMask.Application.TaskManagement.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(BoardInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(BoardUpsertDto input)
         {
             var cmd = new UpdateBoardCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);

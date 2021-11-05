@@ -9,7 +9,7 @@ using TaskoMask.Infrastructure.Data.EventSourcing;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Infrastructure.CrossCutting.Bus;
 using TaskoMask.Domain.Core.Events;
-using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Application.Common.BaseEntities.Queries.Models;
 using TaskoMask.Application.Common.BaseEntities.Queries.Handlers;
 using TaskoMask.Domain.Team.Data;

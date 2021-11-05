@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Team.Projects.Commands.Models;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
 using TaskoMask.Application.Team.Projects.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.Dtos.Team.Projects;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
@@ -38,7 +38,7 @@ namespace TaskoMask.Application.Team.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(ProjectInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(ProjectUpsertDto input)
         {
             var cmd = new CreateProjectCommand(organizationId: input.OrganizationId, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
@@ -49,7 +49,7 @@ namespace TaskoMask.Application.Team.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(ProjectInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(ProjectUpsertDto input)
         {
             var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);

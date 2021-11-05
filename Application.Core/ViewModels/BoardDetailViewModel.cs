@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.Dtos.Boards;
-using TaskoMask.Application.Core.Dtos.Cards;
-using TaskoMask.Application.Core.Dtos.Organizations;
-using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Boards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
+using TaskoMask.Application.Core.Dtos.Team.Organizations;
+using TaskoMask.Application.Core.Dtos.Team.Projects;
 
 namespace TaskoMask.Application.Core.ViewModels
 {

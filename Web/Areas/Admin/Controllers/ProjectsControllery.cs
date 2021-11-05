@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Team.Projects.Services;
-using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.Dtos.Team.Projects;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
@@ -51,7 +51,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create(string organizationId)
         {
-            var model = new ProjectInputDto
+            var model = new ProjectUpsertDto
             {
                 OrganizationId = organizationId,
             };
@@ -64,7 +64,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create(ProjectInputDto input)
+        public async Task<IActionResult> Create(ProjectUpsertDto input)
         {
             var cmdResult = await _projectService.CreateAsync(input);
             return View(cmdResult, input);
@@ -80,7 +80,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         public async Task<IActionResult> Update(string id)
         {
             var projectQueryResult = await _projectService.GetByIdAsync(id);
-            return View<ProjectBasicInfoDto, ProjectInputDto>(projectQueryResult);
+            return View<ProjectBasicInfoDto, ProjectUpsertDto>(projectQueryResult);
         }
 
 
@@ -88,7 +88,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Update(ProjectInputDto input)
+        public async Task<IActionResult> Update(ProjectUpsertDto input)
         {
             var cmdResult = await _projectService.UpdateAsync(input);
             return View(cmdResult, input);

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.TaskManagement.Boards.Services;
-using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Boards;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
@@ -53,7 +53,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPost]
         [Route("boards")]
-        public async Task<Result<CommandResult>> Create(BoardInputDto input)
+        public async Task<Result<CommandResult>> Create(BoardUpsertDto input)
         {
             return await _boardService.CreateAsync(input);
         }
@@ -65,7 +65,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPut]
         [Route("boards")]
-        public async Task<Result<CommandResult>> Update(BoardInputDto input)
+        public async Task<Result<CommandResult>> Update(BoardUpsertDto input)
         {
             return await _boardService.UpdateAsync(input);
         }

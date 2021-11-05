@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Web.Area.Admin.Controllers;
-using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
 using TaskoMask.Application.Team.Members.Services;
 using DNTCaptcha.Core;
 using TaskoMask.Domain.Core.Models;
 using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Members;
+using TaskoMask.Application.Core.Dtos.Team.Members;
 
 namespace TaskoMask.Web.Controllers
 {
@@ -122,7 +122,7 @@ namespace TaskoMask.Web.Controllers
                     CaptchaGeneratorDisplayMode = DisplayMode.NumberToWord)]
         public async Task<IActionResult> Register(MemberRegisterDto input)
         {
-            ModelState.Remove(nameof(UserInputDto.UserName));
+            ModelState.Remove(nameof(UserUpsertDto.UserName));
             if (!ModelState.IsValid)
                 return View(input);
 

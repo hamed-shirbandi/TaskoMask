@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Extensions;
-using TaskoMask.Application.Core.Dtos.Permissions;
+using TaskoMask.Application.Core.Dtos.Administration.Permissions;
 using TaskoMask.Web.Common.Helpers;
 using TaskoMask.Web.Common.Enums;
 using TaskoMask.Web.Common.Filters;
@@ -110,7 +110,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpPost]
         [AjaxOnly]
         [ValidateAntiForgeryToken]
-        public async Task<JavaScriptResult> Create(PermissionInputDto input)
+        public async Task<JavaScriptResult> Create(PermissionUpsertDto input)
         {
             if (!ModelState.IsValid)
             {
@@ -145,7 +145,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpPost]
         [AjaxOnly]
         [ValidateAntiForgeryToken]
-        public async Task<JavaScriptResult> Update(PermissionInputDto input)
+        public async Task<JavaScriptResult> Update(PermissionUpsertDto input)
         {
             if (!ModelState.IsValid)
             {

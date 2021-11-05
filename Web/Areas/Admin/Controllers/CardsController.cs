@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.TaskManagement.Cards.Services;
-using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
@@ -51,7 +51,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create(string boardId)
         {
-            var model = new CardInputDto
+            var model = new CardUpsertDto
             {
                 BoardId = boardId,
             };
@@ -64,7 +64,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create(CardInputDto input)
+        public async Task<IActionResult> Create(CardUpsertDto input)
         {
             var cmdResult = await _cardService.CreateAsync(input);
             return View(cmdResult, input);
@@ -80,7 +80,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         public async Task<IActionResult> Update(string id)
         {
             var cardQueryResult = await _cardService.GetByIdAsync(id);
-            return View<CardBasicInfoDto, CardInputDto>(cardQueryResult);
+            return View<CardBasicInfoDto, CardUpsertDto>(cardQueryResult);
         }
 
 
@@ -88,7 +88,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Update(CardInputDto input)
+        public async Task<IActionResult> Update(CardUpsertDto input)
         {
             var cmdResult = await _cardService.UpdateAsync(input);
             return View(cmdResult, input);

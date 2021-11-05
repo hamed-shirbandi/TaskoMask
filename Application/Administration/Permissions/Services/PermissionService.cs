@@ -8,10 +8,10 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.BaseEntities.Services;
 using TaskoMask.Domain.Administration.Data;
 using TaskoMask.Application.Core.Helpers;
-using TaskoMask.Application.Core.Dtos.Permissions;
+using TaskoMask.Application.Core.Dtos.Administration.Permissions;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Domain.Administration.Entities;
-using TaskoMask.Application.Core.Dtos.Roles;
+using TaskoMask.Application.Core.Dtos.Administration.Roles;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Commands;
@@ -49,7 +49,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(PermissionInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(PermissionUpsertDto input)
         {
             if (await _permissionRepository.ExistBySystemNameAsync("", input.SystemName))
                 return Result.Failure<CommandResult>(message: ApplicationMessages.Name_Already_Exist);
@@ -73,7 +73,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(PermissionInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(PermissionUpsertDto input)
         {
             if (await _permissionRepository.ExistBySystemNameAsync(input.Id, input.SystemName))
                 return Result.Failure<CommandResult>(message: ApplicationMessages.Name_Already_Exist);
@@ -123,7 +123,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
 
             var model = new PermissionDetailViewModel
             {
-                Permission = _mapper.Map<PermissionInputDto>(permission),
+                Permission = _mapper.Map<PermissionUpsertDto>(permission),
                 Roles = _mapper.Map<IEnumerable<RoleBasicInfoDto>>(roles)
             };
             return Result.Success(model);

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.TaskManagement.Cards.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;

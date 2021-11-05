@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.TaskManagement.Cards.Commands.Models;
 using TaskoMask.Application.TaskManagement.Cards.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Queries.Models.Boards;
@@ -41,7 +41,7 @@ namespace TaskoMask.Application.TaskManagement.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(CardInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(CardUpsertDto input)
         {
             var cmd = new CreateCardCommand(boardId: input.BoardId, name: input.Name, description: input.Description, type: input.Type);
             return await SendCommandAsync(cmd);
@@ -52,7 +52,7 @@ namespace TaskoMask.Application.TaskManagement.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(CardInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(CardUpsertDto input)
         {
             var cmd = new UpdateCardCommand(id: input.Id, name: input.Name, description: input.Description,type:input.Type);
             return await SendCommandAsync(cmd);

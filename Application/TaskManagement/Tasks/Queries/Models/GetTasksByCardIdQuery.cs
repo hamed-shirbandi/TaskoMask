@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Tasks;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Tasks;
 using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.TaskManagement.Tasks.Queries.Models

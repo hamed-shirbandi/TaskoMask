@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.TaskManagement.Tasks.Commands.Models;
 using TaskoMask.Application.TaskManagement.Tasks.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Tasks;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Tasks;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
@@ -34,7 +34,7 @@ namespace TaskoMask.Application.TaskManagement.Tasks.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(TaskInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(TaskUpsertDto input)
         {
             var cmd = new CreateTaskCommand(cardId: input.CardId, title: input.Title, description: input.Description);
             return await SendCommandAsync(cmd);
@@ -45,7 +45,7 @@ namespace TaskoMask.Application.TaskManagement.Tasks.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(TaskInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(TaskUpsertDto input)
         {
             var cmd = new UpdateTaskCommand(id: input.Id, name: input.Title, description: input.Description);
             return await SendCommandAsync(cmd);

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
 using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.TaskManagement.Cards.Queries.Models

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Permissions;
+using TaskoMask.Application.Core.Dtos.Administration.Permissions;
 using TaskoMask.Domain.Administration.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
@@ -9,9 +9,9 @@ namespace TaskoMask.Application.Mapper.Profiles
         public PermissionMappingProfile()
         {
             CreateMap<Permission, PermissionBasicInfoDto>();
-            CreateMap<Permission, PermissionInputDto>();
+            CreateMap<Permission, PermissionUpsertDto>();
             CreateMap<Permission, PermissionOutputDto>();
-            CreateMap<PermissionBasicInfoDto, PermissionInputDto>();
+            CreateMap<PermissionBasicInfoDto, PermissionUpsertDto>();
         }
     }
 }

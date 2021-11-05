@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Base;
+using TaskoMask.Application.Core.Dtos.Common.Base;
 using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.Mapper.Profiles

@@ -1,5 +1,5 @@
-﻿using TaskoMask.Application.Core.Dtos.Members;
-using TaskoMask.Application.Core.Dtos.Users;
+﻿using TaskoMask.Application.Core.Dtos.Team.Members;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Application.Core.Queries;
 
 

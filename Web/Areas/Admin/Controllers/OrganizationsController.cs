@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Team.Organizations.Services;
-using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Dtos.Team.Organizations;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
@@ -61,7 +61,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create(OrganizationInputDto input)
+        public async Task<IActionResult> Create(OrganizationUpsertDto input)
         {
             input.OwnerMemberId = GetCurrentUserId();
             var cmdResult = await _organizationService.CreateAsync(input);
@@ -81,7 +81,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         public async Task<IActionResult> Update(string id)
         {
             var organizationQueryResult = await _organizationService.GetByIdAsync(id);
-            return View<OrganizationBasicInfoDto, OrganizationInputDto>(organizationQueryResult);
+            return View<OrganizationBasicInfoDto, OrganizationUpsertDto>(organizationQueryResult);
         }
 
 
@@ -90,7 +90,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Update(OrganizationInputDto input)
+        public async Task<IActionResult> Update(OrganizationUpsertDto input)
         {
             var cmdResult = await _organizationService.UpdateAsync(input);
             return View(cmdResult, input);

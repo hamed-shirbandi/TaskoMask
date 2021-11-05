@@ -1,12 +1,12 @@
 ﻿
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.Mapper.MappingActions
 {
-    public class UserMappingAction : IMappingAction<BaseUser, UserInputDto>, IMappingAction<BaseUser, UserBasicInfoDto>
+    public class UserMappingAction : IMappingAction<BaseUser, UserUpsertDto>, IMappingAction<BaseUser, UserBasicInfoDto>
     {
         #region Fields
 
@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Mapper.MappingActions
         /// <summary>
         /// 
         /// </summary>
-        public void Process(BaseUser source, UserInputDto destination, ResolutionContext context)
+        public void Process(BaseUser source, UserUpsertDto destination, ResolutionContext context)
         {
         }
 

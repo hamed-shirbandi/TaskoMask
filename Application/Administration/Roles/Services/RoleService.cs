@@ -6,13 +6,13 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Application.Common.BaseEntities.Services;
-using TaskoMask.Application.Core.Dtos.Roles;
+using TaskoMask.Application.Core.Dtos.Administration.Roles;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Domain.Administration.Data;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Application.Core.Dtos.Operators;
+using TaskoMask.Application.Core.Dtos.Administration.Operators;
 using System.Linq;
 
 namespace TaskoMask.Application.Administration.Roles.Services
@@ -48,7 +48,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(RoleInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(RoleUpsertDto input)
         {
             if (await _roleRepository.ExistByNameAsync("", input.Name))
                 return Result.Failure<CommandResult>(message: ApplicationMessages.Name_Already_Exist);
@@ -70,7 +70,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(RoleInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(RoleUpsertDto input)
         {
             if (await _roleRepository.ExistByNameAsync(input.Id, input.Name))
                 return Result.Failure<CommandResult>(message: ApplicationMessages.Name_Already_Exist);
@@ -157,7 +157,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
 
             var model = new RoleDetailViewModel
             {
-                Role = _mapper.Map<RoleInputDto>(role),
+                Role = _mapper.Map<RoleUpsertDto>(role),
                 Operators = _mapper.Map<IEnumerable<OperatorBasicInfoDto>>(operators),
                 Permissions = permissions.GroupBy(p => p.GroupName)
                     .ToDictionary(p => p.Key, p => p.ToList().Select(d => new SelectListItem

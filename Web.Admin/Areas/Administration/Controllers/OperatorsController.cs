@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
-using TaskoMask.Application.Core.Dtos.Operators;
+using TaskoMask.Application.Core.Dtos.Administration.Operators;
 using TaskoMask.Web.Common.Helpers;
-using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Web.Common.Filters;
 using TaskoMask.Web.Common.Enums;
 using TaskoMask.Web.Common.Extensions;
@@ -72,7 +72,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpPost]
         [AjaxOnly]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(OperatorInputDto input)
+        public async Task<IActionResult> Create(OperatorUpsertDto input)
         {
             if (!ModelState.IsValid)
             {
@@ -106,10 +106,10 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpPost]
         [AjaxOnly]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(OperatorInputDto input)
+        public async Task<IActionResult> Update(OperatorUpsertDto input)
         {
-            ModelState.Remove(nameof(OperatorInputDto.Password));
-            ModelState.Remove(nameof(OperatorInputDto.ConfirmPassword));
+            ModelState.Remove(nameof(OperatorUpsertDto.Password));
+            ModelState.Remove(nameof(OperatorUpsertDto.ConfirmPassword));
 
             if (!ModelState.IsValid)
             {

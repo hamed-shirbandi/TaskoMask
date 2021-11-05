@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Core.Dtos.Projects;
+﻿using TaskoMask.Application.Core.Dtos.Team.Projects;
 using TaskoMask.Application.Core.Queries;
 
 

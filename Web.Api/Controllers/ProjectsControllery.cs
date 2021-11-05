@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Team.Projects.Services;
-using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.Dtos.Team.Projects;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
@@ -52,7 +52,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPost]
         [Route("projects")]
-        public async Task<Result<CommandResult>> Create(ProjectInputDto input)
+        public async Task<Result<CommandResult>> Create(ProjectUpsertDto input)
         {
             return await _projectService.CreateAsync(input);
         }
@@ -64,7 +64,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPut]
         [Route("projects")]
-        public async Task<Result<CommandResult>> Update(ProjectInputDto input)
+        public async Task<Result<CommandResult>> Update(ProjectUpsertDto input)
         {
             return await _projectService.UpdateAsync(input);
         }

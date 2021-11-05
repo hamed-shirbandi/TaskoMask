@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.TaskManagement.Boards.Services;
-using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Boards;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
@@ -50,7 +50,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create(string projectId)
         {
-            var model = new BoardInputDto
+            var model = new BoardUpsertDto
             {
                 ProjectId = projectId,
             };
@@ -63,7 +63,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create(BoardInputDto input)
+        public async Task<IActionResult> Create(BoardUpsertDto input)
         {
             var cmdResult = await _boardService.CreateAsync(input);
             return View(cmdResult, input);
@@ -79,7 +79,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         public async Task<IActionResult> Update(string id)
         {
             var boardQueryResult = await _boardService.GetByIdAsync(id);
-            return View<BoardBasicInfoDto, BoardInputDto>(boardQueryResult);
+            return View<BoardBasicInfoDto, BoardUpsertDto>(boardQueryResult);
         }
 
 
@@ -87,7 +87,7 @@ namespace TaskoMask.Web.Area.Admin.Controllers
         /// 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Update(BoardInputDto input)
+        public async Task<IActionResult> Update(BoardUpsertDto input)
         {
             var cmdResult = await _boardService.UpdateAsync(input);
             return View(cmdResult, input);

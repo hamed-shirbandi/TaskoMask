@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Team.Projects.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.Dtos.Team.Projects;
 
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Resources;

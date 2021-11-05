@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Roles;
+using TaskoMask.Application.Core.Dtos.Administration.Roles;
 using TaskoMask.Web.Common.Filters;
 using TaskoMask.Web.Common.Extensions;
 using TaskoMask.Web.Common.Enums;
@@ -65,7 +65,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpPost]
         [AjaxOnly]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(RoleInputDto input)
+        public async Task<IActionResult> Create(RoleUpsertDto input)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         [HttpPost]
         [AjaxOnly]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(RoleInputDto input)
+        public async Task<IActionResult> Update(RoleUpsertDto input)
         {
             if (!ModelState.IsValid)
             {

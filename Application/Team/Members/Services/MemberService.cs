@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
 using TaskoMask.Application.Team.Members.Commands.Models;
 using TaskoMask.Application.Team.Members.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Members;
+using TaskoMask.Application.Core.Dtos.Team.Members;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Team.Data;
@@ -49,7 +49,7 @@ namespace TaskoMask.Application.Team.Members.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(UserInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(UserUpsertDto input)
         {
             var cmd = new UpdateMemberCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
             return await SendCommandAsync(cmd);

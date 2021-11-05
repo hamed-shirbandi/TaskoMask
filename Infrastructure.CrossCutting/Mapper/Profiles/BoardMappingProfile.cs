@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Boards;
 using TaskoMask.Domain.TaskManagement.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
@@ -9,8 +9,8 @@ namespace TaskoMask.Application.Mapper.Profiles
         public BoardMappingProfile()
         {
             CreateMap<Board, BoardBasicInfoDto>();
-            CreateMap<Board, BoardInputDto>();
-            CreateMap<BoardBasicInfoDto, BoardInputDto>();
+            CreateMap<Board, BoardUpsertDto>();
+            CreateMap<BoardBasicInfoDto, BoardUpsertDto>();
         }
     }
 }

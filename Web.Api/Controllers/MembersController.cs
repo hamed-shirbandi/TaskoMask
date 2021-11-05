@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Team.Members.Services;
-using TaskoMask.Application.Core.Dtos.Members;
+using TaskoMask.Application.Core.Dtos.Team.Members;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Commands;

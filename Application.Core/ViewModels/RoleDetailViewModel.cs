@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.Dtos.Operators;
-using TaskoMask.Application.Core.Dtos.Roles;
+using TaskoMask.Application.Core.Dtos.Administration.Operators;
+using TaskoMask.Application.Core.Dtos.Administration.Roles;
 using TaskoMask.Application.Core.Helpers;
 
 namespace TaskoMask.Application.Core.ViewModels
@@ -13,7 +13,7 @@ namespace TaskoMask.Application.Core.ViewModels
             Permissions = new Dictionary<string, IEnumerable<SelectListItem>>();
         }
 
-        public RoleInputDto Role { get; set; }
+        public RoleUpsertDto Role { get; set; }
         public IEnumerable<OperatorBasicInfoDto> Operators { get; set; }
         public Dictionary<string, IEnumerable<SelectListItem>> Permissions { get; set; }
 

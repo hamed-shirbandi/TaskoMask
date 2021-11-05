@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.TaskManagement.Tasks.Services;
-using TaskoMask.Application.Core.Dtos.Tasks;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Commands;
@@ -40,7 +40,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPost]
         [Route("tasks")]
-        public async Task<Result<CommandResult>> Create(TaskInputDto input)
+        public async Task<Result<CommandResult>> Create(TaskUpsertDto input)
         {
             //TODO implement tasks create api
             return Result.Failure<CommandResult>(message: "not implemented yet");
@@ -53,7 +53,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPut]
         [Route("tasks")]
-        public async Task<Result<CommandResult>> Update(TaskInputDto input)
+        public async Task<Result<CommandResult>> Update(TaskUpsertDto input)
         {
             //TODO implement tasks Update api
             return Result.Failure<CommandResult>(message:"not implemented yet");

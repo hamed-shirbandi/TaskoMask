@@ -5,7 +5,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
-using TaskoMask.Application.Core.Dtos.Operators;
+using TaskoMask.Application.Core.Dtos.Administration.Operators;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Application.Core.ViewModels;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using TaskoMask.Domain.Administration.Data;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Application.Core.Dtos.Roles;
+using TaskoMask.Application.Core.Dtos.Administration.Roles;
 using System.Linq;
 
 namespace TaskoMask.Application.Administration.Operators.Services
@@ -48,7 +48,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(OperatorInputDto input)
+        public async Task<Result<CommandResult>> CreateAsync(OperatorUpsertDto input)
         {
             var existOperator = await _operatorRepository.GetByUserNameAsync(input.Email);
             if (existOperator != null)
@@ -68,7 +68,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(OperatorInputDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(OperatorUpsertDto input)
         {
             var existOperator = await _operatorRepository.GetByUserNameAsync(input.Email);
             if (existOperator != null && existOperator.Id.ToString() != input.Id)
@@ -149,7 +149,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
 
             var model = new OperatorDetailViewModel
             {
-                Operator = _mapper.Map<OperatorInputDto>(@operator),
+                Operator = _mapper.Map<OperatorUpsertDto>(@operator),
                 Roles = roles.Select(role => new SelectListItem
                 {
                     Selected = @operator.RolesId != null && @operator.RolesId.Contains(role.Id),

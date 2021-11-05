@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Projects;
+using TaskoMask.Application.Core.Dtos.Team.Projects;
 using TaskoMask.Domain.Team.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
@@ -9,8 +9,8 @@ namespace TaskoMask.Application.Mapper.Profiles
         public ProjectMappingProfile()
         {
             CreateMap<Project, ProjectBasicInfoDto>();
-            CreateMap<Project, ProjectInputDto>();
-            CreateMap<ProjectBasicInfoDto, ProjectInputDto>();
+            CreateMap<Project, ProjectUpsertDto>();
+            CreateMap<ProjectBasicInfoDto, ProjectUpsertDto>();
         }
     }
 }

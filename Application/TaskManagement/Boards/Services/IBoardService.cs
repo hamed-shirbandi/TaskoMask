@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Application.Core.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.ViewModels;
-using TaskoMask.Application.Core.Dtos.Boards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Boards;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Common.BaseEntities.Services;
@@ -10,8 +10,8 @@ namespace TaskoMask.Application.TaskManagement.Boards.Services
 {
     public interface IBoardService: IBaseEntityService
     {
-        Task<Result<CommandResult>> CreateAsync(BoardInputDto input);
-        Task<Result<CommandResult>> UpdateAsync(BoardInputDto input);
+        Task<Result<CommandResult>> CreateAsync(BoardUpsertDto input);
+        Task<Result<CommandResult>> UpdateAsync(BoardUpsertDto input);
         Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<BoardReportDto>> GetReportAsync(string id);

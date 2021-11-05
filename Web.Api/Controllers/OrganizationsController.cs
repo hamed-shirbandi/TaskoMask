@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Team.Organizations.Services;
-using TaskoMask.Application.Core.Dtos.Organizations;
+using TaskoMask.Application.Core.Dtos.Team.Organizations;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
@@ -52,7 +52,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPost]
         [Route("organizations")]
-        public async Task<Result<CommandResult>> Create(OrganizationInputDto input)
+        public async Task<Result<CommandResult>> Create(OrganizationUpsertDto input)
         {
             return await _organizationService.CreateAsync(input);
         }
@@ -64,7 +64,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPut]
         [Route("organizations")]
-        public async Task<Result<CommandResult>> Update(OrganizationInputDto input)
+        public async Task<Result<CommandResult>> Update(OrganizationUpsertDto input)
         {
             return await _organizationService.UpdateAsync(input);
         }

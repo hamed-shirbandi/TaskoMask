@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.TaskManagement.Cards.Services;
-using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
@@ -52,7 +52,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPost]
         [Route("cards")]
-        public async Task<Result<CommandResult>> Create(CardInputDto input)
+        public async Task<Result<CommandResult>> Create(CardUpsertDto input)
         {
             return await _cardService.CreateAsync(input);
         }
@@ -64,7 +64,7 @@ namespace TaskoMask.Web.Api.Controllers
         /// </summary>
         [HttpPut]
         [Route("cards")]
-        public async Task<Result<CommandResult>> Update(CardInputDto input)
+        public async Task<Result<CommandResult>> Update(CardUpsertDto input)
         {
             return await _cardService.UpdateAsync(input);
         }

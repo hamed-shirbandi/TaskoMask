@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Cards;
+using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
 using TaskoMask.Domain.TaskManagement.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
@@ -9,8 +9,8 @@ namespace TaskoMask.Application.Mapper.Profiles
         public CardMappingProfile()
         {
             CreateMap<Card, CardBasicInfoDto>();
-            CreateMap<Card, CardInputDto>();
-            CreateMap<CardBasicInfoDto, CardInputDto>();
+            CreateMap<Card, CardUpsertDto>();
+            CreateMap<CardBasicInfoDto, CardUpsertDto>();
         }
     }
 }

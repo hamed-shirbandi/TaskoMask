@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Users;
+using TaskoMask.Application.Core.Dtos.Common.Users;
 
 using TaskoMask.Application.Mapper.MappingActions;
-using TaskoMask.Application.Core.Dtos.Operators;
-using TaskoMask.Application.Core.Dtos.Members;
+using TaskoMask.Application.Core.Dtos.Administration.Operators;
+using TaskoMask.Application.Core.Dtos.Team.Members;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Administration.Entities;
@@ -20,10 +20,10 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             CreateMap<UserBasicInfoDto, AuthenticatedUser>();
 
-            CreateMap<BaseUser, UserInputDto>()
+            CreateMap<BaseUser, UserUpsertDto>()
                 .AfterMap<UserMappingAction>();
 
-            CreateMap<UserBasicInfoDto, UserInputDto>();
+            CreateMap<UserBasicInfoDto, UserUpsertDto>();
             CreateMap<UserBasicInfoDto, UserBaseDto>();
 
             CreateMap<Member, UserBasicInfoDto>();
@@ -33,7 +33,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Operator, OperatorBasicInfoDto>();
 
             CreateMap<Operator, OperatorOutputDto>();
-            CreateMap<Operator, OperatorInputDto>();
+            CreateMap<Operator, OperatorUpsertDto>();
 
         }
     }

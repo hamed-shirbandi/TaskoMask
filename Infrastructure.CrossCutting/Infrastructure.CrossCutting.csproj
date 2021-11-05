@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Infrastructure.CrossCutting\bin\Release\net5.0\TaskoMask.Infrastructure.CrossCutting.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net5.0\TaskoMask.Infrastructure.CrossCutting.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Infrastructure.CrossCutting\bin\Debug\net5.0\TaskoMask.Infrastructure.CrossCutting.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\net5.0\TaskoMask.Infrastructure.CrossCutting.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.0" />

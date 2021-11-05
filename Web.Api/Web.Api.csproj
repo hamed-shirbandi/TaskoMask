@@ -10,11 +10,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Web.Api\bin\Release\net5.0\TaskoMask.Web.Api.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net5.0\TaskoMask.Web.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\CodeBlock\Documents\Visual Studio 2019\Projects\TaskoMask\Web.Api\bin\Debug\net5.0\TaskoMask.Web.Api.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\net5.0\TaskoMask.Web.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

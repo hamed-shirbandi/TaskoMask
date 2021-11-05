@@ -3,8 +3,8 @@
 ################################################################################
 
 /.vs
-/*/obj
-/*/bin
+[Bb]in/
+[Oo]bj/
 /Web/Web.csproj.user
 /Web/Properties/PublishProfiles
 /Web.Admin/Properties/PublishProfiles

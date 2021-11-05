@@ -83,8 +83,7 @@ Please check the [issues](https://github.com/hamed-shirbandi/TaskoMask/issues) a
   > 2. Fork the Project
   > 3. Create your Feature Branch
   > 4. Commit your Changes
-  > 5. Push to Developer Branch
-  > 6. Open a Pull Request
+  > 5. Open a Pull Request
 
 This project exists thanks to all the people who [contribute](https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors).
 

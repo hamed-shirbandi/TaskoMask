@@ -5,7 +5,7 @@ using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
+using TaskoMask.Application.Common.Users.Services;
 using TaskoMask.Application.Team.Members.Commands.Models;
 using TaskoMask.Application.Team.Members.Queries.Models;
 using TaskoMask.Application.Core.Dtos.Team.Members;
@@ -15,7 +15,7 @@ using TaskoMask.Domain.Team.Data;
 
 namespace TaskoMask.Application.Team.Members.Services
 {
-    public class MemberService : BaseUserService<Member>, IMemberService
+    public class MemberService : UserService<Member>, IMemberService
     {
         #region Fields
 

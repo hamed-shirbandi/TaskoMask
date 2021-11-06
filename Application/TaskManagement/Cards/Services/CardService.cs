@@ -13,12 +13,12 @@ using TaskoMask.Application.Team.Projects.Queries.Models;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
 using TaskoMask.Application.TaskManagement.Tasks.Queries.Models;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Domain.TaskManagement.Entities;
 
 namespace TaskoMask.Application.TaskManagement.Cards.Services
 {
-    public class CardService : BaseEntityService<Card>, ICardService
+    public class CardService : BaseService<Card>, ICardService
     {
         #region Fields
 

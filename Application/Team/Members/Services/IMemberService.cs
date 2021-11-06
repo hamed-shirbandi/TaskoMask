@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
+using TaskoMask.Application.Common.Users.Services;
 using TaskoMask.Application.Core.Dtos.Team.Members;
 
 namespace TaskoMask.Application.Team.Members.Services
 {
-    public interface IMemberService : IBaseUserService
+    public interface IMemberService : IUserService
     {
         Task<Result<CommandResult>> CreateAsync(MemberRegisterDto input);
         Task<Result<CommandResult>> UpdateAsync(UserUpsertDto input);

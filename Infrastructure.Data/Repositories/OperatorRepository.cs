@@ -9,7 +9,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class OperatorRepository : UserBaseRepository<Operator>, IOperatorRepository
+    public class OperatorRepository : UserRepository<Operator>, IOperatorRepository
     {
         #region Fields
 

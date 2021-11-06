@@ -20,7 +20,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Common\BaseEntities\Commands\" />
+    <Folder Include="Common\Base\Commands\" />
     <Folder Include="TaskManagement\Boards\Commands\Validations\" />
     <Folder Include="TaskManagement\Boards\EventHandlers\" />
     <Folder Include="TaskManagement\Cards\Commands\Validations\" />

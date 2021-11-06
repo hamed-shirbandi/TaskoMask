@@ -7,7 +7,7 @@ namespace TaskoMask.Domain.Core.Models
     /// <summary>
     /// base class for users
     /// </summary>
-    public abstract class BaseUser : BaseEntity
+    public abstract class User : BaseEntity
     {
         #region Fields
 
@@ -16,7 +16,7 @@ namespace TaskoMask.Domain.Core.Models
 
         #region Ctors
 
-        protected BaseUser(string displayName,string phoneNumber, string email, string userName, string password, IEncryptionService encryptionService)
+        protected User(string displayName,string phoneNumber, string email, string userName, string password, IEncryptionService encryptionService)
         {
             DisplayName = displayName;
             PhoneNumber = phoneNumber;

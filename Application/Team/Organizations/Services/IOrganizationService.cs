@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Team.Organizations;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.ViewModels;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 
 namespace TaskoMask.Application.Team.Organizations.Services
 {
-    public interface IOrganizationService : IBaseEntityService
+    public interface IOrganizationService : IBaseService
     {
         Task<Result<CommandResult>> CreateAsync(OrganizationUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(OrganizationUpsertDto input);

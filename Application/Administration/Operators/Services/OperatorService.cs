@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntitiesUsers.Services;
+using TaskoMask.Application.Common.Users.Services;
 using TaskoMask.Application.Core.Dtos.Administration.Operators;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Application.Core.ViewModels;
@@ -18,7 +18,7 @@ using System.Linq;
 
 namespace TaskoMask.Application.Administration.Operators.Services
 {
-    public class OperatorService : BaseUserService<Operator>, IOperatorService
+    public class OperatorService : UserService<Operator>, IOperatorService
     {
         #region Fields
 

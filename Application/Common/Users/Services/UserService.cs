@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Dtos.Common.Users;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Services;
@@ -12,20 +12,20 @@ using TaskoMask.Domain.Core.Data;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Resources;
 
-namespace TaskoMask.Application.Common.BaseEntitiesUsers.Services
+namespace TaskoMask.Application.Common.Users.Services
 {
-    public class BaseUserService<TEntity> : BaseEntityService<TEntity>, IBaseUserService where TEntity : BaseUser
+    public class UserService<TEntity> : BaseService<TEntity>, IUserService where TEntity : User
     {
         #region Fields
 
-        private readonly IUserBaseRepository<TEntity> _userRepository;
+        private readonly IUserRepository<TEntity> _userRepository;
         private readonly IEncryptionService _encryptionService;
 
         #endregion
 
         #region Ctors
 
-        public BaseUserService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IUserBaseRepository<TEntity> userRepository, IEncryptionService encryptionService) : base(inMemoryBus, mapper, notifications)
+        public UserService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IUserRepository<TEntity> userRepository, IEncryptionService encryptionService) : base(inMemoryBus, mapper, notifications)
         {
             _userRepository = userRepository;
             _encryptionService = encryptionService;

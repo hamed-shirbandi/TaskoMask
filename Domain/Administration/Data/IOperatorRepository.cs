@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.Administration.Data
 {
-    public interface IOperatorRepository : IUserBaseRepository<Operator>
+    public interface IOperatorRepository : IUserRepository<Operator>
     {
         Task<long> CountByRoleIdAsync(string roleId);
         Task<IEnumerable<Operator>> GetListByRoleIdAsync(string roleId);

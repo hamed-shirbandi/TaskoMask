@@ -11,14 +11,14 @@ using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Team.Projects.Queries.Models;
 using System.Linq;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Application.TaskManagement.Boards.Queries.Models;
 using TaskoMask.Application.TaskManagement.Tasks.Queries.Models;
 using TaskoMask.Domain.Team.Entities;
 
 namespace TaskoMask.Application.Team.Organizations.Services
 {
-    public class OrganizationService : BaseEntityService<Organization>, IOrganizationService
+    public class OrganizationService : BaseService<Organization>, IOrganizationService
     {
         #region Fields
 

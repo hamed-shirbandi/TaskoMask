@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Dtos.Administration.Permissions;
 using TaskoMask.Application.Core.Helpers;
@@ -8,7 +8,7 @@ using TaskoMask.Application.Core.ViewModels;
 
 namespace TaskoMask.Application.Administration.Permissions.Services
 {
-    public interface IPermissionService : IBaseEntityService
+    public interface IPermissionService : IBaseService
     {
         Task<Result<CommandResult>> CreateAsync(PermissionUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(PermissionUpsertDto input);

@@ -6,7 +6,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class UserBaseRepository<TEntity> : BaseRepository<TEntity>, IUserBaseRepository<TEntity> where TEntity:BaseUser
+    public class UserRepository<TEntity> : BaseRepository<TEntity>, IUserRepository<TEntity> where TEntity:User
     {
 
         #region Fields
@@ -18,7 +18,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public UserBaseRepository(IMongoDbContext dbContext) : base(dbContext)
+        public UserRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _users = dbContext.GetCollection<TEntity>(); 
 

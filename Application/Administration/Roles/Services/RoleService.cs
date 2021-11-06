@@ -5,7 +5,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Administration.Entities;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Application.Core.Dtos.Administration.Roles;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.ViewModels;
@@ -17,7 +17,7 @@ using System.Linq;
 
 namespace TaskoMask.Application.Administration.Roles.Services
 {
-    public class RoleService : BaseEntityService<Operator>, IRoleService
+    public class RoleService : BaseService<Operator>, IRoleService
     {
         #region Fields
 

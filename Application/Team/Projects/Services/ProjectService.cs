@@ -11,12 +11,12 @@ using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.TaskManagement.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Domain.Team.Entities;
 
 namespace TaskoMask.Application.Team.Projects.Services
 {
-    public class ProjectService : BaseEntityService<Project>, IProjectService
+    public class ProjectService : BaseService<Project>, IProjectService
     {
         #region Fields
 

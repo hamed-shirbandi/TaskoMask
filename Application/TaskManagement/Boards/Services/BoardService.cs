@@ -13,12 +13,12 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
 using TaskoMask.Application.TaskManagement.Cards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Domain.TaskManagement.Entities;
 
 namespace TaskoMask.Application.TaskManagement.Boards.Services
 {
-    public class BoardService :BaseEntityService<Board>, IBoardService
+    public class BoardService :BaseService<Board>, IBoardService
     {
         #region Fields
 

@@ -4,11 +4,11 @@ using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 
 namespace TaskoMask.Application.TaskManagement.Cards.Services
 {
-    public interface ICardService : IBaseEntityService
+    public interface ICardService : IBaseService
     {
         Task<Result<CommandResult>> CreateAsync(CardUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(CardUpsertDto input);

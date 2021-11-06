@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Domain.Administration.Data;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Application.Core.Dtos.Administration.Permissions;
@@ -18,7 +18,7 @@ using TaskoMask.Application.Core.Commands;
 
 namespace TaskoMask.Application.Administration.Permissions.Services
 {
-    public class PermissionService : BaseEntityService<Permission>, IPermissionService
+    public class PermissionService : BaseService<Permission>, IPermissionService
     {
         #region Fields
 

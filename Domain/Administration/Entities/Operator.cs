@@ -7,7 +7,7 @@ namespace TaskoMask.Domain.Administration.Entities
     /// <summary>
     /// opertors of admin panel
     /// </summary>
-   public class Operator :BaseUser
+   public class Operator :User
     {
         #region Fields
 

@@ -2,13 +2,13 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Dtos.Administration.Roles;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.ViewModels;
 
 namespace TaskoMask.Application.Administration.Roles.Services
 {
-    public interface IRoleService : IBaseEntityService
+    public interface IRoleService : IBaseService
     {
         Task<Result<CommandResult>> CreateAsync(RoleUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(RoleUpsertDto input);

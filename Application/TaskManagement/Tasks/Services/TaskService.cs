@@ -8,11 +8,11 @@ using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.BaseEntities.Services;
+using TaskoMask.Application.Common.Base.Services;
 
 namespace TaskoMask.Application.TaskManagement.Tasks.Services
 {
-    public class TaskService : BaseEntityService<Domain.TaskManagement.Entities.Task>, ITaskService
+    public class TaskService : BaseService<Domain.TaskManagement.Entities.Task>, ITaskService
     {
         #region Fields
 

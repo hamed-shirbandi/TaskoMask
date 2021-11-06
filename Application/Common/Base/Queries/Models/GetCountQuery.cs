@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Application.Common.BaseEntities.Queries.Models
+namespace TaskoMask.Application.Common.Base.Queries.Models
 {
   public  class GetCountQuery<TEntity>:BaseQuery<long> where TEntity:BaseEntity
     {

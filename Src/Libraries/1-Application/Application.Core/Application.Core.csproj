@@ -21,9 +21,10 @@
     <PackageReference Include="RedisCache.Core" Version="1.0.2" />
   </ItemGroup>
 
+
   <ItemGroup>
-    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />
-    <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\..\2-Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\..\3-Domain\Domain.Core\Domain.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

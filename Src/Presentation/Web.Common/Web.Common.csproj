@@ -17,11 +17,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
     <PackageReference Include="RedisCache.Core" Version="1.0.2" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
-    <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\..\Libraries\1-Application\Application.Core\Application.Core.csproj" />
+    <ProjectReference Include="..\..\Libraries\1-Application\Application\Application.csproj" />
+    <ProjectReference Include="..\..\Libraries\2-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

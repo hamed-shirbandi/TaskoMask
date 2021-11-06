@@ -9,7 +9,7 @@ using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.TaskManagement.Boards.Queries.Models;
+using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Domain.Team.Entities;

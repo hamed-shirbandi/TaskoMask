@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.Dtos.TaskManagement.Boards;
+using TaskoMask.Application.Core.Dtos.Workspace.Boards;
 using TaskoMask.Application.Core.Dtos.Team.Organizations;
 using TaskoMask.Application.Core.Dtos.Team.Projects;
 

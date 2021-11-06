@@ -15,7 +15,7 @@ using TaskoMask.Application.Common.Base.Queries.Handlers;
 using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Team.Entities;
-using TaskoMask.Domain.TaskManagement.Entities;
+using TaskoMask.Domain.Workspace.Entities;
 using TaskoMask.Application.Core.Commands;
 
 namespace Infrastructure.CrossCutting.Ioc

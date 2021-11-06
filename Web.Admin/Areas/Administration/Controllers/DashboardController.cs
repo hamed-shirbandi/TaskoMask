@@ -8,8 +8,8 @@ using TaskoMask.Domain.Core.Services;
 using TaskoMask.Web.Admin.Area.Admin.Models;
 using TaskoMask.Application.Team.Members.Services;
 using TaskoMask.Application.Team.Projects.Services;
-using TaskoMask.Application.TaskManagement.Tasks.Services;
-using TaskoMask.Application.TaskManagement.Boards.Services;
+using TaskoMask.Application.Workspace.Tasks.Services;
+using TaskoMask.Application.Workspace.Boards.Services;
 
 namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.TaskManagement.Cards.Services;
-using TaskoMask.Application.Core.Dtos.TaskManagement.Cards;
+using TaskoMask.Application.Workspace.Cards.Services;
+using TaskoMask.Application.Core.Dtos.Workspace.Cards;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;

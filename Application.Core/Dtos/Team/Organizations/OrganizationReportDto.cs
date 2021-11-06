@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Core.Dtos.TaskManagement.Tasks;
+using TaskoMask.Application.Core.Dtos.Workspace.Tasks;
 using TaskoMask.Application.Core.Resources;
 
 namespace TaskoMask.Application.Core.Dtos.Team.Organizations

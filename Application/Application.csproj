@@ -21,16 +21,16 @@
   
   <ItemGroup>
     <Folder Include="Common\Base\Commands\" />
-    <Folder Include="TaskManagement\Boards\Commands\Validations\" />
-    <Folder Include="TaskManagement\Boards\EventHandlers\" />
-    <Folder Include="TaskManagement\Cards\Commands\Validations\" />
-    <Folder Include="TaskManagement\Cards\EventHandlers\" />
+    <Folder Include="Workspace\Boards\Commands\Validations\" />
+    <Folder Include="Workspace\Boards\EventHandlers\" />
+    <Folder Include="Workspace\Cards\Commands\Validations\" />
+    <Folder Include="Workspace\Cards\EventHandlers\" />
     <Folder Include="Team\Members\Commands\Validations\" />
     <Folder Include="Team\Members\EventHandlers\" />
     <Folder Include="Team\Organizations\EventHandlers\" />
     <Folder Include="Team\Projects\Commands\Validations\" />
     <Folder Include="Team\Projects\EventHandlers\" />
-    <Folder Include="TaskManagement\Tasks\Commands\Validations\" />
-    <Folder Include="TaskManagement\Tasks\EventHandlers\" />
+    <Folder Include="Workspace\Tasks\Commands\Validations\" />
+    <Folder Include="Workspace\Tasks\EventHandlers\" />
   </ItemGroup>
 </Project>

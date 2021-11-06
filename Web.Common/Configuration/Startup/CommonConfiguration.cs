@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RedisCache.Core;
 using System;
-using TaskoMask.Application.TaskManagement.Boards.Commands.Models;
+using TaskoMask.Application.Workspace.Boards.Commands.Models;
 using TaskoMask.Application.Core.Behaviors;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Mapper;

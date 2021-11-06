@@ -4,9 +4,9 @@ using TaskoMask.Application.Team.Organizations.Services;
 using TaskoMask.Web.Models;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Team.Projects.Services;
-using TaskoMask.Application.TaskManagement.Boards.Services;
+using TaskoMask.Application.Workspace.Boards.Services;
 using TaskoMask.Application.Team.Members.Services;
-using TaskoMask.Application.TaskManagement.Tasks.Services;
+using TaskoMask.Application.Workspace.Tasks.Services;
 
 namespace TaskoMask.Web.Controllers
 {

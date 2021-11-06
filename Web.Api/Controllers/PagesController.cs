@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.TaskManagement.Boards.Services;
+using TaskoMask.Application.Workspace.Boards.Services;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Helpers;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Application.Team.Organizations.Services;
 using TaskoMask.Web.Api.Models;
 using TaskoMask.Application.Team.Members.Services;
-using TaskoMask.Application.TaskManagement.Tasks.Services;
+using TaskoMask.Application.Workspace.Tasks.Services;
 using TaskoMask.Application.Team.Projects.Services;
 
 namespace TaskoMask.Web.Api.Controllers

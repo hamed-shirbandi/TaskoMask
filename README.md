@@ -39,7 +39,6 @@ There is a list of our documentation:
       -	StructureMap
       -	Swagger
       -	MsTest
-      -	Selenium
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/)
       -	[RedisCache.Core](https://www.nuget.org/packages/RedisCache.Core/)
       -	[DbLogger.Core](https://www.nuget.org/packages/DbLogger.Core/)
@@ -62,7 +61,6 @@ There is a list of our documentation:
       -	Repository
       -	CRUD,Anemic Model (for less important subdomains)
       -	Unit Test
-      -	UI Test
   * ### Some technical features:
       -	Caching Behavior
       -	Validation Behavior

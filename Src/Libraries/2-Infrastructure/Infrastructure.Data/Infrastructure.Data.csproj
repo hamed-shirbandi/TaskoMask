@@ -11,9 +11,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
     <PackageReference Include="StackExchange.Redis" Version="2.1.58" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\3-Domain\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

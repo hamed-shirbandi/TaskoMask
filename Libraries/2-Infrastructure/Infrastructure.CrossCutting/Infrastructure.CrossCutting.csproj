@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>TaskoMask.Infrastructure.CrossCutting</AssemblyName>
+    <RootNamespace>TaskoMask.Infrastructure.CrossCutting</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="StructureMap.AspNetCore" Version="1.3.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
+    <PackageReference Include="AspNetCore.Identity.Mongo" Version="6.7.2" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\1-Application\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj" />
+  </ItemGroup>
+</Project>

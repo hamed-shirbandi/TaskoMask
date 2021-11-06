@@ -1,0 +1,148 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain\\Domain.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain.Core\\Domain.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain.Core\\Domain.Core.csproj",
+        "projectName": "TaskoMask.Domain.Core",
+        "projectPath": "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain.Core\\Domain.Core.csproj",
+        "packagesPath": "C:\\Users\\PaydarDeveloper\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\PaydarDeveloper\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AspNetCore.Identity.Mongo": {
+              "target": "Package",
+              "version": "[6.7.2, )"
+            },
+            "CSharpFunctionalExtensions": {
+              "target": "Package",
+              "version": "[2.12.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.3.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "mongocsharpdriver": {
+              "target": "Package",
+              "version": "[2.11.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain\\Domain.csproj",
+        "projectName": "TaskoMask.Domain",
+        "projectPath": "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\PaydarDeveloper\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\PaydarDeveloper\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain.Core\\Domain.Core.csproj": {
+                "projectPath": "C:\\Users\\PaydarDeveloper\\Documents\\Visual Studio 2019\\Projects\\TaskoMask\\Libraries\\3-Domain\\Domain.Core\\Domain.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,18 +1,12 @@
 ﻿using MongoDB.Bson;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TaskoMask.Domain.Core.Models
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
-        public BaseEntity()
-        {
-            id = ObjectId.GenerateNewId().ToString();
-            CreateDateTime = DateTime.Now;
-            ModifiedDateTime = DateTime.Now;
-        }
+        #region Fields & Properties
+
 
         public DateTime CreateDateTime { get; set; }
 
@@ -21,16 +15,30 @@ namespace TaskoMask.Domain.Core.Models
 
         public string Id
         {
-            get { return id; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    id = ObjectId.GenerateNewId().ToString();
-                else
-                    id = value;
-            }
+            get => id;
+            set => id = string.IsNullOrEmpty(value) ?
+                ObjectId.GenerateNewId().ToString() :
+                value;
         }
 
+
         private string id { get; set; }
+
+
+        #endregion
+
+
+        #region Constructors
+
+
+        protected BaseEntity()
+        {
+            id = ObjectId.GenerateNewId().ToString();
+            CreateDateTime = DateTime.Now;
+            ModifiedDateTime = DateTime.Now;
+        }
+
+
+        #endregion
     }
 }

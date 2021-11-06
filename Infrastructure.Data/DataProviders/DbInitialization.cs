@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using TaskoMask.Domain.Administration.Entities;
-using TaskoMask.Domain.Core.Extensions;
+using TaskoMask.Infrastructure.Data.Extensions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.TaskManagement.Entities;
 using TaskoMask.Domain.Team.Entities;

@@ -1,6 +1,16 @@
-# What is TaskoMask?<p align="left">
+# What is TaskoMask?
+
+
+  
+<p align="left">
   <img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask">
+<!--- <img src="https://img.shields.io/github/workflow/status/hamed-shirbandi/TaskoMask/.NET%20Core%20Build"> ---> 
+  <img src="https://img.shields.io/website?url=http://taskomask.ir">
+  <img src="https://img.shields.io/github/license/hamed-shirbandi/TaskoMask">
+  <img src="https://img.shields.io/github/contributors/hamed-shirbandi/TaskoMask">
+
 </p>
+ 
 
 [TaskoMask](http://taskomask.ir/) is a free and open source task management system based on .Net. This project is [online](http://taskomask.ir/) and everyone can use it as a team member or project owner.
 But the main goal of this project is to be an effort to show how can we clearly implement software technologies and patterns by .Net so this can be used by developers how look for a real example project with real challenges. Take a look at it's [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki)!
@@ -85,6 +95,8 @@ Please check the [issues](https://github.com/hamed-shirbandi/TaskoMask/issues) a
 
 This project exists thanks to all the people who [contribute](https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors).
 
+![GitHub Contributors Image](https://contrib.rocks/image?repo=hamed-shirbandi/TaskoMask)
+     
 # Supporting
 We work hard to make something useful to you so please give a star ⭐ if this project helped you!
 We need your support by giving a star or by contributing or telling about us to your friends.

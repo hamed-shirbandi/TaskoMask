@@ -16,7 +16,7 @@ namespace TaskoMask.Application.Mapper
         /// </summary>
         public static string AddStaticSiteUrl( this string url, IConfiguration _configuration)
         {
-            return string.IsNullOrEmpty(url) ? "" : _configuration["Url:Static.Domain"] + url;
+            return string.IsNullOrEmpty(url) ? "" : _configuration["Url:Static"] + url;
         }
     }
 }

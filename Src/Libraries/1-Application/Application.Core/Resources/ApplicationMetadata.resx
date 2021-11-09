@@ -189,6 +189,9 @@
   <data name="OrganizationsCount" xml:space="preserve">
     <value>Organizations Count</value>
   </data>
+  <data name="OwnerDisplayName" xml:space="preserve">
+    <value>Owner</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>

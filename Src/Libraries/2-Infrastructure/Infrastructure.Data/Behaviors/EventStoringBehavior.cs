@@ -1,16 +1,10 @@
-﻿using MediatR;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Commands;
+using MediatR;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Infrastructure.Data.EventSourcing;
 
-namespace TaskoMask.Application.Core.Behaviors
+namespace TaskoMask.Infrastructure.Data.Behaviors
 {
 
     /// <summary>

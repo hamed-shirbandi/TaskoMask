@@ -16,6 +16,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Mapper;
 using TaskoMask.Application.Team.Organizations.Commands.Validations;
 using TaskoMask.Domain.Core.Events;
+using TaskoMask.Infrastructure.Data.Behaviors;
 using TaskoMask.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Web.Common.Configuration.Startup

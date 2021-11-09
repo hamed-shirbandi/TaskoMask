@@ -15,7 +15,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
         Task<Result<CommandResult>> UpdateAsync(OperatorUpsertDto input);
         Task<Result<OperatorBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<IEnumerable<OperatorOutputDto>>> GetListAsync();
-        Task<Result<OperatorDetailViewModel>> GetDetailsAsync(string id);
+        Task<Result<OperatorDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<CommandResult>> UpdateRolesAsync(string id, string[] rolesId);
     }
 }

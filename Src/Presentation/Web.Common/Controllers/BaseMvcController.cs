@@ -16,6 +16,9 @@ namespace TaskoMask.Web.Common.Controllers
 
         private readonly IAuthenticatedUserService _authenticatedUserService;
         protected readonly IMapper _mapper;
+        protected int recordsPerPage;
+        protected int pageSize;
+        protected int totalItemCount;
 
         #endregion
 
@@ -24,13 +27,16 @@ namespace TaskoMask.Web.Common.Controllers
 
         public BaseMvcController()
         {
-
+            InitialPagination();
         }
 
+    
 
         public BaseMvcController(IMapper mapper)
         {
             _mapper = mapper;
+            InitialPagination();
+
         }
 
 
@@ -38,6 +44,8 @@ namespace TaskoMask.Web.Common.Controllers
         {
             _mapper = mapper;
             _authenticatedUserService = authenticatedUserService;
+            InitialPagination();
+
         }
 
 
@@ -191,6 +199,16 @@ namespace TaskoMask.Web.Common.Controllers
         {
             return cmdResult.Message + "<br/>" + string.Join("<br/>", cmdResult.Errors.ToArray());
         }
+
+
+
+        private void InitialPagination()
+        {
+            pageSize = 0;
+            recordsPerPage = 15;
+            totalItemCount = 0;
+        }
+
 
 
         #endregion

@@ -23,6 +23,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
             _organizations = dbContext.GetCollection<Organization>();
         }
 
+     
+
         #endregion
 
         #region Public Methods
@@ -47,6 +49,17 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         {
             return await _organizations.AsQueryable().Where(o => o.OwnerMemberId == ownerMemberId).ToListAsync();
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> CountByOwnerMemberIdAsync(string ownerMemberId)
+        {
+            return await _organizations.CountDocumentsAsync(o => o.OwnerMemberId== ownerMemberId);
+        }
+
 
         #endregion
 

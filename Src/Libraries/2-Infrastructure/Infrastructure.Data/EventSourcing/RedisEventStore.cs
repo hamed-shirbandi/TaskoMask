@@ -72,7 +72,7 @@ namespace TaskoMask.Infrastructure.Data.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        public async Task<List<T>> GetListAsync<T>(string entityId, string entityType) where T : StoredEvent
+        public async Task<List<T>> GetListAsync<T>(string entityId, string entityType) where T : IDomainEvent
         {
             var data = new List<T>();
             var jsonList = await _redisDb.ListRangeAsync(MakeKey(entityId, entityType));

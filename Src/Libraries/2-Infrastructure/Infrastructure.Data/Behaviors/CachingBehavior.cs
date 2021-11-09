@@ -1,13 +1,13 @@
-﻿using MediatR;
-using Microsoft.Extensions.Configuration;
-using RedisCache.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.Extensions.Configuration;
+using RedisCache.Core;
 using TaskoMask.Application.Core.Queries;
 
-namespace TaskoMask.Application.Core.Behaviors
+namespace TaskoMask.Infrastructure.Data.Behaviors
 {
 
     /// <summary>

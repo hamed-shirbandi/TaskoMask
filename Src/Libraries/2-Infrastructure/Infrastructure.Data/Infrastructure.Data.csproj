@@ -9,9 +9,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
-    <PackageReference Include="StackExchange.Redis" Version="2.1.58" />
+    <PackageReference Include="RedisCache.Core" Version="1.0.2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\1-Application\Application.Core\Application.Core.csproj" />
     <ProjectReference Include="..\..\3-Domain\Domain\Domain.csproj" />
   </ItemGroup>
 

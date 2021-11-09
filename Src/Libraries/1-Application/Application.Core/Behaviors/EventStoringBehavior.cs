@@ -8,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Events;
-using TaskoMask.Infrastructure.Data.EventSourcing;
 
 namespace TaskoMask.Application.Core.Behaviors
 {

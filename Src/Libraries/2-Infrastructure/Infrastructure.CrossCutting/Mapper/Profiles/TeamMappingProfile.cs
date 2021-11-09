@@ -15,6 +15,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Organization, OrganizationBasicInfoDto>();
             CreateMap<Organization, OrganizationUpsertDto>();
             CreateMap<OrganizationBasicInfoDto, OrganizationUpsertDto>();
+            CreateMap<Organization, OrganizationOutputDto>();
 
             #endregion
 
@@ -29,6 +30,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             #region Member
 
             CreateMap<Member, MemberBasicInfoDto>();
+            CreateMap<Member, MemberOutputDto>();
 
 
             #endregion

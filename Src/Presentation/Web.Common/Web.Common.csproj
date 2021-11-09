@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Libraries\1-Application\Application.Core\Application.Core.csproj" />
-    <ProjectReference Include="..\..\Libraries\1-Application\Application\Application.csproj" />
-    <ProjectReference Include="..\..\Libraries\2-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\Libraries\2-Application\Application.Core\Application.Core.csproj" />
+    <ProjectReference Include="..\..\Libraries\2-Application\Application\Application.csproj" />
+    <ProjectReference Include="..\..\Libraries\1-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@
 
 
         @Html.LabelFor(model => model.PhoneNumber)
-        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-input-1",@readOnly="readonly" })
+        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-input-1", @readOnly = "readonly" })
 
 
         @Html.LabelFor(model => model.Email)
@@ -20,6 +20,9 @@
 
         @Html.LabelFor(model => model.UserName)
         @Html.TextBoxFor(model => model.UserName, new { @class = "form-input-1", @readOnly = "readonly" })
+
+        @Html.LabelFor(model => model.CreationTime.CreateDateTimeString)
+        @Html.TextBoxFor(model => model.CreationTime.CreateDateTimeString, new { @class = "form-input-1", @readOnly = "readonly" })
 
         <hr />
 

@@ -20,7 +20,6 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
     <PackageReference Include="RedisCache.Core" Version="1.0.2" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
   </ItemGroup>
 
 

@@ -18,12 +18,12 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
     <PackageReference Include="RedisCache.Core" Version="1.0.2" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\2-Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj" />
     <ProjectReference Include="..\..\3-Domain\Domain.Core\Domain.Core.csproj" />
   </ItemGroup>
 

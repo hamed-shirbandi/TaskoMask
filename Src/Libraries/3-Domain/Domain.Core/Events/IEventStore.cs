@@ -21,6 +21,6 @@ namespace TaskoMask.Domain.Core.Events
         /// <summary>
         /// 
         /// </summary>
-        Task<List<T>> GetListAsync<T>(string entityId, string entityType) where T : IDomainEvent;
+        Task<List<T>> GetListAsync<T>(string entityId, string entityType) where T : StoredEvent;
     }
 }

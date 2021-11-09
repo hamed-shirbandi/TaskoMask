@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskoMask.Infrastructure.Data.EventSourcing
+namespace TaskoMask.Domain.Core.Events
 {
     /// <summary>
     /// 

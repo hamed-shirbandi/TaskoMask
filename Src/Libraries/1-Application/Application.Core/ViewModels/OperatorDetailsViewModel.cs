@@ -5,9 +5,9 @@ using TaskoMask.Application.Core.Helpers;
 
 namespace TaskoMask.Application.Core.ViewModels
 {
-    public class OperatorDetailViewModel
+    public class OperatorDetailsViewModel
     {
-        public OperatorDetailViewModel()
+        public OperatorDetailsViewModel()
         {
             Roles = new List<SelectListItem>();
         }

@@ -14,7 +14,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
         Task<Result<CommandResult>> UpdateAsync(PermissionUpsertDto input);
 
         Task<Result<PermissionBasicInfoDto>> GetByIdAsync(string id);
-        Task<Result<PermissionDetailViewModel>> GetDetailsAsync(string id);
+        Task<Result<PermissionDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<IEnumerable<PermissionBasicInfoDto>>> GetListAsync(string id);
         Task<Result<IEnumerable<PermissionBasicInfoDto>>> GetListByIdsAsync(string[] ids);
         Task<Result<string[]>> GetSystemNameListByOperatorAsync(string userName);

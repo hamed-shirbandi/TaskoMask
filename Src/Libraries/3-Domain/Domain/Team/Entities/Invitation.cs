@@ -35,6 +35,11 @@ namespace TaskoMask.Domain.Team.Entities
         /// </summary>
         public string[] BoardsId { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string OrganizationId { get; private set; }
+
 
         #endregion
 

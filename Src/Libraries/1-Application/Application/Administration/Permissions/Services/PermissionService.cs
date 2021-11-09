@@ -111,17 +111,17 @@ namespace TaskoMask.Application.Administration.Permissions.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PermissionDetailViewModel>> GetDetailsAsync(string id)
+        public async Task<Result<PermissionDetailsViewModel>> GetDetailsAsync(string id)
         {
             var permission = await _permissionRepository.GetByIdAsync(id);
             if (permission == null)
-                return Result.Failure<PermissionDetailViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Permission));
+                return Result.Failure<PermissionDetailsViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Permission));
 
 
             var roles = await _roleRepository.GetListByPermissionIdAsync(id);
 
 
-            var model = new PermissionDetailViewModel
+            var model = new PermissionDetailsViewModel
             {
                 Permission = _mapper.Map<PermissionUpsertDto>(permission),
                 Roles = _mapper.Map<IEnumerable<RoleBasicInfoDto>>(roles)

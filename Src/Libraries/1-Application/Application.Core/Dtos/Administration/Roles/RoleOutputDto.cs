@@ -7,6 +7,7 @@ namespace TaskoMask.Application.Core.Dtos.Administration.Roles
     {
         [Display(Name = nameof(ApplicationMetadata.OperatorsCount), ResourceType = typeof(ApplicationMetadata))]
         public long OperatorsCount { get; set; }
+        
         [Display(Name = nameof(ApplicationMetadata.PermissionsCount), ResourceType = typeof(ApplicationMetadata))]
         public long PermissionsCount { get; set; }
         

@@ -1,11 +1,10 @@
 ﻿@using MvcPagedList.Core
 
-@PagedList.Pager(actionName: "search", controllerName: "Permissions", areaName: "Administration",
+@PagedList.Pager(actionName: "search", controllerName: "Members", areaName: "Team",
     routeValues: new
     {
 
         term = Context.Request.Query["term"],
-        groupName = Context.Request.Query["groupName"],
 
     },
     ajaxAttributes: new

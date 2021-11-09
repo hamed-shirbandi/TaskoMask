@@ -1,61 +1,33 @@
-﻿@model TaskoMask.Application.Core.ViewModels.PermissionDetailsViewModel
+﻿@model TaskoMask.Application.Core.ViewModels.MemberDetailsViewModel
 
 @{
-    ViewBag.Title = "Update Permission";
+    ViewBag.Title = "Member Details";
 }
 
-<div class="grid-50 tablet-grid-50 mobile-grid-100">
+<div class="grid-100 tablet-grid-100 mobile-grid-100">
     <div class="block">
-        <div class="block-header">
-            <h4>Basic Info</h4>
+        <div class="block-content no-pad">
+            <ul class="tabs">
+                <li class="tab"><a href="#tab-1" class="active">Basic Info</a></li>
+                <li class="tab"><a href="#tab-2" class="">Organizations</a></li>
+                <li class="tab"><a href="#tab-3" class="">Account Setting</a></li>
+            </ul>
         </div>
-        <div class="block-content">
-            @await Html.PartialAsync("_SaveForm", Model.Permission)
-        </div>
-    </div>
-</div>
 
-<div class="grid-50 tablet-grid-50 mobile-grid-100">
-    <div class="block">
-        <div class="block-header">
-            <h4>Roles</h4>
-        </div>
-        <div class="block-content  has-table">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>@Html.LabelFor(model => model.Roles.FirstOrDefault().Name)</th>
-                            <th>@Html.LabelFor(model => model.Roles.FirstOrDefault().PermissionsId)</th>
-                            <th><label></label></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Roles)
-                        {
-
-                            <tr data-table-row-id="@item.Id">
-                                <td>
-                                    @item.Name
-                                </td>
-                                <td>
-                                    @item.PermissionsId.Length
-                                </td>
-
-                                <td>
-                                    <div class="btn-group-xs">
-                                        <a href="@Url.Action( "update","roles", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-
-                    </tbody>
-                </table>
+        <div id="tab-1">
+            <div class="block-content">
+                @await Html.PartialAsync("_BasicInfo", Model.Member)
             </div>
-
+        </div>
+        <div id="tab-2">
+            <div class="block-content">
+                @await Html.PartialAsync("_Organizations", Model.Organizations)
+            </div>
+        </div>
+        <div id="tab-3">
+            <div class="block-content">
+                @await Html.PartialAsync("_SetUserIsActive", new TaskoMask.web.Admin.Models.SetUserActiveViewModel(id: Model.Member.Id, isActive: Model.Member.IsActive))
+            </div>
         </div>
     </div>
 </div>

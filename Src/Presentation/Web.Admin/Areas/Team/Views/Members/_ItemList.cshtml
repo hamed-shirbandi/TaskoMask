@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TaskoMask.Application.Core.Dtos.Administration.Permissions.PermissionOutputDto>
+﻿@model IEnumerable<TaskoMask.Application.Core.Dtos.Team.Members.MemberOutputDto>
 
 @if (Model.Count() == 0)
 {
@@ -16,9 +16,8 @@ else
                 <thead>
                     <tr>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().DisplayName)</th>
-                        <th>@Html.LabelFor(model => model.FirstOrDefault().SystemName)</th>
-                        <th>@Html.LabelFor(model => model.FirstOrDefault().GroupName)</th>
-                        <th>@Html.LabelFor(model => model.FirstOrDefault().RolesCount)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().CreationTime.CreateDateTimeString)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().OrganizationsCount)</th>
                         <th><label></label></th>
                     </tr>
                 </thead>
@@ -31,18 +30,16 @@ else
                                 @item.DisplayName
                             </td>
                             <td>
-                                @item.SystemName
+                                @item.CreationTime.CreateDateTimeString
                             </td>
                             <td>
-                                @item.GroupName
+                                @item.OrganizationsCount
                             </td>
-                            <td>
-                                @item.RolesCount
-                            </td>
+                      
                             <td>
                                 <div class="btn-group-xs">
-                                    <a href="@Url.Action( "update", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">
-                                        <i class="fa fa-pencil"></i>
+                                    <a href="@Url.Action( "Details", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">
+                                        <i class="fa fa-eye"></i>
                                     </a>
                                 </div>
                             </td>

@@ -10,7 +10,7 @@ using TaskoMask.Web.Common.Helpers;
 namespace Aghoosh.Web.Admin.Areas.Accounting.Controllers
 {
     [Authorize]
-    [Area("Accounting")]
+    [Area("Team")]
     public class MembersController : BaseMvcController
     {
         #region Fields

@@ -5,12 +5,11 @@ using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Team.Organizations.Services;
 using System.Threading.Tasks;
 using TaskoMask.Web.Common.Filters;
-using TaskoMask.Web.Common.Helpers;
 
 namespace Aghoosh.Web.Admin.Areas.Accounting.Controllers
 {
     [Authorize]
-    [Area("Accounting")]
+    [Area("Team")]
     public class OrganizationsController : BaseMvcController
     {
         #region Fields

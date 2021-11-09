@@ -31,9 +31,10 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
 
         #region Ctors
 
-        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IMemberRepository memberRepository) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
+            _memberRepository = memberRepository;
         }
 
         #endregion

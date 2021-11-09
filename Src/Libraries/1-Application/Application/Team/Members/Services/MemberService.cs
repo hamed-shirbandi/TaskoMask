@@ -12,8 +12,6 @@ using TaskoMask.Application.Core.Dtos.Team.Members;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Team.Data;
-using TaskoMask.Application.Core.ViewModels;
-using TaskoMask.Application.Team.Organizations.Queries.Models;
 
 namespace TaskoMask.Application.Team.Members.Services
 {
@@ -68,41 +66,6 @@ namespace TaskoMask.Application.Team.Members.Services
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<PublicPaginatedListReturnType<MemberOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
-        {
-            return await SendQueryAsync(new SearchMembersQuery(page, recordsPerPage, term));
-
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<MemberDetailsViewModel>> GetDetailsAsync(string id)
-        {
-            var memberQueryResult = await SendQueryAsync(new GetMemberByIdQuery(id));
-            if (!memberQueryResult.IsSuccess)
-                return Result.Failure<MemberDetailsViewModel>(memberQueryResult.Errors);
-
-
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByOwnerMemberIdQuery(memberQueryResult.Value.Id));
-            if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<MemberDetailsViewModel>(organizationQueryResult.Errors);
-
-
-            var projectDetail = new MemberDetailsViewModel
-            {
-                Member = memberQueryResult.Value,
-                Organizations = organizationQueryResult.Value,
-            };
-
-            return Result.Success(projectDetail);
-        }
 
 
         #endregion

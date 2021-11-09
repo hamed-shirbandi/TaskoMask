@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Core.Resources;
+﻿using TaskoMask.Application.Core.Dtos.Workspace.Tasks;
 
 namespace TaskoMask.Application.Core.Dtos.Workspace.Cards
 {
-    public class CardReportDto
+   public class CardReportDto: TaskReportDto
     {
-        [Display(Name = nameof(ApplicationMetadata.TasksCount), ResourceType = typeof(ApplicationMetadata))]
-        public int TasksCount { get; set; }
+ 
     }
 }

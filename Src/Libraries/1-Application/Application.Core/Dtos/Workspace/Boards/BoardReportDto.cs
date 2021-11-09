@@ -8,8 +8,5 @@ namespace TaskoMask.Application.Core.Dtos.Workspace.Boards
     {
         [Display(Name = nameof(ApplicationMetadata.CardsCount), ResourceType = typeof(ApplicationMetadata))]
         public int CardsCount { get; set; }
-
-        [Display(Name = nameof(ApplicationMetadata.MembersCount), ResourceType = typeof(ApplicationMetadata))]
-        public int InvitedMembersCount { get; set; }
     }
 }

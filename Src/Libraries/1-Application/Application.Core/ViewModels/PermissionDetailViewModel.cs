@@ -4,9 +4,9 @@ using TaskoMask.Application.Core.Dtos.Administration.Roles;
 
 namespace TaskoMask.Application.Core.ViewModels
 {
-    public class PermissionDetailsViewModel
+    public class PermissionDetailViewModel
     {
-        public PermissionDetailsViewModel()
+        public PermissionDetailViewModel()
         {
             Permission = new PermissionUpsertDto();
             Roles = new List<RoleBasicInfoDto>();

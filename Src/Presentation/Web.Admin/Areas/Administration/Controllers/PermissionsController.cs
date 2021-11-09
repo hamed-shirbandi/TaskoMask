@@ -20,6 +20,9 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         #region Fields
 
         private readonly IPermissionService _permissionService;
+        protected int recordsPerPage;
+        protected int pageSize;
+        protected int totalItemCount;
 
         #endregion
 
@@ -28,7 +31,9 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
         public PermissionsController(IPermissionService permissionService, IMapper mapper) : base(mapper)
         {
             _permissionService = permissionService;
-
+            pageSize = 0;
+            recordsPerPage = 15;
+            totalItemCount = 0;
         }
 
         #endregion
@@ -157,6 +162,7 @@ namespace TaskoMask.Web.Admin.Areas.Administration.Controllers
 
 
         #endregion
+
 
         #region Private Methods
 

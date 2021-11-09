@@ -144,18 +144,18 @@ namespace TaskoMask.Application.Administration.Roles.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<RoleDetailsViewModel>> GetDetailsAsync(string id)
+        public async Task<Result<RoleDetailViewModel>> GetDetailsAsync(string id)
         {
             var role = await _roleRepository.GetByIdAsync(id);
             if (role == null)
-                return Result.Failure<RoleDetailsViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
+                return Result.Failure<RoleDetailViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
 
 
             var operators = await _operatorRepository.GetListByRoleIdAsync(id);
             var permissions = await _permissionRepository.GetListAsync();
 
 
-            var model = new RoleDetailsViewModel
+            var model = new RoleDetailViewModel
             {
                 Role = _mapper.Map<RoleUpsertDto>(role),
                 Operators = _mapper.Map<IEnumerable<OperatorBasicInfoDto>>(operators),

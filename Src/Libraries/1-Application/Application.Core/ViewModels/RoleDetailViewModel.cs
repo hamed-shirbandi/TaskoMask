@@ -5,9 +5,9 @@ using TaskoMask.Application.Core.Helpers;
 
 namespace TaskoMask.Application.Core.ViewModels
 {
-    public class RoleDetailsViewModel
+    public class RoleDetailViewModel
     {
-        public RoleDetailsViewModel()
+        public RoleDetailViewModel()
         {
             Operators = new List<OperatorBasicInfoDto>();
             Permissions = new Dictionary<string, IEnumerable<SelectListItem>>();

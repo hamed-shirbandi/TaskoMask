@@ -139,15 +139,15 @@ namespace TaskoMask.Application.Administration.Operators.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OperatorDetailsViewModel>> GetDetailsAsync(string id)
+        public async Task<Result<OperatorDetailViewModel>> GetDetailsAsync(string id)
         {
             var @operator = await _operatorRepository.GetByIdAsync(id);
             if (@operator == null)
-                return Result.Failure<OperatorDetailsViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+                return Result.Failure<OperatorDetailViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
             var roles = await _roleRepository.GetListAsync();
 
-            var model = new OperatorDetailsViewModel
+            var model = new OperatorDetailViewModel
             {
                 Operator = _mapper.Map<OperatorUpsertDto>(@operator),
                 Roles = roles.Select(role => new SelectListItem

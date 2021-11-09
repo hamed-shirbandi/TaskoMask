@@ -26,8 +26,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Team\Models\" />
-  </ItemGroup>
-
 </Project>

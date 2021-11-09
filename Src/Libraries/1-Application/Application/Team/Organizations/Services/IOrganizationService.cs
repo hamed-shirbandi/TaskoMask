@@ -17,5 +17,7 @@ namespace TaskoMask.Application.Team.Organizations.Services
         Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<OrganizationReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByOwnerMemberIdAsync(string ownerMemberId);
+        Task<Result<PublicPaginatedListReturnType<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+
     }
 }

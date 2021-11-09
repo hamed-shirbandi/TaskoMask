@@ -75,7 +75,6 @@ namespace TaskoMask.Application.Team.Members.Services
         public async Task<Result<PublicPaginatedListReturnType<MemberOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await SendQueryAsync(new SearchMembersQuery(page, recordsPerPage, term));
-
         }
 
 

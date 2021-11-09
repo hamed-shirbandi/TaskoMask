@@ -158,6 +158,16 @@ namespace TaskoMask.Application.Team.Organizations.Services
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<PublicPaginatedListReturnType<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        {
+            return await SendQueryAsync(new SearchOrganizationsQuery(page, recordsPerPage, term));
+        }
+
+
         #endregion
 
         #region Private Methods

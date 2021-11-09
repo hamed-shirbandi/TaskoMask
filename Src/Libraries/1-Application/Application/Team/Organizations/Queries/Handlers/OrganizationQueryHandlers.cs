@@ -12,17 +12,20 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Team.Data;
+using TaskoMask.Application.Core.Helpers;
 
 namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
 {
     public class OrganizationQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
-        IRequestHandler<GetOrganizationsByOwnerMemberIdQuery, IEnumerable<OrganizationBasicInfoDto>>
+        IRequestHandler<GetOrganizationsByOwnerMemberIdQuery, IEnumerable<OrganizationBasicInfoDto>>,
+        IRequestHandler<SearchOrganizationsQuery, PublicPaginatedListReturnType<OrganizationOutputDto>>
     {
         #region Fields
 
         private readonly IOrganizationRepository _organizationRepository;
+        private readonly IMemberRepository _memberRepository;
 
         #endregion
 
@@ -70,6 +73,30 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
         public async Task<OrganizationReportDto> Handle(GetOrganizationReportQuery request, CancellationToken cancellationToken)
         {
             return new OrganizationReportDto();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<PublicPaginatedListReturnType<OrganizationOutputDto>> Handle(SearchOrganizationsQuery request, CancellationToken cancellationToken)
+        {
+            var organizations = _organizationRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
+            var organizationsDto = _mapper.Map<IEnumerable<OrganizationOutputDto>>(organizations);
+
+            foreach (var item in organizationsDto)
+            {
+                var member = await _memberRepository.GetByIdAsync(item.OwnerMemberId);
+                item.OwnerMemberDisplayName = member?.DisplayName;
+            }
+
+            return new PublicPaginatedListReturnType<OrganizationOutputDto>
+            {
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                Items = organizationsDto
+            };
         }
 
 

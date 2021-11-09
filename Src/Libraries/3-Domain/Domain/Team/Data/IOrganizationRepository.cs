@@ -9,5 +9,7 @@ namespace TaskoMask.Domain.Team.Data
     {
         Task<IEnumerable<Organization>> GetListByOwnerMemberIdAsync(string ownerMemberId);
         Task<bool> ExistByNameAsync(string id, string name);
+        Task<long> CountByOwnerMemberIdAsync(string ownerMemberId);
+
     }
 }

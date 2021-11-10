@@ -9,19 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{47C7C7A3-B0A4-44B4-AE16-9B980C72A580}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Application", "1-Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{CC5F6FB4-4140-4427-8CD5-741363DE08F5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Infrastructure", "2-Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Infrastructure", "1-Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Src\Libraries\1-Application\Application\Application.csproj", "{A22E5B93-965A-4C7C-9848-A64BFF580ACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Src\Libraries\2-Application\Application\Application.csproj", "{A22E5B93-965A-4C7C-9848-A64BFF580ACD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "Src\Libraries\1-Application\Application.Core\Application.Core.csproj", "{4D18F587-562B-4560-AAF8-725333B9C65F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "Src\Libraries\2-Application\Application.Core\Application.Core.csproj", "{4D18F587-562B-4560-AAF8-725333B9C65F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "Src\Libraries\2-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{175C9CDF-0881-4DA7-AAE1-1794378CF92B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "Src\Libraries\1-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{175C9CDF-0881-4DA7-AAE1-1794378CF92B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data", "Src\Libraries\2-Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj", "{358ED8E3-5C3C-46CA-81C8-D74B371DF7C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data", "Src\Libraries\1-Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj", "{358ED8E3-5C3C-46CA-81C8-D74B371DF7C2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Src\Libraries\3-Domain\Domain\Domain.csproj", "{293F316D-11EE-40E5-BC41-E492ADCB0E23}"
 EndProject

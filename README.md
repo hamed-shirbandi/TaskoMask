@@ -3,11 +3,25 @@
 
   
 <p align="left">
+  <a href="https://github.com/hamed-shirbandi/TaskoMask/issues">
   <img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask">
-<!--- <img src="https://img.shields.io/github/workflow/status/hamed-shirbandi/TaskoMask/.NET%20Core%20Build"> ---> 
+</a>
+ <a href="http://taskomask.ir">
   <img src="https://img.shields.io/website?url=http://taskomask.ir">
-  <img src="https://img.shields.io/github/license/hamed-shirbandi/TaskoMask">
+</a>
+   <a href="https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE">
+ <img src="https://img.shields.io/github/license/hamed-shirbandi/TaskoMask">
+</a>
+ <a href="https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors">
   <img src="https://img.shields.io/github/contributors/hamed-shirbandi/TaskoMask">
+</a>
+  <!--- 
+   <a href="#s">
+<img src="https://img.shields.io/github/workflow/status/hamed-shirbandi/TaskoMask/.NET%20Core%20Build">
+</a>
+ ---> 
+ 
+  
 
 </p>
  
@@ -95,7 +109,12 @@ Please check the [issues](https://github.com/hamed-shirbandi/TaskoMask/issues) a
 
 This project exists thanks to all the people who [contribute](https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors).
 
-![GitHub Contributors Image](https://contrib.rocks/image?repo=hamed-shirbandi/TaskoMask)
+<a href="https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors">
+  
+  ![GitHub Contributors Image](https://contrib.rocks/image?repo=hamed-shirbandi/TaskoMask)
+  
+</a>
+
      
 # Supporting
 We work hard to make something useful to you so please give a star ⭐ if this project helped you!

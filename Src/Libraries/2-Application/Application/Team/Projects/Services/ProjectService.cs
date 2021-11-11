@@ -71,7 +71,7 @@ namespace TaskoMask.Application.Team.Projects.Services
             if (!organizationQueryResult.IsSuccess)
                 return Result.Failure<ProjectDetailsViewModel>(organizationQueryResult.Errors);
 
-           
+
 
             var boardQueryResult = await SendQueryAsync(new GetBoardsByProjectIdQuery(id));
             if (!boardQueryResult.IsSuccess)
@@ -89,7 +89,7 @@ namespace TaskoMask.Application.Team.Projects.Services
                 Organization = organizationQueryResult.Value,
                 Project = projectQueryResult.Value,
                 Reports = projectReportQueryResult.Value,
-                Boards= boardQueryResult.Value,
+                Boards = boardQueryResult.Value,
             };
 
             return Result.Success(projectDetail);
@@ -124,6 +124,16 @@ namespace TaskoMask.Application.Team.Projects.Services
         public async Task<Result<ProjectReportDto>> GetReportAsync(string id)
         {
             return await SendQueryAsync(new GetProjectReportQuery(id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<PublicPaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        {
+            throw new System.NotImplementedException();
         }
 
 

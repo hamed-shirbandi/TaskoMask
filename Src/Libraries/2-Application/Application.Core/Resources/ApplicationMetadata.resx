@@ -186,6 +186,9 @@
   <data name="OrganizationId" xml:space="preserve">
     <value>OrganizationId</value>
   </data>
+  <data name="OrganizationName" xml:space="preserve">
+    <value>Organization</value>
+  </data>
   <data name="OrganizationsCount" xml:space="preserve">
     <value>Organizations Count</value>
   </data>

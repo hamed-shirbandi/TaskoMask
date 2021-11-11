@@ -268,6 +268,15 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Organization.
+        /// </summary>
+        public static string OrganizationName {
+            get {
+                return ResourceManager.GetString("OrganizationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Organizations Count.
         /// </summary>
         public static string OrganizationsCount {

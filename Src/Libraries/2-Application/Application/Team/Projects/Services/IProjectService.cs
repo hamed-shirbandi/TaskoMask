@@ -5,6 +5,7 @@ using TaskoMask.Application.Core.Dtos.Team.Projects;
 using TaskoMask.Application.Core.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Core.Dtos.Team.Organizations;
 
 namespace TaskoMask.Application.Team.Projects.Services
 {
@@ -16,5 +17,6 @@ namespace TaskoMask.Application.Team.Projects.Services
         Task<Result<ProjectBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<ProjectReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId);
+        Task<Result<PublicPaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
     }
 }

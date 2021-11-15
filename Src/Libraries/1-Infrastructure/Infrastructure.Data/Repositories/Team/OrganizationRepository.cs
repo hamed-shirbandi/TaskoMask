@@ -111,9 +111,5 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
 
         #endregion
 
-
-
-
-
     }
 }

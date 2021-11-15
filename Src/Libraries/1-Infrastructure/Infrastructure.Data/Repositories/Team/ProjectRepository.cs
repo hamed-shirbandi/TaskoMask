@@ -95,7 +95,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> CountByOrganizationAsync(string organizationId)
+        public async Task<long> CountByOrganizationIdAsync(string organizationId)
         {
             return await _projects.CountDocumentsAsync(b => b.OrganizationId == organizationId);
         }

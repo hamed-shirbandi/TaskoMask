@@ -76,7 +76,18 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
 
 
 
-      
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<PublicPaginatedListReturnType<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        {
+            return await SendQueryAsync(new SearchTasksQuery(page, recordsPerPage, term));
+        }
+
+
+
+
 
 
         #endregion

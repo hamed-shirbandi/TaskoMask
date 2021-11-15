@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Workspace.Data;
@@ -56,6 +57,48 @@ namespace TaskoMask.Infrastructure.Data.Repositories
             var task = await _tasks.Find(e => e.Title == title).FirstOrDefaultAsync();
             return task != null && task.Id != id;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IEnumerable<Domain.Workspace.Entities.Task> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
+        {
+            var queryable = _tasks.AsQueryable();
+
+            #region By term
+
+            if (!string.IsNullOrEmpty(term))
+            {
+                queryable = queryable.Where(p => p.Title.Contains(term) || p.Description.Contains(term));
+            }
+
+            #endregion
+
+            #region SortOrder
+
+            queryable = queryable.OrderByDescending(p => p.Id);
+
+            #endregion
+
+            #region  Skip Take
+
+            totalItemCount = queryable.CountAsync().Result;
+            pageSize = (int)Math.Ceiling((double)totalItemCount / recordsPerPage);
+
+            page = page > pageSize || page < 1 ? 1 : page;
+
+
+            var skiped = (page - 1) * recordsPerPage;
+            queryable = queryable.Skip(skiped).Take(recordsPerPage);
+
+
+            #endregion
+
+            return queryable.ToList();
+        }
+
+
 
         #endregion
 

@@ -120,6 +120,9 @@
   <data name="BoardId" xml:space="preserve">
     <value>BoardId</value>
   </data>
+  <data name="BoardName" xml:space="preserve">
+    <value>Board</value>
+  </data>
   <data name="BoardsCount" xml:space="preserve">
     <value>Boards Count</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="ProjectId" xml:space="preserve">
     <value>ProjectId</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Project</value>
   </data>
   <data name="ProjectsCount" xml:space="preserve">
     <value>Projects Count</value>

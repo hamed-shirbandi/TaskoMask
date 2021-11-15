@@ -13,19 +13,26 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Workspace.Data;
+using TaskoMask.Application.Core.Helpers;
 
 namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
 {
     public class TaskQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,
         IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>,
-        IRequestHandler<GetTasksByOrganizationIdQuery, IEnumerable<TaskBasicInfoDto>>
-        
+        IRequestHandler<GetTasksByOrganizationIdQuery, IEnumerable<TaskBasicInfoDto>>,
+        IRequestHandler<SearchTasksQuery, PublicPaginatedListReturnType<TaskOutputDto>>
+
+
     {
         private readonly ITaskRepository _taskRepository;
-        public TaskQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        private readonly ICardRepository _cardRepository;
+
+
+        public TaskQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper, ICardRepository cardRepository) : base(mapper, notifications)
         {
             _taskRepository = taskRepository;
+            _cardRepository = cardRepository;
         }
 
 
@@ -65,5 +72,29 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
             return _mapper.Map<IEnumerable<TaskBasicInfoDto>>(tasks);
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<PublicPaginatedListReturnType<TaskOutputDto>> Handle(SearchTasksQuery request, CancellationToken cancellationToken)
+        {
+            var cards = _cardRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
+            var cardsDto = _mapper.Map<IEnumerable<TaskOutputDto>>(cards);
+
+            foreach (var item in cardsDto)
+            {
+                var card = await _cardRepository.GetByIdAsync(item.CardId);
+                item.CardName = card?.Name;
+            }
+
+            return new PublicPaginatedListReturnType<TaskOutputDto>
+            {
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                Items = cardsDto
+            };
+        }
     }
 }

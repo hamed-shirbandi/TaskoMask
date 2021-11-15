@@ -13,5 +13,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         Task<Result<CommandResult>> UpdateAsync(TaskUpsertDto input);
         Task<Result<TaskBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<IEnumerable<TaskBasicInfoDto>>> GetListByCardIdAsync(string cardId);
+        Task<Result<PublicPaginatedListReturnType<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+
     }
 }

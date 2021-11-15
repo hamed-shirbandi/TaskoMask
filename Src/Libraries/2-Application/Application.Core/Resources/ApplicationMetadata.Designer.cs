@@ -70,6 +70,15 @@ namespace TaskoMask.Application.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Board.
+        /// </summary>
+        public static string BoardName {
+            get {
+                return ResourceManager.GetString("BoardName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Boards Count.
         /// </summary>
         public static string BoardsCount {
@@ -354,6 +363,15 @@ namespace TaskoMask.Application.Core.Resources {
         public static string ProjectId {
             get {
                 return ResourceManager.GetString("ProjectId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string ProjectName {
+            get {
+                return ResourceManager.GetString("ProjectName", resourceCulture);
             }
         }
         

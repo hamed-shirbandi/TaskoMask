@@ -100,6 +100,16 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> CountByCardIdAsync(string cardId)
+        {
+            return await _tasks.CountDocumentsAsync(b => b.CardId == cardId);
+        }
+
+
+
         #endregion
 
         #region Private Methods

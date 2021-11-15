@@ -9,6 +9,11 @@ using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Workspace.Cards.Queries.Models;
+using TaskoMask.Application.Queries.Models.Boards;
+using TaskoMask.Application.Team.Projects.Queries.Models;
+using TaskoMask.Application.Team.Organizations.Queries.Models;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
 {
@@ -85,6 +90,57 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
             return await SendQueryAsync(new SearchTasksQuery(page, recordsPerPage, term));
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id)
+        {
+            var taskQueryResult = await SendQueryAsync(new GetTaskByIdQuery(id));
+            if (!taskQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(taskQueryResult.Errors);
+
+
+
+            var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(taskQueryResult.Value.CardId));
+            if (!cardQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(cardQueryResult.Errors);
+
+
+            var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(cardQueryResult.Value.BoardId));
+            if (!boardQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(boardQueryResult.Errors);
+
+
+            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(boardQueryResult.Value.ProjectId));
+            if (!projectQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(projectQueryResult.Errors);
+
+
+            var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
+            if (!organizationQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(organizationQueryResult.Errors);
+
+
+            var cardReportQueryResult = await SendQueryAsync(new GetCardReportQuery(id));
+            if (!cardReportQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(cardReportQueryResult.Errors);
+
+
+          
+            var cardDetail = new TaskDetailsViewModel
+            {
+                Organization = organizationQueryResult.Value,
+                Project = projectQueryResult.Value,
+                Board = boardQueryResult.Value,
+                Reports = cardReportQueryResult.Value,
+                Card = cardQueryResult.Value,
+                Task = taskQueryResult.Value,
+            };
+
+            return Result.Success(cardDetail);
+        }
 
 
 

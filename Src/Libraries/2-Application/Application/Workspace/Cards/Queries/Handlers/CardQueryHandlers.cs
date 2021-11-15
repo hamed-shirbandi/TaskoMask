@@ -11,26 +11,33 @@ using TaskoMask.Application.Core.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Workspace.Data;
+using TaskoMask.Application.Core.Helpers;
 
 namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
 {
     public class CardQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetCardByIdQuery, CardBasicInfoDto>,
         IRequestHandler<GetCardReportQuery, CardReportDto>,
-         IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>
+         IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>,
+        IRequestHandler<SearchCardsQuery, PublicPaginatedListReturnType<CardOutputDto>>
+
     {
         #region Fields
 
         private readonly ICardRepository _cardRepository;
+        private readonly IBoardRepository _boardRepository;
+        private readonly ITaskRepository _taskRepository;
 
 
         #endregion
 
         #region Ctors
 
-        public CardQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public CardQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper, ITaskRepository taskRepository, IBoardRepository boardRepository) : base(mapper, notifications)
         {
             _cardRepository = cardRepository;
+            _taskRepository = taskRepository;
+            _boardRepository = boardRepository;
         }
 
         #endregion
@@ -67,9 +74,36 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public Task<CardReportDto> Handle(GetCardReportQuery request, CancellationToken cancellationToken)
+        public async Task<CardReportDto> Handle(GetCardReportQuery request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            //TODO Implement GetCardReportQuery
+            return new CardReportDto();
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<PublicPaginatedListReturnType<CardOutputDto>> Handle(SearchCardsQuery request, CancellationToken cancellationToken)
+        {
+            var cards = _cardRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
+            var cardsDto = _mapper.Map<IEnumerable<CardOutputDto>>(cards);
+
+            foreach (var item in cardsDto)
+            {
+                var board = await _boardRepository.GetByIdAsync(item.BoardId);
+                item.BoardName = board?.Name;
+                item.TasksCount = await _taskRepository.CountByCardIdAsync(item.Id);
+            }
+
+            return new PublicPaginatedListReturnType<CardOutputDto>
+            {
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                Items = cardsDto
+            };
         }
 
 

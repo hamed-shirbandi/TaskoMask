@@ -16,5 +16,7 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         Task<Result<CardBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<CardReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<CardBasicInfoDto>>> GetListByBoardIdAsync(string boardId);
+        Task<Result<PublicPaginatedListReturnType<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+
     }
 }

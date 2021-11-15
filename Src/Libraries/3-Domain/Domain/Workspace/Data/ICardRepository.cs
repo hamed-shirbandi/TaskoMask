@@ -9,5 +9,7 @@ namespace TaskoMask.Domain.Workspace.Data
     {
         Task<IEnumerable<Card>> GetListByBoardIdAsync(string boardId);
         Task<bool> ExistByNameAsync(string id, string name);
+        IEnumerable<Card> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount);
+        Task<long> CountByBoardIdAsync(string boardId);
     }
 }

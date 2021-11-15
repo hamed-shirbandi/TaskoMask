@@ -140,6 +140,17 @@ namespace TaskoMask.Application.Workspace.Cards.Services
 
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<PublicPaginatedListReturnType<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        {
+            return await SendQueryAsync(new SearchCardsQuery(page, recordsPerPage, term));
+        }
+
+
+
         #endregion
     }
 }

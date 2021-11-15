@@ -6,7 +6,7 @@ using TaskoMask.Application.Team.Projects.Services;
 using System.Threading.Tasks;
 using TaskoMask.Web.Common.Filters;
 
-namespace Aghoosh.Web.Admin.Areas.Accounting.Controllers
+namespace TaskoMask.Web.Admin.Areas.Team.Controllers
 {
     [Authorize]
     [Area("Team")]

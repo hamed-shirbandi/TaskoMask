@@ -12,6 +12,8 @@ using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Core.Resources;
 using TaskoMask.Domain.Workspace.Data;
+using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Domain.Team.Data;
 
 namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
 {
@@ -19,21 +21,27 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         IRequestHandler<GetBoardByIdQuery, BoardBasicInfoDto>,
         IRequestHandler<GetBoardReportQuery, BoardReportDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
-        IRequestHandler<GetBoardsByOrganizationIdQuery, IEnumerable<BoardBasicInfoDto>>
-        
+        IRequestHandler<GetBoardsByOrganizationIdQuery, IEnumerable<BoardBasicInfoDto>>,
+        IRequestHandler<SearchBoardsQuery, PublicPaginatedListReturnType<BoardOutputDto>>
+
+
     {
         #region Fields
 
         private readonly IBoardRepository _boardRepository;
+        private readonly ICardRepository _cardRepository;
+        private readonly IProjectRepository _projectRepository;
 
         #endregion
 
         #region Ctors
 
 
-        public BoardQueryHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public BoardQueryHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IMapper mapper, IProjectRepository projectRepository, ICardRepository cardRepository) : base(mapper, notifications)
         {
             _boardRepository = boardRepository;
+            _projectRepository = projectRepository;
+            _cardRepository = cardRepository;
         }
 
 
@@ -81,9 +89,35 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public Task<BoardReportDto> Handle(GetBoardReportQuery request, CancellationToken cancellationToken)
+        public async Task<BoardReportDto> Handle(GetBoardReportQuery request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            //TODO Implement GetBoardReportQuery
+            return new BoardReportDto();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<PublicPaginatedListReturnType<BoardOutputDto>> Handle(SearchBoardsQuery request, CancellationToken cancellationToken)
+        {
+            var boards = _boardRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
+            var boardsDto = _mapper.Map<IEnumerable<BoardOutputDto>>(boards);
+
+            foreach (var item in boardsDto)
+            {
+                var project = await _projectRepository.GetByIdAsync(item.ProjectId);
+                item.ProjectName = project?.Name;
+                item.CardsCount = await _cardRepository.CountByBoardIdAsync(item.Id);
+            }
+
+            return new PublicPaginatedListReturnType<BoardOutputDto>
+            {
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                Items = boardsDto
+            };
         }
 
 

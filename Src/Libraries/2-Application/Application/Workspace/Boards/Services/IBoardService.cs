@@ -16,5 +16,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<BoardReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<BoardBasicInfoDto>>> GetListByProjectIdAsync(string projectId);
+        Task<Result<PublicPaginatedListReturnType<BoardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+
     }
 }

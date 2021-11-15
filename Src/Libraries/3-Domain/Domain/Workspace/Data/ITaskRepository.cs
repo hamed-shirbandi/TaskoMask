@@ -11,6 +11,6 @@ namespace TaskoMask.Domain.Workspace.Data
 
         Task<bool> ExistByTitleAsync(string id, string title);
         IEnumerable<Domain.Workspace.Entities.Task> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount);
-        Task<long> CountByCardIdAsync(string id);
+        Task<long> CountByCardIdAsync(string cardId);
     }
 }

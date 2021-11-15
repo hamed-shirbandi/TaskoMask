@@ -9,5 +9,7 @@ namespace TaskoMask.Domain.Team.Data
     {
         Task<IEnumerable<Project>> GetListByOrganizationIdAsync(string organizationId);
         Task<bool> ExistByNameAsync(string id, string name);
+        IEnumerable<Project> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount);
+        Task<long> CountByOrganizationAsync(string organizationId);
     }
 }

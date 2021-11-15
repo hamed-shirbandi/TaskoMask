@@ -26,15 +26,17 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
 
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMemberRepository _memberRepository;
+        private readonly IProjectRepository _projectRepository;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IMemberRepository memberRepository) : base(mapper, notifications)
+        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IMemberRepository memberRepository, IProjectRepository projectRepository) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
             _memberRepository = memberRepository;
+            _projectRepository = projectRepository;
         }
 
         #endregion
@@ -73,6 +75,7 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
         /// </summary>
         public async Task<OrganizationReportDto> Handle(GetOrganizationReportQuery request, CancellationToken cancellationToken)
         {
+            //TODO Implement GetOrganizationReportQuery
             return new OrganizationReportDto();
         }
 
@@ -90,6 +93,7 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
             {
                 var member = await _memberRepository.GetByIdAsync(item.OwnerMemberId);
                 item.OwnerMemberDisplayName = member?.DisplayName;
+                item.ProjectsCount =await _projectRepository.CountByOrganizationAsync(item.Id);
             }
 
             return new PublicPaginatedListReturnType<OrganizationOutputDto>

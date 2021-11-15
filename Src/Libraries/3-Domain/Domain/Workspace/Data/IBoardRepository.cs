@@ -10,5 +10,6 @@ namespace TaskoMask.Domain.Workspace.Data
         Task<IEnumerable<Board>> GetListByProjectIdAsync(string projectId);
         Task<IEnumerable<Board>> GetListByOrganizationIdAsync(string organizationId);
         Task<bool> ExistByNameAsync(string id, string name);
+        Task<long> CountByProjectIdAsync(string projectId);
     }
 }

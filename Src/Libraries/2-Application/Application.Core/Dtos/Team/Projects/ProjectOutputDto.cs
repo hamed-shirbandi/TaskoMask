@@ -9,6 +9,6 @@ namespace TaskoMask.Application.Core.Dtos.Team.Projects
         public string OrganizationName { get; set; }
 
         [Display(Name = nameof(ApplicationMetadata.BoardsCount), ResourceType = typeof(ApplicationMetadata))]
-        public int BoardsCount { get; set; }
+        public long BoardsCount { get; set; }
     }
 }

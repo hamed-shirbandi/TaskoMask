@@ -133,7 +133,7 @@ namespace TaskoMask.Application.Team.Projects.Services
         /// </summary>
         public async Task<Result<PublicPaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
-            throw new System.NotImplementedException();
+            return await SendQueryAsync(new SearchProjectsQuery(page, recordsPerPage, term));
         }
 
 

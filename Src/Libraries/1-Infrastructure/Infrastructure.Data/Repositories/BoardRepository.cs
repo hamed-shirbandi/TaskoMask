@@ -60,6 +60,15 @@ namespace TaskoMask.Infrastructure.Data.Repositories
             return board != null && board.Id != id;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> CountByProjectIdAsync(string projectId)
+        {
+            return await _boards.CountDocumentsAsync(b => b.ProjectId==projectId);
+        }
+
         #endregion
 
         #region Private Methods

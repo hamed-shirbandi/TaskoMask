@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Workspace\Models\" />
     <Folder Include="Areas\Team\Models\" />
   </ItemGroup>
 

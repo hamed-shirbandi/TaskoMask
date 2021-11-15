@@ -13,7 +13,6 @@ using TaskoMask.Domain.Administration.Data;
 using TaskoMask.Application.Core.Resources;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.Resources;
-using TaskoMask.Application.Core.Dtos.Administration.Roles;
 using System.Linq;
 
 namespace TaskoMask.Application.Administration.Operators.Services

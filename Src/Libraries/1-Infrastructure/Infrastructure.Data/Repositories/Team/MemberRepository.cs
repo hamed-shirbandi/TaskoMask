@@ -7,7 +7,7 @@ using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Repositories
+namespace TaskoMask.Infrastructure.Data.Repositories.Team
 {
     public class MemberRepository : UserRepository<Member>, IMemberRepository
     {

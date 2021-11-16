@@ -6,6 +6,10 @@
     <RootNamespace>TaskoMask.Web.Admin</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="C:\Users\CodeBlock\.nuget\packages\mvcpagedlist.core\1.1.1\contentFiles\any\netstandard2.0\wwwroot\css\MvcPagedList.Core.css" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />

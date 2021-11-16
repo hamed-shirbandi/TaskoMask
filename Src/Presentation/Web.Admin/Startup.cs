@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.Infrastructure.Data.DataProviders;
 using TaskoMask.Web.Common.Configuration.Startup;
 
 namespace TaskoMask.Web.Admin
@@ -34,7 +35,11 @@ namespace TaskoMask.Web.Admin
         /// </summary>
         public void Configure(IApplicationBuilder app, IServiceScopeFactory serviceScopeFactory)
         {
+
             app.MvcConfigure(serviceScopeFactory, _env);
+
+            serviceScopeFactory.SeedAdminPanelTempData();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

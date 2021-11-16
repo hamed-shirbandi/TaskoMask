@@ -103,7 +103,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
                 app.UseDeveloperExceptionPage();
 
             serviceScopeFactory.InitialMongoDb();
-            serviceScopeFactory.MongoDbSeedData();
+            serviceScopeFactory.SeedEssentialData();
             app.UseHttpsRedirection();
 
   

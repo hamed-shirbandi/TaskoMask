@@ -75,7 +75,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                         var groupNumber = i > 5 ? 1 : 0;
                         var permission = new Permission
                         {
-                            DisplayName = $"Name {i}",
+                            DisplayName = $"Permission Name {i}",
                             SystemName = $"SystemName{i}",
                             GroupName = $"Group Name {groupNumber}",
                         };
@@ -91,7 +91,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                         var permissionsId = _permissions.Find(p => true).ToList().Select(p => p.Id).ToArray();
                         var role = new Role
                         {
-                            Name = $"Name {i}",
+                            Name = $"Role Name {i}",
                             Description = $"Test Description {i}",
                             PermissionsId = permissionsId.Take(i).ToArray(),
                         };
@@ -106,7 +106,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                     {
                         var rolesId = _roles.Find(p => true).ToList().Select(p => p.Id).ToArray();
                         var @operator = new Operator(
-                            $"Name {i}",
+                            $"Operator Name {i}",
                             $"PhoneNumber {i}",
                             $"Email {i}",
                             $"UserName {i}",
@@ -122,10 +122,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                     #region Members => Organizations => Projects => Boards => Cards => Tasks
 
-                    for (int i = 1; i <= 10; i++)
+                    for (int i = 1; i <= 3; i++)
                     {
                         var member = new Member(
-                            $"Name {i}",
+                            $"Member Name {i}",
                             $"Email {i}",
                             $"Password {i}",
                             _encryptionService
@@ -135,10 +135,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                         #region Organizations
 
-                        for (int j = 1; j <= 10; j++)
+                        for (int j = 1; j <= 3; j++)
                         {
                             var organization = new Organization(
-                                $"Name {j}",
+                                $"Organization Name {j}",
                                 $"Description {j}",
                                 member.Id );
 
@@ -146,10 +146,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                             #region Projects
 
-                            for (int k = 1; k <= 10; k++)
+                            for (int k = 1; k <= 3; k++)
                             {
                                 var project = new Project(
-                                    $"Name {k}",
+                                    $" ProjectName {k}",
                                     $"Description {k}",
                                     organization.Id);
 
@@ -158,10 +158,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                                 #region Boards
 
-                                for (int l = 1; l <= 10; l++)
+                                for (int l = 1; l <= 3; l++)
                                 {
                                     var board = new Board(
-                                        $"Name {l}",
+                                        $"Board Name {l}",
                                         $"Description {l}",
                                         project.Id,
                                         organization.Id);
@@ -171,10 +171,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                                     #region Cards
 
-                                    for (int m = 1; m <= 10; m++)
+                                    for (int m = 1; m <= 3; m++)
                                     {
                                         var card = new Card(
-                                            $"Name {m}",
+                                            $"Card Name {m}",
                                             $"Description {m}",
                                             board.Id,
                                             Domain.Core.Enums.CardType.ToDo,
@@ -185,10 +185,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                                         #region Tasks
 
-                                        for (int n = 1; n <= 10; n++)
+                                        for (int n = 1; n <= 3; n++)
                                         {
                                             var task = new Task(
-                                                $"Title {n}",
+                                                $"Task Title {n}",
                                                 $"Description {n}",
                                                 card.Id,
                                                 board.Id,

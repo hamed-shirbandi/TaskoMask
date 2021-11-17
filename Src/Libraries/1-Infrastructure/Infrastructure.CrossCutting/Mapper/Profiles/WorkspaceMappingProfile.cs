@@ -15,6 +15,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Task, TaskBasicInfoDto>();
             CreateMap<Task, TaskUpsertDto>();
             CreateMap<TaskBasicInfoDto, TaskUpsertDto>();
+            CreateMap<Task, TaskOutputDto>();
 
 
             #endregion
@@ -24,6 +25,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Card, CardBasicInfoDto>();
             CreateMap<Card, CardUpsertDto>();
             CreateMap<CardBasicInfoDto, CardUpsertDto>();
+            CreateMap<Card, CardOutputDto>();
 
             #endregion
 
@@ -32,6 +34,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Board, BoardBasicInfoDto>();
             CreateMap<Board, BoardUpsertDto>();
             CreateMap<BoardBasicInfoDto, BoardUpsertDto>();
+            CreateMap<Board, BoardOutputDto>();
 
             #endregion
         }

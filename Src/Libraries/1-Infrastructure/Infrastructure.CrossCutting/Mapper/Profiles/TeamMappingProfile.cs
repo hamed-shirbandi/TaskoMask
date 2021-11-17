@@ -24,6 +24,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Project, ProjectBasicInfoDto>();
             CreateMap<Project, ProjectUpsertDto>();
             CreateMap<ProjectBasicInfoDto, ProjectUpsertDto>();
+            CreateMap<Project, ProjectOutputDto>();
 
             #endregion
 

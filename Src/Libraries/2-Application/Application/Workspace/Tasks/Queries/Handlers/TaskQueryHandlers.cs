@@ -80,10 +80,10 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
         /// </summary>
         public async Task<PublicPaginatedListReturnType<TaskOutputDto>> Handle(SearchTasksQuery request, CancellationToken cancellationToken)
         {
-            var cards = _cardRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
-            var cardsDto = _mapper.Map<IEnumerable<TaskOutputDto>>(cards);
+            var tasks = _taskRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
+            var tasksDto = _mapper.Map<IEnumerable<TaskOutputDto>>(tasks);
 
-            foreach (var item in cardsDto)
+            foreach (var item in tasksDto)
             {
                 var card = await _cardRepository.GetByIdAsync(item.CardId);
                 item.CardName = card?.Name;
@@ -93,7 +93,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,
-                Items = cardsDto
+                Items = tasksDto
             };
         }
     }

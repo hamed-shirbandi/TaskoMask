@@ -17,5 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\UnitTests.Base\UnitTests.Base.csproj" />
   </ItemGroup>
-
+  <Target Name="CopyConfig" AfterTargets="AfterBuild">
+    <Copy SourceFiles="..\..\Presentation\Web.Admin\appsettings.json" DestinationFolder="$(OutDir)" />
+  </Target>
 </Project>

@@ -71,7 +71,7 @@ There is a list of our documentation:
       -	[RedisCache.Core](https://www.nuget.org/packages/RedisCache.Core/)
       -	[DbLogger.Core](https://www.nuget.org/packages/DbLogger.Core/)
   * ### Front-end:
-      - Blazor (soon)
+      - Blazor
       -	.HTML
       -	CSS
       -	Java Script 

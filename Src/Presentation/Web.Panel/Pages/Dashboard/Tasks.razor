@@ -1,0 +1,42 @@
+﻿@using TaskoMask.Application.Core.Dtos.Workspace.Tasks
+
+@foreach (var item in Model)
+{
+    <div class="col-md-12 col-sm-12 ">
+        <a href="#">
+            <div class="card bg-warning text-dark">
+                <div class="card-body">
+                    <strong>
+                        <i class="bi bi-list-task"></i>
+                        this is a test task title ...
+                    </strong>
+                    <hr />
+                    <small class="btn btn-outline-dark">
+                        <i class="bi bi-clipboard-plus"></i>
+                        test board
+                    </small>
+                    <small class="btn btn-outline-dark">
+                        <i class="bi bi-kanban"></i>
+                        test project
+                    </small>
+                    <small class="btn btn-outline-dark">
+                        <i class="bi bi-calendar-date"></i>
+                        2021/7/9 23:59:32
+                    </small>
+                    <small class="btn btn-outline-dark">
+                        <i class="bi bi-people"></i>
+                        hamed shirbandi
+                    </small>
+                    <small class="btn btn-outline-dark">
+                        <i class="bi bi-clipboard-x"></i>
+                        to do card
+                    </small>
+                </div>
+            </div>
+        </a>
+    </div>
+}
+@code {
+    [Parameter]
+    public IEnumerable<TaskBasicInfoDto> Model { get; set; }
+}

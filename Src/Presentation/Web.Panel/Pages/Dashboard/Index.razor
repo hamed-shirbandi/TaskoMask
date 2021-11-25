@@ -13,10 +13,7 @@ else
 {
     <div class="container py-3">
         <div class="row">
-            @foreach (var item in Model.OrganizationsDetailsList)
-            {
-                <Organization Model="@item" />
-            }
+            <Organizations Model="@Model.OrganizationsDetailsList" />
         </div>
 
     </div>

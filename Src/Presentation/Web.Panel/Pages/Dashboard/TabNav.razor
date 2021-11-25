@@ -1,0 +1,39 @@
+﻿@using TaskoMask.Application.Core.Dtos.Team.Organizations
+
+<ul class="nav nav-tabs small justify-content-end" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#boards-@Model.Id" role="tab">
+            <i class="bi bi-clipboard-plus"></i>
+            Boards
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#projects-@Model.Id" role="tab">
+            <i class="bi bi-kanban"></i>
+            Projects
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#tasks-@Model.Id" role="tab">
+            <i class="bi bi-list-task"></i>
+            Last Tasks
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#members-@Model.Id" role="tab">
+            <i class="bi bi-people"></i>
+            Members
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#reports-@Model.Id" role="tab">
+            <i class="bi bi-pie-chart"></i>
+            Reports
+        </a>
+    </li>
+</ul>
+
+@code {
+    [Parameter]
+    public OrganizationBasicInfoDto Model { get; set; }
+}

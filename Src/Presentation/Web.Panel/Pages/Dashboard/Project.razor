@@ -1,0 +1,18 @@
+﻿@using TaskoMask.Application.Core.Dtos.Team.Projects
+
+<div class="col-md-4 col-sm-12 ">
+    <a href="#">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Project Name</h5>
+                <hr />
+                <small>Description test ...</small>
+            </div>
+        </div>
+    </a>
+</div>
+
+@code {
+    [Parameter]
+    public ProjectBasicInfoDto Model { get; set; }
+}

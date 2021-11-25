@@ -40,9 +40,9 @@
     <div class="tab-content py-4">
         <div class="tab-pane active" id="boards-@Model.Organization.Id" role="tabpanel">
             <div class="row">
-                @foreach (var item in Model.Boards)
+                @foreach (var board in Model.Boards)
                 {
-                    <Board Model="@item" />
+                    <Board Model="@board" />
                 }
             </div>
         </div>
@@ -50,56 +50,12 @@
         <div class="tab-pane" id="projects-@Model.Organization.Id" role="tabpanel">
 
             <div class="row">
-
-                <div class="col-md-4 col-sm-12 ">
-                    <a href="#">
-                        <div class="card bg-success text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">Project Name</h5>
-                                <hr />
-                                <small>Description test ...</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-4 col-sm-12 ">
-                    <a href="#">
-                        <div class="card bg-success text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">Project Name</h5>
-                                <hr />
-                                <small>Description test ...</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-4 col-sm-12 ">
-                    <a href="#">
-                        <div class="card bg-success text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">Project Name</h5>
-                                <hr />
-                                <small>Description test ...</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @foreach (var project in Model.Projects)
+                {
+                    <Project Model="@project" />
+                }
+          
             </div>
-
-            @foreach (var board in Model.Projects)
-            {
-                <div class="col-md-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">@board.Name</h5>
-                            <p class="card-text">@board.Description</p>
-                            <a href="#" class="btn btn-primary">Details</a>
-                        </div>
-                    </div>
-                </div>
-            }
         </div>
 
         <div class="tab-pane" id="tasks-@Model.Organization.Id" role="tabpanel">

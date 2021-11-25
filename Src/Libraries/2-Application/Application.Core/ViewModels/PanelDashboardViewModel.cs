@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.ViewModels;
 
-namespace TaskoMask.Web.Panel.Models
+namespace TaskoMask.Application.Core.ViewModels
 {
-    public class DashboardIndexViewModel
+    public class PanelDashboardViewModel
     {
-        public DashboardIndexViewModel()
+        public PanelDashboardViewModel()
         {
             OrganizationsDetailsList = new List<OrganizationDetailsViewModel>();
         }

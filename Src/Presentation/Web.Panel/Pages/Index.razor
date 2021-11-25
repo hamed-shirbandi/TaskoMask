@@ -1,5 +1,5 @@
 ﻿@page "/"
-@using TaskoMask.Web.Panel.Models
+@using TaskoMask.Application.Core.ViewModels
 
 @if (!Model.OrganizationsDetailsList.Any())
 {
@@ -415,11 +415,11 @@ else
 @code{
 
     private string defaultUserImgUrl = "/content/admin/img/default-user.png";
-    private DashboardIndexViewModel Model;
+    private PanelDashboardViewModel Model;
 
     protected override Task OnInitializedAsync()
     {
-        Model = new DashboardIndexViewModel();
+        Model = new PanelDashboardViewModel();
         return base.OnInitializedAsync();
     }
 }

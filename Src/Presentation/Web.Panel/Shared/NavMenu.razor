@@ -1,37 +1,58 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Web.Panel</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+﻿<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+    <a class="navbar-brand btn btn-outline-light text-dark-hover" href="#">TaskoMask</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-</div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-    </ul>
-</div>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <NavLink class="m-1 btn btn-sm btn-info" href="" Match="NavLinkMatch.All">
+                    <i class="bi bi-house-fill" title="Home"></i>
+                </NavLink>
+           
+            </li>
+            <li class="nav-item">
+                <NavLink class="m-1 btn btn-sm btn-success" href="dashboard">
+                    <i class="bi bi-speedometer" title="dashboard"></i>
+                </NavLink>
+            </li>
 
-@code {
-    private bool collapseNavMenu = true;
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+            <div class="dropdown show">
+                <a class="btn btn-secondary btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Create
+                </a>
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">
+                        <i class="bi bi-building"></i>
+                        New Organization
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="bi bi-kanban"></i>
+                        New Project
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="bi bi-clipboard-plus"></i>
+                        New Board
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="bi bi-people"></i>
+                        Add Member
+                    </a>
+                </div>
+            </div>
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+            <a class="m-1 btn btn-sm btn-warning my-2 my-sm-0" href="#">
+                <i class="bi bi-person-circle"></i>
+            </a>
+            <a class="m-1 btn btn-sm btn-danger my-2 my-sm-0" href="#">
+                <i class="bi bi-power"></i>
+            </a>
+
+        </div>
+    </div>
+</nav>

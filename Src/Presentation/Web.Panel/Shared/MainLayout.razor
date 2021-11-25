@@ -1,17 +1,15 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+<NavMenu />
+<main role="main" class="container">
+    @Body
+</main>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">
+            <p>Developed by <a href="https://github.com/hamed-shirbandi" target="_blank">Hamed Shirbandi</a>. Find the source on  <a href="https://github.com/hamed-shirbandi/TaskoMask" target="_blank">GitHub</a></p>
+        </span>
     </div>
+</footer>
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
 
-        <div class="content px-4">
-            @Body
-        </div>
-    </div>
-</div>

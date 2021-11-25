@@ -17,4 +17,8 @@
     <Folder Include="Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\2-Application\Application.Core\Application.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -48,127 +48,21 @@
         </div>
 
         <div class="tab-pane" id="projects-@Model.Organization.Id" role="tabpanel">
-
             <div class="row">
                 @foreach (var project in Model.Projects)
                 {
                     <Project Model="@project" />
                 }
-          
             </div>
         </div>
 
         <div class="tab-pane" id="tasks-@Model.Organization.Id" role="tabpanel">
-
-            <div class="col-md-12 col-sm-12 ">
-                <a href="#">
-                    <div class="card bg-warning text-dark">
-                        <div class="card-body">
-                            <strong>
-                                <i class="bi bi-list-task"></i>
-                                this is a test task title ...
-                            </strong>
-                            <hr />
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-clipboard-plus"></i>
-                                test board
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-kanban"></i>
-                                test project
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-calendar-date"></i>
-                                2021/7/9 23:59:32
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-people"></i>
-                                hamed shirbandi
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-clipboard-x"></i>
-                                to do card
-                            </small>
-                        </div>
-                    </div>
-                </a>
+            <div class="row">
+                @foreach (var task in Model.LastTasks)
+                {
+                    <Task Model="@task" />
+                }
             </div>
-
-            <div class="col-md-12 col-sm-12 ">
-                <a href="#">
-                    <div class="card bg-warning text-dark">
-                        <div class="card-body">
-                            <strong>
-                                <i class="bi bi-list-task"></i>
-                                this is a test task title ...
-                            </strong>
-                            <hr />
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-clipboard-plus"></i>
-                                test board
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-kanban"></i>
-                                test project
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-calendar-date"></i>
-                                2021/7/9 23:59:32
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-people"></i>
-                                hamed shirbandi
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-clipboard-x"></i>
-                                to do card
-                            </small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-12 col-sm-12 ">
-                <a href="#">
-                    <div class="card bg-warning text-dark">
-                        <div class="card-body">
-                            <strong>
-                                <i class="bi bi-list-task"></i>
-                                this is a test task title ...
-                            </strong>
-                            <hr />
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-clipboard-plus"></i>
-                                test board
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-kanban"></i>
-                                test project
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-calendar-date"></i>
-                                2021/7/9 23:59:32
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-people"></i>
-                                hamed shirbandi
-                            </small>
-                            <small class="btn btn-outline-dark">
-                                <i class="bi bi-clipboard-x"></i>
-                                to do card
-                            </small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-
-            @foreach (var task in Model.LastTasks)
-            {
-                <div class="alert alert-dark" role="alert">
-                    @task.Title
-                </div>
-            }
         </div>
 
         <div class="tab-pane" id="members-@Model.Organization.Id" role="tabpanel">

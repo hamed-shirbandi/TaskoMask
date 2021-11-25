@@ -1,0 +1,36 @@
+﻿@page "/"
+@using TaskoMask.Application.Core.ViewModels
+
+@if (!Model.OrganizationsDetailsList.Any())
+{
+    <div class="alert alert-warning">
+        You are not member of any organization!
+        <br />
+        Maybe you want to <a href="#">create one</a>
+    </div>
+}
+else
+{
+    <div class="container py-3">
+        <div class="row">
+            @foreach (var item in Model.OrganizationsDetailsList)
+            {
+                <Organization Model="@item" />
+            }
+        </div>
+
+    </div>
+}
+
+
+@code{
+
+    private string defaultUserImgUrl = "/content/admin/img/default-user.png";
+    private PanelDashboardViewModel Model;
+
+    protected override Task OnInitializedAsync()
+    {
+        Model = new PanelDashboardViewModel();
+        return base.OnInitializedAsync();
+    }
+}

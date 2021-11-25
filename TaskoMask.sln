@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.Base", "Src\Tests\UnitTests.Base\UnitTests.Base.csproj", "{87EE0684-D45F-46BC-ADEC-5494DD2B3CDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Panel", "Src\Presentation\Web.Panel\Web.Panel.csproj", "{CCE64A3B-40D0-4A2B-A2D9-347037BE560D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Panel", "Src\Presentation\Web.Panel\Web.Panel.csproj", "{CCE64A3B-40D0-4A2B-A2D9-347037BE560D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

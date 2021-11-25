@@ -1,0 +1,78 @@
+﻿@using TaskoMask.Application.Core.Dtos.Team.Organizations 
+
+<div class="col-md-4 col-sm-12 ">
+    <div class="card bg-primary text-white">
+        <div class="card-body">
+            <h5 class="card-title">@Model.InvitedMembersCount</h5>
+            <p class="card-text">
+                <i class="bi bi-bar-chart"></i>
+                InvitedMembersCount
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 col-sm-12 ">
+    <div class="card bg-primary text-white">
+        <div class="card-body">
+            <h5 class="card-title">@Model.ProjectsCount</h5>
+            <p class="card-text">
+                <i class="bi bi-bar-chart"></i>
+                ProjectsCount
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 col-sm-12 ">
+    <div class="card bg-primary text-white">
+        <div class="card-body">
+            <h5 class="card-title">@Model.TasksCount</h5>
+            <p class="card-text">
+                <i class="bi bi-bar-chart"></i>
+                TasksCount
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 col-sm-12 ">
+    <div class="card bg-primary text-white">
+        <div class="card-body">
+            <h5 class="card-title">@Model.ToDoTasksCount</h5>
+            <p class="card-text">
+                <i class="bi bi-bar-chart"></i>
+                ToDoTasksCount
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 col-sm-12 ">
+    <div class="card bg-primary text-white">
+        <div class="card-body">
+            <h5 class="card-title">@Model.DoingTasksCount</h5>
+            <p class="card-text">
+                <i class="bi bi-bar-chart"></i>
+                DoingTasksCount
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 col-sm-12 ">
+    <div class="card bg-primary text-white">
+        <div class="card-body">
+            <h5 class="card-title">@Model.DoneTasksCount</h5>
+            <p class="card-text">
+                <i class="bi bi-bar-chart"></i>
+                DoneTasksCount
+            </p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public OrganizationReportDto Model { get; set; }
+}

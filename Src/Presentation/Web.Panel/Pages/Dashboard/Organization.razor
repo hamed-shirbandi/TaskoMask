@@ -5,38 +5,9 @@
         <i class="bi bi-building"></i>
         @Model.Organization.Name
     </h5>
-    <ul class="nav nav-tabs small justify-content-end" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#boards-@Model.Organization.Id" role="tab">
-                <i class="bi bi-clipboard-plus"></i>
-                Boards
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#projects-@Model.Organization.Id" role="tab">
-                <i class="bi bi-kanban"></i>
-                Projects
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#tasks-@Model.Organization.Id" role="tab">
-                <i class="bi bi-list-task"></i>
-                Last Tasks
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#members-@Model.Organization.Id" role="tab">
-                <i class="bi bi-people"></i>
-                Members
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#reports-@Model.Organization.Id" role="tab">
-                <i class="bi bi-pie-chart"></i>
-                Reports
-            </a>
-        </li>
-    </ul>
+
+    <TabNav Model="@Model.Organization" />
+
     <div class="tab-content py-4">
         <div class="tab-pane active" id="boards-@Model.Organization.Id" role="tabpanel">
             <div class="row">
@@ -72,86 +43,11 @@
                     <Member Model="@member" />
                 }
             </div>
-
         </div>
 
         <div class="tab-pane" id="reports-@Model.Organization.Id" role="tabpanel">
-
-
             <div class="row">
-
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card bg-primary text-white">
-                        <div class="card-body">
-                            <h5 class="card-title">@Model.Reports.InvitedMembersCount</h5>
-                            <p class="card-text">
-                                <i class="bi bi-bar-chart"></i>
-                                InvitedMembersCount
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card bg-primary text-white">
-                        <div class="card-body">
-                            <h5 class="card-title">@Model.Reports.ProjectsCount</h5>
-                            <p class="card-text">
-                                <i class="bi bi-bar-chart"></i>
-                                ProjectsCount
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card bg-primary text-white">
-                        <div class="card-body">
-                            <h5 class="card-title">@Model.Reports.TasksCount</h5>
-                            <p class="card-text">
-                                <i class="bi bi-bar-chart"></i>
-                                TasksCount
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card bg-primary text-white">
-                        <div class="card-body">
-                            <h5 class="card-title">@Model.Reports.ToDoTasksCount</h5>
-                            <p class="card-text">
-                                <i class="bi bi-bar-chart"></i>
-                                ToDoTasksCount
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card bg-primary text-white">
-                        <div class="card-body">
-                            <h5 class="card-title">@Model.Reports.DoingTasksCount</h5>
-                            <p class="card-text">
-                                <i class="bi bi-bar-chart"></i>
-                                DoingTasksCount
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card bg-primary text-white">
-                        <div class="card-body">
-                            <h5 class="card-title">@Model.Reports.DoneTasksCount</h5>
-                            <p class="card-text">
-                                <i class="bi bi-bar-chart"></i>
-                                DoneTasksCount
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+                <Report Model="@Model.Reports" />
             </div>
         </div>
     </div>

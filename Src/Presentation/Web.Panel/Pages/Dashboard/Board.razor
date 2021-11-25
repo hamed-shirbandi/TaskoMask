@@ -1,0 +1,21 @@
+﻿@using TaskoMask.Application.Core.Dtos.Workspace.Boards
+
+<div class="col-md-4 col-sm-12 ">
+    <a href="#">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Member Pannel</h5>
+                <small>this is a test description for my test board</small>
+                <hr />
+                <small>
+                    <i class="bi bi-kanban"></i>: project name
+                </small>
+            </div>
+        </div>
+    </a>
+</div>
+
+@code {
+    [Parameter]
+    public BoardBasicInfoDto Model { get; set; }
+}

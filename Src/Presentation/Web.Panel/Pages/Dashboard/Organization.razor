@@ -67,43 +67,12 @@
 
         <div class="tab-pane" id="members-@Model.Organization.Id" role="tabpanel">
             <div class="row">
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="@defaultUserImgUrl" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Test user</h5>
-                            <p class="card-text">Test@mail.com</p>
-                            <a href="#" class="btn btn-sm btn-primary">Email</a>
-                            <a href="#" class="btn btn-sm btn-warning">Permissions</a>
-                            <a href="#" class="btn btn-sm btn-danger">Remove</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="@defaultUserImgUrl" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Test user</h5>
-                            <p class="card-text">Test@mail.com</p>
-                            <a href="#" class="btn btn-sm btn-primary">Email</a>
-                            <a href="#" class="btn btn-sm btn-warning">Permissions</a>
-                            <a href="#" class="btn btn-sm btn-danger">Remove</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12 ">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="@defaultUserImgUrl" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Test user</h5>
-                            <p class="card-text">Test@mail.com</p>
-                            <a href="#" class="btn btn-sm btn-primary">Email</a>
-                            <a href="#" class="btn btn-sm btn-warning">Permissions</a>
-                            <a href="#" class="btn btn-sm btn-danger">Remove</a>
-                        </div>
-                    </div>
-                </div>
+                @foreach (var member in Model.Members)
+                {
+                    <Member Model="@member" />
+                }
             </div>
+
         </div>
 
         <div class="tab-pane" id="reports-@Model.Organization.Id" role="tabpanel">

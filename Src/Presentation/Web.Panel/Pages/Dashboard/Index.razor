@@ -25,10 +25,9 @@ else
 
 @code{
 
-    private string defaultUserImgUrl = "/content/admin/img/default-user.png";
     private PanelDashboardViewModel Model;
 
-    protected override Task OnInitializedAsync()
+    protected override System.Threading.Tasks.Task OnInitializedAsync()
     {
         Model = new PanelDashboardViewModel();
         return base.OnInitializedAsync();

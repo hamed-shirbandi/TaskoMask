@@ -62,12 +62,12 @@ a{
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
 
 #cover {
     /*background: #222 url('https://unsplash.it/1920/1080/?random') center center no-repeat;*/
@@ -86,14 +86,14 @@ a{
 }
 
 /* only used for background overlay not needed for centering */
-form:before {
+#cover form:before {
     content: '';
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
-    background-color: rgb(42 43 42);
+    background-color: #212529;
     z-index: -1;
     border-radius: 10px;
 }

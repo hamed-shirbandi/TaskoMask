@@ -69,3 +69,31 @@ a{
         top: 0.5rem;
     }
 
+#cover {
+    /*background: #222 url('https://unsplash.it/1920/1080/?random') center center no-repeat;*/
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+form:before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgb(42 43 42);
+    z-index: -1;
+    border-radius: 10px;
+}

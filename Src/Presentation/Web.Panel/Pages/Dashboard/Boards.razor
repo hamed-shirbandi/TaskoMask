@@ -3,18 +3,18 @@
 @foreach (var item in Model)
 {
     <div class="col-md-4 col-sm-12 ">
-        <a href="#">
+        <NavLink href="#">
             <div class="card bg-primary text-white">
                 <div class="card-body">
-                    <h5 class="card-title">Member Pannel</h5>
-                    <small>this is a test description for my test board</small>
+                    <h5 class="card-title">@item.Name</h5>
+                    <small>@item.Description</small>
                     <hr />
                     <small>
-                        <i class="bi bi-kanban"></i>: project name
+                        <i class="bi bi-kanban"></i>: ProjectName
                     </small>
                 </div>
             </div>
-        </a>
+        </NavLink>
     </div>
 }
 

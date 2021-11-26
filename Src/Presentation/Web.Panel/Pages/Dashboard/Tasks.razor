@@ -3,12 +3,12 @@
 @foreach (var item in Model)
 {
     <div class="col-md-12 col-sm-12 ">
-        <a href="#">
+        <NavLink href="#">
             <div class="card bg-warning text-dark">
                 <div class="card-body">
                     <strong>
                         <i class="bi bi-list-task"></i>
-                        this is a test task title ...
+                        @item.Title
                     </strong>
                     <hr />
                     <small class="btn btn-outline-dark">
@@ -21,7 +21,7 @@
                     </small>
                     <small class="btn btn-outline-dark">
                         <i class="bi bi-calendar-date"></i>
-                        2021/7/9 23:59:32
+                        @item.CreationTime.CreateDateTimeString
                     </small>
                     <small class="btn btn-outline-dark">
                         <i class="bi bi-people"></i>
@@ -33,7 +33,7 @@
                     </small>
                 </div>
             </div>
-        </a>
+        </NavLink>
     </div>
 }
 @code {

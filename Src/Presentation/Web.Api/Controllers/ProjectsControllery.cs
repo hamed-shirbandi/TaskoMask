@@ -9,11 +9,12 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Application.Core.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using TaskoMask.Web.Common.Contracts;
 
 namespace TaskoMask.Web.Api.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class ProjectsController : BaseApiController
+    public class ProjectsController : BaseApiController, IProjectWebService
     {
         #region Fields
 

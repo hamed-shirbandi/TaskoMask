@@ -14,12 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\2-Application\Application.Core\Application.Core.csproj" />
+    <ProjectReference Include="..\Web.Common\Web.Common.csproj" />
   </ItemGroup>
 
 </Project>

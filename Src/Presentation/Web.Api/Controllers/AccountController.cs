@@ -9,10 +9,11 @@ using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.JwtAuthentication;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Application.Core.Dtos.Team.Members;
+using TaskoMask.Web.Common.Contracts;
 
 namespace TaskoMask.Web.Api.Controllers
 {
-    public class AccountController : BaseApiController
+    public class AccountController : BaseApiController, IAccountWebService
     {
         #region Fields
 

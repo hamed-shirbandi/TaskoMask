@@ -10,11 +10,12 @@ using TaskoMask.Application.Core.Helpers;
 using TaskoMask.Application.Core.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Web.Common.Contracts;
 
 namespace TaskoMask.Web.Api.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class BoardsController : BaseApiController
+    public class BoardsController : BaseApiController, IBoardWebService
     {
         #region Fields
 

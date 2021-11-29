@@ -7,11 +7,12 @@ using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using TaskoMask.Web.Common.Contracts;
 
 namespace TaskoMask.Web.Api.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class TasksController : BaseApiController
+    public class TasksController : BaseApiController, ITaskWebService
     {
         #region Fields
 

@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -19,7 +21,7 @@
                     <a class="nav-link active" href="@Url.Action(action: "index",controller:"home")">Home</a>
                     <a class="nav-link" href="#">About</a>
                     <a class="nav-link" href="#">Contact</a>
-                    @await Html.PartialAsync("_LoginPartial")
+                    <a class="nav-link" href="@Configuration["Url:Panel"]">Login</a>
                 </nav>
             </div>
         </header>

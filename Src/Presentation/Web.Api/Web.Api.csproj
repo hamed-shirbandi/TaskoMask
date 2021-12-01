@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>7f763081-7ffe-4a61-b636-c05f18a8e18b</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <AssemblyName>TaskoMask.Web.Api</AssemblyName>

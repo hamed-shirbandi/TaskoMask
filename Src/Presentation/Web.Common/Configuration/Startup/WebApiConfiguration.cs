@@ -21,7 +21,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceProvider WebApiConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void WebApiConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -37,7 +37,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
             {
                 configuration.GetSection("Jwt").Bind(options);
             });
-            return services.AddCommonConfigureServices(configuration);
+             services.AddCommonConfigureServices(configuration);
         }
 
 
@@ -45,7 +45,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void WebApiConfigure(this IApplicationBuilder app, IServiceScopeFactory serviceScopeFactory, IWebHostEnvironment env)
+        public static void WebApiConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 
@@ -53,7 +53,7 @@ namespace TaskoMask.Web.Common.Configuration.Startup
                 app.UseDeveloperExceptionPage();
 
             app.UseSwaggerPreConfigured();
-            app.UseCommonConfigure(serviceScopeFactory, env);
+            app.UseCommonConfigure(serviceProvider, env);
 
             app.UseRouting();
             app.UseAuthentication();

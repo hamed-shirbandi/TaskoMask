@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Infrastructure.CrossCutting.Ioc;
+using Infrastructure.CrossCutting.IoC;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.AspNetCore.Builder;
@@ -31,9 +31,10 @@ namespace TaskoMask.Web.Common.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceProvider AddCommonConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddCommonConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
+
 
             services.AddMediatR(typeof(BoardBaseCommand));
 
@@ -65,7 +66,8 @@ namespace TaskoMask.Web.Common.Configuration.Startup
                 options.AllowSynchronousIO = true;
             });
 
-            return services.ConfigureIocContainer(configuration);
+            services.ConfigureIocContainer();
+
         }
 
 
@@ -95,18 +97,16 @@ namespace TaskoMask.Web.Common.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void UseCommonConfigure(this IApplicationBuilder app, IServiceScopeFactory serviceScopeFactory, IWebHostEnvironment env)
+        public static void UseCommonConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
            
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            serviceScopeFactory.InitialMongoDb();
-            serviceScopeFactory.SeedEssentialData();
+            serviceProvider.InitialMongoDb();
+            serviceProvider.SeedEssentialData();
             app.UseHttpsRedirection();
-
-  
         }
 
 

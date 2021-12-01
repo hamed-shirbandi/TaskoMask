@@ -2,16 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>TaskoMask.Web.Panel</AssemblyName>
-    <RootNamespace>TaskoMask.Web.Panel</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	  <AssemblyName>TaskoMask.Web.Panel</AssemblyName>
+	  <RootNamespace>TaskoMask.Web.Panel</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\favicon.ico">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />

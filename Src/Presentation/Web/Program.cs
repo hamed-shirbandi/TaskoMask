@@ -1,21 +1,21 @@
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using StructureMap.AspNetCore;
 
-namespace TaskoMask.Web
+using TaskoMask.Web.Common.Configuration.Startup;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.MvcConfigureServices(builder.Configuration, builder.Environment);
+
+
+var app = builder.Build();
+
+app.MvcConfigure(app.Services, builder.Environment);
+
+app.UseEndpoints(endpoints =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args).Run();
-        }
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 
-        public static IWebHost BuildWebHost(string[] args) =>
-          WebHost.CreateDefaultBuilder(args)
-           .UseStructureMap()
-              .UseStartup<Startup>()
-              .Build();
-    }
-}
+});
+
+app.Run();

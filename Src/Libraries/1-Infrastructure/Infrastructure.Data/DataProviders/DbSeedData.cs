@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using System;
 using System.Linq;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Core.Services;
@@ -21,9 +22,9 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static void SeedEssentialData(this IServiceScopeFactory scopeFactory)
+        public static void SeedEssentialData(this IServiceProvider serviceProvider)
         {
-            using (var serviceScope = scopeFactory.CreateScope())
+            using (var serviceScope = serviceProvider.CreateScope())
             {
                 var _dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
@@ -44,9 +45,9 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static void SeedAdminPanelTempData(this IServiceScopeFactory scopeFactory)
+        public static void SeedAdminPanelTempData(this IServiceProvider serviceProvider)
         {
-            using (var serviceScope = scopeFactory.CreateScope())
+            using (var serviceScope = serviceProvider.CreateScope())
             {
                 var _dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();

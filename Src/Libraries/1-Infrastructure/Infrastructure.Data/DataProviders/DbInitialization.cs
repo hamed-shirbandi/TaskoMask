@@ -6,6 +6,7 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Workspace.Entities;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
+using System;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
 {
@@ -19,9 +20,9 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
         /// <summary>
         /// initial db and create collections and set indexes
         /// </summary>
-        public static void InitialMongoDb(this IServiceScopeFactory scopeFactory)
+        public static void InitialMongoDb(this IServiceProvider serviceProvider)
         {
-            using (var serviceScope = scopeFactory.CreateScope())
+            using (var serviceScope = serviceProvider.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
 

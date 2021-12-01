@@ -1,21 +1,28 @@
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using StructureMap.AspNetCore;
 
-namespace TaskoMask.Web.Admin
+using TaskoMask.Infrastructure.Data.DataProviders;
+using TaskoMask.Web.Common.Configuration.Startup;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.MvcConfigureServices(builder.Configuration, builder.Environment);
+
+
+var app = builder.Build();
+
+app.MvcConfigure(app.Services, builder.Environment);
+
+app.Services.SeedAdminPanelTempData();
+
+app.UseEndpoints(endpoints =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args).Run();
-        }
+    endpoints.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
-        public static IWebHost BuildWebHost(string[] args) =>
-          WebHost.CreateDefaultBuilder(args)
-           .UseStructureMap()
-              .UseStartup<Startup>()
-              .Build();
-    }
-}
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Account}/{action=login}/{id?}");
+
+});
+
+app.Run();

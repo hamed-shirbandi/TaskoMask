@@ -1,21 +1,20 @@
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using StructureMap.AspNetCore;
 
-namespace TaskoMask.Web.Api
+using TaskoMask.Infrastructure.Data.DataProviders;
+using TaskoMask.Web.Common.Configuration.Startup;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.WebApiConfigureServices(builder.Configuration);
+
+
+var app = builder.Build();
+
+app.WebApiConfigure(app.Services, builder.Environment);
+
+
+app.UseEndpoints(endpoints =>
 {
-    public static class Program
-    {
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args).Run();
-        }
+    endpoints.MapControllers();
+});
 
-        public static IWebHost BuildWebHost(string[] args) =>
-           WebHost.CreateDefaultBuilder(args)
-            .UseStructureMap()
-               .UseStartup<Startup>()
-               .Build();
-    }
-}
+app.Run();

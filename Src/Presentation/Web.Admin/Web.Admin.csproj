@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>TaskoMask.Web.Admin</AssemblyName>
     <RootNamespace>TaskoMask.Web.Admin</RootNamespace>
   </PropertyGroup>

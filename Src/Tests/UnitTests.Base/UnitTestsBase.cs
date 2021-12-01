@@ -1,4 +1,4 @@
-using Infrastructure.CrossCutting.Ioc;
+using Infrastructure.CrossCutting.IoC;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -27,9 +27,9 @@ namespace TaskoMask.UnitTests.Base
 
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 
-            var serviceProvider = services.ConfigureIocContainer(configuration);
+              services.ConfigureIocContainer();
             
-            return serviceProvider;
+            return services.BuildServiceProvider();
         }
 
 

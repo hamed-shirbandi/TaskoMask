@@ -54,7 +54,7 @@ There is a list of our documentation:
 
 # Architecture And Tools
   * ### Back-end:
-      - .Net 5 
+      - .Net 6 
       - C#
       - ASP.NET Web API
       - ASP.NET MVC
@@ -64,7 +64,6 @@ There is a list of our documentation:
       -	MediatR
       -	AutoMapper
       -	FluentValidation
-      -	StructureMap
       -	Swagger
       -	MsTest
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/)
@@ -137,6 +136,8 @@ Find Hamed around the web and feel free to ask your question.
 
 # Change Logs
 
+*	### Dec, 2021
+    - [x] Upgrade to .NET 6
 *	### Nov, 2021
     - [x] Start user panel with Blazor
 *	### Oct, 2021
@@ -149,7 +150,7 @@ Find Hamed around the web and feel free to ask your question.
  * ### Jul, 2021
     - [x] Full refactore
  * ### Nov, 2020
-    - [x] upgrade from net 3.1 to net 5
+    - [x] Upgrade from net 3.1 to net 5
 *	### Oct, 2020
     - [x] Repository Created
   

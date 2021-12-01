@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>TaskoMask.Web.Common</AssemblyName>
     <RootNamespace>TaskoMask.Web.Common</RootNamespace>
   </PropertyGroup>
@@ -15,7 +15,7 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
-    <PackageReference Include="RedisCache.Core" Version="1.0.2" />
+
   </ItemGroup>
 
   <ItemGroup>

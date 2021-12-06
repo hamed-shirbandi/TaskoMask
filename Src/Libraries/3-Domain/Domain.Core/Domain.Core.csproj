@@ -20,25 +20,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Resources\DomainMessages.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DomainMessages.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\DomainMetadata.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DomainMetadata.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\DomainMessages.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>DomainMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\DomainMetadata.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>DomainMetadata.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Domain.Share\Domain.Share.csproj" />
   </ItemGroup>
 </Project>

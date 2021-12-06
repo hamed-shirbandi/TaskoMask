@@ -14,7 +14,7 @@ namespace TaskoMask.Web.Common.Extensions
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<SelectListItem> ToMvcSelectList(this Application.Core.Helpers.SelectListItem[] selectListItem)
+        public static IEnumerable<SelectListItem> ToMvcSelectList(this Application.Share.Helpers.SelectListItem[] selectListItem)
         {
             var mvcSelectListItem = new List<SelectListItem>();
             foreach (var item in selectListItem)

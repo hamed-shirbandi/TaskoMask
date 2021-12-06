@@ -1,5 +1,5 @@
 ﻿using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Domain.Core.Models

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Common.Base;
-using TaskoMask.Application.Core.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Common.Base;
+using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Mapper.MappingActions;
 using TaskoMask.Domain.Core.Models;
 

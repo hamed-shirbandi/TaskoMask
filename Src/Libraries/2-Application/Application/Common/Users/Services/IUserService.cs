@@ -1,6 +1,6 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Application.Core.Commands;
 

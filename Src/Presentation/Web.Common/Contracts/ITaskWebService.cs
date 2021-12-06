@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Dtos.Workspace.Tasks;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Web.Common.Contracts
 {

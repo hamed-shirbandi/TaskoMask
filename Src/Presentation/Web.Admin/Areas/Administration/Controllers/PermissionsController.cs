@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Extensions;
-using TaskoMask.Application.Core.Dtos.Administration.Permissions;
+using TaskoMask.Application.Share.Dtos.Administration.Permissions;
 using TaskoMask.Web.Common.Helpers;
 using TaskoMask.Web.Common.Enums;
 using TaskoMask.Web.Common.Filters;

@@ -27,30 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\3-Domain\Domain.Core\Domain.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Resources\ApplicationMessages.Designer.cs">
-      <DependentUpon>ApplicationMessages.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Resources\ApplicationMetadata.Designer.cs">
-      <DependentUpon>ApplicationMetadata.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\ApplicationMessages.resx">
-      <LastGenOutput>ApplicationMessages.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\ApplicationMetadata.resx">
-      <LastGenOutput>ApplicationMetadata.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Application.Core.Models\Application.Share.csproj" />
   </ItemGroup>
 
 </Project>

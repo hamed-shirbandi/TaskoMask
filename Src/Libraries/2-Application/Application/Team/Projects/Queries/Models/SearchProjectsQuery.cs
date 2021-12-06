@@ -1,10 +1,10 @@
-﻿using TaskoMask.Application.Core.Dtos.Team.Projects;
-using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Application.Share.Dtos.Team.Projects;
+using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Team.Projects.Queries.Models
 {
-    public class SearchProjectsQuery:BaseQuery<PublicPaginatedListReturnType<ProjectOutputDto>>
+    public class SearchProjectsQuery:BaseQuery<PaginatedListReturnType<ProjectOutputDto>>
     {
         public SearchProjectsQuery(int page, int recordsPerPage, string term)
         {

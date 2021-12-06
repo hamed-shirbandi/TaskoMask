@@ -1,11 +1,11 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Team.Projects;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.Dtos.Team.Projects;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Common.Base.Services;
-using TaskoMask.Application.Core.Dtos.Team.Organizations;
+using TaskoMask.Application.Share.Dtos.Team.Organizations;
 
 namespace TaskoMask.Application.Team.Projects.Services
 {
@@ -17,6 +17,6 @@ namespace TaskoMask.Application.Team.Projects.Services
         Task<Result<ProjectBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<ProjectReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId);
-        Task<Result<PublicPaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<PaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
     }
 }

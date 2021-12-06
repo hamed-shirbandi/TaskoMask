@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Users.Services;
-using TaskoMask.Application.Core.Dtos.Administration.Operators;
+using TaskoMask.Application.Share.Dtos.Administration.Operators;
 using TaskoMask.Domain.Administration.Entities;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.ViewModels;
 using System.Collections.Generic;
 using TaskoMask.Domain.Administration.Data;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Share.Resources;
 using System.Linq;
 
 namespace TaskoMask.Application.Administration.Operators.Services

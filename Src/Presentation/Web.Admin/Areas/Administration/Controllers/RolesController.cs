@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Administration.Roles;
+using TaskoMask.Application.Share.Dtos.Administration.Roles;
 using TaskoMask.Web.Common.Filters;
 using TaskoMask.Web.Common.Extensions;
 using TaskoMask.Web.Common.Enums;

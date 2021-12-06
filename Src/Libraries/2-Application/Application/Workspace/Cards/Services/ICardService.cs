@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.ViewModels;
-using TaskoMask.Application.Core.Dtos.Workspace.Cards;
+using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
 using TaskoMask.Application.Common.Base.Services;
@@ -16,7 +16,7 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         Task<Result<CardBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<CardReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<CardBasicInfoDto>>> GetListByBoardIdAsync(string boardId);
-        Task<Result<PublicPaginatedListReturnType<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<PaginatedListReturnType<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
 
     }
 }

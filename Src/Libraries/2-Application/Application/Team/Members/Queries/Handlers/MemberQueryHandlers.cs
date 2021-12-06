@@ -3,21 +3,21 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Team.Members.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Team.Members;
+using TaskoMask.Application.Share.Dtos.Team.Members;
 using TaskoMask.Domain.Team.Data;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
 
 namespace TaskoMask.Application.Team.Members.Queries.Handlers
 {
     public class MemberQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetMemberByIdQuery, MemberBasicInfoDto>,
-        IRequestHandler<SearchMembersQuery, PublicPaginatedListReturnType<MemberOutputDto>>
+        IRequestHandler<SearchMembersQuery, PaginatedListReturnType<MemberOutputDto>>
     {
         #region Fields
 
@@ -59,7 +59,7 @@ namespace TaskoMask.Application.Team.Members.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PublicPaginatedListReturnType<MemberOutputDto>> Handle(SearchMembersQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedListReturnType<MemberOutputDto>> Handle(SearchMembersQuery request, CancellationToken cancellationToken)
         {
             var members =  _memberRepository.Search(request.Page,request.RecordsPerPage,request.Term, out var pageNumber, out var totalCount);
             var membersDto = _mapper.Map<IEnumerable<MemberOutputDto>>(members);
@@ -74,7 +74,7 @@ namespace TaskoMask.Application.Team.Members.Queries.Handlers
             }
 
 
-            return new PublicPaginatedListReturnType<MemberOutputDto>
+            return new PaginatedListReturnType<MemberOutputDto>
             { 
                  TotalCount = totalCount,
                 PageNumber = pageNumber,

@@ -1,10 +1,10 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Dtos.Administration.Roles;
+using TaskoMask.Application.Share.Dtos.Administration.Roles;
 using TaskoMask.Application.Common.Base.Services;
 using System.Collections.Generic;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Application.Administration.Roles.Services
 {

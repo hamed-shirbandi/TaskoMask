@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Application.Core.Commands;
-using TaskoMask.Domain.Core.Enums;
+using TaskoMask.Domain.Share.Enums;
 using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 
 
 namespace TaskoMask.Application.Workspace.Cards.Commands.Models

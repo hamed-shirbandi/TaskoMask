@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Team.Members;
-using TaskoMask.Application.Core.Dtos.Team.Organizations;
-using TaskoMask.Application.Core.Dtos.Team.Projects;
+using TaskoMask.Application.Share.Dtos.Team.Members;
+using TaskoMask.Application.Share.Dtos.Team.Organizations;
+using TaskoMask.Application.Share.Dtos.Team.Projects;
 using TaskoMask.Domain.Team.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles

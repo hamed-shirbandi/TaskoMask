@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Core.Dtos.Workspace.Cards;
+﻿using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Workspace.Cards.Queries.Models

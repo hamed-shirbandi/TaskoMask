@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Team.Members.Services;
-using TaskoMask.Application.Core.Dtos.Team.Members;
+using TaskoMask.Application.Share.Dtos.Team.Members;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Web.Common.Contracts;
 

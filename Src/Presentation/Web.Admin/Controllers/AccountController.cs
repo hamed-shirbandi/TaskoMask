@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Core.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Services.Authentication.CookieAuthentication;
 using DNTCaptcha.Core;

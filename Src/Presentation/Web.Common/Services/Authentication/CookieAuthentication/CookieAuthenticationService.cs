@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Infrastructure.CrossCutting.Services.Security;
 using TaskoMask.Web.Common.Extensions;

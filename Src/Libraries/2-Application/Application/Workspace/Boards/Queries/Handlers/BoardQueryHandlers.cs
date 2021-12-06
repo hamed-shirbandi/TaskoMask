@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Workspace.Boards;
+using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Workspace.Data;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Team.Data;
 
 namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         IRequestHandler<GetBoardReportQuery, BoardReportDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<GetBoardsByOrganizationIdQuery, IEnumerable<BoardBasicInfoDto>>,
-        IRequestHandler<SearchBoardsQuery, PublicPaginatedListReturnType<BoardOutputDto>>
+        IRequestHandler<SearchBoardsQuery, PaginatedListReturnType<BoardOutputDto>>
 
 
     {
@@ -100,7 +100,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PublicPaginatedListReturnType<BoardOutputDto>> Handle(SearchBoardsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedListReturnType<BoardOutputDto>> Handle(SearchBoardsQuery request, CancellationToken cancellationToken)
         {
             var boards = _boardRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var boardsDto = _mapper.Map<IEnumerable<BoardOutputDto>>(boards);
@@ -112,7 +112,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
                 item.CardsCount = await _cardRepository.CountByBoardIdAsync(item.Id);
             }
 
-            return new PublicPaginatedListReturnType<BoardOutputDto>
+            return new PaginatedListReturnType<BoardOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

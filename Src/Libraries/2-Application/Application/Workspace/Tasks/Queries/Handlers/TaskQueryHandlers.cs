@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Workspace.Tasks;
+using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Exceptions;
 
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Workspace.Data;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
 {
@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
         IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,
         IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>,
         IRequestHandler<GetTasksByOrganizationIdQuery, IEnumerable<TaskBasicInfoDto>>,
-        IRequestHandler<SearchTasksQuery, PublicPaginatedListReturnType<TaskOutputDto>>
+        IRequestHandler<SearchTasksQuery, PaginatedListReturnType<TaskOutputDto>>
 
 
     {
@@ -78,7 +78,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PublicPaginatedListReturnType<TaskOutputDto>> Handle(SearchTasksQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedListReturnType<TaskOutputDto>> Handle(SearchTasksQuery request, CancellationToken cancellationToken)
         {
             var tasks = _taskRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var tasksDto = _mapper.Map<IEnumerable<TaskOutputDto>>(tasks);
@@ -89,7 +89,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
                 item.CardName = card?.Name;
             }
 
-            return new PublicPaginatedListReturnType<TaskOutputDto>
+            return new PaginatedListReturnType<TaskOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

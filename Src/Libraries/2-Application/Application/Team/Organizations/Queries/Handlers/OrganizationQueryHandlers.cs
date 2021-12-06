@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Team.Organizations;
+using TaskoMask.Application.Share.Dtos.Team.Organizations;
 
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Team.Data;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
 {
@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
         IRequestHandler<GetOrganizationsByOwnerMemberIdQuery, IEnumerable<OrganizationBasicInfoDto>>,
-        IRequestHandler<SearchOrganizationsQuery, PublicPaginatedListReturnType<OrganizationOutputDto>>
+        IRequestHandler<SearchOrganizationsQuery, PaginatedListReturnType<OrganizationOutputDto>>
     {
         #region Fields
 
@@ -84,7 +84,7 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PublicPaginatedListReturnType<OrganizationOutputDto>> Handle(SearchOrganizationsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedListReturnType<OrganizationOutputDto>> Handle(SearchOrganizationsQuery request, CancellationToken cancellationToken)
         {
             var organizations = _organizationRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var organizationsDto = _mapper.Map<IEnumerable<OrganizationOutputDto>>(organizations);
@@ -96,7 +96,7 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
                 item.ProjectsCount =await _projectRepository.CountByOrganizationIdAsync(item.Id);
             }
 
-            return new PublicPaginatedListReturnType<OrganizationOutputDto>
+            return new PaginatedListReturnType<OrganizationOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

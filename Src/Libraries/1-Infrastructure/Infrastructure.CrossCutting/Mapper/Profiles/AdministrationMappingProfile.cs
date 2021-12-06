@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Administration.Operators;
-using TaskoMask.Application.Core.Dtos.Administration.Permissions;
-using TaskoMask.Application.Core.Dtos.Administration.Roles;
+using TaskoMask.Application.Share.Dtos.Administration.Operators;
+using TaskoMask.Application.Share.Dtos.Administration.Permissions;
+using TaskoMask.Application.Share.Dtos.Administration.Roles;
 using TaskoMask.Domain.Administration.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles

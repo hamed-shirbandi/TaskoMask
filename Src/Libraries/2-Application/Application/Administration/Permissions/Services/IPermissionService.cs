@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Dtos.Administration.Permissions;
-using TaskoMask.Application.Core.Helpers;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.Dtos.Administration.Permissions;
+using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Application.Administration.Permissions.Services
 {
@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
         Task<Result<SelectListItem[]>> GetGroupedSelectListAsync();
         Task<Result<SelectListItem[]>> GetSelectListAsync(string[] selectedPermissionsId = null);
 
-        Task<Result<PublicPaginatedListReturnType<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName);
+        Task<Result<PaginatedListReturnType<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName);
 
     }
 }

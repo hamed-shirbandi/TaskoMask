@@ -1,9 +1,9 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Team.Organizations;
+using TaskoMask.Application.Share.Dtos.Team.Organizations;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Common.Base.Services;
 
 namespace TaskoMask.Application.Team.Organizations.Services
@@ -17,7 +17,7 @@ namespace TaskoMask.Application.Team.Organizations.Services
         Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<OrganizationReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByOwnerMemberIdAsync(string ownerMemberId);
-        Task<Result<PublicPaginatedListReturnType<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<PaginatedListReturnType<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
 
     }
 }

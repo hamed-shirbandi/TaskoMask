@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.Dtos.Workspace.Boards;
+using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Core.Queries;
 
 

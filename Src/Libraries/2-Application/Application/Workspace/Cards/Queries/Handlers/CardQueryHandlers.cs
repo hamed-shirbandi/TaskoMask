@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Workspace.Cards;
+using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Workspace.Data;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
 {
@@ -19,7 +19,7 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         IRequestHandler<GetCardByIdQuery, CardBasicInfoDto>,
         IRequestHandler<GetCardReportQuery, CardReportDto>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>,
-        IRequestHandler<SearchCardsQuery, PublicPaginatedListReturnType<CardOutputDto>>
+        IRequestHandler<SearchCardsQuery, PaginatedListReturnType<CardOutputDto>>
 
     {
         #region Fields
@@ -86,7 +86,7 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PublicPaginatedListReturnType<CardOutputDto>> Handle(SearchCardsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedListReturnType<CardOutputDto>> Handle(SearchCardsQuery request, CancellationToken cancellationToken)
         {
             var cards = _cardRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var cardsDto = _mapper.Map<IEnumerable<CardOutputDto>>(cards);
@@ -98,7 +98,7 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
                 item.TasksCount = await _taskRepository.CountByCardIdAsync(item.Id);
             }
 
-            return new PublicPaginatedListReturnType<CardOutputDto>
+            return new PaginatedListReturnType<CardOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

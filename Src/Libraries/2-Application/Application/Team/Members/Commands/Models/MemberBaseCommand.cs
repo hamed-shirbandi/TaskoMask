@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Application.Core.Commands;
 using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 
 namespace TaskoMask.Application.Team.Members.Commands.Models
 {

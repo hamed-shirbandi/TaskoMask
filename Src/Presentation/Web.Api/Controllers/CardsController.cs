@@ -1,13 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Workspace.Cards.Services;
-using TaskoMask.Application.Core.Dtos.Workspace.Cards;
+using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Helpers;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Web.Common.Contracts;
 

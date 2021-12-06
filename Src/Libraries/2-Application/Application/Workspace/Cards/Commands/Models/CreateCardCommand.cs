@@ -1,4 +1,4 @@
-﻿using TaskoMask.Domain.Core.Enums;
+﻿using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Workspace.Cards.Commands.Models
 {

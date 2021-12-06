@@ -1,5 +1,5 @@
 ﻿using TaskoMask.Domain.Workspace.Events;
-using TaskoMask.Domain.Core.Enums;
+using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Core.Models;
 
 

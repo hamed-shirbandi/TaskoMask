@@ -4,7 +4,7 @@ using TaskoMask.Application.Common.Base.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Services;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.Common.Base.Services

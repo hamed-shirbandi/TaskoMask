@@ -1,10 +1,10 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Common.Users.Services;
-using TaskoMask.Application.Core.Dtos.Administration.Operators;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.Dtos.Administration.Operators;
+using TaskoMask.Application.Share.ViewModels;
 using System.Collections.Generic;
 
 namespace TaskoMask.Application.Administration.Operators.Services

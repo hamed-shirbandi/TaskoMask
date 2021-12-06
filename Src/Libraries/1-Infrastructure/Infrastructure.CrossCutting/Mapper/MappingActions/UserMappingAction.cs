@@ -1,7 +1,7 @@
 ﻿
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using TaskoMask.Application.Core.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.Mapper.MappingActions

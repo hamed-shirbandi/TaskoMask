@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Tasks.Commands.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Workspace.Tasks;
+using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Base.Services;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Team.Projects.Queries.Models;
@@ -85,7 +85,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PublicPaginatedListReturnType<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        public async Task<Result<PaginatedListReturnType<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await SendQueryAsync(new SearchTasksQuery(page, recordsPerPage, term));
         }

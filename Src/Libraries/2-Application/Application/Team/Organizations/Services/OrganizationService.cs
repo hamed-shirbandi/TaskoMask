@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Team.Organizations.Commands.Models;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Team.Organizations;
+using TaskoMask.Application.Share.Dtos.Team.Organizations;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Team.Projects.Queries.Models;
 using System.Linq;
 using TaskoMask.Application.Core.Bus;
@@ -162,7 +162,7 @@ namespace TaskoMask.Application.Team.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PublicPaginatedListReturnType<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        public async Task<Result<PaginatedListReturnType<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await SendQueryAsync(new SearchOrganizationsQuery(page, recordsPerPage, term));
         }

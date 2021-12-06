@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Workspace.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
@@ -178,7 +179,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                                             $"Card Name {m}",
                                             $"Description {m}",
                                             board.Id,
-                                            Domain.Core.Enums.CardType.ToDo,
+                                            CardType.ToDo,
                                             organization.Id,
                                             project.Id);
 

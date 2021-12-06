@@ -2,16 +2,17 @@
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Tasks.Commands.Models;
-using TaskoMask.Application.Core.Resources;
+using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 
 
 using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Workspace.Data;
 using TaskoMask.Domain.Team.Data;
+using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 {

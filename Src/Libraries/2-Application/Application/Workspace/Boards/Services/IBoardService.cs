@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Core.Helpers;
+﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.ViewModels;
-using TaskoMask.Application.Core.Dtos.Workspace.Boards;
+using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Common.Base.Services;
@@ -16,7 +16,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<BoardReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<BoardBasicInfoDto>>> GetListByProjectIdAsync(string projectId);
-        Task<Result<PublicPaginatedListReturnType<BoardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<PaginatedListReturnType<BoardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
 
     }
 }

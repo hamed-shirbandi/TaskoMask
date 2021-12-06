@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Web.Admin.Area.Admin.Models
 {

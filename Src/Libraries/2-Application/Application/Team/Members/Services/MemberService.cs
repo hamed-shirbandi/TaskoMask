@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Users.Services;
 using TaskoMask.Application.Team.Members.Commands.Models;
 using TaskoMask.Application.Team.Members.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Team.Members;
+using TaskoMask.Application.Share.Dtos.Team.Members;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Team.Data;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
 
 namespace TaskoMask.Application.Team.Members.Services
@@ -72,7 +72,7 @@ namespace TaskoMask.Application.Team.Members.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PublicPaginatedListReturnType<MemberOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        public async Task<Result<PaginatedListReturnType<MemberOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await SendQueryAsync(new SearchMembersQuery(page, recordsPerPage, term));
         }

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Web.Common.Controllers;
 using TaskoMask.Web.Common.Models;
 

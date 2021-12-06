@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TaskoMask.Application.Core.Services;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Application.Common.Base.Services
 {

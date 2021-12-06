@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Base.Services;
@@ -9,8 +9,8 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Application.Core.Resources;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Application.Share.Resources;
+using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Common.Users.Services
 {

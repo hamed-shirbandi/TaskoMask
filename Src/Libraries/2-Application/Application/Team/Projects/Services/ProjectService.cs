@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Helpers;
+using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Team.Projects.Commands.Models;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
 using TaskoMask.Application.Team.Projects.Queries.Models;
-using TaskoMask.Application.Core.Dtos.Team.Projects;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.Dtos.Team.Projects;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
@@ -131,7 +131,7 @@ namespace TaskoMask.Application.Team.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PublicPaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        public async Task<Result<PaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await SendQueryAsync(new SearchProjectsQuery(page, recordsPerPage, term));
         }

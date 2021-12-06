@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Core.Dtos.Workspace.Boards;
-using TaskoMask.Application.Core.Dtos.Workspace.Cards;
-using TaskoMask.Application.Core.Dtos.Workspace.Tasks;
+using TaskoMask.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Domain.Workspace.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles

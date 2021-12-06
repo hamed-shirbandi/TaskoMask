@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using TaskoMask.Application.Core.Dtos.Workspace.Tasks;
+using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Workspace.Tasks.Queries.Models

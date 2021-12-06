@@ -7,13 +7,13 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Domain.Administration.Data;
-using TaskoMask.Application.Core.Helpers;
-using TaskoMask.Application.Core.Dtos.Administration.Permissions;
-using TaskoMask.Application.Core.ViewModels;
+using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Application.Share.Dtos.Administration.Permissions;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Domain.Administration.Entities;
-using TaskoMask.Application.Core.Dtos.Administration.Roles;
-using TaskoMask.Application.Core.Resources;
-using TaskoMask.Domain.Core.Resources;
+using TaskoMask.Application.Share.Dtos.Administration.Roles;
+using TaskoMask.Application.Share.Resources;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Commands;
 
 namespace TaskoMask.Application.Administration.Permissions.Services
@@ -238,7 +238,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PublicPaginatedListReturnType<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName)
+        public async Task<Result<PaginatedListReturnType<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName)
         {
             var permissions = _permissionRepository.Search(page, recordsPerPage, term, groupName, out var pageNumber, out var totalCount);
 
@@ -247,7 +247,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
             foreach (var item in permissionsDto)
                 item.RolesCount = await _roleRepository.CountByPermissionIdAsync(item.Id);
 
-            var model = new PublicPaginatedListReturnType<PermissionOutputDto>
+            var model = new PaginatedListReturnType<PermissionOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

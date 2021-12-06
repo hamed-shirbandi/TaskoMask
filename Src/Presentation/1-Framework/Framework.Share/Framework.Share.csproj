@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <AssemblyName>TaskoMask.Presentation.Framework.Share</AssemblyName>
+	  <RootNamespace>TaskoMask.Presentation.Framework.Share</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\2-Application\Application.Core.Models\Application.Share.csproj" />
+  </ItemGroup>
+
+</Project>

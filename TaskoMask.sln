@@ -27,17 +27,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Src\Libraries\3-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Core", "Src\Libraries\3-Domain\Domain.Core\Domain.Core.csproj", "{466762B7-1061-4312-BF84-7EDB6A2C467A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "Src\Presentation\3-UI\Web\Website.csproj", "{6482D831-9003-42B5-AEA1-E6CE0F74345B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "Src\Presentation\3-UI\Website\Website.csproj", "{6482D831-9003-42B5-AEA1-E6CE0F74345B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "Src\Presentation\3-UI\Web.Admin\AdminPanel.csproj", "{5775A727-7777-47B6-A917-3935B316A95A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "Src\Presentation\3-UI\AdminPanel\AdminPanel.csproj", "{5775A727-7777-47B6-A917-3935B316A95A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanelAPI", "Src\Presentation\2-API\Web.Api\UserPanelAPI.csproj", "{A73579BA-9281-4671-8B3E-9987C328EB8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanelAPI", "Src\Presentation\2-API\UserPanelAPI\UserPanelAPI.csproj", "{A73579BA-9281-4671-8B3E-9987C328EB8B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Src\Tests\Application.UnitTests\Application.UnitTests.csproj", "{6339DE75-CA79-4F7F-8959-8E9467803CD6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.Base", "Src\Tests\UnitTests.Base\UnitTests.Base.csproj", "{87EE0684-D45F-46BC-ADEC-5494DD2B3CDC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "Src\Presentation\3-UI\Web.Panel\UserPanel.csproj", "{637FCA1E-254C-448B-A3F7-A6BDEF7242C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "Src\Presentation\3-UI\UserPanel\UserPanel.csproj", "{637FCA1E-254C-448B-A3F7-A6BDEF7242C4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Share", "Src\Libraries\2-Application\Application.Core.Models\Application.Share.csproj", "{7410B8EB-85DE-4693-AB7A-ECE039C296B6}"
 EndProject

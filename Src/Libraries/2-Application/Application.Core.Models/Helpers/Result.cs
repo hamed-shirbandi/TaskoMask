@@ -126,6 +126,7 @@ namespace TaskoMask.Application.Share.Helpers
             Errors = errors ?? new List<string>();
         }
 
+    
 
         #endregion
     }

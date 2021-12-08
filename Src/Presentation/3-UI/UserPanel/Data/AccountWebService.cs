@@ -5,6 +5,7 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
+
 namespace TaskoMask.Presentation.UI.UserPanel.Data
 {
     public class AccountWebService : IAccountWebService
@@ -23,11 +24,12 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
         public async Task<Result<string>> Login(UserLoginDto input)
         {
             var uri = new ClientUriBuilder(new Uri(_httpClient.BaseAddress, $"/account/login")).Uri;
-            var httpResponse = await _httpClient.PostAsJsonAsync<UserLoginDto>(uri, input);
-            if (httpResponse.IsSuccessStatusCode)
-                return await JsonSerializer.DeserializeAsync<Result<string>>(httpResponse.Content.ReadAsStream());
-            return Result.Failure<string>(message: $"Request failed. statusCode= {httpResponse.StatusCode}");
+            var httpResponse = await _httpClient.PostAsJsonAsync(uri, input);
 
+            if (httpResponse.IsSuccessStatusCode)
+                return await httpResponse.Content.ReadFromJsonAsync<Result<string>>();
+
+            return Result.Failure<string>(message: $"Request failed!");
         }
 
 

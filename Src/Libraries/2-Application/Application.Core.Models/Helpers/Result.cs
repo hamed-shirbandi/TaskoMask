@@ -13,18 +13,18 @@ namespace TaskoMask.Application.Share.Helpers
         /// <summary>
         /// 
         /// </summary>
-        public bool IsSuccess { get; }
+        public bool IsSuccess { get; set; }
 
         /// <summary>
         /// global message if success or fail
         /// </summary>
-        public string Message { get; }
+        public string Message { get; set; }
 
 
         /// <summary>
         ///
         /// </summary>
-        public List<string> Errors { get; }
+        public List<string> Errors { get; set; }
     }
 
 
@@ -36,10 +36,10 @@ namespace TaskoMask.Application.Share.Helpers
         #region Properties
 
 
-        public bool IsSuccess { get; }
-        public string Message { get; }
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
 
-        public List<string> Errors { get; private set; }
+        public List<string> Errors { get; set; }
 
 
         #endregion
@@ -104,10 +104,10 @@ namespace TaskoMask.Application.Share.Helpers
         #region Properties
 
 
-        public bool IsSuccess { get; }
-        public string Message { get; }
-        public List<string> Errors { get; }
-        public T Value { get; }
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
+        public List<string> Errors { get; set; }
+        public T Value { get; set; }
 
 
         #endregion

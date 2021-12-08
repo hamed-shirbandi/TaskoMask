@@ -4,6 +4,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped(sp => new HttpClient
+{
+    BaseAddress = new Uri(builder.Configuration.GetValue<string>("Url:UserPanelAPI"))
+});
 
 var app = builder.Build();
 

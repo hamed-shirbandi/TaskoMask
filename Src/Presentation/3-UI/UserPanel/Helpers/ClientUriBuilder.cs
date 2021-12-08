@@ -1,9 +1,9 @@
 ﻿using System.Collections.Specialized;
 using System.Web;
 
-namespace TaskoMask.Presentation.Framework.Share.Helpers
+namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 {
-    public class ClientUriBuilder
+   public class ClientUriBuilder
     {
         private readonly NameValueCollection _collection;
         private readonly UriBuilder _builder;

@@ -42,7 +42,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("account/login")]
-        public async Task<Result<string>> Login(UserLoginDto input)
+        public async Task<Result<string>> Login([FromBody] UserLoginDto input)
         {
 
             //get user

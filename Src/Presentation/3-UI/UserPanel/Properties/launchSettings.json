@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "Web.Panel": {
+    "UserPanel": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

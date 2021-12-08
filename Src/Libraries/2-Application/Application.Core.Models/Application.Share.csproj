@@ -2,10 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	  <AssemblyName>TaskoMask.Application.Share</AssemblyName>
+	  <RootNamespace>TaskoMask.Application.Share</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\Release\net5.0\TaskoMask.Application.Share.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\net5.0\TaskoMask.Application.Share.xml</DocumentationFile>
+	</PropertyGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\..\3-Domain\Domain.Share\Domain.Share.csproj" />
   </ItemGroup>

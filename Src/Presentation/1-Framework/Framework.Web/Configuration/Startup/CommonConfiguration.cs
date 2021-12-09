@@ -36,7 +36,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddSharedConfigureServices();
+            services.AddSharedConfigureServices(configuration.GetValue<string>("Url:UserPanelAPI"));
 
             services.AddMediatR(typeof(BoardBaseCommand));
 

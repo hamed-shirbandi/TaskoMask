@@ -13,9 +13,14 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void AddSharedConfigureServices(this IServiceCollection services)
+        public static void AddSharedConfigureServices(this IServiceCollection services,string httpClientBaseAddress)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
+
+            services.AddScoped(sp => new HttpClient
+            {
+                BaseAddress = new Uri(httpClientBaseAddress)
+            });
 
             services.AddScoped<IHttpClientServices, HttpClientServices>();
         }

@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSharedConfigureServices();
+builder.Services.AddSharedConfigureServices(builder.Configuration.GetValue<string>("Url:UserPanelAPI"));
 
 builder.Services.AddScoped<IAccountWebService, AccountWebService>();
 

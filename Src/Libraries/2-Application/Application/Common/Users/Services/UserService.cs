@@ -112,7 +112,7 @@ namespace TaskoMask.Application.Common.Users.Services
 
             await _userRepository.UpdateAsync(user);
 
-            return Result.Success(new CommandResult(id: user.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
 
         }
 
@@ -135,7 +135,7 @@ namespace TaskoMask.Application.Common.Users.Services
 
             await _userRepository.UpdateAsync(user);
 
-            return Result.Success(new CommandResult(id: user.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
         }
 
 
@@ -153,7 +153,7 @@ namespace TaskoMask.Application.Common.Users.Services
 
             await _userRepository.UpdateAsync(user);
 
-            return Result.Success(new CommandResult(id: user.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
         }
 
 

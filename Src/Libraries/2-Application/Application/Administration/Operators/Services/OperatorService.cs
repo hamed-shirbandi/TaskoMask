@@ -58,7 +58,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
 
             await _operatorRepository.CreateAsync(@operator);
 
-            return Result.Success(new CommandResult(id: @operator.Id), ApplicationMessages.Create_Success);
+            return Result.Success(new CommandResult(entityId: @operator.Id), ApplicationMessages.Create_Success);
 
         }
 
@@ -81,7 +81,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
 
             await _operatorRepository.UpdateAsync(@operator);
 
-            return Result.Success(new CommandResult(id: @operator.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: @operator.Id), ApplicationMessages.Update_Success);
         }
 
 
@@ -99,7 +99,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
 
             await _operatorRepository.UpdateAsync(@operator);
 
-            return Result.Success(new CommandResult(id: @operator.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: @operator.Id), ApplicationMessages.Update_Success);
 
         }
 

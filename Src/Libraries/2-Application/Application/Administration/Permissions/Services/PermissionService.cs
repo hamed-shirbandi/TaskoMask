@@ -63,7 +63,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
 
             await _permissionRepository.CreateAsync(permission);
 
-            return Result.Success(new CommandResult(id: permission.Id), ApplicationMessages.Create_Success);
+            return Result.Success(new CommandResult(entityId: permission.Id), ApplicationMessages.Create_Success);
 
 
         }
@@ -88,7 +88,7 @@ namespace TaskoMask.Application.Administration.Permissions.Services
 
             await _permissionRepository.UpdateAsync(permission);
 
-            return Result.Success(new CommandResult(id: permission.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: permission.Id), ApplicationMessages.Update_Success);
 
         }
 

@@ -2,11 +2,12 @@
 {
     public class CommandResult
     {
-        public CommandResult(string message = "", string id = "")
+        public CommandResult(string message = "", string entityId = "")
         {
-            EntityId = id;
+            EntityId = entityId;
             Message = message;
         }
+     
 
         public string EntityId { get; set; }
         public string Message { get; set; }

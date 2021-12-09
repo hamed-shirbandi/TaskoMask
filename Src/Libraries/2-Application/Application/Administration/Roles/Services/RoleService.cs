@@ -61,7 +61,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
 
             await _roleRepository.CreateAsync(role);
 
-            return Result.Success(new CommandResult(id: role.Id), ApplicationMessages.Create_Success);
+            return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Create_Success);
 
         }
 
@@ -84,7 +84,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
 
             await _roleRepository.UpdateAsync(role);
 
-            return Result.Success(new CommandResult(id: role.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Update_Success);
         }
 
 
@@ -102,7 +102,7 @@ namespace TaskoMask.Application.Administration.Roles.Services
 
             await _roleRepository.UpdateAsync(role);
 
-            return Result.Success(new CommandResult(id: role.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Update_Success);
 
         }
 

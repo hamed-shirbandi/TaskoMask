@@ -28,12 +28,14 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
         }
 
 
+
         /// <summary>
         /// 
         /// </summary>
-        public Task<Result<CommandResult>> Register(MemberRegisterDto input)
+        public async Task<Result<CommandResult>> Register(MemberRegisterDto input)
         {
-            throw new NotImplementedException();
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/account/register")).Uri;
+            return await _httpClientServices.PostAsync<CommandResult>(uri, input);
         }
 
 

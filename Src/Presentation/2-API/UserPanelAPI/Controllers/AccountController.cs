@@ -73,7 +73,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("account/register")]
-        public async Task<Result<CommandResult>> Register(MemberRegisterDto input)
+        public async Task<Result<CommandResult>> Register([FromBody] MemberRegisterDto input)
         {
             return await _memberService.CreateAsync(input);
         }

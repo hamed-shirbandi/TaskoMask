@@ -8,7 +8,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
     /// <summary>
     /// 
     /// </summary>
-    public  class HttpClientServices: IHttpClientServices
+    public class HttpClientServices : IHttpClientServices
     {
         private readonly HttpClient _httpClient;
         public HttpClientServices(HttpClient httpClient)
@@ -53,6 +53,17 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         public Uri GetBaseAddress()
         {
             return _httpClient.BaseAddress;
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SetBaseAddress(string httpClientBaseAddress)
+        {
+            _httpClient.BaseAddress = new Uri(httpClientBaseAddress);
         }
 
     }

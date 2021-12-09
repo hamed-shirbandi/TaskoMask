@@ -17,6 +17,7 @@ using TaskoMask.Application.Mapper;
 using TaskoMask.Application.Team.Organizations.Commands.Validations;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Infrastructure.Data.DataProviders;
+using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 
 namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
 {
@@ -35,6 +36,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
+            services.AddSharedConfigureServices();
 
             services.AddMediatR(typeof(BoardBaseCommand));
 

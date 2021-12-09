@@ -13,6 +13,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\Account\Login.razor" />
+    <None Include="Pages\Account\Register.razor" />
+    <None Include="Pages\Dashboard\Boards.razor" />
+    <None Include="Pages\Dashboard\Index.razor" />
+    <None Include="Pages\Dashboard\Members.razor" />
+    <None Include="Pages\Dashboard\Organizations.razor" />
+    <None Include="Pages\Dashboard\Projects.razor" />
+    <None Include="Pages\Dashboard\Reports.razor" />
+    <None Include="Pages\Dashboard\TabNav.razor" />
+    <None Include="Pages\Dashboard\Tasks.razor" />
+    <None Include="Pages\_Host.cshtml" />
+    <None Include="Shared\MainLayout.razor" />
+    <None Include="Shared\NavMenu.razor" />
+    <None Include="UserPanel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\1-Framework\Framework.Share\Framework.Share.csproj" />
   </ItemGroup>
 

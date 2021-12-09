@@ -1,20 +1,20 @@
-﻿using System.Text.Json;
-using TaskoMask.Application.Share.Dtos.Common.Users;
+﻿using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Share.Dtos.Team.Members;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Contracts;
-using TaskoMask.Presentation.UI.UserPanel.Helpers;
+using TaskoMask.Presentation.Framework.Share.Helpers;
+using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 
 namespace TaskoMask.Presentation.UI.UserPanel.Data
 {
     public class AccountWebService : IAccountWebService
     {
-        private readonly HttpClient _httpClient;
+        private readonly IHttpClientServices _httpClientServices;
 
-        public AccountWebService(HttpClient httpClient)
+        public AccountWebService(IHttpClientServices httpClientServices)
         {
-            _httpClient = httpClient;
+            _httpClientServices = httpClientServices;
         }
 
 
@@ -23,20 +23,21 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
         /// </summary>
         public async Task<Result<string>> Login(UserLoginDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClient.BaseAddress, $"/account/login")).Uri;
-            var httpResponse = await _httpClient.PostAsJsonAsync(uri, input);
-
-            if (httpResponse.IsSuccessStatusCode)
-                return await httpResponse.Content.ReadFromJsonAsync<Result<string>>();
-
-            return Result.Failure<string>(message: $"Request failed!");
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/account/login")).Uri;
+            return await _httpClientServices.PostAsync<string>(uri,input);
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Task<Result<CommandResult>> Register(MemberRegisterDto input)
         {
             throw new NotImplementedException();
         }
+
+
+     
+
     }
 }

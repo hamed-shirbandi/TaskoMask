@@ -1,6 +1,4 @@
-﻿
-
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Presentation.Framework.Share.Services.Http
@@ -10,11 +8,30 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
     /// </summary>
     public class HttpClientServices : IHttpClientServices
     {
+        #region Fields
+
         private readonly HttpClient _httpClient;
+
+
+        #endregion
+
+        #region Ctor
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public HttpClientServices(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
+
+
+        #endregion
+
+        #region Public Methods
+
 
 
         /// <summary>
@@ -24,11 +41,21 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         {
             var httpResponse = await _httpClient.PostAsJsonAsync(uri, input);
 
-            if (httpResponse.IsSuccessStatusCode)
-                return await httpResponse.Content.ReadFromJsonAsync<Result<T>>();
-
-            return Result.Failure<T>(message: $"Request failed!");
+            return await GetResponseAsync<T>(httpResponse);
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<T>> PutAsync<T>(Uri uri, object input)
+        {
+            var httpResponse = await _httpClient.PutAsJsonAsync(uri, input);
+
+            return await GetResponseAsync<T>(httpResponse);
+        }
+
 
 
 
@@ -38,11 +65,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         public async Task<Result<T>> GetAsync<T>(Uri uri)
         {
             var httpResponse = await _httpClient.GetAsync(uri);
-
-            if (httpResponse.IsSuccessStatusCode)
-                return await httpResponse.Content.ReadFromJsonAsync<Result<T>>();
-
-            return Result.Failure<T>(message: $"Request failed!");
+            return await GetResponseAsync<T>(httpResponse);
         }
 
 
@@ -66,5 +89,27 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
             _httpClient.BaseAddress = new Uri(httpClientBaseAddress);
         }
 
+
+
+
+        #endregion
+
+        #region Private Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task<Result<T>> GetResponseAsync<T>(HttpResponseMessage httpResponse)
+        {
+            if (httpResponse.IsSuccessStatusCode)
+                return await httpResponse.Content.ReadFromJsonAsync<Result<T>>();
+
+            return Result.Failure<T>(message: $"Request failed!");
+        }
+
+
+        #endregion
     }
 }

@@ -11,7 +11,7 @@ using TaskoMask.Presentation.Framework.Share.Contracts;
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class OrganizationsController : BaseApiController, IOrganizationWebService
+    public class OrganizationsController : BaseApiController, IOrganizationClientService
     {
         #region Fields
 

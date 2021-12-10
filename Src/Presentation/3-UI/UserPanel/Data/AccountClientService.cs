@@ -8,11 +8,11 @@ using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Data
 {
-    public class AccountWebService : IAccountWebService
+    public class AccountClientService : IAccountClientService
     {
         private readonly IHttpClientServices _httpClientServices;
 
-        public AccountWebService(IHttpClientServices httpClientServices)
+        public AccountClientService(IHttpClientServices httpClientServices)
         {
             _httpClientServices = httpClientServices;
         }

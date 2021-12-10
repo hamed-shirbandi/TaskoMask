@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
-    public interface IOrganizationWebService
+    public interface IOrganizationClientService
     {
         Task<Result<CommandResult>> Create(OrganizationUpsertDto input);
         Task<Result<OrganizationDetailsViewModel>> Get(string id);

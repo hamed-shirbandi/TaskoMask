@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
-    public interface IProjectWebService
+    public interface IProjectClientService
     {
         Task<Result<CommandResult>> Create(ProjectUpsertDto input);
         Task<Result<ProjectDetailsViewModel>> Get(string id);

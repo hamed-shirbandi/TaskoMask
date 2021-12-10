@@ -3,7 +3,7 @@ using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
-    public interface IMemberWebService
+    public interface IMemberClientService
     {
         Task<Result<CommandResult>> Add(string email);
         Task<Result<CommandResult>> Delete(string id);

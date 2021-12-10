@@ -10,7 +10,7 @@ using TaskoMask.Presentation.Framework.Share.Contracts;
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class MembersController : BaseApiController, IMemberWebService
+    public class MembersController : BaseApiController, IMemberClientService
     {
         #region Fields
 

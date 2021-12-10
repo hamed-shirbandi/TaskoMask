@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
-    public  interface IAccountWebService
+    public  interface IAccountClientService
     {
         Task<Result<string>> Login(UserLoginDto input);
         Task<Result<CommandResult>> Register(MemberRegisterDto input);

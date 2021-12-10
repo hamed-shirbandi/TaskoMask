@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
-    public interface ICardWebService
+    public interface ICardClientService
     {
         Task<Result<CommandResult>> Create(CardUpsertDto input);
         Task<Result<CardDetailsViewModel>> Get(string id);

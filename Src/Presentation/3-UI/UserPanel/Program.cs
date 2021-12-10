@@ -10,7 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSharedConfigureServices(builder.Configuration.GetValue<string>("Url:UserPanelAPI"));
 
-builder.Services.AddScoped<IAccountWebService, AccountWebService>();
+builder.Services.AddScoped<IAccountClientService, AccountClientService>();
 
 
 

@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
-    public interface IBoardWebService
+    public interface IBoardClientService
     {
         Task<Result<CommandResult>> Create(BoardUpsertDto input);
         Task<Result<BoardDetailsViewModel>> Get(string id);

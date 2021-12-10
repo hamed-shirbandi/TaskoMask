@@ -1,6 +1,6 @@
 ﻿@page "/login"
 @using TaskoMask.Application.Share.Dtos.Common.Users
-@inject TaskoMask.Presentation.Framework.Share.Contracts.IAccountWebService AccountWebService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IAccountClientService AccountClientService
 @inject IJSRuntime JsRuntime
 
 <section id="cover">
@@ -41,7 +41,7 @@
 
     private async Task HandleLogin()
     {
-        var result = await AccountWebService.Login(LoginModel);
+        var result = await AccountClientService.Login(LoginModel);
         if (result.IsSuccess)
         {
              await JsRuntime.InvokeVoidAsync("alert", $"login success. token={result.Value}");

@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Cards;
+﻿using TaskoMask.Application.Share.Dtos.Team.Organizations;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Presentation.Framework.Share.Contracts;
@@ -6,26 +6,26 @@ using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Data
 {
-    public class CardWebService : ICardWebService
+    public class OrganizationClientService : IOrganizationClientService
     {
         private readonly IHttpClientServices _httpClientServices;
 
-        public CardWebService(IHttpClientServices httpClientServices)
+        public OrganizationClientService(IHttpClientServices httpClientServices)
         {
             _httpClientServices = httpClientServices;
         }
 
-        public Task<Result<CommandResult>> Create(CardUpsertDto input)
+        public Task<Result<CommandResult>> Create(OrganizationUpsertDto input)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Result<CardDetailsViewModel>> Get(string id)
+        public Task<Result<OrganizationDetailsViewModel>> Get(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Result<CommandResult>> Update(CardUpsertDto input)
+        public Task<Result<CommandResult>> Update(OrganizationUpsertDto input)
         {
             throw new NotImplementedException();
         }

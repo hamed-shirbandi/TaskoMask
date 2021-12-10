@@ -11,7 +11,7 @@ using TaskoMask.Presentation.Framework.Share.Contracts;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
-    public class AccountController : BaseApiController, IAccountWebService
+    public class AccountController : BaseApiController, IAccountClientService
     {
         #region Fields
 

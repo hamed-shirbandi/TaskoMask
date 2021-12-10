@@ -3,7 +3,7 @@ using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
-    public interface ITaskWebService
+    public interface ITaskClientService
     {
         Task<Result<CommandResult>> Create(TaskUpsertDto input);
         Task<Result<CommandResult>> SetCardId(string taskId, string cardId);

@@ -1,30 +1,35 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
+﻿using TaskoMask.Application.Share.Dtos.Team.Members;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Data
 {
-    public class TaskWebService : ITaskWebService
+    public class MemberClientService : IMemberClientService
     {
         private readonly IHttpClientServices _httpClientServices;
 
-        public TaskWebService(IHttpClientServices httpClientServices)
+        public MemberClientService(IHttpClientServices httpClientServices)
         {
             _httpClientServices = httpClientServices;
         }
 
-        public Task<Result<CommandResult>> Create(TaskUpsertDto input)
+        public Task<Result<CommandResult>> Add(string email)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Result<CommandResult>> SetCardId(string taskId, string cardId)
+        public Task<Result<CommandResult>> Delete(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Result<CommandResult>> Update(TaskUpsertDto input)
+        public Task<Result<MemberBasicInfoDto>> Get(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Result<CommandResult>> Update()
         {
             throw new NotImplementedException();
         }

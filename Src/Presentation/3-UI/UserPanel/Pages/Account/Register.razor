@@ -1,7 +1,7 @@
 ﻿@page "/register"
 @using TaskoMask.Application.Share.Dtos.Team.Members
 @using Application.Share.Dtos.Common.Users
-@inject TaskoMask.Presentation.Framework.Share.Contracts.IAccountWebService AccountWebService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IAccountClientService AccountClientService
 @inject IJSRuntime JsRuntime
 
 <section id="cover">
@@ -51,7 +51,7 @@
     private async Task HandleRegister()
     {
         //Register User
-        var registerResult = await AccountWebService.Register(RegisterModel);
+        var registerResult = await AccountClientService.Register(RegisterModel);
         if (!registerResult.IsSuccess)
         {
             await JsRuntime.InvokeVoidAsync($"alert", $"Register failed! message= {registerResult.Message}");
@@ -59,7 +59,7 @@
         }
 
         //Login User
-        var loginResult = await AccountWebService.Login(new UserLoginDto { Email = RegisterModel.Email, Password = RegisterModel.Password });
+        var loginResult = await AccountClientService.Login(new UserLoginDto { Email = RegisterModel.Email, Password = RegisterModel.Password });
         if (!loginResult.IsSuccess)
         {
             await JsRuntime.InvokeVoidAsync($"alert", $"login failed! message= {loginResult.Message}");

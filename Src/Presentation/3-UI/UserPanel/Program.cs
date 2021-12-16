@@ -11,6 +11,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSharedConfigureServices(builder.Configuration.GetValue<string>("Url:UserPanelAPI"));
 
 builder.Services.AddScoped<IAccountClientService, AccountClientService>();
+builder.Services.AddScoped<IOrganizationClientService, OrganizationClientService>();
 
 
 

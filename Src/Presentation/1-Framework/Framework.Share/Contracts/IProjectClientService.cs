@@ -6,8 +6,8 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
     public interface IProjectClientService
     {
-        Task<Result<CommandResult>> Create(ProjectUpsertDto input);
         Task<Result<ProjectDetailsViewModel>> Get(string id);
+        Task<Result<CommandResult>> Create(ProjectUpsertDto input);
         Task<Result<CommandResult>> Update(ProjectUpsertDto input);
     }
 }

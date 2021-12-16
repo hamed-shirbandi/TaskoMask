@@ -9,11 +9,34 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
 {
     public class BoardClientService : IBoardClientService
     {
+        #region Fields
+
         private readonly IHttpClientServices _httpClientServices;
+
+        #endregion
+
+        #region Ctor
 
         public BoardClientService(IHttpClientServices httpClientServices)
         {
             _httpClientServices = httpClientServices;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<BoardDetailsViewModel>> Get(string id)
+        {
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards"))
+                .AddParameter("id", id)
+                .Uri;
+
+            return await _httpClientServices.GetAsync<BoardDetailsViewModel>(uri);
         }
 
 
@@ -32,24 +55,19 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardDetailsViewModel>> Get(string id)
-        {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards"))
-                .AddParameter("id",id)
-                .Uri;
-         
-            return await _httpClientServices.GetAsync<BoardDetailsViewModel>(uri);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public async Task<Result<CommandResult>> Update(BoardUpsertDto input)
         {
             var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards")).Uri;
             return await _httpClientServices.PutAsync<CommandResult>(uri, input);
         }
+
+        #endregion
+
+        #region Private Methods
+
+
+
+        #endregion
+
     }
 }

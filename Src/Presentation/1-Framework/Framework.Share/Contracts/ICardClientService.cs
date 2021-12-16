@@ -6,8 +6,8 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
     public interface ICardClientService
     {
-        Task<Result<CommandResult>> Create(CardUpsertDto input);
         Task<Result<CardDetailsViewModel>> Get(string id);
+        Task<Result<CommandResult>> Create(CardUpsertDto input);
         Task<Result<CommandResult>> Update(CardUpsertDto input);
     }
 }

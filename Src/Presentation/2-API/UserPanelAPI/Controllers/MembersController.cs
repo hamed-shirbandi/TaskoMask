@@ -58,19 +58,6 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
-        /// update member permissions
-        /// </summary>
-        [HttpPut]
-        [Route("members")]
-        public async Task<Result<CommandResult>> Update( )
-        {
-            //TODO implement members Update api
-            return Result.Failure<CommandResult>(message:"not implemented yet");
-        }
-
-
-
-        /// <summary>
         /// remove a member from team
         /// </summary>
         [HttpDelete]

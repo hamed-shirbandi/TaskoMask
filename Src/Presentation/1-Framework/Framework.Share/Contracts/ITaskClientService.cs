@@ -6,7 +6,7 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
     public interface ITaskClientService
     {
         Task<Result<CommandResult>> Create(TaskUpsertDto input);
-        Task<Result<CommandResult>> SetCardId(string taskId, string cardId);
         Task<Result<CommandResult>> Update(TaskUpsertDto input);
+        Task<Result<CommandResult>> SetCardId(string taskId, string cardId);
     }
 }

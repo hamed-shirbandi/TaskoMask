@@ -5,9 +5,8 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
     public interface IMemberClientService
     {
+        Task<Result<MemberBasicInfoDto>> Get(string id);
         Task<Result<CommandResult>> Add(string email);
         Task<Result<CommandResult>> Delete(string id);
-        Task<Result<MemberBasicInfoDto>> Get(string id);
-        Task<Result<CommandResult>> Update();
     }
 }

@@ -6,8 +6,8 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
     public interface IOrganizationClientService
     {
-        Task<Result<CommandResult>> Create(OrganizationUpsertDto input);
         Task<Result<OrganizationDetailsViewModel>> Get(string id);
+        Task<Result<CommandResult>> Create(OrganizationUpsertDto input);
         Task<Result<CommandResult>> Update(OrganizationUpsertDto input);
     }
 }

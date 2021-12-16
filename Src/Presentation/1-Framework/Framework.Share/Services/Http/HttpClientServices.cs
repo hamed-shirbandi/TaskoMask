@@ -57,6 +57,17 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<T>> PutAsync<T>(Uri uri)
+        {
+            var httpResponse = await _httpClient.PutAsJsonAsync(uri,new { });
+
+            return await GetResponseAsync<T>(httpResponse);
+        }
+
+
 
 
         /// <summary>

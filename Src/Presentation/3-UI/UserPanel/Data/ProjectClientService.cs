@@ -2,32 +2,72 @@
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Data
 {
     public class ProjectClientService : IProjectClientService
     {
+        #region Fields
+
         private readonly IHttpClientServices _httpClientServices;
+
+        #endregion
+
+        #region Ctor
 
         public ProjectClientService(IHttpClientServices httpClientServices)
         {
             _httpClientServices = httpClientServices;
         }
 
-        public Task<Result<CommandResult>> Create(ProjectUpsertDto input)
+        #endregion
+
+        #region Public Methods
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<ProjectDetailsViewModel>> Get(string id)
         {
-            throw new NotImplementedException();
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/projects"))
+                .AddParameter("id", id)
+                .Uri;
+
+            return await _httpClientServices.GetAsync<ProjectDetailsViewModel>(uri);
         }
 
-        public Task<Result<ProjectDetailsViewModel>> Get(string id)
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> Create(ProjectUpsertDto input)
         {
-            throw new NotImplementedException();
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/projects")).Uri;
+            return await _httpClientServices.PostAsync<CommandResult>(uri, input);
         }
 
-        public Task<Result<CommandResult>> Update(ProjectUpsertDto input)
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> Update(ProjectUpsertDto input)
         {
-            throw new NotImplementedException();
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/projects")).Uri;
+            return await _httpClientServices.PutAsync<CommandResult>(uri, input);
         }
+
+        #endregion
+
+        #region Private Methods
+
+
+
+        #endregion
+
     }
 }

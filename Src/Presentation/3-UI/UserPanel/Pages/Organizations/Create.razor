@@ -11,7 +11,7 @@
                 <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
                     <h3 class="py-2">Create new Organization</h3>
                     <div class="px-2">
-                        <EditForm Model="OrganizationModel" OnValidSubmit="HandleLogin" class="justify-content-center">
+                        <EditForm Model="OrganizationModel" OnValidSubmit="HandCreateOrganization" class="justify-content-center">
                            <DataAnnotationsValidator />
                             <div class="form-group">
                                 <InputText @bind-Value="OrganizationModel.Name" placeholder="Name" class="form-control"></InputText>
@@ -38,7 +38,7 @@
 @code {
     private  OrganizationUpsertDto OrganizationModel = new OrganizationUpsertDto();
 
-    private async Task HandleLogin()
+    private async Task HandCreateOrganization()
     {
         var result = await OrganizationClientService.Create(OrganizationModel);
         if (result.IsSuccess)

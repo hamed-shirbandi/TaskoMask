@@ -12,6 +12,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.1" />
 	</ItemGroup>
   <ItemGroup>

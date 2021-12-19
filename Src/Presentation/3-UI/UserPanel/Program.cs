@@ -1,6 +1,9 @@
 
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 using TaskoMask.Presentation.UI.UserPanel.Services.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSharedConfigureServices(builder.Configuration.GetValue<string>("Url:UserPanelAPI"));
-
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
+builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<IAccountClientService, AccountClientService>();
 builder.Services.AddScoped<IOrganizationClientService, OrganizationClientService>();
 

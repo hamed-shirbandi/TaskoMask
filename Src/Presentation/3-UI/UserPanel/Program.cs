@@ -1,9 +1,5 @@
-
-using Blazored.LocalStorage;
-using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Presentation.Framework.Share.Contracts;
-using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 using TaskoMask.Presentation.UI.UserPanel.Services.Data;
 
 var builder = WebApplication.CreateBuilder(args);

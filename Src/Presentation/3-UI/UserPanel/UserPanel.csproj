@@ -11,9 +11,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.1" />
-	</ItemGroup>
+
   <ItemGroup>
     <None Include="Pages\Account\Login.razor" />
     <None Include="Pages\Account\Register.razor" />

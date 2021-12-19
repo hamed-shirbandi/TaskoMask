@@ -6,7 +6,7 @@ using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 
-namespace TaskoMask.Presentation.UI.UserPanel.Data
+namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
 {
     public class AccountClientService : IAccountClientService
     {

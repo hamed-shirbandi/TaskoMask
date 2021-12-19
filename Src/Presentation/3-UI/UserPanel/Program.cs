@@ -1,7 +1,7 @@
 
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Presentation.Framework.Share.Contracts;
-using TaskoMask.Presentation.UI.UserPanel.Data;
+using TaskoMask.Presentation.UI.UserPanel.Services.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,13 +1,13 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Boards;
+﻿using TaskoMask.Application.Share.Dtos.Team.Organizations;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Data
+namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
 {
-    public class BoardClientService : IBoardClientService
+    public class OrganizationClientService : IOrganizationClientService
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
 
         #region Ctor
 
-        public BoardClientService(IHttpClientServices httpClientServices)
+        public OrganizationClientService(IHttpClientServices httpClientServices)
         {
             _httpClientServices = httpClientServices;
         }
@@ -30,13 +30,13 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardDetailsViewModel>> Get(string id)
+        public async Task<Result<OrganizationDetailsViewModel>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/organizations"))
                 .AddParameter("id", id)
                 .Uri;
 
-            return await _httpClientServices.GetAsync<BoardDetailsViewModel>(uri);
+            return await _httpClientServices.GetAsync<OrganizationDetailsViewModel>(uri);
         }
 
 
@@ -44,9 +44,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Create(BoardUpsertDto input)
+        public async Task<Result<CommandResult>> Create(OrganizationUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards")).Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/organizations")).Uri;
             return await _httpClientServices.PostAsync<CommandResult>(uri, input);
         }
 
@@ -55,9 +55,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(BoardUpsertDto input)
+        public async Task<Result<CommandResult>> Update(OrganizationUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards")).Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/organizations")).Uri;
             return await _httpClientServices.PutAsync<CommandResult>(uri, input);
         }
 

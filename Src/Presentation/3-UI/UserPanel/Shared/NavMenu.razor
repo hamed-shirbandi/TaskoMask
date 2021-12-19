@@ -13,58 +13,79 @@
                 <a class="m-1 btn btn-sm btn-info" href="@websiteUrl">
                     <i class="bi bi-house-fill" title="Home"></i>
                 </a>
-
             </li>
-            <li class="nav-item">
-                <NavLink class="m-1 btn btn-sm btn-success" href="" Match="NavLinkMatch.All">
-                    <i class="bi bi-speedometer" title="dashboard"></i>
-                </NavLink>
-            </li>
-
+            <AuthorizeView>
+                <li class="nav-item">
+                    <NavLink class="m-1 btn btn-sm btn-success" href="" Match="NavLinkMatch.All">
+                        <i class="bi bi-speedometer" title="dashboard"></i>
+                    </NavLink>
+                </li>
+            </AuthorizeView>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <div class="dropdown show">
+            <AuthorizeView>
+                <div class="dropdown show">
 
-                <a class="btn btn-secondary btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Create
-                </a>
+                    <a class="btn btn-secondary btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Create
+                    </a>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <NavLink class="dropdown-item" href="organizations/create">
-                        <i class="bi bi-building"></i>
-                        New Organization
-                    </NavLink>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <NavLink class="dropdown-item" href="organizations/create">
+                            <i class="bi bi-building"></i>
+                            New Organization
+                        </NavLink>
 
-                    <NavLink class="dropdown-item" href="projects/create">
-                        <i class="bi bi-kanban"></i>
-                        New Project
-                    </NavLink>
+                        <NavLink class="dropdown-item" href="projects/create">
+                            <i class="bi bi-kanban"></i>
+                            New Project
+                        </NavLink>
 
-                    <NavLink class="dropdown-item" href="boards/create">
-                        <i class="bi bi-clipboard-plus"></i>
-                        New Board
-                    </NavLink>
+                        <NavLink class="dropdown-item" href="boards/create">
+                            <i class="bi bi-clipboard-plus"></i>
+                            New Board
+                        </NavLink>
 
-                    <NavLink class="dropdown-item" href="members/add">
-                        <i class="bi bi-people"></i>
-                        Add Member
-                    </NavLink>
+                        <NavLink class="dropdown-item" href="members/add">
+                            <i class="bi bi-people"></i>
+                            Add Member
+                        </NavLink>
+                    </div>
                 </div>
-            </div>
+            </AuthorizeView>
 
-            <NavLink class="m-1 btn btn-sm btn-warning my-2 my-sm-0" href="user/profile">
-                <i class="bi bi-person-circle"></i>
-            </NavLink>
+            <AuthorizeView>
+                <Authorized>
+                    <NavLink class="m-1 btn btn-sm btn-warning my-2 my-sm-0" href="user/profile">
+                        <i class="bi bi-person-circle"></i>
+                    </NavLink>
 
-            <NavLink class="m-1 btn btn-sm btn-danger my-2 my-sm-0" href="account/logout">
-                <i class="bi bi-power"></i>
-            </NavLink>
+                    <NavLink class="m-1 btn btn-sm btn-danger my-2 my-sm-0" href="account/logout">
+                        <i class="bi bi-power"></i>
+                    </NavLink>
+                </Authorized>
+
+                <NotAuthorized>
+                    <NavLink class="m-1 btn btn-sm btn-warning my-2 my-sm-0" href="login">
+                        <i class="bi bi-box-arrow-in-left"></i>
+                    </NavLink>
+
+                    <NavLink class="m-1 btn btn-sm btn-danger my-2 my-sm-0" href="register">
+                        <i class="bi bi-person-plus"></i>
+                    </NavLink>
+                </NotAuthorized>
+            </AuthorizeView>
+
+
+
+
+
 
         </div>
     </div>
 </nav>
 
-@code{
+@code {
     string websiteUrl = "#";
     protected override async Task OnInitializedAsync()
     {

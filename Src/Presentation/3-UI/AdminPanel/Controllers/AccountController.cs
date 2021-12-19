@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication;
+using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
 using DNTCaptcha.Core;
-using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Models;
 using AutoMapper;
 using TaskoMask.Application.Administration.Operators.Services;
 

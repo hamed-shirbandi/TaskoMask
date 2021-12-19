@@ -8,10 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="DNTCaptcha.Core" Version="4.1.0" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
@@ -22,6 +18,10 @@
 	  <ProjectReference Include="..\..\..\Libraries\1-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
 	  <ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />
 	  <ProjectReference Include="..\Framework.Share\Framework.Share.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>

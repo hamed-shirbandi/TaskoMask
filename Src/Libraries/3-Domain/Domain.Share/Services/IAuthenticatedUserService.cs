@@ -1,6 +1,6 @@
-﻿using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Domain.Share.Models;
 
-namespace TaskoMask.Domain.Core.Services
+namespace TaskoMask.Domain.Share.Services
 {
     public interface IAuthenticatedUserService
     {

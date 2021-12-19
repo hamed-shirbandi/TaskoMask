@@ -33,6 +33,7 @@ using TaskoMask.Domain.Administration.Data;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Infrastructure.CrossCutting.Services.Security;
 using TaskoMask.Domain.Core.Data;
+using TaskoMask.Domain.Share.Services;
 
 namespace Infrastructure.CrossCutting.IoC
 {

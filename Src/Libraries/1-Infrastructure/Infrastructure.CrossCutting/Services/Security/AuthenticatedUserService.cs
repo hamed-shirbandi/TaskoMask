@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Share.Models;
+using TaskoMask.Domain.Share.Services;
 
 namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
 {

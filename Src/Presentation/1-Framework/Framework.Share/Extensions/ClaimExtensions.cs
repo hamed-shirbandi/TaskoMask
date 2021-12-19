@@ -1,11 +1,8 @@
-﻿
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Security.Claims;
-using TaskoMask.Application.Core.Extensions;
-using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Models;
 
-namespace TaskoMask.Presentation.Framework.Web.Extensions
+namespace TaskoMask.Presentation.Framework.Share.Extensions
 {
     public static class ClaimExtensions
     {

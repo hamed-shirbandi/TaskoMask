@@ -4,32 +4,29 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using TaskoMask.Presentation.Framework.Web.Configuration.Captcha;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication;
+using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
 
-namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
+namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
 {
 
     /// <summary>
     /// 
     /// </summary>
-    public static  class MvcConfiguration
+    public static  class BlazorProjectConfiguration
     {
 
         /// <summary>
         /// 
         /// </summary>
-        public static void MvcConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
+        public static void BlazorProjectConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddControllersWithViews();
-            services.AddDNTCaptchaPreConfigured();
             services.AddCookieAuthentication(env,options =>
             {
                 configuration.GetSection("Authentication").Bind(options);
             });
-            services.AddCommonConfigureServices(configuration);
+            services.AddSharedConfigureServices(configuration.GetValue<string>("Url:UserPanelAPI"));
         }
 
 
@@ -37,19 +34,22 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void MvcConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
+        public static void BlazorProjectConfigure(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 
+            // Configure the HTTP request pipeline.
             if (!env.IsDevelopment())
             {
-                app.UseExceptionHandler("/Error/Unknown");
+                app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            app.UseCommonConfigure(serviceProvider, env);
-           
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
+
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

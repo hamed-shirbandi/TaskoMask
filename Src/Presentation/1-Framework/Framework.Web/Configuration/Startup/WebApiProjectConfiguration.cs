@@ -4,9 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using TaskoMask.Presentation.Framework.Share.Services.Authentication.JwtAuthentication;
 using TaskoMask.Presentation.Framework.Web.Configuration.Swagger;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication;
 
 namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
 {
@@ -14,14 +13,14 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
     /// <summary>
     /// 
     /// </summary>
-    public static class WebApiConfiguration
+    public static class WebApiProjectConfiguration
     {
 
 
         /// <summary>
         /// 
         /// </summary>
-        public static void WebApiConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void WebApiProjectConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -45,7 +44,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void WebApiConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
+        public static void WebApiProjectConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 

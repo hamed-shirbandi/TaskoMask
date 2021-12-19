@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Domain.Core.Models
+namespace TaskoMask.Domain.Share.Models
 {
     public class AuthenticatedUser
     {

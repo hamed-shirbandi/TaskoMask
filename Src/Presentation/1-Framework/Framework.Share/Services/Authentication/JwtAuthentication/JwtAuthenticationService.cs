@@ -4,18 +4,16 @@ using System;
 using System.Security.Claims;
 using System.Text;
 using System.Reflection;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using TaskoMask.Application.Core.Extensions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Presentation.Framework.Web.Extensions;
-using TaskoMask.Infrastructure.CrossCutting.Services.Security;
 using Microsoft.AspNetCore.Http;
+using TaskoMask.Presentation.Framework.Share.Services.Authentication.Models;
+using TaskoMask.Domain.Share.Models;
+using TaskoMask.Presentation.Framework.Share.Extensions;
 
-namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication
+namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.JwtAuthentication
 {
-    public class JwtAuthenticationService : AuthenticatedUserService, IJwtAuthenticationService
+    public class JwtAuthenticationService :  IJwtAuthenticationService
     {
         #region Fields
 
@@ -26,7 +24,7 @@ namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthen
 
         #region Ctor
 
-        public JwtAuthenticationService(IOptions<JwtAuthenticationOptions> options, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        public JwtAuthenticationService(IOptions<JwtAuthenticationOptions> options, IHttpContextAccessor httpContextAccessor) 
         {
             _options = options != null ? options.Value : throw new ArgumentNullException(nameof(options));
         }

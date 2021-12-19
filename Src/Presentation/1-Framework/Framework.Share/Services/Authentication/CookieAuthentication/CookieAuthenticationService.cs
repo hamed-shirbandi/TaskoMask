@@ -2,21 +2,16 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Common.Users;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Infrastructure.CrossCutting.Services.Security;
-using TaskoMask.Presentation.Framework.Web.Extensions;
+using TaskoMask.Domain.Share.Models;
+using TaskoMask.Presentation.Framework.Share.Extensions;
 
-namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
+namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication
 {
     /// <summary>
     /// Represents service using cookie for the authentication
     /// </summary>
-    public class CookieAuthenticationService : AuthenticatedUserService, ICookieAuthenticationService
+    public class CookieAuthenticationService : ICookieAuthenticationService
     {
         #region Fields
 
@@ -28,7 +23,7 @@ namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAut
 
         #region Ctors
 
-        public CookieAuthenticationService(IHttpContextAccessor httpContextAccessor, IOptions<Models.CookieAuthenticationOptions> options) : base(httpContextAccessor)
+        public CookieAuthenticationService(IHttpContextAccessor httpContextAccessor, IOptions<Models.CookieAuthenticationOptions> options) 
         {
             _options = options != null ? options.Value : throw new ArgumentNullException(nameof(options));
             _httpContextAccessor = httpContextAccessor;

@@ -2,12 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using System;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.Models;
 
-namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
+namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication
 {
     public static class CookieAuthenticationConfiguration
     {

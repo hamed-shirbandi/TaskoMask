@@ -9,15 +9,15 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
     {
         #region Fields
 
-        private readonly IHttpClientServices _httpClientServices;
+        private readonly IAccountClientService _accountClientService;
 
         #endregion
 
         #region Ctor
 
-        public BoardClientService(IHttpClientServices httpClientServices)
+        public AuthenticationService(IAccountClientService accountClientService)
         {
-            _httpClientServices = httpClientServices;
+            _accountClientService = accountClientService;
         }
 
         #endregion
@@ -25,16 +25,13 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         #region Public Methods
 
 
+
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardDetailsViewModel>> Get(string id)
+        public Task<Result<string>> Login(UserLoginDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards"))
-                .AddParameter("id", id)
-                .Uri;
-
-            return await _httpClientServices.GetAsync<BoardDetailsViewModel>(uri);
+            throw new NotImplementedException();
         }
 
 
@@ -42,10 +39,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Create(BoardUpsertDto input)
+        public Task<Result<CommandResult>> Register(MemberRegisterDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards")).Uri;
-            return await _httpClientServices.PostAsync<CommandResult>(uri, input);
+            throw new NotImplementedException();
         }
 
 
@@ -53,11 +49,12 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(BoardUpsertDto input)
+        public void Logout()
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/boards")).Uri;
-            return await _httpClientServices.PutAsync<CommandResult>(uri, input);
+            throw new NotImplementedException();
         }
+
+
 
         #endregion
 
@@ -66,31 +63,6 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 
 
         #endregion
-
-        private readonly IAccountClientService _accountClientService;
-
-        public AuthenticationService(IAccountClientService accountClientService)
-        {
-            _accountClientService = accountClientService;
-        }
-
-        public Task<Result<string>> Login(UserLoginDto input)
-        {
-            throw new NotImplementedException();
-        }
-
-      
-        public void Logout()
-        {
-            throw new NotImplementedException();
-        }
-
-   
-
-        public Task<Result<CommandResult>> Register(MemberRegisterDto input)
-        {
-            throw new NotImplementedException();
-        }
 
     }
 }

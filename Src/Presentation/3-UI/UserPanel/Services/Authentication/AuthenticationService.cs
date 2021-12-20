@@ -1,7 +1,9 @@
 using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Share.Dtos.Team.Members;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Domain.Share.Models;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 {
@@ -10,14 +12,16 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         #region Fields
 
         private readonly IAccountClientService _accountClientService;
+        private readonly ICookieAuthenticationService _cookieAuthenticationService;
 
         #endregion
 
         #region Ctor
 
-        public AuthenticationService(IAccountClientService accountClientService)
+        public AuthenticationService(IAccountClientService accountClientService, ICookieAuthenticationService cookieAuthenticationService)
         {
             _accountClientService = accountClientService;
+            _cookieAuthenticationService = cookieAuthenticationService;
         }
 
         #endregion
@@ -29,9 +33,23 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public Task<Result<string>> Login(UserLoginDto input)
+        public async Task<Result<string>> Login(UserLoginDto input)
         {
-            throw new NotImplementedException();
+            var loginResult = Result.Success("test","test");
+           // var loginResult = await _accountClientService.Login(input);
+            //if (!loginResult.IsSuccess)
+            //    return loginResult;
+
+            //TODO get from api
+            var user = new AuthenticatedUser
+            {
+                DisplayName="Hamed",
+                Email="Hamed@Test.com",
+                Id="asdasd12121asd",
+                UserName= "Hamed@Test.com"
+            };
+            await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.RememberMe);
+            return loginResult;
         }
 
 

@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.Options;
-using System;
+﻿using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using System.Text;
-using System.Reflection;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Http;

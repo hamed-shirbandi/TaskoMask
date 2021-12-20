@@ -24,7 +24,8 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieA
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ICookieAuthenticationService, CookieAuthenticationService>();
-           
+
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(option =>
             {

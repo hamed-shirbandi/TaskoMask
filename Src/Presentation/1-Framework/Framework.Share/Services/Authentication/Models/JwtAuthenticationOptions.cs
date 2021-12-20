@@ -1,5 +1,4 @@
 ﻿
-
 namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.Models
 {
     public class JwtAuthenticationOptions

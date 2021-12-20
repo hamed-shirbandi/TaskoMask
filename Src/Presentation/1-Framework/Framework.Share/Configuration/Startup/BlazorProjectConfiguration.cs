@@ -22,10 +22,11 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddCookieAuthentication(env,options =>
-            {
-                configuration.GetSection("Authentication").Bind(options);
-            });
+            services.AddCookieAuthentication(env, options =>
+             {
+                 configuration.GetSection("Authentication").Bind(options);
+             });
+
             services.AddSharedConfigureServices(configuration.GetValue<string>("Url:UserPanelAPI"));
         }
 
@@ -53,6 +54,7 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
         }
 
     }

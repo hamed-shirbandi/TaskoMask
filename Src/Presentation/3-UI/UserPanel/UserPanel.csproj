@@ -13,8 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\Account\Login.razor" />
-    <None Include="Pages\Account\Register.razor" />
     <None Include="Pages\Dashboard\Boards.razor" />
     <None Include="Pages\Dashboard\Index.razor" />
     <None Include="Pages\Dashboard\Members.razor" />
@@ -27,6 +25,12 @@
     <None Include="Shared\MainLayout.razor" />
     <None Include="Shared\NavMenu.razor" />
     <None Include="UserPanel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>

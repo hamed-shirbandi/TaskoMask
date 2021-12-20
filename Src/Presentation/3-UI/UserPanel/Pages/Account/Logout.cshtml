@@ -1,0 +1,11 @@
+﻿@page "/logout"
+@using Microsoft.AspNetCore.Identity
+@inject TaskoMask.Presentation.UI.UserPanel.Services.Authentication.IAuthenticationService AuthenticationService
+@functions
+{
+    public async Task<IActionResult> OnGet()
+    {
+        AuthenticationService.Logout();
+        return Redirect("~/");
+    }
+}

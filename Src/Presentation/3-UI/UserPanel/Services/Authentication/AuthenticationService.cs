@@ -3,6 +3,7 @@ using TaskoMask.Application.Share.Dtos.Team.Members;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
+using TaskoMask.Presentation.Framework.Share.Services.Http;
 using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
@@ -12,16 +13,18 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         #region Fields
 
         private readonly IAccountClientService _accountClientService;
+        private readonly IHttpClientServices _httpClientServices;
         private readonly ICookieAuthenticationService _cookieAuthenticationService;
 
         #endregion
 
         #region Ctor
 
-        public AuthenticationService(IAccountClientService accountClientService, ICookieAuthenticationService cookieAuthenticationService)
+        public AuthenticationService(IAccountClientService accountClientService, ICookieAuthenticationService cookieAuthenticationService, IHttpClientServices httpClientServices)
         {
             _accountClientService = accountClientService;
             _cookieAuthenticationService = cookieAuthenticationService;
+            _httpClientServices = httpClientServices;
         }
 
         #endregion
@@ -77,7 +80,6 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
             if (!result.IsSuccess)
                 return result;
 
-            //result.Value = JWT Token returned from login or Register API
             var user = JwtParser.ParseClaimsFromJwt(result.Value);
             await _cookieAuthenticationService.SignInAsync(user, isPersistent: false);
             return result;

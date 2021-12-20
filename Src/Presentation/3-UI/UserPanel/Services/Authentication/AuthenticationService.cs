@@ -1,7 +1,6 @@
 using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Share.Dtos.Team.Members;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.Share.Models;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
 using TaskoMask.Presentation.UI.UserPanel.Helpers;
@@ -37,13 +36,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         public async Task<Result<string>> Login(UserLoginDto input)
         {
             var loginResult = await _accountClientService.Login(input);
-            if (!loginResult.IsSuccess)
-                return loginResult;
+            return await SignInAsync(loginResult);
 
-            var user = JwtParser.ParseClaimsFromJwt(loginResult.Value);
-
-            await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.RememberMe);
-            return loginResult;
         }
 
 
@@ -51,10 +45,12 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public Task<Result<CommandResult>> Register(MemberRegisterDto input)
+        public async Task<Result<string>> Register(MemberRegisterDto input)
         {
-            throw new NotImplementedException();
+            var registerResult = await _accountClientService.Register(input);
+            return await SignInAsync(registerResult);
         }
+
 
 
 
@@ -72,6 +68,20 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 
         #region Private Methods
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task<Result<string>> SignInAsync(Result<string> result)
+        {
+            if (!result.IsSuccess)
+                return result;
+
+            //result.Value = JWT Token returned from login or Register API
+            var user = JwtParser.ParseClaimsFromJwt(result.Value);
+            await _cookieAuthenticationService.SignInAsync(user, isPersistent: false);
+            return result;
+        }
 
 
         #endregion

@@ -18,8 +18,6 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         private readonly IMemberService _memberService;
         private readonly IJwtAuthenticationService _jwtAuthenticationService;
 
-
-
         #endregion
 
         #region Ctor
@@ -38,18 +36,16 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
-        /// login member - return jwt token if result is success
+        /// login member - return jwt token in value if result is success
         /// </summary>
         [HttpPost]
         [Route("account/login")]
         public async Task<Result<string>> Login([FromBody] UserLoginDto input)
         {
-
             //get user
             var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
                 return Result.Failure<string>(userQueryResult.Errors, userQueryResult.Message);
-
 
             //validate user password
             var validateQueryResult = await _memberService.ValidateUserPasswordAsync(input.Email, input.Password);
@@ -62,20 +58,35 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
             //generate and return jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
             return Result.Success(value: token);
-
         }
 
 
 
 
         /// <summary>
-        /// register new member
+        /// register new member - return jwt token in value if result is success
         /// </summary>
         [HttpPost]
         [Route("account/register")]
-        public async Task<Result<CommandResult>> Register([FromBody] MemberRegisterDto input)
+        public async Task<Result<string>> Register([FromBody] MemberRegisterDto input)
         {
-            return await _memberService.CreateAsync(input);
+            //create user
+            var createCommandResult = await _memberService.CreateAsync(input);
+            if (!createCommandResult.IsSuccess)
+                return Result.Failure<string>(createCommandResult.Errors, createCommandResult.Message);
+
+
+            //get user
+            var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
+            if (!userQueryResult.IsSuccess)
+                return Result.Failure<string>(userQueryResult.Errors, userQueryResult.Message);
+
+            //model to add its prop to jwt claims
+            var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
+
+            //generate and return jwt token
+            var token = _jwtAuthenticationService.GenerateJwtToken(user);
+            return Result.Success(value: token);
         }
 
 

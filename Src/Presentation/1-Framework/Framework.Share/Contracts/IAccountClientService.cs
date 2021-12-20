@@ -7,6 +7,6 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
     public  interface IAccountClientService
     {
         Task<Result<string>> Login(UserLoginDto input);
-        Task<Result<CommandResult>> Register(MemberRegisterDto input);
+        Task<Result<string>> Register(MemberRegisterDto input);
     }
 }

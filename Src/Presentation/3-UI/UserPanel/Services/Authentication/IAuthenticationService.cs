@@ -4,6 +4,6 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 {
     public interface IAuthenticationService : IAccountClientService
     {
-       void Logout();
+       Task Logout();
     }
 }

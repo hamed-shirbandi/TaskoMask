@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 using TaskoMask.Application.Share.Dtos.Common.Users;
+using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
 {
@@ -42,6 +43,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
                 return Page();
 
             var loginResult = await _authenticationService.Login(Input);
+            
             if (loginResult.IsSuccess)
                 return LocalRedirect(returnUrl);
 

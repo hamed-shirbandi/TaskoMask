@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using System.Text.Json;
+using TaskoMask.Domain.Share.Models;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 {
@@ -9,16 +10,14 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
     /// </summary>
     public static class JwtParser
     {
-        public static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
+        public static AuthenticatedUser ParseClaimsFromJwt(string jwt)
         {
             var claims = new List<Claim>();
             var payload = jwt.Split('.')[1];
 
             var jsonBytes = ParseBase64WithoutPadding(payload);
 
-            var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
-            claims.AddRange(keyValuePairs.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString())));
-            return claims;
+            return  JsonSerializer.Deserialize<AuthenticatedUser>(jsonBytes);
         }
 
         private static byte[] ParseBase64WithoutPadding(string base64)

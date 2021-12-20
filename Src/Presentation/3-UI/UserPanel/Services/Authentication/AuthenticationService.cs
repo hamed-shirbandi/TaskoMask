@@ -4,6 +4,7 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Share.Models;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
+using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 {
@@ -35,19 +36,12 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// </summary>
         public async Task<Result<string>> Login(UserLoginDto input)
         {
-            var loginResult = Result.Success("test","test");
-           // var loginResult = await _accountClientService.Login(input);
-            //if (!loginResult.IsSuccess)
-            //    return loginResult;
+            var loginResult = await _accountClientService.Login(input);
+            if (!loginResult.IsSuccess)
+                return loginResult;
 
-            //TODO get from api
-            var user = new AuthenticatedUser
-            {
-                DisplayName="Hamed",
-                Email="Hamed@Test.com",
-                Id="asdasd12121asd",
-                UserName= "Hamed@Test.com"
-            };
+            var user = JwtParser.ParseClaimsFromJwt(loginResult.Value);
+
             await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.RememberMe);
             return loginResult;
         }
@@ -67,9 +61,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public void Logout()
+        public async Task Logout()
         {
-            throw new NotImplementedException();
+            await _cookieAuthenticationService.SignOutAsync();
         }
 
 

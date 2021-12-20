@@ -7,6 +7,7 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Domain.Share.Services;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -21,7 +22,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
         #region Ctors
 
-        public OrganizationsController(IOrganizationService organizationService)
+        public OrganizationsController(IOrganizationService organizationService, IAuthenticatedUserService authenticatedUserService):base(authenticatedUserService)
         {
             _organizationService = organizationService;
         }
@@ -52,6 +53,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("organizations")]
         public async Task<Result<CommandResult>> Create(OrganizationUpsertDto input)
         {
+            input.OwnerMemberId = GetCurrentUserId();
             return await _organizationService.CreateAsync(input);
         }
 

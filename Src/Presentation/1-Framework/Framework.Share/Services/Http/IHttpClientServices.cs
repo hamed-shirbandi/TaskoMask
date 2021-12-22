@@ -11,7 +11,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         Task<Result<T>> PutAsync<T>(Uri uri);
         Task<Result<T>> GetAsync<T>(Uri uri);
         Uri GetBaseAddress();
-        void SetBaseAddress(string httpClientBaseAddress);
+        void SetBaseAddress(string httpClientBaseAddress);  
         void SetDefaultBearerAuthorizationHeader(string jwtToken);
 
     }

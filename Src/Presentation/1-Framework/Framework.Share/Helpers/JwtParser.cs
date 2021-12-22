@@ -2,7 +2,7 @@ using System.Security.Claims;
 using System.Text.Json;
 using TaskoMask.Domain.Share.Models;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Helpers
+namespace TaskoMask.Presentation.Framework.Share.Helpers
 {
     /// <summary>
     /// From the Steve Sanderson’s Mission Control project:

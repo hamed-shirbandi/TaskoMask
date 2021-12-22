@@ -4,6 +4,7 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
+using TaskoMask.Presentation.Framework.Share.Services.Cookie;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
@@ -13,18 +14,18 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         #region Fields
 
         private readonly IAccountClientService _accountClientService;
-        private readonly IHttpClientServices _httpClientServices;
+        private readonly ICookieService _cookieService;
         private readonly ICookieAuthenticationService _cookieAuthenticationService;
 
         #endregion
 
         #region Ctor
 
-        public AuthenticationService(IAccountClientService accountClientService, ICookieAuthenticationService cookieAuthenticationService, IHttpClientServices httpClientServices)
+        public AuthenticationService(IAccountClientService accountClientService, ICookieAuthenticationService cookieAuthenticationService, ICookieService cookieService)
         {
             _accountClientService = accountClientService;
             _cookieAuthenticationService = cookieAuthenticationService;
-            _httpClientServices = httpClientServices;
+            _cookieService = cookieService;
         }
 
         #endregion
@@ -80,8 +81,13 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
             if (!result.IsSuccess)
                 return result;
 
+            //Save jwt token by cookie
+            _cookieService.Set("JWT_TOKEN",result.Value);
+
+            //Sign in user by cookie authentication
             var user = JwtParser.ParseClaimsFromJwt(result.Value);
             await _cookieAuthenticationService.SignInAsync(user, isPersistent: false);
+
             return result;
         }
 

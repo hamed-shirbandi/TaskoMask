@@ -1,9 +1,11 @@
-﻿@attribute [AllowAnonymous]
-@inject NavigationManager _navigationManager
+﻿@inject NavigationManager NavigationManager
 
-@code {
-    protected override void OnInitialized()
+@code
+{
+
+    protected override async Task OnInitializedAsync()
     {
-        //_navigationManager.NavigateTo("/login");
+        NavigationManager.NavigateTo("login");
+
     }
 }

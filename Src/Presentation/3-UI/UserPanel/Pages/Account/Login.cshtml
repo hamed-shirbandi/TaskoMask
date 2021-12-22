@@ -24,14 +24,15 @@
                             </div>
                             <div class="form-group">
                                 <div class="checkbox">
-                                   <input type="checkbox" name="RememberMe" />
+                                    <input type="checkbox" name="RememberMe" />
                                     @Html.DisplayNameFor(m => m.Input.RememberMe)
                                 </div>
                                 <span asp-validation-for="Input.RememberMe" class="text-danger"></span>
 
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-success">Login</button>
+                                <a class="btn btn-primary" href="/register">Register</a>
                             </div>
                         </form>
                     </div>
@@ -43,5 +44,5 @@
 
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }

@@ -6,6 +6,7 @@ using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
 using TaskoMask.Presentation.Framework.Share.Services.Cookie;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
+using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 {
@@ -82,7 +83,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
                 return result;
 
             //Save jwt token by cookie
-            _cookieService.Set("JWT_TOKEN",result.Value);
+            _cookieService.Set(MagicKey.Jwt_Token,result.Value);
 
             //Sign in user by cookie authentication
             var user = JwtParser.ParseClaimsFromJwt(result.Value);

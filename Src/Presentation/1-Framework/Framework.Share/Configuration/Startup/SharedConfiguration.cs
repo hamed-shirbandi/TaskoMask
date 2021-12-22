@@ -14,27 +14,9 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void AddSharedConfigureServices(this IServiceCollection services, string httpClientBaseAddress)
+        public static void AddSharedConfigureServices(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
-
-
-
-            services.AddHttpClient(
-                   name: "ServerAPI",
-                   configureClient: client =>
-                   {
-                       client.BaseAddress = new Uri(httpClientBaseAddress);
-                   })
-               .AddHttpMessageHandler<HttpClientInterceptorService>();
-            services.AddScoped<HttpClientInterceptorService>();
-            services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ServerAPI"));
-
-
-            //services.AddScoped(sp => new HttpClient
-            //{
-            //    BaseAddress = new Uri(httpClientBaseAddress)
-            //});
 
             services.AddScoped<IHttpClientServices, HttpClientServices>();
             services.AddScoped<ICookieService, CookieService>();

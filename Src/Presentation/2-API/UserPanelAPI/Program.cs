@@ -3,12 +3,12 @@ using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.WebApiProjectConfigureServices(builder.Configuration);
+builder.Services.AddWebApiProjectConfigureServices(builder.Configuration);
 
 
 var app = builder.Build();
 
-app.WebApiProjectConfigure(app.Services, builder.Environment);
+app.UseWebApiProjectConfigure(app.Services, builder.Environment);
 
 
 app.UseEndpoints(endpoints =>

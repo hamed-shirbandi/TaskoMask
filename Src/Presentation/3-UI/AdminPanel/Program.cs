@@ -4,12 +4,12 @@ using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.MvcProjectConfigureServices(builder.Configuration, builder.Environment);
+builder.Services.AddMvcProjectConfigureServices(builder.Configuration, builder.Environment);
 
 
 var app = builder.Build();
 
-app.MvcProjectConfigure(app.Services, builder.Environment);
+app.UseMvcProjectConfigure(app.Services, builder.Environment);
 
 app.Services.SeedAdminPanelTempData();
 

@@ -1,5 +1,4 @@
-﻿using System.Net.Http.Headers;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Presentation.Framework.Share.Services.Http
@@ -96,16 +95,6 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         public void SetBaseAddress(string httpClientBaseAddress)
         {
             _httpClient.BaseAddress = new Uri(httpClientBaseAddress);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void SetDefaultBearerAuthorizationHeader(string jwtToken)
-        {
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", jwtToken);
         }
 
 

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
 using TaskoMask.Presentation.Framework.Web.Configuration.Captcha;
 
@@ -19,7 +18,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void MvcProjectConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
+        public static void AddMvcProjectConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -37,7 +36,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void MvcProjectConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
+        public static void UseMvcProjectConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 

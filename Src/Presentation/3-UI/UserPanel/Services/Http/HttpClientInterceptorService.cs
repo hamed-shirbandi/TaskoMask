@@ -1,7 +1,8 @@
 ﻿using System.Net.Http.Headers;
 using TaskoMask.Presentation.Framework.Share.Services.Cookie;
 
-namespace TaskoMask.Presentation.Framework.Share.Services.Http
+
+namespace TaskoMask.Presentation.UI.UserPanel.Services.Http
 {
     /// <summary>
     /// 

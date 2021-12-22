@@ -9,6 +9,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieA
     public static class CookieAuthenticationConfiguration
     {
 
+
         /// <summary>
         /// 
         /// </summary>

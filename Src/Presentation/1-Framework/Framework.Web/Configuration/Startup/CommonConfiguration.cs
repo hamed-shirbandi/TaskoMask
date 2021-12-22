@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RedisCache.Core;
-using System;
 using TaskoMask.Application.Workspace.Boards.Commands.Models;
 using TaskoMask.Application.Core.Behaviors;
 using TaskoMask.Application.Core.Exceptions;
@@ -36,7 +35,15 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddSharedConfigureServices(configuration.GetValue<string>("Url:UserPanelAPI"));
+            services.AddSharedConfigureServices();
+
+            services.AddScoped(sp => new HttpClient
+            {
+                //default base address for calling HttpClient
+                //you can use IHttpClientServices to make HttpClient requests
+                //if you use IHttpClientServices you can change the base address by SetBaseAddress method if needed
+                BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelAPI"))
+            });
 
             services.AddMediatR(typeof(BoardBaseCommand));
 
@@ -71,29 +78,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             services.ConfigureIocContainer();
 
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void AddBehaviors(this IServiceCollection services)
-        {
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
-            services.AddScoped<INotificationHandler<IDomainEvent>, EventStoringBehavior>();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void AddExceptionHandlers(this IServiceCollection services)
-        {
-            services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
-        }
-
+       
 
 
         /// <summary>
@@ -111,6 +96,27 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             app.UseHttpsRedirection();
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddBehaviors(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
+            services.AddScoped<INotificationHandler<IDomainEvent>, EventStoringBehavior>();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddExceptionHandlers(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
+        }
 
 
     }

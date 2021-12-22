@@ -11,15 +11,15 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
     {
         #region Fields
 
-        private readonly IHttpClientServices _httpClientServices;
+        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public MemberClientService(IHttpClientServices httpClientServices)
+        public MemberClientService(IHttpClientService httpClientService)
         {
-            _httpClientServices = httpClientServices;
+            _httpClientService = httpClientService;
         }
 
         #endregion
@@ -32,11 +32,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<MemberDetailsViewModel>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/members"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/members"))
                 .AddParameter("id", id)
                 .Uri;
 
-            return await _httpClientServices.GetAsync<MemberDetailsViewModel>(uri);
+            return await _httpClientService.GetAsync<MemberDetailsViewModel>(uri);
         }
 
 
@@ -46,10 +46,10 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Add(string email)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/members"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/members"))
                 .AddParameter("email", email)
                 .Uri;
-            return await _httpClientServices.PutAsync<CommandResult>(uri);
+            return await _httpClientService.PutAsync<CommandResult>(uri);
         }
 
 
@@ -59,10 +59,10 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/members"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/members"))
                 .AddParameter("id", id)
                 .Uri;
-            return await _httpClientServices.PutAsync<CommandResult>(uri);
+            return await _httpClientService.PutAsync<CommandResult>(uri);
         }
 
         #endregion

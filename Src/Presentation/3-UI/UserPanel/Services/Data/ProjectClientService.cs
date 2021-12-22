@@ -11,15 +11,15 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
     {
         #region Fields
 
-        private readonly IHttpClientServices _httpClientServices;
+        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public ProjectClientService(IHttpClientServices httpClientServices)
+        public ProjectClientService(IHttpClientService httpClientService)
         {
-            _httpClientServices = httpClientServices;
+            _httpClientService = httpClientService;
         }
 
         #endregion
@@ -32,11 +32,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<ProjectDetailsViewModel>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/projects"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/projects"))
                 .AddParameter("id", id)
                 .Uri;
 
-            return await _httpClientServices.GetAsync<ProjectDetailsViewModel>(uri);
+            return await _httpClientService.GetAsync<ProjectDetailsViewModel>(uri);
         }
 
 
@@ -46,8 +46,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Create(ProjectUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/projects")).Uri;
-            return await _httpClientServices.PostAsync<CommandResult>(uri, input);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/projects")).Uri;
+            return await _httpClientService.PostAsync<CommandResult>(uri, input);
         }
 
 
@@ -57,8 +57,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Update(ProjectUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/projects")).Uri;
-            return await _httpClientServices.PutAsync<CommandResult>(uri, input);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/projects")).Uri;
+            return await _httpClientService.PutAsync<CommandResult>(uri, input);
         }
 
         #endregion

@@ -11,15 +11,15 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
     {
         #region Fields
 
-        private readonly IHttpClientServices _httpClientServices;
+        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public OrganizationClientService(IHttpClientServices httpClientServices)
+        public OrganizationClientService(IHttpClientService httpClientService)
         {
-            _httpClientServices = httpClientServices;
+            _httpClientService = httpClientService;
         }
 
         #endregion
@@ -32,11 +32,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<OrganizationDetailsViewModel>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/organizations"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations"))
                 .AddParameter("id", id)
                 .Uri;
 
-            return await _httpClientServices.GetAsync<OrganizationDetailsViewModel>(uri);
+            return await _httpClientService.GetAsync<OrganizationDetailsViewModel>(uri);
         }
 
 
@@ -46,8 +46,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Create(OrganizationUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/organizations")).Uri;
-            return await _httpClientServices.PostAsync<CommandResult>(uri, input);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations")).Uri;
+            return await _httpClientService.PostAsync<CommandResult>(uri, input);
         }
 
 
@@ -57,8 +57,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Update(OrganizationUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/organizations")).Uri;
-            return await _httpClientServices.PutAsync<CommandResult>(uri, input);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations")).Uri;
+            return await _httpClientService.PutAsync<CommandResult>(uri, input);
         }
 
         #endregion

@@ -11,15 +11,15 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
     {
         #region Fields
 
-        private readonly IHttpClientServices _httpClientServices;
+        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public TaskClientService(IHttpClientServices httpClientServices)
+        public TaskClientService(IHttpClientService httpClientService)
         {
-            _httpClientServices = httpClientServices;
+            _httpClientService = httpClientService;
         }
 
         #endregion
@@ -32,11 +32,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<TaskDetailsViewModel>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/tasks"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks"))
                 .AddParameter("id", id)
                 .Uri;
 
-            return await _httpClientServices.GetAsync<TaskDetailsViewModel>(uri);
+            return await _httpClientService.GetAsync<TaskDetailsViewModel>(uri);
         }
 
 
@@ -46,8 +46,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Create(TaskUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/tasks")).Uri;
-            return await _httpClientServices.PostAsync<CommandResult>(uri, input);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks")).Uri;
+            return await _httpClientService.PostAsync<CommandResult>(uri, input);
         }
 
 
@@ -57,8 +57,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Update(TaskUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/tasks")).Uri;
-            return await _httpClientServices.PutAsync<CommandResult>(uri, input);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks")).Uri;
+            return await _httpClientService.PutAsync<CommandResult>(uri, input);
         }
 
 
@@ -68,11 +68,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> SetCardId(string taskId, string cardId)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/tasks"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks"))
                 .AddParameter("taskId", taskId)
                 .AddParameter("cardId", cardId)
                 .Uri;
-            return await _httpClientServices.PutAsync<CommandResult>(uri);
+            return await _httpClientService.PutAsync<CommandResult>(uri);
         }
 
         #endregion

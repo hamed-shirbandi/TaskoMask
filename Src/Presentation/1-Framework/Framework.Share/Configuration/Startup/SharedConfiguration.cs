@@ -18,7 +18,7 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddScoped<IHttpClientServices, HttpClientServices>();
+            services.AddScoped<IHttpClientService, HttpClientService>();
             services.AddScoped<ICookieService, CookieService>();
         }
 

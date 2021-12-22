@@ -6,7 +6,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
     /// <summary>
     /// 
     /// </summary>
-    public class HttpClientServices : IHttpClientServices
+    public class HttpClientService : IHttpClientService
     {
         #region Fields
 
@@ -22,7 +22,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public HttpClientServices(HttpClient httpClient)
+        public HttpClientService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

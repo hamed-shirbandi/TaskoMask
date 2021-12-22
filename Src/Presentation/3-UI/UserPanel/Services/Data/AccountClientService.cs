@@ -12,16 +12,16 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
     {
         #region Fields
 
-        private readonly IHttpClientServices _httpClientServices;
+        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
 
-        public AccountClientService(IHttpClientServices httpClientServices)
+        public AccountClientService(IHttpClientService httpClientService)
         {
-            _httpClientServices = httpClientServices;
+            _httpClientService = httpClientService;
         }
 
         #endregion
@@ -34,8 +34,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<string>> Login(UserLoginDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/account/login")).Uri;
-            return await _httpClientServices.PostAsync<string>(uri, input);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/account/login")).Uri;
+            return await _httpClientService.PostAsync<string>(uri, input);
         }
 
 
@@ -45,8 +45,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<string>> Register(MemberRegisterDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientServices.GetBaseAddress(), $"/account/register")).Uri;
-            return await _httpClientServices.PostAsync<string>(uri, input);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/account/register")).Uri;
+            return await _httpClientService.PostAsync<string>(uri, input);
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.Presentation.Framework.Share.Services.Cookie;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
@@ -23,6 +24,7 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
             });
 
             services.AddScoped<IHttpClientServices, HttpClientServices>();
+            services.AddScoped<ICookieService, CookieService>();
         }
 
     }

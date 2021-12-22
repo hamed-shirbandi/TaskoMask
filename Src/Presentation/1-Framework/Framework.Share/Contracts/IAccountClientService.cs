@@ -6,7 +6,7 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
     public  interface IAccountClientService
     {
-        Task<Result<string>> Login(UserLoginDto input);
-        Task<Result<string>> Register(MemberRegisterDto input);
+        Task<Result<UserJwtTokenDto>> Login(UserLoginDto input);
+        Task<Result<UserJwtTokenDto>> Register(MemberRegisterDto input);
     }
 }

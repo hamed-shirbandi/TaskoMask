@@ -36,57 +36,60 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
-        /// login member - return jwt token in value if result is success
+        /// login member - return jwt token if login is success
         /// </summary>
         [HttpPost]
         [Route("account/login")]
-        public async Task<Result<string>> Login([FromBody] UserLoginDto input)
+        public async Task<Result<UserJwtTokenDto>> Login([FromBody] UserLoginDto input)
         {
             //get user
             var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
-                return Result.Failure<string>(userQueryResult.Errors, userQueryResult.Message);
+                return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
 
             //validate user password
             var validateQueryResult = await _memberService.ValidateUserPasswordAsync(input.Email, input.Password);
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
-                return Result.Failure<string>(userQueryResult.Errors, validateQueryResult.Message);
+                return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, validateQueryResult.Message);
 
             //model to add its prop to jwt claims
             var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
 
             //generate and return jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
-            return Result.Success(value: token);
+
+            return Result.Success(value: new UserJwtTokenDto { JwtToken=token});
         }
 
 
 
 
         /// <summary>
-        /// register new member - return jwt token in value if result is success
+        /// register new member - return jwt token if register is success
         /// </summary>
         [HttpPost]
         [Route("account/register")]
-        public async Task<Result<string>> Register([FromBody] MemberRegisterDto input)
+        public async Task<Result<UserJwtTokenDto>> Register([FromBody] MemberRegisterDto input)
         {
             //create user
             var createCommandResult = await _memberService.CreateAsync(input);
             if (!createCommandResult.IsSuccess)
-                return Result.Failure<string>(createCommandResult.Errors, createCommandResult.Message);
+                return Result.Failure<UserJwtTokenDto>(createCommandResult.Errors, createCommandResult.Message);
 
 
             //get user
             var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
-                return Result.Failure<string>(userQueryResult.Errors, userQueryResult.Message);
+                return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
 
             //model to add its prop to jwt claims
             var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
 
             //generate and return jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
-            return Result.Success(value: token);
+
+            return Result.Success(value: new UserJwtTokenDto { JwtToken = token });
+
         }
 
 

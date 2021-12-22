@@ -38,7 +38,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<string>> Login(UserLoginDto input)
+        public async Task<Result<UserJwtTokenDto>> Login(UserLoginDto input)
         {
             var loginResult = await _accountClientService.Login(input);
             return await SignInAsync(loginResult);
@@ -50,7 +50,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<string>> Register(MemberRegisterDto input)
+        public async Task<Result<UserJwtTokenDto>> Register(MemberRegisterDto input)
         {
             var registerResult = await _accountClientService.Register(input);
             return await SignInAsync(registerResult);
@@ -77,16 +77,16 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        private async Task<Result<string>> SignInAsync(Result<string> result)
+        private async Task<Result<UserJwtTokenDto>> SignInAsync(Result<UserJwtTokenDto> result)
         {
             if (!result.IsSuccess)
                 return result;
 
             //Save jwt token by cookie
-            _cookieService.Set(MagicKey.Jwt_Token,result.Value);
+            _cookieService.Set(MagicKey.Jwt_Token,result.Value.JwtToken);
 
             //Sign in user by cookie authentication
-            var user = JwtParser.ParseClaimsFromJwt(result.Value);
+            var user = JwtParser.ParseClaimsFromJwt(result.Value.JwtToken);
             await _cookieAuthenticationService.SignInAsync(user, isPersistent: false);
 
             return result;

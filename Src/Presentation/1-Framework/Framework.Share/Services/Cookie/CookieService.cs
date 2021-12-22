@@ -24,7 +24,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Cookie
         /// </summary>
         public string Get(string key)
         {
-            return _httpContextAccessor.HttpContext.Request.Cookies["key"];
+            return _httpContextAccessor.HttpContext.Request.Cookies[key];
         }
 
 

@@ -64,6 +64,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// </summary>
         public async Task Logout()
         {
+            //Remove jwt token cookie
+            _cookieService.Remove(MagicKey.Jwt_Token);
+
             await _cookieAuthenticationService.SignOutAsync();
         }
 

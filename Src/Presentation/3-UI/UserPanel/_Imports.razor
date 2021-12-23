@@ -11,4 +11,9 @@
 @using Blazored.Toast
 @using Blazored.Toast.Services
 @using TaskoMask.Presentation.UI.UserPanel.Helpers
+@using Blazored.Modal
+@using Blazored.Modal.Services
 @attribute [Authorize]
+@inject IToastService ToastService
+@inject IModalService  ModalService
+

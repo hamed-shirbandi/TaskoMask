@@ -1,38 +1,31 @@
-﻿@page "/organizations/create"
-@using TaskoMask.Application.Share.Dtos.Team.Organizations
+﻿@using TaskoMask.Application.Share.Dtos.Team.Organizations
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
-@inject IToastService toastService
-
-<section id="cover">
-    <div id="cover-caption">
-        <div class="container">
-            <div class="row text-white">
-                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                    <h3 class="py-2">Create new Organization</h3>
-                    <div class="px-2">
-                        <EditForm Model="OrganizationModel" OnValidSubmit="HandCreateOrganization" class="justify-content-center">
-                            <DataAnnotationsValidator />
-                            <div class="form-group">
-                                <InputText @bind-Value="OrganizationModel.Name" placeholder="Name" class="form-control"></InputText>
-                                <ValidationMessage For="()=>OrganizationModel.Name" class="text-danger"></ValidationMessage>
-                            </div>
-                            <div class="form-group">
-                                <InputText @bind-Value="OrganizationModel.Description" placeholder="Description" class="form-control"></InputText>
-                                <ValidationMessage For="()=>OrganizationModel.Description" class="text-danger"></ValidationMessage>
-                            </div>
 
 
-                            <button type="submit" class="btn btn-primary btn-lg">Create</button>
-                            <NavLink class="btn btn-danger btn-lg" href="/">
-                                Cancel
-                            </NavLink>
-                        </EditForm>
-                    </div>
+<div class="row">
+        <section>
+            <EditForm Model="OrganizationModel" OnValidSubmit="HandCreateOrganization">
+
+                <hr />
+                <DataAnnotationsValidator />
+
+                <div class="form-group">
+                    <InputText @bind-Value="OrganizationModel.Name" placeholder="Name" class="form-control"></InputText>
+                    <ValidationMessage For="()=>OrganizationModel.Name" class="text-danger"></ValidationMessage>
                 </div>
-            </div>
-        </div>
+                    <div class="form-group">
+                    <InputText @bind-Value="OrganizationModel.Description" placeholder="Description" class="form-control"></InputText>
+                    <ValidationMessage For="()=>OrganizationModel.Description" class="text-danger"></ValidationMessage>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    @*<a class="btn btn-danger text-white">Cancel</a>*@
+                </div>
+
+            </EditForm>
+        </section>
     </div>
-</section>
 
 @code {
     private OrganizationUpsertDto OrganizationModel = new OrganizationUpsertDto();
@@ -41,9 +34,9 @@
     {
         var result = await OrganizationClientService.Create(OrganizationModel);
         if (result.IsSuccess)
-            toastService.ShowSuccess(result.Value.Message,result.Message);
+            ToastService.ShowSuccess(result.Value.Message, result.Message);
         else
-            toastService.ShowError(result.Errors.ParseToHtml(), result.Message);
+            ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
     }
 
 }

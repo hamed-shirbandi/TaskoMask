@@ -32,7 +32,7 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <NavLink class="dropdown-item" href="organizations/create">
+                        <NavLink class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Create>("Create new organization"))">
                             <i class="bi bi-building"></i>
                             New Organization
                         </NavLink>

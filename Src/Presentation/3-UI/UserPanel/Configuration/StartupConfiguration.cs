@@ -1,4 +1,5 @@
-﻿using Blazored.Toast;
+﻿using Blazored.Modal;
+using Blazored.Toast;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
@@ -50,6 +51,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
 
             services.AddBlazoredToast();
 
+            services.AddBlazoredModal();
         }
 
 

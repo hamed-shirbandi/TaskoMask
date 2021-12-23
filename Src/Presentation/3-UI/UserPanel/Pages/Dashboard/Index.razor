@@ -7,7 +7,8 @@
     <div class="alert alert-warning">
         You are not member of any organization!
         <br />
-        Maybe you want to <a href="/organizations/create">create one</a>
+        Maybe you want to 
+        <a @onclick="@(() => ModalService.Show<Pages.Organizations.Create>("Create new organization"))" class="text-info" style="cursor:pointer">create one</a>
     </div>
 }
 else

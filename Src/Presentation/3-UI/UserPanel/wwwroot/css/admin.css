@@ -97,3 +97,7 @@ a{
     z-index: -1;
     border-radius: 10px;
 }
+
+.validation-message {
+    color: #dc3545 !important;
+}

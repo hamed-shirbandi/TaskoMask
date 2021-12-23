@@ -86,7 +86,6 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<ITaskRepository, TaskRepository>();
             services.AddScoped<IInvitationRepository, InvitationRepository>();
             services.AddScoped<IEncryptionService, EncryptionService>();
-            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
             
 
             #endregion

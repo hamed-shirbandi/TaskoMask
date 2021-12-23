@@ -53,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-API", "2-API", "{9BA7A9BA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Share", "Src\Presentation\1-Framework\Framework.Share\Framework.Share.csproj", "{849813FB-0F7C-4119-ACA6-AD178C502F0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Share", "Src\Libraries\1-Infrastructure\Infrastructure.Share\Infrastructure.Share.csproj", "{C2FABDA4-F5AA-4F20-9653-837269784FE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{849813FB-0F7C-4119-ACA6-AD178C502F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{849813FB-0F7C-4119-ACA6-AD178C502F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{849813FB-0F7C-4119-ACA6-AD178C502F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2FABDA4-F5AA-4F20-9653-837269784FE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FABDA4-F5AA-4F20-9653-837269784FE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FABDA4-F5AA-4F20-9653-837269784FE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FABDA4-F5AA-4F20-9653-837269784FE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +156,7 @@ Global
 		{815A0015-40D4-4587-A2DA-DA6CC498B2FD} = {C0FFF437-0D09-4F24-9157-1D4B409B89C0}
 		{9BA7A9BA-25B7-4F6B-B6B3-E29B77E5788C} = {C0FFF437-0D09-4F24-9157-1D4B409B89C0}
 		{849813FB-0F7C-4119-ACA6-AD178C502F0D} = {31A9C2D6-CD59-4282-934D-51EF6C02FE68}
+		{C2FABDA4-F5AA-4F20-9653-837269784FE2} = {26659BC5-07F5-4AF0-B0F0-4B44628330B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15E4B299-A968-40A3-8192-CCF9082EE3BC}

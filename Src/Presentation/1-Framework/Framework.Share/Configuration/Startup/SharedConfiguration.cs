@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.Domain.Share.Services;
+using TaskoMask.Infrastructure.Share.Services.Security;
 using TaskoMask.Presentation.Framework.Share.Services.Cookie;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
@@ -18,6 +20,7 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
+            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddScoped<IHttpClientService, HttpClientService>();
             services.AddScoped<ICookieService, CookieService>();
         }

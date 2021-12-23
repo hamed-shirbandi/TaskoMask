@@ -3,7 +3,7 @@ using System.Security.Claims;
 using TaskoMask.Domain.Share.Models;
 using TaskoMask.Domain.Share.Services;
 
-namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
+namespace TaskoMask.Infrastructure.Share.Services.Security
 {
     public class AuthenticatedUserService : IAuthenticatedUserService
     {

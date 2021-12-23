@@ -1,8 +1,18 @@
-﻿@inherits LayoutComponentBase
+﻿@using Blazored.Toast.Configuration
+@inherits LayoutComponentBase
 
 <NavMenu />
 <main role="main" class="container">
     @Body
+
+    <BlazoredToasts Position="ToastPosition.BottomRight"
+                Timeout="8"
+                IconType="IconType.Material"
+                ErrorIcon=""
+                InfoIcon=""
+                SuccessIcon=""
+                WarningIcon=""
+                ShowProgressBar="true"/>
 </main>
 <footer class="footer">
     <div class="container">

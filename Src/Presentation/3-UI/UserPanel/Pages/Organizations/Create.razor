@@ -4,7 +4,6 @@
 
 <EditForm Model="OrganizationModel" OnValidSubmit="HandCreateOrganization">
 
-    <hr />
     <DataAnnotationsValidator />
 
     <div class="form-group">
@@ -18,7 +17,7 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
-        @*<a class="btn btn-danger text-white">Cancel</a>*@
+        <a onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-danger text-white">Cancel</a>
     </div>
 
 </EditForm>

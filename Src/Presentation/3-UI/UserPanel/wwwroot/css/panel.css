@@ -101,3 +101,7 @@ a{
 .validation-message {
     color: #dc3545 !important;
 }
+
+.btn{
+    cursor:pointer !important;
+}

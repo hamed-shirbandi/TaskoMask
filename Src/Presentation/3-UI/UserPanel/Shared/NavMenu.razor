@@ -1,4 +1,5 @@
 ﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@inject TaskoMask.Domain.Share.Services.IAuthenticatedUserService AuthenticatedUserService
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
@@ -27,7 +28,7 @@
                 <div class="dropdown show">
 
                     <a class="btn btn-secondary btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Create
+                        <i class="bi bi bi-plus-circle" title="dashboard"></i>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -36,17 +37,17 @@
                             New Organization
                         </NavLink>
 
-                        <NavLink class="dropdown-item" href="projects/create">
+                        <NavLink class="dropdown-item" href="#">
                             <i class="bi bi-kanban"></i>
                             New Project
                         </NavLink>
 
-                        <NavLink class="dropdown-item" href="boards/create">
+                        <NavLink class="dropdown-item" href="#">
                             <i class="bi bi-clipboard-plus"></i>
                             New Board
                         </NavLink>
 
-                        <NavLink class="dropdown-item" href="members/add">
+                        <NavLink class="dropdown-item" href="#">
                             <i class="bi bi-people"></i>
                             Add Member
                         </NavLink>
@@ -56,8 +57,9 @@
 
             <AuthorizeView>
                 <Authorized>
-                    <NavLink class="m-1 btn btn-sm btn-warning my-2 my-sm-0" href="user/profile">
+                    <NavLink class="m-1 btn btn-sm btn-warning my-2 my-sm-0" href="#">
                         <i class="bi bi-person-circle"></i>
+                        @userDisplayName
                     </NavLink>
 
                     <a class="m-1 btn btn-sm btn-danger my-2 my-sm-0" href="/logout">
@@ -78,9 +80,15 @@
 
 @code {
     string websiteUrl = "#";
+    string userDisplayName = "";
     protected override async Task OnInitializedAsync()
     {
         websiteUrl = Configuration["Url:Website"];
+
+        var user = AuthenticatedUserService.GetAuthenticatedUser();
+        if (user != null)
+            userDisplayName = user.DisplayName;
+
         await base.OnInitializedAsync();
     }
 }

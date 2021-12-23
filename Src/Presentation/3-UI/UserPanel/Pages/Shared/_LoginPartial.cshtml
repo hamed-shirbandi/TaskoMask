@@ -1,4 +1,6 @@
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@inject TaskoMask.Domain.Share.Services.IAuthenticatedUserService AuthenticatedUserService
+
 @{
     string websiteUrl = Configuration["Url:Website"];
 }
@@ -18,7 +20,7 @@
                     <i class="bi bi-house-fill" title="Home"></i>
                 </a>
             </li>
-            @if (@Context.User.Identity.IsAuthenticated)
+            @if (AuthenticatedUserService.IsAuthenticated())
             {
                 <li class="nav-item">
                     <a class="m-1 btn btn-sm btn-success" href="/">
@@ -29,7 +31,7 @@
         </ul>
         <div class="form-inline my-2 my-lg-0">
 
-            @if (@Context.User.Identity.IsAuthenticated)
+            @if (AuthenticatedUserService.IsAuthenticated())
             {
                 <a class="m-1 btn btn-sm btn-danger my-2 my-sm-0" href="/logout">
                     <i class="bi bi-power"></i>
@@ -37,9 +39,9 @@
             }
             else
             {
-               
+
                 <a class="m-1 btn btn-sm btn-success my-2 my-sm-0" href="/login">
-                   login
+                    login
                 </a>
             }
 

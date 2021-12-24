@@ -1,13 +1,11 @@
 ﻿@page "/"
-@using TaskoMask.Application.Share.ViewModels
-
-
-@if (!Model.OrganizationsDetailsList.Any())
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
+@if (!model.OrganizationsDetailsList.Any())
 {
     <div class="alert alert-warning">
         You are not member of any organization!
         <br />
-        Maybe you want to 
+        Maybe you want to
         <a @onclick="@(() => ModalService.Show<Pages.Organizations.Create>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info" style="cursor:pointer">create one</a>
     </div>
 }
@@ -15,20 +13,26 @@ else
 {
     <div class="container py-3">
         <div class="row">
-            <Organizations Model="@Model.OrganizationsDetailsList" />
+            <Organizations Model="@model.OrganizationsDetailsList" />
         </div>
 
     </div>
 }
 
 
-@code{
+@code {
 
-    private PanelDashboardViewModel Model;
+    private PanelDashboardViewModel model ;
 
-    protected override System.Threading.Tasks.Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        Model = new PanelDashboardViewModel();
-        return base.OnInitializedAsync();
+        model = new PanelDashboardViewModel();
+
+        var organizationsDetailsListResult = await OrganizationClientService.Get();
+        if (!organizationsDetailsListResult.IsSuccess)
+            ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToHtml(), organizationsDetailsListResult.Message);
+
+        model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
+
     }
 }

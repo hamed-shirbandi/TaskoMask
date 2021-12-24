@@ -11,6 +11,9 @@ namespace TaskoMask.Application.Share.ViewModels
     {
         public OrganizationDetailsViewModel()
         {
+            Members = new List<MemberBasicInfoDto>();
+            Projects = new List<ProjectBasicInfoDto>();
+            Boards = new List<BoardBasicInfoDto>();
             LastTasks = new List<TaskBasicInfoDto>();
         }
         public OrganizationBasicInfoDto Organization { get; set; }

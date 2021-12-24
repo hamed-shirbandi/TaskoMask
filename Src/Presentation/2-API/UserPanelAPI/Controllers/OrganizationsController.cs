@@ -47,6 +47,19 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
+        /// get organizations list for current user
+        /// </summary>
+        [HttpGet]
+        [Route("organizations")]
+        public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> Get()
+        {
+            return await _organizationService.GetListWithDetailsByOwnerMemberIdAsync(GetCurrentUserId());
+        }
+
+
+
+
+        /// <summary>
         /// create new organization
         /// </summary>
         [HttpPost]

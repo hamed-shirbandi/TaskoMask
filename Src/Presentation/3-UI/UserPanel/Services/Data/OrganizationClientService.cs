@@ -44,6 +44,18 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
+        public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> Get()
+        {
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations")).Uri;
+
+            return await _httpClientService.GetAsync<IEnumerable<OrganizationDetailsViewModel>>(uri);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Result<CommandResult>> Create(OrganizationUpsertDto input)
         {
             var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations")).Uri;

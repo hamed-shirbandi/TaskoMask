@@ -2,7 +2,7 @@
 {
     public interface IMessageService
     {
-        event Func<Task> OnMessage;
-        void SendMessage();
+        event Func<MessageTypeEnum,Task> OnMessage;
+        void SendMessage(MessageTypeEnum messageType);
     }
 }

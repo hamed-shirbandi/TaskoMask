@@ -38,7 +38,7 @@
             ToastService.ShowSuccess(result.Value.Message, result.Message);
 
             //send a message to listeners (dashboard index component)
-             MessageService.SendMessage();
+             MessageService.SendMessage(MessageTypeEnum.Organization_Created);
 
         }
         else

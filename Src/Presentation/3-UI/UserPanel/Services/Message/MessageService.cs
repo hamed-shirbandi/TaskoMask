@@ -5,11 +5,11 @@
     /// </summary>
     public class MessageService : IMessageService
     {
-        public event Func<Task> OnMessage;
+        public event Func<MessageTypeEnum,Task> OnMessage;
 
-        public void SendMessage()
+        public void SendMessage(MessageTypeEnum messageType)
         {
-            OnMessage?.Invoke();
+            OnMessage?.Invoke(messageType);
         }
     }
 }

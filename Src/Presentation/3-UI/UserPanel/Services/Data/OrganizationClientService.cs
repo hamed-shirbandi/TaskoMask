@@ -30,13 +30,13 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OrganizationDetailsViewModel>> Get(string id)
+        public async Task<Result<OrganizationBasicInfoDto>> Get(string id)
         {
             var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations"))
                 .AddParameter("id", id)
                 .Uri;
 
-            return await _httpClientService.GetAsync<OrganizationDetailsViewModel>(uri);
+            return await _httpClientService.GetAsync<OrganizationBasicInfoDto>(uri);
         }
 
 

@@ -5,9 +5,9 @@
     /// </summary>
     public class MessageService : IMessageService
     {
-        public event Func<MessageTypeEnum,Task> OnMessage;
+        public event Func<MessageType,Task> OnMessage;
 
-        public void SendMessage(MessageTypeEnum messageType)
+        public void SendMessage(MessageType messageType)
         {
             OnMessage?.Invoke(messageType);
         }

@@ -2,20 +2,20 @@
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
 @implements IDisposable
 
-@if (!model.OrganizationsDetailsList.Any())
+@if (!Model.OrganizationsDetailsList.Any())
 {
     <div class="alert alert-warning">
         You are not member of any organization!
         <br />
         Maybe you want to
-        <a @onclick="@(() => ModalService.Show<Pages.Organizations.Create>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>
+        <a @onclick="@(() => ModalService.Show<Pages.Organizations.Upsert>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>
     </div>
 }
 else
 {
     <div class="container py-3">
         <div class="row">
-            <Organizations Model="@model.OrganizationsDetailsList" />
+            <Organizations Model="@Model.OrganizationsDetailsList" />
         </div>
     </div>
 }
@@ -23,7 +23,7 @@ else
 
 @code {
 
-    private PanelDashboardViewModel model;
+     PanelDashboardViewModel Model;
 
 
 
@@ -45,13 +45,13 @@ else
     /// </summary>
     private async Task LoadDataAsync()
     {
-        model = new PanelDashboardViewModel();
+        Model = new PanelDashboardViewModel();
 
         var organizationsDetailsListResult = await OrganizationClientService.Get();
         if (!organizationsDetailsListResult.IsSuccess)
             ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToHtml(), organizationsDetailsListResult.Message);
 
-        model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
+        Model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
     }
 
 
@@ -59,9 +59,9 @@ else
     /// <summary>
     ///
     /// </summary>
-    private async Task ReloadDataHandler(MessageTypeEnum messageType)
+    private async Task ReloadDataHandler(MessageType messageType)
     {
-        if (messageType == MessageTypeEnum.Organization_Created)
+        if (messageType == MessageType.Organization_Created)
         {
             await LoadDataAsync();
             StateHasChanged();

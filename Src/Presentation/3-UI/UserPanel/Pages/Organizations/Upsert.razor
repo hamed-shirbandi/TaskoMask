@@ -1,0 +1,116 @@
+﻿@using TaskoMask.Application.Share.Dtos.Team.Organizations
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
+
+
+<EditForm Model="OrganizationModel" OnValidSubmit="HandUpsertOrganization">
+
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <InputText @bind-Value="OrganizationModel.Name" placeholder="Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>OrganizationModel.Name" class="text-danger"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <InputText @bind-Value="OrganizationModel.Description" placeholder="Description" class="form-control"></InputText>
+        <ValidationMessage For="()=>OrganizationModel.Description" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-danger text-white">Cancel</a>
+    </div>
+
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public string Id { get; set; }
+
+    OrganizationUpsertDto OrganizationModel = new OrganizationUpsertDto();
+
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        //if Id has value it must handle update so get data by id from api
+        if (!string.IsNullOrEmpty(Id))
+        {
+            var organizationResult = await OrganizationClientService.Get(Id);
+            if (!organizationResult.IsSuccess)
+            {
+                //close the modal window
+                ModalInstance.CloseAsync();
+                ToastService.ShowError(organizationResult.Errors.ParseToHtml(), organizationResult.Message);
+            }
+            else
+                OrganizationModel = new OrganizationUpsertDto
+                    {
+                        Id = organizationResult.Value.Id,
+                        Name = organizationResult.Value.Name,
+                        Description = organizationResult.Value.Description,
+                    };
+
+        }
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandUpsertOrganization()
+    {
+        if (string.IsNullOrEmpty(Id))
+            await HandleCreateOrganizationAsync();
+        else
+            await HandleUpdateOrganizationAsync();
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleCreateOrganizationAsync()
+    {
+        var result = await OrganizationClientService.Create(OrganizationModel);
+
+        if (result.IsSuccess)
+        {
+            ModalInstance.CloseAsync();
+            ToastService.ShowSuccess(result.Value.Message, result.Message);
+            //send a message to listeners (dashboard index component)
+            MessageService.SendMessage(MessageType.Organization_Created);
+        }
+        else
+            ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleUpdateOrganizationAsync()
+    {
+        var result = await OrganizationClientService.Update(OrganizationModel);
+
+        if (result.IsSuccess)
+        {
+            ModalInstance.CloseAsync();
+            ToastService.ShowSuccess(result.Value.Message, result.Message);
+            //send a message to listeners (dashboard index component)
+            MessageService.SendMessage(MessageType.Organization_Updated);
+        }
+        else
+            ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
+    }
+
+}

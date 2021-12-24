@@ -6,6 +6,7 @@ using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthe
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 using TaskoMask.Presentation.UI.UserPanel.Services.Data;
 using TaskoMask.Presentation.UI.UserPanel.Services.Http;
+using TaskoMask.Presentation.UI.UserPanel.Services.Message;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Configuration
 {
@@ -45,7 +46,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ServerAPI"));
 
            
-            services.AddClientDataServices();
+            services.AddClientServices();
 
             services.AddSharedConfigureServices();
 
@@ -89,10 +90,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
         /// <summary>
         /// 
         /// </summary>
-        private static void AddClientDataServices(this IServiceCollection services)
+        private static void AddClientServices(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
+            services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAccountClientService, AccountClientService>();
             services.AddScoped<IOrganizationClientService, OrganizationClientService>();

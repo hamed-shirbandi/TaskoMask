@@ -1,12 +1,13 @@
 ﻿@page "/"
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
+
 @if (!model.OrganizationsDetailsList.Any())
 {
     <div class="alert alert-warning">
         You are not member of any organization!
         <br />
         Maybe you want to
-        <a @onclick="@(() => ModalService.Show<Pages.Organizations.Create>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info" style="cursor:pointer">create one</a>
+        <a @onclick="@(() => ModalService.Show<Pages.Organizations.Create>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>
     </div>
 }
 else
@@ -22,9 +23,27 @@ else
 
 @code {
 
-    private PanelDashboardViewModel model ;
+    private PanelDashboardViewModel model;
 
+
+
+    /// <summary>
+    /// /
+    /// </summary>
     protected override async Task OnInitializedAsync()
+    {
+        //subscribe to OnMessage.It is used when another components need to send a message to this component
+        MessageService.OnMessage += ReloadDataHandler;
+
+        await LoadDataAsync();
+    }
+
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    private async Task LoadDataAsync()
     {
         model = new PanelDashboardViewModel();
 
@@ -33,6 +52,16 @@ else
             ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToHtml(), organizationsDetailsListResult.Message);
 
         model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
+    }
 
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private async Task ReloadDataHandler()
+    {
+        await LoadDataAsync();
+        StateHasChanged();
     }
 }

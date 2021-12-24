@@ -102,6 +102,7 @@ a{
     color: #dc3545 !important;
 }
 
-.btn{
+.btn,a{
     cursor:pointer !important;
 }
+

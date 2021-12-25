@@ -77,7 +77,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("organizations")]
-        public async Task<Result<CommandResult>> Update(OrganizationUpsertDto input)
+        public async Task<Result<CommandResult>> Update([FromBody] OrganizationUpsertDto input)
         {
             return await _organizationService.UpdateAsync(input);
         }

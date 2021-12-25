@@ -52,7 +52,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("tasks")]
-        public async Task<Result<CommandResult>> Create(TaskUpsertDto input)
+        public async Task<Result<CommandResult>> Create([FromBody] TaskUpsertDto input)
         {
             //TODO implement tasks create api
             return Result.Failure<CommandResult>(message: "not implemented yet");
@@ -65,10 +65,10 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("tasks")]
-        public async Task<Result<CommandResult>> Update(TaskUpsertDto input)
+        public async Task<Result<CommandResult>> Update([FromBody] TaskUpsertDto input)
         {
             //TODO implement tasks Update api
-            return Result.Failure<CommandResult>(message:"not implemented yet");
+            return Result.Failure<CommandResult>(message: "not implemented yet");
         }
 
 
@@ -78,7 +78,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("tasks/{taskId}/{cardId}")]
-        public async Task<Result<CommandResult>> SetCardId( string taskId,string cardId)
+        public async Task<Result<CommandResult>> SetCardId(string taskId, string cardId)
         {
             //TODO implement tasks SetCardId
             return Result.Failure<CommandResult>(message: "not implemented yet");

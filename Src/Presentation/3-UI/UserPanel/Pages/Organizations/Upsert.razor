@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">@submitBtnName</button>
         <a onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-danger text-white">Cancel</a>
     </div>
 
@@ -24,8 +24,11 @@
 
 @code {
 
+    //use for update mode
     [Parameter]
     public string Id { get; set; }
+
+    string submitBtnName = "Create";
 
     OrganizationUpsertDto OrganizationModel = new OrganizationUpsertDto();
 
@@ -42,6 +45,8 @@
         //if Id has value it must handle update so get data by id from api
         if (!string.IsNullOrEmpty(Id))
         {
+            submitBtnName = "Update";
+
             var organizationResult = await OrganizationClientService.Get(Id);
             if (!organizationResult.IsSuccess)
             {

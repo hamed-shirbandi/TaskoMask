@@ -23,7 +23,7 @@ else
 
 @code {
 
-     PanelDashboardViewModel Model;
+    PanelDashboardViewModel Model;
 
 
 
@@ -61,7 +61,7 @@ else
     /// </summary>
     private async Task ReloadDataHandler(MessageType messageType)
     {
-        if (messageType == MessageType.Organization_Created)
+        if (messageType == MessageType.Organization_Created || messageType == MessageType.Organization_Updated)
         {
             await LoadDataAsync();
             StateHasChanged();

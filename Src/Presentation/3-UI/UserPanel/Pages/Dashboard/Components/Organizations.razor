@@ -64,6 +64,6 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(OrganizationUpsertDto.Id), organizationId);
-        ModalService.Show<Pages.Organizations.Upsert>("Update organization", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Organizations.Components.Upsert>("Update organization", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 }

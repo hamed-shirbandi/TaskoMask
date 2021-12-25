@@ -5,7 +5,7 @@
     /// </summary>
     public class MessageService : IMessageService
     {
-        public event Func<MessageType,Task> OnMessage;
+        public event Action<MessageType> OnMessage;
 
         public void SendMessage(MessageType messageType)
         {

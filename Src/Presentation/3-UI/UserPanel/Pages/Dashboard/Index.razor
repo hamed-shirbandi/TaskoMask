@@ -61,12 +61,19 @@ else
     /// <summary>
     ///
     /// </summary>
-    private async Task ReloadDataHandler(MessageType messageType)
+    private async void ReloadDataHandler(MessageType messageType)
     {
-        if (messageType == MessageType.Organization_Created || messageType == MessageType.Organization_Updated)
+        try
         {
-            await LoadDataAsync();
-            StateHasChanged();
+            if (messageType == MessageType.Organization_Created || messageType == MessageType.Organization_Updated)
+            {
+                await LoadDataAsync();
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            //Async task failure because of async void challenges
         }
     }
 

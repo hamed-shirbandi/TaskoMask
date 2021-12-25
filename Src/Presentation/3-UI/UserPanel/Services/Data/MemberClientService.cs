@@ -32,9 +32,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<MemberDetailsViewModel>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/members"))
-                .AddParameter("id", id)
-                .Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/members/{id}")).Uri;
 
             return await _httpClientService.GetAsync<MemberDetailsViewModel>(uri);
         }

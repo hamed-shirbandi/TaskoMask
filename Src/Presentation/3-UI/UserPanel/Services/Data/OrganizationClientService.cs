@@ -32,7 +32,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<OrganizationBasicInfoDto>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations"))
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations/{id}"))
                 .AddParameter("id", id)
                 .Uri;
 

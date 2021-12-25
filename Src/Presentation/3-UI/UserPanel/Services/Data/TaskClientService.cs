@@ -32,9 +32,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<TaskDetailsViewModel>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks"))
-                .AddParameter("id", id)
-                .Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks/{id}")).Uri;
 
             return await _httpClientService.GetAsync<TaskDetailsViewModel>(uri);
         }
@@ -68,10 +66,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> SetCardId(string taskId, string cardId)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks"))
-                .AddParameter("taskId", taskId)
-                .AddParameter("cardId", cardId)
-                .Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks/{taskId}/{cardId}")).Uri;
             return await _httpClientService.PutAsync<CommandResult>(uri);
         }
 

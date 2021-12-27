@@ -37,7 +37,7 @@ namespace TaskoMask.Domain.Core.Models
         public string Id
         {
             get { return id; }
-            private set
+            set
             {
                 if (string.IsNullOrEmpty(value))
                     id = ObjectId.GenerateNewId().ToString();
@@ -46,7 +46,6 @@ namespace TaskoMask.Domain.Core.Models
             }
         }
 
-        public bool IsDeleted { get; set; }
         public CreationTime CreationTime { get; private set; }
 
         [BsonIgnore]

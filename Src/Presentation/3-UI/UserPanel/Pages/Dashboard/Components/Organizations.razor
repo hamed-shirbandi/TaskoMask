@@ -7,11 +7,9 @@
         <h5 data-toggle="tooltip" data-placement="left" title="@item.Organization.Description">
             <i class="bi bi-building"></i>
             @item.Organization.Name
-            <a @onclick="@(()=>ShowUpdateModal(item.Organization.Id))" class="text-warning" title="Edit">
+            <a @onclick="@(()=>ShowUpdsertModal(item.Organization.Id))" class="text-warning" title="Edit">
                 <i class="bi bi-pencil"></i>
             </a>
-
-
         </h5>
 
         <TabNav Model="@item.Organization" />
@@ -60,7 +58,7 @@
     /// <summary>
     /// 
     /// </summary>
-    private void ShowUpdateModal(string organizationId)
+    private void ShowUpdsertModal(string organizationId)
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(OrganizationUpsertDto.Id), organizationId);

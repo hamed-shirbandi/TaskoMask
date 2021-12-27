@@ -41,7 +41,6 @@
     BlazoredModalInstance ModalInstance { get; set; }
 
 
-
     /// <summary>
     /// /
     /// </summary>
@@ -113,6 +112,12 @@
     /// </summary>
     private async Task HandleDelete()
     {
+       var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!");
+       var confirmationModalResult = await confirmationModal.Result;
+
+        if (confirmationModalResult.Cancelled)
+            return;
+
         var result = await OrganizationClientService.Delete(Id);
         HandleResult(result, MessageType.Organization_Deleted);
     }

@@ -53,7 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-API", "2-API", "{9BA7A9BA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Share", "Src\Presentation\1-Framework\Framework.Share\Framework.Share.csproj", "{849813FB-0F7C-4119-ACA6-AD178C502F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Share", "Src\Libraries\1-Infrastructure\Infrastructure.Share\Infrastructure.Share.csproj", "{C2FABDA4-F5AA-4F20-9653-837269784FE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Share", "Src\Libraries\1-Infrastructure\Infrastructure.Share\Infrastructure.Share.csproj", "{C2FABDA4-F5AA-4F20-9653-837269784FE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

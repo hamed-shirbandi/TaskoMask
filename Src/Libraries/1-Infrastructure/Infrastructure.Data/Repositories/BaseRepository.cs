@@ -43,7 +43,17 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public virtual async Task DeleteAsync(string id)
         {
-            await _collection.DeleteOneAsync(p => p.Id == id);
+            await SetIsDeletedAsync(id, true);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual async Task RecycleAsync(string id)
+        {
+            await SetIsDeletedAsync(id, false);
         }
 
 
@@ -64,7 +74,6 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         public virtual async Task<IEnumerable<TEntity>> GetListAsync()
         {
             return await _collection.AsQueryable().ToListAsync();
-
         }
 
 
@@ -104,7 +113,22 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task SetIsDeletedAsync(string id, bool isDeleted)
+        {
+            var entity = await GetByIdAsync(id);
+            if (entity != null)
+            {
+                entity.IsDeleted = isDeleted;
+                await UpdateAsync(entity);
+            }
+        }
+
+
+
         #endregion
-       
+
     }
 }

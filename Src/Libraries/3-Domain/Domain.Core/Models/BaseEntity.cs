@@ -46,6 +46,7 @@ namespace TaskoMask.Domain.Core.Models
             }
         }
 
+        public bool IsDeleted { get; set; }
         public CreationTime CreationTime { get; private set; }
 
         [BsonIgnore]

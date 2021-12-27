@@ -10,6 +10,7 @@ namespace TaskoMask.Domain.Core.Data
         Task CreateAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
         Task DeleteAsync(string id);
+        Task RecycleAsync(string id);
         Task<TEntity> GetByIdAsync(string id);
         Task<IEnumerable<TEntity>> GetListAsync();
         Task<long> CountAsync();

@@ -37,7 +37,7 @@ namespace TaskoMask.Domain.Core.Models
         public string Id
         {
             get { return id; }
-            set
+            private set
             {
                 if (string.IsNullOrEmpty(value))
                     id = ObjectId.GenerateNewId().ToString();
@@ -82,7 +82,7 @@ namespace TaskoMask.Domain.Core.Models
         /// </summary>
         protected virtual void Update()
         {
-           CreationTime.UpdateModifiedDateTime();
+            CreationTime.UpdateModifiedDateTime();
         }
 
 
@@ -113,7 +113,7 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
-       
+
         #endregion
 
         #region Private Methods

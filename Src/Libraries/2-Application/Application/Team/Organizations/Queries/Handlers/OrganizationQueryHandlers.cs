@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Team.Organizations.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Team.Organizations;
-
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Exceptions;

@@ -55,6 +55,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         }
 
 
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,6 +65,16 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
             return await GetResponseAsync<T>(httpResponse);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<T>> DeleteAsync<T>(Uri uri)
+        {
+            var httpResponse = await _httpClient.DeleteAsync(uri);
+            return await GetResponseAsync<T>(httpResponse);
+        }
 
 
 

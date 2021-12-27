@@ -24,7 +24,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
             _organizations = dbContext.GetCollection<Organization>();
         }
 
-     
+
 
         #endregion
 
@@ -58,7 +58,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// </summary>
         public async Task<long> CountByOwnerMemberIdAsync(string ownerMemberId)
         {
-            return await _organizations.CountDocumentsAsync(o => o.OwnerMemberId== ownerMemberId);
+            return await _organizations.CountDocumentsAsync(o => o.OwnerMemberId == ownerMemberId);
         }
 
 

@@ -76,7 +76,7 @@ namespace TaskoMask.Domain.Core.Models
         /// </summary>
         public void Delete()
         {
-            IsDeleted = false;
+            IsDeleted = true;
         }
 
 

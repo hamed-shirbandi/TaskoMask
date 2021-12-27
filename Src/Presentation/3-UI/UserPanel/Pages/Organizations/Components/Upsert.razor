@@ -17,7 +17,11 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">@submitBtnName</button>
-        <a onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-danger text-white">Cancel</a>
+        @if (isUpdate)
+        {
+            <a onclick="@(()=>HandDeleteOrganizationAsync())" class="btn btn-danger text-white">Delete</a>
+        }
+        <a onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white">Cancel</a>
     </div>
 
 </EditForm>
@@ -28,6 +32,7 @@
     [Parameter]
     public string Id { get; set; }
 
+    bool isUpdate = false;
     string submitBtnName = "Create";
 
     OrganizationUpsertDto OrganizationModel = new OrganizationUpsertDto();
@@ -46,6 +51,7 @@
         if (!string.IsNullOrEmpty(Id))
         {
             submitBtnName = "Update";
+            isUpdate = true;
 
             var organizationResult = await OrganizationClientService.Get(Id);
             if (!organizationResult.IsSuccess)
@@ -72,10 +78,11 @@
     /// </summary>
     private async Task HandUpsertOrganization()
     {
-        if (string.IsNullOrEmpty(Id))
-            await HandleCreateOrganizationAsync();
-        else
+        if (isUpdate)
             await HandleUpdateOrganizationAsync();
+        else
+            await HandleCreateOrganizationAsync();
+
     }
 
 
@@ -113,6 +120,26 @@
             ToastService.ShowSuccess(result.Value.Message, result.Message);
             //send a message to listeners (dashboard index component)
             MessageService.SendMessage(MessageType.Organization_Updated);
+        }
+        else
+            ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandDeleteOrganizationAsync()
+    {
+        var result = await OrganizationClientService.Delete(Id);
+
+        if (result.IsSuccess)
+        {
+            ModalInstance.CloseAsync();
+            ToastService.ShowSuccess(result.Value.Message, result.Message);
+            //send a message to listeners (dashboard index component)
+            MessageService.SendMessage(MessageType.Organization_Deleted);
         }
         else
             ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);

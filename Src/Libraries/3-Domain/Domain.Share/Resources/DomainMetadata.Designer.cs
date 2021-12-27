@@ -106,6 +106,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entity.
+        /// </summary>
+        public static string Entity {
+            get {
+                return ResourceManager.GetString("Entity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Member.
         /// </summary>
         public static string Member {

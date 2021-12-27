@@ -41,26 +41,6 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public virtual async Task DeleteAsync(string id)
-        {
-            await SetIsDeletedAsync(id, true);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual async Task RecycleAsync(string id)
-        {
-            await SetIsDeletedAsync(id, false);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public virtual async Task<TEntity> GetByIdAsync(string id)
         {
             return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
@@ -110,21 +90,6 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         #endregion
 
         #region Private Methods
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private async Task SetIsDeletedAsync(string id, bool isDeleted)
-        {
-            var entity = await GetByIdAsync(id);
-            if (entity != null)
-            {
-                entity.IsDeleted = isDeleted;
-                await UpdateAsync(entity);
-            }
-        }
 
 
 

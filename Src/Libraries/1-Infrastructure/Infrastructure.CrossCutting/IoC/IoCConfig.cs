@@ -34,6 +34,9 @@ using TaskoMask.Domain.Core.Services;
 using TaskoMask.Infrastructure.CrossCutting.Services.Security;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Share.Services;
+using TaskoMask.Application.Common.Base.Commands.Handlers;
+using TaskoMask.Application.Common.Base.Commands.Models;
+using TaskoMask.Application.Share.Helpers;
 
 namespace Infrastructure.CrossCutting.IoC
 {
@@ -90,7 +93,6 @@ namespace Infrastructure.CrossCutting.IoC
 
             #endregion
 
-
             #region Generic Query Handlers
 
             //TODO Handel Generic Query Handlers
@@ -105,6 +107,23 @@ namespace Infrastructure.CrossCutting.IoC
 
             #endregion
 
+            #region Generic Command Handlers
+
+            //TODO Handel Generic Command Handlers
+
+            services.AddScoped<IRequestHandler<DeleteCommand<Operator>, CommandResult>, BaseCommandHandlers<Operator>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Permission>, CommandResult>, BaseCommandHandlers<Permission>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Role>, CommandResult>, BaseCommandHandlers<Role>>();
+           
+            services.AddScoped<IRequestHandler<DeleteCommand<Invitation>, CommandResult>, BaseCommandHandlers<Invitation>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Member>, CommandResult>, BaseCommandHandlers<Member>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Organization>, CommandResult>, BaseCommandHandlers<Organization>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Project>, CommandResult>, BaseCommandHandlers<Project>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Board>, CommandResult>, BaseCommandHandlers<Board>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Task>, CommandResult>, BaseCommandHandlers<Task>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Card>, CommandResult>, BaseCommandHandlers<Card>>();
+
+            #endregion
         }
     }
 }

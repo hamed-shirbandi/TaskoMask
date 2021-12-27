@@ -13,7 +13,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Common\Base\Commands\" />
     <Folder Include="Workspace\Boards\Commands\Validations\" />
     <Folder Include="Workspace\Boards\EventHandlers\" />
     <Folder Include="Workspace\Cards\Commands\Validations\" />

@@ -71,6 +71,15 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Delete()
+        {
+            IsDeleted = false;
+        }
+
+
         #endregion
 
 
@@ -85,7 +94,6 @@ namespace TaskoMask.Domain.Core.Models
         {
             CreationTime.UpdateModifiedDateTime();
         }
-
 
 
 

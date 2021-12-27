@@ -6,6 +6,7 @@ namespace TaskoMask.Application.Common.Base.Services
 {
     public interface IBaseService:IApplicationService
     {
+        Task<Result<CommandResult>> DeleteAsync(string id);
         Task<Result<long>> CountAsync();
 
     }

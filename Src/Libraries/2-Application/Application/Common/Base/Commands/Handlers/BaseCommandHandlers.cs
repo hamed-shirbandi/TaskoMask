@@ -15,6 +15,7 @@ using TaskoMask.Domain.Share.Resources;
 namespace TaskoMask.Application.Common.Base.Commands.Handlers
 {
     public class BaseCommandHandlers<TEntity> : BaseCommandHandler,
+        IRequestHandler<RecycleCommand<TEntity>, CommandResult>,
         IRequestHandler<DeleteCommand<TEntity>, CommandResult> where TEntity : BaseEntity
 
     {
@@ -42,6 +43,7 @@ namespace TaskoMask.Application.Common.Base.Commands.Handlers
         #region Handlers
 
 
+
         /// <summary>
         /// 
         /// </summary>
@@ -61,6 +63,24 @@ namespace TaskoMask.Application.Common.Base.Commands.Handlers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(RecycleCommand<TEntity> request, CancellationToken cancellationToken)
+        {
+            var entity = await _baseRepository.GetByIdAsync(request.Id);
+            if (entity == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Entity);
+
+            entity.Recycle();
+
+            if (!IsValid(entity))
+                return new CommandResult(ApplicationMessages.Update_Failed);
+
+            await _baseRepository.UpdateAsync(entity);
+            return new CommandResult(ApplicationMessages.Update_Success, entity.Id);
+        }
 
 
         #endregion

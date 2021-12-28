@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Domain.Core.Notifications;
@@ -80,8 +81,17 @@ namespace TaskoMask.Domain.Core.Models
         }
 
 
-        #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Recycle()
+        {
+            IsDeleted = false;
+        }
+
+
+        #endregion
 
         #region Protected Methods
 
@@ -106,7 +116,6 @@ namespace TaskoMask.Domain.Core.Models
 
             validationErrors.Add(new DomainNotification(key: this.GetType().Name, value: errorMessage));
         }
-
 
 
 

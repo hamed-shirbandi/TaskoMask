@@ -53,6 +53,19 @@ namespace TaskoMask.Application.Common.Base.Services
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> RecycleAsync(string id)
+        {
+            var cmd = new RecycleCommand<TEntity>(id);
+            return await SendCommandAsync(cmd);
+        }
+
+
+        
+
         #endregion
     }
 }

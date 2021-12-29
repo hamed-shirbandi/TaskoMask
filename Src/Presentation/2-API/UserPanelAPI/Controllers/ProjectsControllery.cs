@@ -34,13 +34,13 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
-        /// get project detail
+        /// get project basic info
         /// </summary>
         [HttpGet]
         [Route("projects/{id}")]
-        public async Task<Result<ProjectDetailsViewModel>> Get(string id)
+        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
         {
-            return await _projectService.GetDetailsAsync(id);
+            return await _projectService.GetByIdAsync(id);
         }
 
 

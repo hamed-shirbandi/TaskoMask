@@ -98,6 +98,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAccountClientService, AccountClientService>();
             services.AddScoped<IOrganizationClientService, OrganizationClientService>();
+            services.AddScoped<IProjectClientService, ProjectClientService>();
+            services.AddScoped<IBoardClientService, BoardClientService>();
+            services.AddScoped<ICardClientService, CardClientService>();
+            services.AddScoped<ITaskClientService, TaskClientService>();
+            services.AddScoped<IMemberClientService, MemberClientService>();
         }
 
     }

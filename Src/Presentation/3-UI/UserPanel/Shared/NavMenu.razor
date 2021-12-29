@@ -37,7 +37,7 @@
                             New Organization
                         </NavLink>
 
-                        <NavLink class="dropdown-item" href="#">
+                        <NavLink class="dropdown-item"  @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))">
                             <i class="bi bi-kanban"></i>
                             New Project
                         </NavLink>

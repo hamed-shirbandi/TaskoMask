@@ -65,11 +65,8 @@ else
     {
         try
         {
-            if (messageType == MessageType.Organization_Created || messageType == MessageType.Organization_Updated|| messageType == MessageType.Organization_Deleted)
-            {
-                await LoadDataAsync();
-                StateHasChanged();
-            }
+            await LoadDataAsync();
+            StateHasChanged();
         }
         catch
         {

@@ -2,19 +2,37 @@
 
 @foreach (var item in Model)
 {
-<div class="col-md-4 col-sm-12 ">
-    <NavLink href="#">
-        <div class="card bg-success text-white">
-            <div class="card-body">
-                <h5 class="card-title">@item.Name</h5>
-                <hr />
-                <small>@item.Description</small>
+    <div class="col-md-4 col-sm-12 ">
+        <NavLink href="#">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @item.Name
+                        <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </h5>
+                    <hr />
+                    <small>@item.Description</small>
+                </div>
             </div>
-        </div>
-    </NavLink>
-</div>
+        </NavLink>
+    </div>
 }
 @code {
     [Parameter]
     public IEnumerable<ProjectBasicInfoDto> Model { get; set; }
+
+
+    
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ShowUpdsertModal(string organizationId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(ProjectBasicInfoDto.Id), organizationId);
+        ModalService.Show<Pages.Projects.Components.Upsert>("Update project", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
 }

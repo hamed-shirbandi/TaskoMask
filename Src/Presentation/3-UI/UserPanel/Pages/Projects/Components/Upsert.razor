@@ -1,0 +1,165 @@
+﻿@using TaskoMask.Application.Share.Dtos.Team.Projects
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IProjectClientService ProjectClientService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
+
+<EditForm Model="ProjectModel" OnValidSubmit="HandleUpsert">
+
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <InputText @bind-Value="ProjectModel.Name" placeholder="Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>ProjectModel.Name" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <select @bind="ProjectModel.OrganizationId" placeholder="Organization" class="form-control">
+            @foreach (var prop in organizations)
+            {
+                <option value="@prop.Value">@prop.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <InputText @bind-Value="ProjectModel.Description" placeholder="Description" class="form-control"></InputText>
+        <ValidationMessage For="()=>ProjectModel.Description" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mr-1">@submitBtnName</button>
+        @if (isUpdate)
+        {
+            <a @onclick="HandleDelete" class="btn btn-danger text-white mr-1">Delete</a>
+        }
+        <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
+    </div>
+
+</EditForm>
+
+@code {
+
+    //use for update mode
+    [Parameter]
+    public string Id { get; set; }
+
+    bool isUpdate = false;
+    string submitBtnName = "Create";
+    IEnumerable<SelectListItem> organizations;
+
+    ProjectUpsertDto ProjectModel = new ProjectUpsertDto();
+
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        var organizationsResult = await OrganizationClientService.GetSelectListItems();
+        if (!organizationsResult.IsSuccess)
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
+        }
+        else
+            organizations = organizationsResult.Value;
+
+
+        //if Id has value it must handle update so get data by id from api
+    if (!string.IsNullOrEmpty(Id))
+        {
+            submitBtnName = "Update";
+            isUpdate = true;
+
+            var projectResult = await ProjectClientService.Get(Id);
+            if (!projectResult.IsSuccess)
+            {
+                //close the modal window
+                ModalInstance.CloseAsync();
+                ToastService.ShowError(projectResult.Errors.ParseToHtml(), projectResult.Message);
+            }
+            else
+                ProjectModel = new ProjectUpsertDto
+                    {
+                        Id = projectResult.Value.Id,
+                        Name = projectResult.Value.Name,
+                        Description = projectResult.Value.Description,
+                    };
+
+        }
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleUpsert()
+    {
+        if (isUpdate)
+            await HandleUpdate();
+        else
+            await HandleCreate();
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleCreate()
+    {
+        var result = await ProjectClientService.Create(ProjectModel);
+        HandleResult(result, MessageType.Project_Created);
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleUpdate()
+    {
+        var result = await ProjectClientService.Update(ProjectModel);
+        HandleResult(result, MessageType.Project_Updated);
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleDelete()
+    {
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!");
+        var confirmationModalResult = await confirmationModal.Result;
+
+        if (confirmationModalResult.Cancelled)
+            return;
+
+        var result = await ProjectClientService.Delete(Id);
+        HandleResult(result, MessageType.Project_Deleted);
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void HandleResult(Result<CommandResult> result, MessageType messageType)
+    {
+        if (result.IsSuccess)
+        {
+            ModalInstance.CloseAsync();
+            ToastService.ShowSuccess(result.Value.Message, result.Message);
+            //send a message to listeners (dashboard index component)
+            MessageService.SendMessage(messageType);
+        }
+        else
+            ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
+    }
+
+}

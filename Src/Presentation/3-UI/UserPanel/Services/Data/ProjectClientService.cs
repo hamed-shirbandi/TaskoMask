@@ -59,6 +59,19 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
             return await _httpClientService.PutAsync<CommandResult>(uri, input);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> Delete(string id)
+        {
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/projects"))
+                .AddParameter("id", id)
+                .Uri;
+            return await _httpClientService.DeleteAsync<CommandResult>(uri);
+        }
+
         #endregion
 
         #region Private Methods

@@ -69,6 +69,17 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
 
+        /// <summary>
+        /// soft delete project
+        /// </summary>
+        [HttpDelete]
+        [Route("projects")]
+        public async Task<Result<CommandResult>> Delete(string id)
+        {
+            return await _projectService.DeleteAsync(id);
+        }
+
+
         #endregion
 
     }

@@ -9,5 +9,6 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
         Task<Result<ProjectBasicInfoDto>> Get(string id);
         Task<Result<CommandResult>> Create(ProjectUpsertDto input);
         Task<Result<CommandResult>> Update(ProjectUpsertDto input);
+        Task<Result<CommandResult>> Delete(string id);
     }
 }

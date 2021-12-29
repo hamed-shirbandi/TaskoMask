@@ -47,7 +47,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
-        /// get organizations list for current user
+        /// get organizations list with all relational data for current user
         /// </summary>
         [HttpGet]
         [Route("organizations")]
@@ -57,7 +57,18 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         }
 
 
+        /// <summary>
+        /// get organizations list without relational data for current user
+        /// </summary>
+        [HttpGet]
+        [Route("organizations/getSelectListItems")]
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems()
+        {
+            return await _organizationService.GetSelectListAsync(GetCurrentUserId());
+        }
 
+
+        
 
         /// <summary>
         /// create new organization

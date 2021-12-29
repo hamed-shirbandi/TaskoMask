@@ -83,7 +83,7 @@ namespace TaskoMask.Application.Team.Organizations.Services
                 return Result.Failure<OrganizationDetailsViewModel>(boardQueryResult.Errors);
 
 
-            var taskQueryResult = await SendQueryAsync(new GetTasksByOrganizationIdQuery(id,takeCount:20));
+            var taskQueryResult = await SendQueryAsync(new GetTasksByOrganizationIdQuery(id, takeCount: 20));
             if (!taskQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(taskQueryResult.Errors);
 
@@ -108,9 +108,9 @@ namespace TaskoMask.Application.Team.Organizations.Services
         /// </summary>
         public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListWithDetailsByOwnerMemberIdAsync(string ownerMemberId)
         {
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByOwnerMemberIdQuery(ownerMemberId));
+            var organizationQueryResult = await GetListByOwnerMemberIdAsync(ownerMemberId);
             if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<IEnumerable<OrganizationDetailsViewModel>> (organizationQueryResult.Errors);
+                return Result.Failure<IEnumerable<OrganizationDetailsViewModel>>(organizationQueryResult.Errors);
 
             var organizationsDetail = new List<OrganizationDetailsViewModel>();
 
@@ -167,6 +167,27 @@ namespace TaskoMask.Application.Team.Organizations.Services
             return await SendQueryAsync(new SearchOrganizationsQuery(page, recordsPerPage, term));
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string ownerMemberId)
+        {
+            var organizationQueryResult = await GetListByOwnerMemberIdAsync(ownerMemberId);
+            if (!organizationQueryResult.IsSuccess)
+                return Result.Failure<IEnumerable<SelectListItem>>(organizationQueryResult.Errors);
+
+            var organizations = organizationQueryResult.Value.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id,
+
+            }).AsEnumerable();
+
+            return Result.Success(organizations);
+
+        }
 
         #endregion
 

@@ -6,8 +6,9 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
     public interface IBoardClientService
     {
-        Task<Result<BoardDetailsViewModel>> Get(string id);
+        Task<Result<BoardBasicInfoDto>> Get(string id);
         Task<Result<CommandResult>> Create(BoardUpsertDto input);
         Task<Result<CommandResult>> Update(BoardUpsertDto input);
+        Task<Result<CommandResult>> Delete(string id);
     }
 }

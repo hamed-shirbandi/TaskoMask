@@ -30,11 +30,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardDetailsViewModel>> Get(string id)
+        public async Task<Result<BoardBasicInfoDto>> Get(string id)
         {
             var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/boards/{id}")).Uri;
 
-            return await _httpClientService.GetAsync<BoardDetailsViewModel>(uri);
+            return await _httpClientService.GetAsync<BoardBasicInfoDto>(uri);
         }
 
 
@@ -58,6 +58,20 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
             var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/boards")).Uri;
             return await _httpClientService.PutAsync<CommandResult>(uri, input);
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> Delete(string id)
+        {
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/boards"))
+                .AddParameter("id", id)
+                .Uri;
+            return await _httpClientService.DeleteAsync<CommandResult>(uri);
+        }
+
 
         #endregion
 

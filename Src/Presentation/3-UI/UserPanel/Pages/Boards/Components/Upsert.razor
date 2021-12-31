@@ -1,0 +1,169 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
+
+<EditForm Model="BoardModel" OnValidSubmit="HandleUpsert">
+
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <InputText @bind-Value="BoardModel.Name" placeholder="Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>BoardModel.Name" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <select @bind="BoardModel.ProjectId" placeholder="Organization" class="form-control">
+            @foreach (var prop in organizations)
+            {
+                <option value="@prop.Value">@prop.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <InputText @bind-Value="BoardModel.Description" placeholder="Description" class="form-control"></InputText>
+        <ValidationMessage For="()=>BoardModel.Description" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mr-1">@submitBtnName</button>
+        @if (isUpdate)
+        {
+            <a @onclick="HandleDelete" class="btn btn-danger text-white mr-1">Delete</a>
+        }
+        <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
+    </div>
+
+</EditForm>
+
+@code {
+
+    //use for update mode
+    [Parameter]
+    public string Id { get; set; }
+
+    bool isUpdate = false;
+    string submitBtnName = "Create";
+    IEnumerable<SelectListItem> organizations;
+
+    BoardUpsertDto BoardModel = new BoardUpsertDto();
+
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        organizations = new List<SelectListItem>()
+            {
+                new SelectListItem{ Text="Name 1",Value="asdasd"},
+            };
+        //var organizationsResult = await OrganizationClientService.GetSelectListItems();
+        //if (!organizationsResult.IsSuccess)
+        //{
+        //    //close the modal window
+        //    ModalInstance.CloseAsync();
+        //    ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
+        //}
+        //else
+        //    organizations = organizationsResult.Value;
+
+
+        //if Id has value it must handle update so get data by id from api
+    if (!string.IsNullOrEmpty(Id))
+        {
+            submitBtnName = "Update";
+            isUpdate = true;
+
+            var boardResult = await BoardClientService.Get(Id);
+            if (!boardResult.IsSuccess)
+            {
+                //close the modal window
+                ModalInstance.CloseAsync();
+                ToastService.ShowError(boardResult.Errors.ParseToHtml(), boardResult.Message);
+            }
+            else
+                BoardModel = new BoardUpsertDto
+                    {
+                        Id = boardResult.Value.Id,
+                        Name = boardResult.Value.Name,
+                        Description = boardResult.Value.Description,
+                    };
+
+        }
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleUpsert()
+    {
+        if (isUpdate)
+            await HandleUpdate();
+        else
+            await HandleCreate();
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleCreate()
+    {
+        var result = await BoardClientService.Create(BoardModel);
+        HandleResult(result, MessageType.Board_Created);
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleUpdate()
+    {
+        var result = await BoardClientService.Update(BoardModel);
+        HandleResult(result, MessageType.Board_Updated);
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleDelete()
+    {
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!");
+        var confirmationModalResult = await confirmationModal.Result;
+
+        if (confirmationModalResult.Cancelled)
+            return;
+
+        var result = await BoardClientService.Delete(Id);
+        HandleResult(result, MessageType.Board_Deleted);
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void HandleResult(Result<CommandResult> result, MessageType messageType)
+    {
+        if (result.IsSuccess)
+        {
+            ModalInstance.CloseAsync();
+            ToastService.ShowSuccess(result.Value.Message, result.Message);
+            //send a message to listeners (dashboard index component)
+            MessageService.SendMessage(messageType);
+        }
+        else
+            ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
+    }
+
+}

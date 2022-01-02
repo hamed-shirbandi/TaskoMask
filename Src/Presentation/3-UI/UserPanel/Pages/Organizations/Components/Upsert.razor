@@ -15,10 +15,14 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary mr-1">@submitBtnName</button>
         @if (isUpdate)
         {
+            <button type="submit" class="btn btn-primary mr-1">Update</button>
             <a @onclick="HandleDelete" class="btn btn-danger text-white mr-1">Delete</a>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-primary mr-1">Create</button>
         }
         <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
     </div>
@@ -27,52 +31,96 @@
 
 @code {
 
-    //use for update mode
+    #region Fields and Properties
+
+
+
+    /// <summary>
+    /// Get an organization to update by its Id
+    /// </summary>
     [Parameter]
     public string Id { get; set; }
 
-    bool isUpdate = false;
-    string submitBtnName = "Create";
 
+
+    /// <summary>
+    /// Form Model
+    /// </summary>
     OrganizationUpsertDto OrganizationModel = new OrganizationUpsertDto();
 
+
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
     [CascadingParameter]
     BlazoredModalInstance ModalInstance { get; set; }
 
 
+
     /// <summary>
-    /// /
+    /// To specify form role (create or update)
+    /// </summary>
+    bool isUpdate = false;
+
+
+
+    #endregion Fields and Properties
+
+
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        //if Id has value it must handle update so get data by id from api
+        //if Id has value so we need to handle update
         if (!string.IsNullOrEmpty(Id))
+            await PrepareModelToUpdate();
+    }
+
+
+    #endregion Protected Methods
+
+
+
+    #region private Methods
+
+
+
+    /// <summary>
+    /// Get model by Id from API
+    /// </summary>
+    private async Task PrepareModelToUpdate()
+    {
+        isUpdate = true;
+
+        var organizationResult = await OrganizationClientService.Get(Id);
+
+        if (organizationResult.IsSuccess)
         {
-            submitBtnName = "Update";
-            isUpdate = true;
+            OrganizationModel = new OrganizationUpsertDto
+                {
+                    Id = organizationResult.Value.Id,
+                    Name = organizationResult.Value.Name,
+                    Description = organizationResult.Value.Description,
+                };
 
-            var organizationResult = await OrganizationClientService.Get(Id);
-            if (!organizationResult.IsSuccess)
-            {
-                //close the modal window
-                ModalInstance.CloseAsync();
-                ToastService.ShowError(organizationResult.Errors.ParseToHtml(), organizationResult.Message);
-            }
-            else
-                OrganizationModel = new OrganizationUpsertDto
-                    {
-                        Id = organizationResult.Value.Id,
-                        Name = organizationResult.Value.Name,
-                        Description = organizationResult.Value.Description,
-                    };
-
+        }
+        else
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(organizationResult.Errors.ParseToHtml(), organizationResult.Message);
         }
     }
 
 
 
     /// <summary>
-    ///
+    ///Handle form role
     /// </summary>
     private async Task HandleUpsert()
     {
@@ -85,58 +133,46 @@
 
 
     /// <summary>
-    ///
+    /// handle create model 
     /// </summary>
     private async Task HandleCreate()
     {
         var result = await OrganizationClientService.Create(OrganizationModel);
-        HandleResult(result, MessageType.Organization_Created);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Organization_Created, ModalInstance);
     }
 
 
 
     /// <summary>
-    ///
+    /// handle update model 
     /// </summary>
     private async Task HandleUpdate()
     {
         var result = await OrganizationClientService.Update(OrganizationModel);
-        HandleResult(result, MessageType.Organization_Updated);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Organization_Updated, ModalInstance);
     }
 
 
 
     /// <summary>
-    ///
+    /// handle delete item 
     /// </summary>
     private async Task HandleDelete()
     {
-       var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!");
-       var confirmationModalResult = await confirmationModal.Result;
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!");
+        var confirmationModalResult = await confirmationModal.Result;
 
         if (confirmationModalResult.Cancelled)
             return;
 
         var result = await OrganizationClientService.Delete(Id);
-        HandleResult(result, MessageType.Organization_Deleted);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Organization_Deleted, ModalInstance);
     }
 
 
+    #endregion private Methods
 
-    /// <summary>
-    ///
-    /// </summary>
-    private void HandleResult(Result<CommandResult> result, MessageType messageType)
-    {
-        if (result.IsSuccess)
-        {
-            ModalInstance.CloseAsync();
-            ToastService.ShowSuccess(result.Value.Message, result.Message);
-            //send a message to listeners (dashboard index component)
-            MessageService.SendMessage(messageType);
-        }
-        else
-            ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
-    }
+
+
 
 }

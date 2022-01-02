@@ -20,7 +20,6 @@
     <Folder Include="Team\Members\Commands\Validations\" />
     <Folder Include="Team\Members\EventHandlers\" />
     <Folder Include="Team\Organizations\EventHandlers\" />
-    <Folder Include="Team\Projects\Commands\Validations\" />
     <Folder Include="Team\Projects\EventHandlers\" />
     <Folder Include="Workspace\Tasks\Commands\Validations\" />
     <Folder Include="Workspace\Tasks\EventHandlers\" />

@@ -18,5 +18,7 @@ namespace TaskoMask.Application.Team.Projects.Services
         Task<Result<ProjectReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId);
         Task<Result<PaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string organizationId);
+
     }
 }

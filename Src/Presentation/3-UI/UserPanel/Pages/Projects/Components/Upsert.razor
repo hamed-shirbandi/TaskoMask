@@ -44,7 +44,7 @@
 
     bool isUpdate = false;
     string submitBtnName = "Create";
-    IEnumerable<SelectListItem> organizations;
+    IEnumerable<SelectListItem> organizations = new List<SelectListItem>();
 
     ProjectUpsertDto ProjectModel = new ProjectUpsertDto();
 
@@ -69,7 +69,7 @@
 
 
         //if Id has value it must handle update so get data by id from api
-    if (!string.IsNullOrEmpty(Id))
+        if (!string.IsNullOrEmpty(Id))
         {
             submitBtnName = "Update";
             isUpdate = true;

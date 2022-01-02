@@ -46,6 +46,18 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
+        /// get projects list without relational data for current user
+        /// </summary>
+        [HttpGet]
+        [Route("projects/getSelectListItems/{organizationId}")]
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string organizationId)
+        {
+            return await _projectService.GetSelectListAsync(GetCurrentUserId());
+        }
+
+
+
+        /// <summary>
         /// create new project
         /// </summary>
         [HttpPost]
@@ -78,6 +90,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         {
             return await _projectService.DeleteAsync(id);
         }
+
 
 
         #endregion

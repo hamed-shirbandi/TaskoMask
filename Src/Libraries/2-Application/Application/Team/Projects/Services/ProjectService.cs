@@ -13,6 +13,7 @@ using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Domain.Team.Entities;
+using System.Linq;
 
 namespace TaskoMask.Application.Team.Projects.Services
 {
@@ -137,6 +138,26 @@ namespace TaskoMask.Application.Team.Projects.Services
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string organizationId)
+        {
+            var projectQueryResult = await GetListByOrganizationIdAsync(organizationId);
+            if (!projectQueryResult.IsSuccess)
+                return Result.Failure<IEnumerable<SelectListItem>>(projectQueryResult.Errors);
+
+            var projects = projectQueryResult.Value.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id,
+
+            }).AsEnumerable();
+
+            return Result.Success(projects);
+
+        }
 
         #endregion
     }

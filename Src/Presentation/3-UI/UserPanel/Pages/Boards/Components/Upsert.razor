@@ -1,6 +1,7 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IProjectClientService ProjectClientService
 
 <EditForm Model="BoardModel" OnValidSubmit="HandleUpsert">
 
@@ -12,13 +13,25 @@
     </div>
 
     <div class="form-group">
-        <select @bind="BoardModel.ProjectId" placeholder="Organization" class="form-control">
+        <select @onchange="OrganizationChanged" placeholder="Organization" class="form-control">
             @foreach (var prop in organizations)
             {
                 <option value="@prop.Value">@prop.Text</option>
             }
         </select>
     </div>
+
+    @if (!string.IsNullOrEmpty(selectedOrganizationId))
+    {
+        <div class="form-group">
+            <select @bind="BoardModel.ProjectId" placeholder="Organization" class="form-control">
+                @foreach (var prop in projects)
+                {
+                    <option value="@prop.Value">@prop.Text</option>
+                }
+            </select>
+        </div>
+    }
 
     <div class="form-group">
         <InputText @bind-Value="BoardModel.Description" placeholder="Description" class="form-control"></InputText>
@@ -42,9 +55,11 @@
     [Parameter]
     public string Id { get; set; }
 
+    string selectedOrganizationId = "";
     bool isUpdate = false;
     string submitBtnName = "Create";
-    IEnumerable<SelectListItem> organizations;
+    IEnumerable<SelectListItem> organizations = new List<SelectListItem>();
+    IEnumerable<SelectListItem> projects = new List<SelectListItem>();
 
     BoardUpsertDto BoardModel = new BoardUpsertDto();
 
@@ -57,23 +72,19 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        organizations = new List<SelectListItem>()
-            {
-                new SelectListItem{ Text="Name 1",Value="asdasd"},
-            };
-        //var organizationsResult = await OrganizationClientService.GetSelectListItems();
-        //if (!organizationsResult.IsSuccess)
-        //{
-        //    //close the modal window
-        //    ModalInstance.CloseAsync();
-        //    ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
-        //}
-        //else
-        //    organizations = organizationsResult.Value;
 
+        var organizationsResult = await OrganizationClientService.GetSelectListItems();
+        if (!organizationsResult.IsSuccess)
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
+        }
+        else
+            organizations = organizationsResult.Value;
 
         //if Id has value it must handle update so get data by id from api
-    if (!string.IsNullOrEmpty(Id))
+        if (!string.IsNullOrEmpty(Id))
         {
             submitBtnName = "Update";
             isUpdate = true;
@@ -164,6 +175,21 @@
         }
         else
             ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
+    }
+
+
+    private async Task OrganizationChanged( )
+    {
+
+        var projectsResult = await ProjectClientService.GetSelectListItems(selectedOrganizationId);
+        if (!projectsResult.IsSuccess)
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(projectsResult.Errors.ParseToHtml(), projectsResult.Message);
+        }
+        else
+            projects = projectsResult.Value;
     }
 
 }

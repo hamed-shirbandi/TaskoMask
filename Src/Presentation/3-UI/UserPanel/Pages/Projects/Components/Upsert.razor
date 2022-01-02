@@ -12,8 +12,8 @@
     </div>
 
     <div class="form-group">
-        <select @bind="ProjectModel.OrganizationId"  class="form-control">
-            @foreach (var prop in organizations)
+        <select @bind="ProjectModel.OrganizationId" class="form-control">
+            @foreach (var prop in organizationsSelectList)
             {
                 <option value="@prop.Value" selected="@(prop.Value==ProjectModel.OrganizationId?true:false)">@prop.Text</option>
             }
@@ -26,10 +26,14 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary mr-1">@submitBtnName</button>
         @if (isUpdate)
         {
+            <button type="submit" class="btn btn-primary mr-1">Update</button>
             <a @onclick="HandleDelete" class="btn btn-danger text-white mr-1">Delete</a>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-primary mr-1">Create</button>
         }
         <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
     </div>
@@ -38,24 +42,109 @@
 
 @code {
 
-    //use for update mode
+
+    #region Fields and Properties
+
+
+
+    /// <summary>
+    /// Get an organization to update by its Id
+    /// </summary>
     [Parameter]
     public string Id { get; set; }
 
-    bool isUpdate = false;
-    string submitBtnName = "Create";
-    IEnumerable<SelectListItem> organizations = new List<SelectListItem>();
 
+
+    /// <summary>
+    /// organaizations list to use in DropDownList
+    /// </summary>
+    IEnumerable<SelectListItem> organizationsSelectList = new List<SelectListItem>();
+
+
+
+    /// <summary>
+    /// Form Model
+    /// </summary>
     ProjectUpsertDto ProjectModel = new ProjectUpsertDto();
 
+
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
     [CascadingParameter]
     BlazoredModalInstance ModalInstance { get; set; }
 
 
+
     /// <summary>
-    /// /
+    /// To specify form role (create or update)
+    /// </summary>
+    bool isUpdate = false;
+
+
+
+    #endregion Fields and Properties
+
+
+
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
     /// </summary>
     protected override async Task OnInitializedAsync()
+    {
+        //get organization select list
+        await GetOrganizations();
+
+        //if Id has value so we need to handle update
+        if (!string.IsNullOrEmpty(Id))
+            await PrepareModelToUpdate();
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+    /// <summary>
+    /// Get model by Id from API
+    /// </summary>
+    private async Task PrepareModelToUpdate()
+    {
+        isUpdate = true;
+
+        var projectResult = await ProjectClientService.Get(Id);
+
+        if (projectResult.IsSuccess)
+        {
+            ProjectModel = new ProjectUpsertDto
+                {
+                    Id = projectResult.Value.Id,
+                    Name = projectResult.Value.Name,
+                    Description = projectResult.Value.Description,
+                    OrganizationId = projectResult.Value.OrganizationId,
+                };
+        }
+        else
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(projectResult.Errors.ParseToHtml(), projectResult.Message);
+        }
+    }
+
+
+
+    /// <summary>
+    /// get organization select list to use in DropDownList
+    /// </summary>
+    private async Task GetOrganizations()
     {
         var organizationsResult = await OrganizationClientService.GetSelectListItems();
         if (!organizationsResult.IsSuccess)
@@ -65,38 +154,14 @@
             ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
         }
         else
-            organizations = organizationsResult.Value;
+            organizationsSelectList = organizationsResult.Value;
 
-
-        //if Id has value it must handle update so get data by id from api
-        if (!string.IsNullOrEmpty(Id))
-        {
-            submitBtnName = "Update";
-            isUpdate = true;
-
-            var projectResult = await ProjectClientService.Get(Id);
-            if (!projectResult.IsSuccess)
-            {
-                //close the modal window
-                ModalInstance.CloseAsync();
-                ToastService.ShowError(projectResult.Errors.ParseToHtml(), projectResult.Message);
-            }
-            else
-                ProjectModel = new ProjectUpsertDto
-                    {
-                        Id = projectResult.Value.Id,
-                        Name = projectResult.Value.Name,
-                        Description = projectResult.Value.Description,
-                        OrganizationId= projectResult.Value.OrganizationId,
-                    };
-
-        }
     }
 
 
 
     /// <summary>
-    ///
+    /// Handle form role
     /// </summary>
     private async Task HandleUpsert()
     {
@@ -109,29 +174,29 @@
 
 
     /// <summary>
-    ///
+    /// handle create model
     /// </summary>
     private async Task HandleCreate()
     {
         var result = await ProjectClientService.Create(ProjectModel);
-        HandleResult(result, MessageType.Project_Created);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Created, ModalInstance);
     }
 
 
 
     /// <summary>
-    ///
+    /// handle update model
     /// </summary>
     private async Task HandleUpdate()
     {
         var result = await ProjectClientService.Update(ProjectModel);
-        HandleResult(result, MessageType.Project_Updated);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
     }
 
 
 
     /// <summary>
-    ///
+    /// handle delete item
     /// </summary>
     private async Task HandleDelete()
     {
@@ -142,25 +207,11 @@
             return;
 
         var result = await ProjectClientService.Delete(Id);
-        HandleResult(result, MessageType.Project_Deleted);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
     }
 
 
 
-    /// <summary>
-    ///
-    /// </summary>
-    private void HandleResult(Result<CommandResult> result, MessageType messageType)
-    {
-        if (result.IsSuccess)
-        {
-            ModalInstance.CloseAsync();
-            ToastService.ShowSuccess(result.Value.Message, result.Message);
-            //send a message to listeners (dashboard index component)
-            MessageService.SendMessage(messageType);
-        }
-        else
-            ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
-    }
+    #endregion private Methods
 
 }

@@ -5,11 +5,12 @@ namespace TaskoMask.Application.Team.Projects.Commands.Models
 {
    public class UpdateProjectCommand : ProjectBaseCommand
     {
-        public UpdateProjectCommand(string id, string name, string description )
+        public UpdateProjectCommand(string id, string name, string description,string organizationId)
         {
             Id = id;
             Name = name;
             Description = description;
+            OrganizationId = organizationId;
         }
 
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]

@@ -12,10 +12,10 @@
     </div>
 
     <div class="form-group">
-        <select @bind="ProjectModel.OrganizationId" placeholder="Organization" class="form-control">
+        <select @bind="ProjectModel.OrganizationId"  class="form-control">
             @foreach (var prop in organizations)
             {
-                <option value="@prop.Value">@prop.Text</option>
+                <option value="@prop.Value" selected="@(prop.Value==ProjectModel.OrganizationId?true:false)">@prop.Text</option>
             }
         </select>
     </div>
@@ -87,6 +87,7 @@
                         Id = projectResult.Value.Id,
                         Name = projectResult.Value.Name,
                         Description = projectResult.Value.Description,
+                        OrganizationId= projectResult.Value.OrganizationId,
                     };
 
         }
@@ -162,4 +163,14 @@
             ToastService.ShowError(result.Errors.ParseToHtml(), result.Message);
     }
 
+
+    /// <summary>
+    ///
+    /// </summary>
+
+    private async Task OrganizationChanged()
+    {
+
+
+    }
 }

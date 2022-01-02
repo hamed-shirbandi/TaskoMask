@@ -36,8 +36,9 @@ namespace TaskoMask.Domain.Team.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(string name, string description)
+        public void Update(string name, string description, string organizationId)
         {
+            OrganizationId = organizationId;
             Description = description;
             Name = name;
             base.Update();

@@ -76,7 +76,7 @@ namespace TaskoMask.Application.Team.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            project.Update(request.Name, request.Description);
+            project.Update(request.Name, request.Description,request.OrganizationId);
             if (!IsValid(project))
                 return new CommandResult(ApplicationMessages.Update_Failed);
 

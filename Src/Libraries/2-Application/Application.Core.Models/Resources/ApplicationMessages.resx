@@ -126,6 +126,12 @@
   <data name="Data_Not_exist" xml:space="preserve">
     <value>Requested data for {0} not exist in DB</value>
   </data>
+  <data name="Delete_Failed" xml:space="preserve">
+    <value>Delete Failed</value>
+  </data>
+  <data name="Delete_Success" xml:space="preserve">
+    <value>Delete Success</value>
+  </data>
   <data name="Invalid_ForeignKey" xml:space="preserve">
     <value>{0} is invalid</value>
   </data>

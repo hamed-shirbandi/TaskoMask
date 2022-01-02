@@ -88,6 +88,24 @@ namespace TaskoMask.Application.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Failed.
+        /// </summary>
+        public static string Delete_Failed {
+            get {
+                return ResourceManager.GetString("Delete_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Success.
+        /// </summary>
+        public static string Delete_Success {
+            get {
+                return ResourceManager.GetString("Delete_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is invalid.
         /// </summary>
         public static string Invalid_ForeignKey {

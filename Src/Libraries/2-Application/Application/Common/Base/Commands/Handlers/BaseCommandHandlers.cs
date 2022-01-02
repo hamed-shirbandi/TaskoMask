@@ -56,10 +56,10 @@ namespace TaskoMask.Application.Common.Base.Commands.Handlers
             entity.Delete();
 
             if (!IsValid(entity))
-                return new CommandResult(ApplicationMessages.Update_Failed);
+                return new CommandResult(ApplicationMessages.Delete_Failed);
 
             await _baseRepository.UpdateAsync(entity);
-            return new CommandResult(ApplicationMessages.Update_Success, entity.Id);
+            return new CommandResult(ApplicationMessages.Delete_Success, entity.Id);
         }
 
 

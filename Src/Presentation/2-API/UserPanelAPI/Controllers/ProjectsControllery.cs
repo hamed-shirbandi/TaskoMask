@@ -4,7 +4,6 @@ using TaskoMask.Application.Share.Dtos.Team.Projects;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 
@@ -52,7 +51,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("projects/getSelectListItems/{organizationId}")]
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string organizationId)
         {
-            return await _projectService.GetSelectListAsync(GetCurrentUserId());
+            return await _projectService.GetSelectListAsync(organizationId);
         }
 
 

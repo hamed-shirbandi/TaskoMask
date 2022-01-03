@@ -12,6 +12,7 @@ using TaskoMask.Domain.Workspace.Data;
 using TaskoMask.Domain.Workspace.Entities;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Domain.Team.Data;
 
 namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
 {
@@ -22,14 +23,14 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
         #region Fields
 
         private readonly IBoardRepository _boardRepository;
-        private readonly IBoardRepository _projectRepository;
+        private readonly IProjectRepository _projectRepository;
 
         #endregion
 
         #region Ctors
 
 
-        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IBoardRepository projectRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _boardRepository = boardRepository;
             _projectRepository = projectRepository;
@@ -60,7 +61,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
 
-            var board = new Board(name: request.Name, description: request.Description, projectId: request.ProjectId,organizationId: project.OrganizationId);
+            var board = new Board(name: request.Name, description: request.Description, projectId: request.ProjectId, organizationId: project.OrganizationId);
             if (!IsValid(board))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
@@ -88,7 +89,12 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            board.Update(request.Name, request.Description);
+            var project = await _projectRepository.GetByIdAsync(request.ProjectId);
+            if (project == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
+
+
+            board.Update(request.Name, request.Description, request.ProjectId, project.OrganizationId);
 
             if (!IsValid(board))
                 return new CommandResult(ApplicationMessages.Update_Failed);

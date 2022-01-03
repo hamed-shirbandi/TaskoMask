@@ -6,7 +6,12 @@
         <NavLink href="#">
             <div class="card bg-primary text-white">
                 <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
+                    <h5 class="card-title">
+                        @item.Name
+                        <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </h5>
                     <small>@item.Description</small>
                     <hr />
                     <small>
@@ -21,4 +26,17 @@
 @code {
     [Parameter]
     public IEnumerable<BoardBasicInfoDto> Model { get; set; }
+
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowUpdsertModal(string boardId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(BoardBasicInfoDto.Id), boardId);
+        ModalService.Show<Pages.Boards.Components.Upsert>("Update board", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
 }

@@ -18,6 +18,7 @@
                 <option value="@prop.Value" selected="@(prop.Value==ProjectModel.OrganizationId?true:false)">@prop.Text</option>
             }
         </select>
+        <ValidationMessage For="()=>ProjectModel.OrganizationId" class="text-danger"></ValidationMessage>
     </div>
 
     <div class="form-group">
@@ -43,12 +44,12 @@
 @code {
 
 
-    #region Fields and Properties
+    #region Fields and Parameters
 
 
 
     /// <summary>
-    /// Get an organization to update by its Id
+    /// Get the project to update by its Id
     /// </summary>
     [Parameter]
     public string Id { get; set; }
@@ -84,7 +85,7 @@
 
 
 
-    #endregion Fields and Properties
+    #endregion Fields and Parameters
 
 
 
@@ -96,7 +97,7 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        //get organization select list
+        //get organization select list for DropDownList
         await GetOrganizations();
 
         //if Id has value so we need to handle update
@@ -154,7 +155,12 @@
             ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
         }
         else
+        {
             organizationsSelectList = organizationsResult.Value;
+
+            if (string.IsNullOrEmpty(ProjectModel.OrganizationId))
+                ProjectModel.OrganizationId = organizationsSelectList.First().Value;
+        }
 
     }
 

@@ -29,10 +29,10 @@
     /// <summary>
     /// 
     /// </summary>
-    private void ShowUpdsertModal(string organizationId)
+    private void ShowUpdsertModal(string projectId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(ProjectBasicInfoDto.Id), organizationId);
+        parameters.Add(nameof(ProjectBasicInfoDto.Id), projectId);
         ModalService.Show<Pages.Projects.Components.Upsert>("Update project", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 }

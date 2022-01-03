@@ -42,10 +42,13 @@ namespace TaskoMask.Domain.Workspace.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(string name, string description)
+        public void Update(string name, string description, string projectId, string organizationId)
         {
             Description = description;
             Name = name;
+            ProjectId = projectId;
+            OrganizationId = organizationId;
+
             base.Update();
 
         }

@@ -54,7 +54,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(BoardUpsertDto input)
         {
-            var cmd = new UpdateBoardCommand(id: input.Id, name: input.Name, description: input.Description);
+            var cmd = new UpdateBoardCommand(id: input.Id, name: input.Name, description: input.Description, projectId: input.ProjectId);
             return await SendCommandAsync(cmd);
         }
 

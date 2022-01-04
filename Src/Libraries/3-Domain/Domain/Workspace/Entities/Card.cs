@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Domain.Workspace.Entities
 {
-    public class Card : BaseEntity
+    public class Card : BaseAggregate
     {
         #region Fields
 

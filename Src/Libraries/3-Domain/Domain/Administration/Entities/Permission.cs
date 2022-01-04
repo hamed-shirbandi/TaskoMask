@@ -12,15 +12,5 @@ namespace TaskoMask.Domain.Administration.Entities
         public string GroupName { get; set; }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected override void CheckInvariants()
-        {
-
-        }
-
-
     }
 }

@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Domain.Workspace.Entities
 {
-    public class Task : BaseEntity
+    public class Task : BaseAggregate
     {
         #region Fields
 

@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Domain.Team.Entities
 {
-    public class Project : BaseEntity
+    public class Project : BaseAggregate
     {
         #region Fields
 

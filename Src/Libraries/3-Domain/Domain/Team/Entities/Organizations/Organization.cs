@@ -6,7 +6,7 @@ using TaskoMask.Domain.Team.Members.Events;
 
 namespace TaskoMask.Domain.Team.Entities
 {
-    public class Organization : BaseEntity
+    public class Organization : BaseAggregate
     {
         #region Fields
 

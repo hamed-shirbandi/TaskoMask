@@ -7,7 +7,7 @@ namespace TaskoMask.Domain.Team.Entities.Members
     /// <summary>
     /// Members are those who manage their tasks in this system
     /// </summary>
-    public class Member : User
+    public class Member : BaseAggregate
     {
         #region Fields
 

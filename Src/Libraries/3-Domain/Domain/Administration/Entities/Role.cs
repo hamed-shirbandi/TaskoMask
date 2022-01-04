@@ -13,16 +13,5 @@ namespace TaskoMask.Domain.Administration.Entities
         public string Description { get;  set; }
         public string[] PermissionsId { get; set; }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected override void CheckInvariants()
-        {
-
-        }
-
-
     }
 }

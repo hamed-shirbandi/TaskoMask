@@ -53,6 +53,14 @@ namespace TaskoMask.Domain.Workspace.Entities
         #region Private Methods
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void CheckInvariants()
+        {
+
+        }
+
 
         #endregion
 

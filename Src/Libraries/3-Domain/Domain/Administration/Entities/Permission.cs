@@ -10,6 +10,17 @@ namespace TaskoMask.Domain.Administration.Entities
         public string DisplayName { get; set; }
         public string SystemName { get; set; }
         public string GroupName { get; set; }
-      
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void CheckInvariants()
+        {
+
+        }
+
+
     }
 }

@@ -154,7 +154,7 @@
             ModalInstance.CloseAsync();
             ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
         }
-        else
+        else if (organizationsResult.Value.Any())
         {
             organizationsSelectList = organizationsResult.Value;
 

@@ -1,27 +1,42 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
 
-@foreach (var item in Model)
+@if (!Model.Any())
 {
-    <div class="col-md-4 col-sm-12 ">
-        <NavLink href="#">
-            <div class="card bg-primary text-white">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        @item.Name
-                        <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                    </h5>
-                    <small>@item.Description</small>
-                    <hr />
-                    <small>
-                        <i class="bi bi-kanban"></i>: ProjectName
-                    </small>
-                </div>
-            </div>
-        </NavLink>
+    <div class="alert alert-warning">
+        You are not member of any board!
+        <br />
+        Maybe you want to
+        <a @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>
     </div>
 }
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="col-md-4 col-sm-12 ">
+            <NavLink href="#">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @item.Name
+                            <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </h5>
+                        <small>@item.Description</small>
+                        <hr />
+                        <small>
+                            <i class="bi bi-kanban"></i>: ProjectName
+                        </small>
+                    </div>
+                </div>
+            </NavLink>
+        </div>
+    }
+
+}
+
+
 
 @code {
     [Parameter]

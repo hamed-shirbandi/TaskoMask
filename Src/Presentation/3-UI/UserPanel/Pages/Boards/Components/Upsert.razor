@@ -187,7 +187,7 @@
             ModalInstance.CloseAsync();
             ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
         }
-        else
+        else if (organizationsResult.Value.Any())
             organizationsSelectList = organizationsResult.Value;
 
     }
@@ -199,7 +199,9 @@
     /// </summary>
     private async Task GetProjects()
     {
-        //set first organization as selected when the form is for create new board
+        if (!organizationsSelectList.Any())
+            return;
+
         if (string.IsNullOrEmpty(selectedOrganizationId))
             selectedOrganizationId = organizationsSelectList.First().Value;
 
@@ -210,14 +212,13 @@
             ModalInstance.CloseAsync();
             ToastService.ShowError(projectsResult.Errors.ParseToHtml(), projectsResult.Message);
         }
-        else
+        else if (projectsResult.Value.Any())
         {
             projectsSelectList = projectsResult.Value;
 
             if (string.IsNullOrEmpty(BoardModel.ProjectId))
                 BoardModel.ProjectId = projectsSelectList.First().Value;
         }
-
     }
 
 

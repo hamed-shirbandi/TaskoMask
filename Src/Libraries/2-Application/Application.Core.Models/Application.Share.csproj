@@ -9,11 +9,11 @@
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<DocumentationFile>bin\Release\net5.0\TaskoMask.Application.Share.xml</DocumentationFile>
+		<DocumentationFile>bin\Release\net6.0\TaskoMask.Application.Share.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>bin\Debug\net5.0\TaskoMask.Application.Share.xml</DocumentationFile>
+		<DocumentationFile>bin\Debug\net6.0\TaskoMask.Application.Share.xml</DocumentationFile>
 	</PropertyGroup>
 	
   <ItemGroup>

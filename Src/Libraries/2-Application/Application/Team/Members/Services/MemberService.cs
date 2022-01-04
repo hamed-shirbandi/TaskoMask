@@ -9,7 +9,7 @@ using TaskoMask.Application.Common.Users.Services;
 using TaskoMask.Application.Team.Members.Commands.Models;
 using TaskoMask.Application.Team.Members.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Team.Members;
-using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.Team.Entities.Members;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Team.Data;
 using TaskoMask.Application.Share.ViewModels;

@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
 using TaskoMask.Domain.Team.Entities;
 
-namespace TaskoMask.Domain.Team.Events
+namespace TaskoMask.Domain.Team.Members.Events
 {
     public class MemberCreatedEvent : DomainEvent
     {

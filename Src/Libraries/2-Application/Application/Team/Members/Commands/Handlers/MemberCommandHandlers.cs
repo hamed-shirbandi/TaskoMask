@@ -10,7 +10,7 @@ using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Team.Members.Commands.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Team.Data;
-using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.Team.Entities.Members;
 using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Application.Team.Members.Commands.Handlers

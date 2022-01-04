@@ -2,8 +2,8 @@
 using MongoDB.Driver;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Infrastructure.Data.Extensions;
-using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Workspace.Entities;
+using TaskoMask.Domain.Team.Entities.Members;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 using System;

@@ -7,6 +7,7 @@ using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.Team.Entities.Members;
 using TaskoMask.Domain.Workspace.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
@@ -137,82 +138,82 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                         #region Organizations
 
-                        for (int j = 1; j <= 3; j++)
-                        {
-                            var organization = new Organization(
-                                $"Organization Name {j}",
-                                $"Description {j}",
-                                member.Id );
+                        //for (int j = 1; j <= 3; j++)
+                        //{
+                        //    var organization = new Organization(
+                        //        $"Organization Name {j}",
+                        //        $"Description {j}",
+                        //        member.Id );
 
-                            _organizations.InsertOne(organization);
+                        //    _organizations.InsertOne(organization);
 
-                            #region Projects
+                        //    #region Projects
 
-                            for (int k = 1; k <= 3; k++)
-                            {
-                                var project = new Project(
-                                    $" ProjectName {k}",
-                                    $"Description {k}",
-                                    organization.Id);
+                        //    for (int k = 1; k <= 3; k++)
+                        //    {
+                        //        var project = new Project(
+                        //            $" ProjectName {k}",
+                        //            $"Description {k}",
+                        //            organization.Id);
 
-                                _Projects.InsertOne(project);
-
-
-                                #region Boards
-
-                                for (int l = 1; l <= 3; l++)
-                                {
-                                    var board = new Board(
-                                        $"Board Name {l}",
-                                        $"Description {l}",
-                                        project.Id,
-                                        organization.Id);
-
-                                    _boards.InsertOne(board);
+                        //        _Projects.InsertOne(project);
 
 
-                                    #region Cards
+                        //        #region Boards
 
-                                    for (int m = 1; m <= 3; m++)
-                                    {
-                                        var card = new Card(
-                                            $"Card Name {m}",
-                                            $"Description {m}",
-                                            board.Id,
-                                            CardType.ToDo,
-                                            organization.Id,
-                                            project.Id);
+                        //        for (int l = 1; l <= 3; l++)
+                        //        {
+                        //            var board = new Board(
+                        //                $"Board Name {l}",
+                        //                $"Description {l}",
+                        //                project.Id,
+                        //                organization.Id);
 
-                                        _cards.InsertOne(card);
-
-                                        #region Tasks
-
-                                        for (int n = 1; n <= 3; n++)
-                                        {
-                                            var task = new Task(
-                                                $"Task Title {n}",
-                                                $"Description {n}",
-                                                card.Id,
-                                                board.Id,
-                                                organization.Id,
-                                                project.Id);
-
-                                            _tasks.InsertOne(task);
-                                        }
-
-                                        #endregion
-                                    }
-
-                                    #endregion
-                                }
+                        //            _boards.InsertOne(board);
 
 
+                        //            #region Cards
 
-                                #endregion
-                            }
+                        //            for (int m = 1; m <= 3; m++)
+                        //            {
+                        //                var card = new Card(
+                        //                    $"Card Name {m}",
+                        //                    $"Description {m}",
+                        //                    board.Id,
+                        //                    CardType.ToDo,
+                        //                    organization.Id,
+                        //                    project.Id);
 
-                            #endregion
-                        }
+                        //                _cards.InsertOne(card);
+
+                        //                #region Tasks
+
+                        //                for (int n = 1; n <= 3; n++)
+                        //                {
+                        //                    var task = new Task(
+                        //                        $"Task Title {n}",
+                        //                        $"Description {n}",
+                        //                        card.Id,
+                        //                        board.Id,
+                        //                        organization.Id,
+                        //                        project.Id);
+
+                        //                    _tasks.InsertOne(task);
+                        //                }
+
+                        //                #endregion
+                        //            }
+
+                        //            #endregion
+                        //        }
+
+
+
+                        //        #endregion
+                        //    }
+
+                        //    #endregion
+                        //}
 
                         #endregion
                     }

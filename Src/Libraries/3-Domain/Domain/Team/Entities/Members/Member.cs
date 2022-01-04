@@ -1,8 +1,8 @@
 ﻿using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Team.Events;
+using TaskoMask.Domain.Team.Members.Events;
 
-namespace TaskoMask.Domain.Team.Entities
+namespace TaskoMask.Domain.Team.Entities.Members
 {
     /// <summary>
     /// Members are those who manage their tasks in this system
@@ -42,12 +42,27 @@ namespace TaskoMask.Domain.Team.Entities
         public override void Update(string displayName, string email, string userName)
         {
             base.Update(displayName,email, userName);
+
+            AddDomainEvent(new MemberUpdatedEvent(Id, DisplayName, Email, UserName));
         }
+
+
+
 
 
         #endregion
 
         #region Private Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void CheckInvariants()
+        {
+
+        }
 
 
 

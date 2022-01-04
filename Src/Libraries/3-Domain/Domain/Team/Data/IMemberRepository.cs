@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.Team.Entities.Members;
 
 namespace TaskoMask.Domain.Team.Data
 {

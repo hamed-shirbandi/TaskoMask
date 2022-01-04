@@ -13,8 +13,8 @@ namespace TaskoMask.Application.Team.Members.Queries.Models
             Term = term;
         }
 
-        public int Page { get; set; }
-        public int RecordsPerPage { get; set; }
-        public string Term { get; set; }
+        public int Page { get;}
+        public int RecordsPerPage { get; }
+        public string Term { get; }
     }
 }

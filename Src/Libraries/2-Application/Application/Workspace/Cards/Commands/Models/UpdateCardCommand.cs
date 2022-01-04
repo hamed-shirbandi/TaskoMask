@@ -15,7 +15,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Models
         }
 
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public string Id { get; private set; }
+        public string Id { get; }
 
 
      

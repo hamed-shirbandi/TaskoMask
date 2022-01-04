@@ -4,7 +4,7 @@ using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Workspace.Boards.Queries.Models
 {
-    public class SearchBoardsQuery:BaseQuery<PaginatedListReturnType<BoardOutputDto>>
+    public class SearchBoardsQuery : BaseQuery<PaginatedListReturnType<BoardOutputDto>>
     {
         public SearchBoardsQuery(int page, int recordsPerPage, string term)
         {
@@ -13,8 +13,8 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Models
             Term = term;
         }
 
-        public int Page { get; set; }
-        public int RecordsPerPage { get; set; }
-        public string Term { get; set; }
+        public int Page { get; }
+        public int RecordsPerPage { get; }
+        public string Term { get; }
     }
 }

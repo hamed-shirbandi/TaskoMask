@@ -13,6 +13,6 @@ namespace TaskoMask.Application.Team.Organizations.Commands.Models
         }
 
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public string OwnerMemberId { get; private set; }
+        public string OwnerMemberId { get; }
     }
 }

@@ -4,7 +4,7 @@ using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Team.Organizations.Queries.Models
 {
-    public class SearchOrganizationsQuery:BaseQuery<PaginatedListReturnType<OrganizationOutputDto>>
+    public class SearchOrganizationsQuery : BaseQuery<PaginatedListReturnType<OrganizationOutputDto>>
     {
         public SearchOrganizationsQuery(int page, int recordsPerPage, string term)
         {
@@ -13,8 +13,8 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Models
             Term = term;
         }
 
-        public int Page { get; set; }
-        public int RecordsPerPage { get; set; }
-        public string Term { get; set; }
+        public int Page { get; }
+        public int RecordsPerPage { get; }
+        public string Term { get; }
     }
 }

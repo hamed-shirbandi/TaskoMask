@@ -15,6 +15,7 @@ namespace TaskoMask.Application.Core.Queries
             EnableCache = false;
         }
 
+
         public bool EnableCache { get; set; }
     }
 }

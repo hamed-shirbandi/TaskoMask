@@ -30,7 +30,7 @@
 But the primary goal of this project is to be an effort to show how we can implement software technologies and patterns by .Net, so this can be used by developers who are looking for a real example project with real challenges. Please take a look at its [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki)!
 
 Try it online:
-[`Website`](http://taskomask.ir/) - [`User Panel`](http://taskomask.ir/account/register) - [`Admin Panel`](http://admin.taskomask.ir/) - [`API`](http://api.taskomask.ir/)
+[`Website`](http://taskomask.ir/) - [`User Panel`](http://panel.taskomask.ir) - [`Admin Panel`](http://admin.taskomask.ir/) - [`API`](http://api.taskomask.ir/)
 
 ![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/taskomask-all-in-one-0.jpg)
 # Documentation
@@ -42,7 +42,7 @@ There is a list of our documentation:
     TaskoMask contains 4 web projects as below:
     
      - [Website](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Presentation/3-UI/Website): This part is implemented with ASP.NET MVC and it contains the website for TaskoMask. As we sayed it is [online](http://taskomask.ir/) and we use it as a landing page to introduce TaskoMask and some users activity information.
-     - [User Panel](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Presentation/3-UI/UserPanel): This part is implemented with **Blazor** and it contains a user panel for managing users' tasks. it is [online](https://github.com/hamed-shirbandi/TaskoMask/#) (soon) and everybody can register and use it.
+     - [User Panel](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Presentation/3-UI/UserPanel): This part is implemented with **Blazor** and it contains a user panel for managing users' tasks. it is [online](http://panel.taskomask.ir) and everybody can register and use it.
      - [Admin Panel](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Presentation/3-UI/AdminPanel): This part is implemented with ASP.NET MVC, and it contains a panel to manage whole TaskoMask data by administrators. To check its featchures we made it [online](http://admin.taskomask.ir/) by using a temp DB.
      - [API](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Presentation/2-API/UserPanelAPI): This part is implemented with ASP.NET Web API and it contains API services for TaskoMask clients. You can check it [online](http://api.taskomask.ir/)
   - ### [Domain Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Domain-Documentation):

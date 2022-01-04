@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
 using TaskoMask.Domain.Team.Entities;
 
-namespace TaskoMask.Domain.Team.Events
+namespace TaskoMask.Domain.Team.Members.Events
 {
     public class OrganizationCreatedEvent : DomainEvent
     {
@@ -14,8 +14,8 @@ namespace TaskoMask.Domain.Team.Events
         }
 
         public string Id { get; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public string OwnerMemberId { get; private set; }
+        public string Name { get; }
+        public string Description { get;  }
+        public string OwnerMemberId { get;  }
     }
 }

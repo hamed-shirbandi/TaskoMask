@@ -11,11 +11,10 @@ namespace TaskoMask.Domain.Core.Models
     /// <summary>
     ///
     /// </summary>
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         #region Fields
 
-        private string id;
         private List<DomainNotification> validationErrors;
         private List<IDomainEvent> domainEvents;
 
@@ -25,9 +24,9 @@ namespace TaskoMask.Domain.Core.Models
 
         public BaseEntity()
         {
-            id = ObjectId.GenerateNewId().ToString();
+            Id = ObjectId.GenerateNewId().ToString();
             validationErrors = new List<DomainNotification>();
-            CreationTime = new CreationTime();
+            CreationTime = CreationTime.Create();
         }
 
 
@@ -35,26 +34,15 @@ namespace TaskoMask.Domain.Core.Models
 
         #region Properties
 
-        public string Id
-        {
-            get { return id; }
-            private set
-            {
-                if (string.IsNullOrEmpty(value))
-                    id = ObjectId.GenerateNewId().ToString();
-                else
-                    id = value;
-            }
-        }
+        public string Id { get; private set; }
 
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; private set; }
         public CreationTime CreationTime { get; private set; }
 
         [BsonIgnore]
         public IReadOnlyCollection<DomainNotification> ValidationErrors => validationErrors ?? new List<DomainNotification>();
         [BsonIgnore]
         public IReadOnlyCollection<IDomainEvent> DomainEvents => domainEvents?.AsReadOnly();
-
 
 
         #endregion
@@ -72,25 +60,6 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Delete()
-        {
-            IsDeleted = true;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Recycle()
-        {
-            IsDeleted = false;
-        }
-
-
         #endregion
 
         #region Protected Methods
@@ -102,7 +71,27 @@ namespace TaskoMask.Domain.Core.Models
         /// </summary>
         protected virtual void Update()
         {
-            CreationTime.UpdateModifiedDateTime();
+            CreationTime = CreationTime.UpdateModifiedDateTime();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void Delete()
+        {
+            IsDeleted = true;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void Recycle()
+        {
+            IsDeleted = false;
         }
 
 
@@ -124,17 +113,41 @@ namespace TaskoMask.Domain.Core.Models
         /// </summary>
         protected void AddDomainEvent(IDomainEvent domainEvent)
         {
-            domainEvents = domainEvents ?? new List<IDomainEvent>();
-            this.domainEvents.Add(domainEvent);
+
+            CheckInvariants();
+
+            if (IsStateValid())
+            {
+                domainEvents = domainEvents ?? new List<IDomainEvent>();
+                this.domainEvents.Add(domainEvent);
+            }
+
         }
 
 
 
+        /// <summary>
+        /// Check invariants for each entity
+        /// Invariants are kind of validation that made the entity in wrang state
+        /// </summary>
+        protected abstract void CheckInvariants();
 
 
         #endregion
 
         #region Private Methods
+
+
+
+
+        /// <summary>
+        /// Check if there is not any validation error made by CheckInvariants and CheckPolicies
+        /// </summary>
+        private bool IsStateValid()
+        {
+            return validationErrors.Count == 0;
+        }
+
 
 
         #endregion

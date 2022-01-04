@@ -214,15 +214,6 @@ namespace TaskoMask.Application.Share.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description can not be same of name.
-        /// </summary>
-        public static string Equal_Name_And_Description_Error {
-            get {
-                return ResourceManager.GetString("Equal_Name_And_Description_Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The {0} length must be between {1} and {2} characters.
         /// </summary>
         public static string Length_Error {

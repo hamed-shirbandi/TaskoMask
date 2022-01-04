@@ -20,7 +20,7 @@ namespace TaskoMask.Domain.Core.Models
 
         #region Ctors
 
-        public CreationTime()
+        private CreationTime()
         {
             CreateDateTime = DateTime.Now;
             ModifiedDateTime = CreateDateTime;
@@ -29,10 +29,45 @@ namespace TaskoMask.Domain.Core.Models
             CreateYear = CreateDateTime.Year;
         }
 
+
+
         #endregion
 
         #region  Methods
 
+
+
+        /// <summary>
+        /// Factory method for creating new object
+        /// </summary>
+        public static CreationTime Create()
+        {
+            return new CreationTime();
+        }
+
+
+
+        /// <summary>
+        /// Value objects are immutable.
+        /// Changing it creates a new object
+        /// </summary>
+        public CreationTime UpdateModifiedDateTime()
+        {
+            return new CreationTime
+            {
+                ModifiedDateTime = DateTime.Now,
+                CreateDateTime = this.CreateDateTime,
+                CreateDay = this.CreateDateTime.Day,
+                CreateMonth = this.CreateDateTime.Month,
+                CreateYear = this.CreateDateTime.Year,
+            };
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return CreateDateTime;
@@ -43,10 +78,8 @@ namespace TaskoMask.Domain.Core.Models
         }
 
 
-        public void UpdateModifiedDateTime()
-        {
-            ModifiedDateTime = DateTime.Now;
-        }
+
+
 
         #endregion
     }

@@ -61,6 +61,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description cannot be same of name.
+        /// </summary>
+        public static string Equal_Name_And_Description_Error {
+            get {
+                return ResourceManager.GetString("Equal_Name_And_Description_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect password or username.
         /// </summary>
         public static string Incorrect_Password {

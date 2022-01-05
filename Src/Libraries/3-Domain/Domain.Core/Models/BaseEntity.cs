@@ -9,7 +9,6 @@ namespace TaskoMask.Domain.Core.Models
     /// </summary>
     public abstract class BaseEntity
     {
-
         #region Ctors
 
         public BaseEntity()

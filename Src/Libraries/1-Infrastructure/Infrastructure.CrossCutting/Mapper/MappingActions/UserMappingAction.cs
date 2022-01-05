@@ -6,7 +6,7 @@ using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.Mapper.MappingActions
 {
-    public class UserMappingAction : IMappingAction<UserAuthentication, UserUpsertDto>, IMappingAction<UserAuthentication, UserBasicInfoDto>
+    public class UserMappingAction : IMappingAction<BaseUser, UserUpsertDto>, IMappingAction<BaseUser, UserBasicInfoDto>
     {
         #region Fields
 
@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Mapper.MappingActions
         /// <summary>
         /// 
         /// </summary>
-        public void Process(UserAuthentication source, UserUpsertDto destination, ResolutionContext context)
+        public void Process(BaseUser source, UserUpsertDto destination, ResolutionContext context)
         {
         }
 
@@ -38,7 +38,7 @@ namespace TaskoMask.Application.Mapper.MappingActions
         /// <summary>
         /// 
         /// </summary>
-        public void Process(UserAuthentication source, UserBasicInfoDto destination, ResolutionContext context)
+        public void Process(BaseUser source, UserBasicInfoDto destination, ResolutionContext context)
         {
             destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
         }

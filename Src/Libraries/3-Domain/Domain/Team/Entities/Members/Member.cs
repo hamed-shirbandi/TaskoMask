@@ -8,7 +8,7 @@ namespace TaskoMask.Domain.Team.Entities.Members
     /// <summary>
     /// Members are those who manage their tasks in this system
     /// </summary>
-    public class Member : BaseAggregate
+    public class Member : BaseUser
     {
         #region Fields
 
@@ -18,6 +18,7 @@ namespace TaskoMask.Domain.Team.Entities.Members
         #region Ctors
 
         public Member(UserIdentity identity, UserAuthentication authentication, IEncryptionService encryptionService)
+            :base(identity,authentication)
         {
           //  AddDomainEvent(new MemberCreatedEvent(Id, displayName.Value, email.Value, ));
         }
@@ -28,8 +29,6 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
         #region Properties
 
-        public UserIdentity Identity { get; private set; }
-        public UserAuthentication Authentication { get; private set; }
 
         #endregion
 

@@ -6,7 +6,7 @@ namespace TaskoMask.Domain.Administration.Entities
     /// <summary>
     /// opertors of admin panel
     /// </summary>
-   public class Operator :BaseEntity
+   public class Operator : BaseUser
     {
         #region Fields
 
@@ -15,7 +15,8 @@ namespace TaskoMask.Domain.Administration.Entities
 
         #region Ctors
 
-        public Operator(string displayName,string phoneNumber, string email )
+        public Operator(UserIdentity identity, UserAuthentication authentication)
+            :base(identity, authentication)
         {
         }
 
@@ -25,8 +26,6 @@ namespace TaskoMask.Domain.Administration.Entities
 
         #region Properties
 
-        public UserIdentity Identity { get; private set; }
-        public UserAuthentication Authentication { get; private set; }
         public string[] RolesId { get; set; }
 
         #endregion
@@ -59,6 +58,11 @@ namespace TaskoMask.Domain.Administration.Entities
         #endregion
 
         #region Private Methods
+
+        protected override void CheckInvariants()
+        {
+            throw new System.NotImplementedException();
+        }
 
 
 

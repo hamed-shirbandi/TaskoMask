@@ -1,13 +1,12 @@
 ﻿using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Services;
-
+using TaskoMask.Domain.Core.ValueObjects;
 
 namespace TaskoMask.Domain.Administration.Entities
 {
     /// <summary>
     /// opertors of admin panel
     /// </summary>
-   public class Operator :User
+   public class Operator :BaseEntity
     {
         #region Fields
 
@@ -16,8 +15,7 @@ namespace TaskoMask.Domain.Administration.Entities
 
         #region Ctors
 
-        public Operator(string displayName,string phoneNumber, string email, string userName, string password, IEncryptionService encryptionService)
-        :base(displayName, phoneNumber, email, userName, password,encryptionService)
+        public Operator(string displayName,string phoneNumber, string email )
         {
         }
 
@@ -26,6 +24,10 @@ namespace TaskoMask.Domain.Administration.Entities
         #endregion
 
         #region Properties
+
+        
+        public UserAuthentication Authentication { get; private set; }
+
 
         public string[] RolesId { get; set; }
 

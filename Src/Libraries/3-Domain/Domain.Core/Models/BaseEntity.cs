@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using TaskoMask.Domain.Core.ValueObjects;
 
 namespace TaskoMask.Domain.Core.Models
 {

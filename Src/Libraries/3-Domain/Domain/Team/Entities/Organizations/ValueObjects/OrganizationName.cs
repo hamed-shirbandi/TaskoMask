@@ -6,7 +6,7 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
 {
-    public class OrganizationName : ValueObject
+    public class OrganizationName : BaseValueObject
     {
         #region Properties
 
@@ -45,7 +45,8 @@ namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
         /// </summary>
         protected override void CheckPolicies()
         {
-            throw new DomainException(string.Format(DomainMessages.Required, nameof(OrganizationName)));
+            if (string.IsNullOrEmpty(Value))
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(OrganizationName)));
         }
 
 

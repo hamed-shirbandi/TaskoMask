@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Mapper.MappingActions
     /// AutoMapper does not support injection for Profiles
     /// </summary>
     public class CommonMappingAction : 
-        IMappingAction<User, UserBasicInfoDto>
+        IMappingAction<UserAuthentication, UserBasicInfoDto>
     {
         #region Fields
 
@@ -34,7 +34,7 @@ namespace TaskoMask.Application.Mapper.MappingActions
         /// <summary>
         /// 
         /// </summary>
-        public void Process(User source, UserBasicInfoDto destination, ResolutionContext context)
+        public void Process(UserAuthentication source, UserBasicInfoDto destination, ResolutionContext context)
         {
             destination.AvatarUrl = source.AvatarUrl.AddStaticSiteUrl(_configuration);
         }

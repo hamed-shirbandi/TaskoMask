@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
+namespace TaskoMask.Domain.Core.ValueObjects
 {
-    public class OrganizationOwnerMemberId : BaseValueObject
+    public class UserPhoneNumber : BaseValueObject
     {
         #region Properties
 
@@ -17,7 +16,7 @@ namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
 
         #region Ctors
 
-        public OrganizationOwnerMemberId(string value)
+        public UserPhoneNumber(string value)
         {
             Value = value;
 
@@ -33,9 +32,9 @@ namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static OrganizationOwnerMemberId Create(string value)
+        public static UserPhoneNumber Create(string value)
         {
-            return new OrganizationOwnerMemberId(value);
+            return new UserPhoneNumber(value);
         }
 
 
@@ -46,8 +45,7 @@ namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(OrganizationOwnerMemberId)));
-
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(UserPhoneNumber)));
         }
 
 

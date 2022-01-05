@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using TaskoMask.Domain.Core.Exceptions;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
+namespace TaskoMask.Domain.Core.ValueObjects
 {
-    public class OrganizationOwnerMemberId : BaseValueObject
+    /// <summary>
+    /// 
+    /// </summary>
+    public class UserIsActive : BaseValueObject
     {
         #region Properties
 
-        public string Value { get; private set; }
+        public bool Value { get; private set; }
 
 
         #endregion
 
         #region Ctors
 
-        public OrganizationOwnerMemberId(string value)
+        public UserIsActive(bool value)
         {
             Value = value;
 
@@ -33,9 +37,9 @@ namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static OrganizationOwnerMemberId Create(string value)
+        public static UserIsActive Create(bool value)
         {
-            return new OrganizationOwnerMemberId(value);
+            return new UserIsActive(value);
         }
 
 
@@ -45,9 +49,7 @@ namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
         /// </summary>
         protected override void CheckPolicies()
         {
-            if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(OrganizationOwnerMemberId)));
-
+           
         }
 
 

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Core.Models
+namespace TaskoMask.Domain.Core.ValueObjects
 {
     /// <summary>
     ///
     /// </summary>
-    public class CreationTime : ValueObject
+    public class CreationTime : BaseValueObject
     {
         #region Properties
 
@@ -75,6 +76,16 @@ namespace TaskoMask.Domain.Core.Models
             yield return CreateDay;
             yield return CreateMonth;
             yield return CreateYear;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void CheckPolicies()
+        {
+            
         }
 
 

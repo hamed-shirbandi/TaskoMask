@@ -7,7 +7,7 @@ namespace TaskoMask.Domain.Core.Models
     /// <summary>
     ///
     /// </summary>
-    public abstract class ValueObject
+    public abstract class BaseValueObject
     {
         /// <summary>
         /// 
@@ -19,7 +19,7 @@ namespace TaskoMask.Domain.Core.Models
 
             return GetEqualityComponents()
                 .SequenceEqual(
-                    ((ValueObject)obj).GetEqualityComponents());
+                    ((BaseValueObject)obj).GetEqualityComponents());
         }
 
 
@@ -39,7 +39,7 @@ namespace TaskoMask.Domain.Core.Models
         /// <summary>
         /// 
         /// </summary>
-        protected static bool EqualOperator(ValueObject left, ValueObject right)
+        protected static bool EqualOperator(BaseValueObject left, BaseValueObject right)
         {
             if (ReferenceEquals(left, null) ^ ReferenceEquals(right, null))
                 return false;
@@ -52,7 +52,7 @@ namespace TaskoMask.Domain.Core.Models
         /// <summary>
         /// 
         /// </summary>
-        protected static bool NotEqualOperator(ValueObject left, ValueObject right)
+        protected static bool NotEqualOperator(BaseValueObject left, BaseValueObject right)
         {
             return !EqualOperator(left, right);
         }

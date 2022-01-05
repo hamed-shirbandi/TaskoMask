@@ -14,7 +14,7 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Common.Users.Services
 {
-    public class UserService<TEntity> : BaseService<TEntity>, IUserService where TEntity : User
+    public class UserService<TEntity> : BaseService<TEntity>, IUserService where TEntity : UserAuthentication
     {
         #region Fields
 

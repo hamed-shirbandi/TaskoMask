@@ -63,36 +63,6 @@ namespace TaskoMask.Domain.Core.Models
         /// <summary>
         /// 
         /// </summary>
-        protected virtual void Update()
-        {
-            base.Update();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected virtual void Delete()
-        {
-            base.Delete();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected virtual void Recycle()
-        {
-            base.Recycle();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         protected void AddValidationError(string errorMessage)
         {
             validationErrors ??= new List<DomainNotification>();

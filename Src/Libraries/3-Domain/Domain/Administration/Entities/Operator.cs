@@ -25,10 +25,8 @@ namespace TaskoMask.Domain.Administration.Entities
 
         #region Properties
 
-        
+        public UserIdentity Identity { get; private set; }
         public UserAuthentication Authentication { get; private set; }
-
-
         public string[] RolesId { get; set; }
 
         #endregion
@@ -40,9 +38,9 @@ namespace TaskoMask.Domain.Administration.Entities
         /// <summary>
         /// 
         /// </summary>
-        public override void Update(string displayName, string email, string userName)
+        public void Update(string displayName, string email, string userName)
         {
-            base.Update(displayName,email, userName);
+            base.Update();
         }
 
 

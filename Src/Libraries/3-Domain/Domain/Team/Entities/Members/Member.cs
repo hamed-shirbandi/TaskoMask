@@ -1,5 +1,6 @@
 ﻿using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Team.Members.Events;
 
 namespace TaskoMask.Domain.Team.Entities.Members
@@ -16,10 +17,9 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
         #region Ctors
 
-        public Member(string displayName, string email,  string password, IEncryptionService encryptionService)
-        :base(displayName,"", email, email, password,encryptionService)
+        public Member(UserIdentity identity, UserAuthentication authentication, IEncryptionService encryptionService)
         {
-            AddDomainEvent(new MemberCreatedEvent(Id,DisplayName,Email,UserName));
+          //  AddDomainEvent(new MemberCreatedEvent(Id, displayName.Value, email.Value, ));
         }
 
 
@@ -28,7 +28,8 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
         #region Properties
 
-       
+        public UserIdentity Identity { get; private set; }
+        public UserAuthentication Authentication { get; private set; }
 
         #endregion
 
@@ -39,11 +40,11 @@ namespace TaskoMask.Domain.Team.Entities.Members
         /// <summary>
         /// 
         /// </summary>
-        public override void Update(string displayName, string email, string userName)
+        public  void Update(string displayName, string email, string userName)
         {
-            base.Update(displayName,email, userName);
+            base.Update();
 
-            AddDomainEvent(new MemberUpdatedEvent(Id, DisplayName, Email, UserName));
+           // AddDomainEvent(new MemberUpdatedEvent(Id, DisplayName, Email, UserName));
         }
 
 

@@ -44,8 +44,9 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         protected override void CheckPolicies()
         {
-            if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(UserPhoneNumber)));
+            if (!string.IsNullOrEmpty(Value))
+                if (Value.Length != 11)
+                    throw new DomainException(string.Format(DomainMessages.Required, nameof(UserPhoneNumber)));
         }
 
 

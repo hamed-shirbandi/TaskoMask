@@ -141,4 +141,7 @@
   <data name="UserName_And_Email_Cannot_Be_The_Same" xml:space="preserve">
     <value>Username and email can not be the same</value>
   </data>
+  <data name="UserName_And_Email_Must_Be_The_Same" xml:space="preserve">
+    <value>Username and email must be the same</value>
+  </data>
 </root>

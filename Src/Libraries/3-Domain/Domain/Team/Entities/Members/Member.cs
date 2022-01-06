@@ -1,6 +1,8 @@
-﻿using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Domain.Core.Exceptions;
+using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Team.Members.Events;
 
 namespace TaskoMask.Domain.Team.Entities.Members
@@ -17,10 +19,10 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
         #region Ctors
 
-        public Member(UserIdentity identity, UserAuthentication authentication, IEncryptionService encryptionService)
-            :base(identity,authentication)
+        public Member(UserIdentity identity, UserAuthentication authentication)
+            : base(identity, authentication)
         {
-          //  AddDomainEvent(new MemberCreatedEvent(Id, displayName.Value, email.Value, ));
+            AddDomainEvent(new MemberCreatedEvent(Id, identity.DisplayName.Value, identity.Email.Value, authentication.UserName.Value));
         }
 
 
@@ -36,14 +38,57 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
 
 
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        public void Update(UserDisplayName displayName, UserEmail email, UserPhoneNumber phoneNumber)
+        {
+            UpdateIdentity(displayName, email, phoneNumber);
+            UpdateAuthenticationUserName(UserName.Create(email.Value));
+            base.Update();
+
+            AddDomainEvent(new MemberUpdatedEvent(Id, Identity.DisplayName.Value, Identity.Email.Value, Authentication.UserName.Value));
+        }
+
+
+
         /// <summary>
         /// 
         /// </summary>
-        public  void Update(string displayName, string email, string userName)
+        public override void SetPassword(string password, IEncryptionService encryptionService)
         {
-            base.Update();
+            base.SetPassword(password, encryptionService);
+        }
 
-           // AddDomainEvent(new MemberUpdatedEvent(Id, DisplayName, Email, UserName));
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
+        {
+            base.ChangePassword(oldPassword, newPassword, encryptionService);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override bool IsValidPassword(string password, IEncryptionService encryptionService)
+        {
+            return base.IsValidPassword(password, encryptionService);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void SetIsActive(bool isActive)
+        {
+            base.SetIsActive(isActive);
         }
 
 
@@ -56,12 +101,10 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
         protected override void CheckInvariants()
         {
-
+            if (!Identity.Email.Value.ToLower().Equals(Authentication.UserName.Value.ToLower()))
+                throw new DomainException(DomainMessages.UserName_And_Email_Must_Be_The_Same);
         }
 
 

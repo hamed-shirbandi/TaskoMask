@@ -131,5 +131,14 @@ namespace TaskoMask.Domain.Share.Resources {
                 return ResourceManager.GetString("UserName_And_Email_Cannot_Be_The_Same", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username and email must be the same.
+        /// </summary>
+        public static string UserName_And_Email_Must_Be_The_Same {
+            get {
+                return ResourceManager.GetString("UserName_And_Email_Must_Be_The_Same", resourceCulture);
+            }
+        }
     }
 }

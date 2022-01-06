@@ -12,6 +12,7 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Team.Entities.Members;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Domain.Core.ValueObjects;
 
 namespace TaskoMask.Application.Team.Members.Commands.Handlers
 {
@@ -53,7 +54,12 @@ namespace TaskoMask.Application.Team.Members.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var member = new Member(displayName: request.DisplayName, email: request.Email, password: request.Password, encryptionService: _encryptionService);
+            var identity = UserIdentity.Create(new UserDisplayName(request.DisplayName), new UserEmail(request.Email), new UserPhoneNumber(""));
+            var authentication = new UserAuthentication(new UserName(request.Email));
+
+            var member = new Member(identity, authentication);
+            member.SetPassword(request.Password, _encryptionService);
+
             if (!IsValid(member))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
@@ -84,7 +90,8 @@ namespace TaskoMask.Application.Team.Members.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Member);
 
 
-            member.Update(request.DisplayName, request.Email, request.Email);
+            member.Update(UserDisplayName.Create(request.DisplayName), UserEmail.Create(request.Email), UserPhoneNumber.Create(""));
+
             if (!IsValid(member))
                 return new CommandResult(ApplicationMessages.Update_Failed);
 

@@ -11,6 +11,7 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Domain.Team.Entities.Organizations.ValueObjects;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
@@ -58,7 +59,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var organization = new Organization(name: request.Name, description: request.Description, ownerMemberId: request.OwnerMemberId);
+            var organization = new Organization(OrganizationName.Create( request.Name), OrganizationDescription.Create( request.Description), OrganizationOwnerMemberId.Create( request.OwnerMemberId));
             if (!IsValid(organization))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
@@ -87,7 +88,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            organization.Update(request.Name, request.Description);
+            organization.Update(OrganizationName.Create(request.Name), OrganizationDescription.Create(request.Description));
 
 
             if (!IsValid(organization))

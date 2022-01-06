@@ -91,7 +91,7 @@ namespace TaskoMask.Application.Team.Organizations.Queries.Handlers
             foreach (var item in organizationsDto)
             {
                 var member = await _memberRepository.GetByIdAsync(item.OwnerMemberId);
-                item.OwnerMemberDisplayName = member?.DisplayName;
+                item.OwnerMemberDisplayName = member?.Identity.DisplayName.Value;
                 item.ProjectsCount =await _projectRepository.CountByOrganizationIdAsync(item.Id);
             }
 

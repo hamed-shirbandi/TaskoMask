@@ -93,6 +93,24 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void SoftDelete()
+        {
+            base.SoftDelete();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Recycle()
+        {
+            base.Recycle();
+        }
+
 
 
         #endregion

@@ -93,6 +93,26 @@ namespace TaskoMask.Domain.Administration.Entities
         /// <summary>
         /// 
         /// </summary>
+        public override void SoftDelete()
+        {
+            base.SoftDelete();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Recycle()
+        {
+            base.Recycle();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void UpdateRoles(string[] rolesId)
         {
             RolesId = rolesId;

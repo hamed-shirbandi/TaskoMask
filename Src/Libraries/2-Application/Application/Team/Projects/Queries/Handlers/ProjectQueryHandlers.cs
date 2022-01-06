@@ -98,7 +98,7 @@ namespace TaskoMask.Application.Team.Projects.Queries.Handlers
             foreach (var item in projectsDto)
             {
                 var organization = await _organizationRepository.GetByIdAsync(item.OrganizationId);
-                item.OrganizationName = organization?.Name;
+                item.OrganizationName = organization?.Name.Value;
                 item.BoardsCount = await _boardRepository.CountByProjectIdAsync(item.Id) ;
             }
 

@@ -14,6 +14,7 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Resources;
 using System.Linq;
+using TaskoMask.Domain.Core.ValueObjects;
 
 namespace TaskoMask.Application.Administration.Operators.Services
 {
@@ -30,7 +31,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
 
         #region Ctors
 
-        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IEncryptionService encryptionService, IRoleRepository roleRepository) : base(inMemoryBus, mapper, notifications,operatorRepository, encryptionService)
+        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IEncryptionService encryptionService, IRoleRepository roleRepository) : base(inMemoryBus, mapper, notifications, operatorRepository, encryptionService)
         {
             _operatorRepository = operatorRepository;
             _encryptionService = encryptionService;
@@ -54,7 +55,12 @@ namespace TaskoMask.Application.Administration.Operators.Services
                 return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
 
 
-            var @operator = new Operator(displayName: input.DisplayName, phoneNumber: input.PhoneNumber, userName: input.UserName, email: input.Email, password: input.Password, encryptionService: _encryptionService);
+            var identity = UserIdentity.Create(new UserDisplayName(input.DisplayName), new UserEmail(input.Email), new UserPhoneNumber(input.PhoneNumber));
+            var authentication = new UserAuthentication(new UserName(input.UserName));
+           
+            var @operator = new Operator(identity, authentication);
+            
+            @operator.SetPassword(input.Password, _encryptionService);
 
             await _operatorRepository.CreateAsync(@operator);
 
@@ -77,7 +83,7 @@ namespace TaskoMask.Application.Administration.Operators.Services
             if (@operator == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
-            @operator.Update(input.DisplayName, input.Email, input.Email);
+            @operator.Update(UserDisplayName.Create(input.DisplayName), UserEmail.Create(input.Email), UserPhoneNumber.Create(input.PhoneNumber), UserName.Create(input.UserName));
 
             await _operatorRepository.UpdateAsync(@operator);
 

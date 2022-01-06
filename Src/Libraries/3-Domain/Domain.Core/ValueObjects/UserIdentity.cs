@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Core.ValueObjects
 {
@@ -49,6 +51,14 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public UserIdentity Update(UserDisplayName displayName, UserEmail email, UserPhoneNumber phoneNumber)
+        {
+            return new UserIdentity(displayName, email, phoneNumber);
+        }
+
 
 
 
@@ -69,7 +79,14 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         protected override void CheckPolicies()
         {
+            if (DisplayName == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(DisplayName)));
 
+            if (Email == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Email)));
+
+            if (PhoneNumber == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(PhoneNumber)));
         }
 
 

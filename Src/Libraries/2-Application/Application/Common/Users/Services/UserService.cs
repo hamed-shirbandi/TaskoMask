@@ -14,7 +14,7 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Common.Users.Services
 {
-    public class UserService<TEntity> : BaseService<TEntity>, IUserService where TEntity : UserAuthentication
+    public class UserService<TEntity> : BaseService<TEntity>, IUserService where TEntity : BaseUser
     {
         #region Fields
 
@@ -35,7 +35,6 @@ namespace TaskoMask.Application.Common.Users.Services
         #endregion
 
         #region Public Methods
-
 
 
 
@@ -80,7 +79,6 @@ namespace TaskoMask.Application.Common.Users.Services
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -90,7 +88,7 @@ namespace TaskoMask.Application.Common.Users.Services
             if (user == null)
                 return Result.Failure<bool>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
 
-            var isValid = user.ValidatePassword(password, _encryptionService);
+            var isValid = user.IsValidPassword(password, _encryptionService);
             if (!isValid)
                 return Result.Failure<bool>(message: ApplicationMessages.User_Login_failed);
 
@@ -108,7 +106,7 @@ namespace TaskoMask.Application.Common.Users.Services
             if (user == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
 
-            user.SetActive(isActive);
+            user.SetIsActive(isActive);
 
             await _userRepository.UpdateAsync(user);
 
@@ -127,11 +125,7 @@ namespace TaskoMask.Application.Common.Users.Services
             if (user == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
 
-            var validOldPass = await ValidateUserPasswordAsync(user.UserName, oldPassword);
-            if (validOldPass.IsSuccess == false || validOldPass.Value == false)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.User_Login_failed, DomainMetadata.User));
-
-            user.ResetPassword(newPassword, _encryptionService);
+            user.ChangePassword(oldPassword, newPassword, _encryptionService);
 
             await _userRepository.UpdateAsync(user);
 
@@ -149,7 +143,7 @@ namespace TaskoMask.Application.Common.Users.Services
             if (user == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
 
-            user.ResetPassword(newPassword, _encryptionService);
+            user.SetPassword(newPassword, _encryptionService);
 
             await _userRepository.UpdateAsync(user);
 

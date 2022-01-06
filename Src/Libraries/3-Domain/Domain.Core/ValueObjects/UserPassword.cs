@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Core.ValueObjects
@@ -19,10 +20,10 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
         #region Ctors
 
-        public UserPassword(string passwordHash, string passwordSalt)
+        public UserPassword(string password, IEncryptionService encryptionService)
         {
-            PasswordHash = passwordHash;
-            PasswordSalt = passwordSalt;
+            PasswordSalt = encryptionService.CreateSaltKey(5);
+            PasswordHash = encryptionService.CreatePasswordHash(password, PasswordSalt);
 
             CheckPolicies();
         }
@@ -36,9 +37,20 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static UserPassword Create(string passwordHash, string passwordSalt)
+        public static UserPassword Create(string password, IEncryptionService encryptionService)
         {
-            return new UserPassword(passwordHash, passwordSalt);
+            return new UserPassword(password, encryptionService);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsValidPassword(string password, IEncryptionService encryptionService)
+        {
+            var passwordHash = encryptionService.CreatePasswordHash(password, PasswordSalt);
+            return passwordHash == this.PasswordHash;
         }
 
 

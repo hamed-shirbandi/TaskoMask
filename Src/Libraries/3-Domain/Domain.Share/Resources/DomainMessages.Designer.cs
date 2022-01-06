@@ -70,11 +70,29 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Old password is wrong.
+        /// </summary>
+        public static string Incorrect_Old_Password {
+            get {
+                return ResourceManager.GetString("Incorrect_Old_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect password or username.
         /// </summary>
         public static string Incorrect_Password {
             get {
                 return ResourceManager.GetString("Incorrect_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} cannot be null.
+        /// </summary>
+        public static string Null_Reference_Error {
+            get {
+                return ResourceManager.GetString("Null_Reference_Error", resourceCulture);
             }
         }
         
@@ -102,6 +120,15 @@ namespace TaskoMask.Domain.Share.Resources {
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username and email can not be the same.
+        /// </summary>
+        public static string UserName_And_Email_Cannot_Be_The_Same {
+            get {
+                return ResourceManager.GetString("UserName_And_Email_Cannot_Be_The_Same", resourceCulture);
             }
         }
     }

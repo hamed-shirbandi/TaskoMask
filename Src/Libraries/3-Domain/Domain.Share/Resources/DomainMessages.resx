@@ -120,8 +120,14 @@
   <data name="Equal_Name_And_Description_Error" xml:space="preserve">
     <value>Description cannot be same of name</value>
   </data>
+  <data name="Incorrect_Old_Password" xml:space="preserve">
+    <value>Old password is wrong</value>
+  </data>
   <data name="Incorrect_Password" xml:space="preserve">
     <value>Incorrect password or username</value>
+  </data>
+  <data name="Null_Reference_Error" xml:space="preserve">
+    <value>{0} cannot be null</value>
   </data>
   <data name="Operation_Failed" xml:space="preserve">
     <value>Operation failed</value>
@@ -131,5 +137,8 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>{0} is required</value>
+  </data>
+  <data name="UserName_And_Email_Cannot_Be_The_Same" xml:space="preserve">
+    <value>Username and email can not be the same</value>
   </data>
 </root>

@@ -34,6 +34,24 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void SoftDelete()
+        {
+            IsDeleted = true;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void Recycle()
+        {
+            IsDeleted = false;
+        }
+
 
         #endregion
 
@@ -51,23 +69,6 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        protected virtual void Delete()
-        {
-            IsDeleted = true;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected virtual void Recycle()
-        {
-            IsDeleted = false;
-        }
 
         #endregion
 

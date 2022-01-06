@@ -37,7 +37,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<TEntity> GetByUserNameAsync(string userName)
         {
-            return await _users.Find(e => e.UserName == userName).FirstOrDefaultAsync();
+            return await _users.Find(e => e.Authentication.UserName.Value == userName).FirstOrDefaultAsync();
         }
 
 
@@ -47,7 +47,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<TEntity> GetByPhoneNumberAsync(string phoneNumber)
         {
-            return await _users.Find(e => e.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
+            return await _users.Find(e => e.Identity.PhoneNumber.Value == phoneNumber).FirstOrDefaultAsync();
         }
 
 

@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Team.Entities.Members;
@@ -35,7 +36,13 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                 if (!_operators.AsQueryable().Any())
                 {
-                    var @operator = new Operator(_configuration["SuperUser:DisplayName"], "", _configuration["SuperUser:Email"], _configuration["SuperUser:Email"], _configuration["SuperUser:Password"], _encryptionService);
+                    var identity = UserIdentity.Create(new UserDisplayName(_configuration["SuperUser:DisplayName"]), new UserEmail(_configuration["SuperUser:Email"]), new UserPhoneNumber(_configuration["SuperUser:PhoneNumber"]));
+                    var authentication = new UserAuthentication(new UserName(_configuration["SuperUser:Email"]));
+
+                    var @operator = new Operator(identity, authentication);
+                    @operator.SetPassword(_configuration["SuperUser:Password"], _encryptionService);
+
+
                     _operators.InsertOne(@operator);
                 }
 
@@ -108,14 +115,15 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                     for (int i = 1; i <= 10; i++)
                     {
                         var rolesId = _roles.Find(p => true).ToList().Select(p => p.Id).ToArray();
-                        var @operator = new Operator(
-                            $"Operator Name {i}",
-                            $"PhoneNumber {i}",
-                            $"Email {i}",
-                            $"UserName {i}",
-                            $"Password {i}",
-                            _encryptionService
-                            );
+                        var identity = UserIdentity.Create(
+                            new UserDisplayName($"Operator Name {i}"),
+                            new UserEmail($"Email{i}@example.com"),
+                            new UserPhoneNumber(""));
+                        var authentication = new UserAuthentication(new UserName($"Email{i}@example.com"));
+
+                        var @operator = new Operator(identity, authentication);
+                        @operator.SetPassword("123456789", _encryptionService);
+
                         @operator.UpdateRoles(rolesId.Take(i).ToArray());
 
                         _operators.InsertOne(@operator);
@@ -127,12 +135,14 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                     for (int i = 1; i <= 3; i++)
                     {
-                        var member = new Member(
-                            $"Member Name {i}",
-                            $"Email {i}",
-                            $"Password {i}",
-                            _encryptionService
-                            );
+                        var identity = UserIdentity.Create(
+                             new UserDisplayName($"Operator Name {i}"),
+                             new UserEmail($"Email{i}@example.com"),
+                             new UserPhoneNumber(""));
+                        var authentication = new UserAuthentication(new UserName($"Email{i}@example.com"));
+
+                        var member = new Member(identity, authentication);
+                        member.SetPassword("123456789", _encryptionService);
 
                         _members.InsertOne(member);
 

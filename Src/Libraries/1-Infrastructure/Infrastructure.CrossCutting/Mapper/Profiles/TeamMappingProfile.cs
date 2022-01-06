@@ -3,6 +3,7 @@ using TaskoMask.Application.Share.Dtos.Team.Members;
 using TaskoMask.Application.Share.Dtos.Team.Organizations;
 using TaskoMask.Application.Share.Dtos.Team.Projects;
 using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.Team.Entities.Members;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {

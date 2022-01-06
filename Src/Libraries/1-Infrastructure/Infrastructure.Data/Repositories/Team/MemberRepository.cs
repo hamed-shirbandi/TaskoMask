@@ -37,7 +37,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
 
             if (!string.IsNullOrEmpty(term))
             {
-                queryable = queryable.Where(p => p.DisplayName.Contains(term) || p.Email.Contains(term) || p.PhoneNumber.Contains(term));
+                queryable = queryable.Where(p => p.Identity.DisplayName.Value.Contains(term) || p.Identity.Email.Value.Contains(term) || p.Identity.PhoneNumber.Value.Contains(term));
             }
 
             #endregion

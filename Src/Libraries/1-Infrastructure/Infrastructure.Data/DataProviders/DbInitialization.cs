@@ -123,10 +123,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             #region Member Indexs
 
             dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
-            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
-            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber", Unique = false }));
-            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Authentication.UserName.Value), new CreateIndexOptions() { Name = "UserName", Unique = true }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Identity.Email.Value), new CreateIndexOptions() { Name = "Email" }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Identity.PhoneNumber.Value), new CreateIndexOptions() { Name = "PhoneNumber", Unique = false }));
+            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Identity.DisplayName.Value), new CreateIndexOptions() { Name = "DisplayName" }));
 
 
             #endregion
@@ -134,10 +134,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             #region Operator Indexs
 
             dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.PhoneNumber), new CreateIndexOptions() { Name = "PhoneNumber", Unique = false }));
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Authentication.UserName.Value), new CreateIndexOptions() { Name = "UserName", Unique = true }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Identity.Email.Value), new CreateIndexOptions() { Name = "Email" }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Identity.PhoneNumber.Value), new CreateIndexOptions() { Name = "PhoneNumber", Unique = false }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Identity.DisplayName.Value), new CreateIndexOptions() { Name = "DisplayName" }));
 
 
             #endregion

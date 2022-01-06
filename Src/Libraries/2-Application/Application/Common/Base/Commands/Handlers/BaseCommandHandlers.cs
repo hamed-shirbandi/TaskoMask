@@ -16,7 +16,7 @@ namespace TaskoMask.Application.Common.Base.Commands.Handlers
 {
     public class BaseCommandHandlers<TEntity> : BaseCommandHandler,
         IRequestHandler<RecycleCommand<TEntity>, CommandResult>,
-        IRequestHandler<DeleteCommand<TEntity>, CommandResult> where TEntity : BaseEntity
+        IRequestHandler<DeleteCommand<TEntity>, CommandResult> where TEntity : BaseAggregate
 
     {
         #region Fields
@@ -53,7 +53,7 @@ namespace TaskoMask.Application.Common.Base.Commands.Handlers
             if (entity == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Entity);
 
-            entity.Delete();
+            entity.SoftDelete();
 
             if (!IsValid(entity))
                 return new CommandResult(ApplicationMessages.Delete_Failed);

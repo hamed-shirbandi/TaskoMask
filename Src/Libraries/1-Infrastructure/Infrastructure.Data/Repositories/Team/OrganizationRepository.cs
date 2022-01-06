@@ -37,7 +37,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// </summary>
         public async Task<bool> ExistByNameAsync(string id, string name)
         {
-            var organization = await _organizations.Find(e => e.Name == name).FirstOrDefaultAsync();
+            var organization = await _organizations.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
             return organization != null && organization.Id != id;
         }
 
@@ -48,7 +48,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// </summary>
         public async Task<IEnumerable<Organization>> GetListByOwnerMemberIdAsync(string ownerMemberId)
         {
-            return await _organizations.AsQueryable().Where(o => o.OwnerMemberId == ownerMemberId).ToListAsync();
+            return await _organizations.AsQueryable().Where(o => o.OwnerMemberId.Value == ownerMemberId).ToListAsync();
         }
 
 
@@ -58,7 +58,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// </summary>
         public async Task<long> CountByOwnerMemberIdAsync(string ownerMemberId)
         {
-            return await _organizations.CountDocumentsAsync(o => o.OwnerMemberId == ownerMemberId);
+            return await _organizations.CountDocumentsAsync(o => o.OwnerMemberId.Value == ownerMemberId);
         }
 
 
@@ -74,7 +74,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
 
             if (!string.IsNullOrEmpty(term))
             {
-                queryable = queryable.Where(p => p.Name.Contains(term) || p.Description.Contains(term));
+                queryable = queryable.Where(p => p.Name.Value.Contains(term) || p.Description.Value.Contains(term));
             }
 
             #endregion

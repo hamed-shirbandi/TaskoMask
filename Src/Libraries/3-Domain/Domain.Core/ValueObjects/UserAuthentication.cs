@@ -18,14 +18,15 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
         #region Ctors
 
-        public UserAuthentication(UserName userName)
-        {
-            UserName = userName;
-            IsActive = UserIsActive.Create(true);
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public UserAuthentication()
+        {
             CheckPolicies();
         }
-
 
 
         #endregion
@@ -43,11 +44,30 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
 
         /// <summary>
+        /// Factory method for creating new object
+        /// </summary>
+        public static UserAuthentication Create(UserName userName)
+        {
+            return new UserAuthentication
+            {
+                IsActive = UserIsActive.Create(true),
+                UserName = userName,
+            };
+        }
+
+
+
+        /// <summary>
         /// 
         /// </summary>
         public UserAuthentication UpdateUserName(UserName userName)
         {
-            return new UserAuthentication(userName);
+            return new UserAuthentication
+            {
+                IsActive = IsActive,
+                Password = Password,
+                UserName = userName,
+            };
         }
 
 
@@ -55,22 +75,27 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// <summary>
         /// 
         /// </summary>
-        public void SetPassword(string password, IEncryptionService encryptionService)
+        public UserAuthentication SetPassword(string password, IEncryptionService encryptionService)
         {
-            Password = UserPassword.Create(password, encryptionService);
+            return new UserAuthentication
+            {
+                IsActive = IsActive,
+                Password = UserPassword.Create(password, encryptionService),
+                UserName = UserName,
+            };
         }
 
 
         /// <summary>
         /// 
         /// </summary>
-        public void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
+        public UserAuthentication ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
         {
             var isvalidOldPassword = Password.IsValidPassword(oldPassword, encryptionService);
             if (!isvalidOldPassword)
                 throw new DomainException(DomainMessages.Incorrect_Old_Password);
 
-            SetPassword(newPassword, encryptionService);
+            return SetPassword(newPassword, encryptionService);
         }
 
 
@@ -80,6 +105,9 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         public bool IsValidPassword(string password, IEncryptionService encryptionService)
         {
+            if (Password == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error,nameof(Password)));
+
             return Password.IsValidPassword(password, encryptionService);
         }
 
@@ -88,9 +116,14 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// <summary>
         /// 
         /// </summary>
-        public void SetIsActive(bool isActive)
+        public UserAuthentication SetIsActive(bool isActive)
         {
-            IsActive = UserIsActive.Create(isActive);
+            return new UserAuthentication
+            {
+                IsActive = UserIsActive.Create(isActive),
+                Password = Password,
+                UserName = UserName,
+            };
         }
 
 

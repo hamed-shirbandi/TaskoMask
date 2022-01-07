@@ -22,6 +22,8 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
         public UserPassword(string password, IEncryptionService encryptionService)
         {
+            CheckPasswordPolicies(password);
+
             PasswordSalt = encryptionService.CreateSaltKey(5);
             PasswordHash = encryptionService.CreatePasswordHash(password, PasswordSalt);
 
@@ -39,6 +41,7 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         public static UserPassword Create(string password, IEncryptionService encryptionService)
         {
+            //check some policies here for Create
             return new UserPassword(password, encryptionService);
         }
 
@@ -77,6 +80,21 @@ namespace TaskoMask.Domain.Core.ValueObjects
         {
             yield return PasswordHash;
             yield return PasswordSalt;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private  void CheckPasswordPolicies(string password)
+        {
+            if (string.IsNullOrEmpty(password))
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(password)));
+
+            if (password.Length<4)
+                throw new DomainException(string.Format(DomainMessages.Min_Length_Error, nameof(password)));
+
         }
 
 

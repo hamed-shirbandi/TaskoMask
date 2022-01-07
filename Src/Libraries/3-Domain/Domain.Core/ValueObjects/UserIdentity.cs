@@ -54,17 +54,6 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// <summary>
         /// 
         /// </summary>
-        public UserIdentity Update(UserDisplayName displayName, UserEmail email, UserPhoneNumber phoneNumber)
-        {
-            return new UserIdentity(displayName, email, phoneNumber);
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return DisplayName;

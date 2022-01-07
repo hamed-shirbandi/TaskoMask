@@ -12,6 +12,7 @@ using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Team.Entities.Organizations.ValueObjects;
+using TaskoMask.Domain.Team.Entities.Organizations;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
@@ -50,8 +51,6 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             if (!existOwnerMemberId)
                 throw new ApplicationException(string.Format(ApplicationMessages.Invalid_ForeignKey, nameof(request.OwnerMemberId)));
 
-
-
             var exist = await _organizationRepository.ExistByNameAsync("", request.Name);
             if (exist)
             {
@@ -59,7 +58,12 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var organization = Organization.Create(OrganizationName.Create(request.Name), OrganizationDescription.Create(request.Description), OrganizationOwnerMemberId.Create(request.OwnerMemberId));
+            var organization = OrganizationBuilder.Init()
+                .WithName(request.Name)
+                .WithDescription(request.Description)
+                .WithOwnerMemberId(request.OwnerMemberId)
+                .Build();
+
             if (!IsValid(organization))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 
@@ -88,7 +92,10 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            organization.Update(OrganizationName.Create(request.Name), OrganizationDescription.Create(request.Description));
+            organization.Update(
+                OrganizationName.Create(request.Name),
+                OrganizationDescription.Create(request.Description)
+                );
 
 
             if (!IsValid(organization))

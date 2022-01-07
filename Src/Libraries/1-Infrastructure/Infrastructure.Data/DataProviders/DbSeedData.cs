@@ -10,6 +10,7 @@ using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Team.Entities.Members;
+using TaskoMask.Domain.Team.Entities.Organizations;
 using TaskoMask.Domain.Team.Entities.Organizations.ValueObjects;
 using TaskoMask.Domain.Workspace.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
@@ -162,10 +163,11 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                         for (int j = 1; j <= 3; j++)
                         {
-                            var organization = Organization.Create(
-                                OrganizationName.Create($"Organization Name {j}"),
-                                OrganizationDescription.Create($"Description {j}"),
-                                OrganizationOwnerMemberId.Create(member.Id));
+                            var organization = OrganizationBuilder.Init()
+                                .WithName($"Organization Name {j}")
+                                .WithDescription($"Description {j}")
+                                .WithOwnerMemberId(member.Id)
+                                .Build();
 
                             _organizations.InsertOne(organization);
 

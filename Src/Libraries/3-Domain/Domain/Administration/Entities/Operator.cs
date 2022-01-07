@@ -77,7 +77,6 @@ namespace TaskoMask.Domain.Administration.Entities
         public override bool IsValidPassword(string password, IEncryptionService encryptionService)
         {
             return base.IsValidPassword(password, encryptionService);
-            CheckInvariants();
         }
 
 
@@ -136,6 +135,9 @@ namespace TaskoMask.Domain.Administration.Entities
         {
             if (Identity.Email.Value.ToLower().Equals(Authentication.UserName.Value.ToLower()))
                 throw new DomainException(DomainMessages.UserName_And_Email_Cannot_Be_The_Same);
+
+            if (string.IsNullOrEmpty(Identity.PhoneNumber.Value))
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(UserPhoneNumber)));
         }
 
 

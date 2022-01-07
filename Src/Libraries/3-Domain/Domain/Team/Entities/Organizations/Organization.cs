@@ -1,5 +1,4 @@
-﻿using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Team.Entities.Organizations.ValueObjects;
 using TaskoMask.Domain.Team.Members.Events;

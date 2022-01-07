@@ -54,8 +54,8 @@ namespace TaskoMask.Application.Team.Members.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var identity = UserIdentity.Create(new UserDisplayName(request.DisplayName), new UserEmail(request.Email), new UserPhoneNumber(""));
-            var authentication = new UserAuthentication(new UserName(request.Email));
+            var identity = UserIdentity.Create(UserDisplayName.Create(request.DisplayName), UserEmail.Create(request.Email), UserPhoneNumber.Create(""));
+            var authentication = UserAuthentication.Create(UserName.Create(request.Email));
 
             var member = new Member(identity, authentication);
             member.SetPassword(request.Password, _encryptionService);

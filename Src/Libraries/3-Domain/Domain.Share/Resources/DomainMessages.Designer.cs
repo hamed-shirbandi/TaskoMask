@@ -88,6 +88,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PhoneNumber is invalid.
+        /// </summary>
+        public static string Invalid_PhoneNumber {
+            get {
+                return ResourceManager.GetString("Invalid_PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} length must be greater than {1} characters.
         /// </summary>
         public static string Min_Length_Error {

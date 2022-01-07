@@ -55,8 +55,8 @@ namespace TaskoMask.Application.Administration.Operators.Services
                 return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
 
 
-            var identity = UserIdentity.Create(new UserDisplayName(input.DisplayName), new UserEmail(input.Email), new UserPhoneNumber(input.PhoneNumber));
-            var authentication = new UserAuthentication(new UserName(input.UserName));
+            var identity = UserIdentity.Create(UserDisplayName.Create(input.DisplayName), UserEmail.Create(input.Email), UserPhoneNumber.Create(input.PhoneNumber));
+            var authentication =  UserAuthentication.Create(UserName.Create(input.UserName));
            
             var @operator = new Operator(identity, authentication);
             

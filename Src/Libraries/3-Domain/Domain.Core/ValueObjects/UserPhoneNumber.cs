@@ -46,7 +46,7 @@ namespace TaskoMask.Domain.Core.ValueObjects
         {
             if (!string.IsNullOrEmpty(Value))
                 if (Value.Length != 11)
-                    throw new DomainException(string.Format(DomainMessages.Required, nameof(UserPhoneNumber)));
+                    throw new DomainException(string.Format(DomainMessages.Invalid_PhoneNumber, nameof(UserPhoneNumber)));
         }
 
 

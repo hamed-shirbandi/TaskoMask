@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using System;
 using System.Linq;
 using TaskoMask.Domain.Administration.Entities;
+using TaskoMask.Domain.Core.Builders;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Enums;
@@ -37,12 +38,17 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                 if (!_operators.AsQueryable().Any())
                 {
-                    var identity = UserIdentity.Create(UserDisplayName.Create(_configuration["SuperUser:DisplayName"]), UserEmail.Create(_configuration["SuperUser:Email"]), UserPhoneNumber.Create(_configuration["SuperUser:PhoneNumber"]));
-                    var authentication = UserAuthentication.Create(UserName.Create(_configuration["SuperUser:Email"]));
+                    var userIdentity = UserIdentityBuilder.Init()
+                        .WithDisplayName(_configuration["SuperUser:DisplayName"])
+                        .WithEmail(_configuration["SuperUser:Email"])
+                        .WithPhoneNumber(_configuration["SuperUser:PhoneNumber"])
+                        .Build();
 
-                    var @operator = new Operator(identity, authentication);
+                    var userAuthentication = UserAuthentication.Create(UserName.Create(_configuration["SuperUser:Email"]));
+
+                    var @operator = Operator.Create(userIdentity, userAuthentication);
+
                     @operator.SetPassword(_configuration["SuperUser:Password"], _encryptionService);
-
 
                     _operators.InsertOne(@operator);
                 }
@@ -116,13 +122,16 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                     for (int i = 1; i <= 10; i++)
                     {
                         var rolesId = _roles.Find(p => true).ToList().Select(p => p.Id).ToArray();
-                        var identity = UserIdentity.Create(
-                             UserDisplayName.Create($"Operator Name {i}"),
-                             UserEmail.Create($"Email{i}@example.com"),
-                             UserPhoneNumber.Create($"093000000{(i - 1)}"));
-                        var authentication = UserAuthentication.Create(UserName.Create($"Email{i}@example.com"));
+                        var userIdentity = UserIdentityBuilder.Init()
+                            .WithDisplayName($"Operator Name {i}")
+                            .WithEmail($"Email{i}@example.com")
+                            .WithPhoneNumber($"093000000{(i - 1)}")
+                            .Build();
 
-                        var @operator = new Operator(identity, authentication);
+                        var userAuthentication = UserAuthentication.Create(UserName.Create($"Email{i}@example.com"));
+
+                        var @operator = Operator.Create(userIdentity, userAuthentication);
+
                         @operator.SetPassword("123456789", _encryptionService);
 
                         @operator.UpdateRoles(rolesId.Take(i).ToArray());
@@ -136,13 +145,15 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                     for (int i = 1; i <= 3; i++)
                     {
-                        var identity = UserIdentity.Create(
-                              UserDisplayName.Create($"Operator Name {i}"),
-                              UserEmail.Create($"Email{i}@example.com"),
-                              UserPhoneNumber.Create(""));
-                        var authentication = UserAuthentication.Create(UserName.Create($"Email{i}@example.com"));
+                        var userIdentity = UserIdentityBuilder.Init()
+                            .WithDisplayName($"Member Name {i}")
+                            .WithEmail($"Email{i}@taskomask.ir")
+                            .WithPhoneNumber("")
+                            .Build();
 
-                        var member = new Member(identity, authentication);
+                        var userAuthentication = UserAuthentication.Create(UserName.Create($"Email{i}@taskomask.ir"));
+
+                        var member = Member.Create(userIdentity, userAuthentication);
                         member.SetPassword("123456789", _encryptionService);
 
                         _members.InsertOne(member);
@@ -151,7 +162,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                         for (int j = 1; j <= 3; j++)
                         {
-                            var organization = new Organization(
+                            var organization = Organization.Create(
                                 OrganizationName.Create($"Organization Name {j}"),
                                 OrganizationDescription.Create($"Description {j}"),
                                 OrganizationOwnerMemberId.Create(member.Id));

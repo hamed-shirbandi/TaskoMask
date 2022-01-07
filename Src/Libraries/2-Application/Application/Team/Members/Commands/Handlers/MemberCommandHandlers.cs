@@ -13,6 +13,7 @@ using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Team.Entities.Members;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Core.ValueObjects;
+using TaskoMask.Domain.Core.Builders;
 
 namespace TaskoMask.Application.Team.Members.Commands.Handlers
 {
@@ -54,10 +55,16 @@ namespace TaskoMask.Application.Team.Members.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var identity = UserIdentity.Create(UserDisplayName.Create(request.DisplayName), UserEmail.Create(request.Email), UserPhoneNumber.Create(""));
-            var authentication = UserAuthentication.Create(UserName.Create(request.Email));
+            var userIdentity = UserIdentityBuilder.Init()
+                .WithDisplayName(request.DisplayName)
+                .WithEmail(request.Email)
+                .WithPhoneNumber("")
+                .Build();
 
-            var member = new Member(identity, authentication);
+            var userAuthentication = UserAuthentication.Create(UserName.Create(request.Email));
+
+            var member = Member.Create(userIdentity, userAuthentication);
+
             member.SetPassword(request.Password, _encryptionService);
 
             if (!IsValid(member))
@@ -90,7 +97,10 @@ namespace TaskoMask.Application.Team.Members.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Member);
 
 
-            member.Update(UserDisplayName.Create(request.DisplayName), UserEmail.Create(request.Email), UserPhoneNumber.Create(""));
+            member.Update(
+                UserDisplayName.Create(request.DisplayName),
+                UserEmail.Create(request.Email),
+                UserPhoneNumber.Create(request.PhoneNumber));
 
             if (!IsValid(member))
                 return new CommandResult(ApplicationMessages.Update_Failed);

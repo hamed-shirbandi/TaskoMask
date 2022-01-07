@@ -19,7 +19,7 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
         #region Ctors
 
-        public Member(UserIdentity identity, UserAuthentication authentication)
+        private Member(UserIdentity identity, UserAuthentication authentication)
             : base(identity, authentication)
         {
             AddDomainEvent(new MemberCreatedEvent(Id, identity.DisplayName.Value, identity.Email.Value, authentication.UserName.Value));
@@ -35,6 +35,16 @@ namespace TaskoMask.Domain.Team.Entities.Members
         #endregion
 
         #region Public Methods
+
+
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        public static Member Create(UserIdentity identity, UserAuthentication authentication)
+        {
+            return new Member(identity, authentication);
+        }
 
 
 

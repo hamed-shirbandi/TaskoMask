@@ -17,6 +17,9 @@ namespace TaskoMask.Application.Share.Dtos.Team.Members
         public string Email { get; set; }
 
 
+        [Display(Name = nameof(ApplicationMetadata.PhoneNumber), ResourceType = typeof(ApplicationMetadata))]
+        public string PhoneNumber { get; }
+
         [Display(Name = nameof(ApplicationMetadata.Password), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.Required), ErrorMessageResourceType = typeof(ApplicationMetadata))]
         [DataType(DataType.Password)]

@@ -53,7 +53,7 @@ namespace TaskoMask.Application.Team.Members.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(UserUpsertDto input)
         {
-            var cmd = new UpdateMemberCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
+            var cmd = new UpdateMemberCommand(id: input.Id, displayName: input.DisplayName, email: input.Email, phoneNumber: input.PhoneNumber);
             return await SendCommandAsync(cmd);
         }
 

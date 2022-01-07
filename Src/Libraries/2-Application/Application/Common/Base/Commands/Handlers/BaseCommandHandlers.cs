@@ -55,9 +55,6 @@ namespace TaskoMask.Application.Common.Base.Commands.Handlers
 
             entity.SoftDelete();
 
-            if (!IsValid(entity))
-                return new CommandResult(ApplicationMessages.Delete_Failed);
-
             await _baseRepository.UpdateAsync(entity);
             return new CommandResult(ApplicationMessages.Delete_Success, entity.Id);
         }
@@ -74,9 +71,6 @@ namespace TaskoMask.Application.Common.Base.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Entity);
 
             entity.Recycle();
-
-            if (!IsValid(entity))
-                return new CommandResult(ApplicationMessages.Update_Failed);
 
             await _baseRepository.UpdateAsync(entity);
             return new CommandResult(ApplicationMessages.Update_Success, entity.Id);

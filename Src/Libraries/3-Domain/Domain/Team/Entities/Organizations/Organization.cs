@@ -44,9 +44,9 @@ namespace TaskoMask.Domain.Team.Entities
         /// </summary>
         public static Organization Create(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId)
         {
-            return new Organization(name,description,ownerMemberId);
+            return new Organization(name, description, ownerMemberId);
         }
-  
+
 
 
         /// <summary>
@@ -83,7 +83,8 @@ namespace TaskoMask.Domain.Team.Entities
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerMemberId)));
 
             if (Name.Value.Equals(Description.Value))
-                AddValidationError(DomainMessages.Equal_Name_And_Description_Error);
+                throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
+
         }
 
         #endregion

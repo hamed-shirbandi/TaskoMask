@@ -67,9 +67,6 @@ namespace TaskoMask.Application.Team.Members.Commands.Handlers
 
             member.SetPassword(request.Password, _encryptionService);
 
-            if (!IsValid(member))
-                return new CommandResult(ApplicationMessages.Create_Failed);
-
             await PublishDomainEventsAsync(member.DomainEvents);
 
             await _memberRepository.CreateAsync(member);
@@ -101,9 +98,6 @@ namespace TaskoMask.Application.Team.Members.Commands.Handlers
                 UserDisplayName.Create(request.DisplayName),
                 UserEmail.Create(request.Email),
                 UserPhoneNumber.Create(request.PhoneNumber));
-
-            if (!IsValid(member))
-                return new CommandResult(ApplicationMessages.Update_Failed);
 
             await _memberRepository.UpdateAsync(member);
 

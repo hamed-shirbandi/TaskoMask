@@ -5,8 +5,6 @@ using TaskoMask.Application.Workspace.Tasks.Commands.Models;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
-
-
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
@@ -67,10 +65,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (project == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
-
             var task = new Domain.Workspace.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: card.BoardId, projectId: project.Id, organizationId: project.OrganizationId);
-            if (!IsValid(task))
-                return new CommandResult(ApplicationMessages.Create_Failed);
 
             await _taskRepository.CreateAsync(task);
             return new CommandResult(ApplicationMessages.Create_Success, task.Id);
@@ -96,9 +91,6 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             }
 
             task.Update(request.Title, request.Description);
-            if (!IsValid(task))
-                return new CommandResult(ApplicationMessages.Update_Failed);
-
 
             await _taskRepository.UpdateAsync(task);
             return new CommandResult(ApplicationMessages.Update_Success, task.Id);

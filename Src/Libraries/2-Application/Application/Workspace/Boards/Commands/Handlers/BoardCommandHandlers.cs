@@ -62,9 +62,6 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
 
 
             var board = new Board(name: request.Name, description: request.Description, projectId: request.ProjectId, organizationId: project.OrganizationId);
-            if (!IsValid(board))
-                return new CommandResult(ApplicationMessages.Create_Failed);
-
 
             await _boardRepository.CreateAsync(board);
             return new CommandResult(ApplicationMessages.Create_Success, board.Id);
@@ -95,10 +92,6 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
 
 
             board.Update(request.Name, request.Description, request.ProjectId, project.OrganizationId);
-
-            if (!IsValid(board))
-                return new CommandResult(ApplicationMessages.Update_Failed);
-
 
             await _boardRepository.UpdateAsync(board);
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);

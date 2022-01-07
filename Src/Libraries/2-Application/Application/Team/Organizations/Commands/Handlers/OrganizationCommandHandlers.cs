@@ -64,9 +64,6 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 .WithOwnerMemberId(request.OwnerMemberId)
                 .Build();
 
-            if (!IsValid(organization))
-                return new CommandResult(ApplicationMessages.Create_Failed);
-
             await _organizationRepository.CreateAsync(organization);
 
             return new CommandResult(ApplicationMessages.Create_Success, organization.Id);
@@ -96,10 +93,6 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 OrganizationName.Create(request.Name),
                 OrganizationDescription.Create(request.Description)
                 );
-
-
-            if (!IsValid(organization))
-                return new CommandResult(ApplicationMessages.Update_Failed);
 
 
             await _organizationRepository.UpdateAsync(organization);

@@ -15,7 +15,6 @@ namespace TaskoMask.Domain.Core.Models
     {
         #region Fields
 
-        private List<DomainNotification> validationErrors;
         private List<IDomainEvent> domainEvents;
 
         #endregion
@@ -24,7 +23,6 @@ namespace TaskoMask.Domain.Core.Models
 
         public BaseAggregate():base()
         {
-            validationErrors = new List<DomainNotification>();
         }
 
 
@@ -33,8 +31,6 @@ namespace TaskoMask.Domain.Core.Models
         #region Properties
 
 
-        [BsonIgnore]
-        public IReadOnlyCollection<DomainNotification> ValidationErrors => validationErrors ?? new List<DomainNotification>();
         [BsonIgnore]
         public IReadOnlyCollection<IDomainEvent> DomainEvents => domainEvents?.AsReadOnly();
 
@@ -60,16 +56,6 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        protected void AddValidationError(string errorMessage)
-        {
-            validationErrors ??= new List<DomainNotification>();
-
-            validationErrors.Add(new DomainNotification(key: this.GetType().Name, value: errorMessage));
-        }
-
 
 
         /// <summary>
@@ -80,12 +66,8 @@ namespace TaskoMask.Domain.Core.Models
 
             CheckInvariants();
 
-            if (IsStateValid())
-            {
-                domainEvents = domainEvents ?? new List<IDomainEvent>();
-                this.domainEvents.Add(domainEvent);
-            }
-
+            domainEvents = domainEvents ?? new List<IDomainEvent>();
+            this.domainEvents.Add(domainEvent);
         }
 
 
@@ -101,18 +83,6 @@ namespace TaskoMask.Domain.Core.Models
         #endregion
 
         #region Private Methods
-
-
-
-
-        /// <summary>
-        /// Check if there is not any validation error made by CheckInvariants and CheckPolicies
-        /// </summary>
-        private bool IsStateValid()
-        {
-            return validationErrors.Count == 0;
-        }
-
 
 
         #endregion

@@ -47,22 +47,6 @@ namespace TaskoMask.Application.Core.Commands
 
 
 
-
-
-        /// <summary>
-        /// add domain validation errors to notifications
-        /// </summary>
-        protected bool IsValid(BaseAggregate entity)
-        {
-            if (!entity.ValidationErrors.Any())
-                return true;
-
-            _notifications.AddRange(entity.ValidationErrors.ToList());
-            return false;
-        }
-
-
-
         /// <summary>
         /// publish domain events
         /// </summary>

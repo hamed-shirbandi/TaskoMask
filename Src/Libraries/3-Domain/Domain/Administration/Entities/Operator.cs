@@ -56,6 +56,7 @@ namespace TaskoMask.Domain.Administration.Entities
         public override void SetPassword(string password, IEncryptionService encryptionService)
         {
             base.SetPassword(password, encryptionService);
+            CheckInvariants();
         }
 
 
@@ -65,6 +66,7 @@ namespace TaskoMask.Domain.Administration.Entities
         public override void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
         {
             base.ChangePassword(oldPassword, newPassword, encryptionService);
+            CheckInvariants();
         }
         
 
@@ -75,6 +77,7 @@ namespace TaskoMask.Domain.Administration.Entities
         public override bool IsValidPassword(string password, IEncryptionService encryptionService)
         {
             return base.IsValidPassword(password, encryptionService);
+            CheckInvariants();
         }
 
 
@@ -86,6 +89,7 @@ namespace TaskoMask.Domain.Administration.Entities
         public override void SetIsActive(bool isActive)
         {
             base.SetIsActive(isActive);
+            CheckInvariants();
         }
 
 
@@ -96,6 +100,7 @@ namespace TaskoMask.Domain.Administration.Entities
         public override void SoftDelete()
         {
             base.SoftDelete();
+            CheckInvariants();
         }
 
 
@@ -106,6 +111,7 @@ namespace TaskoMask.Domain.Administration.Entities
         public override void Recycle()
         {
             base.Recycle();
+            CheckInvariants();
         }
 
 
@@ -117,6 +123,7 @@ namespace TaskoMask.Domain.Administration.Entities
         {
             RolesId = rolesId;
             base.Update();
+            CheckInvariants();
         }
 
 

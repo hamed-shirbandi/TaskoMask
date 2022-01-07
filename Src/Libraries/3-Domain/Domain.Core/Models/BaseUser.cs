@@ -47,7 +47,8 @@ namespace TaskoMask.Domain.Core.Models
         /// </summary>
         public virtual void SetPassword(string password, IEncryptionService encryptionService)
         {
-            Authentication.SetPassword(password, encryptionService);
+            Authentication= Authentication.SetPassword(password, encryptionService);
+            CheckPolicies();
         }
 
 
@@ -56,7 +57,8 @@ namespace TaskoMask.Domain.Core.Models
         /// </summary>
         public virtual void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
         {
-            Authentication.ChangePassword(oldPassword, newPassword, encryptionService);
+            Authentication = Authentication.ChangePassword(oldPassword, newPassword, encryptionService);
+            CheckPolicies();
         }
 
 
@@ -66,7 +68,8 @@ namespace TaskoMask.Domain.Core.Models
         /// </summary>
         public virtual void SetIsActive(bool isActive)
         {
-             Authentication.SetIsActive(isActive);
+            Authentication = Authentication.SetIsActive(isActive);
+            CheckPolicies();
         }
 
         #endregion
@@ -79,8 +82,9 @@ namespace TaskoMask.Domain.Core.Models
         /// 
         /// </summary>
         protected void UpdateIdentity(UserDisplayName displayName, UserEmail email, UserPhoneNumber phoneNumber)
-        {
-            Identity = Identity.Update(displayName, email, phoneNumber);
+        { 
+            Identity = UserIdentity.Create(displayName, email, phoneNumber);
+            CheckPolicies();
         }
 
 
@@ -92,6 +96,7 @@ namespace TaskoMask.Domain.Core.Models
         protected void UpdateAuthenticationUserName(UserName userName)
         {
             Authentication = Authentication.UpdateUserName(userName);
+            CheckPolicies();
         }
 
 

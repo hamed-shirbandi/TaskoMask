@@ -39,7 +39,7 @@ namespace TaskoMask.Domain.Team.Entities.Members
 
 
         ///// <summary>
-        ///// 
+        /////  
         ///// </summary>
         public void Update(UserDisplayName displayName, UserEmail email, UserPhoneNumber phoneNumber)
         {

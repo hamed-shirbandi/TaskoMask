@@ -14,7 +14,7 @@ namespace TaskoMask.Domain.Team.Entities
 
         #region Ctors
 
-        public Organization(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId)
+        private Organization(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId)
         {
             Name = name;
             Description = description;
@@ -36,7 +36,17 @@ namespace TaskoMask.Domain.Team.Entities
 
         #region Public Methods
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Organization Create(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId)
+        {
+            return new Organization(name,description,ownerMemberId);
+        }
   
+
 
         /// <summary>
         /// 

@@ -59,7 +59,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var organization = new Organization(OrganizationName.Create(request.Name), OrganizationDescription.Create(request.Description), OrganizationOwnerMemberId.Create(request.OwnerMemberId));
+            var organization = Organization.Create(OrganizationName.Create(request.Name), OrganizationDescription.Create(request.Description), OrganizationOwnerMemberId.Create(request.OwnerMemberId));
             if (!IsValid(organization))
                 return new CommandResult(ApplicationMessages.Create_Failed);
 

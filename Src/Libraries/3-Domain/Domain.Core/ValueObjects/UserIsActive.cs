@@ -21,7 +21,7 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
         #region Ctors
 
-        public UserIsActive(bool value)
+        private UserIsActive(bool value)
         {
             Value = value;
 

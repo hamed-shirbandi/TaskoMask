@@ -92,7 +92,8 @@ namespace TaskoMask.Domain.Core.Models
 
         /// <summary>
         /// Check invariants for each entity
-        /// Invariants are kind of validation that made the entity in wrang state
+        /// Invariants are kind of validation that made the entity in true state
+        /// Should be Called in the end of process for the entity
         /// </summary>
         protected abstract void CheckInvariants();
 

@@ -21,6 +21,7 @@ namespace TaskoMask.Domain.Administration.Entities
         private Operator(UserIdentity identity, UserAuthentication authentication)
             : base(identity, authentication)
         {
+            CheckInvariants();
         }
 
 
@@ -142,15 +143,24 @@ namespace TaskoMask.Domain.Administration.Entities
 
         #region Private Methods
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void CheckInvariants()
         {
+            if (Authentication == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Authentication)));
+
+            if (Identity == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Identity)));
+
             if (Identity.Email.Value.ToLower().Equals(Authentication.UserName.Value.ToLower()))
                 throw new DomainException(DomainMessages.UserName_And_Email_Cannot_Be_The_Same);
 
             if (string.IsNullOrEmpty(Identity.PhoneNumber.Value))
                 throw new DomainException(string.Format(DomainMessages.Required, nameof(UserPhoneNumber)));
         }
-
 
 
         #endregion

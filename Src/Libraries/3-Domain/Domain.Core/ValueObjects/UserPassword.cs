@@ -20,7 +20,12 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
         #region Ctors
 
-        public UserPassword(string password, IEncryptionService encryptionService)
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private UserPassword(string password, IEncryptionService encryptionService)
         {
             CheckPasswordPolicies(password);
 
@@ -28,6 +33,15 @@ namespace TaskoMask.Domain.Core.ValueObjects
             PasswordHash = encryptionService.CreatePasswordHash(password, PasswordSalt);
 
             CheckPolicies();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private UserPassword()
+        {
+
         }
 
         #endregion
@@ -41,8 +55,20 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         public static UserPassword Create(string password, IEncryptionService encryptionService)
         {
-            //check some policies here for Create
             return new UserPassword(password, encryptionService);
+        }
+
+
+        /// <summary>
+        /// Factory method for creating new object
+        /// </summary>
+        public static UserPassword CreateDefault()
+        {
+            return new UserPassword
+            {
+                PasswordHash = "",
+                PasswordSalt = ""
+            };
         }
 
 
@@ -68,7 +94,6 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
             if (string.IsNullOrEmpty(PasswordSalt))
                 throw new DomainException(string.Format(DomainMessages.Required, nameof(PasswordSalt)));
-
         }
 
 
@@ -87,12 +112,12 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// <summary>
         /// 
         /// </summary>
-        private  void CheckPasswordPolicies(string password)
+        private void CheckPasswordPolicies(string password)
         {
             if (string.IsNullOrEmpty(password))
                 throw new DomainException(string.Format(DomainMessages.Required, nameof(password)));
 
-            if (password.Length<4)
+            if (password.Length < 4)
                 throw new DomainException(string.Format(DomainMessages.Min_Length_Error, nameof(password)));
 
         }

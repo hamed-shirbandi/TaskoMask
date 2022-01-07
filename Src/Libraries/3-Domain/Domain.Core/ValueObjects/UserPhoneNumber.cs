@@ -16,7 +16,7 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
         #region Ctors
 
-        public UserPhoneNumber(string value)
+        private UserPhoneNumber(string value)
         {
             Value = value;
 

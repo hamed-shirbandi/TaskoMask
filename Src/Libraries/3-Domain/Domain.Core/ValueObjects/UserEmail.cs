@@ -19,7 +19,7 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
         #region Ctors
 
-        public UserEmail(string value)
+        private UserEmail(string value)
         {
             Value = value;
 

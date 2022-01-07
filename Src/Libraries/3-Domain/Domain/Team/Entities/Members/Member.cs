@@ -128,15 +128,22 @@ namespace TaskoMask.Domain.Team.Entities.Members
         #region Private Methods
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void CheckInvariants()
         {
+            if (Authentication == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Authentication)));
+
+            if (Identity == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Identity)));
+
             if (!Identity.Email.Value.ToLower().Equals(Authentication.UserName.Value.ToLower()))
                 throw new DomainException(DomainMessages.UserName_And_Email_Must_Be_The_Same);
         }
 
-
-
+     
         #endregion
     }
 }

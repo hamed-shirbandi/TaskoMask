@@ -1,7 +1,5 @@
-﻿using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Services;
+﻿using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
-using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Core.Models
 {
@@ -13,8 +11,6 @@ namespace TaskoMask.Domain.Core.Models
         {
             Identity = identity;
             Authentication = authentication;
-
-            CheckPolicies();
         }
 
 
@@ -48,7 +44,6 @@ namespace TaskoMask.Domain.Core.Models
         public virtual void SetPassword(string password, IEncryptionService encryptionService)
         {
             Authentication= Authentication.SetPassword(password, encryptionService);
-            CheckPolicies();
         }
 
 
@@ -58,7 +53,6 @@ namespace TaskoMask.Domain.Core.Models
         public virtual void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
         {
             Authentication = Authentication.ChangePassword(oldPassword, newPassword, encryptionService);
-            CheckPolicies();
         }
 
 
@@ -69,7 +63,6 @@ namespace TaskoMask.Domain.Core.Models
         public virtual void SetIsActive(bool isActive)
         {
             Authentication = Authentication.SetIsActive(isActive);
-            CheckPolicies();
         }
 
         #endregion
@@ -84,7 +77,6 @@ namespace TaskoMask.Domain.Core.Models
         protected void UpdateIdentity(UserDisplayName displayName, UserEmail email, UserPhoneNumber phoneNumber)
         { 
             Identity = UserIdentity.Create(displayName, email, phoneNumber);
-            CheckPolicies();
         }
 
 
@@ -96,11 +88,7 @@ namespace TaskoMask.Domain.Core.Models
         protected void UpdateAuthenticationUserName(UserName userName)
         {
             Authentication = Authentication.UpdateUserName(userName);
-            CheckPolicies();
         }
-
-
-
 
 
 
@@ -109,14 +97,7 @@ namespace TaskoMask.Domain.Core.Models
         #region Private Methods
 
 
-        private void CheckPolicies()
-        {
-            if (Authentication == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Authentication)));
 
-            if (Identity == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Identity)));
-        }
 
         #endregion
     }

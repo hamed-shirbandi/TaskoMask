@@ -23,7 +23,7 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// <summary>
         /// 
         /// </summary>
-        public UserAuthentication()
+        private UserAuthentication()
         {
             CheckPolicies();
         }
@@ -52,6 +52,7 @@ namespace TaskoMask.Domain.Core.ValueObjects
             {
                 IsActive = UserIsActive.Create(true),
                 UserName = userName,
+                Password=UserPassword.CreateDefault()
             };
         }
 
@@ -105,9 +106,6 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         public bool IsValidPassword(string password, IEncryptionService encryptionService)
         {
-            if (Password == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error,nameof(Password)));
-
             return Password.IsValidPassword(password, encryptionService);
         }
 
@@ -145,6 +143,9 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         protected override void CheckPolicies()
         {
+            if (Password == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Password)));
+
             if (IsActive == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(IsActive)));
 

@@ -1,4 +1,5 @@
-﻿using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Domain.Core.Exceptions;
+using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Team.Entities.Organizations.ValueObjects;
 using TaskoMask.Domain.Team.Members.Events;
@@ -72,11 +73,18 @@ namespace TaskoMask.Domain.Team.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
+            if (Name == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
+
+            if (Description == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
+
+            if (OwnerMemberId == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerMemberId)));
+
             if (Name.Value.Equals(Description.Value))
                 AddValidationError(DomainMessages.Equal_Name_And_Description_Error);
         }
-
-
 
         #endregion
 

@@ -18,7 +18,7 @@ namespace TaskoMask.Domain.Administration.Entities
 
         #region Ctors
 
-        public Operator(UserIdentity identity, UserAuthentication authentication)
+        private Operator(UserIdentity identity, UserAuthentication authentication)
             : base(identity, authentication)
         {
         }
@@ -34,6 +34,17 @@ namespace TaskoMask.Domain.Administration.Entities
         #endregion
 
         #region Public Methods
+
+
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        public static Operator Create(UserIdentity identity, UserAuthentication authentication)
+        {
+            return new Operator(identity,authentication);
+        }
+
 
 
         ///// <summary>

@@ -12,6 +12,7 @@ using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Domain.Team.Entities.Members;
 using TaskoMask.Domain.Team.Entities.Organizations;
 using TaskoMask.Domain.Team.Entities.Organizations.ValueObjects;
+using TaskoMask.Domain.Team.Entities.Projects;
 using TaskoMask.Domain.Workspace.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
@@ -175,10 +176,12 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                             for (int k = 1; k <= 3; k++)
                             {
-                                var project = new Project(
-                                    $" ProjectName {k}",
-                                    $"Description {k}",
-                                    organization.Id);
+
+                                var project = ProjectBuilder.Init()
+                                   .WithName($"Project Name {k}")
+                                   .WithDescription($"Description {k}")
+                                   .WithOrganizationId(organization.Id)
+                                   .Build();
 
                                 _Projects.InsertOne(project);
 

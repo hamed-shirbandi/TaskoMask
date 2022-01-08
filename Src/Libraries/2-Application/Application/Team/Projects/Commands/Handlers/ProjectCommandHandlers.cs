@@ -11,6 +11,8 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Team.Data;
 using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Domain.Team.Entities.Projects;
+using TaskoMask.Domain.Team.Entities.Projects.ValueObjects;
 
 namespace TaskoMask.Application.Team.Projects.Commands.Handlers
 {
@@ -49,7 +51,11 @@ namespace TaskoMask.Application.Team.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var project = new Project(name: request.Name, description: request.Description, organizationId: request.OrganizationId);
+            var project = ProjectBuilder.Init()
+               .WithName(request.Name)
+               .WithDescription(request.Description)
+               .WithOrganizationId(request.OrganizationId)
+               .Build();
 
             await _projectRepository.CreateAsync(project);
             return new CommandResult(ApplicationMessages.Create_Success, project.Id);
@@ -74,8 +80,12 @@ namespace TaskoMask.Application.Team.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            project.Update(request.Name, request.Description,request.OrganizationId);
- 
+            project.Update(
+               ProjectName.Create(request.Name),
+               ProjectDescription.Create(request.Description),
+               ProjectOrganizationId.Create(request.OrganizationId)
+               );
+
             await _projectRepository.UpdateAsync(project);
             return new CommandResult(ApplicationMessages.Update_Success, project.Id);
 

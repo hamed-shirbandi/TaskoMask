@@ -67,7 +67,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
 
-            var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId, type: request.Type,projectId:project.Id,organizationId:project.OrganizationId);
+            var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId, type: request.Type,projectId:project.Id,organizationId:project.OrganizationId.Value);
             await _cardRepository.CreateAsync(card);
             return new CommandResult(ApplicationMessages.Create_Success, card.Id);
 

@@ -33,7 +33,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// </summary>
         public async Task<bool> ExistByNameAsync(string id, string name)
         {
-            var project = await _projects.Find(e => e.Name == name).FirstOrDefaultAsync();
+            var project = await _projects.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
             return project != null && project.Id != id;
         }
 
@@ -44,7 +44,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// </summary>
         public async Task<IEnumerable<Project>> GetListByOrganizationIdAsync(string organizationId)
         {
-            return await _projects.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();
+            return await _projects.AsQueryable().Where(o => o.OrganizationId.Value == organizationId).ToListAsync();
 
         }
 
@@ -61,7 +61,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
 
             if (!string.IsNullOrEmpty(term))
             {
-                queryable = queryable.Where(p => p.Name.Contains(term) || p.Description.Contains(term));
+                queryable = queryable.Where(p => p.Name.Value.Contains(term) || p.Description.Value.Contains(term));
             }
 
             #endregion
@@ -97,7 +97,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// </summary>
         public async Task<long> CountByOrganizationIdAsync(string organizationId)
         {
-            return await _projects.CountDocumentsAsync(b => b.OrganizationId == organizationId);
+            return await _projects.CountDocumentsAsync(b => b.OrganizationId.Value == organizationId);
         }
 
         #endregion

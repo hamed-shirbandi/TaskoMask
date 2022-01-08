@@ -65,7 +65,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (project == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
-            var task = new Domain.Workspace.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: card.BoardId, projectId: project.Id, organizationId: project.OrganizationId);
+            var task = new Domain.Workspace.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: card.BoardId, projectId: project.Id, organizationId: project.OrganizationId.Value);
 
             await _taskRepository.CreateAsync(task);
             return new CommandResult(ApplicationMessages.Create_Success, task.Id);

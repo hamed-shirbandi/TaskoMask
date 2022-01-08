@@ -108,7 +108,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
             foreach (var item in boardsDto)
             {
                 var project = await _projectRepository.GetByIdAsync(item.ProjectId);
-                item.ProjectName = project?.Name;
+                item.ProjectName = project?.Name.Value;
                 item.CardsCount = await _cardRepository.CountByBoardIdAsync(item.Id);
             }
 

@@ -52,13 +52,14 @@ namespace TaskoMask.Domain.Team.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(ProjectName name, ProjectDescription description)
+        public void Update(ProjectName name, ProjectDescription description, ProjectOrganizationId organizationId)
         {
             Description = description;
             Name = name;
+            OrganizationId = organizationId;
             base.Update();
 
-            AddDomainEvent(new ProjectUpdatedEvent(Id, Name.Value, Description.Value));
+            AddDomainEvent(new ProjectUpdatedEvent(Id, Name.Value, Description.Value,OrganizationId.Value));
         }
 
 

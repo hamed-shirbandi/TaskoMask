@@ -4,7 +4,6 @@ using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Team.Entities.Members.Events;
-using TaskoMask.Domain.Team.Members.Events;
 
 namespace TaskoMask.Domain.Team.Entities.Members
 {

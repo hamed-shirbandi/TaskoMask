@@ -3,6 +3,7 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Team.Entities.Members.Events;
 using TaskoMask.Domain.Team.Members.Events;
 
 namespace TaskoMask.Domain.Team.Entities.Members
@@ -68,6 +69,8 @@ namespace TaskoMask.Domain.Team.Entities.Members
         public override void SetPassword(string password, IEncryptionService encryptionService)
         {
             base.SetPassword(password, encryptionService);
+
+            AddDomainEvent(new MemberPasswordSetEvent(Id, Authentication.Password.PasswordHash, Authentication.Password.PasswordSalt));
         }
 
 
@@ -78,6 +81,7 @@ namespace TaskoMask.Domain.Team.Entities.Members
         public override void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
         {
             base.ChangePassword(oldPassword, newPassword, encryptionService);
+            AddDomainEvent(new MemberPasswordSetEvent(Id, Authentication.Password.PasswordHash, Authentication.Password.PasswordSalt));
         }
 
 
@@ -99,6 +103,8 @@ namespace TaskoMask.Domain.Team.Entities.Members
         public override void SetIsActive(bool isActive)
         {
             base.SetIsActive(isActive);
+            AddDomainEvent(new MemberActivityStateChangedEvent(Id, Authentication.IsActive.Value));
+
         }
 
 
@@ -109,6 +115,7 @@ namespace TaskoMask.Domain.Team.Entities.Members
         public override void SoftDelete()
         {
             base.SoftDelete();
+            AddDomainEvent(new MemberDeletedEvent(Id));
         }
 
 
@@ -119,6 +126,7 @@ namespace TaskoMask.Domain.Team.Entities.Members
         public override void Recycle()
         {
             base.Recycle();
+            AddDomainEvent(new MemberRecycledEvent(Id));
         }
 
 

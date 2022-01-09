@@ -3,7 +3,7 @@
 This is a place that we implement Domain Model by using DDD concepts. It contains 2 BC as below at the moment and we are going to add another in future for reporting by using a separate read DB.
 
 ## Administration
-This BC contains a generic subdomain for administration area. It is used by operators for managing the system by using an admin panel.
+This BC contains a generic subdomain for administration area. It is used by operators for managing application data by using an admin panel.
 We don't implement a rich domain model for it and we don't use CQRS. It is less important to have much focus on it.
 
 ## Workspace

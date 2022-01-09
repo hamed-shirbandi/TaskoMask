@@ -1,6 +1,6 @@
 
-# There are 2 Bounded Context (BC) :
-
+# What is Domain ?
+This is a place that we implement Domain Model by using DDD concepts. It contains 2 BC as below at the moment and we are going to add another in future for reporting by using a separate read DB.
 
 ## Administration
 This BC contains a generic subdomain for administration area. It is used by operators for managing the system by using an admin panel.

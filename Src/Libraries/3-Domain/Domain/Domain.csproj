@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Team\Members\Builders\" />
-    <Folder Include="Team\Members\ValueObjects\" />
+    <Folder Include="Workspace\Members\Builders\" />
+    <Folder Include="Workspace\Members\ValueObjects\" />
     <Folder Include="Workspace\Boards\ValueObjects\" />
     <Folder Include="Workspace\Boards\Builders\" />
     <Folder Include="Workspace\Tasks\Builders\" />

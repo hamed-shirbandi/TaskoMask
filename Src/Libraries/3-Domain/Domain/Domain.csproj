@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Team\Entities\Members\ValueObjects\" />
+    <Folder Include="Team\Members\Builders\" />
+    <Folder Include="Team\Members\ValueObjects\" />
   </ItemGroup>
 
 </Project>

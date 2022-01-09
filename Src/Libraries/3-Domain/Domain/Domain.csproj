@@ -14,6 +14,11 @@
   <ItemGroup>
     <Folder Include="Team\Members\Builders\" />
     <Folder Include="Team\Members\ValueObjects\" />
+    <Folder Include="Workspace\Boards\ValueObjects\" />
+    <Folder Include="Workspace\Boards\Builders\" />
+    <Folder Include="Workspace\Tasks\Builders\" />
+    <Folder Include="Workspace\Tasks\Events\" />
+    <Folder Include="Workspace\Tasks\ValueObjects\" />
   </ItemGroup>
 
 </Project>

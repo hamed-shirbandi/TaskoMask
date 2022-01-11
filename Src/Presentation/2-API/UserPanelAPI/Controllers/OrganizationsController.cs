@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Team.Organizations.Services;
-using TaskoMask.Application.Share.Dtos.Team.Organizations;
+using TaskoMask.Application.Workspace.Organizations.Services;
+using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;

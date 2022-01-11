@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Application.Share.Dtos.Workspace.Boards;
-using TaskoMask.Application.Share.Dtos.Team.Organizations;
-using TaskoMask.Application.Share.Dtos.Team.Projects;
+using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Application.Share.Dtos.Team.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Members;
 
 namespace TaskoMask.Application.Share.ViewModels
 {

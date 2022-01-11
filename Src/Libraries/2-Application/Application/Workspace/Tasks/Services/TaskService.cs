@@ -12,12 +12,12 @@ using TaskoMask.Application.Common.Base.Services;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Queries.Models.Boards;
-using TaskoMask.Application.Team.Projects.Queries.Models;
-using TaskoMask.Application.Team.Organizations.Queries.Models;
+using TaskoMask.Application.Workspace.Projects.Queries.Models;
+using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
 {
-    public class TaskService : BaseService<Domain.Workspace.Entities.Task>, ITaskService
+    public class TaskService : BaseService<Domain.Workspace.Tasks.Entities.Task>, ITaskService
     {
         #region Fields
 

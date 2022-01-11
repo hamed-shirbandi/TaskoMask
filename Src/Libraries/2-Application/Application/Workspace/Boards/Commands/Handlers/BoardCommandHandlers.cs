@@ -8,11 +8,10 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Domain.Workspace.Data;
-using TaskoMask.Domain.Workspace.Entities;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.Team.Data;
+using TaskoMask.Domain.Workspace.Boards.Data;
+using TaskoMask.Domain.Workspace.Organizations.Data;
+using TaskoMask.Domain.Workspace.Boards.Entities;
 
 namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
 {

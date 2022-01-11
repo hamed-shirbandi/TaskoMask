@@ -5,15 +5,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Exceptions;
-
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.Workspace.Data;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Domain.Workspace.Tasks.Data;
+using TaskoMask.Domain.Workspace.Boards.Data;
 
 namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
 {

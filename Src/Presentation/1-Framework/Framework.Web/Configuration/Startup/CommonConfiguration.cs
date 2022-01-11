@@ -13,7 +13,7 @@ using TaskoMask.Application.Workspace.Boards.Commands.Models;
 using TaskoMask.Application.Core.Behaviors;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Mapper;
-using TaskoMask.Application.Team.Organizations.Commands.Validations;
+using TaskoMask.Application.Workspace.Organizations.Commands.Validations;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Infrastructure.Data.DataProviders;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;

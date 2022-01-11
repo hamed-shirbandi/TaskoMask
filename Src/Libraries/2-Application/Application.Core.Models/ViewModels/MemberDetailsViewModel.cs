@@ -1,5 +1,5 @@
-﻿using TaskoMask.Application.Share.Dtos.Team.Members;
-using TaskoMask.Application.Share.Dtos.Team.Organizations;
+﻿using TaskoMask.Application.Share.Dtos.Workspace.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 
 namespace TaskoMask.Application.Share.ViewModels
 {

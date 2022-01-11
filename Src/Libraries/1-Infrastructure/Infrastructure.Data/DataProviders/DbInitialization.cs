@@ -2,11 +2,12 @@
 using MongoDB.Driver;
 using TaskoMask.Domain.Administration.Entities;
 using TaskoMask.Infrastructure.Data.Extensions;
-using TaskoMask.Domain.Workspace.Entities;
-using TaskoMask.Domain.Team.Entities.Members;
-using TaskoMask.Domain.Team.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 using System;
+using TaskoMask.Domain.Workspace.Boards.Entities;
+using TaskoMask.Domain.Workspace.Tasks.Entities;
+using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.Workspace.Members.Entities;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
 {

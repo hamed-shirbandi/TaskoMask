@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Mapper
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             //this will find all profiles in this layer (Infrastructure.CrossCutting)
-            services.AddAutoMapper(typeof(TeamMappingProfile));
+            services.AddAutoMapper(typeof(WorkspaceMappingProfile));
         }
     }
 }

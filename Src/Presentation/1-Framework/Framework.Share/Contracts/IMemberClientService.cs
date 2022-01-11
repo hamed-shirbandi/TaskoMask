@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Share.Dtos.Team.Members;
+﻿using TaskoMask.Application.Share.Dtos.Workspace.Members;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 

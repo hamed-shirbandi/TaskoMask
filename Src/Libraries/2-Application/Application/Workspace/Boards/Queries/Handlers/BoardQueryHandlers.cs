@@ -11,9 +11,9 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Workspace.Data;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.Team.Data;
+using TaskoMask.Domain.Workspace.Organizations.Data;
+using TaskoMask.Domain.Workspace.Boards.Data;
 
 namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
 {

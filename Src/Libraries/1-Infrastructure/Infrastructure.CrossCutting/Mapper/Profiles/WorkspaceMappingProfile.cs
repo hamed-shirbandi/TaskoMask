@@ -1,8 +1,14 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.Application.Share.Dtos.Workspace.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Domain.Workspace.Entities;
+using TaskoMask.Domain.Workspace.Boards.Entities;
+using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {
@@ -35,6 +41,33 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Board, BoardUpsertDto>();
             CreateMap<BoardBasicInfoDto, BoardUpsertDto>();
             CreateMap<Board, BoardOutputDto>();
+
+            #endregion
+
+
+            #region Organization
+
+            CreateMap<Organization, OrganizationBasicInfoDto>();
+            CreateMap<Organization, OrganizationUpsertDto>();
+            CreateMap<OrganizationBasicInfoDto, OrganizationUpsertDto>();
+            CreateMap<Organization, OrganizationOutputDto>();
+
+            #endregion
+
+            #region Project
+
+            CreateMap<Project, ProjectBasicInfoDto>();
+            CreateMap<Project, ProjectUpsertDto>();
+            CreateMap<ProjectBasicInfoDto, ProjectUpsertDto>();
+            CreateMap<Project, ProjectOutputDto>();
+
+            #endregion
+
+            #region Member
+
+            CreateMap<Member, MemberBasicInfoDto>();
+            CreateMap<Member, MemberOutputDto>();
+
 
             #endregion
         }

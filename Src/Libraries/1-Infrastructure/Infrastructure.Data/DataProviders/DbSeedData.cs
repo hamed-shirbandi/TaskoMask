@@ -8,12 +8,11 @@ using TaskoMask.Domain.Core.Builders;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.Team.Entities;
-using TaskoMask.Domain.Team.Entities.Members;
-using TaskoMask.Domain.Team.Entities.Organizations;
-using TaskoMask.Domain.Team.Entities.Organizations.ValueObjects;
-using TaskoMask.Domain.Team.Entities.Projects;
-using TaskoMask.Domain.Workspace.Entities;
+using TaskoMask.Domain.Workspace.Boards.Entities;
+using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Workspace.Organizations.Builders;
+using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.Workspace.Tasks.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders

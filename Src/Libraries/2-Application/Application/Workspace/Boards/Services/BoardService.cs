@@ -3,18 +3,17 @@ using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Boards.Commands.Models;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
-using TaskoMask.Application.Team.Projects.Queries.Models;
+using TaskoMask.Application.Workspace.Projects.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Queries.Models.Boards;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Team.Organizations.Queries.Models;
+using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Base.Services;
-using TaskoMask.Domain.Workspace.Entities;
+using TaskoMask.Domain.Workspace.Boards.Entities;
 
 namespace TaskoMask.Application.Workspace.Boards.Services
 {

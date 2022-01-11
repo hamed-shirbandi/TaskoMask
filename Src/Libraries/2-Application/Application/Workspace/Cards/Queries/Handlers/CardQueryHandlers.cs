@@ -10,8 +10,9 @@ using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Workspace.Data;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Domain.Workspace.Boards.Data;
+using TaskoMask.Domain.Workspace.Tasks.Data;
 
 namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
 {

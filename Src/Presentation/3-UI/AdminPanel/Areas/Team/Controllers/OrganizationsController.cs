@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Application.Team.Organizations.Services;
+using TaskoMask.Application.Workspace.Organizations.Services;
 using System.Threading.Tasks;
 using TaskoMask.Presentation.Framework.Web.Filters;
 

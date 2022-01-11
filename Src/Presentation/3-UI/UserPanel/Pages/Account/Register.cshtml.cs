@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TaskoMask.Application.Share.Dtos.Team.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Members;
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account

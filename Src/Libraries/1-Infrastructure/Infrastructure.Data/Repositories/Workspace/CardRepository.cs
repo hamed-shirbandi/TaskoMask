@@ -3,8 +3,8 @@ using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Workspace.Data;
-using TaskoMask.Domain.Workspace.Entities;
+using TaskoMask.Domain.Workspace.Boards.Data;
+using TaskoMask.Domain.Workspace.Boards.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories

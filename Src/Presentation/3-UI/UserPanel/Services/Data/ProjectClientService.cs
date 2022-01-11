@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Share.Dtos.Team.Projects;
+﻿using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Presentation.Framework.Share.Contracts;

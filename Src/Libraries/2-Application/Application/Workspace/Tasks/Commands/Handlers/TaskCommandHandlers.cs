@@ -8,9 +8,10 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Domain.Workspace.Data;
-using TaskoMask.Domain.Team.Data;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Domain.Workspace.Tasks.Data;
+using TaskoMask.Domain.Workspace.Boards.Data;
+using TaskoMask.Domain.Workspace.Organizations.Data;
 
 namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 {
@@ -65,7 +66,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (project == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
-            var task = new Domain.Workspace.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: card.BoardId, projectId: project.Id, organizationId: project.OrganizationId.Value);
+            var task = new Domain.Workspace.Tasks.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: card.BoardId, projectId: project.Id, organizationId: project.OrganizationId.Value);
 
             await _taskRepository.CreateAsync(task);
             return new CommandResult(ApplicationMessages.Create_Success, task.Id);

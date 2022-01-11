@@ -3,16 +3,16 @@ using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Workspace.Data;
+using TaskoMask.Domain.Workspace.Tasks.Data;
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class TaskRepository : BaseRepository<Domain.Workspace.Entities.Task>, ITaskRepository
+    public class TaskRepository : BaseRepository<Domain.Workspace.Tasks.Entities.Task>, ITaskRepository
     {
         #region Fields
 
-        private readonly IMongoCollection<Domain.Workspace.Entities.Task> _tasks;
+        private readonly IMongoCollection<Domain.Workspace.Tasks.Entities.Task> _tasks;
 
         #endregion
 
@@ -20,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         public TaskRepository(IMongoDbContext dbContext) : base(dbContext)
         {
-            _tasks = dbContext.GetCollection<Domain.Workspace.Entities.Task>();
+            _tasks = dbContext.GetCollection<Domain.Workspace.Tasks.Entities.Task>();
         }
 
         #endregion
@@ -32,7 +32,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Domain.Workspace.Entities.Task>> GetListByCardIdAsync(string cardId)
+        public async Task<IEnumerable<Domain.Workspace.Tasks.Entities.Task>> GetListByCardIdAsync(string cardId)
         {
             return await _tasks.AsQueryable().Where(o => o.CardId == cardId).ToListAsync();
         }
@@ -42,7 +42,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Domain.Workspace.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount)
+        public async Task<IEnumerable<Domain.Workspace.Tasks.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount)
         {
             return await _tasks.AsQueryable().Where(o => o.OrganizationId == organizationId).OrderByDescending(o=> o.CreationTime.CreateDateTime).Take(takeCount).ToListAsync();
         }
@@ -62,7 +62,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public IEnumerable<Domain.Workspace.Entities.Task> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
+        public IEnumerable<Domain.Workspace.Tasks.Entities.Task> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
         {
             var queryable = _tasks.AsQueryable();
 

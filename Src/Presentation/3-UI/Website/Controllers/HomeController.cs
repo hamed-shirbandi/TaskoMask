@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Team.Organizations.Services;
+using TaskoMask.Application.Workspace.Organizations.Services;
 using TaskoMask.Presentation.UI.Website.Models;
 using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Application.Team.Projects.Services;
+using TaskoMask.Application.Workspace.Projects.Services;
 using TaskoMask.Application.Workspace.Boards.Services;
-using TaskoMask.Application.Team.Members.Services;
+using TaskoMask.Application.Workspace.Members.Services;
 using TaskoMask.Application.Workspace.Tasks.Services;
 
 namespace TaskoMask.Presentation.UI.Website.Controllers

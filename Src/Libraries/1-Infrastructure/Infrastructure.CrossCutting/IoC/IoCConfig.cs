@@ -20,7 +20,7 @@ using TaskoMask.Application.Workspace.Cards.Services;
 using TaskoMask.Application.Workspace.Tasks.Services;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Infrastructure.Data.Repositories;
-using TaskoMask.Infrastructure.Data.Repositories.Team;
+using TaskoMask.Infrastructure.Data.Repositories.Workspace;
 using TaskoMask.Infrastructure.Data.Repositories.Administration;
 using TaskoMask.Domain.Administration.Data;
 using TaskoMask.Domain.Core.Services;

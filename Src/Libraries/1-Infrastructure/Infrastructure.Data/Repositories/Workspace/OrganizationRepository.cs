@@ -7,34 +7,38 @@ using TaskoMask.Domain.Workspace.Organizations.Data;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Repositories.Team
+namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
 {
-    public class ProjectRepository : BaseRepository<Project>, IProjectRepository
+    public class OrganizationRepository : BaseRepository<Organization>, IOrganizationRepository
     {
         #region Fields
 
-        private readonly IMongoCollection<Project> _projects;
+        private readonly IMongoCollection<Organization> _organizations;
 
         #endregion
 
         #region Ctors
 
-        public ProjectRepository(IMongoDbContext dbContext) : base(dbContext)
+        public OrganizationRepository(IMongoDbContext dbContext) : base(dbContext)
         {
-            _projects = dbContext.GetCollection<Project>();
+            _organizations = dbContext.GetCollection<Organization>();
         }
+
+
 
         #endregion
 
         #region Public Methods
+
+
 
         /// <summary>
         /// 
         /// </summary>
         public async Task<bool> ExistByNameAsync(string id, string name)
         {
-            var project = await _projects.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
-            return project != null && project.Id != id;
+            var organization = await _organizations.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
+            return organization != null && organization.Id != id;
         }
 
 
@@ -42,10 +46,9 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Project>> GetListByOrganizationIdAsync(string organizationId)
+        public async Task<IEnumerable<Organization>> GetListByOwnerMemberIdAsync(string ownerMemberId)
         {
-            return await _projects.AsQueryable().Where(o => o.OrganizationId.Value == organizationId).ToListAsync();
-
+            return await _organizations.AsQueryable().Where(o => o.OwnerMemberId.Value == ownerMemberId).ToListAsync();
         }
 
 
@@ -53,9 +56,19 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
         /// <summary>
         /// 
         /// </summary>
-        public IEnumerable<Project> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
+        public async Task<long> CountByOwnerMemberIdAsync(string ownerMemberId)
         {
-            var queryable = _projects.AsQueryable();
+            return await _organizations.CountDocumentsAsync(o => o.OwnerMemberId.Value == ownerMemberId);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IEnumerable<Organization> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
+        {
+            var queryable = _organizations.AsQueryable();
 
             #region By term
 
@@ -89,16 +102,6 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Team
             return queryable.ToList();
         }
 
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> CountByOrganizationIdAsync(string organizationId)
-        {
-            return await _projects.CountDocumentsAsync(b => b.OrganizationId.Value == organizationId);
-        }
 
         #endregion
 

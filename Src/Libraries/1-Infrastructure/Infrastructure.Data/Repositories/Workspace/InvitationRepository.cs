@@ -5,7 +5,7 @@ using TaskoMask.Domain.Workspace.Members.Data;
 using TaskoMask.Domain.Workspace.Members.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Repositories.Team
+namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
 {
     public class InvitationRepository : BaseRepository<Invitation>, IInvitationRepository
     {

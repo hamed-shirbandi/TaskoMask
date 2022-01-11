@@ -214,15 +214,6 @@ namespace TaskoMask.Application.Share.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} length must be between {1} and {2} characters.
-        /// </summary>
-        public static string Length_Error {
-            get {
-                return ResourceManager.GetString("Length_Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Members Count.
         /// </summary>
         public static string MembersCount {
@@ -381,15 +372,6 @@ namespace TaskoMask.Application.Share.Resources {
         public static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} is required.
-        /// </summary>
-        public static string Required {
-            get {
-                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
         

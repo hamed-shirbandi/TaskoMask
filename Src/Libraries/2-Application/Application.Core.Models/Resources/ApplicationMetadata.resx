@@ -168,9 +168,6 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="Length_Error" xml:space="preserve">
-    <value>The {0} length must be between {1} and {2} characters</value>
-  </data>
   <data name="MembersCount" xml:space="preserve">
     <value>Members Count</value>
   </data>
@@ -224,9 +221,6 @@
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Remember Me</value>
-  </data>
-  <data name="Required" xml:space="preserve">
-    <value>{0} is required</value>
   </data>
   <data name="RolesCount" xml:space="preserve">
     <value>Roles Count</value>

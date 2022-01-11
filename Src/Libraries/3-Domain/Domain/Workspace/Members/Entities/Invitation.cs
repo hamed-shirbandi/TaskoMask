@@ -1,6 +1,5 @@
 ﻿using TaskoMask.Domain.Core.Models;
-
-namespace TaskoMask.Domain.Team.Entities
+namespace TaskoMask.Domain.Workspace.Members.Entities
 {
     /// <summary>
     /// To determine invited members to another member's account

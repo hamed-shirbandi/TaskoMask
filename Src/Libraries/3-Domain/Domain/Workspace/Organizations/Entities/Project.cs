@@ -1,10 +1,10 @@
 ﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Team.Entities.Projects.Events;
-using TaskoMask.Domain.Team.Entities.Projects.ValueObjects;
+using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
+using TaskoMask.Domain.Workspace.Organizations.Events;
 
-namespace TaskoMask.Domain.Team.Entities
+namespace TaskoMask.Domain.Workspace.Organizations.Entities
 {
     public class Project : BaseAggregate
     {

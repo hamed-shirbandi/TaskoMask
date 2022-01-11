@@ -3,9 +3,9 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Team.Entities.Members.Events;
+using TaskoMask.Domain.Workspace.Members.Events;
 
-namespace TaskoMask.Domain.Team.Entities.Members
+namespace TaskoMask.Domain.Workspace.Members.Entities
 {
     /// <summary>
     /// Members are those who manage their tasks in this system

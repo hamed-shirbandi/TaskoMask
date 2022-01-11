@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Team.Entities;
+using TaskoMask.Domain.Workspace.Members.Entities;
 
-namespace TaskoMask.Domain.Team.Data
+namespace TaskoMask.Domain.Workspace.Members.Data
 {
     public interface IInvitationRepository : IBaseRepository<Invitation>
     {

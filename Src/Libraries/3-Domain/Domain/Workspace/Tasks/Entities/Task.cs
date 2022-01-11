@@ -1,6 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Workspace.Entities
+namespace TaskoMask.Domain.Workspace.Tasks.Entities
+
 {
     public class Task : BaseAggregate
     {

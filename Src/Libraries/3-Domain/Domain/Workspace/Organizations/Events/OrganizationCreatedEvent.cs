@@ -1,6 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
+using TaskoMask.Domain.Workspace.Organizations.Entities;
 
-namespace TaskoMask.Domain.Team.Entities.Organizations.Events
+namespace TaskoMask.Domain.Workspace.Organizations.Events
 {
     public class OrganizationCreatedEvent : DomainEvent
     {

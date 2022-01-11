@@ -1,6 +1,7 @@
-﻿using TaskoMask.Domain.Team.Entities.Organizations.ValueObjects;
+﻿using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
 
-namespace TaskoMask.Domain.Team.Entities.Organizations
+namespace TaskoMask.Domain.Workspace.Organizations.Builders
 {
     public class OrganizationBuilder
     {

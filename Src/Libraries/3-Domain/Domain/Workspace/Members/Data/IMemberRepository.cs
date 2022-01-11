@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Team.Entities.Members;
+using TaskoMask.Domain.Workspace.Members.Entities;
 
-namespace TaskoMask.Domain.Team.Data
+namespace TaskoMask.Domain.Workspace.Members.Data
 {
     public interface IMemberRepository : IUserRepository<Member>
     {

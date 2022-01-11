@@ -1,6 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
+using TaskoMask.Domain.Workspace.Members.Entities;
 
-namespace TaskoMask.Domain.Team.Entities.Members.Events
+namespace TaskoMask.Domain.Workspace.Members.Events
 {
     public class MemberRecycledEvent : DomainEvent
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Workspace.Entities;
+using TaskoMask.Domain.Workspace.Boards.Entities;
 using TaskoMask.Domain.Core.Data;
 
-namespace TaskoMask.Domain.Workspace.Data
+namespace TaskoMask.Domain.Workspace.Boards.Data
 {
     public interface ICardRepository : IBaseRepository<Card>
     {

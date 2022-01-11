@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Team.Entities.Organizations.ValueObjects
+namespace TaskoMask.Domain.Workspace.Organizations.ValueObjects
 {
     public class OrganizationDescription : BaseValueObject
     {

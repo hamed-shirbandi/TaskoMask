@@ -1,9 +1,8 @@
-﻿using TaskoMask.Domain.Workspace.Events;
+﻿using TaskoMask.Domain.Workspace.Boards.Events;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Core.Models;
 
-
-namespace TaskoMask.Domain.Workspace.Entities
+namespace TaskoMask.Domain.Workspace.Boards.Entities
 {
     public class Card : BaseAggregate
     {

@@ -129,6 +129,9 @@
   <data name="Invalid_PhoneNumber" xml:space="preserve">
     <value>PhoneNumber is invalid</value>
   </data>
+  <data name="Length_Error" xml:space="preserve">
+    <value>The {0} length must be between {1} and {2} characters</value>
+  </data>
   <data name="Min_Length_Error" xml:space="preserve">
     <value>The {0} length must be greater than {1} characters</value>
   </data>

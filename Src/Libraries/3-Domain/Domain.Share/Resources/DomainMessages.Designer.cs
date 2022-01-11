@@ -97,6 +97,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} length must be between {1} and {2} characters.
+        /// </summary>
+        public static string Length_Error {
+            get {
+                return ResourceManager.GetString("Length_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} length must be greater than {1} characters.
         /// </summary>
         public static string Min_Length_Error {

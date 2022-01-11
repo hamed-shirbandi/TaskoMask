@@ -4,7 +4,7 @@
 This layer contains an admin panel.
 It is used by operators for managing application data.
 
-# features:
+# Features:
 
 - ASP.NET Core MVC
 - Cookie Authentication without ASP.NET Identity

@@ -4,7 +4,7 @@
 This layer contains API services for TaskoMask user panel.
 Every developers can use it to make own application.
 
-# features:
+# Features:
 
 - ASP.NET Core Web API
 - JWT Authentication without ASP.NET Identity

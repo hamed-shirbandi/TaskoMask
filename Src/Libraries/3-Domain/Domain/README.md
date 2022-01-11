@@ -13,3 +13,16 @@ This BC contains the core domain and talks about managing tasks. We implement it
 # Some points
 - The goal of this project for DDD is to learn how can implement a Domain Model and we didn't focus on the model design. So maybe it could have been better !
 - If you can help to make it better we are happy to have your help.
+
+# Features:
+
+- Rich Domain Modeling (Workspace BC)
+- Anemic Domain Model (Administration BC)
+- Aggregate Pattern
+- Value Objects
+- Specification Pattern
+- Domain Event
+- Domain Validation (Policies, Invariants)
+- Domain Services
+- Builder Pattern
+- Factory Method Pattern

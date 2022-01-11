@@ -4,7 +4,7 @@
 This layer contains a user panel.
 It is used by end-users for managing their tasks by using TaskoMask.
 
-# features:
+# Features:
 
 - Blazor Server
 - Cookie Authentication without ASP.NET Identity

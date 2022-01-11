@@ -18,6 +18,7 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Models
         public string Id { get; }
 
         [Display(Name = nameof(ApplicationMetadata.PhoneNumber), ResourceType = typeof(ApplicationMetadata))]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; }
 
     }

@@ -44,9 +44,14 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         protected override void CheckPolicies()
         {
-            if (!string.IsNullOrEmpty(Value))
-                if (Value.Length != 11)
-                    throw new DomainException(string.Format(DomainMessages.Invalid_PhoneNumber, nameof(UserPhoneNumber)));
+            //if (!string.IsNullOrEmpty(Value))
+            //    if (Value.Length != 11)
+            //        throw new DomainException(string.Format(DomainMessages.Invalid_PhoneNumber, nameof(UserPhoneNumber)));
+
+
+            //TODO should be a valid phoneNumber
+
+            //TODO should be unique
         }
 
 

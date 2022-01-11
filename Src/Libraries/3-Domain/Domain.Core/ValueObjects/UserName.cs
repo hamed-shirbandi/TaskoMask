@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Core.ValueObjects
@@ -53,6 +54,17 @@ namespace TaskoMask.Domain.Core.ValueObjects
         {
             if (string.IsNullOrEmpty(Value))
                 throw new DomainException(string.Format(DomainMessages.Required, nameof(UserName)));
+
+            //for Members it uses Email for UserName
+            //for Operators we consider this policy too
+            if (Value.Length < DomainConstValues.Member_Email_Min_Length)
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(UserName), DomainConstValues.Member_Email_Min_Length, DomainConstValues.Member_Email_Max_Length));
+
+            if (Value.Length > DomainConstValues.Member_Email_Max_Length)
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(UserName), DomainConstValues.Member_Email_Min_Length, DomainConstValues.Member_Email_Max_Length));
+
+
+            //TODO should be unique
         }
 
 

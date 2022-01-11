@@ -1,17 +1,18 @@
-﻿using TaskoMask.Domain.Share.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Cards.Commands.Models
 {
-   public class CreateCardCommand : CardBaseCommand
+    public class CreateCardCommand : CardBaseCommand
     {
-        public CreateCardCommand(string boardId,string name, string description,CardType type)
+        public CreateCardCommand(string name, string description, string boardId, CardType type)
+                : base(name, description, type)
         {
-            Name = name;
-            Description = description;
             BoardId = boardId;
-            Type = type;
         }
 
-  
+        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
+        public string BoardId { get; }
     }
 }

@@ -6,9 +6,8 @@ namespace TaskoMask.Application.Workspace.Organizations.Commands.Models
    public class CreateOrganizationCommand : OrganizationBaseCommand
     {
         public CreateOrganizationCommand(string name, string description, string ownerMemberId)
+            :base(name,description)
         {
-            Name = name;
-            Description = description;
             OwnerMemberId = ownerMemberId;
         }
 

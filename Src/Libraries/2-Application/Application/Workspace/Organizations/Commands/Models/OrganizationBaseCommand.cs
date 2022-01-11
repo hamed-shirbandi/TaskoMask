@@ -7,15 +7,20 @@ namespace TaskoMask.Application.Workspace.Organizations.Commands.Models
 {
     public abstract class OrganizationBaseCommand : BaseCommand
     {
-    
+        public OrganizationBaseCommand(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
+
         [StringLength(DomainConstValues.Organization_Name_Max_Length, MinimumLength = DomainConstValues.Organization_Name_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string Name { get; init; }
+        public string Name { get;  }
 
 
         [StringLength(DomainConstValues.Organization_Description_Max_Length, MinimumLength = DomainConstValues.Organization_Description_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string Description { get; init; }
+        public string Description { get;  }
 
      
     }

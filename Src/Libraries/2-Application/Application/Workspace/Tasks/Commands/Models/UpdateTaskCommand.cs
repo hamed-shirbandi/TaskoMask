@@ -3,13 +3,13 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
 {
-   public class UpdateTaskCommand : TaskBaseCommand
+    public class UpdateTaskCommand : TaskBaseCommand
     {
-        public UpdateTaskCommand(string id, string name, string description )
+        public UpdateTaskCommand(string id, string title, string description, string cardId)
+            : base(title, description, cardId)
+
         {
             Id = id;
-            Title = name;
-            Description = description;
         }
 
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]

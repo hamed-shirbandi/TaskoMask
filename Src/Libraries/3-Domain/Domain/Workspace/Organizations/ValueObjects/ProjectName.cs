@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Workspace.Organizations.ValueObjects
@@ -47,6 +48,13 @@ namespace TaskoMask.Domain.Workspace.Organizations.ValueObjects
         {
             if (string.IsNullOrEmpty(Value))
                 throw new DomainException(string.Format(DomainMessages.Required, nameof(ProjectName)));
+
+            if (Value.Length < DomainConstValues.Project_Name_Min_Length)
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(ProjectName), DomainConstValues.Project_Name_Min_Length, DomainConstValues.Project_Name_Max_Length));
+
+            if (Value.Length > DomainConstValues.Project_Name_Max_Length)
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(ProjectName), DomainConstValues.Project_Name_Min_Length, DomainConstValues.Project_Name_Max_Length));
+
         }
 
 

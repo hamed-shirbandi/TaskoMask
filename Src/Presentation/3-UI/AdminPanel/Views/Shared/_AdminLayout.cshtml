@@ -53,27 +53,18 @@
 
                             <li>
                                 <a class="nav-submenu" data-toggle="nav-submenu" role="button">
-                                    Team
-                                    <span class="si si-users"></span>
-                                </a>
-                                <ul class="sidebar__nav__sub">
-                                    <li><a href="@Url.Action(action: "index", controller: "Members", values: new { Area = "Team"})">Members </a></li>
-                                    <li><a href="@Url.Action(action: "index", controller: "Organizations", values: new { Area = "Team"})">Organizations </a></li>
-                                    <li><a href="@Url.Action(action: "index", controller: "Projects", values: new { Area = "Team"})">Projects </a></li>
-                                </ul>
-
-                            </li>
-
-
-                            <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" role="button">
                                     Workspace
                                     <span class="si si-check"></span>
                                 </a>
                                 <ul class="sidebar__nav__sub">
+                                    <li><a href="@Url.Action(action: "index", controller: "Members", values: new { Area = "Workspace"})">Members </a></li>
+                                    <li><a href="@Url.Action(action: "index", controller: "Organizations", values: new { Area = "Workspace"})">Organizations </a></li>
+                                    <li><a href="@Url.Action(action: "index", controller: "Projects", values: new { Area = "Workspace"})">Projects </a></li>
+
                                     <li><a href="@Url.Action(action: "index", controller: "Tasks", values: new { Area = "Workspace"})">Tasks </a></li>
                                     <li><a href="@Url.Action(action: "index", controller: "Cards", values: new { Area = "Workspace"})">Cards </a></li>
                                     <li><a href="@Url.Action(action: "index", controller: "Boards", values: new { Area = "Workspace"})">Boards </a></li>
+
                                 </ul>
 
                             </li>

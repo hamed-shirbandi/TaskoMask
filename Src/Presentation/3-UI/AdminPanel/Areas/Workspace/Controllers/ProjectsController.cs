@@ -6,10 +6,10 @@ using TaskoMask.Application.Workspace.Projects.Services;
 using System.Threading.Tasks;
 using TaskoMask.Presentation.Framework.Web.Filters;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Team.Controllers
+namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
 {
     [Authorize]
-    [Area("Team")]
+    [Area("Workspace")]
     public class ProjectsController : BaseMvcController
     {
         #region Fields

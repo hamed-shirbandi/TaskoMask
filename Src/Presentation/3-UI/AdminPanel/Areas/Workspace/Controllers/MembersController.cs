@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using TaskoMask.Presentation.Framework.Web.Filters;
 using TaskoMask.Presentation.Framework.Web.Helpers;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Team.Controllers
+namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
 {
     [Authorize]
-    [Area("Team")]
+    [Area("Workspace")]
     public class MembersController : BaseMvcController
     {
         #region Fields

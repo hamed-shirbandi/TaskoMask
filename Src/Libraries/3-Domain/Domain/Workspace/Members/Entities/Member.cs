@@ -4,6 +4,7 @@ using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Workspace.Members.Events;
+using TaskoMask.Domain.Workspace.Members.Specifications;
 
 namespace TaskoMask.Domain.Workspace.Members.Entities
 {
@@ -146,11 +147,12 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
             if (Identity == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Identity)));
 
-            if (!Identity.Email.Value.ToLower().Equals(Authentication.UserName.Value.ToLower()))
+            if (!new MemberEmailAndUserNameMustBeSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.UserName_And_Email_Must_Be_The_Same);
+
         }
 
-     
+
         #endregion
     }
 }

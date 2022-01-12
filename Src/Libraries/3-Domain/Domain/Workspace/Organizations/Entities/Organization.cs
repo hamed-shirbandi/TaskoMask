@@ -3,6 +3,7 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
 using TaskoMask.Domain.Workspace.Organizations.Events;
+using TaskoMask.Domain.Workspace.Organizations.Specifications;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Entities
 {
@@ -82,7 +83,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             if (OwnerMemberId == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerMemberId)));
 
-            if (Name.Value.Equals(Description.Value))
+            if (!new OrganizationNameAndDescriptionCannotBeSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
 
         }

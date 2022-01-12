@@ -2,6 +2,7 @@
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Core.Specifications;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
@@ -115,15 +116,8 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         private void CheckPasswordPolicies(string password)
         {
-            if (string.IsNullOrEmpty(password))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(password)));
-
-            if (password.Length < DomainConstValues.Member_Password_Min_Length)
+            if (!new ValidPasswordSpecification().IsSatisfiedBy(password))
                 throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(password), DomainConstValues.Member_Password_Min_Length, DomainConstValues.Member_DisplayName_Max_Length));
-
-            if (password.Length > DomainConstValues.Member_Password_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(password), DomainConstValues.Member_Password_Min_Length, DomainConstValues.Member_Password_Max_Length));
-
         }
 
 

@@ -60,46 +60,52 @@ There is a list of our documentation:
       - ASP.NET MVC
       -	MongoDB
       -	Redis
-      -	SignalR (soon)
       -	MediatR
       -	AutoMapper
       -	FluentValidation
       -	Swagger
-      -	MsTest
+      -	xUnit with FluenAssertion and Moq
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/)
       -	[RedisCache.Core](https://www.nuget.org/packages/RedisCache.Core/)
-      -	[DbLogger.Core](https://www.nuget.org/packages/DbLogger.Core/)
   * ### Front-end:
       - Blazor
+        - Blazor Server
+        - Cookie Authentication without ASP.NET Identity
+        - Working with APIs protected by JWT
+        - Comunication between components by messages
       -	.HTML
       -	CSS
       -	Java Script 
       -	JQuery
       -	Bootstrap
-      -	Signalr.js
       -	Jquery.noty
       -	Chart.js
   * ### Patterns, Methodologies، Approaches:
       -	Onion Architecture
+      -	Unit Testing
       -	DDD
+        - Rich Domain Model (for core domain)
+        -	Anemic Domain Model (for less important subdomains)
+        -	Aggregate
+        -	Domain Service
+        -	Value Object
+        -	Specification
+        -	Builder
+        -	Factory Method
       -	CQRS
       -	Event Sourcing
-      -	Notification
       -	Repository
-      -	CRUD,Anemic Model (for less important subdomains)
-      -	Unit Test
+      -	Notification
   * ### Some technical features:
-      -	Caching Behavior
-      -	Validation Behavior
-      -	Event Storing Behavior
+      -	Caching Behavior using Pipeline Pattern
+      -	Validation using Pipeline Pattern (Check both Fluent Validation and Data Annotation Validation)
+      -	Event Storing using Pipeline Pattern
       -	Application Exception Handler
-      -	In Memory Bus
+      -	InMemory Bus
       -	Cookie Authentication
       -	JWT Authentication
       -	Role Permission Base User Management
       -	Swagger UI with JWT Support
-      -	Combined Validation (Fluent, Data Annotation)
-      -	Automatic DB Logger
 
 # Contributing
 Contributions, issues, and feature requests are welcome. Feel free to check issues page if you want to contribute. Any contributions you make are greatly appreciated.

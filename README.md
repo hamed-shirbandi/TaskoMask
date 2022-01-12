@@ -87,8 +87,9 @@ There is a list of our documentation:
         - Rich Domain Model (for core domain)
         -	Anemic Domain Model (for less important subdomains)
         -	Aggregate
+        - Value Object
+        - Domain Event
         -	Domain Service
-        -	Value Object
         -	Specification
         -	Builder
         -	Factory Method

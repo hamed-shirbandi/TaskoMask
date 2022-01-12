@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Core.ValueObjects
@@ -44,12 +45,10 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// </summary>
         protected override void CheckPolicies()
         {
-            //if (!string.IsNullOrEmpty(Value))
-            //    if (Value.Length != 11)
-            //        throw new DomainException(string.Format(DomainMessages.Invalid_PhoneNumber, nameof(UserPhoneNumber)));
+            if (!string.IsNullOrEmpty(Value))
+                if (PhoneNumberValidator.IsValid(Value))
+                    throw new DomainException(DomainMessages.Invalid_PhoneNumber);
 
-
-            //TODO should be a valid phoneNumber
 
             //TODO should be unique
         }

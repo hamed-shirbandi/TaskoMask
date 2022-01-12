@@ -88,6 +88,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Email Address.
+        /// </summary>
+        public static string Invalid_Email_Address {
+            get {
+                return ResourceManager.GetString("Invalid_Email_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PhoneNumber is invalid.
         /// </summary>
         public static string Invalid_PhoneNumber {

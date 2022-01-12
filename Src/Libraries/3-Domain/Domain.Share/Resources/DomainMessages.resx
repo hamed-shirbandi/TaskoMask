@@ -126,6 +126,9 @@
   <data name="Incorrect_Password" xml:space="preserve">
     <value>Incorrect password or username</value>
   </data>
+  <data name="Invalid_Email_Address" xml:space="preserve">
+    <value>Invalid Email Address</value>
+  </data>
   <data name="Invalid_PhoneNumber" xml:space="preserve">
     <value>PhoneNumber is invalid</value>
   </data>

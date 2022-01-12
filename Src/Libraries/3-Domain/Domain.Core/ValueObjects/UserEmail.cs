@@ -57,8 +57,9 @@ namespace TaskoMask.Domain.Core.ValueObjects
             if (Value.Length > DomainConstValues.Member_Email_Max_Length)
                 throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(UserEmail), DomainConstValues.Member_Email_Min_Length, DomainConstValues.Member_Email_Max_Length));
 
-            //TODO should be a valid email address
-   
+            if (EmailValidator.IsValid(Value))
+                throw new DomainException(DomainMessages.Invalid_Email_Address);
+
             //TODO should be unique
 
         }

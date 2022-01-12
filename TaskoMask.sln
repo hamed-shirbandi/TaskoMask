@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.Base", "Src\Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "Src\Presentation\3-UI\UserPanel\UserPanel.csproj", "{637FCA1E-254C-448B-A3F7-A6BDEF7242C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Share", "Src\Libraries\2-Application\Application.Core.Models\Application.Share.csproj", "{7410B8EB-85DE-4693-AB7A-ECE039C296B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Share", "Src\Libraries\2-Application\Application.Share\Application.Share.csproj", "{7410B8EB-85DE-4693-AB7A-ECE039C296B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Share", "Src\Libraries\3-Domain\Domain.Share\Domain.Share.csproj", "{0916932F-A913-4CCD-8F53-2B82A4BC657F}"
 EndProject

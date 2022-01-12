@@ -47,10 +47,15 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Organization
 
+            CreateMap<Organization, OrganizationBaseDto>()
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name.Value))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description.Value))
+                    .ForMember(dest => dest.OwnerMemberId, opt => opt.MapFrom(src => src.OwnerMemberId.Value));
+
             CreateMap<Organization, OrganizationBasicInfoDto>();
+            CreateMap<Organization, OrganizationOutputDto>();
             CreateMap<Organization, OrganizationUpsertDto>();
             CreateMap<OrganizationBasicInfoDto, OrganizationUpsertDto>();
-            CreateMap<Organization, OrganizationOutputDto>();
 
             #endregion
 

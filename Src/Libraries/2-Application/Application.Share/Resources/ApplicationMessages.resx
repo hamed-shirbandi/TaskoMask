@@ -150,6 +150,9 @@
   <data name="Update_Success" xml:space="preserve">
     <value>Update Success</value>
   </data>
+  <data name="User_Already_Exist" xml:space="preserve">
+    <value>User already exist</value>
+  </data>
   <data name="User_Email_Already_Exist" xml:space="preserve">
     <value>User Email Already Exist</value>
   </data>

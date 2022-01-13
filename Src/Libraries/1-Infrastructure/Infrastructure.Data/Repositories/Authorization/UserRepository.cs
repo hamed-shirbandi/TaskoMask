@@ -20,13 +20,23 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Authorization
 
         public UserRepository(IMongoDbContext dbContext) : base(dbContext)
         {
-            _users = dbContext.GetCollection<User>(); 
+            _users = dbContext.GetCollection<User>();
 
         }
 
         #endregion
 
         #region Public Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<bool> ExistByUserNameAsync(string userName)
+        {
+            return await _users.Find(e => e.UserName == userName).AnyAsync();
+        }
 
 
 

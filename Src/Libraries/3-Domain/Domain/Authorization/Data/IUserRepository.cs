@@ -7,6 +7,7 @@ namespace TaskoMask.Domain.Authorization.Data
 {
     public interface IUserRepository : IBaseRepository<User>
     {
+        Task<bool> ExistByUserNameAsync(string userName);
         Task<User> GetByUserNameAsync(string userName);
     }
 }

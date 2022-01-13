@@ -160,6 +160,15 @@ namespace TaskoMask.Application.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User already exist.
+        /// </summary>
+        public static string User_Already_Exist {
+            get {
+                return ResourceManager.GetString("User_Already_Exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User Email Already Exist.
         /// </summary>
         public static string User_Email_Already_Exist {

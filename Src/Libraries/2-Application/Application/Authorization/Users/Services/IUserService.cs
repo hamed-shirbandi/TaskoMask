@@ -8,7 +8,7 @@ namespace TaskoMask.Application.Authorization.Users.Services
     public interface IUserService : IBaseService
     {
         Task<Result<CommandResult>> CreateAsync(UserUpsertDto input);
-        Task<Result<CommandResult>> UpdateAsync(UserUpsertDto input);
+        Task<Result<CommandResult>> UpdateUserNameAsync(string userId,string userName);
         Task<Result<UserBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<UserBasicInfoDto>> GetByUserNameAsync(string userName);
         Task<Result<bool>> LoginAsync(string userName,string password);

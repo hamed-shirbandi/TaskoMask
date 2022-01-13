@@ -11,7 +11,7 @@ using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Projects.Queries.Models;
 using System.Linq;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.Domain.Workspace.Organizations.Entities;

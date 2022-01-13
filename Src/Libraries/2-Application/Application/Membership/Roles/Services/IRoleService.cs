@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Common.Services;
 using System.Collections.Generic;
 using TaskoMask.Application.Share.ViewModels;
 

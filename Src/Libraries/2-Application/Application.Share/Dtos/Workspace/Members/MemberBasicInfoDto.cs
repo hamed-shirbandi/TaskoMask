@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Share.Dtos.Common.Users;
+﻿using TaskoMask.Application.Share.Dtos.Authorization.Users;
 
 namespace TaskoMask.Application.Share.Dtos.Workspace.Members
 {

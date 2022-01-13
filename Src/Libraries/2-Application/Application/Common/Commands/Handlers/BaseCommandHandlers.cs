@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Common.Base.Commands.Models;
+using TaskoMask.Application.Common.Commands.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Exceptions;
@@ -12,11 +12,11 @@ using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Common.Base.Commands.Handlers
+namespace TaskoMask.Application.Common.Commands.Handlers
 {
     public class BaseCommandHandlers<TEntity> : BaseCommandHandler,
         IRequestHandler<RecycleCommand<TEntity>, CommandResult>,
-        IRequestHandler<DeleteCommand<TEntity>, CommandResult> where TEntity : BaseAggregate
+        IRequestHandler<DeleteCommand<TEntity>, CommandResult> where TEntity : BaseEntity
 
     {
         #region Fields

@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Common.Users;
-using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Users.Services;
 using TaskoMask.Application.Workspace.Members.Commands.Models;
 using TaskoMask.Application.Workspace.Members.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Members;
@@ -14,10 +12,11 @@ using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Domain.Workspace.Members.Entities;
 using TaskoMask.Domain.Workspace.Members.Data;
+using TaskoMask.Application.Common.Services;
 
 namespace TaskoMask.Application.Workspace.Members.Services
 {
-    public class MemberService : UserService<Member>, IMemberService
+    public class MemberService : BaseService<Member>, IMemberService
     {
         #region Fields
 
@@ -26,7 +25,8 @@ namespace TaskoMask.Application.Workspace.Members.Services
 
         #region Ctors
 
-        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberRepository memberRepository, IEncryptionService encryptionService) : base(inMemoryBus, mapper, notifications, memberRepository, encryptionService)
+        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberRepository memberRepository, IEncryptionService encryptionService)
+             : base(inMemoryBus, mapper, notifications)
         { }
 
 

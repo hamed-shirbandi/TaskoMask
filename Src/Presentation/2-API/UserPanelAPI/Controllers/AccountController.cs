@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Share.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Workspace.Members.Services;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Web.Controllers;

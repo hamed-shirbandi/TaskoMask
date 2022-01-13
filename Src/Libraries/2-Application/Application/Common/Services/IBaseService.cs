@@ -2,7 +2,7 @@
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Share.Helpers;
 
-namespace TaskoMask.Application.Common.Base.Services
+namespace TaskoMask.Application.Common.Services
 {
     public interface IBaseService:IApplicationService
     {

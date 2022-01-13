@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
-using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Common.Services;
 
 namespace TaskoMask.Application.Workspace.Cards.Services
 {

@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Application.Core.Commands;
 using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Application.Common.Base.Commands.Models
+namespace TaskoMask.Application.Common.Commands.Models
 {
     public class RecycleCommand<TEntity>:BaseCommand where TEntity :BaseEntity
     {

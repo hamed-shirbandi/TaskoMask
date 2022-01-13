@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Common.Services;
 
 namespace TaskoMask.Application.Workspace.Boards.Services
 {

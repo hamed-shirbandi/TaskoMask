@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using System.Threading.Tasks;
-using TaskoMask.Application.Common.Base.Commands.Models;
-using TaskoMask.Application.Common.Base.Queries.Models;
+using TaskoMask.Application.Common.Commands.Models;
+using TaskoMask.Application.Common.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Application.Common.Base.Services
+namespace TaskoMask.Application.Common.Services
 {
   public  class BaseService<TEntity>: ApplicationService,IBaseService where TEntity:BaseEntity
     {

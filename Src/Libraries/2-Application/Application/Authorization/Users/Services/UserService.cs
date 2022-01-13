@@ -1,31 +1,31 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Common.Users;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Base.Services;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Application.Core.Commands;
+using TaskoMask.Application.Common.Services;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Core.Data;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Authorization.Entities;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Domain.Authorization.Data;
 
-namespace TaskoMask.Application.Common.Users.Services
+namespace TaskoMask.Application.Authorization.Users.Services
 {
-    public class UserService<TEntity> : BaseService<TEntity>, IUserService where TEntity : BaseUser
+    public class UserService : BaseService<User>, IUserService
     {
         #region Fields
 
-        private readonly IUserRepository<TEntity> _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IEncryptionService _encryptionService;
 
         #endregion
 
         #region Ctors
 
-        public UserService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IUserRepository<TEntity> userRepository, IEncryptionService encryptionService) : base(inMemoryBus, mapper, notifications)
+        public UserService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IUserRepository userRepository, IEncryptionService encryptionService) 
+             : base(inMemoryBus, mapper, notifications)
         {
             _userRepository = userRepository;
             _encryptionService = encryptionService;
@@ -38,10 +38,71 @@ namespace TaskoMask.Application.Common.Users.Services
 
 
 
+
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<UserBasicInfoDto>> GetBaseUserByIdAsync(string id)
+        public async Task<Result<CommandResult>> CreateAsync(UserUpsertDto input)
+        {
+            //move this validation to domain model
+            var existOperator = await _operatorRepository.GetByUserNameAsync(input.UserName);
+            if (existOperator != null)
+                return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
+
+
+            var userIdentity = UserIdentityBuilder.Init()
+                .WithDisplayName(input.DisplayName)
+                .WithEmail(input.Email)
+                .WithPhoneNumber(input.PhoneNumber)
+                .Build();
+
+            var userAuthentication = UserAuthentication.Create(UserName.Create(input.UserName));
+
+            var @operator = Operator.Create(userIdentity, userAuthentication);
+
+            @operator.SetPassword(input.Password, _encryptionService);
+
+            await _operatorRepository.CreateAsync(@operator);
+
+            return Result.Success(new CommandResult(entityId: @operator.Id), ApplicationMessages.Create_Success);
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> UpdateAsync(UserUpsertDto input)
+        {
+            //move this validation to domain model
+            var existOperator = await _operatorRepository.GetByUserNameAsync(input.UserName);
+            if (existOperator != null && existOperator.Id.ToString() != input.Id)
+                return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
+
+
+            var @operator = await _operatorRepository.GetByIdAsync(input.Id);
+            if (@operator == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+
+            @operator.Update(
+                MemberDisplayName.Create(input.DisplayName),
+                UserEmail.Create(input.Email),
+                UserPhoneNumber.Create(input.PhoneNumber),
+                UserName.Create(input.UserName));
+
+
+            await _operatorRepository.UpdateAsync(@operator);
+
+            return Result.Success(new CommandResult(entityId: @operator.Id), ApplicationMessages.Update_Success);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<UserBasicInfoDto>> GetByIdAsync(string id)
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
@@ -55,7 +116,7 @@ namespace TaskoMask.Application.Common.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<UserBasicInfoDto>> GetBaseUserByUserNameAsync(string userName)
+        public async Task<Result<UserBasicInfoDto>> GetByUserNameAsync(string userName)
         {
             var user = await _userRepository.GetByUserNameAsync(userName);
             if (user == null)
@@ -65,24 +126,11 @@ namespace TaskoMask.Application.Common.Users.Services
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<UserBasicInfoDto>> GetBaseUserByPhoneNumberAsync(string phoneNumber)
-        {
-            var user = await _userRepository.GetByPhoneNumberAsync(phoneNumber);
-            if (user == null)
-                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
-
-            return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
-        }
-
-
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<bool>> ValidateUserPasswordAsync(string userName, string password)
+        public async Task<Result<bool>> LoginAsync(string userName, string password)
         {
             var user = await _userRepository.GetByUserNameAsync(userName);
             if (user == null)

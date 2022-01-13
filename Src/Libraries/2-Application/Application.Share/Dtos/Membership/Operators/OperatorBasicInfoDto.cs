@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Resources;
 
 namespace TaskoMask.Application.Share.Dtos.Membership.Operators

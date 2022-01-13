@@ -1,14 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using TaskoMask.Application.Workspace.Projects.Services;
 using TaskoMask.Infrastructure.Data.DbContext;
 using TaskoMask.Infrastructure.Data.EventSourcing;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Infrastructure.CrossCutting.Bus;
 using TaskoMask.Domain.Core.Events;
-using TaskoMask.Application.Common.Base.Queries.Models;
-using TaskoMask.Application.Common.Base.Queries.Handlers;
 using TaskoMask.Domain.Membership.Entities;
 using TaskoMask.Application.Membership.Roles.Services;
 using TaskoMask.Application.Membership.Operators.Services;
@@ -26,8 +23,6 @@ using TaskoMask.Domain.Membership.Data;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Infrastructure.CrossCutting.Services.Security;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Application.Common.Base.Commands.Handlers;
-using TaskoMask.Application.Common.Base.Commands.Models;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Workspace.Members.Entities;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
@@ -37,6 +32,8 @@ using TaskoMask.Domain.Workspace.Members.Data;
 using TaskoMask.Domain.Workspace.Organizations.Data;
 using TaskoMask.Domain.Workspace.Boards.Data;
 using TaskoMask.Domain.Workspace.Tasks.Data;
+using TaskoMask.Domain.Authorization.Data;
+using TaskoMask.Infrastructure.Data.Repositories.Authorization;
 
 namespace Infrastructure.CrossCutting.IoC
 {
@@ -55,6 +52,7 @@ namespace Infrastructure.CrossCutting.IoC
         {
             #region Application
 
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IOperatorService, OperatorService>();
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddScoped<IRoleService, RoleService>();
@@ -87,6 +85,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IBoardRepository, BoardRepository>();
             services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IInvitationRepository, InvitationRepository>();
             services.AddScoped<IEncryptionService, EncryptionService>();
             

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 
 namespace TaskoMask.Application.Workspace.Projects.Services

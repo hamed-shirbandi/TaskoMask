@@ -3,7 +3,6 @@ using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Users.Services;
 using TaskoMask.Application.Share.Dtos.Membership.Operators;
 using TaskoMask.Domain.Membership.Entities;
 using TaskoMask.Application.Share.ViewModels;
@@ -13,12 +12,11 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Resources;
 using System.Linq;
-using TaskoMask.Domain.Core.ValueObjects;
-using TaskoMask.Domain.Core.Builders;
+using TaskoMask.Application.Common.Services;
 
 namespace TaskoMask.Application.Membership.Operators.Services
 {
-    public class OperatorService : UserService<Operator>, IOperatorService
+    public class OperatorService : BaseService<Operator>, IOperatorService
     {
         #region Fields
 
@@ -31,7 +29,8 @@ namespace TaskoMask.Application.Membership.Operators.Services
 
         #region Ctors
 
-        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IEncryptionService encryptionService, IRoleRepository roleRepository) : base(inMemoryBus, mapper, notifications, operatorRepository, encryptionService)
+        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IEncryptionService encryptionService, IRoleRepository roleRepository)
+             : base(inMemoryBus, mapper, notifications)
         {
             _operatorRepository = operatorRepository;
             _encryptionService = encryptionService;

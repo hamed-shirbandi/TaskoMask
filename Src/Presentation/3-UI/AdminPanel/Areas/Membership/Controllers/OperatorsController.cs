@@ -6,7 +6,7 @@ using AutoMapper;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Dtos.Membership.Operators;
 using TaskoMask.Presentation.Framework.Web.Helpers;
-using TaskoMask.Application.Share.Dtos.Common.Users;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Presentation.Framework.Web.Filters;
 using TaskoMask.Presentation.Framework.Web.Enums;
 using TaskoMask.Presentation.Framework.Web.Extensions;

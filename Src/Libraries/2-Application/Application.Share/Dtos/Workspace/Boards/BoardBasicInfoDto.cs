@@ -1,4 +1,4 @@
-﻿using TaskoMask.Application.Share.Dtos.Common.Base;
+﻿using TaskoMask.Application.Share.Dtos.Common;
 
 namespace TaskoMask.Application.Share.Dtos.Workspace.Boards
 {

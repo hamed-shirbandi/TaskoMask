@@ -8,6 +8,7 @@ using TaskoMask.Domain.Workspace.Boards.Entities;
 using TaskoMask.Domain.Workspace.Tasks.Entities;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
 using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Authorization.Entities;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
 {
@@ -71,6 +72,9 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
             if (!collections.Has<Permission>())
                 dbContext.CreateCollection<Permission>();
+
+            if (!collections.Has<User>())
+                dbContext.CreateCollection<User>();
 
         }
 

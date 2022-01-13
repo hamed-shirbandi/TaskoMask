@@ -7,8 +7,6 @@ namespace TaskoMask.Domain.Authorization.Data
 {
     public interface IUserRepository : IBaseRepository<User>
     {
-        Task<User> GetByEmailNameAsync(string email);
         Task<User> GetByUserNameAsync(string userName);
-        Task<User> GetByPhoneNumberAsync(string phoneNumber);
     }
 }

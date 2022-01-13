@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Share.Dtos.Membership.Permissions;
 using TaskoMask.Application.Share.Helpers;

@@ -1,13 +1,12 @@
 ﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Common.Users;
-using TaskoMask.Application.Common.Users.Services;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Dtos.Workspace.Members;
 using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Application.Workspace.Members.Services
 {
-    public interface IMemberService : IUserService
+    public interface IMemberService 
     {
         Task<Result<CommandResult>> CreateAsync(MemberRegisterDto input);
         Task<Result<CommandResult>> UpdateAsync(UserUpsertDto input);

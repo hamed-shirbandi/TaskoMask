@@ -2,7 +2,7 @@
 using TaskoMask.Application.Share.Dtos.Common.Base;
 using TaskoMask.Application.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Common.Users
+namespace TaskoMask.Application.Share.Dtos.Authorization.Users
 {
     public class UserBasicInfoDto: UserBaseDto
     {

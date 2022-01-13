@@ -5,7 +5,7 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Domain.Membership.Entities;
-using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Share.Dtos.Membership.Roles;
 using System.Collections.Generic;
 using TaskoMask.Application.Share.ViewModels;

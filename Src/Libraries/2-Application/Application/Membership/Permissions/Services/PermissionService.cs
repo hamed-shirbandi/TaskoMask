@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Base.Services;
+using TaskoMask.Application.Common.Services;
 using TaskoMask.Domain.Membership.Data;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.Dtos.Membership.Permissions;

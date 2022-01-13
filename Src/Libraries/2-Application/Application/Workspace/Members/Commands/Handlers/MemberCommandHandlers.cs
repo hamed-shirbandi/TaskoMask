@@ -95,7 +95,7 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Handlers
 
 
             member.Update(
-                UserDisplayName.Create(request.DisplayName),
+                MemberDisplayName.Create(request.DisplayName),
                 UserEmail.Create(request.Email),
                 UserPhoneNumber.Create(request.PhoneNumber));
 

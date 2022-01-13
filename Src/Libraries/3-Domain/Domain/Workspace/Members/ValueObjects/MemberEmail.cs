@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Core.ValueObjects
+namespace TaskoMask.Domain.Workspace.Members.ValueObjects
 {
     /// <summary>
     /// 
     /// </summary>
-    public class UserName : BaseValueObject
+    public class MemberEmail : BaseValueObject
     {
         #region Properties
 
@@ -24,7 +20,7 @@ namespace TaskoMask.Domain.Core.ValueObjects
 
         #region Ctors
 
-        private UserName(string value)
+        private MemberEmail(string value)
         {
             Value = value;
 
@@ -40,9 +36,9 @@ namespace TaskoMask.Domain.Core.ValueObjects
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static UserName Create(string value)
+        public static MemberEmail Create(string value)
         {
-            return new UserName(value);
+            return new MemberEmail(value);
         }
 
 
@@ -53,18 +49,19 @@ namespace TaskoMask.Domain.Core.ValueObjects
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(UserName)));
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(MemberEmail)));
 
-            //for Members it uses Email for UserName
-            //for Operators we consider this policy too
             if (Value.Length < DomainConstValues.Member_Email_Min_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(UserName), DomainConstValues.Member_Email_Min_Length, DomainConstValues.Member_Email_Max_Length));
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(MemberEmail), DomainConstValues.Member_Email_Min_Length, DomainConstValues.Member_Email_Max_Length));
 
             if (Value.Length > DomainConstValues.Member_Email_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(UserName), DomainConstValues.Member_Email_Min_Length, DomainConstValues.Member_Email_Max_Length));
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(MemberEmail), DomainConstValues.Member_Email_Min_Length, DomainConstValues.Member_Email_Max_Length));
 
+            if (EmailValidator.IsValid(Value))
+                throw new DomainException(DomainMessages.Invalid_Email_Address);
 
             //TODO should be unique
+
         }
 
 

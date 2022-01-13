@@ -92,7 +92,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
             @operator.Update(
-                UserDisplayName.Create(input.DisplayName),
+                MemberDisplayName.Create(input.DisplayName),
                 UserEmail.Create(input.Email),
                 UserPhoneNumber.Create(input.PhoneNumber),
                 UserName.Create(input.UserName));

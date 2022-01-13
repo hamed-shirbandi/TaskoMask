@@ -1,17 +1,15 @@
 ﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Workspace.Members.Events;
-using TaskoMask.Domain.Workspace.Members.Specifications;
+using TaskoMask.Domain.Workspace.Members.ValueObjects;
 
 namespace TaskoMask.Domain.Workspace.Members.Entities
 {
     /// <summary>
     /// Members are those who manage their tasks in this system
     /// </summary>
-    public class Member : BaseUser
+    public class Member : BaseAggregate
     {
         #region Fields
 
@@ -20,10 +18,12 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
 
         #region Ctors
 
-        private Member(UserIdentity identity, UserAuthentication authentication)
-            : base(identity, authentication)
+        private Member(MemberDisplayName displayName, MemberEmail email)
         {
-            AddDomainEvent(new MemberCreatedEvent(Id, identity.DisplayName.Value, identity.Email.Value, authentication.UserName.Value));
+            DisplayName = displayName;
+            Email = email;
+
+            AddDomainEvent(new MemberCreatedEvent(Id, displayName.Value, email.Value));
         }
 
 
@@ -32,6 +32,8 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
 
         #region Properties
 
+        public MemberDisplayName DisplayName { get; private set; }
+        public MemberEmail Email { get; private set; }
 
         #endregion
 
@@ -42,9 +44,9 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
         ///// <summary>
         ///// 
         ///// </summary>
-        public static Member Create(UserIdentity identity, UserAuthentication authentication)
+        public static Member Create(MemberDisplayName displayName, MemberEmail email)
         {
-            return new Member(identity, authentication);
+            return new Member(displayName, email);
         }
 
 
@@ -52,60 +54,15 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
         ///// <summary>
         /////  
         ///// </summary>
-        public void Update(UserDisplayName displayName, UserEmail email, UserPhoneNumber phoneNumber)
+        public void Update(MemberDisplayName displayName, MemberEmail email)
         {
-            UpdateIdentity(displayName, email, phoneNumber);
-            UpdateAuthenticationUserName(UserName.Create(email.Value));
+            DisplayName = displayName;
+            Email = email;
             base.Update();
 
-            AddDomainEvent(new MemberUpdatedEvent(Id, Identity.DisplayName.Value, Identity.Email.Value, Authentication.UserName.Value));
+            AddDomainEvent(new MemberUpdatedEvent(Id, displayName.Value, email.Value));
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override void SetPassword(string password, IEncryptionService encryptionService)
-        {
-            base.SetPassword(password, encryptionService);
-
-            AddDomainEvent(new MemberPasswordSetEvent(Id, Authentication.Password.PasswordHash, Authentication.Password.PasswordSalt));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override void ChangePassword(string oldPassword, string newPassword, IEncryptionService encryptionService)
-        {
-            base.ChangePassword(oldPassword, newPassword, encryptionService);
-            AddDomainEvent(new MemberPasswordSetEvent(Id, Authentication.Password.PasswordHash, Authentication.Password.PasswordSalt));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override bool IsValidPassword(string password, IEncryptionService encryptionService)
-        {
-            return base.IsValidPassword(password, encryptionService);
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override void SetIsActive(bool isActive)
-        {
-            base.SetIsActive(isActive);
-            AddDomainEvent(new MemberActivityStateChangedEvent(Id, Authentication.IsActive.Value));
-
-        }
 
 
 
@@ -141,14 +98,11 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
-            if (Authentication == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Authentication)));
+            if (DisplayName == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(DisplayName)));
 
-            if (Identity == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Identity)));
-
-            if (!new MemberEmailAndUserNameMustBeSameSpecification().IsSatisfiedBy(this))
-                throw new DomainException(DomainMessages.UserName_And_Email_Must_Be_The_Same);
+            if (Email == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Email)));
 
         }
 

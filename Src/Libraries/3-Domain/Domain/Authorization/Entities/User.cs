@@ -1,16 +1,18 @@
 ﻿using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Core.Services;
-
 
 namespace TaskoMask.Domain.Authorization.Entities
 {
-    public class User : BaseAggregate
+    public class User : BaseEntity
     {
 
+        public string UserName { get; set; }
 
-        protected override void CheckInvariants()
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// Can log in and access to panel
+        /// </summary>
+        public bool IsActive { get; set; }
+        public string PasswordHash { get;  set; }
+        public string PasswordSalt { get;  set; }
+
     }
 }

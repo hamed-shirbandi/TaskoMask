@@ -43,8 +43,8 @@ namespace TaskoMask.Domain.Share.Helpers
         public const int Member_DisplayName_Max_Length = 50;
 
 
-        public const int Member_Password_Min_Length = 4;
-        public const int Member_Password_Max_Length = 50;
+        public const int User_Password_Min_Length = 4;
+        public const int User_Password_Max_Length = 50;
 
 
 

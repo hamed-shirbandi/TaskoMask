@@ -13,6 +13,7 @@ using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Resources;
 using System.Linq;
 using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Application.Membership.Operators.Services
 {
@@ -23,18 +24,19 @@ namespace TaskoMask.Application.Membership.Operators.Services
         private readonly IOperatorRepository _operatorRepository;
         private readonly IEncryptionService _encryptionService;
         private readonly IRoleRepository _roleRepository;
-
+        private readonly IUserService _userService;
 
         #endregion
 
         #region Ctors
 
-        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IEncryptionService encryptionService, IRoleRepository roleRepository)
+        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IEncryptionService encryptionService, IRoleRepository roleRepository, IUserService userService)
              : base(inMemoryBus, mapper, notifications)
         {
             _operatorRepository = operatorRepository;
             _encryptionService = encryptionService;
             _roleRepository = roleRepository;
+            _userService = userService;
         }
 
 
@@ -49,23 +51,20 @@ namespace TaskoMask.Application.Membership.Operators.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(OperatorUpsertDto input)
         {
-            //move this validation to domain model
-            var existOperator = await _operatorRepository.GetByUserNameAsync(input.UserName);
-            if (existOperator != null)
-                return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
+            //create authentication user info
+            var CreateUserCommandResult = await _userService.CreateAsync(input.UserName, input.Password);
+            if (!CreateUserCommandResult.IsSuccess)
+                return CreateUserCommandResult;
 
 
-            var userIdentity = UserIdentityBuilder.Init()
-                .WithDisplayName(input.DisplayName)
-                .WithEmail(input.Email)
-                .WithPhoneNumber(input.PhoneNumber)
-                .Build();
+            var @operator = new Operator
+            {
+                DisplayName = input.DisplayName,
+                Email = input.Email,
+            };
 
-            var userAuthentication = UserAuthentication.Create(UserName.Create(input.UserName));
-
-            var @operator = Operator.Create(userIdentity, userAuthentication);
-
-            @operator.SetPassword(input.Password, _encryptionService);
+            //Share key between User and Operator
+            @operator.SetId(CreateUserCommandResult.Value.EntityId);
 
             await _operatorRepository.CreateAsync(@operator);
 
@@ -80,22 +79,20 @@ namespace TaskoMask.Application.Membership.Operators.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(OperatorUpsertDto input)
         {
-            //move this validation to domain model
-            var existOperator = await _operatorRepository.GetByUserNameAsync(input.UserName);
-            if (existOperator != null && existOperator.Id.ToString() != input.Id)
-                return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
-
 
             var @operator = await _operatorRepository.GetByIdAsync(input.Id);
             if (@operator == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
-            @operator.Update(
-                MemberDisplayName.Create(input.DisplayName),
-                UserEmail.Create(input.Email),
-                UserPhoneNumber.Create(input.PhoneNumber),
-                UserName.Create(input.UserName));
 
+            //create authentication user info
+            var CreateUserCommandResult = await _userService.UpdateUserNameAsync(input.Id, input.UserName);
+            if (!CreateUserCommandResult.IsSuccess)
+                return CreateUserCommandResult;
+
+            @operator.DisplayName = input.DisplayName;
+            @operator.Email = input.Email;
+            @operator.UpdateModifiedDateTime();
 
             await _operatorRepository.UpdateAsync(@operator);
 
@@ -113,7 +110,9 @@ namespace TaskoMask.Application.Membership.Operators.Services
             if (@operator == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
-            @operator.UpdateRoles(rolesId);
+            @operator.RolesId = rolesId;
+
+            @operator.UpdateModifiedDateTime();
 
             await _operatorRepository.UpdateAsync(@operator);
 
@@ -166,7 +165,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
 
             var model = new OperatorDetailsViewModel
             {
-                Operator = _mapper.Map<OperatorUpsertDto>(@operator),
+                Operator = _mapper.Map<OperatorBasicInfoDto>(@operator),
                 Roles = roles.Select(role => new SelectListItem
                 {
                     Selected = @operator.RolesId != null && @operator.RolesId.Contains(role.Id),

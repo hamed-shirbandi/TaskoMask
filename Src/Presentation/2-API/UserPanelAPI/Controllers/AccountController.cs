@@ -8,6 +8,7 @@ using TaskoMask.Presentation.Framework.Share.Services.Authentication.JwtAuthenti
 using TaskoMask.Domain.Share.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Members;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -16,16 +17,18 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         #region Fields
 
         private readonly IMemberService _memberService;
+        private readonly IUserService _userService;
         private readonly IJwtAuthenticationService _jwtAuthenticationService;
 
         #endregion
 
         #region Ctor
 
-        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IMemberService memberService, IMapper mapper):base(mapper)
+        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IMemberService memberService, IMapper mapper, IUserService userService) : base(mapper)
         {
             _jwtAuthenticationService = jwtAuthenticationService;
             _memberService = memberService;
+            _userService = userService;
         }
 
 
@@ -43,12 +46,12 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         public async Task<Result<UserJwtTokenDto>> Login([FromBody] UserLoginDto input)
         {
             //get user
-            var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
+            var userQueryResult = await _userService.GetByUserNameAsync(input.UserName);
             if (!userQueryResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
 
             //validate user password
-            var validateQueryResult = await _memberService.ValidateUserPasswordAsync(input.Email, input.Password);
+            var validateQueryResult = await _userService.IsValidCredentialAsync(input.UserName, input.Password);
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
                 return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, validateQueryResult.Message);
 
@@ -78,7 +81,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
             //get user
-            var userQueryResult = await _memberService.GetBaseUserByUserNameAsync(input.Email);
+            var userQueryResult = await _userService.GetByUserNameAsync(input.Email);
             if (!userQueryResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
 

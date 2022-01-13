@@ -197,9 +197,9 @@ namespace TaskoMask.Application.Membership.Permissions.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<PermissionBasicInfoDto>>> GetListByOperatorAsync(string userName)
+        public async Task<Result<IEnumerable<PermissionBasicInfoDto>>> GetListByOperatorAsync(string userId)
         {
-            var @operator = await _operatorRepository.GetByUserNameAsync(userName);
+            var @operator = await _operatorRepository.GetByIdAsync(userId);
             if (@operator == null)
                 return Result.Failure<IEnumerable<PermissionBasicInfoDto>>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
@@ -221,9 +221,9 @@ namespace TaskoMask.Application.Membership.Permissions.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<string[]>> GetSystemNameListByOperatorAsync(string userName)
+        public async Task<Result<string[]>> GetSystemNameListByOperatorAsync(string userId)
         {
-            var operatorPermissionResult = await GetListByOperatorAsync(userName);
+            var operatorPermissionResult = await GetListByOperatorAsync(userId);
             if (!operatorPermissionResult.IsSuccess)
                 return Result.Failure<string[]>(operatorPermissionResult.Errors);
 

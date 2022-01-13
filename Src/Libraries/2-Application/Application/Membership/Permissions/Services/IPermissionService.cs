@@ -17,8 +17,8 @@ namespace TaskoMask.Application.Membership.Permissions.Services
         Task<Result<PermissionDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<IEnumerable<PermissionBasicInfoDto>>> GetListAsync(string id);
         Task<Result<IEnumerable<PermissionBasicInfoDto>>> GetListByIdsAsync(string[] ids);
-        Task<Result<string[]>> GetSystemNameListByOperatorAsync(string userName);
-        Task<Result<IEnumerable<PermissionBasicInfoDto>>> GetListByOperatorAsync(string userName);
+        Task<Result<string[]>> GetSystemNameListByOperatorAsync(string userId);
+        Task<Result<IEnumerable<PermissionBasicInfoDto>>> GetListByOperatorAsync(string userId);
         Task<Result<SelectListItem[]>> GetGroupedSelectListAsync();
         Task<Result<SelectListItem[]>> GetSelectListAsync(string[] selectedPermissionsId = null);
 

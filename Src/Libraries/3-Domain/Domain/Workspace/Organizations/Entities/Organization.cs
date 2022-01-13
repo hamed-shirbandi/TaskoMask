@@ -57,7 +57,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         {
             Description = description;
             Name = name;
-            base.Update();
+            base.UpdateModifiedDateTime();
 
             AddDomainEvent(new OrganizationUpdatedEvent(Id, Name.Value, Description.Value));
         }

@@ -8,10 +8,11 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Membership
 {
-    public class OperatorRepository : UserRepository<Operator>, IOperatorRepository
+    public class OperatorRepository : BaseRepository<Operator>, IOperatorRepository
     {
         #region Fields
 
+        protected readonly IMongoCollection<Operator> _operators;
 
         #endregion
 
@@ -19,19 +20,20 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Membership
 
         public OperatorRepository(IMongoDbContext dbContext) : base(dbContext)
         {
+            _operators = dbContext.GetCollection<Operator>();
         }
 
         #endregion
 
         #region Public Methods
 
-   
+
         /// <summary>
         /// 
         /// </summary>
         public async Task<long> CountByRoleIdAsync(string roleId)
         {
-            return await _users.CountDocumentsAsync(e => e.RolesId.Contains(roleId));
+            return await _operators.CountDocumentsAsync(e => e.RolesId.Contains(roleId));
         }
 
 
@@ -41,7 +43,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Membership
         /// </summary>
         public async Task<IEnumerable<Operator>> GetListByRoleIdAsync(string roleId)
         {
-            return await _users.Find(u => u.RolesId.Contains(roleId)).ToListAsync();
+            return await _operators.Find(u => u.RolesId.Contains(roleId)).ToListAsync();
         }
 
 

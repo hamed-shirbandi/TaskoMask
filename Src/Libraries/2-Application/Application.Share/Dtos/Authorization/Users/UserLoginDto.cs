@@ -8,10 +8,9 @@ namespace TaskoMask.Application.Share.Dtos.Authorization.Users
     public class UserLoginDto
     {
 
-        [Display(Name = nameof(ApplicationMetadata.Email), ResourceType = typeof(ApplicationMetadata))]
+        [Display(Name = nameof(ApplicationMetadata.UserName), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        [EmailAddress]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
 
         [Display(Name = nameof(ApplicationMetadata.Password), ResourceType = typeof(ApplicationMetadata))]

@@ -8,11 +8,20 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Models
 {
     public abstract class MemberBaseCommand : BaseCommand
     {
-        public MemberBaseCommand(string displayName, string email)
+        public MemberBaseCommand(string id, string displayName, string email)
         {
             DisplayName = displayName;
             Email = email;
+            Id = id;
         }
+
+
+        /// <summary>
+        /// use UserId as shared key between User and Member
+        /// </summary>
+        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
+        public string Id { get; }
+
 
         [StringLength(DomainConstValues.Member_DisplayName_Max_Length, MinimumLength = DomainConstValues.Member_DisplayName_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]

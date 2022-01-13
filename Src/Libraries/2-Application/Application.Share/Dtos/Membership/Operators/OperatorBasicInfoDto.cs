@@ -4,8 +4,14 @@ using TaskoMask.Application.Share.Resources;
 
 namespace TaskoMask.Application.Share.Dtos.Membership.Operators
 {
-    public class OperatorBasicInfoDto: UserBasicInfoDto
+    public class OperatorBasicInfoDto : UserBasicInfoDto
     {
+
+        [Display(Name = nameof(ApplicationMetadata.DisplayName), ResourceType = typeof(ApplicationMetadata))]
+        public string DisplayName { get; set; }
+
+
+
         [Display(Name = nameof(ApplicationMetadata.RolesId), ResourceType = typeof(ApplicationMetadata))]
         public string[] RolesId { get; set; }
 

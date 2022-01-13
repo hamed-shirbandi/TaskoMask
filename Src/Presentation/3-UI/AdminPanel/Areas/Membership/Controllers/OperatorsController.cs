@@ -10,6 +10,7 @@ using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Presentation.Framework.Web.Filters;
 using TaskoMask.Presentation.Framework.Web.Enums;
 using TaskoMask.Presentation.Framework.Web.Extensions;
+using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
 {
@@ -21,14 +22,16 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
         #region Fields
 
         private readonly IOperatorService _operatorService;
+        private readonly IUserService _userService;
 
         #endregion
 
         #region Ctor
 
-        public OperatorsController(IOperatorService operatorService , IMapper mapper) : base(mapper)
+        public OperatorsController(IOperatorService operatorService, IMapper mapper, IUserService userService) : base(mapper)
         {
             _operatorService = operatorService;
+            _userService = userService;
         }
 
         #endregion
@@ -138,7 +141,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
                 return ScriptBox.ShowMessage(errors, MessageType.error);
             }
 
-            var cmdResult = await _operatorService.ResetPasswordAsync(input.Id,input.NewPassword);
+            var cmdResult = await _userService.ResetPasswordAsync(input.Id,input.NewPassword);
             return AjaxResult(cmdResult);
         }
 
@@ -158,7 +161,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
                 return ScriptBox.ShowMessage(errors, MessageType.error);
             }
 
-            var cmdResult = await _operatorService.ChangePasswordAsync(input.Id, input.OldPassword, input.NewPassword);
+            var cmdResult = await _userService.ChangePasswordAsync(input.Id, input.OldPassword, input.NewPassword);
             return AjaxResult(cmdResult);
         }
 
@@ -172,7 +175,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
         [IgnoreAntiforgeryToken]
         public async Task<JavaScriptResult> SetIsActive(string id, bool isActive)
         {
-            var cmdResult = await _operatorService.SetIsActiveAsync(id, isActive);
+            var cmdResult = await _userService.SetIsActiveAsync(id, isActive);
             return AjaxResult(cmdResult,reloadPage:true);
 
         }

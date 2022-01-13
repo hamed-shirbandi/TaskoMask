@@ -24,15 +24,6 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #endregion
 
-            #region User
-
-            CreateMap<BaseUser, UserBaseDto>();
-            CreateMap<BaseUser, UserBasicInfoDto>()
-                 .AfterMap<CommonMappingAction>();      
-            CreateMap<BaseUser, UserUpsertDto>();
-            CreateMap<UserBaseDto, AuthenticatedUser>();
-
-            #endregion
         }
     }
 }

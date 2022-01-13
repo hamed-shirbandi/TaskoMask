@@ -39,30 +39,76 @@ namespace TaskoMask.Application.Authorization.Users.Services
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<UserBasicInfoDto>> GetByIdAsync(string id)
+        {
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null)
+                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
+        }
+
+
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(UserUpsertDto input)
+        public async Task<Result<UserBasicInfoDto>> GetByUserNameAsync(string userName)
         {
-            var existUser = await _userRepository.ExistByUserNameAsync(input.UserName);
+            var user = await _userRepository.GetByUserNameAsync(userName);
+            if (user == null)
+                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<bool>> IsValidCredentialAsync(string userName, string password)
+        {
+            var user = await _userRepository.GetByUserNameAsync(userName);
+            if (user == null)
+                return Result.Failure<bool>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            var passwordHash = _encryptionService.CreatePasswordHash(password, user.PasswordSalt);
+            if (passwordHash != user.PasswordHash)
+                return Result.Failure<bool>(message: ApplicationMessages.User_Login_failed);
+
+            return Result.Success(true);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> CreateAsync(string userName,string password)
+        {
+            var existUser = await _userRepository.ExistByUserNameAsync(userName);
             if (existUser)
                 return Result.Failure<CommandResult>(message: ApplicationMessages.User_Email_Already_Exist);
 
 
-            if (!IsValidPassword(input.Password))
-                return Result.Failure<CommandResult>(message: string.Format(DomainMessages.Length_Error, nameof(input.Password), DomainConstValues.User_Password_Min_Length, DomainConstValues.User_Password_Max_Length));
+            if (!IsValidPassword(password))
+                return Result.Failure<CommandResult>(message: string.Format(DomainMessages.Length_Error, nameof(password), DomainConstValues.User_Password_Min_Length, DomainConstValues.User_Password_Max_Length));
 
 
             var user = new User
             {
-                UserName = input.UserName,
+                UserName = userName,
                 IsActive = true,
             };
 
 
-            SetPassword(user, input.Password);
+            SetPassword(user, password);
 
+            user.UpdateModifiedDateTime();
 
             await _userRepository.CreateAsync(user);
 
@@ -100,52 +146,6 @@ namespace TaskoMask.Application.Authorization.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<UserBasicInfoDto>> GetByIdAsync(string id)
-        {
-            var user = await _userRepository.GetByIdAsync(id);
-            if (user == null)
-                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
-
-            return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<UserBasicInfoDto>> GetByUserNameAsync(string userName)
-        {
-            var user = await _userRepository.GetByUserNameAsync(userName);
-            if (user == null)
-                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
-
-            return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<bool>> LoginAsync(string userName, string password)
-        {
-            var user = await _userRepository.GetByUserNameAsync(userName);
-            if (user == null)
-                return Result.Failure<bool>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
-
-            var passwordHash = _encryptionService.CreatePasswordHash(password, user.PasswordSalt);
-            if (passwordHash != user.PasswordHash)
-                return Result.Failure<bool>(message: ApplicationMessages.User_Login_failed);
-
-            return Result.Success(true);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public async Task<Result<CommandResult>> SetIsActiveAsync(string id, bool isActive)
         {
             var user = await _userRepository.GetByIdAsync(id);
@@ -171,7 +171,7 @@ namespace TaskoMask.Application.Authorization.Users.Services
             if (user == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
 
-            var validateOldPassword = await LoginAsync(user.UserName, oldPassword);
+            var validateOldPassword = await IsValidCredentialAsync(user.UserName, oldPassword);
             if (!validateOldPassword.IsSuccess)
                 return Result.Failure<CommandResult>(message: DomainMessages.Incorrect_Old_Password);
 

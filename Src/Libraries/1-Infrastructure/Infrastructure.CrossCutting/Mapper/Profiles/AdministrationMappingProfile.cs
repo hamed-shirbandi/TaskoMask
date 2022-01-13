@@ -31,7 +31,6 @@ namespace TaskoMask.Application.Mapper.Profiles
             #region Operator
 
             CreateMap<Operator, OperatorBasicInfoDto>();
-            CreateMap<Operator, OperatorUpsertDto>();
             CreateMap<Operator, OperatorOutputDto>();
 
             #endregion

@@ -45,7 +45,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         {
             Description = description;
             Title = title;
-            base.Update();
+            base.UpdateModifiedDateTime();
         }
 
 

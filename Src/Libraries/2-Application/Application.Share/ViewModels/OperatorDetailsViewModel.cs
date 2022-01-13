@@ -12,7 +12,7 @@ namespace TaskoMask.Application.Share.ViewModels
             Roles = new List<SelectListItem>();
         }
 
-        public OperatorUpsertDto Operator { get; set; }
+        public OperatorBasicInfoDto Operator { get; set; }
         public IEnumerable<SelectListItem> Roles { get; set; }
     }
 }

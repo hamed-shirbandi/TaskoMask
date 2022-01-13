@@ -10,10 +10,9 @@ using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Workspace.Members.Commands.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.Core.ValueObjects;
-using TaskoMask.Domain.Core.Builders;
 using TaskoMask.Domain.Workspace.Members.Data;
 using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Workspace.Members.ValueObjects;
 
 namespace TaskoMask.Application.Workspace.Members.Commands.Handlers
 {
@@ -48,26 +47,10 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
         {
-            var existMember = await _memberRepository.GetByUserNameAsync(request.Email);
-            if (existMember != null)
-            {
-                NotifyValidationError(request, ApplicationMessages.User_Email_Already_Exist);
-                return new CommandResult(ApplicationMessages.Create_Failed);
-            }
-
-            var userIdentity = UserIdentityBuilder.Init()
-                .WithDisplayName(request.DisplayName)
-                .WithEmail(request.Email)
-                .WithPhoneNumber("")
-                .Build();
-
-            var userAuthentication = UserAuthentication.Create(UserName.Create(request.Email));
-
-            var member = Member.Create(userIdentity, userAuthentication);
-
-            member.SetPassword(request.Password, _encryptionService);
-
-            await PublishDomainEventsAsync(member.DomainEvents);
+            var member = Member.Create(MemberDisplayName.Create(request.DisplayName), MemberEmail.Create(request.Email));
+            
+            //share key with User (in authentication BC)
+            member.SetId(request.Id);
 
             await _memberRepository.CreateAsync(member);
 
@@ -82,13 +65,6 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateMemberCommand request, CancellationToken cancellationToken)
         {
-            var existMember = await _memberRepository.GetByUserNameAsync(request.Email);
-            if (existMember != null && existMember.Id.ToString() != request.Id)
-            {
-                NotifyValidationError(request, ApplicationMessages.User_Email_Already_Exist);
-                return new CommandResult(ApplicationMessages.Update_Failed);
-            }
-
             var member = await _memberRepository.GetByIdAsync(request.Id);
             if (member == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Member);
@@ -96,8 +72,7 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Handlers
 
             member.Update(
                 MemberDisplayName.Create(request.DisplayName),
-                UserEmail.Create(request.Email),
-                UserPhoneNumber.Create(request.PhoneNumber));
+                MemberEmail.Create(request.Email));
 
             await _memberRepository.UpdateAsync(member);
 

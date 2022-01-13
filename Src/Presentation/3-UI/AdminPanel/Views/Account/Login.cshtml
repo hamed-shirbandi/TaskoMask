@@ -29,9 +29,9 @@
                     @Html.AntiForgeryToken()
 
 
-                    @Html.LabelFor(model => model.Email)
-                    @Html.TextBoxFor(model => model.Email, new { @class = "form-input-1" })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-message is-error" })
+                    @Html.LabelFor(model => model.UserName)
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-input-1" })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "form-message is-error" })
 
 
                     @Html.LabelFor(model => model.Password)

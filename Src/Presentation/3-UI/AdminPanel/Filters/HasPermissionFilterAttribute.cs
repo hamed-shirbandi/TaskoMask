@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Application.Membership.Permissions.Services;
+using TaskoMask.Domain.Share.Services;
 using TaskoMask.Presentation.Framework.Web.Extensions;
 using TaskoMask.Presentation.Framework.Web.Helpers;
 
@@ -24,9 +25,10 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Filters
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             var _permissionService = context.HttpContext.RequestServices.GetService<IPermissionService>();
+            var _authenticatedUserService = context.HttpContext.RequestServices.GetService<IAuthenticatedUserService>();
 
-            var userName = context.HttpContext.User.Identity.Name;
-            var userPermissions = await _permissionService.GetSystemNameListByOperatorAsync(userName);
+            var userId = _authenticatedUserService.GetUserId();
+            var userPermissions = await _permissionService.GetSystemNameListByOperatorAsync(userId);
             if (!userPermissions.Value.Any(p => _permissions.Contains(p)))
             {
                 RedirectToNotFoundPage(context);

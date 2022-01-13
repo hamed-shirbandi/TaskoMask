@@ -12,14 +12,5 @@ namespace TaskoMask.Domain.Membership.Entities
         public string[] RolesId { get; set; }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public new void Update()
-        {
-            base.Update();
-        }
-
     }
 }

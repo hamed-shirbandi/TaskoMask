@@ -49,7 +49,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
             ProjectId = projectId;
             OrganizationId = organizationId;
 
-            base.Update();
+            base.UpdateModifiedDateTime();
 
         }
 

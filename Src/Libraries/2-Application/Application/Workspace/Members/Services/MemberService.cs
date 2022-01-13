@@ -13,6 +13,7 @@ using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Domain.Workspace.Members.Entities;
 using TaskoMask.Domain.Workspace.Members.Data;
 using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Application.Workspace.Members.Services
 {
@@ -20,14 +21,17 @@ namespace TaskoMask.Application.Workspace.Members.Services
     {
         #region Fields
 
+        private readonly IUserService _userService;
 
         #endregion
 
         #region Ctors
 
-        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberRepository memberRepository, IEncryptionService encryptionService)
+        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberRepository memberRepository, IEncryptionService encryptionService, IUserService userService)
              : base(inMemoryBus, mapper, notifications)
-        { }
+        {
+            _userService = userService;
+        }
 
 
         #endregion
@@ -42,7 +46,12 @@ namespace TaskoMask.Application.Workspace.Members.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(MemberRegisterDto input)
         {
-            var cmd = new CreateMemberCommand(displayName: input.DisplayName, email: input.Email, password: input.Password);
+            //create authentication user info
+            var CreateUserCommandResult = await _userService.CreateAsync(input.Email, input.Password);
+            if (!CreateUserCommandResult.IsSuccess)
+                return CreateUserCommandResult;
+
+            var cmd = new CreateMemberCommand(id:CreateUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);
         }
 
@@ -51,9 +60,14 @@ namespace TaskoMask.Application.Workspace.Members.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(UserUpsertDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(MemberUpdateDto input)
         {
-            var cmd = new UpdateMemberCommand(id: input.Id, displayName: input.DisplayName, email: input.Email, phoneNumber: input.PhoneNumber);
+            //update authentication user UserName
+            var updateUserCommandResult = await _userService.UpdateUserNameAsync(input.Id, input.Email);
+            if (!updateUserCommandResult.IsSuccess)
+                return updateUserCommandResult;
+
+            var cmd = new UpdateMemberCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
             return await SendCommandAsync(cmd);
         }
 

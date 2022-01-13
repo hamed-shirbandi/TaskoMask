@@ -7,6 +7,7 @@ using DNTCaptcha.Core;
 using TaskoMask.Domain.Share.Models;
 using AutoMapper;
 using TaskoMask.Application.Membership.Operators.Services;
+using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
 {
@@ -16,6 +17,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
 
         private readonly IOperatorService _operatorService;
         private readonly ICookieAuthenticationService _cookieAuthenticationService;
+        private readonly IUserService _userService;
 
         #endregion
 
@@ -23,10 +25,11 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
 
 
 
-        public AccountController(IOperatorService memberService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper) : base(mapper)
+        public AccountController(IOperatorService memberService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper, IUserService userService) : base(mapper)
         {
             _operatorService = memberService;
             _cookieAuthenticationService = cookieAuthenticationService;
+            _userService = userService;
         }
 
 
@@ -68,13 +71,13 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
 
 
             //get user
-            var userQueryResult = await _operatorService.GetBaseUserByUserNameAsync(input.Email);
+            var userQueryResult = await _userService.GetByUserNameAsync(input.UserName);
             if (!userQueryResult.IsSuccess)
                 return View(userQueryResult, input);
 
 
             //validate user password
-            var validateQueryResult = await _operatorService.ValidateUserPasswordAsync(input.Email, input.Password);
+            var validateQueryResult = await _userService.IsValidCredentialAsync(input.UserName, input.Password);
             if (!validateQueryResult.IsSuccess)
                 return View(validateQueryResult, input);
 

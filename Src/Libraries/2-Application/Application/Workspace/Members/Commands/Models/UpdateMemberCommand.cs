@@ -6,20 +6,11 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Models
 {
     public class UpdateMemberCommand : MemberBaseCommand
     {
-        public UpdateMemberCommand(string id, string displayName, string email, string phoneNumber)
-              : base(displayName, email)
+        public UpdateMemberCommand(string id, string displayName, string email)
+              : base(id,displayName, email)
         {
-            Id = id;
-            PhoneNumber = phoneNumber;
 
         }
-
-        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string Id { get; }
-
-        [Display(Name = nameof(ApplicationMetadata.PhoneNumber), ResourceType = typeof(ApplicationMetadata))]
-        [DataType(DataType.PhoneNumber)]
-        public string PhoneNumber { get; }
 
     }
 }

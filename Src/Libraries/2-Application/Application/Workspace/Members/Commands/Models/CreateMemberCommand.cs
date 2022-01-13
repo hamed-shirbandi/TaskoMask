@@ -8,8 +8,8 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Models
 {
    public class CreateMemberCommand : MemberBaseCommand
     {
-        public CreateMemberCommand(string displayName, string email,string password)
-            :base(displayName,email)
+        public CreateMemberCommand(string id, string displayName, string email,string password)
+      : base(id, displayName, email)
         {
             Password = password;
         }

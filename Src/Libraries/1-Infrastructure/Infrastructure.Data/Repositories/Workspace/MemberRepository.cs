@@ -8,17 +8,21 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
 {
-    public class MemberRepository : UserRepository<Member>, IMemberRepository
+    public class MemberRepository : BaseRepository<Member>, IMemberRepository
     {
         #region Fields
 
-       
+        protected readonly IMongoCollection<Member> _members;
+
+
         #endregion
 
         #region Ctors
 
         public MemberRepository(IMongoDbContext dbContext) : base(dbContext)
         {
+            _members = dbContext.GetCollection<Member>();
+
         }
 
         #endregion
@@ -31,13 +35,13 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
         /// </summary>
         public IEnumerable<Member> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
         {
-            var queryable = _users.AsQueryable();
+            var queryable = _members.AsQueryable();
 
             #region By term
 
             if (!string.IsNullOrEmpty(term))
             {
-                queryable = queryable.Where(p => p.Identity.DisplayName.Value.Contains(term) || p.Identity.Email.Value.Contains(term) || p.Identity.PhoneNumber.Value.Contains(term));
+                queryable = queryable.Where(p => p.DisplayName.Value.Contains(term) || p.Email.Value.Contains(term));
             }
 
             #endregion

@@ -34,6 +34,11 @@ using TaskoMask.Domain.Workspace.Boards.Data;
 using TaskoMask.Domain.Workspace.Tasks.Data;
 using TaskoMask.Domain.Authorization.Data;
 using TaskoMask.Infrastructure.Data.Repositories.Authorization;
+using TaskoMask.Application.Common.Queries.Models;
+using TaskoMask.Application.Common.Queries.Handlers;
+using TaskoMask.Application.Common.Commands.Handlers;
+using TaskoMask.Application.Common.Commands.Models;
+using TaskoMask.Application.Authorization.Users.Services;
 
 namespace Infrastructure.CrossCutting.IoC
 {

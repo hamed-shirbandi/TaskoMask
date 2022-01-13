@@ -51,7 +51,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
             Name = name;
             Type = type;
             Description = description;
-            base.Update();
+            base.UpdateModifiedDateTime();
 
         }
 

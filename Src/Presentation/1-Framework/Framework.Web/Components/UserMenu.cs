@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using TaskoMask.Application.Membership.Operators.Services;
 
 namespace TaskoMask.Presentation.Framework.Web.Components
@@ -33,7 +32,7 @@ namespace TaskoMask.Presentation.Framework.Web.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var currentUserName = User.Identity.Name;
-            var @operator = await _operatorService.GetBaseUserByUserNameAsync(currentUserName);
+            var @operator = await _operatorService.GetByIdAsync(currentUserName);
             return View(@operator.Value);
         }
 

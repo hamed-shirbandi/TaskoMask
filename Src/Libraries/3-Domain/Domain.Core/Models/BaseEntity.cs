@@ -33,6 +33,15 @@ namespace TaskoMask.Domain.Core.Models
         #region Public Methods
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void SetId(string id)
+        {
+            Id = id;
+            UpdateModifiedDateTime();
+        }
+
 
         /// <summary>
         /// 
@@ -40,6 +49,7 @@ namespace TaskoMask.Domain.Core.Models
         public virtual void SoftDelete()
         {
             IsDeleted = true;
+            UpdateModifiedDateTime();
         }
 
 
@@ -50,32 +60,24 @@ namespace TaskoMask.Domain.Core.Models
         public virtual void Recycle()
         {
             IsDeleted = false;
+            UpdateModifiedDateTime();
         }
-
-
-        #endregion
-
-        #region Protected Methods
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        protected virtual void Update()
+        public virtual void UpdateModifiedDateTime()
         {
             CreationTime = CreationTime.UpdateModifiedDateTime();
         }
 
 
-
-
         #endregion
 
+
         #region Private Methods
-
-
-
 
 
 

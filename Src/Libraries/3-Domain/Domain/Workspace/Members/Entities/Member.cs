@@ -58,7 +58,7 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
         {
             DisplayName = displayName;
             Email = email;
-            base.Update();
+            base.UpdateModifiedDateTime();
 
             AddDomainEvent(new MemberUpdatedEvent(Id, displayName.Value, email.Value));
         }

@@ -6,6 +6,7 @@ using TaskoMask.Application.Workspace.Members.Services;
 using System.Threading.Tasks;
 using TaskoMask.Presentation.Framework.Web.Filters;
 using TaskoMask.Presentation.Framework.Web.Helpers;
+using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
 {
@@ -16,15 +17,17 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
         #region Fields
 
         private readonly IMemberService _memberService;
+        private readonly IUserService _userService;
 
 
         #endregion
 
         #region Ctor
 
-        public MembersController(IMemberService memberService, IMapper mapper) : base(mapper)
+        public MembersController(IMemberService memberService, IMapper mapper, IUserService userService) : base(mapper)
         {
             _memberService = memberService;
+            _userService = userService;
         }
 
         #endregion
@@ -101,7 +104,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
         [IgnoreAntiforgeryToken]
         public async Task<JavaScriptResult> SetIsActive(string id, bool isActive)
         {
-            var cmdResult = await _memberService.SetIsActiveAsync(id, isActive);
+            var cmdResult = await _userService.SetIsActiveAsync(id, isActive);
             return AjaxResult(cmdResult, reloadPage: true);
 
         }

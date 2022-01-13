@@ -58,7 +58,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             Description = description;
             Name = name;
             OrganizationId = organizationId;
-            base.Update();
+            base.UpdateModifiedDateTime();
 
             AddDomainEvent(new ProjectUpdatedEvent(Id, Name.Value, Description.Value,OrganizationId.Value));
         }

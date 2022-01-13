@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Administration.Permissions.Services;
+using TaskoMask.Application.Membership.Permissions.Services;
 using TaskoMask.Presentation.Framework.Web.Extensions;
 using TaskoMask.Presentation.Framework.Web.Helpers;
 

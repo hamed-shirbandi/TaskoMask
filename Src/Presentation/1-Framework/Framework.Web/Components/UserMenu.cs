@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using TaskoMask.Application.Administration.Operators.Services;
+using TaskoMask.Application.Membership.Operators.Services;
 
 namespace TaskoMask.Presentation.Framework.Web.Components
 {

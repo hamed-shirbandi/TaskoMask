@@ -18,8 +18,14 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
 
         #region Ctors
 
-        private Member(MemberDisplayName displayName, MemberEmail email)
+        private Member(string id, MemberDisplayName displayName, MemberEmail email)
         {
+            if (string.IsNullOrEmpty(id))
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(id)));
+
+            //shared key with User in authentication BC
+            base.SetId(id);
+
             DisplayName = displayName;
             Email = email;
 
@@ -41,12 +47,14 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
 
 
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        public static Member Create(MemberDisplayName displayName, MemberEmail email)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">Shared key with User in authentication BC</param>
+        /// <returns></returns>
+        public static Member Create(string id, MemberDisplayName displayName, MemberEmail email)
         {
-            return new Member(displayName, email);
+            return new Member(id, displayName, email);
         }
 
 
@@ -98,6 +106,7 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
+           
             if (DisplayName == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(DisplayName)));
 

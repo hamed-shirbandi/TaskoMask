@@ -27,7 +27,7 @@ namespace TaskoMask.Application.Workspace.Members.Services
 
         #region Ctors
 
-        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberRepository memberRepository, IEncryptionService encryptionService, IUserService userService)
+        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberRepository memberRepository , IUserService userService)
              : base(inMemoryBus, mapper, notifications)
         {
             _userService = userService;
@@ -51,12 +51,8 @@ namespace TaskoMask.Application.Workspace.Members.Services
             if (!CreateUserCommandResult.IsSuccess)
                 return CreateUserCommandResult;
 
-            var cmd = new CreateMemberCommand(id:CreateUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
-            var createMemberCommandResult= await SendCommandAsync(cmd);
-            if (!createMemberCommandResult.IsSuccess)
-                await _userService.DeleteAsync(CreateUserCommandResult.Value.EntityId);
-
-            return createMemberCommandResult;
+            var cmd = new CreateMemberCommand(id: CreateUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
+            return await SendCommandAsync(cmd);
         }
 
 

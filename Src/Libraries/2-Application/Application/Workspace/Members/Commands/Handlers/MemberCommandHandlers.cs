@@ -23,17 +23,15 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Handlers
         #region Fields
 
         private readonly IMemberRepository _memberRepository;
-        private readonly IEncryptionService _encryptionService;
 
         #endregion
 
         #region Ctors
 
 
-        public MemberCommandHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IEncryptionService encryptionService, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public MemberCommandHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _memberRepository = memberRepository;
-            _encryptionService = encryptionService;
         }
 
         #endregion
@@ -47,10 +45,7 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
         {
-            var member = Member.Create(MemberDisplayName.Create(request.DisplayName), MemberEmail.Create(request.Email));
-            
-            //share key with User (in authentication BC)
-            member.SetId(request.Id);
+            var member = Member.Create(request.Id,MemberDisplayName.Create(request.DisplayName), MemberEmail.Create(request.Email));
 
             await _memberRepository.CreateAsync(member);
 

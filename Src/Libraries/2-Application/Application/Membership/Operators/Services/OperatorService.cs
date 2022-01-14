@@ -22,7 +22,6 @@ namespace TaskoMask.Application.Membership.Operators.Services
         #region Fields
 
         private readonly IOperatorRepository _operatorRepository;
-        private readonly IEncryptionService _encryptionService;
         private readonly IRoleRepository _roleRepository;
         private readonly IUserService _userService;
 
@@ -30,11 +29,10 @@ namespace TaskoMask.Application.Membership.Operators.Services
 
         #region Ctors
 
-        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IEncryptionService encryptionService, IRoleRepository roleRepository, IUserService userService)
+        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository , IRoleRepository roleRepository, IUserService userService)
              : base(inMemoryBus, mapper, notifications)
         {
             _operatorRepository = operatorRepository;
-            _encryptionService = encryptionService;
             _roleRepository = roleRepository;
             _userService = userService;
         }
@@ -57,14 +55,12 @@ namespace TaskoMask.Application.Membership.Operators.Services
                 return CreateUserCommandResult;
 
 
-            var @operator = new Operator
+            var @operator = new Operator(CreateUserCommandResult.Value.EntityId)
             {
                 DisplayName = input.DisplayName,
                 Email = input.Email,
             };
 
-            //Share key between User and Operator
-            @operator.SetId(CreateUserCommandResult.Value.EntityId);
 
             await _operatorRepository.CreateAsync(@operator);
 

@@ -33,14 +33,7 @@ namespace TaskoMask.Domain.Core.Models
         #region Public Methods
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual void SetId(string id)
-        {
-            Id = id;
-            UpdateModifiedDateTime();
-        }
+
 
 
         /// <summary>
@@ -77,8 +70,17 @@ namespace TaskoMask.Domain.Core.Models
         #endregion
 
 
-        #region Private Methods
+        #region protected Methods
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void SetId(string id)
+        {
+            Id = id;
+            UpdateModifiedDateTime();
+        }
 
 
         #endregion

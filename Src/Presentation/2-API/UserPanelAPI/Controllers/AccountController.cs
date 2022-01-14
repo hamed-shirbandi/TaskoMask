@@ -55,10 +55,17 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
                 return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, validateQueryResult.Message);
 
-            //model to add its prop to jwt claims
-            var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
 
-            //generate and return jwt token
+            //get member
+            var memberQueryResult = await _memberService.GetByIdAsync(userQueryResult.Value.Id);
+            if (!memberQueryResult.IsSuccess)
+                return Result.Failure<UserJwtTokenDto>(memberQueryResult.Errors, memberQueryResult.Message);
+
+
+            //map to jwt claims model
+            var user = _mapper.Map<AuthenticatedUser>(memberQueryResult.Value);
+
+            //generate jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
 
             return Result.Success(value: new UserJwtTokenDto { JwtToken=token});
@@ -85,14 +92,19 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
             if (!userQueryResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
 
-            //model to add its prop to jwt claims
-            var user = _mapper.Map<AuthenticatedUser>(userQueryResult.Value);
 
-            //generate and return jwt token
+            //get member
+            var memberQueryResult = await _memberService.GetByIdAsync(userQueryResult.Value.Id);
+            if (!memberQueryResult.IsSuccess)
+                return Result.Failure<UserJwtTokenDto>(memberQueryResult.Errors, memberQueryResult.Message);
+
+            //map to jwt claims model
+            var user = _mapper.Map<AuthenticatedUser>(memberQueryResult.Value);
+
+            //generate jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
 
             return Result.Success(value: new UserJwtTokenDto { JwtToken = token });
-
         }
 
 

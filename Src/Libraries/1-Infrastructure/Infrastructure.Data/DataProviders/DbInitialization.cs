@@ -143,6 +143,14 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
             #endregion
 
+            #region Operator Indexs
+
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
+
+
+            #endregion
+
         }
 
     }

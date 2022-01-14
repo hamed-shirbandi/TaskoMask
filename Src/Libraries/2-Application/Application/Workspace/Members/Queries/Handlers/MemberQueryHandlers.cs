@@ -13,6 +13,7 @@ using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
 using TaskoMask.Domain.Workspace.Organizations.Data;
 using TaskoMask.Domain.Workspace.Members.Data;
+using TaskoMask.Domain.Authorization.Data;
 
 namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
 {
@@ -25,16 +26,18 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
         private readonly IMemberRepository _memberRepository;
         private readonly IInvitationRepository _invitationRepository;
         private readonly IOrganizationRepository _organizationRepository;
+        private readonly IUserRepository _userRepository;
 
         #endregion
 
         #region Ctors
 
-        public MemberQueryHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationRepository organizationRepository) : base(mapper, notifications)
+        public MemberQueryHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
         {
             _memberRepository = memberRepository;
             _invitationRepository = invitationRepository;
             _organizationRepository = organizationRepository;
+            _userRepository = userRepository;
         }
 
         #endregion
@@ -52,7 +55,17 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
             if (member == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Member);
 
-            return _mapper.Map<MemberBasicInfoDto>(member);
+            var memberDto = _mapper.Map<MemberBasicInfoDto>(member);
+
+            var user = await _userRepository.GetByIdAsync(request.Id);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+
+            //add authentication info from user ti operator
+            memberDto.IsActive = user.IsActive;
+            memberDto.UserName = user.UserName;
+
+            return memberDto;
         }
 
 
@@ -62,11 +75,19 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
         /// </summary>
         public async Task<PaginatedListReturnType<MemberOutputDto>> Handle(SearchMembersQuery request, CancellationToken cancellationToken)
         {
-            var members =  _memberRepository.Search(request.Page,request.RecordsPerPage,request.Term, out var pageNumber, out var totalCount);
+            var members = _memberRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var membersDto = _mapper.Map<IEnumerable<MemberOutputDto>>(members);
 
             foreach (var item in membersDto)
             {
+                //add authentication info from user ti operator
+                var user = await _userRepository.GetByIdAsync(item.Id);
+                if (user != null)
+                {
+                    item.IsActive = user.IsActive;
+                    item.UserName = user.UserName;
+                }
+
                 //As an invited member to organizations
                 item.OrganizationsCount = await _invitationRepository.OrganizationsCountByInvitedMemberIdAsync(item.Id);
 
@@ -76,8 +97,8 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
 
 
             return new PaginatedListReturnType<MemberOutputDto>
-            { 
-                 TotalCount = totalCount,
+            {
+                TotalCount = totalCount,
                 PageNumber = pageNumber,
                 Items = membersDto
             };

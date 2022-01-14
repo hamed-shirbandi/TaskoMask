@@ -52,7 +52,11 @@ namespace TaskoMask.Application.Workspace.Members.Services
                 return CreateUserCommandResult;
 
             var cmd = new CreateMemberCommand(id:CreateUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
-            return await SendCommandAsync(cmd);
+            var createMemberCommandResult= await SendCommandAsync(cmd);
+            if (!createMemberCommandResult.IsSuccess)
+                await _userService.DeleteAsync(CreateUserCommandResult.Value.EntityId);
+
+            return createMemberCommandResult;
         }
 
 

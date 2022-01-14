@@ -27,9 +27,9 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Filters
             var _permissionService = context.HttpContext.RequestServices.GetService<IPermissionService>();
             var _authenticatedUserService = context.HttpContext.RequestServices.GetService<IAuthenticatedUserService>();
 
-            var userId = _authenticatedUserService.GetUserId();
-            var userPermissions = await _permissionService.GetSystemNameListByOperatorAsync(userId);
-            if (!userPermissions.Value.Any(p => _permissions.Contains(p)))
+            var operatorId = _authenticatedUserService.GetUserId();
+            var operatorPermissions = await _permissionService.GetSystemNameListByOperatorAsync(operatorId);
+            if (!operatorPermissions.Value.Any(p => _permissions.Contains(p)))
             {
                 RedirectToNotFoundPage(context);
                 return;

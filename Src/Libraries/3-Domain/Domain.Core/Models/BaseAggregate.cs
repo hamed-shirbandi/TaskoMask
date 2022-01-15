@@ -11,7 +11,7 @@ namespace TaskoMask.Domain.Core.Models
     /// <summary>
     ///
     /// </summary>
-    public abstract class BaseAggregate: BaseEntity
+    public abstract class BaseAggregate : BaseEntity
     {
         #region Fields
 
@@ -21,14 +21,21 @@ namespace TaskoMask.Domain.Core.Models
 
         #region Ctors
 
-        public BaseAggregate():base()
+        public BaseAggregate()
         {
+            SetVersion();
         }
 
 
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// To handle concurrency
+        /// Vesion changes after each aggregate update
+        /// </summary>
+        public string Version { get; private set; }
 
 
         [BsonIgnore]
@@ -55,6 +62,24 @@ namespace TaskoMask.Domain.Core.Models
         #region Protected Methods
 
 
+        /// <summary>
+        /// update aggregate Version and ModifiedDateTime
+        /// </summary>
+        protected void UpdateAggregate()
+        {
+            SetVersion();
+            base.UpdateModifiedDateTime();
+        }
+
+
+
+        /// <summary>
+        /// Vesion must change after each aggregate update
+        /// </summary>
+        protected void SetVersion()
+        {
+            Version = Guid.NewGuid().ToString();
+        }
 
 
 

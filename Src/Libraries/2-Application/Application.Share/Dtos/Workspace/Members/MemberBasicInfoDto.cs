@@ -1,13 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Application.Share.Dtos.Common;
 using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Share.Dtos.Workspace.Members
 {
-    public class MemberBasicInfoDto : UserBasicInfoDto
+    public class MemberBasicInfoDto 
     {
+        public string Id { get; set; }
+
+        public UserBasicInfoDto UserInfo { get; set; }
+
+        public CreationTimeDto CreationTime { get; set; }
+
 
         [Display(Name = nameof(ApplicationMetadata.DisplayName), ResourceType = typeof(ApplicationMetadata))]
         public string DisplayName { get; set; }

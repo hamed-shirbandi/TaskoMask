@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
 
         #region Ctors
 
-        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository , IRoleRepository roleRepository, IUserService userService)
+        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IRoleRepository roleRepository, IUserService userService)
              : base(inMemoryBus, mapper, notifications)
         {
             _operatorRepository = operatorRepository;
@@ -134,8 +134,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
             var model = _mapper.Map<OperatorBasicInfoDto>(@operator);
 
             //add authentication info from user ti operator
-            model.IsActive = userQueryResult.Value.IsActive;
-            model.UserName = userQueryResult.Value.UserName;
+            model.UserInfo = userQueryResult.Value;
 
             return Result.Success(model);
         }
@@ -155,10 +154,8 @@ namespace TaskoMask.Application.Membership.Operators.Services
                 //add authentication info from user to operator
                 var userQueryResult = await _userService.GetByIdAsync(item.Id);
                 if (!userQueryResult.IsSuccess)
-                {
-                    item.IsActive = userQueryResult.Value.IsActive;
-                    item.UserName = userQueryResult.Value.UserName;
-                }
+                    item.UserInfo = userQueryResult.Value;
+
 
                 item.RolesCount = item.RolesId.Length;
 
@@ -178,15 +175,14 @@ namespace TaskoMask.Application.Membership.Operators.Services
             if (@operator == null)
                 return Result.Failure<OperatorDetailsViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
-            //add authentication info from user ti operator
+            var operatorDto = _mapper.Map<OperatorBasicInfoDto>(@operator);
+
             var userQueryResult = await _userService.GetByIdAsync(id);
             if (!userQueryResult.IsSuccess)
                 return Result.Failure<OperatorDetailsViewModel>(message: userQueryResult.Message);
 
-            var operatorDto = _mapper.Map<OperatorBasicInfoDto>(@operator);
-            operatorDto.IsActive = userQueryResult.Value.IsActive;
-            operatorDto.UserName = userQueryResult.Value.UserName;
-
+            //add authentication info from user ti operator
+            operatorDto.UserInfo = userQueryResult.Value;
 
             var roles = await _roleRepository.GetListAsync();
 

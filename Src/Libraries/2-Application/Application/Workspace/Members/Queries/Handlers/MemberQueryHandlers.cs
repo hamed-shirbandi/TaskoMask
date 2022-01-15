@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using TaskoMask.Domain.Workspace.Organizations.Data;
 using TaskoMask.Domain.Workspace.Members.Data;
 using TaskoMask.Domain.Authorization.Data;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
 
 namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
 {
@@ -62,8 +63,7 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
             //add authentication info from user ti operator
-            memberDto.IsActive = user.IsActive;
-            memberDto.UserName = user.UserName;
+            memberDto.UserInfo = _mapper.Map<UserBasicInfoDto>(user);
 
             return memberDto;
         }
@@ -83,10 +83,8 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
                 //add authentication info from user ti operator
                 var user = await _userRepository.GetByIdAsync(item.Id);
                 if (user != null)
-                {
-                    item.IsActive = user.IsActive;
-                    item.UserName = user.UserName;
-                }
+                    item.UserInfo = _mapper.Map<UserBasicInfoDto>(user);
+
 
                 //As an invited member to organizations
                 item.OrganizationsCount = await _invitationRepository.OrganizationsCountByInvitedMemberIdAsync(item.Id);

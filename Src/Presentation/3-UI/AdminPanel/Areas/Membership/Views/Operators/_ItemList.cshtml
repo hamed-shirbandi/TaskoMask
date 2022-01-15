@@ -18,9 +18,9 @@ else
                 <thead>
                     <tr>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().DisplayName)</th>
-                        <th>@Html.LabelFor(model => model.FirstOrDefault().UserName)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().UserInfo.UserName)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().RolesId)</th>
-                        <th>@Html.LabelFor(model => model.FirstOrDefault().IsActive)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().UserInfo.IsActive)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().CreationTime.CreateDateTimeString)</th>
                         <th><label></label></th>
                     </tr>
@@ -31,9 +31,9 @@ else
 
                         <tr data-table-row-id="@item.Id">
                             <td> @item.DisplayName </td>
-                            <td> @item.UserName </td>
+                            <td> @item.UserInfo.UserName </td>
                             <td> @item.RolesId.Count() </td>
-                            <td> @(item.IsActive?"active":"inactive") </td>
+                            <td> @(item.UserInfo.IsActive?"active":"deactivated") </td>
                             <td> @item.CreationTime.CreateDateTimeString </td>
                             <td>
                                 <div class="btn-group-xs">

@@ -16,6 +16,8 @@ else
                 <thead>
                     <tr>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().DisplayName)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().Email)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().UserInfo.IsActive)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().CreationTime.CreateDateTimeString)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().OrganizationsCount)</th>
                         <th><label></label></th>
@@ -30,12 +32,18 @@ else
                                 @item.DisplayName
                             </td>
                             <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                @(item.UserInfo.IsActive?"active":"deactivated")
+                            </td>
+                            <td>
                                 @item.CreationTime.CreateDateTimeString
                             </td>
                             <td>
                                 @item.OrganizationsCount
                             </td>
-                      
+
                             <td>
                                 <div class="btn-group-xs">
                                     <a href="@Url.Action( "Details", new { id = item.Id }) " class=" btn btn-primary btn-xs btn-xs-circle">

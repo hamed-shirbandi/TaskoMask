@@ -124,6 +124,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} name already exist.
+        /// </summary>
+        public static string Name_Already_Exist {
+            get {
+                return ResourceManager.GetString("Name_Already_Exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} cannot be null.
         /// </summary>
         public static string Null_Reference_Error {

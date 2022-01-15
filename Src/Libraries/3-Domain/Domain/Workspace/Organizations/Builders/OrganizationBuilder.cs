@@ -1,15 +1,17 @@
 ﻿using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.Workspace.Organizations.Services;
 using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Builders
 {
     public class OrganizationBuilder
     {
-        #region Properties
+        #region Fields
 
-        public OrganizationName Name { get; private set; }
-        public OrganizationDescription Description { get; private set; }
-        public OrganizationOwnerMemberId OwnerMemberId { get; private set; }
+        private OrganizationName name;
+        private OrganizationDescription description;
+        private OrganizationOwnerMemberId ownerMemberId;
+        private IOrganizationValidatorService organizationValidatorService;
 
         #endregion
 
@@ -47,7 +49,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Builders
         /// </summary>
         public OrganizationBuilder WithName(string name)
         {
-            Name = OrganizationName.Create(name);
+            this.name = OrganizationName.Create(name);
             return this;
         }
 
@@ -58,7 +60,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Builders
         /// </summary>
         public OrganizationBuilder WithDescription(string description)
         {
-            Description = OrganizationDescription.Create(description);
+            this.description = OrganizationDescription.Create(description);
             return this;
         }
 
@@ -69,7 +71,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Builders
         /// </summary>
         public OrganizationBuilder WithOwnerMemberId(string ownerMemberId)
         {
-            OwnerMemberId = OrganizationOwnerMemberId.Create(ownerMemberId);
+            this.ownerMemberId = OrganizationOwnerMemberId.Create(ownerMemberId);
             return this;
         }
 
@@ -78,7 +80,18 @@ namespace TaskoMask.Domain.Workspace.Organizations.Builders
         /// <summary>
         /// 
         /// </summary>
-        public Organization Build() => Organization.Create(Name, Description, OwnerMemberId);
+        public OrganizationBuilder WithValidator(IOrganizationValidatorService organizationValidatorService)
+        {
+            this.organizationValidatorService = organizationValidatorService;
+            return this;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Organization Build() => Organization.Create(name, description, ownerMemberId, organizationValidatorService);
 
 
         #endregion

@@ -138,6 +138,9 @@
   <data name="Min_Length_Error" xml:space="preserve">
     <value>The {0} length must be greater than {1} characters</value>
   </data>
+  <data name="Name_Already_Exist" xml:space="preserve">
+    <value>{0} name already exist</value>
+  </data>
   <data name="Null_Reference_Error" xml:space="preserve">
     <value>{0} cannot be null</value>
   </data>

@@ -35,7 +35,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Authorization
         /// </summary>
         public async Task<bool> ExistByUserNameAsync(string userName)
         {
-            return await _users.Find(e => e.UserName == userName && e.IsDeleted==false).AnyAsync();
+            return await _users.Find(e => e.UserName == userName).AnyAsync();
         }
 
 

@@ -31,13 +31,23 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
         #region Public Methods
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<bool> ExistByNameAsync(string id, string ownerMemberId, string name)
+        {
+            var organization = await _organizations.Find(o => o.Name.Value == name && o.OwnerMemberId.Value == ownerMemberId).FirstOrDefaultAsync();
+            return organization != null && organization.Id != id;
+        }
+
+
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task<bool> ExistByNameAsync(string id, string name)
+        public bool ExistByName(string id, string ownerMemberId, string name)
         {
-            var organization = await _organizations.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
+            var organization =  _organizations.Find(o => o.Name.Value == name && o.OwnerMemberId.Value==ownerMemberId).FirstOrDefault();
             return organization != null && organization.Id != id;
         }
 

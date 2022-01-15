@@ -39,6 +39,8 @@ using TaskoMask.Application.Common.Queries.Handlers;
 using TaskoMask.Application.Common.Commands.Handlers;
 using TaskoMask.Application.Common.Commands.Models;
 using TaskoMask.Application.Authorization.Users.Services;
+using TaskoMask.Domain.Workspace.Organizations.Services;
+using TaskoMask.Infrastructure.Data.Services;
 
 namespace Infrastructure.CrossCutting.IoC
 {
@@ -93,6 +95,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IInvitationRepository, InvitationRepository>();
             services.AddScoped<IEncryptionService, EncryptionService>();
+            services.AddScoped<IOrganizationValidatorService, OrganizationValidatorService>();
             
 
             #endregion

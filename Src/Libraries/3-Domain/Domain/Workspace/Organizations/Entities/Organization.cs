@@ -4,6 +4,8 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
 using TaskoMask.Domain.Workspace.Organizations.Events;
 using TaskoMask.Domain.Workspace.Organizations.Specifications;
+using TaskoMask.Domain.Workspace.Organizations.Services;
+using System;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Entities
 {
@@ -16,15 +18,18 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
         #region Ctors
 
-        private Organization(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId)
+        private Organization(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId, IOrganizationValidatorService organizationValidatorService)
         {
             Name = name;
             Description = description;
             OwnerMemberId = ownerMemberId;
 
+            CheckPolicies(organizationValidatorService);
+
             AddDomainEvent(new OrganizationCreatedEvent(Id, Name.Value, Description.Value, OwnerMemberId.Value));
         }
 
+    
 
         #endregion
 
@@ -43,9 +48,9 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Organization Create(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId)
+        public static Organization Create(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId, IOrganizationValidatorService organizationValidatorService)
         {
-            return new Organization(name, description, ownerMemberId);
+            return new Organization(name, description, ownerMemberId, organizationValidatorService);
         }
 
 
@@ -53,11 +58,14 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(OrganizationName name, OrganizationDescription description)
+        public void Update(string name, string description, IOrganizationValidatorService organizationValidatorService)
         {
-            Description = description;
-            Name = name;
+            Name = OrganizationName.Create(name);
+            Description = OrganizationDescription.Create(name);
+
             base.UpdateModifiedDateTime();
+
+            CheckPolicies(organizationValidatorService);
 
             AddDomainEvent(new OrganizationUpdatedEvent(Id, Name.Value, Description.Value));
         }
@@ -69,10 +77,11 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         #region Private Methods
 
 
+
         /// <summary>
         /// 
         /// </summary>
-        protected override void CheckInvariants()
+        private void CheckPolicies(IOrganizationValidatorService organizationValidatorService)
         {
             if (Name == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
@@ -83,10 +92,22 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             if (OwnerMemberId == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerMemberId)));
 
-            if (!new OrganizationNameAndDescriptionCannotBeSameSpecification().IsSatisfiedBy(this))
-                throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
-
+            if (!new OrganizationNameMustUniqueSpecification(organizationValidatorService).IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void CheckInvariants()
+        {
+            if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
+                throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
+        }
+
+
 
         #endregion
 

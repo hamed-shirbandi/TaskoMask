@@ -3,7 +3,7 @@ using TaskoMask.Domain.Workspace.Organizations.Entities;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Specifications
 {
-    internal class OrganizationNameAndDescriptionCannotBeSameSpecification : ISpecification<Organization>
+    internal class OrganizationNameAndDescriptionCannotSameSpecification : ISpecification<Organization>
     {
         public bool IsSatisfiedBy(Organization organization)
         {

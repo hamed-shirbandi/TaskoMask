@@ -84,7 +84,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             if (OrganizationId == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OrganizationId)));
 
-            if (!new ProjectNameAndDescriptionCannotBeSameSpecification().IsSatisfiedBy(this))
+            if (!new ProjectNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
 
         }

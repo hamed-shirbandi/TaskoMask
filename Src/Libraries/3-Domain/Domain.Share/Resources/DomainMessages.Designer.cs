@@ -133,6 +133,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} not found.
+        /// </summary>
+        public static string Not_Found {
+            get {
+                return ResourceManager.GetString("Not_Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} cannot be null.
         /// </summary>
         public static string Null_Reference_Error {

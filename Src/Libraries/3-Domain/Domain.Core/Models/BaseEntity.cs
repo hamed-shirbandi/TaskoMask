@@ -39,10 +39,9 @@ namespace TaskoMask.Domain.Core.Models
         /// <summary>
         /// 
         /// </summary>
-        public virtual void SoftDelete()
+        public virtual void Delete()
         {
             IsDeleted = true;
-            UpdateModifiedDateTime();
         }
 
 
@@ -53,7 +52,6 @@ namespace TaskoMask.Domain.Core.Models
         public virtual void Recycle()
         {
             IsDeleted = false;
-            UpdateModifiedDateTime();
         }
 
 

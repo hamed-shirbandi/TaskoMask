@@ -91,7 +91,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Builders
         /// <summary>
         /// 
         /// </summary>
-        public Organization Build() => Organization.Create(name, description, ownerMemberId, organizationValidatorService);
+        public Organization Build() => Organization.CreateOrganization(name, description, ownerMemberId, organizationValidatorService);
 
 
         #endregion

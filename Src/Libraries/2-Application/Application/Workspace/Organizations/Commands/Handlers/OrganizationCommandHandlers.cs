@@ -73,7 +73,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             if (organization == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Organization);
 
-            organization.Update(request.Name, request.Description, _organizationValidatorService);
+            organization.UpdateOrganization(request.Name, request.Description, _organizationValidatorService);
 
             await _organizationRepository.UpdateAsync(organization);
 

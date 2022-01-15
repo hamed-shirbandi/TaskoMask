@@ -66,7 +66,6 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
         {
             DisplayName = displayName;
             Email = email;
-            base.UpdateAggregate();
 
             AddDomainEvent(new MemberUpdatedEvent(Id, displayName.Value, email.Value));
         }
@@ -77,10 +76,9 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
         /// <summary>
         /// 
         /// </summary>
-        public override void SoftDelete()
+        public override void Delete()
         {
-            base.SoftDelete();
-            base.UpdateAggregate();
+            base.Delete();
             AddDomainEvent(new MemberDeletedEvent(Id));
         }
 
@@ -92,7 +90,6 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
         public override void Recycle()
         {
             base.Recycle();
-            base.UpdateAggregate();
             AddDomainEvent(new MemberRecycledEvent(Id));
         }
 

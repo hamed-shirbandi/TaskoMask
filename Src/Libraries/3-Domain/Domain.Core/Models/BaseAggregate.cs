@@ -62,32 +62,13 @@ namespace TaskoMask.Domain.Core.Models
         #region Protected Methods
 
 
-        /// <summary>
-        /// update aggregate Version and ModifiedDateTime
-        /// </summary>
-        protected void UpdateAggregate()
-        {
-            SetVersion();
-            base.UpdateModifiedDateTime();
-        }
-
-
-
-        /// <summary>
-        /// Vesion must change after each aggregate update
-        /// </summary>
-        protected void SetVersion()
-        {
-            Version = Guid.NewGuid().ToString();
-        }
-
-
 
         /// <summary>
         /// Add domain event
         /// </summary>
         protected void AddDomainEvent(IDomainEvent domainEvent)
         {
+            UpdateAggregate();
 
             CheckInvariants();
 
@@ -108,6 +89,27 @@ namespace TaskoMask.Domain.Core.Models
         #endregion
 
         #region Private Methods
+
+
+        /// <summary>
+        /// update aggregate Version and ModifiedDateTime
+        /// </summary>
+        private void UpdateAggregate()
+        {
+            SetVersion();
+            UpdateModifiedDateTime();
+        }
+
+
+
+        /// <summary>
+        /// Vesion must change after each aggregate update
+        /// </summary>
+        private void SetVersion()
+        {
+            Version = Guid.NewGuid().ToString();
+        }
+
 
 
         #endregion

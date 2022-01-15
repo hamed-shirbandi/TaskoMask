@@ -6,6 +6,8 @@ using TaskoMask.Domain.Workspace.Organizations.Events;
 using TaskoMask.Domain.Workspace.Organizations.Specifications;
 using TaskoMask.Domain.Workspace.Organizations.Services;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Entities
 {
@@ -29,7 +31,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             AddDomainEvent(new OrganizationCreatedEvent(Id, Name.Value, Description.Value, OwnerMemberId.Value));
         }
 
-    
+
 
         #endregion
 
@@ -39,16 +41,18 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public OrganizationDescription Description { get; private set; }
         public OrganizationOwnerMemberId OwnerMemberId { get; private set; }
 
+        public ICollection<Project> Projects { get; set; }
+
         #endregion
 
-        #region Public Methods
+        #region Public Organization Methods
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        public static Organization Create(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId, IOrganizationValidatorService organizationValidatorService)
+        public static Organization CreateOrganization(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId, IOrganizationValidatorService organizationValidatorService)
         {
             return new Organization(name, description, ownerMemberId, organizationValidatorService);
         }
@@ -58,7 +62,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(string name, string description, IOrganizationValidatorService organizationValidatorService)
+        public void UpdateOrganization(string name, string description, IOrganizationValidatorService organizationValidatorService)
         {
             Name = OrganizationName.Create(name);
             Description = OrganizationDescription.Create(name);
@@ -75,9 +79,9 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public override void SoftDelete()
+        public void DeleteOrganization()
         {
-            base.SoftDelete();
+            base.Delete();
             AddDomainEvent(new OrganizationDeletedEvent(Id));
         }
 
@@ -86,11 +90,76 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public override void Recycle()
+        public void RecycleOrganization()
         {
             base.Recycle();
             AddDomainEvent(new OrganizationRecycledEvent(Id));
         }
+
+
+
+        #endregion
+
+        #region Public Project Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void CreateProject(ProjectName name, ProjectDescription description )
+        {
+            var project=  Project.Create(name, description,ProjectOrganizationId.Create(Id));
+            Projects.Add(project);
+            AddDomainEvent(new ProjectCreatedEvent(project.Id, name.Value, Description.Value,Id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void UpdateProject(string id, ProjectName name, ProjectDescription description)
+        {
+            var project = Projects.FirstOrDefault(p=>p.Id== id);
+            if (project ==null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found,DomainMetadata.Project));
+
+            project.Update(name, description);
+
+            AddDomainEvent(new ProjectUpdatedEvent(Id, Name.Value, Description.Value));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DeleteProject(string id)
+        {
+            var project = Projects.FirstOrDefault(p => p.Id == id);
+            if (project == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
+
+            project.Delete();
+            AddDomainEvent(new ProjectDeletedEvent(Id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void RecycleProject(string id)
+        {
+            var project = Projects.FirstOrDefault(p => p.Id == id);
+            if (project == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
+
+            project.Recycle();
+            AddDomainEvent(new ProjectRecycledEvent(Id));
+        }
+
 
 
 

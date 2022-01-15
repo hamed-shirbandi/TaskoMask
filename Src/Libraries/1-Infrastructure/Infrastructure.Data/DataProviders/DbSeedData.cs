@@ -187,7 +187,6 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                                 var project = ProjectBuilder.Init()
                                    .WithName($"Project Name {k}")
                                    .WithDescription($"Description {k}")
-                                   .WithOrganizationId(organization.Id)
                                    .Build();
 
                                 _Projects.InsertOne(project);

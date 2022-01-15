@@ -64,16 +64,6 @@ namespace TaskoMask.Domain.Workspace.Organizations.Builders
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public ProjectBuilder WithOrganizationId(string organizationId)
-        {
-            OrganizationId = ProjectOrganizationId.Create(organizationId);
-            return this;
-        }
-
-
 
         /// <summary>
         /// 

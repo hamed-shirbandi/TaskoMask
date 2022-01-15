@@ -141,6 +141,9 @@
   <data name="Name_Already_Exist" xml:space="preserve">
     <value>{0} name already exist</value>
   </data>
+  <data name="Not_Found" xml:space="preserve">
+    <value>{0} not found</value>
+  </data>
   <data name="Null_Reference_Error" xml:space="preserve">
     <value>{0} cannot be null</value>
   </data>

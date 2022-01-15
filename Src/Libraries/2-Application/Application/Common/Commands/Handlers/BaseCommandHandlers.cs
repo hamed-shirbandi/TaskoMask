@@ -53,7 +53,8 @@ namespace TaskoMask.Application.Common.Commands.Handlers
             if (entity == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Entity);
 
-            entity.SoftDelete();
+            entity.Delete();
+            entity.UpdateModifiedDateTime();
 
             await _baseRepository.UpdateAsync(entity);
             return new CommandResult(ApplicationMessages.Delete_Success, entity.Id);

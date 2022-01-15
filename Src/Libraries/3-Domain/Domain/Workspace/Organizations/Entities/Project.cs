@@ -1,13 +1,12 @@
 ﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
-using TaskoMask.Domain.Workspace.Organizations.Events;
 using TaskoMask.Domain.Workspace.Organizations.Specifications;
+using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Entities
 {
-    public class Project : BaseAggregate
+    public class Project : BaseEntity
     {
         #region Fields
 
@@ -22,7 +21,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             Description = description;
             OrganizationId = organizationId;
 
-            AddDomainEvent(new ProjectCreatedEvent(Id, name.Value, Description.Value, OrganizationId.Value));
+            CheckPolicies();
         }
 
 
@@ -33,7 +32,6 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public ProjectName Name { get; private set; }
         public ProjectDescription Description { get; private set; }
         public ProjectOrganizationId OrganizationId { get; private set; }
-
         #endregion
 
         #region Public Methods
@@ -53,14 +51,13 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(ProjectName name, ProjectDescription description, ProjectOrganizationId organizationId)
+        public void Update(ProjectName name, ProjectDescription description )
         {
             Description = description;
             Name = name;
-            OrganizationId = organizationId;
             base.UpdateModifiedDateTime();
 
-            AddDomainEvent(new ProjectUpdatedEvent(Id, Name.Value, Description.Value,OrganizationId.Value));
+            CheckPolicies();
         }
 
 
@@ -68,10 +65,10 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public override void SoftDelete()
+        public override void Delete()
         {
-            base.SoftDelete();
-            AddDomainEvent(new ProjectDeletedEvent(Id));
+            base.Delete();
+            base.UpdateModifiedDateTime();
         }
 
 
@@ -82,7 +79,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public override void Recycle()
         {
             base.Recycle();
-            AddDomainEvent(new ProjectRecycledEvent(Id));
+            base.UpdateModifiedDateTime();
         }
 
 
@@ -95,7 +92,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        protected override void CheckInvariants()
+        private void CheckPolicies()
         {
             if (Name == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
@@ -110,6 +107,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
 
         }
+
 
         #endregion
 

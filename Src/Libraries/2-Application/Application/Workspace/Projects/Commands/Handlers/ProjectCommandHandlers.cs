@@ -53,7 +53,6 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
             var project = ProjectBuilder.Init()
                .WithName(request.Name)
                .WithDescription(request.Description)
-               .WithOrganizationId(request.OrganizationId)
                .Build();
 
             await _projectRepository.CreateAsync(project);
@@ -81,8 +80,7 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
 
             project.Update(
                ProjectName.Create(request.Name),
-               ProjectDescription.Create(request.Description),
-               ProjectOrganizationId.Create(request.OrganizationId)
+               ProjectDescription.Create(request.Description)
                );
 
             await _projectRepository.UpdateAsync(project);

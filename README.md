@@ -85,14 +85,16 @@ There is a list of our documentation:
       -	Unit Testing
       -	DDD
         - Rich Domain Model (for core domain)
-        -	Anemic Domain Model (for less important subdomains)
-        -	Aggregate
+        - Anemic Domain Model (for less important subdomains)
+        - Aggregate
         - Value Object
         - Domain Event
-        -	Domain Service
-        -	Specification
-        -	Builder
-        -	Factory Method
+        - Domain Service
+		- Always Valid Domain Model
+		- Invariants
+        - Specification
+        - Builder
+        - Factory Method
       -	CQRS
       -	Event Sourcing
       -	Repository

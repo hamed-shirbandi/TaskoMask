@@ -72,6 +72,28 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void SoftDelete()
+        {
+            base.SoftDelete();
+            AddDomainEvent(new OrganizationDeletedEvent(Id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Recycle()
+        {
+            base.Recycle();
+            AddDomainEvent(new OrganizationRecycledEvent(Id));
+        }
+
+
+
         #endregion
 
         #region Private Methods

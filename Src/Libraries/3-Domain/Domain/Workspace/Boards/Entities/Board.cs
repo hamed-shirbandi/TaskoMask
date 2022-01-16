@@ -3,7 +3,7 @@ using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Domain.Workspace.Boards.Entities
 {
-    public class Board: BaseAggregate
+    public class Board: AggregateRoot
     {
         #region Fields
 

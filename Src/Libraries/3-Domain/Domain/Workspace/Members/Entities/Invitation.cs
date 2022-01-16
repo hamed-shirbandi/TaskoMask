@@ -4,7 +4,7 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
     /// <summary>
     /// To determine invited members to another member's account
     /// </summary>
-    public class Invitation : BaseAggregate
+    public class Invitation : AggregateRoot
     {
         #region Fields
 

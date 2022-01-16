@@ -9,7 +9,7 @@ namespace TaskoMask.Domain.Workspace.Members.Entities
     /// <summary>
     /// Members are those who manage their tasks in this system
     /// </summary>
-    public class Member : BaseAggregate
+    public class Member : AggregateRoot
     {
         #region Fields
 

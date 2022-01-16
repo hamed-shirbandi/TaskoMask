@@ -12,7 +12,7 @@ using TaskoMask.Domain.Share.Helpers;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Entities
 {
-    public class Organization : BaseAggregate
+    public class Organization : AggregateRoot
     {
         #region Fields
 

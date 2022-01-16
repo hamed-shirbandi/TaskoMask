@@ -11,7 +11,7 @@ namespace TaskoMask.Domain.Core.Models
     /// <summary>
     ///
     /// </summary>
-    public abstract class BaseAggregate : BaseEntity
+    public abstract class AggregateRoot : BaseEntity
     {
         #region Fields
 
@@ -21,7 +21,7 @@ namespace TaskoMask.Domain.Core.Models
 
         #region Ctors
 
-        public BaseAggregate()
+        public AggregateRoot()
         {
             SetVersion();
         }

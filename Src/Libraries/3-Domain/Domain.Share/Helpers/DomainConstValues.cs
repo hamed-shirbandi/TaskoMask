@@ -10,6 +10,8 @@ namespace TaskoMask.Domain.Share.Helpers
         public const int Organization_Description_Min_Length = 2;
         public const int Organization_Description_Max_Length = 50;
 
+        public const int Organization_Max_Projects_Count = 5;
+        
 
         public const int Project_Name_Min_Length = 2;
         public const int Project_Name_Max_Length = 50;

@@ -115,6 +115,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An organization cannot have more than {0} project.
+        /// </summary>
+        public static string Max_Projects_Count_Limitiation {
+            get {
+                return ResourceManager.GetString("Max_Projects_Count_Limitiation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} length must be greater than {1} characters.
         /// </summary>
         public static string Min_Length_Error {

@@ -8,6 +8,7 @@ using TaskoMask.Domain.Workspace.Organizations.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TaskoMask.Domain.Share.Helpers;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Entities
 {
@@ -107,11 +108,10 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void CreateProject(ProjectName name, ProjectDescription description )
+        public void CreateProject(Project project)
         {
-            var project=  Project.Create(name, description,ProjectOrganizationId.Create(Id));
             Projects.Add(project);
-            AddDomainEvent(new ProjectCreatedEvent(project.Id, name.Value, Description.Value,Id));
+            AddDomainEvent(new ProjectCreatedEvent(project.Id, project.Name.Value, project.Description.Value,Id));
         }
 
 
@@ -185,6 +185,10 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
             if (!new OrganizationNameMustUniqueSpecification(organizationValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
+
+            if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
+                throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
+
         }
 
 
@@ -194,8 +198,9 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
-            if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
-                throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
+            if (Projects.Count> DomainConstValues.Organization_Max_Projects_Count)
+                throw new DomainException(string.Format(DomainMessages.Max_Projects_Count_Limitiation, DomainConstValues.Organization_Max_Projects_Count));
+
         }
 
 

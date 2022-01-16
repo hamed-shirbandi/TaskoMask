@@ -30,5 +30,4 @@ This BC contains the core domain and talks about managing tasks. We implement it
 - Invariants
 - Always Valid Domain Model
 - Domain Services
-- Builder Pattern
 - Factory Method Pattern

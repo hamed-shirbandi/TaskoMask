@@ -12,11 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Workspace\Members\Builders\" />
     <Folder Include="Workspace\Boards\ValueObjects\" />
     <Folder Include="Workspace\Boards\Builders\" />
     <Folder Include="Workspace\Members\Specifications\" />
-    <Folder Include="Workspace\Tasks\Builders\" />
     <Folder Include="Workspace\Tasks\Events\" />
     <Folder Include="Workspace\Tasks\ValueObjects\" />
   </ItemGroup>

@@ -15,11 +15,11 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
         #region Ctors
 
-        private Project(ProjectName name, ProjectDescription description, ProjectOrganizationId organizationId)
+        private Project(string name, string description, string organizationId)
         {
-            Name = name;
-            Description = description;
-            OrganizationId = organizationId;
+            Name = ProjectName.Create(name);
+            Description = ProjectDescription.Create(description) ;
+            OrganizationId = ProjectOrganizationId.Create(organizationId);
 
             CheckPolicies();
         }
@@ -41,7 +41,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Project Create(ProjectName name, ProjectDescription description, ProjectOrganizationId organizationId)
+        public static Project Create(string name, string description, string organizationId)
         {
             return new Project(name, description, organizationId);
         }
@@ -51,10 +51,10 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(ProjectName name, ProjectDescription description )
+        public void Update(string name, string description )
         {
-            Description = description;
-            Name = name;
+            Description = ProjectDescription.Create(description);
+            Name = ProjectName.Create(name); ;
             base.UpdateModifiedDateTime();
 
             CheckPolicies();

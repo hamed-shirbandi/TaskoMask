@@ -21,11 +21,11 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
         #region Ctors
 
-        private Organization(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId, IOrganizationValidatorService organizationValidatorService)
+        private Organization(string name, string description, string ownerMemberId, IOrganizationValidatorService organizationValidatorService)
         {
-            Name = name;
-            Description = description;
-            OwnerMemberId = ownerMemberId;
+            Name = OrganizationName.Create(name);
+            Description = OrganizationDescription.Create(description);
+            OwnerMemberId = OrganizationOwnerMemberId.Create(ownerMemberId);
 
             CheckPolicies(organizationValidatorService);
 
@@ -53,7 +53,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Organization CreateOrganization(OrganizationName name, OrganizationDescription description, OrganizationOwnerMemberId ownerMemberId, IOrganizationValidatorService organizationValidatorService)
+        public static Organization CreateOrganization(string name, string description, string ownerMemberId, IOrganizationValidatorService organizationValidatorService)
         {
             return new Organization(name, description, ownerMemberId, organizationValidatorService);
         }
@@ -66,7 +66,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public void UpdateOrganization(string name, string description, IOrganizationValidatorService organizationValidatorService)
         {
             Name = OrganizationName.Create(name);
-            Description = OrganizationDescription.Create(name);
+            Description = OrganizationDescription.Create(description);
 
             base.UpdateModifiedDateTime();
 
@@ -111,7 +111,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public void CreateProject(Project project)
         {
             Projects.Add(project);
-            AddDomainEvent(new ProjectCreatedEvent(project.Id, project.Name.Value, project.Description.Value,Id));
+            AddDomainEvent(new ProjectCreatedEvent(project.Id, project.Name.Value, project.Description.Value, Id));
         }
 
 
@@ -119,11 +119,11 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateProject(string id, ProjectName name, ProjectDescription description)
+        public void UpdateProject(string id, string name, string description)
         {
-            var project = Projects.FirstOrDefault(p=>p.Id== id);
-            if (project ==null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found,DomainMetadata.Project));
+            var project = Projects.FirstOrDefault(p => p.Id == id);
+            if (project == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
 
             project.Update(name, description);
 
@@ -198,7 +198,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
-            if (Projects.Count> DomainConstValues.Organization_Max_Projects_Count)
+            if (Projects.Count > DomainConstValues.Organization_Max_Projects_Count)
                 throw new DomainException(string.Format(DomainMessages.Max_Projects_Count_Limitiation, DomainConstValues.Organization_Max_Projects_Count));
 
         }

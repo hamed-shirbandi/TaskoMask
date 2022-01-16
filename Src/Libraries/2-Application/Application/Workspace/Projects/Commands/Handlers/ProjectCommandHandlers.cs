@@ -10,8 +10,7 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Workspace.Organizations.Data;
-using TaskoMask.Domain.Workspace.Organizations.Builders;
-using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
+using TaskoMask.Domain.Workspace.Organizations.Entities;
 
 namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
 {
@@ -50,10 +49,7 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var project = ProjectBuilder.Init()
-               .WithName(request.Name)
-               .WithDescription(request.Description)
-               .Build();
+            var project = Project.Create(request.Name,request.Description,request.OrganizationId);
 
             await _projectRepository.CreateAsync(project);
             return new CommandResult(ApplicationMessages.Create_Success, project.Id);
@@ -78,10 +74,7 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            project.Update(
-               ProjectName.Create(request.Name),
-               ProjectDescription.Create(request.Description)
-               );
+            project.Update(request.Name,request.Id);
 
             await _projectRepository.UpdateAsync(project);
             return new CommandResult(ApplicationMessages.Update_Success, project.Id);

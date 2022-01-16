@@ -10,10 +10,8 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Workspace.Organizations.Data;
-using TaskoMask.Domain.Workspace.Organizations.Builders;
-using TaskoMask.Domain.Workspace.Organizations.ValueObjects;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
 using TaskoMask.Domain.Workspace.Organizations.Services;
+using TaskoMask.Domain.Workspace.Organizations.Entities;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
@@ -46,14 +44,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// </summary>
         public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            //to show how to use builder to create a domain object. It can be useful when the object has many parameters
-            var organization = OrganizationBuilder.Init()
-                .WithName(request.Name)
-                .WithDescription(request.Description)
-                .WithOwnerMemberId(request.OwnerMemberId)
-                .WithValidator(_organizationValidatorService)
-                .Build();
-
+            var organization = Organization.CreateOrganization(request.Name, request.Description, request.OwnerMemberId, _organizationValidatorService);
             await _organizationRepository.CreateAsync(organization);
 
             //TODO publish domain events

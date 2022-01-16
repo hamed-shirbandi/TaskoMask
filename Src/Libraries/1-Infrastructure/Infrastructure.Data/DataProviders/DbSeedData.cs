@@ -9,12 +9,12 @@ using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Workspace.Boards.Entities;
 using TaskoMask.Domain.Workspace.Members.Entities;
-using TaskoMask.Domain.Workspace.Organizations.Builders;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
 using TaskoMask.Domain.Workspace.Tasks.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 using TaskoMask.Domain.Authorization.Entities;
 using TaskoMask.Domain.Workspace.Members.ValueObjects;
+using TaskoMask.Domain.Workspace.Organizations.Services;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
 {
@@ -75,6 +75,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                 var _dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
                 var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
+                var _organizationValidatorService = serviceScope.ServiceProvider.GetService<IOrganizationValidatorService>();
 
                 var _users = _dbContext.GetCollection<User>();
                 var _operators = _dbContext.GetCollection<Operator>();
@@ -143,7 +144,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                         {
                             DisplayName = $"Operator Name {i}",
                             Email = $"Email{i}@example.com",
-                            RolesId= rolesId.Take(i).ToArray(),
+                            RolesId = rolesId.Take(i).ToArray(),
                         };
                         _operators.InsertOne(@operator);
                     }
@@ -171,25 +172,19 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                         for (int j = 1; j <= 3; j++)
                         {
-                            var organization = OrganizationBuilder.Init()
-                                .WithName($"Organization Name {j}")
-                                .WithDescription($"Description {j}")
-                                .WithOwnerMemberId(member.Id)
-                                .Build();
+                            var organization = Organization.CreateOrganization($"Organization Name {j}", $"Description {j}", member.Id, _organizationValidatorService);
 
-                            _organizations.InsertOne(organization);
 
                             #region Projects
 
                             for (int k = 1; k <= 3; k++)
                             {
 
-                                var project = ProjectBuilder.Init()
-                                   .WithName($"Project Name {k}")
-                                   .WithDescription($"Description {k}")
-                                   .Build();
+                                var project = Project.Create($"Project Name {k}", $"Description {k}", organization.Id);
+                                organization.CreateProject(project);
 
-                                _Projects.InsertOne(project);
+                                if (k == 3)
+                                    _organizations.InsertOne(organization);
 
 
                                 #region Boards

@@ -93,7 +93,6 @@ There is a list of our documentation:
 		- Always Valid Domain Model
 		- Invariants
         - Specification
-        - Builder
         - Factory Method
       -	CQRS
       -	Event Sourcing

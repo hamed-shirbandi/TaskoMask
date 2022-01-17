@@ -24,11 +24,11 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
 
 
     {
-        private readonly ITaskRepository _taskRepository;
+        private readonly ITaskAggregateRepository _taskRepository;
         private readonly ICardRepository _cardRepository;
 
 
-        public TaskQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper, ICardRepository cardRepository) : base(mapper, notifications)
+        public TaskQueryHandlers(ITaskAggregateRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper, ICardRepository cardRepository) : base(mapper, notifications)
         {
             _taskRepository = taskRepository;
             _cardRepository = cardRepository;

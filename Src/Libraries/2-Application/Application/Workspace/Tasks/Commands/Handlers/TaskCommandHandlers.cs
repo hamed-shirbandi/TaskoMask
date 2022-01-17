@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
     {
         #region Fields
 
-        private readonly ITaskRepository _taskRepository;
+        private readonly ITaskAggregateRepository _taskRepository;
         private readonly ICardRepository _cardRepository;
         private readonly IBoardAggregateRepository _boardRepository;
         private readonly IProjectRepository _projectRepository;
@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 
         #region Ctors
 
-        public TaskCommandHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public TaskCommandHandlers(ITaskAggregateRepository taskRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _taskRepository = taskRepository;
         }

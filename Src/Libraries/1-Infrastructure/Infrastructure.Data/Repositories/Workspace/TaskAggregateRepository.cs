@@ -8,7 +8,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class TaskRepository : BaseAggregateRepository<Domain.Workspace.Tasks.Entities.Task>, ITaskRepository
+    public class TaskAggregateRepository : BaseAggregateRepository<Domain.Workspace.Tasks.Entities.Task>, ITaskAggregateRepository
     {
         #region Fields
 
@@ -18,7 +18,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public TaskRepository(IMongoDbContext dbContext) : base(dbContext)
+        public TaskAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _tasks = dbContext.GetCollection<Domain.Workspace.Tasks.Entities.Task>();
         }

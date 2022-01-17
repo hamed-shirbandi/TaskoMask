@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.Workspace.Tasks.Data
 {
-    public interface ITaskRepository : IBaseAggregateRepository<Entities.Task>
+    public interface ITaskAggregateRepository : IBaseAggregateRepository<Entities.Task>
     {
         Task<IEnumerable<Entities.Task>> GetListByCardIdAsync(string cardId);
         Task<IEnumerable<Entities.Task>> GetListByOrganizationIdAsync(string organizationId,int takeCount);

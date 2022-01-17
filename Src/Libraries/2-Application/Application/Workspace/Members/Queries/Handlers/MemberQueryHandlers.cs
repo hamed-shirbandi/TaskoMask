@@ -26,14 +26,14 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
 
         private readonly IMemberRepository _memberRepository;
         private readonly IInvitationRepository _invitationRepository;
-        private readonly IOrganizationRepository _organizationRepository;
+        private readonly IOrganizationAggregateRepository _organizationRepository;
         private readonly IUserRepository _userRepository;
 
         #endregion
 
         #region Ctors
 
-        public MemberQueryHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
+        public MemberQueryHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationAggregateRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
         {
             _memberRepository = memberRepository;
             _invitationRepository = invitationRepository;

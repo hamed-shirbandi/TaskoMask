@@ -21,14 +21,14 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
     {
         #region Fields
 
-        private readonly IOrganizationRepository _organizationRepository;
+        private readonly IOrganizationAggregateRepository _organizationRepository;
         private readonly IOrganizationValidatorService _organizationValidatorService;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus, IOrganizationValidatorService organizationValidatorService) : base(notifications, inMemoryBus)
+        public OrganizationCommandHandlers(IOrganizationAggregateRepository organizationRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus, IOrganizationValidatorService organizationValidatorService) : base(notifications, inMemoryBus)
         {
             _organizationRepository = organizationRepository;
             _organizationValidatorService = organizationValidatorService;

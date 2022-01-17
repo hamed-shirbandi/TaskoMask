@@ -82,12 +82,12 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IEventStore, RedisEventStore>();
             services.AddScoped<IInMemoryBus, InMemoryBus>();
 
-            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped(typeof(IBaseAggregateRepository<>), typeof(BaseAggregateRepository<>));
             services.AddScoped<IOperatorRepository, OperatorRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IMemberRepository, MemberRepository>();
-            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IOrganizationAggregateRepository, OrganizationRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IBoardRepository, BoardRepository>();
             services.AddScoped<ICardRepository, CardRepository>();

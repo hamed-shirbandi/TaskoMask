@@ -6,7 +6,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Authorization
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepository : BaseAggregateRepository<User>, IUserRepository
     {
 
         #region Fields

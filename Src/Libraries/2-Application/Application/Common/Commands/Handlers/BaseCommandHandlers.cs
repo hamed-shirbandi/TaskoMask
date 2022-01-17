@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Common.Commands.Handlers
         #region Fields
 
 
-        private readonly IBaseRepository<TEntity> _baseRepository;
+        private readonly IBaseAggregateRepository<TEntity> _baseRepository;
 
 
         #endregion
@@ -31,7 +31,7 @@ namespace TaskoMask.Application.Common.Commands.Handlers
         #region Ctor
 
 
-        public BaseCommandHandlers(IBaseRepository<TEntity> baseRepository, IDomainNotificationHandler notifications , IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public BaseCommandHandlers(IBaseAggregateRepository<TEntity> baseRepository, IDomainNotificationHandler notifications , IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _baseRepository = baseRepository;
         }

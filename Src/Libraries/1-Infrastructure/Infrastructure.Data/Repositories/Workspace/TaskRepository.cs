@@ -8,7 +8,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class TaskRepository : BaseRepository<Domain.Workspace.Tasks.Entities.Task>, ITaskRepository
+    public class TaskRepository : BaseAggregateRepository<Domain.Workspace.Tasks.Entities.Task>, ITaskRepository
     {
         #region Fields
 

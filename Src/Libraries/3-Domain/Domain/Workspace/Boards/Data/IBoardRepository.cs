@@ -5,7 +5,7 @@ using TaskoMask.Domain.Workspace.Boards.Entities;
 
 namespace TaskoMask.Domain.Workspace.Boards.Data
 {
-    public interface IBoardRepository : IBaseRepository<Board>
+    public interface IBoardRepository : IBaseAggregateRepository<Board>
     {
         Task<IEnumerable<Board>> GetListByProjectIdAsync(string projectId);
         Task<IEnumerable<Board>> GetListByOrganizationIdAsync(string organizationId);

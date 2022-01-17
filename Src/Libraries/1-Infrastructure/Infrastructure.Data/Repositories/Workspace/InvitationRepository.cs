@@ -7,7 +7,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
 {
-    public class InvitationRepository : BaseRepository<Invitation>, IInvitationRepository
+    public class InvitationRepository : BaseAggregateRepository<Invitation>, IInvitationRepository
     {
         #region Fields
 

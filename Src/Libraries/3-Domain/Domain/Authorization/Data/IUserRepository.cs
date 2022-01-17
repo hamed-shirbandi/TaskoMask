@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.Authorization.Data
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IUserRepository : IBaseAggregateRepository<User>
     {
         Task<bool> ExistByUserNameAsync(string userName);
         Task<User> GetByUserNameAsync(string userName);

@@ -17,7 +17,7 @@ namespace TaskoMask.Application.Common.Queries.Handlers
         #region Fields
 
 
-        private readonly IBaseRepository<TEntity> _baseRepository;
+        private readonly IBaseAggregateRepository<TEntity> _baseRepository;
 
 
         #endregion
@@ -25,7 +25,7 @@ namespace TaskoMask.Application.Common.Queries.Handlers
         #region Ctors
 
 
-        public BaseQueryHandlers(IBaseRepository<TEntity> baseRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public BaseQueryHandlers(IBaseAggregateRepository<TEntity> baseRepository, IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _baseRepository = baseRepository;
         }

@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.Workspace.Boards.Data
 {
-    public interface ICardRepository : IBaseRepository<Card>
+    public interface ICardRepository : IBaseAggregateRepository<Card>
     {
         Task<IEnumerable<Card>> GetListByBoardIdAsync(string boardId);
         Task<bool> ExistByNameAsync(string id, string name);

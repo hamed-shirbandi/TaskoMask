@@ -9,7 +9,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class CardRepository : BaseRepository<Card>, ICardRepository
+    public class CardRepository : BaseAggregateRepository<Card>, ICardRepository
     {
         #region Fields
 

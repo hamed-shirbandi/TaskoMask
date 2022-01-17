@@ -10,7 +10,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Membership
 {
-    public class RoleRepository : BaseRepository<Role>, IRoleRepository
+    public class RoleRepository : BaseAggregateRepository<Role>, IRoleRepository
     {
         #region Fields
 

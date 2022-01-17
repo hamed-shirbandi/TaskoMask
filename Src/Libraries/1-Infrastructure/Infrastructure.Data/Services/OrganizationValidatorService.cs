@@ -9,9 +9,9 @@ namespace TaskoMask.Infrastructure.Data.Services
     /// </summary>
     public class OrganizationValidatorService : IOrganizationValidatorService
     {
-        private readonly IOrganizationRepository _organizationRepository;
+        private readonly IOrganizationAggregateRepository _organizationRepository;
 
-        public OrganizationValidatorService(IOrganizationRepository organizationRepository)
+        public OrganizationValidatorService(IOrganizationAggregateRepository organizationRepository)
         {
             _organizationRepository = organizationRepository;
         }

@@ -10,7 +10,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Membership
 {
-    public class PermissionRepository : BaseRepository<Permission>, IPermissionRepository
+    public class PermissionRepository : BaseAggregateRepository<Permission>, IPermissionRepository
     {
         private readonly IMongoCollection<Permission> _permissions;
         public PermissionRepository(IMongoDbContext dbContext) : base(dbContext)

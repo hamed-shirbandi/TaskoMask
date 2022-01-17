@@ -4,7 +4,7 @@ using TaskoMask.Domain.Workspace.Members.Entities;
 
 namespace TaskoMask.Domain.Workspace.Members.Data
 {
-    public interface IInvitationRepository : IBaseRepository<Invitation>
+    public interface IInvitationRepository : IBaseAggregateRepository<Invitation>
     {
         Task<int> OrganizationsCountByInvitedMemberIdAsync(string invitedMemberId);
     }

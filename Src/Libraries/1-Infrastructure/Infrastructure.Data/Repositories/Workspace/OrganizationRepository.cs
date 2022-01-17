@@ -9,7 +9,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
 {
-    public class OrganizationRepository : BaseRepository<Organization>, IOrganizationRepository
+    public class OrganizationRepository : BaseAggregateRepository<Organization>, IOrganizationAggregateRepository
     {
         #region Fields
 

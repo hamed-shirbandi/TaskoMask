@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.Membership.Data
 {
-    public interface IPermissionRepository : IBaseRepository<Permission>
+    public interface IPermissionRepository : IBaseAggregateRepository<Permission>
     {
         Task<bool> ExistBySystemNameAsync(string id, string systemName);
         IEnumerable<Permission> Search(int page, int recordsPerPage, string term, string groupName, out int pageSize, out int totalItemCount);

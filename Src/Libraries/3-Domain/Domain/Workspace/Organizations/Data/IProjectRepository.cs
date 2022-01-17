@@ -5,7 +5,10 @@ using TaskoMask.Domain.Workspace.Organizations.Entities;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Data
 {
-    public interface IProjectRepository : IBaseRepository<Project>
+    /// <summary>
+    /// Must delete after adding read side DB
+    /// </summary>
+    public interface IProjectRepository: IBaseAggregateRepository<Project>
     {
         Task<IEnumerable<Project>> GetListByOrganizationIdAsync(string organizationId);
         Task<bool> ExistByNameAsync(string id, string name);

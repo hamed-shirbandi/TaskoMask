@@ -5,7 +5,7 @@ using TaskoMask.Domain.Workspace.Organizations.Entities;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Data
 {
-    public interface IOrganizationRepository : IBaseRepository<Organization>
+    public interface IOrganizationAggregateRepository : IBaseAggregateRepository<Organization>
     {
         Task<IEnumerable<Organization>> GetListByOwnerMemberIdAsync(string ownerMemberId);
         Task<bool> ExistByNameAsync(string id, string ownerMemberId, string name);

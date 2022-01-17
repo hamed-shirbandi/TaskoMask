@@ -15,11 +15,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        public Member(string inviterOwnerId, string invitedOwnerId, string[] boardsId)
+        public Member(string invitedOwnerId)
         {
-            InviterOwnerId = inviterOwnerId;
             InvitedOwnerId = invitedOwnerId;
-            BoardsId = boardsId;
         }
 
 

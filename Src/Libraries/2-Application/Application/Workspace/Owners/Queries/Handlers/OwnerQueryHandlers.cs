@@ -25,7 +25,6 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
         #region Fields
 
         private readonly IOwnerAggregateRepository _ownerRepository;
-        private readonly IInvitationRepository _invitationRepository;
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IUserRepository _userRepository;
 
@@ -33,10 +32,9 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 
         #region Ctors
 
-        public OwnerQueryHandlers(IOwnerAggregateRepository ownerRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
+        public OwnerQueryHandlers(IOwnerAggregateRepository ownerRepository, IDomainNotificationHandler notifications, IMapper mapper,  IOrganizationRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
         {
             _ownerRepository = ownerRepository;
-            _invitationRepository = invitationRepository;
             _organizationRepository = organizationRepository;
             _userRepository = userRepository;
         }
@@ -87,7 +85,7 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 
 
                 //As an invited owner to organizations
-                item.OrganizationsCount = await _invitationRepository.OrganizationsCountByInvitedOwnerIdAsync(item.Id);
+                //item.OrganizationsCount = await _invitationRepository.OrganizationsCountByInvitedOwnerIdAsync(item.Id);
 
                 //As an owner of organizations
                 item.OrganizationsCount += await _organizationRepository.CountByOwnerOwnerIdAsync(item.Id);

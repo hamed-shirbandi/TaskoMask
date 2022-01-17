@@ -15,7 +15,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Specifications
 
         public bool IsSatisfiedBy(Organization organization)
         {
-            return _organizationValidatorService.HasUniqueName(organization.Id, organization.OwnerMemberId.Value,organization.Name.Value);
+            return _organizationValidatorService.OrganizationHasUniqueName(organization.Id, organization.OwnerMemberId.Value,organization.Name.Value);
         }
     }
 }

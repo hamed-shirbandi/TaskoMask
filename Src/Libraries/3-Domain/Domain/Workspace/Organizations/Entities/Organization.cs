@@ -201,6 +201,9 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             if (Projects.Count > DomainConstValues.Organization_Max_Projects_Count)
                 throw new DomainException(string.Format(DomainMessages.Max_Projects_Count_Limitiation, DomainConstValues.Organization_Max_Projects_Count));
 
+            if (!new ProjectNameMustUniqueSpecification().IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Project));
+
         }
 
 

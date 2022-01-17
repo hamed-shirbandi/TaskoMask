@@ -12,7 +12,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Services
         /// Check if the name of the organization is unique for its own member
         /// </summary>
         /// <param name="id">If organization is created before, use it to ignore itself when checking the name </param>
-        bool HasUniqueName(string id, string ownerMemberId, string name);
+        bool OrganizationHasUniqueName(string id, string ownerMemberId, string name);
 
 
     }

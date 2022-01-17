@@ -27,13 +27,13 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
 
         private readonly IProjectRepository _projectRepository;
         private readonly IOrganizationAggregateRepository _organizationRepository;
-        private readonly IBoardRepository _boardRepository;
+        private readonly IBoardAggregateRepository _boardRepository;
 
         #endregion
 
         #region Ctors
 
-        public ProjectQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper, IBoardRepository boardRepository, IOrganizationAggregateRepository organizationRepository) : base(mapper, notifications)
+        public ProjectQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper, IBoardAggregateRepository boardRepository, IOrganizationAggregateRepository organizationRepository) : base(mapper, notifications)
         {
             _projectRepository = projectRepository;
             _boardRepository = boardRepository;

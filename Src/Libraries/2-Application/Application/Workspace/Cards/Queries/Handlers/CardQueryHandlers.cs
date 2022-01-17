@@ -26,7 +26,7 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         #region Fields
 
         private readonly ICardRepository _cardRepository;
-        private readonly IBoardRepository _boardRepository;
+        private readonly IBoardAggregateRepository _boardRepository;
         private readonly ITaskRepository _taskRepository;
 
 
@@ -34,7 +34,7 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
 
         #region Ctors
 
-        public CardQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper, ITaskRepository taskRepository, IBoardRepository boardRepository) : base(mapper, notifications)
+        public CardQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper, ITaskRepository taskRepository, IBoardAggregateRepository boardRepository) : base(mapper, notifications)
         {
             _cardRepository = cardRepository;
             _taskRepository = taskRepository;

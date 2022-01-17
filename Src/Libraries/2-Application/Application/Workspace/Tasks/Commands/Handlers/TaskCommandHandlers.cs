@@ -23,7 +23,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 
         private readonly ITaskRepository _taskRepository;
         private readonly ICardRepository _cardRepository;
-        private readonly IBoardRepository _boardRepository;
+        private readonly IBoardAggregateRepository _boardRepository;
         private readonly IProjectRepository _projectRepository;
 
         #endregion

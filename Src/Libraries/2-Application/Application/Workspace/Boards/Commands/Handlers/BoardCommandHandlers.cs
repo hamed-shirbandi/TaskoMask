@@ -21,7 +21,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
     {
         #region Fields
 
-        private readonly IBoardRepository _boardRepository;
+        private readonly IBoardAggregateRepository _boardRepository;
         private readonly IProjectRepository _projectRepository;
 
         #endregion
@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
         #region Ctors
 
 
-        public BoardCommandHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public BoardCommandHandlers(IBoardAggregateRepository boardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _boardRepository = boardRepository;
             _projectRepository = projectRepository;

@@ -5,6 +5,9 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.Workspace.Boards.Data
 {
+    /// <summary>
+    /// Must delete after adding read side DB
+    /// </summary>
     public interface ICardRepository : IBaseAggregateRepository<Card>
     {
         Task<IEnumerable<Card>> GetListByBoardIdAsync(string boardId);

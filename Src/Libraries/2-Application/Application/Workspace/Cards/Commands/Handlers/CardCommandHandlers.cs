@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
         #region Fields
 
         private readonly ICardRepository _cardRepository;
-        private readonly IBoardRepository _boardRepository;
+        private readonly IBoardAggregateRepository _boardRepository;
         private readonly IProjectRepository _projectRepository;
 
 
@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
 
         #region Ctors
 
-        public CardCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IBoardRepository boardRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public CardCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IBoardAggregateRepository boardRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _cardRepository = cardRepository;
             _projectRepository = projectRepository;

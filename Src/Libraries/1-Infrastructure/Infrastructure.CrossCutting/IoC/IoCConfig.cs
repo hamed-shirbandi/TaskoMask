@@ -89,7 +89,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IOrganizationAggregateRepository, OrganizationRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
-            services.AddScoped<IBoardRepository, BoardRepository>();
+            services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
             services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<ITaskRepository, TaskRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

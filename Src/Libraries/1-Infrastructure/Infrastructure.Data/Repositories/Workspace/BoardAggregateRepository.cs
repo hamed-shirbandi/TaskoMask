@@ -9,7 +9,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories
 {
-    public class BoardRepository : BaseAggregateRepository<Board>, IBoardRepository
+    public class BoardAggregateRepository : BaseAggregateRepository<Board>, IBoardAggregateRepository
     {
         #region Fields
 
@@ -19,7 +19,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public BoardRepository(IMongoDbContext dbContext) : base(dbContext)
+        public BoardAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _boards = dbContext.GetCollection<Board>(); 
         }

@@ -22,14 +22,14 @@ namespace TaskoMask.Application.Workspace.Members.Commands.Handlers
     {
         #region Fields
 
-        private readonly IMemberRepository _memberRepository;
+        private readonly IMemberAggregateRepository _memberRepository;
 
         #endregion
 
         #region Ctors
 
 
-        public MemberCommandHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public MemberCommandHandlers(IMemberAggregateRepository memberRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
             _memberRepository = memberRepository;
         }

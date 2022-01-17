@@ -24,7 +24,7 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
     {
         #region Fields
 
-        private readonly IMemberRepository _memberRepository;
+        private readonly IMemberAggregateRepository _memberRepository;
         private readonly IInvitationRepository _invitationRepository;
         private readonly IOrganizationAggregateRepository _organizationRepository;
         private readonly IUserRepository _userRepository;
@@ -33,7 +33,7 @@ namespace TaskoMask.Application.Workspace.Members.Queries.Handlers
 
         #region Ctors
 
-        public MemberQueryHandlers(IMemberRepository memberRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationAggregateRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
+        public MemberQueryHandlers(IMemberAggregateRepository memberRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationAggregateRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
         {
             _memberRepository = memberRepository;
             _invitationRepository = invitationRepository;

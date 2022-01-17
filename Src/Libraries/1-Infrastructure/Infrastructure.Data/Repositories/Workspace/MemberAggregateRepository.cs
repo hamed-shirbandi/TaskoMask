@@ -8,7 +8,7 @@ using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
 {
-    public class MemberRepository : BaseAggregateRepository<Member>, IMemberRepository
+    public class MemberAggregateRepository : BaseAggregateRepository<Member>, IMemberAggregateRepository
     {
         #region Fields
 
@@ -19,7 +19,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
 
         #region Ctors
 
-        public MemberRepository(IMongoDbContext dbContext) : base(dbContext)
+        public MemberAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _members = dbContext.GetCollection<Member>();
 

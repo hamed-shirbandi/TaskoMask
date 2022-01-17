@@ -86,7 +86,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IOperatorRepository, OperatorRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<IMemberAggregateRepository, MemberAggregateRepository>();
             services.AddScoped<IOrganizationAggregateRepository, OrganizationRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();

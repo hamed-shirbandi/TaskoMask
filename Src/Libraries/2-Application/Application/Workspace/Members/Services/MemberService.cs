@@ -27,7 +27,7 @@ namespace TaskoMask.Application.Workspace.Members.Services
 
         #region Ctors
 
-        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberRepository memberRepository , IUserService userService)
+        public MemberService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IMemberAggregateRepository memberRepository , IUserService userService)
              : base(inMemoryBus, mapper, notifications)
         {
             _userService = userService;

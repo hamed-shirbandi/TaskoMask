@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Read\Entities\" />
-    <Folder Include="Write\Workspace\Boards\ValueObjects\" />
-    <Folder Include="Write\Workspace\Tasks\Events\" />
-    <Folder Include="Write\Workspace\Tasks\ValueObjects\" />
+    <Folder Include="ReadModel\Entities\" />
+    <Folder Include="WriteModel\Workspace\Boards\ValueObjects\" />
+    <Folder Include="WriteModel\Workspace\Tasks\Events\" />
+    <Folder Include="WriteModel\Workspace\Tasks\ValueObjects\" />
   </ItemGroup>
 
 </Project>

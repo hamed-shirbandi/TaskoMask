@@ -87,7 +87,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
-            services.AddScoped<IOrganizationAggregateRepository, OrganizationRepository>();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
             services.AddScoped<ICardRepository, CardRepository>();
@@ -122,7 +122,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IRequestHandler<DeleteCommand<Permission>, CommandResult>, BaseCommandHandlers<Permission>>();
             services.AddScoped<IRequestHandler<DeleteCommand<Role>, CommandResult>, BaseCommandHandlers<Role>>();
            
-            services.AddScoped<IRequestHandler<DeleteCommand<Invitation>, CommandResult>, BaseCommandHandlers<Invitation>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Member>, CommandResult>, BaseCommandHandlers<Member>>();
             services.AddScoped<IRequestHandler<DeleteCommand<Owner>, CommandResult>, BaseCommandHandlers<Owner>>();
             services.AddScoped<IRequestHandler<DeleteCommand<Organization>, CommandResult>, BaseCommandHandlers<Organization>>();
             services.AddScoped<IRequestHandler<DeleteCommand<Project>, CommandResult>, BaseCommandHandlers<Project>>();

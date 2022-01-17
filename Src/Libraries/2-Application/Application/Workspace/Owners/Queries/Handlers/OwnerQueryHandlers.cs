@@ -26,14 +26,14 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 
         private readonly IOwnerAggregateRepository _ownerRepository;
         private readonly IInvitationRepository _invitationRepository;
-        private readonly IOrganizationAggregateRepository _organizationRepository;
+        private readonly IOrganizationRepository _organizationRepository;
         private readonly IUserRepository _userRepository;
 
         #endregion
 
         #region Ctors
 
-        public OwnerQueryHandlers(IOwnerAggregateRepository ownerRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationAggregateRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
+        public OwnerQueryHandlers(IOwnerAggregateRepository ownerRepository, IDomainNotificationHandler notifications, IMapper mapper, IInvitationRepository invitationRepository, IOrganizationRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
         {
             _ownerRepository = ownerRepository;
             _invitationRepository = invitationRepository;

@@ -6,7 +6,7 @@ using TaskoMask.Domain.Workspace.Organizations.Entities;
 namespace TaskoMask.Domain.Workspace.Organizations.Data
 {
     /// <summary>
-    /// Must delete after adding read side DB
+    /// Must delete after adding read side model
     /// </summary>
     public interface IProjectRepository: IBaseAggregateRepository<Project>
     {

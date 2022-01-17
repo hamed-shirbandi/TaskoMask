@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Workspace.Members.Services;
+using TaskoMask.Application.Workspace.Owners.Services;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.JwtAuthentication;
 using TaskoMask.Domain.Share.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Application.Authorization.Users.Services;
 
@@ -16,7 +16,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
     {
         #region Fields
 
-        private readonly IMemberService _memberService;
+        private readonly IOwnerService _ownerService;
         private readonly IUserService _userService;
         private readonly IJwtAuthenticationService _jwtAuthenticationService;
 
@@ -24,10 +24,10 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
         #region Ctor
 
-        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IMemberService memberService, IMapper mapper, IUserService userService) : base(mapper)
+        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IOwnerService ownerService, IMapper mapper, IUserService userService) : base(mapper)
         {
             _jwtAuthenticationService = jwtAuthenticationService;
-            _memberService = memberService;
+            _ownerService = ownerService;
             _userService = userService;
         }
 
@@ -39,7 +39,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
-        /// login member - return jwt token if login is success
+        /// login owner - return jwt token if login is success
         /// </summary>
         [HttpPost]
         [Route("account/login")]
@@ -56,14 +56,14 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
                 return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, validateQueryResult.Message);
 
 
-            //get member
-            var memberQueryResult = await _memberService.GetByIdAsync(userQueryResult.Value.Id);
-            if (!memberQueryResult.IsSuccess)
-                return Result.Failure<UserJwtTokenDto>(memberQueryResult.Errors, memberQueryResult.Message);
+            //get owner
+            var ownerQueryResult = await _ownerService.GetByIdAsync(userQueryResult.Value.Id);
+            if (!ownerQueryResult.IsSuccess)
+                return Result.Failure<UserJwtTokenDto>(ownerQueryResult.Errors, ownerQueryResult.Message);
 
 
             //map to jwt claims model
-            var user = _mapper.Map<AuthenticatedUser>(memberQueryResult.Value);
+            var user = _mapper.Map<AuthenticatedUser>(ownerQueryResult.Value);
 
             //generate jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
@@ -75,14 +75,14 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
-        /// register new member - return jwt token if register is success
+        /// register new owner - return jwt token if register is success
         /// </summary>
         [HttpPost]
         [Route("account/register")]
-        public async Task<Result<UserJwtTokenDto>> Register([FromBody] MemberRegisterDto input)
+        public async Task<Result<UserJwtTokenDto>> Register([FromBody] OwnerRegisterDto input)
         {
             //create user
-            var createCommandResult = await _memberService.CreateAsync(input);
+            var createCommandResult = await _ownerService.CreateAsync(input);
             if (!createCommandResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(createCommandResult.Errors, createCommandResult.Message);
 
@@ -93,13 +93,13 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
                 return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
 
 
-            //get member
-            var memberQueryResult = await _memberService.GetByIdAsync(userQueryResult.Value.Id);
-            if (!memberQueryResult.IsSuccess)
-                return Result.Failure<UserJwtTokenDto>(memberQueryResult.Errors, memberQueryResult.Message);
+            //get owner
+            var ownerQueryResult = await _ownerService.GetByIdAsync(userQueryResult.Value.Id);
+            if (!ownerQueryResult.IsSuccess)
+                return Result.Failure<UserJwtTokenDto>(ownerQueryResult.Errors, ownerQueryResult.Message);
 
             //map to jwt claims model
-            var user = _mapper.Map<AuthenticatedUser>(memberQueryResult.Value);
+            var user = _mapper.Map<AuthenticatedUser>(ownerQueryResult.Value);
 
             //generate jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);

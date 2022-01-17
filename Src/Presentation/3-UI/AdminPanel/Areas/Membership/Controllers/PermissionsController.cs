@@ -1,20 +1,20 @@
-﻿using TaskoMask.Application.Membership.Permissions.Services;
+﻿using TaskoMask.Application.Ownership.Permissions.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using AutoMapper;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Presentation.Framework.Web.Extensions;
-using TaskoMask.Application.Share.Dtos.Membership.Permissions;
+using TaskoMask.Application.Share.Dtos.Ownership.Permissions;
 using TaskoMask.Presentation.Framework.Web.Helpers;
 using TaskoMask.Presentation.Framework.Web.Enums;
 using TaskoMask.Presentation.Framework.Web.Filters;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Ownership.Controllers
 {
 
     [Authorize]
-    [Area("Membership")]
+    [Area("Ownership")]
     public class PermissionsController : BaseMvcController
     {
         #region Fields

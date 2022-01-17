@@ -46,7 +46,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
             if (loginResult.IsSuccess)
                 return LocalRedirect(returnUrl);
 
-            ModelState.AddModelError(nameof(UserLoginDto.RememberMe), loginResult.Message);
+            ModelState.AddModelError(nameof(UserLoginDto.ReownerMe), loginResult.Message);
             return Page();
         }
     }

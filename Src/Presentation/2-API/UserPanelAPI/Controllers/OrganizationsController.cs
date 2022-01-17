@@ -53,7 +53,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("organizations")]
         public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> Get()
         {
-            return await _organizationService.GetListWithDetailsByOwnerMemberIdAsync(GetCurrentUserId());
+            return await _organizationService.GetListWithDetailsByOwnerOwnerIdAsync(GetCurrentUserId());
         }
 
 
@@ -77,7 +77,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("organizations")]
         public async Task<Result<CommandResult>> Create([FromBody] OrganizationUpsertDto input)
         {
-            input.OwnerMemberId = GetCurrentUserId();
+            input.OwnerOwnerId = GetCurrentUserId();
             return await _organizationService.CreateAsync(input);
         }
 

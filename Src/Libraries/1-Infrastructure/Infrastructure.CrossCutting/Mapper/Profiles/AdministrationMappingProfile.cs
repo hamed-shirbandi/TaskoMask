@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Domain.Membership.Entities;
+using TaskoMask.Application.Share.Dtos.Ownership.Operators;
+using TaskoMask.Application.Share.Dtos.Ownership.Permissions;
+using TaskoMask.Application.Share.Dtos.Ownership.Roles;
+using TaskoMask.Domain.Ownership.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {
-    public class MembershipMappingProfile : Profile
+    public class OwnershipMappingProfile : Profile
     {
-        public MembershipMappingProfile()
+        public OwnershipMappingProfile()
         {
             #region Role
 

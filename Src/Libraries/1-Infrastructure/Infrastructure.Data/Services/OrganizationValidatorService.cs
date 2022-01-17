@@ -20,9 +20,9 @@ namespace TaskoMask.Infrastructure.Data.Services
         /// <summary>
         /// 
         /// </summary>
-        public bool OrganizationHasUniqueName(string id, string ownerMemberId, string name)
+        public bool OrganizationHasUniqueName(string id, string ownerOwnerId, string name)
         {
-            return _organizationRepository.ExistByName(id, ownerMemberId, name);
+            return _organizationRepository.ExistByName(id, ownerOwnerId, name);
         }
     }
 }

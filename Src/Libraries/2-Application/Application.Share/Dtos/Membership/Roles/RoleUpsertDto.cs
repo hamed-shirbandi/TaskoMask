@@ -1,6 +1,6 @@
 ﻿
 
-namespace TaskoMask.Application.Share.Dtos.Membership.Roles
+namespace TaskoMask.Application.Share.Dtos.Ownership.Roles
 {
     public class RoleUpsertDto : RoleBaseDto
     {

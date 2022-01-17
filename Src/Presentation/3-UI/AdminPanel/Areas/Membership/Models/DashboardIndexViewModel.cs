@@ -5,7 +5,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Area.Admin.Models
 {
     public class DashboardIndexViewModel
     {
-        public long MembersCount { get; set; }
+        public long OwnersCount { get; set; }
         public long OrganizationsCount { get; set; }
         public long ProjectsCount { get; set; }
         public long BoardsCount { get; set; }

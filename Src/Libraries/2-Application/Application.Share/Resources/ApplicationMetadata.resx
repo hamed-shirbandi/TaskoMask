@@ -168,8 +168,8 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="MembersCount" xml:space="preserve">
-    <value>Members Count</value>
+  <data name="OwnersCount" xml:space="preserve">
+    <value>Owners Count</value>
   </data>
   <data name="ModifiedDateTime" xml:space="preserve">
     <value>Modified Date Time</value>
@@ -219,8 +219,8 @@
   <data name="ProjectsCount" xml:space="preserve">
     <value>Projects Count</value>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Remember Me</value>
+  <data name="ReownerMe" xml:space="preserve">
+    <value>Reowner Me</value>
   </data>
   <data name="RolesCount" xml:space="preserve">
     <value>Roles Count</value>

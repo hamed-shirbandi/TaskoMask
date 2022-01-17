@@ -21,15 +21,15 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
         #region Ctors
 
-        private Organization(string name, string description, string ownerMemberId, IOrganizationValidatorService organizationValidatorService)
+        private Organization(string name, string description, string ownerOwnerId, IOrganizationValidatorService organizationValidatorService)
         {
             Name = OrganizationName.Create(name);
             Description = OrganizationDescription.Create(description);
-            OwnerMemberId = OrganizationOwnerMemberId.Create(ownerMemberId);
+            OwnerOwnerId = OrganizationOwnerOwnerId.Create(ownerOwnerId);
 
             CheckPolicies(organizationValidatorService);
 
-            AddDomainEvent(new OrganizationCreatedEvent(Id, Name.Value, Description.Value, OwnerMemberId.Value));
+            AddDomainEvent(new OrganizationCreatedEvent(Id, Name.Value, Description.Value, OwnerOwnerId.Value));
         }
 
 
@@ -40,7 +40,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
         public OrganizationName Name { get; private set; }
         public OrganizationDescription Description { get; private set; }
-        public OrganizationOwnerMemberId OwnerMemberId { get; private set; }
+        public OrganizationOwnerOwnerId OwnerOwnerId { get; private set; }
 
         public ICollection<Project> Projects { get; set; }
 
@@ -53,9 +53,9 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Organization CreateOrganization(string name, string description, string ownerMemberId, IOrganizationValidatorService organizationValidatorService)
+        public static Organization CreateOrganization(string name, string description, string ownerOwnerId, IOrganizationValidatorService organizationValidatorService)
         {
-            return new Organization(name, description, ownerMemberId, organizationValidatorService);
+            return new Organization(name, description, ownerOwnerId, organizationValidatorService);
         }
 
 
@@ -180,8 +180,8 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             if (Description == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
 
-            if (OwnerMemberId == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerMemberId)));
+            if (OwnerOwnerId == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerOwnerId)));
 
             if (!new OrganizationNameMustUniqueSpecification(organizationValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));

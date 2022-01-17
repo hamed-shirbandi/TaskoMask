@@ -1,10 +1,10 @@
-﻿using TaskoMask.Application.Membership.Operators.Services;
+﻿using TaskoMask.Application.Ownership.Operators.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using AutoMapper;
 using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Application.Share.Dtos.Ownership.Operators;
 using TaskoMask.Presentation.Framework.Web.Helpers;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Presentation.Framework.Web.Filters;
@@ -12,11 +12,11 @@ using TaskoMask.Presentation.Framework.Web.Enums;
 using TaskoMask.Presentation.Framework.Web.Extensions;
 using TaskoMask.Application.Authorization.Users.Services;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Ownership.Controllers
 {
 
     [Authorize]
-    [Area("Membership")]
+    [Area("Ownership")]
     public class OperatorsController : BaseMvcController
     {
         #region Fields
@@ -84,7 +84,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
             }
 
             var cmdResult = await _operatorService.CreateAsync(input);
-            var redirectUrl = $"/membership/operators/update/EntityId";
+            var redirectUrl = $"/ownership/operators/update/EntityId";
             return AjaxResult(cmdResult, redirectUrl: redirectUrl);
         }
 

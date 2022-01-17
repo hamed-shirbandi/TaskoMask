@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Membership.Operators.Services;
+using TaskoMask.Application.Ownership.Operators.Services;
 using TaskoMask.Domain.Share.Services;
 
 namespace TaskoMask.Presentation.Framework.Web.Components

@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Membership.Data;
-using TaskoMask.Domain.Membership.Entities;
+using TaskoMask.Domain.Ownership.Data;
+using TaskoMask.Domain.Ownership.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Repositories.Membership
+namespace TaskoMask.Infrastructure.Data.Repositories.Ownership
 {
     public class PermissionRepository : BaseAggregateRepository<Permission>, IPermissionRepository
     {

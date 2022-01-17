@@ -41,7 +41,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(OrganizationUpsertDto input)
         {
-            var cmd = new CreateOrganizationCommand(ownerMemberId: input.OwnerMemberId, name: input.Name, description: input.Description);
+            var cmd = new CreateOrganizationCommand(ownerOwnerId: input.OwnerOwnerId, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
         }
 
@@ -106,9 +106,9 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListWithDetailsByOwnerMemberIdAsync(string ownerMemberId)
+        public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListWithDetailsByOwnerOwnerIdAsync(string ownerOwnerId)
         {
-            var organizationQueryResult = await GetListByOwnerMemberIdAsync(ownerMemberId);
+            var organizationQueryResult = await GetListByOwnerOwnerIdAsync(ownerOwnerId);
             if (!organizationQueryResult.IsSuccess)
                 return Result.Failure<IEnumerable<OrganizationDetailsViewModel>>(organizationQueryResult.Errors);
 
@@ -142,9 +142,9 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByOwnerMemberIdAsync(string ownerMemberId)
+        public async Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByOwnerOwnerIdAsync(string ownerOwnerId)
         {
-            return await SendQueryAsync(new GetOrganizationsByOwnerMemberIdQuery(ownerMemberId));
+            return await SendQueryAsync(new GetOrganizationsByOwnerOwnerIdQuery(ownerOwnerId));
         }
 
 
@@ -172,9 +172,9 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string ownerMemberId)
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string ownerOwnerId)
         {
-            var organizationQueryResult = await GetListByOwnerMemberIdAsync(ownerMemberId);
+            var organizationQueryResult = await GetListByOwnerOwnerIdAsync(ownerOwnerId);
             if (!organizationQueryResult.IsSuccess)
                 return Result.Failure<IEnumerable<SelectListItem>>(organizationQueryResult.Errors);
 

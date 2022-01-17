@@ -1,12 +1,12 @@
 ﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.Application.Share.Dtos.Ownership.Roles;
 using TaskoMask.Application.Common.Services;
 using System.Collections.Generic;
 using TaskoMask.Application.Share.ViewModels;
 
-namespace TaskoMask.Application.Membership.Roles.Services
+namespace TaskoMask.Application.Ownership.Roles.Services
 {
     public interface IRoleService : IBaseService
     {

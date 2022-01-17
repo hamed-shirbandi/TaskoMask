@@ -12,30 +12,30 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.Workspace.Organizations.Data;
-using TaskoMask.Domain.Workspace.Members.Data;
+using TaskoMask.Domain.Workspace.Owners.Data;
 
 namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
 {
     public class OrganizationQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
-        IRequestHandler<GetOrganizationsByOwnerMemberIdQuery, IEnumerable<OrganizationBasicInfoDto>>,
+        IRequestHandler<GetOrganizationsByOwnerOwnerIdQuery, IEnumerable<OrganizationBasicInfoDto>>,
         IRequestHandler<SearchOrganizationsQuery, PaginatedListReturnType<OrganizationOutputDto>>
     {
         #region Fields
 
         private readonly IOrganizationAggregateRepository _organizationRepository;
-        private readonly IMemberAggregateRepository _memberRepository;
+        private readonly IOwnerAggregateRepository _ownerRepository;
         private readonly IProjectRepository _projectRepository;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationQueryHandlers(IOrganizationAggregateRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IMemberAggregateRepository memberRepository, IProjectRepository projectRepository) : base(mapper, notifications)
+        public OrganizationQueryHandlers(IOrganizationAggregateRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IOwnerAggregateRepository ownerRepository, IProjectRepository projectRepository) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
-            _memberRepository = memberRepository;
+            _ownerRepository = ownerRepository;
             _projectRepository = projectRepository;
         }
 
@@ -62,9 +62,9 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<OrganizationBasicInfoDto>> Handle(GetOrganizationsByOwnerMemberIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<OrganizationBasicInfoDto>> Handle(GetOrganizationsByOwnerOwnerIdQuery request, CancellationToken cancellationToken)
         {
-            var organizations = await _organizationRepository.GetListByOwnerMemberIdAsync(request.OwnerMemberId);
+            var organizations = await _organizationRepository.GetListByOwnerOwnerIdAsync(request.OwnerOwnerId);
             return _mapper.Map<IEnumerable<OrganizationBasicInfoDto>>(organizations);
         }
 
@@ -91,8 +91,8 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
 
             foreach (var item in organizationsDto)
             {
-                var member = await _memberRepository.GetByIdAsync(item.OwnerMemberId);
-                item.OwnerMemberDisplayName = member?.DisplayName.Value;
+                var owner = await _ownerRepository.GetByIdAsync(item.OwnerOwnerId);
+                item.OwnerOwnerDisplayName = owner?.DisplayName.Value;
                 item.ProjectsCount =await _projectRepository.CountByOrganizationIdAsync(item.Id);
             }
 

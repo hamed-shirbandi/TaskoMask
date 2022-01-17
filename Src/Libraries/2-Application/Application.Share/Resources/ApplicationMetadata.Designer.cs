@@ -214,15 +214,6 @@ namespace TaskoMask.Application.Share.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Members Count.
-        /// </summary>
-        public static string MembersCount {
-            get {
-                return ResourceManager.GetString("MembersCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Modified Date Time.
         /// </summary>
         public static string ModifiedDateTime {
@@ -282,6 +273,15 @@ namespace TaskoMask.Application.Share.Resources {
         public static string OwnerDisplayName {
             get {
                 return ResourceManager.GetString("OwnerDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Owners Count.
+        /// </summary>
+        public static string OwnersCount {
+            get {
+                return ResourceManager.GetString("OwnersCount", resourceCulture);
             }
         }
         
@@ -367,11 +367,11 @@ namespace TaskoMask.Application.Share.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remember Me.
+        ///   Looks up a localized string similar to Reowner Me.
         /// </summary>
-        public static string RememberMe {
+        public static string ReownerMe {
             get {
-                return ResourceManager.GetString("RememberMe", resourceCulture);
+                return ResourceManager.GetString("ReownerMe", resourceCulture);
             }
         }
         

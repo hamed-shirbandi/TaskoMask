@@ -3,17 +3,17 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
 using System.Linq;
-using TaskoMask.Domain.Membership.Entities;
+using TaskoMask.Domain.Ownership.Entities;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Workspace.Boards.Entities;
-using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Workspace.Owners.Entities;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
 using TaskoMask.Domain.Workspace.Tasks.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 using TaskoMask.Domain.Authorization.Entities;
-using TaskoMask.Domain.Workspace.Members.ValueObjects;
+using TaskoMask.Domain.Workspace.Owners.ValueObjects;
 using TaskoMask.Domain.Workspace.Organizations.Services;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
@@ -83,7 +83,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                 var _permissions = _dbContext.GetCollection<Permission>();
 
 
-                var _members = _dbContext.GetCollection<Member>();
+                var _owners = _dbContext.GetCollection<Owner>();
                 var _organizations = _dbContext.GetCollection<Organization>();
                 var _Projects = _dbContext.GetCollection<Project>();
 
@@ -151,28 +151,28 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                     #endregion
 
-                    #region Members => Organizations => Projects => Boards => Cards => Tasks
+                    #region Owners => Organizations => Projects => Boards => Cards => Tasks
 
                     for (int i = 1; i <= 3; i++)
                     {
                         var user = new User
                         {
                             IsActive = true,
-                            UserName = $"Member{i}@example.com",
+                            UserName = $"Owner{i}@example.com",
                             PasswordHash = "test",
                             PasswordSalt = "test",
                         };
                         _users.InsertOne(user);
 
-                        var member = Member.Create(user.Id, MemberDisplayName.Create($"Member Name {i}"), MemberEmail.Create($"Email{i}@taskomask.ir"));
+                        var owner = Owner.Create(user.Id, OwnerDisplayName.Create($"Owner Name {i}"), OwnerEmail.Create($"Email{i}@taskomask.ir"));
 
-                        _members.InsertOne(member);
+                        _owners.InsertOne(owner);
 
                         #region Organizations
 
                         for (int j = 1; j <= 3; j++)
                         {
-                            var organization = Organization.CreateOrganization($"Organization Name {j}", $"Description {j}", member.Id, _organizationValidatorService);
+                            var organization = Organization.CreateOrganization($"Organization Name {j}", $"Description {j}", owner.Id, _organizationValidatorService);
 
 
                             #region Projects

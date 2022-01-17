@@ -7,7 +7,7 @@ namespace TaskoMask.Presentation.UI.Website.Models
 {
     public class HomeIndexViewModel
     {
-        public long MembersCount { get; set; }
+        public long OwnersCount { get; set; }
         public long OrganizationsCount { get; set; }
         public long ProjectsCount { get; set; }
         public long BoardsCount { get; set; }

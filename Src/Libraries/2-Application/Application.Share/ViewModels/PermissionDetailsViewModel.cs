@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.Application.Share.Dtos.Ownership.Permissions;
+using TaskoMask.Application.Share.Dtos.Ownership.Roles;
 
 namespace TaskoMask.Application.Share.ViewModels
 {

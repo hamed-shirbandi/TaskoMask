@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TaskoMask.Application.Share.Dtos.Workspace.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
@@ -18,7 +18,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
 
 
         [BindProperty]
-        public MemberRegisterDto Input { get; set; }
+        public OwnerRegisterDto Input { get; set; }
 
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
             if (registerResult.IsSuccess)
                 return LocalRedirect(returnUrl);
 
-            ModelState.AddModelError(nameof(MemberRegisterDto.ConfirmPassword), registerResult.Message);
+            ModelState.AddModelError(nameof(OwnerRegisterDto.ConfirmPassword), registerResult.Message);
             return Page();
         }
     }

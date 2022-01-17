@@ -1,8 +1,8 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Workspace.Members.Data;
-using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Workspace.Owners.Data;
+using TaskoMask.Domain.Workspace.Owners.Entities;
 using TaskoMask.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
@@ -30,10 +30,10 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
 
         #region Public Methods
 
-        public async Task<int> OrganizationsCountByInvitedMemberIdAsync(string invitedMemberId)
+        public async Task<int> OrganizationsCountByInvitedOwnerIdAsync(string invitedOwnerId)
         {
             return await _invitations.AsQueryable()
-                .Where(i => i.InvitedMemberId == invitedMemberId)
+                .Where(i => i.InvitedOwnerId == invitedOwnerId)
                 .Select(i => i.OrganizationId).Distinct().CountAsync();
         }
 

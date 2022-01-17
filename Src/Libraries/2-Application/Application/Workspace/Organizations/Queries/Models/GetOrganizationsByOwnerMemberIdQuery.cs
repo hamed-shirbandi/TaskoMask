@@ -5,13 +5,13 @@ using TaskoMask.Application.Core.Queries;
 namespace TaskoMask.Application.Workspace.Organizations.Queries.Models
 {
    
-    public class GetOrganizationsByOwnerMemberIdQuery : BaseQuery<IEnumerable<OrganizationBasicInfoDto>>
+    public class GetOrganizationsByOwnerOwnerIdQuery : BaseQuery<IEnumerable<OrganizationBasicInfoDto>>
     {
-        public GetOrganizationsByOwnerMemberIdQuery(string ownerMemberId)
+        public GetOrganizationsByOwnerOwnerIdQuery(string ownerOwnerId)
         {
-            OwnerMemberId = ownerMemberId;
+            OwnerOwnerId = ownerOwnerId;
         }
 
-        public string OwnerMemberId { get; }
+        public string OwnerOwnerId { get; }
     }
 }

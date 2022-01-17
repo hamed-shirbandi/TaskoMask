@@ -102,7 +102,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<IBoardClientService, BoardClientService>();
             services.AddScoped<ICardClientService, CardClientService>();
             services.AddScoped<ITaskClientService, TaskClientService>();
-            services.AddScoped<IMemberClientService, MemberClientService>();
+            services.AddScoped<IOwnerClientService, OwnerClientService>();
         }
 
     }

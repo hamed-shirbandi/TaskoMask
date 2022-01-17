@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using TaskoMask.Domain.Membership.Entities;
+using TaskoMask.Domain.Ownership.Entities;
 using TaskoMask.Infrastructure.Data.Extensions;
 using TaskoMask.Infrastructure.Data.DbContext;
 using System;
 using TaskoMask.Domain.Workspace.Boards.Entities;
 using TaskoMask.Domain.Workspace.Tasks.Entities;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
-using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Workspace.Owners.Entities;
 using TaskoMask.Domain.Authorization.Entities;
 
 namespace TaskoMask.Infrastructure.Data.DataProviders
@@ -58,8 +58,8 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             if (!collections.Has<Project>())
                 dbContext.CreateCollection<Project>();
 
-            if (!collections.Has<Member>())
-                dbContext.CreateCollection<Member>();
+            if (!collections.Has<Owner>())
+                dbContext.CreateCollection<Owner>();
 
             if (!collections.Has<Invitation>())
                 dbContext.CreateCollection<Invitation>();
@@ -120,16 +120,16 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
             #region Organization Indexs
 
             dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.OwnerMemberId), new CreateIndexOptions() { Name = "OwnerMemberId" }));
+            dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.OwnerOwnerId), new CreateIndexOptions() { Name = "OwnerOwnerId" }));
 
 
             #endregion
 
-            #region Member Indexs
+            #region Owner Indexs
 
-            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.Email.Value), new CreateIndexOptions() { Name = "Email" }));
-            dbContext.GetCollection<Member>().Indexes.CreateOneAsync(new CreateIndexModel<Member>(Builders<Member>.IndexKeys.Ascending(x => x.DisplayName.Value), new CreateIndexOptions() { Name = "DisplayName" }));
+            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Email.Value), new CreateIndexOptions() { Name = "Email" }));
+            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName.Value), new CreateIndexOptions() { Name = "DisplayName" }));
 
 
             #endregion

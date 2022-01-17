@@ -11,8 +11,8 @@
                     <i class="si si-wallet"></i>
                 </div>
                 <div class="stat-details">
-                    <div class="number to-rial font-s22">@Model.MembersCount</div>
-                    <div class="desc">Members</div>
+                    <div class="number to-rial font-s22">@Model.OwnersCount</div>
+                    <div class="desc">Owners</div>
                 </div>
             </div>
         </div>
@@ -88,10 +88,10 @@
     <div class="grid-50 tablet-grid-50 mobile-grid-100">
         <div class="block  block-scroll">
             <div class="block-header">
-                <h4>New members on last dayes (fake data)</h4>
+                <h4>New owners on last dayes (fake data)</h4>
             </div>
             <div class="block-content block-scroll height-400">
-                <canvas id="new-members-chart-area" class="chart-canvas" />
+                <canvas id="new-owners-chart-area" class="chart-canvas" />
             </div>
         </div>
     </div>
@@ -122,7 +122,7 @@
 
 
 
-            //=====================new-members-chart==========================
+            //=====================new-owners-chart==========================
             chartLables.push('1/1/2021');
             chartDataset.push(20);
             chartLables.push('2/1/2021');
@@ -152,7 +152,7 @@
                 ]
             };
 
-            ctx = document.getElementById("new-members-chart-area").getContext("2d");
+            ctx = document.getElementById("new-owners-chart-area").getContext("2d");
             ctxChart = new Chart(ctx).Bar(chartData, null);
             chartLables = []; chartDataset = []; chartData = [];
 

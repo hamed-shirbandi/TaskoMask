@@ -41,8 +41,8 @@ namespace TaskoMask.Domain.Share.Helpers
         public const int Task_Description_Max_Length = 250;
 
 
-        public const int Member_DisplayName_Min_Length = 4;
-        public const int Member_DisplayName_Max_Length = 50;
+        public const int Owner_DisplayName_Min_Length = 4;
+        public const int Owner_DisplayName_Max_Length = 50;
 
 
         public const int User_Password_Min_Length = 4;
@@ -50,8 +50,8 @@ namespace TaskoMask.Domain.Share.Helpers
 
 
 
-        public const int Member_Email_Min_Length = 5;
-        public const int Member_Email_Max_Length = 50;
+        public const int Owner_Email_Min_Length = 5;
+        public const int Owner_Email_Max_Length = 50;
 
     }
 }

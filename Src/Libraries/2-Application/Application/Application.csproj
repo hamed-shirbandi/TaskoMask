@@ -17,8 +17,8 @@
     <Folder Include="Workspace\Boards\EventHandlers\" />
     <Folder Include="Workspace\Cards\Commands\Validations\" />
     <Folder Include="Workspace\Cards\EventHandlers\" />
-    <Folder Include="Workspace\Members\Commands\Validations\" />
-    <Folder Include="Workspace\Members\EventHandlers\" />
+    <Folder Include="Workspace\Owners\Commands\Validations\" />
+    <Folder Include="Workspace\Owners\EventHandlers\" />
     <Folder Include="Workspace\Organizations\EventHandlers\" />
     <Folder Include="Workspace\Projects\EventHandlers\" />
     <Folder Include="Workspace\Tasks\Commands\Validations\" />

@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Application.Mapper.MappingActions
 {
-    public class MembershipMappingAction
+    public class OwnershipMappingAction
     {
 
     }

@@ -8,7 +8,7 @@ using TaskoMask.Domain.Core.Models;
 namespace TaskoMask.Domain.Workspace.Tasks.Entities
 {
     /// <summary>
-    /// Every board member can leave comment on tasks
+    /// Every board owner can leave comment on tasks
     /// </summary>
     public class Comment: BaseEntity
     {

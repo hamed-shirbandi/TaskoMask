@@ -3,7 +3,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Application.Share.Dtos.Workspace.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 
 namespace TaskoMask.Application.Share.ViewModels
 {
@@ -11,14 +11,14 @@ namespace TaskoMask.Application.Share.ViewModels
     {
         public OrganizationDetailsViewModel()
         {
-            Members = new List<MemberBasicInfoDto>();
+            Owners = new List<OwnerBasicInfoDto>();
             Projects = new List<ProjectBasicInfoDto>();
             Boards = new List<BoardBasicInfoDto>();
             LastTasks = new List<TaskBasicInfoDto>();
         }
         public OrganizationBasicInfoDto Organization { get; set; }
-        public MemberBasicInfoDto OwnerMember { get; set; }
-        public IEnumerable<MemberBasicInfoDto> Members { get; set; }
+        public OwnerBasicInfoDto OwnerOwner { get; set; }
+        public IEnumerable<OwnerBasicInfoDto> Owners { get; set; }
         public OrganizationReportDto Reports { get; set; }
         public IEnumerable<ProjectBasicInfoDto> Projects { get; set; }
         public IEnumerable<BoardBasicInfoDto> Boards { get; set; }

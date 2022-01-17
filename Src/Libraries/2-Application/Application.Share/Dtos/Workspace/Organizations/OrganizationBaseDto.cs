@@ -22,6 +22,6 @@ namespace TaskoMask.Application.Share.Dtos.Workspace.Organizations
         public string Description { get; set; }
 
         [JsonIgnore]
-        public string OwnerMemberId { get; set; }
+        public string OwnerOwnerId { get; set; }
     }
 }

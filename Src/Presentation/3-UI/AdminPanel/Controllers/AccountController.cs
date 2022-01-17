@@ -6,7 +6,7 @@ using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthe
 using DNTCaptcha.Core;
 using TaskoMask.Domain.Share.Models;
 using AutoMapper;
-using TaskoMask.Application.Membership.Operators.Services;
+using TaskoMask.Application.Ownership.Operators.Services;
 using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
@@ -25,9 +25,9 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
 
 
 
-        public AccountController(IOperatorService memberService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper, IUserService userService) : base(mapper)
+        public AccountController(IOperatorService ownerService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper, IUserService userService) : base(mapper)
         {
-            _operatorService = memberService;
+            _operatorService = ownerService;
             _cookieAuthenticationService = cookieAuthenticationService;
             _userService = userService;
         }
@@ -88,7 +88,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
                 return View(operatorQueryResult, input);
 
             var user = _mapper.Map<AuthenticatedUser>(operatorQueryResult.Value);
-            await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.RememberMe);
+            await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.ReownerMe);
 
             return RedirectToLocal(returnUrl);
         }
@@ -119,7 +119,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
             else
-                return RedirectToAction(actionName: "index", controllerName: "Dashboard", routeValues: new { Area = "Membership" });
+                return RedirectToAction(actionName: "index", controllerName: "Dashboard", routeValues: new { Area = "Ownership" });
         }
 
 

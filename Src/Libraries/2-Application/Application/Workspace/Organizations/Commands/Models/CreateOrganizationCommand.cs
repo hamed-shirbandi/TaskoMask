@@ -5,13 +5,13 @@ namespace TaskoMask.Application.Workspace.Organizations.Commands.Models
 {
    public class CreateOrganizationCommand : OrganizationBaseCommand
     {
-        public CreateOrganizationCommand(string name, string description, string ownerMemberId)
+        public CreateOrganizationCommand(string name, string description, string ownerOwnerId)
             :base(name,description)
         {
-            OwnerMemberId = ownerMemberId;
+            OwnerOwnerId = ownerOwnerId;
         }
 
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string OwnerMemberId { get; }
+        public string OwnerOwnerId { get; }
     }
 }

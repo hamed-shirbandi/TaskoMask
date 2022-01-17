@@ -135,8 +135,8 @@
   <data name="Entity" xml:space="preserve">
     <value>Entity</value>
   </data>
-  <data name="Member" xml:space="preserve">
-    <value>Member</value>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
   </data>
   <data name="Operator" xml:space="preserve">
     <value>Operator</value>

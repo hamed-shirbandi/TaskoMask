@@ -6,7 +6,7 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Workspace.Organizations.ValueObjects
 {
-    public class OrganizationOwnerMemberId : BaseValueObject
+    public class OrganizationOwnerOwnerId : BaseValueObject
     {
         #region Properties
 
@@ -17,7 +17,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.ValueObjects
 
         #region Ctors
 
-        public OrganizationOwnerMemberId(string value)
+        public OrganizationOwnerOwnerId(string value)
         {
             Value = value;
 
@@ -33,9 +33,9 @@ namespace TaskoMask.Domain.Workspace.Organizations.ValueObjects
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static OrganizationOwnerMemberId Create(string value)
+        public static OrganizationOwnerOwnerId Create(string value)
         {
-            return new OrganizationOwnerMemberId(value);
+            return new OrganizationOwnerOwnerId(value);
         }
 
 
@@ -46,7 +46,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.ValueObjects
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(OrganizationOwnerMemberId)));
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(OrganizationOwnerOwnerId)));
 
         }
 

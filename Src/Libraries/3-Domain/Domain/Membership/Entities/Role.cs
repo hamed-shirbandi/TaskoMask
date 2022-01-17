@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Models;
 
 
-namespace TaskoMask.Domain.Membership.Entities
+namespace TaskoMask.Domain.Ownership.Entities
 {
     /// <summary>
     /// Roles to determine operator's access level

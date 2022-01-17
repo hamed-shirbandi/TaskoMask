@@ -44,7 +44,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// </summary>
         public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            var organization = Organization.CreateOrganization(request.Name, request.Description, request.OwnerMemberId, _organizationValidatorService);
+            var organization = Organization.CreateOrganization(request.Name, request.Description, request.OwnerOwnerId, _organizationValidatorService);
             await _organizationRepository.CreateAsync(organization);
 
             //TODO publish domain events

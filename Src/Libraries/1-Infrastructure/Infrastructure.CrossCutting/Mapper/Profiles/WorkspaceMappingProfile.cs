@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Application.Share.Dtos.Workspace.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Domain.Workspace.Boards.Entities;
-using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Workspace.Owners.Entities;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
 using TaskoMask.Domain.Workspace.Tasks.Entities;
 
@@ -50,7 +50,7 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Organization, OrganizationBaseDto>()
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name.Value))
                     .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description.Value))
-                    .ForMember(dest => dest.OwnerMemberId, opt => opt.MapFrom(src => src.OwnerMemberId.Value));
+                    .ForMember(dest => dest.OwnerOwnerId, opt => opt.MapFrom(src => src.OwnerOwnerId.Value));
 
             CreateMap<Organization, OrganizationBasicInfoDto>();
             CreateMap<Organization, OrganizationOutputDto>();
@@ -68,10 +68,10 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #endregion
 
-            #region Member
+            #region Owner
 
-            CreateMap<Member, MemberBasicInfoDto>();
-            CreateMap<Member, MemberOutputDto>();
+            CreateMap<Owner, OwnerBasicInfoDto>();
+            CreateMap<Owner, OwnerOutputDto>();
 
 
             #endregion

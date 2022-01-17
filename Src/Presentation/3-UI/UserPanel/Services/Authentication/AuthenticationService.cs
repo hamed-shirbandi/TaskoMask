@@ -1,5 +1,5 @@
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Share.Dtos.Workspace.Members;
+using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
@@ -49,7 +49,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<UserJwtTokenDto>> Register(MemberRegisterDto input)
+        public async Task<Result<UserJwtTokenDto>> Register(OwnerRegisterDto input)
         {
             var registerResult = await _accountClientService.Register(input);
             return await SignInAsync(registerResult);

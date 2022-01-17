@@ -6,11 +6,11 @@ using TaskoMask.Infrastructure.Data.EventSourcing;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Infrastructure.CrossCutting.Bus;
 using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Membership.Entities;
-using TaskoMask.Application.Membership.Roles.Services;
-using TaskoMask.Application.Membership.Operators.Services;
-using TaskoMask.Application.Membership.Permissions.Services;
-using TaskoMask.Application.Workspace.Members.Services;
+using TaskoMask.Domain.Ownership.Entities;
+using TaskoMask.Application.Ownership.Roles.Services;
+using TaskoMask.Application.Ownership.Operators.Services;
+using TaskoMask.Application.Ownership.Permissions.Services;
+using TaskoMask.Application.Workspace.Owners.Services;
 using TaskoMask.Application.Workspace.Organizations.Services;
 using TaskoMask.Application.Workspace.Boards.Services;
 using TaskoMask.Application.Workspace.Cards.Services;
@@ -18,17 +18,17 @@ using TaskoMask.Application.Workspace.Tasks.Services;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Infrastructure.Data.Repositories;
 using TaskoMask.Infrastructure.Data.Repositories.Workspace;
-using TaskoMask.Infrastructure.Data.Repositories.Membership;
-using TaskoMask.Domain.Membership.Data;
+using TaskoMask.Infrastructure.Data.Repositories.Ownership;
+using TaskoMask.Domain.Ownership.Data;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Infrastructure.CrossCutting.Services.Security;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.Workspace.Members.Entities;
+using TaskoMask.Domain.Workspace.Owners.Entities;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
 using TaskoMask.Domain.Workspace.Boards.Entities;
 using TaskoMask.Domain.Workspace.Tasks.Entities;
-using TaskoMask.Domain.Workspace.Members.Data;
+using TaskoMask.Domain.Workspace.Owners.Data;
 using TaskoMask.Domain.Workspace.Organizations.Data;
 using TaskoMask.Domain.Workspace.Boards.Data;
 using TaskoMask.Domain.Workspace.Tasks.Data;
@@ -63,7 +63,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IOperatorService, OperatorService>();
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddScoped<IRoleService, RoleService>();
-            services.AddScoped<IMemberService, MemberService>();
+            services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IOrganizationService, OrganizationService>();
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IBoardService, BoardService>();
@@ -86,7 +86,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IOperatorRepository, OperatorRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<IMemberAggregateRepository, MemberAggregateRepository>();
+            services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
             services.AddScoped<IOrganizationAggregateRepository, OrganizationRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
@@ -105,7 +105,7 @@ namespace Infrastructure.CrossCutting.IoC
             //TODO Handel Generic Query Handlers
 
             services.AddScoped<IRequestHandler<GetCountQuery<Operator>, long>, BaseQueryHandlers<Operator>>();
-            services.AddScoped<IRequestHandler<GetCountQuery<Member>, long>, BaseQueryHandlers<Member>>();
+            services.AddScoped<IRequestHandler<GetCountQuery<Owner>, long>, BaseQueryHandlers<Owner>>();
             services.AddScoped<IRequestHandler<GetCountQuery<Organization>, long>, BaseQueryHandlers<Organization>>();
             services.AddScoped<IRequestHandler<GetCountQuery<Project>, long>, BaseQueryHandlers<Project>>();
             services.AddScoped<IRequestHandler<GetCountQuery<Board>, long>, BaseQueryHandlers<Board>>();
@@ -123,7 +123,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IRequestHandler<DeleteCommand<Role>, CommandResult>, BaseCommandHandlers<Role>>();
            
             services.AddScoped<IRequestHandler<DeleteCommand<Invitation>, CommandResult>, BaseCommandHandlers<Invitation>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Member>, CommandResult>, BaseCommandHandlers<Member>>();
+            services.AddScoped<IRequestHandler<DeleteCommand<Owner>, CommandResult>, BaseCommandHandlers<Owner>>();
             services.AddScoped<IRequestHandler<DeleteCommand<Organization>, CommandResult>, BaseCommandHandlers<Organization>>();
             services.AddScoped<IRequestHandler<DeleteCommand<Project>, CommandResult>, BaseCommandHandlers<Project>>();
             services.AddScoped<IRequestHandler<DeleteCommand<Board>, CommandResult>, BaseCommandHandlers<Board>>();

@@ -34,9 +34,9 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public async Task<bool> ExistByNameAsync(string id, string ownerMemberId, string name)
+        public async Task<bool> ExistByNameAsync(string id, string ownerOwnerId, string name)
         {
-            var organization = await _organizations.Find(o => o.Name.Value == name && o.OwnerMemberId.Value == ownerMemberId).FirstOrDefaultAsync();
+            var organization = await _organizations.Find(o => o.Name.Value == name && o.OwnerOwnerId.Value == ownerOwnerId).FirstOrDefaultAsync();
             return organization != null && organization.Id != id;
         }
 
@@ -45,9 +45,9 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public bool ExistByName(string id, string ownerMemberId, string name)
+        public bool ExistByName(string id, string ownerOwnerId, string name)
         {
-            var organization =  _organizations.Find(o => o.Name.Value == name && o.OwnerMemberId.Value==ownerMemberId).FirstOrDefault();
+            var organization =  _organizations.Find(o => o.Name.Value == name && o.OwnerOwnerId.Value==ownerOwnerId).FirstOrDefault();
             return organization != null && organization.Id != id;
         }
 
@@ -56,9 +56,9 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Organization>> GetListByOwnerMemberIdAsync(string ownerMemberId)
+        public async Task<IEnumerable<Organization>> GetListByOwnerOwnerIdAsync(string ownerOwnerId)
         {
-            return await _organizations.AsQueryable().Where(o => o.OwnerMemberId.Value == ownerMemberId).ToListAsync();
+            return await _organizations.AsQueryable().Where(o => o.OwnerOwnerId.Value == ownerOwnerId).ToListAsync();
         }
 
 
@@ -66,9 +66,9 @@ namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> CountByOwnerMemberIdAsync(string ownerMemberId)
+        public async Task<long> CountByOwnerOwnerIdAsync(string ownerOwnerId)
         {
-            return await _organizations.CountDocumentsAsync(o => o.OwnerMemberId.Value == ownerMemberId);
+            return await _organizations.CountDocumentsAsync(o => o.OwnerOwnerId.Value == ownerOwnerId);
         }
 
 

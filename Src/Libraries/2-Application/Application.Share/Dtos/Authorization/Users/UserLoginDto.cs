@@ -24,8 +24,8 @@ namespace TaskoMask.Application.Share.Dtos.Authorization.Users
         /// <summary>
         /// use in cookie authentication
         /// </summary>
-        [Display(Name = nameof(ApplicationMetadata.RememberMe), ResourceType = typeof(ApplicationMetadata))]
-        public bool RememberMe { get; set; }
+        [Display(Name = nameof(ApplicationMetadata.ReownerMe), ResourceType = typeof(ApplicationMetadata))]
+        public bool ReownerMe { get; set; }
 
     }
 }

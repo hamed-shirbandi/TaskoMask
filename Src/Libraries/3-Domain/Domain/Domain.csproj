@@ -11,8 +11,4 @@
     <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ReadModel\Entities\" />
-  </ItemGroup>
-
 </Project>

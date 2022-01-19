@@ -11,10 +11,10 @@ using TaskoMask.Application.Workspace.Projects.Services;
 using TaskoMask.Application.Workspace.Tasks.Services;
 using TaskoMask.Application.Workspace.Boards.Services;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Ownership.Controllers
+namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
 {
     [Authorize]
-    [Area("ownership")]
+    [Area("membership")]
     public class DashboardController : BaseMvcController
     {
         #region Fields

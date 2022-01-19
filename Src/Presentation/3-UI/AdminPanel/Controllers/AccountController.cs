@@ -6,7 +6,7 @@ using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthe
 using DNTCaptcha.Core;
 using TaskoMask.Domain.Share.Models;
 using AutoMapper;
-using TaskoMask.Application.Ownership.Operators.Services;
+using TaskoMask.Application.Membership.Operators.Services;
 using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
@@ -119,7 +119,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
             else
-                return RedirectToAction(actionName: "index", controllerName: "Dashboard", routeValues: new { Area = "Ownership" });
+                return RedirectToAction(actionName: "index", controllerName: "Dashboard", routeValues: new { Area = "Membership" });
         }
 
 

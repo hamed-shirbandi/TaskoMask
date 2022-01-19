@@ -4,18 +4,18 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Domain.Ownership.Entities;
+using TaskoMask.Domain.Membership.Entities;
 using TaskoMask.Application.Common.Services;
-using TaskoMask.Application.Share.Dtos.Ownership.Roles;
+using TaskoMask.Application.Share.Dtos.Membership.Roles;
 using System.Collections.Generic;
 using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Domain.Ownership.Data;
+using TaskoMask.Domain.Membership.Data;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Share.Dtos.Ownership.Operators;
+using TaskoMask.Application.Share.Dtos.Membership.Operators;
 using System.Linq;
 
-namespace TaskoMask.Application.Ownership.Roles.Services
+namespace TaskoMask.Application.Membership.Roles.Services
 {
     public class RoleService : BaseService<Operator>, IRoleService
     {

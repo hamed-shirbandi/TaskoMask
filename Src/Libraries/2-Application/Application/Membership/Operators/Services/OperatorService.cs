@@ -3,11 +3,11 @@ using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Share.Dtos.Ownership.Operators;
-using TaskoMask.Domain.Ownership.Entities;
+using TaskoMask.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Domain.Membership.Entities;
 using TaskoMask.Application.Share.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.Domain.Ownership.Data;
+using TaskoMask.Domain.Membership.Data;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Resources;
@@ -15,7 +15,7 @@ using System.Linq;
 using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Authorization.Users.Services;
 
-namespace TaskoMask.Application.Ownership.Operators.Services
+namespace TaskoMask.Application.Membership.Operators.Services
 {
     public class OperatorService : BaseService<Operator>, IOperatorService
     {

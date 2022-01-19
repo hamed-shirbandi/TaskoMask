@@ -3,7 +3,7 @@
 using TaskoMask.Application.Share.Resources;
 using System.ComponentModel.DataAnnotations;
 
-namespace TaskoMask.Application.Share.Dtos.Ownership.Permissions
+namespace TaskoMask.Application.Share.Dtos.Membership.Permissions
 {
     public class PermissionBasicInfoDto
     {

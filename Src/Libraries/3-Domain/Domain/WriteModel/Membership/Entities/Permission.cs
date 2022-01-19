@@ -2,7 +2,7 @@
 using TaskoMask.Domain.Core.Services;
 
 
-namespace TaskoMask.Domain.Ownership.Entities
+namespace TaskoMask.Domain.Membership.Entities
 {
     public class Permission : BaseEntity
     {

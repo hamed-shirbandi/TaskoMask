@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Application.Share.Dtos.Ownership.Permissions
+namespace TaskoMask.Application.Share.Dtos.Membership.Permissions
 {
     public class PermissionUpsertDto : PermissionBasicInfoDto
     {

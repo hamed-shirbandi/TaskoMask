@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Share.Dtos.Ownership.Permissions;
+using TaskoMask.Application.Share.Dtos.Membership.Permissions;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 
-namespace TaskoMask.Application.Ownership.Permissions.Services
+namespace TaskoMask.Application.Membership.Permissions.Services
 {
     public interface IPermissionService : IBaseService
     {

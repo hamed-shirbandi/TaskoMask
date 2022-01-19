@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Ownership.Permissions
+namespace TaskoMask.Application.Share.Dtos.Membership.Permissions
 {
     public class PermissionOutputDto : PermissionBasicInfoDto
     {

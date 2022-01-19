@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Ownership.Entities;
+using TaskoMask.Domain.Membership.Entities;
 using TaskoMask.Domain.Core.Data;
 
-namespace TaskoMask.Domain.Ownership.Data
+namespace TaskoMask.Domain.Membership.Data
 {
     public interface IOperatorRepository : IBaseAggregateRepository<Operator>
     {

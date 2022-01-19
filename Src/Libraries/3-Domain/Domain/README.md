@@ -7,7 +7,7 @@ This BC contains a generic subdomain. It is used to handle everything about auth
 We don't implement a rich domain model for it and we don't use CQRS. It is less important to have much focus on it.
 
 
-## Ownership
+## Membership
 This BC contains a supporting subdomain. It is used by operators for managing application data by using an admin panel.
 We don't implement a rich domain model for it and we don't use CQRS. It is less important to have much focus on it.
 
@@ -22,7 +22,7 @@ This BC contains the core domain and talks about managing tasks. We implement it
 # Features:
 
 - Rich Domain Modeling (Workspace BC)
-- Anemic Domain Model (Ownership BC)
+- Anemic Domain Model (Membership BC)
 - Aggregate Pattern
 - Value Objects
 - Specification Pattern

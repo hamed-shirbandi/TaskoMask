@@ -25,7 +25,7 @@
 
                 <ul class="nav-bar nav-quick">
 
-                    <li><a title="dashboard" href="@Url.Action(action: "index", controller: "dashboard", values: new { Area = "ownership"})"><i class="si si-speedometer"></i></a></li>
+                    <li><a title="dashboard" href="@Url.Action(action: "index", controller: "dashboard", values: new { Area = "membership"})"><i class="si si-speedometer"></i></a></li>
                     <li><a title="owners" href="@Url.Action(action: "index", controller: "owners", values: new { Area = "team"})"><i class="si si-users"></i></a></li>
                     <li><a title="settings" href="#"><i class="si si-settings"></i></a></li>
                     <li><a title="logout" href="@Url.Action(action: "logout", controller: "account", values: new { Area = ""})"><i class="si si-power"></i></a></li>
@@ -45,7 +45,7 @@
                     <div class="sidebar-content">
                         <ul class="nav-main">
                             <li>
-                                <a class="nav-main-dashboard" href="@Url.Action(action: "index", controller: "dashboard", values: new { Area = "Ownership"})">
+                                <a class="nav-main-dashboard" href="@Url.Action(action: "index", controller: "dashboard", values: new { Area = "Membership"})">
                                     <span class="si si-speedometer"></span>
                                 </a>
                             </li>
@@ -70,13 +70,13 @@
                             </li>
                             <li>
                                 <a class="nav-submenu" data-toggle="nav-submenu" role="button">
-                                    Ownership
+                                    Membership
                                     <span class="si si-lock"></span>
                                 </a>
                                 <ul class="sidebar__nav__sub">
-                                    <li><a href="@Url.Action(action: "index", controller: "Operators", values: new { Area = "Ownership"})">Operators </a></li>
-                                    <li><a href="@Url.Action(action: "index", controller: "Roles", values: new { Area = "Ownership"})">Roles </a></li>
-                                    <li><a href="@Url.Action(action: "index", controller: "Permissions", values: new { Area = "Ownership"})">Permissions </a></li>
+                                    <li><a href="@Url.Action(action: "index", controller: "Operators", values: new { Area = "Membership"})">Operators </a></li>
+                                    <li><a href="@Url.Action(action: "index", controller: "Roles", values: new { Area = "Membership"})">Roles </a></li>
+                                    <li><a href="@Url.Action(action: "index", controller: "Permissions", values: new { Area = "Membership"})">Permissions </a></li>
                                 </ul>
 
                             </li>

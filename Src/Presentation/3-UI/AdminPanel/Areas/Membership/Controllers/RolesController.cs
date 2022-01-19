@@ -1,20 +1,20 @@
-﻿using TaskoMask.Application.Ownership.Roles.Services;
+﻿using TaskoMask.Application.Membership.Roles.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Ownership.Roles;
+using TaskoMask.Application.Share.Dtos.Membership.Roles;
 using TaskoMask.Presentation.Framework.Web.Filters;
 using TaskoMask.Presentation.Framework.Web.Extensions;
 using TaskoMask.Presentation.Framework.Web.Enums;
 using TaskoMask.Presentation.Framework.Web.Helpers;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Ownership.Controllers
+namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
 {
 
     [Authorize]
-    [Area("Ownership")]
+    [Area("Membership")]
     public class RolesController : BaseMvcController
     {
         #region Fields
@@ -74,7 +74,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Ownership.Controllers
             }
 
             var cmdResult = await _roleService.CreateAsync(input);
-            var redirectUrl = $"/ownership/roles/update/EntityId";
+            var redirectUrl = $"/membership/roles/update/EntityId";
             return AjaxResult(cmdResult,redirectUrl: redirectUrl);
         }
 

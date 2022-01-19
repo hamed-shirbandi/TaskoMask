@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Ownership.Roles
+namespace TaskoMask.Application.Share.Dtos.Membership.Roles
 {
     public class RoleOutputDto : RoleBasicInfoDto
     {

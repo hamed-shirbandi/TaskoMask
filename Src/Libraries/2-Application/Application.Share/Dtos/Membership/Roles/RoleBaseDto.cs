@@ -2,7 +2,7 @@
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Ownership.Roles
+namespace TaskoMask.Application.Share.Dtos.Membership.Roles
 {
     public abstract class RoleBaseDto
     {

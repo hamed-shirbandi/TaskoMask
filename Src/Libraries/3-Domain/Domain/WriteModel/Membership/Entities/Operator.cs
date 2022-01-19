@@ -2,7 +2,7 @@
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Ownership.Entities
+namespace TaskoMask.Domain.Membership.Entities
 {
     /// <summary>
     /// opertors of admin panel

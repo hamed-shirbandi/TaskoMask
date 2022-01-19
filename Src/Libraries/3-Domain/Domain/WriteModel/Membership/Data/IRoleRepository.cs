@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Ownership.Entities;
+using TaskoMask.Domain.Membership.Entities;
 using System.Collections.Generic;
 
-namespace TaskoMask.Domain.Ownership.Data
+namespace TaskoMask.Domain.Membership.Data
 {
     public interface IRoleRepository : IBaseAggregateRepository<Role>
     {

@@ -3,7 +3,7 @@ using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Dtos.Common;
 using TaskoMask.Application.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Ownership.Operators
+namespace TaskoMask.Application.Share.Dtos.Membership.Operators
 {
     public class OperatorBasicInfoDto 
     {

@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
 using System.Linq;
-using TaskoMask.Domain.Ownership.Entities;
+using TaskoMask.Domain.Membership.Entities;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Enums;

@@ -3,7 +3,7 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Ownership.Operators
+namespace TaskoMask.Application.Share.Dtos.Membership.Operators
 {
     public class OperatorUpsertDto 
     {

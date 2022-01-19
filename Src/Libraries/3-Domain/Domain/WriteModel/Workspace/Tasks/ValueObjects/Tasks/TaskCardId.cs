@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
+namespace TaskoMask.Domain.Workspace.Tasks.ValueObjects.Tasks
 {
-    public class MemberOwnerId : BaseValueObject
+    public class TaskCardId : BaseValueObject
     {
         #region Properties
 
@@ -18,7 +17,7 @@ namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
 
         #region Ctors
 
-        public MemberOwnerId(string value)
+        public TaskCardId(string value)
         {
             Value = value;
 
@@ -34,9 +33,9 @@ namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static MemberOwnerId Create(string value)
+        public static TaskCardId Create(string value)
         {
-            return new MemberOwnerId(value);
+            return new TaskCardId(value);
         }
 
 
@@ -47,7 +46,7 @@ namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(MemberOwnerId)));
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(TaskCardId)));
         }
 
 

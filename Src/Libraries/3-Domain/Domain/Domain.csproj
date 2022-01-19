@@ -13,8 +13,8 @@
 
   <ItemGroup>
     <Folder Include="ReadModel\Entities\" />
-    <Folder Include="WriteModel\Workspace\Tasks\Events\" />
-    <Folder Include="WriteModel\Workspace\Tasks\ValueObjects\" />
+    <Folder Include="WriteModel\Workspace\Tasks\ValueObjects\Activities\" />
+    <Folder Include="WriteModel\Workspace\Tasks\ValueObjects\Comments\" />
   </ItemGroup>
 
 </Project>

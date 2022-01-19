@@ -5,9 +5,9 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
+namespace TaskoMask.Domain.Workspace.Tasks.ValueObjects.Tasks
 {
-    public class MemberOwnerId : BaseValueObject
+    public class TaskDescription : BaseValueObject
     {
         #region Properties
 
@@ -18,7 +18,7 @@ namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
 
         #region Ctors
 
-        public MemberOwnerId(string value)
+        public TaskDescription(string value)
         {
             Value = value;
 
@@ -34,9 +34,9 @@ namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static MemberOwnerId Create(string value)
+        public static TaskDescription Create(string value)
         {
-            return new MemberOwnerId(value);
+            return new TaskDescription(value);
         }
 
 
@@ -47,7 +47,13 @@ namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(MemberOwnerId)));
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(TaskDescription)));
+          
+            if (Value.Length < DomainConstValues.Task_Description_Min_Length)
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(TaskDescription), DomainConstValues.Task_Description_Min_Length, DomainConstValues.Task_Description_Max_Length));
+
+            if (Value.Length > DomainConstValues.Task_Description_Max_Length)
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(TaskDescription), DomainConstValues.Task_Description_Min_Length, DomainConstValues.Task_Description_Max_Length));
         }
 
 

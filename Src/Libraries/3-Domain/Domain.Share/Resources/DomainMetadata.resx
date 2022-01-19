@@ -168,4 +168,10 @@
   <data name="Member" xml:space="preserve">
     <value>Member</value>
   </data>
+  <data name="Activity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
 </root>

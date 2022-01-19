@@ -61,6 +61,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activity.
+        /// </summary>
+        public static string Activity {
+            get {
+                return ResourceManager.GetString("Activity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Board.
         /// </summary>
         public static string Board {
@@ -120,6 +129,15 @@ namespace TaskoMask.Domain.Share.Resources {
         public static string CardType_ToDo {
             get {
                 return ResourceManager.GetString("CardType_ToDo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
             }
         }
         

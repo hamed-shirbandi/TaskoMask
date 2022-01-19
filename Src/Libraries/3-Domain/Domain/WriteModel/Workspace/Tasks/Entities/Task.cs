@@ -38,8 +38,8 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         public TaskTitle Title { get; private set; }
         public TaskDescription Description { get; private set; }
         public TaskCardId CardId { get; private set; }
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<Activity> Activities { get; set; }
+        public ICollection<Comment> Comments { get; private set; }
+        public ICollection<Activity> Activities { get; private set; }
 
 
         #endregion

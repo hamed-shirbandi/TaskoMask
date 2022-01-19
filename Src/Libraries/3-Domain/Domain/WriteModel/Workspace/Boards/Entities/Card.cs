@@ -28,8 +28,8 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         #region Properties
 
 
-        public CardName Name { get; set; }
-        public CardType Type { get; set; }
+        public CardName Name { get; private set; }
+        public CardType Type { get; private set; }
 
         #endregion
 

@@ -33,7 +33,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         #region Properties
 
 
-        public ActivityDescription Description { get; set; }
+        public ActivityDescription Description { get; private set; }
 
         #endregion
 

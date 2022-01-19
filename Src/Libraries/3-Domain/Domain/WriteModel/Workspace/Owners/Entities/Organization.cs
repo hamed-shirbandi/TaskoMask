@@ -40,7 +40,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public OrganizationDescription Description { get; private set; }
         public OrganizationOwnerOwnerId OwnerOwnerId { get; private set; }
 
-        public ICollection<Project> Projects { get; set; }
+        public ICollection<Project> Projects { get; private set; }
 
         #endregion
 

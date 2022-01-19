@@ -33,7 +33,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         #region Properties
 
 
-        public CommentContent Content { get; set; }
+        public CommentContent Content { get; private set; }
 
         #endregion
 

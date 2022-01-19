@@ -36,8 +36,8 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         public BoardName Name { get; private set; }
         public BoardDescription Description { get; private set; }
         public BoardProjectId ProjectId { get; private set; }
-        public ICollection<Card> Cards { get; set; }
-        public ICollection<Member> Members { get; set; }
+        public ICollection<Card> Cards { get; private set; }
+        public ICollection<Member> Members { get; private set; }
 
 
         #endregion

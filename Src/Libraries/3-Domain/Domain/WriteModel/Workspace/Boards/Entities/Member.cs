@@ -35,9 +35,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// Each member is an owner at the first
         /// This is a foreign key to Owner
         /// </summary>
-        public MemberOwnerId OwnerId { get; set; }
+        public MemberOwnerId OwnerId { get; private set; }
 
-        public MemberAccessLevel AccessLevel { get; set; }
+        public MemberAccessLevel AccessLevel { get; private set; }
 
         #endregion
 

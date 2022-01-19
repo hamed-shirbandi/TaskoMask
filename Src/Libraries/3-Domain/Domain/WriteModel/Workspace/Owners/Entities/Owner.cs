@@ -2,8 +2,8 @@
 using System.Linq;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.ReadModel.Entities;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Workspace.Organizations.Entities;
 using TaskoMask.Domain.Workspace.Organizations.Events;
 using TaskoMask.Domain.Workspace.Organizations.Services;
 using TaskoMask.Domain.Workspace.Owners.Events;
@@ -47,7 +47,7 @@ namespace TaskoMask.Domain.Workspace.Owners.Entities
 
         public OwnerDisplayName DisplayName { get; private set; }
         public OwnerEmail Email { get; private set; }
-        public ICollection<Organization> Organizations { get; set; }
+        public ICollection<Organization> Organizations { get; private set; }
 
         #endregion
 

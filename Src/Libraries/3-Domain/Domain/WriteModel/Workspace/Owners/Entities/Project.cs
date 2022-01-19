@@ -32,6 +32,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public ProjectName Name { get; private set; }
         public ProjectDescription Description { get; private set; }
         public ProjectOrganizationId OrganizationId { get; private set; }
+
         #endregion
 
         #region Public Methods

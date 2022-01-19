@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Workspace.Tasks.ValueObjects.Comments;
 
 namespace TaskoMask.Domain.Workspace.Tasks.Entities
 {
@@ -23,7 +24,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
 
         private Comment(string content)
         {
-            Content = content;
+            Content = CommentContent.Create(content);
             CheckPolicies();
         }
 
@@ -32,7 +33,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         #region Properties
 
 
-        public string Content { get; set; }
+        public CommentContent Content { get; set; }
 
         #endregion
 
@@ -55,7 +56,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         /// </summary>
         public void Update(string content)
         {
-            Content = content;
+            Content = CommentContent.Create(content);
             base.UpdateModifiedDateTime();
 
             CheckPolicies();

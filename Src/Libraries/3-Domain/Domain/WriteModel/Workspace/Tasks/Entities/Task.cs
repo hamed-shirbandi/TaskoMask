@@ -125,7 +125,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         public void CreateComment(Comment comment)
         {
             Comments.Add(comment);
-            AddDomainEvent(new CommentCreatedEvent(comment.Id, comment.Content, Id));
+            AddDomainEvent(new CommentCreatedEvent(comment.Id, comment.Content.Value, Id));
         }
 
 
@@ -141,7 +141,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
 
             comment.Update(content);
 
-            AddDomainEvent(new CommentUpdatedEvent(comment.Id, comment.Content));
+            AddDomainEvent(new CommentUpdatedEvent(comment.Id, comment.Content.Value));
         }
 
 
@@ -172,7 +172,7 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         public void CreateActivity(Activity activity)
         {
             Activities.Add(activity);
-            AddDomainEvent(new ActivityCreatedEvent(activity.Id, activity.Description,Id));
+            AddDomainEvent(new ActivityCreatedEvent(activity.Id, activity.Description.Value, Id));
         }
 
 

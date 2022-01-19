@@ -94,7 +94,10 @@ There is a list of our documentation:
 		- Invariants
         - Specification
         - Factory Method
+        - Separate Domain Model and Data Model
       -	CQRS
+        - Separate Read and Write Model
+        - Separate Read Side DB and Write Side DB
       -	Event Sourcing
       -	Repository
       -	Notification

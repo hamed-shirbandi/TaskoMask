@@ -164,7 +164,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                         };
                         _users.InsertOne(user);
 
-                        var owner = Owner.CreateOwner(user.Id, OwnerDisplayName.Create($"Owner Name {i}"), OwnerEmail.Create($"Email{i}@taskomask.ir"));
+                        var owner = Owner.CreateOwner(user.Id, $"Owner Name {i}", $"Email{i}@taskomask.ir");
 
                         _owners.InsertOne(owner);
 
@@ -213,13 +213,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                                         for (int n = 1; n <= 3; n++)
                                         {
-                                            var task = new Task(
+                                            var task = Task.CreateTask(
                                                 $"Task Title {n}",
                                                 $"Description {n}",
-                                                card.Id,
-                                                board.Id,
-                                                organization.Id,
-                                                project.Id);
+                                                card.Id);
 
                                             _tasks.InsertOne(task);
                                         }

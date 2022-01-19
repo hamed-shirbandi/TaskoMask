@@ -45,7 +45,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateOwnerCommand request, CancellationToken cancellationToken)
         {
-            var owner = Owner.CreateOwner(request.Id,OwnerDisplayName.Create(request.DisplayName), OwnerEmail.Create(request.Email));
+            var owner = Owner.CreateOwner(request.Id,request.DisplayName, request.Email);
 
             await _ownerRepository.CreateAsync(owner);
 

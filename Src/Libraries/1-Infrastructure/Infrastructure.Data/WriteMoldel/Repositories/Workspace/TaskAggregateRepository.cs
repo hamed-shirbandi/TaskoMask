@@ -34,7 +34,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<IEnumerable<Domain.Workspace.Tasks.Entities.Task>> GetListByCardIdAsync(string cardId)
         {
-            return await _tasks.AsQueryable().Where(o => o.CardId == cardId).ToListAsync();
+            return await _tasks.AsQueryable().Where(o => o.CardId.Value == cardId).ToListAsync();
         }
 
 
@@ -44,7 +44,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<IEnumerable<Domain.Workspace.Tasks.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount)
         {
-            return await _tasks.AsQueryable().Where(o => o.OrganizationId == organizationId).OrderByDescending(o=> o.CreationTime.CreateDateTime).Take(takeCount).ToListAsync();
+           // return await _tasks.AsQueryable().Where(o => o.OrganizationId == organizationId).OrderByDescending(o=> o.CreationTime.CreateDateTime).Take(takeCount).ToListAsync();
+            return await _tasks.AsQueryable().OrderByDescending(o=> o.CreationTime.CreateDateTime).Take(takeCount).ToListAsync();
         }
 
 
@@ -54,7 +55,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<bool> ExistByTitleAsync(string id, string title)
         {
-            var task = await _tasks.Find(e => e.Title == title).FirstOrDefaultAsync();
+            var task = await _tasks.Find(e => e.Title.Value == title).FirstOrDefaultAsync();
             return task != null && task.Id != id;
         }
 
@@ -70,7 +71,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
             if (!string.IsNullOrEmpty(term))
             {
-                queryable = queryable.Where(p => p.Title.Contains(term) || p.Description.Contains(term));
+                queryable = queryable.Where(p => p.Title.Value.Contains(term) || p.Description.Value.Contains(term));
             }
 
             #endregion
@@ -105,7 +106,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<long> CountByCardIdAsync(string cardId)
         {
-            return await _tasks.CountDocumentsAsync(b => b.CardId == cardId);
+            return await _tasks.CountDocumentsAsync(b => b.CardId.Value == cardId);
         }
 
 

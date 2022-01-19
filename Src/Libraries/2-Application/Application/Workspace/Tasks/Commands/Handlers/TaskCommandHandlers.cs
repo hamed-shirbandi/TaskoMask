@@ -66,7 +66,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             //if (project == null)
             //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
-            var task =new Domain.Workspace.Tasks.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: "", projectId: "", organizationId: "");
+            var task = Domain.Workspace.Tasks.Entities.Task.CreateTask(title: request.Title, description: request.Description, cardId: request.CardId);
 
             await _taskRepository.CreateAsync(task);
             return new CommandResult(ApplicationMessages.Create_Success, task.Id);
@@ -91,7 +91,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            task.Update(request.Title, request.Description);
+            task.UpdateTask(request.Title, request.Description);
 
             await _taskRepository.UpdateAsync(task);
             return new CommandResult(ApplicationMessages.Update_Success, task.Id);

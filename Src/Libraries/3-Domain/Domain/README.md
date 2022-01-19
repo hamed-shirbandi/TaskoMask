@@ -18,7 +18,8 @@ We don't implement a rich domain model for it and we don't use CQRS. It is less 
 This BC contains the core domain and talks about managing tasks. We implement it by rich domain model and use CQRS. This is the most important part of system.
 
 # What is ReadModel ?
-This is a place that we implement Data Model to be used in Queries (Read Side). It has its own database that is updated by listening to events on the write side..
+This is a place that we implement Data Model to be used in Queries (Read Side). It has its own database that is updated by listening to events on the write side.
+Read Model for Authorization and Membership is on Write Side. It means we use Domain Model as Data Model for this 2 BC.
 
 
 # Features:

@@ -12,7 +12,7 @@ using TaskoMask.Domain.Share.Helpers;
 
 namespace TaskoMask.Domain.Workspace.Organizations.Entities
 {
-    public class Organization : AggregateRoot
+    public class Organization : BaseEntity
     {
         #region Fields
 
@@ -28,8 +28,6 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             OwnerOwnerId = OrganizationOwnerOwnerId.Create(ownerOwnerId);
 
             CheckPolicies(organizationValidatorService);
-
-            AddDomainEvent(new OrganizationCreatedEvent(Id, Name.Value, Description.Value, OwnerOwnerId.Value));
         }
 
 
@@ -71,8 +69,6 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             base.UpdateModifiedDateTime();
 
             CheckPolicies(organizationValidatorService);
-
-            AddDomainEvent(new OrganizationUpdatedEvent(Id, Name.Value, Description.Value));
         }
 
 
@@ -83,7 +79,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public void DeleteOrganization()
         {
             base.Delete();
-            AddDomainEvent(new OrganizationDeletedEvent(Id));
+            base.UpdateModifiedDateTime();
         }
 
 
@@ -94,7 +90,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public void RecycleOrganization()
         {
             base.Recycle();
-            AddDomainEvent(new OrganizationRecycledEvent(Id));
+            base.UpdateModifiedDateTime();
         }
 
 
@@ -111,7 +107,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public void CreateProject(Project project)
         {
             Projects.Add(project);
-            AddDomainEvent(new ProjectCreatedEvent(project.Id, project.Name.Value, project.Description.Value, Id));
+            base.UpdateModifiedDateTime();
         }
 
 
@@ -127,7 +123,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
             project.Update(name, description);
 
-            AddDomainEvent(new ProjectUpdatedEvent(project.Id, project.Name.Value, project.Description.Value));
+            base.UpdateModifiedDateTime();
         }
 
 
@@ -142,7 +138,8 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
 
             project.Delete();
-            AddDomainEvent(new ProjectDeletedEvent(project.Id));
+
+            base.UpdateModifiedDateTime();
         }
 
 
@@ -157,7 +154,8 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
 
             project.Recycle();
-            AddDomainEvent(new ProjectRecycledEvent(project.Id));
+
+            base.UpdateModifiedDateTime();
         }
 
 
@@ -189,15 +187,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
             if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
 
-        }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected override void CheckInvariants()
-        {
             if (Projects.Count > DomainConstValues.Organization_Max_Projects_Count)
                 throw new DomainException(string.Format(DomainMessages.Max_Projects_Count_Limitiation, DomainConstValues.Organization_Max_Projects_Count));
 
@@ -205,7 +195,6 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Project));
 
         }
-
 
 
         #endregion

@@ -26,6 +26,8 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
             Description = TaskDescription.Create(description);
             CardId = TaskCardId.Create(cardId);
 
+            CheckPolicies();
+
             AddDomainEvent(new TaskCreatedEvent(Id, Title.Value, Description.Value, CardId.Value));
         }
 
@@ -188,6 +190,14 @@ namespace TaskoMask.Domain.Workspace.Tasks.Entities
         /// </summary>
         private void CheckPolicies()
         {
+            if (Description == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
+
+            if (CardId == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(CardId)));
+
+            if (Title == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Title)));
 
         }
 

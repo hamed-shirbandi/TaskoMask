@@ -45,7 +45,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateOwnerCommand request, CancellationToken cancellationToken)
         {
-            var owner = Owner.Create(request.Id,OwnerDisplayName.Create(request.DisplayName), OwnerEmail.Create(request.Email));
+            var owner = Owner.CreateOwner(request.Id,OwnerDisplayName.Create(request.DisplayName), OwnerEmail.Create(request.Email));
 
             await _ownerRepository.CreateAsync(owner);
 
@@ -65,7 +65,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
 
-            owner.Update(
+            owner.UpdateOwner(
                 OwnerDisplayName.Create(request.DisplayName),
                 OwnerEmail.Create(request.Email));
 

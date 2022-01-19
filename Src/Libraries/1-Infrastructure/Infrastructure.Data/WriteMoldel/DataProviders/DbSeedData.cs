@@ -164,7 +164,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                         };
                         _users.InsertOne(user);
 
-                        var owner = Owner.Create(user.Id, OwnerDisplayName.Create($"Owner Name {i}"), OwnerEmail.Create($"Email{i}@taskomask.ir"));
+                        var owner = Owner.CreateOwner(user.Id, OwnerDisplayName.Create($"Owner Name {i}"), OwnerEmail.Create($"Email{i}@taskomask.ir"));
 
                         _owners.InsertOne(owner);
 

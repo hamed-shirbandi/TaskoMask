@@ -191,11 +191,10 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                                 for (int l = 1; l <= 3; l++)
                                 {
-                                    var board = new Board(
+                                    var board = Board.CreateBoard(
                                         $"Board Name {l}",
                                         $"Description {l}",
-                                        project.Id,
-                                        organization.Id);
+                                        project.Id);
 
                                     _boards.InsertOne(board);
 
@@ -204,13 +203,9 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
 
                                     for (int m = 1; m <= 3; m++)
                                     {
-                                        var card = new Card(
+                                        var card = Card.Create(
                                             $"Card Name {m}",
-                                            $"Description {m}",
-                                            board.Id,
-                                            BoardCardType.ToDo,
-                                            organization.Id,
-                                            project.Id);
+                                            BoardCardType.ToDo);
 
                                         _cards.InsertOne(card);
 

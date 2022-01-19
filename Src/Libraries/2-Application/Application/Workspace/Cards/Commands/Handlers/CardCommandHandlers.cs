@@ -57,17 +57,17 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
             }
 
 
-            var board = await _boardRepository.GetByIdAsync(request.BoardId);
-            if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+            //var board = await _boardRepository.GetByIdAsync(request.BoardId);
+            //if (board == null)
+            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
 
-            var project = await _projectRepository.GetByIdAsync(board.ProjectId);
-            if (project == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
+            //var project = await _projectRepository.GetByIdAsync(board.ProjectId);
+            //if (project == null)
+            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
 
-            var card = new Card(name: request.Name, description: request.Description, boardId: request.BoardId, type: request.Type,projectId:project.Id,organizationId:project.OrganizationId.Value);
+            var card =  Card.Create(name: request.Name, type: request.Type);
             await _cardRepository.CreateAsync(card);
             return new CommandResult(ApplicationMessages.Create_Success, card.Id);
 
@@ -91,7 +91,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
             }
 
-            card.Update(request.Name, request.Description, request.Type);
+            card.Update(request.Name, request.Type);
 
             await _cardRepository.UpdateAsync(card);
             return new CommandResult(ApplicationMessages.Update_Success, card.Id);

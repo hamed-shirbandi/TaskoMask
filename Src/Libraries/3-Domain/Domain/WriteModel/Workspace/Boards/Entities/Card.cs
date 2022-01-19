@@ -15,7 +15,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        public Card(string name, BoardCardType type)
+        private Card(string name, BoardCardType type)
         {
             Name = CardName.Create(name);
             Type = CardType.Create(type);
@@ -34,6 +34,15 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         #endregion
 
         #region Public Methods
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Card Create(string name, BoardCardType type)
+        {
+            return new Card(name, type);
+        }
 
 
 

@@ -33,7 +33,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<IEnumerable<Card>> GetListByBoardIdAsync(string boardId)
         {
-            return await _cards.AsQueryable().Where(o => o.BoardId == boardId).ToListAsync();
+           // return await _cards.AsQueryable().Where(o => o.BoardId == boardId).ToListAsync();
+            return await _cards.AsQueryable().ToListAsync();
 
         }
 
@@ -44,7 +45,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<bool> ExistByNameAsync(string id, string name)
         {
-            var card = await _cards.Find(e => e.Name == name).FirstOrDefaultAsync();
+            var card = await _cards.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
             return card != null && card.Id != id;
         }
 
@@ -61,7 +62,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
             if (!string.IsNullOrEmpty(term))
             {
-                queryable = queryable.Where(p => p.Name.Contains(term) || p.Description.Contains(term));
+                queryable = queryable.Where(p => p.Name.Value.Contains(term));
             }
 
             #endregion
@@ -96,7 +97,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<long> CountByBoardIdAsync(string boardId)
         {
-            return await _cards.CountDocumentsAsync(b => b.BoardId == boardId);
+           // return await _cards.CountDocumentsAsync(b => b.BoardId == boardId);
+            return await _cards.CountDocumentsAsync(c=>true);
         }
 
 

@@ -20,13 +20,13 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        private Board(string name, string description, string cardId)
+        private Board(string name, string description, string projectId)
         {
             Name = BoardName.Create(name);
             Description = BoardDescription.Create(description);
-            ProjectId = BoardProjectId.Create(cardId);
+            ProjectId = BoardProjectId.Create(projectId);
 
-            AddDomainEvent(new BoardCreatedEvent(Id, name, description, cardId));
+            AddDomainEvent(new BoardCreatedEvent(Id, Name.Value, Description.Value, ProjectId.Value));
         }
 
         #endregion
@@ -50,9 +50,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Board CreateBoard(string name, string description, string cardId)
+        public static Board CreateBoard(string name, string description, string projectId)
         {
-            return new Board(name, description, cardId);
+            return new Board(name, description, projectId);
         }
 
 
@@ -60,11 +60,10 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateBoard(string name, string description, string cardId )
+        public void UpdateBoard(string name, string description )
         {
             Name = BoardName.Create(name);
             Description = BoardDescription.Create(description);
-            ProjectId = BoardProjectId.Create(cardId);
 
             base.UpdateModifiedDateTime();
 

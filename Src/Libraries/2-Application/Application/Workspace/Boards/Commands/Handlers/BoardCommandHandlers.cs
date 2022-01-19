@@ -60,7 +60,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
 
-            var board = new Board(name: request.Name, description: request.Description, projectId: request.ProjectId, organizationId: project.OrganizationId.Value);
+            var board = Board.CreateBoard(name: request.Name, description: request.Description, projectId: request.ProjectId);
 
             await _boardRepository.CreateAsync(board);
             return new CommandResult(ApplicationMessages.Create_Success, board.Id);
@@ -90,7 +90,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
 
-            board.Update(request.Name, request.Description, request.ProjectId, project.OrganizationId.Value);
+            board.UpdateBoard(request.Name, request.Description);
 
             await _boardRepository.UpdateAsync(board);
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);

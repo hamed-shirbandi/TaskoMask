@@ -35,7 +35,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<IEnumerable<Board>> GetListByProjectIdAsync(string projectId)
         {
-            return await _boards.AsQueryable().Where(o => o.ProjectId == projectId).ToListAsync();
+            //return await _boards.AsQueryable().Where(o => o.ProjectId == projectId).ToListAsync();
+            return await _boards.AsQueryable().ToListAsync();
         }
 
 
@@ -47,7 +48,8 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<IEnumerable<Board>> GetListByOrganizationIdAsync(string organizationId)
         {
-            return await _boards.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();
+           // return await _boards.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();
+            return await _boards.AsQueryable().ToListAsync();
         }
 
 
@@ -57,7 +59,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<bool> ExistByNameAsync(string id, string name)
         {
-            var board = await _boards.Find(e => e.Name == name).FirstOrDefaultAsync();
+            var board = await _boards.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
             return board != null && board.Id != id;
         }
 
@@ -67,7 +69,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<long> CountByProjectIdAsync(string projectId)
         {
-            return await _boards.CountDocumentsAsync(b => b.ProjectId==projectId);
+            return await _boards.CountDocumentsAsync(b => b.ProjectId.Value==projectId);
         }
 
 
@@ -82,7 +84,7 @@ namespace TaskoMask.Infrastructure.Data.Repositories
 
             if (!string.IsNullOrEmpty(term))
             {
-                queryable = queryable.Where(p => p.Name.Contains(term) || p.Description.Contains(term));
+                queryable = queryable.Where(p => p.Name.Value.Contains(term) || p.Description.Value.Contains(term));
             }
 
             #endregion

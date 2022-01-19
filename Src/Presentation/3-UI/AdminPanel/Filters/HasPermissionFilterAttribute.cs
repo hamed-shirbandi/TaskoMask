@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using TaskoMask.Application.Membership.Permissions.Services;
 using TaskoMask.Domain.Share.Services;
 using TaskoMask.Presentation.Framework.Web.Extensions;

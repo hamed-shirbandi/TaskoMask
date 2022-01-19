@@ -19,7 +19,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        public Member(string ownerId, BoardMemberAccessLevel accessLevel)
+        private Member(string ownerId, BoardMemberAccessLevel accessLevel)
         {
             OwnerId = MemberOwnerId.Create(ownerId);
             AccessLevel = MemberAccessLevel.Create(accessLevel);
@@ -42,6 +42,16 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         #endregion
 
         #region Public Methods
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Member Create(string ownerId, BoardMemberAccessLevel accessLevel)
+        {
+            return new Member(ownerId, accessLevel);
+        }
+
 
 
 

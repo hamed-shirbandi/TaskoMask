@@ -52,21 +52,21 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
                 return new CommandResult(ApplicationMessages.Create_Failed);
             }
 
-            var card = await _cardRepository.GetByIdAsync(request.CardId);
-            if (card == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);
+            //var card = await _cardRepository.GetByIdAsync(request.CardId);
+            //if (card == null)
+            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);
 
 
-            var board = await _boardRepository.GetByIdAsync(card.BoardId);
-            if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+            //var board = await _boardRepository.GetByIdAsync(card.BoardId);
+            //if (board == null)
+            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
 
-            var project = await _projectRepository.GetByIdAsync(board.ProjectId);
-            if (project == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
+            //var project = await _projectRepository.GetByIdAsync(board.ProjectId);
+            //if (project == null)
+            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
-            var task = new Domain.Workspace.Tasks.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: card.BoardId, projectId: project.Id, organizationId: project.OrganizationId.Value);
+            var task =new Domain.Workspace.Tasks.Entities.Task(title: request.Title, description: request.Description, cardId: request.CardId, boardId: "", projectId: "", organizationId: "");
 
             await _taskRepository.CreateAsync(task);
             return new CommandResult(ApplicationMessages.Create_Success, task.Id);

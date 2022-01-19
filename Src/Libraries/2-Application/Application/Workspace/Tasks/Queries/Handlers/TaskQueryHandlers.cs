@@ -85,7 +85,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
             foreach (var item in tasksDto)
             {
                 var card = await _cardRepository.GetByIdAsync(item.CardId);
-                item.CardName = card?.Name;
+                item.CardName = card?.Name.Value;
             }
 
             return new PaginatedListReturnType<TaskOutputDto>

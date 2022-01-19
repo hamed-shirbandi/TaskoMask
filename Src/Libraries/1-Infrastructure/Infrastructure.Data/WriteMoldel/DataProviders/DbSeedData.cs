@@ -208,7 +208,7 @@ namespace TaskoMask.Infrastructure.Data.DataProviders
                                             $"Card Name {m}",
                                             $"Description {m}",
                                             board.Id,
-                                            CardType.ToDo,
+                                            BoardCardType.ToDo,
                                             organization.Id,
                                             project.Id);
 

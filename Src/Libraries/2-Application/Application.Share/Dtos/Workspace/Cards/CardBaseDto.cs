@@ -27,7 +27,7 @@ namespace TaskoMask.Application.Share.Dtos.Workspace.Cards
 
         [Display(Name = nameof(ApplicationMetadata.CardType), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(ApplicationMetadata.CardType), ErrorMessageResourceType = typeof(ApplicationMetadata))]
-        public CardType Type { get; set; }
+        public BoardCardType Type { get; set; }
     }
 
 }

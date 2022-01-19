@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Folder Include="ReadModel\Entities\" />
-    <Folder Include="WriteModel\Workspace\Boards\ValueObjects\" />
+    <Folder Include="WriteModel\Workspace\Boards\Events\Member\" />
     <Folder Include="WriteModel\Workspace\Tasks\Events\" />
     <Folder Include="WriteModel\Workspace\Tasks\ValueObjects\" />
   </ItemGroup>

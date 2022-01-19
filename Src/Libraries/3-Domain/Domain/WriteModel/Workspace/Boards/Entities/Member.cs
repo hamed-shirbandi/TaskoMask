@@ -1,5 +1,6 @@
 ﻿
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Domain.Workspace.Boards.Entities
 {
@@ -15,9 +16,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        public Member(string invitedOwnerId)
+        public Member(string memberOwnerId)
         {
-            InvitedOwnerId = invitedOwnerId;
+            MemberOwnerId = memberOwnerId;
         }
 
 
@@ -26,7 +27,12 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Properties
 
-        public string InvitedOwnerId { get; private set; }
+        /// <summary>
+        /// Each member is an owner at the first
+        /// This is a foreign key to Owner
+        /// </summary>
+        public string MemberOwnerId { get; private set; }
+        public BoardMemberAccessLevel AccessLevel { get; private set; }
 
 
         #endregion

@@ -159,4 +159,10 @@
   <data name="User" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="BoardMemberAccessLevel_Reader" xml:space="preserve">
+    <value>Reader</value>
+  </data>
+  <data name="BoardMemberAccessLevel_Writer" xml:space="preserve">
+    <value>Writer</value>
+  </data>
 </root>

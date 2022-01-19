@@ -9,7 +9,20 @@ namespace TaskoMask.Domain.Share.Enums
     /// <summary>
     /// 
     /// </summary>
-    public enum CardType
+    public enum BoardMemberAccessLevel
+    {
+        [Display(Name = nameof(DomainMetadata.BoardMemberAccessLevel_Reader), ResourceType = typeof(DomainMetadata))]
+        Reader = 0,
+        [Display(Name = nameof(DomainMetadata.BoardMemberAccessLevel_Writer), ResourceType = typeof(DomainMetadata))]
+        Writer = 1,
+    }
+
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum BoardCardType
     {
         [Display(Name = nameof(DomainMetadata.CardType_ToDo), ResourceType = typeof(DomainMetadata))]
         ToDo = 0,

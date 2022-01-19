@@ -7,7 +7,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Models
 {
     public class UpdateCardCommand : CardBaseCommand
     {
-        public UpdateCardCommand(string id, string name, string description, CardType type)
+        public UpdateCardCommand(string id, string name, string description, BoardCardType type)
                 : base(name, description, type)
 
         {

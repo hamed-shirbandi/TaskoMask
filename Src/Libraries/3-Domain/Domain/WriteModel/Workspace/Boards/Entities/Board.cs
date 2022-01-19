@@ -1,5 +1,7 @@
-﻿using TaskoMask.Domain.Workspace.Boards.Events;
-using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Workspace.Boards.Board.ValueObjects;
+using System.Collections.Generic;
+using TaskoMask.Domain.Workspace.Boards.Board.Events;
 
 namespace TaskoMask.Domain.Workspace.Boards.Entities
 {
@@ -12,45 +14,80 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        public Board(string name, string description, string projectId, string organizationId)
+        private Board(string name, string description, string projectId)
         {
-            Name = name;
-            Description = description;
-            ProjectId = projectId;
-            OrganizationId = organizationId;
+            Name = BoardName.Create(name);
+            Description = BoardDescription.Create(description);
+            ProjectId = BoardProjectId.Create(projectId);
 
-            AddDomainEvent(new BoardCreatedEvent(Id, name, description, projectId, organizationId));
-
+            AddDomainEvent(new BoardCreatedEvent(Id, name, description, projectId));
         }
 
         #endregion
 
         #region Properties
 
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public string ProjectId { get; private set; }
-        public string OrganizationId { get; private set; }
+        public BoardName Name { get; private set; }
+        public BoardDescription Description { get; private set; }
+        public BoardProjectId ProjectId { get; private set; }
+        public ICollection<Card> Cards { get; set; }
+        public ICollection<Member> Members { get; set; }
 
 
         #endregion
 
-        #region Public Methods
+        #region Public Board Methods
+
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        public void Update(string name, string description, string projectId, string organizationId)
+        public static Board CreateBoard(string name, string description, string projectId)
         {
-            Description = description;
-            Name = name;
-            ProjectId = projectId;
-            OrganizationId = organizationId;
+            return new Board(name, description, projectId);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void UpdateBoard(string name, string description, string projectId )
+        {
+            Name = BoardName.Create(name);
+            Description = BoardDescription.Create(description);
+            ProjectId = BoardProjectId.Create(projectId);
 
             base.UpdateModifiedDateTime();
 
+            CheckPolicies();
+
+            AddDomainEvent(new BoardUpdatedEvent(Id, Name.Value, Description.Value));
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DeleteBoard()
+        {
+            base.Delete();
+            AddDomainEvent(new BoardDeletedEvent(Id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void RecycleBoard()
+        {
+            base.Recycle();
+            AddDomainEvent(new BoardRecycledEvent(Id));
         }
 
 
@@ -58,6 +95,16 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         #endregion
 
         #region Private Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CheckPolicies()
+        {
+
+        }
 
 
 

@@ -11,7 +11,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Models
     public abstract class CardBaseCommand : BaseCommand
     {
 
-        public CardBaseCommand(string name, string description, CardType type)
+        public CardBaseCommand(string name, string description, BoardCardType type)
         {
             Name = name;
             Description = description;
@@ -29,7 +29,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Models
 
 
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public CardType Type { get; }
+        public BoardCardType Type { get; }
 
 
 

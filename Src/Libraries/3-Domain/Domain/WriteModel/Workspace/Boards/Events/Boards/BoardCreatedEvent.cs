@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Workspace.Boards.Entities;
 using TaskoMask.Domain.Core.Events;
 
-namespace TaskoMask.Domain.Workspace.Boards.Board.Events
+namespace TaskoMask.Domain.Workspace.Boards.Events.Boards
 {
     public class BoardCreatedEvent : DomainEvent
     {

@@ -165,4 +165,7 @@
   <data name="BoardMemberAccessLevel_Writer" xml:space="preserve">
     <value>Writer</value>
   </data>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
 </root>

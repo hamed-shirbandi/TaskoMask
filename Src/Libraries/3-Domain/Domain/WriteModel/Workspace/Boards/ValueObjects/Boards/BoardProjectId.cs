@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Boards.Member.ValueObjects
+namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Boards
 {
-    public class MemberAccessLevel : BaseValueObject
+    public class BoardProjectId : BaseValueObject
     {
         #region Properties
 
-        public BoardMemberAccessLevel Value { get; private set; }
+        public string Value { get; private set; }
 
 
         #endregion
 
         #region Ctors
 
-        public MemberAccessLevel(BoardMemberAccessLevel value)
+        public BoardProjectId(string value)
         {
             Value = value;
 
@@ -35,9 +33,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Member.ValueObjects
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static MemberAccessLevel Create(BoardMemberAccessLevel value)
+        public static BoardProjectId Create(string value)
         {
-            return new MemberAccessLevel(value);
+            return new BoardProjectId(value);
         }
 
 
@@ -47,7 +45,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Member.ValueObjects
         /// </summary>
         protected override void CheckPolicies()
         {
-           
+            if (string.IsNullOrEmpty(Value))
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(BoardProjectId)));
+
         }
 
 

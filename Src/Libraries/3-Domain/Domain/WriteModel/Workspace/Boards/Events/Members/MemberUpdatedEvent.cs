@@ -1,11 +1,11 @@
 ﻿using TaskoMask.Domain.Core.Events;
 using TaskoMask.Domain.Workspace.Organizations.Entities;
 
-namespace TaskoMask.Domain.Workspace.Boards.Board.Events
+namespace TaskoMask.Domain.Workspace.Boards.Events.Members
 {
-    public class BoardUpdatedEvent : DomainEvent
+    public class MemberUpdatedEvent : DomainEvent
     {
-        public BoardUpdatedEvent(string id, string name, string description) : base(entityId: id, entityType: nameof(Organization))
+        public MemberUpdatedEvent(string id, string name, string description) : base(entityId: id, entityType: nameof(Organization))
         {
             Id = id;
             Name = name;

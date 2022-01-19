@@ -1,7 +1,13 @@
 ﻿using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Workspace.Boards.Board.ValueObjects;
 using System.Collections.Generic;
-using TaskoMask.Domain.Workspace.Boards.Board.Events;
+using System.Linq;
+using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Core.Exceptions;
+using TaskoMask.Domain.Workspace.Boards.Events.Boards;
+using TaskoMask.Domain.Workspace.Boards.ValueObjects.Boards;
+using TaskoMask.Domain.Workspace.Boards.Events.Members;
+using TaskoMask.Domain.Workspace.Boards.Events.Cards;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Domain.Workspace.Boards.Entities
 {
@@ -14,13 +20,13 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        private Board(string name, string description, string projectId)
+        private Board(string name, string description, string cardId)
         {
             Name = BoardName.Create(name);
             Description = BoardDescription.Create(description);
-            ProjectId = BoardProjectId.Create(projectId);
+            ProjectId = BoardProjectId.Create(cardId);
 
-            AddDomainEvent(new BoardCreatedEvent(Id, name, description, projectId));
+            AddDomainEvent(new BoardCreatedEvent(Id, name, description, cardId));
         }
 
         #endregion
@@ -44,9 +50,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Board CreateBoard(string name, string description, string projectId)
+        public static Board CreateBoard(string name, string description, string cardId)
         {
-            return new Board(name, description, projectId);
+            return new Board(name, description, cardId);
         }
 
 
@@ -54,11 +60,11 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateBoard(string name, string description, string projectId )
+        public void UpdateBoard(string name, string description, string cardId )
         {
             Name = BoardName.Create(name);
             Description = BoardDescription.Create(description);
-            ProjectId = BoardProjectId.Create(projectId);
+            ProjectId = BoardProjectId.Create(cardId);
 
             base.UpdateModifiedDateTime();
 
@@ -89,6 +95,119 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
             base.Recycle();
             AddDomainEvent(new BoardRecycledEvent(Id));
         }
+
+
+
+        #endregion
+
+        #region Public Card Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void CreateCard(Card card)
+        {
+            Cards.Add(card);
+            AddDomainEvent(new CardCreatedEvent(card.Id, card.Name, card.Description, Id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void UpdateCard(string id, string name, string description)
+        {
+            var card = Cards.FirstOrDefault(p => p.Id == id);
+            if (card == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
+
+            card.Update(name, description);
+
+            AddDomainEvent(new CardUpdatedEvent(Id, Name.Value, Description.Value));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DeleteCard(string id)
+        {
+            var card = Cards.FirstOrDefault(p => p.Id == id);
+            if (card == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
+
+            card.Delete();
+            AddDomainEvent(new CardDeletedEvent(Id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void RecycleCard(string id)
+        {
+            var card = Cards.FirstOrDefault(p => p.Id == id);
+            if (card == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
+
+            card.Recycle();
+            AddDomainEvent(new CardRecycledEvent(Id));
+        }
+
+
+
+
+        #endregion
+
+        #region Public Member Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void CreateMember(Member member)
+        {
+            Members.Add(member);
+            AddDomainEvent(new MemberCreatedEvent(member.Id, member.MemberOwnerId, member.AccessLevel, Id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void UpdateMember(string id, BoardMemberAccessLevel accessLevel )
+        {
+            var member = Members.FirstOrDefault(p => p.Id == id);
+            if (member == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Member));
+
+            member.Update(accessLevel);
+
+            AddDomainEvent(new MemberUpdatedEvent(Id, Name.Value, Description.Value));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DeleteMember(string id)
+        {
+            var member = Members.FirstOrDefault(p => p.Id == id);
+            if (member == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Member));
+
+            member.Delete();
+            AddDomainEvent(new MemberDeletedEvent(Id));
+        }
+
 
 
 

@@ -6,20 +6,20 @@ using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Boards.Card.ValueObjects
+namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Members
 {
-    public class CardType : BaseValueObject
+    public class MemberAccessLevel : BaseValueObject
     {
         #region Properties
 
-        public BoardCardType Value { get; private set; }
+        public BoardMemberAccessLevel Value { get; private set; }
 
 
         #endregion
 
         #region Ctors
 
-        public CardType(BoardCardType value)
+        public MemberAccessLevel(BoardMemberAccessLevel value)
         {
             Value = value;
 
@@ -35,9 +35,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Card.ValueObjects
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static CardType Create(BoardCardType value)
+        public static MemberAccessLevel Create(BoardMemberAccessLevel value)
         {
-            return new CardType(value);
+            return new MemberAccessLevel(value);
         }
 
 

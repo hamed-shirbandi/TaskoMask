@@ -5,9 +5,9 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Boards.Member.ValueObjects
+namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Cards
 {
-    public class MemberOwnerId : BaseValueObject
+    public class CardName : BaseValueObject
     {
         #region Properties
 
@@ -18,7 +18,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Member.ValueObjects
 
         #region Ctors
 
-        public MemberOwnerId(string value)
+        public CardName(string value)
         {
             Value = value;
 
@@ -34,9 +34,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Member.ValueObjects
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static MemberOwnerId Create(string value)
+        public static CardName Create(string value)
         {
-            return new MemberOwnerId(value);
+            return new CardName(value);
         }
 
 
@@ -47,13 +47,13 @@ namespace TaskoMask.Domain.Workspace.Boards.Member.ValueObjects
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(MemberOwnerId)));
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(CardName)));
 
             if (Value.Length< DomainConstValues.Card_Name_Min_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(MemberOwnerId), DomainConstValues.Card_Name_Min_Length, DomainConstValues.Card_Name_Max_Length));
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(CardName), DomainConstValues.Card_Name_Min_Length, DomainConstValues.Card_Name_Max_Length));
 
             if (Value.Length > DomainConstValues.Card_Name_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(MemberOwnerId), DomainConstValues.Card_Name_Min_Length, DomainConstValues.Card_Name_Max_Length));
+                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(CardName), DomainConstValues.Card_Name_Min_Length, DomainConstValues.Card_Name_Max_Length));
 
         }
 

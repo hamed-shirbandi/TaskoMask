@@ -1,6 +1,9 @@
 ﻿
+using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Workspace.Boards.ValueObjects.Members;
 
 namespace TaskoMask.Domain.Workspace.Boards.Entities
 {
@@ -16,12 +19,13 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        public Member(string memberOwnerId)
+        public Member(string ownerId, BoardMemberAccessLevel accessLevel)
         {
-            MemberOwnerId = memberOwnerId;
+            OwnerId = MemberOwnerId.Create(ownerId);
+            AccessLevel = MemberAccessLevel.Create(accessLevel);
+
+            CheckPolicies();
         }
-
-
 
         #endregion
 
@@ -31,9 +35,9 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// Each member is an owner at the first
         /// This is a foreign key to Owner
         /// </summary>
-        public string MemberOwnerId { get; private set; }
-        public BoardMemberAccessLevel AccessLevel { get; private set; }
+        public MemberOwnerId OwnerId { get; set; }
 
+        public MemberAccessLevel AccessLevel { get; set; }
 
         #endregion
 
@@ -41,12 +45,38 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Update(BoardMemberAccessLevel accessLevel)
+        {
+            AccessLevel = MemberAccessLevel.Create(accessLevel);
+            base.UpdateModifiedDateTime();
+
+            CheckPolicies();
+        }
+
         #endregion
 
         #region Private Methods
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CheckPolicies()
+        {
+            if (OwnerId == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerId)));
+
+            if (AccessLevel == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(AccessLevel)));
+
+        }
+
+
         #endregion
     }
+
 }

@@ -1,19 +1,20 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Domain.Workspace.Boards.Entities;
 
 namespace TaskoMask.Domain.Workspace.Boards.Events.Cards
 {
     public class CardUpdatedEvent : DomainEvent
     {
-        public CardUpdatedEvent(string id, string name, string description) : base(entityId: id, entityType: nameof(Organization))
+        public CardUpdatedEvent(string id, string name, BoardCardType type) : base(entityId: id, entityType: nameof(Card))
         {
             Id = id;
             Name = name;
-            Description = description;
+            Type = type;
         }
 
         public string Id { get; }
         public string Name { get;  }
-        public string Description { get; }
+        public BoardCardType Type { get; }
     }
 }

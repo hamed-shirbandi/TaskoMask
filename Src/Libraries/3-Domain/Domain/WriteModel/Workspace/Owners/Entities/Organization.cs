@@ -127,7 +127,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
 
             project.Update(name, description);
 
-            AddDomainEvent(new ProjectUpdatedEvent(Id, Name.Value, Description.Value));
+            AddDomainEvent(new ProjectUpdatedEvent(project.Id, project.Name.Value, project.Description.Value));
         }
 
 
@@ -142,7 +142,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
 
             project.Delete();
-            AddDomainEvent(new ProjectDeletedEvent(Id));
+            AddDomainEvent(new ProjectDeletedEvent(project.Id));
         }
 
 
@@ -157,7 +157,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
 
             project.Recycle();
-            AddDomainEvent(new ProjectRecycledEvent(Id));
+            AddDomainEvent(new ProjectRecycledEvent(project.Id));
         }
 
 

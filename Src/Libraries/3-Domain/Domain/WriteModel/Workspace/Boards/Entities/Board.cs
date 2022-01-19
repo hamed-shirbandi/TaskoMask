@@ -110,7 +110,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         public void CreateCard(Card card)
         {
             Cards.Add(card);
-            AddDomainEvent(new CardCreatedEvent(card.Id, card.Name, card.Description, Id));
+            AddDomainEvent(new CardCreatedEvent(card.Id, card.Name.Value,card.Type.Value, Id));
         }
 
 
@@ -118,15 +118,15 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateCard(string id, string name, string description)
+        public void UpdateCard(string id, string name, BoardCardType type)
         {
             var card = Cards.FirstOrDefault(p => p.Id == id);
             if (card == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
 
-            card.Update(name, description);
+            card.Update(name, type);
 
-            AddDomainEvent(new CardUpdatedEvent(Id, Name.Value, Description.Value));
+            AddDomainEvent(new CardUpdatedEvent(card.Id, card.Name.Value, card.Type.Value));
         }
 
 
@@ -141,7 +141,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
 
             card.Delete();
-            AddDomainEvent(new CardDeletedEvent(Id));
+            AddDomainEvent(new CardDeletedEvent(card.Id));
         }
 
 
@@ -156,7 +156,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
 
             card.Recycle();
-            AddDomainEvent(new CardRecycledEvent(Id));
+            AddDomainEvent(new CardRecycledEvent(card.Id));
         }
 
 
@@ -174,7 +174,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         public void CreateMember(Member member)
         {
             Members.Add(member);
-            AddDomainEvent(new MemberCreatedEvent(member.Id, member.MemberOwnerId, member.AccessLevel, Id));
+            AddDomainEvent(new MemberCreatedEvent(member.Id, member.OwnerId.Value, member.AccessLevel.Value, Id));
         }
 
 
@@ -190,7 +190,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
             member.Update(accessLevel);
 
-            AddDomainEvent(new MemberUpdatedEvent(Id, Name.Value, Description.Value));
+            AddDomainEvent(new MemberUpdatedEvent(member.Id, member.AccessLevel.Value));
         }
 
 
@@ -205,7 +205,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Member));
 
             member.Delete();
-            AddDomainEvent(new MemberDeletedEvent(Id));
+            AddDomainEvent(new MemberDeletedEvent(member.Id));
         }
 
 

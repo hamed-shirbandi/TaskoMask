@@ -40,7 +40,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(string name,  BoardCardType type)
+        public void Update(string name, BoardCardType type)
         {
             Name = CardName.Create(name);
             Type = CardType.Create(type);

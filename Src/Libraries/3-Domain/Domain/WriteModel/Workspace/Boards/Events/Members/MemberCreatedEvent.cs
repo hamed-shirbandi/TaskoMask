@@ -6,7 +6,7 @@ namespace TaskoMask.Domain.Workspace.Boards.Events.Members
 {
     public class MemberCreatedEvent : DomainEvent
     {
-        public MemberCreatedEvent(string id, string memberOwnerId, BoardMemberAccessLevel accessLevel, string boardId) : base(entityId: id, entityType: nameof(Card))
+        public MemberCreatedEvent(string id, string memberOwnerId, BoardMemberAccessLevel accessLevel, string boardId) : base(entityId: id, entityType: nameof(Member))
         {
             Id = id;
             MemberOwnerId = memberOwnerId;

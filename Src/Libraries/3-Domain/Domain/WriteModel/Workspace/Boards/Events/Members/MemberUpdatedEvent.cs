@@ -1,19 +1,18 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Domain.Workspace.Boards.Entities;
 
 namespace TaskoMask.Domain.Workspace.Boards.Events.Members
 {
     public class MemberUpdatedEvent : DomainEvent
     {
-        public MemberUpdatedEvent(string id, string name, string description) : base(entityId: id, entityType: nameof(Organization))
+        public MemberUpdatedEvent(string id, BoardMemberAccessLevel accessLevel) : base(entityId: id, entityType: nameof(Member))
         {
             Id = id;
-            Name = name;
-            Description = description;
+            AccessLevel = accessLevel;
         }
 
         public string Id { get; }
-        public string Name { get;  }
-        public string Description { get; }
+        public BoardMemberAccessLevel AccessLevel { get;  }
     }
 }

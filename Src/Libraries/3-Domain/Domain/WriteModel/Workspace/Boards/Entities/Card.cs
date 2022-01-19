@@ -1,10 +1,12 @@
-﻿using TaskoMask.Domain.Workspace.Boards.Events;
-using TaskoMask.Domain.Share.Enums;
+﻿using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Workspace.Boards.ValueObjects.Cards;
+using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Core.Exceptions;
 
 namespace TaskoMask.Domain.Workspace.Boards.Entities
 {
-    public class Card : AggregateRoot
+    public class Card : BaseEntity
     {
         #region Fields
 
@@ -13,16 +15,12 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
 
         #region Ctors
 
-        public Card(string name, string description, string boardId, BoardCardType type, string organizationId, string projectId)
+        public Card(string name, BoardCardType type)
         {
-            Name = name;
-            Description = description;
-            BoardId = boardId;
-            ProjectId = projectId;
-            OrganizationId = organizationId;
-            Type = type;
+            Name = CardName.Create(name);
+            Type = CardType.Create(type);
 
-            AddDomainEvent(new CardCreatedEvent(Id, name, description, boardId, projectId, organizationId));
+            CheckPolicies();
         }
 
         #endregion
@@ -30,12 +28,8 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         #region Properties
 
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public BoardCardType Type { get; set; }
-        public string BoardId { get; set; }
-        public string ProjectId { get; private set; }
-        public string OrganizationId { get; private set; }
+        public CardName Name { get; set; }
+        public CardType Type { get; set; }
 
         #endregion
 
@@ -46,13 +40,13 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void Update(string name, string description, BoardCardType type)
+        public void Update(string name,  BoardCardType type)
         {
-            Name = name;
-            Type = type;
-            Description = description;
+            Name = CardName.Create(name);
+            Type = CardType.Create(type);
             base.UpdateModifiedDateTime();
 
+            CheckPolicies();
         }
 
         #endregion
@@ -60,18 +54,21 @@ namespace TaskoMask.Domain.Workspace.Boards.Entities
         #region Private Methods
 
 
+
         /// <summary>
         /// 
         /// </summary>
-        protected override void CheckInvariants()
+        private void CheckPolicies()
         {
+            if (Name == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
+
+            if (Type == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Type)));
 
         }
 
 
         #endregion
-
-
-
     }
 }

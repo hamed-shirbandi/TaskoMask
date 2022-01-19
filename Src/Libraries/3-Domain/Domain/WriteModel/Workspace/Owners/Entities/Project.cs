@@ -54,7 +54,7 @@ namespace TaskoMask.Domain.Workspace.Organizations.Entities
         public void Update(string name, string description )
         {
             Description = ProjectDescription.Create(description);
-            Name = ProjectName.Create(name); ;
+            Name = ProjectName.Create(name);
             base.UpdateModifiedDateTime();
 
             CheckPolicies();

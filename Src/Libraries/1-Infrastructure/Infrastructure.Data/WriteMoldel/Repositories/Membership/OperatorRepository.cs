@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
 using TaskoMask.Infrastructure.Data.Common.Contracts;
-using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
 {
@@ -29,15 +28,6 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
         #region Public Methods
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> CountByRoleIdAsync(string roleId)
-        {
-            return await _operators.CountDocumentsAsync(e => e.RolesId.Contains(roleId));
-        }
-
-
 
         /// <summary>
         /// 
@@ -48,6 +38,14 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> CountByRoleIdAsync(string roleId)
+        {
+            return await _operators.CountDocumentsAsync(e => e.RolesId.Contains(roleId));
+        }
 
         #endregion
 

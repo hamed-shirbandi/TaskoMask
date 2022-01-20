@@ -9,8 +9,8 @@ namespace TaskoMask.Domain.WriteModel.Membership.Data
     {
         Task<bool> ExistByNameAsync(string id, string name);
         Task<IEnumerable<Role>> GetListByIdsAsync( string[] selectedRolesId);
-        Task<long> CountByPermissionIdAsync(string permissionId);
         Task<IEnumerable<Role>> GetListByPermissionIdAsync(string permissionId);
+        Task<long> CountByPermissionIdAsync(string permissionId);
 
     }
 }

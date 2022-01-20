@@ -24,6 +24,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
             _boards = dbContext.GetCollection<Board>(); 
         }
 
+
         #endregion
 
         #region Public Methods
@@ -33,83 +34,10 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Board>> GetListByProjectIdAsync(string projectId)
+        public bool ExistBoard(string boardId, string boardName)
         {
-            //return await _boards.AsQueryable().Where(o => o.ProjectId == projectId).ToListAsync();
-            return await _boards.AsQueryable().ToListAsync();
-        }
-
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<IEnumerable<Board>> GetListByOrganizationIdAsync(string organizationId)
-        {
-           // return await _boards.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();
-            return await _boards.AsQueryable().ToListAsync();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<bool> ExistBoard(string id, string name)
-        {
-            var board = await _boards.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
-            return board != null && board.Id != id;
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> CountByProjectIdAsync(string projectId)
-        {
-            return await _boards.CountDocumentsAsync(b => b.ProjectId.Value==projectId);
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public IEnumerable<Board> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
-        {
-            var queryable = _boards.AsQueryable();
-
-            #region By term
-
-            if (!string.IsNullOrEmpty(term))
-            {
-                queryable = queryable.Where(p => p.Name.Value.Contains(term) || p.Description.Value.Contains(term));
-            }
-
-            #endregion
-
-            #region SortOrder
-
-            queryable = queryable.OrderByDescending(p => p.Id);
-
-            #endregion
-
-            #region  Skip Take
-
-            totalItemCount = queryable.CountAsync().Result;
-            pageSize = (int)Math.Ceiling((double)totalItemCount / recordsPerPage);
-
-            page = page > pageSize || page < 1 ? 1 : page;
-
-
-            var skiped = (page - 1) * recordsPerPage;
-            queryable = queryable.Skip(skiped).Take(recordsPerPage);
-
-
-            #endregion
-
-            return queryable.ToList();
+            var board = _boards.Find(e => e.Name.Value == boardName).FirstOrDefault();
+            return board != null && board.Id != boardId;
         }
 
 

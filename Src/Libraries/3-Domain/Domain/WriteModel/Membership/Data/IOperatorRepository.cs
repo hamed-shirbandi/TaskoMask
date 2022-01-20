@@ -7,7 +7,7 @@ namespace TaskoMask.Domain.WriteModel.Membership.Data
 {
     public interface IOperatorRepository : IBaseRepository<Operator>
     {
-        Task<long> CountByRoleIdAsync(string roleId);
         Task<IEnumerable<Operator>> GetListByRoleIdAsync(string roleId);
+        Task<long> CountByRoleIdAsync(string roleId);
     }
 }

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
 using TaskoMask.Infrastructure.Data.Common.Contracts;
-using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
 {
@@ -65,9 +64,9 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> CountByPermissionIdAsync(string permissionId)
+        public async Task<IEnumerable<Role>> GetListByPermissionIdAsync(string permissionId)
         {
-            return await _roles.CountDocumentsAsync(e => e.PermissionsId.Contains(permissionId));
+            return await _roles.Find(r => r.PermissionsId.Contains(permissionId)).ToListAsync();
         }
 
 
@@ -75,12 +74,10 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Role>> GetListByPermissionIdAsync(string permissionId)
+        public async Task<long> CountByPermissionIdAsync(string permissionId)
         {
-            return await _roles.Find(r => r.PermissionsId.Contains(permissionId)).ToListAsync();
+            return await _roles.CountDocumentsAsync(e => e.PermissionsId.Contains(permissionId));
         }
-
-
 
 
 

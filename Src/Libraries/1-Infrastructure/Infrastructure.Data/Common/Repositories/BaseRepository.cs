@@ -6,7 +6,7 @@ using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Infrastructure.Data.Common.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories
+namespace TaskoMask.Infrastructure.Data.Common.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {

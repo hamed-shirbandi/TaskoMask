@@ -1,5 +1,5 @@
 
-using TaskoMask.Infrastructure.Data.WriteMoldel.DataProviders;
+using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
 var builder = WebApplication.CreateBuilder(args);

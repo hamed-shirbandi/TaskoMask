@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Tasks.ValueObjects.Tasks
+namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.ValueObjects.Tasks
 {
     public class TaskCardId : BaseValueObject
     {

@@ -1,8 +1,8 @@
 ﻿using TaskoMask.Domain.Core.Events;
 using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.Workspace.Boards.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 
-namespace TaskoMask.Domain.Workspace.Boards.Events.Members
+namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Members
 {
     public class MemberCreatedEvent : DomainEvent
     {

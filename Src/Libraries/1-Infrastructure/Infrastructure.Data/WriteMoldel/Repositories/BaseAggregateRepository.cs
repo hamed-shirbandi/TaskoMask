@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Infrastructure.Data.DbContext;
+using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Repositories
+namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories
 {
     public class BaseAggregateRepository<TEntity> : IBaseAggregateRepository<TEntity> where TEntity : BaseEntity
     {

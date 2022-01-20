@@ -1,10 +1,10 @@
 ﻿using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Workspace.Boards.ValueObjects.Cards;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Cards;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Core.Exceptions;
 
-namespace TaskoMask.Domain.Workspace.Boards.Entities
+namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
 {
     public class Card : BaseEntity
     {

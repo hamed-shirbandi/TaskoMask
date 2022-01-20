@@ -7,9 +7,9 @@ using TaskoMask.Application.Common.Services;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Authorization.Entities;
+using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Domain.Authorization.Data;
+using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Domain.Share.Helpers;
 
 namespace TaskoMask.Application.Authorization.Users.Services

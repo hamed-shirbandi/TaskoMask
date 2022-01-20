@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Cards
+namespace TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Cards
 {
     public class CardName : BaseValueObject
     {

@@ -3,11 +3,12 @@ using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Workspace.Boards.Data;
-using TaskoMask.Domain.Workspace.Boards.Entities;
-using TaskoMask.Infrastructure.Data.DbContext;
+using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
+using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
+using TaskoMask.Infrastructure.Data.WriteMoldel.Repositories;
 
-namespace TaskoMask.Infrastructure.Data.Repositories
+namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
 {
     public class CardRepository : BaseAggregateRepository<Card>, ICardRepository
     {

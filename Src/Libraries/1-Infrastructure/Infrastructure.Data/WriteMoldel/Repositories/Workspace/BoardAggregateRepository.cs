@@ -3,11 +3,11 @@ using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Workspace.Boards.Data;
-using TaskoMask.Domain.Workspace.Boards.Entities;
-using TaskoMask.Infrastructure.Data.DbContext;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
+using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Repositories
+namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 {
     public class BoardAggregateRepository : BaseAggregateRepository<Board>, IBoardAggregateRepository
     {

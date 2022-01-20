@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Workspace.Owners.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.Workspace.Owners.Events
+namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners
 {
     public class OwnerActivityStateChangedEvent : DomainEvent
     {

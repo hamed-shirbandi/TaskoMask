@@ -3,13 +3,13 @@ using System.Linq;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
-using TaskoMask.Domain.Workspace.Organizations.Events;
-using TaskoMask.Domain.Workspace.Organizations.Services;
-using TaskoMask.Domain.Workspace.Owners.Events;
-using TaskoMask.Domain.Workspace.Owners.ValueObjects;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Projects;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners;
 
-namespace TaskoMask.Domain.Workspace.Owners.Entities
+namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 {
     /// <summary>
     /// Owners are those who manage their tasks in this system

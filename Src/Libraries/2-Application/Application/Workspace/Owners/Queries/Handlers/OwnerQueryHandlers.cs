@@ -11,9 +11,9 @@ using TaskoMask.Application.Workspace.Owners.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
-using TaskoMask.Domain.Workspace.Organizations.Data;
-using TaskoMask.Domain.Workspace.Owners.Data;
-using TaskoMask.Domain.Authorization.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 
 namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers

@@ -5,10 +5,10 @@ using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Domain.Workspace.Boards.Entities;
-using TaskoMask.Domain.Workspace.Owners.Entities;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
-using TaskoMask.Domain.Workspace.Tasks.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {

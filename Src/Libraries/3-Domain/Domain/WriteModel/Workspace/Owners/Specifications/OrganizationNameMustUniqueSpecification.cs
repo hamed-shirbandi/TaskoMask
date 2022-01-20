@@ -1,8 +1,8 @@
 ﻿using TaskoMask.Domain.Core.Specifications;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
-using TaskoMask.Domain.Workspace.Organizations.Services;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
 
-namespace TaskoMask.Domain.Workspace.Organizations.Specifications
+namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
 {
     internal class OrganizationNameMustUniqueSpecification : ISpecification<Organization>
     {

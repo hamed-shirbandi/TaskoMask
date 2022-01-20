@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Domain.Share.Services;
 
-namespace TaskoMask.Infrastructure.Data.EventSourcing
+namespace TaskoMask.Infrastructure.Data.WriteMoldel.EventSourcing
 {
 
     /// <summary>

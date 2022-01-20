@@ -2,11 +2,11 @@
 using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
-using TaskoMask.Domain.Workspace.Owners.Data;
-using TaskoMask.Domain.Workspace.Owners.Entities;
-using TaskoMask.Infrastructure.Data.DbContext;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
+namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 {
     public class OwnerAggregateRepository : BaseAggregateRepository<Owner>, IOwnerAggregateRepository
     {

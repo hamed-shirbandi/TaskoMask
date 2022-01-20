@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.Workspace.Organizations.Events
+namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Projects
 {
     public class ProjectUpdatedEvent : DomainEvent
     {

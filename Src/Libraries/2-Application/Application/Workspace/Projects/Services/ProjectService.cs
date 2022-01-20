@@ -12,7 +12,7 @@ using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Services;
 using System.Linq;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Application.Workspace.Projects.Services
 {

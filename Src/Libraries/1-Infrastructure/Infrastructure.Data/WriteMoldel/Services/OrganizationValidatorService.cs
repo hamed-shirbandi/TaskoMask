@@ -1,5 +1,5 @@
-﻿using TaskoMask.Domain.Workspace.Organizations.Data;
-using TaskoMask.Domain.Workspace.Organizations.Services;
+﻿using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
 
 namespace TaskoMask.Infrastructure.Data.Services
 {

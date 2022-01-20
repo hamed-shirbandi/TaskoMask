@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TaskoMask.Domain.Workspace.Organizations.Services
+namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Services
 {
     /// <summary>
     /// Some validations that need persistence layer to do

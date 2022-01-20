@@ -3,11 +3,13 @@ using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Workspace.Organizations.Data;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
-using TaskoMask.Infrastructure.Data.DbContext;
+using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
+using TaskoMask.Infrastructure.Data.WriteMoldel.Repositories;
 
-namespace TaskoMask.Infrastructure.Data.Repositories.Workspace
+namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
 {
     public class OrganizationRepository : BaseAggregateRepository<Organization>, IOrganizationRepository
     {

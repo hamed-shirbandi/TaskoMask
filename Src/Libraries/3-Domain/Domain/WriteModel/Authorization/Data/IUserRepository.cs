@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Authorization.Entities;
+using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Domain.Core.Data;
 
-namespace TaskoMask.Domain.Authorization.Data
+namespace TaskoMask.Domain.WriteModel.Authorization.Data
 {
     public interface IUserRepository : IBaseAggregateRepository<User>
     {

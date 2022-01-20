@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TaskoMask.Infrastructure.Data.Extensions
+namespace TaskoMask.Infrastructure.Data.Common.Extensions
 {
     /// <summary>
     /// 

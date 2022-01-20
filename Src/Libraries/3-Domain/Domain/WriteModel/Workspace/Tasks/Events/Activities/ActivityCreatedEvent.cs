@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Workspace.Tasks.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
 
-namespace TaskoMask.Domain.Workspace.Tasks.Events.Activities
+namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Activities
 {
     public class ActivityCreatedEvent : DomainEvent
     {

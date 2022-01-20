@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Workspace.Boards.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 
-namespace TaskoMask.Domain.Workspace.Boards.Data
+namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Data
 {
     public interface IBoardAggregateRepository : IBaseAggregateRepository<Board>
     {

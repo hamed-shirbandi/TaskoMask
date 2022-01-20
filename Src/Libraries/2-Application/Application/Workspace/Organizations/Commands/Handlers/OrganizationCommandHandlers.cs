@@ -9,9 +9,9 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.Workspace.Organizations.Data;
-using TaskoMask.Domain.Workspace.Organizations.Services;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {

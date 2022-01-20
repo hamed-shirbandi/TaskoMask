@@ -3,7 +3,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Tasks.ValueObjects.Activities
+namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.ValueObjects.Activities
 {
     public class ActivityDescription : BaseValueObject
     {

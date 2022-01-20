@@ -13,7 +13,7 @@ using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Services;
-using TaskoMask.Domain.Workspace.Boards.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Application.Workspace.Cards.Services
 {

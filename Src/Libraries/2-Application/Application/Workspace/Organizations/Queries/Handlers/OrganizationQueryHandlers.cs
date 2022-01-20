@@ -11,8 +11,8 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.Workspace.Organizations.Data;
-using TaskoMask.Domain.Workspace.Owners.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 
 namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
 {

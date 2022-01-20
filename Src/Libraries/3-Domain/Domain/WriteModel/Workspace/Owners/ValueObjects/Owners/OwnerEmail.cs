@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Owners.ValueObjects
+namespace TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners
 {
     /// <summary>
     /// 

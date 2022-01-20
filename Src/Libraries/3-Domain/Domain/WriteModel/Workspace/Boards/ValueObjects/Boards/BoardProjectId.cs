@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Workspace.Boards.ValueObjects.Boards
+namespace TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Boards
 {
     public class BoardProjectId : BaseValueObject
     {

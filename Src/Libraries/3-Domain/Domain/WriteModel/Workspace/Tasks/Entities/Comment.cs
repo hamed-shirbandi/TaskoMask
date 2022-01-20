@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Exceptions;
+﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Workspace.Tasks.ValueObjects.Comments;
+using TaskoMask.Domain.WriteModel.Workspace.Tasks.ValueObjects.Comments;
 
-namespace TaskoMask.Domain.Workspace.Tasks.Entities
+namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
 {
     /// <summary>
     /// Every board's member can leave comment on tasks

@@ -14,7 +14,7 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Application.Workspace.Organizations.Services
 {

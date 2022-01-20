@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Authorization.Entities
+namespace TaskoMask.Domain.WriteModel.Authorization.Entities
 {
     public class User : BaseEntity
     {

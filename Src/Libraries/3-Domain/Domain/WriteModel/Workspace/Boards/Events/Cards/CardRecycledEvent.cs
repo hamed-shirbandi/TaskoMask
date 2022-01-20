@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Workspace.Boards.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 
-namespace TaskoMask.Domain.Workspace.Boards.Events.Cards
+namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards
 {
     public class CardRecycledEvent : DomainEvent
     {

@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using TaskoMask.Domain.Core.Specifications;
-using TaskoMask.Domain.Workspace.Organizations.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.Workspace.Organizations.Specifications
+namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
 {
 
     internal class ProjectNameMustUniqueSpecification : ISpecification<Organization>

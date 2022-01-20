@@ -91,7 +91,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            serviceProvider.InitialMongoDb();
+            serviceProvider.InitialDb();
             serviceProvider.SeedEssentialData();
             app.UseHttpsRedirection();
         }

@@ -19,13 +19,13 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
         #region Ctors
 
-        private Organization(string name, string description, string ownerOwnerId, IOrganizationValidatorService organizationValidatorService)
+        private Organization(string name, string description, string ownerOwnerId)
         {
             Name = OrganizationName.Create(name);
             Description = OrganizationDescription.Create(description);
             OwnerOwnerId = OrganizationOwnerOwnerId.Create(ownerOwnerId);
 
-            CheckPolicies(organizationValidatorService);
+            CheckPolicies();
         }
 
 
@@ -168,7 +168,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        private void CheckPolicies(IOrganizationValidatorService organizationValidatorService)
+        private void CheckPolicies()
         {
             if (Name == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
@@ -179,7 +179,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             if (OwnerOwnerId == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerOwnerId)));
 
-            if (!new OrganizationNameMustUniqueSpecification(organizationValidatorService).IsSatisfiedBy(this))
+            if (!new OrganizationNameMustUniqueSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
 
             if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))

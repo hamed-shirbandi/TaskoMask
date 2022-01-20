@@ -16,7 +16,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.DataProviders
     /// <summary>
     /// 
     /// </summary>
-    public static class DbInitialization
+    public static class WriteDbInitialization
     {
 
         /// <summary>

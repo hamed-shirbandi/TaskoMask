@@ -9,18 +9,16 @@ using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
-using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.WriteMoldel.DataProviders
+namespace TaskoMask.Infrastructure.Data.ReadMoldel.DataProviders
 {
 
     /// <summary>
     /// 
     /// </summary>
-    public static class DbSeedData
+    public static class ReadDbSeedData
     {
 
 
@@ -31,7 +29,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.DataProviders
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {
-                var _dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
+                var _dbContext = serviceScope.ServiceProvider.GetService<IReadDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
                 var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
                 var _operators = _dbContext.GetCollection<Operator>();

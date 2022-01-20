@@ -87,7 +87,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IInMemoryBus, InMemoryBus>();
 
             services.AddScoped<IEncryptionService, EncryptionService>();
-            services.AddScoped<IOrganizationValidatorService, OrganizationValidatorService>();
+            services.AddScoped<IOrganizationValidatorService, TaskValidatorService>();
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 

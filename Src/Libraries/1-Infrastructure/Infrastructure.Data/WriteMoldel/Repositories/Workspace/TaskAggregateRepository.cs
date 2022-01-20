@@ -36,7 +36,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
         /// </summary>
         public bool ExistTask(string taskId, string taskTitle)
         {
-            var task =  _tasks.Find(e => e.Title.Value == taskTitle).FirstOrDefault();
+            var task =  _tasks.Find(e =>e.Title.Value == taskTitle).FirstOrDefault();
             return task != null && task.Id != taskId;
         }
 

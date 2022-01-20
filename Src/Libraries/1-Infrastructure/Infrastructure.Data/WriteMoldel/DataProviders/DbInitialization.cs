@@ -8,6 +8,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.DataProviders
 {

@@ -10,19 +10,19 @@ using TaskoMask.Infrastructure.Data.WriteMoldel.Repositories;
 
 namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
 {
-    public class ProjectRepository : BaseAggregateRepository<Project>, IProjectRepository
+    public class MemberRepository : BaseAggregateRepository<Member>, IMemberRepository
     {
         #region Fields
 
-        private readonly IMongoCollection<Project> _projects;
+        private readonly IMongoCollection<Member> _members;
 
         #endregion
 
         #region Ctors
 
-        public ProjectRepository(IMongoDbContext dbContext) : base(dbContext)
+        public MemberRepository(IMongoDbContext dbContext) : base(dbContext)
         {
-            _projects = dbContext.GetCollection<Project>();
+            _members = dbContext.GetCollection<Member>();
         }
 
         #endregion

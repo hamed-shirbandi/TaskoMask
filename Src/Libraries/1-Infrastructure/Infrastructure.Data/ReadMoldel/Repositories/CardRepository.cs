@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.ReadModel.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
+using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Infrastructure.Data.Common.Contracts;
 using TaskoMask.Infrastructure.Data.WriteMoldel.Repositories;
 
 namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
@@ -46,7 +46,7 @@ namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
         /// </summary>
         public async Task<bool> ExistByNameAsync(string id, string name)
         {
-            var card = await _cards.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
+            var card = await _cards.Find(e => e.Name == name).FirstOrDefaultAsync();
             return card != null && card.Id != id;
         }
 

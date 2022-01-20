@@ -31,6 +31,26 @@ namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<Member>> GetListByBoardIdAsync(string boardId)
+        {
+            return await _members.AsQueryable().Where(o => o.BoardId == boardId).ToListAsync();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<Member>> GetListByOrganizationIdAsync(string organizationId)
+        {
+            return await _members.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();
+        }
+
+
+
         #endregion
 
         #region Private Methods

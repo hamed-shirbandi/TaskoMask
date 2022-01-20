@@ -31,6 +31,46 @@ namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public IEnumerable<Owner> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
+        {
+            var queryable = _owners.AsQueryable();
+
+            #region By term
+
+            if (!string.IsNullOrEmpty(term))
+            {
+                queryable = queryable.Where(p => p.DisplayName.Contains(term) || p.Email.Contains(term));
+            }
+
+            #endregion
+
+            #region SortOrder
+
+            queryable = queryable.OrderByDescending(p => p.Id);
+
+            #endregion
+
+            #region  Skip Take
+
+            totalItemCount = queryable.CountAsync().Result;
+            pageSize = (int)Math.Ceiling((double)totalItemCount / recordsPerPage);
+
+            page = page > pageSize || page < 1 ? 1 : page;
+
+
+            var skiped = (page - 1) * recordsPerPage;
+            queryable = queryable.Skip(skiped).Take(recordsPerPage);
+
+
+            #endregion
+
+            return queryable.ToList();
+        }
+
+
         #endregion
 
         #region Private Methods

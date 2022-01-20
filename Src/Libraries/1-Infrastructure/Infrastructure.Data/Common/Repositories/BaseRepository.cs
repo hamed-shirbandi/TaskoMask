@@ -8,7 +8,7 @@ using TaskoMask.Infrastructure.Data.Common.Contracts;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories
 {
-    public class BaseAggregateRepository<TEntity> : IBaseAggregateRepository<TEntity> where TEntity : BaseEntity
+    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         #region Fields
 
@@ -18,7 +18,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories
 
         #region Ctors
 
-        public BaseAggregateRepository(IMongoDbContext dbContext)
+        public BaseRepository(IMongoDbContext dbContext)
         {
             _collection = dbContext.GetCollection<TEntity>();
         }
@@ -41,6 +41,16 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories
         /// <summary>
         /// 
         /// </summary>
+        public virtual async Task UpdateAsync(TEntity entity)
+        {
+            await _collection.ReplaceOneAsync(p => p.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false });
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual async Task<TEntity> GetByIdAsync(string id)
         {
             return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
@@ -54,16 +64,6 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories
         public virtual async Task<IEnumerable<TEntity>> GetListAsync()
         {
             return await _collection.AsQueryable().ToListAsync();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual async Task UpdateAsync(TEntity entity)
-        {
-            await _collection.ReplaceOneAsync(p => p.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false });
         }
 
 

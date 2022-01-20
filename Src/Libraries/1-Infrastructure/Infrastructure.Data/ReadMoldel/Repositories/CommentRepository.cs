@@ -10,7 +10,7 @@ using TaskoMask.Infrastructure.Data.WriteMoldel.Repositories;
 
 namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
 {
-    public class CommentRepository : BaseAggregateRepository<Comment>, ICommentRepository
+    public class CommentRepository : BaseRepository<Comment>, ICommentRepository
     {
         #region Fields
 

@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
+using TaskoMask.Infrastructure.Data.Common.Contracts;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 {
-    public class BoardAggregateRepository : BaseAggregateRepository<Board>, IBoardAggregateRepository
+    public class BoardAggregateRepository : BaseRepository<Board>, IBoardAggregateRepository
     {
         #region Fields
 

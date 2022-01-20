@@ -4,11 +4,12 @@ using System;
 using System.Collections.Generic;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Infrastructure.Data.Common.Contracts;
 using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 {
-    public class OwnerAggregateRepository : BaseAggregateRepository<Owner>, IOwnerAggregateRepository
+    public class OwnerAggregateRepository : BaseRepository<Owner>, IOwnerAggregateRepository
     {
         #region Fields
 

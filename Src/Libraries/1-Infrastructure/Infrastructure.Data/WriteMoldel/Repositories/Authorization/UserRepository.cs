@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
-using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
+using TaskoMask.Infrastructure.Data.Common.Contracts;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Authorization
 {
-    public class UserRepository : BaseAggregateRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
 
         #region Fields

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Infrastructure.Data.Common.Contracts;
 using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
 {
-    public class OperatorRepository : BaseAggregateRepository<Operator>, IOperatorRepository
+    public class OperatorRepository : BaseRepository<Operator>, IOperatorRepository
     {
         #region Fields
 

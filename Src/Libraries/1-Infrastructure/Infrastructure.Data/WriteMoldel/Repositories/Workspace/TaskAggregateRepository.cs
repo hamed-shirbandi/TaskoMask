@@ -4,11 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
+using TaskoMask.Infrastructure.Data.Common.Contracts;
 using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 {
-    public class TaskAggregateRepository : BaseAggregateRepository<Domain.WriteModel.Workspace.Tasks.Entities.Task>, ITaskAggregateRepository
+    public class TaskAggregateRepository : BaseRepository<Domain.WriteModel.Workspace.Tasks.Entities.Task>, ITaskAggregateRepository
     {
         #region Fields
 

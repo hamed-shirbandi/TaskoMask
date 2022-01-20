@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Data;
 namespace TaskoMask.Domain.ReadModel.Data
 {
 
-    public interface ITaskRepository : IBaseAggregateRepository<Entities.Task>
+    public interface ITaskRepository : IBaseRepository<Entities.Task>
     {
      
     }

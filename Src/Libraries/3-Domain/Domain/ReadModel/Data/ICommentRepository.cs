@@ -6,7 +6,7 @@ using TaskoMask.Domain.ReadModel.Entities;
 namespace TaskoMask.Domain.ReadModel.Data
 {
 
-    public interface ICommentRepository : IBaseAggregateRepository<Comment>
+    public interface ICommentRepository : IBaseRepository<Comment>
     {
     }
 }

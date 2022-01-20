@@ -6,11 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Infrastructure.Data.Common.Contracts;
 using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
 {
-    public class RoleRepository : BaseAggregateRepository<Role>, IRoleRepository
+    public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
         #region Fields
 

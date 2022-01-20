@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace TaskoMask.Domain.WriteModel.Membership.Data
 {
-    public interface IRoleRepository : IBaseAggregateRepository<Role>
+    public interface IRoleRepository : IBaseRepository<Role>
     {
         Task<bool> ExistByNameAsync(string id, string name);
         Task<IEnumerable<Role>> GetListByIdsAsync( string[] selectedRolesId);

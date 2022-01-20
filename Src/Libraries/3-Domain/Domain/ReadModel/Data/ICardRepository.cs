@@ -6,7 +6,7 @@ using TaskoMask.Domain.ReadModel.Entities;
 namespace TaskoMask.Domain.ReadModel.Data
 {
 
-    public interface ICardRepository : IBaseAggregateRepository<Card>
+    public interface ICardRepository : IBaseRepository<Card>
     {
     }
 }

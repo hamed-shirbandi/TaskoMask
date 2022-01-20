@@ -82,7 +82,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IEventStore, RedisEventStore>();
             services.AddScoped<IInMemoryBus, InMemoryBus>();
 
-            services.AddScoped(typeof(IBaseAggregateRepository<>), typeof(BaseAggregateRepository<>));
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IOperatorRepository, OperatorRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();

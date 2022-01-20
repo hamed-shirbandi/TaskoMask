@@ -6,11 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Infrastructure.Data.Common.Contracts;
 using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
 {
-    public class PermissionRepository : BaseAggregateRepository<Permission>, IPermissionRepository
+    public class PermissionRepository : BaseRepository<Permission>, IPermissionRepository
     {
         private readonly IMongoCollection<Permission> _permissions;
         public PermissionRepository(IMongoDbContext dbContext) : base(dbContext)

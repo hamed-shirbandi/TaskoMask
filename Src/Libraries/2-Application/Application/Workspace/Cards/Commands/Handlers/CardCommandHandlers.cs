@@ -21,9 +21,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
     {
         #region Fields
 
-        private readonly ICardRepository _cardRepository;
         private readonly IBoardAggregateRepository _boardRepository;
-        private readonly IProjectRepository _projectRepository;
 
 
         #endregion

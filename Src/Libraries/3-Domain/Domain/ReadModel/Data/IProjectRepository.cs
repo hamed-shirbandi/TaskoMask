@@ -6,7 +6,7 @@ using TaskoMask.Domain.ReadModel.Entities;
 namespace TaskoMask.Domain.ReadModel.Data
 {
 
-    public interface IProjectRepository: IBaseAggregateRepository<Project>
+    public interface IProjectRepository: IBaseRepository<Project>
     {
      
     }

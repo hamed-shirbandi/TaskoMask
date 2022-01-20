@@ -14,6 +14,7 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
+using TaskoMask.Domain.ReadModel.Data;
 
 namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
 {
@@ -108,7 +109,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
             foreach (var item in boardsDto)
             {
                 var project = await _projectRepository.GetByIdAsync(item.ProjectId);
-                item.ProjectName = project?.Name.Value;
+                item.ProjectName = project?.Name;
                 item.CardsCount = await _cardRepository.CountByBoardIdAsync(item.Id);
             }
 

@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Domain.Core.Data
 {
-    public interface IBaseAggregateRepository<TEntity>:IDisposable where TEntity: BaseEntity
+    public interface IBaseRepository<TEntity>: IDisposable where TEntity: BaseEntity
     {
         Task CreateAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);

@@ -54,7 +54,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public async Task<bool> ExistByTitleAsync(string id, string title)
+        public async Task<bool> ExistTask(string id, string title)
         {
             var task = await _tasks.Find(e => e.Title.Value == title).FirstOrDefaultAsync();
             return task != null && task.Id != id;

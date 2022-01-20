@@ -8,6 +8,8 @@ namespace TaskoMask.Domain.ReadModel.Data
 
     public interface IOrganizationRepository : IBaseRepository<Organization>
     {
-
+        Task<IEnumerable<Organization>> GetListByOwnerIdAsync(string ownerId);
+        Task<long> CountByOwnerIdAsync(string ownerId);
+        IEnumerable<Organization> Search(int page, int recordsPerPage, string term, out int pageNumber, out int totalCount);
     }
 }

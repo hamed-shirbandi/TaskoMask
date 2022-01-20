@@ -6,6 +6,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Data
 {
     public interface IOwnerAggregateRepository : IBaseRepository<Owner>
     {
-        IEnumerable<Owner> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount);
+        bool ExistOrganization(string ownerId,string organizationId, string organizationName);
+        bool ExistProject(string ownerId, string organizationId, string projectName);
     }
 }

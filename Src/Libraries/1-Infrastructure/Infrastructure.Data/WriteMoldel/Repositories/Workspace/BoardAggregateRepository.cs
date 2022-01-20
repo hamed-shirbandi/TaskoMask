@@ -57,7 +57,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public async Task<bool> ExistByNameAsync(string id, string name)
+        public async Task<bool> ExistBoard(string id, string name)
         {
             var board = await _boards.Find(e => e.Name.Value == name).FirstOrDefaultAsync();
             return board != null && board.Id != id;

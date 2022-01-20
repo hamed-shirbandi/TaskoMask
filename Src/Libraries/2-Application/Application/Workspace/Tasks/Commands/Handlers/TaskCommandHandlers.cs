@@ -45,7 +45,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
         {
-            var exist = await _taskRepository.ExistByTitleAsync("", request.Title);
+            var exist = await _taskRepository.ExistTask("", request.Title);
             if (exist)
             {
                 NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
@@ -84,7 +84,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (task == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
-            var exist = await _taskRepository.ExistByTitleAsync(task.Id, request.Title);
+            var exist = await _taskRepository.ExistTask(task.Id, request.Title);
             if (exist)
             {
                 NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);

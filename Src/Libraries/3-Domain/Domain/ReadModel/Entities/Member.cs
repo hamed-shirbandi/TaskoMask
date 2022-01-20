@@ -8,12 +8,10 @@ namespace TaskoMask.Domain.ReadModel.Entities
     /// </summary>
     public class Member : BaseEntity
     {
-        /// <summary>
-        /// Each member is an owner at the first
-        /// This is a foreign key to Owner
-        /// </summary>
         public string OwnerId { get; set; }
-
+        public string BoardId { get; set; }
+        public string ProjectId { get; set; }
+        public string OrganizationId { get; set; }
         public string AccessLevel { get; set; }
     }
 

@@ -48,7 +48,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
         public async Task<CommandResult> Handle(CreateBoardCommand request, CancellationToken cancellationToken)
         {
             //TODO move this validations type in all handlers to domain
-            var exist = await _boardRepository.ExistByNameAsync("", request.Name);
+            var exist = await _boardRepository.ExistBoard("", request.Name);
             if (exist)
             {
                 NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
@@ -78,7 +78,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
-            var exist = await _boardRepository.ExistByNameAsync(board.Id, request.Name);
+            var exist = await _boardRepository.ExistBoard(board.Id, request.Name);
             if (exist)
             {
                 NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);

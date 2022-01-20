@@ -8,6 +8,8 @@ namespace TaskoMask.Domain.ReadModel.Data
 
     public interface IMemberRepository : IBaseRepository<Member>
     {
-      
+        Task<IEnumerable<Member>> GetListByBoardIdAsync(string boardId);
+        Task<IEnumerable<Member>> GetListByOrganizationIdAsync(string organizationId);
+
     }
 }

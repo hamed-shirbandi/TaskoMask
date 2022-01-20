@@ -10,8 +10,8 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 
 namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 {
@@ -21,18 +21,19 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
     {
         #region Fields
 
-        private readonly ITaskAggregateRepository _taskRepository;
-        private readonly ICardRepository _cardRepository;
-        private readonly IBoardAggregateRepository _boardRepository;
-        private readonly IProjectRepository _projectRepository;
+        private readonly ITaskAggregateRepository _taskAggregateRepository;
+        private readonly IBoardAggregateRepository _boardAggregateRepository;
+        private readonly ITaskValidatorService _taskValidatorService;
 
         #endregion
 
         #region Ctors
 
-        public TaskCommandHandlers(ITaskAggregateRepository taskRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public TaskCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus, ITaskValidatorService taskValidatorService, IBoardAggregateRepository boardAggregateRepository) : base(notifications, inMemoryBus)
         {
-            _taskRepository = taskRepository;
+            _taskAggregateRepository = taskAggregateRepository;
+            _taskValidatorService = taskValidatorService;
+            _boardAggregateRepository = boardAggregateRepository;
         }
 
         #endregion
@@ -45,32 +46,14 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
         {
-            var exist = await _taskRepository.ExistTask("", request.Title);
-            if (exist)
-            {
-                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Create_Failed);
-            }
+            var board = await _boardAggregateRepository.GetByCardIdAsync(request.CardId);
+            if (board == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
-            //var card = await _cardRepository.GetByIdAsync(request.CardId);
-            //if (card == null)
-            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);
+            var task =Domain.WriteModel.Workspace.Tasks.Entities.Task.CreateTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
 
-
-            //var board = await _boardRepository.GetByIdAsync(card.BoardId);
-            //if (board == null)
-            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
-
-
-            //var project = await _projectRepository.GetByIdAsync(board.ProjectId);
-            //if (project == null)
-            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
-
-            var task = Domain.Workspace.Tasks.Entities.Task.CreateTask(title: request.Title, description: request.Description, cardId: request.CardId);
-
-            await _taskRepository.CreateAsync(task);
+            await _taskAggregateRepository.CreateAsync(task);
             return new CommandResult(ApplicationMessages.Create_Success, task.Id);
-
         }
 
 
@@ -80,20 +63,14 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateTaskCommand request, CancellationToken cancellationToken)
         {
-            var task = await _taskRepository.GetByIdAsync(request.Id);
+            var task = await _taskAggregateRepository.GetByIdAsync(request.Id);
             if (task == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
-            var exist = await _taskRepository.ExistTask(task.Id, request.Title);
-            if (exist)
-            {
-                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
-            }
+           
+            task.UpdateTask(request.Title, request.Description,_taskValidatorService);
 
-            task.UpdateTask(request.Title, request.Description);
-
-            await _taskRepository.UpdateAsync(task);
+            await _taskAggregateRepository.UpdateAsync(task);
             return new CommandResult(ApplicationMessages.Update_Success, task.Id);
 
         }

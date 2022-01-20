@@ -11,8 +11,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
+using TaskoMask.Domain.ReadModel.Data;
 
 namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
 {
@@ -27,13 +26,13 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
 
         private readonly IProjectRepository _projectRepository;
         private readonly IOrganizationRepository _organizationRepository;
-        private readonly IBoardAggregateRepository _boardRepository;
+        private readonly IBoardRepository _boardRepository;
 
         #endregion
 
         #region Ctors
 
-        public ProjectQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper, IBoardAggregateRepository boardRepository, IOrganizationRepository organizationRepository) : base(mapper, notifications)
+        public ProjectQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper, IBoardRepository boardRepository, IOrganizationRepository organizationRepository) : base(mapper, notifications)
         {
             _projectRepository = projectRepository;
             _boardRepository = boardRepository;
@@ -96,7 +95,7 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
             foreach (var item in projectsDto)
             {
                 var organization = await _organizationRepository.GetByIdAsync(item.OrganizationId);
-                item.OrganizationName = organization?.Name.Value;
+                item.OrganizationName = organization?.Name;
                 item.BoardsCount = await _boardRepository.CountByProjectIdAsync(item.Id) ;
             }
 

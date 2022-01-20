@@ -6,6 +6,8 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Activities;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Comments;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Tasks;
+using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
+using TaskoMask.Domain.WriteModel.Workspace.Tasks.Specifications;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.ValueObjects.Tasks;
 
 namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
@@ -15,16 +17,19 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
     {
         #region Fields
 
+        private ITaskValidatorService _taskValidatorService;
 
         #endregion
 
         #region Ctors
 
-        private Task(string title, string description, string cardId)
+        private Task(string title, string description, string cardId,string boardId, ITaskValidatorService taskValidatorService)
         {
             Title = TaskTitle.Create(title);
             Description = TaskDescription.Create(description);
             CardId = TaskCardId.Create(cardId);
+            BoardId = TaskBoardId.Create(boardId);
+            _taskValidatorService = taskValidatorService;
 
             CheckPolicies();
 
@@ -37,6 +42,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
 
         public TaskTitle Title { get; private set; }
         public TaskDescription Description { get; private set; }
+        public TaskBoardId BoardId { get; private set; }
         public TaskCardId CardId { get; private set; }
         public ICollection<Comment> Comments { get; private set; }
         public ICollection<Activity> Activities { get; private set; }
@@ -52,9 +58,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Task CreateTask(string title, string description, string cardId)
+        public static Task CreateTask(string title, string description, string cardId, string boardId, ITaskValidatorService taskValidatorService)
         {
-            return new Task(title, description, cardId);
+            return new Task(title, description, cardId, boardId, taskValidatorService);
         }
 
 
@@ -62,10 +68,11 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateTask(string name, string description)
+        public void UpdateTask(string name, string description, ITaskValidatorService taskValidatorService)
         {
             Title = TaskTitle.Create(name);
             Description = TaskDescription.Create(description);
+            _taskValidatorService = taskValidatorService;
 
             base.UpdateModifiedDateTime();
 
@@ -188,7 +195,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// <summary>
         /// 
         /// </summary>
-        private void CheckPolicies()
+        private void CheckPolicies( )
         {
             if (Description == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
@@ -208,7 +215,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
-
+            //TODO fix null reference for _taskValidatorService
+            if (!new TaskTitleMustUniqueSpecification(_taskValidatorService).IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
         }
 
 

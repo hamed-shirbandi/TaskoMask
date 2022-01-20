@@ -2,6 +2,8 @@
 using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
@@ -31,6 +33,14 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         #region Public Methods
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Owner> GetByOrganizationIdAsync(string organizationId)
+        {
+            return await _owners.Find(e => e.Organizations.Any(c => c.Id == organizationId)).FirstOrDefaultAsync();
+        }
 
         #endregion
 

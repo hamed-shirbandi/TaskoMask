@@ -4,9 +4,9 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Organizations
+namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.ValueObjects.Tasks
 {
-    public class OrganizationOwnerId : BaseValueObject
+    public class TaskBoardId : BaseValueObject
     {
         #region Properties
 
@@ -17,7 +17,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Organization
 
         #region Ctors
 
-        public OrganizationOwnerId(string value)
+        public TaskBoardId(string value)
         {
             Value = value;
 
@@ -33,9 +33,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Organization
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static OrganizationOwnerId Create(string value)
+        public static TaskBoardId Create(string value)
         {
-            return new OrganizationOwnerId(value);
+            return new TaskBoardId(value);
         }
 
 
@@ -46,8 +46,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Organization
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(OrganizationOwnerId)));
-
+                throw new DomainException(string.Format(DomainMessages.Required, nameof(TaskBoardId)));
         }
 
 

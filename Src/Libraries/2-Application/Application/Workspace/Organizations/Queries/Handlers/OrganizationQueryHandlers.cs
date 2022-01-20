@@ -11,28 +11,27 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.ReadModel.Data;
 
 namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
 {
     public class OrganizationQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
-        IRequestHandler<GetOrganizationsByOwnerOwnerIdQuery, IEnumerable<OrganizationBasicInfoDto>>,
+        IRequestHandler<GetOrganizationsByOwnerIdQuery, IEnumerable<OrganizationBasicInfoDto>>,
         IRequestHandler<SearchOrganizationsQuery, PaginatedListReturnType<OrganizationOutputDto>>
     {
         #region Fields
 
         private readonly IOrganizationRepository _organizationRepository;
-        private readonly IOwnerAggregateRepository _ownerRepository;
+        private readonly IOwnerRepository _ownerRepository;
         private readonly IProjectRepository _projectRepository;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IOwnerAggregateRepository ownerRepository, IProjectRepository projectRepository) : base(mapper, notifications)
+        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IOwnerRepository ownerRepository, IProjectRepository projectRepository) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
             _ownerRepository = ownerRepository;
@@ -62,9 +61,9 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<OrganizationBasicInfoDto>> Handle(GetOrganizationsByOwnerOwnerIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<OrganizationBasicInfoDto>> Handle(GetOrganizationsByOwnerIdQuery request, CancellationToken cancellationToken)
         {
-            var organizations = await _organizationRepository.GetListByOwnerOwnerIdAsync(request.OwnerOwnerId);
+            var organizations = await _organizationRepository.GetListByOwnerIdAsync(request.OwnerId);
             return _mapper.Map<IEnumerable<OrganizationBasicInfoDto>>(organizations);
         }
 
@@ -91,8 +90,8 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
 
             foreach (var item in organizationsDto)
             {
-                var owner = await _ownerRepository.GetByIdAsync(item.OwnerOwnerId);
-                item.OwnerOwnerDisplayName = owner?.DisplayName.Value;
+                var owner = await _ownerRepository.GetByIdAsync(item.OwnerId);
+                item.OwnerOwnerDisplayName = owner?.DisplayName;
                 item.ProjectsCount =await _projectRepository.CountByOrganizationIdAsync(item.Id);
             }
 

@@ -103,7 +103,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
                 return Result.Failure<OwnerDetailsViewModel>(ownerQueryResult.Errors);
 
 
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByOwnerOwnerIdQuery(ownerQueryResult.Value.Id));
+            var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByOwnerIdQuery(ownerQueryResult.Value.Id));
             if (!organizationQueryResult.IsSuccess)
                 return Result.Failure<OwnerDetailsViewModel>(organizationQueryResult.Errors);
 

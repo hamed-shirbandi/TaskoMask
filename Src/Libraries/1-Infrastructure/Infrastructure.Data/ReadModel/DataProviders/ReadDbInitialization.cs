@@ -87,7 +87,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
             #region Organization Indexs
 
             dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.OwnerId), new CreateIndexOptions() { Name = "OwnerOwnerId" }));
+            dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.OwnerId), new CreateIndexOptions() { Name = "OwnerId" }));
 
 
             #endregion

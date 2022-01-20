@@ -8,5 +8,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Data
     public interface IBoardAggregateRepository : IBaseRepository<Board>
     {
         bool ExistBoard(string boardId, string boardName);
+        Task<Board> GetByCardIdAsync(string cardId);
     }
 }

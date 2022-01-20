@@ -6,6 +6,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Data
 {
     public interface ITaskAggregateRepository : IBaseRepository<Entities.Task>
     {
-        bool ExistTask(string taskId,string taskTitle);
+        bool ExistTask(string taskId, string boardId, string taskTitle);
     }
 }

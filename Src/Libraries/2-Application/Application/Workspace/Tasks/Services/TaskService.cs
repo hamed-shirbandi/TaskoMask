@@ -17,7 +17,7 @@ using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
 {
-    public class TaskService : BaseService<Domain.Workspace.Tasks.Entities.Task>, ITaskService
+    public class TaskService : BaseService<Domain.WriteModel.Workspace.Tasks.Entities.Task>, ITaskService
     {
         #region Fields
 
@@ -52,7 +52,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(TaskUpsertDto input)
         {
-            var cmd = new UpdateTaskCommand(id: input.Id, title: input.Title, description: input.Description,cardId:input.CardId);
+            var cmd = new UpdateTaskCommand(id: input.Id, title: input.Title, description: input.Description);
             return await SendCommandAsync(cmd);
         }
 

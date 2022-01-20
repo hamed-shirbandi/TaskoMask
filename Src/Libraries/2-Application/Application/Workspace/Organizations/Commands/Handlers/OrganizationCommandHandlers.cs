@@ -9,9 +9,9 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
@@ -21,17 +21,15 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
     {
         #region Fields
 
-        private readonly IOrganizationRepository _organizationRepository;
-        private readonly IOrganizationValidatorService _organizationValidatorService;
+        private readonly IOwnerAggregateRepository _ownerAggregateRepository;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationCommandHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus, IOrganizationValidatorService organizationValidatorService) : base(notifications, inMemoryBus)
+        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
-            _organizationRepository = organizationRepository;
-            _organizationValidatorService = organizationValidatorService;
+            _ownerAggregateRepository = ownerAggregateRepository;
         }
 
         #endregion
@@ -44,8 +42,14 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// </summary>
         public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            var organization = Organization.CreateOrganization(request.Name, request.Description, request.OwnerOwnerId, _organizationValidatorService);
-            await _organizationRepository.CreateAsync(organization);
+            var owner = await _ownerAggregateRepository.GetByIdAsync(request.OwnerId);
+            if (owner == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+
+
+            var organization = Organization.CreateOrganization(request.Name, request.Description, request.OwnerId);
+            owner.CreateOrganization(organization);
+            await _ownerAggregateRepository.UpdateAsync(owner);
 
             //TODO publish domain events
 
@@ -60,17 +64,18 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// </summary>
         public async Task<CommandResult> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
         {
-            var organization = await _organizationRepository.GetByIdAsync(request.Id);
-            if (organization == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Organization);
 
-            organization.UpdateOrganization(request.Name, request.Description, _organizationValidatorService);
+            var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.Id);
+            if (owner == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            await _organizationRepository.UpdateAsync(organization);
+            owner.UpdateOrganization(request.Id,request.Name, request.Description);
+
+            await _ownerAggregateRepository.UpdateAsync(owner);
 
             //TODO publish domain events
 
-            return new CommandResult(ApplicationMessages.Update_Success, organization.Id);
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
         }
 
 

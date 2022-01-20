@@ -112,9 +112,10 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public Organization CreateOrganization(string name, string description, string ownerOwnerId)
+        public void CreateOrganization(Organization organization)
         {
-            return Organization.CreateOrganization(name, description, ownerOwnerId);
+            Organizations.Add(organization);
+            AddDomainEvent(new OrganizationCreatedEvent(organization.Id, organization.Name.Value, organization.Description.Value, organization.OwnerId.Value));
         }
 
 
@@ -129,9 +130,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
 
             organization.UpdateOrganization(name, description);
-
-            base.UpdateModifiedDateTime();
-
             AddDomainEvent(new OrganizationUpdatedEvent(Id, organization.Name.Value, organization.Description.Value));
         }
 

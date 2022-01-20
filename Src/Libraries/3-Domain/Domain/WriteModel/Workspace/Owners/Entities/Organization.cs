@@ -18,11 +18,11 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
         #region Ctors
 
-        private Organization(string name, string description, string ownerOwnerId)
+        private Organization(string name, string description, string ownerId)
         {
             Name = OrganizationName.Create(name);
             Description = OrganizationDescription.Create(description);
-            OwnerOwnerId = OrganizationOwnerOwnerId.Create(ownerOwnerId);
+            OwnerId = OrganizationOwnerId.Create(ownerId);
 
             CheckPolicies();
         }
@@ -35,7 +35,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
         public OrganizationName Name { get; private set; }
         public OrganizationDescription Description { get; private set; }
-        public OrganizationOwnerOwnerId OwnerOwnerId { get; private set; }
+        public OrganizationOwnerId OwnerId { get; private set; }
 
         public ICollection<Project> Projects { get; private set; }
 
@@ -48,9 +48,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Organization CreateOrganization(string name, string description, string ownerOwnerId)
+        public static Organization CreateOrganization(string name, string description, string ownerId)
         {
-            return new Organization(name, description, ownerOwnerId);
+            return new Organization(name, description, ownerId);
         }
 
 
@@ -175,8 +175,8 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             if (Description == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
 
-            if (OwnerOwnerId == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerOwnerId)));
+            if (OwnerId == null)
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerId)));
 
           
             if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))

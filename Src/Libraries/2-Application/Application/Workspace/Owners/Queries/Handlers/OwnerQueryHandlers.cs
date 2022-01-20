@@ -11,10 +11,9 @@ using TaskoMask.Application.Workspace.Owners.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Domain.ReadModel.Data;
 
 namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 {
@@ -24,7 +23,7 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
     {
         #region Fields
 
-        private readonly IOwnerAggregateRepository _ownerRepository;
+        private readonly IOwnerRepository _ownerRepository;
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IUserRepository _userRepository;
 
@@ -32,7 +31,7 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 
         #region Ctors
 
-        public OwnerQueryHandlers(IOwnerAggregateRepository ownerRepository, IDomainNotificationHandler notifications, IMapper mapper,  IOrganizationRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
+        public OwnerQueryHandlers(IOwnerRepository ownerRepository, IDomainNotificationHandler notifications, IMapper mapper,  IOrganizationRepository organizationRepository, IUserRepository userRepository) : base(mapper, notifications)
         {
             _ownerRepository = ownerRepository;
             _organizationRepository = organizationRepository;
@@ -84,11 +83,10 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
                     item.UserInfo = _mapper.Map<UserBasicInfoDto>(user);
 
 
-                //As an invited owner to organizations
-                //item.OrganizationsCount = await _invitationRepository.OrganizationsCountByInvitedOwnerIdAsync(item.Id);
+                //TODO Get OrganizationsCount as an member 
 
                 //As an owner of organizations
-                item.OrganizationsCount += await _organizationRepository.CountByOwnerOwnerIdAsync(item.Id);
+                item.OrganizationsCount += await _organizationRepository.CountByOwnerIdAsync(item.Id);
             }
 
 

@@ -20,16 +20,16 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
     {
         #region Fields
 
-        private readonly IProjectRepository _projectRepository;
+        private readonly IOwnerAggregateRepository _ownerAggregateRepository;
 
 
         #endregion
 
         #region Ctors
 
-        public ProjectCommandHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public ProjectCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
-            _projectRepository = projectRepository;
+            _ownerAggregateRepository = ownerAggregateRepository;
         }
 
         #endregion
@@ -42,16 +42,14 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
-            var exist = await _projectRepository.ExistByNameAsync("", request.Name);
-            if (exist)
-            {
-                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Create_Failed);
-            }
+            var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.OrganizationId);
+            if (owner == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
             var project = Project.Create(request.Name,request.Description,request.OrganizationId);
+            owner.CreateProject(request.OrganizationId,project);
 
-            await _projectRepository.CreateAsync(project);
+            await _ownerAggregateRepository.UpdateAsync(owner);
             return new CommandResult(ApplicationMessages.Create_Success, project.Id);
 
         }
@@ -63,21 +61,14 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetByIdAsync(request.Id);
-            if (project == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
+            var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.OrganizationId);
+            if (owner == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            var exist = await _projectRepository.ExistByNameAsync(project.Id, request.Name);
-            if (exist)
-            {
-                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
-            }
+            owner.UpdateProject(request.OrganizationId, request.Id, request.Name, request.Description);
 
-            project.Update(request.Name,request.Id);
-
-            await _projectRepository.UpdateAsync(project);
-            return new CommandResult(ApplicationMessages.Update_Success, project.Id);
+            await _ownerAggregateRepository.UpdateAsync(owner);
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
 
         }
 

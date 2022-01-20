@@ -22,8 +22,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Services
         /// </summary>
         public bool TaskHasUniqueName(string taskId, string boardId, string taskTitle)
         {
-            //TODO check tasks by boardId
-            return _taskRepository.ExistTask(taskId,taskTitle);
+            return _taskRepository.ExistTask(taskId, boardId,taskTitle);
         }
     }
 }

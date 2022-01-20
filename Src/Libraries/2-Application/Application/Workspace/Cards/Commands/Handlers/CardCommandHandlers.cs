@@ -10,7 +10,6 @@ using MediatR;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
@@ -21,18 +20,16 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
     {
         #region Fields
 
-        private readonly IBoardAggregateRepository _boardRepository;
+        private readonly IBoardAggregateRepository _boardAggregateRepository;
 
 
         #endregion
 
         #region Ctors
 
-        public CardCommandHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IBoardAggregateRepository boardRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public CardCommandHandlers( IDomainNotificationHandler notifications, IBoardAggregateRepository boardAggregateRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
-            _cardRepository = cardRepository;
-            _projectRepository = projectRepository;
-            _boardRepository = boardRepository;
+            _boardAggregateRepository = boardAggregateRepository;
         }
 
 
@@ -47,26 +44,14 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateCardCommand request, CancellationToken cancellationToken)
         {
-            var exist = await _cardRepository.ExistByNameAsync("", request.Name);
-            if (exist)
-            {
-                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Create_Failed);
-            }
-
-
-            //var board = await _boardRepository.GetByIdAsync(request.BoardId);
-            //if (board == null)
-            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
-
-
-            //var project = await _projectRepository.GetByIdAsync(board.ProjectId);
-            //if (project == null)
-            //    throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
-
+            var board = await _boardAggregateRepository.GetByIdAsync(request.BoardId);
+            if (board == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
             var card =  Card.Create(name: request.Name, type: request.Type);
-            await _cardRepository.CreateAsync(card);
+            board.CreateCard(card);
+
+            await _boardAggregateRepository.UpdateAsync(board);
             return new CommandResult(ApplicationMessages.Create_Success, card.Id);
 
         }
@@ -78,21 +63,14 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateCardCommand request, CancellationToken cancellationToken)
         {
-            var card = await _cardRepository.GetByIdAsync(request.Id);
-            if (card == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);
+            var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
+            if (board == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
-            var exist = await _cardRepository.ExistByNameAsync(card.Id, request.Name);
-            if (exist)
-            {
-                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
-            }
+            board.UpdateCard(request.Id,request.Name, request.Type);
+            await _boardAggregateRepository.UpdateAsync(board);
 
-            card.Update(request.Name, request.Type);
-
-            await _cardRepository.UpdateAsync(card);
-            return new CommandResult(ApplicationMessages.Update_Success, card.Id);
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
         }
 
 

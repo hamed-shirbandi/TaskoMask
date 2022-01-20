@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
-using TaskoMask.Infrastructure.Data.Common.DbContext;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
@@ -35,9 +34,9 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public bool ExistTask(string taskId, string taskTitle)
+        public bool ExistTask(string taskId, string boardId, string taskTitle)
         {
-            var task =  _tasks.Find(e =>e.Title.Value == taskTitle).FirstOrDefault();
+            var task = _tasks.Find(e => e.BoardId.Value == boardId && e.Title.Value == taskTitle).FirstOrDefault();
             return task != null && task.Id != taskId;
         }
 

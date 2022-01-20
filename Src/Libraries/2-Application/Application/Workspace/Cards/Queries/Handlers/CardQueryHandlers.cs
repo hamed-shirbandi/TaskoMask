@@ -13,6 +13,7 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
+using TaskoMask.Domain.ReadModel.Data;
 
 namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
 {
@@ -26,15 +27,15 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         #region Fields
 
         private readonly ICardRepository _cardRepository;
-        private readonly IBoardAggregateRepository _boardRepository;
-        private readonly ITaskAggregateRepository _taskRepository;
+        private readonly IBoardRepository _boardRepository;
+        private readonly ITaskRepository _taskRepository;
 
 
         #endregion
 
         #region Ctors
 
-        public CardQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper, ITaskAggregateRepository taskRepository, IBoardAggregateRepository boardRepository) : base(mapper, notifications)
+        public CardQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper, ITaskRepository taskRepository, IBoardRepository boardRepository) : base(mapper, notifications)
         {
             _cardRepository = cardRepository;
             _taskRepository = taskRepository;
@@ -95,7 +96,7 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
             foreach (var item in cardsDto)
             {
                 var board = await _boardRepository.GetByIdAsync(item.BoardId);
-                item.BoardName = board?.Name.Value;
+                item.BoardName = board?.Name;
                 item.TasksCount = await _taskRepository.CountByCardIdAsync(item.Id);
             }
 

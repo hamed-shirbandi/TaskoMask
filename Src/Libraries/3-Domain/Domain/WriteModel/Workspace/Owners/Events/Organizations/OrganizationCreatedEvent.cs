@@ -5,17 +5,17 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations
 {
     public class OrganizationCreatedEvent : DomainEvent
     {
-        public OrganizationCreatedEvent(string id, string name, string description, string ownerOwnerId) : base(entityId: id, entityType: nameof(Organization))
+        public OrganizationCreatedEvent(string id, string name, string description, string ownerId) : base(entityId: id, entityType: nameof(Organization))
         {
             Id = id;
             Name = name;
             Description = description;
-            OwnerOwnerId = ownerOwnerId;
+            OwnerId = ownerId;
         }
 
         public string Id { get; }
         public string Name { get; }
         public string Description { get;  }
-        public string OwnerOwnerId { get;  }
+        public string OwnerId { get;  }
     }
 }

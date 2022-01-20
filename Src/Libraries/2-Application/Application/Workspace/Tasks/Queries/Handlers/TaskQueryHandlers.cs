@@ -11,8 +11,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
+using TaskoMask.Domain.ReadModel.Data;
 
 namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
 {
@@ -24,11 +23,11 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
 
 
     {
-        private readonly ITaskAggregateRepository _taskRepository;
+        private readonly ITaskRepository _taskRepository;
         private readonly ICardRepository _cardRepository;
 
 
-        public TaskQueryHandlers(ITaskAggregateRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper, ICardRepository cardRepository) : base(mapper, notifications)
+        public TaskQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper, ICardRepository cardRepository) : base(mapper, notifications)
         {
             _taskRepository = taskRepository;
             _cardRepository = cardRepository;
@@ -85,7 +84,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
             foreach (var item in tasksDto)
             {
                 var card = await _cardRepository.GetByIdAsync(item.CardId);
-                item.CardName = card?.Name.Value;
+                item.CardName = card?.Name;
             }
 
             return new PaginatedListReturnType<TaskOutputDto>

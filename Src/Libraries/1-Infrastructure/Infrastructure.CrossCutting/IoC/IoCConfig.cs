@@ -38,12 +38,12 @@ using TaskoMask.Application.Common.Queries.Handlers;
 using TaskoMask.Application.Common.Commands.Handlers;
 using TaskoMask.Application.Common.Commands.Models;
 using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
 using TaskoMask.Infrastructure.Data.WriteModel.Services;
-using TaskoMask.Infrastructure.Data.Common.DbContext;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 using TaskoMask.Infrastructure.Data.ReadModel.Repositories;
 using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
+using TaskoMask.Infrastructure.Data.Common.Repositories;
 
 namespace Infrastructure.CrossCutting.IoC
 {
@@ -87,7 +87,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IInMemoryBus, InMemoryBus>();
 
             services.AddScoped<IEncryptionService, EncryptionService>();
-            services.AddScoped<IOrganizationValidatorService, TaskValidatorService>();
+            services.AddScoped<ITaskValidatorService, TaskValidatorService>();
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 

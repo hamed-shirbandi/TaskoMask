@@ -21,18 +21,16 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
     {
         #region Fields
 
-        private readonly IBoardAggregateRepository _boardRepository;
-        private readonly IProjectRepository _projectRepository;
+        private readonly IBoardAggregateRepository _boardAggregateRepository;
 
         #endregion
 
         #region Ctors
 
 
-        public BoardCommandHandlers(IBoardAggregateRepository boardRepository, IDomainNotificationHandler notifications, IProjectRepository projectRepository, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public BoardCommandHandlers(IBoardAggregateRepository boardAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
-            _boardRepository = boardRepository;
-            _projectRepository = projectRepository;
+            _boardAggregateRepository = boardAggregateRepository;
         }
 
 
@@ -47,22 +45,9 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateBoardCommand request, CancellationToken cancellationToken)
         {
-            //TODO move this validations type in all handlers to domain
-            var exist = await _boardRepository.ExistBoard("", request.Name);
-            if (exist)
-            {
-                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Create_Failed);
-            }
-
-            var project = await _projectRepository.GetByIdAsync(request.ProjectId);
-            if (project == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
-
-
             var board = Board.CreateBoard(name: request.Name, description: request.Description, projectId: request.ProjectId);
 
-            await _boardRepository.CreateAsync(board);
+            await _boardAggregateRepository.CreateAsync(board);
             return new CommandResult(ApplicationMessages.Create_Success, board.Id);
 
         }
@@ -74,25 +59,13 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateBoardCommand request, CancellationToken cancellationToken)
         {
-            var board = await _boardRepository.GetByIdAsync(request.Id);
+            var board = await _boardAggregateRepository.GetByIdAsync(request.Id);
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
-
-            var exist = await _boardRepository.ExistBoard(board.Id, request.Name);
-            if (exist)
-            {
-                NotifyValidationError(request, ApplicationMessages.Name_Already_Exist);
-                return new CommandResult(ApplicationMessages.Update_Failed, request.Id);
-            }
-
-            var project = await _projectRepository.GetByIdAsync(request.ProjectId);
-            if (project == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
-
-
+           
             board.UpdateBoard(request.Name, request.Description);
 
-            await _boardRepository.UpdateAsync(board);
+            await _boardAggregateRepository.UpdateAsync(board);
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);
 
         }

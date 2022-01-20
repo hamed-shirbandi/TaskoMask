@@ -25,7 +25,6 @@ using TaskoMask.Infrastructure.CrossCutting.Services.Security;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
@@ -41,6 +40,10 @@ using TaskoMask.Application.Common.Commands.Models;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
 using TaskoMask.Infrastructure.Data.Services;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
+using TaskoMask.Infrastructure.Data.ReadMoldel.DbContext;
+using TaskoMask.Infrastructure.Data.ReadMoldel.Repositories;
+using TaskoMask.Domain.ReadModel.Data;
 
 namespace Infrastructure.CrossCutting.IoC
 {
@@ -78,23 +81,37 @@ namespace Infrastructure.CrossCutting.IoC
 
             #region Infrastructure
 
-            services.AddScoped<IMongoDbContext, WriteDbContext>();
+            services.AddScoped<IReadDbContext, ReadDbContext>();
+            services.AddScoped<IWriteDbContext, WriteDbContext>();
             services.AddScoped<IEventStore, RedisEventStore>();
             services.AddScoped<IInMemoryBus, InMemoryBus>();
 
+            services.AddScoped<IEncryptionService, EncryptionService>();
+            services.AddScoped<IOrganizationValidatorService, OrganizationValidatorService>();
+
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+            //ReadModel Repositories
+            services.AddScoped<IActivityRepository, ActivityRepository>();
+            services.AddScoped<IBoardRepository, BoardRepository>();
+            services.AddScoped<ICardRepository, CardRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
+
+            //Aggregate repositories
+            services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
+            services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
+            services.AddScoped<ITaskAggregateRepository, TaskAggregateRepository>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOperatorRepository, OperatorRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
-            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
-            services.AddScoped<IProjectRepository, ProjectRepository>();
-            services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
-            services.AddScoped<ICardRepository, CardRepository>();
-            services.AddScoped<ITaskAggregateRepository, TaskAggregateRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IEncryptionService, EncryptionService>();
-            services.AddScoped<IOrganizationValidatorService, OrganizationValidatorService>();
+
             
 
             #endregion

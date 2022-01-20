@@ -1,21 +1,25 @@
-﻿using TaskoMask.Domain.Core.Specifications;
+﻿using System.Linq;
+using TaskoMask.Domain.Core.Specifications;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
 
 namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
 {
-    internal class OrganizationNameMustUniqueSpecification : ISpecification<Organization>
+    internal class OrganizationNameMustUniqueSpecification : ISpecification<Owner>
     {
-        private readonly IOrganizationValidatorService _organizationValidatorService;
-        public OrganizationNameMustUniqueSpecification(IOrganizationValidatorService organizationValidatorService)
+        public OrganizationNameMustUniqueSpecification()
         {
-            _organizationValidatorService = organizationValidatorService;
         }
 
 
-        public bool IsSatisfiedBy(Organization organization)
+        public bool IsSatisfiedBy(Owner owner)
         {
-            return _organizationValidatorService.TaskHasUniqueName(organization.Id, organization.OwnerOwnerId.Value,organization.Name.Value);
+            var organizationsCount = owner.Organizations.Count;
+            if (organizationsCount < 2)
+                return true;
+
+            var distincOrganizationsCount = owner.Organizations.Select(p => p.Name).Distinct().Count();
+
+            return organizationsCount == distincOrganizationsCount;
         }
     }
 }

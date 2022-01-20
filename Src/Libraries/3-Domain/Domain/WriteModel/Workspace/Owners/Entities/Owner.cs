@@ -6,7 +6,7 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Projects;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners;
 
 namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
@@ -112,9 +112,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public Organization CreateOrganization(string name, string description, string ownerOwnerId, IOrganizationValidatorService organizationValidatorService)
+        public Organization CreateOrganization(string name, string description, string ownerOwnerId)
         {
-            return Organization.CreateOrganization(name, description, ownerOwnerId, organizationValidatorService);
+            return Organization.CreateOrganization(name, description, ownerOwnerId);
         }
 
 
@@ -122,13 +122,13 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateOrganization(string organizationId, string name, string description, IOrganizationValidatorService organizationValidatorService)
+        public void UpdateOrganization(string organizationId, string name, string description)
         {
             var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
             if (organization == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
 
-            organization.UpdateOrganization(name, description, organizationValidatorService);
+            organization.UpdateOrganization(name, description);
 
             base.UpdateModifiedDateTime();
 
@@ -264,7 +264,8 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
-
+            if (!new OrganizationNameMustUniqueSpecification().IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
         }
 
 

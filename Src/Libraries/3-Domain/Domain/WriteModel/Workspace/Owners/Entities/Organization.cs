@@ -3,7 +3,6 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Organizations;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Services;
 using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.Domain.Share.Helpers;
@@ -49,9 +48,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Organization CreateOrganization(string name, string description, string ownerOwnerId, IOrganizationValidatorService organizationValidatorService)
+        public static Organization CreateOrganization(string name, string description, string ownerOwnerId)
         {
-            return new Organization(name, description, ownerOwnerId, organizationValidatorService);
+            return new Organization(name, description, ownerOwnerId);
         }
 
 
@@ -59,14 +58,14 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateOrganization(string name, string description, IOrganizationValidatorService organizationValidatorService)
+        public void UpdateOrganization(string name, string description)
         {
             Name = OrganizationName.Create(name);
             Description = OrganizationDescription.Create(description);
 
             base.UpdateModifiedDateTime();
 
-            CheckPolicies(organizationValidatorService);
+            CheckPolicies();
         }
 
 
@@ -179,9 +178,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             if (OwnerOwnerId == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerOwnerId)));
 
-            if (!new OrganizationNameMustUniqueSpecification().IsSatisfiedBy(this))
-                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
-
+          
             if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
 

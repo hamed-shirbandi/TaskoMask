@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Infrastructure.Data.Common.Contracts;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 {
@@ -19,7 +19,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 
         #region Ctors
 
-        public OwnerAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
+        public OwnerAggregateRepository(IWriteDbContext dbContext) : base(dbContext)
         {
             _owners = dbContext.GetCollection<Owner>();
 

@@ -78,7 +78,7 @@ namespace Infrastructure.CrossCutting.IoC
 
             #region Infrastructure
 
-            services.AddScoped<IMongoDbContext, MongoDbContext>();
+            services.AddScoped<IMongoDbContext, WriteDbContext>();
             services.AddScoped<IEventStore, RedisEventStore>();
             services.AddScoped<IInMemoryBus, InMemoryBus>();
 

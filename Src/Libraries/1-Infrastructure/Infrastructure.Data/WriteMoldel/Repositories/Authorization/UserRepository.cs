@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
-using TaskoMask.Infrastructure.Data.Common.Contracts;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Authorization
 {
@@ -18,7 +18,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Authorization
 
         #region Ctors
 
-        public UserRepository(IMongoDbContext dbContext) : base(dbContext)
+        public UserRepository(IWriteDbContext dbContext) : base(dbContext)
         {
             _users = dbContext.GetCollection<User>();
 

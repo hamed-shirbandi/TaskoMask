@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.ReadModel.Entities;
-using TaskoMask.Infrastructure.Data.Common.Contracts;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
 using TaskoMask.Infrastructure.Data.WriteMoldel.Repositories;
 
 namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
@@ -20,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.ReadMoldel.Repositories
 
         #region Ctors
 
-        public CardRepository(IMongoDbContext dbContext) : base(dbContext)
+        public CardRepository(IReadDbContext dbContext) : base(dbContext)
         {
             _cards = dbContext.GetCollection<Card>();
         }

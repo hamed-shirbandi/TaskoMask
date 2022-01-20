@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Infrastructure.Data.Common.Contracts;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 {
@@ -19,7 +19,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Workspace
 
         #region Ctors
 
-        public BoardAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
+        public BoardAggregateRepository(IWriteDbContext dbContext) : base(dbContext)
         {
             _boards = dbContext.GetCollection<Board>(); 
         }

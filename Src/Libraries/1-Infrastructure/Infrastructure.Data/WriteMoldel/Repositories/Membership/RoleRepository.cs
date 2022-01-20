@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
-using TaskoMask.Infrastructure.Data.Common.Contracts;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
 {
@@ -20,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.WriteMoldel.Repositories.Membership
 
         #region Ctors
 
-        public RoleRepository(IMongoDbContext dbContext) : base(dbContext)
+        public RoleRepository(IWriteDbContext dbContext) : base(dbContext)
         {
             _roles = dbContext.GetCollection<Role>(); 
         }

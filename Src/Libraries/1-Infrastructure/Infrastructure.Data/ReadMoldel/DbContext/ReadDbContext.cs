@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
-using TaskoMask.Infrastructure.Data.WriteMoldel.DbContext;
+using TaskoMask.Infrastructure.Data.Common.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.ReadMoldel.DbContext
 {
@@ -10,7 +10,7 @@ namespace TaskoMask.Infrastructure.Data.ReadMoldel.DbContext
     /// <summary>
     /// 
     /// </summary>
-    public class MongoDbContext : IMongoDbContext
+    public class ReadDbContext : IReadDbContext
     {
         #region Fields
 
@@ -24,7 +24,7 @@ namespace TaskoMask.Infrastructure.Data.ReadMoldel.DbContext
         #region Ctors
 
 
-        public MongoDbContext(IConfiguration configuration)
+        public ReadDbContext(IConfiguration configuration)
         {
             _dbName = configuration["Mongo:Database"];
             _connectionString = configuration["Mongo:Connection"];

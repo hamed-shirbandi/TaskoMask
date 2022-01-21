@@ -133,6 +133,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A board cannot have more than {0} members.
+        /// </summary>
+        public static string Max_Member_Count_Limitiation {
+            get {
+                return ResourceManager.GetString("Max_Member_Count_Limitiation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An owner cannot have more than {0} organizations.
         /// </summary>
         public static string Max_Organizations_Count_Limitiation {

@@ -17,7 +17,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
     {
         #region Fields
 
-        private ITaskValidatorService _taskValidatorService;
 
         #endregion
 
@@ -29,9 +28,8 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
             Description = TaskDescription.Create(description);
             CardId = TaskCardId.Create(cardId);
             BoardId = TaskBoardId.Create(boardId);
-            _taskValidatorService = taskValidatorService;
 
-            CheckPolicies();
+            CheckPolicies(taskValidatorService);
 
             AddDomainEvent(new TaskCreatedEvent(Id, Title.Value, Description.Value, CardId.Value));
         }
@@ -72,14 +70,10 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         {
             Title = TaskTitle.Create(name);
             Description = TaskDescription.Create(description);
-            _taskValidatorService = taskValidatorService;
 
-            base.UpdateModifiedDateTime();
-
-            CheckPolicies();
+            CheckPolicies(taskValidatorService);
 
             AddDomainEvent(new TaskUpdatedEvent(Id, Title.Value, Description.Value));
-
         }
 
 
@@ -90,12 +84,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         public void MoveTaskToAnotherCard(string cardId)
         {
             CardId = TaskCardId.Create(cardId);
-            base.UpdateModifiedDateTime();
-
-            CheckPolicies();
-
             AddDomainEvent(new TaskMovedToAnotherCardEvent(Id, CardId.Value));
-
         }
 
 
@@ -195,7 +184,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// <summary>
         /// 
         /// </summary>
-        private void CheckPolicies( )
+        private void CheckPolicies(ITaskValidatorService taskValidatorService)
         {
             if (Description == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
@@ -206,6 +195,8 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
             if (Title == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Title)));
 
+            if (!new TaskTitleMustUniqueSpecification(taskValidatorService).IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
         }
 
 
@@ -215,9 +206,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
-            //TODO fix null reference for _taskValidatorService
-            if (!new TaskTitleMustUniqueSpecification(_taskValidatorService).IsSatisfiedBy(this))
-                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
+         
         }
 
 

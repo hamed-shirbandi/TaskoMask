@@ -13,6 +13,10 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Specifications
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsSatisfiedBy(Task task)
         {
             return _taskValidatorService.TaskHasUniqueName(task.Id, task.BoardId.Value, task.Title.Value);

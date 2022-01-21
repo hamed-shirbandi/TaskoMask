@@ -255,9 +255,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
             if (Email == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Email)));
-
-          
         }
+
+
 
         /// <summary>
         /// 

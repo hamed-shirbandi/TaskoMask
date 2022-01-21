@@ -23,7 +23,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
 
         public BoardAggregateRepository(IWriteDbContext dbContext) : base(dbContext)
         {
-            _boards = dbContext.GetCollection<Board>(); 
+            _boards = dbContext.GetCollection<Board>();
         }
 
 
@@ -36,9 +36,9 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public bool ExistBoard(string boardId, string boardName)
+        public bool ExistBoard(string boardId, string projectId, string boardName)
         {
-            var board = _boards.Find(e => e.Name.Value == boardName).FirstOrDefault();
+            var board = _boards.Find(e => e.ProjectId.Value == projectId && e.Name.Value == boardName).FirstOrDefault();
             return board != null && board.Id != boardId;
         }
 
@@ -49,7 +49,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         /// </summary>
         public async Task<Board> GetByCardIdAsync(string cardId)
         {
-          return await _boards.Find(e => e.Cards.Any(c=>c.Id==cardId)).FirstOrDefaultAsync();
+            return await _boards.Find(e => e.Cards.Any(c => c.Id == cardId)).FirstOrDefaultAsync();
         }
 
 

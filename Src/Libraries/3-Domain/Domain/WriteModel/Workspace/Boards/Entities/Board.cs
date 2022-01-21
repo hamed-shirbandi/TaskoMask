@@ -10,6 +10,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Specifications;
 using TaskoMask.Domain.Share.Helpers;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
 
 namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
 {
@@ -22,12 +23,12 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
 
         #region Ctors
 
-        private Board(string name, string description, string projectId)
+        private Board(string name, string description, string projectId, IBoardValidatorService boardValidatorService)
         {
             Name = BoardName.Create(name);
             Description = BoardDescription.Create(description);
             ProjectId = BoardProjectId.Create(projectId);
-            CheckPolicies();
+            CheckPolicies(boardValidatorService);
             AddDomainEvent(new BoardCreatedEvent(Id, Name.Value, Description.Value, ProjectId.Value));
         }
 
@@ -52,9 +53,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Board CreateBoard(string name, string description, string projectId)
+        public static Board CreateBoard(string name, string description, string projectId, IBoardValidatorService boardValidatorService)
         {
-            return new Board(name, description, projectId);
+            return new Board(name, description, projectId, boardValidatorService);
         }
 
 
@@ -62,12 +63,12 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateBoard(string name, string description )
+        public void UpdateBoard(string name, string description, IBoardValidatorService boardValidatorService)
         {
             Name = BoardName.Create(name);
             Description = BoardDescription.Create(description);
 
-            CheckPolicies();
+            CheckPolicies(boardValidatorService);
             AddDomainEvent(new BoardUpdatedEvent(Id, Name.Value, Description.Value));
         }
 
@@ -217,7 +218,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        private void CheckPolicies()
+        private void CheckPolicies(IBoardValidatorService boardValidatorService)
         {
             if (Description == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
@@ -228,7 +229,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
             if (ProjectId == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(ProjectId)));
 
-            if (!new BoardNameMustUniqueSpecification().IsSatisfiedBy(this))
+            if (!new BoardNameMustUniqueSpecification(boardValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board));
 
         }

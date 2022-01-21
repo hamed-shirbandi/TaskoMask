@@ -41,6 +41,16 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public long CountByBoardId(string boardId)
+        {
+            return _tasks.CountDocuments(t=>t.BoardId.Value==boardId);
+        }
+
+
         #endregion
 
         #region Private Methods

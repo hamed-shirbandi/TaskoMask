@@ -2,6 +2,7 @@
 using System.Linq;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Activities;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Comments;
@@ -195,8 +196,14 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
             if (Title == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Title)));
 
+            if (!new TaskTitleAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
+                throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
+
             if (!new TaskTitleMustUniqueSpecification(taskValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
+           
+            if (!new MaxTasksSpecification(taskValidatorService).IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Max_Task_Count_Limitiation, DomainConstValues.Board_Max_Task_Count));
         }
 
 
@@ -206,7 +213,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
-         
+  
         }
 
 

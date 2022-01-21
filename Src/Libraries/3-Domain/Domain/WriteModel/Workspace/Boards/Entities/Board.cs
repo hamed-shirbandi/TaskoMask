@@ -229,6 +229,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
             if (ProjectId == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(ProjectId)));
 
+            if (!new BoardNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
+                throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
+
             if (!new BoardNameMustUniqueSpecification(boardValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board));
 
@@ -241,9 +244,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
-            if (!new BoardNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
-                throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
-
             if (!new BoardMaxCardsSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Max_Card_Count_Limitiation, DomainConstValues.Board_Max_Card_Count));
             
@@ -255,9 +255,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
 
             if (!new MemberOwnerIdMustUniqueSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Member));
-
-
-
         }
 
 

@@ -17,12 +17,24 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Services
         }
 
 
+
         /// <summary>
         /// 
         /// </summary>
         public bool TaskHasUniqueName(string taskId, string boardId, string taskTitle)
         {
-            return _taskRepository.ExistTask(taskId, boardId,taskTitle);
+            return _taskRepository.ExistTask(taskId, boardId, taskTitle);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool CanAddNewTaskToBoard(string boardId, int maxTasksCount)
+        {
+            var tasksCount = _taskRepository.CountByBoardId(boardId);
+            return tasksCount < maxTasksCount;
         }
     }
 }

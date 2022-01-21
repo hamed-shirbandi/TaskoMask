@@ -1,6 +1,5 @@
 ﻿using TaskoMask.Application.Core.Commands;
 using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
@@ -8,7 +7,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
 {
     public abstract class TaskBaseCommand : BaseCommand
     {
-        public TaskBaseCommand(string title, string description )
+        protected TaskBaseCommand(string title, string description )
         {
             Title = title;
             Description = description;

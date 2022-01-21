@@ -7,7 +7,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Commands.Models
 {
     public abstract class OrganizationBaseCommand : BaseCommand
     {
-        public OrganizationBaseCommand(string name, string description)
+        protected OrganizationBaseCommand(string name, string description)
         {
             Name = name;
             Description = description;

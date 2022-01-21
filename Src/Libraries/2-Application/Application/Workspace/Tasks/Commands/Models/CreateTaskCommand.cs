@@ -10,7 +10,6 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
             : base(title, description)
         {
             CardId = cardId;
-
         }
 
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]

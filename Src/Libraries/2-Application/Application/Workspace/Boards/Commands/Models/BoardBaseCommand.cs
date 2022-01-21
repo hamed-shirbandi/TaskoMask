@@ -8,7 +8,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Models
 {
     public abstract class BoardBaseCommand : BaseCommand
     {
-        public BoardBaseCommand(string name, string description, string projectId)
+        protected BoardBaseCommand(string name, string description, string projectId)
         {
             Name = name;
             Description = description;

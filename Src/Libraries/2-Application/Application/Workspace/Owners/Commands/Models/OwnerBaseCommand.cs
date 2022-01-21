@@ -8,7 +8,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Models
 {
     public abstract class OwnerBaseCommand : BaseCommand
     {
-        public OwnerBaseCommand(string id, string displayName, string email)
+        protected OwnerBaseCommand(string id, string displayName, string email)
         {
             DisplayName = displayName;
             Email = email;

@@ -11,7 +11,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Models
     public abstract class CardBaseCommand : BaseCommand
     {
 
-        public CardBaseCommand(string name, string description, BoardCardType type)
+        protected CardBaseCommand(string name, string description, BoardCardType type)
         {
             Name = name;
             Description = description;

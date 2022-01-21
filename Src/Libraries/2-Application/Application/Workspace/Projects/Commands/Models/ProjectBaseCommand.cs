@@ -7,7 +7,7 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Models
 {
     public abstract class ProjectBaseCommand : BaseCommand
     {
-        public ProjectBaseCommand(string name, string description,string organizationId)
+        protected ProjectBaseCommand(string name, string description,string organizationId)
         {
             Name = name;
             Description = description;

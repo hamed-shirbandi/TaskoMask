@@ -25,8 +25,8 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DbContext
 
         public WriteDbContext(IConfiguration configuration)
         {
-            _dbName = configuration["Mongo:Database"];
-            _connectionString = configuration["Mongo:Connection"];
+            _dbName = configuration["Mongo:Write:Database"];
+            _connectionString = configuration["Mongo:Write:Connection"];
             MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(_connectionString));
             _client = new MongoClient(settings);
             _database = _client.GetDatabase(_dbName);

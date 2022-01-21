@@ -25,8 +25,8 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DbContext
 
         public ReadDbContext(IConfiguration configuration)
         {
-            _dbName = configuration["Mongo:Database"];
-            _connectionString = configuration["Mongo:Connection"];
+            _dbName = configuration["Mongo:Read:Database"];
+            _connectionString = configuration["Mongo:Read:Connection"];
             MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(_connectionString));
             _client = new MongoClient(settings);
             _database = _client.GetDatabase(_dbName);

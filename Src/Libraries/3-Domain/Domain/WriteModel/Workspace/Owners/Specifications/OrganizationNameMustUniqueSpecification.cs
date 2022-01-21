@@ -6,11 +6,10 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
 {
     internal class OrganizationNameMustUniqueSpecification : ISpecification<Owner>
     {
-        public OrganizationNameMustUniqueSpecification()
-        {
-        }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsSatisfiedBy(Owner owner)
         {
             var organizationsCount = owner.Organizations.Count;
@@ -18,7 +17,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
                 return true;
 
             var distincOrganizationsCount = owner.Organizations.Select(p => p.Name).Distinct().Count();
-
             return organizationsCount == distincOrganizationsCount;
         }
     }

@@ -135,8 +135,20 @@
   <data name="Length_Error" xml:space="preserve">
     <value>The {0} length must be between {1} and {2} characters</value>
   </data>
+  <data name="Max_Board_Count_Limitiation" xml:space="preserve">
+    <value>A project cannot have more than {0} boards</value>
+  </data>
+  <data name="Max_Card_Count_Limitiation" xml:space="preserve">
+    <value>A board cannot have more than {0} cards</value>
+  </data>
+  <data name="Max_Organizations_Count_Limitiation" xml:space="preserve">
+    <value>An owner cannot have more than {0} organizations</value>
+  </data>
   <data name="Max_Projects_Count_Limitiation" xml:space="preserve">
-    <value>An organization cannot have more than {0} project</value>
+    <value>An organization cannot have more than {0} projects</value>
+  </data>
+  <data name="Max_Task_Count_Limitiation" xml:space="preserve">
+    <value>A board cannot have more than {0} tasks</value>
   </data>
   <data name="Min_Length_Error" xml:space="preserve">
     <value>The {0} length must be greater than {1} characters</value>

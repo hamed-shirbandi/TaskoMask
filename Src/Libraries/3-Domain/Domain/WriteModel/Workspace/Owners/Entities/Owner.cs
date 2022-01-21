@@ -2,6 +2,7 @@
 using System.Linq;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
@@ -255,6 +256,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             if (Email == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Email)));
 
+          
         }
 
         /// <summary>
@@ -262,8 +264,17 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// </summary>
         protected override void CheckInvariants()
         {
+            if (!new OwnerMaxOrganizationsSpecification().IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Max_Organizations_Count_Limitiation, DomainConstValues.Owner_Max_Organizations_Count));
+
             if (!new OrganizationNameMustUniqueSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
+
+            if (!new OrganizationMaxProjectsSpecification().IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Max_Projects_Count_Limitiation, DomainConstValues.Organization_Max_Projects_Count));
+
+            if (!new ProjectNameMustUniqueSpecification().IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Project));
         }
 
 

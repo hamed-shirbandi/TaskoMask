@@ -4,6 +4,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Share.Services;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Projects;
@@ -116,7 +117,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         public void CreateOrganization(Organization organization)
         {
             Organizations.Add(organization);
-            AddDomainEvent(new OrganizationCreatedEvent(organization.Id, organization.Name.Value, organization.Description.Value, organization.OwnerId.Value));
+            AddDomainEvent(new OrganizationCreatedEvent(organization.Id, organization.Name.Value, organization.Description.Value,this.Id));
         }
 
 
@@ -124,8 +125,11 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateOrganization(string organizationId, string name, string description)
+        public void UpdateOrganization(string organizationId, string name, string description, IAuthenticatedUserService authenticatedUserService)
         {
+            if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
+                throw new DomainException(DomainMessages.Access_Denied_By_Current_User);
+
             var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
             if (organization == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
@@ -139,8 +143,11 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void DeleteOrganization(string organizationId)
+        public void DeleteOrganization(string organizationId, IAuthenticatedUserService authenticatedUserService)
         {
+            if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
+                throw new DomainException(DomainMessages.Access_Denied_By_Current_User);
+
             var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
             if (organization == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
@@ -230,7 +237,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
             if (organization == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
-           
+
             organization.RecycleProject(projectId);
 
             AddDomainEvent(new ProjectRecycledEvent(projectId));

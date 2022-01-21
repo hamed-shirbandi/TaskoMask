@@ -61,6 +61,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Access denied by current user.
+        /// </summary>
+        public static string Access_Denied_By_Current_User {
+            get {
+                return ResourceManager.GetString("Access_Denied_By_Current_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description cannot be same of name.
         /// </summary>
         public static string Equal_Name_And_Description_Error {

@@ -19,7 +19,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         {
             Name = ProjectName.Create(name);
             Description = ProjectDescription.Create(description) ;
-            OrganizationId = ProjectOrganizationId.Create(organizationId);
 
             CheckPolicies();
         }
@@ -31,7 +30,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
         public ProjectName Name { get; private set; }
         public ProjectDescription Description { get; private set; }
-        public ProjectOrganizationId OrganizationId { get; private set; }
 
         #endregion
 
@@ -100,9 +98,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
             if (Description == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
-
-            if (OrganizationId == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OrganizationId)));
 
             if (!new ProjectNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);

@@ -6,6 +6,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications;
 using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.Domain.Share.Helpers;
+using TaskoMask.Domain.Share.Services;
 
 namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 {
@@ -18,11 +19,10 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
         #region Ctors
 
-        private Organization(string name, string description, string ownerId)
+        private Organization(string name, string description)
         {
             Name = OrganizationName.Create(name);
             Description = OrganizationDescription.Create(description);
-            OwnerId = OrganizationOwnerId.Create(ownerId);
 
             CheckPolicies();
         }
@@ -35,8 +35,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
         public OrganizationName Name { get; private set; }
         public OrganizationDescription Description { get; private set; }
-        public OrganizationOwnerId OwnerId { get; private set; }
-
         public ICollection<Project> Projects { get; private set; }
 
         #endregion
@@ -48,9 +46,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Organization CreateOrganization(string name, string description, string ownerId)
+        public static Organization CreateOrganization(string name, string description )
         {
-            return new Organization(name, description, ownerId);
+            return new Organization(name, description);
         }
 
 
@@ -164,6 +162,8 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
 
 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -175,10 +175,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             if (Description == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
 
-            if (OwnerId == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerId)));
-
-          
             if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
 

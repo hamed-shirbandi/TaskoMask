@@ -12,6 +12,7 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
+using TaskoMask.Domain.Share.Services;
 
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
@@ -22,14 +23,16 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         #region Fields
 
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
+        private readonly IAuthenticatedUserService _authenticatedUserService;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus, IAuthenticatedUserService authenticatedUserService) : base(notifications, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
+            _authenticatedUserService = authenticatedUserService;
         }
 
         #endregion
@@ -47,7 +50,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
 
-            var organization = Organization.CreateOrganization(request.Name, request.Description, request.OwnerId);
+            var organization = Organization.CreateOrganization(request.Name, request.Description);
             owner.CreateOrganization(organization);
             await _ownerAggregateRepository.UpdateAsync(owner);
 
@@ -64,12 +67,11 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// </summary>
         public async Task<CommandResult> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
         {
-
             var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.Id);
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            owner.UpdateOrganization(request.Id,request.Name, request.Description);
+            owner.UpdateOrganization(request.Id, request.Name, request.Description, _authenticatedUserService);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
 

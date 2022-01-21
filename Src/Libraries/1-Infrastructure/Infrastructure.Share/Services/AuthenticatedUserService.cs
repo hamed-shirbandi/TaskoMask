@@ -34,7 +34,7 @@ namespace TaskoMask.Infrastructure.Share.Services.Security
         {
             var user = _httpContextAccessor.HttpContext.User;
             if (user == null)
-                return null;
+                return new AuthenticatedUser();
 
             return new AuthenticatedUser
             {

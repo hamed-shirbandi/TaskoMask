@@ -50,6 +50,8 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
 
             await _ownerRepository.CreateAsync(owner);
 
+            await PublishDomainEventsAsync(owner.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Create_Success, owner.Id.ToString());
         }
 
@@ -71,6 +73,8 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
                 OwnerEmail.Create(request.Email));
 
             await _ownerRepository.UpdateAsync(owner);
+
+            await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, owner.Id.ToString());
         }

@@ -27,7 +27,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static void SeedEssentialData(this IServiceProvider serviceProvider)
+        public static void SeedEssentialData(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {
@@ -58,7 +58,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static void SeedAdminPanelTempData(this IServiceProvider serviceProvider)
+        public static void SeedAdminPanelTempData(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {

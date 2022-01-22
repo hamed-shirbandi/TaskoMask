@@ -1,4 +1,5 @@
 
+using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
@@ -11,7 +12,8 @@ var app = builder.Build();
 
 app.UseMvcProjectConfigure(app.Services, builder.Environment);
 
-app.Services.SeedAdminPanelTempData();
+WriteDbSeedData.SeedAdminPanelTempData(app.Services);
+ReadDbSeedData.SyncAdminPanelTempData(app.Services);
 
 app.UseEndpoints(endpoints =>
 {

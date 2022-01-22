@@ -17,6 +17,7 @@ using TaskoMask.Application.Workspace.Organizations.Commands.Validations;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
+using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
 
 namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
 {
@@ -24,7 +25,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
     /// <summary>
     /// 
     /// </summary>
-    public static  class CommonConfiguration
+    public static class CommonConfiguration
     {
 
 
@@ -78,7 +79,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             services.ConfigureIocContainer();
 
         }
-       
+
 
 
         /// <summary>
@@ -87,12 +88,14 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
         public static void UseCommonConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
-           
+
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            serviceProvider.InitialDb();
-            serviceProvider.SeedEssentialData();
+            WriteDbInitialization.Initial(serviceProvider);
+            ReadDbInitialization.Initial(serviceProvider);
+            WriteDbSeedData.SeedEssentialData(serviceProvider);
+
             app.UseHttpsRedirection();
         }
 

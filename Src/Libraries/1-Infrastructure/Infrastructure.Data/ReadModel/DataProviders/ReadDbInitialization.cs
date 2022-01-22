@@ -17,7 +17,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
         /// <summary>
         /// Create collections and set indexes
         /// </summary>
-        public static void InitialDb(this IServiceProvider serviceProvider)
+        public static void Initial( IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {

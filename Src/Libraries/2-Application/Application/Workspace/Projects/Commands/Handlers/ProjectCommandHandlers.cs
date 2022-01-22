@@ -46,7 +46,7 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            var project = Project.Create(request.Name,request.Description,request.OrganizationId);
+            var project = Project.Create(request.Name,request.Description);
             owner.CreateProject(request.OrganizationId,project);
 
             await _ownerAggregateRepository.UpdateAsync(owner);

@@ -11,7 +11,6 @@ using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 using TaskoMask.Infrastructure.Data.Common.DataProviders;
-using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
 

@@ -5,10 +5,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
+using TaskoMask.Domain.ReadModel.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {
@@ -44,13 +41,9 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #endregion
 
-
             #region Organization
 
-            CreateMap<Organization, OrganizationBaseDto>()
-                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name.Value))
-                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description.Value));
-
+            CreateMap<Organization, OrganizationBaseDto>();
             CreateMap<Organization, OrganizationBasicInfoDto>();
             CreateMap<Organization, OrganizationOutputDto>();
             CreateMap<Organization, OrganizationUpsertDto>();

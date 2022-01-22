@@ -16,7 +16,6 @@ using TaskoMask.Application.Workspace.Boards.Services;
 using TaskoMask.Application.Workspace.Cards.Services;
 using TaskoMask.Application.Workspace.Tasks.Services;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Infrastructure.Data.WriteModel.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace;
 using TaskoMask.Infrastructure.Data.WriteModel.Repositories.Membership;
 using TaskoMask.Domain.WriteModel.Membership.Data;
@@ -27,7 +26,6 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
@@ -44,6 +42,7 @@ using TaskoMask.Infrastructure.Data.ReadModel.Repositories;
 using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
 
 namespace Infrastructure.CrossCutting.IoC
 {
@@ -88,6 +87,7 @@ namespace Infrastructure.CrossCutting.IoC
 
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<ITaskValidatorService, TaskValidatorService>();
+            services.AddScoped<IBoardValidatorService, BoardValidatorService>();
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 

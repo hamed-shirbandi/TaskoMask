@@ -22,5 +22,6 @@ namespace TaskoMask.Application.Share.Dtos.Workspace.Tasks
         [Display(Name = nameof(ApplicationMetadata.CardId), ResourceType = typeof(ApplicationMetadata))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
         public string CardId { get; set; }
+
     }
 }

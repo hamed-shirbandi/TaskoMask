@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Share.Dtos.Common;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Mapper.MappingActions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Models;
 using TaskoMask.Domain.Core.ValueObjects;
 
 namespace TaskoMask.Application.Mapper.Profiles

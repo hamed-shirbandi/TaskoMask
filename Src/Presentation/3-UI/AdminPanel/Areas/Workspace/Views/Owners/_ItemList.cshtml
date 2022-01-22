@@ -17,7 +17,7 @@ else
                     <tr>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().DisplayName)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().Email)</th>
-                        <th>@Html.LabelFor(model => model.FirstOrDefault().UserInfo.IsActive)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().IsActive)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().CreationTime.CreateDateTimeString)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().OrganizationsCount)</th>
                         <th><label></label></th>
@@ -35,7 +35,7 @@ else
                                 @item.Email
                             </td>
                             <td>
-                                @(item.UserInfo.IsActive?"active":"deactivated")
+                                @(item.IsActive?"active":"deactivated")
                             </td>
                             <td>
                                 @item.CreationTime.CreateDateTimeString

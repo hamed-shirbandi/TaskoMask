@@ -9,17 +9,18 @@ namespace TaskoMask.Application.Share.Dtos.Workspace.Owners
     {
         public string Id { get; set; }
 
-        public UserBasicInfoDto UserInfo { get; set; }
-
         public CreationTimeDto CreationTime { get; set; }
-
 
         [Display(Name = nameof(ApplicationMetadata.DisplayName), ResourceType = typeof(ApplicationMetadata))]
         public string DisplayName { get; set; }
 
-
         [Display(Name = nameof(ApplicationMetadata.Email), ResourceType = typeof(ApplicationMetadata))]
         public string Email { get; set; }
+
+        [Display(Name = nameof(ApplicationMetadata.UserName), ResourceType = typeof(ApplicationMetadata))]
+        public string UserName { get; set; }
+        
+        public bool IsActive { get; set; }
 
     }
 }

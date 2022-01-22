@@ -15,7 +15,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
         #region Ctors
 
-        private Project(string name, string description, string organizationId)
+        private Project(string name, string description )
         {
             Name = ProjectName.Create(name);
             Description = ProjectDescription.Create(description) ;
@@ -40,9 +40,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Project Create(string name, string description, string organizationId)
+        public static Project Create(string name, string description)
         {
-            return new Project(name, description, organizationId);
+            return new Project(name, description);
         }
 
 

@@ -5,12 +5,15 @@ using System;
 using System.Linq;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
+using TaskoMask.Infrastructure.Data.Common.DataProviders;
+using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
+using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
 {
@@ -27,7 +30,28 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
         /// </summary>
         public static void SeedEssentialData(this IServiceProvider serviceProvider)
         {
-            //TODO seed some data
+            using (var serviceScope = serviceProvider.CreateScope())
+            {
+                var _dbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
+                var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
+                var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
+
+
+                var _users = _dbContext.GetCollection<User>();
+                var _operators = _dbContext.GetCollection<Operator>();
+
+
+                //if write database is empty
+                if (!_operators.AsQueryable().Any())
+                {
+                    var superUser = WriteModelDataGenerator.GetSuperUser(_configuration, _encryptionService);
+                    _users.InsertOne(superUser);
+
+                    var adminOperator = WriteModelDataGenerator.GetAdminOperator(superUser.Id, _configuration);
+                    _operators.InsertOne(adminOperator);
+                }
+
+            }
         }
 
 
@@ -37,7 +61,62 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
         /// </summary>
         public static void SeedAdminPanelTempData(this IServiceProvider serviceProvider)
         {
-            //TODO seed some data
+            using (var serviceScope = serviceProvider.CreateScope())
+            {
+                var _writeDbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
+                var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
+                var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
+                var _boardValidatorService = serviceScope.ServiceProvider.GetService<IBoardValidatorService>();
+                var _taskValidatorService = serviceScope.ServiceProvider.GetService<ITaskValidatorService>();
+
+                #region  collections
+
+                var _users = _writeDbContext.GetCollection<User>();
+                var _operators = _writeDbContext.GetCollection<Operator>();
+                var _roles = _writeDbContext.GetCollection<Role>();
+                var _permissions = _writeDbContext.GetCollection<Permission>();
+
+                var _ownerAggregate = _writeDbContext.GetCollection<Owner>();
+                var _boardAggregate = _writeDbContext.GetCollection<Board>();
+                var _taskAggregate = _writeDbContext.GetCollection<Task>();
+
+                #endregion
+
+                //if database is empty
+                if (!_operators.AsQueryable().Any())
+                {
+                    var permissions = WriteModelDataGenerator.GeneratePermission();
+                    _permissions.InsertMany(permissions);
+
+                    var roles = WriteModelDataGenerator.GenerateRole(permissions);
+                    _roles.InsertMany(roles);
+
+                    var usersAsOperator = WriteModelDataGenerator.GenerateUser("Operator");
+                    _users.InsertMany(usersAsOperator);
+
+
+                    var operators = WriteModelDataGenerator.GenerateOperator(usersAsOperator, roles);
+                    _operators.InsertMany(operators);
+
+
+                    var usersAsOwner= WriteModelDataGenerator.GenerateUser("Owner");
+                    _users.InsertMany(usersAsOwner);
+
+                    var owners = WriteModelDataGenerator.GenerateOwner(usersAsOwner);
+                    _ownerAggregate.InsertMany(owners);
+
+
+                    var boards = WriteModelDataGenerator.GenerateBoard(owners, _boardValidatorService);
+                    _boardAggregate.InsertMany(boards);
+
+
+                    var tasks = WriteModelDataGenerator.GenerateTasks(boards,_taskValidatorService);
+                    _taskAggregate.InsertMany(tasks);
+
+
+                }
+
+            }
 
         }
 

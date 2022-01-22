@@ -10,9 +10,8 @@ using TaskoMask.Domain.WriteModel.Membership.Entities;
 
 namespace TaskoMask.Infrastructure.Data.Common.DataProviders
 {
-    public static class ReadDataGenerator
+    public static class ReadModelDataGenerator
     {
-
 
         /// <summary>
         /// 
@@ -40,22 +39,17 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<Organization> GenerateOrganization(IEnumerable<Owner> owners)
+        public static IEnumerable<Organization> GenerateOrganization()
         {
             var items = new List<Organization>();
-            var i = 1;
-            foreach (var item in owners)
+            for (int i = 1; i <= 2; i++)
             {
                 items.Add(new Organization
                 {
-                    OwnerId = item.Id,
                     Name = $"Organization_{i}",
                     Description = $"Organization_{i} test description",
                 });
-
-                i++;
             }
-
             return items;
         }
 
@@ -64,20 +58,16 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<Project> GenerateProject(IEnumerable<Organization> organizations)
+        public static IEnumerable<Project> GenerateProject()
         {
             var items = new List<Project>();
-            var i = 1;
-            foreach (var item in organizations)
+            for (int i = 1; i < 2; i++)
             {
                 items.Add(new Project
                 {
-                    OrganizationId = item.Id,
                     Name = $"Project_{i}",
                     Description = $"Project_{i} test description",
                 });
-
-                i++;
             }
 
             return items;
@@ -88,21 +78,16 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<Board> GenerateBoard(IEnumerable<Project> projects)
+        public static IEnumerable<Board> GenerateBoard()
         {
             var items = new List<Board>();
-            var i = 1;
-            foreach (var item in projects)
+            for (int i = 1; i <= 2; i++)
             {
                 items.Add(new Board
                 {
-                    ProjectId = item.Id,
-                    OrganizationId = item.OrganizationId,
                     Name = $"Board_{i}",
                     Description = $"Board_{i} test description",
                 });
-
-                i++;
             }
 
             return items;
@@ -114,22 +99,17 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<Card> GenerateCard(IEnumerable<Board> boards)
+        public static IEnumerable<Card> GenerateCard()
         {
             var items = new List<Card>();
-            foreach (var item in boards)
+            for (int i = 1; i <= 1; i++)
             {
-                for (int i = 1; i <= 4; i++)
+                items.Add(new Card
                 {
-                    items.Add(new Card
-                    {
-                        BoardId = item.Id,
-                        Name = $"Card_{i}",
-                        Type = BoardCardType.ToDo,
-                    });
-                }
+                    Name = $"Card_{i}",
+                    Type = BoardCardType.ToDo,
+                });
             }
-
             return items;
         }
 
@@ -138,23 +118,17 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<Task> GenerateTasks(IEnumerable<Card> cards)
+        public static IEnumerable<Task> GenerateTasks()
         {
             var items = new List<Task>();
-            foreach (var item in cards)
+            for (int i = 1; i <= 2; i++)
             {
-                for (int i = 1; i <= 5; i++)
+                items.Add(new Task
                 {
-                    items.Add(new Task
-                    {
-                        CardId = item.Id,
-                        BoardId = item.BoardId,
-                        Title = $"Task_Title_{i}",
-                        Description = "This is a test content for this task!",
-                    });
-                }
+                    Title = $"Task_Title_{i}",
+                    Description = "This is a test content for this task!",
+                });
             }
-
             return items;
         }
 

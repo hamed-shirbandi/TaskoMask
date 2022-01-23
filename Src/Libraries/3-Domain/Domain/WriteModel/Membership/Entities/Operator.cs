@@ -26,6 +26,26 @@ namespace TaskoMask.Domain.WriteModel.Membership.Entities
         public string Email { get; set; }
         public string[] RolesId { get; set; }
 
+        #region Update private properties
 
+        public void SetAsDeleteed()
+        {
+            base.Delete();
+            SetAsUpdated();
+        }
+
+
+        public void SetAsRecycled()
+        {
+            base.Recycle();
+            SetAsUpdated();
+        }
+
+        public void SetAsUpdated()
+        {
+            base.UpdateModifiedDateTime();
+        }
+
+        #endregion
     }
 }

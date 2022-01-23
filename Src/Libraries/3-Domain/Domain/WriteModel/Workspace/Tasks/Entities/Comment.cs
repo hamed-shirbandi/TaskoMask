@@ -57,6 +57,29 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
             CheckPolicies();
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public new void Delete()
+        {
+            base.Delete();
+            base.UpdateModifiedDateTime();
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public new void Recycle()
+        {
+            base.Recycle();
+            base.UpdateModifiedDateTime();
+
+        }
         #endregion
 
         #region Private Methods

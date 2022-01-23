@@ -21,5 +21,6 @@ namespace TaskoMask.Domain.ReadModel.Entities
         public string TaskId { get; set; }
         public string OwnerId { get; set; }
         public string Description { get; set; }
+
     }
 }

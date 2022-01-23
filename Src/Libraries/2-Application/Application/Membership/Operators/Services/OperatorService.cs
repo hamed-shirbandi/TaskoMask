@@ -87,7 +87,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
 
             @operator.DisplayName = input.DisplayName;
             @operator.Email = input.Email;
-            @operator.UpdateModifiedDateTime();
+            @operator.SetAsUpdated();
 
             await _operatorRepository.UpdateAsync(@operator);
 
@@ -107,7 +107,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
 
             @operator.RolesId = rolesId;
 
-            @operator.UpdateModifiedDateTime();
+            @operator.SetAsUpdated();
 
             await _operatorRepository.UpdateAsync(@operator);
 

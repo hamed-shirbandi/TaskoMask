@@ -9,5 +9,6 @@ namespace TaskoMask.Domain.WriteModel.Membership.Entities
         public string SystemName { get; set; }
         public string GroupName { get; set; }
 
+
     }
 }

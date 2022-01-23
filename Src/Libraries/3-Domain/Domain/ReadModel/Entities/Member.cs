@@ -29,6 +29,29 @@ namespace TaskoMask.Domain.ReadModel.Entities
         public string ProjectId { get; set; }
         public string OrganizationId { get; set; }
         public BoardMemberAccessLevel AccessLevel { get; set; }
+
+
+        #region Update private properties
+
+        public void SetAsDeleteed()
+        {
+            base.Delete();
+            SetAsUpdated();
+        }
+
+
+        public void SetAsRecycled()
+        {
+            base.Recycle();
+            SetAsUpdated();
+        }
+
+        public void SetAsUpdated()
+        {
+            base.UpdateModifiedDateTime();
+        }
+
+        #endregion
     }
 
 }

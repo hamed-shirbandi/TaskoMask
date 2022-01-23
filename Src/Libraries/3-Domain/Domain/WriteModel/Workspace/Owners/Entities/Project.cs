@@ -64,7 +64,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public override void Delete()
+        public new void Delete()
         {
             base.Delete();
             base.UpdateModifiedDateTime();
@@ -75,7 +75,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public override void Recycle()
+        public new void Recycle()
         {
             base.Recycle();
             base.UpdateModifiedDateTime();

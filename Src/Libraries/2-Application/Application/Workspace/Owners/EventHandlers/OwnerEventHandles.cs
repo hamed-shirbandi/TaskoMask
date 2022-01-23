@@ -65,6 +65,8 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
             owner.Email = updatedOwner.Email;
             owner.UserName = user.UserName;
 
+            owner.SetAsUpdated();
+
             await _ownerRepository.UpdateAsync(owner);
 
         }
@@ -77,7 +79,7 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
         public async System.Threading.Tasks.Task Handle(OwnerDeletedEvent deletedOwner, CancellationToken cancellationToken)
         {
             var owner = await _ownerRepository.GetByIdAsync(deletedOwner.Id);
-            owner.Delete();
+            owner.SetAsDeleteed();
             await _ownerRepository.UpdateAsync(owner);
         }
 
@@ -89,7 +91,7 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
         public async System.Threading.Tasks.Task Handle(OwnerRecycledEvent recycledOwner, CancellationToken cancellationToken)
         {
             var owner = await _ownerRepository.GetByIdAsync(recycledOwner.Id);
-            owner.Recycle();
+            owner.SetAsRecycled();
             await _ownerRepository.UpdateAsync(owner);
         }
 

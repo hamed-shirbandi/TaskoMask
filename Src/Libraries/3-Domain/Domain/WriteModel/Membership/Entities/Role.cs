@@ -1,6 +1,5 @@
 ﻿using TaskoMask.Domain.Core.Models;
 
-
 namespace TaskoMask.Domain.WriteModel.Membership.Entities
 {
     /// <summary>
@@ -11,5 +10,27 @@ namespace TaskoMask.Domain.WriteModel.Membership.Entities
         public string Name { get;  set; }
         public string Description { get;  set; }
         public string[] PermissionsId { get; set; }
+
+        #region Update private properties
+
+        public void SetAsDeleteed()
+        {
+            base.Delete();
+            SetAsUpdated();
+        }
+
+
+        public void SetAsRecycled()
+        {
+            base.Recycle();
+            SetAsUpdated();
+        }
+
+        public void SetAsUpdated()
+        {
+            base.UpdateModifiedDateTime();
+        }
+
+        #endregion
     }
 }

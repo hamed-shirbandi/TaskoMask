@@ -108,7 +108,7 @@ namespace TaskoMask.Application.Authorization.Users.Services
 
             SetPassword(user, password);
 
-            user.UpdateModifiedDateTime();
+            user.SetAsUpdated();
 
             await _userRepository.CreateAsync(user);
 

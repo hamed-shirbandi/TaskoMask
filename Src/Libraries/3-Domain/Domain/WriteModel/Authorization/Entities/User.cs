@@ -14,5 +14,27 @@ namespace TaskoMask.Domain.WriteModel.Authorization.Entities
         public string PasswordHash { get;  set; }
         public string PasswordSalt { get;  set; }
 
+
+        #region Update private properties
+
+        public void SetAsDeleteed()
+        {
+            base.Delete();
+            SetAsUpdated();
+        }
+
+
+        public void SetAsRecycled()
+        {
+            base.Recycle();
+            SetAsUpdated();
+        }
+
+        public void SetAsUpdated()
+        {
+            base.UpdateModifiedDateTime();
+        }
+
+        #endregion
     }
 }

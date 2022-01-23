@@ -23,5 +23,27 @@ namespace TaskoMask.Domain.ReadModel.Entities
         public string Name { get;  set; }
         public string Description { get;  set; }
         public string OwnerId { get; set; }
+
+        #region Update private properties
+
+        public void SetAsDeleteed()
+        {
+            base.Delete();
+            SetAsUpdated();
+        }
+
+
+        public void SetAsRecycled()
+        {
+            base.Recycle();
+            SetAsUpdated();
+        }
+
+        public void SetAsUpdated()
+        {
+            base.UpdateModifiedDateTime();
+        }
+
+        #endregion
     }
 }

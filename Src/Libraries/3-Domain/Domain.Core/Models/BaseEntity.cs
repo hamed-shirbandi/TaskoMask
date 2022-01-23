@@ -34,13 +34,6 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual void UpdateModifiedDateTime()
-        {
-            CreationTime = CreationTime.UpdateModifiedDateTime();
-        }
 
 
         #endregion
@@ -52,7 +45,17 @@ namespace TaskoMask.Domain.Core.Models
         /// <summary>
         /// 
         /// </summary>
-        protected virtual void SetId(string id)
+        protected void UpdateModifiedDateTime()
+        {
+            CreationTime = CreationTime.UpdateModifiedDateTime();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected void SetId(string id)
         {
             Id = id;
             UpdateModifiedDateTime();
@@ -60,12 +63,10 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
-
-
         /// <summary>
         /// 
         /// </summary>
-        protected virtual void Delete()
+        protected void Delete()
         {
             IsDeleted = true;
         }
@@ -75,7 +76,7 @@ namespace TaskoMask.Domain.Core.Models
         /// <summary>
         /// 
         /// </summary>
-        protected virtual void Recycle()
+        protected void Recycle()
         {
             IsDeleted = false;
         }

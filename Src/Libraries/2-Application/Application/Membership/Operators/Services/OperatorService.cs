@@ -200,6 +200,33 @@ namespace TaskoMask.Application.Membership.Operators.Services
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<long>> CountAsync()
+        {
+            var count = await _operatorRepository.CountAsync();
+            return Result.Success(count);
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
+        {
+            var @operator = await _operatorRepository.GetByIdAsync(id);
+            if (@operator == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+
+            @operator.SetAsDeleteed();
+            return Result.Success(new CommandResult(entityId: @operator.Id), ApplicationMessages.Update_Success);
+        }
+
+
         #endregion
     }
 }

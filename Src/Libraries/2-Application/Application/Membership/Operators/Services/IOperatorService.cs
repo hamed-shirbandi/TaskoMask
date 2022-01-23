@@ -15,5 +15,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
         Task<Result<IEnumerable<OperatorOutputDto>>> GetListAsync();
         Task<Result<OperatorDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<CommandResult>> UpdateRolesAsync(string id, string[] rolesId);
+        Task<Result<long>> CountAsync();
+        Task<Result<CommandResult>> DeleteAsync(string id);
     }
 }

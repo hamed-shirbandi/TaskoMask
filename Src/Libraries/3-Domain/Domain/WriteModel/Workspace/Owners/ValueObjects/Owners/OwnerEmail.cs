@@ -57,11 +57,8 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners
             if (Value.Length > DomainConstValues.Owner_Email_Max_Length)
                 throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(OwnerEmail), DomainConstValues.Owner_Email_Min_Length, DomainConstValues.Owner_Email_Max_Length));
 
-            if (EmailValidator.IsValid(Value))
+            if (!EmailValidator.IsValid(Value))
                 throw new DomainException(DomainMessages.Invalid_Email_Address);
-
-            //TODO should be unique
-
         }
 
 

@@ -16,7 +16,8 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
 {
     public class CardCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateCardCommand, CommandResult>,
-         IRequestHandler<UpdateCardCommand, CommandResult>
+         IRequestHandler<UpdateCardCommand, CommandResult>,
+         IRequestHandler<DeleteCardCommand, CommandResult>
     {
         #region Fields
 
@@ -73,6 +74,24 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(DeleteCardCommand request, CancellationToken cancellationToken)
+        {
+            var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
+            if (board == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+
+            board.DeleteCard(request.Id);
+
+            await _boardAggregateRepository.UpdateAsync(board);
+            return new CommandResult(ApplicationMessages.Update_Success, board.Id);
+
+        }
 
         #endregion
 

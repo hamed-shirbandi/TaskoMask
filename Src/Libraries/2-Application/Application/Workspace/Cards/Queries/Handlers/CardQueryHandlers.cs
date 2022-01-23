@@ -21,7 +21,9 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         IRequestHandler<GetCardByIdQuery, CardBasicInfoDto>,
         IRequestHandler<GetCardReportQuery, CardReportDto>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>,
-        IRequestHandler<SearchCardsQuery, PaginatedListReturnType<CardOutputDto>>
+        IRequestHandler<SearchCardsQuery, PaginatedListReturnType<CardOutputDto>>,
+        IRequestHandler<CardsCountQuery, long>
+
 
     {
         #region Fields
@@ -107,6 +109,17 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
                 Items = cardsDto
             };
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> Handle(CardsCountQuery request, CancellationToken cancellationToken)
+        {
+            return await _cardRepository.CountAsync();
+        }
+
 
 
 

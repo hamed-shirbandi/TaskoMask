@@ -34,7 +34,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
 
             CheckPolicies(taskValidatorService);
 
-            AddDomainEvent(new TaskCreatedEvent(Id, Title.Value, Description.Value, CardId.Value));
+            AddDomainEvent(new TaskCreatedEvent(Id, Title.Value, Description.Value, CardId.Value,BoardId.Value));
         }
 
         #endregion

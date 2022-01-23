@@ -6,7 +6,6 @@ using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
@@ -19,20 +18,22 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
 {
     public class OwnerCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateOwnerCommand, CommandResult>,
-        IRequestHandler<UpdateOwnerCommand, CommandResult>
+        IRequestHandler<UpdateOwnerCommand, CommandResult>,
+         IRequestHandler<DeleteOwnerCommand, CommandResult>
+
     {
         #region Fields
 
-        private readonly IOwnerAggregateRepository _ownerRepository;
+        private readonly IOwnerAggregateRepository _ownerAggregateRepository;
 
         #endregion
 
         #region Ctors
 
 
-        public OwnerCommandHandlers(IOwnerAggregateRepository ownerRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public OwnerCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
         {
-            _ownerRepository = ownerRepository;
+            _ownerAggregateRepository = ownerAggregateRepository;
         }
 
         #endregion
@@ -48,7 +49,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
         {
             var owner = Owner.CreateOwner(request.Id,request.DisplayName, request.Email);
 
-            await _ownerRepository.CreateAsync(owner);
+            await _ownerAggregateRepository.CreateAsync(owner);
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
@@ -63,7 +64,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateOwnerCommand request, CancellationToken cancellationToken)
         {
-            var owner = await _ownerRepository.GetByIdAsync(request.Id);
+            var owner = await _ownerAggregateRepository.GetByIdAsync(request.Id);
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
@@ -72,11 +73,29 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
                 OwnerDisplayName.Create(request.DisplayName),
                 OwnerEmail.Create(request.Email));
 
-            await _ownerRepository.UpdateAsync(owner);
+            await _ownerAggregateRepository.UpdateAsync(owner);
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, owner.Id.ToString());
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(DeleteOwnerCommand request, CancellationToken cancellationToken)
+        {
+            var owner = await _ownerAggregateRepository.GetByIdAsync(request.Id);
+            if (owner == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+
+            owner.DeleteOwner();
+
+            await _ownerAggregateRepository.UpdateAsync(owner);
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+
         }
 
 

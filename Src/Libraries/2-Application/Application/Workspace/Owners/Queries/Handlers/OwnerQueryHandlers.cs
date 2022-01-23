@@ -19,7 +19,9 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 {
     public class OwnerQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOwnerByIdQuery, OwnerBasicInfoDto>,
-        IRequestHandler<SearchOwnersQuery, PaginatedListReturnType<OwnerOutputDto>>
+        IRequestHandler<SearchOwnersQuery, PaginatedListReturnType<OwnerOutputDto>>,
+        IRequestHandler<GetOwnersCountQuery, long>
+
     {
         #region Fields
 
@@ -83,6 +85,17 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
                 Items = ownersDto
             };
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> Handle(GetOwnersCountQuery request, CancellationToken cancellationToken)
+        {
+            return await _ownerRepository.CountAsync();
+        }
+
 
 
 

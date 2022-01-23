@@ -5,7 +5,6 @@ using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Workspace.Owners.Queries.Models
 {
-   
     public class GetOwnerByIdQuery : BaseQuery<OwnerBasicInfoDto>
     {
         public GetOwnerByIdQuery(string id)

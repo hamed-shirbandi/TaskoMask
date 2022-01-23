@@ -258,6 +258,33 @@ namespace TaskoMask.Application.Membership.Permissions.Services
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<long>> CountAsync()
+        {
+            var count = await _permissionRepository.CountAsync();
+            return Result.Success(count);
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
+        {
+            var permission = await _permissionRepository.GetByIdAsync(id);
+            if (permission == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Permission));
+
+            permission.SetAsDeleteed();
+            return Result.Success(new CommandResult(entityId: permission.Id), ApplicationMessages.Update_Success);
+        }
+
+
+
         #endregion
     }
 }

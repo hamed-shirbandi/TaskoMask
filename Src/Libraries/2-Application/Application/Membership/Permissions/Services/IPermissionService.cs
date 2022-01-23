@@ -21,6 +21,8 @@ namespace TaskoMask.Application.Membership.Permissions.Services
         Task<Result<SelectListItem[]>> GetSelectListAsync(string[] selectedPermissionsId = null);
 
         Task<Result<PaginatedListReturnType<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName);
+        Task<Result<long>> CountAsync();
+        Task<Result<CommandResult>> DeleteAsync(string id);
 
     }
 }

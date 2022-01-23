@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Workspace.Organizations.Services
 {
-    public interface IOrganizationService : IBaseService
+    public interface IOrganizationService : IApplicationService
     {
         Task<Result<CommandResult>> CreateAsync(OrganizationUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(OrganizationUpsertDto input);
@@ -18,6 +18,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByOwnerIdAsync(string ownerId);
         Task<Result<PaginatedListReturnType<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string ownerId);
-
+        Task<Result<long>> CountAsync();
+        Task<Result<CommandResult>> DeleteAsync(string id);
     }
 }

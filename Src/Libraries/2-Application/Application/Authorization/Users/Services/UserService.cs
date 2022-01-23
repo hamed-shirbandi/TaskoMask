@@ -3,7 +3,6 @@ using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Services;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Resources;
@@ -11,10 +10,11 @@ using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Domain.Share.Helpers;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Authorization.Users.Services
 {
-    public class UserService : BaseService<User>, IUserService
+    public class UserService : ApplicationService, IUserService
     {
         #region Fields
 

@@ -6,7 +6,6 @@ using AutoMapper;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Application.Core.Services
 {

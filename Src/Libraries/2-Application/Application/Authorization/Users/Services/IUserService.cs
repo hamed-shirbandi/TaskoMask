@@ -1,11 +1,11 @@
 ﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Authorization.Users.Services
 {
-    public interface IUserService : IBaseService
+    public interface IUserService : IApplicationService
     {
         Task<Result<UserBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<UserBasicInfoDto>> GetByUserNameAsync(string userName);

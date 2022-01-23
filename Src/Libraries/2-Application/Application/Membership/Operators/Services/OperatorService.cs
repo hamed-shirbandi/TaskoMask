@@ -9,15 +9,14 @@ using TaskoMask.Application.Share.ViewModels;
 using System.Collections.Generic;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Resources;
 using System.Linq;
-using TaskoMask.Application.Common.Services;
 using TaskoMask.Application.Authorization.Users.Services;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Membership.Operators.Services
 {
-    public class OperatorService : BaseService<Operator>, IOperatorService
+    public class OperatorService : ApplicationService, IOperatorService
     {
         #region Fields
 

@@ -12,12 +12,11 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Services;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Workspace.Boards.Services
 {
-    public class BoardService :BaseService<Board>, IBoardService
+    public class BoardService :ApplicationService, IBoardService
     {
         #region Fields
 
@@ -146,6 +145,8 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         {
             return await SendQueryAsync(new SearchBoardsQuery(page, recordsPerPage, term));
         }
+
+
 
 
 

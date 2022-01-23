@@ -12,12 +12,12 @@ using TaskoMask.Application.Workspace.Projects.Queries.Models;
 using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Application.Workspace.Cards.Services
 {
-    public class CardService : BaseService<Card>, ICardService
+    public class CardService : ApplicationService, ICardService
     {
         #region Fields
 

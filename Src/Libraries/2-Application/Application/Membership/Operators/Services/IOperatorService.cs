@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Membership.Operators;
 using TaskoMask.Application.Share.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Membership.Operators.Services
 {
-    public interface IOperatorService: IBaseService
+    public interface IOperatorService: IApplicationService
     {
         Task<Result<CommandResult>> CreateAsync(OperatorUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(OperatorUpsertDto input);

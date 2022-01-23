@@ -4,11 +4,10 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Tasks.Commands.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Queries.Models.Boards;
@@ -17,7 +16,7 @@ using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
 {
-    public class TaskService : BaseService<Domain.WriteModel.Workspace.Tasks.Entities.Task>, ITaskService
+    public class TaskService : ApplicationService, ITaskService
     {
         #region Fields
 

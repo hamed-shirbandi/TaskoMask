@@ -10,13 +10,13 @@ using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 using System.Linq;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Application.Workspace.Projects.Services
 {
-    public class ProjectService : BaseService<Project>, IProjectService
+    public class ProjectService : ApplicationService, IProjectService
     {
         #region Fields
 

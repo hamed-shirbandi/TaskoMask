@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
 {
-    public interface ITaskService : IBaseService
+    public interface ITaskService : IApplicationService
     {
         Task<Result<CommandResult>> CreateAsync(TaskUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(TaskUpsertDto input);
@@ -16,6 +16,6 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         Task<Result<IEnumerable<TaskBasicInfoDto>>> GetListByCardIdAsync(string cardId);
         Task<Result<PaginatedListReturnType<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id);
-
+        Task<Result<long>> CountAsync();
     }
 }

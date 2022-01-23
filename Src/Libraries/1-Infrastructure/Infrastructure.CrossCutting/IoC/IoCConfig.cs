@@ -1,12 +1,10 @@
-﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.Application.Workspace.Projects.Services;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 using TaskoMask.Infrastructure.Data.WriteModel.EventSourcing;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Infrastructure.CrossCutting.Bus;
 using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
 using TaskoMask.Application.Membership.Roles.Services;
 using TaskoMask.Application.Membership.Operators.Services;
 using TaskoMask.Application.Membership.Permissions.Services;
@@ -22,19 +20,11 @@ using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Infrastructure.CrossCutting.Services.Security;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Infrastructure.Data.WriteModel.Repositories.Authorization;
-using TaskoMask.Application.Common.Queries.Models;
-using TaskoMask.Application.Common.Queries.Handlers;
-using TaskoMask.Application.Common.Commands.Handlers;
-using TaskoMask.Application.Common.Commands.Models;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Infrastructure.Data.WriteModel.Services;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
@@ -111,42 +101,10 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IOperatorRepository, OperatorRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
-
             
 
             #endregion
 
-            #region Generic Query Handlers
-
-            //TODO Handel Generic Query Handlers
-
-            services.AddScoped<IRequestHandler<GetCountQuery<Operator>, long>, BaseQueryHandlers<Operator>>();
-            services.AddScoped<IRequestHandler<GetCountQuery<Owner>, long>, BaseQueryHandlers<Owner>>();
-            services.AddScoped<IRequestHandler<GetCountQuery<Organization>, long>, BaseQueryHandlers<Organization>>();
-            services.AddScoped<IRequestHandler<GetCountQuery<Project>, long>, BaseQueryHandlers<Project>>();
-            services.AddScoped<IRequestHandler<GetCountQuery<Board>, long>, BaseQueryHandlers<Board>>();
-            services.AddScoped<IRequestHandler<GetCountQuery<Task>, long>, BaseQueryHandlers<Task>>();
-            services.AddScoped<IRequestHandler<GetCountQuery<Card>, long>, BaseQueryHandlers<Card>>();
-
-            #endregion
-
-            #region Generic Command Handlers
-
-            //TODO Handel Generic Command Handlers
-
-            services.AddScoped<IRequestHandler<DeleteCommand<Operator>, CommandResult>, BaseCommandHandlers<Operator>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Permission>, CommandResult>, BaseCommandHandlers<Permission>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Role>, CommandResult>, BaseCommandHandlers<Role>>();
-           
-            services.AddScoped<IRequestHandler<DeleteCommand<Member>, CommandResult>, BaseCommandHandlers<Member>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Owner>, CommandResult>, BaseCommandHandlers<Owner>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Organization>, CommandResult>, BaseCommandHandlers<Organization>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Project>, CommandResult>, BaseCommandHandlers<Project>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Board>, CommandResult>, BaseCommandHandlers<Board>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Task>, CommandResult>, BaseCommandHandlers<Task>>();
-            services.AddScoped<IRequestHandler<DeleteCommand<Card>, CommandResult>, BaseCommandHandlers<Card>>();
-
-            #endregion
         }
     }
 }

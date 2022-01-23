@@ -1,14 +1,13 @@
 ﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 using System.Collections.Generic;
 using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Application.Membership.Roles.Services
 {
-    public interface IRoleService : IBaseService
+    public interface IRoleService : IApplicationService
     {
         Task<Result<CommandResult>> CreateAsync(RoleUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(RoleUpsertDto input);

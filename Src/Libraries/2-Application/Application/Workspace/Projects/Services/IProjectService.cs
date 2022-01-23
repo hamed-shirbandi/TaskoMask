@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 
 namespace TaskoMask.Application.Workspace.Projects.Services
 {
-    public interface IProjectService : IBaseService
+    public interface IProjectService : IApplicationService
     {
         Task<Result<CommandResult>> CreateAsync(ProjectUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(ProjectUpsertDto input);
@@ -19,6 +19,7 @@ namespace TaskoMask.Application.Workspace.Projects.Services
         Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId);
         Task<Result<PaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string organizationId);
-
+        Task<Result<long>> CountAsync();
+        Task<Result<CommandResult>> DeleteAsync(string id);
     }
 }

@@ -12,12 +12,12 @@ using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Application.Common.Services;
+using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Application.Workspace.Owners.Services
 {
-    public class OwnerService : BaseService<Owner>, IOwnerService
+    public class OwnerService : ApplicationService, IOwnerService
     {
         #region Fields
 

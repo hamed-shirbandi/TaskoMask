@@ -4,6 +4,7 @@ using TaskoMask.Infrastructure.Data.Common.Extensions;
 using System;
 using TaskoMask.Infrastructure.Data.Common.DbContext;
 using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
 {
@@ -21,7 +22,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetService<IReadDbContext>();
 
                 CreateCollections(dbContext);
 
@@ -34,7 +35,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
         /// <summary>
         /// Ensure collections created
         /// </summary>
-        private static void CreateCollections(IMongoDbContext dbContext)
+        private static void CreateCollections(IReadDbContext dbContext)
         {
             var collections = dbContext.Collections();
 
@@ -64,7 +65,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
                 dbContext.CreateCollection<Activity>("Activities");
 
             if (!collections.Has<Comment>())
-                dbContext.CreateCollection<Member>();
+                dbContext.CreateCollection<Comment>();
 
         }
 
@@ -73,7 +74,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
         /// <summary>
         /// Create index for collections
         /// </summary>
-        private static void CreateIndexes(IMongoDbContext dbContext)
+        private static void CreateIndexes(IReadDbContext dbContext)
         {
             #region Owner Indexs
 

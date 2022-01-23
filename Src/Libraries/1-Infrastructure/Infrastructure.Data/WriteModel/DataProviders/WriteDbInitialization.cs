@@ -8,6 +8,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.Common.DbContext;
+using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
 {
@@ -25,7 +26,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetService<IMongoDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
 
                 CreateCollections(dbContext);
 
@@ -38,7 +39,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
         /// <summary>
         /// Ensure collections created
         /// </summary>
-        private static void CreateCollections(IMongoDbContext dbContext)
+        private static void CreateCollections(IWriteDbContext dbContext)
         {
             var collections = dbContext.Collections();
 
@@ -73,7 +74,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
         /// <summary>
         /// Create index for collections
         /// </summary>
-        private static void CreateIndexes(IMongoDbContext dbContext)
+        private static void CreateIndexes(IWriteDbContext dbContext)
         {
             #region Owner Indexs
 

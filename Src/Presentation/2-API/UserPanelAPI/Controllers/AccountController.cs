@@ -81,20 +81,13 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("account/register")]
         public async Task<Result<UserJwtTokenDto>> Register([FromBody] OwnerRegisterDto input)
         {
-            //create user
+            //create owner
             var createCommandResult = await _ownerService.CreateAsync(input);
             if (!createCommandResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(createCommandResult.Errors, createCommandResult.Message);
 
-
-            //get user
-            var userQueryResult = await _userService.GetByUserNameAsync(input.Email);
-            if (!userQueryResult.IsSuccess)
-                return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
-
-
             //get owner
-            var ownerQueryResult = await _ownerService.GetByIdAsync(userQueryResult.Value.Id);
+            var ownerQueryResult = await _ownerService.GetByIdAsync(createCommandResult.Value.EntityId);
             if (!ownerQueryResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(ownerQueryResult.Errors, ownerQueryResult.Message);
 

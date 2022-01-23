@@ -88,7 +88,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
                 return View(operatorQueryResult, input);
 
             var user = _mapper.Map<AuthenticatedUser>(operatorQueryResult.Value);
-            await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.ReownerMe);
+            await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.RememberMe);
 
             return RedirectToLocal(returnUrl);
         }

@@ -369,9 +369,9 @@ namespace TaskoMask.Application.Share.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Reowner Me.
         /// </summary>
-        public static string ReownerMe {
+        public static string RememberMe {
             get {
-                return ResourceManager.GetString("ReownerMe", resourceCulture);
+                return ResourceManager.GetString("RememberMe", resourceCulture);
             }
         }
         

@@ -17,7 +17,8 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 {
     public class TaskCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateTaskCommand, CommandResult>,
-         IRequestHandler<UpdateTaskCommand, CommandResult>
+         IRequestHandler<UpdateTaskCommand, CommandResult>,
+         IRequestHandler<DeleteTaskCommand, CommandResult>
     {
         #region Fields
 
@@ -74,6 +75,25 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             return new CommandResult(ApplicationMessages.Update_Success, task.Id);
 
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(DeleteTaskCommand request, CancellationToken cancellationToken)
+        {
+            var task = await _taskAggregateRepository.GetByIdAsync(request.Id);
+            if (task == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+
+            task.DeleteTask();
+
+            await _taskAggregateRepository.UpdateAsync(task);
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+
+        }
+
 
 
         #endregion

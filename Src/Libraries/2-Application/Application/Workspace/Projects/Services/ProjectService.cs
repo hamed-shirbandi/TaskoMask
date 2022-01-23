@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Workspace.Projects.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(ProjectUpsertDto input)
         {
-            var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description,organizationId:input.OrganizationId);
+            var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
         }
 

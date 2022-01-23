@@ -19,19 +19,31 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
         IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,
         IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>,
         IRequestHandler<GetTasksByOrganizationIdQuery, IEnumerable<TaskBasicInfoDto>>,
-        IRequestHandler<SearchTasksQuery, PaginatedListReturnType<TaskOutputDto>>
-
+        IRequestHandler<SearchTasksQuery, PaginatedListReturnType<TaskOutputDto>>,
+        IRequestHandler<GetTasksCountQuery, long>
 
     {
+
+        #region Fields
+
         private readonly ITaskRepository _taskRepository;
         private readonly ICardRepository _cardRepository;
 
+
+        #endregion
+
+        #region Ctors
 
         public TaskQueryHandlers(ITaskRepository taskRepository, IDomainNotificationHandler notifications, IMapper mapper, ICardRepository cardRepository) : base(mapper, notifications)
         {
             _taskRepository = taskRepository;
             _cardRepository = cardRepository;
         }
+
+        #endregion
+
+        #region Handlers
+
 
 
 
@@ -66,7 +78,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
         /// </summary>
         public async Task<IEnumerable<TaskBasicInfoDto>> Handle(GetTasksByOrganizationIdQuery request, CancellationToken cancellationToken)
         {
-            var tasks = await _taskRepository.GetListByOrganizationIdAsync(request.OrganizationId,request.TakeCount);
+            var tasks = await _taskRepository.GetListByOrganizationIdAsync(request.OrganizationId, request.TakeCount);
             return _mapper.Map<IEnumerable<TaskBasicInfoDto>>(tasks);
         }
 
@@ -94,5 +106,19 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
                 Items = tasksDto
             };
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> Handle(GetTasksCountQuery request, CancellationToken cancellationToken)
+        {
+            return await _taskRepository.CountAsync();
+        }
+
+
+
+        #endregion
     }
 }

@@ -34,28 +34,6 @@ namespace TaskoMask.Domain.Core.Models
 
 
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual void Delete()
-        {
-            IsDeleted = true;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual void Recycle()
-        {
-            IsDeleted = false;
-        }
-
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -78,6 +56,28 @@ namespace TaskoMask.Domain.Core.Models
         {
             Id = id;
             UpdateModifiedDateTime();
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void Delete()
+        {
+            IsDeleted = true;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void Recycle()
+        {
+            IsDeleted = false;
         }
 
 

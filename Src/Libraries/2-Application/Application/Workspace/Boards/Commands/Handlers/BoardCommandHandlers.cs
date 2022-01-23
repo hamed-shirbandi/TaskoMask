@@ -18,7 +18,8 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
 {
     public class BoardCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateBoardCommand, CommandResult>,
-        IRequestHandler<UpdateBoardCommand, CommandResult>
+        IRequestHandler<UpdateBoardCommand, CommandResult>,
+        IRequestHandler<DeleteBoardCommand, CommandResult>
     {
         #region Fields
 
@@ -73,6 +74,24 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
 
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(DeleteBoardCommand request, CancellationToken cancellationToken)
+        {
+            var board = await _boardAggregateRepository.GetByIdAsync(request.Id);
+            if (board == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+
+            board.DeleteBoard();
+
+            await _boardAggregateRepository.UpdateAsync(board);
+            return new CommandResult(ApplicationMessages.Update_Success, board.Id);
+
+        }
 
         #endregion
 

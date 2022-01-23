@@ -23,7 +23,9 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         IRequestHandler<GetBoardReportQuery, BoardReportDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<GetBoardsByOrganizationIdQuery, IEnumerable<BoardBasicInfoDto>>,
-        IRequestHandler<SearchBoardsQuery, PaginatedListReturnType<BoardOutputDto>>
+        IRequestHandler<SearchBoardsQuery, PaginatedListReturnType<BoardOutputDto>>,
+        IRequestHandler<BoardsCountQuery, long>
+        
 
 
     {
@@ -119,6 +121,16 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
                 PageNumber = pageNumber,
                 Items = boardsDto
             };
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> Handle(BoardsCountQuery request, CancellationToken cancellationToken)
+        {
+            return await _boardRepository.CountAsync();
         }
 
 

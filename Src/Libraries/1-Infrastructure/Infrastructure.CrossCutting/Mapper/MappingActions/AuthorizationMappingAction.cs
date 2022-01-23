@@ -1,7 +1,5 @@
-﻿
-
-using AutoMapper;
-using AutoMapper.Configuration;
+﻿using AutoMapper;
+using Microsoft.Extensions.Configuration;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
 

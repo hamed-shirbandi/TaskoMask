@@ -1,6 +1,6 @@
 ﻿
 using AutoMapper;
-using AutoMapper.Configuration;
+using Microsoft.Extensions.Configuration;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Domain.ReadModel.Entities;
 

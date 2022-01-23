@@ -173,6 +173,34 @@ namespace TaskoMask.Application.Membership.Roles.Services
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<long>> CountAsync()
+        {
+            var count = await _roleRepository.CountAsync();
+            return Result.Success(count);
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
+        {
+            var role = await _roleRepository.GetByIdAsync(id);
+            if (role == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
+
+            role.SetAsDeleteed();
+            return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Update_Success);
+        }
+
+
+
+
         #endregion
     }
 }

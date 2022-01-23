@@ -15,5 +15,7 @@ namespace TaskoMask.Application.Membership.Roles.Services
         Task<Result<RoleDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<RoleBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<IEnumerable<RoleOutputDto>>> GetListAsync();
+        Task<Result<long>> CountAsync();
+        Task<Result<CommandResult>> DeleteAsync(string id);
     }
 }

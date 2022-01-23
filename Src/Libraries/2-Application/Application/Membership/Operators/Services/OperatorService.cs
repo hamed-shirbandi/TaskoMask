@@ -222,6 +222,9 @@ namespace TaskoMask.Application.Membership.Operators.Services
             if (@operator == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
+            //delete associated user
+            await _userService.DeleteAsync(@operator.Id);
+
             @operator.SetAsDeleteed();
             return Result.Success(new CommandResult(entityId: @operator.Id), ApplicationMessages.Update_Success);
         }

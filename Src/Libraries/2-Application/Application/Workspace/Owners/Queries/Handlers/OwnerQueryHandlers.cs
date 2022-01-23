@@ -55,7 +55,16 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            return _mapper.Map<OwnerBasicInfoDto>(owner);
+            var ownerDto = _mapper.Map<OwnerBasicInfoDto>(owner);
+
+            var user = await _userRepository.GetByIdAsync(request.Id);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+
+            //add authentication info from user ti operator
+            ownerDto.UserInfo = _mapper.Map<UserBasicInfoDto>(user);
+
+            return ownerDto;
 
         }
 
@@ -71,8 +80,13 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 
             foreach (var item in ownersDto)
             {
-                //TODO Get OrganizationsCount as an member 
+                //add authentication info from user ti operator
+                var user = await _userRepository.GetByIdAsync(item.Id);
+                if (user != null)
+                    item.UserInfo = _mapper.Map<UserBasicInfoDto>(user);
 
+
+                //TODO Get OrganizationsCount as an member 
                 //As an owner of organizations
                 item.OrganizationsCount += await _organizationRepository.CountByOwnerIdAsync(item.Id);
             }

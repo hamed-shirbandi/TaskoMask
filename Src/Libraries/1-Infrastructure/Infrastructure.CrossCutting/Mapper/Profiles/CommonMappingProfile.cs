@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Dtos.Common;
+using TaskoMask.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Domain.Core.ValueObjects;
+using TaskoMask.Domain.Share.Models;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {
@@ -20,6 +24,21 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #endregion
 
+            #region AuthenticatedUser
+
+            CreateMap<OwnerBasicInfoDto, AuthenticatedUser>()
+                  .ForMember(dest => dest.UserName, opt =>
+                      opt.MapFrom(src => src.UserInfo.UserName));
+
+
+            CreateMap<OperatorBasicInfoDto, AuthenticatedUser>()
+                  .ForMember(dest => dest.UserName, opt =>
+                      opt.MapFrom(src => src.UserInfo.UserName));
+
+            CreateMap<UserBasicInfoDto, AuthenticatedUser>() ;
+
+
+            #endregion
         }
     }
 }

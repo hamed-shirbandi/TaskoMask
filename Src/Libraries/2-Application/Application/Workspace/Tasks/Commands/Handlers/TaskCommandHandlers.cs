@@ -54,6 +54,8 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             var task =Domain.WriteModel.Workspace.Tasks.Entities.Task.CreateTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
 
             await _taskAggregateRepository.CreateAsync(task);
+            await PublishDomainEventsAsync(task.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Create_Success, task.Id);
         }
 
@@ -72,6 +74,8 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             task.UpdateTask(request.Title, request.Description,_taskValidatorService);
 
             await _taskAggregateRepository.UpdateAsync(task);
+            await PublishDomainEventsAsync(task.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, task.Id);
 
         }
@@ -90,6 +94,8 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             task.DeleteTask();
 
             await _taskAggregateRepository.UpdateAsync(task);
+            await PublishDomainEventsAsync(task.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
 
         }

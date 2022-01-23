@@ -51,6 +51,8 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
             owner.CreateProject(request.OrganizationId, project);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
+            await PublishDomainEventsAsync(owner.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Create_Success, project.Id);
 
         }
@@ -69,6 +71,8 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
             owner.UpdateProject(request.Id, request.Name, request.Description);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
+            await PublishDomainEventsAsync(owner.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
 
         }
@@ -87,6 +91,8 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
             owner.DeleteProject(request.Id);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
+            await PublishDomainEventsAsync(owner.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
 
         }

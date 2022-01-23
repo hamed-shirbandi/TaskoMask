@@ -53,6 +53,8 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
             board.CreateCard(card);
 
             await _boardAggregateRepository.UpdateAsync(board);
+            await PublishDomainEventsAsync(board.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Create_Success, card.Id);
 
         }
@@ -69,7 +71,9 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
             board.UpdateCard(request.Id,request.Name, request.Type);
+
             await _boardAggregateRepository.UpdateAsync(board);
+            await PublishDomainEventsAsync(board.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
         }
@@ -89,6 +93,8 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
             board.DeleteCard(request.Id);
 
             await _boardAggregateRepository.UpdateAsync(board);
+            await PublishDomainEventsAsync(board.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);
 
         }

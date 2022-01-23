@@ -10,7 +10,6 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
 
@@ -52,6 +51,8 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
             var board = Board.CreateBoard(request.Name, request.Description, request.ProjectId, _boardValidatorService);
 
             await _boardAggregateRepository.CreateAsync(board);
+            await PublishDomainEventsAsync(board.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Create_Success, board.Id);
 
         }
@@ -70,6 +71,8 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
             board.UpdateBoard(request.Name, request.Description, _boardValidatorService);
 
             await _boardAggregateRepository.UpdateAsync(board);
+            await PublishDomainEventsAsync(board.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);
 
         }
@@ -89,6 +92,8 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
             board.DeleteBoard();
 
             await _boardAggregateRepository.UpdateAsync(board);
+            await PublishDomainEventsAsync(board.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);
 
         }

@@ -53,9 +53,9 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
             var organization = Organization.CreateOrganization(request.Name, request.Description);
             owner.CreateOrganization(organization);
+            
             await _ownerAggregateRepository.UpdateAsync(owner);
-
-            //TODO publish domain events
+            await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Create_Success, organization.Id);
 
@@ -75,8 +75,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             owner.UpdateOrganization(request.Id, request.Name, request.Description, _authenticatedUserService);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
-
-            //TODO publish domain events
+            await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
         }
@@ -94,6 +93,8 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             owner.DeleteOrganization(request.Id,_authenticatedUserService);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
+            await PublishDomainEventsAsync(owner.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
 
         }

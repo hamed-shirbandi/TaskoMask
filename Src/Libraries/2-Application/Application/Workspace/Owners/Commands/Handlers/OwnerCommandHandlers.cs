@@ -50,7 +50,6 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
             var owner = Owner.CreateOwner(request.Id,request.DisplayName, request.Email);
 
             await _ownerAggregateRepository.CreateAsync(owner);
-
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Create_Success, owner.Id.ToString());
@@ -74,7 +73,6 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
                 OwnerEmail.Create(request.Email));
 
             await _ownerAggregateRepository.UpdateAsync(owner);
-
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, owner.Id.ToString());
@@ -94,6 +92,8 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
             owner.DeleteOwner();
 
             await _ownerAggregateRepository.UpdateAsync(owner);
+            await PublishDomainEventsAsync(owner.DomainEvents);
+
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
 
         }

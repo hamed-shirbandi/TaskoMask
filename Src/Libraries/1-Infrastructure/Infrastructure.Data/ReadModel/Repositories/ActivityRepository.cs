@@ -22,7 +22,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
         public ActivityRepository(IReadDbContext dbContext) : base(dbContext)
         {
-            _activities = dbContext.GetCollection<Activity>();
+            _activities = dbContext.GetCollection<Activity>("Activities");
         }
 
         #endregion

@@ -61,7 +61,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
             if (!collections.Has<Member>())
                 dbContext.CreateCollection<Member>();
 
-            if (!collections.Has<Activity>())
+            if (!collections.Has<Activity>("Activities"))
                 dbContext.CreateCollection<Activity>("Activities");
 
             if (!collections.Has<Comment>())

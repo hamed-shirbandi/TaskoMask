@@ -17,6 +17,9 @@ namespace TaskoMask.Application.Share.Dtos.Membership.Operators
         public string DisplayName { get; set; }
 
 
+        [Display(Name = nameof(ApplicationMetadata.Email), ResourceType = typeof(ApplicationMetadata))]
+        public string Email { get; set; }
+
 
         [Display(Name = nameof(ApplicationMetadata.RolesId), ResourceType = typeof(ApplicationMetadata))]
         public string[] RolesId { get; set; }

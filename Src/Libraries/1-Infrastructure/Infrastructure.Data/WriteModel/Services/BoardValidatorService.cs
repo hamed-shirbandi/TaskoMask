@@ -22,7 +22,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Services
         /// </summary>
         public bool BoardHasUniqueName(string boardId, string projectId, string boardName)
         {
-            return _boardRepository.ExistBoard(boardId, projectId, boardName);
+            return !_boardRepository.ExistBoard(boardId, projectId, boardName);
         }
     }
 }

@@ -167,11 +167,12 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
 
                 foreach (var organization in organizations)
                 {
-                    ownerAggregate.CreateOrganization(Organization.CreateOrganization(organization.Name, organization.Description));
+                    var createdOrganization = Organization.CreateOrganization(organization.Name, organization.Description);
+                    ownerAggregate.CreateOrganization(createdOrganization);
 
                     var projects = ReadModelDataGenerator.GenerateProject();
                     foreach (var project in projects)
-                        ownerAggregate.CreateProject(organization.Id, Project.Create(project.Name, project.Description));
+                        ownerAggregate.CreateProject(createdOrganization.Id, Project.Create(project.Name, project.Description));
 
                 }
 

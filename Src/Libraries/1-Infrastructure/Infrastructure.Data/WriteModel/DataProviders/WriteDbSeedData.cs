@@ -82,7 +82,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
                 #endregion
 
                 //if database is empty
-                if (!_operators.AsQueryable().Any())
+                if (!_ownerAggregate.AsQueryable().Any())
                 {
                     var permissions = WriteModelDataGenerator.GeneratePermission();
                     _permissions.InsertMany(permissions);

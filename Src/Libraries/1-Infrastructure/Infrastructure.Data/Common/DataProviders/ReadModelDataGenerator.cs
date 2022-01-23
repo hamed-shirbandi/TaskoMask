@@ -82,7 +82,7 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
         {
             var items = new List<Board>();
             for (int i = 1; i <= 2; i++)
-            {
+            { 
                 items.Add(new Board(i.ToString())
                 {
                     Name = $"Board_{i}",

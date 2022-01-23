@@ -29,6 +29,8 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
             Description = TaskDescription.Create(description);
             CardId = TaskCardId.Create(cardId);
             BoardId = TaskBoardId.Create(boardId);
+            Comments = new HashSet<Comment>();
+            Activities = new HashSet<Activity>();
 
             CheckPolicies(taskValidatorService);
 

@@ -23,7 +23,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         {
             Name = OrganizationName.Create(name);
             Description = OrganizationDescription.Create(description);
-
+            Projects = new HashSet<Project>();
             CheckPolicies();
         }
 

@@ -28,6 +28,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
             Name = BoardName.Create(name);
             Description = BoardDescription.Create(description);
             ProjectId = BoardProjectId.Create(projectId);
+            Cards = new HashSet<Card>();
+            Members = new HashSet<Member>();
+
             CheckPolicies(boardValidatorService);
             AddDomainEvent(new BoardCreatedEvent(Id, Name.Value, Description.Value, ProjectId.Value));
         }

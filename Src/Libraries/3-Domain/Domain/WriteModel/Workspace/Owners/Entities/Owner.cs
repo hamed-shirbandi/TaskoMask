@@ -35,6 +35,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
             DisplayName = OwnerDisplayName.Create(displayName);
             Email = OwnerEmail.Create(email);
+            Organizations = new HashSet<Organization>();
 
             CheckPolicies();
 

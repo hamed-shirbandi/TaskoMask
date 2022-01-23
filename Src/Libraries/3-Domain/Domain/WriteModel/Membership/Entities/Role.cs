@@ -1,4 +1,5 @@
-﻿using TaskoMask.Domain.Core.Models;
+﻿using System;
+using TaskoMask.Domain.Core.Models;
 
 namespace TaskoMask.Domain.WriteModel.Membership.Entities
 {
@@ -7,6 +8,11 @@ namespace TaskoMask.Domain.WriteModel.Membership.Entities
     /// </summary>
     public class Role : BaseEntity
     {
+        public Role()
+        {
+            PermissionsId = Array.Empty<string>();
+        }
+
         public string Name { get;  set; }
         public string Description { get;  set; }
         public string[] PermissionsId { get; set; }

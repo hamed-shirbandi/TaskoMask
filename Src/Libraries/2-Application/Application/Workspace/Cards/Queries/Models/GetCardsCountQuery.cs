@@ -4,9 +4,9 @@ using TaskoMask.Application.Core.Queries;
 namespace TaskoMask.Application.Workspace.Cards.Queries.Models
 {
 
-    public class CardsCountQuery : BaseQuery<long>
+    public class GetCardsCountQuery : BaseQuery<long>
     {
-        public CardsCountQuery()
+        public GetCardsCountQuery()
         {
         }
 

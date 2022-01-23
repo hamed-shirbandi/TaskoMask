@@ -16,7 +16,8 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
 {
     public class ProjectCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateProjectCommand, CommandResult>,
-         IRequestHandler<UpdateProjectCommand, CommandResult>
+         IRequestHandler<UpdateProjectCommand, CommandResult>,
+         IRequestHandler<DeleteProjectCommand, CommandResult>
     {
         #region Fields
 
@@ -46,8 +47,8 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            var project = Project.Create(request.Name,request.Description);
-            owner.CreateProject(request.OrganizationId,project);
+            var project = Project.Create(request.Name, request.Description);
+            owner.CreateProject(request.OrganizationId, project);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
             return new CommandResult(ApplicationMessages.Create_Success, project.Id);
@@ -61,16 +62,35 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
-            var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.OrganizationId);
+            var owner = await _ownerAggregateRepository.GetByProjectIdAsync(request.Id);
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            owner.UpdateProject(request.OrganizationId, request.Id, request.Name, request.Description);
+            owner.UpdateProject(request.Id, request.Name, request.Description);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
 
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(DeleteProjectCommand request, CancellationToken cancellationToken)
+        {
+            var owner = await _ownerAggregateRepository.GetByProjectIdAsync(request.Id);
+            if (owner == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+
+            owner.DeleteProject(request.Id);
+
+            await _ownerAggregateRepository.UpdateAsync(owner);
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+
+        }
+
 
 
         #endregion

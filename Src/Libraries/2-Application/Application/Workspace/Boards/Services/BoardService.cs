@@ -153,7 +153,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync(new BoardsCountQuery());
+            return await SendQueryAsync(new GetBoardsCountQuery());
         }
 
 

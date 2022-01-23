@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         IRequestHandler<GetCardReportQuery, CardReportDto>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>,
         IRequestHandler<SearchCardsQuery, PaginatedListReturnType<CardOutputDto>>,
-        IRequestHandler<CardsCountQuery, long>
+        IRequestHandler<GetCardsCountQuery, long>
 
 
     {
@@ -115,7 +115,7 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> Handle(CardsCountQuery request, CancellationToken cancellationToken)
+        public async Task<long> Handle(GetCardsCountQuery request, CancellationToken cancellationToken)
         {
             return await _cardRepository.CountAsync();
         }

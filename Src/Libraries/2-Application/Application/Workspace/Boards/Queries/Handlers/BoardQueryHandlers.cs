@@ -24,7 +24,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<GetBoardsByOrganizationIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<SearchBoardsQuery, PaginatedListReturnType<BoardOutputDto>>,
-        IRequestHandler<BoardsCountQuery, long>
+        IRequestHandler<GetBoardsCountQuery, long>
         
 
 
@@ -128,7 +128,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> Handle(BoardsCountQuery request, CancellationToken cancellationToken)
+        public async Task<long> Handle(GetBoardsCountQuery request, CancellationToken cancellationToken)
         {
             return await _boardRepository.CountAsync();
         }

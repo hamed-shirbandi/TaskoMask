@@ -2,9 +2,9 @@
 
 namespace TaskoMask.Application.Workspace.Organizations.Queries.Models
 {
-    public class OrganizationsCountQuery : BaseQuery<long>
+    public class GetOrganizationsCountQuery : BaseQuery<long>
     {
-        public OrganizationsCountQuery()
+        public GetOrganizationsCountQuery()
         {
         }
 

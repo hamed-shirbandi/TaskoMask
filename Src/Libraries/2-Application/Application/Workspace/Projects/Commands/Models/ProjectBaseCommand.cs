@@ -7,11 +7,10 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Models
 {
     public abstract class ProjectBaseCommand : BaseCommand
     {
-        protected ProjectBaseCommand(string name, string description,string organizationId)
+        protected ProjectBaseCommand(string name, string description)
         {
             Name = name;
             Description = description;
-            OrganizationId = organizationId;
         }
 
 
@@ -24,7 +23,6 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Models
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
         public string Description { get;  }
 
-        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string OrganizationId { get;  }
+
     }
 }

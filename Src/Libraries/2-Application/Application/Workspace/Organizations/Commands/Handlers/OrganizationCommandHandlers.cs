@@ -10,7 +10,6 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.Share.Services;
 

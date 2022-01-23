@@ -20,7 +20,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
         IRequestHandler<GetOrganizationsByOwnerIdQuery, IEnumerable<OrganizationBasicInfoDto>>,
         IRequestHandler<SearchOrganizationsQuery, PaginatedListReturnType<OrganizationOutputDto>>,
-        IRequestHandler<OrganizationsCountQuery, long>
+        IRequestHandler<GetOrganizationsCountQuery, long>
 
     {
         #region Fields
@@ -110,7 +110,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> Handle(OrganizationsCountQuery request, CancellationToken cancellationToken)
+        public async Task<long> Handle(GetOrganizationsCountQuery request, CancellationToken cancellationToken)
         {
             return await _organizationRepository.CountAsync();
         }

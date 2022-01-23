@@ -130,10 +130,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Access_Denied_By_Current_User);
 
-            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
-            if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
-
+            var organization = GetOrganizationById(organizationId);
             organization.UpdateOrganization(name, description);
             AddDomainEvent(new OrganizationUpdatedEvent(Id, organization.Name.Value, organization.Description.Value));
         }
@@ -148,10 +145,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Access_Denied_By_Current_User);
 
-            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
-            if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
-
+            var organization = GetOrganizationById(organizationId);
             organization.DeleteOrganization();
             AddDomainEvent(new OrganizationDeletedEvent(Id));
         }
@@ -163,10 +157,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// </summary>
         public void RecycleOrganization(string organizationId)
         {
-            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
-            if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
-
+            var organization = GetOrganizationById(organizationId);
             organization.RecycleOrganization();
             AddDomainEvent(new OrganizationRecycledEvent(Id));
         }
@@ -184,10 +175,8 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// </summary>
         public void CreateProject(string organizationId, Project project)
         {
-            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
-            if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
-
+            var organization = GetOrganizationById(organizationId);
+            
             organization.CreateProject(project);
 
             AddDomainEvent(new ProjectCreatedEvent(project.Id, project.Name.Value, project.Description.Value, Id));
@@ -198,11 +187,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateProject(string organizationId, string projectId, string name, string description)
+        public void UpdateProject(string projectId, string name, string description)
         {
-            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
-            if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
+            var organization = GetOrganizationByProjectId(projectId);
 
             organization.UpdateProject(projectId, name, description);
 
@@ -216,12 +203,10 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void DeleteProject(string organizationId, string projectId)
+        public void DeleteProject(string projectId)
         {
-            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
-            if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
-
+            var organization = GetOrganizationByProjectId(projectId);
+          
             organization.DeleteProject(projectId);
 
             AddDomainEvent(new ProjectDeletedEvent(projectId));
@@ -229,14 +214,14 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
 
 
+
+
         /// <summary>
         /// 
         /// </summary>
-        public void RecycleProject(string organizationId, string projectId)
+        public void RecycleProject( string projectId)
         {
-            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
-            if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
+            var organization = GetOrganizationByProjectId(projectId);
 
             organization.RecycleProject(projectId);
 
@@ -284,6 +269,32 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Project));
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Organization GetOrganizationByProjectId(string projectId)
+        {
+            var organization = Organizations.FirstOrDefault(p => p.Projects.Any(p => p.Id == projectId));
+            if (organization == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
+
+            return organization;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Organization GetOrganizationById(string organizationId)
+        {
+            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
+            if (organization == null)
+                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
+            return organization;
+        }
 
         #endregion
     }

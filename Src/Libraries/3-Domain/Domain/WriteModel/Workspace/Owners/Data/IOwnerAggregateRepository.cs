@@ -8,5 +8,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Data
     public interface IOwnerAggregateRepository : IBaseRepository<Owner>
     {
         Task<Owner> GetByOrganizationIdAsync(string organizationId);
+        Task<Owner> GetByProjectIdAsync(string projectId);
     }
 }

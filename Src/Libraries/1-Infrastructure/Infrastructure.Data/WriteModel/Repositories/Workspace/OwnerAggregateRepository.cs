@@ -42,6 +42,18 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
             return await _owners.Find(e => e.Organizations.Any(c => c.Id == organizationId)).FirstOrDefaultAsync();
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Owner> GetByProjectIdAsync(string projectId)
+        {
+            return await _owners.Find(e => e.Organizations.Any(c => c.Projects.Any(p=>p.Id == projectId))).FirstOrDefaultAsync();
+        }
+
+
+
         #endregion
 
         #region Private Methods

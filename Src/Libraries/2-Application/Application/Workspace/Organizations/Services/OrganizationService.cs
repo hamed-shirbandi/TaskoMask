@@ -194,7 +194,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync(new OrganizationsCountQuery());
+            return await SendQueryAsync(new GetOrganizationsCountQuery());
         }
 
 

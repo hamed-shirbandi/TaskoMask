@@ -1,16 +1,13 @@
 ﻿using AutoMapper;
 using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Application.Workspace.Owners.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Domain.Core.Services;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Organizations.Queries.Models;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Authorization.Users.Services;
@@ -124,7 +121,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync(new OwnersCountQuery());
+            return await SendQueryAsync(new GetOwnersCountQuery());
         }
 
 

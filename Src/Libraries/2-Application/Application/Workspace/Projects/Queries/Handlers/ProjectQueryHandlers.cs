@@ -19,7 +19,8 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
         IRequestHandler<GetProjectByIdQuery, ProjectBasicInfoDto>,
         IRequestHandler<GetProjectReportQuery, ProjectReportDto>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>,
-        IRequestHandler<SearchProjectsQuery, PaginatedListReturnType<ProjectOutputDto>>
+        IRequestHandler<SearchProjectsQuery, PaginatedListReturnType<ProjectOutputDto>>,
+        IRequestHandler<GetProjectsCountQuery, long>
 
     {
         #region Fields
@@ -106,6 +107,17 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
                 Items = projectsDto
             };
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> Handle(GetProjectsCountQuery request, CancellationToken cancellationToken)
+        {
+            return await _projectRepository.CountAsync();
+        }
+
 
 
         #endregion

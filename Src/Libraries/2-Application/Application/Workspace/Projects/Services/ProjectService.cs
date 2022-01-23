@@ -158,6 +158,28 @@ namespace TaskoMask.Application.Workspace.Projects.Services
 
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<long>> CountAsync()
+        {
+            return await SendQueryAsync(new GetProjectsCountQuery());
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
+        {
+            var cmd = new DeleteProjectCommand(id);
+            return await SendCommandAsync(cmd);
+        }
+
+
         #endregion
     }
 }

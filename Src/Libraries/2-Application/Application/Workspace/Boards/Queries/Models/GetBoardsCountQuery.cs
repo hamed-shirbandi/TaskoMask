@@ -4,9 +4,9 @@ using TaskoMask.Application.Core.Queries;
 namespace TaskoMask.Application.Queries.Models.Boards
 {
    
-    public class BoardsCountQuery : BaseQuery<long>
+    public class GetBoardsCountQuery : BaseQuery<long>
     {
-        public BoardsCountQuery()
+        public GetBoardsCountQuery()
         {
         }
 

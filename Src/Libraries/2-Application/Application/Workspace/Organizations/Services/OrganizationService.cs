@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Organizations.Commands.Models;
 using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
-using TaskoMask.Application.Core.Commands;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Projects.Queries.Models;
@@ -14,7 +13,6 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Application.Workspace.Organizations.Services
 {
@@ -188,6 +186,29 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
             return Result.Success(organizations);
 
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<long>> CountAsync()
+        {
+            return await SendQueryAsync(new OrganizationsCountQuery());
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
+        {
+            var cmd = new DeleteOrganizationCommand(id);
+            return await SendCommandAsync(cmd);
+        }
+
+
 
         #endregion
 

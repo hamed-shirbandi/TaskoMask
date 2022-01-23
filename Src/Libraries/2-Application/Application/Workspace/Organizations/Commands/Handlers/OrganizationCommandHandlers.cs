@@ -18,7 +18,9 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
     public class OrganizationCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateOrganizationCommand, CommandResult>,
-        IRequestHandler<UpdateOrganizationCommand, CommandResult>
+        IRequestHandler<UpdateOrganizationCommand, CommandResult>,
+         IRequestHandler<DeleteOrganizationCommand, CommandResult>
+
     {
         #region Fields
 
@@ -80,6 +82,22 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(DeleteOrganizationCommand request, CancellationToken cancellationToken)
+        {
+            var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.Id);
+            if (owner == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+
+            owner.DeleteOrganization(request.Id,_authenticatedUserService);
+
+            await _ownerAggregateRepository.UpdateAsync(owner);
+            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+
+        }
 
         #endregion
 

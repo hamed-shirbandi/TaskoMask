@@ -74,11 +74,10 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public Task<ProjectReportDto> Handle(GetProjectReportQuery request, CancellationToken cancellationToken)
+        public async Task<ProjectReportDto> Handle(GetProjectReportQuery request, CancellationToken cancellationToken)
         {
             //TODO Implement GetProjectReportQuery
-
-            throw new System.NotImplementedException();
+            return new ProjectReportDto();
         }
 
 

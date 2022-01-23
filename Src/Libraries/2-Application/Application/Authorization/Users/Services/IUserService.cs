@@ -15,6 +15,8 @@ namespace TaskoMask.Application.Authorization.Users.Services
         Task<Result<CommandResult>> SetIsActiveAsync(string id, bool isActive);
         Task<Result<CommandResult>> ChangePasswordAsync(string id, string oldPassword, string newPassword);
         Task<Result<CommandResult>> ResetPasswordAsync(string id, string newPassword);
+        Task<Result<long>> CountAsync();
+        Task<Result<CommandResult>> DeleteAsync(string id);
 
     }
 }

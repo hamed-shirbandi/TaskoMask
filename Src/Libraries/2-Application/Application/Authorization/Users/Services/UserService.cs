@@ -202,6 +202,33 @@ namespace TaskoMask.Application.Authorization.Users.Services
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<long>> CountAsync()
+        {
+            var count= await _userRepository.CountAsync();
+            return Result.Success(count);
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
+        {
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null)
+                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+
+            user.SetAsDeleteed();
+            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
+        }
+
+
+
         #endregion
 
         #region Private Methods

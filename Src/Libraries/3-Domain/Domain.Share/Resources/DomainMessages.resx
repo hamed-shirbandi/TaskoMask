@@ -120,6 +120,9 @@
   <data name="Access_Denied_By_Current_User" xml:space="preserve">
     <value>Access denied by current user</value>
   </data>
+  <data name="Concurrency_Error" xml:space="preserve">
+    <value>Data has been changed since your last access</value>
+  </data>
   <data name="Equal_Name_And_Description_Error" xml:space="preserve">
     <value>Description cannot be same of name</value>
   </data>

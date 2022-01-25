@@ -70,6 +70,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data has been changed since your last access.
+        /// </summary>
+        public static string Concurrency_Error {
+            get {
+                return ResourceManager.GetString("Concurrency_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description cannot be same of name.
         /// </summary>
         public static string Equal_Name_And_Description_Error {

@@ -1,7 +1,10 @@
 ﻿using MongoDB.Driver;
+using System;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
+using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
@@ -17,7 +20,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories
 
         #region Ctors
 
-        public BaseAggregateRepository(IWriteDbContext dbContext):base(dbContext)
+        public BaseAggregateRepository(IWriteDbContext dbContext) : base(dbContext)
         {
             _collection = dbContext.GetCollection<TEntity>();
         }
@@ -35,17 +38,28 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task ConcurrencySafeUpdate(TEntity entity,string loadedVersion)
+        public async Task ConcurrencySafeUpdate(TEntity entity, string loadedVersion)
         {
-            await _collection.ReplaceOneAsync(p => p.Id == entity.Id && p.Version==loadedVersion, entity, new ReplaceOptions() { IsUpsert = false });
+            await CheckIfVersionIsChangedAndThrowExceptionAsync(entity.Id, loadedVersion);
+            await _collection.ReplaceOneAsync(p => p.Id == entity.Id && p.Version == loadedVersion, entity, new ReplaceOptions() { IsUpsert = false });
         }
+
+
 
 
         #endregion
 
         #region Private Methods
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task CheckIfVersionIsChangedAndThrowExceptionAsync(string id, string loadedVersion)
+        {
+            var versionExist = await _collection.Find(e => e.Id == id && e.Version == loadedVersion).AnyAsync();
+            if (!versionExist)
+                throw new DomainException(DomainMessages.Concurrency_Error);
+        }
 
         #endregion
 

@@ -68,9 +68,11 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
+            var loadedVersion = owner.Version;
+
             owner.UpdateProject(request.Id, request.Name, request.Description);
 
-            await _ownerAggregateRepository.UpdateAsync(owner);
+            await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
@@ -88,9 +90,12 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
+            var loadedVersion = owner.Version;
+
             owner.DeleteProject(request.Id);
 
-            await _ownerAggregateRepository.UpdateAsync(owner);
+            await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
+
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);

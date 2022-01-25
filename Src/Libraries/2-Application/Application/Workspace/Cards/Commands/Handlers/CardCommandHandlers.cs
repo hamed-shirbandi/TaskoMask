@@ -70,9 +70,12 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
+            var loadedVersion = board.Version;
+
             board.UpdateCard(request.Id,request.Name, request.Type);
 
-            await _boardAggregateRepository.UpdateAsync(board);
+            await _boardAggregateRepository.ConcurrencySafeUpdate(board, loadedVersion);
+
             await PublishDomainEventsAsync(board.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
@@ -89,10 +92,13 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
             var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+          
+            var loadedVersion = board.Version;
 
             board.DeleteCard(request.Id);
 
-            await _boardAggregateRepository.UpdateAsync(board);
+            await _boardAggregateRepository.ConcurrencySafeUpdate(board, loadedVersion);
+
             await PublishDomainEventsAsync(board.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, board.Id);

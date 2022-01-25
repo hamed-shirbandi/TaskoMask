@@ -67,12 +67,14 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
+            var loadedVersion = owner.Version;
 
             owner.UpdateOwner(
                 OwnerDisplayName.Create(request.DisplayName),
                 OwnerEmail.Create(request.Email));
 
-            await _ownerAggregateRepository.UpdateAsync(owner);
+            await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
+
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, owner.Id.ToString());
@@ -89,9 +91,12 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
+            var loadedVersion = owner.Version;
+
             owner.DeleteOwner();
 
-            await _ownerAggregateRepository.UpdateAsync(owner);
+            await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
+
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);

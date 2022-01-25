@@ -70,10 +70,11 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (task == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
-           
+            var loadedVersion = task.Version;
+
             task.UpdateTask(request.Title, request.Description,_taskValidatorService);
 
-            await _taskAggregateRepository.UpdateAsync(task);
+            await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
             await PublishDomainEventsAsync(task.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, task.Id);
@@ -91,9 +92,12 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (task == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
+            var loadedVersion = task.Version;
+
             task.DeleteTask();
 
-            await _taskAggregateRepository.UpdateAsync(task);
+            await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
+
             await PublishDomainEventsAsync(task.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);

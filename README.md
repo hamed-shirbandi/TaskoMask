@@ -94,6 +94,7 @@ There is a list of our documentation:
 		- Invariants
         - Specification
         - Factory Method
+        - Optimistic Concurrency
         - Separate Domain Model and Data Model
       -	CQRS
         - Separate Read and Write Model

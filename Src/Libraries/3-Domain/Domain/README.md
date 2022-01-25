@@ -39,7 +39,8 @@ Just Workspace BC has separate ReadModel.
 - Always Valid Domain Model
 - Domain Services
 - Factory Method Pattern
-- Separate Read and Write Model
+- Optimistic Concurrency
+- Separate Domain Model and Data Model
 - Separate Read Side DB and Write Side DB
 
 

@@ -147,7 +147,10 @@ Find Hamed around the web and feel free to ask your question.
 [![instagram](http://www.codeblock.ir/Content/site/images/blog/instagram.png)](https://www.instagram.com/hamedshirbandi)
 
 # Change Logs
-
+*	### Jan, 2022
+    - [x] Full domain model refactoring by DDD concepts
+    - [x] Separate Domain Model and Data Model
+    - [x] Separate Read Side and Write Side Database
 *	### Dec, 2021
     - [x] Upgrade to .NET 6
 *	### Nov, 2021

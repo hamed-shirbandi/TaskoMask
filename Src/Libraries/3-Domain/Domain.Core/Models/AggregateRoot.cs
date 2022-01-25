@@ -68,11 +68,11 @@ namespace TaskoMask.Domain.Core.Models
         /// </summary>
         protected void AddDomainEvent(IDomainEvent domainEvent)
         {
-            UpdateAggregate();
-
             CheckInvariants();
 
-            domainEvents = domainEvents ?? new List<IDomainEvent>();
+            UpdateAggregate();
+
+            domainEvents ??= new List<IDomainEvent>();
             this.domainEvents.Add(domainEvent);
         }
 

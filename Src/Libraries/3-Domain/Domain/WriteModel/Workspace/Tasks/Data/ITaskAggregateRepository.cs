@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Data
 {
-    public interface ITaskAggregateRepository : IBaseRepository<Entities.Task>
+    public interface ITaskAggregateRepository : IBaseAggregateRepository<Entities.Task>
     {
         bool ExistTask(string taskId, string boardId, string taskTitle);
         long CountByBoardId(string boardId);

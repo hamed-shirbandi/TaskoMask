@@ -11,7 +11,7 @@ using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
 {
-    public class OwnerAggregateRepository : BaseRepository<Owner>, IOwnerAggregateRepository
+    public class OwnerAggregateRepository : BaseAggregateRepository<Owner>, IOwnerAggregateRepository
     {
         #region Fields
 

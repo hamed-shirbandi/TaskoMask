@@ -5,7 +5,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Data
 {
-    public interface IOwnerAggregateRepository : IBaseRepository<Owner>
+    public interface IOwnerAggregateRepository : IBaseAggregateRepository<Owner>
     {
         Task<Owner> GetByOrganizationIdAsync(string organizationId);
         Task<Owner> GetByProjectIdAsync(string projectId);

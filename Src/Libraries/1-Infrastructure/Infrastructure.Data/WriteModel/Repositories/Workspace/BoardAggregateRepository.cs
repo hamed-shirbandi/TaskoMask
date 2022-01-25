@@ -11,7 +11,7 @@ using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
 {
-    public class BoardAggregateRepository : BaseRepository<Board>, IBoardAggregateRepository
+    public class BoardAggregateRepository : BaseAggregateRepository<Board>, IBoardAggregateRepository
     {
         #region Fields
 

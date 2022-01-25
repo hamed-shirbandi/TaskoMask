@@ -9,7 +9,7 @@ using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
 {
-    public class TaskAggregateRepository : BaseRepository<Domain.WriteModel.Workspace.Tasks.Entities.Task>, ITaskAggregateRepository
+    public class TaskAggregateRepository : BaseAggregateRepository<Domain.WriteModel.Workspace.Tasks.Entities.Task>, ITaskAggregateRepository
     {
         #region Fields
 

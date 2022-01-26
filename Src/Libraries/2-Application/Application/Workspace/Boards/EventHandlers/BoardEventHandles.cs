@@ -18,14 +18,16 @@ namespace TaskoMask.Application.Workspace.Boards.EventHandlers
         #region Fields
 
         private readonly IBoardRepository _boardRepository;
+        private readonly IProjectRepository _projectRepository;
 
         #endregion
 
         #region Ctors
 
-        public BoardEventHandles(IBoardRepository boardRepository)
+        public BoardEventHandles(IBoardRepository boardRepository, IProjectRepository projectRepository)
         {
             _boardRepository = boardRepository;
+            _projectRepository = projectRepository;
         }
 
         #endregion
@@ -38,11 +40,13 @@ namespace TaskoMask.Application.Workspace.Boards.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(BoardCreatedEvent createdBoard, CancellationToken cancellationToken)
         {
+            var project = await _projectRepository.GetByIdAsync(createdBoard.ProjectId);
+
             var board = new Board(createdBoard.Id)
             {
                 Name= createdBoard.Name,
                 Description= createdBoard.Description,
-                OrganizationId= createdBoard.OrganizationId,
+                OrganizationId= project.OrganizationId,
                 ProjectId = createdBoard.ProjectId,
                 
             };

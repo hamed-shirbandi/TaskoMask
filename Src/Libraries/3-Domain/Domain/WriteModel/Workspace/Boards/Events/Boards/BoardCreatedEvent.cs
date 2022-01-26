@@ -5,7 +5,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards
 {
     public class BoardCreatedEvent : DomainEvent
     {
-        public BoardCreatedEvent(string id, string name, string description, string projectId ) : base(entityId: id, entityType: nameof(Board))
+        public BoardCreatedEvent(string id, string name, string description, string projectId) : base(entityId: id, entityType: nameof(Board))
         {
             Id = id;
             Name = name;
@@ -18,7 +18,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string ProjectId { get; private set; }
-        public string OrganizationId { get; private set; }
 
     }
 }

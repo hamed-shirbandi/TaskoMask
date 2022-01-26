@@ -6,6 +6,9 @@ using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards;
 
 namespace TaskoMask.Application.Workspace.Cards.EventHandlers
 {
+    /// <summary>
+    /// Sync data between Write and Read DB
+    /// </summary>
     public class CardEventHandles : 
         INotificationHandler<CardCreatedEvent>,
         INotificationHandler<CardUpdatedEvent>,

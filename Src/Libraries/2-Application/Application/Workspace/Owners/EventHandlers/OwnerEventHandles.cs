@@ -8,6 +8,9 @@ using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 
 namespace TaskoMask.Application.Workspace.Owners.EventHandlers
 {
+    /// <summary>
+    /// Sync data between Write and Read DB
+    /// </summary>
     public class OwnerEventHandles : 
         INotificationHandler<OwnerCreatedEvent>,
         INotificationHandler<OwnerUpdatedEvent>,

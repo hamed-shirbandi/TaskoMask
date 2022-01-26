@@ -6,6 +6,9 @@ using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards;
 
 namespace TaskoMask.Application.Workspace.Boards.EventHandlers
 {
+    /// <summary>
+    /// Sync data between Write and Read DB
+    /// </summary>
     public class BoardEventHandles : 
         INotificationHandler<BoardCreatedEvent>,
         INotificationHandler<BoardUpdatedEvent>,

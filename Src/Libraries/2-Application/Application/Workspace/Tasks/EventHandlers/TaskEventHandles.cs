@@ -6,6 +6,9 @@ using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Tasks;
 
 namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
 {
+    /// <summary>
+    /// Sync data between Write and Read DB
+    /// </summary>
     public class TaskEventHandles : 
         INotificationHandler<TaskCreatedEvent>,
         INotificationHandler<TaskUpdatedEvent>,

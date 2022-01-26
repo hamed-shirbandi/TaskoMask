@@ -6,6 +6,9 @@ using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations;
 
 namespace TaskoMask.Application.Workspace.Organizations.EventHandlers
 {
+    /// <summary>
+    /// Sync data between Write and Read DB
+    /// </summary>
     public class OrganizationEventHandles : 
         INotificationHandler<OrganizationCreatedEvent>,
         INotificationHandler<OrganizationUpdatedEvent>,

@@ -102,15 +102,15 @@ There is a list of our documentation:
       -	Event Sourcing
       -	Repository
       -	Notification
-  * ### Some technical features:
+  * ### Some Technical Features:
       -	Caching Behavior using Pipeline Pattern
       -	Validation using Pipeline Pattern (Check both Fluent Validation and Data Annotation Validation)
       -	Event Storing using Pipeline Pattern
-      -	Application Exception Handler
+      -	Domain & Application Exception Handler
       -	InMemory Bus
       -	Cookie Authentication
       -	JWT Authentication
-      -	Role Permission Base User Management
+      -	Role Permission Base User Management without ASP.NET Identity
       -	Swagger UI with JWT Support
 
 # Contributing
@@ -130,6 +130,9 @@ This project exists thanks to all the people who [contribute](https://github.com
   
 </a>
 
+# Articles And Tutorials
+* [Real-world open-source project based on .NET 6 with DDD, ES, CQRS concepts](https://medium.com/@hamed.shirbandi/real-world-open-source-project-based-on-ddd-es-cqrs-af261cc24353)
+* [How to Blazor articles](https://medium.com/@hamed.shirbandi/how-to-blazor-articles-2bda783d9502)
      
 # Supporting
 We work hard to make something useful for .NET community, so please give a star ⭐ if this project helped you!
@@ -146,7 +149,7 @@ Find Hamed around the web and feel free to ask your question.
 [![github](http://www.codeblock.ir/Content/site/images/blog/github_ic.jpg?v=2)](https://github.com/hamed-shirbandi)
 [![instagram](http://www.codeblock.ir/Content/site/images/blog/instagram.png)](https://www.instagram.com/hamedshirbandi)
 
-# Change Logs
+# Change logs
 *	### Jan, 2022
     - [x] Full domain model refactoring by DDD concepts
     - [x] Separate Domain Model and Data Model

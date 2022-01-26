@@ -13,7 +13,7 @@
     </div>
 
     <div class="form-group">
-        <select @onchange="OnOrganizationsSelectListChange" name="OrganizationId" class="form-control">
+        <select disabled="@isUpdate" @onchange="OnOrganizationsSelectListChange" name="OrganizationId" class="form-control">
             @foreach (var prop in organizationsSelectList)
             {
                 <option value="@prop.Value" selected="@(prop.Value==selectedOrganizationId?true:false)">@prop.Text</option>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="form-group">
-        <select @bind="BoardModel.ProjectId" name="ProjectId" class="form-control">
+        <select disabled="@isUpdate" @bind="BoardModel.ProjectId" name="ProjectId" class="form-control">
             @foreach (var prop in projectsSelectList)
             {
                 <option value="@prop.Value" selected="@(prop.Value==BoardModel.ProjectId?true:false)">@prop.Text</option>

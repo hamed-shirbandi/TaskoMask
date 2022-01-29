@@ -77,16 +77,16 @@ namespace TaskoMask.Application.Share.Helpers
 
 
 
-        public static Result<T> Success<T>(T value = default,string message = "" )
+        public static Result<TValue> Success<TValue>(TValue value = default,string message = "" )
         {
-            return new Result<T>(true, message, value, default);
+            return new Result<TValue>(true, message, value, default);
         }
 
 
 
-        public static Result<T> Failure<T>(List<string> errors= default, string message= "")
+        public static Result<TValue> Failure<TValue>(List<string> errors= default, string message= "")
         {
-            return new Result<T>(false, message, default, errors);
+            return new Result<TValue>(false, message, default, errors);
         }
 
 
@@ -99,7 +99,7 @@ namespace TaskoMask.Application.Share.Helpers
     /// <summary>
     /// 
     /// </summary>
-    public struct Result<T> : IResult
+    public struct Result<TValue> : IResult
     {
         #region Properties
 
@@ -107,7 +107,7 @@ namespace TaskoMask.Application.Share.Helpers
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
         public List<string> Errors { get; set; }
-        public T Value { get; set; }
+        public TValue Value { get; set; }
 
 
         #endregion
@@ -115,7 +115,7 @@ namespace TaskoMask.Application.Share.Helpers
         #region Ctors
 
 
-        public Result(bool isSuccess, string message, T value, List<string> errors)
+        public Result(bool isSuccess, string message, TValue value, List<string> errors)
         {
             if (message == "")
                 message = isSuccess ? DomainMessages.Operation_Success : DomainMessages.Operation_Failed;

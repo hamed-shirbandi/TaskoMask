@@ -47,7 +47,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        public void Save<T>(T @event) where T : IDomainEvent
+        public void Save<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent
         {
             var storedEvent = GetEventDataToStore(@event);
             string jsonData = ConvertDataToJson(storedEvent);
@@ -60,7 +60,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        public async Task SaveAsync<T>(T @event) where T : IDomainEvent
+        public async Task SaveAsync<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent
         {
             var storedEvent = GetEventDataToStore(@event);
             string jsonData = ConvertDataToJson(storedEvent);
@@ -72,12 +72,12 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        public async Task<List<T>> GetListAsync<T>(string entityId, string entityType) where T : StoredEvent
+        public async Task<List<TStoredEvent>> GetListAsync<TStoredEvent>(string entityId, string entityType) where TStoredEvent : StoredEvent
         {
-            var data = new List<T>();
+            var data = new List<TStoredEvent>();
             var jsonList = await _redisDb.ListRangeAsync(MakeKey(entityId, entityType));
             foreach (var item in jsonList)
-                data.Add(JsonConvert.DeserializeObject<T>(item));
+                data.Add(JsonConvert.DeserializeObject<TStoredEvent>(item));
 
             return data;
         }
@@ -134,7 +134,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        private StoredEvent GetEventDataToStore<T>(T @event) where T : IDomainEvent
+        private StoredEvent GetEventDataToStore<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent
         {
             var userId = _authenticatedUserService.GetUserId();
             return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.GetType().Name, data: @event, userId: userId);

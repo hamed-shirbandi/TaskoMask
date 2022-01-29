@@ -15,7 +15,7 @@ namespace TaskoMask.Application.Core.Extensions
         /// <summary>
         /// 
         /// </summary>
-        public static bool Validate<T>(this T obj, out ICollection<ValidationResult> results)
+        public static bool Validate<TObject>(this TObject obj, out ICollection<ValidationResult> results)
         {
             results = new List<ValidationResult>();
 
@@ -27,11 +27,11 @@ namespace TaskoMask.Application.Core.Extensions
         /// <summary>
         /// 
         /// </summary>
-        public static object GetDisplayName<T>(this T obj) where T : class
+        public static object GetDisplayName<TObject>(this TObject obj) where TObject : class
         {
-            return typeof(T).CustomAttributes.Any() ?
-                typeof(T).CustomAttributes.First().ConstructorArguments.First().Value :
-                nameof(T);
+            return typeof(TObject).CustomAttributes.Any() ?
+                typeof(TObject).CustomAttributes.First().ConstructorArguments.First().Value :
+                nameof(TObject);
         }
 
 

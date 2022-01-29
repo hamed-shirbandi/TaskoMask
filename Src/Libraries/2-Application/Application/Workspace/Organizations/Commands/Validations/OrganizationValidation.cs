@@ -5,7 +5,7 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Organizations.Commands.Validations
 {
-    public abstract class OrganizationValidation<T> : AbstractValidator<T> where T : OrganizationBaseCommand
+    public abstract class OrganizationValidation<TOrganizationCommand> : AbstractValidator<TOrganizationCommand> where TOrganizationCommand : OrganizationBaseCommand
     {
         protected void ValidateDescription()
         {

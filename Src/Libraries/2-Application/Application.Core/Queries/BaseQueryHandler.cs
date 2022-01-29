@@ -41,7 +41,7 @@ namespace TaskoMask.Application.Core.Queries
         /// <summary>
         /// 
         /// </summary>
-        protected void NotifyValidationError<T>(BaseQuery<T> request, string error)
+        protected void NotifyValidationError<TQuery>(BaseQuery<TQuery> request, string error)
         {
             _notifications.Add(request.GetType().Name, error);
         }

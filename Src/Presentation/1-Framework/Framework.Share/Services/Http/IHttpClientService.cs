@@ -6,11 +6,11 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
 {
     public  interface IHttpClientService
     {
-        Task<Result<T>> PostAsync<T>(Uri uri, object input);
-        Task<Result<T>> PutAsync<T>(Uri uri, object input);
-        Task<Result<T>> PutAsync<T>(Uri uri);
-        Task<Result<T>> GetAsync<T>(Uri uri);
-        Task<Result<T>> DeleteAsync<T>(Uri uri);
+        Task<Result<TResult>> PostAsync<TResult>(Uri uri, object input);
+        Task<Result<TResult>> PutAsync<TResult>(Uri uri, object input);
+        Task<Result<TResult>> PutAsync<TResult>(Uri uri);
+        Task<Result<TResult>> GetAsync<TResult>(Uri uri);
+        Task<Result<TResult>> DeleteAsync<TResult>(Uri uri);
         Uri GetBaseAddress();
         void SetBaseAddress(string httpClientBaseAddress);
     }

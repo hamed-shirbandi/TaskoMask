@@ -11,16 +11,16 @@ namespace TaskoMask.Domain.Core.Events
         /// <summary>
         /// 
         /// </summary>
-        void Save<T>(T @event) where T : IDomainEvent;
+        void Save<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent;
 
         /// <summary>
         /// 
         /// </summary>
-        Task SaveAsync<T>(T @event) where T : IDomainEvent;
+        Task SaveAsync<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent;
 
         /// <summary>
         /// 
         /// </summary>
-        Task<List<T>> GetListAsync<T>(string entityId, string entityType) where T : StoredEvent;
+        Task<List<TStoredEvent>> GetListAsync<TStoredEvent>(string entityId, string entityType) where TStoredEvent : StoredEvent;
     }
 }

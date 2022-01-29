@@ -2,8 +2,8 @@
 
 namespace TaskoMask.Domain.Core.Specifications
 {
-    public interface ISpecification<T> 
+    public interface ISpecification<TEntity> 
     {
-        bool IsSatisfiedBy(T entity);
+        bool IsSatisfiedBy(TEntity entity);
     }
 }

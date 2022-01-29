@@ -44,7 +44,7 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        protected async Task<Result<CommandResult>> SendCommandAsync<T>(T cmd) where T : BaseCommand
+        protected async Task<Result<CommandResult>> SendCommandAsync<TCommand>(TCommand cmd) where TCommand : BaseCommand
         {
             var result = await _inMemoryBus.Send(cmd);
 
@@ -68,11 +68,11 @@ namespace TaskoMask.Application.Core.Services
         /// <summary>
         /// 
         /// </summary>
-        protected async Task<Result<T>> SendQueryAsync<T>(BaseQuery<T> query)
+        protected async Task<Result<TQuery>> SendQueryAsync<TQuery>(BaseQuery<TQuery> query)
         {
             var result = await _inMemoryBus.Send(query);
             if (_notifications.HasAny())
-                return Result.Failure<T>(_notifications.GetErrors());
+                return Result.Failure<TQuery>(_notifications.GetErrors());
 
             return Result.Success(result);
         }

@@ -40,13 +40,13 @@ namespace TaskoMask.UnitTests.Base
         /// <summary>
         /// Creates an IServiceScope which contains an IServiceProvider used to resolve dependencies from a newly created scope and then runs an associated callback.
         /// </summary>
-        protected void RunScopedService<T, S>(IServiceProvider serviceProvider, Action<S, T> callback)
+        protected void RunScopedService<TService, TContext>(IServiceProvider serviceProvider, Action<TContext, TService> callback)
         {
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetRequiredService<S>();
+                var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
 
-                callback(context, serviceScope.ServiceProvider.GetRequiredService<T>());
+                callback(context, serviceScope.ServiceProvider.GetRequiredService<TService>());
                 if (context is IDisposable disposable)
                 {
                     disposable.Dispose();
@@ -57,11 +57,11 @@ namespace TaskoMask.UnitTests.Base
         /// <summary>
         /// Creates an IServiceScope which contains an IServiceProvider used to resolve dependencies from a newly created scope and then runs an associated callback.
         /// </summary>
-        protected void RunScopedService<S>(IServiceProvider serviceProvider, Action<S> callback)
+        protected void RunScopedService<TService>(IServiceProvider serviceProvider, Action<TService> callback)
         {
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetRequiredService<S>();
+                var context = serviceScope.ServiceProvider.GetRequiredService<TService>();
                 callback(context);
                 if (context is IDisposable disposable)
                 {
@@ -73,11 +73,11 @@ namespace TaskoMask.UnitTests.Base
         /// <summary>
         /// Creates an IServiceScope which contains an IServiceProvider used to resolve dependencies from a newly created scope and then runs an associated callback.
         /// </summary>
-        protected T RunScopedService<T, S>(IServiceProvider serviceProvider, Func<S, T> callback)
+        protected TResult RunScopedService<TResult, TService>(IServiceProvider serviceProvider, Func<TService, TResult> callback)
         {
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetRequiredService<S>();
+                var context = serviceScope.ServiceProvider.GetRequiredService<TService>();
                 return callback(context);
             }
         }

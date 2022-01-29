@@ -11,12 +11,12 @@ namespace TaskoMask.Infrastructure.Data.Common.Extensions
         /// <summary>
         /// 
         /// </summary>
-        public static bool Has<T>(this IList<string> collections, string name = "") 
+        public static bool Has<TModel>(this IList<string> collections, string name = "") 
         {
             var collection = name;
             if (string.IsNullOrEmpty(collection))
             {
-                collection = typeof(T).Name;
+                collection = typeof(TModel).Name;
 
                 if (!collection.EndsWith("s"))  collection += "s";
             }

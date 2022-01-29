@@ -37,10 +37,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<T>> PostAsync<T>(Uri uri, object input)
+        public async Task<Result<TResult>> PostAsync<TResult>(Uri uri, object input)
         {
             var httpResponse = await _httpClient.PostAsJsonAsync(uri, input);
-            return await GetResponseAsync<T>(httpResponse);
+            return await GetResponseAsync<TResult>(httpResponse);
         }
 
 
@@ -48,10 +48,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<T>> PutAsync<T>(Uri uri, object input)
+        public async Task<Result<TResult>> PutAsync<TResult>(Uri uri, object input)
         {
             var httpResponse = await _httpClient.PutAsJsonAsync(uri, input);
-            return await GetResponseAsync<T>(httpResponse);
+            return await GetResponseAsync<TResult>(httpResponse);
         }
 
 
@@ -59,10 +59,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<T>> PutAsync<T>(Uri uri)
+        public async Task<Result<TResult>> PutAsync<TResult>(Uri uri)
         {
             var httpResponse = await _httpClient.PutAsJsonAsync(uri, new { });
-            return await GetResponseAsync<T>(httpResponse);
+            return await GetResponseAsync<TResult>(httpResponse);
         }
 
 
@@ -70,10 +70,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<T>> DeleteAsync<T>(Uri uri)
+        public async Task<Result<TResult>> DeleteAsync<TResult>(Uri uri)
         {
             var httpResponse = await _httpClient.DeleteAsync(uri);
-            return await GetResponseAsync<T>(httpResponse);
+            return await GetResponseAsync<TResult>(httpResponse);
         }
 
 
@@ -81,10 +81,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<T>> GetAsync<T>(Uri uri)
+        public async Task<Result<TResult>> GetAsync<TResult>(Uri uri)
         {
             var httpResponse = await _httpClient.GetAsync(uri);
-            return await GetResponseAsync<T>(httpResponse);
+            return await GetResponseAsync<TResult>(httpResponse);
         }
 
 
@@ -119,12 +119,12 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        private async Task<Result<T>> GetResponseAsync<T>(HttpResponseMessage httpResponse)
+        private async Task<Result<TResult>> GetResponseAsync<TResult>(HttpResponseMessage httpResponse)
         {
             if (httpResponse.IsSuccessStatusCode)
-                return await httpResponse.Content.ReadFromJsonAsync<Result<T>>();
+                return await httpResponse.Content.ReadFromJsonAsync<Result<TResult>>();
 
-            return Result.Failure<T>(message: $"Request failed!");
+            return Result.Failure<TResult>(message: $"Request failed!");
         }
 
 

@@ -3,7 +3,6 @@
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
 @implements IDisposable
 
-
 @if (!Model.OrganizationsDetailsList.Any())
 {
     <div class="alert alert-warning">
@@ -51,8 +50,8 @@ else
         var organizationsDetailsListResult = await OrganizationClientService.Get();
         if (!organizationsDetailsListResult.IsSuccess)
             ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToHtml(), organizationsDetailsListResult.Message);
-
-        Model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
+        else
+            Model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
     }
 
 

@@ -41,11 +41,13 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
                 configureClient: client =>
                 {
                     client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelAPI"));
+                    client.Timeout = TimeSpan.FromSeconds(50);
                 }).AddHttpMessageHandler<HttpClientInterceptorService>();
+
             services.AddScoped<HttpClientInterceptorService>();
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ServerAPI"));
 
-           
+
             services.AddClientServices();
 
             services.AddSharedConfigureServices();

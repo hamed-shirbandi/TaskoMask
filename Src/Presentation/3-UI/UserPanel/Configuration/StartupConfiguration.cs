@@ -37,7 +37,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
 
             //add HttpClient with an Interceptor to add jwt token to all requests automatically
             services.AddHttpClient(
-                name: "ServerAPI",
+                name: "UserPanelAPI",
                 configureClient: client =>
                 {
                     client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelAPI"));

@@ -64,6 +64,8 @@ There is a list of our documentation:
       -	AutoMapper
       -	FluentValidation
       -	Swagger
+      -	Serilog
+      -	Seq
       -	xUnit with FluenAssertion and Moq
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/)
       -	[RedisCache.Core](https://www.nuget.org/packages/RedisCache.Core/)

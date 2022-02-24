@@ -1,21 +1,33 @@
-
+using Serilog;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
-var builder = WebApplication.CreateBuilder(args);
+Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
+Log.Information("Starting up");
 
-builder.Services.AddMvcProjectConfigureServices(builder.Configuration, builder.Environment);
-
-
-var app = builder.Build();
-
-app.UseMvcProjectConfigure(app.Services, builder.Environment);
-
-app.UseEndpoints(endpoints =>
+try
 {
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+    var builder = WebApplication.CreateBuilder(args);
+    builder.Services.AddMvcProjectConfigureServices(builder.Configuration, builder.Environment);
+    var app = builder.Build();
+    app.UseSerilogRequestLogging();
+    app.UseMvcProjectConfigure(app.Services, builder.Environment);
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
 
-});
+    });
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Unhandled exception");
+}
+finally
+{
+    Log.Information("Shut down complete");
+    Log.CloseAndFlush();
+}
 
-app.Run();
+

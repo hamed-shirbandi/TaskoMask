@@ -144,12 +144,14 @@ We need your support by giving a star or contributing or sharing this project wi
 This project is developed by [Hamed Shirbandi](https://github.com/hamed-shirbandi) under [MIT](https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE) licensed.
 Find Hamed around the web and feel free to ask your question.
 
-[![personal blog](http://www.codeblock.ir/Content/site/images/blog/Blog.png)](http://www.codeblock.ir)
-[![linkedin](http://www.codeblock.ir/Content/site/images/blog/linkedin_ic.png)](https://www.linkedin.com/in/hamed-shirbandi)
-[![nuget](http://www.codeblock.ir/Content/site/images/blog/nuget_ic.png)](https://www.nuget.org/profiles/hamed-shirbandi)
-[![email](http://www.codeblock.ir/Content/site/images/blog/Gmail-ic.png)](mailto:hamed.shirbandi@gmail.com)
-[![github](http://www.codeblock.ir/Content/site/images/blog/github_ic.jpg?v=2)](https://github.com/hamed-shirbandi)
-[![instagram](http://www.codeblock.ir/Content/site/images/blog/instagram.png)](https://www.instagram.com/hamedshirbandi)
+[![LinkedIn](https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/LinkedIn.png)](https://www.linkedin.com/in/hamed-shirbandi)
+[![Instagram](https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Instagram.png)](https://www.instagram.com/hamedshirbandi)
+[![GitHub](https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/GitHub.png)](https://github.com/hamed-shirbandi)
+[![Medium](https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Medium.png)](https://medium.com/@hamed.shirbandi)
+[![Nuget](https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Nuget.png)](https://www.nuget.org/profiles/hamed-shirbandi)
+[![Email](https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Email.png)](mailto:hamed.shirbandi@gmail.com)
+[![Telegram](https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Telegram.png)](https://t.me/hamed_shirbandi)
+[![Twitter](https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Twitter.png)](https://twitter.com/hamed_shirbandi)
 
 # Change logs
 *	### Jan, 2022

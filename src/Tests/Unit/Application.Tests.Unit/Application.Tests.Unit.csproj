@@ -2,9 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-
-    <IsPackable>false</IsPackable>
+	  <AssemblyName>TaskoMask.Application.Tests.Unit</AssemblyName>
+	  <RootNamespace>TaskoMask.Application.Tests.Unit</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

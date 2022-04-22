@@ -15,35 +15,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{CC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Infrastructure", "1-Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Src\Libraries\2-Application\Application\Application.csproj", "{A22E5B93-965A-4C7C-9848-A64BFF580ACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Libraries\2-Application\Application\Application.csproj", "{A22E5B93-965A-4C7C-9848-A64BFF580ACD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "Src\Libraries\2-Application\Application.Core\Application.Core.csproj", "{4D18F587-562B-4560-AAF8-725333B9C65F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "src\Libraries\2-Application\Application.Core\Application.Core.csproj", "{4D18F587-562B-4560-AAF8-725333B9C65F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "Src\Libraries\1-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{175C9CDF-0881-4DA7-AAE1-1794378CF92B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "src\Libraries\1-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{175C9CDF-0881-4DA7-AAE1-1794378CF92B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data", "Src\Libraries\1-Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj", "{358ED8E3-5C3C-46CA-81C8-D74B371DF7C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data", "src\Libraries\1-Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj", "{358ED8E3-5C3C-46CA-81C8-D74B371DF7C2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Src\Libraries\3-Domain\Domain\Domain.csproj", "{293F316D-11EE-40E5-BC41-E492ADCB0E23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Libraries\3-Domain\Domain\Domain.csproj", "{293F316D-11EE-40E5-BC41-E492ADCB0E23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Core", "Src\Libraries\3-Domain\Domain.Core\Domain.Core.csproj", "{466762B7-1061-4312-BF84-7EDB6A2C467A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Core", "src\Libraries\3-Domain\Domain.Core\Domain.Core.csproj", "{466762B7-1061-4312-BF84-7EDB6A2C467A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "Src\Presentation\3-UI\Website\Website.csproj", "{6482D831-9003-42B5-AEA1-E6CE0F74345B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "src\Presentation\3-UI\Website\Website.csproj", "{6482D831-9003-42B5-AEA1-E6CE0F74345B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "Src\Presentation\3-UI\AdminPanel\AdminPanel.csproj", "{5775A727-7777-47B6-A917-3935B316A95A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "src\Presentation\3-UI\AdminPanel\AdminPanel.csproj", "{5775A727-7777-47B6-A917-3935B316A95A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanelAPI", "Src\Presentation\2-API\UserPanelAPI\UserPanelAPI.csproj", "{A73579BA-9281-4671-8B3E-9987C328EB8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanelAPI", "src\Presentation\2-API\UserPanelAPI\UserPanelAPI.csproj", "{A73579BA-9281-4671-8B3E-9987C328EB8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Src\Tests\Application.UnitTests\Application.UnitTests.csproj", "{6339DE75-CA79-4F7F-8959-8E9467803CD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "src\Tests\Application.UnitTests\Application.UnitTests.csproj", "{6339DE75-CA79-4F7F-8959-8E9467803CD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.Base", "Src\Tests\UnitTests.Base\UnitTests.Base.csproj", "{87EE0684-D45F-46BC-ADEC-5494DD2B3CDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.Base", "src\Tests\UnitTests.Base\UnitTests.Base.csproj", "{87EE0684-D45F-46BC-ADEC-5494DD2B3CDC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "Src\Presentation\3-UI\UserPanel\UserPanel.csproj", "{637FCA1E-254C-448B-A3F7-A6BDEF7242C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "src\Presentation\3-UI\UserPanel\UserPanel.csproj", "{637FCA1E-254C-448B-A3F7-A6BDEF7242C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Share", "Src\Libraries\2-Application\Application.Share\Application.Share.csproj", "{7410B8EB-85DE-4693-AB7A-ECE039C296B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Share", "src\Libraries\2-Application\Application.Share\Application.Share.csproj", "{7410B8EB-85DE-4693-AB7A-ECE039C296B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Share", "Src\Libraries\3-Domain\Domain.Share\Domain.Share.csproj", "{0916932F-A913-4CCD-8F53-2B82A4BC657F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Share", "src\Libraries\3-Domain\Domain.Share\Domain.Share.csproj", "{0916932F-A913-4CCD-8F53-2B82A4BC657F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Web", "Src\Presentation\1-Framework\Framework.Web\Framework.Web.csproj", "{5A5F866E-20D8-4352-9A96-8CA3A0372BDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Web", "src\Presentation\1-Framework\Framework.Web\Framework.Web.csproj", "{5A5F866E-20D8-4352-9A96-8CA3A0372BDE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Framework", "1-Framework", "{31A9C2D6-CD59-4282-934D-51EF6C02FE68}"
 EndProject
@@ -51,9 +51,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-UI", "3-UI", "{815A0015-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-API", "2-API", "{9BA7A9BA-25B7-4F6B-B6B3-E29B77E5788C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Share", "Src\Presentation\1-Framework\Framework.Share\Framework.Share.csproj", "{849813FB-0F7C-4119-ACA6-AD178C502F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Share", "src\Presentation\1-Framework\Framework.Share\Framework.Share.csproj", "{849813FB-0F7C-4119-ACA6-AD178C502F0D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Share", "Src\Libraries\1-Infrastructure\Infrastructure.Share\Infrastructure.Share.csproj", "{C2FABDA4-F5AA-4F20-9653-837269784FE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Share", "src\Libraries\1-Infrastructure\Infrastructure.Share\Infrastructure.Share.csproj", "{C2FABDA4-F5AA-4F20-9653-837269784FE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

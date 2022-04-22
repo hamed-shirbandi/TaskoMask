@@ -66,7 +66,10 @@ There is a list of our documentation:
       -	Swagger
       -	Serilog
       -	Seq
-      -	xUnit with FluenAssertion and Moq
+      -	xUnit
+      -	FluenAssertion
+      - NSubstitute
+      - SpecFlow
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/)
       -	[RedisCache.Core](https://www.nuget.org/packages/RedisCache.Core/)
   * ### Front-end:
@@ -83,8 +86,10 @@ There is a list of our documentation:
       -	Jquery.noty
       -	Chart.js
   * ### Patterns, Methodologies، Approaches:
-      -	Onion Architecture
-      -	Unit Testing
+      -	[Onion Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
+      -	[Unit Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Unit)
+      -	[Integration Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Integration)
+      -	[Acceptance Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance)
       -	DDD
         - Rich Domain Model (for core domain)
         - Anemic Domain Model (for less important subdomains)
@@ -154,6 +159,8 @@ Find Hamed around the web and feel free to ask your question.
 <a href="https://twitter.com/hamed_shirbandi"><img alt="Twitter" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Twitter-v2.png" width="35"></a>
 
 # Change logs
+*	### Apr, 2022
+    - [x] Add Unit Tests for Domain
 *	### Jan, 2022
     - [x] Full domain model refactoring by DDD concepts
     - [x] Separate Domain Model and Data Model

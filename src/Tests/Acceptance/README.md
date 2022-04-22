@@ -1,3 +1,0 @@
-
-# Acceptance Tests
-

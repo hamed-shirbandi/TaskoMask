@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskoMask.Application.Tests.Unit
+namespace Application.Tests.Integration
 {
-    public class BoardIntegrationTests
+    public class BoardServiceIntegrationTests
     {
     }
 }

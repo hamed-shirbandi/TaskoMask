@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-UI", "3-UI", "{815A0015-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-API", "2-API", "{9BA7A9BA-25B7-4F6B-B6B3-E29B77E5788C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests.Unit", "src\Tests\Unit\Domain.Tests.Unit\Domain.Tests.Unit.csproj", "{ACCC9815-5930-49B9-9B76-DC3FF3426D5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests.Unit", "Src\Tests\Unit\Domain.Tests.Unit\Domain.Tests.Unit.csproj", "{ACCC9815-5930-49B9-9B76-DC3FF3426D5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests.Unit", "src\Tests\Unit\Application.Tests.Unit\Application.Tests.Unit.csproj", "{C3AA7845-8059-4D34-9D23-A89813F38601}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests.Unit", "Src\Tests\Unit\Application.Tests.Unit\Application.Tests.Unit.csproj", "{C3AA7845-8059-4D34-9D23-A89813F38601}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{43600F4B-14DA-4737-9725-0FBE3636A48E}"
 EndProject
@@ -31,39 +31,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Acceptance", "Acceptance", "{96DD9B31-B84C-4F6F-A672-177A4DF21E35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests.Integration", "src\Tests\Integration\Application.Tests.Integration\Application.Tests.Integration.csproj", "{3AA6F10E-CD97-4187-89F1-6E6F6664D1E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests.Integration", "Src\Tests\Integration\Application.Tests.Integration\Application.Tests.Integration.csproj", "{3AA6F10E-CD97-4187-89F1-6E6F6664D1E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Acceptance", "src\Tests\Acceptance\Tests.Acceptance\Tests.Acceptance.csproj", "{4C1334DF-3528-4B4B-85F8-C8BBDC89430C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Acceptance", "Src\Tests\Acceptance\Tests.Acceptance\Tests.Acceptance.csproj", "{4C1334DF-3528-4B4B-85F8-C8BBDC89430C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Share", "src\Libraries\3-Domain\Domain.Share\Domain.Share.csproj", "{6D899224-8901-45F3-97E2-D6F28EFDD816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Share", "Src\Libraries\3-Domain\Domain.Share\Domain.Share.csproj", "{6D899224-8901-45F3-97E2-D6F28EFDD816}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Core", "src\Libraries\3-Domain\Domain.Core\Domain.Core.csproj", "{5359CDE1-8687-4862-BDD7-011571CB4A27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Core", "Src\Libraries\3-Domain\Domain.Core\Domain.Core.csproj", "{5359CDE1-8687-4862-BDD7-011571CB4A27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Libraries\3-Domain\Domain\Domain.csproj", "{CAE67B26-DAA9-4AA5-8E3D-8DB070B4052C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Src\Libraries\3-Domain\Domain\Domain.csproj", "{CAE67B26-DAA9-4AA5-8E3D-8DB070B4052C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Share", "src\Libraries\1-Infrastructure\Infrastructure.Share\Infrastructure.Share.csproj", "{92CE4ECE-45A6-424A-B987-62F97082E49A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Share", "Src\Libraries\1-Infrastructure\Infrastructure.Share\Infrastructure.Share.csproj", "{92CE4ECE-45A6-424A-B987-62F97082E49A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data", "src\Libraries\1-Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj", "{0E7C3007-202C-4A6E-8DCA-F424797A9AED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data", "Src\Libraries\1-Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj", "{0E7C3007-202C-4A6E-8DCA-F424797A9AED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "src\Libraries\1-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{E83B87F2-796F-4668-921C-39D7D9481B91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "Src\Libraries\1-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{E83B87F2-796F-4668-921C-39D7D9481B91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Share", "src\Libraries\2-Application\Application.Share\Application.Share.csproj", "{29377A7F-41D8-4703-A4AB-560DD530CB61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Share", "Src\Libraries\2-Application\Application.Share\Application.Share.csproj", "{29377A7F-41D8-4703-A4AB-560DD530CB61}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "src\Libraries\2-Application\Application.Core\Application.Core.csproj", "{47FB7805-B16B-4652-9045-ACB2932DDD27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "Src\Libraries\2-Application\Application.Core\Application.Core.csproj", "{47FB7805-B16B-4652-9045-ACB2932DDD27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Libraries\2-Application\Application\Application.csproj", "{D048BB35-F168-42C3-AD7E-FCCF56FCABB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Src\Libraries\2-Application\Application\Application.csproj", "{D048BB35-F168-42C3-AD7E-FCCF56FCABB9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Share", "src\Presentation\1-Framework\Framework.Share\Framework.Share.csproj", "{A676FA13-B010-4A7A-85FF-1C9929619948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Share", "Src\Presentation\1-Framework\Framework.Share\Framework.Share.csproj", "{A676FA13-B010-4A7A-85FF-1C9929619948}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Web", "src\Presentation\1-Framework\Framework.Web\Framework.Web.csproj", "{7AD54CF2-7B67-4C84-B9DA-6AF1762FC20C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Web", "Src\Presentation\1-Framework\Framework.Web\Framework.Web.csproj", "{7AD54CF2-7B67-4C84-B9DA-6AF1762FC20C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanelAPI", "src\Presentation\2-API\UserPanelAPI\UserPanelAPI.csproj", "{C015A73A-0C15-4AD8-9BD8-4CF74A601BAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanelAPI", "Src\Presentation\2-API\UserPanelAPI\UserPanelAPI.csproj", "{C015A73A-0C15-4AD8-9BD8-4CF74A601BAD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "src\Presentation\3-UI\Website\Website.csproj", "{395D43D9-49CB-45C7-A25F-4E84370FE948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "Src\Presentation\3-UI\Website\Website.csproj", "{395D43D9-49CB-45C7-A25F-4E84370FE948}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "src\Presentation\3-UI\AdminPanel\AdminPanel.csproj", "{B8C53F1B-0E0D-4DBA-ADBB-5AA676562E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "Src\Presentation\3-UI\AdminPanel\AdminPanel.csproj", "{B8C53F1B-0E0D-4DBA-ADBB-5AA676562E75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "src\Presentation\3-UI\UserPanel\UserPanel.csproj", "{5A908196-FEE6-4DAC-A588-9E45806EDA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "Src\Presentation\3-UI\UserPanel\UserPanel.csproj", "{5A908196-FEE6-4DAC-A588-9E45806EDA41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -15,10 +15,10 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DocumentationFile>bin\Debug\net6.0\TaskoMask.Application.Share.xml</DocumentationFile>
 	</PropertyGroup>
-	
-  <ItemGroup>
-    <ProjectReference Include="..\..\3-Domain\Domain.Share\Domain.Share.csproj" />
-  </ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\3-Domain\Domain.Share\Domain.Share.csproj" />
+	</ItemGroup>
 
   <ItemGroup>
     <Compile Update="Resources\ApplicationMessages.Designer.cs">

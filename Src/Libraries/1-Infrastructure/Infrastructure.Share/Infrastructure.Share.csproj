@@ -5,13 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\3-Domain\Domain.Share\Domain.Share.csproj" />
-  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.0" />
 
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\3-Domain\Domain.Share\Domain.Share.csproj" />
 	</ItemGroup>
 </Project>

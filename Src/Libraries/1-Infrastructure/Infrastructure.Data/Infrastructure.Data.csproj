@@ -12,6 +12,7 @@
     <PackageReference Include="StackExchange.Redis" Version="2.2.88" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\3-Domain\Domain.Core\Domain.Core.csproj" />
     <ProjectReference Include="..\..\3-Domain\Domain\Domain.csproj" />
   </ItemGroup>
 

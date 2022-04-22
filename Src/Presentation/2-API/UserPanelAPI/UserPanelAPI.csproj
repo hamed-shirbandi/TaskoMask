@@ -17,9 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\net6.0\TaskoMask.Presentation.API.UserPanelAPI.xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\1-Framework\Framework.Web\Framework.Web.csproj" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\..\1-Framework\Framework.Web\Framework.Web.csproj" />
+	</ItemGroup>
 </Project>

@@ -24,7 +24,6 @@
     <None Include="Pages\_Host.cshtml" />
     <None Include="Shared\MainLayout.razor" />
     <None Include="Shared\NavMenu.razor" />
-    <None Include="UserPanel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,10 +34,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
 	  <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\1-Framework\Framework.Share\Framework.Share.csproj" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\..\1-Framework\Framework.Share\Framework.Share.csproj" />
+	</ItemGroup>
 
 </Project>

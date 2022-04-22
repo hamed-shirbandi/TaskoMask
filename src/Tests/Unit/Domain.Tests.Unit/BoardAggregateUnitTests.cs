@@ -11,9 +11,9 @@ using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit
 {
-    public class BoardUnitTests
+    public class BoardAggregateUnitTests
     {
-        public BoardUnitTests()
+        public BoardAggregateUnitTests()
         {
 
         }

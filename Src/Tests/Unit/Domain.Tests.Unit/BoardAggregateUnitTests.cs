@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using MongoDB.Bson;
 using NSubstitute;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace TaskoMask.Domain.Tests.Unit
             //Arrange
             var name = "Test Name";
             var description = "Test Description";
-            var projectId = "No_Id";
+            var projectId = ObjectId.GenerateNewId().ToString(); 
             var boardValidatorService = Substitute.For<IBoardValidatorService>();
             boardValidatorService.BoardHasUniqueName(Arg.Any<string>(), projectId, name).Returns(true);
 

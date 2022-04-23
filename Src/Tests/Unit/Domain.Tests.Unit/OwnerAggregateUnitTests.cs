@@ -5,6 +5,7 @@ using System;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit
@@ -35,6 +36,27 @@ namespace TaskoMask.Domain.Tests.Unit
             owner.DisplayName.Value.Should().NotBeNull().And.Be(displayName);
             owner.Organizations.Should().HaveCount(0);
 
+        }
+
+
+
+        [Fact]
+        public void Owner_Created_Event_Is_Raised_When_Owner_Is_Constructed_Properly()
+        {
+            //Arrange
+            var id = ObjectId.GenerateNewId().ToString();
+            var email = "Test@email.com";
+            var displayName = "Test Name";
+            var expectedEvent = new OwnerCreatedEvent(id, displayName, email);
+
+            //Act
+            var owner = Owner.CreateOwner(id, displayName, email);
+
+            owner.Id.Should().NotBeNullOrEmpty().And.Be(id);
+
+            //Assert
+            owner.DomainEvents.Should().Contain(de=>de.EntityId==id && de.EntityType== nameof(Owner));
+ 
         }
 
 

@@ -20,7 +20,7 @@ namespace TaskoMask.Domain.Tests.Unit
 
 
         [Fact]
-        public void Create_Board()
+        public void Board_Is_Constructed_Properly()
         {
             //Arrange
             var name = "Test Name";

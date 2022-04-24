@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using NSubstitute;
 using System;
+using System.Linq;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Tests.Unit.DataBuilders;
@@ -58,6 +59,7 @@ namespace TaskoMask.Domain.Tests.Unit
             var owner = ownerBuilder.Build();
 
             //Assert
+            owner.DomainEvents.Should().HaveCount(1);
             owner.DomainEvents.Should().Contain(de => de.EntityId == expectedEvent.EntityId && de.EntityType == expectedEvent.EntityType);
 
         }

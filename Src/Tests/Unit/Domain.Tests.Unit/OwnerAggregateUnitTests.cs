@@ -29,7 +29,7 @@ namespace TaskoMask.Domain.Tests.Unit
                   .WithDisplayName("Test Name");
 
             //Act
-            var owner = ownerBuilder.Build(); 
+            var owner = ownerBuilder.Build();
 
 
             //Assert
@@ -58,8 +58,8 @@ namespace TaskoMask.Domain.Tests.Unit
             var owner = ownerBuilder.Build();
 
             //Assert
-            owner.DomainEvents.Should().Contain(de=>de.EntityId== ownerBuilder.Id && de.EntityType== nameof(Owner));
- 
+            owner.DomainEvents.Should().Contain(de => de.EntityId == expectedEvent.EntityId && de.EntityType == expectedEvent.EntityType);
+
         }
 
 
@@ -80,7 +80,7 @@ namespace TaskoMask.Domain.Tests.Unit
 
             //Assert
             act.Should().Throw<DomainException>()
-                .Where(e=>e.Message.Equals(string.Format(DomainMessages.Null_Reference_Error, nameof(ownerBuilder.Id).ToLower())));
+                .Where(e => e.Message.Equals(string.Format(DomainMessages.Null_Reference_Error, nameof(ownerBuilder.Id).ToLower())));
         }
 
     }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Tests.Unit.DataBuilders;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
 using Xunit;
 
@@ -43,6 +44,31 @@ namespace TaskoMask.Domain.Tests.Unit
             board.Description.Value.Should().NotBeNull().And.Be(boardBuilder.Description);
             board.ProjectId.Value.Should().NotBeNull().And.Be(boardBuilder.ProjectId);
         }
+
+
+        [Fact]
+        public void Board_Created_Event_Is_Raised_When_Board_Is_Constructed_Properly()
+        {
+
+            //Arrange
+            var boardValidatorService = Substitute.For<IBoardValidatorService>();
+            boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(true);
+
+            var boardBuilder = BoardBuilder.Init(boardValidatorService)
+                  .WithProjectId(ObjectId.GenerateNewId().ToString())
+                  .WithName("Test Name")
+                  .WithDescription("Test Description");
+
+         
+
+            //Act
+            var board = boardBuilder.Build();
+
+            //Assert
+            board.DomainEvents.Should().HaveCount(1);
+            board.DomainEvents.Should().Contain(de => de.EntityId == board.Id);
+        }
+
 
     }
 }

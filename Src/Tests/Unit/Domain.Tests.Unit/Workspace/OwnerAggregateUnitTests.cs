@@ -10,7 +10,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 using Xunit;
 
-namespace TaskoMask.Domain.Tests.Unit
+namespace TaskoMask.Domain.Tests.Unit.Workspace
 {
     public class OwnerAggregateUnitTests
     {

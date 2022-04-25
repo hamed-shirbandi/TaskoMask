@@ -12,7 +12,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
 using Xunit;
 
-namespace TaskoMask.Domain.Tests.Unit
+namespace TaskoMask.Domain.Tests.Unit.Workspace
 {
     public class BoardAggregateUnitTests
     {

@@ -8,7 +8,7 @@ namespace TaskoMask.Domain.WriteModel.Authorization.Entities
         public string UserName { get; set; }
 
         /// <summary>
-        /// Can log in and access to panel
+        /// Can login and access to panel
         /// </summary>
         public bool IsActive { get; set; }
         public string PasswordHash { get;  set; }

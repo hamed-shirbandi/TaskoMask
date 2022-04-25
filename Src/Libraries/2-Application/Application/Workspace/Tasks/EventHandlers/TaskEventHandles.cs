@@ -79,7 +79,7 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
         public async System.Threading.Tasks.Task Handle(TaskDeletedEvent deletedTask, CancellationToken cancellationToken)
         {
             var task = await _taskRepository.GetByIdAsync(deletedTask.Id);
-            task.SetAsDeleteed();
+            task.SetAsDeleted();
             await _taskRepository.UpdateAsync(task);
         }
 

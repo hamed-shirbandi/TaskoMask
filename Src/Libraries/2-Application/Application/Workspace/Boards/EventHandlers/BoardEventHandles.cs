@@ -79,7 +79,7 @@ namespace TaskoMask.Application.Workspace.Boards.EventHandlers
         public async System.Threading.Tasks.Task Handle(BoardDeletedEvent deletedBoard, CancellationToken cancellationToken)
         {
             var board = await _boardRepository.GetByIdAsync(deletedBoard.Id);
-            board.SetAsDeleteed();
+            board.SetAsDeleted();
             await _boardRepository.UpdateAsync(board);
         }
 

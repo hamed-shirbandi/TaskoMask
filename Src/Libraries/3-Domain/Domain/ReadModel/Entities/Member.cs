@@ -33,7 +33,7 @@ namespace TaskoMask.Domain.ReadModel.Entities
 
         #region Update private properties
 
-        public void SetAsDeleteed()
+        public void SetAsDeleted()
         {
             base.Delete();
             SetAsUpdated();

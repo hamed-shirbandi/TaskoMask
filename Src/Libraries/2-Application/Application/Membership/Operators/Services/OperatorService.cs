@@ -225,7 +225,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
             //delete associated user
             await _userService.DeleteAsync(@operator.Id);
 
-            @operator.SetAsDeleteed();
+            @operator.SetAsDeleted();
             return Result.Success(new CommandResult(entityId: @operator.Id), ApplicationMessages.Update_Success);
         }
 

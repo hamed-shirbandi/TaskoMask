@@ -279,7 +279,7 @@ namespace TaskoMask.Application.Membership.Permissions.Services
             if (permission == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Permission));
 
-            permission.SetAsDeleteed();
+            permission.SetAsDeleted();
             return Result.Success(new CommandResult(entityId: permission.Id), ApplicationMessages.Update_Success);
         }
 

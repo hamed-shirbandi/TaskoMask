@@ -223,7 +223,7 @@ namespace TaskoMask.Application.Authorization.Users.Services
             if (user == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
 
-            user.SetAsDeleteed();
+            user.SetAsDeleted();
             return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
         }
 

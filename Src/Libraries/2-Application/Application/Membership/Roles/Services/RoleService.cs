@@ -194,7 +194,7 @@ namespace TaskoMask.Application.Membership.Roles.Services
             if (role == null)
                 return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
 
-            role.SetAsDeleteed();
+            role.SetAsDeleted();
             return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Update_Success);
         }
 

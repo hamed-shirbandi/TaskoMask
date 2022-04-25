@@ -73,7 +73,7 @@ namespace TaskoMask.Application.Workspace.Cards.EventHandlers
         public async System.Threading.Tasks.Task Handle(CardDeletedEvent deletedCard, CancellationToken cancellationToken)
         {
             var card = await _cardRepository.GetByIdAsync(deletedCard.Id);
-            card.SetAsDeleteed();
+            card.SetAsDeleted();
             await _cardRepository.UpdateAsync(card);
         }
 

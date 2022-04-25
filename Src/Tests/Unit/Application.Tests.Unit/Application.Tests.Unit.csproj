@@ -20,4 +20,13 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Membership\" />
+    <Folder Include="Workspace\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />
+  </ItemGroup>
+
 </Project>

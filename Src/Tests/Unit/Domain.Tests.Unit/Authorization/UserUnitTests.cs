@@ -83,7 +83,26 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
         }
 
 
+        [Fact]
+        public void User_Is_Recycled_Properly()
+        {
+            //Arrange
+            var userName = "TestUserName";
 
+
+            //Act
+            var user = new User
+            {
+                UserName = userName,
+            };
+
+            user.SetAsDeleted();
+            user.SetAsRecycled();
+
+            //Assert
+            user.IsDeleted.Should().Be(false);
+
+        }
 
     }
 }

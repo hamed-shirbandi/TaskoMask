@@ -668,3 +668,4 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,visualstudio,visualstudiocode,rider,csharp
 *.ncrunchsolution
 *.cs
+*.ncrunchproject

@@ -137,7 +137,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.EventSourcing
         private StoredEvent GetEventDataToStore<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent
         {
             var userId = _authenticatedUserService.GetUserId();
-            return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.GetType().Name, data: @event, userId: userId);
+            return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.EventType, data: @event, userId: userId);
         }
 
         #endregion

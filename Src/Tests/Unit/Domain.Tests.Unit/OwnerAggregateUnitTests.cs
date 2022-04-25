@@ -53,13 +53,16 @@ namespace TaskoMask.Domain.Tests.Unit
                   .WithEmail("Test@email.com")
                   .WithDisplayName("Test Name");
 
-         
+            var expectedEventType = nameof(OwnerCreatedEvent);
+
             //Act
             var owner = ownerBuilder.Build();
 
             //Assert
             owner.DomainEvents.Should().HaveCount(1);
-            owner.DomainEvents.Should().Contain(de => de.EntityId == owner.Id );
+            var domainEvent = owner.DomainEvents.First();
+            domainEvent.EventType.Should().Be(expectedEventType);
+            domainEvent.EntityId.Should().Be(owner.Id);
 
         }
 

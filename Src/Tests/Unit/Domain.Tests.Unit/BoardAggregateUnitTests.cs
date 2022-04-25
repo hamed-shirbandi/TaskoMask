@@ -59,14 +59,18 @@ namespace TaskoMask.Domain.Tests.Unit
                   .WithName("Test Name")
                   .WithDescription("Test Description");
 
-         
+            var expectedEventType = nameof(BoardCreatedEvent);
+
 
             //Act
             var board = boardBuilder.Build();
 
+
             //Assert
             board.DomainEvents.Should().HaveCount(1);
-            board.DomainEvents.Should().Contain(de => de.EntityId == board.Id);
+            var domainEvent = board.DomainEvents.First();
+            domainEvent.EventType.Should().Be(expectedEventType);
+            domainEvent.EntityId.Should().Be(board.Id);
         }
 
 

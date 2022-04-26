@@ -134,5 +134,28 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+        [InlineData("Hamed@taskomask")]
+        [InlineData("Ha.Taskomask.ir")]
+        [InlineData("Ha.Taskomask")]
+        [Theory]
+        public void Owner_Is_Not_Constructed_When_Email_Is_Not_Valid(string email)
+        {
+            //Arrange
+            var ownerBuilder = OwnerBuilder.Init()
+                  .WithId(ObjectId.GenerateNewId().ToString())
+                  .WithEmail(email)
+                  .WithDisplayName("Test Name");
+
+
+            //Act
+            Action act = () => ownerBuilder.Build();
+
+
+            //Assert
+            act.Should().Throw<DomainException>()
+                .Where(e => e.Message.Equals(DomainMessages.Invalid_Email_Address));
+        }
+
+
     }
 }

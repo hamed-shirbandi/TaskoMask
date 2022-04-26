@@ -27,9 +27,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
         private Owner(string id, string displayName, string email)
         {
-            if (string.IsNullOrEmpty(id))
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(id)));
-
+          
             //shared key with User in authentication BC
             base.SetId(id);
 
@@ -243,6 +241,9 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         /// </summary>
         private void CheckPolicies()
         {
+            if (string.IsNullOrEmpty(Id))
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Id)));
+
             if (DisplayName == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(DisplayName)));
 

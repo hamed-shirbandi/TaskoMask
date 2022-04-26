@@ -112,6 +112,27 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
 
+        [InlineData("H")]
+        [InlineData("Ha")]
+        [Theory]
+        public void Owner_Is_Not_Constructed_When_DisplayName_Lenght_Is_Less_Than_Min_Length(string displayName)
+        {
+            //Arrange
+            var ownerBuilder = OwnerBuilder.Init()
+                  .WithId(ObjectId.GenerateNewId().ToString())
+                  .WithEmail("Test@email.com")
+                  .WithDisplayName(displayName);
+
+
+            //Act
+            Action act = () => ownerBuilder.Build();
+
+
+            //Assert
+            act.Should().Throw<DomainException>()
+                .Where(e => e.Message.Equals(string.Format(DomainMessages.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length)));
+        }
+
 
     }
 }

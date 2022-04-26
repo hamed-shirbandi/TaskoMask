@@ -157,5 +157,32 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+        [Fact]
+        public void Owner_Updated_Event_Is_Raised_When_Owner_Is_Updated()
+        {
+
+            //Arrange
+            var ownerBuilder = OwnerBuilder.Init()
+                  .WithId(ObjectId.GenerateNewId().ToString())
+                  .WithEmail("Test@email.com")
+                  .WithDisplayName("Test Name");
+
+            var expectedEventType = nameof(OwnerUpdatedEvent);
+
+            //Act
+            var owner = ownerBuilder.Build();
+            owner.UpdateOwner(
+                OwnerDisplayName.Create("New Name"),
+                OwnerEmail.Create("New@email.com"));
+
+            //Assert
+            owner.DomainEvents.Should().HaveCount(2);
+            var domainEvent = owner.DomainEvents.Last();
+            domainEvent.EventType.Should().Be(expectedEventType);
+            domainEvent.EntityId.Should().Be(owner.Id);
+
+        }
+
+
     }
 }

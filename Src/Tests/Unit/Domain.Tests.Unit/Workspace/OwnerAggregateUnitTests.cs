@@ -176,5 +176,28 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
 
+        [Fact]
+        public void Project_Is_Created_Properly()
+        {
+
+            //Arrange
+            var owner = OwnerObjectMother.CreateNewOwner();
+            var expectedOrganization = Organization.CreateOrganization("Test Organization Name", "Test Organization Description");
+            var expectedProject = Project.Create("Test Project Name", "Test Project Description");
+
+
+            //Act
+            owner.CreateOrganization(expectedOrganization);
+            owner.CreateProject(expectedOrganization.Id, expectedProject);
+
+            //Assert
+            owner.Organizations.Should().HaveCount(1);
+            owner.Organizations.First().Projects.Should().HaveCount(1);
+            owner.Organizations.First().Projects.First().Name.Should().Be(expectedProject.Name);
+            owner.Organizations.First().Projects.First().Id.Should().Be(expectedProject.Id);
+        }
+
+
+
     }
 }

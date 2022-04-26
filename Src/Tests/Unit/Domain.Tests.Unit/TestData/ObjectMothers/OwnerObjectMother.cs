@@ -15,11 +15,11 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 
         public static Owner CreateNewOwner()
         {
-           return  OwnerBuilder.Init()
-                  .WithId(ObjectId.GenerateNewId().ToString())
-                  .WithEmail("Test@email.com")
-                  .WithDisplayName("Test Name")
-                  .Build();
+            return OwnerBuilder.Init()
+                   .WithId(ObjectId.GenerateNewId().ToString())
+                   .WithEmail("Test@email.com")
+                   .WithDisplayName("Test Name")
+                   .Build();
         }
 
 
@@ -54,5 +54,12 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
                    .Build();
         }
 
+        public static Owner CreateNewOwnerWithAnOrganization()
+        {
+            var owner = CreateNewOwner();
+            var organization = Organization.CreateOrganization("Test Organization Name", "Test Organization Description");
+            owner.CreateOrganization(organization);
+            return owner;
+        }
     }
 }

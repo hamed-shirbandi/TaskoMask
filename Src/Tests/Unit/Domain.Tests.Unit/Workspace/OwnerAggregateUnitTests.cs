@@ -7,6 +7,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
+using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners;
@@ -20,6 +21,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         {
 
         }
+
 
 
         [Fact]
@@ -50,15 +52,10 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         {
 
             //Arrange
-            var ownerBuilder = OwnerBuilder.Init()
-                  .WithId(ObjectId.GenerateNewId().ToString())
-                  .WithEmail("Test@email.com")
-                  .WithDisplayName("Test Name");
-
             var expectedEventType = nameof(OwnerCreatedEvent);
 
             //Act
-            var owner = ownerBuilder.Build();
+            var owner = OwnerObjectMother.CreateNewOwner();
 
             //Assert
             owner.DomainEvents.Should().HaveCount(1);
@@ -74,19 +71,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Constructed_When_Id_Is_Null()
         {
             //Arrange
-            var ownerBuilder = OwnerBuilder.Init()
-                  .WithId(null)
-                  .WithEmail("Test@email.com")
-                  .WithDisplayName("Test Name");
-
 
             //Act
-            Action act = () => ownerBuilder.Build();
-
+            Action act = () => OwnerObjectMother.CreateNewOwnerWithId(null);
 
             //Assert
             act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(string.Format(DomainMessages.Null_Reference_Error, nameof(ownerBuilder.Id))));
+                .Where(e => e.Message.Equals(string.Format(DomainMessages.Null_Reference_Error, nameof(Owner.Id))));
         }
 
 
@@ -95,15 +86,9 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Constructed_When_DisplayName_Is_Null()
         {
             //Arrange
-            var ownerBuilder = OwnerBuilder.Init()
-                  .WithId(ObjectId.GenerateNewId().ToString())
-                  .WithEmail("Test@email.com")
-                  .WithDisplayName(null);
-
 
             //Act
-            Action act = () => ownerBuilder.Build();
-
+            Action act = () => OwnerObjectMother.CreateNewOwnerWithDisplayName(null);
 
             //Assert
             act.Should().Throw<DomainException>()
@@ -118,20 +103,16 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Constructed_When_DisplayName_Lenght_Is_Less_Than_Min_Length(string displayName)
         {
             //Arrange
-            var ownerBuilder = OwnerBuilder.Init()
-                  .WithId(ObjectId.GenerateNewId().ToString())
-                  .WithEmail("Test@email.com")
-                  .WithDisplayName(displayName);
-
 
             //Act
-            Action act = () => ownerBuilder.Build();
+            Action act = () => OwnerObjectMother.CreateNewOwnerWithDisplayName(displayName);
 
 
             //Assert
             act.Should().Throw<DomainException>()
                 .Where(e => e.Message.Equals(string.Format(DomainMessages.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length)));
         }
+
 
 
         [InlineData("Hamed@taskomask")]
@@ -141,14 +122,9 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Constructed_When_Email_Is_Not_Valid(string email)
         {
             //Arrange
-            var ownerBuilder = OwnerBuilder.Init()
-                  .WithId(ObjectId.GenerateNewId().ToString())
-                  .WithEmail(email)
-                  .WithDisplayName("Test Name");
-
 
             //Act
-            Action act = () => ownerBuilder.Build();
+            Action act = () => OwnerObjectMother.CreateNewOwnerWithEmail(email);
 
 
             //Assert
@@ -157,31 +133,27 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+
         [Fact]
         public void Owner_Updated_Event_Is_Raised_When_Owner_Is_Updated()
         {
 
             //Arrange
-            var ownerBuilder = OwnerBuilder.Init()
-                  .WithId(ObjectId.GenerateNewId().ToString())
-                  .WithEmail("Test@email.com")
-                  .WithDisplayName("Test Name");
-
+            var owner = OwnerObjectMother.CreateNewOwner();
             var expectedEventType = nameof(OwnerUpdatedEvent);
 
             //Act
-            var owner = ownerBuilder.Build();
             owner.UpdateOwner(
                 OwnerDisplayName.Create("New Name"),
                 OwnerEmail.Create("New@email.com"));
 
             //Assert
             owner.DomainEvents.Should().HaveCount(2);
-            var domainEvent = owner.DomainEvents.Last();
-            domainEvent.EventType.Should().Be(expectedEventType);
-            domainEvent.EntityId.Should().Be(owner.Id);
+            owner.DomainEvents.Last().EventType.Should().Be(expectedEventType);
+            owner.DomainEvents.Last().EntityId.Should().Be(owner.Id);
 
         }
+
 
 
         [Fact]
@@ -189,23 +161,19 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         {
 
             //Arrange
-            var ownerBuilder = OwnerBuilder.Init()
-                  .WithId(ObjectId.GenerateNewId().ToString())
-                  .WithEmail("Test@email.com")
-                  .WithDisplayName("Test Name");
+            var owner = OwnerObjectMother.CreateNewOwner();
+            var expectedOrganization = Organization.CreateOrganization("Test Organization Name", "Test Organization Description");
 
 
             //Act
-            var owner = ownerBuilder.Build();
-            var expectedOrganization = Organization.CreateOrganization("Test Organization Name", "Test Organization Description");
             owner.CreateOrganization(expectedOrganization);
 
             //Assert
             owner.Organizations.Should().HaveCount(1);
-            var organization = owner.Organizations.First();
-            organization.Name.Should().Be(expectedOrganization.Name);
-            organization.Id.Should().Be(expectedOrganization.Id);
+            owner.Organizations.First().Name.Should().Be(expectedOrganization.Name);
+            owner.Organizations.First().Id.Should().Be(expectedOrganization.Id);
         }
+
 
 
     }

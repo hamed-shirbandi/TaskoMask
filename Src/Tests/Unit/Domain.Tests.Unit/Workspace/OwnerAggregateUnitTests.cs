@@ -4,10 +4,12 @@ using NSubstitute;
 using System;
 using System.Linq;
 using TaskoMask.Domain.Core.Exceptions;
+using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Tests.Unit.DataBuilders;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Workspace
@@ -44,7 +46,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Owner_Created_Event_Is_Raised_When_Owner_Is_Constructed_Properly()
+        public void Owner_Created_Event_Is_Raised_When_Owner_Is_Constructed()
         {
 
             //Arrange
@@ -84,8 +86,32 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
             //Assert
             act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(string.Format(DomainMessages.Null_Reference_Error, nameof(ownerBuilder.Id).ToLower())));
+                .Where(e => e.Message.Equals(string.Format(DomainMessages.Null_Reference_Error, nameof(ownerBuilder.Id))));
         }
+
+
+
+        [Fact]
+        public void Owner_Is_Not_Constructed_When_DisplayName_Is_Null()
+        {
+            //Arrange
+            var ownerBuilder = OwnerBuilder.Init()
+                  .WithId(ObjectId.GenerateNewId().ToString())
+                  .WithEmail("Test@email.com")
+                  .WithDisplayName(null);
+
+
+            //Act
+            Action act = () => ownerBuilder.Build();
+
+
+            //Assert
+            act.Should().Throw<DomainException>()
+                .Where(e => e.Message.Equals(string.Format(DomainMessages.Required, nameof(OwnerDisplayName))));
+        }
+
+
+
 
     }
 }

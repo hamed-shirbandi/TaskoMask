@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Tests.Integration
+namespace TaskoMask.Application.Tests.Integration.Workspace
 {
     public class BoardServiceIntegrationTests
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.Tests.Unit.DataBuilders
+namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
 {
     internal class OwnerBuilder
     {

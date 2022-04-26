@@ -7,7 +7,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.Tests.Unit.DataBuilders
+namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
 {
     internal class BoardBuilder
     {

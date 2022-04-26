@@ -23,4 +23,8 @@
     <Folder Include="Membership\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />
+  </ItemGroup>
+
 </Project>

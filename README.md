@@ -174,7 +174,7 @@ Find Hamed around the web and feel free to ask your question.
     - [x] Add Unit Tests for Domain Model and Application Services
     - [x] Add Integration Tests for Application Services
     - [x] Add Acceptance Tests
-    - [x] add E2E Tests
+    - [x] Add E2E Tests
 *	### Jan, 2022
     - [x] Full domain model refactoring by DDD concepts
     - [x] Separate Domain Model and Data Model

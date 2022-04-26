@@ -60,16 +60,17 @@ There is a list of our documentation:
       - ASP.NET MVC
       -	MongoDB
       -	Redis
+      - xUnit
+      -	FluenAssertion
+      - NSubstitute
+      - Gherkin
+      - SpecFlow
       -	MediatR
       -	AutoMapper
       -	FluentValidation
       -	Swagger
       -	Serilog
       -	Seq
-      -	xUnit
-      -	FluenAssertion
-      - NSubstitute
-      - SpecFlow
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/)
       -	[RedisCache.Core](https://www.nuget.org/packages/RedisCache.Core/)
   * ### Front-end:
@@ -87,9 +88,19 @@ There is a list of our documentation:
       -	Chart.js
   * ### Patterns, Methodologies، Approaches:
       -	[Onion Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
-      -	[Unit Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Unit)
-      -	[Integration Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Integration)
-      -	[Acceptance Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance)
+      - Testing
+         - [Unit Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Unit)
+         - [Integration Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Integration)
+         - [Acceptance Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance)
+         - E2E Testing
+         - Screenplay Pattern
+         - Test Data Builder Pattern
+         - Object Mother Pattern
+         - Test Hooks
+         - Test Doubles
+            - Dummy
+            - Stub
+            - Mock
       -	DDD
         - Rich Domain Model (for core domain)
         - Anemic Domain Model (for less important subdomains)
@@ -160,7 +171,10 @@ Find Hamed around the web and feel free to ask your question.
 
 # Change logs
 *	### Apr, 2022
-    - [x] Add Unit Tests for Domain
+    - [x] Add Unit Tests for Domain Model and Application Services
+    - [x] Add Integration Tests for Application Services
+    - [x] Add Acceptance Tests
+    - [x] add E2E Tests
 *	### Jan, 2022
     - [x] Full domain model refactoring by DDD concepts
     - [x] Separate Domain Model and Data Model

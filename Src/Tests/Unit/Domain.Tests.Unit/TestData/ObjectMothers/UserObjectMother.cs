@@ -27,5 +27,16 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
                 UserName = userName,
             };
         }
+
+
+
+        public static User CreateNewUser(string userName,bool isActive)
+        {
+            return new User
+            {
+                UserName = userName,
+                IsActive = isActive,
+            };
+        }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using FluentAssertions;
 using MongoDB.Bson;
 using System;
-using TaskoMask.Domain.Tests.Unit.DataBuilders;
+using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
+using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using Xunit;
 
@@ -23,11 +24,7 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
 
 
             //Act
-            var user = new User
-            {
-                UserName = userName,
-                IsActive = true,
-            };
+            var user = UserObjectMother.CreateNewUser(userName,isActive: true);
 
 
             //Assert
@@ -42,17 +39,10 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
         public void User_Is_Updated_Properly()
         {
             //Arrange
-            var userName = "TestUserName";
-
-
-            //Act
-            var user = new User
-            {
-                UserName = userName,
-            };
-
+            var user = UserObjectMother.CreateNewUser();
             var specifiedModifiedDateTime = user.CreationTime.ModifiedDateTime;
 
+            //Act
             user.SetAsUpdated();
 
             //Assert
@@ -66,15 +56,9 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
         public void User_Is_Deleted_Properly()
         {
             //Arrange
-            var userName = "TestUserName";
-
+            var user = UserObjectMother.CreateNewUser();
 
             //Act
-            var user = new User
-            {
-                UserName = userName,
-            };
-
             user.SetAsDeleted();
 
             //Assert
@@ -87,15 +71,9 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
         public void User_Is_Recycled_Properly()
         {
             //Arrange
-            var userName = "TestUserName";
-
+            var user = UserObjectMother.CreateNewUser();
 
             //Act
-            var user = new User
-            {
-                UserName = userName,
-            };
-
             user.SetAsDeleted();
             user.SetAsRecycled();
 

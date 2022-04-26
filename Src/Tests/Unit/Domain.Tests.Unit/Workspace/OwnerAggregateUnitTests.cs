@@ -184,5 +184,29 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+        [Fact]
+        public void Organization_Is_Created_Properly()
+        {
+
+            //Arrange
+            var ownerBuilder = OwnerBuilder.Init()
+                  .WithId(ObjectId.GenerateNewId().ToString())
+                  .WithEmail("Test@email.com")
+                  .WithDisplayName("Test Name");
+
+
+            //Act
+            var owner = ownerBuilder.Build();
+            var expectedOrganization = Organization.CreateOrganization("Test Organization Name", "Test Organization Description");
+            owner.CreateOrganization(expectedOrganization);
+
+            //Assert
+            owner.Organizations.Should().HaveCount(1);
+            var organization = owner.Organizations.First();
+            organization.Name.Should().Be(expectedOrganization.Name);
+            organization.Id.Should().Be(expectedOrganization.Id);
+        }
+
+
     }
 }

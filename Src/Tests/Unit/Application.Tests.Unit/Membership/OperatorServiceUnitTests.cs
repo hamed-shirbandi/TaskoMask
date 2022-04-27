@@ -45,6 +45,23 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
 
 
+        [Fact]
+        public async void Operator_Is_Created_Properly()
+        {
+            //Arrange
+            var operatorDto = OperatorObjectMother.CreateNewOperatorUpsertDto();
+
+            //Act
+            var result = await _operatorService.CreateAsync(operatorDto);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(true);
+            var createdUser = _operators.FirstOrDefault(u => u.Id == result.Value.EntityId);
+            createdUser.Email.Should().Be(operatorDto.Email);
+        }
+
+
+
 
 
         #region Private Methods

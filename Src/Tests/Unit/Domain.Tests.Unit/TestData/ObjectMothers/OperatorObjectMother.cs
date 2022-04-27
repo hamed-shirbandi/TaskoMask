@@ -34,5 +34,15 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
         }
 
 
+        public static Operator CreateNewOperatorWithId(string id)
+        {
+            return new Operator(id)
+            {
+                DisplayName = "TestOperatorName",
+                Email = "Test@mail.com",
+            };
+        }
+
+
     }
 }

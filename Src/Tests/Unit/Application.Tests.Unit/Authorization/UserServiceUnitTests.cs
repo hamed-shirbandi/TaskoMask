@@ -107,14 +107,8 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
             _userRepositoryStub.GetByUserNameAsync(Arg.Is<string>(x => _Users.Select(u => u.UserName).Contains(x))).Returns(args => _Users.First(u => u.UserName == (string)args[0]));
             _userRepositoryStub.ExistByUserNameAsync(Arg.Is<string>(x => _Users.Select(u => u.UserName).Contains(x))).Returns(args => _Users.Any(u => u.UserName == (string)args[0]));
             _userRepositoryStub.GetByIdAsync(Arg.Is<string>(x => _Users.Any(u => u.Id == x))).Returns(args => _Users.First(u => u.Id == (string)args[0]));
-
-
             _userRepositoryStub.CreateAsync(Arg.Any<User>()).Returns(args => AddNewUser((User)args[0]));
-
-
-
             _userRepositoryStub.UpdateAsync(Arg.Is<User>(x => _Users.Any(u => u.Id == x.Id))).Returns(args => UpdateUser((User)args[0]));
-
             _userService = new UserService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _userRepositoryStub, _dummyEncryptionService);
         }
 

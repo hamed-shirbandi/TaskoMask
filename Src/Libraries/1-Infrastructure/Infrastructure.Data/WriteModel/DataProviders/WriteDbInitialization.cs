@@ -132,5 +132,21 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
 
         }
 
+
+
+        /// <summary>
+        /// Drop database
+        /// </summary>
+        public static void DropDatabase(IServiceProvider serviceProvider)
+        {
+            using (var serviceScope = serviceProvider.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
+
+                dbContext.DropDatabase();
+            }
+        }
+
+
     }
 }

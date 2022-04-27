@@ -139,5 +139,21 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
             #endregion
         }
 
+
+
+        /// <summary>
+        /// Drop database
+        /// </summary>
+        public static void DropDatabase(IServiceProvider serviceProvider)
+        {
+            using (var serviceScope = serviceProvider.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<IReadDbContext>();
+
+                dbContext.DropDatabase();
+            }
+        }
+
+
     }
 }

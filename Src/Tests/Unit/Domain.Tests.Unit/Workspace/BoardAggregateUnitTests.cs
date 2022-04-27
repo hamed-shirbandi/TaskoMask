@@ -82,13 +82,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Board_Is_Not_Constructed_When_ProjectId_Is_Null()
         {
             //Arrange
+            var expectedMessage = string.Format(DomainMessages.Required, nameof(BoardProjectId));
 
             //Act
             Action act = () => BoardObjectMother.CreateNewBoardWithProjectId(null,_boardValidatorService);
 
             //Assert
-            act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(string.Format(DomainMessages.Required, nameof(BoardProjectId))));
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
@@ -99,13 +99,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Board_Is_Not_Constructed_When_Name_Lenght_Is_Less_Than_Min_Length(string name)
         {
             //Arrange
+            var expectedMessage = string.Format(DomainMessages.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length);
 
             //Act
             Action act = () => BoardObjectMother.CreateNewBoardWithName(name, _boardValidatorService);
 
             //Assert
-            act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(string.Format(DomainMessages.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length)));
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
@@ -116,13 +116,14 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Board_Is_Not_Constructed_When_Name_And_Description_Are_The_Same(string name, string description)
         {
             //Arrange
+            var expectedMessage = DomainMessages.Equal_Name_And_Description_Error;
 
             //Act
             Action act = () => BoardObjectMother.CreateNewBoard(name, description, _boardValidatorService);
 
             //Assert
-            act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(DomainMessages.Equal_Name_And_Description_Error));
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+
         }
 
 

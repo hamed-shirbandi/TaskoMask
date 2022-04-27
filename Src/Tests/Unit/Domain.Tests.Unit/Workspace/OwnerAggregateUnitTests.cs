@@ -71,13 +71,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Constructed_When_Id_Is_Null()
         {
             //Arrange
+            var expectedMessage = string.Format(DomainMessages.Null_Reference_Error, nameof(Owner.Id));
 
             //Act
             Action act = () => OwnerObjectMother.CreateNewOwnerWithId(null);
 
             //Assert
-            act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(string.Format(DomainMessages.Null_Reference_Error, nameof(Owner.Id))));
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
@@ -86,13 +86,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Constructed_When_DisplayName_Is_Null()
         {
             //Arrange
+            var expectedMessage = string.Format(DomainMessages.Required, nameof(OwnerDisplayName));
 
             //Act
             Action act = () => OwnerObjectMother.CreateNewOwnerWithDisplayName(null);
 
             //Assert
-            act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(string.Format(DomainMessages.Required, nameof(OwnerDisplayName))));
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
@@ -103,14 +103,14 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Constructed_When_DisplayName_Lenght_Is_Less_Than_Min_Length(string displayName)
         {
             //Arrange
+            var expectedMessage = string.Format(DomainMessages.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
 
             //Act
             Action act = () => OwnerObjectMother.CreateNewOwnerWithDisplayName(displayName);
 
 
             //Assert
-            act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(string.Format(DomainMessages.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length)));
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage ));
         }
 
 
@@ -122,14 +122,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Constructed_When_Email_Is_Not_Valid(string email)
         {
             //Arrange
+            var expectedMessage = DomainMessages.Invalid_Email_Address;
 
             //Act
             Action act = () => OwnerObjectMother.CreateNewOwnerWithEmail(email);
 
-
             //Assert
-            act.Should().Throw<DomainException>()
-                .Where(e => e.Message.Equals(DomainMessages.Invalid_Email_Address));
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 

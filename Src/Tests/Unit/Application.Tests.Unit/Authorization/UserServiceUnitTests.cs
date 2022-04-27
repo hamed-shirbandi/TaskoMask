@@ -75,6 +75,21 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
 
+        [Fact]
+        public async void User_Is_Not_Created_When_UserName_Is_Already_Exist()
+        {
+            //Arrange
+            var existUserName = _Users.First().UserName;
+
+            //Act
+            var result = await _userService.CreateAsync(existUserName, "TestPassword");
+
+            //Asserrt
+            result.IsSuccess.Should().Be(false);
+            result.Message.Should().Be(ApplicationMessages.User_Email_Already_Exist);
+        }
+
+
 
 
         #region Private Methods

@@ -1,34 +1,24 @@
-﻿using AutoMapper;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MongoDB.Bson;
 using NSubstitute;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Membership.Operators.Services;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Tests.Unit.Membership.TestData;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.WriteModel.Authorization.Data;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Application.Tests.Unit.TestData;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Unit.Membership
 {
-    public class OperatorServiceUnitTests
+    public class OperatorServiceUnitTests: TestsBase
     {
         #region Fields
 
-        private IInMemoryBus _dummyInMemoryBus;
-        private IMapper _dummyIMapper;
-        private IDomainNotificationHandler _dummyDomainNotificationHandler;
         private IOperatorRepository _operatorRepositoryStub;
         private IRoleRepository _roleRepositoryStub;
         private IUserService _userServiceStub;
@@ -85,9 +75,7 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
         private void ImplicitFixtureSetup()
         {
-            _dummyInMemoryBus = Substitute.For<IInMemoryBus>();
-            _dummyIMapper = Substitute.For<IMapper>();
-            _dummyDomainNotificationHandler = Substitute.For<IDomainNotificationHandler>();
+
             _roleRepositoryStub = Substitute.For<IRoleRepository>();
 
             _userServiceStub = Substitute.For<IUserService>();

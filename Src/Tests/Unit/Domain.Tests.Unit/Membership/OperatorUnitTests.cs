@@ -17,10 +17,8 @@ namespace TaskoMask.Domain.Tests.Unit.Membership
             //Arrange
             var expectedEmail = "New@TaskoMask.ir";
 
-
             //Act
             var @operator = OperatorObjectMother.CreateNewOperatorWithEmail(expectedEmail);
-
 
             //Assert
             @operator.Id.Should().NotBeNullOrEmpty();

@@ -62,6 +62,23 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
 
 
+        [Fact]
+        public async void Operator_Is_Updated_Properly( )
+        {
+            //Arrange
+            var expectedEmail = "Test_2@TaskoMask.ir";
+            var operatorToUpdate = _operators.First();
+            var operatorDto = OperatorObjectMother.CreateNewOperatorUpsertDtoFromOperator(operatorToUpdate);
+
+            //Act
+            operatorDto.Email = expectedEmail;
+            var result = await _operatorService.UpdateAsync(operatorDto);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(true);
+            operatorToUpdate.Email.Should().Be(expectedEmail);
+        }
+
 
 
         #region Private Methods
@@ -72,11 +89,11 @@ namespace TaskoMask.Application.Tests.Unit.Membership
             _dummyIMapper = Substitute.For<IMapper>();
             _dummyDomainNotificationHandler = Substitute.For<IDomainNotificationHandler>();
             _roleRepositoryStub = Substitute.For<IRoleRepository>();
-            
+
             _userServiceStub = Substitute.For<IUserService>();
             _userServiceStub.CreateAsync(Arg.Any<string>(), Arg.Any<string>()).Returns(Result.Success(new CommandResult(entityId: ObjectId.GenerateNewId().ToString())));
-            _userServiceStub.UpdateUserNameAsync(Arg.Is<string>(arg => _operators.Select(o=>o.Id).Any(id => id == arg)), Arg.Any<string>()).Returns(args=> Result.Success(new CommandResult(entityId:(string)args[0])));
-          
+            _userServiceStub.UpdateUserNameAsync(Arg.Is<string>(arg => _operators.Select(o => o.Id).Any(id => id == arg)), Arg.Any<string>()).Returns(args => Result.Success(new CommandResult(entityId: (string)args[0])));
+
             _operators = GetOperatorsList();
             _operatorRepositoryStub = Substitute.For<IOperatorRepository>();
             _operatorRepositoryStub.CreateAsync(Arg.Any<Operator>()).Returns(args => AddNewOperator((Operator)args[0]));

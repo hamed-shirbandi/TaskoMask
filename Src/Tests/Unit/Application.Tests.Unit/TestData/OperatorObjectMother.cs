@@ -25,14 +25,13 @@ namespace TaskoMask.Application.Tests.Unit.Membership.TestData
 
 
 
-        public static OperatorUpsertDto CreateNewOperatorUpsertDtoWithEmail(string email)
+        public static OperatorUpsertDto CreateNewOperatorUpsertDtoFromOperator(Operator @operator)
         {
             return new OperatorUpsertDto
             {
-                DisplayName = _displayName,
-                Email = email,
-                UserName = _userName,
-                Password = _password
+                Id= @operator.Id,
+                DisplayName = @operator.DisplayName,
+                Email = @operator.Email,
             };
         }
     }

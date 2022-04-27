@@ -93,5 +93,21 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
 
+        [InlineData("B")]
+        [InlineData("ab")]
+        [Theory]
+        public void Board_Is_Not_Constructed_When_Name_Lenght_Is_Less_Than_Min_Length(string name)
+        {
+            //Arrange
+
+            //Act
+            Action act = () => BoardObjectMother.CreateNewBoardWithName(name, _boardValidatorService);
+
+            //Assert
+            act.Should().Throw<DomainException>()
+                .Where(e => e.Message.Equals(string.Format(DomainMessages.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length)));
+        }
+
+
     }
 }

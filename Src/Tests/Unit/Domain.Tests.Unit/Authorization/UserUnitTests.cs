@@ -6,11 +6,6 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
 {
     public class UserUnitTests
     {
-        public UserUnitTests()
-        {
-
-        }
-
 
         [Fact]
         public void User_Is_Constructed_Properly()

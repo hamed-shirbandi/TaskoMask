@@ -14,6 +14,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
     {
         private readonly IUserService _userService;
         
+        //Run before each test method
         public UserServiceIntegrationTests()
         {
             _userService = ServiceProvider.GetRequiredService<IUserService>();
@@ -23,12 +24,11 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
         [Fact]
         public async Task User_Is_Created_Properly()
         {
-    
             var result = await _userService.CreateAsync("TestUserName", "TestPass");
             result.IsSuccess.Should().BeTrue();
             result.Value.EntityId.Should().NotBeNull();
         }
 
-    
+
     }
 }

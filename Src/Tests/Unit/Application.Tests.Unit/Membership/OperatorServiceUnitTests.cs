@@ -28,9 +28,11 @@ namespace TaskoMask.Application.Tests.Unit.Membership
         #endregion
 
 
+
+        //Run before each test method
         public OperatorServiceUnitTests()
         {
-            ImplicitFixtureSetup();
+            FixtureSetup();
         }
 
 
@@ -73,7 +75,7 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
         #region Private Methods
 
-        private void ImplicitFixtureSetup()
+        private void FixtureSetup()
         {
 
             _roleRepositoryStub = Substitute.For<IRoleRepository>();

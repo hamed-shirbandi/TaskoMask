@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using MongoDB.Bson;
-using NSubstitute;
 using System;
 using System.Linq;
 using TaskoMask.Domain.Core.Exceptions;
@@ -17,12 +16,6 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 {
     public class OwnerAggregateUnitTests
     {
-        public OwnerAggregateUnitTests()
-        {
-
-        }
-
-
 
         [Fact]
         public void Owner_Is_Constructed_Properly()

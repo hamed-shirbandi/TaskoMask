@@ -1,11 +1,6 @@
-﻿using Infrastructure.CrossCutting.IoC;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
@@ -45,6 +40,11 @@ namespace TaskoMask.Application.Tests.Integration.TestData
             return serviceProvider;
         }
 
+
+
+        /// <summary>
+        /// Run after each test method
+        /// </summary>
         public void Dispose()
         {
             WriteDbInitialization.DropDatabase(ServiceProvider);

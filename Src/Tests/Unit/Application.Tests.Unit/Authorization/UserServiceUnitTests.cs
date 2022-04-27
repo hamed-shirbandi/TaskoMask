@@ -25,9 +25,10 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
         #endregion
 
+        //Run before each test method
         public UserServiceUnitTests()
         {
-            ImplicitFixtureSetup();
+            FixtureSetup();
         }
 
 
@@ -89,7 +90,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
         #region Private Methods
 
-        private void ImplicitFixtureSetup()
+        private void FixtureSetup()
         {
             _dummyEncryptionService = Substitute.For<IEncryptionService>();
 

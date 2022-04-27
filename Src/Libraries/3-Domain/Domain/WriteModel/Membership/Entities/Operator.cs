@@ -18,7 +18,7 @@ namespace TaskoMask.Domain.WriteModel.Membership.Entities
         public Operator(string id)
         {
             if (string.IsNullOrEmpty(id))
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(id)));
+                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Id)));
 
             base.SetId(id);
 

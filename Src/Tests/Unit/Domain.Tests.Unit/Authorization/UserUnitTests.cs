@@ -1,9 +1,5 @@
 ﻿using FluentAssertions;
-using MongoDB.Bson;
-using System;
-using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Authorization
@@ -20,16 +16,16 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
         public void User_Is_Constructed_Properly()
         {
             //Arrange
-            var userName = "TestUserName";
+            var expectedUserName = "TestUserName";
 
 
             //Act
-            var user = UserObjectMother.CreateNewUser(userName,isActive: true);
+            var user = UserObjectMother.CreateNewUser(expectedUserName,isActive: true);
 
 
             //Assert
             user.Id.Should().NotBeNullOrEmpty();
-            user.UserName.Should().Be(userName);
+            user.UserName.Should().Be(expectedUserName);
             user.IsActive.Should().Be(true);
 
         }

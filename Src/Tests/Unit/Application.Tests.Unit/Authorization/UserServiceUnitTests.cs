@@ -4,7 +4,6 @@ using NSubstitute;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Application.Core.Bus;
@@ -27,7 +26,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
         private IEncryptionService _dummyEncryptionService;
         private IUserRepository _userRepositoryStub;
         private IUserService _userService;
-        private List<User> _Users;
+        private List<User> _users;
 
         #endregion
 
@@ -43,12 +42,13 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
         {
             //Arrange
             var expectedUserName = "TestUserName";
+
             //Act
             var result = await _userService.CreateAsync(expectedUserName, "TestPassword");
 
             //Asserrt
             result.IsSuccess.Should().Be(true);
-            var createdUser = _Users.FirstOrDefault(u => u.Id == result.Value.EntityId);
+            var createdUser = _users.FirstOrDefault(u => u.Id == result.Value.EntityId);
             createdUser.UserName.Should().Be(expectedUserName);
         }
 
@@ -62,7 +62,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
         public async void UserName_Is_Updated_Properly(string expectedUserName)
         {
             //Arrange
-            var user = _Users.First();
+            var user = _users.First();
 
             //Act
             var result = await _userService.UpdateUserNameAsync(user.Id, expectedUserName);
@@ -79,7 +79,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
         public async void User_Is_Not_Created_When_UserName_Is_Already_Exist()
         {
             //Arrange
-            var existUserName = _Users.First().UserName;
+            var existUserName = _users.First().UserName;
 
             //Act
             var result = await _userService.CreateAsync(existUserName, "TestPassword");
@@ -102,13 +102,13 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
             _dummyEncryptionService = Substitute.For<IEncryptionService>();
             _userRepositoryStub = Substitute.For<IUserRepository>();
 
-            _Users = GetUsersList();
+            _users = GetUsersList();
 
-            _userRepositoryStub.GetByUserNameAsync(Arg.Is<string>(x => _Users.Select(u => u.UserName).Contains(x))).Returns(args => _Users.First(u => u.UserName == (string)args[0]));
-            _userRepositoryStub.ExistByUserNameAsync(Arg.Is<string>(x => _Users.Select(u => u.UserName).Contains(x))).Returns(args => _Users.Any(u => u.UserName == (string)args[0]));
-            _userRepositoryStub.GetByIdAsync(Arg.Is<string>(x => _Users.Any(u => u.Id == x))).Returns(args => _Users.First(u => u.Id == (string)args[0]));
+            _userRepositoryStub.GetByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.First(u => u.UserName == (string)args[0]));
+            _userRepositoryStub.ExistByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.Any(u => u.UserName == (string)args[0]));
+            _userRepositoryStub.GetByIdAsync(Arg.Is<string>(x => _users.Any(u => u.Id == x))).Returns(args => _users.First(u => u.Id == (string)args[0]));
             _userRepositoryStub.CreateAsync(Arg.Any<User>()).Returns(args => AddNewUser((User)args[0]));
-            _userRepositoryStub.UpdateAsync(Arg.Is<User>(x => _Users.Any(u => u.Id == x.Id))).Returns(args => UpdateUser((User)args[0]));
+            _userRepositoryStub.UpdateAsync(Arg.Is<User>(x => _users.Any(u => u.Id == x.Id))).Returns(args => UpdateUser((User)args[0]));
             _userService = new UserService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _userRepositoryStub, _dummyEncryptionService);
         }
 
@@ -116,18 +116,18 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
         private async Task AddNewUser(User user)
         {
-            _Users.Add(user);
+            _users.Add(user);
         }
 
 
 
         private async Task UpdateUser(User user)
         {
-            var existUser = _Users.FirstOrDefault(u => u.Id == user.Id);
+            var existUser = _users.FirstOrDefault(u => u.Id == user.Id);
             if (existUser != null)
             {
-                _Users.Remove(existUser);
-                _Users.Add(user);
+                _users.Remove(existUser);
+                _users.Add(user);
             }
         }
 

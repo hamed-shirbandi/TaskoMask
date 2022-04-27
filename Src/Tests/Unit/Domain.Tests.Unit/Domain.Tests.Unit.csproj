@@ -25,8 +25,4 @@
     <ProjectReference Include="..\..\..\Libraries\3-Domain\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Membership\" />
-  </ItemGroup>
-
 </Project>

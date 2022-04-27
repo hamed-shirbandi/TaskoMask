@@ -146,6 +146,27 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+        [Fact]
+        public void Card_Created_Event_Is_Raised_When_Card_Is_Created()
+        {
+
+            //Arrange
+            var board = BoardObjectMother.CreateNewBoard(_boardValidatorService);
+            var expectedCard = Card.Create("Test Card Name", BoardCardType.ToDo);
+            var expectedEventType = nameof(CardCreatedEvent);
+
+            //Act
+            board.CreateCard(expectedCard);
+
+            //Assert
+            board.DomainEvents.Should().HaveCount(2);
+            var domainEvent = board.DomainEvents.Last();
+            domainEvent.EventType.Should().Be(expectedEventType);
+            domainEvent.EntityId.Should().Be(expectedCard.Id);
+
+        }
+
+
 
     }
 }

@@ -1,24 +1,20 @@
 ﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
 
 namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 {
     internal static class OperatorObjectMother
     {
-
+        private const string _email = "Test@TaskoMask.ir";
+        private const string _displayName = "Test DisplayName";
+        private static string _id = ObjectId.GenerateNewId().ToString();
 
         public static Operator CreateNewOperator()
         {
-           return new Operator(ObjectId.GenerateNewId().ToString())
+            return new Operator(_id)
             {
-                DisplayName = "TestOperatorName",
-               Email = "Test@mail.com",
-                
+                DisplayName = _displayName,
+                Email = _email,
             };
         }
 
@@ -26,9 +22,9 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 
         public static Operator CreateNewOperatorWithEmail(string email)
         {
-            return new Operator(ObjectId.GenerateNewId().ToString())
+            return new Operator(_id)
             {
-                DisplayName = "TestOperatorName",
+                DisplayName = _displayName,
                 Email = email,
             };
         }
@@ -38,8 +34,8 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
         {
             return new Operator(id)
             {
-                DisplayName = "TestOperatorName",
-                Email = "Test@mail.com",
+                DisplayName = _displayName,
+                Email = _email,
             };
         }
 

@@ -1,9 +1,4 @@
 ﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
@@ -16,6 +11,7 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
         private const string _displayName= "Test DisplayName";
         private static string _id = ObjectId.GenerateNewId().ToString();
 
+        
         public static Owner CreateNewOwner()
         {
             return OwnerBuilder.Init()

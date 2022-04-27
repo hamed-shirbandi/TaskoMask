@@ -16,10 +16,18 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 {
     public class BoardAggregateUnitTests
     {
+        private readonly IBoardValidatorService _boardValidatorService;
+       
+
+        /// <summary>
+        /// Run before each test method
+        /// </summary>
         public BoardAggregateUnitTests()
         {
-
+            _boardValidatorService = Substitute.For<IBoardValidatorService>();
+            _boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(true);
         }
+
 
 
         [Fact]
@@ -27,10 +35,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         {
 
             //Arrange
-            var boardValidatorService = Substitute.For<IBoardValidatorService>();
-            boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(true);
-
-            var boardBuilder = BoardBuilder.Init(boardValidatorService)
+            var boardBuilder = BoardBuilder.Init(_boardValidatorService)
                   .WithProjectId(ObjectId.GenerateNewId().ToString())
                   .WithName("Test Name")
                   .WithDescription("Test Description");
@@ -46,15 +51,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+
         [Fact]
         public void Board_Created_Event_Is_Raised_When_Board_Is_Constructed_Properly()
         {
 
             //Arrange
-            var boardValidatorService = Substitute.For<IBoardValidatorService>();
-            boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(true);
-
-            var boardBuilder = BoardBuilder.Init(boardValidatorService)
+            var boardBuilder = BoardBuilder.Init(_boardValidatorService)
                   .WithProjectId(ObjectId.GenerateNewId().ToString())
                   .WithName("Test Name")
                   .WithDescription("Test Description");
@@ -72,6 +75,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
             domainEvent.EventType.Should().Be(expectedEventType);
             domainEvent.EntityId.Should().Be(board.Id);
         }
+
 
 
     }

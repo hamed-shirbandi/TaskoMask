@@ -109,5 +109,23 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+        [InlineData("TestName", "TestName")]
+        [InlineData("SameName", "SameName")]
+        [InlineData("نام تست", "نام تست")]
+        [Theory]
+        public void Board_Is_Not_Constructed_When_Name_And_Description_Are_The_Same(string name, string description)
+        {
+            //Arrange
+
+            //Act
+            Action act = () => BoardObjectMother.CreateNewBoard(name, description, _boardValidatorService);
+
+            //Assert
+            act.Should().Throw<DomainException>()
+                .Where(e => e.Message.Equals(DomainMessages.Equal_Name_And_Description_Error));
+        }
+
+
+
     }
 }

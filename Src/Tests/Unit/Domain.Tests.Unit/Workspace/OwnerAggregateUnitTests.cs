@@ -149,8 +149,9 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
             //Assert
             owner.DomainEvents.Should().HaveCount(2);
-            owner.DomainEvents.Last().EventType.Should().Be(expectedEventType);
-            owner.DomainEvents.Last().EntityId.Should().Be(owner.Id);
+            var domainEvent = owner.DomainEvents.Last();
+            domainEvent.EventType.Should().Be(expectedEventType);
+            domainEvent.EntityId.Should().Be(owner.Id);
 
         }
 
@@ -170,8 +171,9 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
             //Assert
             owner.Organizations.Should().HaveCount(1);
-            owner.Organizations.First().Name.Should().Be(expectedOrganization.Name);
-            owner.Organizations.First().Id.Should().Be(expectedOrganization.Id);
+            var organization = owner.Organizations.First();
+            organization.Name.Should().Be(expectedOrganization.Name);
+            organization.Id.Should().Be(expectedOrganization.Id);
         }
 
 
@@ -190,8 +192,9 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
             //Assert
             owner.Organizations.First().Projects.Should().HaveCount(1);
-            owner.Organizations.First().Projects.First().Name.Should().Be(expectedProject.Name);
-            owner.Organizations.First().Projects.First().Id.Should().Be(expectedProject.Id);
+            var project = owner.Organizations.First().Projects.First();
+            project.Name.Should().Be(expectedProject.Name);
+            project.Id.Should().Be(expectedProject.Id);
         }
 
 

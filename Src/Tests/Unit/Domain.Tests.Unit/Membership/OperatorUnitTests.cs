@@ -27,5 +27,19 @@ namespace TaskoMask.Domain.Tests.Unit.Membership
             @operator.Email.Should().Be(expectedEmail);
         }
 
+
+        [Fact]
+        public void Operator_Is_Not_Constructed_When_Id_Is_Null()
+        {
+            //Arrange
+            var expectedMessage = string.Format(DomainMessages.Null_Reference_Error, nameof(Operator.Id));
+
+            //Act
+            Action act = () => OperatorObjectMother.CreateNewOperatorWithId(null);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
     }
 }

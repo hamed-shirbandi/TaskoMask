@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
+using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
@@ -57,17 +58,10 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         {
 
             //Arrange
-            var boardBuilder = BoardBuilder.Init(_boardValidatorService)
-                  .WithProjectId(ObjectId.GenerateNewId().ToString())
-                  .WithName("Test Name")
-                  .WithDescription("Test Description");
-
             var expectedEventType = nameof(BoardCreatedEvent);
 
-
             //Act
-            var board = boardBuilder.Build();
-
+            var board = BoardObjectMother.CreateNewBoard(_boardValidatorService);
 
             //Assert
             board.DomainEvents.Should().HaveCount(1);

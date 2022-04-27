@@ -12,13 +12,16 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
     internal static class OwnerObjectMother
     {
 
+        private const string _email = "Test@TaskoMask.ir";
+        private const string _displayName= "Test DisplayName";
+        private static string _id = ObjectId.GenerateNewId().ToString();
 
         public static Owner CreateNewOwner()
         {
             return OwnerBuilder.Init()
-                   .WithId(ObjectId.GenerateNewId().ToString())
-                   .WithEmail("Test@email.com")
-                   .WithDisplayName("Test Name")
+                   .WithId(_id)
+                   .WithEmail(_email)
+                   .WithDisplayName(_displayName)
                    .Build();
         }
 
@@ -28,8 +31,8 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
         {
             return OwnerBuilder.Init()
                    .WithId(id)
-                   .WithEmail("Test@email.com")
-                   .WithDisplayName("Test Name")
+                   .WithEmail(_email)
+                   .WithDisplayName(_displayName)
                    .Build();
         }
 
@@ -38,8 +41,8 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
         public static Owner CreateNewOwnerWithDisplayName(string displayName)
         {
             return OwnerBuilder.Init()
-                   .WithId(ObjectId.GenerateNewId().ToString())
-                   .WithEmail("Test@email.com")
+                   .WithId(_id)
+                   .WithEmail(_email)
                    .WithDisplayName(displayName)
                    .Build();
         }
@@ -48,9 +51,9 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
         public static Owner CreateNewOwnerWithEmail(string email)
         {
             return OwnerBuilder.Init()
-                   .WithId(ObjectId.GenerateNewId().ToString())
+                   .WithId(_id)
                    .WithEmail(email)
-                   .WithDisplayName("Test Name")
+                   .WithDisplayName(_displayName)
                    .Build();
         }
 

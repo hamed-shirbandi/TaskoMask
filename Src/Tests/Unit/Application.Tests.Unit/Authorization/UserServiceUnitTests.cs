@@ -55,6 +55,28 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
 
+
+        [InlineData("NewUserName")]
+        [InlineData("TestUserName")]
+        [Theory]
+        public async void UserName_Is_Updated_Properly(string expectedUserName)
+        {
+            //Arrange
+            var user = _Users.First();
+
+            //Act
+            var result = await _userService.UpdateUserNameAsync(user.Id, expectedUserName);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(true);
+            result.Value.EntityId.Should().Be(user.Id);
+            user.UserName.Should().Be(expectedUserName);
+        }
+
+
+
+
+
         #region Private Methods
 
         private void ImplicitFixtureSetup()

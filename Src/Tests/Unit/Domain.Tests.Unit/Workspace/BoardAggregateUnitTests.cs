@@ -126,6 +126,26 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+        [Fact]
+        public void Card_Is_Created_Properly()
+        {
+
+            //Arrange
+            var board = BoardObjectMother.CreateNewBoard(_boardValidatorService);
+            var expectedCard = Card.Create("Test Card Name", BoardCardType.ToDo);
+
+
+            //Act
+            board.CreateCard(expectedCard);
+
+            //Assert
+            board.Cards.Should().HaveCount(1);
+            var card = board.Cards.First();
+            card.Name.Should().Be(expectedCard.Name);
+            card.Id.Should().Be(expectedCard.Id);
+        }
+
+
 
     }
 }

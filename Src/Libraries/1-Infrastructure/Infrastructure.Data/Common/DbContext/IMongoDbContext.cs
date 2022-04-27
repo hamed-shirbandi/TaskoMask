@@ -23,5 +23,19 @@ namespace TaskoMask.Infrastructure.Data.Common.DbContext
         /// get list of all collections
         /// </summary>
         IList<string> Collections();
+
+
+
+        /// <summary>
+        /// remove the database
+        /// </summary>
+        void DropDatabase();
+
+
+
+        /// <summary>
+        /// remove a collection
+        /// </summary>
+        void DropCollection<TEntity>(string name = "");
     }
 }

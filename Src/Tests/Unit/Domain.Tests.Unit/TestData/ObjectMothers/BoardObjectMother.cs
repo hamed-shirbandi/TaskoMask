@@ -26,10 +26,21 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 
 
 
-        public static Board CreateNewBoardWithId(string id, IBoardValidatorService boardValidatorService)
+        public static Board CreateNewBoard(string name, string description, IBoardValidatorService boardValidatorService)
         {
             return BoardBuilder.Init(boardValidatorService)
-                  .WithProjectId(id)
+                  .WithProjectId(ObjectId.GenerateNewId().ToString())
+                  .WithName(name)
+                  .WithDescription(description)
+                  .Build();
+        }
+
+
+
+        public static Board CreateNewBoardWithProjectId(string projectId, IBoardValidatorService boardValidatorService)
+        {
+            return BoardBuilder.Init(boardValidatorService)
+                  .WithProjectId(projectId)
                   .WithName("Test Name")
                   .WithDescription("Test Description")
                   .Build();
@@ -46,14 +57,5 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
                   .Build();
         }
 
-
-   
-        public static Board CreateNewBoardWithACard(IBoardValidatorService boardValidatorService)
-        {
-            var board = CreateNewBoard(boardValidatorService);
-            var card = Card.Create("Test Card Name",BoardCardType.ToDo);
-            board.CreateCard(card);
-            return board;
-        }
     }
 }

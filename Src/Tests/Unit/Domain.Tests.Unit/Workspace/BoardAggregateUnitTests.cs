@@ -6,11 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskoMask.Domain.Core.Exceptions;
+using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Domain.Share.Helpers;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Boards;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Workspace
@@ -68,6 +74,21 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
             var domainEvent = board.DomainEvents.First();
             domainEvent.EventType.Should().Be(expectedEventType);
             domainEvent.EntityId.Should().Be(board.Id);
+        }
+
+
+
+        [Fact]
+        public void Board_Is_Not_Constructed_When_ProjectId_Is_Null()
+        {
+            //Arrange
+
+            //Act
+            Action act = () => BoardObjectMother.CreateNewBoardWithProjectId(null,_boardValidatorService);
+
+            //Assert
+            act.Should().Throw<DomainException>()
+                .Where(e => e.Message.Equals(string.Format(DomainMessages.Required, nameof(BoardProjectId))));
         }
 
 

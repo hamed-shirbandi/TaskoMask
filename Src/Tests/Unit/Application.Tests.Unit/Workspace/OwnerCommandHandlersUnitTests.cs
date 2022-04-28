@@ -74,33 +74,23 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
         private void FixtureSetup()
         {
-            _owners = GetOwnersList();
+            _owners = DataGenerator.GenerateOwnerList();
 
             _ownerAggregateRepository = Substitute.For<IOwnerAggregateRepository>();
-            _ownerAggregateRepository.CreateAsync(Arg.Any<Owner>()).Returns(async args => await AddNewOwner((Owner)args[0]));
-
+            _ownerAggregateRepository.GetByIdAsync(Arg.Is<string>(x => _owners.Any(u => u.Id == x))).Returns(args => _owners.First(u => u.Id == (string)args[0]));
+            _ownerAggregateRepository.CreateAsync(Arg.Any<Owner>()).Returns(async args => _owners.Add((Owner)args[0]));
+            _ownerAggregateRepository.UpdateAsync(Arg.Is<Owner>(x => _owners.Any(u => u.Id == x.Id))).Returns(async args =>
+            {
+                var existUser = _owners.FirstOrDefault(u => u.Id == ((Owner)args[0]).Id);
+                if (existUser != null)
+                {
+                    _owners.Remove(existUser);
+                    _owners.Add(((Owner)args[0]));
+                }
+            });
             _ownerCommandHandlers = new OwnerCommandHandlers(_ownerAggregateRepository, _dummyInMemoryBus);
 
         }
-
-
-
-        private List<Owner> GetOwnersList()
-        {
-            return new List<Owner>
-            {
-
-            };
-        }
-
-
-
-        private async Task AddNewOwner(Owner owner)
-        {
-            _owners.Add(owner);
-        }
-
-
 
         #endregion
     }

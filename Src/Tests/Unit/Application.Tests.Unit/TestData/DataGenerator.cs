@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Application.Tests.Unit.TestData
 {
@@ -30,7 +31,7 @@ namespace TaskoMask.Application.Tests.Unit.TestData
 
 
 
-        public static List<Operator> GenerateOperatorList(int number=3)
+        public static List<Operator> GenerateOperatorList(int number = 3)
         {
             var list = new List<Operator>();
 
@@ -43,9 +44,23 @@ namespace TaskoMask.Application.Tests.Unit.TestData
             }
 
             return list;
-
         }
 
+
+
+        public static List<Owner> GenerateOwnerList(int number = 3)
+        {
+            var list = new List<Owner>();
+
+            for (int i = 1; i <= number; i++)
+            {
+                var owner = Owner.CreateOwner(ObjectId.GenerateNewId().ToString(), $"DisplayName_{i}", $"Email_{i}@mail.com");
+
+                list.Add(owner);
+            }
+
+            return list;
+        }
 
 
 

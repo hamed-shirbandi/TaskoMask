@@ -39,7 +39,6 @@
 	
   <ItemGroup>
     <Folder Include="Membership\" />
-    <Folder Include="Workspace\" />
   </ItemGroup>
 
   <ItemGroup>

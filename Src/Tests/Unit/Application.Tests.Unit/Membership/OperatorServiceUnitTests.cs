@@ -71,7 +71,7 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
         #region Private Methods
 
-        protected override void FixtureSetup()
+        protected override void TestClassFixtureSetup()
         {
             _operators = DataGenerator.GenerateOperatorList();
 

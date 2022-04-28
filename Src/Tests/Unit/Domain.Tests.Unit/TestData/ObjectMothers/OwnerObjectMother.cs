@@ -14,49 +14,71 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
         
         public static Owner CreateNewOwner()
         {
-            return OwnerBuilder.Init()
+            var owner= OwnerBuilder.Init()
                    .WithId(_id)
                    .WithEmail(_email)
                    .WithDisplayName(_displayName)
                    .Build();
+
+            owner.ClearDomainEvents();
+
+            return owner;
         }
 
 
 
         public static Owner CreateNewOwnerWithId(string id)
         {
-            return OwnerBuilder.Init()
+            var owner = OwnerBuilder.Init()
                    .WithId(id)
                    .WithEmail(_email)
                    .WithDisplayName(_displayName)
                    .Build();
+
+            owner.ClearDomainEvents();
+
+            return owner;
         }
 
 
 
         public static Owner CreateNewOwnerWithDisplayName(string displayName)
         {
-            return OwnerBuilder.Init()
+            var owner = OwnerBuilder.Init()
                    .WithId(_id)
                    .WithEmail(_email)
                    .WithDisplayName(displayName)
                    .Build();
+
+            owner.ClearDomainEvents();
+
+            return owner;
         }
+
 
 
         public static Owner CreateNewOwnerWithEmail(string email)
         {
-            return OwnerBuilder.Init()
+            var owner = OwnerBuilder.Init()
                    .WithId(_id)
                    .WithEmail(email)
                    .WithDisplayName(_displayName)
                    .Build();
+
+            owner.ClearDomainEvents();
+
+            return owner;
         }
+
+
 
         public static Owner CreateNewOwnerWithAnOrganization()
         {
             var owner = CreateNewOwner();
             var organization = Organization.CreateOrganization("Test Organization Name", "Test Organization Description");
+
+            owner.ClearDomainEvents();
+
             owner.CreateOrganization(organization);
             return owner;
         }

@@ -47,9 +47,12 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
             //Arrange
             var expectedEventType = nameof(OwnerCreatedEvent);
-
+            var ownerBuilder = OwnerBuilder.Init()
+                              .WithId(ObjectId.GenerateNewId().ToString())
+                              .WithEmail("Test@email.com")
+                              .WithDisplayName("Test Name");
             //Act
-            var owner = OwnerObjectMother.CreateNewOwner();
+            var owner = ownerBuilder.Build();
 
             //Assert
             owner.DomainEvents.Should().HaveCount(1);
@@ -141,11 +144,10 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
                 OwnerEmail.Create("New@email.com"));
 
             //Assert
-            owner.DomainEvents.Should().HaveCount(2);
+            owner.DomainEvents.Should().HaveCount(1);
             var domainEvent = owner.DomainEvents.Last();
             domainEvent.EventType.Should().Be(expectedEventType);
             domainEvent.EntityId.Should().Be(owner.Id);
-
         }
 
 

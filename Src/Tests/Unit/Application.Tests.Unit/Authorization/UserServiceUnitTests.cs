@@ -89,7 +89,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
 
-        protected override void FixtureSetup()
+        protected override void TestClassFixtureSetup()
         {
             _encryptionService = Substitute.For<IEncryptionService>();
 

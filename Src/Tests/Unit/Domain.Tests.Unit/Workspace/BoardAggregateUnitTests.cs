@@ -60,9 +60,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
             //Arrange
             var expectedEventType = nameof(BoardCreatedEvent);
+            var boardBuilder = BoardBuilder.Init(_boardValidatorService)
+                  .WithProjectId(ObjectId.GenerateNewId().ToString())
+                  .WithName("Test Name")
+                  .WithDescription("Test Description");
 
             //Act
-            var board = BoardObjectMother.CreateNewBoard(_boardValidatorService);
+            var board = boardBuilder.Build();
 
             //Assert
             board.DomainEvents.Should().HaveCount(1);
@@ -175,7 +179,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
             board.CreateCard(expectedCard);
 
             //Assert
-            board.DomainEvents.Should().HaveCount(2);
+            board.DomainEvents.Should().HaveCount(1);
             var domainEvent = board.DomainEvents.Last();
             domainEvent.EventType.Should().Be(expectedEventType);
             domainEvent.EntityId.Should().Be(expectedCard.Id);

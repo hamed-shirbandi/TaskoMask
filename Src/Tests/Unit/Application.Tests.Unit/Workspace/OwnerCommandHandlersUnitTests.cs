@@ -1,18 +1,16 @@
 ﻿using FluentAssertions;
 using MongoDB.Bson;
 using NSubstitute;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Tests.Unit.TestData;
 using TaskoMask.Application.Workspace.Owners.Commands.Handlers;
 using TaskoMask.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Unit.Workspace
@@ -38,17 +36,17 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
         public async Task Owner_Is_Created_Properly()
         {
             //Arrange
-            var createOwnerCommand = new CreateOwnerCommand(ObjectId.GenerateNewId().ToString(), "Test_DisplayName", "Test@email.com", "Test_Password");
+            var expectedUserId = ObjectId.GenerateNewId().ToString();
+            var createOwnerCommand = new CreateOwnerCommand(expectedUserId, "Test_DisplayName", "Test@email.com", "Test_Password");
 
             //Act
             var result = await _ownerCommandHandlers.Handle(createOwnerCommand, CancellationToken.None);
 
             //Assert
-            result.EntityId.Should().NotBeNullOrEmpty();
-            result.Message.Should().Be(ApplicationMessages.Create_Success);
+            result.EntityId.Should().Be(expectedUserId);
             var createdUser = _owners.FirstOrDefault(u => u.Id == result.EntityId);
-            createdUser.DisplayName.Value.Should().Be(createOwnerCommand.DisplayName);
-
+            createdUser.Email.Value.Should().Be(createOwnerCommand.Email);
+            await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerCreatedEvent>());
         }
 
 
@@ -60,16 +58,14 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
             //Arrange
             var ownerToUpdate = _owners.First();
             var updateOwnerCommand = new UpdateOwnerCommand(ownerToUpdate.Id, "New_DisplayName", "New@email.com");
-
+     
             //Act
             var result = await _ownerCommandHandlers.Handle(updateOwnerCommand, CancellationToken.None);
 
             //Assert
-            result.EntityId.Should().NotBeNullOrEmpty();
-            result.Message.Should().Be(ApplicationMessages.Update_Success);
-            ownerToUpdate.DisplayName.Value.Should().Be(updateOwnerCommand.DisplayName);
+            result.EntityId.Should().Be(ownerToUpdate.Id);
             ownerToUpdate.Email.Value.Should().Be(updateOwnerCommand.Email);
-
+            await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerUpdatedEvent>());
         }
 
 
@@ -80,7 +76,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
 
-        protected override void FixtureSetup()
+        protected override void TestClassFixtureSetup()
         {
             _owners = DataGenerator.GenerateOwnerList();
 
@@ -96,9 +92,12 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
                     _owners.Add(((Owner)args[0]));
                 }
             });
+
             _ownerCommandHandlers = new OwnerCommandHandlers(_ownerAggregateRepository, _inMemoryBus);
 
         }
+
+
 
         #endregion
     }

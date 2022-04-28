@@ -14,25 +14,45 @@ namespace TaskoMask.Application.Tests.Unit.TestData
         protected IDomainNotificationHandler _domainNotificationHandler;
 
 
+
         /// <summary>
         /// Run before each test method
         /// </summary>
         public TestsBase()
         {
+            FixtureSetup();
+        }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void FixtureSetup()
+        {
+            CommonFixtureSetup();
+
+            TestClassFixtureSetup();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CommonFixtureSetup()
+        {
             _inMemoryBus = Substitute.For<IInMemoryBus>();
             _iMapper = Substitute.For<IMapper>();
             _domainNotificationHandler = Substitute.For<IDomainNotificationHandler>();
-
-            FixtureSetup();
-
         }
+
 
 
         /// <summary>
         /// Each test class should setup its fixture
         /// </summary>
-        protected abstract void FixtureSetup();
+        protected abstract void TestClassFixtureSetup();
 
 
 
@@ -43,7 +63,6 @@ namespace TaskoMask.Application.Tests.Unit.TestData
         {
 
         }
-
 
     }
 }

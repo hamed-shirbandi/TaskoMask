@@ -1,13 +1,17 @@
 ﻿using FluentAssertions;
 using MongoDB.Bson;
 using NSubstitute;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using TaskoMask.Application.Core.Exceptions;
+using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Tests.Unit.TestData;
 using TaskoMask.Application.Workspace.Owners.Commands.Handlers;
 using TaskoMask.Application.Workspace.Owners.Commands.Models;
+using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
@@ -58,7 +62,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
             //Arrange
             var ownerToUpdate = _owners.First();
             var updateOwnerCommand = new UpdateOwnerCommand(ownerToUpdate.Id, "New_DisplayName", "New@email.com");
-     
+
             //Act
             var result = await _ownerCommandHandlers.Handle(updateOwnerCommand, CancellationToken.None);
 
@@ -67,6 +71,25 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
             ownerToUpdate.Email.Value.Should().Be(updateOwnerCommand.Email);
             await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerUpdatedEvent>());
         }
+
+
+
+        [Fact]
+        public async Task Owner_Is_Deleted_Properly()
+        {
+            //Arrange
+            var ownerToDelete = _owners.First();
+            var deleteOwnerCommand = new DeleteOwnerCommand(ownerToDelete.Id);
+
+            //Act
+            var result = await _ownerCommandHandlers.Handle(deleteOwnerCommand, CancellationToken.None);
+
+            //Assert
+            result.EntityId.Should().Be(ownerToDelete.Id);
+            ownerToDelete.IsDeleted.Should().BeTrue();
+            await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerDeletedEvent>());
+        }
+
 
 
 

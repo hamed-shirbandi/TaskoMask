@@ -83,6 +83,7 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
         private void FixtureSetup()
         {
+            _operators = DataGenerator.GenerateOperatorList();
 
             _roleRepository = Substitute.For<IRoleRepository>();
 
@@ -90,52 +91,24 @@ namespace TaskoMask.Application.Tests.Unit.Membership
             _userService.CreateAsync(Arg.Any<string>(), Arg.Any<string>()).Returns(Result.Success(new CommandResult(entityId: ObjectId.GenerateNewId().ToString())));
             _userService.UpdateUserNameAsync(Arg.Is<string>(arg => _operators.Select(o => o.Id).Any(id => id == arg)), Arg.Any<string>()).Returns(args => Result.Success(new CommandResult(entityId: (string)args[0])));
 
-            _operators = GetOperatorsList();
             _operatorRepository = Substitute.For<IOperatorRepository>();
-            _operatorRepository.CreateAsync(Arg.Any<Operator>()).Returns(args => AddNewOperator((Operator)args[0]));
-            _operatorRepository.UpdateAsync(Arg.Is<Operator>(x => _operators.Any(u => u.Id == x.Id))).Returns(args => UpdateOperator((Operator)args[0]));
             _operatorRepository.GetByIdAsync(Arg.Is<string>(x => _operators.Any(u => u.Id == x))).Returns(args => _operators.First(u => u.Id == (string)args[0]));
-
-            _operatorService = new OperatorService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _operatorRepository, _roleRepository, _userService);
-        }
-
-
-
-        private async Task AddNewOperator(Operator @operator)
-        {
-            _operators.Add(@operator);
-        }
-
-
-
-        private async Task UpdateOperator(Operator @operator)
-        {
-            var existOperator = _operators.FirstOrDefault(u => u.Id == @operator.Id);
-            if (existOperator != null)
+            _operatorRepository.CreateAsync(Arg.Any<Operator>()).Returns(args =>
             {
-                _operators.Remove(existOperator);
-                _operators.Add(@operator);
-            }
-        }
-
-
-        private List<Operator> GetOperatorsList()
-        {
-            return new List<Operator>
+                _operators.Add((Operator)args[0]);
+                return Task.CompletedTask;
+            });
+            _operatorRepository.UpdateAsync(Arg.Is<Operator>(x => _operators.Any(u => u.Id == x.Id))).Returns(args =>
             {
-                new Operator(ObjectId.GenerateNewId().ToString())
+                var existUser = _operators.FirstOrDefault(u => u.Id == ((Operator)args[0]).Id);
+                if (existUser != null)
                 {
-                    Email="email_1@test.com",
-                },
-                 new Operator(ObjectId.GenerateNewId().ToString())
-                {
-                    Email="email_2@test.com",
-                },
-                  new Operator(ObjectId.GenerateNewId().ToString())
-                {
-                    Email="email_3@test.com",
+                    _operators.Remove(existUser);
+                    _operators.Add(((Operator)args[0]));
                 }
-            };
+                return Task.CompletedTask;
+            });
+            _operatorService = new OperatorService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _operatorRepository, _roleRepository, _userService);
         }
 
 

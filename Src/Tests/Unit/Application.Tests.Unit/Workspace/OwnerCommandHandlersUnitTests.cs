@@ -53,6 +53,27 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
 
+
+        [Fact]
+        public async Task Owner_Is_Updated_Properly()
+        {
+            //Arrange
+            var ownerToUpdate = _owners.First();
+            var updateOwnerCommand = new UpdateOwnerCommand(ownerToUpdate.Id, "New_DisplayName", "New@email.com");
+
+            //Act
+            var result = await _ownerCommandHandlers.Handle(updateOwnerCommand, CancellationToken.None);
+
+            //Assert
+            result.EntityId.Should().NotBeNullOrEmpty();
+            result.Message.Should().Be(ApplicationMessages.Update_Success);
+            ownerToUpdate.DisplayName.Value.Should().Be(updateOwnerCommand.DisplayName);
+            ownerToUpdate.Email.Value.Should().Be(updateOwnerCommand.Email);
+
+        }
+
+
+
         #endregion
 
         #region Private Methods

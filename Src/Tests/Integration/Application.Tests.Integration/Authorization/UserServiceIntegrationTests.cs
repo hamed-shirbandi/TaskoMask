@@ -35,9 +35,34 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
         [Fact]
         public async Task User_Is_Created_Properly()
         {
+            //Arrange
+
+            //Act
             var result = await _userService.CreateAsync("TestUserName", "TestPass");
+
+            //Assert
             result.IsSuccess.Should().BeTrue();
             result.Value.EntityId.Should().NotBeNull();
+        }
+
+
+
+        [Fact]
+        public async Task User_Is_Updated_Properly()
+        {
+            //Arrange
+            var createdUserResult = await _userService.CreateAsync("TestUserName", "TestPass");
+            var createdUserId = createdUserResult.Value.EntityId;
+            var expectedUserName = "NewUserName";
+
+            //Act
+            var result = await _userService.UpdateUserNameAsync(createdUserId, expectedUserName);
+            var updatedUserResult = await _userService.GetByIdAsync(createdUserId);
+
+            //Assert
+            result.IsSuccess.Should().BeTrue();
+            updatedUserResult.Value.UserName.Should().Be(expectedUserName);
+
         }
 
 

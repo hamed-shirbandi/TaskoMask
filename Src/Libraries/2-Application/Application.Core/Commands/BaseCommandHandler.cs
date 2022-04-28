@@ -16,7 +16,6 @@ namespace TaskoMask.Application.Core.Commands
         #region Fields
 
 
-        private readonly IDomainNotificationHandler _notifications;
         private readonly IInMemoryBus _inMemoryBus;
 
 
@@ -25,9 +24,8 @@ namespace TaskoMask.Application.Core.Commands
         #region Ctors
 
 
-        protected BaseCommandHandler(IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus)
+        protected BaseCommandHandler(IInMemoryBus inMemoryBus)
         {
-            _notifications = notifications;
             _inMemoryBus = inMemoryBus;
         }
 
@@ -35,15 +33,6 @@ namespace TaskoMask.Application.Core.Commands
         #endregion
 
         #region Protected Methods
-
-
-        /// <summary>
-        /// add error to notifications
-        /// </summary>
-        protected void NotifyValidationError(BaseCommand request, string error)
-        {
-            _notifications.Add(request.GetType().Name, error);
-        }
 
 
 

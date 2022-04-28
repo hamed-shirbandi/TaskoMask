@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 
         #region Ctors
 
-        public TaskCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus, ITaskValidatorService taskValidatorService, IBoardAggregateRepository boardAggregateRepository) : base(notifications, inMemoryBus)
+        public TaskCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IInMemoryBus inMemoryBus, ITaskValidatorService taskValidatorService, IBoardAggregateRepository boardAggregateRepository) : base(inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
             _taskValidatorService = taskValidatorService;
@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
-            var task =Domain.WriteModel.Workspace.Tasks.Entities.Task.CreateTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
+            var task = Domain.WriteModel.Workspace.Tasks.Entities.Task.CreateTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
 
             await _taskAggregateRepository.CreateAsync(task);
             await PublishDomainEventsAsync(task.DomainEvents);
@@ -72,7 +72,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 
             var loadedVersion = task.Version;
 
-            task.UpdateTask(request.Title, request.Description,_taskValidatorService);
+            task.UpdateTask(request.Title, request.Description, _taskValidatorService);
 
             await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
             await PublishDomainEventsAsync(task.DomainEvents);

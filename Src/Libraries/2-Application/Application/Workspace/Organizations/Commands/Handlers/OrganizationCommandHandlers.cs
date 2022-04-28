@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
         #region Ctors
 
-        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus, IAuthenticatedUserService authenticatedUserService) : base(notifications, inMemoryBus)
+        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus, IAuthenticatedUserService authenticatedUserService) : base(inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
             _authenticatedUserService = authenticatedUserService;
@@ -53,7 +53,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
             var organization = Organization.CreateOrganization(request.Name, request.Description);
             owner.CreateOrganization(organization);
-            
+
             await _ownerAggregateRepository.UpdateAsync(owner);
             await PublishDomainEventsAsync(owner.DomainEvents);
 
@@ -95,7 +95,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
             var loadedVersion = owner.Version;
 
-            owner.DeleteOrganization(request.Id,_authenticatedUserService);
+            owner.DeleteOrganization(request.Id, _authenticatedUserService);
 
             await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
 

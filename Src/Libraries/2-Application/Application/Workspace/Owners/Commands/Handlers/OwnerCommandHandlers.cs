@@ -31,7 +31,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
         #region Ctors
 
 
-        public OwnerCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus) : base(notifications, inMemoryBus)
+        public OwnerCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus) : base(inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }

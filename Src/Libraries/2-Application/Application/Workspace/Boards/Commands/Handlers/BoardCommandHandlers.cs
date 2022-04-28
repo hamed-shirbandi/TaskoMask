@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
         #region Ctors
 
 
-        public BoardCommandHandlers(IBoardAggregateRepository boardAggregateRepository, IDomainNotificationHandler notifications, IInMemoryBus inMemoryBus, IBoardValidatorService boardValidatorService) : base(notifications, inMemoryBus)
+        public BoardCommandHandlers(IBoardAggregateRepository boardAggregateRepository, IInMemoryBus inMemoryBus, IBoardValidatorService boardValidatorService) : base(inMemoryBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
             _boardValidatorService = boardValidatorService;

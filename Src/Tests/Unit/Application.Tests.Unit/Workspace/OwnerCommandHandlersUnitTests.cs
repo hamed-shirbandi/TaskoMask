@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskoMask.Application.Tests.Unit.Workspace
 {
-    internal class OwnerCommandHandlersUnitTests
+    public class OwnerCommandHandlersUnitTests
     {
     }
 }

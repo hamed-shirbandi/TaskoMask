@@ -22,11 +22,20 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
         #region Fields
 
+        private IOwnerAggregateRepository _ownerAggregateRepository;
+        private OwnerCommandHandlers _ownerCommandHandlers;
+        private List<Owner> _owners;
 
 
         #endregion
 
         #region Ctor
+
+        //Run before each test method
+        public OwnerCommandHandlersUnitTests()
+        {
+            FixtureSetup();
+        }
 
 
 
@@ -37,9 +46,42 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
 
+
+
+
         #endregion
 
         #region Private Methods
+
+
+
+        private void FixtureSetup()
+        {
+            _owners = GetOwnersList();
+
+            _ownerAggregateRepository = Substitute.For<IOwnerAggregateRepository>();
+            _ownerAggregateRepository.CreateAsync(Arg.Any<Owner>()).Returns(async args => await AddNewOwner((Owner)args[0]));
+
+            _ownerCommandHandlers = new OwnerCommandHandlers(_ownerAggregateRepository, _dummyInMemoryBus);
+
+        }
+
+
+
+        private List<Owner> GetOwnersList()
+        {
+            return new List<Owner>
+            {
+
+            };
+        }
+
+
+
+        private async Task AddNewOwner(Owner owner)
+        {
+            _owners.Add(owner);
+        }
 
 
 

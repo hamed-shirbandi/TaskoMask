@@ -55,7 +55,7 @@ namespace TaskoMask.Application.Tests.Unit.TestData
             for (int i = 1; i <= number; i++)
             {
                 var owner = Owner.CreateOwner(ObjectId.GenerateNewId().ToString(), $"DisplayName_{i}", $"Email_{i}@mail.com");
-
+                owner.ClearDomainEvents();
                 list.Add(owner);
             }
 

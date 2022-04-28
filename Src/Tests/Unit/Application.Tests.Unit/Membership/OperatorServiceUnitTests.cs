@@ -93,12 +93,8 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
             _operatorRepository = Substitute.For<IOperatorRepository>();
             _operatorRepository.GetByIdAsync(Arg.Is<string>(x => _operators.Any(u => u.Id == x))).Returns(args => _operators.First(u => u.Id == (string)args[0]));
-            _operatorRepository.CreateAsync(Arg.Any<Operator>()).Returns(args =>
-            {
-                _operators.Add((Operator)args[0]);
-                return Task.CompletedTask;
-            });
-            _operatorRepository.UpdateAsync(Arg.Is<Operator>(x => _operators.Any(u => u.Id == x.Id))).Returns(args =>
+            _operatorRepository.CreateAsync(Arg.Any<Operator>()).Returns(async args => _operators.Add((Operator)args[0]));
+            _operatorRepository.UpdateAsync(Arg.Is<Operator>(x => _operators.Any(u => u.Id == x.Id))).Returns(async args =>
             {
                 var existUser = _operators.FirstOrDefault(u => u.Id == ((Operator)args[0]).Id);
                 if (existUser != null)
@@ -106,7 +102,6 @@ namespace TaskoMask.Application.Tests.Unit.Membership
                     _operators.Remove(existUser);
                     _operators.Add(((Operator)args[0]));
                 }
-                return Task.CompletedTask;
             });
             _operatorService = new OperatorService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _operatorRepository, _roleRepository, _userService);
         }

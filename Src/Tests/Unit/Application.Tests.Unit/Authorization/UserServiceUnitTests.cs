@@ -106,12 +106,8 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
             _userRepository.GetByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.First(u => u.UserName == (string)args[0]));
             _userRepository.ExistByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.Any(u => u.UserName == (string)args[0]));
             _userRepository.GetByIdAsync(Arg.Is<string>(x => _users.Any(u => u.Id == x))).Returns(args => _users.First(u => u.Id == (string)args[0]));
-            _userRepository.CreateAsync(Arg.Any<User>()).Returns(args =>
-            {
-                _users.Add((User)args[0]);
-                return Task.CompletedTask;
-            });
-            _userRepository.UpdateAsync(Arg.Is<User>(x => _users.Any(u => u.Id == x.Id))).Returns(args =>
+            _userRepository.CreateAsync(Arg.Any<User>()).Returns(async args => _users.Add((User)args[0]));
+            _userRepository.UpdateAsync(Arg.Is<User>(x => _users.Any(u => u.Id == x.Id))).Returns(async args =>
             {
                 var existUser = _users.FirstOrDefault(u => u.Id == ((User)args[0]).Id);
                 if (existUser != null)
@@ -119,7 +115,6 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
                     _users.Remove(existUser);
                     _users.Add(((User)args[0]));
                 }
-                return Task.CompletedTask;
             });
 
             _userService = new UserService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _userRepository, _encryptionService);

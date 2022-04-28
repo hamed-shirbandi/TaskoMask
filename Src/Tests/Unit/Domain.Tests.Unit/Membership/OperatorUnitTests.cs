@@ -2,13 +2,14 @@
 using System;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Tests.Unit.TestData;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Membership
 {
-    public class OperatorUnitTests
+    public class OperatorUnitTests : TestsBase
     {
 
         [Fact]
@@ -37,6 +38,16 @@ namespace TaskoMask.Domain.Tests.Unit.Membership
 
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
+        /// <summary>
+        /// Manage Test Fixture
+        /// </summary>
+        protected override void FixtureSetup()
+        {
+
         }
 
     }

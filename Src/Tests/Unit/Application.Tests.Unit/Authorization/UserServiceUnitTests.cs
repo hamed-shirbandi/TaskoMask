@@ -25,16 +25,6 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
         #endregion
 
-        #region Ctor
-
-        //Run before each test method
-        public UserServiceUnitTests()
-        {
-            FixtureSetup();
-        }
-
-        #endregion
-
         #region Test Methods
 
 
@@ -97,7 +87,9 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
         #region Private Methods
 
-        private void FixtureSetup()
+
+
+        protected override void FixtureSetup()
         {
             _encryptionService = Substitute.For<IEncryptionService>();
 

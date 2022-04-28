@@ -7,10 +7,14 @@ using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
 namespace TaskoMask.Application.Tests.Integration.TestData
 {
-    public class TestsBase:IDisposable
+    public abstract class TestsBase:IDisposable
     {
         protected IServiceProvider ServiceProvider { get; private set; }
 
+
+        /// <summary>
+        /// Run before each test method
+        /// </summary>
         public TestsBase()
         {
             ServiceProvider = GetServiceProvider();

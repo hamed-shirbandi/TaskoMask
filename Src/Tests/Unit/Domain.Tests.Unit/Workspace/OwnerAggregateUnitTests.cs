@@ -5,6 +5,7 @@ using System.Linq;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Tests.Unit.TestData;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
@@ -14,7 +15,7 @@ using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Workspace
 {
-    public class OwnerAggregateUnitTests
+    public class OwnerAggregateUnitTests : TestsBase
     {
 
         [Fact]
@@ -190,6 +191,14 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+
+        /// <summary>
+        /// Manage Test Fixture
+        /// </summary>
+        protected override void FixtureSetup()
+        {
+
+        }
 
     }
 }

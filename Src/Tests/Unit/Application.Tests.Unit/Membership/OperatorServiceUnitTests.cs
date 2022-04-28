@@ -27,16 +27,6 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
         #endregion
 
-        #region Ctor
-
-        //Run before each test method
-        public OperatorServiceUnitTests()
-        {
-            FixtureSetup();
-        }
-
-        #endregion
-
         #region Test Methods
 
 
@@ -81,7 +71,7 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
         #region Private Methods
 
-        private void FixtureSetup()
+        protected override void FixtureSetup()
         {
             _operators = DataGenerator.GenerateOperatorList();
 

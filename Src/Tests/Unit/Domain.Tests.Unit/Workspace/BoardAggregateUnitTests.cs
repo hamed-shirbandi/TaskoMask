@@ -7,6 +7,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Domain.Tests.Unit.TestData;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
@@ -18,7 +19,7 @@ using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Workspace
 {
-    public class BoardAggregateUnitTests
+    public class BoardAggregateUnitTests :TestsBase
     {
         #region Fields
 
@@ -26,17 +27,6 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
         #endregion
 
-        #region Ctor
-
-        /// <summary>
-        /// Run before each test method
-        /// </summary>
-        public BoardAggregateUnitTests()
-        {
-            FixtureSetup();
-        }
-
-        #endregion
 
         #region Test Mthods
 
@@ -199,13 +189,14 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         #region Private Methods
 
 
-
-        private void FixtureSetup()
+        /// <summary>
+        /// Manage Test Fixture
+        /// </summary>
+        protected override void FixtureSetup()
         {
             _boardValidatorService = Substitute.For<IBoardValidatorService>();
-            _boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(arg=> (string)arg[2]!="Reserved_Name");
+            _boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(arg => (string)arg[2] != "Reserved_Name");
         }
-
 
 
         #endregion

@@ -29,19 +29,6 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
         #endregion
 
-        #region Ctor
-
-        //Run before each test method
-        public OwnerCommandHandlersUnitTests()
-        {
-            FixtureSetup();
-        }
-
-
-
-        #endregion
-
-
         #region Test Methods
 
 
@@ -72,7 +59,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
 
-        private void FixtureSetup()
+        protected override void FixtureSetup()
         {
             _owners = DataGenerator.GenerateOwnerList();
 

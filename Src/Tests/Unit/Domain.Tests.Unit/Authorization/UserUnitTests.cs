@@ -1,10 +1,11 @@
 ﻿using FluentAssertions;
+using TaskoMask.Domain.Tests.Unit.TestData;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Authorization
 {
-    public class UserUnitTests
+    public class UserUnitTests :TestsBase
     {
 
         [Fact]
@@ -71,5 +72,14 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
 
         }
 
+
+
+        /// <summary>
+        /// Manage Test Fixture
+        /// </summary>
+        protected override void FixtureSetup()
+        {
+
+        }
     }
 }

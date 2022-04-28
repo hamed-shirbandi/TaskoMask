@@ -14,7 +14,7 @@ using Xunit;
 
 namespace TaskoMask.Application.Tests.Unit.Authorization
 {
-    public class UserServiceUnitTests: TestsBase
+    public class UserServiceUnitTests : TestsBase
     {
         #region Fields
 
@@ -101,55 +101,31 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
         {
             _encryptionService = Substitute.For<IEncryptionService>();
 
-            _users = GetUsersList();
+            _users = DataGenerator.GenerateUserList();
             _userRepository = Substitute.For<IUserRepository>();
             _userRepository.GetByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.First(u => u.UserName == (string)args[0]));
             _userRepository.ExistByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.Any(u => u.UserName == (string)args[0]));
             _userRepository.GetByIdAsync(Arg.Is<string>(x => _users.Any(u => u.Id == x))).Returns(args => _users.First(u => u.Id == (string)args[0]));
-            _userRepository.CreateAsync(Arg.Any<User>()).Returns(args => AddNewUser((User)args[0]));
-            _userRepository.UpdateAsync(Arg.Is<User>(x => _users.Any(u => u.Id == x.Id))).Returns(args => UpdateUser((User)args[0]));
-           
+            _userRepository.CreateAsync(Arg.Any<User>()).Returns(args =>
+            {
+                _users.Add((User)args[0]);
+                return Task.CompletedTask;
+            });
+            _userRepository.UpdateAsync(Arg.Is<User>(x => _users.Any(u => u.Id == x.Id))).Returns(args =>
+            {
+                var existUser = _users.FirstOrDefault(u => u.Id == ((User)args[0]).Id);
+                if (existUser != null)
+                {
+                    _users.Remove(existUser);
+                    _users.Add(((User)args[0]));
+                }
+                return Task.CompletedTask;
+            });
+
             _userService = new UserService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _userRepository, _encryptionService);
         }
 
 
-
-        private async Task AddNewUser(User user)
-        {
-            _users.Add(user);
-        }
-
-
-
-        private async Task UpdateUser(User user)
-        {
-            var existUser = _users.FirstOrDefault(u => u.Id == user.Id);
-            if (existUser != null)
-            {
-                _users.Remove(existUser);
-                _users.Add(user);
-            }
-        }
-
-
-        private List<User> GetUsersList()
-        {
-            return new List<User>
-            {
-                new User
-                {
-                    UserName="UserName1",
-                },
-                 new User
-                {
-                    UserName="UserName2",
-                },
-                  new User
-                {
-                    UserName="UserName3",
-                }
-            };
-        }
 
 
 

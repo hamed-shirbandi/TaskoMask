@@ -47,6 +47,23 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
 
+        [Fact]
+        public async Task Create_Owner_Command_Is_Worked_Properly()
+        {
+            //Arrange
+            var createOwnerCommand = new CreateOwnerCommand(ObjectId.GenerateNewId().ToString(), "Test_DisplayName", "Test@email.com", "Test_Password");
+
+            //Act
+            var result = await _ownerCommandHandlers.Handle(createOwnerCommand, CancellationToken.None);
+
+            //Assert
+            result.EntityId.Should().NotBeNullOrEmpty();
+            result.Message.Should().Be(ApplicationMessages.Create_Success);
+            var createdUser = _owners.FirstOrDefault(u => u.Id == result.EntityId);
+            createdUser.DisplayName.Value.Should().Be(createOwnerCommand.DisplayName);
+
+        }
+
 
 
         #endregion

@@ -93,7 +93,7 @@ namespace TaskoMask.Application.Tests.Unit.Membership
                     _operators.Add(((Operator)args[0]));
                 }
             });
-            _operatorService = new OperatorService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _operatorRepository, _roleRepository, _userService);
+            _operatorService = new OperatorService(_inMemoryBus, _iMapper, _domainNotificationHandler, _operatorRepository, _roleRepository, _userService);
         }
 
 

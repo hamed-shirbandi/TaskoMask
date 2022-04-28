@@ -109,7 +109,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
                 }
             });
 
-            _userService = new UserService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _userRepository, _encryptionService);
+            _userService = new UserService(_inMemoryBus, _iMapper, _domainNotificationHandler, _userRepository, _encryptionService);
         }
 
 

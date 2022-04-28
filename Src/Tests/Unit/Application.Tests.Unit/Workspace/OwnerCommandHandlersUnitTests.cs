@@ -96,7 +96,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
                     _owners.Add(((Owner)args[0]));
                 }
             });
-            _ownerCommandHandlers = new OwnerCommandHandlers(_ownerAggregateRepository, _dummyInMemoryBus);
+            _ownerCommandHandlers = new OwnerCommandHandlers(_ownerAggregateRepository, _inMemoryBus);
 
         }
 

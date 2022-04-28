@@ -9,9 +9,9 @@ namespace TaskoMask.Application.Tests.Unit.TestData
     public abstract class TestsBase : IDisposable
     {
 
-        protected IInMemoryBus _dummyInMemoryBus;
-        protected IMapper _dummyIMapper;
-        protected IDomainNotificationHandler _dummyDomainNotificationHandler;
+        protected IInMemoryBus _inMemoryBus;
+        protected IMapper _iMapper;
+        protected IDomainNotificationHandler _domainNotificationHandler;
 
 
         /// <summary>
@@ -20,9 +20,9 @@ namespace TaskoMask.Application.Tests.Unit.TestData
         public TestsBase()
         {
 
-            _dummyInMemoryBus = Substitute.For<IInMemoryBus>();
-            _dummyIMapper = Substitute.For<IMapper>();
-            _dummyDomainNotificationHandler = Substitute.For<IDomainNotificationHandler>();
+            _inMemoryBus = Substitute.For<IInMemoryBus>();
+            _iMapper = Substitute.For<IMapper>();
+            _domainNotificationHandler = Substitute.For<IDomainNotificationHandler>();
 
             FixtureSetup();
 

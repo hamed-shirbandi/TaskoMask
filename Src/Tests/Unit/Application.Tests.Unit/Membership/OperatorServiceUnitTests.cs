@@ -19,21 +19,25 @@ namespace TaskoMask.Application.Tests.Unit.Membership
     {
         #region Fields
 
-        private IOperatorRepository _operatorRepositoryStub;
-        private IRoleRepository _roleRepositoryStub;
-        private IUserService _userServiceStub;
+        private IOperatorRepository _operatorRepository;
+        private IRoleRepository _roleRepository;
+        private IUserService _userService;
         private IOperatorService _operatorService;
         private List<Operator> _operators;
 
         #endregion
 
-
+        #region Ctor
 
         //Run before each test method
         public OperatorServiceUnitTests()
         {
             FixtureSetup();
         }
+
+        #endregion
+
+        #region Test Methods
 
 
 
@@ -73,24 +77,26 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
 
 
+        #endregion
+
         #region Private Methods
 
         private void FixtureSetup()
         {
 
-            _roleRepositoryStub = Substitute.For<IRoleRepository>();
+            _roleRepository = Substitute.For<IRoleRepository>();
 
-            _userServiceStub = Substitute.For<IUserService>();
-            _userServiceStub.CreateAsync(Arg.Any<string>(), Arg.Any<string>()).Returns(Result.Success(new CommandResult(entityId: ObjectId.GenerateNewId().ToString())));
-            _userServiceStub.UpdateUserNameAsync(Arg.Is<string>(arg => _operators.Select(o => o.Id).Any(id => id == arg)), Arg.Any<string>()).Returns(args => Result.Success(new CommandResult(entityId: (string)args[0])));
+            _userService = Substitute.For<IUserService>();
+            _userService.CreateAsync(Arg.Any<string>(), Arg.Any<string>()).Returns(Result.Success(new CommandResult(entityId: ObjectId.GenerateNewId().ToString())));
+            _userService.UpdateUserNameAsync(Arg.Is<string>(arg => _operators.Select(o => o.Id).Any(id => id == arg)), Arg.Any<string>()).Returns(args => Result.Success(new CommandResult(entityId: (string)args[0])));
 
             _operators = GetOperatorsList();
-            _operatorRepositoryStub = Substitute.For<IOperatorRepository>();
-            _operatorRepositoryStub.CreateAsync(Arg.Any<Operator>()).Returns(args => AddNewOperator((Operator)args[0]));
-            _operatorRepositoryStub.UpdateAsync(Arg.Is<Operator>(x => _operators.Any(u => u.Id == x.Id))).Returns(args => UpdateOperator((Operator)args[0]));
-            _operatorRepositoryStub.GetByIdAsync(Arg.Is<string>(x => _operators.Any(u => u.Id == x))).Returns(args => _operators.First(u => u.Id == (string)args[0]));
+            _operatorRepository = Substitute.For<IOperatorRepository>();
+            _operatorRepository.CreateAsync(Arg.Any<Operator>()).Returns(args => AddNewOperator((Operator)args[0]));
+            _operatorRepository.UpdateAsync(Arg.Is<Operator>(x => _operators.Any(u => u.Id == x.Id))).Returns(args => UpdateOperator((Operator)args[0]));
+            _operatorRepository.GetByIdAsync(Arg.Is<string>(x => _operators.Any(u => u.Id == x))).Returns(args => _operators.First(u => u.Id == (string)args[0]));
 
-            _operatorService = new OperatorService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _operatorRepositoryStub, _roleRepositoryStub, _userServiceStub);
+            _operatorService = new OperatorService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _operatorRepository, _roleRepository, _userService);
         }
 
 

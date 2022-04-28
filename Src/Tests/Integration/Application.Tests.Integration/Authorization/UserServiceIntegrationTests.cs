@@ -12,13 +12,24 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 {
     public class UserServiceIntegrationTests : TestsBase
     {
+        #region Fields
+
         private readonly IUserService _userService;
-        
+
+        #endregion
+
+        #region Ctor
+
         //Run before each test method
         public UserServiceIntegrationTests()
         {
             _userService = ServiceProvider.GetRequiredService<IUserService>();
         }
+
+        #endregion
+
+        #region Test Mthods
+
 
 
         [Fact]
@@ -29,6 +40,8 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
             result.Value.EntityId.Should().NotBeNull();
         }
 
+
+        #endregion
 
     }
 }

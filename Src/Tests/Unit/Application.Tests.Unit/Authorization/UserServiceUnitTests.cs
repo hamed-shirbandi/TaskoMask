@@ -18,18 +18,24 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
     {
         #region Fields
 
-        private IEncryptionService _dummyEncryptionService;
-        private IUserRepository _userRepositoryStub;
+        private IEncryptionService _encryptionService;
+        private IUserRepository _userRepository;
         private IUserService _userService;
         private List<User> _users;
 
         #endregion
+
+        #region Ctor
 
         //Run before each test method
         public UserServiceUnitTests()
         {
             FixtureSetup();
         }
+
+        #endregion
+
+        #region Test Methods
 
 
 
@@ -87,22 +93,23 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
 
+        #endregion
 
         #region Private Methods
 
         private void FixtureSetup()
         {
-            _dummyEncryptionService = Substitute.For<IEncryptionService>();
+            _encryptionService = Substitute.For<IEncryptionService>();
 
             _users = GetUsersList();
-            _userRepositoryStub = Substitute.For<IUserRepository>();
-            _userRepositoryStub.GetByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.First(u => u.UserName == (string)args[0]));
-            _userRepositoryStub.ExistByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.Any(u => u.UserName == (string)args[0]));
-            _userRepositoryStub.GetByIdAsync(Arg.Is<string>(x => _users.Any(u => u.Id == x))).Returns(args => _users.First(u => u.Id == (string)args[0]));
-            _userRepositoryStub.CreateAsync(Arg.Any<User>()).Returns(args => AddNewUser((User)args[0]));
-            _userRepositoryStub.UpdateAsync(Arg.Is<User>(x => _users.Any(u => u.Id == x.Id))).Returns(args => UpdateUser((User)args[0]));
+            _userRepository = Substitute.For<IUserRepository>();
+            _userRepository.GetByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.First(u => u.UserName == (string)args[0]));
+            _userRepository.ExistByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.Any(u => u.UserName == (string)args[0]));
+            _userRepository.GetByIdAsync(Arg.Is<string>(x => _users.Any(u => u.Id == x))).Returns(args => _users.First(u => u.Id == (string)args[0]));
+            _userRepository.CreateAsync(Arg.Any<User>()).Returns(args => AddNewUser((User)args[0]));
+            _userRepository.UpdateAsync(Arg.Is<User>(x => _users.Any(u => u.Id == x.Id))).Returns(args => UpdateUser((User)args[0]));
            
-            _userService = new UserService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _userRepositoryStub, _dummyEncryptionService);
+            _userService = new UserService(_dummyInMemoryBus, _dummyIMapper, _dummyDomainNotificationHandler, _userRepository, _encryptionService);
         }
 
 

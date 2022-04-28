@@ -20,17 +20,25 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 {
     public class BoardAggregateUnitTests
     {
-        private readonly IBoardValidatorService _boardValidatorService;
-       
+        #region Fields
+
+        private IBoardValidatorService _boardValidatorService;
+
+        #endregion
+
+        #region Ctor
 
         /// <summary>
         /// Run before each test method
         /// </summary>
         public BoardAggregateUnitTests()
         {
-            _boardValidatorService = Substitute.For<IBoardValidatorService>();
-            _boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(true);
+            FixtureSetup();
         }
+
+        #endregion
+
+        #region Test Mthods
 
 
 
@@ -165,6 +173,20 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+        #endregion
 
+        #region Private Methods
+
+
+
+        private void FixtureSetup()
+        {
+            _boardValidatorService = Substitute.For<IBoardValidatorService>();
+            _boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(true);
+        }
+
+
+
+        #endregion
     }
 }

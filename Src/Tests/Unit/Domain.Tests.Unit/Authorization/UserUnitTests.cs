@@ -13,10 +13,8 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
             //Arrange
             var expectedUserName = "TestUserName";
 
-
             //Act
             var user = UserObjectMother.CreateNewUser(expectedUserName,isActive: true);
-
 
             //Assert
             user.Id.Should().NotBeNullOrEmpty();

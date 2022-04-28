@@ -9,5 +9,25 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 {
     public class BoardServiceIntegrationTests : TestsBase
     {
+        #region Fields
+
+
+        #endregion
+
+        #region Ctor
+
+        //Run before each test method
+        public BoardServiceIntegrationTests()
+        {
+        }
+
+        #endregion
+
+        #region Test Mthods
+
+
+
+
+        #endregion
     }
 }

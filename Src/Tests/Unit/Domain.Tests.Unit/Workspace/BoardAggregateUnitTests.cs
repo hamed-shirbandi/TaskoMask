@@ -84,6 +84,22 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
+        public void Board_Is_Not_Constructed_When_Name_Already_Exist()
+        {
+            //Arrange
+            var reservedName = "Reserved_Name";//configured in _boardValidatorService in FixtureSetup()
+            var expectedMessage = string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board);
+
+            //Act
+            Action act = () => BoardObjectMother.CreateNewBoardWithName(reservedName, _boardValidatorService);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
+        [Fact]
         public void Board_Is_Not_Constructed_When_ProjectId_Is_Null()
         {
             //Arrange
@@ -114,6 +130,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+
         [InlineData("TestName", "TestName")]
         [InlineData("SameName", "SameName")]
         [InlineData("نام تست", "نام تست")]
@@ -130,6 +147,8 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
 
         }
+
+
 
 
         [Fact]
@@ -150,6 +169,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
             card.Name.Should().Be(expectedCard.Name);
             card.Id.Should().Be(expectedCard.Id);
         }
+
 
 
         [Fact]
@@ -173,6 +193,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         }
 
 
+
         #endregion
 
         #region Private Methods
@@ -182,7 +203,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         private void FixtureSetup()
         {
             _boardValidatorService = Substitute.For<IBoardValidatorService>();
-            _boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(true);
+            _boardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(arg=> (string)arg[2]!="Reserved_Name");
         }
 
 

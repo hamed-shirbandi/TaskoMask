@@ -35,7 +35,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
         [Fact]
-        public async Task Create_Owner_Command_Is_Worked_Properly()
+        public async Task Owner_Is_Created_Properly()
         {
             //Arrange
             var createOwnerCommand = new CreateOwnerCommand(ObjectId.GenerateNewId().ToString(), "Test_DisplayName", "Test@email.com", "Test_Password");

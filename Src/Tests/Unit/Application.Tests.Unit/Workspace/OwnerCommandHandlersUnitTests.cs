@@ -92,6 +92,22 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
 
+        [Fact]
+        public async Task Owner_Is_Not_Deleted_When_Id_Not_Exist()
+        {
+            //Arrange
+            var notExistOwnerId = ObjectId.GenerateNewId().ToString();
+            var expectedMessage = string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+            var deleteOwnerCommand = new DeleteOwnerCommand(notExistOwnerId);
+
+            //Act
+            Func<Task> func = async () => { await _ownerCommandHandlers.Handle(deleteOwnerCommand, CancellationToken.None); };
+
+            //Assert
+            await func.Should().ThrowAsync<Core.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
 
         #endregion
 

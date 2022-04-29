@@ -7,22 +7,23 @@ using TaskoMask.Application.Workspace.Organizations.Services;
 using Xunit;
 using Xunit.Priority;
 
-namespace TaskoMask.Application.Tests.Integration.Workspace
+
+namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
 {
-    [TestCaseOrderer(PriorityOrderer.Name, PriorityOrderer.Assembly)]
-    [Collection("TestsBaseFixture collection")]
-    public class OrganizationServiceIntegrationTests
+    [TestCaseOrderer(PriorityOrderer.Assembly, PriorityOrderer.Name)]
+    [Collection("Owner Collection Fixture")]
+    public class OTC2_OrganizationServiceIntegrationTests
     {
         #region Fields
 
         private readonly IOrganizationService _organizationService;
-        private readonly TestsBaseFixture _fixture;
+        private readonly OwnerCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public OrganizationServiceIntegrationTests(TestsBaseFixture fixture)
+        public OTC2_OrganizationServiceIntegrationTests(OwnerCollectionFixture fixture)
         {
             _fixture = fixture;
             _organizationService = _fixture.GetRequiredService<IOrganizationService>();
@@ -33,7 +34,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
         #region Test Mthods
 
 
-        [Fact, Priority(200)]
+        [Fact, Priority(0)]
         public async Task Organization_Is_Created_Properly()
         {
             //Arrange

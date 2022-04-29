@@ -40,6 +40,8 @@
 	
   <ItemGroup>
     <Folder Include="Membership\" />
+    <Folder Include="Workspace\TaskTestCollection\" />
+    <Folder Include="Workspace\BoardTestCollection\" />
   </ItemGroup>
 
   <ItemGroup>

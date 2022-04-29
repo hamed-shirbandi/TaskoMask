@@ -11,10 +11,18 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
     /// So the TestsBaseFixture initialize before all test methods in all test classes and then dispose after all tests run
     /// </summary>
     [CollectionDefinition("Owner Collection Fixture")]
-    public class OwnerCollectionFixture : ICollectionFixture<TestsBaseFixture>
+    public class OwnerCollectionFixtureDefinition : ICollectionFixture<OwnerCollectionFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
+    }
+
+
+    public class OwnerCollectionFixture : TestsBaseFixture
+    {
+        public OwnerCollectionFixture( ) : base(dbNameSuffix: "OwnerCollectionFixture")
+        {
+        }
     }
 }

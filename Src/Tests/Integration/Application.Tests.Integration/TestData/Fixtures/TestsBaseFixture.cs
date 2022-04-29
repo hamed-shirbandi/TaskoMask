@@ -19,7 +19,7 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
     /// You just need to  Inherit from TestsBaseFixture for that class
     /// So the TestsBaseFixture initialize before each test method and then dispose after that test run
     /// </summary>
-    public class TestsBaseFixture : IDisposable
+    public abstract class TestsBaseFixture : IDisposable
     {
         #region Fields
 
@@ -30,10 +30,10 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 
         #region Ctor
 
-        public TestsBaseFixture()
+        public TestsBaseFixture(string dbNameSuffix)
         {
             _memorise = new Dictionary<string, string>();
-            _serviceProvider = GetServiceProvider();
+            _serviceProvider = GetServiceProvider(dbNameSuffix);
             InitializeDatabases();
         }
 
@@ -82,7 +82,7 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
         /// <summary>
         /// 
         /// </summary>
-        private static IServiceProvider GetServiceProvider()
+        private static IServiceProvider GetServiceProvider(string dbNameSuffix)
         {
             var services = new ServiceCollection();
 
@@ -90,6 +90,11 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
                                 //Copy from AdminPanel project during the build event
                                 .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
                                 .AddJsonFile("appsettings.Development.json", reloadOnChange: true, optional: false)
+                                .AddInMemoryCollection(new[]
+                                {
+                                   new KeyValuePair<string,string>("Mongo:Write:Database", $"TaskoMask_WriteDB_Test_{dbNameSuffix}"),
+                                   new KeyValuePair<string,string>("Mongo:Read:Database", $"TaskoMask_ReadDB_Test_{dbNameSuffix}"),
+                                })
                                 .Build();
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 

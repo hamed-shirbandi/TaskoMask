@@ -6,21 +6,21 @@ using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
 using Xunit;
 using Xunit.Priority;
 
-namespace TaskoMask.Application.Tests.Integration.Workspace
+namespace TaskoMask.Application.Tests.Integration.Authorization
 {
     [TestCaseOrderer(PriorityOrderer.Name, PriorityOrderer.Assembly)]
-    public class UserServiceIntegrationTests : IClassFixture<TestsBaseFixture>
+    public class UserServiceIntegrationTests : IClassFixture<UserClassFixture>
     {
         #region Fields
 
         private readonly IUserService _userService;
-        private readonly TestsBaseFixture _fixture;
+        private readonly UserClassFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public UserServiceIntegrationTests(TestsBaseFixture fixture)
+        public UserServiceIntegrationTests(UserClassFixture fixture)
         {
             _fixture = fixture;
             _userService = _fixture.GetRequiredService<IUserService>();

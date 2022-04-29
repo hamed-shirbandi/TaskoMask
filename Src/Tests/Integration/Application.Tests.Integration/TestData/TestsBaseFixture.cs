@@ -7,6 +7,16 @@ using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
 namespace TaskoMask.Application.Tests.Integration.TestData
 {
+    /// <summary>
+    /// If you want to share TestsBaseFixture for all test methods in a Test Class
+    /// You just need to Inherit from IClassFixture<TestsBaseFixture> for that class
+    /// And get TestsBaseFixture as a parameter in test class constructor
+    /// So the TestsBaseFixture initialize before all test methods in that test class and then dispose after all tests run
+    /// *But*
+    /// If you want TestsBaseFixture to be initialized and disposed for each test method
+    /// You just need to  Inherit from TestsBaseFixture for that class
+    /// So the TestsBaseFixture initialize before each test method and then dispose after that test run
+    /// </summary>
     public class TestsBaseFixture : IDisposable
     {
         private readonly IServiceProvider _serviceProvider;

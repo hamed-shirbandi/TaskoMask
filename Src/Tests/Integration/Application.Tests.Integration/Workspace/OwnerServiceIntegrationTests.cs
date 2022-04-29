@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Tests.Integration.TestData;
+using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
 using TaskoMask.Application.Workspace.Owners.Services;
 using Xunit;
 using Xunit.Priority;

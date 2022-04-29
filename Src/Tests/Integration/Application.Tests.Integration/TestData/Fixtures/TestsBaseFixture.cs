@@ -7,7 +7,7 @@ using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
-namespace TaskoMask.Application.Tests.Integration.TestData
+namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 {
     /// <summary>
     /// If you want to share TestsBaseFixture for all test methods in a Test Class

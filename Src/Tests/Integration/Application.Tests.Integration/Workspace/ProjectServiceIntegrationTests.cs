@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using System.Threading.Tasks;
 using TaskoMask.Application.Tests.Integration.TestData;
+using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
 using TaskoMask.Application.Workspace.Projects.Services;
 using Xunit;
 using Xunit.Priority;

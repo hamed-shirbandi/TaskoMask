@@ -1,7 +1,7 @@
 ﻿
 using Xunit;
 
-namespace TaskoMask.Application.Tests.Integration.TestData
+namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 {
 
     /// <summary>

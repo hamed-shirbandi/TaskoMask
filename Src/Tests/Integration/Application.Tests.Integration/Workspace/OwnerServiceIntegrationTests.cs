@@ -9,7 +9,8 @@ using Xunit.Priority;
 namespace TaskoMask.Application.Tests.Integration.Workspace
 {
     [TestCaseOrderer(PriorityOrderer.Name, PriorityOrderer.Assembly)]
-    public class OwnerServiceIntegrationTests: IClassFixture<TestsBaseFixture>
+    [Collection("TestsBaseFixture collection")]
+    public class OwnerServiceIntegrationTests
     {
         #region Fields
 

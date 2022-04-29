@@ -3,22 +3,26 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Application.Tests.Integration.TestData;
 using Xunit;
+using Xunit.Priority;
 
 namespace TaskoMask.Application.Tests.Integration.Workspace
 {
-    public class UserServiceIntegrationTests : TestsBaseFixture
+    [TestCaseOrderer(PriorityOrderer.Name, PriorityOrderer.Assembly)]
+    public class UserServiceIntegrationTests : IClassFixture<TestsBaseFixture>
     {
         #region Fields
 
         private readonly IUserService _userService;
+        private readonly TestsBaseFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public UserServiceIntegrationTests()
+        public UserServiceIntegrationTests(TestsBaseFixture fixture)
         {
-            _userService = GetRequiredService<IUserService>();
+            _fixture = fixture;
+            _userService = _fixture.GetRequiredService<IUserService>();
         }
 
         #endregion
@@ -27,10 +31,11 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 
 
 
-        [Fact]
+        [Fact, Priority(0)]
         public async Task User_Is_Created_Properly()
         {
             //Arrange
+
 
             //Act
             var result = await _userService.CreateAsync("TestUserName", "TestPass");
@@ -38,16 +43,17 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
             //Assert
             result.IsSuccess.Should().BeTrue();
             result.Value.EntityId.Should().NotBeNull();
+
+            _fixture.SaveToMemeory(MagicKey.User.Created_User_Id, result.Value.EntityId);
         }
 
 
 
-        [Fact]
+        [Fact, Priority(2)]
         public async Task User_Is_Updated_Properly()
         {
             //Arrange
-            var createdUserResult = await _userService.CreateAsync("TestUserName", "TestPass");
-            var createdUserId = createdUserResult.Value.EntityId;
+            var createdUserId = _fixture.GetFromMemeory(MagicKey.User.Created_User_Id);
             var expectedUserName = "NewUserName";
 
             //Act
@@ -57,7 +63,6 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
             //Assert
             result.IsSuccess.Should().BeTrue();
             updatedUserResult.Value.UserName.Should().Be(expectedUserName);
-
         }
 
 

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
@@ -20,13 +22,14 @@ namespace TaskoMask.Application.Tests.Integration.TestData
     public class TestsBaseFixture : IDisposable
     {
         private readonly IServiceProvider _serviceProvider;
-
+        private readonly IDictionary<string, string> _memorise;
 
         /// <summary>
         ///
         /// </summary>
         public TestsBaseFixture()
         {
+            _memorise = new Dictionary<string, string>();
             _serviceProvider = GetServiceProvider();
             InitializeDatabases();
         }
@@ -40,6 +43,27 @@ namespace TaskoMask.Application.Tests.Integration.TestData
         {
             return _serviceProvider.GetRequiredService<T>();
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SaveToMemeory(string key, string value)
+        {
+            _memorise.Add(key, value);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string GetFromMemeory(string key)
+        {
+            var memory= _memorise.FirstOrDefault(m => m.Key == key);
+            return memory.Value;
+        }
+
 
 
 

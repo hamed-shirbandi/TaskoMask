@@ -17,5 +17,10 @@ namespace TaskoMask.Application.Tests.Integration.TestData
         {
             public const string Created_Owner_Id = "Created_Owner_Id";
         }
+
+        public static class Organization
+        {
+            public const string Created_Organization_Id = "Created_Organization_Id";
+        }
     }
 }

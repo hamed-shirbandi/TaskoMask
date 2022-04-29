@@ -97,10 +97,6 @@ namespace TaskoMask.Application.Tests.Integration.TestData
 
             var serviceProvider = services.BuildServiceProvider();
 
-            WriteDbInitialization.Initial(serviceProvider);
-            ReadDbInitialization.Initial(serviceProvider);
-            WriteDbSeedData.SeedEssentialData(serviceProvider);
-
             return serviceProvider;
         }
 

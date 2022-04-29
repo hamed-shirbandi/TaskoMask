@@ -25,7 +25,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.JwtAuth
 
             services.Configure(setupAction);
             services.TryAddSingleton<IJwtAuthenticationService, JwtAuthenticationService>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+           // services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             var jwtOptions = services.BuildServiceProvider().GetRequiredService<IOptions<JwtAuthenticationOptions>>();
 

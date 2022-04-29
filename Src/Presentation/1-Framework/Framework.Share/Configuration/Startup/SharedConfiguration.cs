@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.Domain.Share.Services;
 using TaskoMask.Infrastructure.Share.Services.Security;
 using TaskoMask.Presentation.Framework.Share.Services.Cookie;
@@ -19,6 +20,8 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
         public static void AddSharedConfigureServices(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddScoped<IHttpClientService, HttpClientService>();

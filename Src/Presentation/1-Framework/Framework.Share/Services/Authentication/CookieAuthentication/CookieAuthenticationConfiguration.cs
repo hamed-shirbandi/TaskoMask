@@ -23,7 +23,7 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieA
 
             var options = services.BuildServiceProvider().GetRequiredService<IOptions<Models.CookieAuthenticationOptions>>();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+          //  services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ICookieAuthenticationService, CookieAuthenticationService>();
 
 

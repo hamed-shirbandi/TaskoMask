@@ -1,11 +1,7 @@
 ﻿using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Tests.Integration.TestData;
+using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Integration.Workspace
@@ -23,7 +19,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
         //Run before each test method
         public UserServiceIntegrationTests()
         {
-            _userService = ServiceProvider.GetRequiredService<IUserService>();
+            _userService = GetRequiredService<IUserService>();
         }
 
         #endregion

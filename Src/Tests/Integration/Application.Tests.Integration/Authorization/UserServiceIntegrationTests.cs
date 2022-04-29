@@ -49,6 +49,21 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 
 
 
+        [Fact, Priority(1)]
+        public async Task User_Is_Fetched_Properly()
+        {
+            //Arrange
+            var createdUserId = _fixture.GetFromMemeory(MagicKey.User.Created_User_Id);
+
+            //Act
+            var updatedUserResult = await _userService.GetByIdAsync(createdUserId);
+
+            //Assert
+            updatedUserResult.Value.Id.Should().Be(createdUserId);
+        }
+
+
+
         [Fact, Priority(2)]
         public async Task User_Is_Updated_Properly()
         {

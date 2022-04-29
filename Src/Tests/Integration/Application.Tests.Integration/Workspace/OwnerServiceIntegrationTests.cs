@@ -7,7 +7,7 @@ using TaskoMask.Application.Tests.Integration.TestData;
 
 namespace TaskoMask.Application.Tests.Integration.Workspace
 {
-    public class OwnerServiceIntegrationTests:TestsBase
+    public class OwnerServiceIntegrationTests: TestsBaseFixture
     {
     }
 }

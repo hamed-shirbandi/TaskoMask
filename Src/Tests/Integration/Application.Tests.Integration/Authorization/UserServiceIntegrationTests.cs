@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
 using System.Threading.Tasks;
 using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
+using TaskoMask.Application.Tests.Integration.TestData;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Integration.Workspace
 {
-    public class UserServiceIntegrationTests : TestsBase
+    public class UserServiceIntegrationTests : TestsBaseFixture
     {
         #region Fields
 
@@ -16,7 +16,6 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 
         #region Ctor
 
-        //Run before each test method
         public UserServiceIntegrationTests()
         {
             _userService = GetRequiredService<IUserService>();

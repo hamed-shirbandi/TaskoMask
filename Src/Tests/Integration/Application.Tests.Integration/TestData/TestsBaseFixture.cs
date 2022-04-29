@@ -21,12 +21,15 @@ namespace TaskoMask.Application.Tests.Integration.TestData
     /// </summary>
     public class TestsBaseFixture : IDisposable
     {
+        #region Fields
+
         private readonly IServiceProvider _serviceProvider;
         private readonly IDictionary<string, string> _memorise;
 
-        /// <summary>
-        ///
-        /// </summary>
+        #endregion
+
+        #region Ctor
+
         public TestsBaseFixture()
         {
             _memorise = new Dictionary<string, string>();
@@ -34,10 +37,13 @@ namespace TaskoMask.Application.Tests.Integration.TestData
             InitializeDatabases();
         }
 
+        #endregion
+
+        #region Public Methods
 
 
         /// <summary>
-        /// 
+        /// Get required services for each service
         /// </summary>
         public T GetRequiredService<T>()
         {
@@ -46,7 +52,8 @@ namespace TaskoMask.Application.Tests.Integration.TestData
 
 
         /// <summary>
-        /// 
+        /// Save data across all of the tests that fixture is shared between
+        /// Use it when a test need a data from previous tests
         /// </summary>
         public void SaveToMemeory(string key, string value)
         {
@@ -56,15 +63,20 @@ namespace TaskoMask.Application.Tests.Integration.TestData
 
 
         /// <summary>
-        /// 
+        /// Get data by its key
+        /// Use it when a test need a data from previous tests
         /// </summary>
         public string GetFromMemeory(string key)
         {
-            var memory= _memorise.FirstOrDefault(m => m.Key == key);
-            return memory.Value;
+            _memorise.TryGetValue(key, out string value);
+            return value;
         }
 
 
+
+        #endregion
+
+        #region Private Methods
 
 
         /// <summary>
@@ -116,13 +128,20 @@ namespace TaskoMask.Application.Tests.Integration.TestData
         }
 
 
+        #endregion
+
+        #region Dispose
+
 
         /// <summary>
-        ///
+        /// Dispose all resources that fixture used for tests
         /// </summary>
         public void Dispose()
         {
             DropDatabases();
         }
+
+
+        #endregion
     }
 }

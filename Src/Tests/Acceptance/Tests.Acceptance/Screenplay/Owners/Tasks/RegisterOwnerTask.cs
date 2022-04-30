@@ -5,13 +5,13 @@ using Suzianna.Rest.Screenplay.Questions;
 using TaskoMask.Tests.Acceptance.Helpers;
 using TaskoMask.Tests.Acceptance.Models.Owners;
 
-namespace TaskoMask.Tests.Acceptance.Screenplay.Owners
+namespace TaskoMask.Tests.Acceptance.Screenplay.Owners.Tasks
 {
-    public class RegisterOwner : ITask
+    public class RegisterOwnerTask : ITask
     {
         private readonly OwnerRegisterDto _ownerRegisterDto;
 
-        public RegisterOwner(OwnerRegisterDto ownerRegisterDto)
+        public RegisterOwnerTask(OwnerRegisterDto ownerRegisterDto)
         {
             _ownerRegisterDto = ownerRegisterDto;
         }

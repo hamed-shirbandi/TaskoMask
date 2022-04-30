@@ -36,12 +36,6 @@
 	<Target Name="CopyConfig" AfterTargets="AfterBuild">
 		<Copy SourceFiles="..\..\..\Presentation\3-UI\AdminPanel\appsettings.json" DestinationFolder="$(OutDir)" />
 	</Target>
-	
-  <ItemGroup>
-    <Folder Include="Membership\" />
-    <Folder Include="Workspace\TaskTestCollection\" />
-    <Folder Include="Workspace\BoardTestCollection\" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />

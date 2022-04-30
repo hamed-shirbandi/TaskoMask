@@ -7,7 +7,7 @@ using TaskoMask.Application.Workspace.Owners.Services;
 using Xunit;
 
 
-namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
+namespace TaskoMask.Application.Tests.Integration.Workspace
 {
 
     [Collection(nameof(OwnerCollectionFixture))]
@@ -28,12 +28,12 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
 
         #endregion
 
-        #region Test Mthods
+        #region Test Methods
 
 
 
         [Fact]
-        public async Task Owner_Is_Created_Properly()
+        public async Task Owner_Is_Created()
         {
             //Arrange
             var dto = new OwnerRegisterDto
@@ -50,6 +50,8 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
             result.IsSuccess.Should().BeTrue();
             result.Value.EntityId.Should().NotBeNull();
         }
+
+
 
 
 

@@ -6,7 +6,7 @@ using TaskoMask.Application.Workspace.Projects.Services;
 using Xunit;
 
 
-namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
+namespace TaskoMask.Application.Tests.Integration.Workspace
 {
 
     [Collection(nameof(OwnerCollectionFixture))]
@@ -27,7 +27,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
 
         #endregion
 
-        #region Test Mthods
+        #region Test Methods
 
 
 

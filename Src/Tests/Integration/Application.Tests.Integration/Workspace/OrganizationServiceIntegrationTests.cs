@@ -7,7 +7,7 @@ using TaskoMask.Application.Workspace.Organizations.Services;
 using Xunit;
 
 
-namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
+namespace TaskoMask.Application.Tests.Integration.Workspace
 {
    
     [Collection(nameof(OwnerCollectionFixture))]
@@ -28,11 +28,11 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
 
         #endregion
 
-        #region Test Mthods
+        #region Test Methods
 
 
         [Fact]
-        public async Task Organization_Is_Created_Properly()
+        public async Task Organization_Is_Created()
         {
             //Arrange
             var owner = await _fixture.GetSampleOwnerAsync();

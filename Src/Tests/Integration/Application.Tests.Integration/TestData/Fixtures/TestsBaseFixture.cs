@@ -10,14 +10,28 @@ using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 {
     /// <summary>
+    /// Each test class must have its own fixture and each fixture initialize and dispose a unique database
+    /// So, we have control over parallel test run and lower cost for creating database
+    /// ------------------* But *-----------------------------------------------
+    /// If you want TestsBaseFixture to be initialized and disposed for each test method in the class
+    /// You just need to  Inherit from TestsBaseFixture for that class
+    /// So the TestsBaseFixture initialize before each test method and then dispose after that test run
+    /// ------------------* But *-----------------------------------------------
     /// If you want to share TestsBaseFixture for all test methods in a Test Class
     /// You just need to Inherit from IClassFixture<TestsBaseFixture> for that class
     /// And get TestsBaseFixture as a parameter in test class constructor
     /// So the TestsBaseFixture initialize before all test methods in that test class and then dispose after all tests run
-    /// *But*
-    /// If you want TestsBaseFixture to be initialized and disposed for each test method
+    /// ------------------* But *-----------------------------------------------
+    /// If you want TestsBaseFixture to be initialized and disposed for each test method in the class
     /// You just need to  Inherit from TestsBaseFixture for that class
     /// So the TestsBaseFixture initialize before each test method and then dispose after that test run
+    /// ------------------* But *-----------------------------------------------
+    /// If you want to share TestsBaseFixture for all test methods in some Test Classes
+    /// You just need to make a new class inherited from ICollectionFixture<OwnerCollectionFixture>
+    /// Then apply [CollectionDefinition("my Collection Fixture")] attribute for that new class
+    /// And then apply [Collection("my Collection Fixture")] attribute for those test classes you want to share the fixture between
+    /// And get TestsBaseFixture as a parameter in each test class constructor
+    /// So the TestsBaseFixture initialize before all test methods in all test classes and then dispose after all tests run
     /// </summary>
     public abstract class TestsBaseFixture : IDisposable
     {
@@ -29,6 +43,10 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 
         #region Ctor
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbNameSuffix">To make a unique database for each fixture</param>
         public TestsBaseFixture(string dbNameSuffix)
         {
             _serviceProvider = GetServiceProvider(dbNameSuffix);

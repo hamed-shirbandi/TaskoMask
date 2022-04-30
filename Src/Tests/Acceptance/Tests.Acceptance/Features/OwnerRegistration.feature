@@ -7,21 +7,20 @@ John wants to register an account
 @OwnerScenarios
 Scenario: Registering online for a new owner account
 	Given John is not a registered member
-	When John registers for a new account with his email
-	Then Joun can login
-
-Examples:
-| DisplayName	|Email			| Password	 |
-| John			|John@email.com | John123	 |
+	When John registers for a new account
+	| DisplayName	|Email			| Password	 |
+	| John			|John@email.com | John123	 |
+	And John attempts to Log in
+	Then John log in successfully
 
 
 @OwnerScenarios
 Scenario: Preventing registration with duplicate email
 	Given Jane is not a registered member
-	When Jane registers for a new account with john's email
+	When Jane registers for a new account with John's email
+	| DisplayName	|Email			| Password	 |
+	| Jane			|John@email.com | Jane458	 |
 	Then Jane can not register
-	And Jane is not in owner List
+	And Jane is not in owners List
 
-Examples:
-| DisplayName	|Email			| Password	 |
-| Jane			|John@email.com | Jane458	 |
+

@@ -24,7 +24,8 @@ namespace TaskoMask.Tests.Acceptance.Steps
 
         public OwnerRegistrationSteps()
         {
-
+            _john = Actor.Named("john");
+            _jane = Actor.Named("jane");
         }
 
         #endregion
@@ -36,7 +37,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [Given(@"John is not a registered member")]
         public void GivenJohnIsNotARegisteredMember()
         {
-            _john = Actor.Named("John").WhoCan(CallAnApi.At("https://localhost:44314/"));
+            _john.WhoCan(CallAnApi.At("https://localhost:44314/"));
         }
 
 

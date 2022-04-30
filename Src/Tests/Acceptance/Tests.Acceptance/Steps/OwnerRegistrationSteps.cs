@@ -1,6 +1,7 @@
 using FluentAssertions;
-using Suzianna.Core.Screenplay.Actors;
+using Suzianna.Core.Screenplay;
 using Suzianna.Rest.Screenplay.Abilities;
+using System.Collections.Generic;
 using TaskoMask.Tests.Acceptance.Helpers;
 using TaskoMask.Tests.Acceptance.Models.Owners;
 using TaskoMask.Tests.Acceptance.Screenplay.Owners.Tasks;
@@ -14,8 +15,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
     {
         #region Fields
 
-        private Actor _john;
-        private Actor _jane;
+        private Stage _stage;
         private OwnerRegisterDto _ownerRegisterDto;
 
         #endregion
@@ -24,8 +24,8 @@ namespace TaskoMask.Tests.Acceptance.Steps
 
         public OwnerRegistrationSteps()
         {
-            _john = Actor.Named("john");
-            _jane = Actor.Named("jane");
+            var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At("https://localhost:44314/") });
+            _stage = new Stage(cast);
         }
 
         #endregion
@@ -37,7 +37,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [Given(@"John is not a registered member")]
         public void GivenJohnIsNotARegisteredMember()
         {
-            _john.WhoCan(CallAnApi.At("https://localhost:44314/"));
+            _stage.ShineSpotlightOn("John");
         }
 
 
@@ -46,7 +46,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         public void WhenJohnRegistersForANewAccountWithHisEmail(Table table)
         {
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
-            _john.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
         }
 
 
@@ -60,7 +60,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
                 Password = _ownerRegisterDto.Password,
             };
 
-            _john.AttemptsTo(new LoginOwnerTask(ownerLoginDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(new LoginOwnerTask(ownerLoginDto));
         }
 
 
@@ -68,7 +68,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [Then(@"John log in successfully")]
         public void ThenJohnLogInSuccessfully()
         {
-            var loginResult = _john.Recall<Result<UserJwtTokenDto>>(MagicKey.Owner.Login_Result);
+            var loginResult = _stage.ActorInTheSpotlight.Recall<Result<UserJwtTokenDto>>(MagicKey.Owner.Login_Result);
             loginResult.IsSuccess.Should().BeTrue();
         }
 
@@ -80,21 +80,22 @@ namespace TaskoMask.Tests.Acceptance.Steps
 
 
 
-
-        [Given(@"Jane is not a registered member")]
-        public void GivenJaneIsNotARegisteredMember()
+        [Given(@"John is a registered member")]
+        public void GivenJohnIsARegisteredMember(Table table)
         {
-            _jane.WhoCan(CallAnApi.At("https://localhost:44314/"));
+            _stage.ShineSpotlightOn("John");
+
+            _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
+
+            _stage.ActorInTheSpotlight.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
         }
 
 
 
-        [Given(@"John is a registered member")]
-        public void GivenJohnIsARegisteredMember(Table table)
+        [Given(@"Jane is not a registered member")]
+        public void GivenJaneIsNotARegisteredMember()
         {
-            _john.WhoCan(CallAnApi.At("https://localhost:44314/"));
-            _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
-            _john.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ShineSpotlightOn("Jane");
         }
 
 
@@ -103,7 +104,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         public void WhenJaneRegistersForANewAccountWithJohnsEmail(Table table)
         {
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
-            _jane.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
         }
 
 
@@ -111,7 +112,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [Then(@"Jane can not register")]
         public void ThenJaneCanNotRegister()
         {
-            var registerResult = _jane.Recall<Result<UserJwtTokenDto>>(MagicKey.Owner.Regiser_Result);
+            var registerResult = _stage.ActorInTheSpotlight.Recall<Result<UserJwtTokenDto>>(MagicKey.Owner.Regiser_Result);
             registerResult.IsSuccess.Should().BeFalse();
         }
 

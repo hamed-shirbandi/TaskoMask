@@ -6,6 +6,7 @@ namespace TaskoMask.Tests.Acceptance.Helpers
         public static class Owner
         {
             public const string Regiser_Result = "Owner_Regiser_Result";
+            public const string Login_Result = "Owner_Login_Result";
         }
     }
 }

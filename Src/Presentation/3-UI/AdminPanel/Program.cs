@@ -14,8 +14,8 @@ try
     var app = builder.Build();
     app.UseSerilogRequestLogging();
     app.UseMvcProjectConfigure(app.Services, builder.Environment);
-    WriteDbSeedData.SeedAdminPanelTempData(app.Services);
-    ReadDbSeedData.SyncAdminPanelTempData(app.Services);
+    WriteDbSeedData.SeedSampleData(app.Services);
+    ReadDbSeedData.SyncSampleData(app.Services);
     app.UseEndpoints(endpoints =>
     {
         endpoints.MapControllerRoute(

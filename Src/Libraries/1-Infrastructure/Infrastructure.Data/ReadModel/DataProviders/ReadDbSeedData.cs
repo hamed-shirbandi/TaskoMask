@@ -16,9 +16,9 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
     {
 
         /// <summary>
-        /// 
+        /// Sync sample data that is inserted from WriteDbSeedData.SeedSampleData
         /// </summary>
-        public static void SyncAdminPanelTempData(IServiceProvider serviceProvider)
+        public static void SyncSampleData(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {

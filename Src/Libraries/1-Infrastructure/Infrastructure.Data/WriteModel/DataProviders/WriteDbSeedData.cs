@@ -25,7 +25,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
 
 
         /// <summary>
-        /// 
+        /// Seed the necessary data that system needs
         /// </summary>
         public static void SeedEssentialData(IServiceProvider serviceProvider)
         {
@@ -56,9 +56,9 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
 
 
         /// <summary>
-        /// 
+        /// Seed some sample data
         /// </summary>
-        public static void SeedAdminPanelTempData(IServiceProvider serviceProvider)
+        public static void SeedSampleData(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {

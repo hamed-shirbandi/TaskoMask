@@ -2,6 +2,7 @@
 using Suzianna.Core.Screenplay;
 using Suzianna.Rest.Screenplay.Abilities;
 using System.Collections.Generic;
+using TaskoMask.Tests.Acceptance.Helpers;
 using TechTalk.SpecFlow;
 
 namespace TaskoMask.Tests.Acceptance.Hooks
@@ -21,7 +22,7 @@ namespace TaskoMask.Tests.Acceptance.Hooks
         [BeforeScenario("API-Level")]
         public void StageSetup()
         {
-            var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At("https://localhost:44314/") });
+            var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At(MagicKey.Configuration.API_Base_Url) });
             var stage = new Stage(cast);
             _objectContainer.RegisterInstanceAs(stage);
         }

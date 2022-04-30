@@ -89,6 +89,16 @@ namespace TaskoMask.Tests.Acceptance.Steps
 
 
 
+        [Given(@"John is a registered member")]
+        public void GivenJohnIsARegisteredMember(Table table)
+        {
+            _john.WhoCan(CallAnApi.At("https://localhost:44314/"));
+            _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
+            _john.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
+        }
+
+
+
         [When(@"Jane registers for a new account with John's email")]
         public void WhenJaneRegistersForANewAccountWithJohnsEmail(Table table)
         {

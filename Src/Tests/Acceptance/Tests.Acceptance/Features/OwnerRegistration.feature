@@ -17,9 +17,12 @@ Scenario: Registering online for a new owner account
 @OwnerScenarios
 Scenario: Preventing registration with duplicate email
 	Given Jane is not a registered member
+	And John is a registered member
+	| DisplayName	|Email					| Password	 |
+	| John			|John.NewMail@email.com | abc123	 |
 	When Jane registers for a new account with John's email
-	| DisplayName	|Email			| Password	 |
-	| Jane			|John@email.com | Jane458	 |
+	| DisplayName	|Email					| Password	 |
+	| Jane			|John.NewMail@email.com | Jane458	 |
 	Then Jane can not register
 
 

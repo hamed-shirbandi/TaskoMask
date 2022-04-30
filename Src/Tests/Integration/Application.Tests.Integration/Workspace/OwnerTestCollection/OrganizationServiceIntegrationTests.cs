@@ -5,12 +5,11 @@ using TaskoMask.Application.Tests.Integration.TestData;
 using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
 using TaskoMask.Application.Workspace.Organizations.Services;
 using Xunit;
-using Xunit.Priority;
 
 
 namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
 {
-    [TestCaseOrderer(PriorityOrderer.Assembly, PriorityOrderer.Name)]
+   
     [Collection("Owner Collection Fixture")]
     public class OTC2_OrganizationServiceIntegrationTests
     {
@@ -34,7 +33,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
         #region Test Mthods
 
 
-        [Fact, Priority(0)]
+        [Fact]
         public async Task Organization_Is_Created_Properly()
         {
             //Arrange

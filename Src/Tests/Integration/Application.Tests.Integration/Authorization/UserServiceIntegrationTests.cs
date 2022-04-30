@@ -4,11 +4,10 @@ using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Application.Tests.Integration.TestData;
 using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
 using Xunit;
-using Xunit.Priority;
+
 
 namespace TaskoMask.Application.Tests.Integration.Authorization
 {
-    [TestCaseOrderer(PriorityOrderer.Name, PriorityOrderer.Assembly)]
     public class UserServiceIntegrationTests : IClassFixture<UserClassFixture>
     {
         #region Fields
@@ -32,7 +31,7 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
 
 
 
-        [Fact, Priority(0)]
+        [Fact]
         public async Task User_Is_Created_Properly()
         {
             //Arrange
@@ -50,7 +49,7 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
 
 
 
-        [Fact, Priority(1)]
+        [Fact]
         public async Task User_Is_Fetched_Properly()
         {
             //Arrange
@@ -65,7 +64,7 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
 
 
 
-        [Fact, Priority(2)]
+        [Fact]
         public async Task User_Is_Updated_Properly()
         {
             //Arrange

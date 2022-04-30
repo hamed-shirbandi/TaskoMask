@@ -62,7 +62,7 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
                 items.Add(new User
                 {
                     IsActive = true,
-                    UserName = $"{prefix}_{i}",
+                    UserName = $"{prefix}_{i}@email.com",
                     PasswordSalt = "test",
                     PasswordHash = "test"
                 });
@@ -138,7 +138,7 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
                 items.Add(new Operator(user.Id)
                 {
                     DisplayName = $"Operator {i}",
-                    Email = $"Operator{i}@example.com",
+                    Email = user.UserName,
                     RolesId = rolesId.Take(roleTakeCount).ToArray(),
                 });
 

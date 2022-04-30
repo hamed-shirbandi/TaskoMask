@@ -25,7 +25,7 @@ namespace TaskoMask.Infrastructure.Data.Common.DataProviders
                 items.Add(new Owner(user.Id)
                 {
                     DisplayName = $"Owner {i}",
-                    Email = $"Owner{i}@example.com",
+                    Email = user.UserName,
                 });
 
                 i++;

@@ -11,11 +11,12 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 {
     /// <summary>
     /// Each test class must have its own fixture and each fixture initialize and dispose a unique database
-    /// So, we have control over parallel test run and lower cost for creating database
+    /// So, we have control over parallel test run and lower cost for creating database for tests
     /// ------------------* But *-----------------------------------------------
-    /// If you want TestsBaseFixture to be initialized and disposed for each test method in the class
-    /// You just need to  Inherit from TestsBaseFixture for that class
-    /// So the TestsBaseFixture initialize before each test method and then dispose after that test run
+    /// If you want the fixture to be initialized and disposed for each test method in a class
+    /// You just need to make a new dixture class by Inheriting from TestsBaseFixture (public class MyFixture:TestsBaseFixture)
+    /// And use that new fixture class as a base for the test class (public class MyTestsClass:MyFixture)
+    /// So the fixture initialize before each test method and then dispose after that test run
     /// ------------------* But *-----------------------------------------------
     /// If you want to share TestsBaseFixture for all test methods in a Test Class
     /// You just need to Inherit from IClassFixture<TestsBaseFixture> for that class
@@ -51,19 +52,18 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
         {
             _serviceProvider = GetServiceProvider(dbNameSuffix);
             InitializeDatabases();
-            SeedSampleData();
         }
 
 
         #endregion
 
-        #region Public Methods
+        #region Protected Methods
 
 
         /// <summary>
         /// Get required services for each service
         /// </summary>
-        public T GetRequiredService<T>()
+        protected T GetRequiredService<T>()
         {
             return _serviceProvider.GetRequiredService<T>();
         }
@@ -73,7 +73,7 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
         /// <summary>
         /// Seed some sample data in the database for the fixture
         /// </summary>
-        public void SeedSampleData()
+        protected void SeedSampleData()
         {
             WriteDbSeedData.SeedSampleData(_serviceProvider);
             ReadDbSeedData.SyncSampleData(_serviceProvider);

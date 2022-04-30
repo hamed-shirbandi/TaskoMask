@@ -43,8 +43,6 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
             //Assert
             result.IsSuccess.Should().BeTrue();
             result.Value.EntityId.Should().NotBeNull();
-
-            _fixture.SaveToMemeory(MagicKey.User.Created_User_Id, result.Value.EntityId);
         }
 
 
@@ -53,7 +51,7 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
         public async Task User_Is_Fetched_Properly()
         {
             //Arrange
-            var createdUserId = _fixture.GetFromMemeory(MagicKey.User.Created_User_Id);
+            var createdUserId = "createdUserId";
 
             //Act
             var updatedUserResult = await _userService.GetByIdAsync(createdUserId);
@@ -68,7 +66,7 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
         public async Task User_Is_Updated_Properly()
         {
             //Arrange
-            var createdUserId = _fixture.GetFromMemeory(MagicKey.User.Created_User_Id);
+            var createdUserId = "createdUserId";
             var expectedUserName = "NewUserName";
 
             //Act

@@ -51,8 +51,6 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
             //Assert
             result.IsSuccess.Should().BeTrue();
             result.Value.EntityId.Should().NotBeNull();
-
-            _fixture.SaveToMemeory(MagicKey.Owner.Created_Owner_Id, result.Value.EntityId);
         }
 
 

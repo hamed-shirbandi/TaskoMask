@@ -41,7 +41,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
             {
                 Name = "Test Organization Name",
                 Description = "Test Organization Description",
-                OwnerId = _fixture.GetFromMemeory(MagicKey.Owner.Created_Owner_Id),
+                OwnerId = "OwnerId",
             };
 
             //Act
@@ -51,7 +51,6 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
             result.IsSuccess.Should().BeTrue();
             result.Value.EntityId.Should().NotBeNull();
 
-            _fixture.SaveToMemeory(MagicKey.Organization.Created_Organization_Id, result.Value.EntityId);
         }
 
 

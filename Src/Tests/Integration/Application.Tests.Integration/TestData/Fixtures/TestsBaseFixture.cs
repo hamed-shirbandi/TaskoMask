@@ -24,7 +24,6 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
         #region Fields
 
         private readonly IServiceProvider _serviceProvider;
-        private readonly IDictionary<string, string> _memorise;
 
         #endregion
 
@@ -32,7 +31,6 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 
         public TestsBaseFixture(string dbNameSuffix)
         {
-            _memorise = new Dictionary<string, string>();
             _serviceProvider = GetServiceProvider(dbNameSuffix);
             InitializeDatabases();
         }
@@ -49,30 +47,6 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
         {
             return _serviceProvider.GetRequiredService<T>();
         }
-
-
-        /// <summary>
-        /// Save data across all of the tests that fixture is shared between
-        /// Use it when a test need a data from previous tests
-        /// </summary>
-        public void SaveToMemeory(string key, string value)
-        {
-            _memorise.Add(key, value);
-        }
-
-
-
-        /// <summary>
-        /// Get data by its key
-        /// Use it when a test need a data from previous tests
-        /// </summary>
-        public string GetFromMemeory(string key)
-        {
-            _memorise.TryGetValue(key, out string value);
-            return value;
-        }
-
-
 
         #endregion
 

@@ -84,6 +84,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [Given(@"Jane is not a registered member")]
         public void GivenJaneIsNotARegisteredMember()
         {
+            _jane.WhoCan(CallAnApi.At("https://localhost:44314/"));
         }
 
 
@@ -91,6 +92,8 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [When(@"Jane registers for a new account with John's email")]
         public void WhenJaneRegistersForANewAccountWithJohnsEmail(Table table)
         {
+            _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
+            _jane.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
         }
 
 
@@ -98,13 +101,8 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [Then(@"Jane can not register")]
         public void ThenJaneCanNotRegister()
         {
-        }
-
-
-
-        [Then(@"Jane is not in owners List")]
-        public void ThenJaneIsNotInOwnersList()
-        {
+            var registerResult = _jane.Recall<Result<UserJwtTokenDto>>(MagicKey.Owner.Regiser_Result);
+            registerResult.IsSuccess.Should().BeFalse();
         }
 
 

@@ -21,6 +21,5 @@ Scenario: Preventing registration with duplicate email
 	| DisplayName	|Email			| Password	 |
 	| Jane			|John@email.com | Jane458	 |
 	Then Jane can not register
-	And Jane is not in owners List
 
 

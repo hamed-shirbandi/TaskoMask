@@ -1,12 +1,15 @@
 ﻿
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+using System.Threading.Tasks;
+using TaskoMask.Application.Workspace.Owners.Services;
+using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 {
 
-    /// <summary>
-    /// 
-    /// </summary>
     [CollectionDefinition(nameof(OwnerCollectionFixture))]
     public class OwnerCollectionFixtureDefinition : ICollectionFixture<OwnerCollectionFixture>
     {
@@ -18,9 +21,25 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 
     public class OwnerCollectionFixture : TestsBaseFixture
     {
-        public OwnerCollectionFixture( ) : base(dbNameSuffix: nameof(OwnerCollectionFixture))
+        public readonly IOwnerService OwnerService;
+        private readonly IWriteDbContext _writeDbContext;
+
+        public OwnerCollectionFixture() : base(dbNameSuffix: nameof(OwnerCollectionFixture))
         {
             SeedSampleData();
+            OwnerService = GetRequiredService<IOwnerService>();
+            _writeDbContext = GetRequiredService<IWriteDbContext>();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Owner> GetSampleOwnerAsync()
+        {
+            var _users = _writeDbContext.GetCollection<Owner>();
+            return await _users.AsQueryable().Sample(1).SingleOrDefaultAsync();
         }
     }
 }

@@ -9,7 +9,6 @@ Scenario: Registering online for a new owner account
 	Given John is not a registered member
 	When John registers for a new account with his email
 	Then Joun can login
-	And John can see the dashboard data
 
 Examples:
 | DisplayName	|Email			| Password	 |
@@ -21,6 +20,7 @@ Scenario: Preventing registration with duplicate email
 	Given Jane is not a registered member
 	When Jane registers for a new account with john's email
 	Then Jane can not register
+	And Jane is not in owner List
 
 Examples:
 | DisplayName	|Email			| Password	 |

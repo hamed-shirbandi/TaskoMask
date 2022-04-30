@@ -7,19 +7,19 @@ using TechTalk.SpecFlow;
 namespace TaskoMask.Tests.Acceptance.Hooks
 {
     [Binding]
-    public class TestsBaseHook
+    public class StageSetupHook
     {
         private readonly IObjectContainer _objectContainer;
 
-        public TestsBaseHook(IObjectContainer objectContainer)
+        public StageSetupHook(IObjectContainer objectContainer)
         {
             _objectContainer = objectContainer;
         }
 
 
 
-        [BeforeScenario]
-        public void InitialStage()
+        [BeforeScenario("API-Level")]
+        public void StageSetup()
         {
             var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At("https://localhost:44314/") });
             var stage = new Stage(cast);

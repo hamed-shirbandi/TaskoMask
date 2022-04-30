@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Organizations.Services;
 using TaskoMask.Application.Workspace.Owners.Services;
+using TaskoMask.Application.Workspace.Projects.Services;
 using TaskoMask.Domain.ReadModel.Entities;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 using Xunit;
@@ -25,6 +26,7 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
     {
         public readonly IOwnerService OwnerService;
         public readonly IOrganizationService OrganizationService;
+        public readonly IProjectService ProjectService;
         private readonly IReadDbContext _readDbContext;
 
         public OwnerCollectionFixture() : base(dbNameSuffix: nameof(OwnerCollectionFixture))
@@ -32,6 +34,7 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
             SeedSampleData();
             OwnerService = GetRequiredService<IOwnerService>();
             OrganizationService = GetRequiredService<IOrganizationService>();
+            ProjectService = GetRequiredService<IProjectService>();
             _readDbContext = GetRequiredService<IReadDbContext>();
         }
 
@@ -55,6 +58,17 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
         {
             var _organizations = _readDbContext.GetCollection<Organization>();
             return await _organizations.AsQueryable().Sample(1).SingleOrDefaultAsync();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Project> GetSampleProjectAsync()
+        {
+            var _projects = _readDbContext.GetCollection<Project>();
+            return await _projects.AsQueryable().Sample(1).SingleOrDefaultAsync();
         }
 
 

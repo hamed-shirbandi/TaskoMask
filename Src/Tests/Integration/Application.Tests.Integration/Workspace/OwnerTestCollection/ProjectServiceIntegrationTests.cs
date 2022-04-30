@@ -10,21 +10,19 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
 {
 
     [Collection(nameof(OwnerCollectionFixture))]
-    public class OTC3_ProjectServiceIntegrationTests
+    public class ProjectServiceIntegrationTests
     {
         #region Fields
 
-        private readonly IProjectService _projectService;
         private readonly OwnerCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public OTC3_ProjectServiceIntegrationTests(OwnerCollectionFixture fixture)
+        public ProjectServiceIntegrationTests(OwnerCollectionFixture fixture)
         {
             _fixture = fixture;
-          //  _projectService = _fixture.GetRequiredService<IProjectService>();
         }
 
         #endregion

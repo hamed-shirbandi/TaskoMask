@@ -11,8 +11,17 @@ Scenario: Registering online for a new owner account
 	Then Joun can login
 	And John can see the dashboard data
 
+Examples:
+| DisplayName	|Email			| Password	 |
+| John			|John@email.com | John123	 |
+
+
 @OwnerScenarios
 Scenario: Preventing registration with duplicate email
 	Given Jane is not a registered member
 	When Jane registers for a new account with john's email
 	Then Jane can not register
+
+Examples:
+| DisplayName	|Email			| Password	 |
+| Jane			|John@email.com | Jane458	 |

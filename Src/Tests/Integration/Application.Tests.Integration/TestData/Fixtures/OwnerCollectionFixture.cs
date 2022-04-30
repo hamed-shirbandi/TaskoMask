@@ -7,7 +7,7 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
     /// <summary>
     /// 
     /// </summary>
-    [CollectionDefinition("Owner Collection Fixture")]
+    [CollectionDefinition(nameof(OwnerCollectionFixture))]
     public class OwnerCollectionFixtureDefinition : ICollectionFixture<OwnerCollectionFixture>
     {
         // This class has no code, and is never created. Its purpose is simply

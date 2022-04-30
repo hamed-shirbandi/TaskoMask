@@ -9,8 +9,8 @@ using Xunit;
 
 namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
 {
-    
-    [Collection("Owner Collection Fixture")]
+
+    [Collection(nameof(OwnerCollectionFixture))]
     public class OTC1_OwnerServiceIntegrationTests 
     {
         #region Fields

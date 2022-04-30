@@ -24,7 +24,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
         public OTC3_ProjectServiceIntegrationTests(OwnerCollectionFixture fixture)
         {
             _fixture = fixture;
-            _projectService = _fixture.GetRequiredService<IProjectService>();
+          //  _projectService = _fixture.GetRequiredService<IProjectService>();
         }
 
         #endregion

@@ -11,21 +11,19 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
 {
    
     [Collection(nameof(OwnerCollectionFixture))]
-    public class OTC2_OrganizationServiceIntegrationTests
+    public class OrganizationServiceIntegrationTests
     {
         #region Fields
 
-        private readonly IOrganizationService _organizationService;
         private readonly OwnerCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public OTC2_OrganizationServiceIntegrationTests(OwnerCollectionFixture fixture)
+        public OrganizationServiceIntegrationTests(OwnerCollectionFixture fixture)
         {
             _fixture = fixture;
-            _organizationService = _fixture.GetRequiredService<IOrganizationService>();
         }
 
         #endregion
@@ -45,7 +43,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
             };
 
             //Act
-            var result = await _organizationService.CreateAsync(dto);
+            var result = await _fixture.OrganizationService.CreateAsync(dto);
 
             //Assert
             result.IsSuccess.Should().BeTrue();

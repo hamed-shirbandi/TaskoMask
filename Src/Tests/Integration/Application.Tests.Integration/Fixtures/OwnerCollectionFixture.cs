@@ -10,7 +10,7 @@ using TaskoMask.Domain.ReadModel.Entities;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 using Xunit;
 
-namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
+namespace TaskoMask.Application.Tests.Integration.Fixtures
 {
 
     [CollectionDefinition(nameof(OwnerCollectionFixture))]

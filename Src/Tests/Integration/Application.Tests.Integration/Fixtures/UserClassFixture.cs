@@ -6,7 +6,7 @@ using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 using Xunit;
 
-namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
+namespace TaskoMask.Application.Tests.Integration.Fixtures
 {
 
     /// <summary>

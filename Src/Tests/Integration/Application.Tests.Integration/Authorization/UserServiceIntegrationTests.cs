@@ -1,8 +1,6 @@
 ﻿using FluentAssertions;
-using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
-using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
+using TaskoMask.Application.Tests.Integration.Fixtures;
 using Xunit;
 
 

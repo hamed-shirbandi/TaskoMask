@@ -7,7 +7,7 @@ using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
-namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
+namespace TaskoMask.Application.Tests.Integration.Fixtures
 {
     /// <summary>
     /// Each test class must have its own fixture and each fixture initialize and dispose a unique database

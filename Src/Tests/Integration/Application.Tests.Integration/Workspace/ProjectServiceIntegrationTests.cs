@@ -2,9 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Application.Tests.Integration.TestData;
-using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
-using TaskoMask.Application.Workspace.Projects.Services;
+using TaskoMask.Application.Tests.Integration.Fixtures;
 using Xunit;
 
 

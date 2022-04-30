@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Features\" />
-    <Folder Include="Screenplay\Owners\" />
   </ItemGroup>
 
 </Project>

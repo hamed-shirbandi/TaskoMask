@@ -57,6 +57,22 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 
 
 
+        [Fact]
+        public async Task Project_List_By_OrganizationId_Is_Fetched()
+        {
+            //Arrange
+            var expectedOrganization = await _fixture.GetSampleOrganizationAsync();
+
+            //Act
+            var result = await _fixture.ProjectService.GetListByOrganizationIdAsync(expectedOrganization.Id);
+
+            //Assert
+            result.IsSuccess.Should().BeTrue();
+            result.Value.Should().HaveCountGreaterThan(0);
+            var anyNotExpectedOrganizationId = result.Value.Any(o => o.OrganizationId != expectedOrganization.Id);
+            anyNotExpectedOrganizationId.Should().BeFalse();
+        }
+
 
 
         #endregion

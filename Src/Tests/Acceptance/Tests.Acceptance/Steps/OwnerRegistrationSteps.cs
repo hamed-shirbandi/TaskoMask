@@ -22,10 +22,13 @@ namespace TaskoMask.Tests.Acceptance.Steps
 
         #region Ctor
 
-        public OwnerRegistrationSteps()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stage"> Initialized by TestsBaseHook</param>
+        public OwnerRegistrationSteps(Stage stage)
         {
-            var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At("https://localhost:44314/") });
-            _stage = new Stage(cast);
+            _stage = stage;
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Application.Tests.Integration.TestData.Fixtures;
@@ -11,7 +12,6 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
     {
         #region Fields
 
-        private readonly IUserService _userService;
         private readonly UserClassFixture _fixture;
 
         #endregion
@@ -21,7 +21,6 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
         public UserServiceIntegrationTests(UserClassFixture fixture)
         {
             _fixture = fixture;
-            _userService = _fixture.GetRequiredService<IUserService>();
         }
 
         #endregion
@@ -34,11 +33,12 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
         public async Task User_Is_Created_Properly()
         {
             //Arrange
-
+            var userName = "TestUserName";
+            var password = "TestPass";
 
             //Act
-            var result = await _userService.CreateAsync("TestUserName", "TestPass");
-
+            var result = await _fixture.UserService.CreateAsync(userName, password);
+   
             //Assert
             result.IsSuccess.Should().BeTrue();
             result.Value.EntityId.Should().NotBeNull();
@@ -50,13 +50,14 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
         public async Task User_Is_Fetched_Properly()
         {
             //Arrange
-            var createdUserId = "createdUserId";
+            var expectedUser =await _fixture.GetSampleUserAsync();
 
             //Act
-            var updatedUserResult = await _userService.GetByIdAsync(createdUserId);
+            var result = await _fixture.UserService.GetByIdAsync(expectedUser.Id);
 
             //Assert
-            updatedUserResult.Value.Id.Should().Be(createdUserId);
+            result.IsSuccess.Should().BeTrue();
+            result.Value.UserName.Should().Be(expectedUser.UserName);
         }
 
 
@@ -65,15 +66,15 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
         public async Task User_Is_Updated_Properly()
         {
             //Arrange
-            var createdUserId = "createdUserId";
+            var userToUpdate = await _fixture.GetSampleUserAsync();
             var expectedUserName = "NewUserName";
 
             //Act
-            var result = await _userService.UpdateUserNameAsync(createdUserId, expectedUserName);
-            var updatedUserResult = await _userService.GetByIdAsync(createdUserId);
+            var result = await _fixture.UserService.UpdateUserNameAsync(userToUpdate.Id, expectedUserName);
 
             //Assert
             result.IsSuccess.Should().BeTrue();
+            var updatedUserResult = await _fixture.UserService.GetByIdAsync(userToUpdate.Id);
             updatedUserResult.Value.UserName.Should().Be(expectedUserName);
         }
 

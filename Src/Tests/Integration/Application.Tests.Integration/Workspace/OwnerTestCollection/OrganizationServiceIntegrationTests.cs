@@ -35,11 +35,12 @@ namespace TaskoMask.Application.Tests.Integration.Workspace.OwnerTestCollection
         public async Task Organization_Is_Created_Properly()
         {
             //Arrange
+            var owner = await _fixture.GetSampleOwnerAsync();
             var dto = new OrganizationUpsertDto
             {
                 Name = "Test Organization Name",
                 Description = "Test Organization Description",
-                OwnerId = "OwnerId",
+                OwnerId = owner.Id,
             };
 
             //Act

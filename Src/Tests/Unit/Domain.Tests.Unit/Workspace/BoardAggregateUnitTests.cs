@@ -33,7 +33,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Board_Is_Constructed_Properly()
+        public void Board_Is_Constructed()
         {
 
             //Arrange
@@ -55,7 +55,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Board_Created_Event_Is_Raised_When_Board_Is_Constructed_Properly()
+        public void Board_Created_Event_Is_Raised_When_Board_Is_Constructed()
         {
 
             //Arrange
@@ -146,7 +146,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Card_Is_Created_Properly()
+        public void Card_Is_Created()
         {
 
             //Arrange

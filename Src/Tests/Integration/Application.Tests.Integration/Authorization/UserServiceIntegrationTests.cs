@@ -25,12 +25,12 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
 
         #endregion
 
-        #region Test Mthods
+        #region Test Methods
 
 
 
         [Fact]
-        public async Task User_Is_Created_Properly()
+        public async Task User_Is_Created()
         {
             //Arrange
             var userName = "TestUserName";
@@ -47,7 +47,7 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
 
 
         [Fact]
-        public async Task User_Is_Fetched_Properly()
+        public async Task User_Is_Fetched()
         {
             //Arrange
             var expectedUser =await _fixture.GetSampleUserAsync();
@@ -63,7 +63,7 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
 
 
         [Fact]
-        public async Task User_Is_Updated_Properly()
+        public async Task User_Is_Updated()
         {
             //Arrange
             var userToUpdate = await _fixture.GetSampleUserAsync();

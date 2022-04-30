@@ -30,7 +30,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
         [Fact]
-        public async void User_Is_Created_Properly()
+        public async void User_Is_Created()
         {
             //Arrange
             var expectedUserName = "TestUserName";

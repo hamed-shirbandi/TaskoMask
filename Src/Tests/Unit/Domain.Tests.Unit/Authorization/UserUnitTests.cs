@@ -9,7 +9,7 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
     {
 
         [Fact]
-        public void User_Is_Constructed_Properly()
+        public void User_Is_Constructed()
         {
             //Arrange
             var expectedUserName = "TestUserName";
@@ -26,7 +26,7 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
 
 
         [Fact]
-        public void User_Is_Updated_Properly()
+        public void User_Is_Updated()
         {
             //Arrange
             var user = UserObjectMother.CreateNewUser();
@@ -43,7 +43,7 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
 
 
         [Fact]
-        public void User_Is_Deleted_Properly()
+        public void User_Is_Deleted()
         {
             //Arrange
             var user = UserObjectMother.CreateNewUser();
@@ -58,7 +58,7 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
 
 
         [Fact]
-        public void User_Is_Recycled_Properly()
+        public void User_Is_Recycled()
         {
             //Arrange
             var user = UserObjectMother.CreateNewUser();

@@ -13,7 +13,7 @@ namespace TaskoMask.Domain.Tests.Unit.Membership
     {
 
         [Fact]
-        public void Operator_Is_Constructed_Properly()
+        public void Operator_Is_Constructed()
         {
             //Arrange
             var expectedEmail = "New@TaskoMask.ir";

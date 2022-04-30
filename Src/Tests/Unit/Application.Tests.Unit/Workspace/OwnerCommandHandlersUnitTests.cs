@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
         [Fact]
-        public async Task Owner_Is_Created_Properly()
+        public async Task Owner_Is_Created()
         {
             //Arrange
             var expectedUserId = ObjectId.GenerateNewId().ToString();
@@ -57,7 +57,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
         [Fact]
-        public async Task Owner_Is_Updated_Properly()
+        public async Task Owner_Is_Updated()
         {
             //Arrange
             var ownerToUpdate = _owners.First();
@@ -75,7 +75,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
         [Fact]
-        public async Task Owner_Is_Deleted_Properly()
+        public async Task Owner_Is_Deleted()
         {
             //Arrange
             var ownerToDelete = _owners.First();

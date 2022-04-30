@@ -32,7 +32,7 @@ namespace TaskoMask.Application.Tests.Unit.Membership
 
 
         [Fact]
-        public async void Operator_Is_Created_Properly()
+        public async void Operator_Is_Created()
         {
             //Arrange
             var operatorDto = OperatorObjectMother.CreateNewOperatorUpsertDto();

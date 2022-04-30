@@ -19,7 +19,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
     {
 
         [Fact]
-        public void Owner_Is_Constructed_Properly()
+        public void Owner_Is_Constructed()
         {
             //Arrange
             var ownerBuilder = OwnerBuilder.Init()
@@ -153,7 +153,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Organization_Is_Created_Properly()
+        public void Organization_Is_Created()
         {
 
             //Arrange
@@ -174,7 +174,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Project_Is_Created_Properly()
+        public void Project_Is_Created()
         {
             //Arrange
             var owner = OwnerObjectMother.CreateNewOwnerWithAnOrganization();

@@ -53,6 +53,20 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 
 
 
+        [Fact]
+        public async Task Owner_Details_Is_Fetched()
+        {
+            //Arrange
+            var expectedOwner = await _fixture.GetSampleOwnerAsync();
+
+            //Act
+            var result = await _fixture.OwnerService.GetDetailsAsync(expectedOwner.Id);
+
+            //Assert
+            result.IsSuccess.Should().BeTrue();
+            result.Value.Owner.UserInfo.UserName.Should().Be(expectedOwner.UserName);
+            result.Value.Organizations.Should().HaveCountGreaterThan(0);
+        }
 
 
         #endregion

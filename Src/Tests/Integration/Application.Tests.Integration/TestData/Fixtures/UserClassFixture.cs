@@ -9,8 +9,9 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
     /// </summary>
     public class UserClassFixture : TestsBaseFixture
     {
-        public UserClassFixture( ) : base(dbNameSuffix: "UserClassFixture")
+        public UserClassFixture( ) : base(dbNameSuffix: nameof(UserClassFixture))
         {
+            SeedSampleData();
         }
     }
 }

@@ -18,8 +18,9 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
 
     public class OwnerCollectionFixture : TestsBaseFixture
     {
-        public OwnerCollectionFixture( ) : base(dbNameSuffix: "OwnerCollectionFixture")
+        public OwnerCollectionFixture( ) : base(dbNameSuffix: nameof(OwnerCollectionFixture))
         {
+            SeedSampleData();
         }
     }
 }

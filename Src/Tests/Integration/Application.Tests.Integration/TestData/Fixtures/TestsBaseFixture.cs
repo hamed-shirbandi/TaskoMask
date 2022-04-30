@@ -51,7 +51,9 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
         {
             _serviceProvider = GetServiceProvider(dbNameSuffix);
             InitializeDatabases();
+            SeedSampleData();
         }
+
 
         #endregion
 
@@ -65,6 +67,19 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
         {
             return _serviceProvider.GetRequiredService<T>();
         }
+
+
+
+        /// <summary>
+        /// Seed some sample data in the database for the fixture
+        /// </summary>
+        public void SeedSampleData()
+        {
+            WriteDbSeedData.SeedSampleData(_serviceProvider);
+            ReadDbSeedData.SyncSampleData(_serviceProvider);
+        }
+
+
 
         #endregion
 
@@ -88,6 +103,7 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
                                    new KeyValuePair<string,string>("Mongo:Read:Database", $"TaskoMask_ReadDB_Test_{dbNameSuffix}"),
                                 })
                                 .Build();
+
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 
             services.AddCommonConfigureServices(configuration);
@@ -119,6 +135,7 @@ namespace TaskoMask.Application.Tests.Integration.TestData.Fixtures
             WriteDbInitialization.DropDatabase(_serviceProvider);
             ReadDbInitialization.DropDatabase(_serviceProvider);
         }
+
 
 
         #endregion

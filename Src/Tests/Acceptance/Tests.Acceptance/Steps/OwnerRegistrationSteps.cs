@@ -12,7 +12,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
             throw new PendingStepException();
         }
 
-        [When(@"John registers for new account")]
+        [When(@"John registers for a new account with his email")]
         public void WhenJohnRegistersForNewAccount()
         {
             throw new PendingStepException();
@@ -29,5 +29,25 @@ namespace TaskoMask.Tests.Acceptance.Steps
         {
             throw new PendingStepException();
         }
+
+
+        [Given(@"Jane is not a registered member")]
+        public void GivenJaneIsNotARegisteredMember()
+        {
+            throw new PendingStepException();
+        }
+
+        [When(@"Jane registers for a new account with john's email")]
+        public void WhenJaneRegistersForANewAccountWithJohnsEmail()
+        {
+            throw new PendingStepException();
+        }
+
+        [Then(@"Jane can not register")]
+        public void ThenJaneCanNotRegister()
+        {
+            throw new PendingStepException();
+        }
+
     }
 }

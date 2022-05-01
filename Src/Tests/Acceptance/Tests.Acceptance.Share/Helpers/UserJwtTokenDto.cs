@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Tests.Acceptance.Helpers
+namespace TaskoMask.Tests.Acceptance.Share.Helpers
 {
     public class UserJwtTokenDto
     {

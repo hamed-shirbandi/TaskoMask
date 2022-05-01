@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TaskoMask.Tests.Acceptance.Helpers
+namespace TaskoMask.Tests.Acceptance.Share.Helpers
 {
 
     /// <summary>

@@ -2,7 +2,7 @@ using FluentAssertions;
 using Suzianna.Core.Screenplay;
 using Suzianna.Rest.Screenplay.Abilities;
 using System.Collections.Generic;
-using TaskoMask.Tests.Acceptance.Helpers;
+using TaskoMask.Tests.Acceptance.Share.Helpers;
 using TaskoMask.Tests.Acceptance.Models.Owners;
 using TaskoMask.Tests.Acceptance.Screenplay.Owners.Tasks;
 using TechTalk.SpecFlow;

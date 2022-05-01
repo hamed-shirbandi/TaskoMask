@@ -69,8 +69,8 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [Then(@"John log in successfully")]
         public void ThenJohnLogInSuccessfully()
         {
-            var loginResult = _stage.ActorInTheSpotlight.Recall<Result<UserJwtTokenDto>>(MagicKey.Owner.Login_Result);
-            loginResult.IsSuccess.Should().BeTrue();
+            var loginResult = _stage.ActorInTheSpotlight.Recall<bool>(MagicKey.Owner.Login_Result);
+            loginResult.Should().BeTrue();
         }
 
 
@@ -113,8 +113,8 @@ namespace TaskoMask.Tests.Acceptance.Steps
         [Then(@"Jane can not register")]
         public void ThenJaneCanNotRegister()
         {
-            var registerResult = _stage.ActorInTheSpotlight.Recall<Result<UserJwtTokenDto>>(MagicKey.Owner.Regiser_Result);
-            registerResult.IsSuccess.Should().BeFalse();
+            var registerResult = _stage.ActorInTheSpotlight.Recall<bool>(MagicKey.Owner.Regiser_Result);
+            registerResult.Should().BeFalse();
         }
 
 

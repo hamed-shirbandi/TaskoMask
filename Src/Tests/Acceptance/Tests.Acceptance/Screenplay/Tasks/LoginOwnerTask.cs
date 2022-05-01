@@ -5,7 +5,7 @@ using Suzianna.Rest.Screenplay.Questions;
 using TaskoMask.Tests.Acceptance.Share.Helpers;
 using TaskoMask.Tests.Acceptance.Share.Models;
 
-namespace TaskoMask.Tests.Acceptance.Screenplay.Owners.Tasks
+namespace TaskoMask.Tests.Acceptance.Screenplay.Tasks
 {
     public class LoginOwnerTask : ITask
     {

@@ -22,9 +22,7 @@ namespace TaskoMask.Tests.Acceptance.Hooks
         [BeforeScenario("UI-Level")]
         public void StageSetup()
         {
-            //var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At(MagicKey.Configuration.API_Base_Url) });
-            //var stage = new Stage(cast);
-            //_objectContainer.RegisterInstanceAs(stage);
+            //TODO: Setup selenium dirvers
         }
     }
 }

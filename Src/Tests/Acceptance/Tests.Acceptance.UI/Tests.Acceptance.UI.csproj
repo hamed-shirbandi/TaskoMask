@@ -10,4 +10,9 @@
     <ProjectReference Include="..\Tests.Acceptance.Share\Tests.Acceptance.Share.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Questions\" />
+    <Folder Include="Tasks\" />
+  </ItemGroup>
+
 </Project>

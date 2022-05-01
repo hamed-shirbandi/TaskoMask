@@ -1,20 +1,27 @@
 ﻿using Suzianna.Core.Screenplay;
 using Suzianna.Core.Screenplay.Actors;
+using Suzianna.Rest.Screenplay.Interactions;
+using Suzianna.Rest.Screenplay.Questions;
+using TaskoMask.Tests.Acceptance.Share.Helpers;
 using TaskoMask.Tests.Acceptance.Share.Models;
+using TaskoMask.Tests.Acceptance.Share.Tasks;
 
 namespace TaskoMask.Tests.Acceptance.API.Tasks
 {
-    public class RegisterOwnerApiTask : ITask
+    public class RegisterOwnerApiTask : RegisterOwnerTask
     {
-
-        public RegisterOwnerApiTask()
+        public RegisterOwnerApiTask(OwnerRegisterDto ownerRegisterDto) : base(ownerRegisterDto)
         {
 
         }
 
 
-        public void PerformAs<T>(T actor) where T : Actor
+        protected override bool DoRegister<T>(T actor)
         {
+            actor.AttemptsTo(Post.DataAsJson(OwnerRegisterDto).To("account/register"));
+            var result = actor.AsksFor(LastResponse.Content<Result<UserJwtTokenDto>>());
+            return result.IsSuccess;
         }
+
     }
 }

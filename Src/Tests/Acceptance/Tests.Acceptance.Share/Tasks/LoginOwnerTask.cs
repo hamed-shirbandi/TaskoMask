@@ -5,21 +5,24 @@ using TaskoMask.Tests.Acceptance.Share.Models;
 
 namespace TaskoMask.Tests.Acceptance.Share.Tasks
 {
-    public class LoginOwnerTask : ITask
+    public abstract class LoginOwnerTask : ITask
     {
-        private readonly OwnerLoginDto _ownerLoginDto;
+        protected readonly OwnerLoginDto OwnerLoginDto;
 
         public LoginOwnerTask(OwnerLoginDto ownerLoginDto)
         {
-            _ownerLoginDto = ownerLoginDto;
+            OwnerLoginDto = ownerLoginDto;
         }
 
 
         public void PerformAs<T>(T actor) where T : Actor
         {
-            //actor.AttemptsTo(Post.DataAsJson(_ownerLoginDto).To("account/login"));
-            //var result = actor.AsksFor(LastResponse.Content<Result<UserJwtTokenDto>>());
-           // actor.Remember(MagicKey.Owner.Login_Result, result);
+            var result = DoLogin(actor);
+
+            actor.Remember(MagicKey.Owner.Login_Result, result);
         }
+
+
+        protected abstract bool DoLogin<T>(T actor) where T : Actor;
     }
 }

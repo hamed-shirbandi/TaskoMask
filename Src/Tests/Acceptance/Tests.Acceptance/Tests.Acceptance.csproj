@@ -22,4 +22,8 @@
     <Folder Include="Screenplay\Owners\Questions\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tests.Acceptance.Share\Tests.Acceptance.Share.csproj" />
+  </ItemGroup>
+
 </Project>

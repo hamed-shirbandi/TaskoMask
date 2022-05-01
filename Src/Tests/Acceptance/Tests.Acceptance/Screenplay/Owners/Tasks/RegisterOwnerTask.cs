@@ -3,7 +3,7 @@ using Suzianna.Core.Screenplay.Actors;
 using Suzianna.Rest.Screenplay.Interactions;
 using Suzianna.Rest.Screenplay.Questions;
 using TaskoMask.Tests.Acceptance.Share.Helpers;
-using TaskoMask.Tests.Acceptance.Models.Owners;
+using TaskoMask.Tests.Acceptance.Share.Models;
 
 namespace TaskoMask.Tests.Acceptance.Screenplay.Owners.Tasks
 {

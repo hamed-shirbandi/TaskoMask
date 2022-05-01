@@ -1,10 +1,8 @@
 using FluentAssertions;
 using Suzianna.Core.Screenplay;
-using Suzianna.Rest.Screenplay.Abilities;
-using System.Collections.Generic;
+using TaskoMask.Tests.Acceptance.Screenplay;
 using TaskoMask.Tests.Acceptance.Share.Helpers;
 using TaskoMask.Tests.Acceptance.Share.Models;
-using TaskoMask.Tests.Acceptance.Share.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -49,7 +47,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         public void WhenJohnRegistersForANewAccountWithHisEmail(Table table)
         {
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
-            _stage.ActorInTheSpotlight.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.RegisterOwnerTask(_ownerRegisterDto));
         }
 
 
@@ -63,7 +61,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
                 Password = _ownerRegisterDto.Password,
             };
 
-            _stage.ActorInTheSpotlight.AttemptsTo(new LoginOwnerTask(ownerLoginDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.LoginOwnerTask(ownerLoginDto));
         }
 
 
@@ -90,7 +88,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
 
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
 
-            _stage.ActorInTheSpotlight.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.RegisterOwnerTask(_ownerRegisterDto));
         }
 
 
@@ -107,7 +105,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         public void WhenJaneRegistersForANewAccountWithJohnsEmail(Table table)
         {
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
-            _stage.ActorInTheSpotlight.AttemptsTo(new RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.RegisterOwnerTask(_ownerRegisterDto));
         }
 
 

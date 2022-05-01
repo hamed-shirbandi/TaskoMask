@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskoMask.Tests.Acceptance.API.Tasks;
 using TaskoMask.Tests.Acceptance.Share.Models;
 
 namespace TaskoMask.Tests.Acceptance.Screenplay
@@ -12,13 +13,15 @@ namespace TaskoMask.Tests.Acceptance.Screenplay
     {
         public static ITask LoginOwnerTask(OwnerLoginDto ownerLoginDto)
         {
-            return null;
+            //TODO: dynamic select between api level and ui level 
+            return new LoginOwnerAPITask(ownerLoginDto);
         }
 
 
         public static ITask RegisterOwnerTask(OwnerRegisterDto ownerRegisterDto)
         {
-            return null;
+            //TODO: dynamic select between api level and ui level 
+            return new RegisterOwnerApiTask(ownerRegisterDto);
         }
     }
 }

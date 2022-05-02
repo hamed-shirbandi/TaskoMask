@@ -1,6 +1,6 @@
 ﻿using System;
-using TaskoMask.Tests.Acceptance.Share.Models;
-using TaskoMask.Tests.Acceptance.Share.Screenplay.Tasks;
+using TaskoMask.Tests.Acceptance.Core.Models;
+using TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks;
 
 namespace TaskoMask.Tests.Acceptance.UI.Tasks
 {

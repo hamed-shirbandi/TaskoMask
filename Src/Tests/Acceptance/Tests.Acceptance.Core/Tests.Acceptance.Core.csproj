@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<AssemblyName>TaskoMask.Tests.Acceptance.Share</AssemblyName>
-		<RootNamespace>TaskoMask.Tests.Acceptance.Share</RootNamespace>
+		<AssemblyName>TaskoMask.Tests.Acceptance.Core</AssemblyName>
+		<RootNamespace>TaskoMask.Tests.Acceptance.Core</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Suzianna.Core" Version="1.1.0" />

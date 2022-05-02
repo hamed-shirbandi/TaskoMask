@@ -1,10 +1,10 @@
 ﻿using Suzianna.Core.Screenplay;
 using Suzianna.Core.Screenplay.Questions;
-using TaskoMask.Tests.Acceptance.Share.Models;
-using TaskoMask.Tests.Acceptance.Share.Screenplay.Questions;
-using TaskoMask.Tests.Acceptance.Share.Screenplay.Tasks;
+using TaskoMask.Tests.Acceptance.Core.Models;
+using TaskoMask.Tests.Acceptance.Core.Screenplay.Questions;
+using TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks;
 
-namespace TaskoMask.Tests.Acceptance.Share.Screenplay
+namespace TaskoMask.Tests.Acceptance.Core.Screenplay
 {
     public static class Perform
     {

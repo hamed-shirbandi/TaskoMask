@@ -1,9 +1,9 @@
 ﻿using Suzianna.Core.Screenplay;
 using Suzianna.Core.Screenplay.Actors;
-using TaskoMask.Tests.Acceptance.Share.Helpers;
-using TaskoMask.Tests.Acceptance.Share.Models;
+using TaskoMask.Tests.Acceptance.Core.Helpers;
+using TaskoMask.Tests.Acceptance.Core.Models;
 
-namespace TaskoMask.Tests.Acceptance.Share.Screenplay.Tasks
+namespace TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks
 {
     public abstract class RegisterOwnerTask : ITask
     {

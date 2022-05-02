@@ -2,9 +2,9 @@
 using Suzianna.Core.Screenplay.Actors;
 using Suzianna.Rest.Screenplay.Interactions;
 using Suzianna.Rest.Screenplay.Questions;
-using TaskoMask.Tests.Acceptance.Share.Helpers;
-using TaskoMask.Tests.Acceptance.Share.Models;
-using TaskoMask.Tests.Acceptance.Share.Screenplay.Tasks;
+using TaskoMask.Tests.Acceptance.Core.Helpers;
+using TaskoMask.Tests.Acceptance.Core.Models;
+using TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks;
 
 namespace TaskoMask.Tests.Acceptance.API.Tasks
 {

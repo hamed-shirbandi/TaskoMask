@@ -7,9 +7,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskoMask.Tests.Acceptance.Share.Helpers
+namespace TaskoMask.Tests.Acceptance.Core.Helpers
 {
-    public static class Reflector
+    internal static class Reflector
     {
         public static IDictionary<string, Type> GetScreenplayTypes(this Assembly assembly)
         {

@@ -49,7 +49,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Tests.Acceptance.API\Tests.Acceptance.API.csproj" />
-		<ProjectReference Include="..\Tests.Acceptance.Share\Tests.Acceptance.Share.csproj" />
+		<ProjectReference Include="..\Tests.Acceptance.Core\Tests.Acceptance.Core.csproj" />
 		<ProjectReference Include="..\Tests.Acceptance.UI\Tests.Acceptance.UI.csproj" />
 	</ItemGroup>
 

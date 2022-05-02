@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Tests.Acceptance.Share.Helpers
+namespace TaskoMask.Tests.Acceptance.Core.Helpers
 {
     public static class MagicKey
     {

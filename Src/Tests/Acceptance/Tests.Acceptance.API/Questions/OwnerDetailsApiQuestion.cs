@@ -1,7 +1,7 @@
 ﻿using Suzianna.Rest.Screenplay.Interactions;
 using Suzianna.Rest.Screenplay.Questions;
-using TaskoMask.Tests.Acceptance.Share.Models;
-using TaskoMask.Tests.Acceptance.Share.Screenplay.Questions;
+using TaskoMask.Tests.Acceptance.Core.Models;
+using TaskoMask.Tests.Acceptance.Core.Screenplay.Questions;
 
 namespace TaskoMask.Tests.Acceptance.API.Screenplay.Questions
 {

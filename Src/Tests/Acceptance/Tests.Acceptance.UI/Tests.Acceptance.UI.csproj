@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tests.Acceptance.Share\Tests.Acceptance.Share.csproj" />
+    <ProjectReference Include="..\Tests.Acceptance.Core\Tests.Acceptance.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

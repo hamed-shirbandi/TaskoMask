@@ -2,7 +2,7 @@
 using Suzianna.Core.Screenplay;
 using Suzianna.Rest.Screenplay.Abilities;
 using System.Collections.Generic;
-using TaskoMask.Tests.Acceptance.Share.Helpers;
+using TaskoMask.Tests.Acceptance.Core.Helpers;
 using TechTalk.SpecFlow;
 
 namespace TaskoMask.Tests.Acceptance.Hooks

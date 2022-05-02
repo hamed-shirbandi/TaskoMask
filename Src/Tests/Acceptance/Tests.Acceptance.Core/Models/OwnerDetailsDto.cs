@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskoMask.Tests.Acceptance.Share.Models
+namespace TaskoMask.Tests.Acceptance.Core.Models
 {
     public class OwnerDetailsDto
     {

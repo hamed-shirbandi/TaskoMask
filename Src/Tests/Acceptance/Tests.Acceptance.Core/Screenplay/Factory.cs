@@ -1,11 +1,11 @@
 ﻿using Suzianna.Core.Screenplay;
 using System;
 using System.Collections.Generic;
-using TaskoMask.Tests.Acceptance.Share.Helpers;
+using TaskoMask.Tests.Acceptance.Core.Helpers;
 
-namespace TaskoMask.Tests.Acceptance.Share.Screenplay
+namespace TaskoMask.Tests.Acceptance.Core.Screenplay
 {
-    public static class Factory
+    internal static class Factory
     {
         private static IDictionary<string, Type> _screenplayTypes;
 

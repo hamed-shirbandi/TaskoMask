@@ -7,10 +7,11 @@ namespace TaskoMask.Tests.Acceptance.Configuration
     public static class Config
     {
         private static IConfiguration _configuration;
-        public static string TestLevel;
-        public static string BaseApiUrl;
-        public static string BaseUiUrl;
-        public static Assembly TestLevelAssembly;
+        public static string TestLevel { get; private set; }
+        public static string BaseApiUrl { get; private set; }
+        public static string BaseUiUrl { get; private set; }
+        public static Assembly TestLevelAssembly { get; private set; }
+
 
         static Config()
         {
@@ -21,6 +22,11 @@ namespace TaskoMask.Tests.Acceptance.Configuration
             TestLevelAssembly = GetTestLevelAssembly();
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         private static Assembly GetTestLevelAssembly()
         {
             if (TestLevel == "API-Level")
@@ -29,6 +35,11 @@ namespace TaskoMask.Tests.Acceptance.Configuration
                return  Assembly.Load("TaskoMask.Tests.Acceptance.UI");
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         private static IConfiguration BuildConfiguration()
         {
             return new ConfigurationBuilder()
@@ -37,5 +48,6 @@ namespace TaskoMask.Tests.Acceptance.Configuration
                                 .AddJsonFile("appsettings.Development.json", optional: true)
                                 .Build();
         }
+
     }
 }

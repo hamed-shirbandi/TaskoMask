@@ -65,6 +65,8 @@ There is a list of our documentation:
       - NSubstitute
       - Gherkin
       - SpecFlow
+      - Suzianna
+      - Selenium
       -	MediatR
       -	AutoMapper
       -	FluentValidation
@@ -91,16 +93,33 @@ There is a list of our documentation:
       - Testing
          - [Unit Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Unit)
          - [Integration Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Integration)
+         - [E2E Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance/Tests.Acceptance.API)
+         - [UI Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance/Tests.Acceptance.UI)
          - [Acceptance Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance)
-         - E2E Testing
-         - Screenplay Pattern
-         - Test Data Builder Pattern
+            - Screenplay Pattern
+            - Well writen tests Organized in:
+                - Business Rule Layer
+                - Business Flow Layer
+                - Technical Layer
+            - Test from API level
+            - Test from UI level
          - Object Mother Pattern
          - Test Hooks
          - Test Doubles
             - Dummy
             - Stub
             - Mock
+        - Teardown
+            - Sandbox (for integration and acceptance tests)
+        - Fixture Management
+            - Fresh
+            - Shared
+            - Transient
+            - Persistent
+        - Verification
+            - State
+            - Output/Value
+            - Interaction/Behavior
       -	DDD
         - Rich Domain Model (for core domain)
         - Anemic Domain Model (for less important subdomains)
@@ -171,10 +190,11 @@ Find Hamed around the web and feel free to ask your question.
 
 # Change logs
 *	### Apr, 2022
-    - [x] Add Unit Tests for Domain Model and Application Services
-    - [x] Add Integration Tests for Application Services
+    - [x] Add Unit Tests
+    - [x] Add Integration Tests
     - [x] Add Acceptance Tests
     - [x] Add E2E Tests
+    - [x] Add UI Tests
 *	### Jan, 2022
     - [x] Full domain model refactoring by DDD concepts
     - [x] Separate Domain Model and Data Model

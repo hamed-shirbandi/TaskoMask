@@ -9,7 +9,7 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         private static IConfiguration _configuration;
         public static string TestLevel { get; private set; }
         public static string BaseApiUrl { get; private set; }
-        public static string BaseUiUrl { get; private set; }
+        public static string BaseWebUrl { get; private set; }
         public static Assembly TestLevelAssembly { get; private set; }
 
 
@@ -18,7 +18,7 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
             _configuration = BuildConfiguration();
             TestLevel = _configuration["TestLevelToExecute"];
             BaseApiUrl = _configuration["BaseApiUrl"];
-            BaseUiUrl = _configuration["BaseUiUrl"];
+            BaseWebUrl = _configuration["BaseWebUrl"];
             TestLevelAssembly = GetTestLevelAssembly();
         }
 

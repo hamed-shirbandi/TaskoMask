@@ -3,7 +3,7 @@ using Suzianna.Core.Screenplay.Actors;
 using TaskoMask.Tests.Acceptance.Share.Helpers;
 using TaskoMask.Tests.Acceptance.Share.Models;
 
-namespace Tests.Acceptance.Share.Screenplay.Tasks
+namespace TaskoMask.Tests.Acceptance.Share.Screenplay.Tasks
 {
     public abstract class LoginOwnerTask : ITask
     {

@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		<AssemblyName>TaskoMask.Tests.Acceptance.Share</AssemblyName>
+		<RootNamespace>TaskoMask.Tests.Acceptance.Share</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Suzianna.Core" Version="1.1.0" />

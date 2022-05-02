@@ -44,7 +44,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
 
 
         [When(@"John registers for a new account")]
-        public void WhenJohnRegistersForANewAccountWithHisEmail(Table table)
+        public void WhenJohnRegistersForANewAccount(Table table)
         {
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
             _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.RegisterOwnerTask(_ownerRegisterDto));

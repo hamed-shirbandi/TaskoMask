@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using TaskoMask.Tests.Acceptance.Share.Helpers;
 
-namespace TaskoMask.Tests.Acceptance.Screenplay
+namespace TaskoMask.Tests.Acceptance.Share.Screenplay
 {
     public static class Factory
     {
-        private static IDictionary<string,Type> _screenplayTypes;
+        private static IDictionary<string, Type> _screenplayTypes;
 
         static Factory()
         {
@@ -15,7 +15,7 @@ namespace TaskoMask.Tests.Acceptance.Screenplay
         }
 
 
-        public static T CreateTask<T>(params object[] parameters) where T:ITask
+        public static T CreateTask<T>(params object[] parameters) where T : ITask
         {
             return _screenplayTypes.GetInstanceOf<T>(parameters);
         }

@@ -1,8 +1,8 @@
 using FluentAssertions;
 using Suzianna.Core.Screenplay;
-using TaskoMask.Tests.Acceptance.Screenplay;
 using TaskoMask.Tests.Acceptance.Share.Helpers;
 using TaskoMask.Tests.Acceptance.Share.Models;
+using TaskoMask.Tests.Acceptance.Share.Screenplay;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 

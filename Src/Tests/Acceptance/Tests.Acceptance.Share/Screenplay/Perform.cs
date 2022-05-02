@@ -4,7 +4,7 @@ using TaskoMask.Tests.Acceptance.Share.Models;
 using TaskoMask.Tests.Acceptance.Share.Screenplay.Questions;
 using TaskoMask.Tests.Acceptance.Share.Screenplay.Tasks;
 
-namespace TaskoMask.Tests.Acceptance.Screenplay
+namespace TaskoMask.Tests.Acceptance.Share.Screenplay
 {
     public static class Perform
     {

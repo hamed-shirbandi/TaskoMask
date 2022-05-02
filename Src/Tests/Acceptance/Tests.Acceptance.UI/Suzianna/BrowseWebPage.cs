@@ -18,7 +18,8 @@ namespace TaskoMask.Tests.Acceptance.UI.Suzianna
 
         private BrowseWebPage(string baseUrl)
         {
-            Driver = new ChromeDriver();
+            BaseUrl = baseUrl;
+            Driver = new ChromeDriver(Environment.CurrentDirectory);
         }
 
         public void Dispose()
@@ -32,7 +33,5 @@ namespace TaskoMask.Tests.Acceptance.UI.Suzianna
             return new BrowseWebPage(baseApiUrl);
         }
 
-        //var ability=actor.FindAbility<BrowseWebPage>();
-        //ability.Driver.NavigateTo("");
     }
 }

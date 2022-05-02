@@ -1,20 +1,19 @@
-﻿using Suzianna.Core.Screenplay;
-using Suzianna.Core.Screenplay.Actors;
-
+﻿using TaskoMask.Tests.Acceptance.Share.Models;
+using Tests.Acceptance.Share.Screenplay.Tasks;
 
 namespace TaskoMask.Tests.Acceptance.UI.Tasks
 {
-    public class LoginOwnerUiTask : ITask
+    public class LoginOwnerUiTask : LoginOwnerTask
     {
-
-        public LoginOwnerUiTask( )
+        public LoginOwnerUiTask(OwnerLoginDto ownerLoginDto):base(ownerLoginDto)
         {
+
         }
 
 
-        public void PerformAs<T>(T actor) where T : Actor
+        protected override bool DoLogin<T>(T actor)
         {
-  
+            throw new NotImplementedException();
         }
     }
 }

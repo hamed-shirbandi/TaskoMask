@@ -7,18 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="appsettings.Development.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="appsettings.Development.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -35,6 +23,8 @@
 
 	<Target Name="CopyConfig" AfterTargets="AfterBuild">
 		<Copy SourceFiles="..\..\..\Presentation\3-UI\AdminPanel\appsettings.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\..\Presentation\3-UI\AdminPanel\appsettings.Development.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\..\Presentation\3-UI\AdminPanel\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
 	</Target>
 
   <ItemGroup>

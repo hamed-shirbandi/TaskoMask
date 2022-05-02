@@ -6,7 +6,7 @@ using TaskoMask.Tests.Acceptance.Core.Screenplay;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
-namespace TaskoMask.Tests.Acceptance.Steps
+namespace TaskoMask.Tests.Acceptance.Specs.Steps
 {
     [Binding]
     public class OwnerRegistrationSteps

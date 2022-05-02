@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<AssemblyName>TaskoMask.Tests.Acceptance</AssemblyName>
-		<RootNamespace>TaskoMask.Tests.Acceptance</RootNamespace>
+		<AssemblyName>TaskoMask.Tests.Acceptance.Specs</AssemblyName>
+		<RootNamespace>TaskoMask.Tests.Acceptance.Specs</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

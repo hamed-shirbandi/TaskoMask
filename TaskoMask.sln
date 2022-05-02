@@ -57,7 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{F8D8DFB2-5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Acceptance", "Acceptance", "{FDA81CD0-E67C-4F8F-9C1B-7D2632581898}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance", "Src\Tests\Acceptance\Tests.Acceptance\Tests.Acceptance.csproj", "{D578C414-4FE4-4748-9BC4-3EB1C606B293}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.Specs", "Src\Tests\Acceptance\Tests.Acceptance.Specs\Tests.Acceptance.Specs.csproj", "{D578C414-4FE4-4748-9BC4-3EB1C606B293}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests.Integration", "Src\Tests\Integration\Application.Tests.Integration\Application.Tests.Integration.csproj", "{6C52AD1D-F37F-4214-9CDA-3B84154ED9B4}"
 EndProject

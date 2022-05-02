@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TaskoMask.Tests.Acceptance.Core.Helpers;
 using TechTalk.SpecFlow;
 
-namespace TaskoMask.Tests.Acceptance.Hooks
+namespace TaskoMask.Tests.Acceptance.Specs.Hooks
 {
     [Binding]
     public class StageSetupApiHook

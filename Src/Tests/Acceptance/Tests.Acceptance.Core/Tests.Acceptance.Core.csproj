@@ -9,5 +9,6 @@
 		<PackageReference Include="Suzianna.Core" Version="1.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+
 	</ItemGroup>
 </Project>

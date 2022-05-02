@@ -18,7 +18,7 @@ Scenario: Registering online for a new owner account
 
 @OwnerScenarios
 @API-Level
-#@UI-Level
+@UI-Level
 Scenario: Preventing registration with duplicate email
 
 	Given John is a registered member

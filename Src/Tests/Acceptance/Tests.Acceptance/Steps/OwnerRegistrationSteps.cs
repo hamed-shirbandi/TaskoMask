@@ -47,7 +47,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         public void WhenJohnRegistersForANewAccount(Table table)
         {
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
-            _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(Perform.RegisterOwner(_ownerRegisterDto));
         }
 
 
@@ -61,7 +61,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
                 Password = _ownerRegisterDto.Password,
             };
 
-            _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.LoginOwnerTask(ownerLoginDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(Perform.LoginOwner(ownerLoginDto));
         }
 
 
@@ -88,7 +88,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
 
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
 
-            _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(Perform.RegisterOwner(_ownerRegisterDto));
         }
 
 
@@ -105,7 +105,7 @@ namespace TaskoMask.Tests.Acceptance.Steps
         public void WhenJaneRegistersForANewAccountWithJohnsEmail(Table table)
         {
             _ownerRegisterDto = table.CreateInstance<OwnerRegisterDto>();
-            _stage.ActorInTheSpotlight.AttemptsTo(PerformTask.RegisterOwnerTask(_ownerRegisterDto));
+            _stage.ActorInTheSpotlight.AttemptsTo(Perform.RegisterOwner(_ownerRegisterDto));
         }
 
 

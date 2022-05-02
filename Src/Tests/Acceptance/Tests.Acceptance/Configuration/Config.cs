@@ -33,8 +33,8 @@ namespace TaskoMask.Tests.Acceptance.Configuration
         {
             return new ConfigurationBuilder()
                                 .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
-                                .AddJsonFile("appsettings.Development.json", optional: true)
                                 .AddJsonFile("appsettings.Staging.json", optional: true)
+                                .AddJsonFile("appsettings.Development.json", optional: true)
                                 .Build();
         }
     }

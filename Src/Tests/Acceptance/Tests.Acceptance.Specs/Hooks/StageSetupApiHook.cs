@@ -18,7 +18,9 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
         }
 
 
-
+        /// <summary>
+        /// This hook runs beafor each senario with API-Level tag
+        /// </summary>
         [BeforeScenario("API-Level")]
         public void StageSetup()
         {

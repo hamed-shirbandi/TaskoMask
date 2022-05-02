@@ -25,13 +25,15 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
 
 
         /// <summary>
-        /// 
+        /// When tests run, you need to specify what type of test level must handle it
+        /// If you want to run tests from UI level you must set UI-Level for TestLevelToExecute in appsettings
+        /// Or set API-Level to run tests from API level
         /// </summary>
         private static Assembly GetTestLevelAssembly()
         {
             if (TestLevel == "API-Level")
                return  Assembly.Load("TaskoMask.Tests.Acceptance.API");
-            else
+            else // For "UI-Level"
                return  Assembly.Load("TaskoMask.Tests.Acceptance.UI");
         }
 

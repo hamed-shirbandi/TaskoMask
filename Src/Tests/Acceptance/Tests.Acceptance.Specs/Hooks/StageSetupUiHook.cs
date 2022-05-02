@@ -1,8 +1,4 @@
 ﻿using BoDi;
-using Suzianna.Core.Screenplay;
-using Suzianna.Rest.Screenplay.Abilities;
-using System.Collections.Generic;
-using TaskoMask.Tests.Acceptance.Core.Helpers;
 using TechTalk.SpecFlow;
 
 namespace TaskoMask.Tests.Acceptance.Specs.Hooks
@@ -18,7 +14,9 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
         }
 
 
-
+        /// <summary>
+        /// This hook runs beafor each senario with UI-Level tag
+        /// </summary>
         [BeforeScenario("UI-Level")]
         public void StageSetup()
         {

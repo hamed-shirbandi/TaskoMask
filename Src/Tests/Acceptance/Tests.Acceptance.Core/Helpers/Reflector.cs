@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TaskoMask.Tests.Acceptance.Core.Helpers
 {
     internal static class Reflector
     {
+        /// <summary>
+        /// Get Task and Question types from given assembly
+        /// </summary>
         public static IDictionary<string, Type> GetScreenplayTypes(this Assembly assembly)
         {
             return assembly.GetExportedTypes()
@@ -18,6 +19,11 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
                 .ToDictionary(t => t.BaseType.Name, t => t);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static T GetInstanceOf<T>(this IDictionary<string, Type> types, object[] parameters)
         {
             var type = types[(typeof(T).Name)];
@@ -25,13 +31,21 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         }
 
 
-        public static bool IsTask(this Type type)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static bool IsTask(this Type type)
         {
             return type.BaseType.GetInterfaces().Contains(typeof(ITask));
         }
 
 
-        public static bool IsQuestion(this Type type)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static bool IsQuestion(this Type type)
         {
             return type.BaseType.GetInterfaces().Contains(typeof(IQuestion<>));
         }

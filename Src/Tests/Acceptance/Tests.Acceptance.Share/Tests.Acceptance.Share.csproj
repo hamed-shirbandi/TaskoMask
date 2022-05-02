@@ -9,6 +9,6 @@
 		<PackageReference Include="Suzianna.Core" Version="1.1.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Questions\" />
+	  <Folder Include="Screenplay\Questions\" />
 	</ItemGroup>
 </Project>

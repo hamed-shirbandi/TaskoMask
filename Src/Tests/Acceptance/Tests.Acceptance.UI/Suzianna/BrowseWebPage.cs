@@ -1,15 +1,15 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Suzianna.Core.Screenplay;
-using Suzianna.Core.Screenplay.Actors;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TaskoMask.Tests.Acceptance.UI.Suzianna
 {
+
+    /// <summary>
+    /// This is an extension for Suzianna
+    /// Because it's not support working with web pages as an ability
+    /// </summary>
     public class BrowseWebPage : IAbility, IDisposable
     {
         public IWebDriver Driver { get; private set; }
@@ -22,16 +22,19 @@ namespace TaskoMask.Tests.Acceptance.UI.Suzianna
             Driver = new ChromeDriver(Environment.CurrentDirectory);
         }
 
+
+        public static BrowseWebPage At(string baseApiUrl)
+        {
+            return new BrowseWebPage(baseApiUrl);
+        }
+
+
         public void Dispose()
         {
             Driver.Close();
             Driver?.Dispose();
         }
 
-        public static BrowseWebPage At(string baseApiUrl)
-        {
-            return new BrowseWebPage(baseApiUrl);
-        }
 
     }
 }

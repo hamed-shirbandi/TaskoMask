@@ -97,7 +97,7 @@ There is a list of our documentation:
          - [UI Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance/Tests.Acceptance.UI)
          - [Acceptance Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance)
             - Screenplay Pattern
-            - Well writen tests Organized in:
+            - Well written tests organized in:
                 - Business Rule Layer
                 - Business Flow Layer
                 - Technical Layer

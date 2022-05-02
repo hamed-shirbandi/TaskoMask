@@ -3,7 +3,7 @@ using Suzianna.Core.Screenplay.Questions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Tests.Acceptance.Configuration;
+using TaskoMask.Tests.Acceptance.Share.Helpers;
 
 namespace TaskoMask.Tests.Acceptance.Screenplay
 {

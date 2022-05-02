@@ -2,7 +2,7 @@
 using System;
 using System.Reflection;
 
-namespace TaskoMask.Tests.Acceptance.Configuration
+namespace TaskoMask.Tests.Acceptance.Share.Helpers
 {
     public static class Config
     {

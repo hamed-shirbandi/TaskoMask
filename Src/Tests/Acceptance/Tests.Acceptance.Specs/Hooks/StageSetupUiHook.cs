@@ -1,4 +1,5 @@
 ﻿using BoDi;
+using TaskoMask.Tests.Acceptance.Core.Helpers;
 using TechTalk.SpecFlow;
 
 namespace TaskoMask.Tests.Acceptance.Specs.Hooks
@@ -17,10 +18,27 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
         /// <summary>
         /// This hook runs beafor each senario with UI-Level tag
         /// </summary>
-        [BeforeScenario("UI-Level")]
+        [BeforeScenario(MagicKey.TestLevel.UI_Level)]
         public void StageSetup()
         {
-            //TODO: Setup selenium dirvers
+            if (Config.TestLevel == MagicKey.TestLevel.UI_Level)
+            {
+                //TODO: Setup selenium dirvers
+            }
+        }
+
+
+
+        /// <summary>
+        /// This hook runs beafor each senario with UI-Level tag
+        /// </summary>
+        [AfterScenario(MagicKey.TestLevel.UI_Level)]
+        public void StageDrop()
+        {
+            if (Config.TestLevel == MagicKey.TestLevel.UI_Level)
+            {
+                //TODO: dispose selenium drivers
+            }
         }
     }
 }

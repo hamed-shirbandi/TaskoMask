@@ -31,7 +31,7 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         /// </summary>
         private static Assembly GetTestLevelAssembly()
         {
-            if (TestLevel == "API-Level")
+            if (TestLevel == MagicKey.TestLevel.API_Level)
                return  Assembly.Load("TaskoMask.Tests.Acceptance.API");
             else // For "UI-Level"
                return  Assembly.Load("TaskoMask.Tests.Acceptance.UI");

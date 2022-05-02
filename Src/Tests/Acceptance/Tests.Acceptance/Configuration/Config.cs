@@ -32,9 +32,9 @@ namespace TaskoMask.Tests.Acceptance.Configuration
         private static IConfiguration BuildConfiguration()
         {
             return new ConfigurationBuilder()
-                                //Copy from AdminPanel project during the build event
                                 .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
-                                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true)
+                                .AddJsonFile("appsettings.Development.json", optional: true)
+                                .AddJsonFile("appsettings.Staging.json", optional: true)
                                 .Build();
         }
     }

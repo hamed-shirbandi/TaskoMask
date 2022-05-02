@@ -96,7 +96,8 @@ namespace TaskoMask.Application.Tests.Integration.Fixtures
             var configuration = new ConfigurationBuilder()
                                 //Copy from AdminPanel project during the build event
                                 .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
-                                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true)
+                                .AddJsonFile("appsettings.Development.json", optional: true)
+                                .AddJsonFile("appsettings.Staging.json", optional: true)
                                 .AddInMemoryCollection(new[]
                                 {
                                    new KeyValuePair<string,string>("Mongo:Write:Database", $"TaskoMask_WriteDB_Test_{dbNameSuffix}"),

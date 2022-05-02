@@ -27,7 +27,7 @@ namespace TaskoMask.Tests.Acceptance.UI.Suzianna
             Driver?.Dispose();
         }
 
-        public static IAbility At(string baseApiUrl)
+        public static BrowseWebPage At(string baseApiUrl)
         {
             return new BrowseWebPage(baseApiUrl);
         }

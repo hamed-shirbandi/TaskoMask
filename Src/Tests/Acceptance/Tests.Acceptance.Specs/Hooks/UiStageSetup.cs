@@ -8,11 +8,11 @@ using TechTalk.SpecFlow;
 namespace TaskoMask.Tests.Acceptance.Specs.Hooks
 {
     [Binding]
-    public class StageSetupUiHook
+    public class UiStageSetup
     {
         private readonly IObjectContainer _objectContainer;
         private BrowseWebPage browseWebPage;
-        public StageSetupUiHook(IObjectContainer objectContainer)
+        public UiStageSetup(IObjectContainer objectContainer)
         {
             _objectContainer = objectContainer;
         }

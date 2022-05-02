@@ -8,11 +8,11 @@ using TechTalk.SpecFlow;
 namespace TaskoMask.Tests.Acceptance.Specs.Hooks
 {
     [Binding]
-    public class StageSetupApiHook
+    public class ApiStageSetup
     {
         private readonly IObjectContainer _objectContainer;
 
-        public StageSetupApiHook(IObjectContainer objectContainer)
+        public ApiStageSetup(IObjectContainer objectContainer)
         {
             _objectContainer = objectContainer;
         }

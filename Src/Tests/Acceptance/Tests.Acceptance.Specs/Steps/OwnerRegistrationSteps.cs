@@ -69,7 +69,9 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
         [Then(@"John log in successfully")]
         public void ThenJohnLogInSuccessfully()
         {
+            var registerResult = _stage.ActorInTheSpotlight.Recall<bool>(MagicKey.Owner.Regiser_Result);
             var loginResult = _stage.ActorInTheSpotlight.Recall<bool>(MagicKey.Owner.Login_Result);
+            registerResult.Should().BeTrue();
             loginResult.Should().BeTrue();
         }
 

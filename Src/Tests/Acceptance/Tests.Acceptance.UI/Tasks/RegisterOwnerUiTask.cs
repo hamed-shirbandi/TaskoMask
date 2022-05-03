@@ -1,6 +1,4 @@
 ﻿using OpenQA.Selenium;
-using Suzianna.Core.Screenplay;
-using Suzianna.Core.Screenplay.Actors;
 using System;
 using System.Threading;
 using TaskoMask.Tests.Acceptance.Core.Models;
@@ -24,10 +22,20 @@ namespace TaskoMask.Tests.Acceptance.UI.Tasks
 
             registerUrl = $"{ability.BaseUrl}/register";
             ability.Driver.Navigate().GoToUrl(registerUrl);
-            var element = ability.Driver.FindElement(By.Id("Input_DisplayName"));
 
-            Thread.Sleep(10000);
-            return true; 
+            ability.Driver.FindElement(By.Id("Input_DisplayName")).SendKeys(OwnerRegisterDto.DisplayName);
+            ability.Driver.FindElement(By.Id("Input_Email")).SendKeys(OwnerRegisterDto.Email);
+            ability.Driver.FindElement(By.Id("Input_Password")).SendKeys(OwnerRegisterDto.Password);
+            ability.Driver.FindElement(By.Id("Input_ConfirmPassword")).SendKeys(OwnerRegisterDto.Password);
+
+            ability.Driver.FindElement(By.Id("Input_ConfirmPassword")).Click();
+            Thread.Sleep(5000);
+
+
+            return !ability.Driver.FindElement(By.Id("dashboard-page")).Size.IsEmpty;
+            //var sdsd= ability.Driver.FindElement(By.Id("dashboard-page"));
+            //sdsd.ex
+
         }
     }
 }

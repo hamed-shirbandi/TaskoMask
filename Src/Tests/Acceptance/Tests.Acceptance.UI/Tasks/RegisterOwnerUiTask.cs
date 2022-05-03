@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using Selenium.WebDriver.WaitExtensions;
 using System;
 using System.Threading;
 using TaskoMask.Tests.Acceptance.Core.Models;
@@ -28,14 +29,23 @@ namespace TaskoMask.Tests.Acceptance.UI.Tasks
             ability.Driver.FindElement(By.Id("Input_Password")).SendKeys(OwnerRegisterDto.Password);
             ability.Driver.FindElement(By.Id("Input_ConfirmPassword")).SendKeys(OwnerRegisterDto.Password);
 
-            ability.Driver.FindElement(By.Id("Input_ConfirmPassword")).Click();
-            Thread.Sleep(5000);
+            ability.Driver.FindElement(By.Id("registerBtn")).Click();
+
+            return ExistElementInThePage(ability.Driver, By.Id("dashboard_page"));
+        }
 
 
-            return !ability.Driver.FindElement(By.Id("dashboard-page")).Size.IsEmpty;
-            //var sdsd= ability.Driver.FindElement(By.Id("dashboard-page"));
-            //sdsd.ex
-
+        private bool ExistElementInThePage(IWebDriver driver, By by)
+        {
+            try
+            {
+                driver.Wait(2500).ForElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
         }
     }
 }

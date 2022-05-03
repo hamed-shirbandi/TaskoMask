@@ -1,9 +1,7 @@
 ﻿using OpenQA.Selenium;
-using Selenium.WebDriver.WaitExtensions;
-using System;
-using System.Threading;
 using TaskoMask.Tests.Acceptance.Core.Models;
 using TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks;
+using TaskoMask.Tests.Acceptance.UI.Helpers;
 using TaskoMask.Tests.Acceptance.UI.Suzianna;
 
 namespace TaskoMask.Tests.Acceptance.UI.Tasks
@@ -31,21 +29,8 @@ namespace TaskoMask.Tests.Acceptance.UI.Tasks
 
             ability.Driver.FindElement(By.Id("registerBtn")).Click();
 
-            return ExistElementInThePage(ability.Driver, By.Id("dashboard_page"));
+            return ability.Driver.WaitForElementToExist(By.Id("dashboard_page"));
         }
 
-
-        private bool ExistElementInThePage(IWebDriver driver, By by)
-        {
-            try
-            {
-                driver.Wait(2500).ForElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
     }
 }

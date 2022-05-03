@@ -45,7 +45,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
                 }).AddHttpMessageHandler<HttpClientInterceptorService>();
 
             services.AddScoped<HttpClientInterceptorService>();
-            services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ServerAPI"));
+            services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelAPI"));
 
 
             services.AddClientServices();

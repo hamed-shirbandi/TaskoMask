@@ -5,7 +5,7 @@
 
 @if (!Model.OrganizationsDetailsList.Any())
 {
-    <div class="alert alert-warning">
+    <div id="dashboard_page" class="alert alert-warning">
         You are not owner of any organization!
         <br />
         Maybe you want to
@@ -14,7 +14,7 @@
 }
 else
 {
-    <div id="dashboard-page" class="container py-3">
+    <div id="dashboard_page" class="container py-3">
         <div class="row">
             <Organizations Model="@Model.OrganizationsDetailsList" />
         </div>

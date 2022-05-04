@@ -20,7 +20,12 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
 
         /// <summary>
         /// This hook runs beafor each senario with UI-Level tag
-        /// And enable chrome driver
+        /// ************* Important point *************
+        /// You always have to determine the tag before running acceptance tests
+        /// If you use CLI do it like bellow
+        /// > dotnet test myproject --filter Category=API-Level
+        /// Or to run with Visual Studio
+        /// You can select the tag in Traits list in Test Explorer
         /// </summary>
         [BeforeScenario(MagicKey.TestLevel.UI_Level)]
         public void StageSetup()

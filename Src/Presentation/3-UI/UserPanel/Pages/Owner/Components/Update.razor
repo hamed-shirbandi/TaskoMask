@@ -1,9 +1,11 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Owners
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOwnerClientService OwnerClientService
 
-<EditForm Model="OwnerUpdateModel" OnValidSubmit="HandleUpdate">
+<EditForm id="user_update_profile_form" Model="OwnerUpdateModel" OnValidSubmit="HandleUpdate">
 
     <DataAnnotationsValidator />
+    <input id="user_profile_email" type="hidden" value="@OwnerUpdateModel.Email" />
+    <input id="user_profile_displayname" type="hidden" value="@OwnerUpdateModel.DisplayName" />
 
     <div class="form-group">
         <InputText @bind-Value="OwnerUpdateModel.DisplayName" placeholder="Display Name" class="form-control"></InputText>
@@ -58,7 +60,7 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-    var ownerResult = await OwnerClientService.Get();
+        var ownerResult = await OwnerClientService.Get();
 
         if (ownerResult.IsSuccess)
         {

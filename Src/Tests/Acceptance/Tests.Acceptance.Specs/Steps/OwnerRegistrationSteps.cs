@@ -52,7 +52,7 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
 
 
 
-        [When(@"John attempts to Login")]
+        [When(@"John attempts to login")]
         public void WhenJohnAttemptsToLogin()
         {
             var ownerLoginDto = new OwnerLoginDto
@@ -74,7 +74,6 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
             registerResult.Should().BeTrue();
             loginResult.Should().BeTrue();
         }
-
 
 
         #endregion

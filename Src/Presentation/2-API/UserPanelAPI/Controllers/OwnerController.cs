@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Domain.Share.Services;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -21,7 +22,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
         #region Ctors
 
-        public OwnerController(IOwnerService ownerService)
+        public OwnerController(IOwnerService ownerService, IAuthenticatedUserService authenticatedUserService) : base(authenticatedUserService)
         {
             _ownerService = ownerService;
         }

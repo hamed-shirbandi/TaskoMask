@@ -12,8 +12,8 @@ Scenario: Registering online for a new owner account
 	When John registers for a new account
 		| DisplayName | Email          | Password |
 		| John        | John@email.com | John123  |
-	And John attempts to Log in
-	Then John log in successfully
+	And John attempts to login
+	Then John login successfully
 
 
 @OwnerScenarios

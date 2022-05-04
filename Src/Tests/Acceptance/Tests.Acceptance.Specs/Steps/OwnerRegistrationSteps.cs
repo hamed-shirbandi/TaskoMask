@@ -52,8 +52,8 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
 
 
 
-        [When(@"John attempts to Log in")]
-        public void WhenJohnAttemptsToLogIn()
+        [When(@"John attempts to Login")]
+        public void WhenJohnAttemptsToLogin()
         {
             var ownerLoginDto = new OwnerLoginDto
             {
@@ -66,8 +66,8 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
 
 
 
-        [Then(@"John log in successfully")]
-        public void ThenJohnLogInSuccessfully()
+        [Then(@"John login successfully")]
+        public void ThenJohnLoginSuccessfully()
         {
             var registerResult = _stage.ActorInTheSpotlight.Recall<bool>(MagicKey.Owner.Regiser_Result);
             var loginResult = _stage.ActorInTheSpotlight.Recall<bool>(MagicKey.Owner.Login_Result);

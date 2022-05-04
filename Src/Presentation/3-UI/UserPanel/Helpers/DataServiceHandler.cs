@@ -20,6 +20,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
 
                 //send a message to listeners
+                //it helps to update another component by changin data for current component
                 if (messageService != null && messageType != null)
                     messageService.SendMessage(messageType.Value);
             }

@@ -37,12 +37,12 @@
                             New Organization
                         </NavLink>
 
-                        <NavLink class="dropdown-item"  @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <NavLink class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))">
                             <i class="bi bi-kanban"></i>
                             New Project
                         </NavLink>
 
-                        <NavLink class="dropdown-item"  @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <NavLink class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))">
                             <i class="bi bi-clipboard-plus"></i>
                             New Board
                         </NavLink>
@@ -57,7 +57,8 @@
 
             <AuthorizeView>
                 <Authorized>
-                    <NavLink class="m-1 btn btn-sm btn-warning my-2 my-sm-0" href="#">
+
+                    <NavLink id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))"  class="m-1 btn btn-sm btn-warning my-2 my-sm-0">
                         <i class="bi bi-person-circle"></i>
                         @userDisplayName
                     </NavLink>

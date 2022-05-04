@@ -1,4 +1,5 @@
-﻿@model TaskoMask.Application.Share.Dtos.Membership.Operators.OperatorUpsertDto
+﻿@using TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
+@model TaskoMask.Application.Share.Dtos.Membership.Operators.OperatorUpsertDto
 @{
     var actionName = ViewContext.RouteData.Values["action"].ToString();
 }
@@ -27,7 +28,7 @@
         @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "form-message is-error" })
 
 
-        @if (actionName.ToLower() == "Create")
+        @if (actionName == nameof(OperatorsController.Create))
         {
             @Html.LabelFor(model => model.Password)
             @Html.PasswordFor(model => model.Password, new { @class = "form-input-1" })

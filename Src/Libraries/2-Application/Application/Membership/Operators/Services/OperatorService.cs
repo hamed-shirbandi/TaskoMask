@@ -152,7 +152,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
             {
                 //add authentication info from user to operator
                 var userQueryResult = await _userService.GetByIdAsync(item.Id);
-                if (!userQueryResult.IsSuccess)
+                if (userQueryResult.IsSuccess)
                     item.UserInfo = userQueryResult.Value;
 
 

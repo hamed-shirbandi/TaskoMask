@@ -1,39 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-	  <AssemblyName>TaskoMask.Presentation.UI.UserPanel</AssemblyName>
-	  <RootNamespace>TaskoMask.Presentation.UI.UserPanel</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>TaskoMask.Presentation.UI.UserPanel</AssemblyName>
+		<RootNamespace>TaskoMask.Presentation.UI.UserPanel</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Models\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="Pages\Dashboard\Components\Boards.razor" />
-    <None Include="Pages\Dashboard\Index.razor" />
-    <None Include="Pages\Dashboard\Components\Owners.razor" />
-    <None Include="Pages\Dashboard\Components\Organizations.razor" />
-    <None Include="Pages\Dashboard\Components\Projects.razor" />
-    <None Include="Pages\Dashboard\Components\Reports.razor" />
-    <None Include="Pages\Dashboard\Components\TabNav.razor" />
-    <None Include="Pages\Dashboard\Components\Tasks.razor" />
-    <None Include="Pages\_Host.cshtml" />
-    <None Include="Shared\MainLayout.razor" />
-    <None Include="Shared\NavMenu.razor" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="Pages\Dashboard\Components\Boards.razor" />
+		<None Include="Pages\Dashboard\Index.razor" />
+		<None Include="Pages\Dashboard\Components\Owners.razor" />
+		<None Include="Pages\Dashboard\Components\Organizations.razor" />
+		<None Include="Pages\Dashboard\Components\Projects.razor" />
+		<None Include="Pages\Dashboard\Components\Reports.razor" />
+		<None Include="Pages\Dashboard\Components\TabNav.razor" />
+		<None Include="Pages\Dashboard\Components\Tasks.razor" />
+		<None Include="Pages\_Host.cshtml" />
+		<None Include="Shared\MainLayout.razor" />
+		<None Include="Shared\NavMenu.razor" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Blazored.Modal" Version="6.0.1" />
-    <PackageReference Include="Blazored.Toast" Version="3.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
-	  <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
+		<PackageReference Include="Blazored.Toast" Version="3.2.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\1-Framework\Framework.Share\Framework.Share.csproj" />
 	</ItemGroup>

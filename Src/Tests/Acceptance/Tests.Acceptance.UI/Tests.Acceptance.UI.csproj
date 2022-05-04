@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Questions\" />
-  </ItemGroup>
-
-  <ItemGroup>
 	  <PackageReference Include="Selenium.WebDriver" Version="4.1.1" />
 	  <PackageReference Include="Selenium.WebDriver.WaitExtensions" Version="2.0.0" />
 

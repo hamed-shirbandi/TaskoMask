@@ -38,12 +38,12 @@ namespace TaskoMask.Tests.Acceptance.Core.Screenplay
         /// <summary>
         /// 
         /// </summary>
-        public static IQuestion<OwnerDetailsDto> OwnerDetails(string ownerId)
+        public static IQuestion<OwnerBasicInfoDto> OwnerDetails(string ownerId)
         {
             //usage in steps : 
             //var dto= actor.AsksFor(new OwnerDetailsApiQuestion(ownerId));
 
-            return Factory.CreateQuestion<OwnerDetailsQuestion>(ownerId);
+            return Factory.CreateQuestion<LastOwnerQuestion>(ownerId);
         }
     }
 }

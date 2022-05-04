@@ -49,7 +49,7 @@ else
 
         var organizationsDetailsListResult = await OrganizationClientService.Get();
         if (!organizationsDetailsListResult.IsSuccess)
-            ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToHtml(), organizationsDetailsListResult.Message);
+            ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToFragment(), organizationsDetailsListResult.Message);
         else
             Model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
     }

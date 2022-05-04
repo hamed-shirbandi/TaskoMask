@@ -25,7 +25,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
             }
             else
                 //show failed notification
-                toastService.ShowError(result.Errors.ParseToHtml(), result.Message);
+                toastService.ShowError(result.Errors.ParseToFragment(), result.Message);
         }
     }
 }

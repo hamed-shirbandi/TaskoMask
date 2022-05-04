@@ -136,7 +136,7 @@
         {
             //close the modal window
             ModalInstance.CloseAsync();
-            ToastService.ShowError(projectResult.Errors.ParseToHtml(), projectResult.Message);
+            ToastService.ShowError(projectResult.Errors.ParseToFragment(), projectResult.Message);
         }
     }
 
@@ -152,7 +152,7 @@
         {
             //close the modal window
             ModalInstance.CloseAsync();
-            ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
+            ToastService.ShowError(organizationsResult.Errors.ParseToFragment(), organizationsResult.Message);
         }
         else if (organizationsResult.Value.Any())
         {

@@ -12,6 +12,9 @@
                     <h3 class=" py-2 ">Login to TaskoMask!</h3>
                     <div class="px-2">
                         <form method="post">
+
+                            <partial name="_ServerValidationSummary" />
+
                             @Html.AntiForgeryToken()
 
                             <div class="form-group">

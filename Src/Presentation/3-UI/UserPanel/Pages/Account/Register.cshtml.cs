@@ -1,13 +1,15 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Presentation.UI.UserPanel.Helpers;
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
 {
     [AllowAnonymous]
-    public class RegisterModel : PageModel
+    public class RegisterModel : BasePageModel
     {
         private readonly IAuthenticationService _authenticationService;
 
@@ -45,7 +47,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
             if (registerResult.IsSuccess)
                 return LocalRedirect(returnUrl);
 
-            ModelState.AddModelError(nameof(OwnerRegisterDto.ConfirmPassword), registerResult.Message);
+            ParseErrorsViewData(registerResult);
+
             return Page();
         }
     }

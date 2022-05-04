@@ -2,12 +2,13 @@
 
 namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 {
-    public static class ToastHelper
+    public static class HtmlParser
     {
+
         /// <summary>
-        /// Parse errors list to html to show by Toast service
+        /// Parse errors list to Fragment to show by Toast service
         /// </summary>
-        public static RenderFragment? ParseToHtml(this List<string> errors)
+        public static RenderFragment? ParseToFragment(this List<string> errors)
         {
             RenderFragment? content = null;
 

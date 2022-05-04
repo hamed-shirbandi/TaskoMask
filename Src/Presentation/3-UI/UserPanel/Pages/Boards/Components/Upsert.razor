@@ -169,7 +169,7 @@
         {
             //close the modal window
             ModalInstance.CloseAsync();
-            ToastService.ShowError(boardResult.Errors.ParseToHtml(), boardResult.Message);
+            ToastService.ShowError(boardResult.Errors.ParseToFragment(), boardResult.Message);
         }
     }
 
@@ -185,7 +185,7 @@
         {
             //close the modal window
             ModalInstance.CloseAsync();
-            ToastService.ShowError(organizationsResult.Errors.ParseToHtml(), organizationsResult.Message);
+            ToastService.ShowError(organizationsResult.Errors.ParseToFragment(), organizationsResult.Message);
         }
         else if (organizationsResult.Value.Any())
             organizationsSelectList = organizationsResult.Value;
@@ -210,7 +210,7 @@
         {
             //close the modal window
             ModalInstance.CloseAsync();
-            ToastService.ShowError(projectsResult.Errors.ParseToHtml(), projectsResult.Message);
+            ToastService.ShowError(projectsResult.Errors.ParseToFragment(), projectsResult.Message);
         }
         else if (projectsResult.Value.Any())
         {
@@ -238,7 +238,7 @@
         {
             //close the modal window
             ModalInstance.CloseAsync();
-            ToastService.ShowError(projectResult.Errors.ParseToHtml(), projectResult.Message);
+            ToastService.ShowError(projectResult.Errors.ParseToFragment(), projectResult.Message);
         }
     }
 

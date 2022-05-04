@@ -113,7 +113,7 @@
         {
             //close the modal window
             ModalInstance.CloseAsync();
-            ToastService.ShowError(organizationResult.Errors.ParseToHtml(), organizationResult.Message);
+            ToastService.ShowError(organizationResult.Errors.ParseToFragment(), organizationResult.Message);
         }
     }
 

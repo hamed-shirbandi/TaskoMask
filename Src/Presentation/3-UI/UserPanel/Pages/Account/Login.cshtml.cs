@@ -7,7 +7,7 @@ using TaskoMask.Application.Share.Dtos.Authorization.Users;
 namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
 {
     [AllowAnonymous]
-    public class LoginModel : PageModel
+    public class LoginModel : BasePageModel
     {
         private readonly IAuthenticationService _authenticationService;
 
@@ -46,7 +46,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Pages.Account
             if (loginResult.IsSuccess)
                 return LocalRedirect(returnUrl);
 
-            ModelState.AddModelError(nameof(UserLoginDto.RememberMe), loginResult.Message);
+            ParseErrorsViewData(loginResult);
+
             return Page();
         }
     }

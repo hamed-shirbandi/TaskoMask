@@ -14,6 +14,7 @@ Scenario: Registering online for a new owner account
 		| John        | John@email.com | John123  |
 	And John attempts to login
 	Then John login successfully
+	And John have access to his profile
 
 
 @OwnerScenarios

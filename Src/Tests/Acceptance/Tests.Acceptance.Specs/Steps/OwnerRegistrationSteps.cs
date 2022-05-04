@@ -76,6 +76,17 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
         }
 
 
+
+        [Then(@"John have access to his profile")]
+        public void ThenJohnHaveAccessToHisProfile()
+        {
+            var lastOwnerResult = _stage.ActorInTheSpotlight.AsksFor(DataFrom.LastOwner());
+            lastOwnerResult.IsSuccess.Should().BeTrue();
+            lastOwnerResult.Value.Email.Should().Be(_ownerRegisterDto.Email);
+        }
+
+
+
         #endregion
 
         #region Scenario: Preventing registration with duplicate email

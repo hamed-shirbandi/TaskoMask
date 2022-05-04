@@ -47,7 +47,7 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         /// </summary>
         private static bool IsQuestion(this Type type)
         {
-            return type.BaseType.GetInterfaces().Contains(typeof(IQuestion<>));
+            return type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IQuestion<>));
         }
     }
 }

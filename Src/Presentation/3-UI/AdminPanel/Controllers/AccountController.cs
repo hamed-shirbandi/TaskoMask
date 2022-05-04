@@ -8,6 +8,7 @@ using TaskoMask.Domain.Share.Models;
 using AutoMapper;
 using TaskoMask.Application.Membership.Operators.Services;
 using TaskoMask.Application.Authorization.Users.Services;
+using TaskoMask.Presentation.Framework.Web.Extensions;
 
 namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
 {
@@ -43,12 +44,13 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
         /// 
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Login(string returnUrl = null)
+        public async Task<IActionResult> Login(string returnUrl = "")
         {
             // Clear the existing external cookie to ensure a clean login process
             await _cookieAuthenticationService.SignOutAsync();
 
             ViewData["ReturnUrl"] = returnUrl;
+
             return View();
         }
 
@@ -62,7 +64,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
         [ValidateDNTCaptcha(ErrorMessage = "Please enter the text inside the image numerically",
                     CaptchaGeneratorLanguage = Language.English,
                     CaptchaGeneratorDisplayMode = DisplayMode.NumberToWord)]
-        public async Task<IActionResult> Login(UserLoginDto input, string returnUrl = null)
+        public async Task<IActionResult> Login(UserLoginDto input, string returnUrl = "")
         {
             ViewData["ReturnUrl"] = returnUrl;
 

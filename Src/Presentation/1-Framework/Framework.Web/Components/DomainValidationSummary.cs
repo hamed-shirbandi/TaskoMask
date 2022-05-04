@@ -15,7 +15,8 @@ namespace TaskoMask.Presentation.Framework.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            _notifications.GetErrors().ForEach(error => ViewData.ModelState.AddModelError(string.Empty, error));
+            if (_notifications.HasAny())
+                _notifications.GetErrors().ForEach(error => ViewData.ModelState.AddModelError(string.Empty, error));
             return View();
         }
     }

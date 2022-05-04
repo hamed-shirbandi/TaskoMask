@@ -30,11 +30,10 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OwnerDetailsViewModel>> Get(string id)
+        public async Task<Result<OwnerBasicInfoDto>> Get()
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owners/{id}")).Uri;
-
-            return await _httpClientService.GetAsync<OwnerDetailsViewModel>(uri);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owner")).Uri;
+            return await _httpClientService.GetAsync<OwnerBasicInfoDto>(uri);
         }
 
 
@@ -42,25 +41,10 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(string email)
+        public async Task<Result<CommandResult>> Update(OwnerUpdateDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owners"))
-                .AddParameter("email", email)
-                .Uri;
-            return await _httpClientService.PutAsync<CommandResult>(uri);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> Delete(string id)
-        {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owners"))
-                .AddParameter("id", id)
-                .Uri;
-            return await _httpClientService.PutAsync<CommandResult>(uri);
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owner")).Uri;
+            return await _httpClientService.PutAsync<CommandResult>(uri, input);
         }
 
         #endregion

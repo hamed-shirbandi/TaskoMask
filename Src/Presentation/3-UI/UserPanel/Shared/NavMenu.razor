@@ -1,5 +1,6 @@
 ﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 @inject TaskoMask.Domain.Share.Services.IAuthenticatedUserService AuthenticatedUserService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IOwnerClientService OwnerClientService
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
@@ -58,7 +59,7 @@
             <AuthorizeView>
                 <Authorized>
 
-                    <NavLink id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))"  class="m-1 btn btn-sm btn-warning my-2 my-sm-0">
+                    <NavLink id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))" class="m-1 btn btn-sm btn-warning my-2 my-sm-0">
                         <i class="bi bi-person-circle"></i>
                         @userDisplayName
                     </NavLink>
@@ -84,12 +85,48 @@
     string userDisplayName = "";
     protected override async Task OnInitializedAsync()
     {
+        //subscribe to OnMessage event. It is used when another components need to send a message to this component
+        MessageService.OnMessage += ReloadUserDisplayNameHandler;
+
         websiteUrl = Configuration["Url:Website"];
 
         var user = AuthenticatedUserService.GetAuthenticatedUser();
-        if (user != null)
-            userDisplayName = user.DisplayName;
+        userDisplayName = user.DisplayName;
 
         await base.OnInitializedAsync();
+    }
+
+
+
+    /// <summary>
+    ///This is a handler to be notified when user display name is changed somewhere
+    /// </summary>
+    private async void ReloadUserDisplayNameHandler(MessageType messageType)
+    {
+        try
+        {
+            var ownerResult = await OwnerClientService.Get();
+            if (ownerResult.IsSuccess)
+            {
+                userDisplayName = ownerResult.Value.DisplayName;
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            //Async task failure because of async void challenges
+        }
+    }
+
+
+    
+
+    /// <summary>
+    ///
+    /// </summary>
+    public void Dispose()
+    {
+        // unsubscribe from OnMessage event
+        MessageService.OnMessage -= ReloadUserDisplayNameHandler;
     }
 }

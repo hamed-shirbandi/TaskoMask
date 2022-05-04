@@ -58,7 +58,7 @@
             <AuthorizeView>
                 <Authorized>
 
-                    <NavLink id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))"  class="m-1 btn btn-sm btn-warning my-2 my-sm-0">
+                    <NavLink id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))"  class="m-1 btn btn-sm btn-warning my-2 my-sm-0">
                         <i class="bi bi-person-circle"></i>
                         @userDisplayName
                     </NavLink>

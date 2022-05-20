@@ -61,9 +61,10 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// update existing board
         /// </summary>
         [HttpPut]
-        [Route("boards")]
-        public async Task<Result<CommandResult>> Update([FromBody] BoardUpsertDto input)
+        [Route("boards/{id}")]
+        public async Task<Result<CommandResult>> Update(string id,[FromBody] BoardUpsertDto input)
         {
+            input.Id = id;
             return await _boardService.UpdateAsync(input);
         }
 
@@ -74,7 +75,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// soft delete board
         /// </summary>
         [HttpDelete]
-        [Route("boards")]
+        [Route("boards/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
             return await _boardService.DeleteAsync(id);

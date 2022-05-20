@@ -8,7 +8,7 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
     {
         Task<Result<BoardBasicInfoDto>> Get(string id);
         Task<Result<CommandResult>> Create(BoardUpsertDto input);
-        Task<Result<CommandResult>> Update(BoardUpsertDto input);
+        Task<Result<CommandResult>> Update(string id,BoardUpsertDto input);
         Task<Result<CommandResult>> Delete(string id);
     }
 }

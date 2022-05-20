@@ -273,7 +273,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await BoardClientService.Update(BoardModel);
+        var result = await BoardClientService.Update(Id,BoardModel);
         DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
     }
 

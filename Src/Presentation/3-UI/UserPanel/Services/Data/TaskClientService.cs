@@ -53,9 +53,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(TaskUpsertDto input)
+        public async Task<Result<CommandResult>> Update(string id,TaskUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks")).Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks/{id}")).Uri;
             return await _httpClientService.PutAsync<CommandResult>(uri, input);
         }
 

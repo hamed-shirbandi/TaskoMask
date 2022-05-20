@@ -64,9 +64,10 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// update task
         /// </summary>
         [HttpPut]
-        [Route("tasks")]
-        public async Task<Result<CommandResult>> Update([FromBody] TaskUpsertDto input)
+        [Route("tasks/{id}")]
+        public async Task<Result<CommandResult>> Update(string id, [FromBody] TaskUpsertDto input)
         {
+            input.Id = id;
             //TODO implement tasks Update api
             return Result.Failure<CommandResult>(message: "not implemented yet");
         }

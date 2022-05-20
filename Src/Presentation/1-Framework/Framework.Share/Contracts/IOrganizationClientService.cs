@@ -10,7 +10,7 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
         Task<Result<IEnumerable<OrganizationDetailsViewModel>>> Get();
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems();
         Task<Result<CommandResult>> Create(OrganizationUpsertDto input);
-        Task<Result<CommandResult>> Update(OrganizationUpsertDto input);
+        Task<Result<CommandResult>> Update(string id,OrganizationUpsertDto input);
         Task<Result<CommandResult>> Delete(string id);
     }
 }

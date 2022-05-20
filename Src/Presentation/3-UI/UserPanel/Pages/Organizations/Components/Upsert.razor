@@ -148,7 +148,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await OrganizationClientService.Update(OrganizationModel);
+        var result = await OrganizationClientService.Update(Id,OrganizationModel);
         DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Organization_Updated, ModalInstance);
     }
 
@@ -171,8 +171,5 @@
 
 
     #endregion private Methods
-
-
-
 
 }

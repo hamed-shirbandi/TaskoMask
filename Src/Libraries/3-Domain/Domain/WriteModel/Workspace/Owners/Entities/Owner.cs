@@ -131,7 +131,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
             var organization = GetOrganizationById(organizationId);
             organization.UpdateOrganization(name, description);
-            AddDomainEvent(new OrganizationUpdatedEvent(Id, organization.Name.Value, organization.Description.Value));
+            AddDomainEvent(new OrganizationUpdatedEvent(organizationId, organization.Name.Value, organization.Description.Value));
         }
 
 
@@ -146,7 +146,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 
             var organization = GetOrganizationById(organizationId);
             organization.DeleteOrganization();
-            AddDomainEvent(new OrganizationDeletedEvent(Id));
+            AddDomainEvent(new OrganizationDeletedEvent(organizationId));
         }
 
 
@@ -158,7 +158,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         {
             var organization = GetOrganizationById(organizationId);
             organization.RecycleOrganization();
-            AddDomainEvent(new OrganizationRecycledEvent(Id));
+            AddDomainEvent(new OrganizationRecycledEvent(organizationId));
         }
 
 

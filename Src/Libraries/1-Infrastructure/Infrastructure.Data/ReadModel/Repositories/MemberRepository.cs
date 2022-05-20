@@ -36,7 +36,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<IEnumerable<Member>> GetListByBoardIdAsync(string boardId)
         {
-            return await _members.AsQueryable().Where(o => o.BoardId == boardId).ToListAsync();
+            return await _members.AsQueryable().Where(o => o.BoardId == boardId && o.IsDeleted == false).ToListAsync();
         }
 
 
@@ -46,7 +46,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<IEnumerable<Member>> GetListByOrganizationIdAsync(string organizationId)
         {
-            return await _members.AsQueryable().Where(o => o.OrganizationId == organizationId).ToListAsync();
+            return await _members.AsQueryable().Where(o => o.OrganizationId == organizationId && o.IsDeleted == false).ToListAsync();
         }
 
 

@@ -34,7 +34,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<IEnumerable<Card>> GetListByBoardIdAsync(string boardId)
         {
-            return await _cards.AsQueryable().Where(o => o.BoardId == boardId).ToListAsync();
+            return await _cards.AsQueryable().Where(o => o.BoardId == boardId && o.IsDeleted == false).ToListAsync();
 
         }
 

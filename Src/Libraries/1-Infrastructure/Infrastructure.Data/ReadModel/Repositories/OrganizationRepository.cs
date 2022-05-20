@@ -36,7 +36,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<IEnumerable<Organization>> GetListByOwnerIdAsync(string OwnerId)
         {
-            return await _organizations.AsQueryable().Where(o => o.OwnerId == OwnerId).ToListAsync();
+            return await _organizations.AsQueryable().Where(o => o.OwnerId == OwnerId && o.IsDeleted==false).ToListAsync();
         }
 
 

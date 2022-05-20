@@ -61,9 +61,10 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// update existing card
         /// </summary>
         [HttpPut]
-        [Route("cards")]
-        public async Task<Result<CommandResult>> Update([FromBody] CardUpsertDto input)
+        [Route("cards/{id}")]
+        public async Task<Result<CommandResult>> Update(string id,[FromBody] CardUpsertDto input)
         {
+            input.Id = id;
             return await _cardService.UpdateAsync(input);
         }
 

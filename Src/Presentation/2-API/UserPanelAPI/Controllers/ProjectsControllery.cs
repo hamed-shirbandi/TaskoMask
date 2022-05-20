@@ -72,9 +72,10 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// update existing project
         /// </summary>
         [HttpPut]
-        [Route("projects")]
-        public async Task<Result<CommandResult>> Update([FromBody] ProjectUpsertDto input)
+        [Route("projects/{id}")]
+        public async Task<Result<CommandResult>> Update(string id, [FromBody] ProjectUpsertDto input)
         {
+            input.Id = id;
             return await _projectService.UpdateAsync(input);
         }
 
@@ -84,7 +85,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// soft delete project
         /// </summary>
         [HttpDelete]
-        [Route("projects")]
+        [Route("projects/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
             return await _projectService.DeleteAsync(id);

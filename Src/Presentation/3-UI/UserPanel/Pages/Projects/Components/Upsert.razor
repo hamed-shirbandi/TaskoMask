@@ -195,7 +195,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await ProjectClientService.Update(ProjectModel);
+        var result = await ProjectClientService.Update(Id,ProjectModel);
         DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
     }
 

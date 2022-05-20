@@ -64,9 +64,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(ProjectUpsertDto input)
+        public async Task<Result<CommandResult>> Update(string id,ProjectUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/projects")).Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/projects/{id}")).Uri;
             return await _httpClientService.PutAsync<CommandResult>(uri, input);
         }
 
@@ -77,9 +77,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/projects"))
-                 .AddParameter("id", id)
-                 .Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/projects/{id}")).Uri;
             return await _httpClientService.DeleteAsync<CommandResult>(uri);
         }
 

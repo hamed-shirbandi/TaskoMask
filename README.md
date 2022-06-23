@@ -171,7 +171,6 @@ This project exists thanks to all the people who [contribute](https://github.com
 # Articles And Tutorials
 * [Real-world open-source project based on .NET 6 with DDD, ES, CQRS concepts](https://medium.com/@hamed.shirbandi/real-world-open-source-project-based-on-ddd-es-cqrs-af261cc24353)
 * [How to Blazor articles](https://medium.com/@hamed.shirbandi/how-to-blazor-articles-2bda783d9502)
-* [Learning by doing (podcats)](https://adventuresindotnet.com/learning-by-doing-net-122)
      
 # Supporting
 We work hard to make something useful for .NET community, so please give a star ⭐ if this project helped you!

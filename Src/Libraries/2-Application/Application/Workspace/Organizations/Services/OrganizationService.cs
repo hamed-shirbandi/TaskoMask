@@ -90,7 +90,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
                 Organization = organizationQueryResult.Value,
                 Projects = projectQueryResult.Value,
                 Boards = boardQueryResult.Value,
-                LastTasks = taskQueryResult.Value,
+                PendingTasks = taskQueryResult.Value,
                 Reports = organizationReportQueryResult.Value,
             };
 

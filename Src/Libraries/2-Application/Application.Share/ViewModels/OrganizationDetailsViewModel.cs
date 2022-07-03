@@ -14,7 +14,7 @@ namespace TaskoMask.Application.Share.ViewModels
             Owners = new List<OwnerBasicInfoDto>();
             Projects = new List<ProjectBasicInfoDto>();
             Boards = new List<BoardBasicInfoDto>();
-            LastTasks = new List<TaskBasicInfoDto>();
+            PendingTasks = new List<TaskBasicInfoDto>();
         }
         public OrganizationBasicInfoDto Organization { get; set; }
         public OwnerBasicInfoDto OwnerOwner { get; set; }
@@ -22,6 +22,6 @@ namespace TaskoMask.Application.Share.ViewModels
         public OrganizationReportDto Reports { get; set; }
         public IEnumerable<ProjectBasicInfoDto> Projects { get; set; }
         public IEnumerable<BoardBasicInfoDto> Boards { get; set; }
-        public IEnumerable<TaskBasicInfoDto> LastTasks { get; set; }
+        public IEnumerable<TaskBasicInfoDto> PendingTasks { get; set; }
     }
 }

@@ -15,7 +15,6 @@
 	<ItemGroup>
 		<None Include="Pages\Dashboard\Components\Boards.razor" />
 		<None Include="Pages\Dashboard\Index.razor" />
-		<None Include="Pages\Dashboard\Components\Owners.razor" />
 		<None Include="Pages\Dashboard\Components\Organizations.razor" />
 		<None Include="Pages\Dashboard\Components\Projects.razor" />
 		<None Include="Pages\Dashboard\Components\Reports.razor" />

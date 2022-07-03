@@ -15,7 +15,14 @@
         <TabNav Model="@item.Organization" />
 
         <div class="tab-content py-4">
-            <div class="tab-pane active" id="boards-@item.Organization.Id" role="tabpanel">
+
+            <div class="tab-pane active" id="tasks-@item.Organization.Id" role="tabpanel">
+                <div class="row">
+                    <Tasks Model="@item.PendingTasks" />
+                </div>
+            </div>
+
+            <div class="tab-pane" id="boards-@item.Organization.Id" role="tabpanel">
                 <div class="row">
                     <Boards Model="@item.Boards" />
                 </div>
@@ -24,12 +31,6 @@
             <div class="tab-pane" id="projects-@item.Organization.Id" role="tabpanel">
                 <div class="row">
                     <Projects Model="@item.Projects" />
-                </div>
-            </div>
-
-            <div class="tab-pane" id="tasks-@item.Organization.Id" role="tabpanel">
-                <div class="row">
-                    <Tasks Model="@item.LastTasks" />
                 </div>
             </div>
 

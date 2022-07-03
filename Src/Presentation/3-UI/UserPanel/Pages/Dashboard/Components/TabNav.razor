@@ -2,7 +2,13 @@
 
 <ul class="nav nav-tabs small justify-content-end" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#boards-@Model.Id" role="tab">
+        <a class="nav-link active" data-toggle="tab" href="#tasks-@Model.Id" role="tab">
+            <i class="bi bi-list-task"></i>
+            Pending Tasks
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#boards-@Model.Id" role="tab">
             <i class="bi bi-clipboard-plus"></i>
             Boards
         </a>
@@ -11,12 +17,6 @@
         <a class="nav-link" data-toggle="tab" href="#projects-@Model.Id" role="tab">
             <i class="bi bi-kanban"></i>
             Projects
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#tasks-@Model.Id" role="tab">
-            <i class="bi bi-list-task"></i>
-            Last Tasks
         </a>
     </li>
     <li class="nav-item">

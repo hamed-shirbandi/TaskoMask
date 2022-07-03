@@ -3,7 +3,7 @@
 @if (!Model.Any())
 {
     <div class="alert alert-warning">
-        You are not owner of any project!
+       There isn't any project yet!
         <br />
         Maybe you want to
         <a @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>

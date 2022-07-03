@@ -3,7 +3,7 @@
 @if (!Model.Any())
 {
     <div class="alert alert-warning">
-        You are not owner of any board!
+       There isn't any board yet!
         <br />
         Maybe you want to
         <a @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>

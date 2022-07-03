@@ -3,10 +3,12 @@
 @if (!Model.Any())
 {
     <div class="alert alert-warning">
-       There isn't any project yet!
-        <br />
-        Maybe you want to
-        <a @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>
+        <b>There isn't any board yet!</b>
+        <hr>
+        <small>
+            You can
+            <a @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>
+        </small>
     </div>
 }
 else

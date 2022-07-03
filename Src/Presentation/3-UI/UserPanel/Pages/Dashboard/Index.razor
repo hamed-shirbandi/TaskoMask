@@ -5,11 +5,21 @@
 
 @if (!Model.OrganizationsDetailsList.Any())
 {
-    <div id="dashboard_page" class="alert alert-warning">
-        You are not owner of any organization!
-        <br />
-        Maybe you want to
-        <a @onclick="@(() => ModalService.Show<Pages.Organizations.Components.Upsert>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>
+    <div class="alert alert-warning">
+        <b>There isn't any organization yet!</b>
+        <hr>
+        <small>
+            You can add new organization by using
+            <b>
+                <a @onclick="@(() => ModalService.Show<Pages.Organizations.Components.Upsert>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">
+                    <i class="bi bi-building"></i>
+                    New Organization
+                </a>
+            </b>
+            item from the top right menue
+            <i class="bi bi bi-plus-circle"></i>
+             Also other users can add you as a member to their organizations.
+        </small>
     </div>
 }
 else

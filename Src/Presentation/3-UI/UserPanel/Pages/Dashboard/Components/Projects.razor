@@ -3,11 +3,19 @@
 @if (!Model.Any())
 {
     <div class="alert alert-warning">
-        <b>There isn't any board yet!</b>
+        <b>There isn't any member yet!</b>
         <hr>
         <small>
-            You can
-            <a @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one</a>
+            You can add new project by using
+            <b>
+                <a @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">
+                    <i class="bi bi-kanban"></i>
+                    New Project
+                </a>
+            </b>
+            item from the top right menue
+            <i class="bi bi bi-plus-circle"></i>
+            . But make sure you have a project
         </small>
     </div>
 }

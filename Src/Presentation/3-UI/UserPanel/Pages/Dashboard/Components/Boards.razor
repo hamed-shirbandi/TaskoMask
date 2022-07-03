@@ -5,9 +5,18 @@
     <div class="alert alert-warning">
         <b>There isn't any board yet!</b>
         <hr>
-        <small>You can 
-        <a @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">create one!</a>
-         . But make sure you have a project</small>
+        <small>
+            You can add new board by using
+            <b>
+                <a @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">
+                    <i class="bi bi-clipboard-plus"></i>
+                    New Board
+                </a>
+            </b>
+            item from the top right menue
+            <i class="bi bi bi-plus-circle"></i>
+            . But make sure you have a project
+        </small>
     </div>
 }
 else

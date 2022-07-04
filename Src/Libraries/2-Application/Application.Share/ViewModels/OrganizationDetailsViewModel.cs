@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TaskoMask.Application.Share.Dtos.Workspace.Boards;
+﻿using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
@@ -17,7 +16,6 @@ namespace TaskoMask.Application.Share.ViewModels
             PendingTasks = new List<TaskBasicInfoDto>();
         }
         public OrganizationBasicInfoDto Organization { get; set; }
-        public OwnerBasicInfoDto OwnerOwner { get; set; }
         public IEnumerable<OwnerBasicInfoDto> Members { get; set; }
         public OrganizationReportDto Reports { get; set; }
         public IEnumerable<ProjectBasicInfoDto> Projects { get; set; }

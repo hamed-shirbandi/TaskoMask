@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using TaskoMask.Presentation.Framework.Web.Controllers;
-using System.Threading.Tasks;
 using TaskoMask.Presentation.Framework.Web.Filters;
 using TaskoMask.Application.Workspace.Tasks.Services;
 
@@ -84,7 +83,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            var taskQueryResult = await _taskService.GetDetailsAsync(id);
+            var taskQueryResult = await _taskService.GetByIdAsync(id);
 
             return View(taskQueryResult);
 

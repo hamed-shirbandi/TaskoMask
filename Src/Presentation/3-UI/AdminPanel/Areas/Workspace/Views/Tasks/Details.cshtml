@@ -1,4 +1,4 @@
-﻿@model TaskoMask.Application.Share.ViewModels.TaskDetailsViewModel
+﻿@model TaskoMask.Application.Share.Dtos.Workspace.Tasks.TaskBasicInfoDto
 
 @{
     ViewBag.Title = "Task Details";
@@ -14,7 +14,7 @@
 
         <div id="tab-1">
             <div class="block-content">
-                @await Html.PartialAsync("_BasicInfo", Model.Task)
+                @await Html.PartialAsync("_BasicInfo", Model)
             </div>
         </div>
     </div>

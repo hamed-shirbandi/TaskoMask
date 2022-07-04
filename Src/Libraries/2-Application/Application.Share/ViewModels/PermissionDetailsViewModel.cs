@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TaskoMask.Application.Share.Dtos.Membership.Permissions;
+﻿using TaskoMask.Application.Share.Dtos.Membership.Permissions;
 using TaskoMask.Application.Share.Dtos.Membership.Roles;
 
 namespace TaskoMask.Application.Share.ViewModels

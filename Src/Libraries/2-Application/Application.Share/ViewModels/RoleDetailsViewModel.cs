@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
+﻿using TaskoMask.Application.Share.Dtos.Membership.Operators;
 using TaskoMask.Application.Share.Dtos.Membership.Roles;
 using TaskoMask.Application.Share.Helpers;
 

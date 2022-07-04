@@ -84,7 +84,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            var projectQueryResult = await _projectService.GetDetailsAsync(id);
+            var projectQueryResult = await _projectService.GetByIdAsync(id);
 
             return View(projectQueryResult);
 

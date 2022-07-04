@@ -94,58 +94,6 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id)
-        {
-            var taskQueryResult = await SendQueryAsync(new GetTaskByIdQuery(id));
-            if (!taskQueryResult.IsSuccess)
-                return Result.Failure<TaskDetailsViewModel>(taskQueryResult.Errors);
-
-
-
-            var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(taskQueryResult.Value.CardId));
-            if (!cardQueryResult.IsSuccess)
-                return Result.Failure<TaskDetailsViewModel>(cardQueryResult.Errors);
-
-
-            var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(cardQueryResult.Value.BoardId));
-            if (!boardQueryResult.IsSuccess)
-                return Result.Failure<TaskDetailsViewModel>(boardQueryResult.Errors);
-
-
-            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(boardQueryResult.Value.ProjectId));
-            if (!projectQueryResult.IsSuccess)
-                return Result.Failure<TaskDetailsViewModel>(projectQueryResult.Errors);
-
-
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
-            if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<TaskDetailsViewModel>(organizationQueryResult.Errors);
-
-
-            var cardReportQueryResult = await SendQueryAsync(new GetCardReportQuery(id));
-            if (!cardReportQueryResult.IsSuccess)
-                return Result.Failure<TaskDetailsViewModel>(cardReportQueryResult.Errors);
-
-
-          
-            var cardDetail = new TaskDetailsViewModel
-            {
-                Organization = organizationQueryResult.Value,
-                Project = projectQueryResult.Value,
-                Board = boardQueryResult.Value,
-                Reports = cardReportQueryResult.Value,
-                Card = cardQueryResult.Value,
-                Task = taskQueryResult.Value,
-            };
-
-            return Result.Success(cardDetail);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public async Task<Result<long>> CountAsync()
         {
             return await SendQueryAsync(new GetTasksCountQuery());

@@ -13,6 +13,7 @@ using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Workspace.Cards.Services;
 
 namespace TaskoMask.Application.Workspace.Boards.Services
 {
@@ -20,13 +21,16 @@ namespace TaskoMask.Application.Workspace.Boards.Services
     {
         #region Fields
 
+        private readonly ICardService _cardService;
 
         #endregion
 
         #region Ctors
 
-        public BoardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
-        { }
+        public BoardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, ICardService cardService) : base(inMemoryBus, mapper, notifications)
+        {
+            _cardService = cardService;
+        }
 
 
 
@@ -62,7 +66,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id)
+        public async Task<Result<BoardOutputDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetBoardByIdQuery(id));
 
@@ -79,35 +83,14 @@ namespace TaskoMask.Application.Workspace.Boards.Services
             if (!boardQueryResult.IsSuccess)
                 return Result.Failure<BoardDetailsViewModel>(boardQueryResult.Errors);
 
-
-            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(boardQueryResult.Value.ProjectId));
-            if (!projectQueryResult.IsSuccess)
-                return Result.Failure<BoardDetailsViewModel>(projectQueryResult.Errors);
-
-
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(projectQueryResult.Value.OrganizationId));
-            if (!organizationQueryResult.IsSuccess)
-                return Result.Failure<BoardDetailsViewModel>(organizationQueryResult.Errors);
-
-
-
-            var cardQueryResult = await SendQueryAsync(new GetCardsByBoardIdQuery(id));
+            var cardQueryResult = await _cardService.GetCardDetailsListByBoardIdAsync(id);
             if (!cardQueryResult.IsSuccess)
                 return Result.Failure<BoardDetailsViewModel>(cardQueryResult.Errors);
 
 
-            var boardReportQueryResult = await SendQueryAsync(new GetBoardReportQuery(id));
-            if (!boardReportQueryResult.IsSuccess)
-                return Result.Failure<BoardDetailsViewModel>(boardReportQueryResult.Errors);
-
-
-
             var boardDetail = new BoardDetailsViewModel
             {
-                Organization = organizationQueryResult.Value,
-                Project = projectQueryResult.Value,
                 Board = boardQueryResult.Value,
-                Reports = boardReportQueryResult.Value,
                 Cards = cardQueryResult.Value,
             };
 

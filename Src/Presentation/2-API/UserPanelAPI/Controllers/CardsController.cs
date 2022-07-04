@@ -40,7 +40,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("cards/{id}")]
         public async Task<Result<CardDetailsViewModel>> Get(string id)
         {
-            return await _cardService.GetDetailsAsync(id);
+            return await _cardService.GetCardDetailsListByBoardIdAsync(id);
         }
 
 

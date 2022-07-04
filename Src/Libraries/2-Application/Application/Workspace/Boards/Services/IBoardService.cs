@@ -12,7 +12,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         Task<Result<CommandResult>> CreateAsync(BoardUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(BoardUpsertDto input);
         Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id);
-        Task<Result<BoardBasicInfoDto>> GetByIdAsync(string id);
+        Task<Result<BoardOutputDto>> GetByIdAsync(string id);
         Task<Result<BoardReportDto>> GetReportAsync(string id);
         Task<Result<IEnumerable<BoardBasicInfoDto>>> GetListByProjectIdAsync(string projectId);
         Task<Result<PaginatedListReturnType<BoardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);

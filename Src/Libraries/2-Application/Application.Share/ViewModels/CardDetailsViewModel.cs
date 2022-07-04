@@ -9,11 +9,7 @@ namespace TaskoMask.Application.Share.ViewModels
 {
    public class CardDetailsViewModel
     {
-        public OrganizationBasicInfoDto Organization { get; set; }
-        public ProjectBasicInfoDto Project { get; set; }
-        public BoardBasicInfoDto Board { get; set; }
         public CardBasicInfoDto Card { get; set; }
-        public CardReportDto Reports { get; set; }
         public IEnumerable<TaskBasicInfoDto> Tasks { get; set; }
     }
 }

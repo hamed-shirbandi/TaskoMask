@@ -84,7 +84,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            var cardQueryResult = await _cardService.GetDetailsAsync(id);
+            var cardQueryResult = await _cardService.GetCardDetailsListByBoardIdAsync(id);
 
             return View(cardQueryResult);
 

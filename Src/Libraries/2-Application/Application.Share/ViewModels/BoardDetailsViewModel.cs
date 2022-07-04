@@ -8,10 +8,7 @@ namespace TaskoMask.Application.Share.ViewModels
 {
    public class BoardDetailsViewModel
     {
-        public OrganizationBasicInfoDto Organization { get; set; }
-        public ProjectBasicInfoDto Project { get; set; }
-        public BoardBasicInfoDto Board { get; set; }
-        public BoardReportDto Reports { get; set; }
-        public IEnumerable<CardBasicInfoDto> Cards { get; set; }
+        public BoardOutputDto Board { get; set; }
+        public IEnumerable<CardDetailsViewModel> Cards { get; set; }
     }
 }

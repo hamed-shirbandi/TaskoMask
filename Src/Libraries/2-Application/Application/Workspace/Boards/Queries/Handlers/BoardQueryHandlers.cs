@@ -19,7 +19,7 @@ using TaskoMask.Domain.ReadModel.Data;
 namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
 {
     public class BoardQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetBoardByIdQuery, BoardBasicInfoDto>,
+        IRequestHandler<GetBoardByIdQuery, BoardOutputDto>,
         IRequestHandler<GetBoardReportQuery, BoardReportDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<GetBoardsByOrganizationIdQuery, IEnumerable<BoardBasicInfoDto>>,
@@ -34,17 +34,19 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         private readonly IBoardRepository _boardRepository;
         private readonly ICardRepository _cardRepository;
         private readonly IProjectRepository _projectRepository;
+        private readonly IOrganizationRepository _organizationRepository;
 
         #endregion
 
         #region Ctors
 
 
-        public BoardQueryHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IMapper mapper, IProjectRepository projectRepository, ICardRepository cardRepository) : base(mapper, notifications)
+        public BoardQueryHandlers(IBoardRepository boardRepository, IDomainNotificationHandler notifications, IMapper mapper, IProjectRepository projectRepository, ICardRepository cardRepository, IOrganizationRepository organizationRepository) : base(mapper, notifications)
         {
             _boardRepository = boardRepository;
             _projectRepository = projectRepository;
             _cardRepository = cardRepository;
+            _organizationRepository = organizationRepository;
         }
 
 
@@ -56,13 +58,22 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<BoardBasicInfoDto> Handle(GetBoardByIdQuery request, CancellationToken cancellationToken)
+        public async Task<BoardOutputDto> Handle(GetBoardByIdQuery request, CancellationToken cancellationToken)
         {
             var board = await _boardRepository.GetByIdAsync(request.Id);
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
-            return _mapper.Map<BoardBasicInfoDto>(board);
+            //TODO refactore read model for board to decrease db queries
+            var project = await _projectRepository.GetByIdAsync(board.ProjectId);
+            var organization = await _organizationRepository.GetByIdAsync(project.OrganizationId);
+         
+            var dto= _mapper.Map<BoardOutputDto>(board);
+            dto.ProjectName = project.Name;
+            dto.OrganizationName = organization.Name;
+            dto.CardsCount = await _cardRepository.CountByBoardIdAsync(board.Id);
+
+            return dto;
         }
 
 
@@ -110,8 +121,11 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
 
             foreach (var item in boardsDto)
             {
+                //TODO refactore read model for board to decrease db queries
                 var project = await _projectRepository.GetByIdAsync(item.ProjectId);
-                item.ProjectName = project?.Name;
+                var organization = await _organizationRepository.GetByIdAsync(project.OrganizationId);
+                item.ProjectName = project.Name;
+                item.OrganizationName = organization.Name;
                 item.CardsCount = await _cardRepository.CountByBoardIdAsync(item.Id);
             }
 

@@ -4,7 +4,7 @@ using TaskoMask.Application.Core.Queries;
 namespace TaskoMask.Application.Queries.Models.Boards
 {
    
-    public class GetBoardByIdQuery : BaseQuery<BoardBasicInfoDto>
+    public class GetBoardByIdQuery : BaseQuery<BoardOutputDto>
     {
         public GetBoardByIdQuery(string id)
         {

@@ -150,16 +150,6 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OrganizationReportDto>> GetReportAsync(string id)
-        {
-            return await SendQueryAsync(new GetOrganizationReportQuery(id));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public async Task<Result<PaginatedListReturnType<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await SendQueryAsync(new SearchOrganizationsQuery(page, recordsPerPage, term));

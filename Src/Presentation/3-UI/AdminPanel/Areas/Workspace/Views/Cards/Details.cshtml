@@ -1,4 +1,4 @@
-﻿@model TaskoMask.Application.Share.ViewModels.CardDetailsViewModel
+﻿@model TaskoMask.Application.Share.Dtos.Workspace.Cards.CardBasicInfoDto
 
 @{
     ViewBag.Title = "Card Details";
@@ -14,7 +14,7 @@
 
         <div id="tab-1">
             <div class="block-content">
-                @await Html.PartialAsync("_BasicInfo", Model.Card)
+                @await Html.PartialAsync("_BasicInfo", Model)
             </div>
         </div>
     </div>

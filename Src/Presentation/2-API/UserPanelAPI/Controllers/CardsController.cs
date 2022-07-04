@@ -38,9 +38,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpGet]
         [Route("cards/{id}")]
-        public async Task<Result<CardDetailsViewModel>> Get(string id)
+        public async Task<Result<CardBasicInfoDto>> Get(string id)
         {
-            return await _cardService.GetCardDetailsListByBoardIdAsync(id);
+            return await _cardService.GetByIdAsync(id);
         }
 
 

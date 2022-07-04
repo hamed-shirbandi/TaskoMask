@@ -38,7 +38,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpGet]
         [Route("boards/{id}")]
-        public async Task<Result<BoardBasicInfoDto>> Get(string id)
+        public async Task<Result<BoardOutputDto>> Get(string id)
         {
             return await _boardService.GetByIdAsync(id);
         }

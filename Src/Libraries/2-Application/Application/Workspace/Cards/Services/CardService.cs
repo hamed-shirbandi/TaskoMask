@@ -68,7 +68,7 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public Task<Result<IEnumerable<CardDetailsViewModel>>> GetCardDetailsListByBoardIdAsync(string boardId)
+        public Task<Result<IEnumerable<CardDetailsViewModel>>> GetListWithDetailsByBoardIdAsync(string boardId)
         {
             //GetCardDetailsAsync()
             throw new System.NotImplementedException();

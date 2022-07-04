@@ -79,7 +79,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
             if (!boardQueryResult.IsSuccess)
                 return Result.Failure<BoardDetailsViewModel>(boardQueryResult.Errors);
 
-            var cardQueryResult = await _cardService.GetCardDetailsListByBoardIdAsync(id);
+            var cardQueryResult = await _cardService.GetListWithDetailsByBoardIdAsync(id);
             if (!cardQueryResult.IsSuccess)
                 return Result.Failure<BoardDetailsViewModel>(cardQueryResult.Errors);
 

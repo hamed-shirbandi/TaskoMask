@@ -10,6 +10,8 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Workspace.Tasks.Services;
+using System.Linq;
 
 namespace TaskoMask.Application.Workspace.Cards.Services
 {
@@ -17,14 +19,15 @@ namespace TaskoMask.Application.Workspace.Cards.Services
     {
         #region Fields
 
+        private readonly ITaskService _taskService;
 
         #endregion
 
         #region Ctors
 
-        public CardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
-        { 
-
+        public CardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, ITaskService taskService) : base(inMemoryBus, mapper, notifications)
+        {
+            _taskService = taskService;
         }
 
         #endregion
@@ -49,7 +52,7 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(CardUpsertDto input)
         {
-            var cmd = new UpdateCardCommand(id: input.Id, name: input.Name, description: input.Description,type:input.Type);
+            var cmd = new UpdateCardCommand(id: input.Id, name: input.Name, description: input.Description, type: input.Type);
             return await SendCommandAsync(cmd);
         }
 
@@ -68,10 +71,29 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public Task<Result<IEnumerable<CardDetailsViewModel>>> GetListWithDetailsByBoardIdAsync(string boardId)
+        public async Task<Result<IEnumerable<CardDetailsViewModel>>> GetListWithDetailsByBoardIdAsync(string boardId)
         {
-            //GetCardDetailsAsync()
-            throw new System.NotImplementedException();
+            var cardQueryResult = await SendQueryAsync(new GetCardsByBoardIdQuery(boardId));
+            if (!cardQueryResult.IsSuccess)
+                return Result.Failure<IEnumerable<CardDetailsViewModel>>(cardQueryResult.Errors);
+
+            var cardsList = new List<CardDetailsViewModel>();
+
+            foreach (var card in cardQueryResult.Value)
+            {
+                var taskQueryResult = await _taskService.GetListByCardIdAsync(card.Id);
+                if (!taskQueryResult.IsSuccess)
+                    return Result.Failure<IEnumerable<CardDetailsViewModel>>(taskQueryResult.Errors);
+
+
+                cardsList.Add(new CardDetailsViewModel
+                {
+                    Card=card,
+                    Tasks= taskQueryResult.Value
+                });
+            }
+
+            return Result.Success(cardsList.AsEnumerable());
         }
 
 
@@ -111,33 +133,6 @@ namespace TaskoMask.Application.Workspace.Cards.Services
 
 
         #region Private Methods
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private async Task<Result<CardDetailsViewModel>> GetCardDetailsAsync(string id)
-        {
-            var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(id));
-            if (!cardQueryResult.IsSuccess)
-                return Result.Failure<CardDetailsViewModel>(cardQueryResult.Errors);
-
-
-            var taskQueryResult = await SendQueryAsync(new GetTasksByCardIdQuery(id));
-            if (!taskQueryResult.IsSuccess)
-                return Result.Failure<CardDetailsViewModel>(taskQueryResult.Errors);
-
-
-            var cardDetail = new CardDetailsViewModel
-            {
-                Card = cardQueryResult.Value,
-                Tasks = taskQueryResult.Value,
-            };
-
-            return Result.Success(cardDetail);
-        }
-
 
 
 

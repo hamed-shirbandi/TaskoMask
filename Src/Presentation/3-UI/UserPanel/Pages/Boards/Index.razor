@@ -1,13 +1,77 @@
 ﻿@page "/board/{BoardId}"
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Boards.Components
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
+@implements IDisposable
 
-<Breadcrumb></Breadcrumb>
-
-<h3>Boards Index @BoardId</h3>
+@if (Model!=null)
+{
+    <Breadcrumb Model=@Model.Board></Breadcrumb>
+}
 
 @code {
 
     [Parameter]
     public string BoardId { get; set; }
+
+    public BoardDetailsViewModel Model { get; set; }
+
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        MessageService.OnMessage += ReloadDataHandler;
+
+        await LoadDataAsync();
+    }
+
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    private async Task LoadDataAsync()
+    {
+        var boardDetailsListResult = await BoardClientService.GetDetails(BoardId);
+        if (!boardDetailsListResult.IsSuccess)
+            ToastService.ShowError(boardDetailsListResult.Errors.ParseToFragment(), boardDetailsListResult.Message);
+        else
+            Model = boardDetailsListResult.Value;
+    }
+
+
+
+    /// <summary>
+    ///This is a handler to be notified when some interesting events happened
+    ///For example we like to reload data for this component when new organization created by Organizations.Components.Upsert component
+    /// </summary>
+    private async void ReloadDataHandler(MessageType messageType)
+    {
+        try
+        {
+            await LoadDataAsync();
+            StateHasChanged();
+        }
+        catch
+        {
+            //Async task failure because of async void challenges
+        }
+    }
+
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public void Dispose()
+    {
+        // unsubscribe from OnMessage event
+        MessageService.OnMessage -= ReloadDataHandler;
+    }
+
+
 
 }

@@ -1,18 +1,18 @@
-﻿
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <i class="bi bi-building"></i>
-            Organization Name
+            @Model.OrganizationName
         </li>
         <li class="breadcrumb-item">
             <i class="bi bi-kanban"></i>
-            Project Name
+           @Model.ProjectName
         </li>
         <li class="breadcrumb-item">
             <i class="bi bi-clipboard-plus"></i>
-            Board Name
+          @Model.Name
         </li>
         <li class="breadcrumb-item active" aria-current="page">
             <a href="#">
@@ -25,5 +25,6 @@
 
 
 @code {
-
+    [Parameter]
+    public BoardOutputDto Model { get; set; }
 }

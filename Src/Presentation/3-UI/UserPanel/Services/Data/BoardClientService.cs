@@ -1,5 +1,6 @@
 ﻿using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
@@ -26,6 +27,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         #region Public Methods
 
 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -35,6 +38,20 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
 
             return await _httpClientService.GetAsync<BoardOutputDto>(uri);
         }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<BoardDetailsViewModel>> GetDetails(string id)
+        {
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/boards/{id}/details")).Uri;
+
+            return await _httpClientService.GetAsync<BoardDetailsViewModel>(uri);
+        }
+
 
 
 

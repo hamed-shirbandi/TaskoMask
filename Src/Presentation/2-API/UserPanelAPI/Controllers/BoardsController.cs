@@ -31,16 +31,27 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         #region Public Methods
 
 
-
-
         /// <summary>
-        /// get board detail
+        /// get board basic info
         /// </summary>
         [HttpGet]
         [Route("boards/{id}")]
         public async Task<Result<BoardOutputDto>> Get(string id)
         {
             return await _boardService.GetByIdAsync(id);
+        }
+
+
+
+
+        /// <summary>
+        /// get board detail
+        /// </summary>
+        [HttpGet]
+        [Route("boards/{id}/details")]
+        public async Task<Result<BoardDetailsViewModel>> GetDetails(string id)
+        {
+            return await _boardService.GetDetailsAsync(id);
         }
 
 

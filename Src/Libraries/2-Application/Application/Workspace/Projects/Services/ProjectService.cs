@@ -12,7 +12,6 @@ using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
 using System.Linq;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Application.Workspace.Projects.Services
 {
@@ -114,16 +113,6 @@ namespace TaskoMask.Application.Workspace.Projects.Services
         public async Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId)
         {
             return await SendQueryAsync(new GetProjectsByOrganizationIdQuery(organizationId));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<ProjectReportDto>> GetReportAsync(string id)
-        {
-            return await SendQueryAsync(new GetProjectReportQuery(id));
         }
 
 

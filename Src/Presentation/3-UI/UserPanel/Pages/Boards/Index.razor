@@ -1,0 +1,12 @@
+﻿@page "/board/{BoardId}"
+@using TaskoMask.Presentation.UI.UserPanel.Pages.Boards.Components
+
+
+<h3>Boards Index @BoardId</h3>
+
+@code {
+
+    [Parameter]
+    public string BoardId { get; set; }
+
+}

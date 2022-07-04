@@ -23,8 +23,9 @@ else
 {
     foreach (var item in Model)
     {
+        var href = $"/board/{item.Id}";
         <div class="col-md-4 col-sm-12 ">
-            <NavLink href="#">
+            <NavLink href="@href">
                 <div class="card bg-primary text-white">
                     <div class="card-body">
                         <h5 class="card-title">

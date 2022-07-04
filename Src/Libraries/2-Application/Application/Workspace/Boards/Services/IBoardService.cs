@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Share.Dtos.Workspace.Boards;
-using System.Collections.Generic;
 using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Workspace.Boards.Services
@@ -13,8 +12,6 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         Task<Result<CommandResult>> UpdateAsync(BoardUpsertDto input);
         Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<BoardOutputDto>> GetByIdAsync(string id);
-        Task<Result<BoardReportDto>> GetReportAsync(string id);
-        Task<Result<IEnumerable<BoardBasicInfoDto>>> GetListByProjectIdAsync(string projectId);
         Task<Result<PaginatedListReturnType<BoardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);

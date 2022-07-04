@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Application.Core.Commands;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Services;
 
@@ -14,7 +13,6 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         Task<Result<CommandResult>> UpdateAsync(CardUpsertDto input);
         Task<Result<IEnumerable<CardDetailsViewModel>>> GetCardDetailsListByBoardIdAsync(string boardId);
         Task<Result<CardBasicInfoDto>> GetByIdAsync(string id);
-        Task<Result<CardReportDto>> GetReportAsync(string id);
         Task<Result<PaginatedListReturnType<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);

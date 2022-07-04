@@ -5,15 +5,11 @@ using TaskoMask.Application.Workspace.Cards.Commands.Models;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Queries.Models.Boards;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Workspace.Projects.Queries.Models;
-using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Application.Workspace.Cards.Services
 {
@@ -77,18 +73,6 @@ namespace TaskoMask.Application.Workspace.Cards.Services
             //GetCardDetailsAsync()
             throw new System.NotImplementedException();
         }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CardReportDto>> GetReportAsync(string id)
-        {
-            return await SendQueryAsync(new GetCardReportQuery(id));
-        }
-
 
 
 

@@ -3,9 +3,10 @@
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
 @implements IDisposable
 
-@if (Model!=null)
+@if (Model != null)
 {
     <Breadcrumb Model=@Model.Board></Breadcrumb>
+    <Cards Model=@Model.Cards></Cards>
 }
 
 @code {

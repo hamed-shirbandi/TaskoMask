@@ -1,0 +1,60 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Cards
+@using TaskoMask.Application.Share.ViewModels
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        <b>There isn't any card yet!</b>
+        <hr>
+        <small>
+            You can add new card by using
+            <b>
+                <a href="#" class="text-info">
+                    <i class="bi bi-card-list"></i>
+                    New Card
+                </a>
+            </b>
+            item from the top breadcrumb bar.
+        </small>
+    </div>
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="col-md-4 col-sm-12 ">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @item.Card.Name
+                        <a href="#" class="text-warning" title="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </h5>
+                    <hr />
+
+                    <strong>
+                        <i class="bi bi-list-task"></i>
+                        Card Title
+                    </strong>
+                    <hr />
+                    <small class="btn btn-outline-dark">
+                        <i class="bi bi-calendar-date"></i>
+                        Date time
+                    </small>
+
+                </div>
+            </div>
+        </div>
+    }
+
+}
+
+
+
+@code {
+    [Parameter]
+    public IEnumerable<CardDetailsViewModel> Model { get; set; }
+
+
+}

@@ -152,7 +152,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await CardClientService.Update(CardModel.Id, CardModel);
+        var result = await CardClientService.Update(CardId, CardModel);
         DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
     }
 
@@ -169,7 +169,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await CardClientService.Delete(CardModel.Id);
+        var result = await CardClientService.Delete(CardId);
         DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
     }
 

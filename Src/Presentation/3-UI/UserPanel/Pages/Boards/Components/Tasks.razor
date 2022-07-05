@@ -1,0 +1,37 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        <b>There isn't any task yet!</b>
+        <hr>
+        <small>
+            <b>
+                <a href="#" class="text-info">
+                    <i class="bi bi-card-list"></i>
+                    New Task
+                </a>
+            </b>
+        </small>
+    </div>
+}
+else
+{
+    <ul class="list-group list-group-flush">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">
+                <i class="bi bi-list-task"></i>
+                <a href="#" class="text-black-50">@item.Title</a>
+            </li>
+        }
+    </ul>
+}
+@code {
+
+    [Parameter]
+    public IEnumerable<TaskBasicInfoDto> Model { get; set; }
+
+    [Parameter]
+    public string CardId { get; set; }
+}

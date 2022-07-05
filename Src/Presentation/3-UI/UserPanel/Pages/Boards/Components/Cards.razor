@@ -22,27 +22,16 @@ else
 {
     foreach (var item in Model)
     {
-        <div class="col-md-4 col-sm-12 ">
-            <div class="card bg-primary text-white">
+        <div class="col-md-4 col-sm-6 ">
+            <div class="card">
+                <h5 class="card-header">
+                    @item.Card.Name
+                    <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="text-warning" title="Edit">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                </h5>
                 <div class="card-body">
-                    <h5 class="card-title">
-                        @item.Card.Name
-                        <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="text-warning" title="Edit">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                    </h5>
-                    <hr />
-
-                    <strong>
-                        <i class="bi bi-list-task"></i>
-                        Card Title
-                    </strong>
-                    <hr />
-                    <small class="btn btn-outline-dark">
-                        <i class="bi bi-calendar-date"></i>
-                        Date time
-                    </small>
-
+                    <Tasks Model=item.Tasks CardId=item.Card.Id></Tasks>
                 </div>
             </div>
         </div>

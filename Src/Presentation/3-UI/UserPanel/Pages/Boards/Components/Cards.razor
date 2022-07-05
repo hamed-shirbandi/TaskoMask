@@ -20,9 +20,9 @@
 }
 else
 {
-    foreach (var item in Model)
-    {
-        <div class="col-md-4 col-sm-6 ">
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
             <div class="card">
                 <h5 class="card-header">
                     @item.Card.Name
@@ -34,8 +34,8 @@ else
                     <Tasks Model=item.Tasks CardId=item.Card.Id></Tasks>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 
 }
 

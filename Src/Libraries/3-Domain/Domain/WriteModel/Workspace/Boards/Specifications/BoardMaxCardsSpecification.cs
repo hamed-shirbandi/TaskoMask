@@ -13,7 +13,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Board board)
         {
-            return board.Cards.Count <= DomainConstValues.Board_Max_Card_Count;
+            return board.Cards.Count(c=>c.IsDeleted==false) <= DomainConstValues.Board_Max_Card_Count;
         }
     }
 }

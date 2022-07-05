@@ -1,0 +1,34 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Cards
+
+
+<h3>Create card for board @BoardId</h3>
+
+@code {
+
+    #region Fields and Parameters
+
+
+    [Parameter]
+    public string BoardId { get; set; }
+
+    [Parameter]
+    public string CardId { get; set; }
+
+    CardBasicInfoDto CardModel = new CardBasicInfoDto();
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+    /// <summary>
+    /// To specify form role (create or update)
+    /// </summary>
+    bool isUpdate = false;
+
+    #endregion Fields and Parameters
+
+
+}

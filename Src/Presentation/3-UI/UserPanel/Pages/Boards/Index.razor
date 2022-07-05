@@ -6,7 +6,7 @@
 @if (Model != null)
 {
     <Breadcrumb Model=@Model.Board></Breadcrumb>
-    <Cards Model=@Model.Cards></Cards>
+    <Cards Model=@Model.Cards BoardId=@Model.Board.Id></Cards>
 }
 
 @code {

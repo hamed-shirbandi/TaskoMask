@@ -1,4 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
+@using TaskoMask.Application.Share.Dtos.Workspace.Cards
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -8,14 +9,14 @@
         </li>
         <li class="breadcrumb-item">
             <i class="bi bi-kanban"></i>
-           @Model.ProjectName
+            @Model.ProjectName
         </li>
         <li class="breadcrumb-item">
             <i class="bi bi-clipboard-plus"></i>
-          @Model.Name
+            @Model.Name
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-            <a href="#">
+            <a @onclick="@(()=>ShowCreateCardModal(Model.Id))" class="text-info">
                 <i class="bi bi-card-list"></i>
                 New Card
             </a>
@@ -27,4 +28,15 @@
 @code {
     [Parameter]
     public BoardOutputDto Model { get; set; }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowCreateCardModal(string boardId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(CardBasicInfoDto.BoardId), boardId);
+        ModalService.Show<Pages.Cards.Components.Upsert>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
 }

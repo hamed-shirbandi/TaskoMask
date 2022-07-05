@@ -27,7 +27,7 @@ else
                 <div class="card-body">
                     <h5 class="card-title">
                         @item.Card.Name
-                        <a href="#" class="text-warning" title="Edit">
+                        <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="text-warning" title="Edit">
                             <i class="bi bi-pencil"></i>
                         </a>
                     </h5>
@@ -71,6 +71,17 @@ else
         var parameters = new ModalParameters();
         parameters.Add(nameof(CardBasicInfoDto.BoardId), boardId);
         ModalService.Show<Pages.Cards.Components.Upsert>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowUpdateCardModal(string cardId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add("CardId", cardId);
+        ModalService.Show<Pages.Cards.Components.Upsert>("Update Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 
 }

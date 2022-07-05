@@ -1,7 +1,49 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Cards
+@using TaskoMask.Domain.Share.Enums
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ICardClientService CardClientService
+
+<EditForm Model="CardModel" OnValidSubmit="HandleUpsert">
+
+    <DataAnnotationsValidator />
+
+    <input type="hidden" @bind="CardModel.BoardId" />
 
 
-<h3>Create card for board @BoardId</h3>
+    <div class="form-group">
+        <InputText @bind-Value="CardModel.Name" placeholder="Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>CardModel.Name" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <InputSelect @bind-Value="CardModel.Type" class="form-control">
+            @foreach (var type in Enum.GetValues(typeof(BoardCardType)))
+            {
+                <option value="@type">@type</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="()=>CardModel.Type" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <InputText @bind-Value="CardModel.Description" placeholder="Description" class="form-control"></InputText>
+        <ValidationMessage For="()=>CardModel.Description" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        @if (isUpdate)
+        {
+            <button type="submit" class="btn btn-primary mr-1">Update</button>
+            <a @onclick="HandleDelete" class="btn btn-danger text-white mr-1">Delete</a>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-primary mr-1">Create</button>
+        }
+        <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
+    </div>
+
+</EditForm>
+
 
 @code {
 
@@ -14,7 +56,7 @@
     [Parameter]
     public string CardId { get; set; }
 
-    CardBasicInfoDto CardModel = new CardBasicInfoDto();
+    CardUpsertDto CardModel = new CardUpsertDto();
 
     /// <summary>
     /// Access to current modal
@@ -30,5 +72,111 @@
 
     #endregion Fields and Parameters
 
+
+
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        //if Id has value so we need to handle update
+        if (!string.IsNullOrEmpty(CardId))
+            await PrepareModelToUpdate();
+        else
+            CardModel.BoardId = BoardId;
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+    /// <summary>
+    /// Get model by Id from API
+    /// </summary>
+    private async Task PrepareModelToUpdate()
+    {
+        isUpdate = true;
+
+        var cardResult = await CardClientService.Get(CardId);
+
+        if (cardResult.IsSuccess)
+        {
+            CardModel = new CardUpsertDto
+                {
+                    Id = cardResult.Value.Id,
+                    Name = cardResult.Value.Name,
+                    Description = cardResult.Value.Description,
+                    Type = cardResult.Value.Type,
+                    BoardId = cardResult.Value.BoardId,
+                };
+        }
+        else
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(cardResult.Errors.ParseToFragment(), cardResult.Message);
+        }
+    }
+
+
+    /// <summary>
+    /// Handle form role
+    /// </summary>
+    private async Task HandleUpsert()
+    {
+        if (isUpdate)
+            await HandleUpdate();
+        else
+            await HandleCreate();
+    }
+
+
+
+    /// <summary>
+    /// handle create model
+    /// </summary>
+    private async Task HandleCreate()
+    {
+        CardModel.BoardId = BoardId;
+        var result = await CardClientService.Create(CardModel);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Card_Created, ModalInstance);
+    }
+
+
+
+    /// <summary>
+    /// handle update model
+    /// </summary>
+    private async Task HandleUpdate()
+    {
+        var result = await CardClientService.Update(CardId, CardModel);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
+    }
+
+
+
+    /// <summary>
+    /// handle delete item
+    /// </summary>
+    private async Task HandleDelete()
+    {
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!");
+        var confirmationModalResult = await confirmationModal.Result;
+
+        if (confirmationModalResult.Cancelled)
+            return;
+
+        var result = await CardClientService.Delete(CardId);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
+    }
+
+    #endregion private Methods
 
 }

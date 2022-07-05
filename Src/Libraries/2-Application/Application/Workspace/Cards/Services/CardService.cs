@@ -41,7 +41,7 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(CardUpsertDto input)
         {
-            var cmd = new CreateCardCommand(boardId: input.BoardId, name: input.Name, description: input.Description, type: input.Type);
+            var cmd = new CreateCardCommand(boardId: input.BoardId, name: input.Name, type: input.Type);
             return await SendCommandAsync(cmd);
         }
 
@@ -52,7 +52,7 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(CardUpsertDto input)
         {
-            var cmd = new UpdateCardCommand(id: input.Id, name: input.Name, description: input.Description, type: input.Type);
+            var cmd = new UpdateCardCommand(id: input.Id, name: input.Name, type: input.Type);
             return await SendCommandAsync(cmd);
         }
 

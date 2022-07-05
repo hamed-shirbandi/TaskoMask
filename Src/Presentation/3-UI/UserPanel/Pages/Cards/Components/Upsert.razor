@@ -25,11 +25,6 @@
     </div>
 
     <div class="form-group">
-        <InputText @bind-Value="CardModel.Description" placeholder="Description" class="form-control"></InputText>
-        <ValidationMessage For="()=>CardModel.Description" class="text-danger"></ValidationMessage>
-    </div>
-
-    <div class="form-group">
         @if (isUpdate)
         {
             <button type="submit" class="btn btn-primary mr-1">Update</button>
@@ -108,11 +103,12 @@
 
         if (cardResult.IsSuccess)
         {
+            CardId = cardResult.Value.Id;
+
             CardModel = new CardUpsertDto
                 {
                     Id = cardResult.Value.Id,
                     Name = cardResult.Value.Name,
-                    Description = cardResult.Value.Description,
                     Type = cardResult.Value.Type,
                     BoardId = cardResult.Value.BoardId,
                 };
@@ -156,7 +152,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await CardClientService.Update(CardId, CardModel);
+        var result = await CardClientService.Update(CardModel.Id, CardModel);
         DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
     }
 
@@ -173,7 +169,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await CardClientService.Delete(CardId);
+        var result = await CardClientService.Delete(CardModel.Id);
         DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
     }
 

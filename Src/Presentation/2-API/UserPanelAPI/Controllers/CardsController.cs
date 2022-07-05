@@ -4,7 +4,6 @@ using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 
@@ -67,6 +66,19 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
             input.Id = id;
             return await _cardService.UpdateAsync(input);
         }
+
+
+
+        /// <summary>
+        /// soft delete card
+        /// </summary>
+        [HttpDelete]
+        [Route("cards/{id}")]
+        public async Task<Result<CommandResult>> Delete(string id)
+        {
+            return await _cardService.DeleteAsync(id);
+        }
+
 
 
 

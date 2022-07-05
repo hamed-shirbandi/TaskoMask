@@ -12,6 +12,12 @@
         Board_Updated = 7,
         Board_Deleted = 8,
         Owner_Updated = 9,
+        Card_Created=10,
+        Card_Updated = 11,
+        Card_Deleted = 12,
+        Task_Created = 13,
+        Task_Updated = 14,
+        Task_Deleted = 15,
 
     }
 }

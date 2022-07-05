@@ -9,7 +9,7 @@
             <b>
                 <a href="#" class="text-info">
                     <i class="bi bi-card-list"></i>
-                    New Task
+                    Add new task
                 </a>
             </b>
         </small>
@@ -18,6 +18,10 @@
 else
 {
     <ul class="list-group list-group-flush">
+        <li class="list-group-item list-group-item-warning">
+            <i class="bi bi-list-task"></i>
+            <a href="#" class="text-black-50">Add new Task</a>
+        </li>
         @foreach (var item in Model)
         {
             <li class="list-group-item">

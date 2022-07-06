@@ -73,7 +73,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 
             var loadedVersion = task.Version;
 
-            task.UpdateTask(request.Title,request.CardId, request.Description, _taskValidatorService);
+            task.UpdateTask(request.Title, request.Description, _taskValidatorService);
 
             await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
             await PublishDomainEventsAsync(task.DomainEvents);

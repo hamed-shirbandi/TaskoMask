@@ -65,7 +65,6 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
 
             task.Title = updatedTask.Title;
             task.Description = updatedTask.Description;
-            task.CardId = updatedTask.CardId;
 
             task.SetAsUpdated();
 

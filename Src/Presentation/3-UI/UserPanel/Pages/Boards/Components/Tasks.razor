@@ -1,38 +1,29 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
 
-@if (!Model.Any())
-{
-    <div class="alert alert-warning">
-        <b>There isn't any task yet!</b>
-        <hr>
-        <small>
-            <b>
-                <a @onclick="@(()=>ShowCreateTaskModal())" class="text-info">
-                    <i class="bi bi-card-list"></i>
-                    Add new task
-                </a>
-            </b>
-        </small>
-    </div>
-}
-else
-{
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item list-group-item-warning">
+<ul class="list-group list-group-flush">
+
+    <li class="list-group-item list-group-item-warning">
+        <b>
             <i class="bi bi-list-task"></i>
-            <a @onclick="@(()=>ShowCreateTaskModal())" class="text-black-50">Add new Task</a>
-        </li>
-        @foreach (var item in Model)
+            <a @onclick="@(()=>ShowCreateTaskModal())" class="text-info">Add new Task</a>
+        </b>
+    </li>
+
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
         {
             <li class="list-group-item">
                 <i class="bi bi-list-task"></i>
-                <a @onclick="@(()=>ShowUpdateTaskModal(item.Id))" class="text-black-50">
+                <a @onclick="@(()=>ShowUpdateTaskModal(item.Id))" class="text-black">
                     @item.Title
                 </a>
             </li>
         }
-    </ul>
-}
+    }
+</ul>
+
+
 @code {
 
     [Parameter]

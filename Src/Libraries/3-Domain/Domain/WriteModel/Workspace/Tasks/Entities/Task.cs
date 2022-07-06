@@ -69,15 +69,14 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateTask(string name,string cardId, string description, ITaskValidatorService taskValidatorService)
+        public void UpdateTask(string name , string description, ITaskValidatorService taskValidatorService)
         {
             Title = TaskTitle.Create(name);
             Description = TaskDescription.Create(description);
-            CardId = TaskCardId.Create(cardId);
 
             CheckPolicies(taskValidatorService);
 
-            AddDomainEvent(new TaskUpdatedEvent(Id, CardId.Value, Title.Value, Description.Value));
+            AddDomainEvent(new TaskUpdatedEvent(Id, Title.Value, Description.Value));
         }
 
 

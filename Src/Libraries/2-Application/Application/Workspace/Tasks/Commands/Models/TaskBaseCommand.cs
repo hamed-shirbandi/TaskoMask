@@ -7,10 +7,9 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
 {
     public abstract class TaskBaseCommand : BaseCommand
     {
-        protected TaskBaseCommand(string title, string cardId, string description )
+        protected TaskBaseCommand(string title, string description )
         {
             Title = title;
-            CardId = cardId;
             Description = description;
         }
 
@@ -19,8 +18,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
         public string Title { get;  }
 
-        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string CardId { get; }
+
 
         [StringLength(DomainConstValues.Organization_Name_Max_Length, MinimumLength = DomainConstValues.Organization_Name_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]

@@ -14,15 +14,6 @@
         <ValidationMessage For="()=>TaskModel.Title" class="text-danger"></ValidationMessage>
     </div>
 
-    <div class="form-group">
-        <select disabled="@isUpdate" @bind="TaskModel.CardId" class="form-control">
-            @foreach (var prop in cardsSelectList)
-            {
-                <option value="@prop.Value" selected="@(prop.Value==TaskModel.CardId?true:false)">@prop.Text</option>
-            }
-        </select>
-        <ValidationMessage For="()=>TaskModel.CardId" class="text-danger"></ValidationMessage>
-    </div>
 
     <div class="form-group">
         <InputTextArea @bind-Value="TaskModel.Description" placeholder="Title" class="form-control"></InputTextArea>
@@ -55,11 +46,6 @@
     [Parameter]
     public string CardId { get; set; }
 
-    /// <summary>
-    /// cards list to use in DropDownList
-    /// </summary>
-    IEnumerable<SelectListItem> cardsSelectList = new List<SelectListItem>();
-
 
 
     TaskUpsertDto TaskModel = new TaskUpsertDto();
@@ -87,9 +73,6 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        //get cards select list for DropDownList
-        await GetCards();
-
         //if Id has value so we need to handle update
         if (!string.IsNullOrEmpty(TaskId))
             await PrepareModelToUpdate();
@@ -130,30 +113,6 @@
             ModalInstance.CloseAsync();
             ToastService.ShowError(taskResult.Errors.ParseToFragment(), taskResult.Message);
         }
-    }
-
-
-    
-    /// <summary>
-    /// get cards select list to use in DropDownList
-    /// </summary>
-    private async Task GetCards()
-    {
-        var cardsResult = await CardClientService.GetSelectListItems(CardId);
-        if (!cardsResult.IsSuccess)
-        {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(cardsResult.Errors.ParseToFragment(), cardsResult.Message);
-        }
-        else if (cardsResult.Value.Any())
-        {
-            cardsSelectList = cardsResult.Value;
-
-            if (string.IsNullOrEmpty(TaskModel.CardId))
-                TaskModel.CardId = cardsSelectList.First().Value;
-        }
-
     }
 
 

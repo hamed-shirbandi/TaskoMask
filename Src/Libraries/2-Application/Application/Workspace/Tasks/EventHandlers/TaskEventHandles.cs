@@ -13,6 +13,7 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
         INotificationHandler<TaskCreatedEvent>,
         INotificationHandler<TaskUpdatedEvent>,
         INotificationHandler<TaskDeletedEvent>,
+        INotificationHandler<TaskMovedToAnotherCardEvent>,
         INotificationHandler<TaskRecycledEvent>
     {
         #region Fields
@@ -80,6 +81,18 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
         {
             var task = await _taskRepository.GetByIdAsync(deletedTask.Id);
             task.SetAsDeleted();
+            await _taskRepository.UpdateAsync(task);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async System.Threading.Tasks.Task Handle(TaskMovedToAnotherCardEvent movedToAnotherCardEvent, CancellationToken cancellationToken)
+        {
+            var task = await _taskRepository.GetByIdAsync(movedToAnotherCardEvent.Id);
+            task.CardId= movedToAnotherCardEvent.CardId;
             await _taskRepository.UpdateAsync(task);
         }
 

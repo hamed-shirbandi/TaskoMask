@@ -5,8 +5,8 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
 {
     public class UpdateTaskCommand : TaskBaseCommand
     {
-        public UpdateTaskCommand(string id, string title, string description)
-            : base(title, description)
+        public UpdateTaskCommand(string id, string title, string cardId, string description)
+            : base(title, cardId, description)
         {
             Id = id;
         }

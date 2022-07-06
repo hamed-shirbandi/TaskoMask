@@ -6,14 +6,12 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
 {
     public class CreateTaskCommand : TaskBaseCommand
     {
-        public CreateTaskCommand(string title, string description, string cardId)
-            : base(title, description)
+        public CreateTaskCommand(string title, string cardId, string description)
+            : base(title,cardId, description)
         {
-            CardId = cardId;
         }
 
-        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string CardId { get; }
+
 
     }
 }

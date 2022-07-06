@@ -1,5 +1,6 @@
 ﻿using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
@@ -29,11 +30,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TaskBasicInfoDto>> Get(string id)
+        public async Task<Result<TaskDetailsViewModel>> Get(string id)
         {
             var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks/{id}")).Uri;
 
-            return await _httpClientService.GetAsync<TaskBasicInfoDto>(uri);
+            return await _httpClientService.GetAsync<TaskDetailsViewModel>(uri);
         }
 
 

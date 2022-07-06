@@ -6,6 +6,7 @@ using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -36,10 +37,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpGet]
         [Route("tasks/{id}")]
-        public async Task<Result<TaskBasicInfoDto>> Get(string id)
+        public async Task<Result<TaskDetailsViewModel>> Get(string id)
         {
-            //TODO implement tasks get api
-            return Result.Failure<TaskBasicInfoDto>(message: "not implemented yet");
+            return await _taskService.GetDetailsAsync(id);
         }
 
 
@@ -47,7 +47,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
-        /// Create new task
+        /// create new task
         /// </summary>
         [HttpPost]
         [Route("tasks")]

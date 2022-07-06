@@ -1,10 +1,51 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
 @inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ICardClientService CardClientService
 
-<h3>Upsert task for card @CardId</h3>
+<EditForm Model="TaskModel" OnValidSubmit="HandleUpsert">
+
+    <DataAnnotationsValidator />
+
+    <input type="hidden" @bind="TaskModel.CardId" />
+
+
+    <div class="form-group">
+        <InputText @bind-Value="TaskModel.Title" placeholder="Title" class="form-control"></InputText>
+        <ValidationMessage For="()=>TaskModel.Title" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <select disabled="@isUpdate" @bind="TaskModel.CardId" class="form-control">
+            @foreach (var prop in cardsSelectList)
+            {
+                <option value="@prop.Value" selected="@(prop.Value==TaskModel.CardId?true:false)">@prop.Text</option>
+            }
+        </select>
+        <ValidationMessage For="()=>TaskModel.CardId" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <InputTextArea @bind-Value="TaskModel.Description" placeholder="Title" class="form-control"></InputTextArea>
+        <ValidationMessage For="()=>TaskModel.Description" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        @if (isUpdate)
+        {
+            <button type="submit" class="btn btn-primary mr-1">Update</button>
+            <a @onclick="HandleDelete" class="btn btn-danger text-white mr-1">Delete</a>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-primary mr-1">Create</button>
+        }
+        <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
+    </div>
+
+</EditForm>
 
 @code {
-    
+
     #region Fields and Parameters
 
 
@@ -13,6 +54,13 @@
 
     [Parameter]
     public string CardId { get; set; }
+
+    /// <summary>
+    /// cards list to use in DropDownList
+    /// </summary>
+    IEnumerable<SelectListItem> cardsSelectList = new List<SelectListItem>();
+
+
 
     TaskUpsertDto TaskModel = new TaskUpsertDto();
 
@@ -30,7 +78,7 @@
 
     #endregion Fields and Parameters
 
-    
+
     #region Protected Methods
 
 
@@ -39,6 +87,9 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
+        //get cards select list for DropDownList
+        await GetCards();
+
         //if Id has value so we need to handle update
         if (!string.IsNullOrEmpty(TaskId))
             await PrepareModelToUpdate();
@@ -80,6 +131,31 @@
             ToastService.ShowError(taskResult.Errors.ParseToFragment(), taskResult.Message);
         }
     }
+
+
+    
+    /// <summary>
+    /// get cards select list to use in DropDownList
+    /// </summary>
+    private async Task GetCards()
+    {
+        var cardsResult = await CardClientService.GetSelectListItems(CardId);
+        if (!cardsResult.IsSuccess)
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(cardsResult.Errors.ParseToFragment(), cardsResult.Message);
+        }
+        else if (cardsResult.Value.Any())
+        {
+            cardsSelectList = cardsResult.Value;
+
+            if (string.IsNullOrEmpty(TaskModel.CardId))
+                TaskModel.CardId = cardsSelectList.First().Value;
+        }
+
+    }
+
 
 
     /// <summary>
@@ -134,6 +210,4 @@
     }
 
     #endregion private Methods
-
-
 }

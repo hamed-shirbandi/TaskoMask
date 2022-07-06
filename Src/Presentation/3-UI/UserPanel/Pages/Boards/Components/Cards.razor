@@ -9,7 +9,7 @@
         <small>
             You can add new card by using
             <b>
-                <a @onclick="@(()=>ShowCreateCardModal(BoardId))" class="text-info">
+                <a @onclick="@(()=>ShowCreateCardModal())" class="text-info">
                     <i class="bi bi-card-list"></i>
                     New Card
                 </a>
@@ -55,10 +55,10 @@ else
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateCardModal(string boardId)
+    private void ShowCreateCardModal()
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(CardBasicInfoDto.BoardId), boardId);
+        parameters.Add(nameof(CardBasicInfoDto.BoardId), BoardId);
         ModalService.Show<Pages.Cards.Components.Upsert>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 

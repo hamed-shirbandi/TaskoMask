@@ -66,21 +66,20 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         public async Task<Result<CommandResult>> Update(string id, [FromBody] TaskUpsertDto input)
         {
             input.Id = id;
-            return await _taskService.CreateAsync(input);
-
+            return await _taskService.UpdateAsync(input);
         }
 
 
 
         /// <summary>
-        /// change task's card
+        /// moce a task to another card
         /// </summary>
         [HttpPut]
-        [Route("tasks/{taskId}/{cardId}")]
-        public async Task<Result<CommandResult>> SetCardId(string taskId, string cardId)
+        [Route("tasks/{taskId}/moveto/{cardId}")]
+        public async Task<Result<CommandResult>> MoveTaskToAnotherCard(string taskId, string cardId)
         {
-            //TODO implement tasks SetCardId
-            return Result.Failure<CommandResult>(message: "not implemented yet");
+            return await _taskService.MoveTaskToAnotherCardAsync(taskId, cardId);
+
         }
 
 

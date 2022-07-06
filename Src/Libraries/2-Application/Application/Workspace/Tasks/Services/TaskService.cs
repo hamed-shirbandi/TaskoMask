@@ -9,7 +9,6 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
@@ -55,7 +54,15 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
 
 
 
- 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> MoveTaskToAnotherCardAsync(string taskId, string cardId)
+        {
+            var cmd = new MoveTaskToAnotherCardCommand(taskId, cardId);
+            return await SendCommandAsync(cmd);
+        }
+
 
 
         /// <summary>
@@ -137,7 +144,6 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
             var cmd = new DeleteTaskCommand(id);
             return await SendCommandAsync(cmd);
         }
-
 
 
 

@@ -66,8 +66,8 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         public async Task<Result<CommandResult>> Update(string id, [FromBody] TaskUpsertDto input)
         {
             input.Id = id;
-            //TODO implement tasks Update api
-            return Result.Failure<CommandResult>(message: "not implemented yet");
+            return await _taskService.CreateAsync(input);
+
         }
 
 

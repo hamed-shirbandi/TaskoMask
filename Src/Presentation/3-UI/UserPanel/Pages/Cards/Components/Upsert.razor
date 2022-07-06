@@ -103,8 +103,6 @@
 
         if (cardResult.IsSuccess)
         {
-            CardId = cardResult.Value.Id;
-
             CardModel = new CardUpsertDto
                 {
                     Id = cardResult.Value.Id,

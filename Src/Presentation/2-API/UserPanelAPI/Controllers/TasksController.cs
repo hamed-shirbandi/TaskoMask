@@ -53,8 +53,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("tasks")]
         public async Task<Result<CommandResult>> Create([FromBody] TaskUpsertDto input)
         {
-            //TODO implement tasks create api
-            return Result.Failure<CommandResult>(message: "not implemented yet");
+            return await _taskService.CreateAsync(input);
         }
 
 

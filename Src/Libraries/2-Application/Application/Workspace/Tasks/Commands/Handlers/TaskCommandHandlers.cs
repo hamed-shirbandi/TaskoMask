@@ -18,6 +18,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
     public class TaskCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateTaskCommand, CommandResult>,
          IRequestHandler<UpdateTaskCommand, CommandResult>,
+         IRequestHandler<MoveTaskToAnotherCardCommand, CommandResult>,
          IRequestHandler<DeleteTaskCommand, CommandResult>
     {
         #region Fields
@@ -103,6 +104,30 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
 
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(MoveTaskToAnotherCardCommand request, CancellationToken cancellationToken)
+        {
+            var task = await _taskAggregateRepository.GetByIdAsync(request.TaskId);
+            if (task == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+
+            var loadedVersion = task.Version;
+
+            task.MoveTaskToAnotherCard(request.CardId);
+
+            await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
+
+            await PublishDomainEventsAsync(task.DomainEvents);
+
+            return new CommandResult(ApplicationMessages.Update_Success, request.TaskId);
+
+        }
+
 
 
 

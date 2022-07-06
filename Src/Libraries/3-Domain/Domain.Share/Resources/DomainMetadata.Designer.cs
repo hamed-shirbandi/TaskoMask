@@ -106,6 +106,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backlog.
+        /// </summary>
+        public static string CardType_Backlog {
+            get {
+                return ResourceManager.GetString("CardType_Backlog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Doing.
         /// </summary>
         public static string CardType_Doing {

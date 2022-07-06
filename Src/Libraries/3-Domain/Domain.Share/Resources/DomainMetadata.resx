@@ -174,4 +174,7 @@
   <data name="Comment" xml:space="preserve">
     <value>Comment</value>
   </data>
+  <data name="CardType_Backlog" xml:space="preserve">
+    <value>Backlog</value>
+  </data>
 </root>

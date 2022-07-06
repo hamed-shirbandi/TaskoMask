@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Domain.Share.Enums
@@ -30,6 +29,8 @@ namespace TaskoMask.Domain.Share.Enums
         Doing = 1,
         [Display(Name = nameof(DomainMetadata.CardType_Done), ResourceType = typeof(DomainMetadata))]
         Done = 2,
+        [Display(Name = nameof(DomainMetadata.CardType_Backlog), ResourceType = typeof(DomainMetadata))]
+        Backlog = 3,
     }
    
 }

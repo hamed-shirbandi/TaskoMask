@@ -68,6 +68,29 @@ namespace TaskoMask.Application.Workspace.Cards.Services
 
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string boardId)
+        {
+            var cardQueryResult = await SendQueryAsync(new GetCardsByBoardIdQuery(boardId));
+            if (!cardQueryResult.IsSuccess)
+                return Result.Failure<IEnumerable<SelectListItem>>(cardQueryResult.Errors);
+
+            var cards = cardQueryResult.Value.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id,
+
+            }).AsEnumerable();
+
+            return Result.Success(cards);
+
+        }
+
+
+
         /// <summary>
         /// 
         /// </summary>

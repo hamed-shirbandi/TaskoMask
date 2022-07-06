@@ -16,6 +16,6 @@ namespace TaskoMask.Application.Workspace.Cards.Services
         Task<Result<PaginatedListReturnType<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);
-
+        Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string boardId);
     }
 }

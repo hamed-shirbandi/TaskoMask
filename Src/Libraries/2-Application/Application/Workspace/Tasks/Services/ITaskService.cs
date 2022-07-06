@@ -18,5 +18,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         Task<Result<PaginatedListReturnType<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> MoveTaskToAnotherCardAsync(string taskId, string cardId);
+        Task<Result<CommandResult>> DeleteAsync(string id);
+
     }
 }

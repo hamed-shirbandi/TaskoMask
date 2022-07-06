@@ -6,6 +6,7 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
     public interface ICardClientService
     {
         Task<Result<CardBasicInfoDto>> Get(string id);
+        Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string boardId);
         Task<Result<CommandResult>> Create(CardUpsertDto input);
         Task<Result<CommandResult>> Update(string id,CardUpsertDto input);
         Task<Result<CommandResult>> Delete(string id);

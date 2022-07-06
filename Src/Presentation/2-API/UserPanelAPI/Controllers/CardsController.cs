@@ -45,6 +45,18 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
         /// <summary>
+        /// get cards select list for a board
+        /// </summary>
+        [HttpGet]
+        [Route("boards/{boardId}/cards")]
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string boardId)
+        {
+            return await _cardService.GetSelectListAsync(boardId);
+        }
+
+
+
+        /// <summary>
         /// create new card
         /// </summary>
         [HttpPost]

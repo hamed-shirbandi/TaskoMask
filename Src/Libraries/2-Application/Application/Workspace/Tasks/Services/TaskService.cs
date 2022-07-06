@@ -9,10 +9,8 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Queries.Models.Boards;
-using TaskoMask.Application.Workspace.Projects.Queries.Models;
-using TaskoMask.Application.Workspace.Organizations.Queries.Models;
+using TaskoMask.Application.Workspace.Cards.Queries.Models;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
 {
@@ -66,6 +64,36 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         public async Task<Result<TaskBasicInfoDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetTaskByIdQuery(id));
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id)
+        {
+
+            var taskQueryResult = await SendQueryAsync(new GetTaskByIdQuery(id));
+            if (!taskQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(taskQueryResult.Errors);
+
+
+            var cardQueryResult = await SendQueryAsync(new GetCardByIdQuery(taskQueryResult.Value.CardId));
+            if (!cardQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(cardQueryResult.Errors);
+
+
+            var boardDetail = new TaskDetailsViewModel
+            {
+                Task = taskQueryResult.Value,
+                Card = cardQueryResult.Value,
+            };
+
+            return Result.Success(boardDetail);
+
         }
 
 

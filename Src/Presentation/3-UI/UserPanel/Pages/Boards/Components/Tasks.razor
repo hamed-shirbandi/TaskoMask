@@ -7,7 +7,7 @@
         <hr>
         <small>
             <b>
-                <a href="#" class="text-info">
+                <a @onclick="@(()=>ShowCreateTaskModal())" class="text-info">
                     <i class="bi bi-card-list"></i>
                     Add new task
                 </a>
@@ -20,13 +20,15 @@ else
     <ul class="list-group list-group-flush">
         <li class="list-group-item list-group-item-warning">
             <i class="bi bi-list-task"></i>
-            <a href="#" class="text-black-50">Add new Task</a>
+            <a @onclick="@(()=>ShowCreateTaskModal())" class="text-black-50">Add new Task</a>
         </li>
         @foreach (var item in Model)
         {
             <li class="list-group-item">
                 <i class="bi bi-list-task"></i>
-                <a href="#" class="text-black-50">@item.Title</a>
+                <a @onclick="@(()=>ShowUpdateTaskModal(item.Id))" class="text-black-50">
+                    @item.Title
+                </a>
             </li>
         }
     </ul>
@@ -38,4 +40,28 @@ else
 
     [Parameter]
     public string CardId { get; set; }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowCreateTaskModal()
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(TaskBasicInfoDto.CardId), CardId);
+        ModalService.Show<Pages.Cards.Components.Upsert>("Create Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowUpdateTaskModal(string taskId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add("TaskId", taskId);
+        ModalService.Show<Pages.Cards.Components.Upsert>("Update Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+
 }

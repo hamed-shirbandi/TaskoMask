@@ -1,0 +1,32 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
+
+<h3>Upsert task for card @CardId</h3>
+
+@code {
+    
+    #region Fields and Parameters
+
+
+    [Parameter]
+    public string TaskId { get; set; }
+
+    [Parameter]
+    public string CardId { get; set; }
+
+    TaskUpsertDto CardModel = new TaskUpsertDto();
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+    /// <summary>
+    /// To specify form role (create or update)
+    /// </summary>
+    bool isUpdate = false;
+
+    #endregion Fields and Parameters
+
+}

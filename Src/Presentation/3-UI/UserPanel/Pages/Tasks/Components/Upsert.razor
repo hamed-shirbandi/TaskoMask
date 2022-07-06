@@ -1,4 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
 
 <h3>Upsert task for card @CardId</h3>
 
@@ -13,7 +14,7 @@
     [Parameter]
     public string CardId { get; set; }
 
-    TaskUpsertDto CardModel = new TaskUpsertDto();
+    TaskUpsertDto TaskModel = new TaskUpsertDto();
 
     /// <summary>
     /// Access to current modal
@@ -28,5 +29,111 @@
     bool isUpdate = false;
 
     #endregion Fields and Parameters
+
+    
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        //if Id has value so we need to handle update
+        if (!string.IsNullOrEmpty(TaskId))
+            await PrepareModelToUpdate();
+        else
+            TaskModel.CardId = CardId;
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+    /// <summary>
+    /// Get model by Id from API
+    /// </summary>
+    private async Task PrepareModelToUpdate()
+    {
+        isUpdate = true;
+
+        var taskResult = await TaskClientService.Get(TaskId);
+
+        if (taskResult.IsSuccess)
+        {
+            TaskModel = new TaskUpsertDto
+                {
+                    Id = taskResult.Value.Task.Id,
+                    Title = taskResult.Value.Task.Title,
+                    Description = taskResult.Value.Task.Description,
+                    CardId = taskResult.Value.Task.CardId,
+                };
+        }
+        else
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(taskResult.Errors.ParseToFragment(), taskResult.Message);
+        }
+    }
+
+
+    /// <summary>
+    /// Handle form role
+    /// </summary>
+    private async Task HandleUpsert()
+    {
+        if (isUpdate)
+            await HandleUpdate();
+        else
+            await HandleCreate();
+    }
+
+
+
+    /// <summary>
+    /// handle create model
+    /// </summary>
+    private async Task HandleCreate()
+    {
+        TaskModel.CardId = CardId;
+        var result = await TaskClientService.Create(TaskModel);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Card_Created, ModalInstance);
+    }
+
+
+
+    /// <summary>
+    /// handle update model
+    /// </summary>
+    private async Task HandleUpdate()
+    {
+        var result = await TaskClientService.Update(TaskId, TaskModel);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
+    }
+
+
+
+    /// <summary>
+    /// handle delete item
+    /// </summary>
+    private async Task HandleDelete()
+    {
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!");
+        var confirmationModalResult = await confirmationModal.Result;
+
+        if (confirmationModalResult.Cancelled)
+            return;
+
+        var result = await TaskClientService.Delete(TaskId);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
+    }
+
+    #endregion private Methods
+
 
 }

@@ -50,7 +50,7 @@ else
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(TaskBasicInfoDto.CardId), CardId);
-        ModalService.Show<Pages.Cards.Components.Upsert>("Create Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Tasks.Components.Upsert>("Create Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 
 
@@ -61,7 +61,7 @@ else
     {
         var parameters = new ModalParameters();
         parameters.Add("TaskId", taskId);
-        ModalService.Show<Pages.Cards.Components.Upsert>("Update Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Tasks.Components.Upsert>("Update Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 
 }

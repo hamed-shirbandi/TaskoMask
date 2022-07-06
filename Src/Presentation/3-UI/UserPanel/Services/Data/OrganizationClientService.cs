@@ -56,7 +56,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems()
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations/getSelectListItems")).Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owner/organizations")).Uri;
             return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(uri);
         }
 

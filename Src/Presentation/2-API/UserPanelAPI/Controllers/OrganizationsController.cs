@@ -57,11 +57,12 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         }
 
 
+
         /// <summary>
-        /// get organizations list without relational data for current user
+        /// get organizations select list for current user
         /// </summary>
         [HttpGet]
-        [Route("organizations/getSelectListItems")]
+        [Route("owner/organizations")]
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems()
         {
             return await _organizationService.GetSelectListAsync(GetCurrentUserId());

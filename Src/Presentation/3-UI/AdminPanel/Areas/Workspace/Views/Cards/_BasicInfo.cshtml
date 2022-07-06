@@ -9,10 +9,7 @@
         @Html.LabelFor(model => model.Name)
         @Html.TextBoxFor(model => model.Name, new { @class = "form-input-1", @readOnly = "readonly" })
 
-
-        @Html.LabelFor(model => model.Description)
-        @Html.TextBoxFor(model => model.Description, new { @class = "form-input-1", @readOnly = "readonly" })
-
+    
         @Html.LabelFor(model => model.Type)
         <input type="text" name="Type" value="@Model.Type.GetDisplayName()" class = "form-input-1" readOnly = "readonly" />
 

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Application.Share.Resources;
+using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Share.Dtos.Workspace.Tasks
@@ -10,13 +11,15 @@ namespace TaskoMask.Application.Share.Dtos.Workspace.Tasks
 
 
         [Display(Name = nameof(ApplicationMetadata.Title), ResourceType = typeof(ApplicationMetadata))]
+        [StringLength(DomainConstValues.Task_Title_Max_Length, MinimumLength = DomainConstValues.Task_Title_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string Title { get; set; }
+        public string Title { get; }
 
 
         [Display(Name = nameof(ApplicationMetadata.Description), ResourceType = typeof(ApplicationMetadata))]
+        [StringLength(DomainConstValues.Task_Description_Max_Length, MinimumLength = DomainConstValues.Task_Description_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string Description { get; set; }
+        public string Description { get; }
 
 
         [Display(Name = nameof(ApplicationMetadata.CardId), ResourceType = typeof(ApplicationMetadata))]

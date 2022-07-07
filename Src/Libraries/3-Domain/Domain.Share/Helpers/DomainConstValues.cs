@@ -35,7 +35,7 @@ namespace TaskoMask.Domain.Share.Helpers
         public const int Task_Title_Min_Length = 3;
         public const int Task_Title_Max_Length = 50;
         public const int Task_Description_Min_Length = 2;
-        public const int Task_Description_Max_Length = 250;
+        public const int Task_Description_Max_Length = 1024;
 
 
         public const int Owner_DisplayName_Min_Length = 3;

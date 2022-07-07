@@ -58,8 +58,8 @@ else
     private void ShowCreateCardModal()
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(CardBasicInfoDto.BoardId), BoardId);
-        ModalService.Show<Pages.Cards.Components.Upsert>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        parameters.Add(nameof(Pages.Cards.Components.Upsert.BoardId), BoardId);
+        ModalService.Show<Upsert>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 
 
@@ -69,7 +69,7 @@ else
     private void ShowUpdateCardModal(string cardId)
     {
         var parameters = new ModalParameters();
-        parameters.Add("CardId", cardId);
+        parameters.Add(nameof(Pages.Cards.Components.Upsert.CardId), cardId);
         ModalService.Show<Pages.Cards.Components.Upsert>("Update Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 

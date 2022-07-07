@@ -56,7 +56,7 @@ else
     private void ShowUpdsertModal(string projectId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(ProjectBasicInfoDto.Id), projectId);
+        parameters.Add(nameof(Pages.Projects.Components.Upsert.Id), projectId);
         ModalService.Show<Pages.Projects.Components.Upsert>("Update project", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 }

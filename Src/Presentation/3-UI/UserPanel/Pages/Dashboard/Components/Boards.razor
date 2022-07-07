@@ -62,7 +62,7 @@ else
     private void ShowUpdsertModal(string boardId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(BoardBasicInfoDto.Id), boardId);
+        parameters.Add(nameof(Pages.Boards.Components.Upsert.Id), boardId);
         ModalService.Show<Pages.Boards.Components.Upsert>("Update board", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 }

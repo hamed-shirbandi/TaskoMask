@@ -36,7 +36,7 @@
     private void ShowCreateCardModal(string boardId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(CardBasicInfoDto.BoardId), boardId);
+        parameters.Add(nameof(Pages.Cards.Components.Upsert.BoardId), boardId);
         ModalService.Show<Pages.Cards.Components.Upsert>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 }

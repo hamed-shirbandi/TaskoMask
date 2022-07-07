@@ -11,15 +11,15 @@ namespace TaskoMask.Application.Share.Dtos.Workspace.Organizations
         public string Id { get; set; }
 
         [Display(Name = nameof(ApplicationMetadata.Name), ResourceType = typeof(ApplicationMetadata))]
+        [StringLength(DomainConstValues.Organization_Name_Max_Length, MinimumLength = DomainConstValues.Organization_Name_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        [StringLength(DomainConstValues.Project_Name_Max_Length, MinimumLength = DomainConstValues.Project_Name_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string Name { get; set; }
+        public string Name { get; }
 
 
         [Display(Name = nameof(ApplicationMetadata.Description), ResourceType = typeof(ApplicationMetadata))]
+        [StringLength(DomainConstValues.Organization_Description_Max_Length, MinimumLength = DomainConstValues.Organization_Description_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
-        [StringLength(DomainConstValues.Project_Description_Max_Length, MinimumLength = DomainConstValues.Project_Description_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
-        public string Description { get; set; }
+        public string Description { get; }
 
         [JsonIgnore]
         public string OwnerId { get; set; }

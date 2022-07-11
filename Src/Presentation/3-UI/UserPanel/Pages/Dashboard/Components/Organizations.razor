@@ -4,7 +4,7 @@
 @foreach (var item in Model)
 {
     <div class="col-10 mx-auto">
-        <h5 data-toggle="tooltip" data-placement="left" title="@item.Organization.Description">
+        <h5 id="@item.Organization.Id" data-toggle="tooltip" data-placement="left" title="@item.Organization.Description">
             <i class="bi bi-building"></i>
             @item.Organization.Name
             <a @onclick="@(()=>ShowUpdsertModal(item.Organization.Id))" class="text-warning" title="Edit">

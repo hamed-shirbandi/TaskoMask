@@ -5,7 +5,9 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <i class="bi bi-building"></i>
-            @Model.OrganizationName
+            <NavLink href="@("/#"+Model.OrganizationId)">
+                @Model.OrganizationName
+            </NavLink>
         </li>
         <li class="breadcrumb-item">
             <i class="bi bi-kanban"></i>
@@ -29,7 +31,7 @@
     [Parameter]
     public BoardOutputDto Model { get; set; }
 
-
+  
     /// <summary>
     ///
     /// </summary>

@@ -71,7 +71,6 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
             var dto= _mapper.Map<BoardOutputDto>(board);
             dto.ProjectName = project.Name;
             dto.OrganizationName = organization.Name;
-            dto.CardsCount = await _cardRepository.CountByBoardIdAsync(board.Id);
 
             return dto;
         }
@@ -126,7 +125,6 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
                 var organization = await _organizationRepository.GetByIdAsync(project.OrganizationId);
                 item.ProjectName = project.Name;
                 item.OrganizationName = organization.Name;
-                item.CardsCount = await _cardRepository.CountByBoardIdAsync(item.Id);
             }
 
             return new PaginatedListReturnType<BoardOutputDto>

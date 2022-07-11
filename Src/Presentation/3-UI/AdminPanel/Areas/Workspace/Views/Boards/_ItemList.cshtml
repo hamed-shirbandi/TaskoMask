@@ -17,8 +17,8 @@ else
                     <tr>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().Name)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().CreationTime.CreateDateTimeString)</th>
+                        <th>@Html.LabelFor(model => model.FirstOrDefault().OrganizationName)</th>
                         <th>@Html.LabelFor(model => model.FirstOrDefault().ProjectName)</th>
-                        <th>@Html.LabelFor(model => model.FirstOrDefault().CardsCount)</th>
                         <th><label></label></th>
                     </tr>
                 </thead>
@@ -34,12 +34,14 @@ else
                             @item.CreationTime.CreateDateTimeString
                         </td>
                         <td>
+                            <a href="@Url.Action( "Details","organizations", new { id = item.OrganizationId,Area="Workspace"}) ">
+                                @item.OrganizationName
+                            </a>
+                        </td>
+                                 <td>
                             <a href="@Url.Action( "Details","Projects", new { id = item.ProjectId,Area="Workspace"}) ">
                                 @item.ProjectName
                             </a>
-                        </td>
-                        <td>
-                            @item.CardsCount
                         </td>
 
                         <td>

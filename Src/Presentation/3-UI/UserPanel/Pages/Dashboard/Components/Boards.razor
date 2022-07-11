@@ -23,25 +23,24 @@ else
 {
     foreach (var item in Model)
     {
-        var href = $"/board/{item.Id}";
         <div class="col-md-4 col-sm-12 ">
-            <NavLink href="@href">
-                <div class="card bg-primary text-white">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            @item.Name
-                            <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                        </h5>
+            <div class="card bg-primary text-white">
+                <h5 class="card-header">
+                    @item.Name
+                    <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                </h5>
+                <a href="@($"/board/{item.Id}")">
+                    <div class="card-body text-white">
                         <small>@item.Description</small>
                         <hr />
                         <small>
                             <i class="bi bi-kanban"></i>: ProjectName
                         </small>
                     </div>
-                </div>
-            </NavLink>
+                </a>
+            </div>
         </div>
     }
 

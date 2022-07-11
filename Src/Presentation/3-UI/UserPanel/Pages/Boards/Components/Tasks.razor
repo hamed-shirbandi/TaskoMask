@@ -14,9 +14,12 @@
         foreach (var item in Model)
         {
             <li class="list-group-item">
-                <i class="bi bi-list-task"></i>
                 <a @onclick="@(()=>ShowUpdateTaskModal(item.Id))" class="text-black">
-                    @item.Title
+                    <div>
+                        <i class="bi bi-list-task"></i>
+                        @item.Title
+
+                    </div>
                 </a>
             </li>
         }

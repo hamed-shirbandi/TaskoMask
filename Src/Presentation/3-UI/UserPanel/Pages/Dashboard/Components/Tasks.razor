@@ -13,37 +13,12 @@ else
 {
     foreach (var item in Model)
     {
-        var href = $"/board/{item.BoardId}";
-
-        <div class="col-md-12 col-sm-12 ">
-            <NavLink href="@href">
+        <div class="col-md-6 col-sm-6">
+            <NavLink href="@($"/board/{item.BoardId}")">
                 <div class="card bg-warning text-dark">
                     <div class="card-body">
-                        <strong>
-                            <i class="bi bi-list-task"></i>
-                            @item.Title
-                        </strong>
-                        <hr />
-                        <small class="btn btn-outline-dark">
-                            <i class="bi bi-clipboard-plus"></i>
-                            test board
-                        </small>
-                        <small class="btn btn-outline-dark">
-                            <i class="bi bi-kanban"></i>
-                            test project
-                        </small>
-                        <small class="btn btn-outline-dark">
-                            <i class="bi bi-calendar-date"></i>
-                            @item.CreationTime.CreateDateTimeString
-                        </small>
-                        <small class="btn btn-outline-dark">
-                            <i class="bi bi-people"></i>
-                            hamed shirbandi
-                        </small>
-                        <small class="btn btn-outline-dark">
-                            <i class="bi bi-clipboard-x"></i>
-                            to do card
-                        </small>
+                        <i class="bi bi-list-task"></i>
+                        @item.Title
                     </div>
                 </div>
             </NavLink>

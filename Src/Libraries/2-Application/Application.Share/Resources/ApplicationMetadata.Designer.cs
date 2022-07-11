@@ -367,7 +367,7 @@ namespace TaskoMask.Application.Share.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reowner Me.
+        ///   Looks up a localized string similar to Remember Me.
         /// </summary>
         public static string RememberMe {
             get {

@@ -66,7 +66,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> MoveTaskToAnotherCard(string taskId, string cardId)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks/{taskId}/{cardId}")).Uri;
+            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/tasks/{taskId}/moveto/{cardId}")).Uri;
             return await _httpClientService.PutAsync<CommandResult>(uri);
         }
 

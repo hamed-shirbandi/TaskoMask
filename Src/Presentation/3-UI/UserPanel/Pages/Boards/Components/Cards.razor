@@ -1,6 +1,7 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Cards
 @using TaskoMask.Application.Share.ViewModels
-
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
+@inject TaskoMask.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
 @if (!Model.Any())
 {
     <div class="alert alert-warning">
@@ -30,7 +31,7 @@ else
                         <i class="bi bi-pencil"></i>
                     </a>
                 </h5>
-                <div class="card-body">
+                <div class="card-body" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
                     <Tasks Model=item.Tasks CardId=@item.Card.Id></Tasks>
                 </div>
             </div>
@@ -49,6 +50,17 @@ else
     [Parameter]
     public IEnumerable<CardDetailsViewModel> Model { get; set; }
 
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleDrop(string cardId)
+    {
+        var draggedTaskId = DragDropService.GetDraggedData();
+        var result = await TaskClientService.MoveTaskToAnotherCard(draggedTaskId, cardId);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Moved);
+    }
 
 
 
@@ -72,5 +84,7 @@ else
         parameters.Add(nameof(Pages.Cards.Components.Upsert.CardId), cardId);
         ModalService.Show<Pages.Cards.Components.Upsert>("Update Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
+
+
 
 }

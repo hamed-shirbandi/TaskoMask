@@ -1,11 +1,12 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
+@inject TaskoMask.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
 
 <ul class="list-group list-group-flush">
 
     <li class="list-group-item list-group-item-warning">
         <b>
             <i class="bi bi-list-task"></i>
-            <a @onclick="@(()=>ShowCreateTaskModal())" class="text-info">Add new Task</a>
+            <a @onclick="@(()=>ShowCreateModal())" class="text-info">Add new Task</a>
         </b>
     </li>
 
@@ -13,8 +14,8 @@
     {
         foreach (var item in Model)
         {
-            <li class="list-group-item">
-                <a @onclick="@(()=>ShowUpdateTaskModal(item.Id))" class="text-black">
+            <li class="list-group-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
+                <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
                     <div>
                         <i class="bi bi-list-task"></i>
                         @item.Title
@@ -36,11 +37,10 @@
     public string CardId { get; set; }
 
 
-
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateTaskModal()
+    private void ShowCreateModal()
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.Upsert.CardId), CardId);
@@ -48,14 +48,27 @@
     }
 
 
+
     /// <summary>
     ///
     /// </summary>
-    private void ShowUpdateTaskModal(string taskId)
+    private void ShowDetailsModal(string taskId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Tasks.Components.Upsert.TaskId), taskId);
-        ModalService.Show<Pages.Tasks.Components.Upsert>("Update Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        parameters.Add(nameof(Pages.Tasks.Components.Details.TaskId), taskId);
+        ModalService.Show<Pages.Tasks.Components.Details>("Task Details", parameters, new ModalOptions { DisableBackgroundCancel = true ,Class="blazored-modal w-75"});
     }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void HandleDragStart(string taskId)
+    {
+        DragDropService.SetDraggedData(taskId);
+    }
+
+
 
 }

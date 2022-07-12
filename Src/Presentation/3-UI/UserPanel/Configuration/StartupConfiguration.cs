@@ -5,6 +5,7 @@ using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 using TaskoMask.Presentation.UI.UserPanel.Services.Data;
+using TaskoMask.Presentation.UI.UserPanel.Services.DragDrop;
 using TaskoMask.Presentation.UI.UserPanel.Services.Http;
 using TaskoMask.Presentation.UI.UserPanel.Services.Message;
 
@@ -24,6 +25,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
+            services.AddSharedConfigureServices();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
@@ -50,7 +52,6 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
 
             services.AddClientServices();
 
-            services.AddSharedConfigureServices();
 
             services.AddBlazoredToast();
 
@@ -105,6 +106,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<ICardClientService, CardClientService>();
             services.AddScoped<ITaskClientService, TaskClientService>();
             services.AddScoped<IOwnerClientService, OwnerClientService>();
+            services.AddScoped<IDragDropService, DragDropService>();
         }
 
     }

@@ -1,0 +1,18 @@
+﻿@using TaskoMask.Presentation.UI.UserPanel.Pages.Tasks.Components
+
+<div class="row">
+    <div class="col-md-8">
+        <Upsert TaskId=@TaskId></Upsert>
+        <Comments></Comments>
+    </div>
+    <hr />
+    <div class="col-md-4">
+        <State></State>
+        <Activities></Activities>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string TaskId { get; set; }
+}

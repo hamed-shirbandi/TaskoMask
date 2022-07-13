@@ -20,7 +20,6 @@
 		<None Include="Pages\Dashboard\Components\Reports.razor" />
 		<None Include="Pages\Dashboard\Components\TabNav.razor" />
 		<None Include="Pages\Dashboard\Components\Tasks.razor" />
-		<None Include="Pages\_Host.cshtml" />
 		<None Include="Shared\MainLayout.razor" />
 		<None Include="Shared\NavMenu.razor" />
 	</ItemGroup>

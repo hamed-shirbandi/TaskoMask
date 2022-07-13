@@ -21,7 +21,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static void AddProjectConfigureServices(this IServiceCollection services, IConfiguration configuration )
+        public static void AddProjectConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -39,9 +39,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<HttpClientInterceptorService>();
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelAPI"));
 
-
             services.AddClientServices();
-
 
             services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();

@@ -1,4 +1,5 @@
-﻿using Blazored.Modal;
+﻿using Blazored.LocalStorage;
+using Blazored.Modal;
 using Blazored.Toast;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Presentation.Framework.Share.Contracts;
@@ -42,8 +43,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddClientServices();
 
 
+            services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();
-
             services.AddBlazoredModal();
         }
 

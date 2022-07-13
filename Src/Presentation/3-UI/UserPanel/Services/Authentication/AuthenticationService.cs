@@ -3,8 +3,6 @@ using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
-using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
-using TaskoMask.Presentation.Framework.Share.Services.Cookie;
 using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
@@ -14,18 +12,14 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         #region Fields
 
         private readonly IAccountClientService _accountClientService;
-        private readonly ICookieService _cookieService;
-        private readonly ICookieAuthenticationService _cookieAuthenticationService;
 
         #endregion
 
         #region Ctor
 
-        public AuthenticationService(IAccountClientService accountClientService, ICookieAuthenticationService cookieAuthenticationService, ICookieService cookieService)
+        public AuthenticationService(IAccountClientService accountClientService)
         {
             _accountClientService = accountClientService;
-            _cookieAuthenticationService = cookieAuthenticationService;
-            _cookieService = cookieService;
         }
 
         #endregion
@@ -64,9 +58,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         public async Task Logout()
         {
             //Remove jwt token cookie
-            _cookieService.Remove(MagicKey.Jwt_Token);
+            //_cookieService.Remove(MagicKey.Jwt_Token);
 
-            await _cookieAuthenticationService.SignOutAsync();
+            //await _cookieAuthenticationService.SignOutAsync();
         }
 
 
@@ -84,12 +78,12 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
             if (!result.IsSuccess)
                 return result;
 
-            //Save jwt token by cookie
-            _cookieService.Set(MagicKey.Jwt_Token,result.Value.JwtToken);
+            ////Save jwt token by cookie
+            //_cookieService.Set(MagicKey.Jwt_Token,result.Value.JwtToken);
 
-            //Sign in user by cookie authentication
-            var user = JwtParser.ParseClaimsFromJwt(result.Value.JwtToken);
-            await _cookieAuthenticationService.SignInAsync(user, isPersistent: false);
+            ////Sign in user by cookie authentication
+            //var user = JwtParser.ParseClaimsFromJwt(result.Value.JwtToken);
+            //await _cookieAuthenticationService.SignInAsync(user, isPersistent: false);
 
             return result;
         }

@@ -21,8 +21,5 @@
 		<ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />
 		<ProjectReference Include="..\Framework.Share\Framework.Share.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Services\" />
-	</ItemGroup>
 
 </Project>

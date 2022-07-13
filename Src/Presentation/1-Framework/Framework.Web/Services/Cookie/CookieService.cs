@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 
-namespace TaskoMask.Presentation.Framework.Share.Services.Cookie
+namespace TaskoMask.Presentation.Framework.Web.Services.Cookie
 {
     public class CookieService : ICookieService
     {

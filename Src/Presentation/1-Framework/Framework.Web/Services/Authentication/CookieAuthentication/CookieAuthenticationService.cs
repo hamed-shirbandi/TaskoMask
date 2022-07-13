@@ -6,7 +6,7 @@ using System.Security.Claims;
 using TaskoMask.Domain.Share.Models;
 using TaskoMask.Presentation.Framework.Share.Extensions;
 
-namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication
+namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
 {
     /// <summary>
     /// Represents service using cookie for the authentication

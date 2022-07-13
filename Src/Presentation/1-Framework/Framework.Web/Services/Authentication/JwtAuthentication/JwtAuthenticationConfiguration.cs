@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
@@ -7,9 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using TaskoMask.Presentation.Framework.Share.Services.Authentication.Models;
+using TaskoMask.Presentation.Framework.Web.Services.Authentication.Models;
 
-namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.JwtAuthentication
+namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication
 {
     public static class JwtAuthenticationConfiguration
     {

@@ -18,6 +18,9 @@ using TaskoMask.Domain.Core.Events;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
+using TaskoMask.Domain.Share.Services;
+using TaskoMask.Presentation.Framework.Web.Services.Authentication;
+using TaskoMask.Presentation.Framework.Web.Services.Cookie;
 
 namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
 {
@@ -37,6 +40,11 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddSharedConfigureServices();
+
+
+            services.AddHttpContextAccessor();
+            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
+            services.AddScoped<ICookieService, CookieService>();
 
             services.AddScoped(sp => new HttpClient
             {

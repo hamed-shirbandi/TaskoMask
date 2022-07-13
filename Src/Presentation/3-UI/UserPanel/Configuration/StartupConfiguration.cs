@@ -2,7 +2,6 @@
 using Blazored.Toast;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Presentation.Framework.Share.Contracts;
-using TaskoMask.Presentation.Framework.Share.Services.Authentication.CookieAuthentication;
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 using TaskoMask.Presentation.UI.UserPanel.Services.Data;
 using TaskoMask.Presentation.UI.UserPanel.Services.DragDrop;
@@ -21,21 +20,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static void AddProjectConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
+        public static void AddProjectConfigureServices(this IServiceCollection services, IConfiguration configuration )
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddSharedConfigureServices();
-
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
-
-
-            //add cookie authentication
-            services.AddCookieAuthentication(env, options =>
-             {
-                 configuration.GetSection("Authentication").Bind(options);
-             });
 
             //add HttpClient with an Interceptor to add jwt token to all requests automatically
             services.AddHttpClient(
@@ -58,35 +47,6 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddBlazoredModal();
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void UseProjectConfigure(this WebApplication app, IWebHostEnvironment env)
-        {
-            if (app == null) throw new ArgumentNullException(nameof(app));
-
-            // Configure the HTTP request pipeline.
-            if (!env.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseStaticFiles();
-
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.MapRazorPages();
-            app.MapBlazorHub();
-            app.MapFallbackToPage("/_Host");
-        }
 
 
 

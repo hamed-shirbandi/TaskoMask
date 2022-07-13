@@ -8,7 +8,6 @@
 		<RootNamespace>TaskoMask.Presentation.Framework.Share</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Libraries\1-Infrastructure\Infrastructure.Share\Infrastructure.Share.csproj" />
 		<ProjectReference Include="..\..\..\Libraries\2-Application\Application.Share\Application.Share.csproj" />
 	</ItemGroup>
 	<ItemGroup>

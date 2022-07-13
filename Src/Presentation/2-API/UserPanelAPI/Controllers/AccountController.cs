@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Workspace.Owners.Services;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Presentation.Framework.Share.Services.Authentication.JwtAuthentication;
+using TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication;
 using TaskoMask.Domain.Share.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Presentation.Framework.Share.Contracts;

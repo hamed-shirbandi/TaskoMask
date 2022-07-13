@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Domain.Share.Models;
 
-namespace TaskoMask.Presentation.Framework.Share.Services.Authentication.JwtAuthentication
+namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication
 {
     public interface IJwtAuthenticationService
     {

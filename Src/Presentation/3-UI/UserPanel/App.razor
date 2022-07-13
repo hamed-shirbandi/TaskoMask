@@ -1,6 +1,5 @@
 @using TaskoMask.Presentation.UI.UserPanel.Shared
 
-@inject NavigationManager _navigationManager
 <CascadingBlazoredModal>
     <CascadingAuthenticationState>
         <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
@@ -10,7 +9,7 @@
                         <p>Please wait, we are authorizing the user.</p>
                     </Authorizing>
                     <NotAuthorized>
-                        <LoginRedirect />
+                        <LoginRedirect></LoginRedirect>
                     </NotAuthorized>
                 </AuthorizeRouteView>
             </Found>
@@ -22,3 +21,5 @@
         </Router>
     </CascadingAuthenticationState>
 </CascadingBlazoredModal>
+
+

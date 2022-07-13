@@ -1,7 +1,11 @@
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.Helpers;
+using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 {
@@ -10,14 +14,18 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         #region Fields
 
         private readonly IAccountClientService _accountClientService;
+        private readonly ILocalStorageService _localStorage;
+        private readonly AuthenticationStateProvider _authStateProvider;
 
         #endregion
 
         #region Ctor
 
-        public AuthenticationService(IAccountClientService accountClientService)
+        public AuthenticationService(IAccountClientService accountClientService, ILocalStorageService localStorage, AuthenticationStateProvider authStateProvider)
         {
             _accountClientService = accountClientService;
+            _localStorage = localStorage;
+            _authStateProvider = authStateProvider;
         }
 
         #endregion
@@ -55,10 +63,10 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// </summary>
         public async Task Logout()
         {
-            //Remove jwt token cookie
-            //_cookieService.Remove(MagicKey.Jwt_Token);
+            await _localStorage.RemoveItemAsync(MagicKey.Jwt_Token);
+            await _localStorage.RemoveItemAsync(MagicKey.Authenticated_User);
 
-            //await _cookieAuthenticationService.SignOutAsync();
+            ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
         }
 
 
@@ -76,12 +84,12 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
             if (!result.IsSuccess)
                 return result;
 
-            ////Save jwt token by cookie
-            //_cookieService.Set(MagicKey.Jwt_Token,result.Value.JwtToken);
+            var user = JwtParser.ParseAuthenticatedUserModelFromJwt(result.Value.JwtToken);
+            await _localStorage.SetItemAsync(MagicKey.Jwt_Token, result.Value.JwtToken);
+            await _localStorage.SetItemAsync(MagicKey.Authenticated_User, user);
 
-            ////Sign in user by cookie authentication
-            //var user = JwtParser.ParseClaimsFromJwt(result.Value.JwtToken);
-            //await _cookieAuthenticationService.SignInAsync(user, isPersistent: false);
+            ((AuthStateProvider)_authStateProvider).NotifyUserLoggedIn(result.Value.JwtToken);
+
 
             return result;
         }

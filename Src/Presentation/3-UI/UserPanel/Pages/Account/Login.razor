@@ -1,6 +1,5 @@
 ﻿@page "/login"
 @using TaskoMask.Application.Share.Dtos.Authorization.Users
-@using TaskoMask.Presentation.UI.UserPanel.Pages.Account
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IAccountClientService AccountClientService
 
 <section id="cover">
@@ -19,7 +18,7 @@
                                 <ValidationMessage For="()=>LoginModel.UserName" class="text-danger"></ValidationMessage>
                             </div>
                             <div class="form-group">
-                                <InputText @bind-Value="LoginModel.Password" placeholder="UserName" class="form-control"></InputText>
+                                <InputText @bind-Value="LoginModel.Password" placeholder="Password" class="form-control"></InputText>
                                 <ValidationMessage For="()=>LoginModel.Password" class="text-danger"></ValidationMessage>
                             </div>
 

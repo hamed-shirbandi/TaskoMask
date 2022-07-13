@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -9,25 +9,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Models\" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="Pages\Dashboard\Components\Boards.razor" />
-		<None Include="Pages\Dashboard\Index.razor" />
-		<None Include="Pages\Dashboard\Components\Organizations.razor" />
-		<None Include="Pages\Dashboard\Components\Projects.razor" />
-		<None Include="Pages\Dashboard\Components\Reports.razor" />
-		<None Include="Pages\Dashboard\Components\TabNav.razor" />
-		<None Include="Pages\Dashboard\Components\Tasks.razor" />
-		<None Include="Shared\MainLayout.razor" />
-		<None Include="Shared\NavMenu.razor" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
 		<PackageReference Include="Blazored.Toast" Version="3.2.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.4" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />

@@ -1,6 +1,7 @@
 ﻿@page "/login"
+@using System.Web
 @using TaskoMask.Application.Share.Dtos.Authorization.Users
-@inject TaskoMask.Presentation.Framework.Share.Contracts.IAccountClientService AccountClientService
+@inject TaskoMask.Presentation.UI.UserPanel.Services.Authentication.IAuthenticationService AuthenticationService
 
 <section id="cover">
     <div id="cover-caption">
@@ -43,13 +44,7 @@
     #region Fields and Parameters
 
 
-    /// <summary>
-    /// Form Model
-    /// </summary>
     UserLoginDto LoginModel = new UserLoginDto();
-
-
-
 
 
     #endregion Fields and Parameters
@@ -65,10 +60,24 @@
     /// </summary>
     private async Task HandleLogin()
     {
-        var result = await AccountClientService.Login(LoginModel);
-        ///...
+        var loginResult = await AuthenticationService.Login(LoginModel);
+        if (loginResult.IsSuccess)
+            NavigationManager.NavigateTo("/" + GetReturnUrl());
+        else
+            ToastService.ShowError(loginResult.Errors.ParseToFragment(), loginResult.Message);
     }
 
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private string GetReturnUrl()
+    {
+        var absoluteUri = new Uri(NavigationManager.Uri);
+        var queryParam = HttpUtility.ParseQueryString(absoluteUri.Query);
+        return queryParam["returnUrl"];
+    }
 
 
     #endregion private Methods

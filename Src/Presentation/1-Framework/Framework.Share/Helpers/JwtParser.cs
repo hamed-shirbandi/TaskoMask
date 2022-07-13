@@ -12,12 +12,11 @@ namespace TaskoMask.Presentation.Framework.Share.Helpers
     {
         public static AuthenticatedUser ParseClaimsFromJwt(string jwt)
         {
-            var claims = new List<Claim>();
             var payload = jwt.Split('.')[1];
 
             var jsonBytes = ParseBase64WithoutPadding(payload);
 
-            return  JsonSerializer.Deserialize<AuthenticatedUser>(jsonBytes);
+            return JsonSerializer.Deserialize<AuthenticatedUser>(jsonBytes);
         }
 
         private static byte[] ParseBase64WithoutPadding(string base64)

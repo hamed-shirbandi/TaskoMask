@@ -1,6 +1,7 @@
 ﻿using Blazored.LocalStorage;
 using Blazored.Modal;
 using Blazored.Toast;
+using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
@@ -39,8 +40,10 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<HttpClientInterceptorService>();
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelAPI"));
 
-            services.AddClientServices();
+            services.AddAuthorizationCore();
+            services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
 
+            services.AddClientServices();
             services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();
             services.AddBlazoredModal();

@@ -24,7 +24,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddControllers()
-                //prevent auto validate on model binding
+               //prevent auto validate on model binding
                .ConfigureApiBehaviorOptions(options => { options.SuppressModelStateInvalidFilter = true; });
 
             services.AddSwaggerPreConfigured(options =>
@@ -35,7 +35,10 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             {
                 configuration.GetSection("Jwt").Bind(options);
             });
-             services.AddCommonConfigureServices(configuration);
+            services.AddCommonConfigureServices(configuration);
+
+            services.AddCors();
+
         }
 
 
@@ -54,6 +57,10 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             app.UseCommonConfigure(serviceProvider, env);
 
             app.UseRouting();
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
             app.UseAuthentication();
             app.UseAuthorization();
         }

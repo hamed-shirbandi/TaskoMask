@@ -1,4 +1,5 @@
 ﻿@using TaskoMask.Presentation.UI.UserPanel.Pages.Tasks.Components
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
 
 <div class="row">
     <div class="col-md-8">
@@ -7,12 +8,40 @@
     </div>
     <hr />
     <div class="col-md-4">
-        <State></State>
+        <State Model=@Model.Task></State>
         <Activities></Activities>
     </div>
 </div>
 
 @code {
+
     [Parameter]
     public string TaskId { get; set; }
+
+    TaskDetailsViewModel Model = new TaskDetailsViewModel();
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        var taskResult = await TaskClientService.Get(TaskId);
+
+        if (taskResult.IsSuccess)
+            Model = taskResult.Value;
+        else
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(taskResult.Errors.ParseToFragment(), taskResult.Message);
+        }
+    }
 }

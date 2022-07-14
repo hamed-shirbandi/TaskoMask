@@ -3,7 +3,11 @@
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
 @implements IDisposable
 
-@if (!Model.OrganizationsDetailsList.Any())
+@if (DataIsloading)
+{
+    <div class="spinner-loading"></div>
+}
+else if (!Model.OrganizationsDetailsList.Any())
 {
     <div class="alert alert-warning">
         <b>There isn't any organization yet!</b>
@@ -18,7 +22,7 @@
             </b>
             item from the top right menue
             <i class="bi bi bi-plus-circle"></i>
-             Also other users can add you as a member to their organizations.
+            Also other users can add you as a member to their organizations.
         </small>
     </div>
 }
@@ -35,7 +39,7 @@ else
 @code {
 
     PanelDashboardViewModel Model;
-
+    bool DataIsloading = true;
 
     /// <summary>
     /// /
@@ -55,6 +59,7 @@ else
     /// </summary>
     private async Task LoadDataAsync()
     {
+        DataIsloading = true;
         Model = new PanelDashboardViewModel();
 
         var organizationsDetailsListResult = await OrganizationClientService.Get();
@@ -62,6 +67,7 @@ else
             ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToFragment(), organizationsDetailsListResult.Message);
         else
             Model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
+        DataIsloading = false;
     }
 
 

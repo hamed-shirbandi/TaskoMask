@@ -34,8 +34,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<UserJwtTokenDto>> Login(UserLoginDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/account/login")).Uri;
-            return await _httpClientService.PostAsync<UserJwtTokenDto>(uri, input);
+            var url = $"/account/login";
+            return await _httpClientService.PostAsync<UserJwtTokenDto>(url, input);
         }
 
 
@@ -45,8 +45,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<UserJwtTokenDto>> Register(OwnerRegisterDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/account/register")).Uri;
-            return await _httpClientService.PostAsync<UserJwtTokenDto>(uri, input);
+            var url = $"/account/register";
+            return await _httpClientService.PostAsync<UserJwtTokenDto>(url, input);
         }
 
 

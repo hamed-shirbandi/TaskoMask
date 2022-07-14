@@ -32,8 +32,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<OwnerBasicInfoDto>> Get()
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owner")).Uri;
-            return await _httpClientService.GetAsync<OwnerBasicInfoDto>(uri);
+            var url = $"/owner";
+            return await _httpClientService.GetAsync<OwnerBasicInfoDto>(url);
         }
 
 
@@ -43,8 +43,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Update(OwnerUpdateDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owner")).Uri;
-            return await _httpClientService.PutAsync<CommandResult>(uri, input);
+            var url = $"/owner";
+            return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
         #endregion

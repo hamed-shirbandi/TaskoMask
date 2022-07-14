@@ -38,10 +38,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TResult>> PostAsync<TResult>(Uri uri, object input)
+        public async Task<Result<TResult>> PostAsync<TResult>(string url, object input)
         {
             return await HttpClientRetryHelper.RetryAsync<TResult>(
-                () => _httpClient.PostAsJsonAsync(uri, input)
+                () => _httpClient.PostAsJsonAsync(url, input)
                 );
         }
 
@@ -50,10 +50,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TResult>> PutAsync<TResult>(Uri uri, object input)
+        public async Task<Result<TResult>> PutAsync<TResult>(string url, object input)
         {
             return await HttpClientRetryHelper.RetryAsync<TResult>(
-                () => _httpClient.PutAsJsonAsync(uri, input)
+                () => _httpClient.PutAsJsonAsync(url, input)
                 );
         }
 
@@ -62,10 +62,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TResult>> PutAsync<TResult>(Uri uri)
+        public async Task<Result<TResult>> PutAsync<TResult>(string url)
         {
             return await HttpClientRetryHelper.RetryAsync<TResult>(
-                () => _httpClient.PutAsJsonAsync(uri, new { })
+                () => _httpClient.PutAsJsonAsync(url, new { })
                 );
         }
 
@@ -74,10 +74,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TResult>> DeleteAsync<TResult>(Uri uri)
+        public async Task<Result<TResult>> DeleteAsync<TResult>(string url)
         {
             return await HttpClientRetryHelper.RetryAsync<TResult>(
-                () => _httpClient.DeleteAsync(uri)
+                () => _httpClient.DeleteAsync(url)
                 );
         }
 
@@ -86,10 +86,10 @@ namespace TaskoMask.Presentation.Framework.Share.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TResult>> GetAsync<TResult>(Uri uri)
+        public async Task<Result<TResult>> GetAsync<TResult>(string url)
         {
             return await HttpClientRetryHelper.RetryAsync<TResult>(
-            () => _httpClient.GetAsync(uri)
+            () => _httpClient.GetAsync(url)
             );
         }
 

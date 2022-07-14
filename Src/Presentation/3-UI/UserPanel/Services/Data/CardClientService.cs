@@ -32,9 +32,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CardBasicInfoDto>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/cards/{id}")).Uri;
-
-            return await _httpClientService.GetAsync<CardBasicInfoDto>(uri);
+            var url = $"/cards/{id}";
+            return await _httpClientService.GetAsync<CardBasicInfoDto>(url);
         }
 
 
@@ -45,8 +44,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string boardId)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/boards/{boardId}/cards")).Uri;
-            return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(uri);
+            var url = $"/boards/{boardId}/cards";
+            return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(url);
         }
 
 
@@ -56,8 +55,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Create(CardUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/cards")).Uri;
-            return await _httpClientService.PostAsync<CommandResult>(uri, input);
+            var url = $"/cards";
+            return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
 
@@ -67,8 +66,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Update(string id,CardUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/cards/{id}")).Uri;
-            return await _httpClientService.PutAsync<CommandResult>(uri, input);
+            var url = $"/cards/{id}";
+            return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
 
@@ -77,8 +76,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/cards/{id}")).Uri;
-            return await _httpClientService.DeleteAsync<CommandResult>(uri);
+            var url = $"/cards/{id}";
+            return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 
 

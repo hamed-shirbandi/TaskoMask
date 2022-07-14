@@ -32,9 +32,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<OrganizationBasicInfoDto>> Get(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations/{id}")).Uri;
-
-            return await _httpClientService.GetAsync<OrganizationBasicInfoDto>(uri);
+            var url = $"/organizations/{id}";
+            return await _httpClientService.GetAsync<OrganizationBasicInfoDto>(url);
         }
 
 
@@ -44,9 +43,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> Get()
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations")).Uri;
-
-            return await _httpClientService.GetAsync<IEnumerable<OrganizationDetailsViewModel>>(uri);
+            var url = $"/organizations";
+            return await _httpClientService.GetAsync<IEnumerable<OrganizationDetailsViewModel>>(url);
         }
 
 
@@ -56,8 +54,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems()
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/owner/organizations")).Uri;
-            return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(uri);
+            var url = $"/owner/organizations";
+            return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(url);
         }
 
 
@@ -68,8 +66,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Create(OrganizationUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations")).Uri;
-            return await _httpClientService.PostAsync<CommandResult>(uri, input);
+            var url = $"/organizations";
+            return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
 
@@ -79,8 +77,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Update(string id,OrganizationUpsertDto input)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations/{id}")).Uri;
-            return await _httpClientService.PutAsync<CommandResult>(uri, input);
+            var url = $"/organizations/{id}";
+            return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
 
@@ -90,8 +88,8 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var uri = new ClientUriBuilder(new Uri(_httpClientService.GetBaseAddress(), $"/organizations/{id}")).Uri;
-            return await _httpClientService.DeleteAsync<CommandResult>(uri);
+            var url = $"/organizations/{id}";
+            return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 
         #endregion

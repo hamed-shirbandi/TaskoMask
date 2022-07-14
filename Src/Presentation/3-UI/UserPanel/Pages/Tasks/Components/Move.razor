@@ -1,0 +1,76 @@
+﻿@inject TaskoMask.Presentation.Framework.Share.Contracts.ICardClientService CardClientService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
+
+<EditForm Model=CardId OnValidSubmit="HandleMoveTaskToAnotherCard">
+
+    <div class="form-group">
+        <select class="form-control" @bind="CardId">
+            @foreach (var prop in cardsSelectList)
+            {
+                <option value="@prop.Value" selected="@(prop.Value==CardId?true:false)">@prop.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-block btn-primary mr-1">Move To Card</button>
+    </div>
+
+</EditForm>
+
+
+
+@code {
+
+    [Parameter]
+    public string TaskId { get; set; }
+
+    [Parameter]
+    public string BoardId { get; set; }
+
+    [Parameter]
+    public string CardId { get; set; }
+
+
+    /// <summary>
+    /// cards list to use in DropDownList
+    /// </summary>
+    IEnumerable<SelectListItem> cardsSelectList = new List<SelectListItem>();
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        //get cards select list for DropDownList
+        await GetCardsSelectList();
+    }
+
+
+
+    /// <summary>
+    /// get cards select list to use in DropDownList
+    /// </summary>
+    private async Task GetCardsSelectList()
+    {
+        var cardsResult = await CardClientService.GetSelectListItems(BoardId);
+        if (cardsResult.IsSuccess)
+            cardsSelectList = cardsResult.Value;
+        else
+            ToastService.ShowError(cardsResult.Errors.ParseToFragment(), cardsResult.Message);
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleMoveTaskToAnotherCard()
+    {
+        var result = await TaskClientService.MoveTaskToAnotherCard(TaskId, CardId);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Moved);
+    }
+
+
+}

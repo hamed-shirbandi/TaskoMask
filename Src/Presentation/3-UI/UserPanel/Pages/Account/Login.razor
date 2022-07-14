@@ -1,8 +1,11 @@
 ﻿@page "/login"
+@attribute [AllowAnonymous]
+
 @using System.Web
 @using TaskoMask.Application.Share.Dtos.Authorization.Users
 @inject TaskoMask.Presentation.UI.UserPanel.Services.Authentication.IAuthenticationService AuthenticationService
 
+<h2>test</h2>
 <section id="cover">
     <div id="cover-caption">
         <div class="container">
@@ -76,7 +79,7 @@
     {
         var absoluteUri = new Uri(NavigationManager.Uri);
         var queryParam = HttpUtility.ParseQueryString(absoluteUri.Query);
-        return queryParam["returnUrl"];
+        return queryParam["returnUrl"]??"";
     }
 
 

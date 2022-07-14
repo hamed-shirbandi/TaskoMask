@@ -1,24 +1,29 @@
 ﻿@using TaskoMask.Presentation.UI.UserPanel.Pages.Tasks.Components
 @inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
-
-<div class="row">
-    <div class="col-md-8">
-        <Upsert TaskId=@TaskId></Upsert>
-        <Comments></Comments>
+@if (Model == null)
+{
+    <div class="spinner-loading"></div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-8">
+            <Upsert TaskId=@TaskId></Upsert>
+            <Comments></Comments>
+        </div>
+        <hr />
+        <div class="col-md-4">
+            <State Model=@Model.Task></State>
+            <Activities></Activities>
+        </div>
     </div>
-    <hr />
-    <div class="col-md-4">
-        <State Model=@Model.Task></State>
-        <Activities></Activities>
-    </div>
-</div>
-
+}
 @code {
 
     [Parameter]
     public string TaskId { get; set; }
 
-    TaskDetailsViewModel Model = new TaskDetailsViewModel();
+    TaskDetailsViewModel Model;
 
     /// <summary>
     /// Access to current modal
@@ -34,7 +39,6 @@
     protected override async Task OnInitializedAsync()
     {
         var taskResult = await TaskClientService.Get(TaskId);
-
         if (taskResult.IsSuccess)
             Model = taskResult.Value;
         else

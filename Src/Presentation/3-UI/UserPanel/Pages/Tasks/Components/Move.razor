@@ -1,19 +1,26 @@
 ﻿@inject TaskoMask.Presentation.Framework.Share.Contracts.ICardClientService CardClientService
 @inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
 
+@if (!cardsSelectList.Any())
+{
+    <div class="spinner-loading"></div>
+}
+else
+{
+    <div class="form-group">
+        <select class="form-control" @bind="CardId">
+            @foreach (var prop in cardsSelectList)
+            {
+                <option value="@prop.Value" selected="@(prop.Value==CardId?true:false)">@prop.Text</option>
+            }
+        </select>
+    </div>
 
-<div class="form-group">
-    <select class="form-control" @bind="CardId">
-        @foreach (var prop in cardsSelectList)
-        {
-            <option value="@prop.Value" selected="@(prop.Value==CardId?true:false)">@prop.Text</option>
-        }
-    </select>
-</div>
+    <div class="form-group">
+        <button type="button" @onclick="HandleMoveTaskToAnotherCard" class="btn btn-block btn-primary mr-1">Move To Card</button>
+    </div>
+}
 
-<div class="form-group">
-    <button type="button" @onclick="HandleMoveTaskToAnotherCard" class="btn btn-block btn-primary mr-1">Move To Card</button>
-</div>
 
 
 
@@ -37,14 +44,12 @@
 
 
 
-    /// <summary>
-    ///
-    /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        //get cards select list for DropDownList
         await GetCardsSelectList();
     }
+
+
 
 
 

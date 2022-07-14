@@ -14,7 +14,6 @@ namespace TaskoMask.Presentation.Framework.Share.Helpers
 
         public static AuthenticatedUser ParseAuthenticatedUserModelFromJwt(string jwt)
         {
-            var claims = new List<Claim>();
             var payload = jwt.Split('.')[1];
 
             var jsonBytes = ParseBase64WithoutPadding(payload);

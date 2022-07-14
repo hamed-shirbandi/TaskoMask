@@ -1,5 +1,4 @@
 ﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
-@inject TaskoMask.Domain.Share.Services.IAuthenticatedUserService AuthenticatedUserService
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOwnerClientService OwnerClientService
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -90,8 +89,9 @@
 
         websiteUrl = Configuration["Url:Website"];
 
-        var user = AuthenticatedUserService.GetAuthenticatedUser();
-        userDisplayName = user.DisplayName;
+        var user = await LocalStorageService.GetItemAsync<AuthenticatedUser>(MagicKey.Jwt_Token);
+        if (user != null)
+            userDisplayName = user.DisplayName;
 
         await base.OnInitializedAsync();
     }
@@ -119,7 +119,7 @@
     }
 
 
-    
+
 
     /// <summary>
     ///

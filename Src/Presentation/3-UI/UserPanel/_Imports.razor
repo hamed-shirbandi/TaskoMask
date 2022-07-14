@@ -13,14 +13,17 @@
 @using Blazored.Toast.Services
 @using TaskoMask.Presentation.UI.UserPanel.Helpers
 @using Blazored.Modal
+@using Blazored.LocalStorage
 @using Blazored.Modal.Services
 @using TaskoMask.Application.Share.ViewModels
 @using TaskoMask.Application.Share.Helpers
+@using TaskoMask.Domain.Share.Models
 @using UserPanel
 @using UserPanel.Shared
 
 @attribute [Authorize]
 @inject IToastService ToastService
+@inject ILocalStorageService LocalStorageService
 @inject IModalService  ModalService
 @inject IMessageService MessageService
 @inject NavigationManager NavigationManager

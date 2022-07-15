@@ -1,7 +1,7 @@
 @page "/register"
 @attribute [AllowAnonymous]
 @using TaskoMask.Application.Share.Dtos.Workspace.Owners
-@inject TaskoMask.Presentation.Framework.Share.Contracts.IAccountClientService AccountClientService
+@inject TaskoMask.Presentation.UI.UserPanel.Services.Authentication.IAuthenticationService AuthenticationService
 
 
 <section id="cover">
@@ -73,8 +73,11 @@
     /// </summary>
     private async Task HandleRegister()
     {
-        var result = await AccountClientService.Register(RegisterModel);
-        ///...
+        var registerResult = await AuthenticationService.Register(RegisterModel);
+        if (registerResult.IsSuccess)
+            NavigationManager.NavigateTo("/");
+        else
+            ToastService.ShowError(registerResult.Errors.ParseToFragment(), registerResult.Message);
     }
 
 

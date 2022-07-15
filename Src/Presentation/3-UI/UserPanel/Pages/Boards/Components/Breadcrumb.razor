@@ -5,17 +5,21 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <i class="bi bi-building"></i>
-            <NavLink href="@("/#"+Model.OrganizationId)">
+            <a href="@("/#"+Model.OrganizationId)">
                 @Model.OrganizationName
-            </NavLink>
+            </a>
         </li>
         <li class="breadcrumb-item">
             <i class="bi bi-kanban"></i>
-            @Model.ProjectName
+            <a href="@("/project/"+Model.ProjectId)">
+                @Model.ProjectName
+            </a>
         </li>
         <li class="breadcrumb-item">
             <i class="bi bi-clipboard-plus"></i>
-            @Model.Name
+            <a href="@("/board/"+Model.Id)">
+                @Model.Name
+            </a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
             <a @onclick="@(()=>ShowCreateCardModal(Model.Id))" class="text-info">
@@ -31,7 +35,7 @@
     [Parameter]
     public BoardOutputDto Model { get; set; }
 
-  
+
     /// <summary>
     ///
     /// </summary>

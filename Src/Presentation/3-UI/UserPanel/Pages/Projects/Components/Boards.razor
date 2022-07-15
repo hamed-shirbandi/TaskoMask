@@ -1,0 +1,63 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        <b>There isn't any board yet!</b>
+        <hr>
+        <small>
+            You can add new board by using
+            <b>
+                <a @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">
+                    <i class="bi bi-clipboard-plus"></i>
+                    New Board
+                </a>
+            </b>
+            item from the top right menue
+            <i class="bi bi bi-plus-circle"></i>
+            . But make sure you have a project
+        </small>
+    </div>
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="col-md-4 col-sm-12 ">
+            <div class="card bg-primary text-white">
+                <h5 class="card-header">
+                    @item.Name
+                    <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                </h5>
+                <a href="@($"/board/{item.Id}")">
+                    <div class="card-body text-white">
+                        <small>@item.Description</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+
+}
+
+
+
+@code {
+    [Parameter]
+    public IEnumerable<BoardBasicInfoDto> Model { get; set; }
+
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowUpdsertModal(string boardId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Boards.Components.Upsert.Id), boardId);
+        ModalService.Show<Pages.Boards.Components.Upsert>("Update board", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+}

@@ -11,7 +11,9 @@ namespace TaskoMask.Application.Workspace.Projects.Services
     {
         Task<Result<CommandResult>> CreateAsync(ProjectUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(ProjectUpsertDto input);
-        Task<Result<ProjectBasicInfoDto>> GetByIdAsync(string id);
+        Task<Result<ProjectOutputDto>> GetByIdAsync(string id);
+        Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id);
+
         Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId);
         Task<Result<PaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string organizationId);

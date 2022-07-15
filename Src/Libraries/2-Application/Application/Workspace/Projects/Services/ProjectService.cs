@@ -60,9 +60,35 @@ namespace TaskoMask.Application.Workspace.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectBasicInfoDto>> GetByIdAsync(string id)
+        public async Task<Result<ProjectOutputDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetProjectByIdQuery(id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id)
+        {
+            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(id));
+            if (!projectQueryResult.IsSuccess)
+                return Result.Failure<ProjectDetailsViewModel>(projectQueryResult.Errors);
+
+            var boardsQueryResult = await SendQueryAsync(new GetBoardsByProjectIdQuery(id));
+            if (!boardsQueryResult.IsSuccess)
+                return Result.Failure<ProjectDetailsViewModel>(boardsQueryResult.Errors);
+
+
+            var boardDetail = new ProjectDetailsViewModel
+            {
+                Project = projectQueryResult.Value,
+                Boards = boardsQueryResult.Value,
+            };
+
+            return Result.Success(boardDetail);
+
         }
 
 

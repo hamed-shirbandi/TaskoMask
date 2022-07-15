@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 
@@ -99,6 +100,15 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
             return await _tasks.CountDocumentsAsync(b => b.CardId == cardId);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> CountByOrganizationIdAsync(string organizationId,BoardCardType cardType)
+        {
+            return await _tasks.CountDocumentsAsync(b => b.OrganizationId == organizationId && b.CardType==cardType);
+        }
 
 
 

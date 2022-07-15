@@ -81,11 +81,11 @@ There is a list of our documentation:
             - Cookie Authentication without ASP.NET Identity
         - Blazor WebAssembly (standalone)
             - JWT Authentication
-        - Comunication between components by messages
-        - Handle Drag and Drop
+        - Comunication between components
         - Local Storage
         - Consume REST API
         - Retry using HttpClientRetryHelper
+        - Handle Drag and Drop
         - Using Modal, Toast, etc.
       -	.HTML
       -	CSS

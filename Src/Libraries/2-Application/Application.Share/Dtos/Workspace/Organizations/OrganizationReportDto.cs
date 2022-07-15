@@ -8,7 +8,7 @@ namespace TaskoMask.Application.Share.Dtos.Workspace.Organizations
    public class OrganizationReportDto : ProjectReportDto
     {
         [Display(Name = nameof(ApplicationMetadata.ProjectsCount), ResourceType = typeof(ApplicationMetadata))]
-        public int ProjectsCount { get; set; }
+        public long ProjectsCount { get; set; }
 
     }
 }

@@ -151,7 +151,7 @@
     private async Task HandleUpdate()
     {
         var result = await CardClientService.Update(CardId, CardModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Card_Updated, ModalInstance);
     }
 
 
@@ -168,7 +168,7 @@
             return;
 
         var result = await CardClientService.Delete(CardId);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Card_Deleted, ModalInstance);
     }
 
     #endregion private Methods

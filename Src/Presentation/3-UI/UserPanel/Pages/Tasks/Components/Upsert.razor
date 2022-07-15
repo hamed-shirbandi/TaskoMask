@@ -137,7 +137,7 @@
     {
         TaskModel.CardId = CardId;
         var result = await TaskClientService.Create(TaskModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Card_Created, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Created, ModalInstance);
     }
 
 
@@ -148,7 +148,7 @@
     private async Task HandleUpdate()
     {
         var result = await TaskClientService.Update(TaskId, TaskModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Updated, ModalInstance);
     }
 
 
@@ -165,7 +165,7 @@
             return;
 
         var result = await TaskClientService.Delete(TaskId);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Deleted, ModalInstance);
     }
 
     #endregion private Methods

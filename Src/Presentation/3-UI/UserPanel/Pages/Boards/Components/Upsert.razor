@@ -263,7 +263,7 @@
     private async Task HandleCreate()
     {
         var result = await BoardClientService.Create(BoardModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Created, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Board_Created, ModalInstance);
     }
 
 
@@ -274,7 +274,7 @@
     private async Task HandleUpdate()
     {
         var result = await BoardClientService.Update(Id,BoardModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Board_Updated, ModalInstance);
     }
 
 
@@ -291,7 +291,7 @@
             return;
 
         var result = await BoardClientService.Delete(Id);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Board_Deleted, ModalInstance);
     }
 
 

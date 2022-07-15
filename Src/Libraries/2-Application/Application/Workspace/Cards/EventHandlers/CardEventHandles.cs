@@ -18,14 +18,16 @@ namespace TaskoMask.Application.Workspace.Cards.EventHandlers
         #region Fields
 
         private readonly ICardRepository _cardRepository;
+        private readonly IBoardRepository _boardRepository;
 
         #endregion
 
         #region Ctors
 
-        public CardEventHandles(ICardRepository cardRepository)
+        public CardEventHandles(ICardRepository cardRepository, IBoardRepository boardRepository)
         {
             _cardRepository = cardRepository;
+            _boardRepository = boardRepository;
         }
 
         #endregion
@@ -38,11 +40,13 @@ namespace TaskoMask.Application.Workspace.Cards.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(CardCreatedEvent createdCard, CancellationToken cancellationToken)
         {
+            var board = await _boardRepository.GetByIdAsync(createdCard.BoardId);
             var card = new Card(createdCard.Id)
             {
                 Name= createdCard.Name,
                 Type= createdCard.Type,
                 BoardId= createdCard.BoardId,
+                OrganizationId= board.OrganizationId
             };
            await _cardRepository.CreateAsync(card);
         }

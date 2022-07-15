@@ -61,6 +61,15 @@ namespace TaskoMask.Application.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backlog Tasks Count.
+        /// </summary>
+        public static string BacklogTasksCount {
+            get {
+                return ResourceManager.GetString("BacklogTasksCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BoardId.
         /// </summary>
         public static string BoardId {

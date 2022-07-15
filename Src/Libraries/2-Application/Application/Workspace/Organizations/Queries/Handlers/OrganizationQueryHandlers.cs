@@ -12,6 +12,7 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
 {
@@ -28,16 +29,22 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IOwnerRepository _ownerRepository;
         private readonly IProjectRepository _projectRepository;
+        private readonly IBoardRepository _boardRepository;
+        private readonly ICardRepository _cardRepository;
+        private readonly ITaskRepository _taskRepository;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IOwnerRepository ownerRepository, IProjectRepository projectRepository) : base(mapper, notifications)
+        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IOwnerRepository ownerRepository, IProjectRepository projectRepository, IBoardRepository boardRepository, ICardRepository cardRepository, ITaskRepository taskRepository) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
             _ownerRepository = ownerRepository;
             _projectRepository = projectRepository;
+            _boardRepository = boardRepository;
+            _cardRepository = cardRepository;
+            _taskRepository = taskRepository;
         }
 
         #endregion
@@ -78,6 +85,13 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
         {
             return new OrganizationReportDto
             {
+                ProjectsCount=await _projectRepository.CountByOrganizationIdAsync(request.OrganizationId),
+                BoardsCount=await _boardRepository.CountByOrganizationIdAsync(request.OrganizationId),
+                CardsCount=await _cardRepository.CountByOrganizationIdAsync(request.OrganizationId),
+                BacklogTasksCount = await _taskRepository.CountByOrganizationIdAsync(request.OrganizationId,BoardCardType.Backlog),
+                ToDoTasksCount = await _taskRepository.CountByOrganizationIdAsync(request.OrganizationId,BoardCardType.ToDo),
+                DoingTasksCount = await _taskRepository.CountByOrganizationIdAsync(request.OrganizationId,BoardCardType.Doing),
+                DoneTasksCount = await _taskRepository.CountByOrganizationIdAsync(request.OrganizationId,BoardCardType.Doing),
             };
         }
 

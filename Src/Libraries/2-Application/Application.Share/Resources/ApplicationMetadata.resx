@@ -255,4 +255,7 @@
   <data name="User_OldPassword" xml:space="preserve">
     <value>Old Password</value>
   </data>
+  <data name="BacklogTasksCount" xml:space="preserve">
+    <value>Backlog Tasks Count</value>
+  </data>
 </root>

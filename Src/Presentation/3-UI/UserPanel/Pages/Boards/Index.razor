@@ -1,4 +1,5 @@
 ﻿@page "/board/{BoardId}"
+@page "/board/{BoardId}/task/{TaskId}"
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Boards.Components
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
 @implements IDisposable
@@ -14,6 +15,9 @@
     [Parameter]
     public string BoardId { get; set; }
 
+    [Parameter]
+    public string TaskId { get; set; }
+
     public BoardDetailsViewModel Model { get; set; }
 
 
@@ -26,6 +30,9 @@
         MessageService.OnMessage += ReloadDataHandler;
 
         await LoadDataAsync();
+
+        if (!string.IsNullOrEmpty(TaskId))
+            ShowTaskDetailsModal(TaskId);
     }
 
 
@@ -61,6 +68,17 @@
         }
     }
 
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowTaskDetailsModal(string taskId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Tasks.Components.Details.TaskId), taskId);
+        ModalService.Show<Pages.Tasks.Components.Details>("Task Details", parameters, new ModalOptions { DisableBackgroundCancel = true, ContentScrollable = true, Class = "blazored-modal w-75 h-75" });
+    }
 
 
 

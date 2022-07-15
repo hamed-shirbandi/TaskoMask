@@ -5,13 +5,13 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Tasks
 {
     public class TaskMovedToAnotherCardEvent : DomainEvent
     {
-        public TaskMovedToAnotherCardEvent(string id, string cardId) : base(entityId: id, entityType: nameof(Task))
+        public TaskMovedToAnotherCardEvent(string taskId, string cardId) : base(entityId: taskId, entityType: nameof(Task))
         {
-            Id = id;
+            TaskId = taskId;
             CardId = cardId;
         }
 
-        public string Id { get; }
+        public string TaskId { get; }
         public string CardId { get;  }
     }
 }

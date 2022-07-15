@@ -20,15 +20,17 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
 
         private readonly ITaskRepository _taskRepository;
         private readonly IBoardRepository _boardRepository;
+        private readonly ICardRepository _cardRepository;
 
         #endregion
 
         #region Ctors
 
-        public TaskEventHandles(ITaskRepository taskRepository, IBoardRepository boardRepository)
+        public TaskEventHandles(ITaskRepository taskRepository, IBoardRepository boardRepository, ICardRepository cardRepository)
         {
             _taskRepository = taskRepository;
             _boardRepository = boardRepository;
+            _cardRepository = cardRepository;
         }
 
         #endregion
@@ -42,6 +44,7 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
         public async System.Threading.Tasks.Task Handle(TaskCreatedEvent createdTask, CancellationToken cancellationToken)
         {
             var board = await _boardRepository.GetByIdAsync(createdTask.BoardId);
+            var card = await _cardRepository.GetByIdAsync(createdTask.CardId);
 
             var task = new Task(createdTask.Id)
             {
@@ -50,6 +53,7 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
                 CardId= createdTask.CardId,
                 BoardId = createdTask.BoardId,
                 OrganizationId= board.OrganizationId,
+                CardType= card.Type,
             };
            await _taskRepository.CreateAsync(task);
         }
@@ -91,8 +95,12 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(TaskMovedToAnotherCardEvent movedToAnotherCardEvent, CancellationToken cancellationToken)
         {
-            var task = await _taskRepository.GetByIdAsync(movedToAnotherCardEvent.Id);
+            var task = await _taskRepository.GetByIdAsync(movedToAnotherCardEvent.TaskId);
+            var card = await _cardRepository.GetByIdAsync(movedToAnotherCardEvent.CardId);
+
             task.CardId= movedToAnotherCardEvent.CardId;
+            task.CardType= card.Type;
+
             await _taskRepository.UpdateAsync(task);
         }
 

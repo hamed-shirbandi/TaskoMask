@@ -76,8 +76,9 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
         /// </summary>
         public async Task<OrganizationReportDto> Handle(GetOrganizationReportQuery request, CancellationToken cancellationToken)
         {
-            //TODO Implement GetOrganizationReportQuery
-            return new OrganizationReportDto();
+            return new OrganizationReportDto
+            {
+            };
         }
 
 

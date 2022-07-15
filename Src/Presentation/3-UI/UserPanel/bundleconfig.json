@@ -1,0 +1,35 @@
+// Configure bundling and minification for the project.
+// More info at https://go.microsoft.com/fwlink/?LinkId=808241
+[
+  {
+    "outputFileName": "wwwroot/bundled/panel.min.css",
+    "inputFiles": [
+      "wwwroot/css/bootstrap.min.css",
+      "wwwroot/css/panel.css",
+      "wwwroot/css/loading.css",
+      "wwwroot/css/blazored-toast.min.css",
+      "wwwroot/css/blazored-modal.css",
+      "wwwroot/css/rewrite.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundled/panel.min.js",
+    "inputFiles": [
+      "wwwroot/js/jquery.min.js",
+      "wwwroot/js/popper.min.js",
+      "wwwroot/js/bootstrap.min.js",
+      "wwwroot/js/panel.js",
+      "wwwroot/js/blazored.modal.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": false
+    },
+    "sourceMap": false
+  }
+]

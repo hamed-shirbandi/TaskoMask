@@ -77,10 +77,16 @@ There is a list of our documentation:
       -	[RedisCache.Core](https://www.nuget.org/packages/RedisCache.Core/)
   * ### Front-end:
       - Blazor
-        - Blazor Server
-        - Cookie Authentication without ASP.NET Identity
-        - Working with APIs protected by JWT
+        - Blazor Server ([last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/a6f036f91c2185861209191d9bb3e4ae01665f46/Src/Presentation/3-UI/UserPanel))
+            - Cookie Authentication without ASP.NET Identity
+        - Blazor WebAssembly (standalone)
+            - JWT Authentication
         - Comunication between components by messages
+        - Handle Drag and Drop
+        - Local Storage
+        - Consume REST API
+        - Retry using HttpClientRetryHelper
+        - Using Modal, Toast, etc.
       -	.HTML
       -	CSS
       -	Java Script 
@@ -184,31 +190,34 @@ Find Hamed around the web and feel free to ask your question.
 <a href="https://www.linkedin.com/in/hamed-shirbandi"><img alt="LinkedIn" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/LinkedIn-v2.png" width="35"></a><a href="https://www.instagram.com/hamedshirbandi"><img alt="Instagram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Instagram-v2.png" width="35"></a><a href="https://github.com/hamed-shirbandi"><img alt="GitHub" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/GitHub-v2.png" width="35"></a><a href="https://medium.com/@hamed.shirbandi"><img alt="Medium" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Medium-v2.png" width="35"></a><a href="https://www.nuget.org/profiles/hamed-shirbandi"><img alt="Nuget" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Nuget-v3.png" width="35"></a><a href="mailto:hamed.shirbandi@gmail.com"><img alt="Email" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Email-v2.png" width="35"></a><a href="https://t.me/hamed_shirbandi"><img alt="Telegram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Telegram-v2.png" width="35"></a><a href="https://twitter.com/hamed_shirbandi"><img alt="Twitter" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Twitter-v2.png" width="35"></a>
 
 # Change logs
+*	### July, 2022
+    - [x] Converted UserPanel from Blazor Server to Blazor WebAssembly
+    - [x] Completed the functionality for single owner usage
 *	### Apr, 2022
-    - [x] Add Unit Tests
-    - [x] Add Integration Tests
-    - [x] Add Acceptance Tests
-    - [x] Add API Tests
-    - [x] Add UI Tests
+    - [x] Added Unit Tests
+    - [x] Added Integration Tests
+    - [x] Added Acceptance Tests
+    - [x] Added API Tests
+    - [x] Added UI Tests
 *	### Jan, 2022
-    - [x] Full domain model refactoring by DDD concepts
-    - [x] Separate Domain Model and Data Model
-    - [x] Separate Read Side and Write Side Database
+    - [x] Domain model refactored by DDD concepts
+    - [x] Separated Domain Model and Data Model
+    - [x] Separated Read Side and Write Side Database
 *	### Dec, 2021
-    - [x] Upgrade to .NET 6
+    - [x] Upgraded to .NET 6
 *	### Nov, 2021
-    - [x] Start user panel with Blazor
+    - [x] Started user panel with Blazor Server
 *	### Oct, 2021
-    - [x] Start admin panel with ASP.NET MVC
-    - [x] Implement administration subdomain by CRUD
+    - [x] Started admin panel with ASP.NET MVC
+    - [x] Implemented administration subdomain by CRUD
 *	### Aug, 2021
-    - [x] Remove Asp.net Identity from project
-    - [x] Add cookie authentication
-    - [x] Add jwt authorization
+    - [x] Removed Asp.net Identity from project
+    - [x] Added cookie authentication
+    - [x] Added jwt authorization
  * ### Jul, 2021
     - [x] Full refactore
  * ### Nov, 2020
-    - [x] Upgrade from net 3.1 to net 5
+    - [x] Upgraded from net 3.1 to net 5
 *	### Oct, 2020
     - [x] Repository Created
   

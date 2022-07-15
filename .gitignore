@@ -669,3 +669,4 @@ fabric.properties
 *.ncrunchsolution
 *.ncrunchproject
 *.feature.cs
+/wwwroot/bundled

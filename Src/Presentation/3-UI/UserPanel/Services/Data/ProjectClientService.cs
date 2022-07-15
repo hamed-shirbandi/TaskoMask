@@ -30,10 +30,22 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
+        public async Task<Result<ProjectOutputDto>> Get(string id)
         {
             var url = $"/projects/{id}";
-            return await _httpClientService.GetAsync<ProjectBasicInfoDto>(url);
+            return await _httpClientService.GetAsync<ProjectOutputDto>(url);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<ProjectDetailsViewModel>> GetDetails(string id)
+        {
+            var url = $"/projects/{id}/details";
+            return await _httpClientService.GetAsync<ProjectDetailsViewModel>(url);
         }
 
 

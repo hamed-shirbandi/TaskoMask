@@ -6,6 +6,7 @@ using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -37,9 +38,21 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpGet]
         [Route("projects/{id}")]
-        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
+        public async Task<Result<ProjectOutputDto>> Get(string id)
         {
             return await _projectService.GetByIdAsync(id);
+        }
+
+
+
+        /// <summary>
+        /// get board detail
+        /// </summary>
+        [HttpGet]
+        [Route("projects/{id}/details")]
+        public async Task<Result<ProjectDetailsViewModel>> GetDetails(string id)
+        {
+            return await _projectService.GetDetailsAsync(id);
         }
 
 

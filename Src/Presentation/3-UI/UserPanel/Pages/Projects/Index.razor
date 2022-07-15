@@ -1,0 +1,81 @@
+﻿@page "/project/{ProjectId}"
+@using TaskoMask.Presentation.UI.UserPanel.Pages.Projects.Components
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IProjectClientService ProjectClientService
+@implements IDisposable
+
+@if (Model != null)
+{
+    <Breadcrumb Model=@Model.Project></Breadcrumb>
+    <Boards Model=@Model.Boards></Boards>
+}
+
+@code {
+
+    [Parameter]
+    public string ProjectId { get; set; }
+
+
+    public ProjectDetailsViewModel Model { get; set; }
+
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        MessageService.OnMessage += ReloadDataHandler;
+
+        await LoadDataAsync();
+    }
+
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    private async Task LoadDataAsync()
+    {
+        var projectDetailsListResult = await ProjectClientService.GetDetails(ProjectId);
+        if (!projectDetailsListResult.IsSuccess)
+            ToastService.ShowError(projectDetailsListResult.Errors.ParseToFragment(), projectDetailsListResult.Message);
+        else
+            Model = projectDetailsListResult.Value;
+    }
+
+
+
+    /// <summary>
+    ///This is a handler to be notified when some interesting events happened
+    ///For example we like to reload data for this component when new organization created by Organizations.Components.Upsert component
+    /// </summary>
+    private async void ReloadDataHandler(MessageType messageType)
+    {
+        try
+        {
+            if (messageType == MessageType.Board_Created || messageType == MessageType.Board_Deleted || messageType == MessageType.Board_Deleted)
+            {
+                await LoadDataAsync();
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            //Async task failure because of async void challenges
+        }
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public void Dispose()
+    {
+        // unsubscribe from OnMessage event
+        MessageService.OnMessage -= ReloadDataHandler;
+    }
+
+
+
+}

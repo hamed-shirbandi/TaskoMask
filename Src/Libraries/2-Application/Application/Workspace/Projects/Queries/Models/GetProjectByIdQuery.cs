@@ -3,7 +3,7 @@ using TaskoMask.Application.Core.Queries;
 
 namespace TaskoMask.Application.Workspace.Projects.Queries.Models
 {
-    public class GetProjectByIdQuery : BaseQuery<ProjectBasicInfoDto>
+    public class GetProjectByIdQuery : BaseQuery<ProjectOutputDto>
     {
         public GetProjectByIdQuery(string id)
         {

@@ -16,7 +16,7 @@ using TaskoMask.Domain.ReadModel.Data;
 namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
 {
     public class ProjectQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetProjectByIdQuery, ProjectBasicInfoDto>,
+        IRequestHandler<GetProjectByIdQuery, ProjectOutputDto>,
         IRequestHandler<GetProjectReportQuery, ProjectReportDto>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>,
         IRequestHandler<SearchProjectsQuery, PaginatedListReturnType<ProjectOutputDto>>,
@@ -49,13 +49,18 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<ProjectBasicInfoDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ProjectOutputDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
             if (project == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
-            return _mapper.Map<ProjectBasicInfoDto>(project);
+            var dto = _mapper.Map<ProjectOutputDto>(project);
+
+            //TODO refactore read model for board to decrease db queries
+            var organization = await _organizationRepository.GetByIdAsync(project.OrganizationId);
+            dto.OrganizationName = organization.Name;
+            return dto;
         }
 
 

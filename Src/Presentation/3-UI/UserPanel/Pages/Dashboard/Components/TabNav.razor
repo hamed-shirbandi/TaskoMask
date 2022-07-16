@@ -1,26 +1,26 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Organizations
 
-<ul class="nav nav-tabs small justify-content-end" role="tablist">
-    <li class="nav-item">
+<ul class="nav nav-tabs small justify-content-start p-1" role="tablist" style="flex-wrap: nowrap !important; overflow-x: auto !important; overflow-y: auto !important;">
+    <li class="text-nowrap nav-item d-block">
         <a class="nav-link active" data-toggle="tab" href="#tasks-@Model.Id" role="tab">
             <i class="bi bi-list-task"></i>
             Quick Access
         </a>
     </li>
-    <li class="nav-item">
+    <li class="text-nowrap nav-item d-block">
         <a class="nav-link" data-toggle="tab" href="#projects-@Model.Id" role="tab">
             <i class="bi bi-kanban"></i>
             Projects
         </a>
     </li>
-    <li class="nav-item">
+    <li class="text-nowrap nav-item d-block">
         <a class="nav-link" data-toggle="tab" href="#boards-@Model.Id" role="tab">
             <i class="bi bi-clipboard-plus"></i>
             Boards
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="text-nowrap nav-item d-block">
         <a class="nav-link" data-toggle="tab" href="#reports-@Model.Id" role="tab">
             <i class="bi bi-pie-chart"></i>
             Reports

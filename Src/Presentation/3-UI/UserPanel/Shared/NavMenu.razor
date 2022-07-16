@@ -2,77 +2,62 @@
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOwnerClientService OwnerClientService
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav style="justify-content:normal !important; display:block" class="navbar navbar-dark bg-dark fixed-top">
+    <div class="float-left">
+        <a class="navbar-brand btn btn-sm btn-outline-light text-dark-hover" href="@websiteUrl">TaskoMask</a>
+    </div>
+    <AuthorizeView>
 
-    <a class="navbar-brand btn btn-outline-light text-dark-hover" href="@websiteUrl">TaskoMask</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="m-1 btn btn-sm btn-info" href="@websiteUrl">
-                    <i class="bi bi-house-fill" title="Home"></i>
+        <Authorized>
+            <div class="float-left">
+                <a class="m-md-1 m-lg-1 btn btn-sm btn-primary" href="/">
+                    <i class="bi bi-speedometer" title="dashboard"></i>
                 </a>
-            </li>
-            <AuthorizeView>
-                <li class="nav-item">
-                    <NavLink class="m-1 btn btn-sm btn-success" href="" Match="NavLinkMatch.All">
-                        <i class="bi bi-speedometer" title="dashboard"></i>
-                    </NavLink>
-                </li>
-            </AuthorizeView>
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <AuthorizeView>
+            </div>
+            <div class="float-left">
                 <div class="dropdown show">
-
-                    <a class="btn btn-secondary btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="m-md-1 m-lg-1 btn btn-sm btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="bi bi bi-plus-circle"></i>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <NavLink class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.Upsert>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.Upsert>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))">
                             <i class="bi bi-building"></i>
                             New Organization
-                        </NavLink>
+                        </a>
 
-                        <NavLink class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))">
                             <i class="bi bi-kanban"></i>
                             New Project
-                        </NavLink>
+                        </a>
 
-                        <NavLink class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))">
                             <i class="bi bi-clipboard-plus"></i>
                             New Board
-                        </NavLink>
+                        </a>
                     </div>
                 </div>
-            </AuthorizeView>
+            </div>
 
-            <AuthorizeView>
-                <Authorized>
+            <div class="float-right">
+                <a class="m-md-1 m-lg-1 btn btn-sm btn-warning" id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))">
+                    <i class="bi bi-person-circle"></i>
+                    @(userDisplayName.Substring(0, 5) + "...")
+                </a>
+                <a class="m-md-1 m-lg-1 btn btn-sm btn-danger" href="/logout">
+                    <i class="bi bi-power"></i>
+                </a>
 
-                    <NavLink id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))" class="m-1 btn btn-sm btn-warning my-2 my-sm-0">
-                        <i class="bi bi-person-circle"></i>
-                        @userDisplayName
-                    </NavLink>
-
-                    <a class="m-1 btn btn-sm btn-danger my-2 my-sm-0" href="/logout">
-                        <i class="bi bi-power"></i>
-                    </a>
-                </Authorized>
-
-                <NotAuthorized>
-                    <a class="m-1 btn btn-sm btn-success my-2 my-sm-0" href="/login">
-                        login
-                    </a>
-                </NotAuthorized>
-            </AuthorizeView>
-
-        </div>
-    </div>
+            </div>
+        </Authorized>
+        <NotAuthorized>
+            <div class="float-right">
+                <a class="m-md-1 m-lg-1 btn btn-sm btn-success" href="/login">
+                    login
+                </a>
+            </div>
+        </NotAuthorized>
+    </AuthorizeView>
 </nav>
 
 @code {

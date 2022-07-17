@@ -139,9 +139,6 @@
         else if (organizationsResult.Value.Any())
         {
             organizationsSelectList = organizationsResult.Value;
-
-            if (string.IsNullOrEmpty(ProjectModel.OrganizationId))
-                ProjectModel.OrganizationId = organizationsSelectList.First().Value;
         }
 
     }

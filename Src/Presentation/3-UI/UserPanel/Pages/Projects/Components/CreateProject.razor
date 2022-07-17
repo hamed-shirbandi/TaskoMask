@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-group">
-        <select disabled="@organizationsDropDownListDisabled" @bind="ProjectModel.OrganizationId" class="form-control">
+        <select @bind="ProjectModel.OrganizationId" class="form-control">
             @foreach (var prop in organizationsSelectList)
             {
                 <option value="@prop.Value" selected="@(prop.Value==OrganizationId?true:false)">@prop.Text</option>
@@ -45,8 +45,6 @@
     [Parameter]
     public string OrganizationId { get; set; }
 
-
-    bool organizationsDropDownListDisabled = true;
 
 
     /// <summary>
@@ -84,8 +82,9 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        organizationsDropDownListDisabled = !string.IsNullOrEmpty(OrganizationId);
         await GetOrganizations();
+
+        SetDefaultOrganizationId();
     }
 
 
@@ -110,10 +109,22 @@
         else if (organizationsResult.Value.Any())
         {
             organizationsSelectList = organizationsResult.Value;
-
-            ProjectModel.OrganizationId = organizationsSelectList.First().Value;
         }
 
+    }
+
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void SetDefaultOrganizationId()
+    {
+        if (!string.IsNullOrEmpty(OrganizationId))
+            ProjectModel.OrganizationId = OrganizationId;
+        else if (organizationsSelectList.Any())
+            ProjectModel.OrganizationId = organizationsSelectList.First().Value;
     }
 
 

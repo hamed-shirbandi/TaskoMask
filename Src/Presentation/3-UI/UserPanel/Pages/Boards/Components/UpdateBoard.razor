@@ -16,7 +16,7 @@
         <select @onchange="OnOrganizationsSelectListChange" name="OrganizationId" class="form-control">
             @foreach (var prop in organizationsSelectList)
             {
-                <option value="@prop.Value" selected="@(prop.Value==selectedOrganizationId?true:false)">@prop.Text</option>
+                    <option value="@prop.Value" selected="@(prop.Value==selectedOrganizationId?true:false)">@prop.Text</option>
             }
         </select>
     </div>
@@ -25,7 +25,7 @@
         <select @bind="BoardModel.ProjectId" name="ProjectId" class="form-control">
             @foreach (var prop in projectsSelectList)
             {
-                <option value="@prop.Value" selected="@(prop.Value==BoardModel.ProjectId?true:false)">@prop.Text</option>
+                    <option value="@prop.Value" selected="@(prop.Value==BoardModel.ProjectId?true:false)">@prop.Text</option>
             }
         </select>
         <ValidationMessage For="()=>BoardModel.ProjectId" class="text-danger"></ValidationMessage>
@@ -132,7 +132,7 @@
     /// </summary>
     private async Task PrepareModelToUpdate()
     {
-      
+
         var boardResult = await BoardClientService.Get(Id);
 
         if (boardResult.IsSuccess)
@@ -195,7 +195,7 @@
         else if (projectsResult.Value.Any())
         {
             projectsSelectList = projectsResult.Value;
-                BoardModel.ProjectId = projectsSelectList.First().Value;
+            //BoardModel.ProjectId = projectsSelectList.First().Value;
         }
     }
 
@@ -222,7 +222,7 @@
 
 
 
-  
+
 
 
     /// <summary>
@@ -261,6 +261,8 @@
         selectedOrganizationId = e.Value.ToString();
         BoardModel.ProjectId = "";
         await GetProjects();
+        if (projectsSelectList.Any())
+            BoardModel.ProjectId = projectsSelectList.First().Value;
     }
 
 

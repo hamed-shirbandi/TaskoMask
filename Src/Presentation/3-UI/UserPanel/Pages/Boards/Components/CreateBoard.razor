@@ -13,19 +13,19 @@
     </div>
 
     <div class="form-group">
-        <select disabled="@projectsDropDownListDisabled" @onchange="OnOrganizationsSelectListChange" name="OrganizationId" class="form-control">
+        <select @onchange="OnOrganizationsSelectListChange" name="OrganizationId" class="form-control">
             @foreach (var prop in organizationsSelectList)
             {
-                    <option value="@prop.Value" selected="@(prop.Value==selectedOrganizationId?true:false)">@prop.Text</option>
+                        <option value="@prop.Value" selected="@(prop.Value==selectedOrganizationId?true:false)">@prop.Text</option>
             }
         </select>
     </div>
 
     <div class="form-group">
-        <select disabled="@projectsDropDownListDisabled" @bind="BoardModel.ProjectId" name="ProjectId" class="form-control">
+        <select @bind="BoardModel.ProjectId" name="ProjectId" class="form-control">
             @foreach (var prop in projectsSelectList)
             {
-                    <option value="@prop.Value" selected="@(prop.Value==BoardModel.ProjectId?true:false)">@prop.Text</option>
+                        <option value="@prop.Value" selected="@(prop.Value==BoardModel.ProjectId?true:false)">@prop.Text</option>
             }
         </select>
         <ValidationMessage For="()=>BoardModel.ProjectId" class="text-danger"></ValidationMessage>
@@ -63,9 +63,6 @@
     [Parameter]
     public string ProjectId { get; set; }
 
-
-
-    bool projectsDropDownListDisabled = true;
 
 
     /// <summary>
@@ -116,13 +113,15 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        projectsDropDownListDisabled = !string.IsNullOrEmpty(ProjectId);
+
 
         await SetSelectedOrganizationId();
 
         await GetOrganizations();
 
         await GetProjects();
+
+        SetDefaultProjectId();
 
     }
 
@@ -175,10 +174,19 @@
         else if (projectsResult.Value.Any())
         {
             projectsSelectList = projectsResult.Value;
-
-            if (string.IsNullOrEmpty(BoardModel.ProjectId))
-                BoardModel.ProjectId = projectsSelectList.First().Value;
         }
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void SetDefaultProjectId()
+    {
+        if (!string.IsNullOrEmpty(ProjectId))
+            BoardModel.ProjectId = ProjectId;
+        else if (projectsSelectList.Any())
+            BoardModel.ProjectId = projectsSelectList.First().Value;
     }
 
 
@@ -229,6 +237,8 @@
         selectedOrganizationId = e.Value.ToString();
         BoardModel.ProjectId = "";
         await GetProjects();
+        if (projectsSelectList.Any())
+            BoardModel.ProjectId = projectsSelectList.First().Value;
     }
 
 

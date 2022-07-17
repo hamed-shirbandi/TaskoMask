@@ -47,7 +47,7 @@
 
     <hr />
     <p class="align-content-center  text-center">
-        <a class="btn btn-success text-white text-center" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.Upsert>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))">
+        <a class="btn btn-success text-white text-center" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.CreateOrUpdateOrganization>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))">
             <i class="bi bi-building"></i>
             Ready to Start?
         </a>

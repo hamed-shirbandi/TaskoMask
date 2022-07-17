@@ -41,30 +41,9 @@
 
 
     /// <summary>
-    /// organaizations list to use in DropDownList
-    /// </summary>
-    IEnumerable<SelectListItem> organizationsSelectList = new List<SelectListItem>();
-
-
-
-    /// <summary>
-    /// to get selected option from organizations DropDownList
-    /// </summary>
-    string selectedOrganizationId = "";
-
-
-
-    /// <summary>
-    /// projects list to use in DropDownList
-    /// </summary>
-    IEnumerable<SelectListItem> projectsSelectList = new List<SelectListItem>();
-
-
-
-    /// <summary>
     /// Form Model
     /// </summary>
-    BoardUpsertDto BoardModel = new BoardUpsertDto();
+    BoardUpdateDto BoardModel = new BoardUpdateDto();
 
 
 
@@ -89,14 +68,7 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-
         await PrepareModelToUpdate();
-
-        await SetSelectedOrganizationId();
-
-        await GetOrganizations();
-
-        await GetProjects();
 
     }
 
@@ -118,12 +90,11 @@
 
         if (boardResult.IsSuccess)
         {
-            BoardModel = new BoardUpsertDto
+            BoardModel = new BoardUpdateDto
                 {
                     Id = boardResult.Value.Id,
                     Name = boardResult.Value.Name,
                     Description = boardResult.Value.Description,
-                    ProjectId = boardResult.Value.ProjectId,
                 };
         }
         else
@@ -133,76 +104,6 @@
             ToastService.ShowError(boardResult.Errors.ParseToFragment(), boardResult.Message);
         }
     }
-
-
-
-    /// <summary>
-    /// get organization select list to use in DropDownList
-    /// </summary>
-    private async Task GetOrganizations()
-    {
-        var organizationsResult = await OrganizationClientService.GetSelectListItems();
-        if (!organizationsResult.IsSuccess)
-        {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(organizationsResult.Errors.ParseToFragment(), organizationsResult.Message);
-        }
-        else if (organizationsResult.Value.Any())
-            organizationsSelectList = organizationsResult.Value;
-
-    }
-
-
-
-    /// <summary>
-    /// get projects select list to use in DropDownList
-    /// </summary>
-    private async Task GetProjects()
-    {
-        if (!organizationsSelectList.Any())
-            return;
-
-        if (string.IsNullOrEmpty(selectedOrganizationId))
-            selectedOrganizationId = organizationsSelectList.First().Value;
-
-        var projectsResult = await ProjectClientService.GetSelectListItems(selectedOrganizationId);
-        if (!projectsResult.IsSuccess)
-        {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(projectsResult.Errors.ParseToFragment(), projectsResult.Message);
-        }
-        else if (projectsResult.Value.Any())
-        {
-            projectsSelectList = projectsResult.Value;
-            //BoardModel.ProjectId = projectsSelectList.First().Value;
-        }
-    }
-
-
-
-    /// <summary>
-    /// get OrganizationId for the current board and set it for selectedOrganizationId
-    /// </summary>
-    private async Task SetSelectedOrganizationId()
-    {
-        var projectResult = await ProjectClientService.Get(BoardModel.ProjectId);
-
-        if (projectResult.IsSuccess)
-        {
-            selectedOrganizationId = projectResult.Value.OrganizationId;
-        }
-        else
-        {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(projectResult.Errors.ParseToFragment(), projectResult.Message);
-        }
-    }
-
-
-
 
 
 
@@ -232,19 +133,6 @@
         DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Board_Deleted, ModalInstance);
     }
 
-
-
-    /// <summary>
-    /// get projects list by selected organizationId from DropDownList
-    /// /// </summary>
-    private async Task OnOrganizationsSelectListChange(ChangeEventArgs e)
-    {
-        selectedOrganizationId = e.Value.ToString();
-        BoardModel.ProjectId = "";
-        await GetProjects();
-        if (projectsSelectList.Any())
-            BoardModel.ProjectId = projectsSelectList.First().Value;
-    }
 
 
     #endregion private Methods

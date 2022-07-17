@@ -4,7 +4,6 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Activities;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Comments;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Tasks;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
@@ -30,7 +29,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
             CardId = TaskCardId.Create(cardId);
             BoardId = TaskBoardId.Create(boardId);
             Comments = new HashSet<Comment>();
-            Activities = new HashSet<Activity>();
 
             CheckPolicies(taskValidatorService);
 
@@ -46,7 +44,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         public TaskBoardId BoardId { get; private set; }
         public TaskCardId CardId { get; private set; }
         public ICollection<Comment> Comments { get; private set; }
-        public ICollection<Activity> Activities { get; private set; }
 
 
         #endregion
@@ -163,22 +160,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
 
         #endregion
 
-        #region Public Activity Methods
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void CreateActivity(Activity activity)
-        {
-            Activities.Add(activity);
-            AddDomainEvent(new ActivityCreatedEvent(activity.Id, activity.Description.Value, Id));
-        }
-
-
-
-        #endregion
 
         #region Private Methods
 

@@ -61,7 +61,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("boards")]
-        public async Task<Result<CommandResult>> Create([FromBody] BoardUpsertDto input)
+        public async Task<Result<CommandResult>> Create([FromBody] BoardCreateDto input)
         {
             return await _boardService.CreateAsync(input);
         }
@@ -73,7 +73,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("boards/{id}")]
-        public async Task<Result<CommandResult>> Update(string id,[FromBody] BoardUpsertDto input)
+        public async Task<Result<CommandResult>> Update(string id, [FromBody] BoardUpdateDto input)
         {
             input.Id = id;
             return await _boardService.UpdateAsync(input);

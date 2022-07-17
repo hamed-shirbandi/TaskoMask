@@ -35,8 +35,6 @@ namespace TaskoMask.Application.Mapper.Profiles
             #region Board
 
             CreateMap<Board, BoardBasicInfoDto>();
-            CreateMap<Board, BoardUpsertDto>();
-            CreateMap<BoardBasicInfoDto, BoardUpsertDto>();
             CreateMap<Board, BoardOutputDto>();
 
             #endregion

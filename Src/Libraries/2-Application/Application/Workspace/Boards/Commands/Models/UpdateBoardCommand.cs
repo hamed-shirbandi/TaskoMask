@@ -6,8 +6,8 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Models
 {
     public class UpdateBoardCommand : BoardBaseCommand
     {
-        public UpdateBoardCommand(string id, string name, string description, string projectId)
-             : base(name, description, projectId)
+        public UpdateBoardCommand(string id, string name, string description)
+             : base(name, description)
         {
             Id = id;
         }

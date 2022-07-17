@@ -26,7 +26,7 @@
                             New Organization
                         </a>
 
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.CreateProject>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))">
                             <i class="bi bi-kanban"></i>
                             New Project
                         </a>

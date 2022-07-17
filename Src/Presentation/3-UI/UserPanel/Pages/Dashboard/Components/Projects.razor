@@ -8,7 +8,7 @@
         <small>
             You can add new project by using
             <b>
-                <a @onclick="@(() => ModalService.Show<Pages.Projects.Components.Upsert>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">
+                <a @onclick="@(()=>ShowCreateModal())" class="text-info">
                     <i class="bi bi-kanban"></i>
                     New Project
                 </a>
@@ -26,7 +26,7 @@ else
             <div class="card bg-success text-white">
                 <h5 class="card-header">
                     @item.Name
-                    <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
+                    <a @onclick="@(()=>ShowUpdateModal(item.Id))" class="text-warning" title="Edit">
                         <i class="bi bi-pencil"></i>
                     </a>
                 </h5>
@@ -46,16 +46,30 @@ else
     [Parameter]
     public IEnumerable<ProjectBasicInfoDto> Model { get; set; }
 
+    [Parameter]
+    public string OrganizationId { get; set; }
+
 
 
 
     /// <summary>
     ///
     /// </summary>
-    private void ShowUpdsertModal(string projectId)
+    private void ShowCreateModal( )
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Projects.Components.Upsert.Id), projectId);
-        ModalService.Show<Pages.Projects.Components.Upsert>("Update project", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        parameters.Add(nameof(Pages.Projects.Components.CreateProject.OrganizationId), OrganizationId);
+        ModalService.Show<Pages.Projects.Components.CreateProject>("Create project", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowUpdateModal(string projectId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Projects.Components.UpdateProject.Id), projectId);
+        ModalService.Show<Pages.Projects.Components.UpdateProject>("Update project", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 }

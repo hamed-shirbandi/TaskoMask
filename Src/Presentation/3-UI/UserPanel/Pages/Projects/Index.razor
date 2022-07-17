@@ -54,7 +54,7 @@
     {
         try
         {
-            if (messageType == MessageType.Board_Created || messageType == MessageType.Board_Deleted || messageType == MessageType.Board_Deleted)
+            if (messageType == MessageType.Board_Created || messageType == MessageType.Board_Deleted || messageType == MessageType.Board_Updated)
             {
                 await LoadDataAsync();
                 StateHasChanged();

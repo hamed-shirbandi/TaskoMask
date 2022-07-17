@@ -10,7 +10,7 @@ using TaskoMask.Application.Workspace.Activities.Queries.Models;
 
 namespace TaskoMask.Application.Workspace.Activities.Services
 {
-    public class TaskService : ApplicationService, IActivityService
+    public class ActivityService : ApplicationService, IActivityService
     {
         #region Fields
 
@@ -19,7 +19,7 @@ namespace TaskoMask.Application.Workspace.Activities.Services
 
         #region Ctors
 
-        public TaskService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
+        public ActivityService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
 

@@ -12,16 +12,6 @@
     </div>
 
     <div class="form-group">
-        <select @bind="ProjectModel.OrganizationId" class="form-control">
-            @foreach (var prop in organizationsSelectList)
-            {
-                        <option value="@prop.Value" selected="@(prop.Value==ProjectModel.OrganizationId?true:false)">@prop.Text</option>
-            }
-        </select>
-        <ValidationMessage For="()=>ProjectModel.OrganizationId" class="text-danger"></ValidationMessage>
-    </div>
-
-    <div class="form-group">
         <InputText @bind-Value="ProjectModel.Description" placeholder="Description" class="form-control"></InputText>
         <ValidationMessage For="()=>ProjectModel.Description" class="text-danger"></ValidationMessage>
     </div>

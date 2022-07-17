@@ -9,8 +9,8 @@ namespace TaskoMask.Application.Workspace.Projects.Services
 {
     public interface IProjectService : IApplicationService
     {
-        Task<Result<CommandResult>> CreateAsync(ProjectUpsertDto input);
-        Task<Result<CommandResult>> UpdateAsync(ProjectUpsertDto input);
+        Task<Result<CommandResult>> CreateAsync(ProjectCreateDto input);
+        Task<Result<CommandResult>> UpdateAsync(ProjectUpdateDto input);
         Task<Result<ProjectOutputDto>> GetByIdAsync(string id);
         Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id);
 

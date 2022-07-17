@@ -74,7 +74,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("projects")]
-        public async Task<Result<CommandResult>> Create([FromBody] ProjectUpsertDto input)
+        public async Task<Result<CommandResult>> Create([FromBody] ProjectCreateDto input)
         {
             return await _projectService.CreateAsync(input);
         }
@@ -86,7 +86,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("projects/{id}")]
-        public async Task<Result<CommandResult>> Update(string id, [FromBody] ProjectUpsertDto input)
+        public async Task<Result<CommandResult>> Update(string id, [FromBody] ProjectUpdateDto input)
         {
             input.Id = id;
             return await _projectService.UpdateAsync(input);

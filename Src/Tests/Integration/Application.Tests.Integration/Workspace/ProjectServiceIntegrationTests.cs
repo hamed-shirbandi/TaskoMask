@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
         {
             //Arrange
             var organization = await _fixture.GetSampleOrganizationAsync();
-            var dto = new ProjectUpsertDto
+            var dto = new ProjectCreateDto
             {
                 Name = "Test Project Name",
                 Description = "Test Project Description",

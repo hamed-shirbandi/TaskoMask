@@ -40,16 +40,9 @@
 
 
     /// <summary>
-    /// organaizations list to use in DropDownList
-    /// </summary>
-    IEnumerable<SelectListItem> organizationsSelectList = new List<SelectListItem>();
-
-
-
-    /// <summary>
     /// Form Model
     /// </summary>
-    ProjectUpsertDto ProjectModel = new ProjectUpsertDto();
+    ProjectUpdateDto ProjectModel = new ProjectUpdateDto();
 
 
 
@@ -74,7 +67,6 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        await GetOrganizations();
         await PrepareModelToUpdate();
     }
 
@@ -96,12 +88,11 @@
 
         if (projectResult.IsSuccess)
         {
-            ProjectModel = new ProjectUpsertDto
+            ProjectModel = new ProjectUpdateDto
                 {
                     Id = projectResult.Value.Id,
                     Name = projectResult.Value.Name,
                     Description = projectResult.Value.Description,
-                    OrganizationId = projectResult.Value.OrganizationId,
                 };
         }
         else
@@ -110,27 +101,6 @@
             ModalInstance.CloseAsync();
             ToastService.ShowError(projectResult.Errors.ParseToFragment(), projectResult.Message);
         }
-    }
-
-
-
-    /// <summary>
-    /// get organization select list to use in DropDownList
-    /// </summary>
-    private async Task GetOrganizations()
-    {
-        var organizationsResult = await OrganizationClientService.GetSelectListItems();
-        if (!organizationsResult.IsSuccess)
-        {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(organizationsResult.Errors.ParseToFragment(), organizationsResult.Message);
-        }
-        else if (organizationsResult.Value.Any())
-        {
-            organizationsSelectList = organizationsResult.Value;
-        }
-
     }
 
 

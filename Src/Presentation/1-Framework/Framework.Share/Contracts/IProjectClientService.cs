@@ -9,8 +9,8 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
         Task<Result<ProjectOutputDto>> Get(string id);
         Task<Result<ProjectDetailsViewModel>> GetDetails(string id);
 
-        Task<Result<CommandResult>> Create(ProjectUpsertDto input);
-        Task<Result<CommandResult>> Update(string id,ProjectUpsertDto input);
+        Task<Result<CommandResult>> Create(ProjectCreateDto input);
+        Task<Result<CommandResult>> Update(string id, ProjectUpdateDto input);
         Task<Result<CommandResult>> Delete(string id);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string organizationId);
 

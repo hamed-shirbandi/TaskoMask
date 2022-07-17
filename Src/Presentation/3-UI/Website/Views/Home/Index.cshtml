@@ -1,6 +1,4 @@
-﻿@model TaskoMask.Presentation.UI.Website.Models.HomeIndexViewModel
-@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
-
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 @{
     ViewBag.Title = "Home";
 }
@@ -9,12 +7,15 @@
 <p class="lead">
     TaskoMask is a free and open-source application for managing your tasks.
     It is very simple and flexible. You will find it more useable if you have to work on some unrelated tasks.
-    <a href="@(Configuration["Url:UserPanel"]+"/register")" class="btn btn-success d-block">Try it for free!</a>
+    <br />
+    <a href="@(Configuration["Url:UserPanel"]+"/register")" class="btn btn-success">Try it for free!</a>
+    <hr />
 </p>
-<hr />
+
 <div class="bg-primary rounded p-2">
      <h3 class="text-center text-white">Our Contributers on GitHub</h3>
     <a href="https://github.com/hamed-shirbandi/TaskoMask#contributing">
-        <img src="https://camo.githubusercontent.com/a7f8dcd50e73b2ee3424f95db898581586a68d5667a7656c9a98687bb8fc8ad1/68747470733a2f2f636f6e747269622e726f636b732f696d6167653f7265706f3d68616d65642d7368697262616e64692f5461736b6f4d61736b" />
+        <img class="w-75" src="https://camo.githubusercontent.com/a7f8dcd50e73b2ee3424f95db898581586a68d5667a7656c9a98687bb8fc8ad1/68747470733a2f2f636f6e747269622e726f636b732f696d6167653f7265706f3d68616d65642d7368697262616e64692f5461736b6f4d61736b" />
     </a>
 </div>
+

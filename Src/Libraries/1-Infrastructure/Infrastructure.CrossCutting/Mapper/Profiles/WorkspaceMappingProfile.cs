@@ -16,6 +16,7 @@ namespace TaskoMask.Application.Mapper.Profiles
         {
             #region Task
 
+            CreateMap<Task, TaskBaseDto>();
             CreateMap<Task, TaskBasicInfoDto>();
             CreateMap<Task, TaskUpsertDto>();
             CreateMap<TaskBasicInfoDto, TaskUpsertDto>();
@@ -26,6 +27,7 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             #region Activity
 
+            CreateMap<Activity, ActivityBaseDto>();
             CreateMap<Activity, ActivityBasicInfoDto>();
 
 

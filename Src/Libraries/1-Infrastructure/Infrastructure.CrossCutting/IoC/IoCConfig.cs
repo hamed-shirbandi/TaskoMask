@@ -33,6 +33,7 @@ using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
+using TaskoMask.Application.Workspace.Activities.Services;
 
 namespace Infrastructure.CrossCutting.IoC
 {
@@ -61,6 +62,7 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IBoardService, BoardService>();
             services.AddScoped<ICardService, CardService>();
             services.AddScoped<ITaskService, TaskService>();
+            services.AddScoped<IActivityService, ActivityService>();
 
             services.AddScoped<IDomainNotificationHandler, DomainNotificationHandler>();
 

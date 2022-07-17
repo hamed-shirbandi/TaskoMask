@@ -1,11 +1,12 @@
-﻿using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.ReadModel.Entities;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using TaskoMask.Domain.Core.Data;
 
 namespace TaskoMask.Domain.ReadModel.Data
 {
 
-    public interface IActivityRepository : IBaseRepository<Activity>
+    public interface IActivityRepository : IBaseRepository<Entities.Activity>
     {
-      
+        Task<IEnumerable<Entities.Activity>> GetListByTaskIdAsync(string taskId);
     }
 }

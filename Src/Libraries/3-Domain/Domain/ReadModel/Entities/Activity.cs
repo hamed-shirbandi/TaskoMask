@@ -9,17 +9,11 @@ namespace TaskoMask.Domain.ReadModel.Entities
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id">Id Must sync with write side DB</param>
-        public Activity(string id)
+        public Activity( )
         {
-            if (string.IsNullOrEmpty(id))
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(id)));
-
-            base.SetId(id);
         }
 
         public string TaskId { get; set; }
-        public string OwnerId { get; set; }
         public string Description { get; set; }
 
     }

@@ -8,13 +8,13 @@ namespace TaskoMask.Application.Share.Dtos.Common
     {
 
         [Display(Name = nameof(ApplicationMetadata.CreateDateTime), ResourceType = typeof(ApplicationMetadata))]
-        public DateTime CreateDateTime { get; private set; }
+        public DateTime CreateDateTime { get; set; }
 
         [Display(Name = nameof(ApplicationMetadata.CreateDateTime), ResourceType = typeof(ApplicationMetadata))]
-        public string CreateDateTimeString { get; private set; }
+        public string CreateDateTimeString { get; set; }
 
         [Display(Name = nameof(ApplicationMetadata.ModifiedDateTime), ResourceType = typeof(ApplicationMetadata))]
-        public DateTime ModifiedDateTime { get; private set; }
+        public DateTime ModifiedDateTime { get; set; }
 
 
         [Display(Name = nameof(ApplicationMetadata.ModifiedDateTime), ResourceType = typeof(ApplicationMetadata))]

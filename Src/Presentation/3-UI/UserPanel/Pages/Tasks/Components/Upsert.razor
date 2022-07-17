@@ -148,7 +148,7 @@
     private async Task HandleUpdate()
     {
         var result = await TaskClientService.Update(TaskId, TaskModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Updated, ModalInstance);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Updated);
     }
 
 

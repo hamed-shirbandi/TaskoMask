@@ -1,5 +1,8 @@
 ﻿@using TaskoMask.Presentation.UI.UserPanel.Pages.Tasks.Components
 @inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
+@implements IDisposable
+
+
 @if (Model == null)
 {
     <div class="spinner-loading"></div>
@@ -38,6 +41,18 @@ else
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
+        MessageService.OnMessage += ReloadDataHandler;
+
+        await GetTaskDetails();
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task GetTaskDetails()
+    {
         var taskResult = await TaskClientService.Get(TaskId);
         if (taskResult.IsSuccess)
             Model = taskResult.Value;
@@ -48,4 +63,40 @@ else
             ToastService.ShowError(taskResult.Errors.ParseToFragment(), taskResult.Message);
         }
     }
+
+
+
+
+    /// <summary>
+    ///This is a handler to be notified when some interesting events happened
+    ///For example we like to reload data for this component when new organization created by Organizations.Components.CreateOrUpdateOrganization component
+    /// </summary>
+    private async void ReloadDataHandler(MessageType messageType)
+    {
+        try
+        {
+            if (messageType == MessageType.Task_Updated || messageType == MessageType.Task_Moved)
+            {
+                await GetTaskDetails();
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            //Async task failure because of async void challenges
+        }
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public void Dispose()
+    {
+        // unsubscribe from OnMessage event
+        MessageService.OnMessage -= ReloadDataHandler;
+    }
+
+
 }

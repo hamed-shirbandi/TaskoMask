@@ -1,6 +1,5 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.ReadModel.Data;
@@ -28,6 +27,15 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         #endregion
 
         #region Public Methods
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<Activity>> GetListByTaskIdAsync(string taskId)
+        {
+            return await _activities.AsQueryable().Where(o => o.TaskId == taskId ).ToListAsync();
+        }
 
 
 

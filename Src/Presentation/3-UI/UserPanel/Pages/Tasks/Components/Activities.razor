@@ -1,4 +1,5 @@
-﻿
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Activities
+
 <div class="list-group">
     <div class="list-group-item list-group-item-action">
         <strong>
@@ -6,18 +7,19 @@
             Activities
         </strong>
     </div>
-    <div class="list-group-item list-group-item-action">
-        <small>
-            created at ...
-        </small>
-    </div>
-    <div class="list-group-item list-group-item-action">
-        <small>
-            moved to ...
-        </small>
-    </div>
+    @foreach (var item in Model)
+    {
+        <div class="list-group-item list-group-item-action">
+            <small>
+                @item.Description at @item.CreationTime.CreateDateTimeString
+            </small>
+        </div>
+    }
+
 </div>
 
 @code {
+    [Parameter]
+    public IEnumerable<ActivityBasicInfoDto> Model { get; set; }
 
 }

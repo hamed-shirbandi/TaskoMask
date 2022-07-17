@@ -10,6 +10,7 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
+using TaskoMask.Application.Workspace.Activities.Services;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
 {
@@ -17,13 +18,15 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
     {
         #region Fields
 
-
+        private readonly IActivityService _activityService;
         #endregion
 
         #region Ctors
 
-        public TaskService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
-        { }
+        public TaskService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IActivityService activityService) : base(inMemoryBus, mapper, notifications)
+        {
+            _activityService = activityService;
+        }
 
 
         #endregion
@@ -93,13 +96,19 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
                 return Result.Failure<TaskDetailsViewModel>(cardQueryResult.Errors);
 
 
-            var boardDetail = new TaskDetailsViewModel
+            var activitiesQueryResult = await _activityService.GetListByTaskIdAsync(id);
+            if (!activitiesQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(activitiesQueryResult.Errors);
+
+
+            var taskDetail = new TaskDetailsViewModel
             {
                 Task = taskQueryResult.Value,
                 Card = cardQueryResult.Value,
+                Activities= activitiesQueryResult.Value
             };
 
-            return Result.Success(boardDetail);
+            return Result.Success(taskDetail);
 
         }
 

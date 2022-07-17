@@ -126,7 +126,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
 
             #region Activity Indexs
 
-            dbContext.GetCollection<Activity>().Indexes.CreateOneAsync(new CreateIndexModel<Activity>(Builders<Activity>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Activity>("Activities").Indexes.CreateOneAsync(new CreateIndexModel<Activity>(Builders<Activity>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
 
 
             #endregion

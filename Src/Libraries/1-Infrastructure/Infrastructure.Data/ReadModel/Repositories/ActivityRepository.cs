@@ -14,14 +14,14 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         #region Fields
 
         private readonly IMongoCollection<Activity> _activities;
-
+        private const string activityCollectionName = "Activities";
         #endregion
 
         #region Ctors
 
-        public ActivityRepository(IReadDbContext dbContext) : base(dbContext)
+        public ActivityRepository(IReadDbContext dbContext) : base(dbContext, activityCollectionName)
         {
-            _activities = dbContext.GetCollection<Activity>("Activities");
+            _activities = dbContext.GetCollection<Activity>(activityCollectionName);
         }
 
         #endregion
@@ -34,7 +34,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<IEnumerable<Activity>> GetListByTaskIdAsync(string taskId)
         {
-            return await _activities.AsQueryable().Where(o => o.TaskId == taskId ).ToListAsync();
+            return await _activities.AsQueryable().Where(o => o.TaskId == taskId).ToListAsync();
         }
 
 

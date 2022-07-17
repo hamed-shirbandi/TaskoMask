@@ -18,9 +18,9 @@ namespace TaskoMask.Infrastructure.Data.Common.Repositories
 
         #region Ctors
 
-        public BaseRepository(IMongoDbContext dbContext)
+        public BaseRepository(IMongoDbContext dbContext,string collectionName="")
         {
-            _collection = dbContext.GetCollection<TEntity>();
+            _collection = dbContext.GetCollection<TEntity>(collectionName);
         }
 
         #endregion

@@ -12,11 +12,13 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Owner owner)
         {
+            var organizations = owner.Organizations.Where(p => p.IsDeleted == false).ToList();
+
             var organizationsCount = owner.Organizations.Count;
             if (organizationsCount < 2)
                 return true;
 
-            var distincOrganizationsCount = owner.Organizations.Select(p => p.Name).Distinct().Count();
+            var distincOrganizationsCount = organizations.Select(p => p.Name).Distinct().Count();
             return organizationsCount == distincOrganizationsCount;
         }
     }

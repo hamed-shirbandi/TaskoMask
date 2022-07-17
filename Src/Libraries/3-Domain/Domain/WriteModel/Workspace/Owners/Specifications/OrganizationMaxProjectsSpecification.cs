@@ -14,7 +14,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
         public bool IsSatisfiedBy(Owner owner)
         {
             foreach (var organization in owner.Organizations)
-                if (organization.Projects.Count > DomainConstValues.Organization_Max_Projects_Count)
+                if (organization.Projects.Count(p=>p.IsDeleted==false) > DomainConstValues.Organization_Max_Projects_Count)
                     return false;
 
             return true;

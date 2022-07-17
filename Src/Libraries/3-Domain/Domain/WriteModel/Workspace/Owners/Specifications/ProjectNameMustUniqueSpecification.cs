@@ -15,11 +15,12 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
         {
             foreach (var organization in owner.Organizations)
             {
-                var projectsCount = organization.Projects.Count;
+                var projects = organization.Projects.Where(p => p.IsDeleted == false).ToList();
+                var projectsCount = projects.Count;
                 if (projectsCount < 2)
                     continue;
 
-                var distincprojectsCount = organization.Projects.Select(p => p.Name).Distinct().Count();
+                var distincprojectsCount = projects.Select(p => p.Name).Distinct().Count();
                 if (distincprojectsCount != projectsCount)
                     return false;
             }

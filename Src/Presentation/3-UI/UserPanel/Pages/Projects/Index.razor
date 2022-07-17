@@ -7,7 +7,7 @@
 @if (Model != null)
 {
     <Breadcrumb Model=@Model.Project></Breadcrumb>
-    <Boards Model=@Model.Boards></Boards>
+    <Boards Model=@Model.Boards ProjectId=@Model.Project.Id></Boards>
 }
 
 @code {

@@ -31,7 +31,7 @@
 
             <div class="tab-pane" id="boards-@item.Organization.Id" role="tabpanel">
                 <div class="row">
-                    <Boards Model="@item.Boards" />
+                    <Boards Model="@item.Boards" OrganizationId=@item.Organization.Id/>
                 </div>
             </div>
 

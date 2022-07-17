@@ -31,7 +31,7 @@
                             New Project
                         </a>
 
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.CreateBoard>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))">
                             <i class="bi bi-clipboard-plus"></i>
                             New Board
                         </a>

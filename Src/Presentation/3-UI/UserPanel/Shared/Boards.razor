@@ -8,7 +8,7 @@
         <small>
             You can add new board by using
             <b>
-                <a @onclick="@(() => ModalService.Show<Pages.Boards.Components.Upsert>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))" class="text-info">
+                <a @onclick="@(()=>ShowCreateModal())" class="text-info">
                     <i class="bi bi-clipboard-plus"></i>
                     New Board
                 </a>
@@ -27,7 +27,7 @@ else
             <div class="card bg-primary text-white">
                 <h5 class="card-header">
                     @item.Name
-                    <a @onclick="@(()=>ShowUpdsertModal(item.Id))" class="text-warning" title="Edit">
+                    <a @onclick="@(()=>ShowUpdateModal(item.Id))" class="text-warning" title="Edit">
                         <i class="bi bi-pencil"></i>
                     </a>
                 </h5>
@@ -45,19 +45,39 @@ else
 
 
 @code {
+
+
     [Parameter]
     public IEnumerable<BoardBasicInfoDto> Model { get; set; }
 
 
+    [Parameter]
+    public string ProjectId { get; set; }
+
+
+    [Parameter]
+    public string OrganizationId { get; set; }
 
 
     /// <summary>
     ///
     /// </summary>
-    private void ShowUpdsertModal(string boardId)
+    private void ShowCreateModal()
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Boards.Components.Upsert.Id), boardId);
-        ModalService.Show<Pages.Boards.Components.Upsert>("Update board", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        parameters.Add(nameof(Pages.Boards.Components.CreateBoard.ProjectId), ProjectId);
+        parameters.Add(nameof(Pages.Boards.Components.CreateBoard.OrganizationId), OrganizationId);
+        ModalService.Show<Pages.Boards.Components.CreateBoard>("Create board", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowUpdateModal(string boardId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Boards.Components.UpdateBoard.Id), boardId);
+        ModalService.Show<Pages.Boards.Components.UpdateBoard>("Update board", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 }

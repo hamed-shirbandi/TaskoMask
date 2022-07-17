@@ -1,0 +1,230 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IProjectClientService ProjectClientService
+@inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
+
+<EditForm Model="BoardModel" OnValidSubmit="HandleCreate">
+
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <InputText @bind-Value="BoardModel.Name" placeholder="Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>BoardModel.Name" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <select disabled="@projectsDropDownListDisabled" @onchange="OnOrganizationsSelectListChange" name="OrganizationId" class="form-control">
+            @foreach (var prop in organizationsSelectList)
+            {
+                <option value="@prop.Value" selected="@(prop.Value==selectedOrganizationId?true:false)">@prop.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <select disabled="@projectsDropDownListDisabled" @bind="BoardModel.ProjectId" name="ProjectId" class="form-control">
+            @foreach (var prop in projectsSelectList)
+            {
+                <option value="@prop.Value" selected="@(prop.Value==BoardModel.ProjectId?true:false)">@prop.Text</option>
+            }
+        </select>
+        <ValidationMessage For="()=>BoardModel.ProjectId" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <InputText @bind-Value="BoardModel.Description" placeholder="Description" class="form-control"></InputText>
+        <ValidationMessage For="()=>BoardModel.Description" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+            <button type="submit" class="btn btn-primary mr-1">Create</button>
+
+        <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
+    </div>
+
+</EditForm>
+
+@code {
+
+
+    #region Fields and Parameters
+
+
+    /// <summary>
+    /// Default ProjectId
+    /// </summary>
+    [Parameter]
+    public string ProjectId { get; set; }
+
+
+
+    bool projectsDropDownListDisabled = true;
+
+
+    /// <summary>
+    /// organaizations list to use in DropDownList
+    /// </summary>
+    IEnumerable<SelectListItem> organizationsSelectList = new List<SelectListItem>();
+
+
+
+    /// <summary>
+    /// to get selected option from organizations DropDownList
+    /// </summary>
+    string selectedOrganizationId = "";
+
+
+
+    /// <summary>
+    /// projects list to use in DropDownList
+    /// </summary>
+    IEnumerable<SelectListItem> projectsSelectList = new List<SelectListItem>();
+
+
+
+    /// <summary>
+    /// Form Model
+    /// </summary>
+    BoardUpsertDto BoardModel = new BoardUpsertDto();
+
+
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+
+    #endregion Fields and Parameters
+
+
+
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        projectsDropDownListDisabled = !string.IsNullOrEmpty(ProjectId);
+
+        if (!string.IsNullOrEmpty(ProjectId))
+        {
+            await SetSelectedOrganizationId();
+        }
+
+        //get organizations select list for DropDownList
+        await GetOrganizations();
+
+        //get projects select list  for DropDownList
+        await GetProjects();
+
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+
+    /// <summary>
+    /// get organization select list to use in DropDownList
+    /// </summary>
+    private async Task GetOrganizations()
+    {
+        var organizationsResult = await OrganizationClientService.GetSelectListItems();
+        if (!organizationsResult.IsSuccess)
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(organizationsResult.Errors.ParseToFragment(), organizationsResult.Message);
+        }
+        else if (organizationsResult.Value.Any())
+            organizationsSelectList = organizationsResult.Value;
+
+    }
+
+
+
+    /// <summary>
+    /// get projects select list to use in DropDownList
+    /// </summary>
+    private async Task GetProjects()
+    {
+        if (!organizationsSelectList.Any())
+            return;
+
+        if (string.IsNullOrEmpty(selectedOrganizationId))
+            selectedOrganizationId = organizationsSelectList.First().Value;
+
+        var projectsResult = await ProjectClientService.GetSelectListItems(selectedOrganizationId);
+        if (!projectsResult.IsSuccess)
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(projectsResult.Errors.ParseToFragment(), projectsResult.Message);
+        }
+        else if (projectsResult.Value.Any())
+        {
+            projectsSelectList = projectsResult.Value;
+
+            if (string.IsNullOrEmpty(BoardModel.ProjectId))
+                BoardModel.ProjectId = projectsSelectList.First().Value;
+        }
+    }
+
+
+
+    /// <summary>
+    /// get OrganizationId for the current board and set it for selectedOrganizationId
+    /// </summary>
+    private async Task SetSelectedOrganizationId()
+    {
+        var projectResult = await ProjectClientService.Get(ProjectId);
+
+        if (projectResult.IsSuccess)
+        {
+            selectedOrganizationId = projectResult.Value.OrganizationId;
+        }
+        else
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(projectResult.Errors.ParseToFragment(), projectResult.Message);
+        }
+    }
+
+
+
+    /// <summary>
+    /// handle create model
+    /// </summary>
+    private async Task HandleCreate()
+    {
+        var result = await BoardClientService.Create(BoardModel);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Board_Created, ModalInstance);
+    }
+
+
+
+
+    /// <summary>
+    /// get projects list by selected organizationId from DropDownList
+    /// /// </summary>
+    private async Task OnOrganizationsSelectListChange(ChangeEventArgs e)
+    {
+        selectedOrganizationId = e.Value.ToString();
+        BoardModel.ProjectId = "";
+        await GetProjects();
+    }
+
+
+    #endregion private Methods
+
+}

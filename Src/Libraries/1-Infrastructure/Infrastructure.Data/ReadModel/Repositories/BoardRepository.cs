@@ -2,6 +2,7 @@
 using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.ReadModel.Entities;
@@ -52,6 +53,16 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
             return await _boards.AsQueryable().Where(o => o.OrganizationId == organizationId && o.IsDeleted == false).ToListAsync();
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<Board>> GetListByProjectsIdAsync(string[] projectsId)
+        {
+            return await _boards.AsQueryable().Where(o => projectsId.Contains(o.ProjectId) && o.IsDeleted == false).ToListAsync();
+
+        }
 
 
         /// <summary>

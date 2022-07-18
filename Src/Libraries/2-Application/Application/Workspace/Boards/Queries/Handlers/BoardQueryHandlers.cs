@@ -22,7 +22,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         IRequestHandler<GetBoardByIdQuery, BoardOutputDto>,
         IRequestHandler<GetBoardReportQuery, BoardReportDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
-        IRequestHandler<GetBoardsByOrganizationIdQuery, IEnumerable<BoardBasicInfoDto>>,
+        IRequestHandler<GetBoardsByProjectsIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<SearchBoardsQuery, PaginatedListReturnType<BoardOutputDto>>,
         IRequestHandler<GetBoardsCountQuery, long>
         
@@ -92,9 +92,9 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<BoardBasicInfoDto>> Handle(GetBoardsByOrganizationIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<BoardBasicInfoDto>> Handle(GetBoardsByProjectsIdQuery request, CancellationToken cancellationToken)
         {
-            var boards = await _boardRepository.GetListByOrganizationIdAsync(request.OrganizationId);
+            var boards = await _boardRepository.GetListByProjectsIdAsync(request.ProjectsId);
             return _mapper.Map<IEnumerable<BoardBasicInfoDto>>(boards);
         }
 

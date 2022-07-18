@@ -67,9 +67,20 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
                 return Result.Failure<OrganizationDetailsViewModel>(organizationQueryResult.Errors);
 
 
-            var projectQueryResult = await SendQueryAsync(new GetProjectsByOrganizationIdQuery(id));
-            if (!projectQueryResult.IsSuccess)
-                return Result.Failure<OrganizationDetailsViewModel>(projectQueryResult.Errors);
+            var projectsQueryResult = await SendQueryAsync(new GetProjectsByOrganizationIdQuery(id));
+            if (!projectsQueryResult.IsSuccess)
+                return Result.Failure<OrganizationDetailsViewModel>(projectsQueryResult.Errors);
+
+
+            var projectsId = projectsQueryResult.Value.Select(p => p.Id).ToArray();
+            var boardsQueryResult = await SendQueryAsync(new GetBoardsByProjectsIdQuery(projectsId));
+            if (!boardsQueryResult.IsSuccess)
+                return Result.Failure<OrganizationDetailsViewModel>(boardsQueryResult.Errors);
+
+
+            var pendingTasksQueryResult = await SendQueryAsync(new GetPendingTasksByOrganizationIdQuery(organizationId: id, takeCount: 10));
+            if (!pendingTasksQueryResult.IsSuccess)
+                return Result.Failure<OrganizationDetailsViewModel>(pendingTasksQueryResult.Errors);
 
 
             var organizationReportQueryResult = await SendQueryAsync(new GetOrganizationReportQuery(id));
@@ -77,21 +88,13 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
                 return Result.Failure<OrganizationDetailsViewModel>(organizationReportQueryResult.Errors);
 
 
-            var boardQueryResult = await SendQueryAsync(new GetBoardsByOrganizationIdQuery(id));
-            if (!boardQueryResult.IsSuccess)
-                return Result.Failure<OrganizationDetailsViewModel>(boardQueryResult.Errors);
-
-
-            var taskQueryResult = await SendQueryAsync(new GetPendingTasksByOrganizationIdQuery(organizationId: id, takeCount: 10));
-            if (!taskQueryResult.IsSuccess)
-                return Result.Failure<OrganizationDetailsViewModel>(taskQueryResult.Errors);
 
             var organizationDetail = new OrganizationDetailsViewModel
             {
                 Organization = organizationQueryResult.Value,
-                Projects = projectQueryResult.Value,
-                Boards = boardQueryResult.Value,
-                PendingTasks = taskQueryResult.Value,
+                Projects = projectsQueryResult.Value,
+                Boards = boardsQueryResult.Value,
+                PendingTasks = pendingTasksQueryResult.Value,
                 Reports = organizationReportQueryResult.Value,
             };
 

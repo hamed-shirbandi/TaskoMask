@@ -2,6 +2,7 @@
 using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.ReadModel.Entities;
@@ -51,7 +52,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
             if (!string.IsNullOrEmpty(term))
             {
-                queryable = queryable.Where(p => p.Name.Contains(term) );
+                queryable = queryable.Where(p => p.Name.Contains(term));
             }
 
             #endregion
@@ -86,7 +87,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<long> CountByBoardIdAsync(string boardId)
         {
-            return await _cards.CountDocumentsAsync(b => b.BoardId == boardId);
+            return await _cards.CountDocumentsAsync(b => b.BoardId == boardId && b.IsDeleted == false);
         }
 
 
@@ -96,7 +97,20 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<long> CountByOrganizationIdAsync(string organizationId)
         {
-            return await _cards.CountDocumentsAsync(b => b.OrganizationId == organizationId);
+            return await _cards.CountDocumentsAsync(b => b.OrganizationId == organizationId && b.IsDeleted == false);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<string[]> GetCardsIdByBoardsIdAsync(string[] boardsId)
+        {
+            return _cards
+                .AsQueryable().Where(b => boardsId.Contains(b.BoardId) && b.IsDeleted == false)
+                .Select(b => b.Id)
+                .ToArray();
         }
 
 

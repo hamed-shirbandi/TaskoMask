@@ -52,7 +52,7 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
         public async Task<ProjectOutputDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
-            if (project == null)
+            if (project == null || project.IsDeleted)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
             var dto = _mapper.Map<ProjectOutputDto>(project);
@@ -101,7 +101,7 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
             {
                 var organization = await _organizationRepository.GetByIdAsync(item.OrganizationId);
                 item.OrganizationName = organization?.Name;
-                item.BoardsCount = await _boardRepository.CountByProjectIdAsync(item.Id) ;
+                item.BoardsCount = await _boardRepository.CountByProjectIdAsync(item.Id);
             }
 
             return new PaginatedListReturnType<ProjectOutputDto>

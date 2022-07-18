@@ -61,7 +61,7 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
         public async Task<BoardOutputDto> Handle(GetBoardByIdQuery request, CancellationToken cancellationToken)
         {
             var board = await _boardRepository.GetByIdAsync(request.Id);
-            if (board == null)
+            if (board == null || board.IsDeleted)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
             //TODO refactore read model for board to decrease db queries

@@ -53,7 +53,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
         public async Task<TaskBasicInfoDto> Handle(GetTaskByIdQuery request, CancellationToken cancellationToken)
         {
             var task = await _taskRepository.GetByIdAsync(request.Id);
-            if (task == null)
+            if (task == null || task.IsDeleted)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
             return _mapper.Map<TaskBasicInfoDto>(task);

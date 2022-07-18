@@ -87,7 +87,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<long> CountByOwnerIdAsync(string OwnerId)
         {
-            return await _organizations.CountDocumentsAsync(o => o.OwnerId == OwnerId);
+            return await _organizations.CountDocumentsAsync(o => o.OwnerId == OwnerId && o.IsDeleted == false);
         }
 
 

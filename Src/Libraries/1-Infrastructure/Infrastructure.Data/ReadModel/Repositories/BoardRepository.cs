@@ -111,7 +111,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<long> CountByProjectIdAsync(string projectId)
         {
-            return await _boards.CountDocumentsAsync(b => b.ProjectId == projectId);
+            return await _boards.CountDocumentsAsync(b => b.ProjectId == projectId && b.IsDeleted==false);
         }
 
 
@@ -120,10 +120,11 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> CountByOrganizationIdAsync(string organizationId)
+        public async Task<long> CountByProjectsIdAsync(string[] projectsId)
         {
-            return await _boards.CountDocumentsAsync(b => b.OrganizationId == organizationId);
+            return await _boards.CountDocumentsAsync(b => projectsId.Contains(b.ProjectId) && b.IsDeleted == false);
         }
+
 
 
         #endregion

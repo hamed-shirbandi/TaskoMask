@@ -83,7 +83,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
                 return Result.Failure<OrganizationDetailsViewModel>(pendingTasksQueryResult.Errors);
 
 
-            var organizationReportQueryResult = await SendQueryAsync(new GetOrganizationReportQuery(id));
+            var organizationReportQueryResult = await SendQueryAsync(new GetOrganizationReportQuery(id,projectsId,boardsId));
             if (!organizationReportQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(organizationReportQueryResult.Errors);
 

@@ -125,17 +125,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<long> CountByCardIdAsync(string cardId)
         {
-            return await _tasks.CountDocumentsAsync(b => b.CardId == cardId);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<long> CountByOrganizationIdAsync(string organizationId, BoardCardType cardType)
-        {
-            return await _tasks.CountDocumentsAsync(b => b.OrganizationId == organizationId && b.CardType == cardType);
+            return await _tasks.CountDocumentsAsync(b => b.CardId == cardId && b.IsDeleted == false);
         }
 
 
@@ -146,6 +136,17 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         public async Task BulkUpdateCardTypeByCardIdAsync(string cardId, BoardCardType cardType)
         {
             await _tasks.UpdateManyAsync(b => b.CardId == cardId, Builders<Domain.ReadModel.Entities.Task>.Update.Set(p => p.CardType, cardType));
+        }
+        
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<long> CountByCardsIdAsync(string[] cardsId, BoardCardType cardType)
+        {
+            return await _tasks.CountDocumentsAsync(b => cardsId.Contains(b.CardId) && b.CardType == cardType && b.IsDeleted == false);
+
         }
 
 

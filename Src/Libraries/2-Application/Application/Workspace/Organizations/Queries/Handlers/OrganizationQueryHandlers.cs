@@ -83,16 +83,19 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
         /// </summary>
         public async Task<OrganizationReportDto> Handle(GetOrganizationReportQuery request, CancellationToken cancellationToken)
         {
-            return new OrganizationReportDto
-            {
-                ProjectsCount=await _projectRepository.CountByOrganizationIdAsync(request.OrganizationId),
-                BoardsCount=await _boardRepository.CountByOrganizationIdAsync(request.OrganizationId),
-                CardsCount=await _cardRepository.CountByOrganizationIdAsync(request.OrganizationId),
-                BacklogTasksCount = await _taskRepository.CountByOrganizationIdAsync(request.OrganizationId,BoardCardType.Backlog),
-                ToDoTasksCount = await _taskRepository.CountByOrganizationIdAsync(request.OrganizationId,BoardCardType.ToDo),
-                DoingTasksCount = await _taskRepository.CountByOrganizationIdAsync(request.OrganizationId,BoardCardType.Doing),
-                DoneTasksCount = await _taskRepository.CountByOrganizationIdAsync(request.OrganizationId,BoardCardType.Doing),
-            };
+            var report = new OrganizationReportDto();
+
+            report.ProjectsCount = await _projectRepository.CountByOrganizationIdAsync(request.OrganizationId);
+            report.BoardsCount = await _boardRepository.CountByProjectsIdAsync(request.ProjectsId);
+
+            var cardsId = await _cardRepository.GetCardsIdByBoardsIdAsync(request.BoardsId);
+
+            report.BacklogTasksCount = await _taskRepository.CountByCardsIdAsync(cardsId, BoardCardType.Backlog);
+            report.ToDoTasksCount = await _taskRepository.CountByCardsIdAsync(cardsId, BoardCardType.ToDo);
+            report.DoingTasksCount = await _taskRepository.CountByCardsIdAsync(cardsId, BoardCardType.Doing);
+            report.DoneTasksCount = await _taskRepository.CountByCardsIdAsync(cardsId, BoardCardType.Done);
+
+            return report;
         }
 
 
@@ -109,7 +112,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
             {
                 var owner = await _ownerRepository.GetByIdAsync(item.OwnerId);
                 item.OwnerOwnerDisplayName = owner?.DisplayName;
-                item.ProjectsCount =await _projectRepository.CountByOrganizationIdAsync(item.Id);
+                item.ProjectsCount = await _projectRepository.CountByOrganizationIdAsync(item.Id);
             }
 
             return new PaginatedListReturnType<OrganizationOutputDto>

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Application.Core.Queries;
-using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Workspace.Tasks.Queries.Models
 {

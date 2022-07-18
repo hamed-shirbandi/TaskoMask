@@ -89,7 +89,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<long> CountByOrganizationIdAsync(string organizationId)
         {
-            return await _projects.CountDocumentsAsync(b => b.OrganizationId == organizationId);
+            return await _projects.CountDocumentsAsync(b => b.OrganizationId == organizationId && b.IsDeleted == false);
         }
 
 

@@ -44,9 +44,18 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount)
+        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount,BoardCardType? cardType)
         {
-            return await _tasks.AsQueryable().Where(o => o.OrganizationId == organizationId && o.IsDeleted == false).OrderByDescending(o => o.CreationTime.CreateDateTime).Take(takeCount).ToListAsync();
+            var queryable = _tasks.AsQueryable();
+
+            if (cardType.HasValue)
+                queryable = queryable.Where(p => p.CardType == cardType);
+
+            return await queryable.AsQueryable()
+                .Where(o => o.OrganizationId == organizationId && o.IsDeleted == false)
+                .OrderByDescending(o => o.CreationTime.CreateDateTime)
+                .Take(takeCount)
+                .ToListAsync();
         }
 
 

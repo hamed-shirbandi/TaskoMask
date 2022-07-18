@@ -13,6 +13,7 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Workspace.Tasks.Queries.Models;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Workspace.Organizations.Services
 {
@@ -81,7 +82,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
                 return Result.Failure<OrganizationDetailsViewModel>(boardQueryResult.Errors);
 
 
-            var taskQueryResult = await SendQueryAsync(new GetTasksByOrganizationIdQuery(id, takeCount: 20));
+            var taskQueryResult = await SendQueryAsync(new GetTasksByOrganizationIdQuery(organizationId: id, takeCount: 10,cardType:BoardCardType.Doing));
             if (!taskQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(taskQueryResult.Errors);
 

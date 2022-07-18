@@ -78,7 +78,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
         /// </summary>
         public async Task<IEnumerable<TaskBasicInfoDto>> Handle(GetTasksByOrganizationIdQuery request, CancellationToken cancellationToken)
         {
-            var tasks = await _taskRepository.GetListByOrganizationIdAsync(request.OrganizationId, request.TakeCount);
+            var tasks = await _taskRepository.GetListByOrganizationIdAsync(request.OrganizationId, request.TakeCount,request.CardType);
             return _mapper.Map<IEnumerable<TaskBasicInfoDto>>(tasks);
         }
 

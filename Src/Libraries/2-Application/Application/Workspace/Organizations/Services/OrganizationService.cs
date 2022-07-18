@@ -77,8 +77,8 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
             if (!boardsQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(boardsQueryResult.Errors);
 
-
-            var pendingTasksQueryResult = await SendQueryAsync(new GetPendingTasksByOrganizationIdQuery(organizationId: id, takeCount: 10));
+            var boardsId = boardsQueryResult.Value.Select(p => p.Id).ToArray();
+            var pendingTasksQueryResult = await SendQueryAsync(new GetPendingTasksByBoardsIdQuery( boardsId, takeCount: 10));
             if (!pendingTasksQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(pendingTasksQueryResult.Errors);
 

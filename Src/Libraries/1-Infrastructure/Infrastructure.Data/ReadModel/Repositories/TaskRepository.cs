@@ -2,6 +2,7 @@
 using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.Share.Enums;
@@ -44,7 +45,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount,BoardCardType? cardType)
+        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount, BoardCardType? cardType)
         {
             var queryable = _tasks.AsQueryable();
 
@@ -63,14 +64,14 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetPendingTasksByOrganizationIdAsync(string organizationId, int takeCount)
+        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetPendingTasksByBoardsIdAsync(string[] boardsId, int takeCount)
         {
             var queryable = _tasks.AsQueryable();
 
-                queryable = queryable.Where(p => p.CardType == BoardCardType.ToDo || p.CardType == BoardCardType.Doing);
+            queryable = queryable.Where(p => p.CardType == BoardCardType.ToDo || p.CardType == BoardCardType.Doing);
 
             return await queryable
-                .Where(o => o.OrganizationId == organizationId && o.IsDeleted == false)
+                .Where(o => boardsId.Contains(o.BoardId) && o.IsDeleted == false)
                 .OrderByDescending(o => o.CreationTime.CreateDateTime)
                 .Take(takeCount)
                 .ToListAsync();
@@ -132,9 +133,9 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<long> CountByOrganizationIdAsync(string organizationId,BoardCardType cardType)
+        public async Task<long> CountByOrganizationIdAsync(string organizationId, BoardCardType cardType)
         {
-            return await _tasks.CountDocumentsAsync(b => b.OrganizationId == organizationId && b.CardType==cardType);
+            return await _tasks.CountDocumentsAsync(b => b.OrganizationId == organizationId && b.CardType == cardType);
         }
 
 
@@ -147,7 +148,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
             await _tasks.UpdateManyAsync(b => b.CardId == cardId, Builders<Domain.ReadModel.Entities.Task>.Update.Set(p => p.CardType, cardType));
         }
 
-      
+
 
 
         #endregion

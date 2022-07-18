@@ -51,7 +51,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
             if (cardType.HasValue)
                 queryable = queryable.Where(p => p.CardType == cardType);
 
-            return await queryable.AsQueryable()
+            return await queryable
                 .Where(o => o.OrganizationId == organizationId && o.IsDeleted == false)
                 .OrderByDescending(o => o.CreationTime.CreateDateTime)
                 .Take(takeCount)

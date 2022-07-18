@@ -22,11 +22,13 @@ else
 {
     foreach (var item in Model)
     {
-        <div class="col-md-4 col-sm-12 ">
+       <div class="col-md-4 col-sm-6 col-12 p-2">
             <div class="card bg-success text-white">
                 <h5 class="card-header">
-                    @item.Name
-                    <a @onclick="@(()=>ShowUpdateModal(item.Id))" class="text-warning" title="Edit">
+                   <a class="text-white" href="@($"/project/{item.Id}")">
+                        @item.Name
+                   </a>
+                    <a @onclick="@(()=>ShowUpdateModal(item.Id))" class="text-warning float-right" title="Edit">
                         <i class="bi bi-pencil"></i>
                     </a>
                 </h5>

@@ -4,20 +4,19 @@
 @if (!Model.Any())
 {
     <div class="alert alert-warning">
-        <b>There isn't any task yet!</b>
+        <b>There isn't any doing task!</b>
         <hr>
-        <small>Make sure you have a board then go to the boards tab, open it and create your tasks</small>
+        <small>If you add a task to Doing cards you can see its shortcut here</small>
     </div>
 }
 else
 {
     foreach (var item in Model)
     {
-        <div class="col-md-6 col-sm-6">
+    <div class="col-md-6 col-sm-12 col-12 p-2">
             <NavLink href="@($"/board/{item.BoardId}/task/{item.Id}")">
                 <div class="card bg-warning text-dark">
-                    <div class="card-body p-3">
-                        <i class="bi bi-list-task"></i>
+                    <div class="card-body p-3 mh overflow-hidden">
                         @item.Title
                     </div>
                 </div>

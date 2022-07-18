@@ -121,6 +121,16 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task BulkUpdateCardTypeByCardIdAsync(string cardId, BoardCardType cardType)
+        {
+            await _tasks.UpdateManyAsync(b => b.CardId == cardId, Builders<Domain.ReadModel.Entities.Task>.Update.Set(p => p.CardType, cardType));
+        }
+
+
+
         #endregion
 
         #region Private Methods

@@ -2,6 +2,7 @@
 using System.Threading;
 using TaskoMask.Domain.ReadModel.Data;
 using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Tasks;
 
 namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
@@ -14,7 +15,8 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
         INotificationHandler<TaskUpdatedEvent>,
         INotificationHandler<TaskDeletedEvent>,
         INotificationHandler<TaskMovedToAnotherCardEvent>,
-        INotificationHandler<TaskRecycledEvent>
+        INotificationHandler<TaskRecycledEvent>,
+        INotificationHandler<CardUpdatedEvent>
     {
         #region Fields
 
@@ -115,6 +117,25 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
             task.SetAsRecycled();
             await _taskRepository.UpdateAsync(task);
         }
+
+
+
+
+
+        /// <summary>
+        /// update cardType for all tasks in a card when the cardType for that card is changed
+        /// </summary>
+        public async System.Threading.Tasks.Task Handle(CardUpdatedEvent updatedCard, CancellationToken cancellationToken)
+        {
+            var card = await _cardRepository.GetByIdAsync(updatedCard.Id);
+
+            if (card.Type!=updatedCard.Type)
+            {
+                await _taskRepository.BulkUpdateCardTypeByCardIdAsync(card.Id, updatedCard.Type);
+            }
+
+        }
+
 
         #endregion
 

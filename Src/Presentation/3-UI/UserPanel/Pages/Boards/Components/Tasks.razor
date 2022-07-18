@@ -3,13 +3,6 @@
 
 <ul class="list-group list-group-flush">
 
-    <li class="list-group-item list-group-item-warning">
-        <b>
-            <i class="bi bi-list-task"></i>
-            <a @onclick="@(()=>ShowCreateModal())" class="text-info">Add new Task</a>
-        </b>
-    </li>
-
     @if (Model.Any())
     {
         foreach (var item in Model)
@@ -17,9 +10,7 @@
             <li class="list-group-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
                 <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
                     <div>
-                        <i class="bi bi-list-task"></i>
                         @item.Title
-
                     </div>
                 </a>
             </li>
@@ -36,16 +27,6 @@
     [Parameter]
     public string CardId { get; set; }
 
-
-    /// <summary>
-    ///
-    /// </summary>
-    private void ShowCreateModal()
-    {
-        var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Tasks.Components.Upsert.CardId), CardId);
-        ModalService.Show<Pages.Tasks.Components.Upsert>("Create Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
-    }
 
 
 

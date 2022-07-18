@@ -30,6 +30,10 @@ else
                     <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="text-warning" title="Edit">
                         <i class="bi bi-pencil"></i>
                     </a>
+
+                    <a @onclick="@(()=>ShowCreateTaskModal(item.Card.Id))" class="float-right small text-primary" title="add task">
+                        <i class="bi bi-plus-circle"></i> add a task
+                    </a>
                 </h5>
                 <div class="card-body" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
                     <Tasks Model=item.Tasks CardId=@item.Card.Id></Tasks>
@@ -86,6 +90,17 @@ else
         ModalService.Show<Pages.Cards.Components.Upsert>("Update Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 
+
+
+        /// <summary>
+    ///
+    /// </summary>
+    private void ShowCreateTaskModal(string cardId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Tasks.Components.Upsert.CardId), cardId);
+        ModalService.Show<Pages.Tasks.Components.Upsert>("Create Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
 
 
 }

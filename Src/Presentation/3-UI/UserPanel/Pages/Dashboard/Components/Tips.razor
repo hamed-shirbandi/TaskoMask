@@ -1,0 +1,54 @@
+﻿
+@if (!Model.Projects.Any())
+{
+    <div class="alert alert-warning">
+        There is'nt any project yet. 
+        <a  @onclick="@(()=>ShowCreateProjectModal())" class="btn btn-success text-white" >add a project</a>
+    </div>
+}
+else if (!Model.Boards.Any())
+{
+    <div class="alert alert-warning">
+        There is'nt any board yet. 
+        <a  @onclick="@(()=>ShowCreateBoardModal())" class="btn btn-success text-white">add a board</a>
+    </div>
+}
+else if (!Model.PendingTasks.Any())
+{
+    var board = Model.Boards.First();
+
+    <div class="alert alert-warning">
+        Want to add a task to @board.Name board?
+        <a href="@($"/board/{board.Id}")" class="btn btn-success text-white320000" >add new task</a>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public OrganizationDetailsViewModel Model { get; set; }
+
+
+    
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowCreateProjectModal( )
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Projects.Components.CreateProject.OrganizationId), Model.Organization.Id);
+        ModalService.Show<Pages.Projects.Components.CreateProject>("Create project", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+
+
+        /// <summary>
+    ///
+    /// </summary>
+    private void ShowCreateBoardModal()
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Boards.Components.CreateBoard.OrganizationId), Model.Organization.Id);
+        ModalService.Show<Pages.Boards.Components.CreateBoard>("Create board", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+
+
+}

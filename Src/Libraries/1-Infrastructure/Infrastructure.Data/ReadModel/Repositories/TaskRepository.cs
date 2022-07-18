@@ -63,6 +63,24 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
+        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetPendingTasksByOrganizationIdAsync(string organizationId, int takeCount)
+        {
+            var queryable = _tasks.AsQueryable();
+
+                queryable = queryable.Where(p => p.CardType == BoardCardType.ToDo || p.CardType == BoardCardType.Doing);
+
+            return await queryable
+                .Where(o => o.OrganizationId == organizationId && o.IsDeleted == false)
+                .OrderByDescending(o => o.CreationTime.CreateDateTime)
+                .Take(takeCount)
+                .ToListAsync();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public IEnumerable<Domain.ReadModel.Entities.Task> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
         {
             var queryable = _tasks.AsQueryable();
@@ -129,6 +147,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
             await _tasks.UpdateManyAsync(b => b.CardId == cardId, Builders<Domain.ReadModel.Entities.Task>.Update.Set(p => p.CardType, cardType));
         }
 
+      
 
 
         #endregion

@@ -18,7 +18,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
     public class TaskQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,
         IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>,
-        IRequestHandler<GetTasksByOrganizationIdQuery, IEnumerable<TaskBasicInfoDto>>,
+        IRequestHandler<GetPendingTasksByOrganizationIdQuery, IEnumerable<TaskBasicInfoDto>>,
         IRequestHandler<SearchTasksQuery, PaginatedListReturnType<TaskOutputDto>>,
         IRequestHandler<GetTasksCountQuery, long>
 
@@ -76,9 +76,9 @@ namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<TaskBasicInfoDto>> Handle(GetTasksByOrganizationIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TaskBasicInfoDto>> Handle(GetPendingTasksByOrganizationIdQuery request, CancellationToken cancellationToken)
         {
-            var tasks = await _taskRepository.GetListByOrganizationIdAsync(request.OrganizationId, request.TakeCount,request.CardType);
+            var tasks = await _taskRepository.GetPendingTasksByOrganizationIdAsync(request.OrganizationId, request.TakeCount);
             return _mapper.Map<IEnumerable<TaskBasicInfoDto>>(tasks);
         }
 

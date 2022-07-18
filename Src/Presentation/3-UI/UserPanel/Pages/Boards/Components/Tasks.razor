@@ -1,22 +1,20 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
 @inject TaskoMask.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
 
-<ul class="list-group list-group-flush">
 
     @if (Model.Any())
     {
         foreach (var item in Model)
         {
-            <li class="list-group-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
+            <div class="rounded border shadow-sm p-3 mb-2 bg-light" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
                 <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
                     <div>
                         @item.Title
                     </div>
                 </a>
-            </li>
+            </div>
         }
     }
-</ul>
 
 
 @code {

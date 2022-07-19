@@ -11,7 +11,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Organization organization)
         {
-            return organization.Name.Value.ToLower() != organization.Description.Value.ToLower();
+            return organization.Name.Value.ToLower() != organization.Description.Value?.ToLower();
         }
     }
 }

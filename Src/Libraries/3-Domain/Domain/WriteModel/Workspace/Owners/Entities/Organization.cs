@@ -172,9 +172,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             if (Name == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
 
-            if (Description == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
-
             if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
 

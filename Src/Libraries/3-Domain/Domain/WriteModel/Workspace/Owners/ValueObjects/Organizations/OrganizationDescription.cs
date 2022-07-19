@@ -47,13 +47,10 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Organization
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(OrganizationDescription)));
-          
-            if (Value.Length < DomainConstValues.Organization_Description_Min_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(OrganizationName), DomainConstValues.Organization_Description_Min_Length, DomainConstValues.Organization_Description_Max_Length));
+                return;
 
             if (Value.Length > DomainConstValues.Organization_Description_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(OrganizationName), DomainConstValues.Organization_Description_Min_Length, DomainConstValues.Organization_Description_Max_Length));
+                throw new DomainException(string.Format(DomainMessages.Max_Length_Error, nameof(OrganizationName), DomainConstValues.Organization_Description_Max_Length));
 
         }
 

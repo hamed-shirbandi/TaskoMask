@@ -68,7 +68,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
             //generate jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
 
-            return Result.Success(value: new UserJwtTokenDto { JwtToken=token});
+            return Result.Success(value: new UserJwtTokenDto { JwtToken = token });
         }
 
 
@@ -90,6 +90,10 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
             var ownerQueryResult = await _ownerService.GetByIdAsync(createCommandResult.Value.EntityId);
             if (!ownerQueryResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(ownerQueryResult.Errors, ownerQueryResult.Message);
+
+            //create default workspace for owner
+            await _ownerService.CreateDefaultWorkspaceAsync(ownerQueryResult.Value.Id);
+
 
             //map to jwt claims model
             var user = _mapper.Map<AuthenticatedUser>(ownerQueryResult.Value);

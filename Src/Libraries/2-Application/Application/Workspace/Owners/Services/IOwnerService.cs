@@ -15,5 +15,6 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         Task<Result<PaginatedListReturnType<OwnerOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<OwnerDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<long>> CountAsync();
+        Task CreateDefaultWorkspaceAsync(string ownerId);
     }
 }

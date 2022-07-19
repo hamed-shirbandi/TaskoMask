@@ -11,6 +11,15 @@ using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Authorization.Users.Services;
+using TaskoMask.Application.Workspace.Organizations.Services;
+using TaskoMask.Application.Workspace.Projects.Services;
+using TaskoMask.Application.Workspace.Boards.Services;
+using TaskoMask.Application.Workspace.Cards.Services;
+using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Application.Share.Dtos.Workspace.Projects;
+using TaskoMask.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Workspace.Owners.Services
 {
@@ -19,15 +28,23 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         #region Fields
 
         private readonly IUserService _userService;
+        private readonly IOrganizationService _organizationService;
+        private readonly IProjectService _projectService;
+        private readonly IBoardService _boardService;
+        private readonly ICardService _cardService;
 
         #endregion
 
         #region Ctors
 
-        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOwnerAggregateRepository ownerRepository , IUserService userService)
+        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOwnerAggregateRepository ownerRepository, IUserService userService, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService)
              : base(inMemoryBus, mapper, notifications)
         {
             _userService = userService;
+            _organizationService = organizationService;
+            _projectService = projectService;
+            _boardService = boardService;
+            _cardService = cardService;
         }
 
 
@@ -66,6 +83,87 @@ namespace TaskoMask.Application.Workspace.Owners.Services
 
             var cmd = new UpdateOwnerCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
             return await SendCommandAsync(cmd);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task CreateDefaultWorkspaceAsync(string ownerId)
+        {
+            #region create default organization
+
+
+            var organizationDto = new OrganizationUpsertDto
+            {
+                OwnerId = ownerId,
+                Name = "Your Workspace",
+            };
+
+            var CreateOrganizationCommandResult = await _organizationService.CreateAsync(organizationDto);
+            if (!CreateOrganizationCommandResult.IsSuccess)
+                return;
+
+            #endregion
+
+            #region create default project
+
+
+            var projectDto = new ProjectCreateDto
+            {
+                OrganizationId = CreateOrganizationCommandResult.Value.EntityId,
+                Name = "Default Project",
+            };
+
+            var CreateProjectCommandResult = await _projectService.CreateAsync(projectDto);
+            if (!CreateProjectCommandResult.IsSuccess)
+                return;
+
+            #endregion
+
+            #region create default board
+
+
+            var boardDto = new BoardCreateDto
+            {
+                ProjectId = CreateProjectCommandResult.Value.EntityId,
+                Name = "Default Board",
+            };
+
+            var CreateBoardCommandResult = await _boardService.CreateAsync(boardDto);
+            if (!CreateBoardCommandResult.IsSuccess)
+                return;
+
+
+            #endregion
+
+            #region create default cards
+
+
+            var cardDto = new CardUpsertDto
+            {
+                BoardId = CreateBoardCommandResult.Value.EntityId,
+            };
+
+
+            cardDto.Name = "To Do Tasks";
+            cardDto.Type = BoardCardType.ToDo;
+            await _cardService.CreateAsync(cardDto);
+
+
+            cardDto.Name = "Doing Tasks";
+            cardDto.Type = BoardCardType.Doing;
+            await _cardService.CreateAsync(cardDto);
+
+
+            cardDto.Name = "Done Tasks";
+            cardDto.Type = BoardCardType.Done;
+            await _cardService.CreateAsync(cardDto);
+
+
+
+            #endregion
         }
 
 
@@ -132,7 +230,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var cmd = new DeleteOwnerCommand(id);
-            var result= await SendCommandAsync(cmd);
+            var result = await SendCommandAsync(cmd);
 
             //delete associated user
             if (result.IsSuccess)

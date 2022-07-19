@@ -170,9 +170,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
         /// </summary>
         private void CheckPolicies(ITaskValidatorService taskValidatorService)
         {
-            if (Description == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
-
+          
             if (CardId == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(CardId)));
 

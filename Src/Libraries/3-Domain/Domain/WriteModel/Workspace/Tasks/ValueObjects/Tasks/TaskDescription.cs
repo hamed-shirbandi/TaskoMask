@@ -47,13 +47,11 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.ValueObjects.Tasks
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(TaskDescription)));
-          
-            if (Value.Length < DomainConstValues.Task_Description_Min_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(TaskDescription), DomainConstValues.Task_Description_Min_Length, DomainConstValues.Task_Description_Max_Length));
+                return;
 
             if (Value.Length > DomainConstValues.Task_Description_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(TaskDescription), DomainConstValues.Task_Description_Min_Length, DomainConstValues.Task_Description_Max_Length));
+                throw new DomainException(string.Format(DomainMessages.Max_Length_Error, nameof(TaskDescription), DomainConstValues.Task_Description_Max_Length));
+
         }
 
 

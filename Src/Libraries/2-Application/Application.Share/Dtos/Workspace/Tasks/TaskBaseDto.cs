@@ -17,8 +17,7 @@ namespace TaskoMask.Application.Share.Dtos.Workspace.Tasks
 
 
         [Display(Name = nameof(ApplicationMetadata.Description), ResourceType = typeof(ApplicationMetadata))]
-        [StringLength(DomainConstValues.Task_Description_Max_Length, MinimumLength = DomainConstValues.Task_Description_Min_Length, ErrorMessageResourceName = nameof(DomainMessages.Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
-        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
+        [MaxLength(DomainConstValues.Task_Description_Max_Length, ErrorMessageResourceName = nameof(DomainMessages.Max_Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
         public string Description { get; set; }
 
 

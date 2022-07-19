@@ -11,7 +11,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Task task)
         {
-            return task.Title.Value.ToLower() != task.Description.Value.ToLower();
+            return task.Title.Value.ToLower() != task.Description.Value?.ToLower();
         }
     }
 }

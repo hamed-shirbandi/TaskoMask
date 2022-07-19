@@ -6,8 +6,13 @@
 
 @if (Model != null)
 {
-    <Breadcrumb Model=@Model.Board></Breadcrumb>
-    <Cards Model=@Model.Cards BoardId=@Model.Board.Id></Cards>
+    <div id="board_page" class="row px-md-2">
+        <div class="col-12 mx-auto">
+            <Breadcrumb Model=@Model.Board></Breadcrumb>
+            <Cards Model=@Model.Cards BoardId=@Model.Board.Id></Cards>
+        </div>
+    </div>
+
 }
 
 @code {

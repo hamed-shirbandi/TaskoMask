@@ -17,10 +17,8 @@
             </a>
         </li>
         <li class="text-nowrap breadcrumb-item active" aria-current="page">
-            <a @onclick="@(()=>ShowCreateBoardModal(Model.Id))" class="text-info">
-                <i class="bi bi-card-list"></i>
-                New Board
-            </a>
+            <i class="bi bi-card-list"></i>
+                boards
         </li>
     </ol>
 </nav>
@@ -31,13 +29,4 @@
     public ProjectOutputDto Model { get; set; }
 
   
-    /// <summary>
-    ///
-    /// </summary>
-    private void ShowCreateBoardModal(string projectId)
-    {
-        var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Boards.Components.CreateBoard.ProjectId), projectId);
-        ModalService.Show<Pages.Boards.Components.CreateBoard>("Create Board", parameters, new ModalOptions { DisableBackgroundCancel = true });
-    }
 }

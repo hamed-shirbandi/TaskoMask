@@ -11,7 +11,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Project project)
         {
-            return project.Name.Value.ToLower() != project.Description.Value.ToLower();
+            return project.Name.Value.ToLower() != project.Description.Value?.ToLower();
         }
     }
 }

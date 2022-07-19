@@ -3,11 +3,11 @@
 
 @foreach (var item in Model)
 {
-    <div class="card-hover rounded border p-3 mb-2 bg-light task-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
-        <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
+    <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
+        <div class="rounded border p-3 mb-2 bg-light task-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
             @item.Title
-        </a>
-    </div>
+        </div>
+    </a>
 }
 
 @code {

@@ -12,12 +12,10 @@ namespace TaskoMask.Application.Share.ViewModels
         {
             Projects = new List<ProjectBasicInfoDto>();
             Boards = new List<BoardBasicInfoDto>();
-            PendingTasks = new List<TaskBasicInfoDto>();
         }
         public OrganizationBasicInfoDto Organization { get; set; }
         public OrganizationReportDto Reports { get; set; }
         public IEnumerable<ProjectBasicInfoDto> Projects { get; set; }
         public IEnumerable<BoardBasicInfoDto> Boards { get; set; }
-        public IEnumerable<TaskBasicInfoDto> PendingTasks { get; set; }
     }
 }

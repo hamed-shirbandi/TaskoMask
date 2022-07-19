@@ -4,35 +4,37 @@
 
 @foreach (var item in Model)
 {
-    <div class="col-12 mx-auto">
-        <h5 id="@item.Organization.Id" data-toggle="tooltip" data-placement="left" title="@item.Organization.Description">
+    <div class="col-12 mx-auto pb-3">
+        <h6 id="@item.Organization.Id" data-toggle="tooltip" data-placement="left" title="@item.Organization.Description">
             <i class="bi bi-building"></i>
             @item.Organization.Name
             <a @onclick="@(()=>ShowUpdsertModal(item.Organization.Id))" class="text-warning" title="Edit">
                 <i class="bi bi-pencil"></i>
             </a>
-        </h5>
+        </h6>
 
         <TabNav Model="@item.Organization" />
 
         <div class="tab-content py-4">
 
-            <div class="tab-pane active" id="tasks-@item.Organization.Id" role="tabpanel">
+            <div class="tab-pane active" id="boards-@item.Organization.Id" role="tabpanel">
                 <div class="row">
                     <Tips Model="@item"></Tips>
-                    <Tasks Model="@item.PendingTasks" />
                 </div>
+
+                @if (item.Projects.Any())
+                {
+                    <div class="row">
+                        <Boards Model="@item.Boards" OrganizationId=@item.Organization.Id />
+                    </div>
+                }
+
+
             </div>
 
             <div class="tab-pane" id="projects-@item.Organization.Id" role="tabpanel">
                 <div class="row">
                     <Projects Model="@item.Projects" OrganizationId=@item.Organization.Id />
-                </div>
-            </div>
-
-            <div class="tab-pane" id="boards-@item.Organization.Id" role="tabpanel">
-                <div class="row">
-                    <Boards Model="@item.Boards" OrganizationId=@item.Organization.Id/>
                 </div>
             </div>
 

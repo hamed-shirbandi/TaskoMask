@@ -35,7 +35,7 @@ else
                         <i class="bi bi-plus-circle"></i> add a task
                     </a>
                 </h5>
-                <div class="card-body" style="background:#ededed" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
+                <div class="card-body bg-light-gray" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
                     <Tasks Model=item.Tasks CardId=@item.Card.Id></Tasks>
                 </div>
             </div>

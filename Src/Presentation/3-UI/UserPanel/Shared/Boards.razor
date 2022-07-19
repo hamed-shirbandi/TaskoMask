@@ -1,48 +1,33 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
 
-@if (!Model.Any())
+@foreach (var item in Model)
 {
-    <div class="alert alert-warning">
-        <b>There isn't any board yet!</b>
-        <hr>
-        <small>
-            You can add new board by using
-            <b>
-                <a @onclick="@(()=>ShowCreateModal())" class="text-info">
-                    <i class="bi bi-clipboard-plus"></i>
-                    New Board
+    <div class="col-md-3 col-sm-6 col-6 p-2">
+        <div class="card bg-primary text-white card-min-width card-hover">
+            <h6 class="card-header">
+                <a class="text-white" href="@($"/board/{item.Id}")">
+                    @item.Name
                 </a>
-            </b>
-            item from the top menue
-            <i class="bi bi bi-plus-circle"></i>
-            . But make sure you have a project
-        </small>
+                <a @onclick="@(()=>ShowUpdateModal(item.Id))" class="text-warning float-right" title="Edit">
+                    <i class="bi bi-pencil"></i>
+                </a>
+            </h6>
+            <a href="@($"/board/{item.Id}")">
+                <div class="card-body text-white">
+                    <small>@item.Description</small>
+                </div>
+            </a>
+        </div>
     </div>
 }
-else
-{
-    foreach (var item in Model)
-    {
-        <div class="col-md-4 col-sm-6 col-12  p-2">
-            <div class="card bg-primary text-white">
-                <h5 class="card-header">
-                    <a class="text-white" href="@($"/board/{item.Id}")">
-                        @item.Name
-                    </a>
-                    <a @onclick="@(()=>ShowUpdateModal(item.Id))" class="text-warning float-right" title="Edit">
-                        <i class="bi bi-pencil"></i>
-                    </a>
-                </h5>
-                <a href="@($"/board/{item.Id}")">
-                    <div class="card-body text-white">
-                        <small>@item.Description</small>
-                    </div>
-                </a>
-            </div>
-        </div>
-    }
 
-}
+<div class="col-md-3 col-sm-6 col-6 p-2">
+    <a @onclick="@(()=>ShowCreateModal())" class="text-center">
+        <div class="card text-center text-muted justify-content-center card-min-width bg-light-gray card-hover">
+            <i class="bi bi-plus">add new board</i>
+        </div>
+    </a>
+</div>
 
 
 

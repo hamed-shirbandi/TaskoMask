@@ -1,21 +1,14 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
 @inject TaskoMask.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
 
-
-    @if (Model.Any())
-    {
-        foreach (var item in Model)
-        {
-            <div class="rounded border shadow-sm p-3 mb-2 bg-light" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
-                <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
-                    <div>
-                        @item.Title
-                    </div>
-                </a>
-            </div>
-        }
-    }
-
+@foreach (var item in Model)
+{
+    <div class="card-hover rounded border p-3 mb-2 bg-light task-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
+        <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
+            @item.Title
+        </a>
+    </div>
+}
 
 @code {
 
@@ -35,7 +28,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.Details.TaskId), taskId);
-        ModalService.Show<Pages.Tasks.Components.Details>("Task Details", parameters, new ModalOptions { DisableBackgroundCancel = true, ContentScrollable=true ,Class="blazored-modal w-75 h-75"});
+        ModalService.Show<Pages.Tasks.Components.Details>("Task Details", parameters, new ModalOptions { DisableBackgroundCancel = true, ContentScrollable = true, Class = "blazored-modal w-75 h-75" });
     }
 
 

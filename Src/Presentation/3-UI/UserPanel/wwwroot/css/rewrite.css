@@ -1,8 +1,29 @@
-﻿.blazored-toast-container{
-    z-index:200 !important;
+﻿.blazored-toast-container {
+    z-index: 200 !important;
 }
 
 
-#footer p{
+#footer p {
     font-size: .75rem;
+}
+
+.card-min-width {
+    height: 9rem !important;
+}
+
+.bg-light-gray {
+    background-color: #ededed !important;
+}
+
+.task-item {
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    cursor: pointer;
+}
+
+.task-item:hover {
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.card-hover:hover {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }

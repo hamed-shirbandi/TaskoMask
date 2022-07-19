@@ -223,9 +223,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
         /// </summary>
         private void CheckPolicies(IBoardValidatorService boardValidatorService)
         {
-            if (Description == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Description)));
-
+           
             if (Name == null)
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
            

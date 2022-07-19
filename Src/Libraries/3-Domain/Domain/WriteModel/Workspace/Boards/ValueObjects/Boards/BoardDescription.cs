@@ -47,13 +47,11 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Boards
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(BoardDescription)));
-          
-            if (Value.Length < DomainConstValues.Board_Description_Min_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(BoardDescription), DomainConstValues.Board_Description_Min_Length, DomainConstValues.Board_Description_Max_Length));
+                return;
 
+           
             if (Value.Length > DomainConstValues.Board_Description_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(BoardDescription), DomainConstValues.Board_Description_Min_Length, DomainConstValues.Board_Description_Max_Length));
+                throw new DomainException(string.Format(DomainMessages.Max_Length_Error, nameof(BoardDescription), DomainConstValues.Board_Description_Max_Length));
 
         }
 

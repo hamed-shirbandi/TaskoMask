@@ -147,6 +147,9 @@
   <data name="Max_Card_Count_Limitiation" xml:space="preserve">
     <value>A board cannot have more than {0} cards</value>
   </data>
+  <data name="Max_Length_Error" xml:space="preserve">
+    <value>The {0} length can not be more than {1} characters</value>
+  </data>
   <data name="Max_Member_Count_Limitiation" xml:space="preserve">
     <value>A board cannot have more than {0} members</value>
   </data>

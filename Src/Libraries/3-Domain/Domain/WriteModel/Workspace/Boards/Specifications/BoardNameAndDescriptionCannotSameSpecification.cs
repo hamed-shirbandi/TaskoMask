@@ -11,7 +11,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Board board)
         {
-            return board.Name.Value.ToLower() != board.Description.Value.ToLower();
+            return board.Name.Value.ToLower() != board.Description.Value?.ToLower();
         }
     }
 }

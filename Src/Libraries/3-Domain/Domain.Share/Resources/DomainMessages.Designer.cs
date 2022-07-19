@@ -151,6 +151,15 @@ namespace TaskoMask.Domain.Share.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} length can not be more than {1} characters.
+        /// </summary>
+        public static string Max_Length_Error {
+            get {
+                return ResourceManager.GetString("Max_Length_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A board cannot have more than {0} members.
         /// </summary>
         public static string Max_Member_Count_Limitiation {

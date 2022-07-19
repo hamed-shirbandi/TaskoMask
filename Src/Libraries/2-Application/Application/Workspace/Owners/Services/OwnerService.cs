@@ -20,6 +20,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Domain.Share.Enums;
+using Microsoft.Extensions.Configuration;
 
 namespace TaskoMask.Application.Workspace.Owners.Services
 {
@@ -32,12 +33,13 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         private readonly IProjectService _projectService;
         private readonly IBoardService _boardService;
         private readonly ICardService _cardService;
+        private readonly IConfiguration _configuration;
 
         #endregion
 
         #region Ctors
 
-        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOwnerAggregateRepository ownerRepository, IUserService userService, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService)
+        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOwnerAggregateRepository ownerRepository, IUserService userService, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService, IConfiguration configuration)
              : base(inMemoryBus, mapper, notifications)
         {
             _userService = userService;
@@ -45,6 +47,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             _projectService = projectService;
             _boardService = boardService;
             _cardService = cardService;
+            _configuration = configuration;
         }
 
 
@@ -98,7 +101,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             var organizationDto = new OrganizationUpsertDto
             {
                 OwnerId = ownerId,
-                Name = "Your Workspace",
+                Name = _configuration["Default:Workspace:OrganizationName"],
             };
 
             var CreateOrganizationCommandResult = await _organizationService.CreateAsync(organizationDto);
@@ -113,7 +116,8 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             var projectDto = new ProjectCreateDto
             {
                 OrganizationId = CreateOrganizationCommandResult.Value.EntityId,
-                Name = "Default Project",
+                Name = _configuration["Default:Workspace:ProjectName"],
+                Description= _configuration["Default:Workspace:ProjectDescription"],
             };
 
             var CreateProjectCommandResult = await _projectService.CreateAsync(projectDto);
@@ -128,7 +132,8 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             var boardDto = new BoardCreateDto
             {
                 ProjectId = CreateProjectCommandResult.Value.EntityId,
-                Name = "Default Board",
+                Name = _configuration["Default:Workspace:BoardName"],
+                Description = _configuration["Default:Workspace:BoardDescription"],
             };
 
             var CreateBoardCommandResult = await _boardService.CreateAsync(boardDto);
@@ -147,17 +152,17 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             };
 
 
-            cardDto.Name = "To Do Tasks";
+            cardDto.Name = _configuration["Default:Workspace:ToDoCardName"];
             cardDto.Type = BoardCardType.ToDo;
             await _cardService.CreateAsync(cardDto);
 
 
-            cardDto.Name = "Doing Tasks";
+            cardDto.Name = _configuration["Default:Workspace:DoingCardName"];
             cardDto.Type = BoardCardType.Doing;
             await _cardService.CreateAsync(cardDto);
 
 
-            cardDto.Name = "Done Tasks";
+            cardDto.Name = _configuration["Default:Workspace:DoneCardName"];
             cardDto.Type = BoardCardType.Done;
             await _cardService.CreateAsync(cardDto);
 

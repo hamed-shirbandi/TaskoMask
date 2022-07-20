@@ -42,7 +42,7 @@
             <div class="float-right">
                 <a class="m-md-1 m-lg-1 btn btn-sm btn-warning" id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))">
                     <i class="bi bi-person-circle"></i>
-                    @(userDisplayName.Substring(0, 5) + "...")
+                    @(userDisplayName.Length<6?userDisplayName: userDisplayName.Substring(0, 5) + "...")
                 </a>
                 <a class="m-md-1 m-lg-1 btn btn-sm btn-danger" href="/logout">
                     <i class="bi bi-power"></i>

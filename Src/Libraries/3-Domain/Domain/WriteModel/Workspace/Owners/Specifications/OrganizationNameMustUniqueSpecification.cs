@@ -14,7 +14,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
         {
             var organizations = owner.Organizations.Where(p => p.IsDeleted == false).ToList();
 
-            var organizationsCount = owner.Organizations.Count;
+            var organizationsCount = organizations.Count;
             if (organizationsCount < 2)
                 return true;
 

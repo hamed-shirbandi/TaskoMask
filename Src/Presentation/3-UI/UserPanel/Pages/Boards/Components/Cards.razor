@@ -35,7 +35,7 @@ else
                         <i class="bi bi-plus-circle"></i> add a task
                     </a>
                 </h6>
-                <div class="card-body bg-light-gray" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
+                <div class="card-body bg-light" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
                     <Tasks Model=item.Tasks CardId=@item.Card.Id></Tasks>
                 </div>
             </div>
@@ -75,8 +75,8 @@ else
     {
 
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Cards.Components.Upsert.BoardId), BoardId);
-        ModalService.Show<Pages.Cards.Components.Upsert>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.BoardId), BoardId);
+        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 
 
@@ -86,8 +86,8 @@ else
     private void ShowUpdateCardModal(string cardId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Cards.Components.Upsert.CardId), cardId);
-        ModalService.Show<Pages.Cards.Components.Upsert>("Update Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.CardId), cardId);
+        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Update Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 
 
@@ -98,8 +98,8 @@ else
     private void ShowCreateTaskModal(string cardId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Tasks.Components.Upsert.CardId), cardId);
-        ModalService.Show<Pages.Tasks.Components.Upsert>("Create Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        parameters.Add(nameof(Pages.Tasks.Components.CreateOrUpdateTask.CardId), cardId);
+        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Create Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
     }
 
 

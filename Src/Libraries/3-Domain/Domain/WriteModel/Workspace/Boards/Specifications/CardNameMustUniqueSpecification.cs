@@ -13,12 +13,15 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Board board)
         {
-            var cardsCount = board.Cards.Count;
+
+            var cards = board.Cards.Where(p => p.IsDeleted == false).ToList();
+
+            var cardsCount = cards.Count;
             if (cardsCount < 2)
                 return true;
 
-            var distincCardsCount = board.Cards.Select(p => p.Name).Distinct().Count();
-            return distincCardsCount == cardsCount;
+            var distincCardsCount = cards.Select(p => p.Name).Distinct().Count();
+            return cardsCount == distincCardsCount;
         }
     }
 }

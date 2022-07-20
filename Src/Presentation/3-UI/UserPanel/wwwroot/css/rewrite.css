@@ -2,6 +2,10 @@
     z-index: 200 !important;
 }
 
+.blazored-modal-container {
+    z-index: 100 !important;
+}
+
 
 #footer p {
     font-size: .75rem;

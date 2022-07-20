@@ -24,7 +24,7 @@ else
     <div class="card-deck bg-light">
         @foreach (var item in Model)
         {
-            <div class="card task-card">
+            <div class="card task-card mb-2">
                 <h6 class="card-header">
                     @item.Card.Name
                     <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="text-warning" title="Edit">
@@ -35,7 +35,7 @@ else
                         <i class="bi bi-plus-circle"></i> add a task
                     </a>
                 </h6>
-                <div class="card-body bg-light" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
+                <div class="card-body bg-light-gray px-0" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
                     <Tasks Model=item.Tasks CardId=@item.Card.Id></Tasks>
                 </div>
             </div>

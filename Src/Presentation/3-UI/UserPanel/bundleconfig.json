@@ -5,7 +5,6 @@
     "outputFileName": "wwwroot/bundled/panel.min.css",
     "inputFiles": [
       "wwwroot/css/bootstrap.min.css",
-      "wwwroot/css/panel.css",
       "wwwroot/css/loading.css",
       "wwwroot/css/blazored-toast.min.css",
       "wwwroot/css/blazored-modal.css",

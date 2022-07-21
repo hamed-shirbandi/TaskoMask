@@ -181,7 +181,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
 
             if (!new TaskTitleMustUniqueSpecification(taskValidatorService).IsSatisfiedBy(this))
-                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
+                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Task));
            
             if (!new MaxTasksSpecification(taskValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Max_Task_Count_Limitiation, DomainConstValues.Board_Max_Task_Count));

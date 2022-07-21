@@ -130,8 +130,12 @@ body {
     font-size: .75rem;
 }
 
-.card-min-width {
+.min-height-9rem {
     height: 9rem !important;
+}
+
+.min-height-22rem {
+    height: 22rem !important;
 }
 
 .bg-light-gray {
@@ -148,7 +152,7 @@ body {
     }
 
     .task-card > .card-body {
-        min-height: 9rem !important;
+        min-height: 22rem !important;
         max-height: 22rem !important;
         overflow: auto;
     }

@@ -4,7 +4,7 @@
 @foreach (var item in Model)
 {
     <div class="col-md-3 col-sm-6 col-6 p-2">
-        <div class="card bg-success text-white card-min-width card-hover">
+        <div class="card bg-success text-white min-height-9rem overflow-hidden card-hover">
             <h6 class="card-header">
                 <a class="text-white" href="@($"/project/{item.Id}")">
                     @item.Name
@@ -24,7 +24,7 @@
 
 <div class="col-md-3 col-sm-6 col-6 p-2">
     <a @onclick="@(()=>ShowCreateModal())" class="text-center">
-        <div class="card text-center text-muted justify-content-center card-min-width bg-light-gray card-hover">
+        <div class="card text-center text-muted justify-content-center min-height-9rem bg-light-gray card-hover">
             <i class="bi bi-plus">add new project</i>
         </div>
     </a>

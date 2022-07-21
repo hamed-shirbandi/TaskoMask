@@ -2,47 +2,29 @@
 @using TaskoMask.Application.Share.ViewModels
 @inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
 @inject TaskoMask.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
-@if (!Model.Any())
-{
-    <div class="alert alert-warning">
-        <b>There isn't any card yet!</b>
-        <hr>
-        <small>
-            You can add new card by using
-            <b>
-                <a @onclick="@(()=>ShowCreateCardModal())" class="text-info">
-                   <i class="bi bi-plus-circle"></i>
-                    add a card
+
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+        <div class="card task-card mb-2">
+            <h6 class="card-header">
+                @item.Card.Name
+                <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="text-warning" title="Edit">
+                    <i class="bi bi-pencil"></i>
                 </a>
-            </b>
-            item from the top bar.
-        </small>
-    </div>
-}
-else
-{
-    <div class="card-deck">
-        @foreach (var item in Model)
-        {
-            <div class="card task-card mb-2">
-                <h6 class="card-header">
-                    @item.Card.Name
-                    <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="text-warning" title="Edit">
-                        <i class="bi bi-pencil"></i>
-                    </a>
 
-                    <a @onclick="@(()=>ShowCreateTaskModal(item.Card.Id))" class="float-right small text-info" title="add task">
-                        <i class="bi bi-plus-circle"></i> add a task
-                    </a>
-                </h6>
-                <div class="card-body px-1" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
-                    <Tasks Model=item.Tasks CardId=@item.Card.Id></Tasks>
-                </div>
+                <a @onclick="@(()=>ShowCreateTaskModal(item.Card.Id))" class="float-right small text-info" title="add task">
+                    <i class="bi bi-plus-circle"></i> add a task
+                </a>
+            </h6>
+            <div class="card-body px-1" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
+                <Tasks Model=@item.Tasks CardId=@item.Card.Id></Tasks>
             </div>
-        }
-    </div>
+        </div>
+    }
 
-}
+   <TempCards CardsCount=@Model.Count() BoardId=@BoardId></TempCards>
+</div>
 
 
 
@@ -92,7 +74,7 @@ else
 
 
 
-        /// <summary>
+    /// <summary>
     ///
     /// </summary>
     private void ShowCreateTaskModal(string cardId)

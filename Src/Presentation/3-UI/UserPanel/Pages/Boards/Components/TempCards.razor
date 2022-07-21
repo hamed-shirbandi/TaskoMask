@@ -1,0 +1,39 @@
+﻿
+@if (CardsCount < 3)
+{
+    @for (var i = CardsCount; i < 3; i++)
+    {
+    <div class="card task-card mb-2">
+        <a @onclick="@(()=>ShowCreateCardModal())" class="">
+            <div class="card-body px-1 min-height-22rem text-center text-muted justify-content-center">
+                <i class="bi bi-plus ">add new card</i>
+            </div>
+        </a>
+    </div>
+    }
+}
+
+@code {
+
+    [Parameter]
+    public int CardsCount { get; set; }
+
+    [Parameter]
+    public string BoardId { get; set; }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowCreateCardModal()
+    {
+
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.BoardId), BoardId);
+        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
+    }
+
+
+
+
+}

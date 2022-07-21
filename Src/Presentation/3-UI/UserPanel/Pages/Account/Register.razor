@@ -84,7 +84,10 @@
         isProcessing = true;
         var registerResult = await AuthenticationService.Register(RegisterModel);
         if (registerResult.IsSuccess)
+        {
+            MessageService.SendMessage(MessageType.Owner_Registered);
             NavigationManager.NavigateTo("/");
+         }
         else
             ToastService.ShowError(registerResult.Errors.ParseToFragment(), registerResult.Message);
         isProcessing = false;

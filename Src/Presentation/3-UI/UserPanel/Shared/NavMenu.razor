@@ -87,7 +87,7 @@
     {
         try
         {
-            if ( messageType == MessageType.Owner_Updated)
+            if ( messageType == MessageType.Owner_Updated||messageType == MessageType.Owner_Registered||messageType == MessageType.Owner_Loggedin)
             {
                 var ownerResult = await OwnerClientService.Get();
                 if (ownerResult.IsSuccess)

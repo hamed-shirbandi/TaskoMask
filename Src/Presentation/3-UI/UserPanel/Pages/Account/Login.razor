@@ -64,7 +64,10 @@
     {
         var loginResult = await AuthenticationService.Login(LoginModel);
         if (loginResult.IsSuccess)
+        {
+            MessageService.SendMessage(MessageType.Owner_Loggedin);
             NavigationManager.NavigateTo("/" + GetReturnUrl());
+        }
         else
             ToastService.ShowError(loginResult.Errors.ParseToFragment(), loginResult.Message);
     }
@@ -78,7 +81,7 @@
     {
         var absoluteUri = new Uri(NavigationManager.Uri);
         var queryParam = HttpUtility.ParseQueryString(absoluteUri.Query);
-        return queryParam["returnUrl"]??"";
+        return queryParam["returnUrl"] ?? "";
     }
 
 

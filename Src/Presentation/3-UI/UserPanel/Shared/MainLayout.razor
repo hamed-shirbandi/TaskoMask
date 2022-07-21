@@ -2,7 +2,7 @@
 @inherits LayoutComponentBase
 
 <NavMenu />
-<main role="main" class="py-3">
+<main role="main" id="main">
     @Body
 
     <BlazoredToasts Position="ToastPosition.BottomRight"
@@ -13,14 +13,8 @@
                     SuccessIcon=""
                     WarningIcon=""
                     ShowProgressBar="true" />
-
 </main>
-<footer class="footer" id="footer">
-    <div class="container">
-      <p class="text-muted">
-        ©@DateTime.Now.Year  taskomask.ir | Find the source on  <a href="https://github.com/hamed-shirbandi/TaskoMask" target="_blank">GitHub</a>
-      </p>
-    </div>
-</footer>
+
+
 
 

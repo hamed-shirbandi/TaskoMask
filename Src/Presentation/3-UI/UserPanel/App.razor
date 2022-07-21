@@ -1,6 +1,6 @@
 @using TaskoMask.Presentation.UI.UserPanel.Shared
 
-<CascadingBlazoredModal>
+<CascadingBlazoredModal FocusFirstElement="false" ContentScrollable="true" DisableBackgroundCancel = "true">
     <CascadingAuthenticationState>
         <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
             <Found Context="routeData">

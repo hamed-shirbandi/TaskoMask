@@ -20,7 +20,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Projects.Components.CreateProject.OrganizationId), Model.Organization.Id);
-        ModalService.Show<Pages.Projects.Components.CreateProject>("Create project", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Projects.Components.CreateProject>("Create project", parameters, new ModalOptions {});
     }
 
 }

@@ -58,7 +58,7 @@
 
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.BoardId), BoardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Create Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Create Card", parameters, new ModalOptions { });
     }
 
 
@@ -69,7 +69,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.CardId), cardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Update Card", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Update Card", parameters, new ModalOptions { });
     }
 
 
@@ -81,7 +81,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.CreateOrUpdateTask.CardId), cardId);
-        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Create Task", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Create Task", parameters, new ModalOptions {  });
     }
 
 

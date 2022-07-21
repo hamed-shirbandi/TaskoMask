@@ -21,17 +21,17 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.CreateOrUpdateOrganization>("Create new organization",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.CreateOrUpdateOrganization>("Create new organization",new ModalOptions{}))">
                             <i class="bi bi-building"></i>
                             New Workspace
                         </a>
 
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.CreateProject>("Create new project",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.CreateProject>("Create new project",new ModalOptions{}))">
                             <i class="bi bi-kanban"></i>
                             New Project
                         </a>
 
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.CreateBoard>("Create new board",new ModalOptions{DisableBackgroundCancel=true}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.CreateBoard>("Create new board",new ModalOptions{}))">
                             <i class="bi bi-clipboard-plus"></i>
                             New Board
                         </a>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="float-right">
-                <a class="m-md-1 m-lg-1 btn btn-sm btn-warning" id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile",new ModalOptions{DisableBackgroundCancel=true}))">
+                <a class="m-md-1 m-lg-1 btn btn-sm btn-warning" id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile",new ModalOptions{}))">
                     <i class="bi bi-person-circle"></i>
                     @(userDisplayName.Length<6?userDisplayName: userDisplayName.Substring(0, 5) + "...")
                 </a>

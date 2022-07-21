@@ -54,7 +54,7 @@
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Boards.Components.CreateBoard.ProjectId), ProjectId);
         parameters.Add(nameof(Pages.Boards.Components.CreateBoard.OrganizationId), OrganizationId);
-        ModalService.Show<Pages.Boards.Components.CreateBoard>("Create board", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Boards.Components.CreateBoard>("Create board", parameters, new ModalOptions { });
     }
 
 
@@ -65,6 +65,6 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Boards.Components.UpdateBoard.Id), boardId);
-        ModalService.Show<Pages.Boards.Components.UpdateBoard>("Update board", parameters, new ModalOptions { DisableBackgroundCancel = true });
+        ModalService.Show<Pages.Boards.Components.UpdateBoard>("Update board", parameters, new ModalOptions { });
     }
 }

@@ -127,7 +127,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         public void UpdateOrganization(string organizationId, string name, string description, IAuthenticatedUserService authenticatedUserService)
         {
             if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
-                throw new DomainException(DomainMessages.Access_Denied_By_Current_User);
+                throw new DomainException(DomainMessages.Access_Denied);
 
             var organization = GetOrganizationById(organizationId);
             organization.UpdateOrganization(name, description);
@@ -142,7 +142,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
         public void DeleteOrganization(string organizationId, IAuthenticatedUserService authenticatedUserService)
         {
             if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
-                throw new DomainException(DomainMessages.Access_Denied_By_Current_User);
+                throw new DomainException(DomainMessages.Access_Denied);
 
             var organization = GetOrganizationById(organizationId);
             organization.DeleteOrganization();

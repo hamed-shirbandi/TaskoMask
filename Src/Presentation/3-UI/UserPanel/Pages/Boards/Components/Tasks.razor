@@ -4,7 +4,7 @@
 @foreach (var item in Model)
 {
     <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
-        <div class="rounded border p-3 mb-2 mx-1 bg-light task-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
+        <div class="rounded p-3 mb-2 mx-1 task-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
             @item.Title
         </div>
     </a>

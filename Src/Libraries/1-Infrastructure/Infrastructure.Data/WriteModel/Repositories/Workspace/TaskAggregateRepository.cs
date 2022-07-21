@@ -36,7 +36,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         /// </summary>
         public bool ExistTask(string taskId, string boardId, string taskTitle)
         {
-            var task = _tasks.Find(e => e.BoardId.Value == boardId && e.Title.Value == taskTitle).FirstOrDefault();
+            var task = _tasks.Find(e => e.BoardId.Value == boardId && e.Title.Value == taskTitle && e.IsDeleted==false).FirstOrDefault();
             return task != null && task.Id != taskId;
         }
 
@@ -47,7 +47,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         /// </summary>
         public long CountByBoardId(string boardId)
         {
-            return _tasks.CountDocuments(t=>t.BoardId.Value==boardId);
+            return _tasks.CountDocuments(t=>t.BoardId.Value==boardId &&t.IsDeleted==false);
         }
 
 

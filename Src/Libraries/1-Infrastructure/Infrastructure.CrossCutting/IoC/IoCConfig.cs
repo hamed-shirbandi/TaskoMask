@@ -65,8 +65,8 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IActivityService, ActivityService>();
 
             services.AddScoped<IDomainNotificationHandler, DomainNotificationHandler>();
-
             
+
 
             #endregion
 
@@ -78,6 +78,8 @@ namespace Infrastructure.CrossCutting.IoC
             services.AddScoped<IInMemoryBus, InMemoryBus>();
 
             services.AddScoped<IEncryptionService, EncryptionService>();
+            services.AddScoped<IUserAccessManagementService, UserAccessManagementService>();
+
             services.AddScoped<ITaskValidatorService, TaskValidatorService>();
             services.AddScoped<IBoardValidatorService, BoardValidatorService>();
 

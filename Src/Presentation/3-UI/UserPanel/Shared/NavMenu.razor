@@ -86,13 +86,16 @@
     {
         try
         {
-            var ownerResult = await OwnerClientService.Get();
-            if (ownerResult.IsSuccess)
+            if ( messageType == MessageType.Owner_Updated)
             {
-                await UpdateAuthenticatedUserInLocalStorage(ownerResult.Value);
+                var ownerResult = await OwnerClientService.Get();
+                if (ownerResult.IsSuccess)
+                {
+                    await UpdateAuthenticatedUserInLocalStorage(ownerResult.Value);
 
-                userDisplayName = ownerResult.Value.DisplayName;
-                StateHasChanged();
+                    userDisplayName = ownerResult.Value.DisplayName;
+                    StateHasChanged();
+                }
             }
         }
         catch

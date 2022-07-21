@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Share.Services;
+using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Projects;

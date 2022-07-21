@@ -7,7 +7,7 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
-using TaskoMask.Domain.Share.Services;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {

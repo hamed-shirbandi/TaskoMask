@@ -4,7 +4,7 @@ using TaskoMask.Application.Workspace.Organizations.Services;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Domain.Share.Services;
+using TaskoMask.Domain.Core.Services;
 using TaskoMask.Presentation.UI.AdminPanle.Area.Admin.Models;
 using TaskoMask.Application.Workspace.Owners.Services;
 using TaskoMask.Application.Workspace.Projects.Services;

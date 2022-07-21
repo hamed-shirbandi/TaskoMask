@@ -6,7 +6,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications;
 using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Services;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
 {

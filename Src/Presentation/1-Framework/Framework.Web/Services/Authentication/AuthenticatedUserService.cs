@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using TaskoMask.Domain.Share.Models;
-using TaskoMask.Domain.Share.Services;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Presentation.Framework.Web.Services.Authentication
 {

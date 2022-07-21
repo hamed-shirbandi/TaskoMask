@@ -4,7 +4,7 @@ using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Share.Services;
+using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.EventSourcing
 {

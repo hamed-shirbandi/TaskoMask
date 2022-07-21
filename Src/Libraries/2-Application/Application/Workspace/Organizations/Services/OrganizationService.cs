@@ -12,8 +12,7 @@ using System.Linq;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
-using TaskoMask.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Domain.Share.Enums;
+
 
 namespace TaskoMask.Application.Workspace.Organizations.Services
 {

@@ -18,7 +18,7 @@ using TaskoMask.Domain.Core.Events;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
 using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
-using TaskoMask.Domain.Share.Services;
+using TaskoMask.Domain.Core.Services;
 using TaskoMask.Presentation.Framework.Web.Services.Authentication;
 using TaskoMask.Presentation.Framework.Web.Services.Cookie;
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using TaskoMask.Application.Membership.Permissions.Services;
-using TaskoMask.Domain.Share.Services;
+using TaskoMask.Domain.Core.Services;
 using TaskoMask.Presentation.Framework.Web.Extensions;
 using TaskoMask.Presentation.Framework.Web.Helpers;
 

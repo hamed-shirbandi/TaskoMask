@@ -64,7 +64,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         public async Task<Result<CommandResult>> CreateAsync(OwnerRegisterDto input)
         {
             //create authentication user info
-            var CreateUserCommandResult = await _userService.CreateAsync(input.Email, input.Password);
+            var CreateUserCommandResult = await _userService.CreateAsync(input.Email, input.Password,UserType.Owner);
             if (!CreateUserCommandResult.IsSuccess)
                 return CreateUserCommandResult;
 

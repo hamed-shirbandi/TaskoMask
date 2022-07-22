@@ -8,6 +8,7 @@ using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Tests.Unit.TestData;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using Xunit;
@@ -36,7 +37,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
             var expectedUserName = "TestUserName";
 
             //Act
-            var result = await _userService.CreateAsync(expectedUserName, "TestPassword");
+            var result = await _userService.CreateAsync(expectedUserName, "TestPassword",UserType.Owner);
 
             //Asserrt
             result.IsSuccess.Should().Be(true);
@@ -74,7 +75,7 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
             var existUserName = _users.First().UserName;
 
             //Act
-            var result = await _userService.CreateAsync(existUserName, "TestPassword");
+            var result = await _userService.CreateAsync(existUserName, "TestPassword", UserType.Owner);
 
             //Asserrt
             result.IsSuccess.Should().Be(false);

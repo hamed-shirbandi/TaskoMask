@@ -9,6 +9,7 @@ using TaskoMask.Application.Membership.Operators.Services;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Tests.Unit.Membership.TestData;
 using TaskoMask.Application.Tests.Unit.TestData;
+using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.WriteModel.Membership.Data;
 using TaskoMask.Domain.WriteModel.Membership.Entities;
 using Xunit;
@@ -78,7 +79,7 @@ namespace TaskoMask.Application.Tests.Unit.Membership
             _roleRepository = Substitute.For<IRoleRepository>();
 
             _userService = Substitute.For<IUserService>();
-            _userService.CreateAsync(Arg.Any<string>(), Arg.Any<string>()).Returns(Result.Success(new CommandResult(entityId: ObjectId.GenerateNewId().ToString())));
+            _userService.CreateAsync(Arg.Any<string>(), Arg.Any<string>(), UserType.Operator).Returns(Result.Success(new CommandResult(entityId: ObjectId.GenerateNewId().ToString())));
             _userService.UpdateUserNameAsync(Arg.Is<string>(arg => _operators.Select(o => o.Id).Any(id => id == arg)), Arg.Any<string>()).Returns(args => Result.Success(new CommandResult(entityId: (string)args[0])));
 
             _operatorRepository = Substitute.For<IOperatorRepository>();

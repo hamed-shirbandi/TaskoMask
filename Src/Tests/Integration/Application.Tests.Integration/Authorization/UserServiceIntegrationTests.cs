@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using System.Threading.Tasks;
 using TaskoMask.Application.Tests.Integration.Fixtures;
+using TaskoMask.Domain.Share.Enums;
 using Xunit;
 
 
@@ -35,7 +36,7 @@ namespace TaskoMask.Application.Tests.Integration.Authorization
             var password = "TestPass";
 
             //Act
-            var result = await _fixture.UserService.CreateAsync(userName, password);
+            var result = await _fixture.UserService.CreateAsync(userName, password, UserType.Owner);
    
             //Assert
             result.IsSuccess.Should().BeTrue();

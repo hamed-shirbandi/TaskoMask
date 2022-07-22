@@ -13,6 +13,7 @@ using TaskoMask.Domain.Share.Resources;
 using System.Linq;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Membership.Operators.Services
 {
@@ -49,7 +50,7 @@ namespace TaskoMask.Application.Membership.Operators.Services
         public async Task<Result<CommandResult>> CreateAsync(OperatorUpsertDto input)
         {
             //create authentication user info
-            var CreateUserCommandResult = await _userService.CreateAsync(input.UserName, input.Password);
+            var CreateUserCommandResult = await _userService.CreateAsync(input.UserName, input.Password,UserType.Operator);
             if (!CreateUserCommandResult.IsSuccess)
                 return CreateUserCommandResult;
 

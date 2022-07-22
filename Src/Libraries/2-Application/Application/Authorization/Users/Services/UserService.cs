@@ -11,6 +11,7 @@ using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Application.Core.Services;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Authorization.Users.Services
 {
@@ -88,7 +89,7 @@ namespace TaskoMask.Application.Authorization.Users.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(string userName,string password)
+        public async Task<Result<CommandResult>> CreateAsync(string userName,string password,UserType type )
         {
             var existUser = await _userRepository.ExistByUserNameAsync(userName);
             if (existUser)
@@ -103,6 +104,7 @@ namespace TaskoMask.Application.Authorization.Users.Services
             {
                 UserName = userName,
                 IsActive = true,
+                Type= type
             };
 
 

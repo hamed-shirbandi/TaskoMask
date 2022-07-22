@@ -8,6 +8,8 @@ using TaskoMask.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Domain.Core.Services;
+using TaskoMask.Application.Core.Services;
+using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -17,14 +19,16 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         #region Fields
 
         private readonly IOrganizationService _organizationService;
+        private readonly IUserAccessManagementService _userAccessManagementService;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationsController(IOrganizationService organizationService, IAuthenticatedUserService authenticatedUserService):base(authenticatedUserService)
+        public OrganizationsController(IOrganizationService organizationService, IAuthenticatedUserService authenticatedUserService, IUserAccessManagementService userAccessManagementService) : base(authenticatedUserService)
         {
             _organizationService = organizationService;
+            _userAccessManagementService = userAccessManagementService;
         }
 
         #endregion
@@ -41,6 +45,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("organizations/{id}")]
         public async Task<Result<OrganizationBasicInfoDto>> Get(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
+                return Result.Failure<OrganizationBasicInfoDto>(message: DomainMessages.Access_Denied);
+
             return await _organizationService.GetByIdAsync(id);
         }
 
@@ -91,6 +98,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("organizations/{id}")]
         public async Task<Result<CommandResult>> Update(string id,[FromBody] OrganizationUpsertDto input)
         {
+            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             input.Id = id;
             return await _organizationService.UpdateAsync(input);
         }
@@ -104,6 +114,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("organizations/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             return await _organizationService.DeleteAsync(id);
         }
 

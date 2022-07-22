@@ -7,9 +7,8 @@ using TaskoMask.Domain.Share.Models;
 namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
 {
     /// <summary>
-    /// In this service we just focus on owner users (UserPanel users) and check their access permissions
+    /// In this service we just focus on owner users (UserPanel users) and check their access permissions (for example, to prevent an owner to access another owners data)
     /// For operators (AdminPanle users) we check their access permissions in admin panel controllers through HasPermissionFilterAttribute
-    /// 
     /// </summary>
     public class UserAccessManagementService : IUserAccessManagementService
     {
@@ -44,12 +43,13 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
                 return true;
 
             var organization = await _organizationRepository.GetByIdAsync(organizationId);
-           
+
             // handling null reference is not this class's business
             if (organization == null)
                 return true;
 
             return organization.OwnerId == currentUser.Id;
+
         }
 
 

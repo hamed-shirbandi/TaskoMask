@@ -12,8 +12,6 @@ using System.Linq;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Workspace.Organizations.Services
 {
@@ -21,14 +19,12 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
     {
         #region Fields
 
-        private readonly IUserAccessManagementService _userAccessManagementService;
         #endregion
 
         #region Ctors
 
-        public OrganizationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IUserAccessManagementService userAccessManagementService) : base(inMemoryBus, mapper, notifications)
+        public OrganizationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications ) : base(inMemoryBus, mapper, notifications)
         {
-            _userAccessManagementService = userAccessManagementService;
         }
 
         #endregion
@@ -54,9 +50,6 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(OrganizationUpsertDto input)
         {
-            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(input.Id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
-
             var cmd = new UpdateOrganizationCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
         }
@@ -68,10 +61,6 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<OrganizationDetailsViewModel>> GetDetailsAsync(string id)
         {
-            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
-                return Result.Failure<OrganizationDetailsViewModel>(message: DomainMessages.Access_Denied);
-
-
             var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(id));
             if (!organizationQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(organizationQueryResult.Errors);
@@ -137,9 +126,6 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id)
         {
-            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
-                return Result.Failure<OrganizationBasicInfoDto>(message: DomainMessages.Access_Denied);
-
             return await SendQueryAsync(new GetOrganizationByIdQuery(id));
         }
 
@@ -203,9 +189,6 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
-            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
-
             var cmd = new DeleteOrganizationCommand(id);
             return await SendCommandAsync(cmd);
         }

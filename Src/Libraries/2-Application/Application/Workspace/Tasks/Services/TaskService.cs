@@ -7,7 +7,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Workspace.Activities.Services;

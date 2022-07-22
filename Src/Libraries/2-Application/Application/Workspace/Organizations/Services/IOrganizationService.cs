@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 
 namespace TaskoMask.Application.Workspace.Organizations.Services
 {

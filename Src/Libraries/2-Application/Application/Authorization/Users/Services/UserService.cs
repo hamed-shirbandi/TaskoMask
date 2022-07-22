@@ -10,8 +10,9 @@ using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Authorization.Users.Services
 {

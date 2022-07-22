@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using System.Linq;
 
 namespace TaskoMask.Application.Workspace.Projects.Services

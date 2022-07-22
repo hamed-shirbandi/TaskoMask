@@ -7,7 +7,7 @@ using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Bus;
 
-namespace TaskoMask.Application.Core.Services
+namespace TaskoMask.Application.Core.Services.Application
 {
     public abstract class ApplicationService : IApplicationService
     {

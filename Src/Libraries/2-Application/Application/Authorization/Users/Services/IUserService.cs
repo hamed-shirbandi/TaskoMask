@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Authorization.Users.Services

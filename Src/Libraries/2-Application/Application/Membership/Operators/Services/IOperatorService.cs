@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Share.Dtos.Membership.Operators;
 using TaskoMask.Application.Share.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 
 namespace TaskoMask.Application.Membership.Operators.Services
 {

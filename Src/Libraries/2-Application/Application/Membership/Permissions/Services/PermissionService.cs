@@ -13,7 +13,7 @@ using TaskoMask.Domain.WriteModel.Membership.Entities;
 using TaskoMask.Application.Share.Dtos.Membership.Roles;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 
 namespace TaskoMask.Application.Membership.Permissions.Services
 {

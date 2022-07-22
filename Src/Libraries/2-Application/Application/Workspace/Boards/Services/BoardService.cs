@@ -8,7 +8,7 @@ using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Application.Workspace.Cards.Services;
 
 namespace TaskoMask.Application.Workspace.Boards.Services

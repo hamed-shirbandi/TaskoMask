@@ -10,10 +10,10 @@ using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Projects.Queries.Models;
 using System.Linq;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Application.Workspace.Boards.Queries.Models;
-using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Application.Workspace.Organizations.Services
 {

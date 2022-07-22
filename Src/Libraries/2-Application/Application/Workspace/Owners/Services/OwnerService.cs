@@ -9,7 +9,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Application.Workspace.Organizations.Services;
 using TaskoMask.Application.Workspace.Projects.Services;

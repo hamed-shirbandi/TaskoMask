@@ -12,7 +12,7 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Resources;
 using System.Linq;
 using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Application.Membership.Operators.Services

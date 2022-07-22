@@ -12,7 +12,7 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Share.Dtos.Membership.Operators;
 using System.Linq;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 
 namespace TaskoMask.Application.Membership.Roles.Services
 {

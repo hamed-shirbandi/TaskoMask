@@ -3,7 +3,7 @@ using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Application.Share.Dtos.Workspace.Activities;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Activities.Queries.Models;

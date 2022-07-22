@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskoMask.Domain.Core.Services
+namespace TaskoMask.Application.Core.Services
 {
     public interface IUserAccessManagementService
     {

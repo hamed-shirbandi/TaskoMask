@@ -34,6 +34,7 @@ using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
 using TaskoMask.Application.Workspace.Activities.Services;
+using TaskoMask.Application.Core.Services;
 
 namespace Infrastructure.CrossCutting.IoC
 {

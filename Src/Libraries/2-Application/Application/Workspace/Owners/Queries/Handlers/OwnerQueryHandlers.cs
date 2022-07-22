@@ -19,6 +19,7 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 {
     public class OwnerQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOwnerByIdQuery, OwnerBasicInfoDto>,
+        IRequestHandler<GetOwnerByUserNameQuery, OwnerBasicInfoDto>,
         IRequestHandler<SearchOwnersQuery, PaginatedListReturnType<OwnerOutputDto>>,
         IRequestHandler<GetOwnersCountQuery, long>
 
@@ -61,6 +62,33 @@ namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
             if (user == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
 
+            //add authentication info from user ti operator
+            ownerDto.UserInfo = _mapper.Map<UserBasicInfoDto>(user);
+
+            return ownerDto;
+
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<OwnerBasicInfoDto> Handle(GetOwnerByUserNameQuery request, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetByUserNameAsync(request.UserName);
+            if (user == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+
+
+            var owner = await _ownerRepository.GetByIdAsync(user.Id);
+            if (owner == null)
+                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+
+            var ownerDto = _mapper.Map<OwnerBasicInfoDto>(owner);
+
+          
             //add authentication info from user ti operator
             ownerDto.UserInfo = _mapper.Map<UserBasicInfoDto>(user);
 

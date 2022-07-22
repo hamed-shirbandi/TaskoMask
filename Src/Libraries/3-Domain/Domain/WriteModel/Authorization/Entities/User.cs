@@ -1,4 +1,5 @@
 ﻿using TaskoMask.Domain.Core.Models;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Domain.WriteModel.Authorization.Entities
 {
@@ -8,12 +9,12 @@ namespace TaskoMask.Domain.WriteModel.Authorization.Entities
         public string UserName { get; set; }
 
         /// <summary>
-        /// Can login and access to panel
+        /// If user is active then can login and access to panel
         /// </summary>
         public bool IsActive { get; set; }
         public string PasswordHash { get;  set; }
         public string PasswordSalt { get;  set; }
-
+        public UserType Type { get; set; }
 
         #region Update private properties
 

@@ -32,5 +32,15 @@ namespace TaskoMask.Domain.Share.Enums
         [Display(Name = nameof(DomainMetadata.CardType_Backlog), ResourceType = typeof(DomainMetadata))]
         Backlog = 3,
     }
-   
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum UserType
+    {
+        Owner=0,
+        Operator=1
+    }
+
 }

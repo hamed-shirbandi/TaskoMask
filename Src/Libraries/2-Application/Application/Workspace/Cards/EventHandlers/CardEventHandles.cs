@@ -46,7 +46,8 @@ namespace TaskoMask.Application.Workspace.Cards.EventHandlers
                 Name= createdCard.Name,
                 Type= createdCard.Type,
                 BoardId= createdCard.BoardId,
-                OrganizationId= board.OrganizationId
+                OrganizationId= board.OrganizationId,
+                OwnerId= board.OwnerId,
             };
            await _cardRepository.CreateAsync(card);
         }

@@ -6,6 +6,8 @@ using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Application.Core.Services;
+using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -15,14 +17,16 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         #region Fields
 
         private readonly ICardService _cardService;
+        private readonly IUserAccessManagementService _userAccessManagementService;
 
         #endregion
 
         #region Ctors
 
-        public CardsController(ICardService cardService)
+        public CardsController(ICardService cardService, IUserAccessManagementService userAccessManagementService)
         {
             _cardService = cardService;
+            _userAccessManagementService = userAccessManagementService;
         }
 
         #endregion
@@ -39,6 +43,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("cards/{id}")]
         public async Task<Result<CardBasicInfoDto>> Get(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToCardAsync(id))
+                return Result.Failure<CardBasicInfoDto>(message: DomainMessages.Access_Denied);
+
             return await _cardService.GetByIdAsync(id);
         }
 
@@ -75,6 +82,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("cards/{id}")]
         public async Task<Result<CommandResult>> Update(string id,[FromBody] CardUpsertDto input)
         {
+            if (!await _userAccessManagementService.CanAccessToCardAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             input.Id = id;
             return await _cardService.UpdateAsync(input);
         }
@@ -88,6 +98,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("cards/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToCardAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             return await _cardService.DeleteAsync(id);
         }
 

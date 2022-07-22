@@ -7,5 +7,6 @@ namespace TaskoMask.Application.Core.Services
         Task<bool> CanAccessToOrganizationAsync(string organizationId);
         Task<bool> CanAccessToProjectAsync(string projectId);
         Task<bool> CanAccessToBoardAsync(string boardId);
+        Task<bool> CanAccessToCardAsync(string cardId);
     }
 }

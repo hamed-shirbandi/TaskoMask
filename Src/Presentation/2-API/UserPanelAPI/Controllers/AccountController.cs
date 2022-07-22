@@ -10,6 +10,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Presentation.Framework.Share.Helpers;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -112,7 +113,6 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
                 DisplayName= input.DisplayName,
                 Email= input.Email,
                 UserName= input.Email,
-                Type = UserType.Owner,
             };
         }
 

@@ -1,8 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using TaskoMask.Application.Core.Services;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Share.Models;
+using TaskoMask.Domain.WriteModel.Authorization.Data;
 
 namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
 {
@@ -15,6 +18,7 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         #region Fields
 
         private readonly IAuthenticatedUserService _authenticatedUserService;
+        private readonly IUserRepository _userRepository;
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IProjectRepository _projectRepository;
         private readonly IBoardRepository _boardRepository;
@@ -26,7 +30,7 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
 
         #region Ctors
 
-        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, IOrganizationRepository organizationRepository, IProjectRepository projectRepository, ICardRepository cardRepository, ITaskRepository taskRepository)
+        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, IOrganizationRepository organizationRepository, IProjectRepository projectRepository, ICardRepository cardRepository, ITaskRepository taskRepository, IUserRepository userRepository, IBoardRepository boardRepository)
         {
             _authenticatedUserService = authenticatedUserService;
             _organizationRepository = organizationRepository;
@@ -34,6 +38,8 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
             _projectRepository = projectRepository;
             _cardRepository = cardRepository;
             _taskRepository = taskRepository;
+            _userRepository = userRepository;
+            _boardRepository = boardRepository;
         }
 
 
@@ -48,7 +54,7 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         /// </summary>
         public async Task<bool> CanAccessToOrganizationAsync(string organizationId)
         {
-            if (!currentUser.IsOperator())
+            if (await CurrentUserIsNotAnOowner())
                 return true;
 
             var organization = await _organizationRepository.GetByIdAsync(organizationId);
@@ -68,7 +74,7 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         /// </summary>
         public async Task<bool> CanAccessToProjectAsync(string projectId)
         {
-            if (!currentUser.IsOperator())
+            if (await CurrentUserIsNotAnOowner())
                 return true;
 
             var project = await _projectRepository.GetByIdAsync(projectId);
@@ -87,7 +93,7 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         /// </summary>
         public async Task<bool> CanAccessToBoardAsync(string boardId)
         {
-            if (!currentUser.IsOperator())
+            if (await CurrentUserIsNotAnOowner())
                 return true;
 
             var board = await _boardRepository.GetByIdAsync(boardId);
@@ -106,7 +112,7 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         /// </summary>
         public async Task<bool> CanAccessToCardAsync(string cardId)
         {
-            if (!currentUser.IsOperator())
+            if (await CurrentUserIsNotAnOowner())
                 return true;
 
             var card = await _cardRepository.GetByIdAsync(cardId);
@@ -125,7 +131,7 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         /// </summary>
         public async Task<bool> CanAccessToTaskAsync(string taskId)
         {
-            if (!currentUser.IsOperator())
+            if (await CurrentUserIsNotAnOowner())
                 return true;
 
             var task = await _taskRepository.GetByIdAsync(taskId);
@@ -141,6 +147,16 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         #endregion
 
         #region Private Methods
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task<bool> CurrentUserIsNotAnOowner()
+        {
+            var user = await _userRepository.GetByIdAsync(currentUser.Id);
+            return user.Type != UserType.Owner;
+        }
 
 
 

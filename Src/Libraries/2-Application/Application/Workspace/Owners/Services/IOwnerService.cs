@@ -10,8 +10,11 @@ namespace TaskoMask.Application.Workspace.Owners.Services
     public interface IOwnerService : IApplicationService
     {
         Task<Result<CommandResult>> CreateAsync(OwnerRegisterDto input);
+        Task<Result<CommandResult>> CreateWithDefaultWorkspaceAsync(OwnerRegisterDto input);
+
         Task<Result<CommandResult>> UpdateAsync(OwnerUpdateDto input);
         Task<Result<OwnerBasicInfoDto>> GetByIdAsync(string id);
+        Task<Result<OwnerBasicInfoDto>> GetByUserNameAsync(string userName);
         Task<Result<PaginatedListReturnType<OwnerOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<OwnerDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<long>> CountAsync();

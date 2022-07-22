@@ -57,6 +57,21 @@ namespace TaskoMask.Application.Workspace.Owners.Services
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> CreateWithDefaultWorkspaceAsync(OwnerRegisterDto input)
+        {
+            var createUserCommandResult = await CreateAsync(input);
+            if (!createUserCommandResult.IsSuccess)
+                return createUserCommandResult;
+
+            await CreateDefaultWorkspaceAsync(createUserCommandResult.Value.EntityId);
+
+            return createUserCommandResult;
+        }
+
+
 
         /// <summary>
         /// 
@@ -64,11 +79,11 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         public async Task<Result<CommandResult>> CreateAsync(OwnerRegisterDto input)
         {
             //create authentication user info
-            var CreateUserCommandResult = await _userService.CreateAsync(input.Email, input.Password,UserType.Owner);
-            if (!CreateUserCommandResult.IsSuccess)
-                return CreateUserCommandResult;
+            var createUserCommandResult = await _userService.CreateAsync(input.Email, input.Password,UserType.Owner);
+            if (!createUserCommandResult.IsSuccess)
+                return createUserCommandResult;
 
-            var cmd = new CreateOwnerCommand(id: CreateUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
+            var cmd = new CreateOwnerCommand(id: createUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);
         }
 
@@ -179,6 +194,16 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         public async Task<Result<OwnerBasicInfoDto>> GetByIdAsync(string id)
         {
             return await SendQueryAsync(new GetOwnerByIdQuery(id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<OwnerBasicInfoDto>> GetByUserNameAsync(string userName)
+        {
+            return await SendQueryAsync(new GetOwnerByUserNameQuery(userName));
         }
 
 

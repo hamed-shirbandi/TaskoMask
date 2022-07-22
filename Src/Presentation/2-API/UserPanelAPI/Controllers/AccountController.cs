@@ -9,6 +9,7 @@ using TaskoMask.Domain.Share.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Application.Authorization.Users.Services;
+using TaskoMask.Domain.Share.Enums;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -45,19 +46,15 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("account/login")]
         public async Task<Result<UserJwtTokenDto>> Login([FromBody] UserLoginDto input)
         {
-            //get user
-            var userQueryResult = await _userService.GetByUserNameAsync(input.UserName);
-            if (!userQueryResult.IsSuccess)
-                return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
-
+          
             //validate user password
             var validateQueryResult = await _userService.IsValidCredentialAsync(input.UserName, input.Password);
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
-                return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, validateQueryResult.Message);
+                return Result.Failure<UserJwtTokenDto>(validateQueryResult.Errors, validateQueryResult.Message);
 
 
             //get owner
-            var ownerQueryResult = await _ownerService.GetByIdAsync(userQueryResult.Value.Id);
+            var ownerQueryResult = await _ownerService.GetByUserNameAsync(input.UserName);
             if (!ownerQueryResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(ownerQueryResult.Errors, ownerQueryResult.Message);
 
@@ -81,22 +78,12 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("account/register")]
         public async Task<Result<UserJwtTokenDto>> Register([FromBody] OwnerRegisterDto input)
         {
-            //create owner
-            var createCommandResult = await _ownerService.CreateAsync(input);
+            //create owner with default workspace
+            var createCommandResult = await _ownerService.CreateWithDefaultWorkspaceAsync(input);
             if (!createCommandResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(createCommandResult.Errors, createCommandResult.Message);
 
-            //get owner
-            var ownerQueryResult = await _ownerService.GetByIdAsync(createCommandResult.Value.EntityId);
-            if (!ownerQueryResult.IsSuccess)
-                return Result.Failure<UserJwtTokenDto>(ownerQueryResult.Errors, ownerQueryResult.Message);
-
-            //create default workspace for owner
-            await _ownerService.CreateDefaultWorkspaceAsync(ownerQueryResult.Value.Id);
-
-
-            //map to jwt claims model
-            var user = _mapper.Map<AuthenticatedUser>(ownerQueryResult.Value);
+            var user = GetAuthenticatedUserModel(createCommandResult.Value.EntityId, input);
 
             //generate jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
@@ -107,12 +94,27 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
 
+
+
         #endregion
 
         #region  Private Methods
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        private AuthenticatedUser GetAuthenticatedUserModel(string entityId, OwnerRegisterDto input)
+        {
+            return new AuthenticatedUser
+            {
+                Id= entityId,
+                DisplayName= input.DisplayName,
+                Email= input.Email,
+                UserName= input.Email,
+                Type = UserType.Owner,
+            };
+        }
 
 
 

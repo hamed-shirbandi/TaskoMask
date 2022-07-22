@@ -16,6 +16,7 @@ namespace TaskoMask.Application.Workspace.Comments.Commands.Models
 
 
         [MaxLength(DomainConstValues.Comment_Content_Max_Length, ErrorMessageResourceName = nameof(DomainMessages.Max_Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
+        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
         public string Content { get; }
 
 

@@ -178,7 +178,7 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
             
             organization.CreateProject(project);
 
-            AddDomainEvent(new ProjectCreatedEvent(project.Id, project.Name.Value, project.Description.Value, organization.Id));
+            AddDomainEvent(new ProjectCreatedEvent(project.Id, project.Name.Value, project.Description.Value, organization.Id,Id));
         }
 
 

@@ -38,11 +38,13 @@ namespace TaskoMask.Application.Workspace.Projects.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(ProjectCreatedEvent createdProject, CancellationToken cancellationToken)
         {
+
             var project = new Project(createdProject.Id)
             {
                 Name= createdProject.Name,
                 Description= createdProject.Description,
                 OrganizationId= createdProject.OrganizationId,
+                OwnerId = createdProject.OwnerId,
             };
            await _projectRepository.CreateAsync(project);
         }

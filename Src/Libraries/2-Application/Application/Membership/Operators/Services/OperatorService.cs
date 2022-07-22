@@ -123,14 +123,41 @@ namespace TaskoMask.Application.Membership.Operators.Services
         /// </summary>
         public async Task<Result<OperatorBasicInfoDto>> GetByIdAsync(string id)
         {
-            var @operator = await _operatorRepository.GetByIdAsync(id);
-            if (@operator == null)
-                return Result.Failure<OperatorBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
 
             var userQueryResult = await _userService.GetByIdAsync(id);
             if (!userQueryResult.IsSuccess)
                 return Result.Failure<OperatorBasicInfoDto>(message: userQueryResult.Message);
 
+
+            var @operator = await _operatorRepository.GetByIdAsync(id);
+            if (@operator == null)
+                return Result.Failure<OperatorBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+
+            var model = _mapper.Map<OperatorBasicInfoDto>(@operator);
+
+            //add authentication info from user ti operator
+            model.UserInfo = userQueryResult.Value;
+
+            return Result.Success(model);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<OperatorBasicInfoDto>> GetByUserNameAsync(string userName)
+        {
+            var userQueryResult = await _userService.GetByUserNameAsync(userName);
+            if (!userQueryResult.IsSuccess)
+                return Result.Failure<OperatorBasicInfoDto>(message: userQueryResult.Message);
+
+
+            var @operator = await _operatorRepository.GetByIdAsync(userQueryResult.Value.Id);
+            if (@operator == null)
+                return Result.Failure<OperatorBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+
+           
             var model = _mapper.Map<OperatorBasicInfoDto>(@operator);
 
             //add authentication info from user ti operator

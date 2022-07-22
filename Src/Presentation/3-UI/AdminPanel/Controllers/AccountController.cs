@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication;
@@ -8,7 +7,6 @@ using TaskoMask.Domain.Share.Models;
 using AutoMapper;
 using TaskoMask.Application.Membership.Operators.Services;
 using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Presentation.Framework.Web.Extensions;
 
 namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
 {
@@ -72,20 +70,13 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
                 return View(input);
 
 
-            //get user
-            var userQueryResult = await _userService.GetByUserNameAsync(input.UserName);
-            if (!userQueryResult.IsSuccess)
-                return View(userQueryResult, input);
-
-
             //validate user password
             var validateQueryResult = await _userService.IsValidCredentialAsync(input.UserName, input.Password);
             if (!validateQueryResult.IsSuccess)
                 return View(validateQueryResult, input);
 
-
             //get operator
-            var operatorQueryResult = await _operatorService.GetByIdAsync(userQueryResult.Value.Id);
+            var operatorQueryResult = await _operatorService.GetByUserNameAsync(input.UserName);
             if (!operatorQueryResult.IsSuccess)
                 return View(operatorQueryResult, input);
 

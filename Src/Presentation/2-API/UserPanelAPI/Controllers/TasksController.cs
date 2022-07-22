@@ -7,6 +7,8 @@ using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Application.Core.Services;
+using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -16,14 +18,16 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         #region Fields
 
         private readonly ITaskService _taskService;
+        private readonly IUserAccessManagementService _userAccessManagementService;
 
         #endregion
 
         #region Ctors
 
-        public TasksController(ITaskService taskService)
+        public TasksController(ITaskService taskService, IUserAccessManagementService userAccessManagementService)
         {
             _taskService = taskService;
+            _userAccessManagementService = userAccessManagementService;
         }
 
         #endregion
@@ -39,6 +43,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("tasks/{id}")]
         public async Task<Result<TaskDetailsViewModel>> Get(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
+                return Result.Failure<TaskDetailsViewModel>(message: DomainMessages.Access_Denied);
+
             return await _taskService.GetDetailsAsync(id);
         }
 
@@ -65,6 +72,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("tasks/{id}")]
         public async Task<Result<CommandResult>> Update(string id, [FromBody] TaskUpsertDto input)
         {
+            if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             input.Id = id;
             return await _taskService.UpdateAsync(input);
         }
@@ -78,6 +88,10 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("tasks/{taskId}/moveto/{cardId}")]
         public async Task<Result<CommandResult>> MoveTaskToAnotherCard(string taskId, string cardId)
         {
+
+            if (!await _userAccessManagementService.CanAccessToTaskAsync(taskId))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             return await _taskService.MoveTaskToAnotherCardAsync(taskId, cardId);
 
         }
@@ -90,6 +104,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("tasks/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             return await _taskService.DeleteAsync(id);
         }
 

@@ -19,19 +19,21 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         private readonly IProjectRepository _projectRepository;
         private readonly IBoardRepository _boardRepository;
         private readonly ICardRepository _cardRepository;
+        private readonly ITaskRepository _taskRepository;
         private readonly AuthenticatedUser currentUser;
 
         #endregion
 
         #region Ctors
 
-        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, IOrganizationRepository organizationRepository, IProjectRepository projectRepository, ICardRepository cardRepository)
+        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, IOrganizationRepository organizationRepository, IProjectRepository projectRepository, ICardRepository cardRepository, ITaskRepository taskRepository)
         {
             _authenticatedUserService = authenticatedUserService;
             _organizationRepository = organizationRepository;
             currentUser = _authenticatedUserService.GetAuthenticatedUser();
             _projectRepository = projectRepository;
             _cardRepository = cardRepository;
+            _taskRepository = taskRepository;
         }
 
 
@@ -114,6 +116,25 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
                 return true;
 
             return card.OwnerId == currentUser.Id;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<bool> CanAccessToTaskAsync(string taskId)
+        {
+            if (!currentUser.IsOperator())
+                return true;
+
+            var task = await _taskRepository.GetByIdAsync(taskId);
+
+            // handling null reference is not this class's business
+            if (task == null)
+                return true;
+
+            return task.OwnerId == currentUser.Id;
         }
 
 

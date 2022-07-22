@@ -55,6 +55,7 @@ namespace TaskoMask.Application.Workspace.Tasks.EventHandlers
                 CardId= createdTask.CardId,
                 BoardId = createdTask.BoardId,
                 OrganizationId= board.OrganizationId,
+                OwnerId= board.OwnerId,
                 CardType= card.Type,
             };
            await _taskRepository.CreateAsync(task);

@@ -27,6 +27,7 @@ namespace TaskoMask.Domain.ReadModel.Entities
         public string BoardId { get; set; }
         public string ProjectId { get; set; }
         public string OrganizationId { get; set; }
+        public string OwnerId { get; set; }
         public BoardCardType CardType { get; set; }
 
         #region Update private properties

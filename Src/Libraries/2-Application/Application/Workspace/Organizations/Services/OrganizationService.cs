@@ -65,7 +65,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<OrganizationDetailsViewModel>> GetDetailsAsync(string id)
         {
-            if (!await _userAccessManagementService.CanGetOrganizationAsync(id))
+            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
                 return Result.Failure<OrganizationDetailsViewModel>(message: DomainMessages.Access_Denied);
 
 
@@ -134,7 +134,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id)
         {
-            if (!await _userAccessManagementService.CanGetOrganizationAsync(id))
+            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
                 return Result.Failure<OrganizationBasicInfoDto>(message: DomainMessages.Access_Denied);
 
             return await SendQueryAsync(new GetOrganizationByIdQuery(id));

@@ -14,5 +14,15 @@ namespace TaskoMask.Domain.Share.Models
         /// </summary>
         public UserType Type { get; set; }
 
+
+        public bool IsOwner()
+        {
+            return Type == UserType.Owner;
+        }
+
+        public bool IsOperator()
+        {
+            return Type == UserType.Operator;
+        }
     }
 }

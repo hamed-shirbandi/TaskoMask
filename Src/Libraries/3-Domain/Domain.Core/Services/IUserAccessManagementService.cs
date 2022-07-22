@@ -8,6 +8,6 @@ namespace TaskoMask.Domain.Core.Services
 {
     public interface IUserAccessManagementService
     {
-        Task<bool> CanGetOrganizationAsync(string organizationId);
+        Task<bool> CanAccessToOrganizationAsync(string organizationId);
     }
 }

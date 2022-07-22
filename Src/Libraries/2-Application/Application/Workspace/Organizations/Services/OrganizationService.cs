@@ -54,6 +54,9 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(OrganizationUpsertDto input)
         {
+            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(input.Id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             var cmd = new UpdateOrganizationCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
         }
@@ -200,6 +203,9 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             var cmd = new DeleteOrganizationCommand(id);
             return await SendCommandAsync(cmd);
         }

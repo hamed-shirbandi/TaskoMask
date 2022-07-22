@@ -51,5 +51,8 @@ namespace TaskoMask.Domain.Share.Helpers
         public const int Owner_Email_Min_Length = 5;
         public const int Owner_Email_Max_Length = 50;
 
+        
+        public const int Comment_Content_Max_Length = 512;
+
     }
 }

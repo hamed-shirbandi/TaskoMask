@@ -15,6 +15,8 @@
   <ItemGroup>
     <Folder Include="Workspace\Boards\Commands\Validations\" />
     <Folder Include="Workspace\Cards\Commands\Validations\" />
+    <Folder Include="Workspace\Comments\Commands\Models\" />
+    <Folder Include="Workspace\Comments\Queries\Models\" />
     <Folder Include="Workspace\Owners\Commands\Validations\" />
     <Folder Include="Workspace\Tasks\Commands\Validations\" />
   </ItemGroup>

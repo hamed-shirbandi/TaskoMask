@@ -7,6 +7,8 @@ using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Application.Core.Services;
+using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -16,14 +18,16 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         #region Fields
 
         private readonly IProjectService _projectService;
+        private readonly IUserAccessManagementService _userAccessManagementService;
 
         #endregion
 
         #region Ctors
 
-        public ProjectsController(IProjectService projectService)
+        public ProjectsController(IProjectService projectService, IUserAccessManagementService userAccessManagementService)
         {
             _projectService = projectService;
+            _userAccessManagementService = userAccessManagementService;
         }
 
         #endregion
@@ -40,6 +44,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("projects/{id}")]
         public async Task<Result<ProjectOutputDto>> Get(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
+                return Result.Failure<ProjectOutputDto>(message: DomainMessages.Access_Denied);
+
             return await _projectService.GetByIdAsync(id);
         }
 
@@ -52,6 +59,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("projects/{id}/details")]
         public async Task<Result<ProjectDetailsViewModel>> GetDetails(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
+                return Result.Failure<ProjectDetailsViewModel>(message: DomainMessages.Access_Denied);
+
             return await _projectService.GetDetailsAsync(id);
         }
 
@@ -88,6 +98,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("projects/{id}")]
         public async Task<Result<CommandResult>> Update(string id, [FromBody] ProjectUpdateDto input)
         {
+            if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             input.Id = id;
             return await _projectService.UpdateAsync(input);
         }
@@ -101,6 +114,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("projects/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             return await _projectService.DeleteAsync(id);
         }
 

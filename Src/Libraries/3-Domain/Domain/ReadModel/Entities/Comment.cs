@@ -24,6 +24,7 @@ namespace TaskoMask.Domain.ReadModel.Entities
 
 
         public string Content { get; set; }
+        public string TaskId { get; set; }
 
 
         #region Update private properties

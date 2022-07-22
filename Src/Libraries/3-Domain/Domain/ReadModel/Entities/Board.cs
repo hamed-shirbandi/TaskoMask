@@ -23,6 +23,7 @@ namespace TaskoMask.Domain.ReadModel.Entities
         public string Description { get; set; }
         public string ProjectId { get; set; }
         public string OrganizationId { get; set; }
+        public string OwnerId { get; set; }
 
 
         #region Update private properties

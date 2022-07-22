@@ -17,6 +17,7 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
         private readonly IAuthenticatedUserService _authenticatedUserService;
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IProjectRepository _projectRepository;
+        private readonly IBoardRepository _boardRepository;
         private readonly AuthenticatedUser currentUser;
 
         #endregion
@@ -74,6 +75,26 @@ namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
 
             return project.OwnerId == currentUser.Id;
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<bool> CanAccessToBoardAsync(string boardId)
+        {
+            if (!currentUser.IsOperator())
+                return true;
+
+            var board = await _boardRepository.GetByIdAsync(boardId);
+
+            // handling null reference is not this class's business
+            if (board == null)
+                return true;
+
+            return board.OwnerId == currentUser.Id;
+        }
+
 
 
         #endregion

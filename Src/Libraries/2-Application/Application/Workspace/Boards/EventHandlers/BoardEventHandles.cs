@@ -48,7 +48,7 @@ namespace TaskoMask.Application.Workspace.Boards.EventHandlers
                 Description= createdBoard.Description,
                 OrganizationId= project.OrganizationId,
                 ProjectId = createdBoard.ProjectId,
-                
+                OwnerId= project.OwnerId,
             };
            await _boardRepository.CreateAsync(board);
         }

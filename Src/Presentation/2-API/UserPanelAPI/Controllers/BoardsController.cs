@@ -7,6 +7,8 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Application.Core.Services;
+using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
@@ -16,14 +18,16 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         #region Fields
 
         private readonly IBoardService _boardService;
+        private readonly IUserAccessManagementService _userAccessManagementService;
 
         #endregion
 
         #region Ctors
 
-        public BoardsController(IBoardService boardService)
+        public BoardsController(IBoardService boardService, IUserAccessManagementService userAccessManagementService)
         {
             _boardService = boardService;
+            _userAccessManagementService = userAccessManagementService;
         }
 
         #endregion
@@ -38,6 +42,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("boards/{id}")]
         public async Task<Result<BoardOutputDto>> Get(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
+                return Result.Failure<BoardOutputDto>(message: DomainMessages.Access_Denied);
+
             return await _boardService.GetByIdAsync(id);
         }
 
@@ -51,6 +58,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("boards/{id}/details")]
         public async Task<Result<BoardDetailsViewModel>> GetDetails(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
+                return Result.Failure<BoardDetailsViewModel>(message: DomainMessages.Access_Denied);
+
             return await _boardService.GetDetailsAsync(id);
         }
 
@@ -75,6 +85,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("boards/{id}")]
         public async Task<Result<CommandResult>> Update(string id, [FromBody] BoardUpdateDto input)
         {
+            if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             input.Id = id;
             return await _boardService.UpdateAsync(input);
         }
@@ -89,6 +102,9 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("boards/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
+            if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
+                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+
             return await _boardService.DeleteAsync(id);
         }
 

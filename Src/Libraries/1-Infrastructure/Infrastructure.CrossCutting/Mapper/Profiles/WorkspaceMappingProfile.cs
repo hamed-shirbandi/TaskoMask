@@ -7,6 +7,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Domain.ReadModel.Entities;
 using TaskoMask.Application.Share.Dtos.Workspace.Activities;
+using TaskoMask.Application.Share.Dtos.Workspace.Comments;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {
@@ -21,6 +22,14 @@ namespace TaskoMask.Application.Mapper.Profiles
             CreateMap<Task, TaskUpsertDto>();
             CreateMap<TaskBasicInfoDto, TaskUpsertDto>();
             CreateMap<Task, TaskOutputDto>();
+
+
+            #endregion
+
+            #region Comments
+
+            CreateMap<Comment, CommentBaseDto>();
+            CreateMap<Comment, CommentBasicInfoDto>();
 
 
             #endregion

@@ -42,7 +42,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Comments.Components.CreateOrUpdateComment.TaskId), TaskId);
-        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Create Comment", parameters, new ModalOptions {  });
+        ModalService.Show<Pages.Comments.Components.CreateOrUpdateComment>("Create Comment", parameters, new ModalOptions {  });
     }
 
 }

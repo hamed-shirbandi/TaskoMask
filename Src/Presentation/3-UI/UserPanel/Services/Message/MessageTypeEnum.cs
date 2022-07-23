@@ -21,6 +21,9 @@
         Task_Updated ,
         Task_Deleted ,
         Task_Moved ,
+        Comment_Created,
+        Comment_Updated,
+        Comment_Deleted,
 
     }
 }

@@ -1,0 +1,167 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
+@using TaskoMask.Domain.Share.Enums
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ICommentClientService CommentClientService
+
+<EditForm Model="CommentModel" OnValidSubmit="HandleUpsert">
+
+    <DataAnnotationsValidator />
+
+    <input type="hidden" @bind="CommentModel.TaskId" />
+
+
+    <div class="form-group">
+        <InputText @bind-Value="CommentModel.Content" placeholder="Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>CommentModel.Content" class="text-danger"></ValidationMessage>
+    </div>
+
+
+
+    <div class="form-group">
+        @if (isUpdate)
+        {
+            <button type="submit" class="btn btn-primary mr-1">Update</button>
+            <a @onclick="HandleDelete" class="btn btn-danger text-white mr-1">Delete</a>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-primary mr-1">Create</button>
+        }
+        <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
+    </div>
+
+</EditForm>
+
+
+@code {
+
+    #region Fields and Parameters
+
+
+    [Parameter]
+    public string TaskId { get; set; }
+
+    [Parameter]
+    public string CommentId { get; set; }
+
+    CommentUpsertDto CommentModel = new CommentUpsertDto();
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+    /// <summary>
+    /// To specify form role (create or update)
+    /// </summary>
+    bool isUpdate = false;
+
+    #endregion Fields and Parameters
+
+
+
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        //if Id has value so we need to handle update
+        if (!string.IsNullOrEmpty(CommentId))
+            await PrepareModelToUpdate();
+        else
+            CommentModel.TaskId = TaskId;
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+    /// <summary>
+    /// Get model by Id from API
+    /// </summary>
+    private async Task PrepareModelToUpdate()
+    {
+        isUpdate = true;
+
+        var commentResult = await CommentClientService.Get(CommentId);
+
+        if (commentResult.IsSuccess)
+        {
+            CommentModel = new CommentUpsertDto
+                {
+                    Id = commentResult.Value.Id,
+                    Content = commentResult.Value.Content,
+                    TaskId = commentResult.Value.TaskId,
+                };
+        }
+        else
+        {
+            //close the modal window
+            ModalInstance.CloseAsync();
+            ToastService.ShowError(commentResult.Errors.ParseToFragment(), commentResult.Message);
+        }
+    }
+
+
+    /// <summary>
+    /// Handle form role
+    /// </summary>
+    private async Task HandleUpsert()
+    {
+        if (isUpdate)
+            await HandleUpdate();
+        else
+            await HandleCreate();
+    }
+
+
+
+    /// <summary>
+    /// handle create model
+    /// </summary>
+    private async Task HandleCreate()
+    {
+        CommentModel.TaskId = TaskId;
+        var result = await CommentClientService.Create(CommentModel);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Comment_Created, ModalInstance);
+    }
+
+
+
+    /// <summary>
+    /// handle update model
+    /// </summary>
+    private async Task HandleUpdate()
+    {
+        var result = await CommentClientService.Update(CommentId, CommentModel);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Comment_Updated, ModalInstance);
+    }
+
+
+
+    /// <summary>
+    /// handle delete item
+    /// </summary>
+    private async Task HandleDelete()
+    {
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!");
+        var confirmationModalResult = await confirmationModal.Result;
+
+        if (confirmationModalResult.Cancelled)
+            return;
+
+        var result = await CommentClientService.Delete(CommentId);
+        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Comment_Deleted, ModalInstance);
+    }
+
+    #endregion private Methods
+
+}

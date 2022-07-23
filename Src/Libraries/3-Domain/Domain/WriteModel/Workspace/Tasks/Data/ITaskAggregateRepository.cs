@@ -8,5 +8,6 @@ namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Data
     {
         bool ExistTask(string taskId, string boardId, string taskTitle);
         long CountByBoardId(string boardId);
+        Task<Entities.Task> GetByCommentIdAsync(string commentId);
     }
 }

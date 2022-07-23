@@ -2,6 +2,7 @@
 using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
@@ -49,6 +50,18 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         {
             return _tasks.CountDocuments(t=>t.BoardId.Value==boardId &&t.IsDeleted==false);
         }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Domain.WriteModel.Workspace.Tasks.Entities.Task> GetByCommentIdAsync(string commentId)
+        {
+            return await _tasks.Find(e => e.Comments.Any(c => c.Id == commentId)).FirstOrDefaultAsync();
+        }
+
 
 
         #endregion

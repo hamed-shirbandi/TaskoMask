@@ -31,6 +31,16 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<IEnumerable<Comment>> GetListByTaskIdAsync(string taskId)
+        {
+            return await _comments.AsQueryable().Where(o => o.TaskId == taskId && o.IsDeleted == false).ToListAsync();
+        }
+
+
+
         #endregion
 
         #region Private Methods

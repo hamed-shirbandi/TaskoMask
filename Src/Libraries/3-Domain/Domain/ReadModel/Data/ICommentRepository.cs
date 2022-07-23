@@ -8,5 +8,6 @@ namespace TaskoMask.Domain.ReadModel.Data
 
     public interface ICommentRepository : IBaseRepository<Comment>
     {
+        Task<IEnumerable<Comment>> GetListByTaskIdAsync(string taskId);
     }
 }

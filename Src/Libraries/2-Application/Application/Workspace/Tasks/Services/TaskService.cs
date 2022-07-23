@@ -11,6 +11,7 @@ using TaskoMask.Application.Core.Services.Application;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Application.Workspace.Activities.Services;
+using TaskoMask.Application.Workspace.Comments.Services;
 
 namespace TaskoMask.Application.Workspace.Tasks.Services
 {
@@ -19,13 +20,16 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         #region Fields
 
         private readonly IActivityService _activityService;
+        private readonly ICommentService _commentService;
+
         #endregion
 
         #region Ctors
 
-        public TaskService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IActivityService activityService) : base(inMemoryBus, mapper, notifications)
+        public TaskService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IActivityService activityService, ICommentService commentService) : base(inMemoryBus, mapper, notifications)
         {
             _activityService = activityService;
+            _commentService = commentService;
         }
 
 
@@ -101,11 +105,18 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
                 return Result.Failure<TaskDetailsViewModel>(activitiesQueryResult.Errors);
 
 
+            var commentsQueryResult = await _commentService.GetListByTaskIdAsync(id);
+            if (!commentsQueryResult.IsSuccess)
+                return Result.Failure<TaskDetailsViewModel>(commentsQueryResult.Errors);
+
+
+
             var taskDetail = new TaskDetailsViewModel
             {
                 Task = taskQueryResult.Value,
                 Card = cardQueryResult.Value,
-                Activities= activitiesQueryResult.Value
+                Activities= activitiesQueryResult.Value,
+                Comments= commentsQueryResult.Value,
             };
 
             return Result.Success(taskDetail);

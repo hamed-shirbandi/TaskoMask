@@ -90,7 +90,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         public async Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id)
         {
 
-            var taskQueryResult = await SendQueryAsync(new GetTaskByIdQuery(id));
+            var taskQueryResult = await GetByIdAsync(id);
             if (!taskQueryResult.IsSuccess)
                 return Result.Failure<TaskDetailsViewModel>(taskQueryResult.Errors);
 

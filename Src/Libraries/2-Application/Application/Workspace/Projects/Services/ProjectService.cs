@@ -2,7 +2,6 @@
 using TaskoMask.Application.Share.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Projects.Commands.Models;
-using TaskoMask.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Application.Workspace.Projects.Queries.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.ViewModels;
@@ -72,7 +71,7 @@ namespace TaskoMask.Application.Workspace.Projects.Services
         /// </summary>
         public async Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id)
         {
-            var projectQueryResult = await SendQueryAsync(new GetProjectByIdQuery(id));
+            var projectQueryResult = await GetByIdAsync(id);
             if (!projectQueryResult.IsSuccess)
                 return Result.Failure<ProjectDetailsViewModel>(projectQueryResult.Errors);
 

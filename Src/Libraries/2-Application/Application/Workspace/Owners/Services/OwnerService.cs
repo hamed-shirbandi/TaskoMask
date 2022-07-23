@@ -223,7 +223,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<OwnerDetailsViewModel>> GetDetailsAsync(string id)
         {
-            var ownerQueryResult = await SendQueryAsync(new GetOwnerByIdQuery(id));
+            var ownerQueryResult = await GetByIdAsync(id);
             if (!ownerQueryResult.IsSuccess)
                 return Result.Failure<OwnerDetailsViewModel>(ownerQueryResult.Errors);
 

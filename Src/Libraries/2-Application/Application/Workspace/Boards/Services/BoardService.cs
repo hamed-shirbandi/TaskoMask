@@ -75,7 +75,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         /// </summary>
         public async Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id)
         {
-            var boardQueryResult = await SendQueryAsync(new GetBoardByIdQuery(id));
+            var boardQueryResult = await GetByIdAsync(id);
             if (!boardQueryResult.IsSuccess)
                 return Result.Failure<BoardDetailsViewModel>(boardQueryResult.Errors);
 

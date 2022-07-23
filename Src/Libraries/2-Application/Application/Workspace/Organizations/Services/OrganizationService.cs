@@ -61,7 +61,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// </summary>
         public async Task<Result<OrganizationDetailsViewModel>> GetDetailsAsync(string id)
         {
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationByIdQuery(id));
+            var organizationQueryResult = await GetByIdAsync(id);
             if (!organizationQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(organizationQueryResult.Errors);
 

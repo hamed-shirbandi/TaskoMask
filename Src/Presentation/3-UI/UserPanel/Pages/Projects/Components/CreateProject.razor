@@ -102,9 +102,10 @@
         var organizationsResult = await OrganizationClientService.GetSelectListItems();
         if (!organizationsResult.IsSuccess)
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(organizationsResult.Errors.ParseToFragment(), organizationsResult.Message);
+            QueryResultHandler<IEnumerable<SelectListItem>>.Init()
+                .WithResult(organizationsResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
         }
         else if (organizationsResult.Value.Any())
         {
@@ -136,7 +137,11 @@
     private async Task HandleCreate()
     {
         var result = await ProjectClientService.Create(ProjectModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Created, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Project_Created)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 

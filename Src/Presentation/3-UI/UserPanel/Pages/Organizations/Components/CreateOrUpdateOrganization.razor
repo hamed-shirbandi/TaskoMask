@@ -111,9 +111,10 @@
         }
         else
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(organizationResult.Errors.ParseToFragment(), organizationResult.Message);
+            QueryResultHandler<OrganizationBasicInfoDto>.Init()
+                .WithResult(organizationResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
         }
     }
 
@@ -138,7 +139,11 @@
     private async Task HandleCreate()
     {
         var result = await OrganizationClientService.Create(OrganizationModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Organization_Created, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Organization_Created)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 
@@ -149,7 +154,11 @@
     private async Task HandleUpdate()
     {
         var result = await OrganizationClientService.Update(Id,OrganizationModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Organization_Updated, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Organization_Updated)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 
@@ -166,7 +175,11 @@
             return;
 
         var result = await OrganizationClientService.Delete(Id);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Organization_Deleted, ModalInstance);
+               CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Organization_Deleted)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 

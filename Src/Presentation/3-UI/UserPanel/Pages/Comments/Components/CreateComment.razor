@@ -1,0 +1,71 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
+@using TaskoMask.Domain.Share.Enums
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ICommentClientService CommentClientService
+
+<EditForm Model="CommentModel" OnValidSubmit="HandleCreate" class="form-inline">
+
+    <DataAnnotationsValidator />
+
+    <input type="hidden" @bind="CommentModel.TaskId" />
+
+    <InputText @bind-Value="CommentModel.Content" placeholder="Content" class="form-control"></InputText>
+    <ValidationMessage For="()=>CommentModel.Content" class="text-danger"></ValidationMessage>
+    <button type="submit" class="btn btn-primary mr-1">Create</button>
+
+</EditForm>
+
+
+@code {
+
+    #region Fields and Parameters
+
+
+    [Parameter]
+    public string TaskId { get; set; }
+
+
+    CommentUpsertDto CommentModel = new CommentUpsertDto();
+
+
+
+    #endregion Fields and Parameters
+
+
+
+    #region Protected Methods
+
+    protected override Task OnInitializedAsync()
+    {
+        CommentModel.TaskId=TaskId;
+
+        return base.OnInitializedAsync();
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+
+    /// <summary>
+    /// handle create model
+    /// </summary>
+    private async Task HandleCreate()
+    {
+        var result = await CommentClientService.Create(CommentModel);
+
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Comment_Created)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
+    }
+
+
+
+    #endregion private Methods
+
+}

@@ -74,9 +74,10 @@
         }
         else
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(ownerResult.Errors.ParseToFragment(), ownerResult.Message);
+            QueryResultHandler<OwnerBasicInfoDto>.Init()
+                .WithResult(ownerResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
         }
     }
 
@@ -95,7 +96,11 @@
     private async Task HandleUpdate()
     {
         var result = await OwnerClientService.Update(OwnerUpdateModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Owner_Updated, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Owner_Updated)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 

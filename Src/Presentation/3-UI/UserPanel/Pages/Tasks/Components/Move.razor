@@ -72,7 +72,11 @@ else
     private async Task HandleMoveTaskToAnotherCard()
     {
         var result = await TaskClientService.MoveTaskToAnotherCard(TaskId, CardId);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Moved);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Task_Moved)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 

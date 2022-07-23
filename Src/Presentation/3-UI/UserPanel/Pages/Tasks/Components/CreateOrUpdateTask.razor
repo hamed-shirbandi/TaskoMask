@@ -109,9 +109,10 @@
         }
         else
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(taskResult.Errors.ParseToFragment(), taskResult.Message);
+            QueryResultHandler<TaskDetailsViewModel>.Init()
+                .WithResult(taskResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
         }
     }
 
@@ -137,7 +138,11 @@
     {
         TaskModel.CardId = CardId;
         var result = await TaskClientService.Create(TaskModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Created, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Task_Created)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 
@@ -148,7 +153,11 @@
     private async Task HandleUpdate()
     {
         var result = await TaskClientService.Update(TaskId, TaskModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Updated);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Task_Updated)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 
@@ -165,7 +174,11 @@
             return;
 
         var result = await TaskClientService.Delete(TaskId);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Task_Deleted, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Task_Deleted)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
     #endregion private Methods

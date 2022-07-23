@@ -58,9 +58,10 @@ else
             Model = taskResult.Value;
         else
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(taskResult.Errors.ParseToFragment(), taskResult.Message);
+            QueryResultHandler<TaskDetailsViewModel>.Init()
+            .WithResult(taskResult)
+            .ShowErrorToast(ToastService)
+            .CloseModal(ModalInstance);
         }
     }
 
@@ -75,7 +76,7 @@ else
     {
         try
         {
-            if (messageType == MessageType.Task_Updated || messageType == MessageType.Task_Moved|| messageType == MessageType.Comment_Created|| messageType == MessageType.Comment_Deleted)
+            if (messageType == MessageType.Task_Updated || messageType == MessageType.Task_Moved || messageType == MessageType.Comment_Created || messageType == MessageType.Comment_Deleted)
             {
                 await GetTaskDetails();
                 StateHasChanged();

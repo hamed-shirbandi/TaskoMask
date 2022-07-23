@@ -97,9 +97,10 @@
         }
         else
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(projectResult.Errors.ParseToFragment(), projectResult.Message);
+            QueryResultHandler<ProjectOutputDto>.Init()
+                .WithResult(projectResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
         }
     }
 
@@ -111,7 +112,11 @@
     private async Task HandleUpdate()
     {
         var result = await ProjectClientService.Update(Id, ProjectModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Updated, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Project_Updated)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 
@@ -128,7 +133,11 @@
             return;
 
         var result = await ProjectClientService.Delete(Id);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Project_Deleted, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Project_Deleted)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
     }
 
 

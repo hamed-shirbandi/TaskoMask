@@ -1,20 +1,15 @@
-﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
-@inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
-@inject TaskoMask.Presentation.Framework.Share.Contracts.IProjectClientService ProjectClientService
-@inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ICommentClientService CommentClientService
 
-<EditForm Model="BoardModel" OnValidSubmit="HandleUpdate">
+<EditForm Model="CommentModel" OnValidSubmit="HandleUpdate">
+
+    <input type="hidden" @bind="CommentModel.TaskId" />
 
     <DataAnnotationsValidator />
 
     <div class="form-group">
-        <InputText @bind-Value="BoardModel.Name" placeholder="Name" class="form-control"></InputText>
-        <ValidationMessage For="()=>BoardModel.Name" class="text-danger"></ValidationMessage>
-    </div>
-
-    <div class="form-group">
-        <InputText @bind-Value="BoardModel.Description" placeholder="Description" class="form-control"></InputText>
-        <ValidationMessage For="()=>BoardModel.Description" class="text-danger"></ValidationMessage>
+        <InputText @bind-Value="CommentModel.Content" placeholder="Content" class="form-control"></InputText>
+        <ValidationMessage For="()=>CommentModel.Content" class="text-danger"></ValidationMessage>
     </div>
 
     <div class="form-group">
@@ -33,7 +28,7 @@
 
 
     /// <summary>
-    /// Get the board to update by its Id
+    /// Get the comment to update by its Id
     /// </summary>
     [Parameter]
     public string Id { get; set; }
@@ -43,7 +38,7 @@
     /// <summary>
     /// Form Model
     /// </summary>
-    BoardUpdateDto BoardModel = new BoardUpdateDto();
+    CommentUpsertDto CommentModel = new CommentUpsertDto();
 
 
 
@@ -86,21 +81,21 @@
     private async Task PrepareModelToUpdate()
     {
 
-        var boardResult = await BoardClientService.Get(Id);
+        var commentResult = await CommentClientService.Get(Id);
 
-        if (boardResult.IsSuccess)
+        if (commentResult.IsSuccess)
         {
-            BoardModel = new BoardUpdateDto
+            CommentModel = new CommentUpsertDto
                 {
-                    Id = boardResult.Value.Id,
-                    Name = boardResult.Value.Name,
-                    Description = boardResult.Value.Description,
+                    Id = commentResult.Value.Id,
+                    Content = commentResult.Value.Content,
+                    TaskId = commentResult.Value.TaskId,
                 };
         }
         else
         {
-            QueryResultHandler<BoardOutputDto>.Init()
-                .WithResult(boardResult)
+            QueryResultHandler<CommentBasicInfoDto>.Init()
+                .WithResult(commentResult)
                 .ShowErrorToast(ToastService)
                 .CloseModal(ModalInstance);
         }
@@ -113,10 +108,10 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await BoardClientService.Update(Id, BoardModel);
+        var result = await CommentClientService.Update(Id, CommentModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Board_Updated)
+            .WithMessageType(MessageType.Comment_Updated)
             .ShowErrorToast(ToastService)
             .PublishMessage(MessageService)
             .CloseModal(ModalInstance);
@@ -135,10 +130,10 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await BoardClientService.Delete(Id);
+        var result = await CommentClientService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Board_Deleted)
+            .WithMessageType(MessageType.Comment_Deleted)
             .ShowErrorToast(ToastService)
             .PublishMessage(MessageService)
             .CloseModal(ModalInstance);

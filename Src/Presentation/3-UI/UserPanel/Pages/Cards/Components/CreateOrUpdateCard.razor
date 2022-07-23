@@ -113,9 +113,10 @@
         }
         else
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(cardResult.Errors.ParseToFragment(), cardResult.Message);
+            QueryResultHandler<CardBasicInfoDto>.Init()
+                .WithResult(cardResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
         }
     }
 
@@ -140,7 +141,12 @@
     {
         CardModel.BoardId = BoardId;
         var result = await CardClientService.Create(CardModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Card_Created, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Card_Created)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService)
+            .CloseModal(ModalInstance);
     }
 
 
@@ -151,7 +157,12 @@
     private async Task HandleUpdate()
     {
         var result = await CardClientService.Update(CardId, CardModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Card_Updated, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Card_Updated)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService)
+            .CloseModal(ModalInstance);
     }
 
 
@@ -168,7 +179,12 @@
             return;
 
         var result = await CardClientService.Delete(CardId);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Card_Deleted, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Card_Deleted)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService)
+            .CloseModal(ModalInstance);
     }
 
     #endregion private Methods

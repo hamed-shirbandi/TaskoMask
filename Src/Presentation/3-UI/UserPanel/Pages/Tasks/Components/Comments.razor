@@ -1,4 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
+@using TaskoMask.Presentation.UI.UserPanel.Pages.Comments.Components
 
 <div class="list-group">
     <div class="list-group-item list-group-item-action">
@@ -6,9 +7,9 @@
             <i class="bi bi-list-task"></i>
             Comments
         </strong>
-          <a @onclick="@(()=>ShowCreateCommentModal())" class="float-right small text-info" title="add task">
-                    <i class="bi bi-plus-circle"></i> add a comment
-                </a>
+        <a @onclick="@(()=>ShowCreateCommentModal())" class="float-right small text-info" title="add task">
+            <i class="bi bi-plus-circle"></i> add a comment
+        </a>
     </div>
     @foreach (var item in Model)
     {
@@ -21,6 +22,9 @@
         </div>
     }
 
+    <CreateOrUpdateComment TaskId=@TaskId></CreateOrUpdateComment>
+
+
 </div>
 
 
@@ -28,21 +32,21 @@
     [Parameter]
     public IEnumerable<CommentBasicInfoDto> Model { get; set; }
 
-        [Parameter]
+    [Parameter]
     public string TaskId { get; set; }
 
 
 
-    
+
 
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateCommentModal( )
+    private void ShowCreateCommentModal()
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Comments.Components.CreateOrUpdateComment.TaskId), TaskId);
-        ModalService.Show<Pages.Comments.Components.CreateOrUpdateComment>("Create Comment", parameters, new ModalOptions {  });
+        parameters.Add(nameof(Pages.Comments.Components.CreateComment.TaskId), TaskId);
+        ModalService.Show<Pages.Comments.Components.CreateComment>("Create Comment", parameters, new ModalOptions { });
     }
 
 }

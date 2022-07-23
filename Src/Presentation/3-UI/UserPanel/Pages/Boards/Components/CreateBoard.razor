@@ -1,4 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
+@using TaskoMask.Application.Share.Dtos.Workspace.Projects
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IProjectClientService ProjectClientService
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IOrganizationClientService OrganizationClientService
@@ -16,7 +17,7 @@
         <select @onchange="OnOrganizationsSelectListChange" name="OrganizationId" class="form-control">
             @foreach (var prop in organizationsSelectList)
             {
-                        <option value="@prop.Value" selected="@(prop.Value==selectedOrganizationId?true:false)">@prop.Text</option>
+                <option value="@prop.Value" selected="@(prop.Value==selectedOrganizationId?true:false)">@prop.Text</option>
             }
         </select>
     </div>
@@ -25,7 +26,7 @@
         <select @bind="BoardModel.ProjectId" name="ProjectId" class="form-control">
             @foreach (var prop in projectsSelectList)
             {
-                        <option value="@prop.Value" selected="@(prop.Value==BoardModel.ProjectId?true:false)">@prop.Text</option>
+                <option value="@prop.Value" selected="@(prop.Value==BoardModel.ProjectId?true:false)">@prop.Text</option>
             }
         </select>
         <ValidationMessage For="()=>BoardModel.ProjectId" class="text-danger"></ValidationMessage>
@@ -142,9 +143,10 @@
         var organizationsResult = await OrganizationClientService.GetSelectListItems();
         if (!organizationsResult.IsSuccess)
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(organizationsResult.Errors.ParseToFragment(), organizationsResult.Message);
+            QueryResultHandler<IEnumerable<SelectListItem>>.Init()
+                .WithResult(organizationsResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
         }
         else if (organizationsResult.Value.Any())
             organizationsSelectList = organizationsResult.Value;
@@ -167,9 +169,10 @@
         var projectsResult = await ProjectClientService.GetSelectListItems(selectedOrganizationId);
         if (!projectsResult.IsSuccess)
         {
-            //close the modal window
-            ModalInstance.CloseAsync();
-            ToastService.ShowError(projectsResult.Errors.ParseToFragment(), projectsResult.Message);
+            QueryResultHandler<IEnumerable<SelectListItem>>.Init()
+                .WithResult(projectsResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
         }
         else if (projectsResult.Value.Any())
         {
@@ -207,9 +210,10 @@
             }
             else
             {
-                //close the modal window
-                ModalInstance.CloseAsync();
-                ToastService.ShowError(projectResult.Errors.ParseToFragment(), projectResult.Message);
+                QueryResultHandler<ProjectOutputDto>.Init()
+                    .WithResult(projectResult)
+                    .ShowErrorToast(ToastService)
+                    .CloseModal(ModalInstance);
             }
         }
 
@@ -223,7 +227,12 @@
     private async Task HandleCreate()
     {
         var result = await BoardClientService.Create(BoardModel);
-        DataServiceHandler.Handle(result, ToastService, MessageService, MessageType.Board_Created, ModalInstance);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Board_Created)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService)
+            .CloseModal(ModalInstance);
     }
 
 

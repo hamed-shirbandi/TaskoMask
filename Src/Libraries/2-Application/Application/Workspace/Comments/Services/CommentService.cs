@@ -7,7 +7,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Comments;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Core.Services.Application;
-using TaskoMask.Application.Workspace.Tasks.Services;
+using System.Collections.Generic;
 
 namespace TaskoMask.Application.Workspace.Comments.Services
 {
@@ -15,20 +15,39 @@ namespace TaskoMask.Application.Workspace.Comments.Services
     {
         #region Fields
 
-        private readonly ITaskService _taskService;
 
         #endregion
 
         #region Ctors
 
-        public CommentService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, ITaskService taskService) : base(inMemoryBus, mapper, notifications)
+        public CommentService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         {
-            _taskService = taskService;
         }
 
         #endregion
 
         #region Public Methods
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommentBasicInfoDto>> GetByIdAsync(string id)
+        {
+            return await SendQueryAsync(new GetCommentByIdQuery(id));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<CommentBasicInfoDto>>> GetListByTaskIdAsync(string taskId)
+        {
+            return await SendQueryAsync(new GetCommentsByTaskIdQuery(taskId));
+        }
 
 
 
@@ -51,17 +70,6 @@ namespace TaskoMask.Application.Workspace.Comments.Services
             var cmd = new UpdateCommentCommand(id: input.Id, content: input.Content);
             return await SendCommandAsync(cmd);
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommentBasicInfoDto>> GetByIdAsync(string id)
-        {
-            return await SendQueryAsync(new GetCommentByIdQuery(id));
-        }
-
 
 
 

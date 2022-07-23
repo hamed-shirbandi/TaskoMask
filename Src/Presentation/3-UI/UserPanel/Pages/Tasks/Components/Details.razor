@@ -75,7 +75,7 @@ else
     {
         try
         {
-            if (messageType == MessageType.Task_Updated || messageType == MessageType.Task_Moved)
+            if (messageType == MessageType.Task_Updated || messageType == MessageType.Task_Moved|| messageType == MessageType.Comment_Created|| messageType == MessageType.Comment_Deleted)
             {
                 await GetTaskDetails();
                 StateHasChanged();

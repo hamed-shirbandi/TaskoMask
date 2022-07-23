@@ -68,6 +68,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<ICardClientService, CardClientService>();
             services.AddScoped<ITaskClientService, TaskClientService>();
             services.AddScoped<IOwnerClientService, OwnerClientService>();
+            services.AddScoped<ICommentClientService, CommentClientService>();
             services.AddScoped<IDragDropService, DragDropService>();
         }
 

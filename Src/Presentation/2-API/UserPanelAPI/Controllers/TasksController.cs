@@ -36,12 +36,28 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
 
 
+
         /// <summary>
-        /// get task detail
+        /// get task
         /// </summary>
         [HttpGet]
         [Route("tasks/{id}")]
-        public async Task<Result<TaskDetailsViewModel>> Get(string id)
+        public async Task<Result<TaskBasicInfoDto>> Get(string id)
+        {
+            if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
+                return Result.Failure<TaskBasicInfoDto>(message: DomainMessages.Access_Denied);
+
+            return await _taskService.GetByIdAsync(id);
+        }
+
+
+
+        /// <summary>
+        /// get task details
+        /// </summary>
+        [HttpGet]
+        [Route("tasks/{id}/details")]
+        public async Task<Result<TaskDetailsViewModel>> GetDetails(string id)
         {
             if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
                 return Result.Failure<TaskDetailsViewModel>(message: DomainMessages.Access_Denied);

@@ -6,7 +6,9 @@ namespace TaskoMask.Presentation.Framework.Share.Contracts
 {
     public interface ITaskClientService
     {
-        Task<Result<TaskDetailsViewModel>> Get(string id);
+        Task<Result<TaskBasicInfoDto>> Get(string id);
+        Task<Result<TaskDetailsViewModel>> GetDetails(string id);
+
         Task<Result<CommandResult>> Create(TaskUpsertDto input);
         Task<Result<CommandResult>> Update(string id, TaskUpsertDto input);
         Task<Result<CommandResult>> Delete(string id);

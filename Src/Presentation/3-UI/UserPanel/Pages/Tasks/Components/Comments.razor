@@ -13,8 +13,9 @@
         <a @onclick="@(()=>ShowUpdateCommentModal(item.Id))">
             <div class="list-group-item task-list-group-item">
                 <small>
+                    <i class="bi bi-pencil text-warning"></i>
                     @item.Content
-                   <span class="text-muted badge badge-light"> @item.CreationTime.CreateDateTimeString</span>
+                   <span class="text-muted badge bg-light-gray"> @item.CreationTime.CreateDateTimeString</span>
                 </small>
             </div>
         </a>
@@ -46,7 +47,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Comments.Components.UpdateComment.Id), id);
-        ModalService.Show<Pages.Comments.Components.UpdateComment>("Update Comment", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
+        ModalService.Show<Pages.Comments.Components.UpdateComment>("Update Comment", parameters, new ModalOptions { Class="blazored-modal w-75 bg-light-gray"});
     }
 
 }

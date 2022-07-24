@@ -22,6 +22,13 @@
     public TaskBasicInfoDto Model { get; set; }
 
 
+    protected override Task OnInitializedAsync()
+    {
+        if (string.IsNullOrEmpty(Model.Description))
+            Model.Description = "This task has not any description. you can add it by edit task link";
+
+        return base.OnInitializedAsync();
+    }
 
     /// <summary>
     ///
@@ -30,6 +37,6 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.CreateOrUpdateTask.TaskId), taskId);
-        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Update Task", parameters, new ModalOptions {Class = "blazored-modal w-50 h-75 bg-light-gray" });
+        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Update Task", parameters, new ModalOptions {Class = "blazored-modal w-75 bg-light-gray" });
     }
 }

@@ -24,7 +24,7 @@
         {
             <button type="submit" class="btn btn-primary mr-1">Create</button>
         }
-        <button @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</button>
+        <button @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-dark mr-1">Cancel</button>
     </div>
 
 </EditForm>
@@ -143,7 +143,8 @@
             .WithResult(result)
             .WithComponentMessageType(MessageType.Organization_Created)
             .ShowErrorToast(ToastService)
-            .PublishMessage(ComponentMessageService);
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
     }
 
 
@@ -158,7 +159,8 @@
             .WithResult(result)
             .WithComponentMessageType(MessageType.Organization_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(ComponentMessageService);
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
     }
 
 

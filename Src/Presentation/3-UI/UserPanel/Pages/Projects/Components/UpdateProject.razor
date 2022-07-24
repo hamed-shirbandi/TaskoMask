@@ -136,7 +136,8 @@
             .WithResult(result)
             .WithComponentMessageType(MessageType.Project_Deleted)
             .ShowErrorToast(ToastService)
-            .PublishMessage(ComponentMessageService);
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
     }
 
 

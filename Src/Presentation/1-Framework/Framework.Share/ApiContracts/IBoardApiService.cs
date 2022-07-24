@@ -2,9 +2,9 @@
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 
-namespace TaskoMask.Presentation.Framework.Share.Contracts
+namespace TaskoMask.Presentation.Framework.Share.ApiContracts
 {
-    public interface IBoardClientService
+    public interface IBoardApiService
     {
         Task<Result<BoardOutputDto>> Get(string id);
         Task<Result<BoardDetailsViewModel>> GetDetails(string id);

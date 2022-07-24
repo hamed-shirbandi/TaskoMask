@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.ApiContracts;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Domain.Core.Services;

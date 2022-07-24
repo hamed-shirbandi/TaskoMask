@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Application.Share.Dtos.Workspace.Comments;
 using TaskoMask.Application.Share.Helpers;
 
-namespace TaskoMask.Presentation.Framework.Share.Contracts
+namespace TaskoMask.Presentation.Framework.Share.ApiContracts
 {
-    public interface ICommentClientService
+    public interface ICommentApiService
     {
         Task<Result<CommentBasicInfoDto>> Get(string id);
         Task<Result<CommandResult>> Create(CommentUpsertDto input);

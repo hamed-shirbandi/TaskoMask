@@ -3,9 +3,9 @@ using Blazored.Modal;
 using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
-using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.ApiContracts;
 using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
-using TaskoMask.Presentation.UI.UserPanel.Services.Data;
+using TaskoMask.Presentation.UI.UserPanel.Services.API;
 using TaskoMask.Presentation.UI.UserPanel.Services.DragDrop;
 using TaskoMask.Presentation.UI.UserPanel.Services.Http;
 using TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage;
@@ -61,14 +61,14 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
 
             services.AddScoped<IComponentMessageService, ComponentMessageService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
-            services.AddScoped<IAccountClientService, AccountClientService>();
+            services.AddScoped<IAccountApiService, AccountApiService>();
             services.AddScoped<IOrganizationClientService, OrganizationClientService>();
             services.AddScoped<IProjectClientService, ProjectClientService>();
-            services.AddScoped<IBoardClientService, BoardClientService>();
-            services.AddScoped<ICardClientService, CardClientService>();
+            services.AddScoped<IBoardApiService, BoardClientService>();
+            services.AddScoped<ICardApiService, CardClientService>();
             services.AddScoped<ITaskClientService, TaskClientService>();
             services.AddScoped<IOwnerClientService, OwnerClientService>();
-            services.AddScoped<ICommentClientService, CommentClientService>();
+            services.AddScoped<ICommentApiService, CommentClientService>();
             services.AddScoped<IDragDropService, DragDropService>();
         }
 

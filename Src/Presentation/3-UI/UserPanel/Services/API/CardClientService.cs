@@ -1,13 +1,13 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Projects;
+﻿using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.ApiContracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
+namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 {
-    public class ProjectClientService : IProjectClientService
+    public class CardClientService : ICardApiService
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
 
         #region Ctor
 
-        public ProjectClientService(IHttpClientService httpClientService)
+        public CardClientService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }
@@ -30,10 +30,10 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectOutputDto>> Get(string id)
+        public async Task<Result<CardBasicInfoDto>> Get(string id)
         {
-            var url = $"/projects/{id}";
-            return await _httpClientService.GetAsync<ProjectOutputDto>(url);
+            var url = $"/cards/{id}";
+            return await _httpClientService.GetAsync<CardBasicInfoDto>(url);
         }
 
 
@@ -42,20 +42,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectDetailsViewModel>> GetDetails(string id)
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string boardId)
         {
-            var url = $"/projects/{id}/details";
-            return await _httpClientService.GetAsync<ProjectDetailsViewModel>(url);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string organizationId)
-        {
-            var url = $"/projects/getSelectListItems/{organizationId}";
+            var url = $"/boards/{boardId}/cards";
             return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(url);
         }
 
@@ -64,9 +53,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Create(ProjectCreateDto input)
+        public async Task<Result<CommandResult>> Create(CardUpsertDto input)
         {
-            var url = $"/projects";
+            var url = $"/cards";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -75,12 +64,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id, ProjectUpdateDto input)
+        public async Task<Result<CommandResult>> Update(string id,CardUpsertDto input)
         {
-            var url = $"/projects/{id}";
+            var url = $"/cards/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
-
 
 
         /// <summary>
@@ -88,9 +76,11 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var url = $"/projects/{id}";
+            var url = $"/cards/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
+
+
 
         #endregion
 

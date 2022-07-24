@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Authorization;
 using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.ApiContracts;
 using TaskoMask.Application.Core.Services;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class CommentsController : BaseApiController, ICommentClientService
+    public class CommentsController : BaseApiController, ICommentApiService
     {
         #region Fields
 

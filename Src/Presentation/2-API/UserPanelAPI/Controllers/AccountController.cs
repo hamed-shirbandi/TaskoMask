@@ -7,14 +7,14 @@ using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication;
 using TaskoMask.Domain.Share.Models;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.ApiContracts;
 using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Presentation.Framework.Share.Helpers;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
-    public class AccountController : BaseApiController, IAccountClientService
+    public class AccountController : BaseApiController, IAccountApiService
     {
         #region Fields
 

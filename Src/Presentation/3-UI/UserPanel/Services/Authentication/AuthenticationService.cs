@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Presentation.Framework.Share.Contracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
@@ -13,7 +12,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
     {
         #region Fields
 
-        private readonly IAccountClientService _accountClientService;
+        private readonly IAccountApiService _accountClientService;
         private readonly ILocalStorageService _localStorage;
         private readonly AuthenticationStateProvider _authStateProvider;
 
@@ -21,7 +20,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 
         #region Ctor
 
-        public AuthenticationService(IAccountClientService accountClientService, ILocalStorageService localStorage, AuthenticationStateProvider authStateProvider)
+        public AuthenticationService(IAccountApiService accountClientService, ILocalStorageService localStorage, AuthenticationStateProvider authStateProvider)
         {
             _accountClientService = accountClientService;
             _localStorage = localStorage;

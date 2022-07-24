@@ -1,14 +1,13 @@
 ﻿using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Presentation.Framework.Share.Contracts;
-using TaskoMask.Presentation.Framework.Share.Helpers;
+using TaskoMask.Presentation.Framework.Share.ApiContracts;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 
-namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
+namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 {
-    public class AccountClientService : IAccountClientService
+    public class AccountApiService : IAccountApiService
     {
         #region Fields
 
@@ -19,7 +18,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Data
         #region Ctor
 
 
-        public AccountClientService(IHttpClientService httpClientService)
+        public AccountApiService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }

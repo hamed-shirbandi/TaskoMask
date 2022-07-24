@@ -1,8 +1,8 @@
-using TaskoMask.Presentation.Framework.Share.Contracts;
+using TaskoMask.Presentation.Framework.Share.ApiContracts;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 {
-    public interface IAuthenticationService : IAccountClientService
+    public interface IAuthenticationService : IAccountApiService
     {
        Task Logout();
     }

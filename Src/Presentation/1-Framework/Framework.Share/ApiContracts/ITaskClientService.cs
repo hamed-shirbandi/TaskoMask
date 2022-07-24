@@ -2,7 +2,7 @@
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 
-namespace TaskoMask.Presentation.Framework.Share.Contracts
+namespace TaskoMask.Presentation.Framework.Share.ApiContracts
 {
     public interface ITaskClientService
     {

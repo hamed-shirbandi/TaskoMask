@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Application.Share.Helpers;
 
-namespace TaskoMask.Presentation.Framework.Share.Contracts
+namespace TaskoMask.Presentation.Framework.Share.ApiContracts
 {
-    public interface ICardClientService
+    public interface ICardApiService
     {
         Task<Result<CardBasicInfoDto>> Get(string id);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string boardId);

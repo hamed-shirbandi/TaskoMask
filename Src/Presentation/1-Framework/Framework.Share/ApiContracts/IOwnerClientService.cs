@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
 
-namespace TaskoMask.Presentation.Framework.Share.Contracts
+namespace TaskoMask.Presentation.Framework.Share.ApiContracts
 {
     public interface IOwnerClientService
     {

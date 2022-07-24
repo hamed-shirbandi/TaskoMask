@@ -118,9 +118,9 @@
         var result = await TaskClientService.Update(Id, TaskModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Task_Updated)
+            .WithComponentMessageType(MessageType.Task_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 
@@ -140,9 +140,9 @@
         var result = await TaskClientService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Task_Deleted)
+            .WithComponentMessageType(MessageType.Task_Deleted)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 

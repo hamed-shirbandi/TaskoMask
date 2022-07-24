@@ -65,9 +65,9 @@
 
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Task_Created)
+            .WithComponentMessageType(MessageType.Task_Created)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 

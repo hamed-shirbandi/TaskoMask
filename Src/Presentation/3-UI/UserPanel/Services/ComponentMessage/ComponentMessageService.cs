@@ -1,9 +1,9 @@
-﻿namespace TaskoMask.Presentation.UI.UserPanel.Services.Message
+﻿namespace TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage
 {
     /// <summary>
     /// A service to communicate between components
     /// </summary>
-    public class MessageService : IMessageService
+    public class ComponentMessageService : IComponentMessageService
     {
         public event Action<MessageType> OnMessage;
 

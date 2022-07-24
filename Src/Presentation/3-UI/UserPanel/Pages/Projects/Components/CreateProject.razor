@@ -139,9 +139,9 @@
         var result = await ProjectClientService.Create(ProjectModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Project_Created)
+            .WithComponentMessageType(MessageType.Project_Created)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 

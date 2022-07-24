@@ -115,9 +115,9 @@
         var result = await BoardClientService.Update(Id, BoardModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Board_Updated)
+            .WithComponentMessageType(MessageType.Board_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 
@@ -137,9 +137,9 @@
         var result = await BoardClientService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Board_Deleted)
+            .WithComponentMessageType(MessageType.Board_Deleted)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 

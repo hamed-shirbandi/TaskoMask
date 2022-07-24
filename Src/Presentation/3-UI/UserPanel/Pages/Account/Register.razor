@@ -85,7 +85,7 @@
         var registerResult = await AuthenticationService.Register(RegisterModel);
         if (registerResult.IsSuccess)
         {
-            MessageService.SendMessage(MessageType.Owner_Registered);
+            ComponentMessageService.SendMessage(MessageType.Owner_Registered);
             NavigationManager.NavigateTo("/");
          }
         else

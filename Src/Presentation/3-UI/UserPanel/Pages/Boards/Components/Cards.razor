@@ -50,9 +50,9 @@
 
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Task_Moved)
+            .WithComponentMessageType(MessageType.Task_Moved)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 

@@ -8,7 +8,7 @@ using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
 using TaskoMask.Presentation.UI.UserPanel.Services.Data;
 using TaskoMask.Presentation.UI.UserPanel.Services.DragDrop;
 using TaskoMask.Presentation.UI.UserPanel.Services.Http;
-using TaskoMask.Presentation.UI.UserPanel.Services.Message;
+using TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Configuration
 {
@@ -59,7 +59,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IComponentMessageService, ComponentMessageService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAccountClientService, AccountClientService>();
             services.AddScoped<IOrganizationClientService, OrganizationClientService>();

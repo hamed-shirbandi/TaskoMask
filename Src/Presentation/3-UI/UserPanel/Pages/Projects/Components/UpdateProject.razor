@@ -113,9 +113,9 @@
         var result = await ProjectClientService.Update(Id, ProjectModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Project_Updated)
+            .WithComponentMessageType(MessageType.Project_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 
@@ -134,9 +134,9 @@
         var result = await ProjectClientService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Project_Deleted)
+            .WithComponentMessageType(MessageType.Project_Deleted)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 

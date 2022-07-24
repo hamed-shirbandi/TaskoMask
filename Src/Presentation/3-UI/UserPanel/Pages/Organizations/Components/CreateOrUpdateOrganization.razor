@@ -141,9 +141,9 @@
         var result = await OrganizationClientService.Create(OrganizationModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Organization_Created)
+            .WithComponentMessageType(MessageType.Organization_Created)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 
@@ -156,9 +156,9 @@
         var result = await OrganizationClientService.Update(Id,OrganizationModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Organization_Updated)
+            .WithComponentMessageType(MessageType.Organization_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 
@@ -177,9 +177,9 @@
         var result = await OrganizationClientService.Delete(Id);
                CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Organization_Deleted)
+            .WithComponentMessageType(MessageType.Organization_Deleted)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 

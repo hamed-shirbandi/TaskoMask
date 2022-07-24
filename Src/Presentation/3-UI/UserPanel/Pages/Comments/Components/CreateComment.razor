@@ -66,9 +66,9 @@
 
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Comment_Created)
+            .WithComponentMessageType(MessageType.Comment_Created)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 

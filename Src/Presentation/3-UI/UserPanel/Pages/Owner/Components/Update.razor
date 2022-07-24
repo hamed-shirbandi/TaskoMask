@@ -98,9 +98,9 @@
         var result = await OwnerClientService.Update(OwnerUpdateModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Owner_Updated)
+            .WithComponentMessageType(MessageType.Owner_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService);
+            .PublishMessage(ComponentMessageService);
     }
 
 

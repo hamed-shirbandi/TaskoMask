@@ -228,9 +228,9 @@
         var result = await BoardClientService.Create(BoardModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Board_Created)
+            .WithComponentMessageType(MessageType.Board_Created)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 

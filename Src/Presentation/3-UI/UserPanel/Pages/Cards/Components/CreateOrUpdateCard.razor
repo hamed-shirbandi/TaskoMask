@@ -143,9 +143,9 @@
         var result = await CardClientService.Create(CardModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Card_Created)
+            .WithComponentMessageType(MessageType.Card_Created)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 
@@ -159,9 +159,9 @@
         var result = await CardClientService.Update(CardId, CardModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Card_Updated)
+            .WithComponentMessageType(MessageType.Card_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 
@@ -181,9 +181,9 @@
         var result = await CardClientService.Delete(CardId);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Card_Deleted)
+            .WithComponentMessageType(MessageType.Card_Deleted)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 

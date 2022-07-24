@@ -1,7 +1,7 @@
 ﻿using Blazored.Modal;
 using Blazored.Toast.Services;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Presentation.UI.UserPanel.Services.Message;
+using TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 {
@@ -30,7 +30,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
 
 
-        public QueryResultHandler<T> WithMessageType(MessageType messageType)
+        public QueryResultHandler<T> WithComponentMessageType(MessageType messageType)
         {
             _messageType = messageType;
             return this;
@@ -56,7 +56,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
         }
 
 
-        public QueryResultHandler<T> PublishMessage(IMessageService messageService)
+        public QueryResultHandler<T> PublishMessage(IComponentMessageService messageService)
         {
             if (_result.IsSuccess)
                 messageService.SendMessage(_messageType);

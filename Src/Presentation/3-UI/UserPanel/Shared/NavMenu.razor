@@ -67,7 +67,7 @@
     protected override async Task OnInitializedAsync()
     {
         //subscribe to OnMessage event. It is used when another components need to send a message to this component
-        MessageService.OnMessage += ReloadUserDisplayNameHandler;
+        ComponentMessageService.OnMessage += ReloadUserDisplayNameHandler;
 
         websiteUrl = Configuration["Url:Website"];
 
@@ -125,6 +125,6 @@
     public void Dispose()
     {
         // unsubscribe from OnMessage event
-        MessageService.OnMessage -= ReloadUserDisplayNameHandler;
+        ComponentMessageService.OnMessage -= ReloadUserDisplayNameHandler;
     }
 }

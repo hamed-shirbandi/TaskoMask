@@ -39,7 +39,7 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        MessageService.OnMessage += ReloadDataHandler;
+        ComponentMessageService.OnMessage += ReloadDataHandler;
 
         await LoadDataAsync();
 
@@ -102,7 +102,7 @@
     public void Dispose()
     {
         // unsubscribe from OnMessage event
-        MessageService.OnMessage -= ReloadDataHandler;
+        ComponentMessageService.OnMessage -= ReloadDataHandler;
     }
 
 

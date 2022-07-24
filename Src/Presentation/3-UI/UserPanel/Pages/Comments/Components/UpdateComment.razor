@@ -110,9 +110,9 @@
         var result = await CommentClientService.Update(Id, CommentModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Comment_Updated)
+            .WithComponentMessageType(MessageType.Comment_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 
@@ -132,9 +132,9 @@
         var result = await CommentClientService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithMessageType(MessageType.Comment_Deleted)
+            .WithComponentMessageType(MessageType.Comment_Deleted)
             .ShowErrorToast(ToastService)
-            .PublishMessage(MessageService)
+            .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);
     }
 

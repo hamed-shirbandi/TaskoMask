@@ -1,4 +1,4 @@
-﻿namespace TaskoMask.Presentation.UI.UserPanel.Services.Message
+﻿namespace TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage
 {
     public enum MessageType
     {

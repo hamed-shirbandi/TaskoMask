@@ -12,7 +12,7 @@ using TaskoMask.Domain.Share.Resources;
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class CardsController : BaseApiController, ICardApiService
+    public class CardsApiController : BaseApiController, ICardApiService
     {
         #region Fields
 
@@ -23,7 +23,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
         #region Ctors
 
-        public CardsController(ICardService cardService, IUserAccessManagementService userAccessManagementService)
+        public CardsApiController(ICardService cardService, IUserAccessManagementService userAccessManagementService)
         {
             _cardService = cardService;
             _userAccessManagementService = userAccessManagementService;

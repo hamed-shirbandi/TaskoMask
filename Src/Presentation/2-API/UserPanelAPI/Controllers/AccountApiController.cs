@@ -14,7 +14,7 @@ using TaskoMask.Presentation.Framework.Share.Helpers;
 
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
-    public class AccountController : BaseApiController, IAccountApiService
+    public class AccountApiController : BaseApiController, IAccountApiService
     {
         #region Fields
 
@@ -26,7 +26,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
         #region Ctor
 
-        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IOwnerService ownerService, IMapper mapper, IUserService userService) : base(mapper)
+        public AccountApiController(IJwtAuthenticationService jwtAuthenticationService, IOwnerService ownerService, IMapper mapper, IUserService userService) : base(mapper)
         {
             _jwtAuthenticationService = jwtAuthenticationService;
             _ownerService = ownerService;

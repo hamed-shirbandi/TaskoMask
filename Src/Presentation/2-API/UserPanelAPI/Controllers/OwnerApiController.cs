@@ -12,7 +12,7 @@ using TaskoMask.Domain.Core.Services;
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class OwnerController : BaseApiController, IOwnerApiService
+    public class OwnerApiController : BaseApiController, IOwnerApiService
     {
         #region Fields
 
@@ -22,7 +22,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
         #region Ctors
 
-        public OwnerController(IOwnerService ownerService, IAuthenticatedUserService authenticatedUserService) : base(authenticatedUserService)
+        public OwnerApiController(IOwnerService ownerService, IAuthenticatedUserService authenticatedUserService) : base(authenticatedUserService)
         {
             _ownerService = ownerService;
         }

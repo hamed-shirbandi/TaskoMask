@@ -11,7 +11,7 @@ using TaskoMask.Application.Core.Services;
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class CommentsController : BaseApiController, ICommentApiService
+    public class CommentsApiController : BaseApiController, ICommentApiService
     {
         #region Fields
 
@@ -22,7 +22,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
         #region Ctors
 
-        public CommentsController(ICommentService commentService, IUserAccessManagementService userAccessManagementService)
+        public CommentsApiController(ICommentService commentService, IUserAccessManagementService userAccessManagementService)
         {
             _commentService = commentService;
             _userAccessManagementService = userAccessManagementService;

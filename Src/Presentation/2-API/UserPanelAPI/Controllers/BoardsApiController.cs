@@ -13,7 +13,7 @@ using TaskoMask.Domain.Share.Resources;
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class BoardsController : BaseApiController, IBoardApiService
+    public class BoardsApiController : BaseApiController, IBoardApiService
     {
         #region Fields
 
@@ -24,7 +24,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 
         #region Ctors
 
-        public BoardsController(IBoardService boardService, IUserAccessManagementService userAccessManagementService)
+        public BoardsApiController(IBoardService boardService, IUserAccessManagementService userAccessManagementService)
         {
             _boardService = boardService;
             _userAccessManagementService = userAccessManagementService;

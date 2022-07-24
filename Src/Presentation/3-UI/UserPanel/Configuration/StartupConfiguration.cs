@@ -27,7 +27,23 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddSharedConfigureServices();
+            services.AddHttpServices(configuration);
+            services.AddAuthorizationServices();
+            services.AddApiServices();
+            services.AddComponentMessageServices();
+            services.AddDragDropServices();
+            services.AddBlazoredLocalStorage();
+            services.AddBlazoredToast();
+            services.AddBlazoredModal();
+        }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddHttpServices(this IServiceCollection services, IConfiguration configuration)
+        {
             //add HttpClient with an Interceptor to add jwt token to all requests automatically
             services.AddHttpClient(
                 name: "UserPanelAPI",
@@ -40,27 +56,29 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<HttpClientInterceptorService>();
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelAPI"));
 
-            services.AddAuthorizationCore();
-            services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
-
-            services.AddClientServices();
-            services.AddBlazoredLocalStorage();
-            services.AddBlazoredToast();
-            services.AddBlazoredModal();
         }
-
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        private static void AddClientServices(this IServiceCollection services)
+        private static void AddAuthorizationServices(this IServiceCollection services)
+        {
+            services.AddAuthorizationCore();
+            services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddApiServices(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddScoped<IComponentMessageService, ComponentMessageService>();
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAccountApiService, AccountApiService>();
             services.AddScoped<IOrganizationApiService, OrganizationApiService>();
             services.AddScoped<IProjectApiService, ProjectApiService>();
@@ -69,6 +87,28 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<ITaskApiService, TaskApiService>();
             services.AddScoped<IOwnerApiService, OwnerApiService>();
             services.AddScoped<ICommentApiService, CommentApiService>();
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddComponentMessageServices(this IServiceCollection services)
+        {
+            services.AddScoped<IComponentMessageService, ComponentMessageService>();
+
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddDragDropServices(this IServiceCollection services)
+        {
             services.AddScoped<IDragDropService, DragDropService>();
         }
 

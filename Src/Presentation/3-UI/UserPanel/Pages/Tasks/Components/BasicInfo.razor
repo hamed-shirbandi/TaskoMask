@@ -36,7 +36,7 @@
     private void ShowUpdateModal(string taskId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Tasks.Components.CreateOrUpdateTask.TaskId), taskId);
-        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Update Task", parameters, new ModalOptions {Class = "blazored-modal w-75 bg-light-gray" });
+        parameters.Add(nameof(Pages.Tasks.Components.UpdateTask.Id), taskId);
+        ModalService.Show<Pages.Tasks.Components.UpdateTask>("Update Task", parameters, new ModalOptions {Class = "blazored-modal w-75 bg-light-gray" });
     }
 }

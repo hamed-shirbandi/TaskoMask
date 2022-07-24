@@ -85,8 +85,8 @@
     private void ShowCreateTaskModal(string cardId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Tasks.Components.CreateOrUpdateTask.CardId), cardId);
-        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Create Task", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
+        parameters.Add(nameof(Pages.Tasks.Components.CreateTask.CardId), cardId);
+        ModalService.Show<Pages.Tasks.Components.CreateTask>("Create Task", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
     }
 
 

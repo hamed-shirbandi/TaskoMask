@@ -38,7 +38,7 @@
         .spinner-loading:not(:required):after {
             content: '';
             display: block;
-            font-size: 10px;
+            font-size: 20px;
             width: 1em;
             height: 1em;
             margin-top: -0.5em;

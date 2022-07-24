@@ -116,6 +116,10 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (task == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
+            if (task.CardId.Value==request.CardId)
+                return new CommandResult(ApplicationMessages.Update_Success, request.TaskId);
+
+
             var loadedVersion = task.Version;
 
             task.MoveTaskToAnotherCard(request.CardId);

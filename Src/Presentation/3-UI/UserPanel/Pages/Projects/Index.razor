@@ -59,7 +59,7 @@
     {
         try
         {
-            if (messageType == MessageType.Board_Created || messageType == MessageType.Board_Deleted || messageType == MessageType.Board_Updated)
+            if (ReloadDataHelper.Project_Index_Need_Reload(messageType))
             {
                 await LoadDataAsync();
                 StateHasChanged();

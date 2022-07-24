@@ -5,6 +5,30 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
     public static class ReloadDataHelper
     {
 
+
+        public static bool Dashboard_Index_Need_Reload(MessageType messageType)
+        {
+            if (OrganizationIsChanged(messageType)
+                || ProjectIsChanged(messageType)
+                || BoardIsChanged(messageType)
+                )
+                return true;
+
+            return false;
+        }
+
+
+
+        public static bool Project_Index_Need_Reload(MessageType messageType)
+        {
+            if (BoardIsChanged(messageType))
+                return true;
+
+            return false;
+        }
+
+
+
         public static bool Task_Details_Need_Reload(MessageType messageType)
         {
             if (TaskIsChanged(messageType) || CommentIsChanged(messageType))
@@ -31,7 +55,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
             return false;
         }
-        
+
 
 
         private static bool CardIsChanged(MessageType messageType)

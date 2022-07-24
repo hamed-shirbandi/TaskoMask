@@ -71,8 +71,12 @@
     {
         try
         {
-            await LoadDataAsync();
-            StateHasChanged();
+            if (ReloadDataHelper.Board_Index_Need_Reload(messageType))
+            {
+                await LoadDataAsync();
+                StateHasChanged();
+            }
+
         }
         catch
         {

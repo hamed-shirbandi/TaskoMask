@@ -1,0 +1,35 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
+
+<div class="list-group">
+    <div class="list-group-item list-group-item-action">
+        <strong>
+            <i class="bi bi-list-task"></i>
+            Description
+        </strong>
+            <a @onclick="@(()=>ShowUpdateModal(Model.Id))" class="text-warning float-right" >
+                    <span class="bi bi-pencil">edit task</span>
+                </a>
+    </div>
+
+    <div class="list-group-item list-group-item-action">
+        @Model.Description
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public TaskBasicInfoDto Model { get; set; }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowUpdateModal(string taskId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Tasks.Components.CreateOrUpdateTask.TaskId), taskId);
+        ModalService.Show<Pages.Tasks.Components.CreateOrUpdateTask>("Update Task", parameters, new ModalOptions {Class = "blazored-modal w-50 h-75 bg-light-gray" });
+    }
+}

@@ -3,7 +3,7 @@
 
 @foreach (var item in Model)
 {
-    <a @onclick="@(()=>ShowDetailsModal(item.Id))" class="text-black">
+    <a @onclick="@(()=>ShowDetailsModal(item.Id,item.Title))" class="text-black">
         <div class="rounded p-3 mb-2 mx-1 task-item" draggable="true" ondragstart="@(() => HandleDragStart(item.Id))">
             @item.Title
         </div>
@@ -24,11 +24,11 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowDetailsModal(string taskId)
+    private void ShowDetailsModal(string taskId,string taskTitle)
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.Details.TaskId), taskId);
-        ModalService.Show<Pages.Tasks.Components.Details>("Task Details", parameters, new ModalOptions { Class = "blazored-modal w-100 h-100" });
+        ModalService.Show<Pages.Tasks.Components.Details>(taskTitle, parameters, new ModalOptions { Class = "blazored-modal w-100 h-100" });
     }
 
 

@@ -8,7 +8,7 @@
         <h6 id="@item.Organization.Id" data-toggle="tooltip" data-placement="left" title="@item.Organization.Description">
             <i class="bi bi-building"></i>
             @item.Organization.Name
-            <a @onclick="@(()=>ShowUpdsertModal(item.Organization.Id))" class="text-warning" title="Edit">
+            <a @onclick="@(()=>ShowUpdsertModal(item.Organization.Id))" class="text-warning" >
                 <i class="bi bi-pencil"></i>
             </a>
         </h6>
@@ -61,6 +61,6 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Organizations.Components.CreateOrUpdateOrganization.Id), organizationId);
-        ModalService.Show<Pages.Organizations.Components.CreateOrUpdateOrganization>("Update organization", parameters, new ModalOptions { });
+        ModalService.Show<Pages.Organizations.Components.CreateOrUpdateOrganization>("Update organization", parameters, new ModalOptions {Class="blazored-modal bg-light-gray" });
     }
 }

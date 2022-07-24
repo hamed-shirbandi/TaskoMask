@@ -16,7 +16,7 @@
 
 
     <div class="form-group">
-        <InputTextArea @bind-Value="TaskModel.Description" placeholder="Description" class="form-control"></InputTextArea>
+        <InputTextArea @bind-Value="TaskModel.Description" placeholder="Description" class="form-control" rows="15"></InputTextArea>
         <ValidationMessage For="()=>TaskModel.Description" class="text-danger"></ValidationMessage>
     </div>
 
@@ -101,15 +101,15 @@
         {
             TaskModel = new TaskUpsertDto
                 {
-                    Id = taskResult.Value.Task.Id,
-                    Title = taskResult.Value.Task.Title,
-                    Description = taskResult.Value.Task.Description,
-                    CardId = taskResult.Value.Task.CardId,
+                    Id = taskResult.Value.Id,
+                    Title = taskResult.Value.Title,
+                    Description = taskResult.Value.Description,
+                    CardId = taskResult.Value.CardId,
                 };
         }
         else
         {
-            QueryResultHandler<TaskDetailsViewModel>.Init()
+            QueryResultHandler<TaskBasicInfoDto>.Init()
                 .WithResult(taskResult)
                 .ShowErrorToast(ToastService)
                 .CloseModal(ModalInstance);

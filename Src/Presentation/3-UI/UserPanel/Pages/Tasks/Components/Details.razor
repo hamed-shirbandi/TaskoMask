@@ -11,7 +11,7 @@ else
 {
     <div class="row">
         <div class="col-md-8">
-            <CreateOrUpdateTask TaskId=@TaskId></CreateOrUpdateTask>
+            <BasicInfo Model=@Model.Task></BasicInfo>
             <Comments Model=@Model.Comments TaskId=@TaskId></Comments>
         </div>
         <hr />
@@ -53,7 +53,7 @@ else
     /// </summary>
     private async Task GetTaskDetails()
     {
-        var taskResult = await TaskClientService.Get(TaskId);
+        var taskResult = await TaskClientService.GetDetails(TaskId);
         if (taskResult.IsSuccess)
             Model = taskResult.Value;
         else

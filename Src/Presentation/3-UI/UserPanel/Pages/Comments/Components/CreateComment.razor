@@ -2,16 +2,23 @@
 @using TaskoMask.Domain.Share.Enums
 @inject TaskoMask.Presentation.Framework.Share.Contracts.ICommentClientService CommentClientService
 
-<EditForm Model="CommentModel" OnValidSubmit="HandleCreate" class="form-inline">
-
+<EditForm Model="CommentModel" OnValidSubmit="HandleCreate" class="form">
     <DataAnnotationsValidator />
-
     <input type="hidden" @bind="CommentModel.TaskId" />
 
-    <InputText @bind-Value="CommentModel.Content" placeholder="Content" class="form-control"></InputText>
-    <ValidationMessage For="()=>CommentModel.Content" class="text-danger"></ValidationMessage>
-    <button type="submit" class="btn btn-primary mr-1">Create</button>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
 
+                <InputText @bind-Value="CommentModel.Content" class="form-control" placeholder="add a comment"></InputText>
+
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">add</button>
+                </span>
+                <ValidationMessage For="()=>CommentModel.Content" class="text-danger"></ValidationMessage>
+            </div>
+        </div>
+    </div>
 </EditForm>
 
 
@@ -36,7 +43,7 @@
 
     protected override Task OnInitializedAsync()
     {
-        CommentModel.TaskId=TaskId;
+        CommentModel.TaskId = TaskId;
 
         return base.OnInitializedAsync();
     }

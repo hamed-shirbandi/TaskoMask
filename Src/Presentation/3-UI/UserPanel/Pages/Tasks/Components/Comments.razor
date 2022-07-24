@@ -7,25 +7,25 @@
             <i class="bi bi-list-task"></i>
             Comments
         </strong>
-        <a @onclick="@(()=>ShowCreateCommentModal())" class="float-right small text-info" title="add task">
-            <i class="bi bi-plus-circle"></i> add a comment
-        </a>
     </div>
     @foreach (var item in Model)
     {
-        <div class="list-group-item list-group-item-action">
-            <small>
-                @item.Content
-                <br />
-                @item.CreationTime.CreateDateTimeString
-            </small>
-        </div>
+        <a @onclick="@(()=>ShowUpdateCommentModal(item.Id))">
+            <div class="list-group-item list-group-item-action">
+                <small>
+                    @item.Content
+                   <span class="text-muted badge badge-light"> @item.CreationTime.CreateDateTimeString</span>
+                </small>
+            </div>
+        </a>
     }
 
-    <CreateOrUpdateComment TaskId=@TaskId></CreateOrUpdateComment>
+    <div class="list-group-item list-group-item-action">
+        <CreateComment TaskId=@TaskId></CreateComment>
 
-
+    </div>
 </div>
+
 
 
 @code {
@@ -42,11 +42,11 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateCommentModal()
+    private void ShowUpdateCommentModal(string id)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Comments.Components.CreateComment.TaskId), TaskId);
-        ModalService.Show<Pages.Comments.Components.CreateComment>("Create Comment", parameters, new ModalOptions { });
+        parameters.Add(nameof(Pages.Comments.Components.UpdateComment.Id), id);
+        ModalService.Show<Pages.Comments.Components.UpdateComment>("Update Comment", parameters, new ModalOptions { });
     }
 
 }

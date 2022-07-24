@@ -3,7 +3,7 @@ using TaskoMask.Application.Share.Helpers;
 
 namespace TaskoMask.Presentation.Framework.Share.ApiContracts
 {
-    public interface IOwnerClientService
+    public interface IOwnerApiService
     {
         Task<Result<OwnerBasicInfoDto>> Get();
         Task<Result<CommandResult>> Update(OwnerUpdateDto input);

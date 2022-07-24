@@ -13,7 +13,7 @@ using TaskoMask.Domain.Share.Resources;
 namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class TasksController : BaseApiController, ITaskClientService
+    public class TasksController : BaseApiController, ITaskApiService
     {
         #region Fields
 

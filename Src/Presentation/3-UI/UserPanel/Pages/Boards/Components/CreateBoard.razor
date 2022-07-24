@@ -1,8 +1,8 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
 @using TaskoMask.Application.Share.Dtos.Workspace.Projects
 @inject TaskoMask.Presentation.Framework.Share.ApiContracts.IBoardApiService BoardClientService
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectClientService ProjectClientService
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationClientService OrganizationClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationClientService
 
 <EditForm Model="BoardModel" OnValidSubmit="HandleCreate">
 

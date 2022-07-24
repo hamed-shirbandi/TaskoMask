@@ -7,7 +7,7 @@ using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 {
-    public class TaskClientService : ITaskClientService
+    public class TaskClientService : ITaskApiService
     {
         #region Fields
 

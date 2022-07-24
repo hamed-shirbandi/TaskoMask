@@ -4,7 +4,7 @@ using TaskoMask.Application.Share.ViewModels;
 
 namespace TaskoMask.Presentation.Framework.Share.ApiContracts
 {
-    public interface IOrganizationClientService
+    public interface IOrganizationApiService
     {
         Task<Result<OrganizationBasicInfoDto>> Get(string id);
         Task<Result<IEnumerable<OrganizationDetailsViewModel>>> Get();

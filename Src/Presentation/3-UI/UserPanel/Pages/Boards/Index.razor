@@ -2,8 +2,6 @@
 @page "/board/{BoardId}/task/{TaskId}"
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Boards.Components
 @inject TaskoMask.Presentation.Framework.Share.Contracts.IBoardClientService BoardClientService
-@inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
-@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
 
 @implements IDisposable
 
@@ -46,7 +44,7 @@
         await LoadDataAsync();
 
         if (!string.IsNullOrEmpty(TaskId))
-            await  ShowTaskDetailsModal(TaskId);
+            await ShowTaskDetailsModal(TaskId);
     }
 
 
@@ -89,19 +87,9 @@
     /// </summary>
     private async Task ShowTaskDetailsModal(string taskId)
     {
-        var taskResult = await TaskClientService.Get(TaskId);
-        if (taskResult.IsSuccess)
-        {
-                                var parameters = new ModalParameters();
+        var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.Details.TaskId), taskId);
-        ModalService.Show<Pages.Tasks.Components.Details>(taskResult.Value.Title, parameters, new ModalOptions { Class = "blazored-modal w-100 h-100 bg-light-gray" });
-        }
-        else
-        {
-            QueryResultHandler<TaskBasicInfoDto>.Init()
-            .WithResult(taskResult)
-            .ShowErrorToast(ToastService);
-        }
+        ModalService.Show<Pages.Tasks.Components.Details>("", parameters, new ModalOptions { Class = "blazored-modal w-100 h-100 bg-light-gray" });
 
 
     }

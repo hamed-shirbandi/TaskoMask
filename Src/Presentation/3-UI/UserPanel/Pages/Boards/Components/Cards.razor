@@ -12,7 +12,7 @@
                 @item.Card.Name
 
                 <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="float-right small text-warning">
-                    <i class="bi bi-pencil"></i> edit
+                    <span class="bi bi-pencil"></span>
                 </a>
             </h6>
             <div class="card-body px-1" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">

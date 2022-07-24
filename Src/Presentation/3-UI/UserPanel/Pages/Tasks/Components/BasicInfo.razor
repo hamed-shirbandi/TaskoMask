@@ -2,13 +2,13 @@
 
 <div class="list-group task-list-group mb-3">
     <div class="list-group-item task-list-group-header">
-        <strong>
-            <i class="bi bi-list-task"></i>
-            Description
-        </strong>
-        <a @onclick="@(()=>ShowUpdateModal(Model.Id))" class="text-info float-right">
-            edit task
-        </a>
+        <h4>
+            @Model.Title
+            <a @onclick="@(()=>ShowUpdateModal(Model.Id))" class="text-warning float-right">
+                <small class="bi bi-pencil" style="font-size:15px;">edit task</small>
+            </a>
+        </h4>
+
     </div>
 
     <div class="list-group-item task-list-group-item">

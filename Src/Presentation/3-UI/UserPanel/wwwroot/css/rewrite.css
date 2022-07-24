@@ -219,3 +219,16 @@ body {
 .btn-add-task {
     box-shadow: 1px 1px 1px #091e4240;
 }
+
+
+/* MD breakpoint*/
+@media (min-width: 768px) {
+    /* CUSTOM WIDTHS */
+    .w-md-50 {
+        width: 50% !important;
+    }
+
+    .w-md-75 {
+        width: 75% !important;
+    }
+}

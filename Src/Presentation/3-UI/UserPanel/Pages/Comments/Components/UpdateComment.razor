@@ -123,7 +123,7 @@
     /// </summary>
     private async Task HandleDelete()
     {
-        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!", new ModalOptions { Class="blazored-modal bg-light-gray"});
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
         var confirmationModalResult = await confirmationModal.Result;
 
         if (confirmationModalResult.Cancelled)

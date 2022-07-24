@@ -1,14 +1,14 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
 
-<div class="list-group mb-3">
-    <div class="list-group-item task-list-group-item">
+<div class="list-group task-list-group mb-3">
+    <div class="list-group-item task-list-group-header">
         <strong>
             <i class="bi bi-list-task"></i>
             Description
         </strong>
-            <a @onclick="@(()=>ShowUpdateModal(Model.Id))" class="text-warning float-right" >
-                    <span class="bi bi-pencil">edit task</span>
-                </a>
+        <a @onclick="@(()=>ShowUpdateModal(Model.Id))" class="text-info float-right">
+            edit task
+        </a>
     </div>
 
     <div class="list-group-item task-list-group-item">
@@ -37,6 +37,6 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.UpdateTask.Id), taskId);
-        ModalService.Show<Pages.Tasks.Components.UpdateTask>("Update Task", parameters, new ModalOptions {Class = "blazored-modal w-75 bg-light-gray" });
+        ModalService.Show<Pages.Tasks.Components.UpdateTask>("Update Task", parameters, new ModalOptions { Class = "blazored-modal w-75 bg-light-gray" });
     }
 }

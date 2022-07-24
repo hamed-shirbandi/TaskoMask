@@ -1,5 +1,6 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Cards
 @using TaskoMask.Application.Share.ViewModels
+@using TaskoMask.Presentation.UI.UserPanel.Pages.Tasks.Components
 @inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
 @inject TaskoMask.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
 
@@ -16,6 +17,10 @@
             </h6>
             <div class="card-body px-1" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
                 <Tasks Model=@item.Tasks CardId=@item.Card.Id></Tasks>
+            </div>
+            <div class="card-footer text-muted">
+               <CreateTask CardId=@item.Card.Id></CreateTask>
+
             </div>
         </div>
     }
@@ -60,7 +65,7 @@
 
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.BoardId), BoardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Create Card", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
+        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Create Card", parameters, new ModalOptions { Class = "blazored-modal bg-light-gray" });
     }
 
 
@@ -71,7 +76,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.CardId), cardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Update Card", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
+        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Update Card", parameters, new ModalOptions { Class = "blazored-modal bg-light-gray" });
     }
 
 }

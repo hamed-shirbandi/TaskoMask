@@ -198,6 +198,24 @@ body {
         color: white !important;
     }
 
+.task-list-group {
+    border: 1px solid rgba(0,0,0,.125) !important;
+}
+
+.task-list-group-header {
+    background-color: #f8f9fa !important;
+    border: 0px !important;
+}
+
 .task-list-group-item {
     background-color: #f8f9fa !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid rgba(0,0,0,.125) !important;
+    margin:0px;
+}
+
+
+.btn-add-task {
+    box-shadow: 1px 1px 1px #091e4240;
 }

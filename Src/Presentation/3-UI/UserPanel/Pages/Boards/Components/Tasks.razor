@@ -1,4 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
+@using TaskoMask.Presentation.UI.UserPanel.Pages.Tasks.Components
 @inject TaskoMask.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
 
 @foreach (var item in Model)
@@ -9,6 +10,7 @@
         </div>
     </a>
 }
+
 
 
 
@@ -26,7 +28,7 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowDetailsModal(string taskId,string taskTitle)
+    private void ShowDetailsModal(string taskId, string taskTitle)
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.Details.TaskId), taskId);

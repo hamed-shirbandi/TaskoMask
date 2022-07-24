@@ -1,8 +1,8 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Comments.Components
 
-<div class="list-group mb-3">
-    <div class="list-group-item task-list-group-item">
+<div class="list-group task-list-group mb-3">
+    <div class="list-group-item task-list-group-header">
         <strong>
             <i class="bi bi-list-task"></i>
             Comments
@@ -13,7 +13,6 @@
         <a @onclick="@(()=>ShowUpdateCommentModal(item.Id))">
             <div class="list-group-item task-list-group-item">
                 <small>
-                    <i class="bi bi-pencil text-warning"></i>
                     @item.Content
                    <span class="text-muted badge bg-light-gray"> @item.CreationTime.CreateDateTimeString</span>
                 </small>
@@ -23,7 +22,6 @@
 
     <div class="list-group-item task-list-group-item">
         <CreateComment TaskId=@TaskId></CreateComment>
-
     </div>
 </div>
 

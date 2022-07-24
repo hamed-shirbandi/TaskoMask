@@ -5,7 +5,7 @@ using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 {
-    public class CommentClientService : ICommentApiService
+    public class CommentApiService : ICommentApiService
     {
         #region Fields
 
@@ -15,7 +15,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 
         #region Ctor
 
-        public CommentClientService(IHttpClientService httpClientService)
+        public CommentApiService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }

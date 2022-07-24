@@ -2,12 +2,11 @@
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 {
-    public class BoardClientService : IBoardApiService
+    public class BoardApiService : IBoardApiService
     {
         #region Fields
 
@@ -17,7 +16,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 
         #region Ctor
 
-        public BoardClientService(IHttpClientService httpClientService)
+        public BoardApiService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }

@@ -7,7 +7,7 @@ using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 {
-    public class OwnerClientService : IOwnerApiService
+    public class OwnerApiService : IOwnerApiService
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
 
         #region Ctor
 
-        public OwnerClientService(IHttpClientService httpClientService)
+        public OwnerApiService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }

@@ -62,13 +62,13 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
             services.AddScoped<IComponentMessageService, ComponentMessageService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAccountApiService, AccountApiService>();
-            services.AddScoped<IOrganizationApiService, OrganizationClientService>();
-            services.AddScoped<IProjectApiService, ProjectClientService>();
-            services.AddScoped<IBoardApiService, BoardClientService>();
-            services.AddScoped<ICardApiService, CardClientService>();
-            services.AddScoped<ITaskApiService, TaskClientService>();
-            services.AddScoped<IOwnerApiService, OwnerClientService>();
-            services.AddScoped<ICommentApiService, CommentClientService>();
+            services.AddScoped<IOrganizationApiService, OrganizationApiService>();
+            services.AddScoped<IProjectApiService, ProjectApiService>();
+            services.AddScoped<IBoardApiService, BoardApiService>();
+            services.AddScoped<ICardApiService, CardApiService>();
+            services.AddScoped<ITaskApiService, TaskApiService>();
+            services.AddScoped<IOwnerApiService, OwnerApiService>();
+            services.AddScoped<ICommentApiService, CommentApiService>();
             services.AddScoped<IDragDropService, DragDropService>();
         }
 

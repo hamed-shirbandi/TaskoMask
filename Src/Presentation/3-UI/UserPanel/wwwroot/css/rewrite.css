@@ -198,3 +198,6 @@ body {
         color: white !important;
     }
 
+.task-list-group-item {
+    /*background-color: #ebecf0 !important;*/
+}

@@ -30,7 +30,7 @@
 
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.BoardId), BoardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Create Card", parameters, new ModalOptions { });
+        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Create Card", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
     }
 
 

@@ -1,8 +1,8 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Comments.Components
 
-<div class="list-group">
-    <div class="list-group-item list-group-item-action">
+<div class="list-group mb-3">
+    <div class="list-group-item task-list-group-item">
         <strong>
             <i class="bi bi-list-task"></i>
             Comments
@@ -11,7 +11,7 @@
     @foreach (var item in Model)
     {
         <a @onclick="@(()=>ShowUpdateCommentModal(item.Id))">
-            <div class="list-group-item list-group-item-action">
+            <div class="list-group-item task-list-group-item">
                 <small>
                     @item.Content
                    <span class="text-muted badge badge-light"> @item.CreationTime.CreateDateTimeString</span>
@@ -20,7 +20,7 @@
         </a>
     }
 
-    <div class="list-group-item list-group-item-action">
+    <div class="list-group-item task-list-group-item">
         <CreateComment TaskId=@TaskId></CreateComment>
 
     </div>
@@ -46,7 +46,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Comments.Components.UpdateComment.Id), id);
-        ModalService.Show<Pages.Comments.Components.UpdateComment>("Update Comment", parameters, new ModalOptions { });
+        ModalService.Show<Pages.Comments.Components.UpdateComment>("Update Comment", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
     }
 
 }

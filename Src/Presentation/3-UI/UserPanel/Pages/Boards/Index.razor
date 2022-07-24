@@ -94,7 +94,7 @@
         {
                                 var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.Details.TaskId), taskId);
-        ModalService.Show<Pages.Tasks.Components.Details>(taskResult.Value.Title, parameters, new ModalOptions { Class = "blazored-modal w-100 h-100" });
+        ModalService.Show<Pages.Tasks.Components.Details>(taskResult.Value.Title, parameters, new ModalOptions { Class = "blazored-modal w-100 h-100 bg-light-gray" });
         }
         else
         {

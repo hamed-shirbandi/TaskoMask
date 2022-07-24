@@ -1,7 +1,7 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Activities
 
-<div class="list-group">
-    <div class="list-group-item list-group-item-action">
+<div class="list-group mb-3">
+    <div class="list-group-item task-list-group-item">
         <strong>
             <i class="bi bi-list-task"></i>
             Activities
@@ -9,7 +9,7 @@
     </div>
     @foreach (var item in Model)
     {
-        <div class="list-group-item list-group-item-action">
+        <div class="list-group-item task-list-group-item">
             <small>
                 @item.Description at <span class="text-muted badge badge-light"> @item.CreationTime.CreateDateTimeString</span>
             </small>

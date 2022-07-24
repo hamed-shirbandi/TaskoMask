@@ -1,0 +1,77 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
+@inject TaskoMask.Presentation.Framework.Share.Contracts.ITaskClientService TaskClientService
+
+<EditForm Model="TaskModel" OnValidSubmit="HandleCreate" class="form">
+    <DataAnnotationsValidator />
+    <input type="hidden" @bind="TaskModel.CardId" />
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+
+                <InputText @bind-Value="TaskModel.Title" class="form-control" placeholder="add a task"></InputText>
+
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">add</button>
+                </span>
+            </div>
+            <ValidationMessage For="()=>TaskModel.Title" class="text-danger"></ValidationMessage>
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+
+    #region Fields and Parameters
+
+
+    [Parameter]
+    public string CardId { get; set; }
+
+
+    TaskUpsertDto TaskModel = new TaskUpsertDto();
+
+
+
+    #endregion Fields and Parameters
+
+
+
+    #region Protected Methods
+
+    protected override Task OnInitializedAsync()
+    {
+        TaskModel.CardId = CardId;
+
+        return base.OnInitializedAsync();
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+
+    /// <summary>
+    /// handle create model
+    /// </summary>
+    private async Task HandleCreate()
+    {
+        var result = await TaskClientService.Create(TaskModel);
+
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithMessageType(MessageType.Task_Created)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(MessageService);
+    }
+
+
+
+    #endregion private Methods
+
+}

@@ -16,21 +16,20 @@
 
 
     <div class="form-group">
-        <InputTextArea @bind-Value="TaskModel.Description" placeholder="Description" class="form-control" rows="15"></InputTextArea>
+        <InputTextArea @bind-Value="TaskModel.Description" placeholder="Description" class="form-control" rows="8"></InputTextArea>
         <ValidationMessage For="()=>TaskModel.Description" class="text-danger"></ValidationMessage>
     </div>
 
     <div class="form-group">
         @if (isUpdate)
         {
-            <button type="submit" class="btn btn-primary mr-1">Update</button>
-            <a @onclick="HandleDelete" class="btn btn-danger text-white mr-1">Delete</a>
+            <button type="submit" class="btn btn-primary float-left">Update</button>
+            <button @onclick="HandleDelete" class="btn btn-danger text-white float-right">Delete</button>
         }
         else
         {
             <button type="submit" class="btn btn-primary mr-1">Create</button>
         }
-        <a @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-white mr-1">Cancel</a>
     </div>
 
 </EditForm>

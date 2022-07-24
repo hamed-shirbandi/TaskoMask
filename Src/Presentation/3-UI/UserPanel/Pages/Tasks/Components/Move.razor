@@ -7,17 +7,21 @@
 }
 else
 {
-    <div class="form-group">
-        <select class="form-control" @bind="CardId">
-            @foreach (var prop in cardsSelectList)
-            {
-                <option value="@prop.Value" selected="@(prop.Value==CardId?true:false)">@prop.Text</option>
-            }
-        </select>
-    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <select class="form-control" @bind="CardId">
+                    @foreach (var prop in cardsSelectList)
+                    {
+                        <option value="@prop.Value" selected="@(prop.Value==CardId?true:false)">@prop.Text</option>
+                    }
+                </select>
 
-    <div class="form-group">
-        <button type="button" @onclick="HandleMoveTaskToAnotherCard" class="btn btn-block btn-primary mr-1">Move To Card</button>
+                <span class="input-group-btn">
+                    <button type="button" @onclick="HandleMoveTaskToAnotherCard" class="btn btn-primary">move</button>
+                </span>
+            </div>
+        </div>
     </div>
 }
 

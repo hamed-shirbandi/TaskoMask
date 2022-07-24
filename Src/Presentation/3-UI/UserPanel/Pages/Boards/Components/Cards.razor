@@ -9,12 +9,9 @@
         <div class="card task-card mb-2">
             <h6 class="card-header">
                 @item.Card.Name
-                <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="text-warning" >
-                    <i class="bi bi-pencil"></i>
-                </a>
 
-                <a @onclick="@(()=>ShowCreateTaskModal(item.Card.Id))" class="float-right small text-info" title="add task">
-                    <i class="bi bi-plus-circle"></i> add a task
+                <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="float-right small text-warning">
+                    <i class="bi bi-pencil"></i> edit
                 </a>
             </h6>
             <div class="card-body px-1" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
@@ -76,18 +73,5 @@
         parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.CardId), cardId);
         ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Update Card", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
     }
-
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    private void ShowCreateTaskModal(string cardId)
-    {
-        var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Tasks.Components.CreateTask.CardId), cardId);
-        ModalService.Show<Pages.Tasks.Components.CreateTask>("Create Task", parameters, new ModalOptions { Class="blazored-modal bg-light-gray"});
-    }
-
 
 }

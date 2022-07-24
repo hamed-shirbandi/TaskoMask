@@ -1,6 +1,6 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Owners
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOwnerApiService OwnerClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOwnerApiService OwnerApiService
 @implements IDisposable
 
 <nav style="justify-content:normal !important; display:block; z-index:99;" class="navbar navbar-dark bg-dark fixed-top">
@@ -89,7 +89,7 @@
         {
             if ( messageType == MessageType.Owner_Updated||messageType == MessageType.Owner_Registered||messageType == MessageType.Owner_Loggedin)
             {
-                var ownerResult = await OwnerClientService.Get();
+                var ownerResult = await OwnerApiService.Get();
                 if (ownerResult.IsSuccess)
                 {
                     await UpdateAuthenticatedUserInLocalStorage(ownerResult.Value);

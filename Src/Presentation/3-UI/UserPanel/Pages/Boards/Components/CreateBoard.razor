@@ -1,8 +1,8 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
 @using TaskoMask.Application.Share.Dtos.Workspace.Projects
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IBoardApiService BoardClientService
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectClientService
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IBoardApiService BoardApiService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectApiService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationApiService
 
 <EditForm Model="BoardModel" OnValidSubmit="HandleCreate">
 
@@ -139,7 +139,7 @@
     /// </summary>
     private async Task GetOrganizations()
     {
-        var organizationsResult = await OrganizationClientService.GetSelectListItems();
+        var organizationsResult = await OrganizationApiService.GetSelectListItems();
         if (!organizationsResult.IsSuccess)
         {
             QueryResultHandler<IEnumerable<SelectListItem>>.Init()
@@ -165,7 +165,7 @@
         if (string.IsNullOrEmpty(selectedOrganizationId))
             selectedOrganizationId = organizationsSelectList.First().Value;
 
-        var projectsResult = await ProjectClientService.GetSelectListItems(selectedOrganizationId);
+        var projectsResult = await ProjectApiService.GetSelectListItems(selectedOrganizationId);
         if (!projectsResult.IsSuccess)
         {
             QueryResultHandler<IEnumerable<SelectListItem>>.Init()
@@ -202,7 +202,7 @@
             selectedOrganizationId = OrganizationId;
         else if (!string.IsNullOrEmpty(ProjectId))
         {
-            var projectResult = await ProjectClientService.Get(ProjectId);
+            var projectResult = await ProjectApiService.Get(ProjectId);
             if (projectResult.IsSuccess)
             {
                 selectedOrganizationId = projectResult.Value.OrganizationId;
@@ -225,7 +225,7 @@
     /// </summary>
     private async Task HandleCreate()
     {
-        var result = await BoardClientService.Create(BoardModel);
+        var result = await BoardApiService.Create(BoardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Board_Created)

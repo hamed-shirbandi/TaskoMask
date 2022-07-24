@@ -1,7 +1,7 @@
 ﻿@page "/project/{ProjectId}"
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Projects.Components
 @using TaskoMask.Presentation.UI.UserPanel.Shared
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectApiService
 @implements IDisposable
 
 @if (Model != null)
@@ -42,7 +42,7 @@
     /// </summary>
     private async Task LoadDataAsync()
     {
-        var projectDetailsListResult = await ProjectClientService.GetDetails(ProjectId);
+        var projectDetailsListResult = await ProjectApiService.GetDetails(ProjectId);
         if (!projectDetailsListResult.IsSuccess)
             ToastService.ShowError(projectDetailsListResult.Errors.ParseToFragment(), projectDetailsListResult.Message);
         else

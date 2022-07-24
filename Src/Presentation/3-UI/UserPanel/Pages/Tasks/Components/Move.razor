@@ -1,5 +1,5 @@
-﻿@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICardApiService CardClientService
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskClientService
+﻿@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICardApiService CardApiService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskApiService
 
 @if (!cardsSelectList.Any())
 {
@@ -62,7 +62,7 @@ else
     /// </summary>
     private async Task GetCardsSelectList()
     {
-        var cardsResult = await CardClientService.GetSelectListItems(BoardId);
+        var cardsResult = await CardApiService.GetSelectListItems(BoardId);
         if (cardsResult.IsSuccess)
             cardsSelectList = cardsResult.Value;
         else
@@ -75,7 +75,7 @@ else
     /// </summary>
     private async Task HandleMoveTaskToAnotherCard()
     {
-        var result = await TaskClientService.MoveTaskToAnotherCard(TaskId, CardId);
+        var result = await TaskApiService.MoveTaskToAnotherCard(TaskId, CardId);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Task_Moved)

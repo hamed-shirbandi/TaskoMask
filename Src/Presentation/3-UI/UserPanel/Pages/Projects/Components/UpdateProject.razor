@@ -1,6 +1,6 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Projects
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectClientService
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectApiService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationApiService
 
 <EditForm Model="ProjectModel" OnValidSubmit="HandleUpdate">
 
@@ -83,7 +83,7 @@
     private async Task PrepareModelToUpdate()
     {
   
-        var projectResult = await ProjectClientService.Get(Id);
+        var projectResult = await ProjectApiService.Get(Id);
 
         if (projectResult.IsSuccess)
         {
@@ -110,7 +110,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await ProjectClientService.Update(Id, ProjectModel);
+        var result = await ProjectApiService.Update(Id, ProjectModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Project_Updated)
@@ -131,7 +131,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await ProjectClientService.Delete(Id);
+        var result = await ProjectApiService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Project_Deleted)

@@ -1,5 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICommentApiService CommentClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICommentApiService CommentApiService
 
 <EditForm Model="CommentModel" OnValidSubmit="HandleUpdate">
 
@@ -80,7 +80,7 @@
     private async Task PrepareModelToUpdate()
     {
 
-        var commentResult = await CommentClientService.Get(Id);
+        var commentResult = await CommentApiService.Get(Id);
 
         if (commentResult.IsSuccess)
         {
@@ -107,7 +107,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await CommentClientService.Update(Id, CommentModel);
+        var result = await CommentApiService.Update(Id, CommentModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Comment_Updated)
@@ -129,7 +129,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await CommentClientService.Delete(Id);
+        var result = await CommentApiService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Comment_Deleted)

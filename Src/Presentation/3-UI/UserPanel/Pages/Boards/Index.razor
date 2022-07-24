@@ -1,7 +1,7 @@
 ﻿@page "/board/{BoardId}"
 @page "/board/{BoardId}/task/{TaskId}"
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Boards.Components
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IBoardApiService BoardClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IBoardApiService BoardApiService
 
 @implements IDisposable
 
@@ -54,7 +54,7 @@
     /// </summary>
     private async Task LoadDataAsync()
     {
-        var boardDetailsListResult = await BoardClientService.GetDetails(BoardId);
+        var boardDetailsListResult = await BoardApiService.GetDetails(BoardId);
         if (!boardDetailsListResult.IsSuccess)
             ToastService.ShowError(boardDetailsListResult.Errors.ParseToFragment(), boardDetailsListResult.Message);
         else

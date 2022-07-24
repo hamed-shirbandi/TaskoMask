@@ -1,7 +1,7 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Cards
 @using TaskoMask.Application.Share.ViewModels
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Tasks.Components
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskApiService
 @inject TaskoMask.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
 
 <div class="card-deck">
@@ -46,7 +46,7 @@
     private async Task HandleDrop(string cardId)
     {
         var draggedTaskId = DragDropService.GetDraggedData();
-        var result = await TaskClientService.MoveTaskToAnotherCard(draggedTaskId, cardId);
+        var result = await TaskApiService.MoveTaskToAnotherCard(draggedTaskId, cardId);
 
         CommandResultHandler.Init()
             .WithResult(result)

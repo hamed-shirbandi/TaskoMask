@@ -1,7 +1,7 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Boards
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IBoardApiService BoardClientService
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectClientService
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IBoardApiService BoardApiService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectApiService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationApiService
 
 <EditForm Model="BoardModel" OnValidSubmit="HandleUpdate">
 
@@ -85,7 +85,7 @@
     private async Task PrepareModelToUpdate()
     {
 
-        var boardResult = await BoardClientService.Get(Id);
+        var boardResult = await BoardApiService.Get(Id);
 
         if (boardResult.IsSuccess)
         {
@@ -112,7 +112,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await BoardClientService.Update(Id, BoardModel);
+        var result = await BoardApiService.Update(Id, BoardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Board_Updated)
@@ -134,7 +134,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await BoardClientService.Delete(Id);
+        var result = await BoardApiService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Board_Deleted)

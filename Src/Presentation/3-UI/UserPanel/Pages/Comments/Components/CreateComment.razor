@@ -1,6 +1,6 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
 @using TaskoMask.Domain.Share.Enums
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICommentApiService CommentClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICommentApiService CommentApiService
 
 <EditForm Model="CommentModel" OnValidSubmit="HandleCreate" class="form">
     <DataAnnotationsValidator />
@@ -62,7 +62,7 @@
     /// </summary>
     private async Task HandleCreate()
     {
-        var result = await CommentClientService.Create(CommentModel);
+        var result = await CommentApiService.Create(CommentModel);
 
         CommandResultHandler.Init()
             .WithResult(result)

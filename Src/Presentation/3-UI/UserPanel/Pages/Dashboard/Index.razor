@@ -1,6 +1,6 @@
 ﻿@page "/"
 @using TaskoMask.Presentation.UI.UserPanel.Pages.Dashboard.Components
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationApiService
 @implements IDisposable
 
 @if (DataIsloading)
@@ -43,7 +43,7 @@ else
         DataIsloading = true;
         Model = new PanelDashboardViewModel();
 
-        var organizationsDetailsListResult = await OrganizationClientService.Get();
+        var organizationsDetailsListResult = await OrganizationApiService.Get();
         if (!organizationsDetailsListResult.IsSuccess)
             ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToFragment(), organizationsDetailsListResult.Message);
         else

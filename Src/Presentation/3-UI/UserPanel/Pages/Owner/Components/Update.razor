@@ -1,5 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Owners
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOwnerApiService OwnerClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOwnerApiService OwnerApiService
 
 <EditForm id="user_update_profile_form" Model="OwnerUpdateModel" OnValidSubmit="HandleUpdate">
 
@@ -60,7 +60,7 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        var ownerResult = await OwnerClientService.Get();
+        var ownerResult = await OwnerApiService.Get();
 
         if (ownerResult.IsSuccess)
         {
@@ -95,7 +95,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await OwnerClientService.Update(OwnerUpdateModel);
+        var result = await OwnerApiService.Update(OwnerUpdateModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Owner_Updated)

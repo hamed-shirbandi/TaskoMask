@@ -1,5 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskApiService
 
 <EditForm Model="TaskModel" OnValidSubmit="HandleUpdate">
 
@@ -87,7 +87,7 @@
     private async Task PrepareModelToUpdate()
     {
 
-        var taskResult = await TaskClientService.Get(Id);
+        var taskResult = await TaskApiService.Get(Id);
 
         if (taskResult.IsSuccess)
         {
@@ -115,7 +115,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await TaskClientService.Update(Id, TaskModel);
+        var result = await TaskApiService.Update(Id, TaskModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Task_Updated)
@@ -137,7 +137,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await TaskClientService.Delete(Id);
+        var result = await TaskApiService.Delete(Id);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Task_Deleted)

@@ -1,5 +1,5 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskApiService
 
 <EditForm Model="TaskModel" OnValidSubmit="HandleCreate" class="form">
     <DataAnnotationsValidator />
@@ -61,7 +61,7 @@
     /// </summary>
     private async Task HandleCreate()
     {
-        var result = await TaskClientService.Create(TaskModel);
+        var result = await TaskApiService.Create(TaskModel);
 
         CommandResultHandler.Init()
             .WithResult(result)

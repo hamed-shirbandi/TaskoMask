@@ -1,6 +1,6 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Cards
 @using TaskoMask.Domain.Share.Enums
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICardApiService CardClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICardApiService CardApiService
 
 <EditForm Model="CardModel" OnValidSubmit="HandleUpsert">
 
@@ -99,7 +99,7 @@
     {
         isUpdate = true;
 
-        var cardResult = await CardClientService.Get(CardId);
+        var cardResult = await CardApiService.Get(CardId);
 
         if (cardResult.IsSuccess)
         {
@@ -140,7 +140,7 @@
     private async Task HandleCreate()
     {
         CardModel.BoardId = BoardId;
-        var result = await CardClientService.Create(CardModel);
+        var result = await CardApiService.Create(CardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Card_Created)
@@ -156,7 +156,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await CardClientService.Update(CardId, CardModel);
+        var result = await CardApiService.Update(CardId, CardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Card_Updated)
@@ -178,7 +178,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await CardClientService.Delete(CardId);
+        var result = await CardApiService.Delete(CardId);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Card_Deleted)

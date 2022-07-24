@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Presentation.Framework.Share.ApiContracts;
 using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.UI.UserPanel.Helpers;
 
@@ -12,7 +13,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
     {
         #region Fields
 
-        private readonly IAccountApiService _accountClientService;
+        private readonly IAccountApiService _accountApiService;
         private readonly ILocalStorageService _localStorage;
         private readonly AuthenticationStateProvider _authStateProvider;
 
@@ -20,9 +21,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
 
         #region Ctor
 
-        public AuthenticationService(IAccountApiService accountClientService, ILocalStorageService localStorage, AuthenticationStateProvider authStateProvider)
+        public AuthenticationService(IAccountApiService accountApiService, ILocalStorageService localStorage, AuthenticationStateProvider authStateProvider)
         {
-            _accountClientService = accountClientService;
+            _accountApiService = accountApiService;
             _localStorage = localStorage;
             _authStateProvider = authStateProvider;
         }
@@ -38,7 +39,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// </summary>
         public async Task<Result<UserJwtTokenDto>> Login(UserLoginDto input)
         {
-            var loginResult = await _accountClientService.Login(input);
+            var loginResult = await _accountApiService.Login(input);
             return await SignInAsync(loginResult);
 
         }
@@ -50,7 +51,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// </summary>
         public async Task<Result<UserJwtTokenDto>> Register(OwnerRegisterDto input)
         {
-            var registerResult = await _accountClientService.Register(input);
+            var registerResult = await _accountApiService.Register(input);
             return await SignInAsync(registerResult);
         }
 

@@ -1,5 +1,5 @@
 ﻿@using TaskoMask.Presentation.UI.UserPanel.Pages.Tasks.Components
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskClientService
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskApiService
 @implements IDisposable
 
 
@@ -53,7 +53,7 @@ else
     /// </summary>
     private async Task GetTaskDetails()
     {
-        var taskResult = await TaskClientService.GetDetails(TaskId);
+        var taskResult = await TaskApiService.GetDetails(TaskId);
         if (taskResult.IsSuccess)
             Model = taskResult.Value;
         else

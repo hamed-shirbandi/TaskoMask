@@ -37,7 +37,10 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetListByCardIdAsync(string cardId)
         {
-            return await _tasks.AsQueryable().Where(o => o.CardId == cardId && o.IsDeleted == false).ToListAsync();
+            return await _tasks.AsQueryable()
+                .Where(o => o.CardId == cardId && o.IsDeleted == false)
+                .OrderByDescending(o => o.CreationTime.ModifiedDateTime)
+                .ToListAsync();
         }
 
 
@@ -54,7 +57,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
             return await queryable
                 .Where(o => o.OrganizationId == organizationId && o.IsDeleted == false)
-                .OrderByDescending(o => o.CreationTime.CreateDateTime)
+                .OrderByDescending(o => o.CreationTime.ModifiedDateTime)
                 .Take(takeCount)
                 .ToListAsync();
         }
@@ -72,7 +75,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
             return await queryable
                 .Where(o => boardsId.Contains(o.BoardId) && o.IsDeleted == false)
-                .OrderByDescending(o => o.CreationTime.CreateDateTime)
+                .OrderByDescending(o => o.CreationTime.ModifiedDateTime)
                 .Take(takeCount)
                 .ToListAsync();
         }
@@ -97,7 +100,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
             #region SortOrder
 
-            queryable = queryable.OrderByDescending(p => p.Id);
+            queryable = queryable.OrderByDescending(p => p.CreationTime.ModifiedDateTime);
 
             #endregion
 

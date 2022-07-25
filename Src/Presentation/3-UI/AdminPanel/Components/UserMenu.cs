@@ -2,7 +2,7 @@
 using TaskoMask.Application.Membership.Operators.Services;
 using TaskoMask.Domain.Core.Services;
 
-namespace TaskoMask.Presentation.Framework.Web.Components
+namespace TaskoMask.Presentation.UI.AdminPanle.Components
 {
     public class UserMenu : ViewComponent
     {

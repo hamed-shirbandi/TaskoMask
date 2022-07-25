@@ -13,7 +13,7 @@ namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void AddSharedConfigureServices(this IServiceCollection services)
+        public static void HttpClientService(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

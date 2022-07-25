@@ -26,7 +26,6 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddSharedConfigureServices();
             services.AddHttpServices(configuration);
             services.AddAuthorizationServices();
             services.AddApiServices();
@@ -55,6 +54,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Configuration
 
             services.AddScoped<HttpClientInterceptorService>();
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelAPI"));
+            services.HttpClientService();
 
         }
 

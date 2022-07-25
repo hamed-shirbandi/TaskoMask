@@ -34,7 +34,10 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task<IEnumerable<Activity>> GetListByTaskIdAsync(string taskId)
         {
-            return await _activities.AsQueryable().Where(o => o.TaskId == taskId).ToListAsync();
+            return await _activities.AsQueryable()
+                .Where(o => o.TaskId == taskId)
+                .OrderByDescending(o=>o.CreationTime.CreateDateTime)
+                .ToListAsync();
         }
 
 

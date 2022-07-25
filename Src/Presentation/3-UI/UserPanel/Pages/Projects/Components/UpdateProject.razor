@@ -115,7 +115,8 @@
             .WithResult(result)
             .WithComponentMessageType(MessageType.Project_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(ComponentMessageService);
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
     }
 
 

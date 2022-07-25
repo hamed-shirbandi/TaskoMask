@@ -33,8 +33,8 @@
         else
         {
             <button type="submit" class="btn btn-primary mr-1">Create</button>
+            <button @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-dark mr-1">Cancel</button>
         }
-        <button @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-dark mr-1">Cancel</button>
     </div>
 
 </EditForm>
@@ -172,7 +172,7 @@
     /// </summary>
     private async Task HandleDelete()
     {
-        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!", new ModalOptions { Class="blazored-modal w-75 w-md-50 w-md-50 bg-light-gray"});
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!", new ModalOptions { Class = "blazored-modal w-75 w-md-50 w-md-50 bg-light-gray" });
         var confirmationModalResult = await confirmationModal.Result;
 
         if (confirmationModalResult.Cancelled)

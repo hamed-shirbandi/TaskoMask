@@ -100,7 +100,8 @@
             .WithResult(result)
             .WithComponentMessageType(MessageType.Owner_Updated)
             .ShowErrorToast(ToastService)
-            .PublishMessage(ComponentMessageService);
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
     }
 
 

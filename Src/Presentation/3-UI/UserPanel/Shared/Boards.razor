@@ -54,7 +54,7 @@
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Boards.Components.CreateBoard.ProjectId), ProjectId);
         parameters.Add(nameof(Pages.Boards.Components.CreateBoard.OrganizationId), OrganizationId);
-        ModalService.Show<Pages.Boards.Components.CreateBoard>("Create board", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        ModalService.Show<Pages.Boards.Components.CreateBoard>("New board", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
     }
 
 

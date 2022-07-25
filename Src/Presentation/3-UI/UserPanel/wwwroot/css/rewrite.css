@@ -232,3 +232,7 @@ body {
         width: 75% !important;
     }
 }
+
+.blazored-modal-title{
+    font-size:1.5rem!important;
+}

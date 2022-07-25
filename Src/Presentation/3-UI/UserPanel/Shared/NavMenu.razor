@@ -22,17 +22,17 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.CreateOrUpdateOrganization>("Create new workspace", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.CreateOrUpdateOrganization>("New workspace", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
                             <i class="bi bi-building"></i>
                             New Workspace
                         </a>
 
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.CreateProject>("Create new project", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.CreateProject>("New project", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
                             <i class="bi bi-kanban"></i>
                             New Project
                         </a>
 
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.CreateBoard>("Create new board", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.CreateBoard>("New board", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
                             <i class="bi bi-clipboard-plus"></i>
                             New Board
                         </a>

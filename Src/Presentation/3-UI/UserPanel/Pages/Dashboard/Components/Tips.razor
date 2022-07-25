@@ -20,7 +20,7 @@
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Projects.Components.CreateProject.OrganizationId), Model.Organization.Id);
-        ModalService.Show<Pages.Projects.Components.CreateProject>("Create project", parameters, new ModalOptions {});
+        ModalService.Show<Pages.Projects.Components.CreateProject>("New project", parameters, new ModalOptions {});
     }
 
 }

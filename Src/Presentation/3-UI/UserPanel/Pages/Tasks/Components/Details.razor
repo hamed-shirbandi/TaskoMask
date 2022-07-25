@@ -2,6 +2,11 @@
 @inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskApiService
 @implements IDisposable
 
+<style>
+    .blazored-modal-header {
+        padding: 0px !important;
+    }
+</style>
 
 @if (Model == null)
 {
@@ -9,7 +14,7 @@
 }
 else
 {
-    <div class="row" id="task-details">
+    <div class="row m-0" id="task-details">
         <div class="col-md-8">
             <BasicInfo Model=@Model.Task></BasicInfo>
             <Comments Model=@Model.Comments TaskId=@TaskId></Comments>

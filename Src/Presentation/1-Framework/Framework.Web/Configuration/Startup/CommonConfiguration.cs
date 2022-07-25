@@ -40,52 +40,31 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddSharedConfigureServices();
-
-
             services.AddHttpContextAccessor();
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddScoped<ICookieService, CookieService>();
-
-            services.AddScoped(sp => new HttpClient
-            {
-                //default base address for calling HttpClient
-                //you can use IHttpClientServices to make HttpClient requests
-                //if you use IHttpClientServices you can change the base address by SetBaseAddress method if needed
-                BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelAPI"))
-            });
-
             services.AddMediatR(typeof(BoardBaseCommand));
-
             services.AddExceptionHandlers();
-
             services.AddBehaviors();
-
             services.AddAutoMapperSetup();
-
             //Load all fluent validation to use in ValidationBehaviour
             services.AddValidatorsFromAssembly(typeof(CreateOrganizationCommandValidation).Assembly);
-
             services.AddAutoMapperSetup();
-
             services.AddRedisCache(options =>
             {
                 configuration.GetSection("RedisCache").Bind(options);
             });
-
             // If using Kestrel:
             services.Configure<KestrelServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
             });
-
             // If using IIS:
             services.Configure<IISServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
             });
-
             services.ConfigureIocContainer();
-
         }
 
 

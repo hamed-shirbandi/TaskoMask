@@ -32,7 +32,7 @@ But the primary goal of this project is to be an effort to show how we can imple
 Try it online:
 [`Website`](http://taskomask.ir/) - [`User Panel`](http://panel.taskomask.ir) - [`Admin Panel`](http://admin.taskomask.ir/) - [`API`](http://api.taskomask.ir/)
 
-![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/taskomask-all-in-one-0.jpg)
+![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/taskomask-all-in-one-2.jpg)
 # Documentation
 We are trying to document all necessary information so you can use them to get more information about what we did and how we did and why!
 There is a list of our documentation:

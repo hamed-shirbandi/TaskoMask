@@ -8,11 +8,11 @@
     }
 </style>
 
-@if (Model == null)
+@if (DataIsloading)
 {
     <div class="spinner-loading"></div>
 }
-else
+else if (Model!=null)
 {
     <div class="row m-0" id="task-details">
         <div class="col-md-8">
@@ -32,6 +32,8 @@ else
     public string TaskId { get; set; }
 
     TaskDetailsViewModel Model;
+
+    bool DataIsloading = true;
 
     /// <summary>
     /// Access to current modal
@@ -58,6 +60,8 @@ else
     /// </summary>
     private async Task GetTaskDetails()
     {
+        DataIsloading = true;
+
         var taskResult = await TaskApiService.GetDetails(TaskId);
         if (taskResult.IsSuccess)
             Model = taskResult.Value;
@@ -68,6 +72,8 @@ else
             .ShowErrorToast(ToastService)
             .CloseModal(ModalInstance);
         }
+
+        DataIsloading = false;
     }
 
 

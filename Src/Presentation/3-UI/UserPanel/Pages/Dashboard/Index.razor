@@ -7,7 +7,7 @@
 {
     <div class="spinner-loading"></div>
 }
-else
+else if (Model.OrganizationsDetailsList.Any())
 {
     <div class="container">
         <div id="dashboard_page" class="row">
@@ -19,7 +19,7 @@ else
 
 @code {
 
-    PanelDashboardViewModel Model;
+    PanelDashboardViewModel Model= new PanelDashboardViewModel();
     bool DataIsloading = true;
 
     /// <summary>
@@ -41,8 +41,7 @@ else
     private async Task LoadDataAsync()
     {
         DataIsloading = true;
-        Model = new PanelDashboardViewModel();
-
+      
         var organizationsDetailsListResult = await OrganizationApiService.Get();
         if (!organizationsDetailsListResult.IsSuccess)
             ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToFragment(), organizationsDetailsListResult.Message);

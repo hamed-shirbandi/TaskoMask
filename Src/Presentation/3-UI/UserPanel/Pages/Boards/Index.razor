@@ -10,7 +10,11 @@
     }
 </style>
 
-@if (Model != null)
+@if (DataIsloading)
+{
+    <div class="spinner-loading"></div>
+}
+else if (Model!=null)
 {
     <div id="board_page">
         <div class="col-12 mx-auto">
@@ -30,6 +34,8 @@
     public string TaskId { get; set; }
 
     public BoardDetailsViewModel Model { get; set; }
+
+    bool DataIsloading = true;
 
 
 
@@ -53,11 +59,16 @@
     /// </summary>
     private async Task LoadDataAsync()
     {
+        DataIsloading = true;
+
         var boardDetailsListResult = await BoardApiService.GetDetails(BoardId);
         if (!boardDetailsListResult.IsSuccess)
             ToastService.ShowError(boardDetailsListResult.Errors.ParseToFragment(), boardDetailsListResult.Message);
         else
             Model = boardDetailsListResult.Value;
+
+        DataIsloading = false;
+
     }
 
 

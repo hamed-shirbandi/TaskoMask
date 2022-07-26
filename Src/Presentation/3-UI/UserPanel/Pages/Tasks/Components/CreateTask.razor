@@ -15,7 +15,6 @@
                     <button type="submit" class="btn btn-add-task">add</button>
                 </span>
             </div>
-            <ValidationMessage For="()=>TaskModel.Title" class="text-danger"></ValidationMessage>
         </div>
     </div>
 </EditForm>
@@ -62,6 +61,8 @@
     private async Task HandleCreate()
     {
         var result = await TaskApiService.Create(TaskModel);
+        if (result.IsSuccess)
+            TaskModel.Title = "";
 
         CommandResultHandler.Init()
             .WithResult(result)

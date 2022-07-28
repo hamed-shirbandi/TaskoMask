@@ -89,7 +89,7 @@ There is a list of our documentation:
         - Using Modal, Toast, etc.
       -	.HTML
       -	CSS
-      -	Java Script 
+      -	JavaScript 
       -	JQuery
       -	Bootstrap
       -	Jquery.noty
@@ -191,35 +191,39 @@ Find Hamed around the web and feel free to ask your question.
 
 # Change logs
 *	### July, 2022
-    - [x] Converted UserPanel from Blazor Server to Blazor WebAssembly
-    - [x] Completed the functionality for single owner usage
+    - [x] Convert UserPanel from Blazor Server to Blazor WebAssembly
+    - [x] Complete the functionalities for single user usage
 *	### Apr, 2022
-    - [x] Added Unit Tests
-    - [x] Added Integration Tests
-    - [x] Added Acceptance Tests
-    - [x] Added API Tests
-    - [x] Added UI Tests
+    - [x] Implement Unit Tests
+    - [x] Implement Integration Tests
+    - [x] Implement Acceptance Tests
+    - [x] Implement API Tests
+    - [x] Implement UI Tests
 *	### Jan, 2022
-    - [x] Domain model refactored by DDD concepts
+    - [x] Full refactor Domain model with DDD concepts
     - [x] Separated Domain Model and Data Model
     - [x] Separated Read Side and Write Side Database
 *	### Dec, 2021
-    - [x] Upgraded to .NET 6
+    - [x] Upgrade to .NET 6
 *	### Nov, 2021
-    - [x] Started user panel with Blazor Server
+    - [x] Convert user panel from ASP.NET MVC to Blazor Server
 *	### Oct, 2021
-    - [x] Started admin panel with ASP.NET MVC
-    - [x] Implemented administration subdomain by CRUD
+    - [x] Implement admin panel with ASP.NET MVC
+    - [x] Implement administration subdomain
 *	### Aug, 2021
-    - [x] Removed Asp.net Identity from project
-    - [x] Added cookie authentication
-    - [x] Added jwt authorization
+    - [x] Remove Asp.net Identity
+    - [x] Add cookie authentication
+    - [x] Add JWT authorization
+    - [x] Implement API with ASP.NET Web API
  * ### Jul, 2021
     - [x] Full refactore
  * ### Nov, 2020
-    - [x] Upgraded from net 3.1 to net 5
+    - [x] Upgrad from net 3.1 to net 5
+    - [x] Implement user panel with ASP.NET MVC
 *	### Oct, 2020
-    - [x] Repository Created
+    - [x] Implement Website with ASP.NET MVC
+    - [x] Implement Anemic Domain Model
+    - [x] Create Repository
   
 
 

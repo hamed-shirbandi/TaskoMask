@@ -22,7 +22,7 @@ namespace TaskoMask.Domain.Share.Helpers
         public const int Board_Name_Max_Length = 50;
         public const int Board_Description_Min_Length = 3;
         public const int Board_Description_Max_Length = 100;
-        public const int Board_Max_Card_Count = 4;
+        public const int Board_Max_Card_Count = 10;
         public const int Board_Max_Task_Count = 1000;
         public const int Board_Max_Member_Count = 10;
 

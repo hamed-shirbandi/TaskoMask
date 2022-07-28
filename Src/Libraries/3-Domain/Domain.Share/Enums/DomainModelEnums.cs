@@ -23,14 +23,15 @@ namespace TaskoMask.Domain.Share.Enums
     /// </summary>
     public enum BoardCardType
     {
-        [Display(Name = nameof(DomainMetadata.CardType_ToDo), ResourceType = typeof(DomainMetadata))]
-        ToDo = 0,
-        [Display(Name = nameof(DomainMetadata.CardType_Doing), ResourceType = typeof(DomainMetadata))]
-        Doing = 1,
-        [Display(Name = nameof(DomainMetadata.CardType_Done), ResourceType = typeof(DomainMetadata))]
-        Done = 2,
         [Display(Name = nameof(DomainMetadata.CardType_Backlog), ResourceType = typeof(DomainMetadata))]
-        Backlog = 3,
+        Backlog = 0,
+        [Display(Name = nameof(DomainMetadata.CardType_ToDo), ResourceType = typeof(DomainMetadata))]
+        ToDo = 1,
+        [Display(Name = nameof(DomainMetadata.CardType_Doing), ResourceType = typeof(DomainMetadata))]
+        Doing = 2,
+        [Display(Name = nameof(DomainMetadata.CardType_Done), ResourceType = typeof(DomainMetadata))]
+        Done = 3,
+
     }
 
 
@@ -39,8 +40,8 @@ namespace TaskoMask.Domain.Share.Enums
     /// </summary>
     public enum UserType
     {
-        Owner=0,
-        Operator=1
+        Owner = 0,
+        Operator = 1
     }
 
 }

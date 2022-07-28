@@ -83,7 +83,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
             #region SortOrder
 
-            queryable = queryable.OrderByDescending(p => p.Id);
+            queryable = queryable.OrderByDescending(p => p.CreationTime.CreateDateTime);
 
             #endregion
 

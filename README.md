@@ -159,12 +159,7 @@ There is a list of our documentation:
 
 # Contributing
 Contributions, issues, and feature requests are welcome. Feel free to check issues page if you want to contribute. Any contributions you make are greatly appreciated.
-Please check the issues and [projects](https://github.com/hamed-shirbandi/TaskoMask/projects) pages before anything.
-  > 1. Give a Star
-  > 2. Fork the Project
-  > 3. Create your Feature Branch
-  > 4. Commit your Changes
-  > 5. Open a Pull Request
+  >Please see the [Contribution Guide](https://github.com/hamed-shirbandi/TaskoMask/tree/master/docs/CONTRIBUTING.md) and follow the instructions to be a part of this project.
 
 This project exists thanks to all the people who [contribute](https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors).
 

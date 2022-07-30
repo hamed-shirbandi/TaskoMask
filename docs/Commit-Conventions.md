@@ -15,13 +15,13 @@ empty separator line
 # Type
 Type Must be one of the following:
 
-- feat: A new feature
-- fix: A bug fix
-- refactor: A change that refactor the current code
-- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
-- test: Adding missing tests or correcting existing tests
-- docs: Documentation only changes
-- chore: a catch-all type for any other commits. For instance, if you're implementing a single feature and it makes sense to divide the work into multiple commits, you should mark one commit as feat and the rest as chore.
+- **feat**: a new feature
+- **fix**: a bug fix
+- **refactor**: a change that refactor the current code
+- **style**: changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
+- **test**: adding missing tests or correcting existing tests
+- **docs**: documentation only changes
+- **chore**: a catch-all type for any other commits. For instance, if you're implementing a single feature and it makes sense to divide the work into multiple commits, you should mark one commit as feat and the rest as chore.
 
 ## Subject
 The subject contains a succinct description of the change.

@@ -78,6 +78,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{D33831F5-8FD5-408F-90DF-7907CBACA8D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{A5ACB1F9-60A6-46DB-9602-7987BE5941B7}"
+	ProjectSection(SolutionItems) = preProject
+		Src\Libraries\2-Application\Application\README.md = Src\Libraries\2-Application\Application\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

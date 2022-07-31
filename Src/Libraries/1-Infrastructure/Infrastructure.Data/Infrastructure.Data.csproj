@@ -18,6 +18,8 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Common\" />
+	  <Folder Include="ReadModel\" />
+	  <Folder Include="WriteModel\" />
 	</ItemGroup>
 
 </Project>

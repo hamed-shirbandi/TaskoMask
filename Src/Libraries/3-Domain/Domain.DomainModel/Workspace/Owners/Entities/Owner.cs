@@ -5,13 +5,13 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Projects;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Organizations;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Projects;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
+namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 {
     /// <summary>
     /// Owners are those who manage their tasks in this system

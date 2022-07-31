@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Members
+namespace TaskoMask.Domain.DomainModel.Workspace.Boards.ValueObjects.Members
 {
     public class MemberOwnerId : BaseValueObject
     {

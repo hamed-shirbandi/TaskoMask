@@ -1,8 +1,8 @@
 ﻿using TaskoMask.Domain.Core.Specifications;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Specifications
+namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Specifications
 {
     internal class BoardNameMustUniqueSpecification : ISpecification<Board>
     {

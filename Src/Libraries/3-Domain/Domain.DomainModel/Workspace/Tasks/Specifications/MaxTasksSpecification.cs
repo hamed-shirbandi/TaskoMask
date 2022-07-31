@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Domain.Core.Specifications;
 using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Specifications
+namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Specifications
 {
     internal class MaxTasksSpecification : ISpecification<Task>
     {

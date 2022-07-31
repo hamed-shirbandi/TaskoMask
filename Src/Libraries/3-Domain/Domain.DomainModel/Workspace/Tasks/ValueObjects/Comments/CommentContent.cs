@@ -3,7 +3,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.ValueObjects.Comments
+namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.ValueObjects.Comments
 {
     public class CommentContent : BaseValueObject
     {

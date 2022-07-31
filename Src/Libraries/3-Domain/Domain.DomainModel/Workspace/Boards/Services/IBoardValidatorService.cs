@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Services
+namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Services
 {
     /// <summary>
     /// Some validations that need persistence layer to do

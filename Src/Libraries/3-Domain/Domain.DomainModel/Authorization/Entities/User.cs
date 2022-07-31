@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Enums;
 
-namespace TaskoMask.Domain.WriteModel.Authorization.Entities
+namespace TaskoMask.Domain.DomainModel.Authorization.Entities
 {
     public class User : BaseEntity
     {

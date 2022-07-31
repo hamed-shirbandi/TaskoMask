@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Comments
+namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Comments
 {
     public class CommentUpdatedEvent : DomainEvent
     {

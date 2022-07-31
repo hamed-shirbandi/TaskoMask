@@ -1,8 +1,8 @@
 ﻿using TaskoMask.Domain.Core.Events;
 using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards
+namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Cards
 {
     public class CardCreatedEvent : DomainEvent
     {

@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Organizations
+namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Organizations
 {
     public class OrganizationRecycledEvent : DomainEvent
     {

@@ -1,10 +1,10 @@
 ﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Projects;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Projects;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Entities
+namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 {
     public class Project : BaseEntity
     {

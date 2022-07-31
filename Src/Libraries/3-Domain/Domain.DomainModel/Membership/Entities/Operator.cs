@@ -3,7 +3,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.WriteModel.Membership.Entities
+namespace TaskoMask.Domain.DomainModel.Membership.Entities
 {
     /// <summary>
     /// opertors of admin panel

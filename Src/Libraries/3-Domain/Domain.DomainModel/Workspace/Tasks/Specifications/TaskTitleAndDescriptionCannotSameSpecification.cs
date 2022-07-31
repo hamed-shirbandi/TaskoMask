@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Specifications;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Specifications
+namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Specifications
 {
     internal class TaskTitleAndDescriptionCannotSameSpecification : ISpecification<Task>
     {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Data
+namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Data
 {
     public interface ITaskAggregateRepository : IBaseAggregateRepository<Entities.Task>
     {

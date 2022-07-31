@@ -3,9 +3,9 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Members;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.ValueObjects.Members;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
+namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
 {
     /// <summary>
     /// Member of a board

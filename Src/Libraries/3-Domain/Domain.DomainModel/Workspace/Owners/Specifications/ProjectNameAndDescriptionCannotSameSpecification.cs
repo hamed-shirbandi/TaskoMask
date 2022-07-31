@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Specifications;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Owners.Specifications
+namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications
 {
     internal class ProjectNameAndDescriptionCannotSameSpecification : ISpecification<Project>
     {

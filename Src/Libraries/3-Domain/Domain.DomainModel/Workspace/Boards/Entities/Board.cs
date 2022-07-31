@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Boards;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Members;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Boards;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Members;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Cards;
 using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Specifications;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Specifications;
 using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Boards.Entities
+namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
 {
     public class Board: AggregateRoot
     {

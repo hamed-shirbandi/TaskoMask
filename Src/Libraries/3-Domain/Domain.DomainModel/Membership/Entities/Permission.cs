@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.Core.Models;
 
 
-namespace TaskoMask.Domain.WriteModel.Membership.Entities
+namespace TaskoMask.Domain.DomainModel.Membership.Entities
 {
     public class Permission : BaseEntity
     {

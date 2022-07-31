@@ -4,13 +4,13 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Comments;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Tasks;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Specifications;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.ValueObjects.Tasks;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Comments;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Tasks;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Specifications;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.ValueObjects.Tasks;
 
-namespace TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities
+namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
 
 {
     public class Task : AggregateRoot

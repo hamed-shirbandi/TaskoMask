@@ -13,7 +13,7 @@ namespace TaskoMask.Application.Tests.Integration.Fixtures
     /// So, we have control over parallel test run and lower cost for creating database for tests
     /// ------------------* But *-----------------------------------------------
     /// If you want the fixture to be initialized and disposed for each test method in a class
-    /// You just need to make a new dixture class by Inheriting from TestsBaseFixture (public class MyFixture:TestsBaseFixture)
+    /// You just need to make a new fixture class by Inheriting from TestsBaseFixture (public class MyFixture:TestsBaseFixture)
     /// And use that new fixture class as a base for the test class (public class MyTestsClass:MyFixture)
     /// So the fixture initialize before each test method and then dispose after that test run
     /// ------------------* But *-----------------------------------------------

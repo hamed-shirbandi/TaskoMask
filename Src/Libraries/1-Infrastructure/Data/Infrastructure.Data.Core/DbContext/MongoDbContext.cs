@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using MongoDB.Driver;
-using Microsoft.Extensions.Configuration;
 using System.Linq;
 
 namespace TaskoMask.Infrastructure.Data.Core.DbContext

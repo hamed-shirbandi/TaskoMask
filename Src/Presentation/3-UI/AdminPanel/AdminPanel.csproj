@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Workspace\Models\" />
-    <Folder Include="Demo\" />
   </ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\1-Framework\Framework.Web\Framework.Web.csproj" />

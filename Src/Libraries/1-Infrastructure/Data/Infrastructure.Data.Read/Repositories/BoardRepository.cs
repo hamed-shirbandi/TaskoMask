@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
+using TaskoMask.Infrastructure.Data.Read.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
+namespace TaskoMask.Infrastructure.Data.Read.Repositories
 {
     public class BoardRepository : BaseRepository<Board>, IBoardRepository
     {

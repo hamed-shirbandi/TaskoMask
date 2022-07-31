@@ -4,9 +4,9 @@ using TaskoMask.Infrastructure.Data.Core.Extensions;
 using System;
 using TaskoMask.Infrastructure.Data.Core.DbContext;
 using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
+using TaskoMask.Infrastructure.Data.Read.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
+namespace TaskoMask.Infrastructure.Data.Read.DataProviders
 {
 
     /// <summary>

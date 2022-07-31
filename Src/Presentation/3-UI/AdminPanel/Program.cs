@@ -1,5 +1,5 @@
 using Serilog;
-using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
+using TaskoMask.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 

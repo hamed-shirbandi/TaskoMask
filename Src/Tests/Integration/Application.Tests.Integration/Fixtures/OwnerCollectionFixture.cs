@@ -7,7 +7,7 @@ using TaskoMask.Application.Workspace.Organizations.Services;
 using TaskoMask.Application.Workspace.Owners.Services;
 using TaskoMask.Application.Workspace.Projects.Services;
 using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
+using TaskoMask.Infrastructure.Data.Read.DbContext;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Integration.Fixtures

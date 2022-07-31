@@ -16,7 +16,7 @@ using TaskoMask.Application.Mapper;
 using TaskoMask.Application.Workspace.Organizations.Commands.Validations;
 using TaskoMask.Domain.Core.Events;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
-using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
+using TaskoMask.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Presentation.Framework.Web.Services.Authentication;
 using TaskoMask.Presentation.Framework.Web.Services.Cookie;

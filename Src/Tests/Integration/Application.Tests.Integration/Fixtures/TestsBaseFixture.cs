@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Infrastructure.Data.ReadModel.DataProviders;
+using TaskoMask.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 

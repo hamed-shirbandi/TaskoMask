@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.Linq;
 using TaskoMask.Infrastructure.Data.Core.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.ReadModel.DbContext
+namespace TaskoMask.Infrastructure.Data.Read.DbContext
 {
 
     /// <summary>

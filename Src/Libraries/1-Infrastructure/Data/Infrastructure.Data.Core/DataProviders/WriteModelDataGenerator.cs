@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Linq;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.DomainModel.Authorization.Entities;
@@ -226,9 +224,9 @@ namespace TaskoMask.Infrastructure.Data.Core.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<Task> GenerateTasks(IEnumerable<Board> boards, ITaskValidatorService taskValidatorService)
+        public static IEnumerable<Domain.DomainModel.Workspace.Tasks.Entities.Task> GenerateTasks(IEnumerable<Board> boards, ITaskValidatorService taskValidatorService)
         {
-            var items = new List<Task>();
+            var items = new List<Domain.DomainModel.Workspace.Tasks.Entities.Task>();
 
             foreach (var board in boards)
                 foreach (var card in board.Cards)
@@ -236,7 +234,7 @@ namespace TaskoMask.Infrastructure.Data.Core.DataProviders
                     var tasks = ReadModelDataGenerator.GenerateTasks();
                     foreach (var task in tasks)
                     {
-                        var taskAggregate = Task.CreateTask(task.Title, task.Description, card.Id, board.Id, taskValidatorService);
+                        var taskAggregate = Domain.DomainModel.Workspace.Tasks.Entities.Task.CreateTask(task.Title, task.Description, card.Id, board.Id, taskValidatorService);
                         items.Add(taskAggregate);
                     }
                 }

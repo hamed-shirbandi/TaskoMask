@@ -29,7 +29,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
                 var _projects = _readDbContext.GetCollection<Project>();
                 var _boards = _readDbContext.GetCollection<Board>();
                 var _cards = _readDbContext.GetCollection<Card>();
-                var _tasks = _readDbContext.GetCollection<Task>();
+                var _tasks = _readDbContext.GetCollection<Domain.DataModel.Entities.Task>();
                 var _members = _readDbContext.GetCollection<Member>();
 
                 var _ownerAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Owners.Entities.Owner>();
@@ -130,7 +130,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
                         var board = _boardAggregate.AsQueryable().FirstOrDefault(o => o.Id == task.BoardId.Value);
                         var project = _projects.AsQueryable().FirstOrDefault(o => o.Id == board.ProjectId.Value);
 
-                        _tasks.InsertOne(new Task(task.Id)
+                        _tasks.InsertOne(new Domain.DataModel.Entities.Task(task.Id)
                         {
                             Title = task.Title.Value,
                             Description = task.Description.Value,

@@ -1,12 +1,6 @@
-﻿
-using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Linq;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.DataModel.Entities;
+﻿using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
 
 namespace TaskoMask.Infrastructure.Data.Core.DataProviders
 {
@@ -118,12 +112,12 @@ namespace TaskoMask.Infrastructure.Data.Core.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<Task> GenerateTasks()
+        public static IEnumerable<Domain.DataModel.Entities.Task> GenerateTasks()
         {
-            var items = new List<Task>();
+            var items = new List<Domain.DataModel.Entities.Task>();
             for (int i = 1; i <= 2; i++)
             {
-                items.Add(new Task(i.ToString())
+                items.Add(new Domain.DataModel.Entities.Task(i.ToString())
                 {
                     Title = $"Task_Title_{i}",
                     Description = "This is a test content for this task!",

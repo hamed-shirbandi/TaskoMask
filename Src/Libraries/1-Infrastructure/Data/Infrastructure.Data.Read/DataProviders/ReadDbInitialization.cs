@@ -55,8 +55,8 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
             if (!collections.Has<Card>())
                 dbContext.CreateCollection<Card>();
 
-            if (!collections.Has<Task>())
-                dbContext.CreateCollection<Task>();
+            if (!collections.Has<Domain.DataModel.Entities.Task>())
+                dbContext.CreateCollection<Domain.DataModel.Entities.Task>();
        
             if (!collections.Has<Member>())
                 dbContext.CreateCollection<Member>();
@@ -111,8 +111,8 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
 
             #region Task Indexs
 
-            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = "CardId" }));
+            dbContext.GetCollection<Domain.DataModel.Entities.Task>().Indexes.CreateOneAsync(new CreateIndexModel<Domain.DataModel.Entities.Task>(Builders<Domain.DataModel.Entities.Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Domain.DataModel.Entities.Task>().Indexes.CreateOneAsync(new CreateIndexModel<Domain.DataModel.Entities.Task>(Builders<Domain.DataModel.Entities.Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = "CardId" }));
 
 
             #endregion

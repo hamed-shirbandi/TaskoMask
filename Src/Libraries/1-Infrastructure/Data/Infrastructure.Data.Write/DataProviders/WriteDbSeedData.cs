@@ -77,7 +77,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
 
                 var _ownerAggregate = _writeDbContext.GetCollection<Owner>();
                 var _boardAggregate = _writeDbContext.GetCollection<Board>();
-                var _taskAggregate = _writeDbContext.GetCollection<Task>();
+                var _taskAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task>();
 
                 #endregion
 

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
+using TaskoMask.Infrastructure.Data.Write.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
+namespace TaskoMask.Infrastructure.Data.Write.Repositories.Workspace
 {
     public class TaskAggregateRepository : BaseAggregateRepository<Domain.DomainModel.Workspace.Tasks.Entities.Task>, ITaskAggregateRepository
     {

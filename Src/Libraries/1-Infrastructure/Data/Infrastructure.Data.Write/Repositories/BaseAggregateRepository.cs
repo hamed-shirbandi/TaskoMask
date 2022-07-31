@@ -6,9 +6,9 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
+using TaskoMask.Infrastructure.Data.Write.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories
+namespace TaskoMask.Infrastructure.Data.Write.Repositories
 {
     public class BaseAggregateRepository<TEntity> : BaseRepository<TEntity>, IBaseAggregateRepository<TEntity> where TEntity : AggregateRoot
     {

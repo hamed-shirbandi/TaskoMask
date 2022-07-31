@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.DomainModel.Membership.Data;
 using TaskoMask.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
+using TaskoMask.Infrastructure.Data.Write.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Membership
+namespace TaskoMask.Infrastructure.Data.Write.Repositories.Membership
 {
     public class OperatorRepository : BaseRepository<Operator>, IOperatorRepository
     {

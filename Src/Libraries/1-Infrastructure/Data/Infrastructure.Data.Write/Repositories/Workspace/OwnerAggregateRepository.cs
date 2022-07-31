@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
+using TaskoMask.Infrastructure.Data.Write.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
+namespace TaskoMask.Infrastructure.Data.Write.Repositories.Workspace
 {
     public class OwnerAggregateRepository : BaseAggregateRepository<Owner>, IOwnerAggregateRepository
     {

@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 
-namespace TaskoMask.Infrastructure.Data.WriteModel.Services
+namespace TaskoMask.Infrastructure.Data.Write.Services
 {
 
     /// <summary>

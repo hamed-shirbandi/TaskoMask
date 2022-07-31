@@ -15,7 +15,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Application.Mapper;
 using TaskoMask.Application.Workspace.Organizations.Commands.Validations;
 using TaskoMask.Domain.Core.Events;
-using TaskoMask.Infrastructure.Data.WriteModel.DataProviders;
+using TaskoMask.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Presentation.Framework.Web.Services.Authentication;

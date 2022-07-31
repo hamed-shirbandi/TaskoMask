@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.Read.DbContext;
-using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
+using TaskoMask.Infrastructure.Data.Write.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.Read.DataProviders
 {

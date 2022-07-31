@@ -9,12 +9,12 @@ using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
+using TaskoMask.Infrastructure.Data.Write.DbContext;
 using TaskoMask.Infrastructure.Data.Core.DataProviders;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
 
-namespace TaskoMask.Infrastructure.Data.WriteModel.DataProviders
+namespace TaskoMask.Infrastructure.Data.Write.DataProviders
 {
 
     /// <summary>

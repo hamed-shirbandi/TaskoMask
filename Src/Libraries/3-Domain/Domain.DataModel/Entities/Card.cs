@@ -3,7 +3,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.ReadModel.Entities
+namespace TaskoMask.Domain.DataModel.Entities
 {
     public class Card : BaseEntity
     {

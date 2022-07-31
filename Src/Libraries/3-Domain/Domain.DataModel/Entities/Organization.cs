@@ -2,16 +2,16 @@
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.ReadModel.Entities
+namespace TaskoMask.Domain.DataModel.Entities
 {
-    public class Project : BaseEntity
+    public class Organization : BaseEntity
     {
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id">Id Must sync with write side DB</param>
-        public Project(string id)
+        public Organization(string id)
         {
             if (string.IsNullOrEmpty(id))
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(id)));
@@ -20,11 +20,9 @@ namespace TaskoMask.Domain.ReadModel.Entities
         }
 
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string OrganizationId { get; set; }
+        public string Name { get;  set; }
+        public string Description { get;  set; }
         public string OwnerId { get; set; }
-
 
         #region Update private properties
 
@@ -47,6 +45,5 @@ namespace TaskoMask.Domain.ReadModel.Entities
         }
 
         #endregion
-
     }
 }

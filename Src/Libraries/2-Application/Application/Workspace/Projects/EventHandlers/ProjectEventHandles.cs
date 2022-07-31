@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Threading;
-using TaskoMask.Domain.ReadModel.Data;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Data;
+using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Projects;
 
 namespace TaskoMask.Application.Workspace.Projects.EventHandlers

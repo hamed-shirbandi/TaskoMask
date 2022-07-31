@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.WriteModel.Authorization.Entities;
 using TaskoMask.Domain.WriteModel.Membership.Entities;

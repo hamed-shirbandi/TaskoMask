@@ -2,7 +2,7 @@
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Entities;
 
 namespace TaskoMask.Application.Mapper.MappingActions
 {

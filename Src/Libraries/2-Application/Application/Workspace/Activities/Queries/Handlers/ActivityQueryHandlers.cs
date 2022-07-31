@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Activities.Queries.Models;
 using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Application.Share.Dtos.Workspace.Activities;
 
 namespace TaskoMask.Application.Workspace.Activities.Queries.Handlers

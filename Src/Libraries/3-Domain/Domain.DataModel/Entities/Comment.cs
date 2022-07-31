@@ -2,15 +2,19 @@
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.ReadModel.Entities
+namespace TaskoMask.Domain.DataModel.Entities
 {
-    public class Board : BaseEntity
+    /// <summary>
+    /// Every board's member can leave comment on tasks
+    /// </summary>
+    public class Comment : BaseEntity
     {
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id">Id Must sync with write side DB</param>
-        public Board(string id)
+        public Comment(string id)
         {
             if (string.IsNullOrEmpty(id))
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(id)));
@@ -19,11 +23,8 @@ namespace TaskoMask.Domain.ReadModel.Entities
         }
 
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ProjectId { get; set; }
-        public string OrganizationId { get; set; }
-        public string OwnerId { get; set; }
+        public string Content { get; set; }
+        public string TaskId { get; set; }
 
 
         #region Update private properties
@@ -35,17 +36,12 @@ namespace TaskoMask.Domain.ReadModel.Entities
         }
 
 
-        public void SetAsRecycled()
-        {
-            base.Recycle();
-            SetAsUpdated();
-        }
-
         public void SetAsUpdated()
         {
             base.UpdateModifiedDateTime();
         }
 
         #endregion
+
     }
 }

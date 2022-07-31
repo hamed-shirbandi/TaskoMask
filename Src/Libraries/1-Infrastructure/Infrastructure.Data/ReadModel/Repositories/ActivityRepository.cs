@@ -2,8 +2,8 @@
 using MongoDB.Driver.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.ReadModel.Data;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Data;
+using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 

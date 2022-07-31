@@ -10,7 +10,7 @@ using TaskoMask.Application.Core.Queries;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.DataModel.Data;
 
 namespace TaskoMask.Application.Workspace.Comments.Queries.Handlers
 {

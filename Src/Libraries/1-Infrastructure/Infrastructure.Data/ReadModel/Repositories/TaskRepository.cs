@@ -4,18 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 {
-    public class TaskRepository : BaseRepository<Domain.ReadModel.Entities.Task>, ITaskRepository
+    public class TaskRepository : BaseRepository<Domain.DataModel.Entities.Task>, ITaskRepository
     {
         #region Fields
 
-        private readonly IMongoCollection<Domain.ReadModel.Entities.Task> _tasks;
+        private readonly IMongoCollection<Domain.DataModel.Entities.Task> _tasks;
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
 
         public TaskRepository(IReadDbContext dbContext) : base(dbContext)
         {
-            _tasks = dbContext.GetCollection<Domain.ReadModel.Entities.Task>();
+            _tasks = dbContext.GetCollection<Domain.DataModel.Entities.Task>();
         }
 
         #endregion
@@ -35,7 +35,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetListByCardIdAsync(string cardId)
+        public async Task<IEnumerable<Domain.DataModel.Entities.Task>> GetListByCardIdAsync(string cardId)
         {
             return await _tasks.AsQueryable()
                 .Where(o => o.CardId == cardId && o.IsDeleted == false)
@@ -48,7 +48,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount, BoardCardType? cardType)
+        public async Task<IEnumerable<Domain.DataModel.Entities.Task>> GetListByOrganizationIdAsync(string organizationId, int takeCount, BoardCardType? cardType)
         {
             var queryable = _tasks.AsQueryable();
 
@@ -67,7 +67,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<Domain.ReadModel.Entities.Task>> GetPendingTasksByBoardsIdAsync(string[] boardsId, int takeCount)
+        public async Task<IEnumerable<Domain.DataModel.Entities.Task>> GetPendingTasksByBoardsIdAsync(string[] boardsId, int takeCount)
         {
             var queryable = _tasks.AsQueryable();
 
@@ -85,7 +85,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public IEnumerable<Domain.ReadModel.Entities.Task> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
+        public IEnumerable<Domain.DataModel.Entities.Task> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
         {
             var queryable = _tasks.AsQueryable();
 
@@ -138,7 +138,7 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories
         /// </summary>
         public async Task BulkUpdateCardTypeByCardIdAsync(string cardId, BoardCardType cardType)
         {
-            await _tasks.UpdateManyAsync(b => b.CardId == cardId, Builders<Domain.ReadModel.Entities.Task>.Update.Set(p => p.CardType, cardType));
+            await _tasks.UpdateManyAsync(b => b.CardId == cardId, Builders<Domain.DataModel.Entities.Task>.Update.Set(p => p.CardType, cardType));
         }
         
 

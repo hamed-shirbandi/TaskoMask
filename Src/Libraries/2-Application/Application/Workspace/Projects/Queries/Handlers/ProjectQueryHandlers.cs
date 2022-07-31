@@ -11,7 +11,7 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.DataModel.Data;
 
 namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
 {

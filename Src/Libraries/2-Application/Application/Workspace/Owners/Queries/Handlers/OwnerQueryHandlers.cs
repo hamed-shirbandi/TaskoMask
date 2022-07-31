@@ -13,7 +13,7 @@ using TaskoMask.Application.Share.Helpers;
 using System.Collections.Generic;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.DataModel.Data;
 
 namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
 {

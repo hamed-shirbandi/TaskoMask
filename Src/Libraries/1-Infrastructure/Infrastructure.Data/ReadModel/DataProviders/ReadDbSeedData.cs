@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using System;
 using System.Linq;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 

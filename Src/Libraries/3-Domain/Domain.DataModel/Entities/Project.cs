@@ -1,31 +1,30 @@
-﻿using System;
-using TaskoMask.Domain.Core.Exceptions;
+﻿using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.ReadModel.Entities
+namespace TaskoMask.Domain.DataModel.Entities
 {
-    /// <summary>
-    /// Owners are those who manage their tasks in this system
-    /// </summary>
-    public class Owner : BaseEntity
+    public class Project : BaseEntity
     {
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id">Id Must sync with write side DB</param>
-        public Owner(string id)
+        public Project(string id)
         {
             if (string.IsNullOrEmpty(id))
                 throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(id)));
-            
+
             base.SetId(id);
         }
 
-        public string UserName { get; set; }
-        public bool IsActive { get; set; }
-        public string DisplayName { get; set; }
-        public string Email { get; set; }
+
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string OrganizationId { get; set; }
+        public string OwnerId { get; set; }
+
 
         #region Update private properties
 
@@ -48,5 +47,6 @@ namespace TaskoMask.Domain.ReadModel.Entities
         }
 
         #endregion
+
     }
 }

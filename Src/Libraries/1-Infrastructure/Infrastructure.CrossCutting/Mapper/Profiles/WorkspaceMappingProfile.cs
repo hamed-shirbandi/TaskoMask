@@ -5,7 +5,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
 using TaskoMask.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Application.Share.Dtos.Workspace.Activities;
 using TaskoMask.Application.Share.Dtos.Workspace.Comments;
 

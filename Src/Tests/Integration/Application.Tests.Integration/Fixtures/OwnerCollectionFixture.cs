@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Organizations.Services;
 using TaskoMask.Application.Workspace.Owners.Services;
 using TaskoMask.Application.Workspace.Projects.Services;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 using Xunit;
 

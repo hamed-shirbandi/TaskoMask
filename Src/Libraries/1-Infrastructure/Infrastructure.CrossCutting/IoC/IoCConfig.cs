@@ -29,7 +29,7 @@ using TaskoMask.Application.Authorization.Users.Services;
 using TaskoMask.Infrastructure.Data.WriteModel.Services;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 using TaskoMask.Infrastructure.Data.ReadModel.Repositories;
-using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;

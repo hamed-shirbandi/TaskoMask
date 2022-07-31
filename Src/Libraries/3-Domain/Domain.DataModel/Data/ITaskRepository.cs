@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Share.Enums;
 
-namespace TaskoMask.Domain.ReadModel.Data
+namespace TaskoMask.Domain.DataModel.Data
 {
     public interface ITaskRepository : IBaseRepository<Entities.Task>
     {

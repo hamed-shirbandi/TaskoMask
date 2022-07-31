@@ -13,7 +13,7 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
-using TaskoMask.Domain.ReadModel.Data;
+using TaskoMask.Domain.DataModel.Data;
 
 namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
 {

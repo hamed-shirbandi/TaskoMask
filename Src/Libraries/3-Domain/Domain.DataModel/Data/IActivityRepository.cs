@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
 
-namespace TaskoMask.Domain.ReadModel.Data
+namespace TaskoMask.Domain.DataModel.Data
 {
 
     public interface IActivityRepository : IBaseRepository<Entities.Activity>

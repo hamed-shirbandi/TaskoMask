@@ -3,7 +3,7 @@ using MongoDB.Driver;
 using TaskoMask.Infrastructure.Data.Common.Extensions;
 using System;
 using TaskoMask.Infrastructure.Data.Common.DbContext;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Entities;
 
-namespace TaskoMask.Domain.ReadModel.Data
+namespace TaskoMask.Domain.DataModel.Data
 {
 
     public interface IProjectRepository: IBaseRepository<Project>

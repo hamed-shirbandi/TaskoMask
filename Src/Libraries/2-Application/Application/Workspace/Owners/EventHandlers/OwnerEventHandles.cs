@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Domain.ReadModel.Data;
-using TaskoMask.Domain.ReadModel.Entities;
+using TaskoMask.Domain.DataModel.Data;
+using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Domain.WriteModel.Authorization.Data;
 using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
 

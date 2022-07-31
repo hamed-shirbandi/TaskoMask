@@ -4,7 +4,7 @@ using TaskoMask.Domain.DomainModel.Authorization.Entities;
 
 namespace TaskoMask.Infrastructure.Data.Generator.ReadDB
 {
-    public static class ReadDbDataGenerator
+    internal static class ReadDbDataGenerator
     {
 
         /// <summary>

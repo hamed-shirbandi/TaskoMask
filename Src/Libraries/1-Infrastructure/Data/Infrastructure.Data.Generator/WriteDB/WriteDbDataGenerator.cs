@@ -1,50 +1,16 @@
-﻿using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Share.Enums;
+﻿using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
-using Microsoft.Extensions.Configuration;
+using TaskoMask.Infrastructure.Data.Generator.ReadDB;
 
 namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
 {
-    public static class WriteDbDataGenerator
+    internal static class WriteDbDataGenerator
     {
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static User GetSuperUser(IConfiguration configuration, IEncryptionService encryptionService)
-        {
-            var passwordSalt = encryptionService.CreateSaltKey(5);
-
-            return new User
-            {
-                UserName = configuration["SuperUser:Email"],
-                IsActive = true,
-                PasswordSalt = passwordSalt,
-                PasswordHash = encryptionService.CreatePasswordHash(configuration["SuperUser:Password"], passwordSalt)
-            };
-
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static Operator GetAdminOperator(string userId, IConfiguration configuration)
-        {
-            return new Operator(userId)
-            {
-                DisplayName = configuration["SuperUser:DisplayName"],
-                Email = configuration["SuperUser:Email"],
-            };
-
-        }
-
 
 
         /// <summary>

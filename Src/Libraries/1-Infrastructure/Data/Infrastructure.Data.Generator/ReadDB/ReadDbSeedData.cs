@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using System;
-using System.Linq;
 using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.Read.DbContext;
 using TaskoMask.Infrastructure.Data.Write.DbContext;
@@ -12,13 +10,13 @@ namespace TaskoMask.Infrastructure.Data.Generator.ReadDB
     /// <summary>
     /// 
     /// </summary>
-    public static class ReadDbSeedData
+    internal static class ReadDbSeedData
     {
 
         /// <summary>
         /// Sync sample data that is inserted from WriteDbSeedData.SeedSampleData
         /// </summary>
-        public static void SyncSampleData(IServiceProvider serviceProvider)
+        public static void SyncSampleDataWithWriteDB(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {

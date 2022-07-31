@@ -3,7 +3,6 @@ using TaskoMask.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.Write.DbContext;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
@@ -17,40 +16,8 @@ namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
     /// <summary>
     /// 
     /// </summary>
-    public static class WriteDbSeedData
+    internal static class WriteDbSeedData
     {
-
-
-        /// <summary>
-        /// Seed the necessary data that system needs
-        /// </summary>
-        public static void SeedEssentialData(IServiceProvider serviceProvider)
-        {
-            using (var serviceScope = serviceProvider.CreateScope())
-            {
-                var _dbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
-                var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
-                var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
-
-
-                var _users = _dbContext.GetCollection<User>();
-                var _operators = _dbContext.GetCollection<Operator>();
-
-
-                //if write database is empty
-                if (!_operators.AsQueryable().Any())
-                {
-                    var superUser = WriteDbDataGenerator.GetSuperUser(_configuration, _encryptionService);
-                    _users.InsertOne(superUser);
-
-                    var adminOperator = WriteDbDataGenerator.GetAdminOperator(superUser.Id, _configuration);
-                    _operators.InsertOne(adminOperator);
-                }
-
-            }
-        }
-
-
 
         /// <summary>
         /// Seed some sample data

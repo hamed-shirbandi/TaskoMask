@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using System;
 using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.DomainModel.Membership.Entities;
 
 namespace TaskoMask.Application.Tests.Unit.Membership.TestData
 {

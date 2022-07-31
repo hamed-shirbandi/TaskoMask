@@ -10,11 +10,11 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Tests.Unit.TestData;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Boards;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.ValueObjects.Boards;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Boards;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Cards;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Workspace

@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using System.Threading.Tasks;
-using TaskoMask.Domain.WriteModel.Authorization.Data;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Domain.DomainModel.Authorization.Data;
+using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 

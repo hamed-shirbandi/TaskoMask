@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 {

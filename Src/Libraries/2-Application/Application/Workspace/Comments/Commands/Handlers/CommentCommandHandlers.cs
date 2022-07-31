@@ -9,8 +9,8 @@ using TaskoMask.Domain.Share.Resources;
 using MediatR;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Application.Workspace.Comments.Commands.Handlers
 {

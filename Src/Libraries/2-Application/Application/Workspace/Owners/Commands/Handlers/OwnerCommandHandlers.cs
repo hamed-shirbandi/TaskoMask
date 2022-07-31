@@ -9,10 +9,10 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 
 namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
 {

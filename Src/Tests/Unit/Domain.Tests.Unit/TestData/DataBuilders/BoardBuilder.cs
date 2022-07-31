@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
 {

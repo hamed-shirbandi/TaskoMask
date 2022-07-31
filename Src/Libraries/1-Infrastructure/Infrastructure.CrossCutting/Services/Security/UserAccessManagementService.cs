@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Share.Models;
-using TaskoMask.Domain.WriteModel.Authorization.Data;
+using TaskoMask.Domain.DomainModel.Authorization.Data;
 
 namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
 {

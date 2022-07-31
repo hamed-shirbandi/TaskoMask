@@ -12,9 +12,9 @@ using TaskoMask.Application.Tests.Unit.TestData;
 using TaskoMask.Application.Workspace.Owners.Commands.Handlers;
 using TaskoMask.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Owners;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Unit.Workspace

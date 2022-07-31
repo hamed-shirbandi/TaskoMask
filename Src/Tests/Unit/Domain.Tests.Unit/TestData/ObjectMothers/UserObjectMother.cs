@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Domain.DomainModel.Authorization.Entities;
 
 namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 {

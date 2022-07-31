@@ -2,7 +2,7 @@
 using System.Threading;
 using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Events.Comments;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Comments;
 
 namespace TaskoMask.Application.Workspace.Comments.EventHandlers
 {

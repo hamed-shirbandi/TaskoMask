@@ -10,8 +10,8 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Tests.Unit.TestData;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.WriteModel.Authorization.Data;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Domain.DomainModel.Authorization.Data;
+using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Unit.Authorization

@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 

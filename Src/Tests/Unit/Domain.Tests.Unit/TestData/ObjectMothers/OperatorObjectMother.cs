@@ -1,5 +1,5 @@
 ﻿using MongoDB.Bson;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.DomainModel.Membership.Entities;
 
 namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 {

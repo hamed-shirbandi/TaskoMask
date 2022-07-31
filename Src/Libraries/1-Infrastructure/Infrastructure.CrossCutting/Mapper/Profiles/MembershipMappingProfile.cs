@@ -2,7 +2,7 @@
 using TaskoMask.Application.Share.Dtos.Membership.Operators;
 using TaskoMask.Application.Share.Dtos.Membership.Permissions;
 using TaskoMask.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.DomainModel.Membership.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {

@@ -5,8 +5,8 @@ using System.Linq;
 using TaskoMask.Domain.Core.Services;
 using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Domain.DomainModel.Membership.Entities;
 
 namespace TaskoMask.Infrastructure.Data.Common.DataProviders
 {

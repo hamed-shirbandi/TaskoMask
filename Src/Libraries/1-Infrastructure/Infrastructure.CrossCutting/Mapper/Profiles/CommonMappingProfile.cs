@@ -6,7 +6,7 @@ using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Domain.Core.ValueObjects;
 using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.Share.Models;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Domain.DomainModel.Authorization.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {

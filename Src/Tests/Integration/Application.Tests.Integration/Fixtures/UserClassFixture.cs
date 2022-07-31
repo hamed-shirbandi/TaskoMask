@@ -2,7 +2,7 @@
 using MongoDB.Driver.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 using Xunit;
 

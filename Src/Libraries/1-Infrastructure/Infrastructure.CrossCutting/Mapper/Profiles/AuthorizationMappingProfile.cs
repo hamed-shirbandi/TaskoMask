@@ -5,7 +5,7 @@ using TaskoMask.Application.Mapper.MappingActions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Models;
 using TaskoMask.Domain.Core.ValueObjects;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Domain.DomainModel.Authorization.Entities;
 
 namespace TaskoMask.Application.Mapper.Profiles
 {

@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Infrastructure.Data.Common.Extensions;
 using System;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Authorization.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.Common.DbContext;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 

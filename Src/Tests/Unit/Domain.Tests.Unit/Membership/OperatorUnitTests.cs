@@ -4,7 +4,7 @@ using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Tests.Unit.TestData;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.DomainModel.Membership.Entities;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Membership

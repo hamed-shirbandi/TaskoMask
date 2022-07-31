@@ -1,5 +1,5 @@
-﻿using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
+﻿using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.Services
 {

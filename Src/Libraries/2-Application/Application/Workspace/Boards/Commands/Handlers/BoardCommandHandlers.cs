@@ -9,9 +9,9 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Services;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 
 namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
 {

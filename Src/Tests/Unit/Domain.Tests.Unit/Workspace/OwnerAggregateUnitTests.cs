@@ -8,9 +8,9 @@ using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.Tests.Unit.TestData;
 using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.ValueObjects.Owners;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 using Xunit;
 
 namespace TaskoMask.Domain.Tests.Unit.Workspace

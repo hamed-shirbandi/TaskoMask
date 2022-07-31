@@ -10,8 +10,8 @@ using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Application.Tests.Unit.Membership.TestData;
 using TaskoMask.Application.Tests.Unit.TestData;
 using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.WriteModel.Membership.Data;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.DomainModel.Membership.Data;
+using TaskoMask.Domain.DomainModel.Membership.Entities;
 using Xunit;
 
 namespace TaskoMask.Application.Tests.Unit.Membership

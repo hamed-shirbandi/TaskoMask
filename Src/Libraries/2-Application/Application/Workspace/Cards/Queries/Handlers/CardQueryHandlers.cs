@@ -11,8 +11,8 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Domain.DataModel.Data;
 
 namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers

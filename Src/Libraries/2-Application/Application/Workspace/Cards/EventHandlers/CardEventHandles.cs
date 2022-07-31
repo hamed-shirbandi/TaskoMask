@@ -2,7 +2,7 @@
 using System.Threading;
 using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Events.Cards;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Cards;
 
 namespace TaskoMask.Application.Workspace.Cards.EventHandlers
 {

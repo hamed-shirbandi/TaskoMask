@@ -9,8 +9,8 @@ using TaskoMask.Domain.Share.Resources;
 using MediatR;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Entities;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
 {

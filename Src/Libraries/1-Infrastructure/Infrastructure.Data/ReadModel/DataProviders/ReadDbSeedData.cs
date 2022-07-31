@@ -32,9 +32,9 @@ namespace TaskoMask.Infrastructure.Data.ReadModel.DataProviders
                 var _tasks = _readDbContext.GetCollection<Task>();
                 var _members = _readDbContext.GetCollection<Member>();
 
-                var _ownerAggregate = _writeDbContext.GetCollection<Domain.WriteModel.Workspace.Owners.Entities.Owner>();
-                var _boardAggregate = _writeDbContext.GetCollection<Domain.WriteModel.Workspace.Boards.Entities.Board>();
-                var _taskAggregate = _writeDbContext.GetCollection<Domain.WriteModel.Workspace.Tasks.Entities.Task>();
+                var _ownerAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Owners.Entities.Owner>();
+                var _boardAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Boards.Entities.Board>();
+                var _taskAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task>();
 
 
                 //Sync read db with write db

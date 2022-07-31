@@ -9,9 +9,9 @@ using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Services;
-using TaskoMask.Domain.WriteModel.Workspace.Boards.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
+using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
 
 namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 {
@@ -52,7 +52,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
-            var task = Domain.WriteModel.Workspace.Tasks.Entities.Task.CreateTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
+            var task = Domain.DomainModel.Workspace.Tasks.Entities.Task.CreateTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
 
             await _taskAggregateRepository.CreateAsync(task);
             await PublishDomainEventsAsync(task.DomainEvents);

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Domain.WriteModel.Membership.Data;
-using TaskoMask.Domain.WriteModel.Membership.Entities;
+using TaskoMask.Domain.DomainModel.Membership.Data;
+using TaskoMask.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 

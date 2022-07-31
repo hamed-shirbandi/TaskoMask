@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Domain.WriteModel.Workspace.Tasks.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Infrastructure.Data.Common.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
 {
-    public class TaskAggregateRepository : BaseAggregateRepository<Domain.WriteModel.Workspace.Tasks.Entities.Task>, ITaskAggregateRepository
+    public class TaskAggregateRepository : BaseAggregateRepository<Domain.DomainModel.Workspace.Tasks.Entities.Task>, ITaskAggregateRepository
     {
         #region Fields
 
-        private readonly IMongoCollection<Domain.WriteModel.Workspace.Tasks.Entities.Task> _tasks;
+        private readonly IMongoCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task> _tasks;
 
         #endregion
 
@@ -22,7 +22,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
 
         public TaskAggregateRepository(IWriteDbContext dbContext) : base(dbContext)
         {
-            _tasks = dbContext.GetCollection<Domain.WriteModel.Workspace.Tasks.Entities.Task>();
+            _tasks = dbContext.GetCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task>();
         }
 
         #endregion
@@ -57,7 +57,7 @@ namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Domain.WriteModel.Workspace.Tasks.Entities.Task> GetByCommentIdAsync(string commentId)
+        public async Task<Domain.DomainModel.Workspace.Tasks.Entities.Task> GetByCommentIdAsync(string commentId)
         {
             return await _tasks.Find(e => e.Comments.Any(c => c.Id == commentId)).FirstOrDefaultAsync();
         }

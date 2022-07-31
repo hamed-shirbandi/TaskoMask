@@ -3,8 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Domain.WriteModel.Authorization.Data;
-using TaskoMask.Domain.WriteModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Domain.DomainModel.Authorization.Data;
+using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Owners;
 
 namespace TaskoMask.Application.Workspace.Owners.EventHandlers
 {

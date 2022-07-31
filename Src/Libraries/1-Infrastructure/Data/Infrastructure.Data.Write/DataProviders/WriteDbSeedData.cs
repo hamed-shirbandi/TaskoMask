@@ -5,14 +5,8 @@ using System;
 using System.Linq;
 using TaskoMask.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.Write.DbContext;
-using TaskoMask.Infrastructure.Data.Core.DataProviders;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
 
 namespace TaskoMask.Infrastructure.Data.Write.DataProviders
 {
@@ -27,7 +21,7 @@ namespace TaskoMask.Infrastructure.Data.Write.DataProviders
         /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
-        public static void SeedEssentialData(IServiceProvider serviceProvider)
+        public static void Seed(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {
@@ -35,18 +29,16 @@ namespace TaskoMask.Infrastructure.Data.Write.DataProviders
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
                 var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
 
-
                 var _users = _dbContext.GetCollection<User>();
                 var _operators = _dbContext.GetCollection<Operator>();
 
 
-                //if write database is empty
                 if (!_operators.AsQueryable().Any())
                 {
-                    var superUser = WriteModelDataGenerator.GetSuperUser(_configuration, _encryptionService);
+                    var superUser = GetSuperUser(_configuration, _encryptionService);
                     _users.InsertOne(superUser);
 
-                    var adminOperator = WriteModelDataGenerator.GetAdminOperator(superUser.Id, _configuration);
+                    var adminOperator = GetAdminOperator(superUser.Id, _configuration);
                     _operators.InsertOne(adminOperator);
                 }
 
@@ -56,66 +48,34 @@ namespace TaskoMask.Infrastructure.Data.Write.DataProviders
 
 
         /// <summary>
-        /// Seed some sample data
+        /// 
         /// </summary>
-        public static void SeedSampleData(IServiceProvider serviceProvider)
+        private static User GetSuperUser(IConfiguration configuration, IEncryptionService encryptionService)
         {
-            using (var serviceScope = serviceProvider.CreateScope())
+            var passwordSalt = encryptionService.CreateSaltKey(5);
+
+            return new User
             {
-                var _writeDbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
-                var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
-                var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
-                var _boardValidatorService = serviceScope.ServiceProvider.GetService<IBoardValidatorService>();
-                var _taskValidatorService = serviceScope.ServiceProvider.GetService<ITaskValidatorService>();
+                UserName = configuration["SuperUser:Email"],
+                IsActive = true,
+                PasswordSalt = passwordSalt,
+                PasswordHash = encryptionService.CreatePasswordHash(configuration["SuperUser:Password"], passwordSalt)
+            };
 
-                #region  collections
-
-                var _users = _writeDbContext.GetCollection<User>();
-                var _operators = _writeDbContext.GetCollection<Operator>();
-                var _roles = _writeDbContext.GetCollection<Role>();
-                var _permissions = _writeDbContext.GetCollection<Permission>();
-
-                var _ownerAggregate = _writeDbContext.GetCollection<Owner>();
-                var _boardAggregate = _writeDbContext.GetCollection<Board>();
-                var _taskAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task>();
-
-                #endregion
-
-                //if database is empty
-                if (!_ownerAggregate.AsQueryable().Any())
-                {
-                    var permissions = WriteModelDataGenerator.GeneratePermission();
-                    _permissions.InsertMany(permissions);
-
-                    var roles = WriteModelDataGenerator.GenerateRole(permissions);
-                    _roles.InsertMany(roles);
-
-                    var usersAsOperator = WriteModelDataGenerator.GenerateUser("Operator");
-                    _users.InsertMany(usersAsOperator);
+        }
 
 
-                    var operators = WriteModelDataGenerator.GenerateOperator(usersAsOperator, roles);
-                    _operators.InsertMany(operators);
 
-
-                    var usersAsOwner= WriteModelDataGenerator.GenerateUser("Owner");
-                    _users.InsertMany(usersAsOwner);
-
-                    var owners = WriteModelDataGenerator.GenerateOwner(usersAsOwner);
-                    _ownerAggregate.InsertMany(owners);
-
-
-                    var boards = WriteModelDataGenerator.GenerateBoard(owners, _boardValidatorService);
-                    _boardAggregate.InsertMany(boards);
-
-
-                    var tasks = WriteModelDataGenerator.GenerateTasks(boards,_taskValidatorService);
-                    _taskAggregate.InsertMany(tasks);
-
-
-                }
-
-            }
+        /// <summary>
+        /// 
+        /// </summary>
+        private static Operator GetAdminOperator(string userId, IConfiguration configuration)
+        {
+            return new Operator(userId)
+            {
+                DisplayName = configuration["SuperUser:DisplayName"],
+                Email = configuration["SuperUser:Email"],
+            };
 
         }
 

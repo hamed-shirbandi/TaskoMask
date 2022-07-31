@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using TaskoMask.Infrastructure.Data.Core.Extensions;
-using System;
-using TaskoMask.Infrastructure.Data.Core.DbContext;
 using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.Read.DbContext;
+using System;
 
 namespace TaskoMask.Infrastructure.Data.Read.DataProviders
 {
@@ -55,8 +54,8 @@ namespace TaskoMask.Infrastructure.Data.Read.DataProviders
             if (!collections.Has<Card>())
                 dbContext.CreateCollection<Card>();
 
-            if (!collections.Has<Domain.DataModel.Entities.Task>())
-                dbContext.CreateCollection<Domain.DataModel.Entities.Task>();
+            if (!collections.Has<Task>())
+                dbContext.CreateCollection<Task>();
        
             if (!collections.Has<Member>())
                 dbContext.CreateCollection<Member>();
@@ -111,8 +110,8 @@ namespace TaskoMask.Infrastructure.Data.Read.DataProviders
 
             #region Task Indexs
 
-            dbContext.GetCollection<Domain.DataModel.Entities.Task>().Indexes.CreateOneAsync(new CreateIndexModel<Domain.DataModel.Entities.Task>(Builders<Domain.DataModel.Entities.Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Domain.DataModel.Entities.Task>().Indexes.CreateOneAsync(new CreateIndexModel<Domain.DataModel.Entities.Task>(Builders<Domain.DataModel.Entities.Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = "CardId" }));
+            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = "CardId" }));
 
 
             #endregion

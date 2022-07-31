@@ -79,7 +79,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
 
             WriteDbInitialization.Initial(serviceProvider);
             ReadDbInitialization.Initial(serviceProvider);
-            WriteDbSeedData.SeedEssentialData(serviceProvider);
+            WriteDbSeedData.Seed(serviceProvider);
 
             app.UseHttpsRedirection();
         }

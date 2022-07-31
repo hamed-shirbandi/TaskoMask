@@ -49,8 +49,8 @@ namespace TaskoMask.Infrastructure.Data.Write.DataProviders
             if (!collections.Has<Board>())
                 dbContext.CreateCollection<Board>();
 
-            if (!collections.Has<Domain.DomainModel.Workspace.Tasks.Entities.Task>())
-                dbContext.CreateCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task>();
+            if (!collections.Has<Task>())
+                dbContext.CreateCollection<Task>();
 
 
             if (!collections.Has<User>())
@@ -95,8 +95,8 @@ namespace TaskoMask.Infrastructure.Data.Write.DataProviders
 
             #region Task Indexs
 
-            dbContext.GetCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task>().Indexes.CreateOneAsync(new CreateIndexModel<Domain.DomainModel.Workspace.Tasks.Entities.Task>(Builders<Domain.DomainModel.Workspace.Tasks.Entities.Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task>().Indexes.CreateOneAsync(new CreateIndexModel<Domain.DomainModel.Workspace.Tasks.Entities.Task>(Builders<Domain.DomainModel.Workspace.Tasks.Entities.Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = "CardId" }));
+            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = "CardId" }));
 
 
             #endregion

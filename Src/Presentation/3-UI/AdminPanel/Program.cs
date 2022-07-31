@@ -1,6 +1,5 @@
 using Serilog;
 using TaskoMask.Infrastructure.Data.Read.DataProviders;
-using TaskoMask.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
@@ -14,8 +13,6 @@ try
     var app = builder.Build();
     app.UseSerilogRequestLogging();
     app.UseMvcProjectConfigure(app.Services, builder.Environment);
-    WriteDbSeedData.SeedSampleData(app.Services);
-    ReadDbSeedData.SyncSampleData(app.Services);
     app.UseEndpoints(endpoints =>
     {
         endpoints.MapControllerRoute(

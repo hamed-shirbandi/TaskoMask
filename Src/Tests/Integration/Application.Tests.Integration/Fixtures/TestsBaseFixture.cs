@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using TaskoMask.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
@@ -75,8 +74,8 @@ namespace TaskoMask.Application.Tests.Integration.Fixtures
         /// </summary>
         protected void SeedSampleData()
         {
-            WriteDbSeedData.SeedSampleData(_serviceProvider);
-            ReadDbSeedData.SyncSampleData(_serviceProvider);
+            WriteDbSeedData.Seed(_serviceProvider);
+            ReadDbSeedData.Seed(_serviceProvider);
         }
 
 
@@ -123,7 +122,7 @@ namespace TaskoMask.Application.Tests.Integration.Fixtures
         {
             WriteDbInitialization.Initial(_serviceProvider);
             ReadDbInitialization.Initial(_serviceProvider);
-            WriteDbSeedData.SeedEssentialData(_serviceProvider);
+            WriteDbSeedData.Seed(_serviceProvider);
         }
 
 

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using TaskoMask.Infrastructure.Data.Generator;
 using TaskoMask.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
@@ -76,6 +77,7 @@ namespace TaskoMask.Application.Tests.Integration.Fixtures
         {
             WriteDbSeedData.Seed(_serviceProvider);
             ReadDbSeedData.Seed(_serviceProvider);
+            SampleDataGenerator.GenerateAndSeedSampleData(_serviceProvider);
         }
 
 

@@ -8,7 +8,7 @@ using TaskoMask.Domain.Share.Enums;
 using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Domain.DomainModel.Membership.Entities;
 
-namespace TaskoMask.Infrastructure.Data.Common.DataProviders
+namespace TaskoMask.Infrastructure.Data.Core.DataProviders
 {
     public static class ReadModelDataGenerator
     {

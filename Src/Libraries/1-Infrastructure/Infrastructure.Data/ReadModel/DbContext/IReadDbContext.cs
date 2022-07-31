@@ -1,5 +1,5 @@
 ﻿
-using TaskoMask.Infrastructure.Data.Common.DbContext;
+using TaskoMask.Infrastructure.Data.Core.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.ReadModel.DbContext
 {

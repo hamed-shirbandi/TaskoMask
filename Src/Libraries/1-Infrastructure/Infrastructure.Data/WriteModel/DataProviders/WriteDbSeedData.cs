@@ -10,7 +10,7 @@ using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
-using TaskoMask.Infrastructure.Data.Common.DataProviders;
+using TaskoMask.Infrastructure.Data.Core.DataProviders;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
 

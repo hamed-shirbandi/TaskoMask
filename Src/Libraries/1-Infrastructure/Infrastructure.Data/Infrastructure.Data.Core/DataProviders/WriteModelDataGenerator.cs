@@ -11,7 +11,7 @@ using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
 
-namespace TaskoMask.Infrastructure.Data.Common.DataProviders
+namespace TaskoMask.Infrastructure.Data.Core.DataProviders
 {
     public static class WriteModelDataGenerator
     {

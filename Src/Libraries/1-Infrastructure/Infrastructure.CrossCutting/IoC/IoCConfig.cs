@@ -31,7 +31,7 @@ using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 using TaskoMask.Infrastructure.Data.ReadModel.Repositories;
 using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
-using TaskoMask.Infrastructure.Data.Common.Repositories;
+using TaskoMask.Infrastructure.Data.Core.Repositories;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Application.Workspace.Activities.Services;
 using TaskoMask.Application.Core.Services;

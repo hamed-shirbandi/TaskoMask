@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.DataModel.Data;
 using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Infrastructure.Data.Common.Repositories;
+using TaskoMask.Infrastructure.Data.Core.Repositories;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.ReadModel.Repositories

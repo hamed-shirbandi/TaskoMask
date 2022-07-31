@@ -3,7 +3,7 @@ using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 
-namespace TaskoMask.Infrastructure.Data.Common.DbContext
+namespace TaskoMask.Infrastructure.Data.Core.DbContext
 {
 
     /// <summary>

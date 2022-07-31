@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using TaskoMask.Infrastructure.Data.Common.Extensions;
+using TaskoMask.Infrastructure.Data.Core.Extensions;
 using System;
-using TaskoMask.Infrastructure.Data.Common.DbContext;
+using TaskoMask.Infrastructure.Data.Core.DbContext;
 using TaskoMask.Domain.DataModel.Entities;
 using TaskoMask.Infrastructure.Data.ReadModel.DbContext;
 

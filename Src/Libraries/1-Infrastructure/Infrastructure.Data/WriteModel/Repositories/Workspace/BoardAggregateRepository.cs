@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.Infrastructure.Data.Common.Repositories;
+using TaskoMask.Infrastructure.Data.Core.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories.Workspace

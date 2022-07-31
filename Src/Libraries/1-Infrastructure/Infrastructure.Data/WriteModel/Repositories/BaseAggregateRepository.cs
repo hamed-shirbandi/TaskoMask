@@ -5,7 +5,7 @@ using TaskoMask.Domain.Core.Data;
 using TaskoMask.Domain.Core.Exceptions;
 using TaskoMask.Domain.Core.Models;
 using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Infrastructure.Data.Common.Repositories;
+using TaskoMask.Infrastructure.Data.Core.Repositories;
 using TaskoMask.Infrastructure.Data.WriteModel.DbContext;
 
 namespace TaskoMask.Infrastructure.Data.WriteModel.Repositories

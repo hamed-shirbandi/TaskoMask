@@ -3,6 +3,8 @@
 
   
 <p align="left">
+
+[![build and test](https://github.com/hamed-shirbandi/TaskoMask/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/hamed-shirbandi/TaskoMask/actions/workflows/ci.yml)
   <a href="https://github.com/hamed-shirbandi/TaskoMask/issues">
   <img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask">
 </a>

@@ -13,7 +13,7 @@ empty separator line
 ```
 
 # Type
-Type Must be one of the following:
+Type must be one of the following:
 
 - **feat**: a new feature
 - **fix**: a bug fix
@@ -21,7 +21,7 @@ Type Must be one of the following:
 - **style**: changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
 - **test**: adding missing tests or correcting existing tests
 - **docs**: documentation only changes
-- **chore**: a catch-all type for any other commits. For instance, if you're implementing a single feature and it makes sense to divide the work into multiple commits, you should mark one commit as feat and the rest as chore.
+- **chore**: a catch-all type for any other commits. Use it if you can not use any other types for your changes. For instance modifying the .gitignore. Also, if you're implementing a single feature (or bug fix) and it makes sense to divide the work into multiple commits, you should mark one commit as feat and the rest as chore.
 
 ## Subject
 The subject contains a succinct description of the change.

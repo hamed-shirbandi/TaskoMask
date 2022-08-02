@@ -85,6 +85,66 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
 
+        [InlineData(true)]
+        [InlineData(false)]
+        [Theory]
+        public async void User_Activity_Permission_Is_Changed(bool isActive)
+        {
+            //Arrange
+            var user = _users.First();
+            var expectedUserIsActiveValue = isActive;
+
+            //Act
+            var result = await _userService.SetIsActiveAsync(user.Id, expectedUserIsActiveValue);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(true);
+            result.Value.EntityId.Should().Be(user.Id);
+            user.IsActive.Should().Be(expectedUserIsActiveValue);
+        }
+
+
+
+        [Fact]
+        public async void User_Can_Login_When_Credential_Is_Valid()
+        {
+            //Arrange
+            var expectedUserName = "TestUserName";
+            var expectedUserPassword = "TestPassword";
+            //create user
+            await _userService.CreateAsync(expectedUserName, expectedUserPassword, UserType.Owner);
+
+            //Act
+            var result = await _userService.IsValidCredentialAsync(expectedUserName, expectedUserPassword);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(true);
+            result.Value.Should().Be(true);
+        }
+
+
+
+        [Fact]
+        public async void User_Can_Not_Login_When_Is_Not_Active()
+        {
+            //Arrange
+            var expectedUserName = "TestUserName";
+            var expectedUserPassword = "TestPassword";
+            var expectedMessage = ApplicationMessages.User_Is_Not_Active_And_Can_Not_Login;
+            //create user and set IsActive to false
+            var userCreateResult = await _userService.CreateAsync(expectedUserName, expectedUserPassword, UserType.Owner);
+            await _userService.SetIsActiveAsync(userCreateResult.Value.EntityId, false);
+
+            //Act
+            var result = await _userService.IsValidCredentialAsync(expectedUserName, expectedUserPassword);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(false);
+            result.Message.Should().Be(expectedMessage);
+        }
+
+
+
         #endregion
 
         #region Private Methods

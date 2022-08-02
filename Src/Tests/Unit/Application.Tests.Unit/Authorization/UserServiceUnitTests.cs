@@ -106,6 +106,25 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
         [Fact]
+        public async void User_Can_Login_When_Credential_Is_Valid()
+        {
+            //Arrange
+            var expectedUserName = "TestUserName";
+            var expectedUserPassword = "TestPassword";
+            //create user
+            await _userService.CreateAsync(expectedUserName, expectedUserPassword, UserType.Owner);
+
+            //Act
+            var result = await _userService.IsValidCredentialAsync(expectedUserName, expectedUserPassword);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(true);
+            result.Value.Should().Be(true);
+        }
+
+
+
+        [Fact]
         public async void User_Can_Not_Login_When_Is_Not_Active()
         {
             //Arrange

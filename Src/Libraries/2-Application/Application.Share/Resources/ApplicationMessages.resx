@@ -156,6 +156,9 @@
   <data name="User_Email_Already_Exist" xml:space="preserve">
     <value>User Email Already Exist</value>
   </data>
+  <data name="User_Is_Not_Active_And_Can_Not_Login" xml:space="preserve">
+    <value>User account is inactivated by operators</value>
+  </data>
   <data name="User_Login_failed" xml:space="preserve">
     <value>Invalid login attempt</value>
   </data>

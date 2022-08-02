@@ -23,6 +23,7 @@ namespace TaskoMask.Application.Tests.Unit.TestData
                 list.Add(new User
                 {
                     UserName = $"UserName_{i}",
+                    IsActive=false
                 });
             }
 

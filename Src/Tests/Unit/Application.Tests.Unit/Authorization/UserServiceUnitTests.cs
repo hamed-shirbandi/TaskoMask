@@ -85,6 +85,27 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
 
+        [InlineData(true)]
+        [InlineData(false)]
+        [Theory]
+        public async void User_Activity_Permission_Is_Changed(bool isActive)
+        {
+            //Arrange
+            var user = _users.First();
+            var expectedUserIsActiveValue = isActive;
+
+            //Act
+            var result = await _userService.SetIsActiveAsync(user.Id, expectedUserIsActiveValue);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(true);
+            result.Value.EntityId.Should().Be(user.Id);
+            user.IsActive.Should().Be(expectedUserIsActiveValue);
+        }
+
+
+
+
         #endregion
 
         #region Private Methods

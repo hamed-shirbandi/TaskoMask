@@ -105,6 +105,26 @@ namespace TaskoMask.Application.Tests.Unit.Authorization
 
 
 
+        [Fact]
+        public async void User_Can_Not_Login_When_Is_Not_Active()
+        {
+            //Arrange
+            var expectedUserName = "TestUserName";
+            var expectedUserPassword = "TestPassword";
+            var expectedMessage = ApplicationMessages.User_Is_Not_Active_And_Can_Not_Login;
+            //create user and set IsActive to false
+            var userCreateResult = await _userService.CreateAsync(expectedUserName, expectedUserPassword, UserType.Owner);
+            await _userService.SetIsActiveAsync(userCreateResult.Value.EntityId, false);
+
+            //Act
+            var result = await _userService.IsValidCredentialAsync(expectedUserName, expectedUserPassword);
+
+            //Asserrt
+            result.IsSuccess.Should().Be(false);
+            result.Message.Should().Be(expectedMessage);
+        }
+
+
 
         #endregion
 

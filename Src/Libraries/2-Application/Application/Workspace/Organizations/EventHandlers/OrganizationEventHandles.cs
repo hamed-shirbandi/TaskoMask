@@ -12,8 +12,7 @@ namespace TaskoMask.Application.Workspace.Organizations.EventHandlers
     public class OrganizationEventHandles : 
         INotificationHandler<OrganizationCreatedEvent>,
         INotificationHandler<OrganizationUpdatedEvent>,
-        INotificationHandler<OrganizationDeletedEvent>,
-        INotificationHandler<OrganizationRecycledEvent>
+        INotificationHandler<OrganizationDeletedEvent>
     {
         #region Fields
 
@@ -78,23 +77,7 @@ namespace TaskoMask.Application.Workspace.Organizations.EventHandlers
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async System.Threading.Tasks.Task Handle(OrganizationRecycledEvent recycledOrganization, CancellationToken cancellationToken)
-        {
-            var organization = await _organizationRepository.GetByIdAsync(recycledOrganization.Id);
-            organization.SetAsRecycled();
-            await _organizationRepository.UpdateAsync(organization);
-        }
-
         #endregion
-
-
-
-
-
 
     }
 }

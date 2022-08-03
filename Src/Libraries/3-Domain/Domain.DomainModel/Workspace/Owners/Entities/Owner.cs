@@ -151,17 +151,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleOrganization(string organizationId)
-        {
-            var organization = GetOrganizationById(organizationId);
-            organization.RecycleOrganization();
-            AddDomainEvent(new OrganizationRecycledEvent(organizationId));
-        }
-
-
 
         #endregion
 

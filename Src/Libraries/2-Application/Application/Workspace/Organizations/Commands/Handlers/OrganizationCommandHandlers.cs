@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Organizations.Commands.Models;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;

@@ -5,8 +5,6 @@ using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Organizations;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications;
 using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 {
@@ -74,17 +72,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         public void DeleteOrganization()
         {
            
-            base.UpdateModifiedDateTime();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleOrganization()
-        {
-            
             base.UpdateModifiedDateTime();
         }
 

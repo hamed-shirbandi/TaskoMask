@@ -82,7 +82,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
         /// </summary>
         public void DeleteBoard()
         {
-            base.Delete();
             AddDomainEvent(new BoardDeletedEvent(Id));
         }
 
@@ -93,7 +92,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
         /// </summary>
         public void RecycleBoard()
         {
-            base.Recycle();
             AddDomainEvent(new BoardRecycledEvent(Id));
         }
 

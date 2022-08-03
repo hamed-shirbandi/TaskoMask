@@ -87,7 +87,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// </summary>
         public void DeleteOwner()
         {
-            base.Delete();
+           
             AddDomainEvent(new OwnerDeletedEvent(Id));
         }
 
@@ -98,7 +98,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// </summary>
         public void RecycleOwner()
         {
-            base.Recycle();
+            
             AddDomainEvent(new OwnerRecycledEvent(Id));
         }
 

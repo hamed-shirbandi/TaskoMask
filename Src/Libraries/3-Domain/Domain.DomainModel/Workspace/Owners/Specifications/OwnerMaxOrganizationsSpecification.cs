@@ -13,7 +13,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Owner owner)
         {
-            return owner.Organizations.Count(p => p.IsDeleted == false) <= DomainConstValues.Owner_Max_Organizations_Count;
+            return owner.Organizations.Count() <= DomainConstValues.Owner_Max_Organizations_Count;
         }
     }
 }

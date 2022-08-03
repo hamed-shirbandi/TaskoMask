@@ -36,7 +36,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<IEnumerable<Project>> GetListByOrganizationIdAsync(string organizationId)
         {
-            return await _projects.AsQueryable().Where(o => o.OrganizationId == organizationId && o.IsDeleted == false).ToListAsync();
+            return await _projects.AsQueryable().Where(o => o.OrganizationId == organizationId ).ToListAsync();
 
         }
 
@@ -89,7 +89,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<long> CountByOrganizationIdAsync(string organizationId)
         {
-            return await _projects.CountDocumentsAsync(b => b.OrganizationId == organizationId && b.IsDeleted == false);
+            return await _projects.CountDocumentsAsync(b => b.OrganizationId == organizationId );
         }
 
 

@@ -38,7 +38,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<IEnumerable<Board>> GetListByProjectIdAsync(string projectId)
         {
-            return await _boards.AsQueryable().Where(o => o.ProjectId == projectId && o.IsDeleted == false).ToListAsync();
+            return await _boards.AsQueryable().Where(o => o.ProjectId == projectId ).ToListAsync();
         }
 
 
@@ -50,7 +50,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<IEnumerable<Board>> GetListByOrganizationIdAsync(string organizationId)
         {
-            return await _boards.AsQueryable().Where(o => o.OrganizationId == organizationId && o.IsDeleted == false).ToListAsync();
+            return await _boards.AsQueryable().Where(o => o.OrganizationId == organizationId ).ToListAsync();
         }
 
 
@@ -60,7 +60,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<IEnumerable<Board>> GetListByProjectsIdAsync(string[] projectsId)
         {
-            return await _boards.AsQueryable().Where(o => projectsId.Contains(o.ProjectId) && o.IsDeleted == false).ToListAsync();
+            return await _boards.AsQueryable().Where(o => projectsId.Contains(o.ProjectId) ).ToListAsync();
 
         }
 
@@ -111,7 +111,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<long> CountByProjectIdAsync(string projectId)
         {
-            return await _boards.CountDocumentsAsync(b => b.ProjectId == projectId && b.IsDeleted==false);
+            return await _boards.CountDocumentsAsync(b => b.ProjectId == projectId);
         }
 
 
@@ -122,7 +122,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<long> CountByProjectsIdAsync(string[] projectsId)
         {
-            return await _boards.CountDocumentsAsync(b => projectsId.Contains(b.ProjectId) && b.IsDeleted == false);
+            return await _boards.CountDocumentsAsync(b => projectsId.Contains(b.ProjectId) );
         }
 
 

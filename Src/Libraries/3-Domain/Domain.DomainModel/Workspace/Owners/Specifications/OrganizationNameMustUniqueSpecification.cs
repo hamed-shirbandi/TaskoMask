@@ -12,7 +12,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications
         /// </summary>
         public bool IsSatisfiedBy(Owner owner)
         {
-            var organizations = owner.Organizations.Where(p => p.IsDeleted == false).ToList();
+            var organizations = owner.Organizations.ToList();
 
             var organizationsCount = organizations.Count;
             if (organizationsCount < 2)

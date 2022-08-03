@@ -15,7 +15,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications
         {
             foreach (var organization in owner.Organizations)
             {
-                var projects = organization.Projects.Where(p => p.IsDeleted == false).ToList();
+                var projects = organization.Projects.ToList();
                 var projectsCount = projects.Count;
                 if (projectsCount < 2)
                     continue;

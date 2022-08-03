@@ -23,7 +23,6 @@ namespace TaskoMask.Domain.Core.Models
         #region Properties
 
         public string Id { get; private set; }
-        public bool IsDeleted { get; private set; }
         public CreationTime CreationTime { get; private set; }
 
 
@@ -62,24 +61,6 @@ namespace TaskoMask.Domain.Core.Models
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected void Delete()
-        {
-            IsDeleted = true;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected void Recycle()
-        {
-            IsDeleted = false;
-        }
 
 
         #endregion

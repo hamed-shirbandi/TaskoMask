@@ -36,7 +36,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<IEnumerable<Organization>> GetListByOwnerIdAsync(string OwnerId)
         {
-            return await _organizations.AsQueryable().Where(o => o.OwnerId == OwnerId && o.IsDeleted==false).ToListAsync();
+            return await _organizations.AsQueryable().Where(o => o.OwnerId == OwnerId).ToListAsync();
         }
 
 
@@ -87,7 +87,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<long> CountByOwnerIdAsync(string OwnerId)
         {
-            return await _organizations.CountDocumentsAsync(o => o.OwnerId == OwnerId && o.IsDeleted == false);
+            return await _organizations.CountDocumentsAsync(o => o.OwnerId == OwnerId );
         }
 
 

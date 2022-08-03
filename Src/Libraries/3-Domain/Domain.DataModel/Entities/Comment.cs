@@ -31,7 +31,7 @@ namespace TaskoMask.Domain.DataModel.Entities
 
         public void SetAsDeleted()
         {
-            base.Delete();
+           
             SetAsUpdated();
         }
 

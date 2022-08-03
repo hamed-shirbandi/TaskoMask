@@ -94,7 +94,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
         /// </summary>
         public void DeleteTask()
         {
-            base.Delete();
             AddDomainEvent(new TaskDeletedEvent(Id));
         }
 
@@ -105,7 +104,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
         /// </summary>
         public void RecycleTask()
         {
-            base.Recycle();
             AddDomainEvent(new TaskRecycledEvent(Id));
         }
 

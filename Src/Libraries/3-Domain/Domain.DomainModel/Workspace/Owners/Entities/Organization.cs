@@ -73,7 +73,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// </summary>
         public void DeleteOrganization()
         {
-            base.Delete();
+           
             base.UpdateModifiedDateTime();
         }
 
@@ -84,7 +84,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// </summary>
         public void RecycleOrganization()
         {
-            base.Recycle();
+            
             base.UpdateModifiedDateTime();
         }
 

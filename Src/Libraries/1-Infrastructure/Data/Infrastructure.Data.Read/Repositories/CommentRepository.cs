@@ -36,7 +36,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<IEnumerable<Comment>> GetListByTaskIdAsync(string taskId)
         {
-            return await _comments.AsQueryable().Where(o => o.TaskId == taskId && o.IsDeleted == false).ToListAsync();
+            return await _comments.AsQueryable().Where(o => o.TaskId == taskId ).ToListAsync();
         }
 
 

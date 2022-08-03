@@ -73,7 +73,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
         /// </summary>
         public new void Delete()
         {
-            base.Delete();
+           
             base.UpdateModifiedDateTime();
 
         }
@@ -85,7 +85,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
         /// </summary>
         public new void Recycle()
         {
-            base.Recycle();
+            
             base.UpdateModifiedDateTime();
 
         }

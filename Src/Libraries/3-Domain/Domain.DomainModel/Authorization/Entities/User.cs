@@ -20,14 +20,14 @@ namespace TaskoMask.Domain.DomainModel.Authorization.Entities
 
         public void SetAsDeleted()
         {
-            base.Delete();
+           
             SetAsUpdated();
         }
 
 
         public void SetAsRecycled()
         {
-            base.Recycle();
+            
             SetAsUpdated();
         }
 

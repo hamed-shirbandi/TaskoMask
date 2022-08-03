@@ -36,7 +36,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         public async Task<IEnumerable<Card>> GetListByBoardIdAsync(string boardId)
         {
             return await _cards.AsQueryable()
-                .Where(o => o.BoardId == boardId && o.IsDeleted == false)
+                .Where(o => o.BoardId == boardId )
                 .OrderBy(c=>c.Type)
                 .OrderBy(c=>c.CreationTime.CreateDateTime)
                 .ToListAsync();
@@ -91,7 +91,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<long> CountByBoardIdAsync(string boardId)
         {
-            return await _cards.CountDocumentsAsync(b => b.BoardId == boardId && b.IsDeleted == false);
+            return await _cards.CountDocumentsAsync(b => b.BoardId == boardId );
         }
 
 
@@ -101,7 +101,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async Task<long> CountByOrganizationIdAsync(string organizationId)
         {
-            return await _cards.CountDocumentsAsync(b => b.OrganizationId == organizationId && b.IsDeleted == false);
+            return await _cards.CountDocumentsAsync(b => b.OrganizationId == organizationId );
         }
 
 
@@ -112,7 +112,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         public string[] GetCardsIdByBoardsId(string[] boardsId)
         {
             return _cards
-                .AsQueryable().Where(b => boardsId.Contains(b.BoardId) && b.IsDeleted == false)
+                .AsQueryable().Where(b => boardsId.Contains(b.BoardId) )
                 .Select(b => b.Id)
                 .ToArray();
         }

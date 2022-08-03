@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
         public async Task<ProjectOutputDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
-            if (project == null || project.IsDeleted)
+            if (project == null )
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
 
             var dto = _mapper.Map<ProjectOutputDto>(project);

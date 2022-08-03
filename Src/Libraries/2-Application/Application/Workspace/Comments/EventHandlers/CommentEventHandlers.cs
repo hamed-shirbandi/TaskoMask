@@ -72,9 +72,7 @@ namespace TaskoMask.Application.Workspace.Comments.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(CommentDeletedEvent deletedComment, CancellationToken cancellationToken)
         {
-            var comment = await _commentRepository.GetByIdAsync(deletedComment.Id);
-            comment.SetAsDeleted();
-            await _commentRepository.UpdateAsync(comment);
+            await _commentRepository.DeleteAsync(deletedComment.Id);
         }
 
 

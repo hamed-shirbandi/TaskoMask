@@ -94,21 +94,8 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
         /// </summary>
         public void DeleteTask()
         {
-            base.Delete();
             AddDomainEvent(new TaskDeletedEvent(Id));
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleTask()
-        {
-            base.Recycle();
-            AddDomainEvent(new TaskRecycledEvent(Id));
-        }
-
 
 
         #endregion
@@ -153,13 +140,12 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
             if (comment == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Comment));
 
-            comment.Delete();
+            Comments.Remove(comment);
             AddDomainEvent(new CommentDeletedEvent(comment.Id));
         }
 
 
         #endregion
-
 
         #region Private Methods
 

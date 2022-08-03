@@ -33,14 +33,14 @@ namespace TaskoMask.Domain.DomainModel.Membership.Entities
 
         public void SetAsDeleted()
         {
-            base.Delete();
+           
             SetAsUpdated();
         }
 
 
         public void SetAsRecycled()
         {
-            base.Recycle();
+            
             SetAsUpdated();
         }
 

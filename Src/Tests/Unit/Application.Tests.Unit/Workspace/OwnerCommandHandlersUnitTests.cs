@@ -85,8 +85,6 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
             var result = await _ownerCommandHandlers.Handle(deleteOwnerCommand, CancellationToken.None);
 
             //Assert
-            result.EntityId.Should().Be(ownerToDelete.Id);
-            ownerToDelete.IsDeleted.Should().BeTrue();
             await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerDeletedEvent>());
         }
 

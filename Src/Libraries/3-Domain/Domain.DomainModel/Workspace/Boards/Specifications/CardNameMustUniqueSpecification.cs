@@ -14,7 +14,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Specifications
         public bool IsSatisfiedBy(Board board)
         {
 
-            var cards = board.Cards.Where(p => p.IsDeleted == false).ToList();
+            var cards = board.Cards.ToList();
 
             var cardsCount = cards.Count;
             if (cardsCount < 2)

@@ -12,8 +12,7 @@ namespace TaskoMask.Application.Workspace.Cards.EventHandlers
     public class CardEventHandles : 
         INotificationHandler<CardCreatedEvent>,
         INotificationHandler<CardUpdatedEvent>,
-        INotificationHandler<CardDeletedEvent>,
-        INotificationHandler<CardRecycledEvent>
+        INotificationHandler<CardDeletedEvent>
     {
         #region Fields
 
@@ -77,22 +76,10 @@ namespace TaskoMask.Application.Workspace.Cards.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(CardDeletedEvent deletedCard, CancellationToken cancellationToken)
         {
-            var card = await _cardRepository.GetByIdAsync(deletedCard.Id);
-            card.SetAsDeleted();
-            await _cardRepository.UpdateAsync(card);
+            await _cardRepository.DeleteAsync(deletedCard.Id);
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async System.Threading.Tasks.Task Handle(CardRecycledEvent recycledCard, CancellationToken cancellationToken)
-        {
-            var card = await _cardRepository.GetByIdAsync(recycledCard.Id);
-            card.SetAsRecycled();
-            await _cardRepository.UpdateAsync(card);
-        }
 
         #endregion
 

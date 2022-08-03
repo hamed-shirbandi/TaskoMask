@@ -38,7 +38,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         public async System.Threading.Tasks.Task<IEnumerable<Task>> GetListByCardIdAsync(string cardId)
         {
             return await _tasks.AsQueryable()
-                .Where(o => o.CardId == cardId && o.IsDeleted == false)
+                .Where(o => o.CardId == cardId )
                 .OrderByDescending(o => o.CreationTime.ModifiedDateTime)
                 .ToListAsync();
         }
@@ -56,7 +56,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
                 queryable = queryable.Where(p => p.CardType == cardType);
 
             return await queryable
-                .Where(o => o.OrganizationId == organizationId && o.IsDeleted == false)
+                .Where(o => o.OrganizationId == organizationId )
                 .OrderByDescending(o => o.CreationTime.ModifiedDateTime)
                 .Take(takeCount)
                 .ToListAsync();
@@ -74,7 +74,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
             queryable = queryable.Where(p => p.CardType == BoardCardType.ToDo || p.CardType == BoardCardType.Doing);
 
             return await queryable
-                .Where(o => boardsId.Contains(o.BoardId) && o.IsDeleted == false)
+                .Where(o => boardsId.Contains(o.BoardId) )
                 .OrderByDescending(o => o.CreationTime.ModifiedDateTime)
                 .Take(takeCount)
                 .ToListAsync();
@@ -128,7 +128,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async System.Threading.Tasks.Task<long> CountByCardIdAsync(string cardId)
         {
-            return await _tasks.CountDocumentsAsync(b => b.CardId == cardId && b.IsDeleted == false);
+            return await _tasks.CountDocumentsAsync(b => b.CardId == cardId );
         }
 
 
@@ -148,7 +148,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// </summary>
         public async System.Threading.Tasks.Task<long> CountByCardsIdAsync(string[] cardsId, BoardCardType cardType)
         {
-            return await _tasks.CountDocumentsAsync(b => cardsId.Contains(b.CardId) && b.CardType == cardType && b.IsDeleted == false);
+            return await _tasks.CountDocumentsAsync(b => cardsId.Contains(b.CardId) && b.CardType == cardType );
 
         }
 

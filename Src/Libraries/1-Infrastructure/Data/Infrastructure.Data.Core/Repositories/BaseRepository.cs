@@ -51,6 +51,16 @@ namespace TaskoMask.Infrastructure.Data.Core.Repositories
         /// <summary>
         /// 
         /// </summary>
+        public async Task DeleteAsync(string id)
+        {
+            await _collection.DeleteOneAsync(p => p.Id == id);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual async Task<TEntity> GetByIdAsync(string id)
         {
             return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();

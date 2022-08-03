@@ -42,38 +42,6 @@ namespace TaskoMask.Domain.Tests.Unit.Authorization
 
 
 
-        [Fact]
-        public void User_Is_Deleted()
-        {
-            //Arrange
-            var user = UserObjectMother.CreateNewUser();
-
-            //Act
-            user.SetAsDeleted();
-
-            //Assert
-            user.IsDeleted.Should().Be(true);
-
-        }
-
-
-        [Fact]
-        public void User_Is_Recycled()
-        {
-            //Arrange
-            var user = UserObjectMother.CreateNewUser();
-
-            //Act
-            user.SetAsDeleted();
-            user.SetAsRecycled();
-
-            //Assert
-            user.IsDeleted.Should().Be(false);
-
-        }
-
-
-
         /// <summary>
         /// Manage Test Fixture
         /// </summary>

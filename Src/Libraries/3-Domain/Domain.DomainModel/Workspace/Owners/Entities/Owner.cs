@@ -87,19 +87,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// </summary>
         public void DeleteOwner()
         {
-            base.Delete();
             AddDomainEvent(new OwnerDeletedEvent(Id));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleOwner()
-        {
-            base.Recycle();
-            AddDomainEvent(new OwnerRecycledEvent(Id));
         }
 
 
@@ -145,21 +133,10 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
                 throw new DomainException(DomainMessages.Access_Denied);
 
             var organization = GetOrganizationById(organizationId);
-            organization.DeleteOrganization();
+            Organizations.Remove(organization);
             AddDomainEvent(new OrganizationDeletedEvent(organizationId));
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleOrganization(string organizationId)
-        {
-            var organization = GetOrganizationById(organizationId);
-            organization.RecycleOrganization();
-            AddDomainEvent(new OrganizationRecycledEvent(organizationId));
-        }
 
 
 
@@ -210,24 +187,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 
             AddDomainEvent(new ProjectDeletedEvent(projectId));
         }
-
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleProject( string projectId)
-        {
-            var organization = GetOrganizationByProjectId(projectId);
-
-            organization.RecycleProject(projectId);
-
-            AddDomainEvent(new ProjectRecycledEvent(projectId));
-        }
-
-
 
 
         #endregion

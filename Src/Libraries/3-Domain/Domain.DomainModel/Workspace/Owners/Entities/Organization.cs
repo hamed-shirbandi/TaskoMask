@@ -5,8 +5,6 @@ using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Organizations;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications;
 using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Core.Services;
 
 namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 {
@@ -68,27 +66,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void DeleteOrganization()
-        {
-            base.Delete();
-            base.UpdateModifiedDateTime();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleOrganization()
-        {
-            base.Recycle();
-            base.UpdateModifiedDateTime();
-        }
-
-
 
         #endregion
 
@@ -132,27 +109,10 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
             if (project == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
 
-            project.Delete();
+            Projects.Remove(project);
 
             base.UpdateModifiedDateTime();
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleProject(string id)
-        {
-            var project = Projects.FirstOrDefault(p => p.Id == id);
-            if (project == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
-
-            project.Recycle();
-
-            base.UpdateModifiedDateTime();
-        }
-
 
 
 

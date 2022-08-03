@@ -12,8 +12,7 @@ namespace TaskoMask.Application.Workspace.Projects.EventHandlers
     public class ProjectEventHandles : 
         INotificationHandler<ProjectCreatedEvent>,
         INotificationHandler<ProjectUpdatedEvent>,
-        INotificationHandler<ProjectDeletedEvent>,
-        INotificationHandler<ProjectRecycledEvent>
+        INotificationHandler<ProjectDeletedEvent>
     {
         #region Fields
 
@@ -74,29 +73,12 @@ namespace TaskoMask.Application.Workspace.Projects.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(ProjectDeletedEvent deletedProject, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetByIdAsync(deletedProject.Id);
-            project.SetAsDeleted();
-            await _projectRepository.UpdateAsync(project);
+            await _projectRepository.DeleteAsync(deletedProject.Id);
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async System.Threading.Tasks.Task Handle(ProjectRecycledEvent recycledProject, CancellationToken cancellationToken)
-        {
-            var project = await _projectRepository.GetByIdAsync(recycledProject.Id);
-            project.SetAsRecycled();
-            await _projectRepository.UpdateAsync(project);
-        }
 
         #endregion
-
-
-
-
-
 
     }
 }

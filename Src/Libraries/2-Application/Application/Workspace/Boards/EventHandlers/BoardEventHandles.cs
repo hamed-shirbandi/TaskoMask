@@ -12,8 +12,7 @@ namespace TaskoMask.Application.Workspace.Boards.EventHandlers
     public class BoardEventHandles : 
         INotificationHandler<BoardCreatedEvent>,
         INotificationHandler<BoardUpdatedEvent>,
-        INotificationHandler<BoardDeletedEvent>,
-        INotificationHandler<BoardRecycledEvent>
+        INotificationHandler<BoardDeletedEvent>
     {
         #region Fields
 
@@ -84,16 +83,6 @@ namespace TaskoMask.Application.Workspace.Boards.EventHandlers
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async System.Threading.Tasks.Task Handle(BoardRecycledEvent recycledBoard, CancellationToken cancellationToken)
-        {
-            var board = await _boardRepository.GetByIdAsync(recycledBoard.Id);
-            board.SetAsRecycled();
-            await _boardRepository.UpdateAsync(board);
-        }
 
         #endregion
 

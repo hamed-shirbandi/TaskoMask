@@ -87,16 +87,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleBoard()
-        {
-            AddDomainEvent(new BoardRecycledEvent(Id));
-        }
-
-
-
         #endregion
 
         #region Public Card Methods

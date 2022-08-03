@@ -68,28 +68,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public new void Delete()
-        {
-           
-            base.UpdateModifiedDateTime();
-
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public new void Recycle()
-        {
-            
-            base.UpdateModifiedDateTime();
-
-        }
-
         #endregion
 
         #region Private Methods

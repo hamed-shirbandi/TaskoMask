@@ -176,7 +176,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
             if (member == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Member));
 
-            member.Delete();
+            Members.Remove(member);
             AddDomainEvent(new MemberDeletedEvent(member.Id));
         }
 

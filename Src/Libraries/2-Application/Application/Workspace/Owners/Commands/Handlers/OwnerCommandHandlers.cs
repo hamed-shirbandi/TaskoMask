@@ -91,11 +91,10 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
             if (owner == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            var loadedVersion = owner.Version;
 
             owner.DeleteOwner();
 
-            await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
+            await _ownerAggregateRepository.DeleteAsync(owner.Id);
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 

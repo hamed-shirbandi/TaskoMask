@@ -80,9 +80,7 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(OwnerDeletedEvent deletedOwner, CancellationToken cancellationToken)
         {
-            var owner = await _ownerRepository.GetByIdAsync(deletedOwner.Id);
-            owner.SetAsDeleted();
-            await _ownerRepository.UpdateAsync(owner);
+            await _ownerRepository.DeleteAsync(deletedOwner.Id);
         }
 
 

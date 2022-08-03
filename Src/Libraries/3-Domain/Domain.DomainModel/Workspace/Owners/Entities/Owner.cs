@@ -189,24 +189,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         }
 
 
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleProject( string projectId)
-        {
-            var organization = GetOrganizationByProjectId(projectId);
-
-            organization.RecycleProject(projectId);
-
-            AddDomainEvent(new ProjectRecycledEvent(projectId));
-        }
-
-
-
-
         #endregion
 
         #region Private Methods

@@ -73,9 +73,7 @@ namespace TaskoMask.Application.Workspace.Projects.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(ProjectDeletedEvent deletedProject, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetByIdAsync(deletedProject.Id);
-            project.SetAsDeleted();
-            await _projectRepository.UpdateAsync(project);
+            await _projectRepository.DeleteAsync(deletedProject.Id);
         }
 
 

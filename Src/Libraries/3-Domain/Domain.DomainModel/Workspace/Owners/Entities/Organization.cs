@@ -109,7 +109,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
             if (project == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
 
-            project.Delete();
+            Projects.Remove(project);
 
             base.UpdateModifiedDateTime();
         }

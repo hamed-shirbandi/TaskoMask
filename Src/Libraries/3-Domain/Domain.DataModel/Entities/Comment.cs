@@ -29,6 +29,10 @@ namespace TaskoMask.Domain.DataModel.Entities
 
         #region Update private properties
 
+        public void SetAsUpdated()
+        {
+            base.UpdateModifiedDateTime();
+        }
 
         #endregion
 

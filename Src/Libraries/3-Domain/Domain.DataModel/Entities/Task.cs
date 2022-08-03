@@ -32,19 +32,6 @@ namespace TaskoMask.Domain.DataModel.Entities
 
         #region Update private properties
 
-        public void SetAsDeleted()
-        {
-           
-            SetAsUpdated();
-        }
-
-
-        public void SetAsRecycled()
-        {
-           
-            SetAsUpdated();
-        }
-
         public void SetAsUpdated()
         {
             base.UpdateModifiedDateTime();

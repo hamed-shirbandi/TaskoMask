@@ -13,8 +13,7 @@ namespace TaskoMask.Application.Workspace.Activities.EventHandlers
         INotificationHandler<TaskCreatedEvent>,
         INotificationHandler<TaskUpdatedEvent>,
         INotificationHandler<TaskDeletedEvent>,
-        INotificationHandler<TaskMovedToAnotherCardEvent>,
-        INotificationHandler<TaskRecycledEvent>
+        INotificationHandler<TaskMovedToAnotherCardEvent>
     {
         #region Fields
 
@@ -99,21 +98,6 @@ namespace TaskoMask.Application.Workspace.Activities.EventHandlers
             };
             await _activityRepository.CreateAsync(activity);
 
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async System.Threading.Tasks.Task Handle(TaskRecycledEvent recycledTask, CancellationToken cancellationToken)
-        {
-            var activity = new Activity()
-            {
-                TaskId = recycledTask.Id,
-                Description = "Task Recycled",
-            };
-            await _activityRepository.CreateAsync(activity);
         }
 
         #endregion

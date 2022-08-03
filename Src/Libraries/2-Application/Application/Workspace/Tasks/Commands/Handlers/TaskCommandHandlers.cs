@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using TaskoMask.Application.Workspace.Tasks.Commands.Models;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Core.Bus;
@@ -93,16 +92,13 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (task == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
-            var loadedVersion = task.Version;
-
             task.DeleteTask();
 
-            await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
+            await _taskAggregateRepository.DeleteAsync(task.Id);
 
             await PublishDomainEventsAsync(task.DomainEvents);
 
             return new CommandResult(ApplicationMessages.Update_Success, request.Id);
-
         }
 
 

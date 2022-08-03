@@ -92,11 +92,9 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
-            var loadedVersion = board.Version;
-
             board.DeleteBoard();
 
-            await _boardAggregateRepository.ConcurrencySafeUpdate(board, loadedVersion);
+            await _boardAggregateRepository.DeleteAsync(board.Id);
 
             await PublishDomainEventsAsync(board.DomainEvents);
 

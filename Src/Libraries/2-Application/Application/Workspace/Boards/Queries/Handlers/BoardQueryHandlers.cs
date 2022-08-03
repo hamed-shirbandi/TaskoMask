@@ -12,15 +12,12 @@ using TaskoMask.Application.Queries.Models.Boards;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Domain.DataModel.Data;
 
 namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
 {
     public class BoardQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetBoardByIdQuery, BoardOutputDto>,
-        IRequestHandler<GetBoardReportQuery, BoardReportDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<GetBoardsByProjectsIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<SearchBoardsQuery, PaginatedListReturnType<BoardOutputDto>>,
@@ -97,17 +94,6 @@ namespace TaskoMask.Application.Workspace.Boards.Queries.Handlers
             var boards = await _boardRepository.GetListByProjectsIdAsync(request.ProjectsId);
             return _mapper.Map<IEnumerable<BoardBasicInfoDto>>(boards);
         }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<BoardReportDto> Handle(GetBoardReportQuery request, CancellationToken cancellationToken)
-        {
-            //TODO Implement GetBoardReportQuery
-            return new BoardReportDto();
-        }
-
 
 
         /// <summary>

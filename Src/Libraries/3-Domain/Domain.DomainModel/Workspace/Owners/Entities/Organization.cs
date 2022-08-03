@@ -116,23 +116,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleProject(string id)
-        {
-            var project = Projects.FirstOrDefault(p => p.Id == id);
-            if (project == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Project));
-
-            project.Recycle();
-
-            base.UpdateModifiedDateTime();
-        }
-
-
-
-
         #endregion
 
         #region Private Methods

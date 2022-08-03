@@ -129,26 +129,9 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
             if (card == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
 
-            card.Delete();
+            Cards.Remove(card);
             AddDomainEvent(new CardDeletedEvent(card.Id));
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleCard(string id)
-        {
-            var card = Cards.FirstOrDefault(p => p.Id == id);
-            if (card == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
-
-            card.Recycle();
-            AddDomainEvent(new CardRecycledEvent(card.Id));
-        }
-
-
 
 
         #endregion

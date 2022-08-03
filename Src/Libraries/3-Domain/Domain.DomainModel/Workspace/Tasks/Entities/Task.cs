@@ -151,13 +151,12 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
             if (comment == null)
                 throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Comment));
 
-            comment.Delete();
+            Comments.Remove(comment);
             AddDomainEvent(new CommentDeletedEvent(comment.Id));
         }
 
 
         #endregion
-
 
         #region Private Methods
 

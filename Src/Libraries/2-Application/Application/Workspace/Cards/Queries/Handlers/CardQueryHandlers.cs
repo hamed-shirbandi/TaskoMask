@@ -11,15 +11,12 @@ using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Domain.DataModel.Data;
 
 namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
 {
     public class CardQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetCardByIdQuery, CardBasicInfoDto>,
-        IRequestHandler<GetCardReportQuery, CardReportDto>,
          IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>,
         IRequestHandler<SearchCardsQuery, PaginatedListReturnType<CardOutputDto>>,
         IRequestHandler<GetCardsCountQuery, long>
@@ -71,17 +68,6 @@ namespace TaskoMask.Application.Workspace.Cards.Queries.Handlers
         {
             var cards = await _cardRepository.GetListByBoardIdAsync(request.BoardId);
             return _mapper.Map<IEnumerable<CardBasicInfoDto>>(cards);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<CardReportDto> Handle(GetCardReportQuery request, CancellationToken cancellationToken)
-        {
-            //TODO Implement GetCardReportQuery
-            return new CardReportDto();
         }
 
 

@@ -98,17 +98,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void RecycleTask()
-        {
-            AddDomainEvent(new TaskRecycledEvent(Id));
-        }
-
-
-
         #endregion
 
         #region Public Comment Methods

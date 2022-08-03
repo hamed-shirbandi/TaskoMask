@@ -78,6 +78,10 @@ namespace TaskoMask.Application.Authorization.Users.Services
             if (user == null)
                 return Result.Failure<bool>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
 
+            if (user.IsActive == false)
+                return Result.Failure<bool>(message: ApplicationMessages.User_Is_Not_Active_And_Can_Not_Login);
+
+
             var passwordHash = _encryptionService.CreatePasswordHash(password, user.PasswordSalt);
             if (passwordHash != user.PasswordHash)
                 return Result.Failure<bool>(message: ApplicationMessages.User_Login_failed);

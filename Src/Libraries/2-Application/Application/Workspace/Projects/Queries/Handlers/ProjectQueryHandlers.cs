@@ -17,7 +17,6 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
 {
     public class ProjectQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetProjectByIdQuery, ProjectOutputDto>,
-        IRequestHandler<GetProjectReportQuery, ProjectReportDto>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>,
         IRequestHandler<SearchProjectsQuery, PaginatedListReturnType<ProjectOutputDto>>,
         IRequestHandler<GetProjectsCountQuery, long>
@@ -73,18 +72,6 @@ namespace TaskoMask.Application.Workspace.Projects.Queries.Handlers
             var projects = await _projectRepository.GetListByOrganizationIdAsync(request.OrganizationId);
             return _mapper.Map<IEnumerable<ProjectBasicInfoDto>>(projects);
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<ProjectReportDto> Handle(GetProjectReportQuery request, CancellationToken cancellationToken)
-        {
-            //TODO Implement GetProjectReportQuery
-            return new ProjectReportDto();
-        }
-
 
 
 

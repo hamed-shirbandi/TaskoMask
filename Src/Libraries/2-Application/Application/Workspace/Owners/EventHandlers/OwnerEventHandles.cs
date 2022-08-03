@@ -14,8 +14,7 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
     public class OwnerEventHandles : 
         INotificationHandler<OwnerCreatedEvent>,
         INotificationHandler<OwnerUpdatedEvent>,
-        INotificationHandler<OwnerDeletedEvent>,
-        INotificationHandler<OwnerRecycledEvent>
+        INotificationHandler<OwnerDeletedEvent>
     {
         #region Fields
 
@@ -87,23 +86,6 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async System.Threading.Tasks.Task Handle(OwnerRecycledEvent recycledOwner, CancellationToken cancellationToken)
-        {
-            var owner = await _ownerRepository.GetByIdAsync(recycledOwner.Id);
-            owner.SetAsRecycled();
-            await _ownerRepository.UpdateAsync(owner);
-        }
-
         #endregion
-
-
-
-
-
-
     }
 }

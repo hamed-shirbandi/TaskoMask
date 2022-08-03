@@ -27,7 +27,7 @@ namespace TaskoMask.Presentation.UI.Website.Controllers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }

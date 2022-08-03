@@ -27,7 +27,7 @@ namespace TaskoMask.Presentation.UI.Website.Controllers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IActionResult> known(string message )
+        public IActionResult Known(string message )
         {
             var model = new ErrorViewModel
             {
@@ -43,7 +43,7 @@ namespace TaskoMask.Presentation.UI.Website.Controllers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IActionResult> Unknown()
+        public IActionResult Unknown()
         {
             return View("Error");
         }

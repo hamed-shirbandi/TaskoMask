@@ -51,7 +51,7 @@ namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
         /// 
         /// </summary>
         [HttpGet]
-        public async Task<ActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }

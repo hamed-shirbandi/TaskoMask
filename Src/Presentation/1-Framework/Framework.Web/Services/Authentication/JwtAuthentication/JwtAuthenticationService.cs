@@ -14,14 +14,13 @@ namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthen
     {
         #region Fields
 
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly JwtAuthenticationOptions _options;
 
         #endregion
 
         #region Ctor
 
-        public JwtAuthenticationService(IOptions<JwtAuthenticationOptions> options, IHttpContextAccessor httpContextAccessor) 
+        public JwtAuthenticationService(IOptions<JwtAuthenticationOptions> options) 
         {
             _options = options != null ? options.Value : throw new ArgumentNullException(nameof(options));
         }

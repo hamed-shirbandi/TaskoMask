@@ -66,16 +66,6 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void DeleteOrganization()
-        {
-           
-            base.UpdateModifiedDateTime();
-        }
-
-
 
         #endregion
 

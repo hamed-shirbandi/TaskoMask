@@ -145,7 +145,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
                 throw new DomainException(DomainMessages.Access_Denied);
 
             var organization = GetOrganizationById(organizationId);
-            organization.DeleteOrganization();
+            Organizations.Remove(organization);
             AddDomainEvent(new OrganizationDeletedEvent(organizationId));
         }
 

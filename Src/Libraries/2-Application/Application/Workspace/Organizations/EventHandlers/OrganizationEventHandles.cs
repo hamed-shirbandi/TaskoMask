@@ -71,9 +71,7 @@ namespace TaskoMask.Application.Workspace.Organizations.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(OrganizationDeletedEvent deletedOrganization, CancellationToken cancellationToken)
         {
-            var organization = await _organizationRepository.GetByIdAsync(deletedOrganization.Id);
-            organization.SetAsDeleted();
-            await _organizationRepository.UpdateAsync(organization);
+            await _organizationRepository.DeleteAsync(deletedOrganization.Id);
         }
 
 

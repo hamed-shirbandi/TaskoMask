@@ -10,6 +10,6 @@ namespace TaskoMask.Domain.DataModel.Data
         Task<IEnumerable<Card>> GetListByBoardIdAsync(string boardId);
         IEnumerable<Card> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount);
         Task<long> CountByBoardIdAsync(string boardId);
-        Task<string[]> GetCardsIdByBoardsIdAsync(string[] boardsId);
+        string[] GetCardsIdByBoardsId(string[] boardsId);
     }
 }

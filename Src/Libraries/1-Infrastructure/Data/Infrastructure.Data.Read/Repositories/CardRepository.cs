@@ -109,7 +109,7 @@ namespace TaskoMask.Infrastructure.Data.Read.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public async Task<string[]> GetCardsIdByBoardsIdAsync(string[] boardsId)
+        public string[] GetCardsIdByBoardsId(string[] boardsId)
         {
             return _cards
                 .AsQueryable().Where(b => boardsId.Contains(b.BoardId) && b.IsDeleted == false)

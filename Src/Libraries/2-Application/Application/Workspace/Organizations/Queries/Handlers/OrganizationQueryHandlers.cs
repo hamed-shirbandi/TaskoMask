@@ -88,7 +88,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
             report.ProjectsCount = await _projectRepository.CountByOrganizationIdAsync(request.OrganizationId);
             report.BoardsCount = await _boardRepository.CountByProjectsIdAsync(request.ProjectsId);
 
-            var cardsId = await _cardRepository.GetCardsIdByBoardsIdAsync(request.BoardsId);
+            var cardsId =  _cardRepository.GetCardsIdByBoardsId(request.BoardsId);
 
             report.BacklogTasksCount = await _taskRepository.CountByCardsIdAsync(cardsId, BoardCardType.Backlog);
             report.ToDoTasksCount = await _taskRepository.CountByCardsIdAsync(cardsId, BoardCardType.ToDo);

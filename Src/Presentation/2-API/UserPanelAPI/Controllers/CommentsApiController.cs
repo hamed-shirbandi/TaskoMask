@@ -55,7 +55,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("comments")]
         public async Task<Result<CommandResult>> Create([FromBody] CommentUpsertDto input)
         {
-            return await _commentService.CreateAsync(input);
+            return await _commentService.AddAsync(input);
         }
 
 

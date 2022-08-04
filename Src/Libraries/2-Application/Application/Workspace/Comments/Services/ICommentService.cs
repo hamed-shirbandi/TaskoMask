@@ -9,8 +9,8 @@ namespace TaskoMask.Application.Workspace.Comments.Services
     {
         Task<Result<CommentBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<IEnumerable<CommentBasicInfoDto>>> GetListByTaskIdAsync(string taskId);
-        Task<Result<CommandResult>> AddAsync(CommentUpsertDto input);
-        Task<Result<CommandResult>> UpdateAsync(CommentUpsertDto input);
+        Task<Result<CommandResult>> AddAsync(UpdateCommentDto input);
+        Task<Result<CommandResult>> UpdateAsync(UpdateCommentDto input);
         Task<Result<CommandResult>> DeleteAsync(string id);
     }
 }

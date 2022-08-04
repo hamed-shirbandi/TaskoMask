@@ -37,7 +37,7 @@
     /// <summary>
     /// Form Model
     /// </summary>
-    CommentUpsertDto CommentModel = new CommentUpsertDto();
+    UpdateCommentDto CommentModel = new UpdateCommentDto();
 
 
 
@@ -84,7 +84,7 @@
 
         if (commentResult.IsSuccess)
         {
-            CommentModel = new CommentUpsertDto
+            CommentModel = new UpdateCommentDto
                 {
                     Id = commentResult.Value.Id,
                     Content = commentResult.Value.Content,

@@ -39,7 +39,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(CommentUpsertDto input)
+        public async Task<Result<CommandResult>> Add(UpdateCommentDto input)
         {
             var url = $"/comments";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
@@ -50,7 +50,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id,CommentUpsertDto input)
+        public async Task<Result<CommandResult>> Update(string id,UpdateCommentDto input)
         {
             var url = $"/comments/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);

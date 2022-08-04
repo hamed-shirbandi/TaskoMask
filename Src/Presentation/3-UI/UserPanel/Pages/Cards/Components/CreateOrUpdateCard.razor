@@ -140,7 +140,7 @@
     private async Task HandleCreate()
     {
         CardModel.BoardId = BoardId;
-        var result = await CardApiService.Create(CardModel);
+        var result = await CardApiService.Add(CardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Card_Created)

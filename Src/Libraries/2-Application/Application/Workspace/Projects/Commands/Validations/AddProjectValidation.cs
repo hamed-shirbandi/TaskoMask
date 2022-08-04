@@ -2,9 +2,9 @@
 
 namespace TaskoMask.Application.Workspace.Projects.Commands.Validations
 {
-    public class UpdateProjectCommandValidation : ProjectValidation<UpdateProjectCommand>
+   public class AddProjectValidation:ProjectValidation<AddProjectCommand>
     {
-        public UpdateProjectCommandValidation()
+        public AddProjectValidation()
         {
             ValidateDescription();
         }

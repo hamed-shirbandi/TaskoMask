@@ -60,7 +60,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> RegisterAndSeedDefaultWorkspaceAsync(OwnerRegisterDto input)
+        public async Task<Result<CommandResult>> RegisterAndSeedDefaultWorkspaceAsync(RegisterOwnerDto input)
         {
             var createUserCommandResult = await RegisterAsync(input);
             if (!createUserCommandResult.IsSuccess)
@@ -76,7 +76,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> RegisterAsync(OwnerRegisterDto input)
+        public async Task<Result<CommandResult>> RegisterAsync(RegisterOwnerDto input)
         {
             //create authentication user info
             var createUserCommandResult = await _userService.CreateAsync(input.Email, input.Password,UserType.Owner);
@@ -92,7 +92,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateProfileAsync(OwnerUpdateProfileDto input)
+        public async Task<Result<CommandResult>> UpdateProfileAsync(UpdateOwnerProfileDto input)
         {
             //update authentication user UserName
             var updateUserCommandResult = await _userService.UpdateUserNameAsync(input.Id, input.Email);

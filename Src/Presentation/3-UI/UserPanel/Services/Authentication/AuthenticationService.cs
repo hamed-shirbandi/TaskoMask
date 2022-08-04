@@ -49,7 +49,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<UserJwtTokenDto>> Register(OwnerRegisterDto input)
+        public async Task<Result<UserJwtTokenDto>> Register(RegisterOwnerDto input)
         {
             var registerResult = await _accountApiService.Register(input);
             return await SignInAsync(registerResult);

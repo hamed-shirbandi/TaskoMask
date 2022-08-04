@@ -7,6 +7,6 @@ namespace TaskoMask.Presentation.Framework.Share.ApiContracts
     public  interface IAccountApiService
     {
         Task<Result<UserJwtTokenDto>> Login(UserLoginDto input);
-        Task<Result<UserJwtTokenDto>> Register(OwnerRegisterDto input);
+        Task<Result<UserJwtTokenDto>> Register(RegisterOwnerDto input);
     }
 }

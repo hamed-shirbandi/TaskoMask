@@ -42,7 +42,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<UserJwtTokenDto>> Register(OwnerRegisterDto input)
+        public async Task<Result<UserJwtTokenDto>> Register(RegisterOwnerDto input)
         {
             var url = $"/account/register";
             return await _httpClientService.PostAsync<UserJwtTokenDto>(url, input);

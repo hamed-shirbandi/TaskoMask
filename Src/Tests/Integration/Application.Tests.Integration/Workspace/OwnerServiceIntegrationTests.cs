@@ -34,7 +34,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
         public async Task Owner_Is_Registered()
         {
             //Arrange
-            var dto = new OwnerRegisterDto
+            var dto = new RegisterOwnerDto
             {
                 DisplayName= "Test DisplayName",
                 Email="TestOwner@email.com",

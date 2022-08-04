@@ -84,7 +84,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("account/register")]
-        public async Task<Result<UserJwtTokenDto>> Register([FromBody] OwnerRegisterDto input)
+        public async Task<Result<UserJwtTokenDto>> Register([FromBody] RegisterOwnerDto input)
         {
             //create owner with default workspace
             var createCommandResult = await _ownerService.RegisterAndSeedDefaultWorkspaceAsync(input);
@@ -112,7 +112,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// <summary>
         /// 
         /// </summary>
-        private AuthenticatedUser GetAuthenticatedUserModel(string entityId, OwnerRegisterDto input)
+        private AuthenticatedUser GetAuthenticatedUserModel(string entityId, RegisterOwnerDto input)
         {
             return new AuthenticatedUser
             {

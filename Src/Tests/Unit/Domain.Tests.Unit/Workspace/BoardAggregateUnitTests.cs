@@ -33,7 +33,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Board_Is_Constructed()
+        public void Board_Is_Added()
         {
 
             //Arrange
@@ -43,7 +43,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
                   .WithDescription("Test Description");
 
             //Act
-            var board = boardBuilder.Build();
+            var board = boardBuilder.AddBoard();
 
 
             //Assert
@@ -55,7 +55,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Board_Created_Event_Is_Raised_When_Board_Is_Constructed()
+        public void Event_Is_Published_When_Board_Is_Added()
         {
 
             //Arrange
@@ -66,7 +66,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
                   .WithDescription("Test Description");
 
             //Act
-            var board = boardBuilder.Build();
+            var board = boardBuilder.AddBoard();
 
             //Assert
             board.DomainEvents.Should().HaveCount(1);
@@ -78,14 +78,14 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Board_Is_Not_Constructed_When_Name_Already_Exist()
+        public void Board_Is_Not_Added_When_Name_Already_Exist()
         {
             //Arrange
             var reservedName = "Reserved_Name";//configured in _boardValidatorService in FixtureSetup()
             var expectedMessage = string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board);
 
             //Act
-            Action act = () => BoardObjectMother.CreateNewBoardWithName(reservedName, _boardValidatorService);
+            Action act = () => BoardObjectMother.AddBoardWithName(reservedName, _boardValidatorService);
 
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
@@ -94,13 +94,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Board_Is_Not_Constructed_When_ProjectId_Is_Null()
+        public void Board_Is_Not_Added_When_ProjectId_Is_Null()
         {
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Required, nameof(BoardProjectId));
 
             //Act
-            Action act = () => BoardObjectMother.CreateNewBoardWithProjectId(null,_boardValidatorService);
+            Action act = () => BoardObjectMother.AddBoardWithProjectId(null,_boardValidatorService);
 
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
@@ -111,13 +111,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         [InlineData("B")]
         [InlineData("ab")]
         [Theory]
-        public void Board_Is_Not_Constructed_When_Name_Lenght_Is_Less_Than_Min_Length(string name)
+        public void Board_Is_Not_Added_When_Name_Lenght_Is_Less_Than_Min_Length(string name)
         {
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length);
 
             //Act
-            Action act = () => BoardObjectMother.CreateNewBoardWithName(name, _boardValidatorService);
+            Action act = () => BoardObjectMother.AddBoardWithName(name, _boardValidatorService);
 
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
@@ -129,13 +129,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         [InlineData("SameName", "SameName")]
         [InlineData("نام تست", "نام تست")]
         [Theory]
-        public void Board_Is_Not_Constructed_When_Name_And_Description_Are_The_Same(string name, string description)
+        public void Board_Is_Not_Added_When_Name_And_Description_Are_The_Same(string name, string description)
         {
             //Arrange
             var expectedMessage = DomainMessages.Equal_Name_And_Description_Error;
 
             //Act
-            Action act = () => BoardObjectMother.CreateNewBoard(name, description, _boardValidatorService);
+            Action act = () => BoardObjectMother.AddBoard(name, description, _boardValidatorService);
 
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
@@ -146,11 +146,11 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Card_Is_Created()
+        public void Card_Is_Added()
         {
 
             //Arrange
-            var board = BoardObjectMother.CreateNewBoard(_boardValidatorService);
+            var board = BoardObjectMother.AddBoard(_boardValidatorService);
             var expectedCard = Card.Create("Test Card Name", BoardCardType.ToDo);
 
 
@@ -167,11 +167,11 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Card_Created_Event_Is_Raised_When_Card_Is_Created()
+        public void Event_Is_Published_When_Card_Is_Added()
         {
 
             //Arrange
-            var board = BoardObjectMother.CreateNewBoard(_boardValidatorService);
+            var board = BoardObjectMother.AddBoard(_boardValidatorService);
             var expectedCard = Card.Create("Test Card Name", BoardCardType.ToDo);
             var expectedEventType = nameof(CardCreatedEvent);
 

@@ -52,7 +52,7 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
 
 
 
-        public Board Build()
+        public Board AddBoard()
         {
             return Board.AddBoard(Name, Description, ProjectId ,_boardValidatorService);
         }

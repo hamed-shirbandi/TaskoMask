@@ -5,7 +5,6 @@ using TaskoMask.Presentation.Framework.Web.Controllers;
 using TaskoMask.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Domain.Core.Services;
 
@@ -52,7 +51,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("owner")]
-        public async Task<Result<CommandResult>> Update([FromBody] OwnerUpdateProfileDto input)
+        public async Task<Result<CommandResult>> UpdateProfile([FromBody] OwnerUpdateProfileDto input)
         {
             input.Id = GetCurrentUserId();
             return await _ownerService.UpdateProfileAsync(input);

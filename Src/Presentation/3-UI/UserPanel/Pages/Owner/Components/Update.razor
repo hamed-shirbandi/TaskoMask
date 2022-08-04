@@ -95,7 +95,7 @@
     /// </summary>
     private async Task HandleUpdate()
     {
-        var result = await OwnerApiService.Update(OwnerUpdateModel);
+        var result = await OwnerApiService.UpdateProfile(OwnerUpdateModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Owner_Updated)

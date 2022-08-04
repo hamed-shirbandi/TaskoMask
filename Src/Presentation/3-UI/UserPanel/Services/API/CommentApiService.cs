@@ -39,7 +39,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Create(CommentUpsertDto input)
+        public async Task<Result<CommandResult>> Add(CommentUpsertDto input)
         {
             var url = $"/comments";
             return await _httpClientService.PostAsync<CommandResult>(url, input);

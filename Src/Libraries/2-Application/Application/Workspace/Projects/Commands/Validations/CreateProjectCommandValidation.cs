@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Application.Workspace.Projects.Commands.Validations
 {
-   public class CreateProjectCommandValidation:ProjectValidation<CreateProjectCommand>
+   public class CreateProjectCommandValidation:ProjectValidation<AddProjectCommand>
     {
         public CreateProjectCommandValidation()
         {

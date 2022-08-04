@@ -4,9 +4,9 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Projects.Commands.Models
 {
-    public class CreateProjectCommand : ProjectBaseCommand
+    public class AddProjectCommand : ProjectBaseCommand
     {
-        public CreateProjectCommand(string name, string description, string organizationId)
+        public AddProjectCommand(string name, string description, string organizationId)
             : base(name, description)
 
         {

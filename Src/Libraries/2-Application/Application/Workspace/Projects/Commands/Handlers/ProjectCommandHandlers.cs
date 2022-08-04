@@ -15,7 +15,7 @@ using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
 {
     public class ProjectCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateProjectCommand, CommandResult>,
+        IRequestHandler<AddProjectCommand, CommandResult>,
          IRequestHandler<UpdateProjectCommand, CommandResult>,
          IRequestHandler<DeleteProjectCommand, CommandResult>
     {
@@ -41,7 +41,7 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(AddProjectCommand request, CancellationToken cancellationToken)
         {
             var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.OrganizationId);
             if (owner == null)

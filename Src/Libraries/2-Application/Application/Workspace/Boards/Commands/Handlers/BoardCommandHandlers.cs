@@ -48,7 +48,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
         /// </summary>
         public async Task<CommandResult> Handle(CreateBoardCommand request, CancellationToken cancellationToken)
         {
-            var board = Board.CreateBoard(request.Name, request.Description, request.ProjectId, _boardValidatorService);
+            var board = Board.AddBoard(request.Name, request.Description, request.ProjectId, _boardValidatorService);
 
             await _boardAggregateRepository.CreateAsync(board);
             await PublishDomainEventsAsync(board.DomainEvents);

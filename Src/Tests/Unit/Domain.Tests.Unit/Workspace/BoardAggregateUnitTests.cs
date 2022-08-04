@@ -59,7 +59,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         {
 
             //Arrange
-            var expectedEventType = nameof(BoardCreatedEvent);
+            var expectedEventType = nameof(BoardAddedEvent);
             var boardBuilder = BoardBuilder.Init(_boardValidatorService)
                   .WithProjectId(ObjectId.GenerateNewId().ToString())
                   .WithName("Test Name")

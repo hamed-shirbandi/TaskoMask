@@ -3,9 +3,9 @@ using TaskoMask.Domain.Core.Events;
 
 namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Boards
 {
-    public class BoardCreatedEvent : DomainEvent
+    public class BoardAddedEvent : DomainEvent
     {
-        public BoardCreatedEvent(string id, string name, string description, string projectId) : base(entityId: id, entityType: nameof(Board))
+        public BoardAddedEvent(string id, string name, string description, string projectId) : base(entityId: id, entityType: nameof(Board))
         {
             Id = id;
             Name = name;

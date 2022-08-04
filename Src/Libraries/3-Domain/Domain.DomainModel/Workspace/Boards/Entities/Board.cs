@@ -32,7 +32,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
             Members = new HashSet<Member>();
             
             CheckPolicies(boardValidatorService);
-            AddDomainEvent(new BoardCreatedEvent(Id, Name.Value, Description.Value, ProjectId.Value));
+            AddDomainEvent(new BoardAddedEvent(Id, Name.Value, Description.Value, ProjectId.Value));
         }
 
         #endregion
@@ -56,7 +56,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Board CreateBoard(string name, string description, string projectId, IBoardValidatorService boardValidatorService)
+        public static Board AddBoard(string name, string description, string projectId, IBoardValidatorService boardValidatorService)
         {
             return new Board(name, description, projectId, boardValidatorService);
         }

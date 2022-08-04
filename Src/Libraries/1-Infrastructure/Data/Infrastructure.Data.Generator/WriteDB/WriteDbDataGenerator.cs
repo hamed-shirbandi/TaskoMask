@@ -165,7 +165,7 @@ namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
                         var boards = ReadDbDataGenerator.GenerateBoard();
                         foreach (var board in boards)
                         {
-                            var boardAggregate = Board.CreateBoard(board.Name, board.Description, project.Id, boardValidatorService);
+                            var boardAggregate = Board.AddBoard(board.Name, board.Description, project.Id, boardValidatorService);
 
                             var cards = ReadDbDataGenerator.GenerateCard();
                             foreach (var card in cards)

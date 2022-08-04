@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Workspace.Boards.EventHandlers
     /// Sync data between Write and Read DB
     /// </summary>
     public class BoardEventHandles : 
-        INotificationHandler<BoardCreatedEvent>,
+        INotificationHandler<BoardAddedEvent>,
         INotificationHandler<BoardUpdatedEvent>,
         INotificationHandler<BoardDeletedEvent>
     {
@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Workspace.Boards.EventHandlers
         /// <summary>
         /// 
         /// </summary>
-        public async System.Threading.Tasks.Task Handle(BoardCreatedEvent createdBoard, CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task Handle(BoardAddedEvent createdBoard, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetByIdAsync(createdBoard.ProjectId);
 

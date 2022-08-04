@@ -2,7 +2,7 @@
 @using TaskoMask.Domain.Share.Enums
 @inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICommentApiService CommentApiService
 
-<EditForm Model="CommentModel" OnValidSubmit="HandleCreate" class="form">
+<EditForm Model="CommentModel" OnValidSubmit="HandleAddComment" class="form">
     <DataAnnotationsValidator />
     <input type="hidden" @bind="CommentModel.TaskId" />
 
@@ -59,7 +59,7 @@
     /// <summary>
     /// handle create model
     /// </summary>
-    private async Task HandleCreate()
+    private async Task HandleAddComment()
     {
         var result = await CommentApiService.Add(CommentModel);
         if (result.IsSuccess)
@@ -67,7 +67,7 @@
 
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithComponentMessageType(MessageType.Comment_Created)
+            .WithComponentMessageType(MessageType.Comment_Added)
             .ShowErrorToast(ToastService)
             .PublishMessage(ComponentMessageService);
     }

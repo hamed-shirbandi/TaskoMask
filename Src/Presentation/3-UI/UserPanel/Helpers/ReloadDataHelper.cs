@@ -60,7 +60,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
         private static bool CardIsChanged(MessageType messageType)
         {
-            return messageType == MessageType.Card_Created
+            return messageType == MessageType.Card_Added
                  || messageType == MessageType.Card_Deleted
                  || messageType == MessageType.Card_Updated;
         }
@@ -68,7 +68,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
         private static bool TaskIsChanged(MessageType messageType)
         {
-            return messageType == MessageType.Task_Created
+            return messageType == MessageType.Task_Added
                 || messageType == MessageType.Task_Deleted
                 || messageType == MessageType.Task_Moved
                 || messageType == MessageType.Task_Updated;
@@ -86,7 +86,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
         private static bool BoardIsChanged(MessageType messageType)
         {
-            return messageType == MessageType.Board_Created
+            return messageType == MessageType.Board_Added
                 || messageType == MessageType.Board_Deleted
                 || messageType == MessageType.Board_Updated;
         }
@@ -94,7 +94,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
         private static bool ProjectIsChanged(MessageType messageType)
         {
-            return messageType == MessageType.Project_Created
+            return messageType == MessageType.Project_Added
                 || messageType == MessageType.Project_Deleted
                 || messageType == MessageType.Project_Updated;
         }
@@ -102,7 +102,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
         private static bool OrganizationIsChanged(MessageType messageType)
         {
-            return messageType == MessageType.Organization_Created
+            return messageType == MessageType.Organization_Added
                 || messageType == MessageType.Organization_Deleted
                 || messageType == MessageType.Organization_Updated;
         }
@@ -111,7 +111,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
 
         private static bool CommentIsChanged(MessageType messageType)
         {
-            return messageType == MessageType.Comment_Created
+            return messageType == MessageType.Comment_Added
                 || messageType == MessageType.Comment_Deleted
                 || messageType == MessageType.Comment_Updated;
         }

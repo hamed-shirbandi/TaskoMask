@@ -228,7 +228,7 @@
         var result = await BoardApiService.Add(BoardModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithComponentMessageType(MessageType.Board_Created)
+            .WithComponentMessageType(MessageType.Board_Added)
             .ShowErrorToast(ToastService)
             .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);

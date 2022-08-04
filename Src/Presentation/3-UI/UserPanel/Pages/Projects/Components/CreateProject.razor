@@ -139,7 +139,7 @@
         var result = await ProjectApiService.Add(ProjectModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithComponentMessageType(MessageType.Project_Created)
+            .WithComponentMessageType(MessageType.Project_Added)
             .ShowErrorToast(ToastService)
             .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);

@@ -82,7 +82,7 @@
         var result = await CardApiService.Add(CardModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithComponentMessageType(MessageType.Card_Created)
+            .WithComponentMessageType(MessageType.Card_Added)
             .ShowErrorToast(ToastService)
             .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);

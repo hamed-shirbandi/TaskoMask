@@ -60,7 +60,7 @@
         var result = await OrganizationApiService.Add(OrganizationModel);
         CommandResultHandler.Init()
             .WithResult(result)
-            .WithComponentMessageType(MessageType.Organization_Created)
+            .WithComponentMessageType(MessageType.Organization_Added)
             .ShowErrorToast(ToastService)
             .PublishMessage(ComponentMessageService)
             .CloseModal(ModalInstance);

@@ -9,7 +9,7 @@ namespace TaskoMask.Presentation.Framework.Share.ApiContracts
         Task<Result<TaskBasicInfoDto>> Get(string id);
         Task<Result<TaskDetailsViewModel>> GetDetails(string id);
 
-        Task<Result<CommandResult>> Create(TaskUpsertDto input);
+        Task<Result<CommandResult>> Add(TaskUpsertDto input);
         Task<Result<CommandResult>> Update(string id, TaskUpsertDto input);
         Task<Result<CommandResult>> Delete(string id);
         Task<Result<CommandResult>> MoveTaskToAnotherCard(string taskId, string cardId);

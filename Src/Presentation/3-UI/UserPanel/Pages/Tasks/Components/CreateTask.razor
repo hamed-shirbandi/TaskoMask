@@ -60,7 +60,7 @@
     /// </summary>
     private async Task HandleCreate()
     {
-        var result = await TaskApiService.Create(TaskModel);
+        var result = await TaskApiService.Add(TaskModel);
         if (result.IsSuccess)
             TaskModel.Title = "";
 

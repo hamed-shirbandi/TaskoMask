@@ -5,9 +5,9 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Boards.Commands.Models
 {
-    public class CreateBoardCommand : BoardBaseCommand
+    public class AddBoardCommand : BoardBaseCommand
     {
-        public CreateBoardCommand(string name, string description, string projectId)
+        public AddBoardCommand(string name, string description, string projectId)
            : base(name, description)
         {
             ProjectId = projectId;

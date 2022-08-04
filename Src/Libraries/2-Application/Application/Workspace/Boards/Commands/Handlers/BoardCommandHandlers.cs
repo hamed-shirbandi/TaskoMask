@@ -16,7 +16,7 @@ using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
 namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
 {
     public class BoardCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateBoardCommand, CommandResult>,
+        IRequestHandler<AddBoardCommand, CommandResult>,
         IRequestHandler<UpdateBoardCommand, CommandResult>,
         IRequestHandler<DeleteBoardCommand, CommandResult>
     {
@@ -46,7 +46,7 @@ namespace TaskoMask.Application.Workspace.Boards.Commands.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(CreateBoardCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(AddBoardCommand request, CancellationToken cancellationToken)
         {
             var board = Board.AddBoard(request.Name, request.Description, request.ProjectId, _boardValidatorService);
 

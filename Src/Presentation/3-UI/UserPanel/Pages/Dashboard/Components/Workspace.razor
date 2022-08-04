@@ -1,6 +1,5 @@
 ﻿@using TaskoMask.Application.Share.ViewModels
 @using TaskoMask.Application.Share.Dtos.Workspace.Organizations
-@using TaskoMask.Presentation.UI.UserPanel.Shared
 
 @foreach (var item in Model)
 {
@@ -8,7 +7,7 @@
         <h6 id="@item.Organization.Id" data-toggle="tooltip" data-placement="left" title="@item.Organization.Description">
             <i class="bi bi-building"></i>
             @item.Organization.Name
-            <a @onclick="@(()=>ShowUpdsertModal(item.Organization.Id))" class="text-warning" >
+            <a @onclick="@(()=>ShowUpdateOrganizationModal(item.Organization.Id))" class="text-warning" >
                 <i class="bi bi-pencil"></i>
             </a>
         </h6>
@@ -25,7 +24,7 @@
                 @if (item.Projects.Any())
                 {
                     <div class="row">
-                        <Boards Model="@item.Boards" OrganizationId=@item.Organization.Id />
+                        <TaskoMask.Presentation.UI.UserPanel.Shared.Boards Model="@item.Boards" OrganizationId=@item.Organization.Id />
                     </div>
                 }
 
@@ -57,10 +56,10 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowUpdsertModal(string organizationId)
+    private void ShowUpdateOrganizationModal(string organizationId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Organizations.Components.CreateOrUpdateOrganization.Id), organizationId);
-        ModalService.Show<Pages.Organizations.Components.CreateOrUpdateOrganization>("Update workspace", parameters, new ModalOptions {Class="blazored-modal w-75 w-md-50 bg-light-gray" });
+        parameters.Add(nameof(Pages.Organizations.Components.UpdateOrganization.Id), organizationId);
+        ModalService.Show<Pages.Organizations.Components.UpdateOrganization>("Update workspace", parameters, new ModalOptions {Class="blazored-modal w-75 w-md-50 bg-light-gray" });
     }
 }

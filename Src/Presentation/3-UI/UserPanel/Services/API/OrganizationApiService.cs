@@ -64,7 +64,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> AddToOwnerWorkspace(OrganizationUpsertDto input)
+        public async Task<Result<CommandResult>> Add(OrganizationUpsertDto input)
         {
             var url = $"/organizations";
             return await _httpClientService.PostAsync<CommandResult>(url, input);

@@ -9,7 +9,7 @@ namespace TaskoMask.Presentation.Framework.Share.ApiContracts
         Task<Result<OrganizationBasicInfoDto>> Get(string id);
         Task<Result<IEnumerable<OrganizationDetailsViewModel>>> Get();
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems();
-        Task<Result<CommandResult>> AddToOwnerWorkspace(OrganizationUpsertDto input);
+        Task<Result<CommandResult>> Add(OrganizationUpsertDto input);
         Task<Result<CommandResult>> Update(string id,OrganizationUpsertDto input);
         Task<Result<CommandResult>> Delete(string id);
     }

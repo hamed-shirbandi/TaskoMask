@@ -119,7 +119,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
                 Name = _configuration["Default:Workspace:OrganizationName"],
             };
 
-            var CreateOrganizationCommandResult = await _organizationService.AddToOwnerWorkspace(organizationDto);
+            var CreateOrganizationCommandResult = await _organizationService.AddAsync(organizationDto);
             if (!CreateOrganizationCommandResult.IsSuccess)
                 return;
 

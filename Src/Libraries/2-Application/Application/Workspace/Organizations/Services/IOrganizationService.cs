@@ -9,7 +9,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
 {
     public interface IOrganizationService : IApplicationService
     {
-        Task<Result<CommandResult>> AddToOwnerWorkspace(OrganizationUpsertDto input);
+        Task<Result<CommandResult>> AddAsync(OrganizationUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(OrganizationUpsertDto input);
         Task<Result<OrganizationDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListWithDetailsByOwnerIdAsync(string ownerId);

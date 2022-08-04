@@ -43,7 +43,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
             };
 
             //Act
-            var result = await _fixture.OrganizationService.AddToOwnerWorkspace(dto);
+            var result = await _fixture.OrganizationService.AddAsync(dto);
 
             //Assert
             result.IsSuccess.Should().BeTrue();

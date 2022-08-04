@@ -83,7 +83,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("organizations")]
-        public async Task<Result<CommandResult>> Create([FromBody] OrganizationUpsertDto input)
+        public async Task<Result<CommandResult>> AddToOwnerWorkspace([FromBody] OrganizationUpsertDto input)
         {
             input.OwnerId = GetCurrentUserId();
             return await _organizationService.AddToOwnerWorkspace(input);

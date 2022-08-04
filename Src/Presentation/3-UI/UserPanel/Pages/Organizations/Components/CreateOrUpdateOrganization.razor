@@ -138,7 +138,7 @@
     /// </summary>
     private async Task HandleCreate()
     {
-        var result = await OrganizationApiService.Create(OrganizationModel);
+        var result = await OrganizationApiService.AddToOwnerWorkspace(OrganizationModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Organization_Created)

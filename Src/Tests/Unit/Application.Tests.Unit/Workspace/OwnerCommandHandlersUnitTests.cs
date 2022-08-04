@@ -50,7 +50,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
             result.EntityId.Should().Be(expectedUserId);
             var createdUser = _owners.FirstOrDefault(u => u.Id == result.EntityId);
             createdUser.Email.Value.Should().Be(createOwnerCommand.Email);
-            await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerCreatedEvent>());
+            await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerRegisteredEvent>());
         }
 
 
@@ -69,40 +69,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
             //Assert
             result.EntityId.Should().Be(ownerToUpdate.Id);
             ownerToUpdate.Email.Value.Should().Be(updateOwnerCommand.Email);
-            await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerUpdatedEvent>());
-        }
-
-
-
-        [Fact]
-        public async Task Owner_Is_Deleted()
-        {
-            //Arrange
-            var ownerToDelete = _owners.First();
-            var deleteOwnerCommand = new DeleteOwnerCommand(ownerToDelete.Id);
-
-            //Act
-            var result = await _ownerCommandHandlers.Handle(deleteOwnerCommand, CancellationToken.None);
-
-            //Assert
-            await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerDeletedEvent>());
-        }
-
-
-
-        [Fact]
-        public async Task Owner_Is_Not_Deleted_When_Id_Not_Exist()
-        {
-            //Arrange
-            var notExistOwnerId = ObjectId.GenerateNewId().ToString();
-            var expectedMessage = string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
-            var deleteOwnerCommand = new DeleteOwnerCommand(notExistOwnerId);
-
-            //Act
-            Func<Task> func = async () => { await _ownerCommandHandlers.Handle(deleteOwnerCommand, CancellationToken.None); };
-
-            //Assert
-            await func.Should().ThrowAsync<Core.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+            await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerProfileUpdatedEvent>());
         }
 
 

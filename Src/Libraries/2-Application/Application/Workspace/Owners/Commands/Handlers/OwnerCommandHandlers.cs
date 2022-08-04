@@ -18,8 +18,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
 {
     public class OwnerCommandHandlers : BaseCommandHandler,
         IRequestHandler<CreateOwnerCommand, CommandResult>,
-        IRequestHandler<UpdateOwnerCommand, CommandResult>,
-         IRequestHandler<DeleteOwnerCommand, CommandResult>
+        IRequestHandler<UpdateOwnerCommand, CommandResult>
 
     {
         #region Fields
@@ -80,27 +79,6 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
             return new CommandResult(ApplicationMessages.Update_Success, owner.Id.ToString());
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<CommandResult> Handle(DeleteOwnerCommand request, CancellationToken cancellationToken)
-        {
-            var owner = await _ownerAggregateRepository.GetByIdAsync(request.Id);
-            if (owner == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
-
-
-            owner.DeleteOwner();
-
-            await _ownerAggregateRepository.DeleteAsync(owner.Id);
-
-            await PublishDomainEventsAsync(owner.DomainEvents);
-
-            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
-
-        }
 
 
         #endregion

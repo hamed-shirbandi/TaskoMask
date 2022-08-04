@@ -254,23 +254,6 @@ namespace TaskoMask.Application.Workspace.Owners.Services
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> DeleteAsync(string id)
-        {
-            var cmd = new DeleteOwnerCommand(id);
-            var result = await SendCommandAsync(cmd);
-
-            //delete associated user
-            if (result.IsSuccess)
-                await _userService.DeleteAsync(id);
-
-            return result;
-        }
-
-
-
         #endregion
     }
 }

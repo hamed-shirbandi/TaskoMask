@@ -37,7 +37,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
 
             CheckPolicies();
 
-            AddDomainEvent(new OwnerCreatedEvent(Id, DisplayName.Value, Email.Value));
+            AddDomainEvent(new OwnerRegisteredEvent(Id, DisplayName.Value, Email.Value));
         }
 
 
@@ -76,19 +76,10 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
             DisplayName = displayName;
             Email = email;
 
-            AddDomainEvent(new OwnerUpdatedEvent(Id, displayName.Value, email.Value));
+            AddDomainEvent(new OwnerProfileUpdatedEvent(Id, displayName.Value, email.Value));
         }
 
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void DeleteOwner()
-        {
-            AddDomainEvent(new OwnerDeletedEvent(Id));
-        }
 
 
 

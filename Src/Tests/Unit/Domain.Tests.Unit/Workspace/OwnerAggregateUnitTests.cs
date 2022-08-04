@@ -46,7 +46,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         {
 
             //Arrange
-            var expectedEventType = nameof(OwnerCreatedEvent);
+            var expectedEventType = nameof(OwnerRegisteredEvent);
             var ownerBuilder = OwnerBuilder.Init()
                               .WithId(ObjectId.GenerateNewId().ToString())
                               .WithEmail("Test@email.com")
@@ -136,7 +136,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
             //Arrange
             var owner = OwnerObjectMother.CreateNewOwner();
-            var expectedEventType = nameof(OwnerUpdatedEvent);
+            var expectedEventType = nameof(OwnerProfileUpdatedEvent);
 
             //Act
             owner.UpdateOwner(

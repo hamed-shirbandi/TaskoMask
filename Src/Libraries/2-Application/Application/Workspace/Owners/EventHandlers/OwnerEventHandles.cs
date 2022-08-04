@@ -12,9 +12,8 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
     /// Sync data between Write and Read DB
     /// </summary>
     public class OwnerEventHandles : 
-        INotificationHandler<OwnerCreatedEvent>,
-        INotificationHandler<OwnerUpdatedEvent>,
-        INotificationHandler<OwnerDeletedEvent>
+        INotificationHandler<OwnerRegisteredEvent>,
+        INotificationHandler<OwnerProfileUpdatedEvent>
     {
         #region Fields
 
@@ -39,7 +38,7 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
         /// <summary>
         /// 
         /// </summary>
-        public async System.Threading.Tasks.Task Handle(OwnerCreatedEvent createdOwner, CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task Handle(OwnerRegisteredEvent createdOwner, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByIdAsync(createdOwner.Id);
 
@@ -58,7 +57,7 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
         /// <summary>
         /// 
         /// </summary>
-        public async System.Threading.Tasks.Task Handle(OwnerUpdatedEvent updatedOwner, CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task Handle(OwnerProfileUpdatedEvent updatedOwner, CancellationToken cancellationToken)
         {
             var owner = await _ownerRepository.GetByIdAsync(updatedOwner.Id);
             var user = await _userRepository.GetByIdAsync(updatedOwner.Id);
@@ -73,15 +72,6 @@ namespace TaskoMask.Application.Workspace.Owners.EventHandlers
 
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async System.Threading.Tasks.Task Handle(OwnerDeletedEvent deletedOwner, CancellationToken cancellationToken)
-        {
-            await _ownerRepository.DeleteAsync(deletedOwner.Id);
-        }
 
 
         #endregion

@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
             if (board == null)
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
-            var task = Domain.DomainModel.Workspace.Tasks.Entities.Task.CreateTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
+            var task = Domain.DomainModel.Workspace.Tasks.Entities.Task.AddTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
 
             await _taskAggregateRepository.CreateAsync(task);
             await PublishDomainEventsAsync(task.DomainEvents);

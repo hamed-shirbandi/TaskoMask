@@ -199,7 +199,7 @@ namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
                     var tasks = ReadDbDataGenerator.GenerateTasks();
                     foreach (var task in tasks)
                     {
-                        var taskAggregate = Domain.DomainModel.Workspace.Tasks.Entities.Task.CreateTask(task.Title, task.Description, card.Id, board.Id, taskValidatorService);
+                        var taskAggregate = Domain.DomainModel.Workspace.Tasks.Entities.Task.AddTask(task.Title, task.Description, card.Id, board.Id, taskValidatorService);
                         items.Add(taskAggregate);
                     }
                 }

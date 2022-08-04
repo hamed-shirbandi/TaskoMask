@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Workspace.Activities.EventHandlers
     /// Sync data between Write and Read DB
     /// </summary>
     public class TaskEventHandles : 
-        INotificationHandler<TaskCreatedEvent>,
+        INotificationHandler<TaskAddedEvent>,
         INotificationHandler<TaskUpdatedEvent>,
         INotificationHandler<TaskDeletedEvent>,
         INotificationHandler<TaskMovedToAnotherCardEvent>
@@ -38,7 +38,7 @@ namespace TaskoMask.Application.Workspace.Activities.EventHandlers
         /// <summary>
         /// 
         /// </summary>
-        public async System.Threading.Tasks.Task Handle(TaskCreatedEvent createdTask, CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task Handle(TaskAddedEvent createdTask, CancellationToken cancellationToken)
         {
             var card = await _cardRepository.GetByIdAsync(createdTask.CardId);
 

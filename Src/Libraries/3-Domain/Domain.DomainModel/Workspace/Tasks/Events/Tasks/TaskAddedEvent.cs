@@ -3,9 +3,9 @@ using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Tasks
 {
-    public class TaskCreatedEvent : DomainEvent
+    public class TaskAddedEvent : DomainEvent
     {
-        public TaskCreatedEvent(string id, string title, string description, string cardId, string boardId) : base(entityId: id, entityType: nameof(Task))
+        public TaskAddedEvent(string id, string title, string description, string cardId, string boardId) : base(entityId: id, entityType: nameof(Task))
         {
             Id = id;
             Title = title;

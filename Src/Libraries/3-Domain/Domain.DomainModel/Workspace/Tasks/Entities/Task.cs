@@ -32,7 +32,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
 
             CheckPolicies(taskValidatorService);
 
-            AddDomainEvent(new TaskCreatedEvent(Id, Title.Value, Description.Value, CardId.Value,BoardId.Value));
+            AddDomainEvent(new TaskAddedEvent(Id, Title.Value, Description.Value, CardId.Value,BoardId.Value));
         }
 
         #endregion
@@ -56,7 +56,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Task CreateTask(string title, string description, string cardId, string boardId, ITaskValidatorService taskValidatorService)
+        public static Task AddTask(string title, string description, string cardId, string boardId, ITaskValidatorService taskValidatorService)
         {
             return new Task(title, description, cardId, boardId, taskValidatorService);
         }

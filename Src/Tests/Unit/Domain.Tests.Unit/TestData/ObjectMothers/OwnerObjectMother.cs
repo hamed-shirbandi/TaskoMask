@@ -12,13 +12,13 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
         private static string _id = ObjectId.GenerateNewId().ToString();
 
         
-        public static Owner CreateNewOwner()
+        public static Owner RegisterOwner()
         {
             var owner= OwnerBuilder.Init()
                    .WithId(_id)
                    .WithEmail(_email)
                    .WithDisplayName(_displayName)
-                   .Build();
+                   .RegisterOwner();
 
             owner.ClearDomainEvents();
 
@@ -27,13 +27,13 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 
 
 
-        public static Owner CreateNewOwnerWithId(string id)
+        public static Owner RegisterOwnerWithId(string id)
         {
             var owner = OwnerBuilder.Init()
                    .WithId(id)
                    .WithEmail(_email)
                    .WithDisplayName(_displayName)
-                   .Build();
+                   .RegisterOwner();
 
             owner.ClearDomainEvents();
 
@@ -42,13 +42,13 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 
 
 
-        public static Owner CreateNewOwnerWithDisplayName(string displayName)
+        public static Owner RegisterOwnerWithDisplayName(string displayName)
         {
             var owner = OwnerBuilder.Init()
                    .WithId(_id)
                    .WithEmail(_email)
                    .WithDisplayName(displayName)
-                   .Build();
+                   .RegisterOwner();
 
             owner.ClearDomainEvents();
 
@@ -57,13 +57,13 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 
 
 
-        public static Owner CreateNewOwnerWithEmail(string email)
+        public static Owner RegisterOwnerWithEmail(string email)
         {
             var owner = OwnerBuilder.Init()
                    .WithId(_id)
                    .WithEmail(email)
                    .WithDisplayName(_displayName)
-                   .Build();
+                   .RegisterOwner();
 
             owner.ClearDomainEvents();
 
@@ -72,9 +72,9 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 
 
 
-        public static Owner CreateNewOwnerWithAnOrganization()
+        public static Owner RegisterOwnerWithAnOrganization()
         {
-            var owner = CreateNewOwner();
+            var owner = RegisterOwner();
             var organization = Organization.CreateOrganization("Test Organization Name", "Test Organization Description");
 
             owner.ClearDomainEvents();

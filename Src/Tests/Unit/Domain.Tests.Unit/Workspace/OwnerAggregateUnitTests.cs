@@ -19,7 +19,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
     {
 
         [Fact]
-        public void Owner_Is_Constructed()
+        public void Owner_Is_Registered()
         {
             //Arrange
             var ownerBuilder = OwnerBuilder.Init()
@@ -28,7 +28,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
                   .WithDisplayName("Test Name");
 
             //Act
-            var owner = ownerBuilder.Build();
+            var owner = ownerBuilder.RegisterOwner();
 
 
             //Assert
@@ -42,7 +42,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Owner_Created_Event_Is_Raised_When_Owner_Is_Constructed()
+        public void Event_is_Published_When_Owner_Is_Registered()
         {
 
             //Arrange
@@ -52,7 +52,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
                               .WithEmail("Test@email.com")
                               .WithDisplayName("Test Name");
             //Act
-            var owner = ownerBuilder.Build();
+            var owner = ownerBuilder.RegisterOwner();
 
             //Assert
             owner.DomainEvents.Should().HaveCount(1);
@@ -65,13 +65,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Owner_Is_Not_Constructed_When_Id_Is_Null()
+        public void Owner_Is_Not_Registered_When_Id_Is_Null()
         {
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Null_Reference_Error, nameof(Owner.Id));
 
             //Act
-            Action act = () => OwnerObjectMother.CreateNewOwnerWithId(null);
+            Action act = () => OwnerObjectMother.RegisterOwnerWithId(null);
 
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
@@ -80,13 +80,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Owner_Is_Not_Constructed_When_DisplayName_Is_Null()
+        public void Owner_Is_Not_Registered_When_DisplayName_Is_Null()
         {
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Required, nameof(OwnerDisplayName));
 
             //Act
-            Action act = () => OwnerObjectMother.CreateNewOwnerWithDisplayName(null);
+            Action act = () => OwnerObjectMother.RegisterOwnerWithDisplayName(null);
 
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
@@ -97,13 +97,13 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         [InlineData("H")]
         [InlineData("Ha")]
         [Theory]
-        public void Owner_Is_Not_Constructed_When_DisplayName_Lenght_Is_Less_Than_Min_Length(string displayName)
+        public void Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_Less_Than_Min_Length(string displayName)
         {
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
 
             //Act
-            Action act = () => OwnerObjectMother.CreateNewOwnerWithDisplayName(displayName);
+            Action act = () => OwnerObjectMother.RegisterOwnerWithDisplayName(displayName);
 
 
             //Assert
@@ -116,26 +116,26 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
         [InlineData("Ha.Taskomask.ir")]
         [InlineData("Ha.Taskomask")]
         [Theory]
-        public void Owner_Is_Not_Constructed_When_Email_Is_Not_Valid(string email)
+        public void Owner_Is_Not_Registered_When_Email_Is_Not_Valid(string email)
         {
             //Arrange
             var expectedMessage = DomainMessages.Invalid_Email_Address;
 
             //Act
-            Action act = () => OwnerObjectMother.CreateNewOwnerWithEmail(email);
+            Action act = () => OwnerObjectMother.RegisterOwnerWithEmail(email);
 
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
-
+        
         [Fact]
-        public void Owner_Updated_Event_Is_Raised_When_Owner_Is_Updated()
+        public void Event_is_Published_When_Owner_Profile_Is_Updated()
         {
 
             //Arrange
-            var owner = OwnerObjectMother.CreateNewOwner();
+            var owner = OwnerObjectMother.RegisterOwner();
             var expectedEventType = nameof(OwnerProfileUpdatedEvent);
 
             //Act
@@ -153,11 +153,11 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Organization_Is_Created()
+        public void Organization_Is_Added_To_Owner_Workspace()
         {
 
             //Arrange
-            var owner = OwnerObjectMother.CreateNewOwner();
+            var owner = OwnerObjectMother.RegisterOwner();
             var expectedOrganization = Organization.CreateOrganization("Test Organization Name", "Test Organization Description");
 
 
@@ -174,10 +174,10 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Project_Is_Created()
+        public void Project_Is_Added_To_Organization()
         {
             //Arrange
-            var owner = OwnerObjectMother.CreateNewOwnerWithAnOrganization();
+            var owner = OwnerObjectMother.RegisterOwnerWithAnOrganization();
             var expectedOrganizationId = owner.Organizations.First().Id;
             var expectedProject = Project.Create("Test Project Name", "Test Project Description");
 

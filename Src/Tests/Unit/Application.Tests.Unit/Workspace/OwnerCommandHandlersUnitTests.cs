@@ -1,17 +1,13 @@
 ﻿using FluentAssertions;
 using MongoDB.Bson;
 using NSubstitute;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Tests.Unit.TestData;
 using TaskoMask.Application.Workspace.Owners.Commands.Handlers;
 using TaskoMask.Application.Workspace.Owners.Commands.Models;
-using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Owners;
@@ -37,7 +33,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
         [Fact]
-        public async Task Owner_Is_Created()
+        public async Task Owner_Is_Register()
         {
             //Arrange
             var expectedUserId = ObjectId.GenerateNewId().ToString();
@@ -57,7 +53,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
         [Fact]
-        public async Task Owner_Is_Updated()
+        public async Task Owner_Profile_Is_Updated()
         {
             //Arrange
             var ownerToUpdate = _owners.First();

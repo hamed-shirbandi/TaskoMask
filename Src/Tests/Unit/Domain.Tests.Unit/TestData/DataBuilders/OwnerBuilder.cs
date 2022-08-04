@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+﻿using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
 {
@@ -49,7 +44,7 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
 
 
 
-        public Owner Build()
+        public Owner RegisterOwner()
         {
             return Owner.RegisterOwner(Id, DisplayName, Email);
         }

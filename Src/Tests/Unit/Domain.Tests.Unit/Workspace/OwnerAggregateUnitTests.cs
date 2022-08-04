@@ -139,7 +139,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
             var expectedEventType = nameof(OwnerProfileUpdatedEvent);
 
             //Act
-            owner.UpdateOwner(
+            owner.UpdateOwnerProfile(
                 OwnerDisplayName.Create("New Name"),
                 OwnerEmail.Create("New@email.com"));
 
@@ -162,7 +162,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
             //Act
-            owner.CreateOrganization(expectedOrganization);
+            owner.AddOrganizationToOwnerWorkspace(expectedOrganization);
 
             //Assert
             owner.Organizations.Should().HaveCount(1);
@@ -183,7 +183,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
             //Act
-            owner.CreateProject(expectedOrganizationId, expectedProject);
+            owner.AddProjectToOrganization(expectedOrganizationId, expectedProject);
 
             //Assert
             owner.Organizations.First().Projects.Should().HaveCount(1);

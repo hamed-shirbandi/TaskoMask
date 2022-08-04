@@ -61,7 +61,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// </summary>
         /// <param name="id">Shared key with User in authentication BC</param>
         /// <returns></returns>
-        public static Owner CreateOwner(string id, string displayName, string email)
+        public static Owner RegisterOwner(string id, string displayName, string email)
         {
             return new Owner(id, displayName, email);
         }
@@ -71,7 +71,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         ///// <summary>
         /////  
         ///// </summary>
-        public void UpdateOwner(OwnerDisplayName displayName, OwnerEmail email)
+        public void UpdateOwnerProfile(OwnerDisplayName displayName, OwnerEmail email)
         {
             DisplayName = displayName;
             Email = email;
@@ -92,7 +92,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void CreateOrganization(Organization organization)
+        public void AddOrganizationToOwnerWorkspace(Organization organization)
         {
             Organizations.Add(organization);
             AddDomainEvent(new OrganizationCreatedEvent(organization.Id, organization.Name.Value, organization.Description.Value,this.Id));
@@ -140,11 +140,11 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void CreateProject(string organizationId, Project project)
+        public void AddProjectToOrganization(string organizationId, Project project)
         {
             var organization = GetOrganizationById(organizationId);
             
-            organization.CreateProject(project);
+            organization.AddProject(project);
 
             AddDomainEvent(new ProjectCreatedEvent(project.Id, project.Name.Value, project.Description.Value, organization.Id,Id));
         }

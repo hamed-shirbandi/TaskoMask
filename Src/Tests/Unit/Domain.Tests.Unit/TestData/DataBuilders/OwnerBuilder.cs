@@ -51,7 +51,7 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
 
         public Owner Build()
         {
-            return Owner.CreateOwner(Id, DisplayName, Email);
+            return Owner.RegisterOwner(Id, DisplayName, Email);
         }
 
 

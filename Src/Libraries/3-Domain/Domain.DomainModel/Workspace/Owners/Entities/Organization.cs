@@ -76,7 +76,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void CreateProject(Project project)
+        public void AddProject(Project project)
         {
             Projects.Add(project);
             base.UpdateModifiedDateTime();

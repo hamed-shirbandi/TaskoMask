@@ -124,18 +124,18 @@ namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
 
             foreach (var owner in owners)
             {
-                var ownerAggregate = Owner.CreateOwner(owner.Id, owner.DisplayName, owner.Email);
+                var ownerAggregate = Owner.RegisterOwner(owner.Id, owner.DisplayName, owner.Email);
 
                 var organizations = ReadDbDataGenerator.GenerateOrganization();
 
                 foreach (var organization in organizations)
                 {
                     var createdOrganization = Organization.CreateOrganization(organization.Name, organization.Description);
-                    ownerAggregate.CreateOrganization(createdOrganization);
+                    ownerAggregate.AddOrganizationToOwnerWorkspace(createdOrganization);
 
                     var projects = ReadDbDataGenerator.GenerateProject();
                     foreach (var project in projects)
-                        ownerAggregate.CreateProject(createdOrganization.Id, Project.Create(project.Name, project.Description));
+                        ownerAggregate.AddProjectToOrganization(createdOrganization.Id, Project.Create(project.Name, project.Description));
 
                 }
 

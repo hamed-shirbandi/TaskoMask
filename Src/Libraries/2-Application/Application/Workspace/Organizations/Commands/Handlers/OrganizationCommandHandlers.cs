@@ -51,7 +51,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
 
 
             var organization = Organization.CreateOrganization(request.Name, request.Description);
-            owner.CreateOrganization(organization);
+            owner.AddOrganizationToOwnerWorkspace(organization);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
             await PublishDomainEventsAsync(owner.DomainEvents);

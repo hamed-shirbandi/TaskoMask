@@ -9,8 +9,8 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
 {
     public interface IOrganizationService : IApplicationService
     {
-        Task<Result<CommandResult>> AddAsync(OrganizationUpsertDto input);
-        Task<Result<CommandResult>> UpdateAsync(OrganizationUpsertDto input);
+        Task<Result<CommandResult>> AddAsync(AddOrganizationDto input);
+        Task<Result<CommandResult>> UpdateAsync(UpdateOrganizationDto input);
         Task<Result<OrganizationDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListWithDetailsByOwnerIdAsync(string ownerId);
         Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id);

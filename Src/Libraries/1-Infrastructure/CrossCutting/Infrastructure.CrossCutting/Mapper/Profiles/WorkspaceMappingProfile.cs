@@ -45,8 +45,8 @@ namespace TaskoMask.Application.Mapper.Profiles
             #region Card
 
             CreateMap<Card, CardBasicInfoDto>();
-            CreateMap<Card, CardUpsertDto>();
-            CreateMap<CardBasicInfoDto, CardUpsertDto>();
+            CreateMap<Card, UpdateCardDto>();
+            CreateMap<CardBasicInfoDto, UpdateCardDto>();
             CreateMap<Card, CardOutputDto>();
 
             #endregion

@@ -1,7 +1,7 @@
 ﻿
 namespace TaskoMask.Application.Share.Dtos.Workspace.Cards
 {
-    public class CardUpsertDto: CardBaseDto
+    public class UpdateCardDto: CardBaseDto
     {
 
     }

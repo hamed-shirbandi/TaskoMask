@@ -161,7 +161,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             #region create default cards
 
 
-            var cardDto = new CardUpsertDto
+            var cardDto = new UpdateCardDto
             {
                 BoardId = CreateBoardCommandResult.Value.EntityId,
             };

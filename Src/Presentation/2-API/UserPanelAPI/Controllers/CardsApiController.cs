@@ -68,7 +68,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("cards")]
-        public async Task<Result<CommandResult>> Add([FromBody] CardUpsertDto input)
+        public async Task<Result<CommandResult>> Add([FromBody] UpdateCardDto input)
         {
             return await _cardService.AddAsync(input);
         }
@@ -80,7 +80,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("cards/{id}")]
-        public async Task<Result<CommandResult>> Update(string id,[FromBody] CardUpsertDto input)
+        public async Task<Result<CommandResult>> Update(string id,[FromBody] UpdateCardDto input)
         {
             if (!await _userAccessManagementService.CanAccessToCardAsync(id))
                 return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);

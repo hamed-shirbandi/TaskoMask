@@ -51,7 +51,7 @@
     [Parameter]
     public string CardId { get; set; }
 
-    CardUpsertDto CardModel = new CardUpsertDto();
+    UpdateCardDto CardModel = new UpdateCardDto();
 
     /// <summary>
     /// Access to current modal
@@ -103,7 +103,7 @@
 
         if (cardResult.IsSuccess)
         {
-            CardModel = new CardUpsertDto
+            CardModel = new UpdateCardDto
                 {
                     Id = cardResult.Value.Id,
                     Name = cardResult.Value.Name,

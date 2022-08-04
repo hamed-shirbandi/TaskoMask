@@ -76,7 +76,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("tasks")]
         public async Task<Result<CommandResult>> Create([FromBody] TaskUpsertDto input)
         {
-            return await _taskService.CreateAsync(input);
+            return await _taskService.AddAsync(input);
         }
 
 

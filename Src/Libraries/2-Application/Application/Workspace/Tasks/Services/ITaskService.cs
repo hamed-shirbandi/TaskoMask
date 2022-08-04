@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
 {
     public interface ITaskService : IApplicationService
     {
-        Task<Result<CommandResult>> CreateAsync(TaskUpsertDto input);
+        Task<Result<CommandResult>> AddAsync(TaskUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(TaskUpsertDto input);
         Task<Result<TaskBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id);

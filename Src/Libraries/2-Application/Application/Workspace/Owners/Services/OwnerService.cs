@@ -169,17 +169,17 @@ namespace TaskoMask.Application.Workspace.Owners.Services
 
             cardDto.Name = _configuration["Default:Workspace:ToDoCardName"];
             cardDto.Type = BoardCardType.ToDo;
-            await _cardService.CreateAsync(cardDto);
+            await _cardService.AddAsync(cardDto);
 
 
             cardDto.Name = _configuration["Default:Workspace:DoingCardName"];
             cardDto.Type = BoardCardType.Doing;
-            await _cardService.CreateAsync(cardDto);
+            await _cardService.AddAsync(cardDto);
 
 
             cardDto.Name = _configuration["Default:Workspace:DoneCardName"];
             cardDto.Type = BoardCardType.Done;
-            await _cardService.CreateAsync(cardDto);
+            await _cardService.AddAsync(cardDto);
 
 
 

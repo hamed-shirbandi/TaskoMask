@@ -9,7 +9,7 @@ namespace TaskoMask.Application.Workspace.Cards.Services
 {
     public interface ICardService : IApplicationService
     {
-        Task<Result<CommandResult>> CreateAsync(CardUpsertDto input);
+        Task<Result<CommandResult>> AddAsync(CardUpsertDto input);
         Task<Result<CommandResult>> UpdateAsync(CardUpsertDto input);
         Task<Result<IEnumerable<CardDetailsViewModel>>> GetListWithDetailsByBoardIdAsync(string boardId);
         Task<Result<CardBasicInfoDto>> GetByIdAsync(string id);

@@ -70,7 +70,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         [Route("cards")]
         public async Task<Result<CommandResult>> Create([FromBody] CardUpsertDto input)
         {
-            return await _cardService.CreateAsync(input);
+            return await _cardService.AddAsync(input);
         }
 
 

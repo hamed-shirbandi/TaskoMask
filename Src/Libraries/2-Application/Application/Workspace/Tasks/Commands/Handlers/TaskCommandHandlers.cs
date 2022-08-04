@@ -15,7 +15,7 @@ using TaskoMask.Domain.DomainModel.Workspace.Boards.Data;
 namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
 {
     public class TaskCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateTaskCommand, CommandResult>,
+        IRequestHandler<AddTaskCommand, CommandResult>,
          IRequestHandler<UpdateTaskCommand, CommandResult>,
          IRequestHandler<MoveTaskToAnotherCardCommand, CommandResult>,
          IRequestHandler<DeleteTaskCommand, CommandResult>
@@ -45,7 +45,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Commands.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(AddTaskCommand request, CancellationToken cancellationToken)
         {
             var board = await _boardAggregateRepository.GetByCardIdAsync(request.CardId);
             if (board == null)

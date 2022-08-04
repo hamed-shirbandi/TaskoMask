@@ -4,9 +4,9 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
 {
-    public class CreateTaskCommand : TaskBaseCommand
+    public class AddTaskCommand : TaskBaseCommand
     {
-        public CreateTaskCommand(string title, string cardId, string description)
+        public AddTaskCommand(string title, string cardId, string description)
             : base(title, description)
         {
             CardId = cardId;

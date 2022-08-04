@@ -44,7 +44,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(TaskUpsertDto input)
         {
-            var cmd = new CreateTaskCommand( title: input.Title, cardId: input.CardId, description: input.Description);
+            var cmd = new AddTaskCommand( title: input.Title, cardId: input.CardId, description: input.Description);
             return await SendCommandAsync(cmd);
         }
 

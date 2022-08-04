@@ -8,7 +8,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
 {
     public interface IBoardService: IApplicationService
     {
-        Task<Result<CommandResult>> CreateAsync(BoardCreateDto input);
+        Task<Result<CommandResult>> AddAsync(BoardCreateDto input);
         Task<Result<CommandResult>> UpdateAsync(BoardUpdateDto input);
         Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<BoardOutputDto>> GetByIdAsync(string id);

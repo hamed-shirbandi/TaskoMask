@@ -44,7 +44,7 @@
     /// <summary>
     /// Form Model
     /// </summary>
-    TaskUpsertDto TaskModel = new TaskUpsertDto();
+    UpdateTaskDto TaskModel = new UpdateTaskDto();
 
 
 
@@ -91,7 +91,7 @@
 
         if (taskResult.IsSuccess)
         {
-            TaskModel = new TaskUpsertDto
+            TaskModel = new UpdateTaskDto
                 {
                     Id = taskResult.Value.Id,
                     Title = taskResult.Value.Title,

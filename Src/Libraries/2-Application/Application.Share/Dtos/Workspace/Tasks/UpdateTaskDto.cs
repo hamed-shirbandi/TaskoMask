@@ -1,6 +1,6 @@
 ﻿namespace TaskoMask.Application.Share.Dtos.Workspace.Tasks
 {
-    public class TaskUpsertDto: TaskBaseDto
+    public class UpdateTaskDto: TaskBaseDto
     {
     }
 }

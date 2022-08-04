@@ -42,7 +42,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> AddAsync(TaskUpsertDto input)
+        public async Task<Result<CommandResult>> AddAsync(UpdateTaskDto input)
         {
             var cmd = new AddTaskCommand( title: input.Title, cardId: input.CardId, description: input.Description);
             return await SendCommandAsync(cmd);
@@ -53,7 +53,7 @@ namespace TaskoMask.Application.Workspace.Tasks.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(TaskUpsertDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(UpdateTaskDto input)
         {
             var cmd = new UpdateTaskCommand(id: input.Id, title: input.Title, description: input.Description);
             return await SendCommandAsync(cmd);

@@ -19,8 +19,8 @@ namespace TaskoMask.Application.Mapper.Profiles
 
             CreateMap<Task, TaskBaseDto>();
             CreateMap<Task, TaskBasicInfoDto>();
-            CreateMap<Task, TaskUpsertDto>();
-            CreateMap<TaskBasicInfoDto, TaskUpsertDto>();
+            CreateMap<Task, UpdateTaskDto>();
+            CreateMap<TaskBasicInfoDto, UpdateTaskDto>();
             CreateMap<Task, TaskOutputDto>();
 
 

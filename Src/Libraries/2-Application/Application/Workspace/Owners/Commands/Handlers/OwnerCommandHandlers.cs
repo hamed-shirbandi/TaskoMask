@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Application.Share.Resources;
 using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Notifications;
 using TaskoMask.Application.Core.Exceptions;
 using TaskoMask.Domain.Share.Resources;
 using TaskoMask.Application.Workspace.Owners.Commands.Models;
@@ -11,14 +10,13 @@ using TaskoMask.Application.Core.Bus;
 using TaskoMask.Application.Share.Helpers;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects;
 using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 
 namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
 {
     public class OwnerCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateOwnerCommand, CommandResult>,
-        IRequestHandler<UpdateOwnerCommand, CommandResult>
+        IRequestHandler<RegisterOwnerCommand, CommandResult>,
+        IRequestHandler<UpdateOwnerProfileCommand, CommandResult>
 
     {
         #region Fields
@@ -44,7 +42,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(CreateOwnerCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(RegisterOwnerCommand request, CancellationToken cancellationToken)
         {
             var owner = Owner.RegisterOwner(request.Id,request.DisplayName, request.Email);
 
@@ -60,7 +58,7 @@ namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(UpdateOwnerCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(UpdateOwnerProfileCommand request, CancellationToken cancellationToken)
         {
             var owner = await _ownerAggregateRepository.GetByIdAsync(request.Id);
             if (owner == null)

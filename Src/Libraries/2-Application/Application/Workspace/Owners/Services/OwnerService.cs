@@ -83,7 +83,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             if (!createUserCommandResult.IsSuccess)
                 return createUserCommandResult;
 
-            var cmd = new CreateOwnerCommand(id: createUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
+            var cmd = new RegisterOwnerCommand(id: createUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);
         }
 
@@ -99,7 +99,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             if (!updateUserCommandResult.IsSuccess)
                 return updateUserCommandResult;
 
-            var cmd = new UpdateOwnerCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
+            var cmd = new UpdateOwnerProfileCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
             return await SendCommandAsync(cmd);
         }
 

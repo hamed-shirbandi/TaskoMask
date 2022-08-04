@@ -1,14 +1,12 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Resources;
+﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Domain.Share.Helpers;
 using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Owners.Commands.Models
 {
-   public class CreateOwnerCommand : OwnerBaseCommand
+   public class RegisterOwnerCommand : OwnerBaseCommand
     {
-        public CreateOwnerCommand(string id, string displayName, string email,string password)
+        public RegisterOwnerCommand(string id, string displayName, string email,string password)
       : base(id, displayName, email)
         {
             Password = password;

@@ -4,9 +4,9 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Owners.Commands.Models
 {
-    public class UpdateOwnerCommand : OwnerBaseCommand
+    public class UpdateOwnerProfileCommand : OwnerBaseCommand
     {
-        public UpdateOwnerCommand(string id, string displayName, string email)
+        public UpdateOwnerProfileCommand(string id, string displayName, string email)
               : base(id,displayName, email)
         {
 

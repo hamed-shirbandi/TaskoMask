@@ -41,7 +41,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
         {
             //Arrange
             var expectedUserId = ObjectId.GenerateNewId().ToString();
-            var createOwnerCommand = new CreateOwnerCommand(expectedUserId, "Test_DisplayName", "Test@email.com", "Test_Password");
+            var createOwnerCommand = new RegisterOwnerCommand(expectedUserId, "Test_DisplayName", "Test@email.com", "Test_Password");
 
             //Act
             var result = await _ownerCommandHandlers.Handle(createOwnerCommand, CancellationToken.None);
@@ -61,7 +61,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
         {
             //Arrange
             var ownerToUpdate = _owners.First();
-            var updateOwnerCommand = new UpdateOwnerCommand(ownerToUpdate.Id, "New_DisplayName", "New@email.com");
+            var updateOwnerCommand = new UpdateOwnerProfileCommand(ownerToUpdate.Id, "New_DisplayName", "New@email.com");
 
             //Act
             var result = await _ownerCommandHandlers.Handle(updateOwnerCommand, CancellationToken.None);

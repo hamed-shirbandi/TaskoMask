@@ -135,7 +135,7 @@ namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
 
                     var projects = ReadDbDataGenerator.GenerateProject();
                     foreach (var project in projects)
-                        ownerAggregate.AddProjectToOrganization(createdOrganization.Id, Project.Create(project.Name, project.Description));
+                        ownerAggregate.AddProject(createdOrganization.Id, Project.Create(project.Name, project.Description));
 
                 }
 

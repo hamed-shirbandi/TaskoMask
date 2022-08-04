@@ -140,13 +140,13 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void AddProjectToOrganization(string organizationId, Project project)
+        public void AddProject(string organizationId, Project project)
         {
             var organization = GetOrganizationById(organizationId);
             
             organization.AddProject(project);
 
-            AddDomainEvent(new ProjectAddedToOrganizationEvent(project.Id, project.Name.Value, project.Description.Value, organization.Id,Id));
+            AddDomainEvent(new ProjectAddedEvent(project.Id, project.Name.Value, project.Description.Value, organization.Id,Id));
         }
 
 

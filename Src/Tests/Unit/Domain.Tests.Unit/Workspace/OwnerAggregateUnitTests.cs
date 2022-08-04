@@ -174,7 +174,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Project_Is_Added_To_Organization()
+        public void Project_Is_Added()
         {
             //Arrange
             var owner = OwnerObjectMother.RegisterOwnerWithAnOrganization();
@@ -183,7 +183,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
             //Act
-            owner.AddProjectToOrganization(expectedOrganizationId, expectedProject);
+            owner.AddProject(expectedOrganizationId, expectedProject);
 
             //Assert
             owner.Organizations.First().Projects.Should().HaveCount(1);

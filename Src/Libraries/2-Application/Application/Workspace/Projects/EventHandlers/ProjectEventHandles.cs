@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Workspace.Projects.EventHandlers
     /// Sync data between Write and Read DB
     /// </summary>
     public class ProjectEventHandles : 
-        INotificationHandler<ProjectAddedToOrganizationEvent>,
+        INotificationHandler<ProjectAddedEvent>,
         INotificationHandler<ProjectUpdatedEvent>,
         INotificationHandler<ProjectDeletedEvent>
     {
@@ -35,7 +35,7 @@ namespace TaskoMask.Application.Workspace.Projects.EventHandlers
         /// <summary>
         /// 
         /// </summary>
-        public async System.Threading.Tasks.Task Handle(ProjectAddedToOrganizationEvent addedProject, CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task Handle(ProjectAddedEvent addedProject, CancellationToken cancellationToken)
         {
 
             var project = new Project(addedProject.Id)

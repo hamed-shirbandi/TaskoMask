@@ -48,7 +48,7 @@ namespace TaskoMask.Application.Workspace.Projects.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
 
             var project = Project.Create(request.Name, request.Description);
-            owner.AddProjectToOrganization(request.OrganizationId, project);
+            owner.AddProject(request.OrganizationId, project);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
             await PublishDomainEventsAsync(owner.DomainEvents);

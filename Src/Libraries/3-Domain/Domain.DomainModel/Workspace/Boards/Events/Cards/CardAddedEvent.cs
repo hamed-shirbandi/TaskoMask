@@ -4,9 +4,9 @@ using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Cards
 {
-    public class CardCreatedEvent : DomainEvent
+    public class CardAddedEvent : DomainEvent
     {
-        public CardCreatedEvent(string id, string name, BoardCardType type, string boardId) : base(entityId: id, entityType: nameof(Card))
+        public CardAddedEvent(string id, string name, BoardCardType type, string boardId) : base(entityId: id, entityType: nameof(Card))
         {
             Id = id;
             Name = name;

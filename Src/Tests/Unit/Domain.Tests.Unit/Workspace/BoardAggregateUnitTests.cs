@@ -155,7 +155,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
             //Act
-            board.CreateCard(expectedCard);
+            board.AddCard(expectedCard);
 
             //Assert
             board.Cards.Should().HaveCount(1);
@@ -173,10 +173,10 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
             //Arrange
             var board = BoardObjectMother.AddBoard(_boardValidatorService);
             var expectedCard = Card.Create("Test Card Name", BoardCardType.ToDo);
-            var expectedEventType = nameof(CardCreatedEvent);
+            var expectedEventType = nameof(CardAddedEvent);
 
             //Act
-            board.CreateCard(expectedCard);
+            board.AddCard(expectedCard);
 
             //Assert
             board.DomainEvents.Should().HaveCount(1);

@@ -50,7 +50,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
 
             var card = Card.Create(name: request.Name, type: request.Type);
-            board.CreateCard(card);
+            board.AddCard(card);
 
             await _boardAggregateRepository.UpdateAsync(board);
             await PublishDomainEventsAsync(board.DomainEvents);

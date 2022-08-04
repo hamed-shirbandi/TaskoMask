@@ -169,7 +169,7 @@ namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
 
                             var cards = ReadDbDataGenerator.GenerateCard();
                             foreach (var card in cards)
-                                boardAggregate.CreateCard(Card.Create(card.Name, card.Type));
+                                boardAggregate.AddCard(Card.Create(card.Name, card.Type));
 
 
                             boardAggregate.CreateMember(Member.Create(owner.Id, BoardMemberAccessLevel.Writer));

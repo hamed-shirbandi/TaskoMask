@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Workspace.Cards.EventHandlers
     /// Sync data between Write and Read DB
     /// </summary>
     public class CardEventHandles : 
-        INotificationHandler<CardCreatedEvent>,
+        INotificationHandler<CardAddedEvent>,
         INotificationHandler<CardUpdatedEvent>,
         INotificationHandler<CardDeletedEvent>
     {
@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Workspace.Cards.EventHandlers
         /// <summary>
         /// 
         /// </summary>
-        public async System.Threading.Tasks.Task Handle(CardCreatedEvent createdCard, CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task Handle(CardAddedEvent createdCard, CancellationToken cancellationToken)
         {
             var board = await _boardRepository.GetByIdAsync(createdCard.BoardId);
             var card = new Card(createdCard.Id)

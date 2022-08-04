@@ -96,10 +96,10 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void CreateCard(Card card)
+        public void AddCard(Card card)
         {
             Cards.Add(card);
-            AddDomainEvent(new CardCreatedEvent(card.Id, card.Name.Value,card.Type.Value, Id));
+            AddDomainEvent(new CardAddedEvent(card.Id, card.Name.Value,card.Type.Value, Id));
         }
 
 

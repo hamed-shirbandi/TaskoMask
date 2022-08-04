@@ -71,7 +71,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("boards")]
-        public async Task<Result<CommandResult>> Create([FromBody] BoardCreateDto input)
+        public async Task<Result<CommandResult>> Add([FromBody] BoardCreateDto input)
         {
             return await _boardService.CreateAsync(input);
         }

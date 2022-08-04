@@ -55,7 +55,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Create(BoardCreateDto input)
+        public async Task<Result<CommandResult>> Add(BoardCreateDto input)
         {
             var url = $"/boards";
             return await _httpClientService.PostAsync<CommandResult>(url, input);

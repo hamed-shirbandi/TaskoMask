@@ -225,7 +225,7 @@
     /// </summary>
     private async Task HandleCreate()
     {
-        var result = await BoardApiService.Create(BoardModel);
+        var result = await BoardApiService.Add(BoardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Board_Created)

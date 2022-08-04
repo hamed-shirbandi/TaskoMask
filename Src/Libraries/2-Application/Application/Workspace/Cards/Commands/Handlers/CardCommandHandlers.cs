@@ -15,7 +15,7 @@ using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
 namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
 {
     public class CardCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateCardCommand, CommandResult>,
+        IRequestHandler<AddCardCommand, CommandResult>,
          IRequestHandler<UpdateCardCommand, CommandResult>,
          IRequestHandler<DeleteCardCommand, CommandResult>
     {
@@ -43,7 +43,7 @@ namespace TaskoMask.Application.Workspace.Cards.Commands.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(CreateCardCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(AddCardCommand request, CancellationToken cancellationToken)
         {
             var board = await _boardAggregateRepository.GetByIdAsync(request.BoardId);
             if (board == null)

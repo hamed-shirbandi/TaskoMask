@@ -151,7 +151,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
                 Description = _configuration["Default:Workspace:BoardDescription"],
             };
 
-            var CreateBoardCommandResult = await _boardService.CreateAsync(boardDto);
+            var CreateBoardCommandResult = await _boardService.AddAsync(boardDto);
             if (!CreateBoardCommandResult.IsSuccess)
                 return;
 
@@ -161,7 +161,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             #region create default cards
 
 
-            var cardDto = new UpdateCardDto
+            var cardDto = new AddCardDto
             {
                 BoardId = CreateBoardCommandResult.Value.EntityId,
             };

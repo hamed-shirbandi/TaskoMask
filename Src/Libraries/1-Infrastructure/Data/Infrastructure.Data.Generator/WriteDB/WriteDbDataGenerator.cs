@@ -172,7 +172,7 @@ namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
                                 boardAggregate.AddCard(Card.Create(card.Name, card.Type));
 
 
-                            boardAggregate.CreateMember(Member.Create(owner.Id, BoardMemberAccessLevel.Writer));
+                            boardAggregate.AddMember(Member.Create(owner.Id, BoardMemberAccessLevel.Writer));
 
                             items.Add(boardAggregate);
                         }

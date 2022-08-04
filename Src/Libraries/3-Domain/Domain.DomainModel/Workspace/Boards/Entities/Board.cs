@@ -143,10 +143,10 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void CreateMember(Member member)
+        public void AddMember(Member member)
         {
             Members.Add(member);
-            AddDomainEvent(new MemberCreatedEvent(member.Id, member.OwnerId.Value, member.AccessLevel.Value, Id));
+            AddDomainEvent(new MemberAddedEvent(member.Id, member.OwnerId.Value, member.AccessLevel.Value, Id));
         }
 
 
@@ -154,7 +154,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateMember(string id, BoardMemberAccessLevel accessLevel )
+        public void UpdateMemberAccessLevel(string id, BoardMemberAccessLevel accessLevel )
         {
             var member = Members.FirstOrDefault(p => p.Id == id);
             if (member == null)
@@ -162,7 +162,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
 
             member.Update(accessLevel);
 
-            AddDomainEvent(new MemberUpdatedEvent(member.Id, member.AccessLevel.Value));
+            AddDomainEvent(new MemberAccessLevelUpdatedEvent(member.Id, member.AccessLevel.Value));
         }
 
 

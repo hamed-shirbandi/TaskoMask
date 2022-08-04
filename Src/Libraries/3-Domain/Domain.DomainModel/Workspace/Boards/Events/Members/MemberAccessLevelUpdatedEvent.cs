@@ -4,9 +4,9 @@ using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Members
 {
-    public class MemberUpdatedEvent : DomainEvent
+    public class MemberAccessLevelUpdatedEvent : DomainEvent
     {
-        public MemberUpdatedEvent(string id, BoardMemberAccessLevel accessLevel) : base(entityId: id, entityType: nameof(Member))
+        public MemberAccessLevelUpdatedEvent(string id, BoardMemberAccessLevel accessLevel) : base(entityId: id, entityType: nameof(Member))
         {
             Id = id;
             AccessLevel = accessLevel;

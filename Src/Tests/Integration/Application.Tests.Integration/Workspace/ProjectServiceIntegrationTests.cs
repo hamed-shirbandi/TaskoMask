@@ -33,7 +33,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 
 
         [Fact]
-        public async Task Project_Is_Created()
+        public async Task Project_Is_Added()
         {
             //Arrange
             var organization = await _fixture.GetSampleOrganizationAsync();

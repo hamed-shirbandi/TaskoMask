@@ -3,9 +3,9 @@ using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Organizations
 {
-    public class OrganizationAddedToOwnerWorkspaceEvent : DomainEvent
+    public class OrganizationAddedEvent : DomainEvent
     {
-        public OrganizationAddedToOwnerWorkspaceEvent(string id, string name, string description, string ownerId) : base(entityId: id, entityType: nameof(Organization))
+        public OrganizationAddedEvent(string id, string name, string description, string ownerId) : base(entityId: id, entityType: nameof(Organization))
         {
             Id = id;
             Name = name;

@@ -131,7 +131,7 @@ namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
                 foreach (var organization in organizations)
                 {
                     var createdOrganization = Organization.CreateOrganization(organization.Name, organization.Description);
-                    ownerAggregate.AddOrganizationToOwnerWorkspace(createdOrganization);
+                    ownerAggregate.AddOrganization(createdOrganization);
 
                     var projects = ReadDbDataGenerator.GenerateProject();
                     foreach (var project in projects)

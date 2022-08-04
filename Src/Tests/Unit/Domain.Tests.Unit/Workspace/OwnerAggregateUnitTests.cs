@@ -153,7 +153,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Organization_Is_Added_To_Owner_Workspace()
+        public void Organization_Is_Added()
         {
 
             //Arrange
@@ -162,7 +162,7 @@ namespace TaskoMask.Domain.Tests.Unit.Workspace
 
 
             //Act
-            owner.AddOrganizationToOwnerWorkspace(expectedOrganization);
+            owner.AddOrganization(expectedOrganization);
 
             //Assert
             owner.Organizations.Should().HaveCount(1);

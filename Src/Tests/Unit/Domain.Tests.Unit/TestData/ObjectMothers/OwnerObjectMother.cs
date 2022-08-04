@@ -79,7 +79,7 @@ namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
 
             owner.ClearDomainEvents();
 
-            owner.AddOrganizationToOwnerWorkspace(organization);
+            owner.AddOrganization(organization);
             return owner;
         }
     }

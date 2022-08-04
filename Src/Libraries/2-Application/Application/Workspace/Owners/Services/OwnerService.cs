@@ -66,7 +66,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             if (!createUserCommandResult.IsSuccess)
                 return createUserCommandResult;
 
-            await CreateDefaultWorkspaceAsync(createUserCommandResult.Value.EntityId);
+            await SeedDefaultWorkspaceAsync(createUserCommandResult.Value.EntityId);
 
             return createUserCommandResult;
         }
@@ -108,12 +108,12 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task CreateDefaultWorkspaceAsync(string ownerId)
+        private async Task SeedDefaultWorkspaceAsync(string ownerId)
         {
             #region create default organization
 
 
-            var organizationDto = new OrganizationUpsertDto
+            var organizationDto = new AddOrganizationDto
             {
                 OwnerId = ownerId,
                 Name = _configuration["Default:Workspace:OrganizationName"],

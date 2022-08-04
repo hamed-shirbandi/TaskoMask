@@ -35,7 +35,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
         {
             //Arrange
             var owner = await _fixture.GetSampleOwnerAsync();
-            var dto = new OrganizationUpsertDto
+            var dto = new AddOrganizationDto
             {
                 Name = "Test Organization Name",
                 Description = "Test Organization Description",

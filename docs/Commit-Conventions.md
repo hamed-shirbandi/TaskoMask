@@ -50,7 +50,7 @@ feat: display cards of the same type next to each other
 
 This feature change the card's sorting behavior to diplay cards of the same type next to each other. 
 
-refers to [issue#15](https://github.com/hamed-shirbandi/TaskoMask/issues/15)
+refers to issue #15
 
 ```
 

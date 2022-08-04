@@ -31,7 +31,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 
 
         [Fact]
-        public async Task Organization_Is_Created()
+        public async Task Organization_Is_Added()
         {
             //Arrange
             var owner = await _fixture.GetSampleOwnerAsync();

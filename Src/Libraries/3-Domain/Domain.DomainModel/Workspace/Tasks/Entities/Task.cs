@@ -107,10 +107,10 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void CreateComment(Comment comment)
+        public void AddComment(Comment comment)
         {
             Comments.Add(comment);
-            AddDomainEvent(new CommentCreatedEvent(comment.Id, comment.Content.Value, Id));
+            AddDomainEvent(new CommentAddedEvent(comment.Id, comment.Content.Value, Id));
         }
 
 

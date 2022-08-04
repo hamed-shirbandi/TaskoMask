@@ -3,9 +3,9 @@ using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Comments
 {
-    public class CommentCreatedEvent : DomainEvent
+    public class CommentAddedEvent : DomainEvent
     {
-        public CommentCreatedEvent(string id, string content, string taskId) : base(entityId: id, entityType: nameof(Comment))
+        public CommentAddedEvent(string id, string content, string taskId) : base(entityId: id, entityType: nameof(Comment))
         {
             Id = id;
             Content = content;

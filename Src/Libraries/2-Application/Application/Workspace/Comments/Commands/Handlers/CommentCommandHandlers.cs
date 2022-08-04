@@ -50,7 +50,7 @@ namespace TaskoMask.Application.Workspace.Comments.Commands.Handlers
                 throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
 
             var comment = Comment.Create(content: request.Content);
-            task.CreateComment(comment);
+            task.AddComment(comment);
 
             await _taskAggregateRepository.UpdateAsync(task);
             await PublishDomainEventsAsync(task.DomainEvents);

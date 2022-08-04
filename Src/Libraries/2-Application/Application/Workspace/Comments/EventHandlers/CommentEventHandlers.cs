@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Workspace.Comments.EventHandlers
     /// Sync data between Write and Read DB
     /// </summary>
     public class CommentEventHandles :
-        INotificationHandler<CommentCreatedEvent>,
+        INotificationHandler<CommentAddedEvent>,
         INotificationHandler<CommentUpdatedEvent>,
         INotificationHandler<CommentDeletedEvent>
     {
@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Workspace.Comments.EventHandlers
         /// <summary>
         /// 
         /// </summary>
-        public async System.Threading.Tasks.Task Handle(CommentCreatedEvent createdComment, CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task Handle(CommentAddedEvent createdComment, CancellationToken cancellationToken)
         {
             var task = await _taskRepository.GetByIdAsync(createdComment.TaskId);
             var comment = new Comment(createdComment.Id)

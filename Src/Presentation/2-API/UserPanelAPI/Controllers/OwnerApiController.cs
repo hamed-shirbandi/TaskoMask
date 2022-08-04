@@ -55,7 +55,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         public async Task<Result<CommandResult>> Update([FromBody] OwnerUpdateDto input)
         {
             input.Id = GetCurrentUserId();
-            return await _ownerService.UpdateAsync(input);
+            return await _ownerService.UpdateProfileAsync(input);
         }
 
 

@@ -87,7 +87,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         public async Task<Result<UserJwtTokenDto>> Register([FromBody] OwnerRegisterDto input)
         {
             //create owner with default workspace
-            var createCommandResult = await _ownerService.CreateWithDefaultWorkspaceAsync(input);
+            var createCommandResult = await _ownerService.RegisterAndSeedDefaultWorkspaceAsync(input);
             if (!createCommandResult.IsSuccess)
                 return Result.Failure<UserJwtTokenDto>(createCommandResult.Errors, createCommandResult.Message);
 

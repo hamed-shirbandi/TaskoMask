@@ -95,7 +95,7 @@ namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
         public void AddOrganizationToOwnerWorkspace(Organization organization)
         {
             Organizations.Add(organization);
-            AddDomainEvent(new OrganizationCreatedEvent(organization.Id, organization.Name.Value, organization.Description.Value,this.Id));
+            AddDomainEvent(new OrganizationAddedToOwnerWorkspaceEvent(organization.Id, organization.Name.Value, organization.Description.Value,this.Id));
         }
 
 

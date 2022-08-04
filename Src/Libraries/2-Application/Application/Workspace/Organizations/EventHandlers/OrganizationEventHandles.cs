@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Workspace.Organizations.EventHandlers
     /// Sync data between Write and Read DB
     /// </summary>
     public class OrganizationEventHandles : 
-        INotificationHandler<OrganizationCreatedEvent>,
+        INotificationHandler<OrganizationAddedToOwnerWorkspaceEvent>,
         INotificationHandler<OrganizationUpdatedEvent>,
         INotificationHandler<OrganizationDeletedEvent>
     {
@@ -35,13 +35,13 @@ namespace TaskoMask.Application.Workspace.Organizations.EventHandlers
         /// <summary>
         /// 
         /// </summary>
-        public async System.Threading.Tasks.Task Handle(OrganizationCreatedEvent createdOrganization, CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task Handle(OrganizationAddedToOwnerWorkspaceEvent addedOrganization, CancellationToken cancellationToken)
         {
-            var organization = new Organization(createdOrganization.Id)
+            var organization = new Organization(addedOrganization.Id)
             {
-                Name= createdOrganization.Name,
-                Description= createdOrganization.Description,
-                OwnerId= createdOrganization.OwnerId,
+                Name= addedOrganization.Name,
+                Description= addedOrganization.Description,
+                OwnerId= addedOrganization.OwnerId,
             };
            await _organizationRepository.CreateAsync(organization);
         }

@@ -84,7 +84,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("projects")]
-        public async Task<Result<CommandResult>> Create([FromBody] ProjectCreateDto input)
+        public async Task<Result<CommandResult>> Add([FromBody] ProjectCreateDto input)
         {
             return await _projectService.AddAsync(input);
         }

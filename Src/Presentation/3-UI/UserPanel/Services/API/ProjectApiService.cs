@@ -64,7 +64,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Create(ProjectCreateDto input)
+        public async Task<Result<CommandResult>> Add(ProjectCreateDto input)
         {
             var url = $"/projects";
             return await _httpClientService.PostAsync<CommandResult>(url, input);

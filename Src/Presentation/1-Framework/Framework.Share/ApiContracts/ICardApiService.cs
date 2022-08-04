@@ -7,7 +7,7 @@ namespace TaskoMask.Presentation.Framework.Share.ApiContracts
     {
         Task<Result<CardBasicInfoDto>> Get(string id);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string boardId);
-        Task<Result<CommandResult>> Add(UpdateCardDto input);
+        Task<Result<CommandResult>> Add(AddCardDto input);
         Task<Result<CommandResult>> Update(string id,UpdateCardDto input);
         Task<Result<CommandResult>> Delete(string id);
     }

@@ -2,7 +2,7 @@
 @using TaskoMask.Domain.Share.Enums
 @inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICardApiService CardApiService
 
-<EditForm Model="CardModel" OnValidSubmit="HandleUpsert">
+<EditForm Model="CardModel" OnValidSubmit="HandleUpdateCard">
 
     <DataAnnotationsValidator />
 
@@ -25,16 +25,8 @@
     </div>
 
     <div class="form-group">
-        @if (isUpdate)
-        {
-            <button type="submit" class="btn btn-primary float-left">Update</button>
-            <button @onclick="HandleDelete" class="btn btn-danger text-white float-right">Delete</button>
-        }
-        else
-        {
-            <button type="submit" class="btn btn-primary mr-1">Create</button>
-            <button @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-dark mr-1">Cancel</button>
-        }
+        <button type="submit" class="btn btn-primary float-left">Update</button>
+        <button @onclick="HandleDelete" class="btn btn-danger text-white float-right">Delete</button>
     </div>
 
 </EditForm>
@@ -44,9 +36,6 @@
 
     #region Fields and Parameters
 
-
-    [Parameter]
-    public string BoardId { get; set; }
 
     [Parameter]
     public string CardId { get; set; }
@@ -60,10 +49,6 @@
     BlazoredModalInstance ModalInstance { get; set; }
 
 
-    /// <summary>
-    /// To specify form role (create or update)
-    /// </summary>
-    bool isUpdate = false;
 
     #endregion Fields and Parameters
 
@@ -77,11 +62,8 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        //if Id has value so we need to handle update
-        if (!string.IsNullOrEmpty(CardId))
-            await PrepareModelToUpdate();
-        else
-            CardModel.BoardId = BoardId;
+        await PrepareModelToUpdate();
+
     }
 
 
@@ -97,7 +79,6 @@
     /// </summary>
     private async Task PrepareModelToUpdate()
     {
-        isUpdate = true;
 
         var cardResult = await CardApiService.Get(CardId);
 
@@ -121,40 +102,11 @@
     }
 
 
-    /// <summary>
-    /// Handle form role
-    /// </summary>
-    private async Task HandleUpsert()
-    {
-        if (isUpdate)
-            await HandleUpdate();
-        else
-            await HandleCreate();
-    }
-
-
-
-    /// <summary>
-    /// handle create model
-    /// </summary>
-    private async Task HandleCreate()
-    {
-        CardModel.BoardId = BoardId;
-        var result = await CardApiService.Add(CardModel);
-        CommandResultHandler.Init()
-            .WithResult(result)
-            .WithComponentMessageType(MessageType.Card_Created)
-            .ShowErrorToast(ToastService)
-            .PublishMessage(ComponentMessageService)
-            .CloseModal(ModalInstance);
-    }
-
-
 
     /// <summary>
     /// handle update model
     /// </summary>
-    private async Task HandleUpdate()
+    private async Task HandleUpdateCard()
     {
         var result = await CardApiService.Update(CardId, CardModel);
         CommandResultHandler.Init()

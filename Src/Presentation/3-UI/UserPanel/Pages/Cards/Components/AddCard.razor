@@ -1,0 +1,94 @@
+﻿@using TaskoMask.Application.Share.Dtos.Workspace.Cards
+@using TaskoMask.Domain.Share.Enums
+@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICardApiService CardApiService
+
+<EditForm Model="CardModel" OnValidSubmit="HandleAddCard">
+
+    <DataAnnotationsValidator />
+
+    <input type="hidden" @bind="CardModel.BoardId" />
+
+
+    <div class="form-group">
+        <InputText @bind-Value="CardModel.Name" placeholder="Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>CardModel.Name" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <InputSelect @bind-Value="CardModel.Type" class="form-control">
+            @foreach (var type in Enum.GetValues(typeof(BoardCardType)))
+            {
+                <option value="@type">@type</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="()=>CardModel.Type" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mr-1">Add</button>
+        <button @onclick="@(()=>ModalInstance.CancelAsync())" class="btn btn-warning text-dark mr-1">Cancel</button>
+    </div>
+
+</EditForm>
+
+
+@code {
+
+    #region Fields and Parameters
+
+
+    [Parameter]
+    public string BoardId { get; set; }
+
+
+    AddCardDto CardModel = new AddCardDto();
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+    #endregion Fields and Parameters
+
+
+
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override Task OnInitializedAsync()
+    {
+        CardModel.BoardId = BoardId;
+
+        return base.OnInitializedAsync();
+    }
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+    /// <summary>
+    /// handle create model
+    /// </summary>
+    private async Task HandleAddCard()
+    {
+        CardModel.BoardId = BoardId;
+        var result = await CardApiService.Add(CardModel);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithComponentMessageType(MessageType.Card_Created)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
+    }
+
+
+    #endregion private Methods
+
+}

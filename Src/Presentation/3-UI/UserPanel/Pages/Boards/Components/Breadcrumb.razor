@@ -22,7 +22,7 @@
             </a>
         </li>
         <li class="text-nowrap breadcrumb-item active" aria-current="page">
-            <a @onclick="@(()=>ShowCreateCardModal(Model.Id))" class="text-info">
+            <a @onclick="@(()=>ShowAddCardModal(Model.Id))" class="text-info">
                 <i class="bi bi-plus-circle"></i>
                 add a card
             </a>
@@ -39,10 +39,10 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateCardModal(string boardId)
+    private void ShowAddCardModal(string boardId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.BoardId), boardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("New card", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        parameters.Add(nameof(Pages.Cards.Components.AddCard.BoardId), boardId);
+        ModalService.Show<Pages.Cards.Components.AddCard>("Add card", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
     }
 }

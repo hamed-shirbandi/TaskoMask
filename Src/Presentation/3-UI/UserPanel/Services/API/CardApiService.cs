@@ -1,8 +1,6 @@
 ﻿using TaskoMask.Application.Share.Dtos.Workspace.Cards;
 using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Application.Share.ViewModels;
 using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Presentation.Framework.Share.Helpers;
 using TaskoMask.Presentation.Framework.Share.Services.Http;
 
 namespace TaskoMask.Presentation.UI.UserPanel.Services.API
@@ -53,7 +51,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(UpdateCardDto input)
+        public async Task<Result<CommandResult>> Add(AddCardDto input)
         {
             var url = $"/cards";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
@@ -64,7 +62,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id,UpdateCardDto input)
+        public async Task<Result<CommandResult>> Update(string id, UpdateCardDto input)
         {
             var url = $"/cards/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);

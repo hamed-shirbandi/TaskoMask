@@ -56,27 +56,14 @@
     }
 
 
-
-    /// <summary>
-    ///
-    /// </summary>
-    private void ShowCreateCardModal()
-    {
-
-        var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.BoardId), BoardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("New card", parameters, new ModalOptions { Class = "blazored-modal bg-light-gray" });
-    }
-
-
     /// <summary>
     ///
     /// </summary>
     private void ShowUpdateCardModal(string cardId)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.CardId), cardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("Update Card", parameters, new ModalOptions { Class = "blazored-modal bg-light-gray" });
+        parameters.Add(nameof(Pages.Cards.Components.UpdateCard.CardId), cardId);
+        ModalService.Show<Pages.Cards.Components.UpdateCard>("Update Card", parameters, new ModalOptions { Class = "blazored-modal bg-light-gray" });
     }
 
 }

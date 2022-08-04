@@ -4,7 +4,7 @@
     @for (var i = CardsCount; i < 3; i++)
     {
     <div class="card task-card mb-2">
-        <a @onclick="@(()=>ShowCreateCardModal())" class="">
+        <a @onclick="@(()=>ShowAddCardModal())" class="">
             <div class="card-body px-1 min-height-22rem text-center text-muted justify-content-center">
                 <i class="bi bi-plus ">add new card</i>
             </div>
@@ -25,12 +25,12 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateCardModal()
+    private void ShowAddCardModal()
     {
 
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Cards.Components.CreateOrUpdateCard.BoardId), BoardId);
-        ModalService.Show<Pages.Cards.Components.CreateOrUpdateCard>("New card", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        parameters.Add(nameof(Pages.Cards.Components.AddCard.BoardId), BoardId);
+        ModalService.Show<Pages.Cards.Components.AddCard>("Add card", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
     }
 
 

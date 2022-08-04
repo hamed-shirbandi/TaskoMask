@@ -135,7 +135,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
                 Description= _configuration["Default:Workspace:ProjectDescription"],
             };
 
-            var CreateProjectCommandResult = await _projectService.CreateAsync(projectDto);
+            var CreateProjectCommandResult = await _projectService.AddAsync(projectDto);
             if (!CreateProjectCommandResult.IsSuccess)
                 return;
 

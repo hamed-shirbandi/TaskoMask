@@ -45,7 +45,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
             };
 
             //Act
-            var result = await _fixture.ProjectService.CreateAsync(dto);
+            var result = await _fixture.ProjectService.AddAsync(dto);
 
             //Assert
             result.IsSuccess.Should().BeTrue();

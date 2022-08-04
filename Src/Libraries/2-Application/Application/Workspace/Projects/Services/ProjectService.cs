@@ -36,7 +36,7 @@ namespace TaskoMask.Application.Workspace.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(ProjectCreateDto input)
+        public async Task<Result<CommandResult>> AddAsync(ProjectCreateDto input)
         {
             var cmd = new AddProjectCommand(organizationId: input.OrganizationId, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);

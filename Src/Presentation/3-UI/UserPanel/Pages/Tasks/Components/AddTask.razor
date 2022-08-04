@@ -1,7 +1,7 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
 @inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskApiService
 
-<EditForm Model="TaskModel" OnValidSubmit="HandleCreate" class="form">
+<EditForm Model="TaskModel" OnValidSubmit="HandleAddTask" class="form">
     <DataAnnotationsValidator />
     <input type="hidden" @bind="TaskModel.CardId" />
 
@@ -56,9 +56,9 @@
 
 
     /// <summary>
-    /// handle create model
+    /// 
     /// </summary>
-    private async Task HandleCreate()
+    private async Task HandleAddTask()
     {
         var result = await TaskApiService.Add(TaskModel);
         if (result.IsSuccess)

@@ -1,7 +1,7 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Owners
 @inject TaskoMask.Presentation.Framework.Share.ApiContracts.IOwnerApiService OwnerApiService
 
-<EditForm id="user_update_profile_form" Model="OwnerUpdateModel" OnValidSubmit="HandleUpdate">
+<EditForm id="user_update_profile_form" Model="OwnerUpdateModel" OnValidSubmit="HandleUpdateOwner">
 
     <DataAnnotationsValidator />
     <input id="user_profile_email" type="hidden" value="@OwnerUpdateModel.Email" />
@@ -93,7 +93,7 @@
     /// <summary>
     /// Handle form role
     /// </summary>
-    private async Task HandleUpdate()
+    private async Task HandleUpdateOwner()
     {
         var result = await OwnerApiService.UpdateProfile(OwnerUpdateModel);
         CommandResultHandler.Init()

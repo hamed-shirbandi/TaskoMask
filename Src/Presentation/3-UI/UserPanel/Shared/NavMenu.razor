@@ -22,17 +22,17 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.AddOrganization>("Add workspace", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Organizations.Components.AddOrganization>("Add Workspace", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
                             <i class="bi bi-building"></i>
                             Add Workspace
                         </a>
 
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.CreateProject>("Add project", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Projects.Components.AddProject>("Add Project", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
                             <i class="bi bi-kanban"></i>
                             Add Project
                         </a>
 
-                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.CreateBoard>("Add board", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
+                        <a class="dropdown-item" @onclick="@(() => ModalService.Show<Pages.Boards.Components.AddBoard>("Add Board", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
                             <i class="bi bi-clipboard-plus"></i>
                             Add Board
                         </a>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="float-right">
-                <a class="m-md-1 m-lg-1 btn btn-sm btn-warning" id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.Update>("Update User Profile", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
+                <a class="m-md-1 m-lg-1 btn btn-sm btn-warning" id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.UpdateOwner>("Update Profile", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
                     <i class="bi bi-person-circle"></i>
                     @(userDisplayName.Length<6?userDisplayName: userDisplayName.Substring(0, 5) + "...")
                 </a>

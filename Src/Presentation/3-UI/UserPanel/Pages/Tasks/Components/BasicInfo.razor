@@ -4,7 +4,7 @@
     <div class="list-group-item task-list-group-header">
         <h4>
             @Model.Title
-            <a @onclick="@(()=>ShowUpdateModal(Model.Id))" class="text-warning float-right">
+            <a @onclick="@(()=>ShowUpdateTaskModal(Model.Id))" class="text-warning float-right">
                 <small class="bi bi-pencil" style="font-size:15px;">edit task</small>
             </a>
         </h4>
@@ -35,7 +35,7 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowUpdateModal(string taskId)
+    private void ShowUpdateTaskModal(string taskId)
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Tasks.Components.UpdateTask.Id), taskId);

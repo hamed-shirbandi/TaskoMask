@@ -1,7 +1,7 @@
 ﻿@using TaskoMask.Application.Share.Dtos.Workspace.Tasks
 @inject TaskoMask.Presentation.Framework.Share.ApiContracts.ITaskApiService TaskApiService
 
-<EditForm Model="TaskModel" OnValidSubmit="HandleUpdate">
+<EditForm Model="TaskModel" OnValidSubmit="HandleUpdateTask">
 
     <DataAnnotationsValidator />
 
@@ -21,7 +21,7 @@
 
     <div class="form-group">
             <button type="submit" class="btn btn-primary float-left">Update</button>
-            <button @onclick="HandleDelete" class="btn btn-danger text-white float-right">Delete</button>
+            <button @onclick="HandleDeleteTask" class="btn btn-danger text-white float-right">Delete</button>
     </div>
 
 </EditForm>
@@ -113,7 +113,7 @@
     /// <summary>
     /// handle update model
     /// </summary>
-    private async Task HandleUpdate()
+    private async Task HandleUpdateTask()
     {
         var result = await TaskApiService.Update(Id, TaskModel);
         CommandResultHandler.Init()
@@ -129,9 +129,9 @@
     /// <summary>
     /// handle delete item
     /// </summary>
-    private async Task HandleDelete()
+    private async Task HandleDeleteTask()
     {
-        var confirmationModal = ModalService.Show<Confirmation>("Deletion warning!", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion Warning!", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
         var confirmationModalResult = await confirmationModal.Result;
 
         if (confirmationModalResult.Cancelled)

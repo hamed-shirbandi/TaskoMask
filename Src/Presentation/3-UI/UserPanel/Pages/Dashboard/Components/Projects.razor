@@ -9,7 +9,7 @@
                 <a class="text-white" href="@($"/project/{item.Id}")">
                     @item.Name
                 </a>
-                <a @onclick="@(()=>ShowUpdateModal(item.Id))" class="text-warning float-right" >
+                <a @onclick="@(()=>ShowUpdateProjectModal(item.Id))" class="text-warning float-right" >
                     <i class="bi bi-pencil"></i>
                 </a>
             </h6>
@@ -23,7 +23,7 @@
 }
 
 <div class="col-md-3 col-sm-6 col-6 p-2">
-    <a @onclick="@(()=>ShowCreateModal())" class="text-center">
+    <a @onclick="@(()=>ShowAddProjectModal())" class="text-center">
         <div class="card text-center text-muted justify-content-center min-height-9rem bg-light-gray card-hover">
             <i class="bi bi-plus">add new project</i>
         </div>
@@ -46,21 +46,21 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateModal()
+    private void ShowAddProjectModal()
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Projects.Components.CreateProject.OrganizationId), OrganizationId);
-        ModalService.Show<Pages.Projects.Components.CreateProject>("New project", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        parameters.Add(nameof(Pages.Projects.Components.AddProject.OrganizationId), OrganizationId);
+        ModalService.Show<Pages.Projects.Components.AddProject>("Add Project", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
     }
 
 
     /// <summary>
     ///
     /// </summary>
-    private void ShowUpdateModal(string projectId)
+    private void ShowUpdateProjectModal(string projectId)
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Projects.Components.UpdateProject.Id), projectId);
-        ModalService.Show<Pages.Projects.Components.UpdateProject>("Update project", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        ModalService.Show<Pages.Projects.Components.UpdateProject>("Update Project", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
     }
 }

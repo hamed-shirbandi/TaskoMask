@@ -3,7 +3,7 @@
 {
     <div class="alert alert-warning">
         There is'nt any project yet. 
-        <a  @onclick="@(()=>ShowCreateProjectModal())" class="text-primary">add new project</a>
+        <a  @onclick="@(()=>ShowAddProjectModal())" class="text-primary">add new project</a>
     </div>
 }
 
@@ -16,11 +16,11 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateProjectModal( )
+    private void ShowAddProjectModal( )
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Projects.Components.CreateProject.OrganizationId), Model.Organization.Id);
-        ModalService.Show<Pages.Projects.Components.CreateProject>("New project", parameters, new ModalOptions {});
+        parameters.Add(nameof(Pages.Projects.Components.AddProject.OrganizationId), Model.Organization.Id);
+        ModalService.Show<Pages.Projects.Components.AddProject>("Add Project", parameters, new ModalOptions {});
     }
 
 }

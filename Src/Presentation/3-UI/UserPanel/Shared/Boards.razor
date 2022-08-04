@@ -8,7 +8,7 @@
                 <a class="text-white" href="@($"/board/{item.Id}")">
                     @item.Name
                 </a>
-                <a @onclick="@(()=>ShowUpdateModal(item.Id))" class="text-warning float-right" >
+                <a @onclick="@(()=>ShowUpdateBoardModal(item.Id))" class="text-warning float-right" >
                     <i class="bi bi-pencil"></i>
                 </a>
             </h6>
@@ -22,7 +22,7 @@
 }
 
 <div class="col-md-3 col-sm-6 col-6 p-2">
-    <a @onclick="@(()=>ShowCreateModal())" class="text-center">
+    <a @onclick="@(()=>ShowAddBoardModal())" class="text-center">
         <div class="card text-center text-muted justify-content-center min-height-9rem bg-light-gray card-hover">
             <i class="bi bi-plus">add new board</i>
         </div>
@@ -49,19 +49,19 @@
     /// <summary>
     ///
     /// </summary>
-    private void ShowCreateModal()
+    private void ShowAddBoardModal()
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(Pages.Boards.Components.CreateBoard.ProjectId), ProjectId);
-        parameters.Add(nameof(Pages.Boards.Components.CreateBoard.OrganizationId), OrganizationId);
-        ModalService.Show<Pages.Boards.Components.CreateBoard>("New board", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        parameters.Add(nameof(Pages.Boards.Components.AddBoard.ProjectId), ProjectId);
+        parameters.Add(nameof(Pages.Boards.Components.AddBoard.OrganizationId), OrganizationId);
+        ModalService.Show<Pages.Boards.Components.AddBoard>("Add Board", parameters, new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
     }
 
 
     /// <summary>
     ///
     /// </summary>
-    private void ShowUpdateModal(string boardId)
+    private void ShowUpdateBoardModal(string boardId)
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(Pages.Boards.Components.UpdateBoard.Id), boardId);

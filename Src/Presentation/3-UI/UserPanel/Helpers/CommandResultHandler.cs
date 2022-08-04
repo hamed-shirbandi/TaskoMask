@@ -93,7 +93,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
         /// <summary>
         /// 
         /// </summary>
-        public CommandResultHandler CloseModal(BlazoredModalInstance? modalInstance)
+        public CommandResultHandler CloseModal(BlazoredModalInstance modalInstance)
         {
             if (_result.IsSuccess)
                 modalInstance.CloseAsync();

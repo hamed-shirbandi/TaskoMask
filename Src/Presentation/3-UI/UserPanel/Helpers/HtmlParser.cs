@@ -8,9 +8,9 @@ namespace TaskoMask.Presentation.UI.UserPanel.Helpers
         /// <summary>
         /// Parse errors list to Fragment to show by Toast service
         /// </summary>
-        public static RenderFragment? ParseToFragment(this List<string> errors)
+        public static RenderFragment ParseToFragment(this List<string> errors)
         {
-            RenderFragment? content = null;
+            RenderFragment content = null;
 
             if (!errors.Any())
                 return content;

@@ -41,7 +41,7 @@ namespace TaskoMask.Application.Core.Exceptions
         /// <summary>
         /// 
         /// </summary>
-        public async Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
+        public Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
         {
             var exceptionType = exception.GetType();
 
@@ -67,6 +67,7 @@ namespace TaskoMask.Application.Core.Exceptions
 
             state.SetHandled(default);
 
+            return Task.CompletedTask;
         }
 
 

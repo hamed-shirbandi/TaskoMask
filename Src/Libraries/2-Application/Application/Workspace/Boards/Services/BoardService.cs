@@ -39,7 +39,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(BoardCreateDto input)
+        public async Task<Result<CommandResult>> CreateAsync(AddBoardDto input)
         {
             var cmd = new AddBoardCommand(name: input.Name, input.Description, input.ProjectId);
             return await SendCommandAsync(cmd);
@@ -50,7 +50,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(BoardUpdateDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(UpdateBoardDto input)
         {
             var cmd = new UpdateBoardCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);

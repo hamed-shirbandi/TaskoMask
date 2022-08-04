@@ -144,7 +144,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             #region create default board
 
 
-            var boardDto = new BoardCreateDto
+            var boardDto = new AddBoardDto
             {
                 ProjectId = CreateProjectCommandResult.Value.EntityId,
                 Name = _configuration["Default:Workspace:BoardName"],

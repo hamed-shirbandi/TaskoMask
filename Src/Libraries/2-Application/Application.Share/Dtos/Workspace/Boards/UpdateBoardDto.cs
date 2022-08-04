@@ -5,7 +5,7 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Share.Dtos.Workspace.Boards
 {
-    public class BoardUpdateDto
+    public class UpdateBoardDto
     {
         public string Id { get; set; }
 

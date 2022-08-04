@@ -71,7 +71,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPost]
         [Route("boards")]
-        public async Task<Result<CommandResult>> Add([FromBody] BoardCreateDto input)
+        public async Task<Result<CommandResult>> Add([FromBody] AddBoardDto input)
         {
             return await _boardService.CreateAsync(input);
         }
@@ -83,7 +83,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("boards/{id}")]
-        public async Task<Result<CommandResult>> Update(string id, [FromBody] BoardUpdateDto input)
+        public async Task<Result<CommandResult>> Update(string id, [FromBody] UpdateBoardDto input)
         {
             if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
                 return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);

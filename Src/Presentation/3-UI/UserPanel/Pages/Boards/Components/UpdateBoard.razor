@@ -42,7 +42,7 @@
     /// <summary>
     /// Form Model
     /// </summary>
-    BoardUpdateDto BoardModel = new BoardUpdateDto();
+    UpdateBoardDto BoardModel = new UpdateBoardDto();
 
 
 
@@ -89,7 +89,7 @@
 
         if (boardResult.IsSuccess)
         {
-            BoardModel = new BoardUpdateDto
+            BoardModel = new UpdateBoardDto
                 {
                     Id = boardResult.Value.Id,
                     Name = boardResult.Value.Name,

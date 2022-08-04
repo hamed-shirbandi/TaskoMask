@@ -39,7 +39,7 @@ namespace TaskoMask.Application.Workspace.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(AddBoardDto input)
+        public async Task<Result<CommandResult>> AddAsync(AddBoardDto input)
         {
             var cmd = new AddBoardCommand(name: input.Name, input.Description, input.ProjectId);
             return await SendCommandAsync(cmd);

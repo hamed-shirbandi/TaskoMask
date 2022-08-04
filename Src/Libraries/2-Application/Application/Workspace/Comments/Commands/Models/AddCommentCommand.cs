@@ -4,9 +4,9 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Comments.Commands.Models
 {
-    public class CreateCommentCommand : CommentBaseCommand
+    public class AddCommentCommand : CommentBaseCommand
     {
-        public CreateCommentCommand(string taskId , string content)
+        public AddCommentCommand(string taskId , string content)
                 : base(content)
         {
             TaskId = taskId;

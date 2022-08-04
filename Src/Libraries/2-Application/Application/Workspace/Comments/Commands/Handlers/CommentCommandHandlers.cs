@@ -15,7 +15,7 @@ using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
 namespace TaskoMask.Application.Workspace.Comments.Commands.Handlers
 {
     public class CommentCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateCommentCommand, CommandResult>,
+        IRequestHandler<AddCommentCommand, CommandResult>,
          IRequestHandler<UpdateCommentCommand, CommandResult>,
          IRequestHandler<DeleteCommentCommand, CommandResult>
     {
@@ -43,7 +43,7 @@ namespace TaskoMask.Application.Workspace.Comments.Commands.Handlers
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(AddCommentCommand request, CancellationToken cancellationToken)
         {
             var task = await _taskAggregateRepository.GetByIdAsync(request.TaskId);
             if (task == null)

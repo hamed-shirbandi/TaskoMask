@@ -56,7 +56,7 @@ namespace TaskoMask.Application.Workspace.Comments.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(CommentUpsertDto input)
         {
-            var cmd = new CreateCommentCommand(taskId: input.TaskId, content: input.Content);
+            var cmd = new AddCommentCommand(taskId: input.TaskId, content: input.Content);
             return await SendCommandAsync(cmd);
         }
 

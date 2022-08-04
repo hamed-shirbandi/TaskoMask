@@ -2,9 +2,9 @@
 
 namespace TaskoMask.Application.Workspace.Organizations.Commands.Validations
 {
-   public class UpdateOrganizationCommandValidation : OrganizationValidation<UpdateOrganizationCommand>
+   public class AddOrganizationToOwnerWorkspaceValidation:OrganizationValidation<AddOrganizationToOwnerWorkspaceCommand>
     {
-        public UpdateOrganizationCommandValidation()
+        public AddOrganizationToOwnerWorkspaceValidation()
         {
             ValidateDescription();
         }

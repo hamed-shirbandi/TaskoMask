@@ -15,7 +15,7 @@ using TaskoMask.Domain.Core.Services;
 namespace TaskoMask.Application.Commands.Handlers.Organizations
 {
     public class OrganizationCommandHandlers : BaseCommandHandler,
-        IRequestHandler<CreateOrganizationCommand, CommandResult>,
+        IRequestHandler<AddOrganizationToOwnerWorkspaceCommand, CommandResult>,
         IRequestHandler<UpdateOrganizationCommand, CommandResult>,
          IRequestHandler<DeleteOrganizationCommand, CommandResult>
 
@@ -43,7 +43,7 @@ namespace TaskoMask.Application.Commands.Handlers.Organizations
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(CreateOrganizationCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(AddOrganizationToOwnerWorkspaceCommand request, CancellationToken cancellationToken)
         {
             var owner = await _ownerAggregateRepository.GetByIdAsync(request.OwnerId);
             if (owner == null)

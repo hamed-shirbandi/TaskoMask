@@ -46,7 +46,7 @@ namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
             services.AddBehaviors();
             services.AddAutoMapperSetup();
             //Load all fluent validation to use in ValidationBehaviour
-            services.AddValidatorsFromAssembly(typeof(CreateOrganizationCommandValidation).Assembly);
+            services.AddValidatorsFromAssembly(typeof(AddOrganizationToOwnerWorkspaceValidation).Assembly);
             services.AddAutoMapperSetup();
             services.AddRedisCache(options =>
             {

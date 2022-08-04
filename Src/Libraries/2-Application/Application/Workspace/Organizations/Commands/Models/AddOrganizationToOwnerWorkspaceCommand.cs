@@ -3,9 +3,9 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Workspace.Organizations.Commands.Models
 {
-   public class CreateOrganizationCommand : OrganizationBaseCommand
+   public class AddOrganizationToOwnerWorkspaceCommand : OrganizationBaseCommand
     {
-        public CreateOrganizationCommand(string name, string description, string ownerId)
+        public AddOrganizationToOwnerWorkspaceCommand(string name, string description, string ownerId)
             :base(name,description)
         {
             OwnerId = ownerId;

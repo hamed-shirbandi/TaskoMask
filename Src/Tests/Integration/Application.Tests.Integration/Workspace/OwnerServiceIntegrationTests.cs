@@ -31,7 +31,7 @@ namespace TaskoMask.Application.Tests.Integration.Workspace
 
 
         [Fact]
-        public async Task Owner_Is_Created()
+        public async Task Owner_Is_Registered()
         {
             //Arrange
             var dto = new OwnerRegisterDto

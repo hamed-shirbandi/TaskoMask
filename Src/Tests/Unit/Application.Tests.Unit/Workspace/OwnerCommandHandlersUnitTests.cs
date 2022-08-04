@@ -33,7 +33,7 @@ namespace TaskoMask.Application.Tests.Unit.Workspace
 
 
         [Fact]
-        public async Task Owner_Is_Register()
+        public async Task Owner_Is_Registered()
         {
             //Arrange
             var expectedUserId = ObjectId.GenerateNewId().ToString();

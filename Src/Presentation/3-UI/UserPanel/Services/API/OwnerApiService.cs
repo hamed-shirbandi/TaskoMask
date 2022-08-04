@@ -41,7 +41,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(OwnerUpdateDto input)
+        public async Task<Result<CommandResult>> Update(OwnerUpdateProfileDto input)
         {
             var url = $"/owner";
             return await _httpClientService.PutAsync<CommandResult>(url, input);

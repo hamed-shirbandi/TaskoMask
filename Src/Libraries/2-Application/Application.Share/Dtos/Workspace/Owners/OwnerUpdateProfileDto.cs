@@ -5,7 +5,7 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Share.Dtos.Workspace.Owners
 {
-    public class OwnerUpdateDto
+    public class OwnerUpdateProfileDto
     {
 
         [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]

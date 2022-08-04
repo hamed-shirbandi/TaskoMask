@@ -52,7 +52,7 @@ namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
         /// </summary>
         [HttpPut]
         [Route("owner")]
-        public async Task<Result<CommandResult>> Update([FromBody] OwnerUpdateDto input)
+        public async Task<Result<CommandResult>> Update([FromBody] OwnerUpdateProfileDto input)
         {
             input.Id = GetCurrentUserId();
             return await _ownerService.UpdateProfileAsync(input);

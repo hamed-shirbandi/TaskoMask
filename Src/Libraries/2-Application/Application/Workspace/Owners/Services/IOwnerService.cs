@@ -10,7 +10,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
     {
         Task<Result<CommandResult>> RegisterAsync(OwnerRegisterDto input);
         Task<Result<CommandResult>> RegisterAndSeedDefaultWorkspaceAsync(OwnerRegisterDto input);
-        Task<Result<CommandResult>> UpdateProfileAsync(OwnerUpdateDto input);
+        Task<Result<CommandResult>> UpdateProfileAsync(OwnerUpdateProfileDto input);
         Task<Result<OwnerBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<OwnerBasicInfoDto>> GetByUserNameAsync(string userName);
         Task<Result<PaginatedListReturnType<OwnerOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);

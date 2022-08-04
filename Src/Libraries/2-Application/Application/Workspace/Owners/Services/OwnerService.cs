@@ -92,7 +92,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateProfileAsync(OwnerUpdateDto input)
+        public async Task<Result<CommandResult>> UpdateProfileAsync(OwnerUpdateProfileDto input)
         {
             //update authentication user UserName
             var updateUserCommandResult = await _userService.UpdateUserNameAsync(input.Id, input.Email);

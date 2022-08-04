@@ -6,6 +6,6 @@ namespace TaskoMask.Presentation.Framework.Share.ApiContracts
     public interface IOwnerApiService
     {
         Task<Result<OwnerBasicInfoDto>> Get();
-        Task<Result<CommandResult>> Update(OwnerUpdateDto input);
+        Task<Result<CommandResult>> Update(OwnerUpdateProfileDto input);
     }
 }

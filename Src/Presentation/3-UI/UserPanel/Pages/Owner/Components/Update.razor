@@ -36,7 +36,7 @@
     /// <summary>
     /// Form Model
     /// </summary>
-    OwnerUpdateDto OwnerUpdateModel = new OwnerUpdateDto();
+    OwnerUpdateProfileDto OwnerUpdateModel = new OwnerUpdateProfileDto();
 
 
 
@@ -64,7 +64,7 @@
 
         if (ownerResult.IsSuccess)
         {
-            OwnerUpdateModel = new OwnerUpdateDto
+            OwnerUpdateModel = new OwnerUpdateProfileDto
                 {
                     Id = ownerResult.Value.Id,
                     DisplayName = ownerResult.Value.DisplayName,

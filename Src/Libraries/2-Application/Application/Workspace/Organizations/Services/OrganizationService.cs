@@ -37,7 +37,7 @@ namespace TaskoMask.Application.Workspace.Organizations.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> CreateAsync(OrganizationUpsertDto input)
+        public async Task<Result<CommandResult>> AddToOwnerWorkspace(OrganizationUpsertDto input)
         {
             var cmd = new AddOrganizationToOwnerWorkspaceCommand(ownerId: input.OwnerId, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);

@@ -2,7 +2,7 @@
 
 namespace TaskoMask.Application.Share.Dtos.Workspace.Projects
 {
-    public class ProjectCreateDto : ProjectBaseDto
+    public class AddProjectDto : ProjectBaseDto
     {
     }
 }

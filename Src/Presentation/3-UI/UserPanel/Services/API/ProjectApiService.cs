@@ -64,7 +64,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(ProjectCreateDto input)
+        public async Task<Result<CommandResult>> Add(AddProjectDto input)
         {
             var url = $"/projects";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
@@ -75,7 +75,7 @@ namespace TaskoMask.Presentation.UI.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id, ProjectUpdateDto input)
+        public async Task<Result<CommandResult>> Update(string id, UpdateProjectDto input)
         {
             var url = $"/projects/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);

@@ -8,8 +8,8 @@ namespace TaskoMask.Presentation.Framework.Share.ApiContracts
     {
         Task<Result<ProjectOutputDto>> Get(string id);
         Task<Result<ProjectDetailsViewModel>> GetDetails(string id);
-        Task<Result<CommandResult>> Add(ProjectCreateDto input);
-        Task<Result<CommandResult>> Update(string id, ProjectUpdateDto input);
+        Task<Result<CommandResult>> Add(AddProjectDto input);
+        Task<Result<CommandResult>> Update(string id, UpdateProjectDto input);
         Task<Result<CommandResult>> Delete(string id);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string organizationId);
 

@@ -41,7 +41,7 @@
     /// <summary>
     /// Form Model
     /// </summary>
-    ProjectUpdateDto ProjectModel = new ProjectUpdateDto();
+    UpdateProjectDto ProjectModel = new UpdateProjectDto();
 
 
 
@@ -87,7 +87,7 @@
 
         if (projectResult.IsSuccess)
         {
-            ProjectModel = new ProjectUpdateDto
+            ProjectModel = new UpdateProjectDto
                 {
                     Id = projectResult.Value.Id,
                     Name = projectResult.Value.Name,

@@ -36,7 +36,7 @@ namespace TaskoMask.Application.Workspace.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> AddAsync(ProjectCreateDto input)
+        public async Task<Result<CommandResult>> AddAsync(AddProjectDto input)
         {
             var cmd = new AddProjectCommand(organizationId: input.OrganizationId, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);
@@ -47,7 +47,7 @@ namespace TaskoMask.Application.Workspace.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(ProjectUpdateDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(UpdateProjectDto input)
         {
             var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description);
             return await SendCommandAsync(cmd);

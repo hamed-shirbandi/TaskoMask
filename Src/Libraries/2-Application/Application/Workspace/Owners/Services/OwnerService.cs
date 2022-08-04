@@ -128,7 +128,7 @@ namespace TaskoMask.Application.Workspace.Owners.Services
             #region create default project
 
 
-            var projectDto = new ProjectCreateDto
+            var projectDto = new AddProjectDto
             {
                 OrganizationId = CreateOrganizationCommandResult.Value.EntityId,
                 Name = _configuration["Default:Workspace:ProjectName"],

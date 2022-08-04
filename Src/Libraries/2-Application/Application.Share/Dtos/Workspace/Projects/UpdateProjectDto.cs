@@ -6,7 +6,7 @@ using TaskoMask.Domain.Share.Resources;
 
 namespace TaskoMask.Application.Share.Dtos.Workspace.Projects
 {
-    public class ProjectUpdateDto
+    public class UpdateProjectDto
     {
         public string Id { get; set; }
 

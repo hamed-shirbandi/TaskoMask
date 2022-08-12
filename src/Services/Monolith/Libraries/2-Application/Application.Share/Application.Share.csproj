@@ -18,10 +18,6 @@
 		<NoWarn>1701;1702;1591</NoWarn>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\..\3-Domain\Domain.Share\Domain.Share.csproj" />
-	</ItemGroup>
-
   <ItemGroup>
     <Compile Update="Resources\ApplicationMessages.Designer.cs">
       <DependentUpon>ApplicationMessages.resx</DependentUpon>

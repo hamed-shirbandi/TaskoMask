@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\3-Domain\Domain.DataModel\Domain.DataModel.csproj" />
-    <ProjectReference Include="..\Infrastructure.Data.Core\Infrastructure.Data.Core.csproj" />
   </ItemGroup>
 
 </Project>

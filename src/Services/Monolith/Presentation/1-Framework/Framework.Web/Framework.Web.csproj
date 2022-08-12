@@ -19,7 +19,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Libraries\1-Infrastructure\CrossCutting\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
 		<ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />
-		<ProjectReference Include="..\Framework.Share\Framework.Share.csproj" />
 	</ItemGroup>
 
 </Project>

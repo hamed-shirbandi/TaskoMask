@@ -12,7 +12,6 @@
 	  <ProjectReference Include="..\..\1-Infrastructure\Data\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj" />
 	  <ProjectReference Include="..\..\3-Domain\Domain.DomainModel\Domain.DomainModel.csproj" />
 	  <ProjectReference Include="..\..\3-Domain\Domain.DataModel\Domain.DataModel.csproj" />
-	  <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
   </ItemGroup>
   
   <ItemGroup>

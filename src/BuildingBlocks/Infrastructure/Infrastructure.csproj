@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="CrossCutting\Services\Email\**" />
+    <Compile Remove="CrossCutting\Services\Logging\**" />
+    <Compile Remove="CrossCutting\Services\Sms\**" />
+    <EmbeddedResource Remove="CrossCutting\Services\Email\**" />
+    <EmbeddedResource Remove="CrossCutting\Services\Logging\**" />
+    <EmbeddedResource Remove="CrossCutting\Services\Sms\**" />
+    <None Remove="CrossCutting\Services\Email\**" />
+    <None Remove="CrossCutting\Services\Logging\**" />
+    <None Remove="CrossCutting\Services\Sms\**" />
+  </ItemGroup>
+
 </Project>

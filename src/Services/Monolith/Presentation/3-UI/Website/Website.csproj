@@ -21,7 +21,4 @@
   <ItemGroup>
     <Folder Include="Views\Errors\" />
   </ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\..\1-Framework\Framework.Web\Framework.Web.csproj" />
-	</ItemGroup>
 </Project>

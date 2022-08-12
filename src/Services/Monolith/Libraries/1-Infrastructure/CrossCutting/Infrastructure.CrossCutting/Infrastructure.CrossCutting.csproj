@@ -11,7 +11,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\2-Application\Application.Core\Application.Core.csproj" />
-    <ProjectReference Include="..\..\..\2-Application\Application.Share\Application.Share.csproj" />
     <ProjectReference Include="..\..\..\2-Application\Application\Application.csproj" />
     <ProjectReference Include="..\..\Data\Infrastructure.Data.Read\Infrastructure.Data.Read.csproj" />
     <ProjectReference Include="..\..\Data\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj" />

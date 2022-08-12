@@ -18,4 +18,28 @@
     <None Remove="CrossCutting\Services\Sms\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Application\Resources\ApplicationMessages.Designer.cs">
+      <DependentUpon>ApplicationMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Application\Resources\ApplicationMetadata.Designer.cs">
+      <DependentUpon>ApplicationMetadata.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Application\Resources\ApplicationMessages.resx">
+      <LastGenOutput>ApplicationMessages.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Application\Resources\ApplicationMetadata.resx">
+      <LastGenOutput>ApplicationMetadata.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

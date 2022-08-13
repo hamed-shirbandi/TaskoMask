@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-
+	  <AssemblyName>TaskoMask.Services.Monolith.Domain.DataModel</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Monolith.Domain.DataModel</RootNamespace>
   </PropertyGroup>
 
 </Project>

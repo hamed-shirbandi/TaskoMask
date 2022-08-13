@@ -2,9 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>TaskoMask.Domain</AssemblyName>
-    <RootNamespace>TaskoMask.Domain</RootNamespace>
-     
+	  <AssemblyName>TaskoMask.Services.Monolith.Domain.DomainModel</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Monolith.Domain.DomainModel</RootNamespace>
   </PropertyGroup>
 
 </Project>

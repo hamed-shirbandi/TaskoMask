@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+	  <AssemblyName>TaskoMask.Services.Monolith.Application.Core</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Monolith.Application.Core</RootNamespace>
   </PropertyGroup>
 
 </Project>

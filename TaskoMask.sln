@@ -95,13 +95,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B9CD4304-BA0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{0160F89F-AEC6-4822-88CC-80E0D867BB19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "src\ApiGateways\UserPanel\Web\ApiGateway\ApiGateway.csproj", "{C37FF5F1-2507-4C70-BC15-6A1646F2F134}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "src\ApiGateways\UserPanel\Web\ApiGateway\ApiGateway.csproj", "{C37FF5F1-2507-4C70-BC15-6A1646F2F134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aggregator", "src\ApiGateways\UserPanel\Web\ApiGateway\Aggregator\Aggregator.csproj", "{3097903D-74AE-47D4-9C57-8DD55497D62A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\ApiGateways\UserPanel\Web\ApiGateway\Aggregator\Aggregator.csproj", "{3097903D-74AE-47D4-9C57-8DD55497D62A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "src\ApiGateways\AdminPanel\Web\ApiGateway\ApiGateway.csproj", "{C16614C1-6CDC-4715-A53C-C44625121E3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "src\ApiGateways\AdminPanel\Web\ApiGateway\ApiGateway.csproj", "{C16614C1-6CDC-4715-A53C-C44625121E3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aggregator", "src\ApiGateways\AdminPanel\Web\Aggregator\Aggregator.csproj", "{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\ApiGateways\AdminPanel\Web\Aggregator\Aggregator.csproj", "{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Core", "src\Services\Monolith\Libraries\2-Application\Application\Application.Core\Application.Core.csproj", "{4A5D9335-4B41-4C57-BA57-3CE4A6778484}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -217,6 +219,10 @@ Global
 		{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A5D9335-4B41-4C57-BA57-3CE4A6778484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A5D9335-4B41-4C57-BA57-3CE4A6778484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A5D9335-4B41-4C57-BA57-3CE4A6778484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A5D9335-4B41-4C57-BA57-3CE4A6778484}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -267,6 +273,7 @@ Global
 		{3097903D-74AE-47D4-9C57-8DD55497D62A} = {83FAED61-BA27-422C-91B4-99A097E9C4D1}
 		{C16614C1-6CDC-4715-A53C-C44625121E3F} = {B9CD4304-BA0E-469B-8A52-8B4098F95EA6}
 		{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97} = {B9CD4304-BA0E-469B-8A52-8B4098F95EA6}
+		{4A5D9335-4B41-4C57-BA57-3CE4A6778484} = {03E9DC7E-C995-440B-A355-B095EDF06215}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15E4B299-A968-40A3-8192-CCF9082EE3BC}

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+	  <AssemblyName>TaskoMask.ApiGateways.AdminPanel.Web.ApiGateway</AssemblyName>
+	  <RootNamespace>TaskoMask.ApiGateways.AdminPanel.Web.ApiGateway</RootNamespace>
     <UserSecretsId>192e57d7-c306-4363-adad-09efd6a3169d</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..\..\..</DockerfileContext>

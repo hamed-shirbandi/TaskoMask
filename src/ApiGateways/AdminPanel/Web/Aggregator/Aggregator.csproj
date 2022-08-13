@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+	  <AssemblyName>TaskoMask.ApiGateways.AdminPanel.Web.Aggregator</AssemblyName>
+	  <RootNamespace>TaskoMask.ApiGateways.AdminPanel.Web.Aggregator</RootNamespace>
     <UserSecretsId>d839fcad-1035-4fd8-b186-f2fe5b780774</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..\..\..</DockerfileContext>

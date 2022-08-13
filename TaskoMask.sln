@@ -105,6 +105,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{0160F8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "src\ApiGateways\UserPanel\Web\ApiGateway\ApiGateway.csproj", "{C37FF5F1-2507-4C70-BC15-6A1646F2F134}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aggregator", "src\ApiGateways\UserPanel\Web\ApiGateway\Aggregator\Aggregator.csproj", "{3097903D-74AE-47D4-9C57-8DD55497D62A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +209,10 @@ Global
 		{C37FF5F1-2507-4C70-BC15-6A1646F2F134}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C37FF5F1-2507-4C70-BC15-6A1646F2F134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C37FF5F1-2507-4C70-BC15-6A1646F2F134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3097903D-74AE-47D4-9C57-8DD55497D62A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3097903D-74AE-47D4-9C57-8DD55497D62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3097903D-74AE-47D4-9C57-8DD55497D62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3097903D-74AE-47D4-9C57-8DD55497D62A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -258,6 +264,7 @@ Global
 		{B9CD4304-BA0E-469B-8A52-8B4098F95EA6} = {427DCA3A-5936-4776-AC1E-08FA40ACBFB7}
 		{0160F89F-AEC6-4822-88CC-80E0D867BB19} = {427DCA3A-5936-4776-AC1E-08FA40ACBFB7}
 		{C37FF5F1-2507-4C70-BC15-6A1646F2F134} = {83FAED61-BA27-422C-91B4-99A097E9C4D1}
+		{3097903D-74AE-47D4-9C57-8DD55497D62A} = {83FAED61-BA27-422C-91B4-99A097E9C4D1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15E4B299-A968-40A3-8192-CCF9082EE3BC}

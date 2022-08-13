@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{1BA9D23D-A4DE-4841-B047-AC1E8355F6A3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C0FFF437-0D09-4F24-9157-1D4B409B89C0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{C0FFF437-0D09-4F24-9157-1D4B409B89C0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Services\Monolith\Libraries\2-Application\Application\Application.csproj", "{D048BB35-F168-42C3-AD7E-FCCF56FCABB9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanelAPI", "src\Services\Monolith\Presentation\UserPanelAPI\UserPanelAPI.csproj", "{C015A73A-0C15-4AD8-9BD8-4CF74A601BAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monolith.Api", "src\Services\Monolith\Api\Monolith.Api\Monolith.Api.csproj", "{C015A73A-0C15-4AD8-9BD8-4CF74A601BAD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "src\Clients\Web\Website\Website.csproj", "{395D43D9-49CB-45C7-A25F-4E84370FE948}"
 EndProject
@@ -103,7 +103,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "src\ApiGatewa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\ApiGateways\AdminPanel\Web\Aggregator\Aggregator.csproj", "{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Core", "src\Services\Monolith\Libraries\2-Application\Application\Application.Core\Application.Core.csproj", "{4A5D9335-4B41-4C57-BA57-3CE4A6778484}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "src\Services\Monolith\Libraries\2-Application\Application\Application.Core\Application.Core.csproj", "{4A5D9335-4B41-4C57-BA57-3CE4A6778484}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

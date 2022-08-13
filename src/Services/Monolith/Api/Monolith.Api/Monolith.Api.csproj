@@ -5,8 +5,8 @@
 	  <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>7f763081-7ffe-4a61-b636-c05f18a8e18b</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    <AssemblyName>TaskoMask.Presentation.API.UserPanelAPI</AssemblyName>
-    <RootNamespace>TaskoMask.Presentation.API.UserPanelAPI</RootNamespace>
+    <AssemblyName>TaskoMask.Services.Monolith.Api</AssemblyName>
+    <RootNamespace>TaskoMask.Services.Monolith.Api</RootNamespace>
      
   </PropertyGroup>
 

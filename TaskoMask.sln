@@ -7,25 +7,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{C0FFF437-0D09-4F24-9157-1D4B409B89C0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{CC5F6FB4-4140-4427-8CD5-741363DE08F5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{CC5F6FB4-4140-4427-8CD5-741363DE08F5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Infrastructure", "1-Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DomainModel", "src\Services\Monolith\Libraries\3-Domain\Domain.DomainModel\Domain.DomainModel.csproj", "{CAE67B26-DAA9-4AA5-8E3D-8DB070B4052C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DomainModel", "src\2-Services\Monolith\Libraries\Domain\Domain.DomainModel\Domain.DomainModel.csproj", "{CAE67B26-DAA9-4AA5-8E3D-8DB070B4052C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "src\Services\Monolith\Libraries\1-Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{E83B87F2-796F-4668-921C-39D7D9481B91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "src\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{E83B87F2-796F-4668-921C-39D7D9481B91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Services\Monolith\Libraries\2-Application\Application\Application.csproj", "{D048BB35-F168-42C3-AD7E-FCCF56FCABB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\2-Services\Monolith\Libraries\Application\Application\Application.csproj", "{D048BB35-F168-42C3-AD7E-FCCF56FCABB9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monolith.Api", "src\Services\Monolith\Api\Monolith.Api\Monolith.Api.csproj", "{C015A73A-0C15-4AD8-9BD8-4CF74A601BAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monolith.Api", "src\2-Services\Monolith\Api\Monolith.Api\Monolith.Api.csproj", "{C015A73A-0C15-4AD8-9BD8-4CF74A601BAD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "src\Clients\Web\Website\Website.csproj", "{395D43D9-49CB-45C7-A25F-4E84370FE948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "src\4-Clients\Web\Website\Website.csproj", "{395D43D9-49CB-45C7-A25F-4E84370FE948}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "src\Clients\Web\AdminPanel\AdminPanel.csproj", "{B8C53F1B-0E0D-4DBA-ADBB-5AA676562E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "src\4-Clients\Web\AdminPanel\AdminPanel.csproj", "{B8C53F1B-0E0D-4DBA-ADBB-5AA676562E75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "src\Clients\Web\UserPanel\UserPanel.csproj", "{5A908196-FEE6-4DAC-A588-9E45806EDA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPanel", "src\4-Clients\Web\UserPanel\UserPanel.csproj", "{5A908196-FEE6-4DAC-A588-9E45806EDA41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8A1E62D3-0CD8-4674-B269-E7269B19C918}"
 EndProject
@@ -33,35 +33,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{F8D8DFB2-5A75-4700-A659-CE4429CF4110}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.Specs", "src\Tests\Acceptance\Tests.Acceptance.Specs\Tests.Acceptance.Specs.csproj", "{D578C414-4FE4-4748-9BC4-3EB1C606B293}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.Specs", "src\5-Tests\Acceptance\Tests.Acceptance.Specs\Tests.Acceptance.Specs.csproj", "{D578C414-4FE4-4748-9BC4-3EB1C606B293}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests.Integration", "src\Services\Monolith\Tests\Integration\Application.Tests.Integration\Application.Tests.Integration.csproj", "{6C52AD1D-F37F-4214-9CDA-3B84154ED9B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests.Integration", "src\2-Services\Monolith\Tests\Integration\Application.Tests.Integration\Application.Tests.Integration.csproj", "{6C52AD1D-F37F-4214-9CDA-3B84154ED9B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests.Unit", "src\Services\Monolith\Tests\Unit\Application.Tests.Unit\Application.Tests.Unit.csproj", "{FCBAE4F3-78F2-4464-836C-A6772B31E147}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests.Unit", "src\2-Services\Monolith\Tests\Unit\Application.Tests.Unit\Application.Tests.Unit.csproj", "{FCBAE4F3-78F2-4464-836C-A6772B31E147}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests.Unit", "src\Services\Monolith\Tests\Unit\Domain.Tests.Unit\Domain.Tests.Unit.csproj", "{43727B44-CACC-46CB-AE40-E79FFC3D3AED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests.Unit", "src\2-Services\Monolith\Tests\Unit\Domain.Tests.Unit\Domain.Tests.Unit.csproj", "{43727B44-CACC-46CB-AE40-E79FFC3D3AED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.Core", "src\Tests\Acceptance\Tests.Acceptance.Core\Tests.Acceptance.Core.csproj", "{F68EBC86-1A34-4322-82F7-D3F978FA1382}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.Core", "src\5-Tests\Acceptance\Tests.Acceptance.Core\Tests.Acceptance.Core.csproj", "{F68EBC86-1A34-4322-82F7-D3F978FA1382}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.API", "src\Tests\Acceptance\Tests.Acceptance.API\Tests.Acceptance.API.csproj", "{2298CBFE-DF32-47C3-9B42-D969E47A944E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.API", "src\5-Tests\Acceptance\Tests.Acceptance.API\Tests.Acceptance.API.csproj", "{2298CBFE-DF32-47C3-9B42-D969E47A944E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.UI", "src\Tests\Acceptance\Tests.Acceptance.UI\Tests.Acceptance.UI.csproj", "{99ADF9A8-B7A9-44AA-85AA-9040A220CAD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.UI", "src\5-Tests\Acceptance\Tests.Acceptance.UI\Tests.Acceptance.UI.csproj", "{99ADF9A8-B7A9-44AA-85AA-9040A220CAD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DataModel", "src\Services\Monolith\Libraries\3-Domain\Domain.DataModel\Domain.DataModel.csproj", "{0FE32A14-B32D-4F36-8D37-CF11357884F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DataModel", "src\2-Services\Monolith\Libraries\Domain\Domain.DataModel\Domain.DataModel.csproj", "{0FE32A14-B32D-4F36-8D37-CF11357884F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Write", "src\Services\Monolith\Libraries\1-Infrastructure\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj", "{02B20F07-FFBC-4E48-995A-80B85AED86F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Write", "src\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj", "{02B20F07-FFBC-4E48-995A-80B85AED86F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Read", "src\Services\Monolith\Libraries\1-Infrastructure\Infrastructure.Data.Read\Infrastructure.Data.Read.csproj", "{17FC7A36-E7C1-4159-81DA-CBD06FEB937E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Read", "src\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.Data.Read\Infrastructure.Data.Read.csproj", "{17FC7A36-E7C1-4159-81DA-CBD06FEB937E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Generator", "src\Services\Monolith\Libraries\1-Infrastructure\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj", "{E59BEA82-E497-4FDA-8A16-F48CD05BFBAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Generator", "src\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj", "{E59BEA82-E497-4FDA-8A16-F48CD05BFBAC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{57022868-EED7-4320-8B38-DC1986C4F908}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-ApiGateways", "3-ApiGateways", "{57022868-EED7-4320-8B38-DC1986C4F908}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{F2F89D10-54CD-4A8B-9125-FCDAB433CD9C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-BuildingBlocks", "1-BuildingBlocks", "{F2F89D10-54CD-4A8B-9125-FCDAB433CD9C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{15D3FEEE-FCF6-404A-9624-0DAFF75A04D4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", "{15D3FEEE-FCF6-404A-9624-0DAFF75A04D4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{B0E305EF-4895-448B-8621-A3DD835B4F9B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Clients", "4-Clients", "{B0E305EF-4895-448B-8621-A3DD835B4F9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{8ACDCED2-7A18-4AFF-A61C-2BBD1A08A1A3}"
 EndProject
@@ -69,17 +69,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{C7AB50E5-22E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Monolith", "Monolith", "{1F2E9B28-D5EE-4112-A326-68FAD5650D2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\BuildingBlocks\Domain\Domain.csproj", "{01C8F838-138D-4142-9EA2-25C6FFE1BC00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\1-BuildingBlocks\Domain\Domain.csproj", "{01C8F838-138D-4142-9EA2-25C6FFE1BC00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\BuildingBlocks\Infrastructure\Infrastructure.csproj", "{FD154197-B5FE-4982-92D3-FE4D0B97288F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\1-BuildingBlocks\Infrastructure\Infrastructure.csproj", "{FD154197-B5FE-4982-92D3-FE4D0B97288F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.MVC", "src\BuildingBlocks\Web.MVC\Web.MVC.csproj", "{06D2CD3B-1FD7-4256-95ED-84B6E099A2D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.MVC", "src\1-BuildingBlocks\Web.MVC\Web.MVC.csproj", "{06D2CD3B-1FD7-4256-95ED-84B6E099A2D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "src\BuildingBlocks\Contracts\Contracts.csproj", "{68786622-C0B4-4C35-8308-6EB29DA40773}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "src\1-BuildingBlocks\Contracts\Contracts.csproj", "{68786622-C0B4-4C35-8308-6EB29DA40773}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\BuildingBlocks\Web\Web.csproj", "{29080057-6713-4EA9-89EC-5C0C37DAEDE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\1-BuildingBlocks\Web\Web.csproj", "{29080057-6713-4EA9-89EC-5C0C37DAEDE6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{74A54FB6-73A7-4E0F-AC1F-7C82044FF8C3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Tests", "5-Tests", "{74A54FB6-73A7-4E0F-AC1F-7C82044FF8C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Acceptance", "Acceptance", "{8ED418D7-3F1D-4446-AB23-2E0E8A148C24}"
 EndProject
@@ -95,15 +95,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B9CD4304-BA0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{0160F89F-AEC6-4822-88CC-80E0D867BB19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "src\ApiGateways\UserPanel\Web\ApiGateway\ApiGateway.csproj", "{C37FF5F1-2507-4C70-BC15-6A1646F2F134}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "src\3-ApiGateways\UserPanel\Web\ApiGateway\ApiGateway.csproj", "{C37FF5F1-2507-4C70-BC15-6A1646F2F134}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\ApiGateways\UserPanel\Web\ApiGateway\Aggregator\Aggregator.csproj", "{3097903D-74AE-47D4-9C57-8DD55497D62A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\3-ApiGateways\UserPanel\Web\ApiGateway\Aggregator\Aggregator.csproj", "{3097903D-74AE-47D4-9C57-8DD55497D62A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "src\ApiGateways\AdminPanel\Web\ApiGateway\ApiGateway.csproj", "{C16614C1-6CDC-4715-A53C-C44625121E3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "src\3-ApiGateways\AdminPanel\Web\ApiGateway\ApiGateway.csproj", "{C16614C1-6CDC-4715-A53C-C44625121E3F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\ApiGateways\AdminPanel\Web\Aggregator\Aggregator.csproj", "{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\3-ApiGateways\AdminPanel\Web\Aggregator\Aggregator.csproj", "{DE3A1206-EC0F-4D78-AC77-E8406BAD9D97}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "src\Services\Monolith\Libraries\2-Application\Application\Application.Core\Application.Core.csproj", "{4A5D9335-4B41-4C57-BA57-3CE4A6778484}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "src\2-Services\Monolith\Libraries\Application\Application\Application.Core\Application.Core.csproj", "{4A5D9335-4B41-4C57-BA57-3CE4A6778484}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

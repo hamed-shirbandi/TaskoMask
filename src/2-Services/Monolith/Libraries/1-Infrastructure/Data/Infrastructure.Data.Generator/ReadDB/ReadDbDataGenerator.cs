@@ -1,5 +1,5 @@
 ﻿using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB

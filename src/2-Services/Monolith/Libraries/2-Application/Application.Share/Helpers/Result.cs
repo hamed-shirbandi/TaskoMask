@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Share.Helpers
 {
@@ -50,7 +50,7 @@ namespace TaskoMask.Services.Monolith.Application.Share.Helpers
         public Result(bool isSuccess, string message, List<string> errors)
         {
             if (message == "")
-                message = isSuccess?DomainMessages.Operation_Success: DomainMessages.Operation_Failed;
+                message = isSuccess?ContractsMessages.Operation_Success: ContractsMessages.Operation_Failed;
 
             IsSuccess = isSuccess;
             Message = message;
@@ -118,7 +118,7 @@ namespace TaskoMask.Services.Monolith.Application.Share.Helpers
         public Result(bool isSuccess, string message, TValue value, List<string> errors)
         {
             if (message == "")
-                message = isSuccess ? DomainMessages.Operation_Success : DomainMessages.Operation_Failed;
+                message = isSuccess ? ContractsMessages.Operation_Success : ContractsMessages.Operation_Failed;
 
             IsSuccess = isSuccess;
             Message = message;

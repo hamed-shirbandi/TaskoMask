@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 
 namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 {

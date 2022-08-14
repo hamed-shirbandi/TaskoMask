@@ -5,14 +5,15 @@ using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Application.Core.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 {
@@ -48,7 +49,7 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
-                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+                return Result.Failure<UserBasicInfoDto>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.User));
 
             return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
         }
@@ -62,7 +63,7 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         {
             var user = await _userRepository.GetByUserNameAsync(userName);
             if (user == null)
-                return Result.Failure<UserBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+                return Result.Failure<UserBasicInfoDto>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.User));
 
             return Result.Success(_mapper.Map<UserBasicInfoDto>(user));
         }
@@ -76,7 +77,7 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         {
             var user = await _userRepository.GetByUserNameAsync(userName);
             if (user == null)
-                return Result.Failure<bool>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+                return Result.Failure<bool>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.User));
 
             if (user.IsActive == false)
                 return Result.Failure<bool>(message: ApplicationMessages.User_Is_Not_Active_And_Can_Not_Login);
@@ -102,7 +103,7 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 
 
             if (!IsValidPassword(password))
-                return Result.Failure<CommandResult>(message: string.Format(DomainMessages.Length_Error, nameof(password), DomainConstValues.User_Password_Min_Length, DomainConstValues.User_Password_Max_Length));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMetadata.Length_Error, nameof(password), DomainConstValues.User_Password_Min_Length, DomainConstValues.User_Password_Max_Length));
 
 
             var user = new User
@@ -119,7 +120,7 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 
             await _userRepository.CreateAsync(user);
 
-            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Create_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ContractsMessages.Create_Success);
 
         }
 
@@ -138,14 +139,14 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 
             var user = await _userRepository.GetByIdAsync(userId);
             if (user == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Operator));
 
 
             user.UserName = userName;
 
             await _userRepository.UpdateAsync(user);
 
-            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ContractsMessages.Update_Success);
         }
 
 
@@ -157,13 +158,13 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.User));
 
             user.IsActive = isActive;
 
             await _userRepository.UpdateAsync(user);
 
-            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ContractsMessages.Update_Success);
 
         }
 
@@ -176,7 +177,7 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.User));
 
             var validateOldPassword = await IsValidCredentialAsync(user.UserName, oldPassword);
             if (!validateOldPassword.IsSuccess)
@@ -186,7 +187,7 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 
             await _userRepository.UpdateAsync(user);
 
-            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ContractsMessages.Update_Success);
         }
 
 
@@ -198,13 +199,13 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.User));
 
             SetPassword(user, newPassword);
 
             await _userRepository.UpdateAsync(user);
 
-            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ContractsMessages.Update_Success);
         }
 
 
@@ -228,10 +229,10 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.User));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.User));
 
             user.SetAsDeleted();
-            return Result.Success(new CommandResult(entityId: user.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: user.Id), ContractsMessages.Update_Success);
         }
 
 

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using TaskoMask.Services.Monolith.Application.Core.Services;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.API.Controllers
 {
@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<TaskBasicInfoDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
-                return Result.Failure<TaskBasicInfoDto>(message: DomainMessages.Access_Denied);
+                return Result.Failure<TaskBasicInfoDto>(message: ContractsMessages.Access_Denied);
 
             return await _taskService.GetByIdAsync(id);
         }
@@ -60,7 +60,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<TaskDetailsViewModel>> GetDetails(string id)
         {
             if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
-                return Result.Failure<TaskDetailsViewModel>(message: DomainMessages.Access_Denied);
+                return Result.Failure<TaskDetailsViewModel>(message: ContractsMessages.Access_Denied);
 
             return await _taskService.GetDetailsAsync(id);
         }
@@ -89,7 +89,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Update(string id, [FromBody] UpdateTaskDto input)
         {
             if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             input.Id = id;
             return await _taskService.UpdateAsync(input);
@@ -106,7 +106,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         {
 
             if (!await _userAccessManagementService.CanAccessToTaskAsync(taskId))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             return await _taskService.MoveTaskToAnotherCardAsync(taskId, cardId);
 
@@ -121,7 +121,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Delete(string id)
         {
             if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             return await _taskService.DeleteAsync(id);
         }

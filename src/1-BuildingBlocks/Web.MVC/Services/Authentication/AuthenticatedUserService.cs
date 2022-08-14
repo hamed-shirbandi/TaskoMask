@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
-using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication

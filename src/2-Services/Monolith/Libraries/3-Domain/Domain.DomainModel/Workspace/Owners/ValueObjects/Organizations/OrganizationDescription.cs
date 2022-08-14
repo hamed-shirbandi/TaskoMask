@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Organizations
 {
@@ -50,7 +50,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueO
                 return;
 
             if (Value.Length > DomainConstValues.Organization_Description_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Max_Length_Error, nameof(OrganizationName), DomainConstValues.Organization_Description_Max_Length));
+                throw new DomainException(string.Format(ContractsMetadata.Max_Length_Error, nameof(OrganizationName), DomainConstValues.Organization_Description_Max_Length));
 
         }
 

@@ -6,12 +6,13 @@ using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Handlers
 {
@@ -53,7 +54,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Hand
             await _boardAggregateRepository.CreateAsync(board);
             await PublishDomainEventsAsync(board.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Create_Success, board.Id);
+            return new CommandResult(ContractsMessages.Create_Success, board.Id);
 
         }
 
@@ -66,7 +67,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Hand
         {
             var board = await _boardAggregateRepository.GetByIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             var loadedVersion = board.Version;
 
@@ -76,7 +77,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Hand
 
             await PublishDomainEventsAsync(board.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, board.Id);
+            return new CommandResult(ContractsMessages.Update_Success, board.Id);
 
         }
 
@@ -90,7 +91,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Hand
         {
             var board = await _boardAggregateRepository.GetByIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             board.DeleteBoard();
 
@@ -98,7 +99,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Hand
 
             await PublishDomainEventsAsync(board.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, board.Id);
+            return new CommandResult(ContractsMessages.Update_Success, board.Id);
 
         }
 

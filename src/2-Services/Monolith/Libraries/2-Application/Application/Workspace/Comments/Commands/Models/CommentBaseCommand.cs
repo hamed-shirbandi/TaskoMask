@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Services.Monolith.Application.Core.Commands;
 using System.ComponentModel.DataAnnotations;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Models
 {
@@ -15,8 +15,8 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Mo
         }
 
 
-        [MaxLength(DomainConstValues.Comment_Content_Max_Length, ErrorMessageResourceName = nameof(DomainMessages.Max_Length_Error), ErrorMessageResourceType = typeof(DomainMessages))]
-        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
+        [MaxLength(DomainConstValues.Comment_Content_Max_Length, ErrorMessageResourceName = nameof(ContractsMetadata.Max_Length_Error), ErrorMessageResourceType = typeof(ContractsMetadata))]
+        [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Content { get; }
 
 

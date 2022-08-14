@@ -7,7 +7,7 @@ using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Core.Services;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.API.Controllers
 {
@@ -44,7 +44,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CardBasicInfoDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToCardAsync(id))
-                return Result.Failure<CardBasicInfoDto>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CardBasicInfoDto>(message: ContractsMessages.Access_Denied);
 
             return await _cardService.GetByIdAsync(id);
         }
@@ -83,7 +83,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Update(string id,[FromBody] UpdateCardDto input)
         {
             if (!await _userAccessManagementService.CanAccessToCardAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             input.Id = id;
             return await _cardService.UpdateAsync(input);
@@ -99,7 +99,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Delete(string id)
         {
             if (!await _userAccessManagementService.CanAccessToCardAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             return await _cardService.DeleteAsync(id);
         }

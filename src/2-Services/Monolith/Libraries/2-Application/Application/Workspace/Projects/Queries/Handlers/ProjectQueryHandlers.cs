@@ -8,10 +8,11 @@ using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Handlers
 {
@@ -52,7 +53,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Han
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
             if (project == null )
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Project);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
 
             var dto = _mapper.Map<ProjectOutputDto>(project);
 

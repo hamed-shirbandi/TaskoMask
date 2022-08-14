@@ -1,4 +1,4 @@
-﻿using TaskoMask.Services.Monolith.Domain.Share.Models;
+﻿using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication
 {

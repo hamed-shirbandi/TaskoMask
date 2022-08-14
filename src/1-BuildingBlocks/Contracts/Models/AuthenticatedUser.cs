@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Services.Monolith.Domain.Share.Models
+namespace TaskoMask.BuildingBlocks.Contracts.Models
 {
     public class AuthenticatedUser
     {

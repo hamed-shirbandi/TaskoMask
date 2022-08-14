@@ -3,7 +3,7 @@ using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.CookieAuthentication;
 using DNTCaptcha.Core;
-using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 using AutoMapper;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;

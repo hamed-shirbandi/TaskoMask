@@ -1,7 +1,8 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace TaskoMask.Services.Monolith.Domain.Share.Helpers
+namespace TaskoMask.BuildingBlocks.Contracts.Extensions
 {
     public static class EmailValidator
     {

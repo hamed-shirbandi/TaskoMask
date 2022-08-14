@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueObjects.Tasks
 {
@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueOb
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(TaskBoardId)));
+                throw new DomainException(string.Format(ContractsMetadata.Required, nameof(TaskBoardId)));
         }
 
 

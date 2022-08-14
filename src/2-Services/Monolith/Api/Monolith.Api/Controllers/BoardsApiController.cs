@@ -8,7 +8,7 @@ using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Core.Services;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.API.Controllers
 {
@@ -43,7 +43,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<BoardOutputDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
-                return Result.Failure<BoardOutputDto>(message: DomainMessages.Access_Denied);
+                return Result.Failure<BoardOutputDto>(message: ContractsMessages.Access_Denied);
 
             return await _boardService.GetByIdAsync(id);
         }
@@ -59,7 +59,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<BoardDetailsViewModel>> GetDetails(string id)
         {
             if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
-                return Result.Failure<BoardDetailsViewModel>(message: DomainMessages.Access_Denied);
+                return Result.Failure<BoardDetailsViewModel>(message: ContractsMessages.Access_Denied);
 
             return await _boardService.GetDetailsAsync(id);
         }
@@ -86,7 +86,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Update(string id, [FromBody] UpdateBoardDto input)
         {
             if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             input.Id = id;
             return await _boardService.UpdateAsync(input);
@@ -103,7 +103,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Delete(string id)
         {
             if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             return await _boardService.DeleteAsync(id);
         }

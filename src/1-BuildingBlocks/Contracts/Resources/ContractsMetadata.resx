@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Board" xml:space="preserve">
-    <value>Board</value>
-  </data>
-  <data name="Card" xml:space="preserve">
-    <value>Card</value>
-  </data>
   <data name="CardType_Doing" xml:space="preserve">
     <value>Doing</value>
   </data>
@@ -132,49 +126,25 @@
   <data name="CardType_ToDo" xml:space="preserve">
     <value>To Do</value>
   </data>
-  <data name="Entity" xml:space="preserve">
-    <value>Entity</value>
+  <data name="CardType_Backlog" xml:space="preserve">
+    <value>Backlog</value>
   </data>
-  <data name="Owner" xml:space="preserve">
-    <value>Owner</value>
+  <data name="Length_Error" xml:space="preserve">
+    <value>The {0} length must be between {1} and {2} characters</value>
   </data>
-  <data name="Operator" xml:space="preserve">
-    <value>Operator</value>
+  <data name="Max_Length_Error" xml:space="preserve">
+    <value>The {0} length can not be more than {1} characters</value>
   </data>
-  <data name="Organization" xml:space="preserve">
-    <value>Organization</value>
+  <data name="Min_Length_Error" xml:space="preserve">
+    <value>The {0} length must be greater than {1} characters</value>
   </data>
-  <data name="Permission" xml:space="preserve">
-    <value>Permission</value>
-  </data>
-  <data name="Project" xml:space="preserve">
-    <value>Project</value>
-  </data>
-  <data name="Role" xml:space="preserve">
-    <value>Role</value>
-  </data>
-  <data name="Task" xml:space="preserve">
-    <value>Task</value>
-  </data>
-  <data name="User" xml:space="preserve">
-    <value>User</value>
+  <data name="Required" xml:space="preserve">
+    <value>{0} is required</value>
   </data>
   <data name="BoardMemberAccessLevel_Reader" xml:space="preserve">
     <value>Reader</value>
   </data>
   <data name="BoardMemberAccessLevel_Writer" xml:space="preserve">
     <value>Writer</value>
-  </data>
-  <data name="Member" xml:space="preserve">
-    <value>Member</value>
-  </data>
-  <data name="Activity" xml:space="preserve">
-    <value>Activity</value>
-  </data>
-  <data name="Comment" xml:space="preserve">
-    <value>Comment</value>
-  </data>
-  <data name="CardType_Backlog" xml:space="preserve">
-    <value>Backlog</value>
   </data>
 </root>

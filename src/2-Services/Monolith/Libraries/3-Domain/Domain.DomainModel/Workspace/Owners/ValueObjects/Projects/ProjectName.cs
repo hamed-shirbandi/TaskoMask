@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Projects
 {
@@ -47,13 +47,13 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueO
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(ProjectName)));
+                throw new DomainException(string.Format(ContractsMetadata.Required, nameof(ProjectName)));
 
             if (Value.Length < DomainConstValues.Project_Name_Min_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(ProjectName), DomainConstValues.Project_Name_Min_Length, DomainConstValues.Project_Name_Max_Length));
+                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(ProjectName), DomainConstValues.Project_Name_Min_Length, DomainConstValues.Project_Name_Max_Length));
 
             if (Value.Length > DomainConstValues.Project_Name_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(ProjectName), DomainConstValues.Project_Name_Min_Length, DomainConstValues.Project_Name_Max_Length));
+                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(ProjectName), DomainConstValues.Project_Name_Min_Length, DomainConstValues.Project_Name_Max_Length));
 
         }
 

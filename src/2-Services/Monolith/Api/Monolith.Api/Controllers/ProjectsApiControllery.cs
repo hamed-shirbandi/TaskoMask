@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using TaskoMask.Services.Monolith.Application.Core.Services;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.API.Controllers
 {
@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<ProjectOutputDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
-                return Result.Failure<ProjectOutputDto>(message: DomainMessages.Access_Denied);
+                return Result.Failure<ProjectOutputDto>(message: ContractsMessages.Access_Denied);
 
             return await _projectService.GetByIdAsync(id);
         }
@@ -60,7 +60,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<ProjectDetailsViewModel>> GetDetails(string id)
         {
             if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
-                return Result.Failure<ProjectDetailsViewModel>(message: DomainMessages.Access_Denied);
+                return Result.Failure<ProjectDetailsViewModel>(message: ContractsMessages.Access_Denied);
 
             return await _projectService.GetDetailsAsync(id);
         }
@@ -99,7 +99,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Update(string id, [FromBody] UpdateProjectDto input)
         {
             if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             input.Id = id;
             return await _projectService.UpdateAsync(input);
@@ -115,7 +115,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Delete(string id)
         {
             if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             return await _projectService.DeleteAsync(id);
         }

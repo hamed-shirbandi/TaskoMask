@@ -1,8 +1,8 @@
 ﻿
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Members;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
@@ -80,10 +80,10 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
         private void CheckPolicies()
         {
             if (OwnerId == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(OwnerId)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(OwnerId)));
 
             if (AccessLevel == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(AccessLevel)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(AccessLevel)));
 
         }
 

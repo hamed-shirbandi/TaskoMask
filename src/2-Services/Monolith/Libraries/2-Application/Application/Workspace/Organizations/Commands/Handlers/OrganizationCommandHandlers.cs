@@ -5,12 +5,13 @@ using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.M
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organizations
 {
@@ -47,7 +48,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
         {
             var owner = await _ownerAggregateRepository.GetByIdAsync(request.OwnerId);
             if (owner == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
 
             var organization = Organization.CreateOrganization(request.Name, request.Description);
@@ -56,7 +57,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
             await _ownerAggregateRepository.UpdateAsync(owner);
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Create_Success, organization.Id);
+            return new CommandResult(ContractsMessages.Create_Success, organization.Id);
 
         }
 
@@ -69,7 +70,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
         {
             var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.Id);
             if (owner == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
             var loadedVersion = owner.Version;
 
@@ -79,7 +80,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+            return new CommandResult(ContractsMessages.Update_Success, request.Id);
         }
 
 
@@ -90,7 +91,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
         {
             var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.Id);
             if (owner == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
             var loadedVersion = owner.Version;
 
@@ -100,7 +101,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+            return new CommandResult(ContractsMessages.Update_Success, request.Id);
 
         }
 

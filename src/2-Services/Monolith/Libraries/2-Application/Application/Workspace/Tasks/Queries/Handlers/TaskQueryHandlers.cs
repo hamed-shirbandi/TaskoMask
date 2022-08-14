@@ -8,10 +8,11 @@ using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handlers
 {
@@ -54,7 +55,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
         {
             var task = await _taskRepository.GetByIdAsync(request.Id);
             if (task == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
             return _mapper.Map<TaskBasicInfoDto>(task);
         }

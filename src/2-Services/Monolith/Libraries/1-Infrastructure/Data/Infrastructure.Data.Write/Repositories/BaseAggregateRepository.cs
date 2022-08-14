@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.Core.Data;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
@@ -58,7 +58,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories
         {
             var versionExist = await _collection.Find(e => e.Id == id && e.Version == loadedVersion).AnyAsync();
             if (!versionExist)
-                throw new DomainException(DomainMessages.Concurrency_Error);
+                throw new DomainException(ContractsMessages.Concurrency_Error);
         }
 
         #endregion

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Handlers
 {
@@ -54,13 +55,13 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Handl
         {
             var owner = await _ownerRepository.GetByIdAsync(request.Id);
             if (owner == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
             var ownerDto = _mapper.Map<OwnerBasicInfoDto>(owner);
 
             var user = await _userRepository.GetByIdAsync(request.Id);
             if (user == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.User);
 
             //add authentication info from user ti operator
             ownerDto.UserInfo = _mapper.Map<UserBasicInfoDto>(user);
@@ -79,12 +80,12 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Handl
         {
             var user = await _userRepository.GetByUserNameAsync(request.UserName);
             if (user == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.User);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.User);
 
 
             var owner = await _ownerRepository.GetByIdAsync(user.Id);
             if (owner == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
             var ownerDto = _mapper.Map<OwnerBasicInfoDto>(owner);
 

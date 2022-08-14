@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Models
 {
@@ -12,7 +12,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Model
             CardId = cardId;
         }
 
-        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
+        [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string TaskId { get; }
         public string CardId { get; }
 

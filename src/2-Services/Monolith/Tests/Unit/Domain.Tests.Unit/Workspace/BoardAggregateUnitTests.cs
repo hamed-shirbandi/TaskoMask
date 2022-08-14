@@ -4,9 +4,9 @@ using NSubstitute;
 using System;
 using System.Linq;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;
@@ -16,6 +16,7 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Car
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
 using Xunit;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 {
@@ -97,7 +98,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
         public void Board_Is_Not_Added_When_ProjectId_Is_Null()
         {
             //Arrange
-            var expectedMessage = string.Format(DomainMessages.Required, nameof(BoardProjectId));
+            var expectedMessage = string.Format(ContractsMetadata.Required, nameof(BoardProjectId));
 
             //Act
             Action act = () => BoardObjectMother.AddBoardWithProjectId(null,_boardValidatorService);
@@ -114,7 +115,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
         public void Board_Is_Not_Added_When_Name_Lenght_Is_Less_Than_Min_Length(string name)
         {
             //Arrange
-            var expectedMessage = string.Format(DomainMessages.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length);
+            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length);
 
             //Act
             Action act = () => BoardObjectMother.AddBoardWithName(name, _boardValidatorService);

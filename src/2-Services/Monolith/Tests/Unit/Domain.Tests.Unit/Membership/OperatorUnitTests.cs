@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using System;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
@@ -31,7 +31,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Membership
         public void Operator_Is_Not_Constructed_When_Id_Is_Null()
         {
             //Arrange
-            var expectedMessage = string.Format(DomainMessages.Null_Reference_Error, nameof(Operator.Id));
+            var expectedMessage = string.Format(ContractsMessages.Null_Reference_Error, nameof(Operator.Id));
 
             //Act
             Action act = () => OperatorObjectMother.CreateNewOperatorWithId(null);

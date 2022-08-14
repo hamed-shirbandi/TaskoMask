@@ -1,7 +1,7 @@
 ﻿using System;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities
 {
@@ -18,7 +18,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities
         public Operator(string id)
         {
             if (string.IsNullOrEmpty(id))
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Id)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Id)));
 
             base.SetId(id);
 

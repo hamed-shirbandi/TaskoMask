@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Models
 {
@@ -13,7 +13,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Model
             Id = id;
         }
 
-        [Required(ErrorMessageResourceName = nameof(DomainMessages.Required), ErrorMessageResourceType = typeof(DomainMessages))]
+        [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Id { get; }
     }
 }

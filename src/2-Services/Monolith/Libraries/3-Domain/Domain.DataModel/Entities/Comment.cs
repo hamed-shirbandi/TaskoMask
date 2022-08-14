@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DataModel.Entities
 {
@@ -17,7 +17,7 @@ namespace TaskoMask.Services.Monolith.Domain.DataModel.Entities
         public Comment(string id)
         {
             if (string.IsNullOrEmpty(id))
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(id)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(id)));
 
             base.SetId(id);
         }

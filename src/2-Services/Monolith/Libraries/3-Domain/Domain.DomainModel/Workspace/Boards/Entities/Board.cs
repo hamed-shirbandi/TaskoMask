@@ -1,16 +1,17 @@
 ﻿using TaskoMask.Services.Monolith.Domain.Core.Models;
 using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Boards;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Members;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Cards;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Specifications;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
 {
@@ -111,7 +112,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
         {
             var card = Cards.FirstOrDefault(p => p.Id == id);
             if (card == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Card));
 
             card.Update(name, type);
 
@@ -127,7 +128,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
         {
             var card = Cards.FirstOrDefault(p => p.Id == id);
             if (card == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Card));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Card));
 
             Cards.Remove(card);
             AddDomainEvent(new CardDeletedEvent(card.Id));
@@ -158,7 +159,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
         {
             var member = Members.FirstOrDefault(p => p.Id == id);
             if (member == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Member));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Member));
 
             member.Update(accessLevel);
 
@@ -174,7 +175,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
         {
             var member = Members.FirstOrDefault(p => p.Id == id);
             if (member == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Member));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Member));
 
             Members.Remove(member);
             AddDomainEvent(new MemberDeletedEvent(member.Id));
@@ -196,10 +197,10 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
         {
            
             if (Name == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Name)));
            
             if (ProjectId == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(ProjectId)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(ProjectId)));
 
             if (!new BoardNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);

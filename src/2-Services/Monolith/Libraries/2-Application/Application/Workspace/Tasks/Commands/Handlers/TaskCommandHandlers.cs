@@ -5,12 +5,13 @@ using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handlers
 {
@@ -49,14 +50,14 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
         {
             var board = await _boardAggregateRepository.GetByCardIdAsync(request.CardId);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             var task = Domain.DomainModel.Workspace.Tasks.Entities.Task.AddTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
 
             await _taskAggregateRepository.CreateAsync(task);
             await PublishDomainEventsAsync(task.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Create_Success, task.Id);
+            return new CommandResult(ContractsMessages.Create_Success, task.Id);
         }
 
 
@@ -68,7 +69,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
         {
             var task = await _taskAggregateRepository.GetByIdAsync(request.Id);
             if (task == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
             var loadedVersion = task.Version;
 
@@ -77,7 +78,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
             await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
             await PublishDomainEventsAsync(task.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, task.Id);
+            return new CommandResult(ContractsMessages.Update_Success, task.Id);
 
         }
 
@@ -90,7 +91,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
         {
             var task = await _taskAggregateRepository.GetByIdAsync(request.Id);
             if (task == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
             task.DeleteTask();
 
@@ -98,7 +99,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
 
             await PublishDomainEventsAsync(task.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+            return new CommandResult(ContractsMessages.Update_Success, request.Id);
         }
 
 
@@ -110,10 +111,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
         {
             var task = await _taskAggregateRepository.GetByIdAsync(request.TaskId);
             if (task == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
             if (task.CardId.Value==request.CardId)
-                return new CommandResult(ApplicationMessages.Update_Success, request.TaskId);
+                return new CommandResult(ContractsMessages.Update_Success, request.TaskId);
 
 
             var loadedVersion = task.Version;
@@ -124,7 +125,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
 
             await PublishDomainEventsAsync(task.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, request.TaskId);
+            return new CommandResult(ContractsMessages.Update_Success, request.TaskId);
 
         }
 

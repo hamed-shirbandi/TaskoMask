@@ -4,13 +4,14 @@ using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Handlers
 {
@@ -49,7 +50,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Hand
             await _ownerAggregateRepository.CreateAsync(owner);
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Create_Success, owner.Id.ToString());
+            return new CommandResult(ContractsMessages.Create_Success, owner.Id.ToString());
         }
 
 
@@ -62,7 +63,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Hand
         {
             var owner = await _ownerAggregateRepository.GetByIdAsync(request.Id);
             if (owner == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
             var loadedVersion = owner.Version;
 
@@ -74,7 +75,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Hand
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, owner.Id.ToString());
+            return new CommandResult(ContractsMessages.Update_Success, owner.Id.ToString());
         }
 
 

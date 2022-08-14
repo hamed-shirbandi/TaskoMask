@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
+namespace TaskoMask.Services.Monolith.Domain.Core.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Services.Monolith.Domain.Share.Resources.DomainMetadata", typeof(DomainMetadata).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Services.Monolith.Domain.Core.Resources.DomainMetadata", typeof(DomainMetadata).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,65 +79,11 @@ namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reader.
-        /// </summary>
-        public static string BoardMemberAccessLevel_Reader {
-            get {
-                return ResourceManager.GetString("BoardMemberAccessLevel_Reader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Writer.
-        /// </summary>
-        public static string BoardMemberAccessLevel_Writer {
-            get {
-                return ResourceManager.GetString("BoardMemberAccessLevel_Writer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Card.
         /// </summary>
         public static string Card {
             get {
                 return ResourceManager.GetString("Card", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Backlog.
-        /// </summary>
-        public static string CardType_Backlog {
-            get {
-                return ResourceManager.GetString("CardType_Backlog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Doing.
-        /// </summary>
-        public static string CardType_Doing {
-            get {
-                return ResourceManager.GetString("CardType_Doing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Done.
-        /// </summary>
-        public static string CardType_Done {
-            get {
-                return ResourceManager.GetString("CardType_Done", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To Do.
-        /// </summary>
-        public static string CardType_ToDo {
-            get {
-                return ResourceManager.GetString("CardType_ToDo", resourceCulture);
             }
         }
         

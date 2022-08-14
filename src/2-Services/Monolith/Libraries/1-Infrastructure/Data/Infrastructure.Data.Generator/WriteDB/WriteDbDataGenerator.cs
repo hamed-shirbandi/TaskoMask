@@ -1,4 +1,4 @@
-﻿using TaskoMask.Services.Monolith.Domain.Share.Enums;
+﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;

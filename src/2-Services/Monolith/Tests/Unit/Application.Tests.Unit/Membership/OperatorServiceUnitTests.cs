@@ -9,7 +9,7 @@ using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Application.Tests.Unit.Membership.TestData;
 using TaskoMask.Services.Monolith.Application.Tests.Unit.TestData;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using Xunit;

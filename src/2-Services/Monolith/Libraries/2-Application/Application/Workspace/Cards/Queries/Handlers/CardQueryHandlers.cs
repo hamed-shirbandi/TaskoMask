@@ -9,9 +9,10 @@ using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Handlers
 {
@@ -54,7 +55,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Handle
         {
             var card = await _cardRepository.GetByIdAsync(request.Id);
             if (card == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Card);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
 
             return _mapper.Map<CardBasicInfoDto>(card);
         }

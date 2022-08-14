@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueObjects.Tasks
 {
@@ -46,13 +46,13 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueOb
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(TaskTitle)));
+                throw new DomainException(string.Format(ContractsMetadata.Required, nameof(TaskTitle)));
 
             if (Value.Length< DomainConstValues.Task_Title_Min_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(TaskTitle), DomainConstValues.Task_Title_Min_Length, DomainConstValues.Task_Title_Max_Length));
+                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(TaskTitle), DomainConstValues.Task_Title_Min_Length, DomainConstValues.Task_Title_Max_Length));
 
             if (Value.Length > DomainConstValues.Task_Title_Max_Length)
-                throw new DomainException(string.Format(DomainMessages.Length_Error, nameof(TaskTitle), DomainConstValues.Task_Title_Min_Length, DomainConstValues.Task_Title_Max_Length));
+                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(TaskTitle), DomainConstValues.Task_Title_Min_Length, DomainConstValues.Task_Title_Max_Length));
         }
 
 

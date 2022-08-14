@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Members
 {
@@ -47,7 +47,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueO
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(DomainMessages.Required, nameof(MemberOwnerId)));
+                throw new DomainException(string.Format(ContractsMetadata.Required, nameof(MemberOwnerId)));
         }
 
 

@@ -9,8 +9,9 @@ using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Handlers
 {
@@ -47,7 +48,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Han
         {
             var comment = await _commentRepository.GetByIdAsync(request.Id);
             if (comment == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Comment);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Comment);
 
             return _mapper.Map<CommentBasicInfoDto>(comment);
         }

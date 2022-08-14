@@ -1,7 +1,7 @@
-﻿using TaskoMask.Services.Monolith.Domain.Share.Enums;
+﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Cards;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
@@ -73,10 +73,10 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
         private void CheckPolicies()
         {
             if (Name == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Name)));
 
             if (Type == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Type)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Type)));
 
         }
 

@@ -1,8 +1,9 @@
 ﻿using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Projects;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities
 {
@@ -73,7 +74,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         private void CheckPolicies()
         {
             if (Name == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Name)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Name)));
 
             if (!new ProjectNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);

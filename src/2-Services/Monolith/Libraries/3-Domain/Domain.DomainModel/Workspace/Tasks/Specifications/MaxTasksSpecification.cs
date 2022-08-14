@@ -1,5 +1,5 @@
 ﻿using TaskoMask.Services.Monolith.Domain.Core.Specifications;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 

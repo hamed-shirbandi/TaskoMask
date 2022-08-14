@@ -9,10 +9,11 @@ using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
 using System.Linq;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
 {
@@ -60,7 +61,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
 
             await _roleRepository.CreateAsync(role);
 
-            return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Create_Success);
+            return Result.Success(new CommandResult(entityId: role.Id), ContractsMessages.Create_Success);
 
         }
 
@@ -76,14 +77,14 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
 
             var role = await _roleRepository.GetByIdAsync(input.Id);
             if (role == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Role));
 
             role.Name = input.Name;
             role.Description = input.Description;
 
             await _roleRepository.UpdateAsync(role);
 
-            return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: role.Id), ContractsMessages.Update_Success);
         }
 
 
@@ -95,13 +96,13 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
         {
             var role = await _roleRepository.GetByIdAsync(id);
             if (role == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Role));
 
             role.PermissionsId = permissionsId;
 
             await _roleRepository.UpdateAsync(role);
 
-            return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: role.Id), ContractsMessages.Update_Success);
 
         }
 
@@ -114,7 +115,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
         {
             var role = await _roleRepository.GetByIdAsync(id);
             if (role == null)
-                return Result.Failure<RoleBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
+                return Result.Failure<RoleBasicInfoDto>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Role));
 
             return Result.Success(_mapper.Map<RoleBasicInfoDto>(role));
         }
@@ -147,7 +148,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
         {
             var role = await _roleRepository.GetByIdAsync(id);
             if (role == null)
-                return Result.Failure<RoleDetailsViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
+                return Result.Failure<RoleDetailsViewModel>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Role));
 
 
             var operators = await _operatorRepository.GetListByRoleIdAsync(id);
@@ -192,10 +193,10 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
         {
             var role = await _roleRepository.GetByIdAsync(id);
             if (role == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Role));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Role));
 
             role.SetAsDeleted();
-            return Result.Success(new CommandResult(entityId: role.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: role.Id), ContractsMessages.Update_Success);
         }
 
 

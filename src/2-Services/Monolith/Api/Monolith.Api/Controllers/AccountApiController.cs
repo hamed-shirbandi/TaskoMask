@@ -5,10 +5,10 @@ using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication;
-using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 

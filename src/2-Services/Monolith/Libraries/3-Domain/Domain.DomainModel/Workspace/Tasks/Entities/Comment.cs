@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueObjects.Comments;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities
@@ -70,7 +70,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entitie
         private void CheckPolicies()
         {
             if (Content == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Content)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Content)));
         }
 
 

@@ -19,7 +19,7 @@ using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using Microsoft.Extensions.Configuration;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services

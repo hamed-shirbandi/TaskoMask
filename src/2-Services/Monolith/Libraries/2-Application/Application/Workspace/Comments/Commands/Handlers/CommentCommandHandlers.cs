@@ -5,12 +5,13 @@ using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using MediatR;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Handlers
 {
@@ -47,7 +48,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Ha
         {
             var task = await _taskAggregateRepository.GetByIdAsync(request.TaskId);
             if (task == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
             var comment = Comment.Create(content: request.Content);
             task.AddComment(comment);
@@ -55,7 +56,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Ha
             await _taskAggregateRepository.UpdateAsync(task);
             await PublishDomainEventsAsync(task.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Create_Success, comment.Id);
+            return new CommandResult(ContractsMessages.Create_Success, comment.Id);
 
         }
 
@@ -68,7 +69,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Ha
         {
             var task = await _taskAggregateRepository.GetByCommentIdAsync(request.Id);
             if (task == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
             var loadedVersion = task.Version;
 
@@ -78,7 +79,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Ha
 
             await PublishDomainEventsAsync(task.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+            return new CommandResult(ContractsMessages.Update_Success, request.Id);
         }
 
 
@@ -91,7 +92,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Ha
         {
             var task = await _taskAggregateRepository.GetByCommentIdAsync(request.Id);
             if (task == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Task);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
             var loadedVersion = task.Version;
 
@@ -101,7 +102,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Ha
 
             await PublishDomainEventsAsync(task.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, task.Id);
+            return new CommandResult(ContractsMessages.Update_Success, task.Id);
 
         }
 

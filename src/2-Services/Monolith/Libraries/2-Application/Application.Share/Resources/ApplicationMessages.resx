@@ -117,38 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Create_Failed" xml:space="preserve">
-    <value>Create Failed</value>
-  </data>
-  <data name="Create_Success" xml:space="preserve">
-    <value>Create Success</value>
-  </data>
-  <data name="Data_Not_exist" xml:space="preserve">
-    <value>Requested data for {0} not exist in DB</value>
-  </data>
-  <data name="Delete_Failed" xml:space="preserve">
-    <value>Delete Failed</value>
-  </data>
-  <data name="Delete_Success" xml:space="preserve">
-    <value>Delete Success</value>
-  </data>
-  <data name="Invalid_ForeignKey" xml:space="preserve">
-    <value>{0} is invalid</value>
-  </data>
   <data name="Name_Already_Exist" xml:space="preserve">
     <value>Name Already Exist</value>
-  </data>
-  <data name="Operation_Failed" xml:space="preserve">
-    <value>Operation failed</value>
-  </data>
-  <data name="Operation_Success" xml:space="preserve">
-    <value>Operation success</value>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>Update Failed</value>
-  </data>
-  <data name="Update_Success" xml:space="preserve">
-    <value>Update Success</value>
   </data>
   <data name="User_Already_Exist" xml:space="preserve">
     <value>User already exist</value>

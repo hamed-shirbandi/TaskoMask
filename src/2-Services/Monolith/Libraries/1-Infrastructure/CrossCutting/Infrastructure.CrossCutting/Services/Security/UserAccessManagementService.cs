@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
-using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services.Security

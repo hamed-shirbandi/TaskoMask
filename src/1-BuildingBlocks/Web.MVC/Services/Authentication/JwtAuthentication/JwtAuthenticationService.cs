@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Http;
-using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Web.Extensions;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.Models;
 

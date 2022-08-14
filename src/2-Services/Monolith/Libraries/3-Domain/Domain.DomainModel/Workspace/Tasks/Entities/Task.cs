@@ -2,13 +2,14 @@
 using System.Linq;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Comments;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Tasks;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Specifications;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueObjects.Tasks;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities
 
@@ -122,7 +123,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entitie
         {
             var comment = Comments.FirstOrDefault(p => p.Id == id);
             if (comment == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Comment));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Comment));
 
             comment.Update(content);
 
@@ -138,7 +139,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entitie
         {
             var comment = Comments.FirstOrDefault(p => p.Id == id);
             if (comment == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Comment));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Comment));
 
             Comments.Remove(comment);
             AddDomainEvent(new CommentDeletedEvent(comment.Id));
@@ -158,10 +159,10 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entitie
         {
           
             if (CardId == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(CardId)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(CardId)));
 
             if (Title == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Title)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Title)));
 
             if (!new TaskTitleAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);

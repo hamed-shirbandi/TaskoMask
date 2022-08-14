@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.Core.Data;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 
 namespace TaskoMask.Services.Monolith.Domain.DataModel.Data
 {

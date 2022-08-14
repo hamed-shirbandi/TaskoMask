@@ -2,14 +2,15 @@
 using System.Linq;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Organizations;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Owners;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Projects;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities
 {
@@ -106,7 +107,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         public void UpdateOrganization(string organizationId, string name, string description, IAuthenticatedUserService authenticatedUserService)
         {
             if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
-                throw new DomainException(DomainMessages.Access_Denied);
+                throw new DomainException(ContractsMessages.Access_Denied);
 
             var organization = GetOrganizationById(organizationId);
             organization.UpdateOrganization(name, description);
@@ -121,7 +122,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         public void DeleteOrganization(string organizationId, IAuthenticatedUserService authenticatedUserService)
         {
             if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
-                throw new DomainException(DomainMessages.Access_Denied);
+                throw new DomainException(ContractsMessages.Access_Denied);
 
             var organization = GetOrganizationById(organizationId);
             Organizations.Remove(organization);
@@ -192,13 +193,13 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         private void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Id))
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Id)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Id)));
 
             if (DisplayName == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(DisplayName)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(DisplayName)));
 
             if (Email == null)
-                throw new DomainException(string.Format(DomainMessages.Null_Reference_Error, nameof(Email)));
+                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Email)));
         }
 
 
@@ -230,7 +231,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         {
             var organization = Organizations.FirstOrDefault(p => p.Projects.Any(p => p.Id == projectId));
             if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Organization));
 
             return organization;
         }
@@ -244,7 +245,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         {
             var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
             if (organization == null)
-                throw new DomainException(string.Format(DomainMessages.Not_Found, DomainMetadata.Organization));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Organization));
             return organization;
         }
 

@@ -10,9 +10,10 @@ using TaskoMask.Services.Monolith.Application.Core.Queries;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Queries.Models.Boards;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handlers
 {
@@ -59,7 +60,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
         {
             var board = await _boardRepository.GetByIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             //TODO refactore read model for board to decrease db queries
             var project = await _projectRepository.GetByIdAsync(board.ProjectId);

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using TaskoMask.Services.Monolith.Domain.Core.Specifications;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Specifications

@@ -5,12 +5,13 @@ using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using MediatR;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Handlers
 {
@@ -47,7 +48,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Handl
         {
             var board = await _boardAggregateRepository.GetByIdAsync(request.BoardId);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             var card = Card.Create(name: request.Name, type: request.Type);
             board.AddCard(card);
@@ -55,7 +56,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Handl
             await _boardAggregateRepository.UpdateAsync(board);
             await PublishDomainEventsAsync(board.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Create_Success, card.Id);
+            return new CommandResult(ContractsMessages.Create_Success, card.Id);
 
         }
 
@@ -68,7 +69,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Handl
         {
             var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             var loadedVersion = board.Version;
 
@@ -78,7 +79,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Handl
 
             await PublishDomainEventsAsync(board.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, request.Id);
+            return new CommandResult(ContractsMessages.Update_Success, request.Id);
         }
 
 
@@ -91,7 +92,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Handl
         {
             var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Board);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             var loadedVersion = board.Version;
 
@@ -101,7 +102,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Handl
 
             await PublishDomainEventsAsync(board.DomainEvents);
 
-            return new CommandResult(ApplicationMessages.Update_Success, board.Id);
+            return new CommandResult(ContractsMessages.Update_Success, board.Id);
 
         }
 

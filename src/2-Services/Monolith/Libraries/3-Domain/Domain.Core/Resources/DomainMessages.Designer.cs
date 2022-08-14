@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
+namespace TaskoMask.Services.Monolith.Domain.Core.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Services.Monolith.Domain.Share.Resources.DomainMessages", typeof(DomainMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Services.Monolith.Domain.Core.Resources.DomainMessages", typeof(DomainMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,24 +57,6 @@ namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Access denied.
-        /// </summary>
-        public static string Access_Denied {
-            get {
-                return ResourceManager.GetString("Access_Denied", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data has been changed since your last access.
-        /// </summary>
-        public static string Concurrency_Error {
-            get {
-                return ResourceManager.GetString("Concurrency_Error", resourceCulture);
             }
         }
         
@@ -124,15 +106,6 @@ namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} length must be between {1} and {2} characters.
-        /// </summary>
-        public static string Length_Error {
-            get {
-                return ResourceManager.GetString("Length_Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A project cannot have more than {0} boards.
         /// </summary>
         public static string Max_Board_Count_Limitiation {
@@ -147,15 +120,6 @@ namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
         public static string Max_Card_Count_Limitiation {
             get {
                 return ResourceManager.GetString("Max_Card_Count_Limitiation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The {0} length can not be more than {1} characters.
-        /// </summary>
-        public static string Max_Length_Error {
-            get {
-                return ResourceManager.GetString("Max_Length_Error", resourceCulture);
             }
         }
         
@@ -196,65 +160,11 @@ namespace TaskoMask.Services.Monolith.Domain.Share.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} length must be greater than {1} characters.
-        /// </summary>
-        public static string Min_Length_Error {
-            get {
-                return ResourceManager.GetString("Min_Length_Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} name already exist.
         /// </summary>
         public static string Name_Already_Exist {
             get {
                 return ResourceManager.GetString("Name_Already_Exist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} not found.
-        /// </summary>
-        public static string Not_Found {
-            get {
-                return ResourceManager.GetString("Not_Found", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} cannot be null.
-        /// </summary>
-        public static string Null_Reference_Error {
-            get {
-                return ResourceManager.GetString("Null_Reference_Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Operation failed.
-        /// </summary>
-        public static string Operation_Failed {
-            get {
-                return ResourceManager.GetString("Operation_Failed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Operation success.
-        /// </summary>
-        public static string Operation_Success {
-            get {
-                return ResourceManager.GetString("Operation_Success", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} is required.
-        /// </summary>
-        public static string Required {
-            get {
-                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
         

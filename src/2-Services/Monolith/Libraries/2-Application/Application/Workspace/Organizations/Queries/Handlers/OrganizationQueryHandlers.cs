@@ -8,11 +8,12 @@ using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Handlers
 {
@@ -60,7 +61,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Querie
         {
             var organization = await _organizationRepository.GetByIdAsync(request.Id);
             if (organization == null)
-                throw new ApplicationException(ApplicationMessages.Data_Not_exist, DomainMetadata.Organization);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Organization);
 
             return _mapper.Map<OrganizationBasicInfoDto>(organization);
         }

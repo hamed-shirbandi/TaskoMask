@@ -117,76 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Access_Denied" xml:space="preserve">
-    <value>Access denied</value>
+  <data name="Board" xml:space="preserve">
+    <value>Board</value>
   </data>
-  <data name="Concurrency_Error" xml:space="preserve">
-    <value>Data has been changed since your last access</value>
+  <data name="Card" xml:space="preserve">
+    <value>Card</value>
   </data>
-  <data name="Equal_Name_And_Description_Error" xml:space="preserve">
-    <value>Description cannot be same of name</value>
+  <data name="Entity" xml:space="preserve">
+    <value>Entity</value>
   </data>
-  <data name="Incorrect_Old_Password" xml:space="preserve">
-    <value>Old password is wrong</value>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
   </data>
-  <data name="Incorrect_Password" xml:space="preserve">
-    <value>Incorrect password or username</value>
+  <data name="Operator" xml:space="preserve">
+    <value>Operator</value>
   </data>
-  <data name="Invalid_Email_Address" xml:space="preserve">
-    <value>Invalid Email Address</value>
+  <data name="Organization" xml:space="preserve">
+    <value>Organization</value>
   </data>
-  <data name="Invalid_PhoneNumber" xml:space="preserve">
-    <value>PhoneNumber is invalid</value>
+  <data name="Permission" xml:space="preserve">
+    <value>Permission</value>
   </data>
-  <data name="Length_Error" xml:space="preserve">
-    <value>The {0} length must be between {1} and {2} characters</value>
+  <data name="Project" xml:space="preserve">
+    <value>Project</value>
   </data>
-  <data name="Max_Board_Count_Limitiation" xml:space="preserve">
-    <value>A project cannot have more than {0} boards</value>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
   </data>
-  <data name="Max_Card_Count_Limitiation" xml:space="preserve">
-    <value>A board cannot have more than {0} cards</value>
+  <data name="Task" xml:space="preserve">
+    <value>Task</value>
   </data>
-  <data name="Max_Length_Error" xml:space="preserve">
-    <value>The {0} length can not be more than {1} characters</value>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
   </data>
-  <data name="Max_Member_Count_Limitiation" xml:space="preserve">
-    <value>A board cannot have more than {0} members</value>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
   </data>
-  <data name="Max_Organizations_Count_Limitiation" xml:space="preserve">
-    <value>An owner cannot have more than {0} organizations</value>
+  <data name="Activity" xml:space="preserve">
+    <value>Activity</value>
   </data>
-  <data name="Max_Projects_Count_Limitiation" xml:space="preserve">
-    <value>An organization cannot have more than {0} projects</value>
-  </data>
-  <data name="Max_Task_Count_Limitiation" xml:space="preserve">
-    <value>A board cannot have more than {0} tasks</value>
-  </data>
-  <data name="Min_Length_Error" xml:space="preserve">
-    <value>The {0} length must be greater than {1} characters</value>
-  </data>
-  <data name="Name_Already_Exist" xml:space="preserve">
-    <value>{0} name already exist</value>
-  </data>
-  <data name="Not_Found" xml:space="preserve">
-    <value>{0} not found</value>
-  </data>
-  <data name="Null_Reference_Error" xml:space="preserve">
-    <value>{0} cannot be null</value>
-  </data>
-  <data name="Operation_Failed" xml:space="preserve">
-    <value>Operation failed</value>
-  </data>
-  <data name="Operation_Success" xml:space="preserve">
-    <value>Operation success</value>
-  </data>
-  <data name="Required" xml:space="preserve">
-    <value>{0} is required</value>
-  </data>
-  <data name="UserName_And_Email_Cannot_Be_The_Same" xml:space="preserve">
-    <value>Username and email can not be the same</value>
-  </data>
-  <data name="UserName_And_Email_Must_Be_The_Same" xml:space="preserve">
-    <value>Username and email must be the same</value>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
   </data>
 </root>

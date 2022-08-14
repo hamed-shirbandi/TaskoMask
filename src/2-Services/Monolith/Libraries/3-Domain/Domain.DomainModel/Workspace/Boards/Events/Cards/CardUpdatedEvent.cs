@@ -1,5 +1,5 @@
 ﻿using TaskoMask.Services.Monolith.Domain.Core.Events;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Cards

@@ -1,5 +1,5 @@
 ﻿using TaskoMask.Services.Monolith.Domain.Core.Models;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities
 {

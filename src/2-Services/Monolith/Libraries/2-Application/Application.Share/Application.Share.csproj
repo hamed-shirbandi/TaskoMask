@@ -19,7 +19,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\3-Domain\Domain.Share\Domain.Share.csproj" />
+	  <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Contracts.csproj" />
 	</ItemGroup>
 
   <ItemGroup>

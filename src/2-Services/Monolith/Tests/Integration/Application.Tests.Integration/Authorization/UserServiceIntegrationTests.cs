@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures;
-using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using Xunit;
 
 

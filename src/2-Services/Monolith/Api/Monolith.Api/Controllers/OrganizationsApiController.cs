@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.API.Controllers
 {
@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<OrganizationBasicInfoDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
-                return Result.Failure<OrganizationBasicInfoDto>(message: DomainMessages.Access_Denied);
+                return Result.Failure<OrganizationBasicInfoDto>(message: ContractsMessages.Access_Denied);
 
             return await _organizationService.GetByIdAsync(id);
         }
@@ -99,7 +99,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Update(string id,[FromBody] UpdateOrganizationDto input)
         {
             if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             input.Id = id;
             return await _organizationService.UpdateAsync(input);
@@ -115,7 +115,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         public async Task<Result<CommandResult>> Delete(string id)
         {
             if (!await _userAccessManagementService.CanAccessToOrganizationAsync(id))
-                return Result.Failure<CommandResult>(message: DomainMessages.Access_Denied);
+                return Result.Failure<CommandResult>(message: ContractsMessages.Access_Denied);
 
             return await _organizationService.DeleteAsync(id);
         }

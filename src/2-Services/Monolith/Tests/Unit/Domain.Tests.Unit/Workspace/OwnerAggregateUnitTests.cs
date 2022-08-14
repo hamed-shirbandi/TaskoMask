@@ -3,8 +3,8 @@ using MongoDB.Bson;
 using System;
 using System.Linq;
 using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Share.Helpers;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;
@@ -12,6 +12,7 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Owners;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 using Xunit;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 {
@@ -68,7 +69,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Registered_When_Id_Is_Null()
         {
             //Arrange
-            var expectedMessage = string.Format(DomainMessages.Null_Reference_Error, nameof(Owner.Id));
+            var expectedMessage = string.Format(ContractsMessages.Null_Reference_Error, nameof(Owner.Id));
 
             //Act
             Action act = () => OwnerObjectMother.RegisterOwnerWithId(null);
@@ -83,7 +84,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Registered_When_DisplayName_Is_Null()
         {
             //Arrange
-            var expectedMessage = string.Format(DomainMessages.Required, nameof(OwnerDisplayName));
+            var expectedMessage = string.Format(ContractsMetadata.Required, nameof(OwnerDisplayName));
 
             //Act
             Action act = () => OwnerObjectMother.RegisterOwnerWithDisplayName(null);
@@ -100,7 +101,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
         public void Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_Less_Than_Min_Length(string displayName)
         {
             //Arrange
-            var expectedMessage = string.Format(DomainMessages.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
+            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
 
             //Act
             Action act = () => OwnerObjectMother.RegisterOwnerWithDisplayName(displayName);

@@ -12,8 +12,9 @@ using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
-using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Domain.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Services
 {
@@ -62,7 +63,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
 
             await _permissionRepository.CreateAsync(permission);
 
-            return Result.Success(new CommandResult(entityId: permission.Id), ApplicationMessages.Create_Success);
+            return Result.Success(new CommandResult(entityId: permission.Id), ContractsMessages.Create_Success);
 
 
         }
@@ -79,7 +80,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
 
             var permission = await _permissionRepository.GetByIdAsync(input.Id);
             if (permission == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Permission));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Permission));
 
             permission.SystemName = input.SystemName;
             permission.DisplayName = input.DisplayName;
@@ -87,7 +88,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
 
             await _permissionRepository.UpdateAsync(permission);
 
-            return Result.Success(new CommandResult(entityId: permission.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: permission.Id), ContractsMessages.Update_Success);
 
         }
 
@@ -100,7 +101,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
         {
             var permission = await _permissionRepository.GetByIdAsync(id);
             if (permission == null)
-                return Result.Failure<PermissionBasicInfoDto>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Permission));
+                return Result.Failure<PermissionBasicInfoDto>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Permission));
 
             return Result.Success(_mapper.Map<PermissionBasicInfoDto>(permission));
         }
@@ -114,7 +115,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
         {
             var permission = await _permissionRepository.GetByIdAsync(id);
             if (permission == null)
-                return Result.Failure<PermissionDetailsViewModel>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Permission));
+                return Result.Failure<PermissionDetailsViewModel>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Permission));
 
 
             var roles = await _roleRepository.GetListByPermissionIdAsync(id);
@@ -200,7 +201,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
         {
             var @operator = await _operatorRepository.GetByIdAsync(userId);
             if (@operator == null)
-                return Result.Failure<IEnumerable<PermissionBasicInfoDto>>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Operator));
+                return Result.Failure<IEnumerable<PermissionBasicInfoDto>>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Operator));
 
 
             var roles = await _roleRepository.GetListByIdsAsync(@operator.RolesId);
@@ -277,10 +278,10 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
         {
             var permission = await _permissionRepository.GetByIdAsync(id);
             if (permission == null)
-                return Result.Failure<CommandResult>(message: string.Format(ApplicationMessages.Data_Not_exist, DomainMetadata.Permission));
+                return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Permission));
 
             permission.SetAsDeleted();
-            return Result.Success(new CommandResult(entityId: permission.Id), ApplicationMessages.Update_Success);
+            return Result.Success(new CommandResult(entityId: permission.Id), ContractsMessages.Update_Success);
         }
 
 

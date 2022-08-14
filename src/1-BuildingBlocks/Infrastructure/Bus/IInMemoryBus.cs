@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Threading.Tasks;
 
-namespace TaskoMask.BuildingBlocks.Application.Bus
+namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {
     public interface IInMemoryBus
     {

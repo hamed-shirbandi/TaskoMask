@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using AutoMapper;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Queries;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 
 namespace TaskoMask.BuildingBlocks.Application.Services
 {

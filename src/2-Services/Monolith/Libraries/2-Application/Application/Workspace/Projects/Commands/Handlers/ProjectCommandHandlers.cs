@@ -6,7 +6,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;

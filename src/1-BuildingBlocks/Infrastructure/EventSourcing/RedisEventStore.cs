@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.BuildingBlocks.Domain.Services;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.EventSourcing
+namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
 {
 
     /// <summary>

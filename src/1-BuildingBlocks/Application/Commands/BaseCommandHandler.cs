@@ -1,10 +1,7 @@
-﻿using TaskoMask.BuildingBlocks.Application.Notifications;
-using TaskoMask.BuildingBlocks.Domain.Models;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Domain.Events;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 
 namespace TaskoMask.BuildingBlocks.Application.Commands
 {

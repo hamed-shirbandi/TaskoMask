@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Notifications;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;

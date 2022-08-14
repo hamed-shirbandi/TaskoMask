@@ -8,7 +8,7 @@ using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Models;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Application.Services;

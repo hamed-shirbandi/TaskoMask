@@ -5,7 +5,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;

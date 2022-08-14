@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Permissions;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Services
 {
@@ -20,7 +21,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
         Task<Result<SelectListItem[]>> GetGroupedSelectListAsync();
         Task<Result<SelectListItem[]>> GetSelectListAsync(string[] selectedPermissionsId = null);
 
-        Task<Result<PaginatedListReturnType<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName);
+        Task<Result<PaginatedList<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);
 

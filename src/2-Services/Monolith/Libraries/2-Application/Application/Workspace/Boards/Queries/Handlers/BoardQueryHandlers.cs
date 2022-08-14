@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Models;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Queries.Models.Boards;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handlers
 {
@@ -21,7 +21,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
         IRequestHandler<GetBoardByIdQuery, BoardOutputDto>,
         IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
         IRequestHandler<GetBoardsByProjectsIdQuery, IEnumerable<BoardBasicInfoDto>>,
-        IRequestHandler<SearchBoardsQuery, PaginatedListReturnType<BoardOutputDto>>,
+        IRequestHandler<SearchBoardsQuery, PaginatedList<BoardOutputDto>>,
         IRequestHandler<GetBoardsCountQuery, long>
         
 
@@ -100,7 +100,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PaginatedListReturnType<BoardOutputDto>> Handle(SearchBoardsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<BoardOutputDto>> Handle(SearchBoardsQuery request, CancellationToken cancellationToken)
         {
             var boards = _boardRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var boardsDto = _mapper.Map<IEnumerable<BoardOutputDto>>(boards);
@@ -114,7 +114,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
                 item.OrganizationName = organization.Name;
             }
 
-            return new PaginatedListReturnType<BoardOutputDto>
+            return new PaginatedList<BoardOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

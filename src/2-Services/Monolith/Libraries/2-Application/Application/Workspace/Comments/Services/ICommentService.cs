@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
 {

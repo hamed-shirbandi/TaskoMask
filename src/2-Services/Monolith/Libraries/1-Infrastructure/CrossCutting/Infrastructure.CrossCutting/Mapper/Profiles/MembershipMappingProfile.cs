@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Permissions;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Roles;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 
 namespace TaskoMask.Services.Monolith.Application.Mapper.Profiles

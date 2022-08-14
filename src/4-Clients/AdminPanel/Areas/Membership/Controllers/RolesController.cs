@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Roles;
 using TaskoMask.BuildingBlocks.Web.MVC.Filters;
 using TaskoMask.BuildingBlocks.Web.MVC.Extensions;
 using TaskoMask.BuildingBlocks.Web.MVC.Enums;

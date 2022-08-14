@@ -6,13 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Tests.Unit.TestData;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using Xunit;
+using TaskoMask.Services.Monolith.Application.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Authorization
 {

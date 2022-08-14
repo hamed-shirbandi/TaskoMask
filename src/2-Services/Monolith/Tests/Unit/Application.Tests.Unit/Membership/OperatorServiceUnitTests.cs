@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Application.Tests.Unit.Membership.TestData;
 using TaskoMask.Services.Monolith.Application.Tests.Unit.TestData;
 using TaskoMask.BuildingBlocks.Contracts.Enums;

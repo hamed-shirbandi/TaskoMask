@@ -1,7 +1,7 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 

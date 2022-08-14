@@ -1,10 +1,11 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models
 {
-    public class SearchOrganizationsQuery : BaseQuery<PaginatedListReturnType<OrganizationOutputDto>>
+    public class SearchOrganizationsQuery : BaseQuery<PaginatedList<OrganizationOutputDto>>
     {
         public SearchOrganizationsQuery(int page, int recordsPerPage, string term)
         {

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-
 namespace TaskoMask.BuildingBlocks.Web.MVC.Extensions
 {
     public static class MvcExtensions
@@ -12,7 +11,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Extensions
         /// <summary>
         /// 
         /// </summary>
-        public static IEnumerable<SelectListItem> ToMvcSelectList(this TaskoMask.Services.Monolith.Application.Share.Helpers.SelectListItem[] selectListItem)
+        public static IEnumerable<SelectListItem> ToMvcSelectList(this Contracts.Models.SelectListItem[] selectListItem)
         {
             var mvcSelectListItem = new List<SelectListItem>();
             foreach (var item in selectListItem)

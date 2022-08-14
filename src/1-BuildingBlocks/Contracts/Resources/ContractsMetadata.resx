@@ -147,4 +147,145 @@
   <data name="BoardMemberAccessLevel_Writer" xml:space="preserve">
     <value>Writer</value>
   </data>
+  <data name="BacklogTasksCount" xml:space="preserve">
+    <value>Backlog Tasks Count</value>
+  </data>
+  <data name="BoardId" xml:space="preserve">
+    <value>BoardId</value>
+  </data>
+  <data name="BoardName" xml:space="preserve">
+    <value>Board</value>
+  </data>
+  <data name="BoardsCount" xml:space="preserve">
+    <value>Boards Count</value>
+  </data>
+  <data name="CardId" xml:space="preserve">
+    <value>CardId</value>
+  </data>
+  <data name="CardsCount" xml:space="preserve">
+    <value>Cards Count</value>
+  </data>
+  <data name="CardType" xml:space="preserve">
+    <value>Card Type</value>
+  </data>
+  <data name="ComparePasswords" xml:space="preserve">
+    <value>The password and confirmation password do not match</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>ConfirmPassword</value>
+  </data>
+  <data name="CreateDateTime" xml:space="preserve">
+    <value>Create Date Time</value>
+  </data>
+  <data name="CreateDay" xml:space="preserve">
+    <value>Create Day</value>
+  </data>
+  <data name="CreateMonth" xml:space="preserve">
+    <value>Create Month</value>
+  </data>
+  <data name="CreateYear" xml:space="preserve">
+    <value>Create Year</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="DoingTasksCount" xml:space="preserve">
+    <value>Doing Tasks Count</value>
+  </data>
+  <data name="DoneTasksCount" xml:space="preserve">
+    <value>Done Tasks Count</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ModifiedDateTime" xml:space="preserve">
+    <value>Modified Date Time</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="OperatorsCount" xml:space="preserve">
+    <value>Operators Count</value>
+  </data>
+  <data name="OrganizationId" xml:space="preserve">
+    <value>OrganizationId</value>
+  </data>
+  <data name="OrganizationName" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="OrganizationsCount" xml:space="preserve">
+    <value>Organizations Count</value>
+  </data>
+  <data name="OwnerDisplayName" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="OwnersCount" xml:space="preserve">
+    <value>Owners Count</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PermissionsCount" xml:space="preserve">
+    <value>Permissions Count</value>
+  </data>
+  <data name="PermissionsId" xml:space="preserve">
+    <value>Permissions Count</value>
+  </data>
+  <data name="Permission_GroupName" xml:space="preserve">
+    <value>GroupName</value>
+  </data>
+  <data name="Permission_SystemName" xml:space="preserve">
+    <value>SystemName</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="ProjectId" xml:space="preserve">
+    <value>ProjectId</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ProjectsCount" xml:space="preserve">
+    <value>Projects Count</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="RolesCount" xml:space="preserve">
+    <value>Roles Count</value>
+  </data>
+  <data name="RolesId" xml:space="preserve">
+    <value>Roles Count</value>
+  </data>
+  <data name="TasksCount" xml:space="preserve">
+    <value>Tasks Count</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ToDoTasksCount" xml:space="preserve">
+    <value>To Do Tasks Count</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>UserId</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="User_ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm New Password</value>
+  </data>
+  <data name="User_ConfirmPassword_Not_Match" xml:space="preserve">
+    <value>password and Confirm not match</value>
+  </data>
+  <data name="User_NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="User_OldPassword" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
 </root>

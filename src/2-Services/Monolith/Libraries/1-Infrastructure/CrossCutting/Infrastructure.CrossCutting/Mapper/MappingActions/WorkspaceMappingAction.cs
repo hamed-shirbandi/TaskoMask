@@ -1,7 +1,7 @@
 ﻿
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 
 namespace TaskoMask.Services.Monolith.Application.Mapper.MappingActions

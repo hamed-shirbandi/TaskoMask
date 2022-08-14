@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Json;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.Helpers;
 
 namespace TaskoMask.BuildingBlocks.Web.Services.Http

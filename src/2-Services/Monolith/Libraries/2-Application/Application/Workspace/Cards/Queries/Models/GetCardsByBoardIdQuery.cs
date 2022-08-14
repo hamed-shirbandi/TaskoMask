@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models

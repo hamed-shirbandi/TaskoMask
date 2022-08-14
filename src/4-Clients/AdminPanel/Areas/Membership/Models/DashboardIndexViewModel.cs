@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 
 namespace TaskoMask.Clients.AdminPanle.Area.Admin.Models
 {

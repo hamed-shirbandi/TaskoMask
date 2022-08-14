@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.Services.Monolith.Application.Core.Commands
 {

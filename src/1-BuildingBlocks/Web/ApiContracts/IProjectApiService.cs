@@ -1,6 +1,7 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+﻿using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 
 namespace TaskoMask.BuildingBlocks.Web.ApiContracts
 {

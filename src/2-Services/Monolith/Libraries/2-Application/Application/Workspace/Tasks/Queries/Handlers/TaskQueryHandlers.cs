@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
-using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handlers
 {
@@ -20,7 +20,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
         IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,
         IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>,
         IRequestHandler<GetPendingTasksByBoardsIdQuery, IEnumerable<TaskBasicInfoDto>>,
-        IRequestHandler<SearchTasksQuery, PaginatedListReturnType<TaskOutputDto>>,
+        IRequestHandler<SearchTasksQuery, PaginatedList<TaskOutputDto>>,
         IRequestHandler<GetTasksCountQuery, long>
 
     {
@@ -89,7 +89,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PaginatedListReturnType<TaskOutputDto>> Handle(SearchTasksQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<TaskOutputDto>> Handle(SearchTasksQuery request, CancellationToken cancellationToken)
         {
             var tasks = _taskRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var tasksDto = _mapper.Map<IEnumerable<TaskOutputDto>>(tasks);
@@ -100,7 +100,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
                 item.CardName = card?.Name;
             }
 
-            return new PaginatedListReturnType<TaskOutputDto>
+            return new PaginatedList<TaskOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

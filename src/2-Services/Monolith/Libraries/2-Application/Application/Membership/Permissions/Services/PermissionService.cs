@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Permissions;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Roles;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.Services.Monolith.Application.Core.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Services
 {
@@ -238,7 +239,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PaginatedListReturnType<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName)
+        public async Task<Result<PaginatedList<PermissionOutputDto>>> SearchAsync(int page, int recordsPerPage, string term, string groupName)
         {
             var permissions = _permissionRepository.Search(page, recordsPerPage, term, groupName, out var pageNumber, out var totalCount);
 
@@ -247,7 +248,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
             foreach (var item in permissionsDto)
                 item.RolesCount = await _roleRepository.CountByPermissionIdAsync(item.Id);
 
-            var model = new PaginatedListReturnType<PermissionOutputDto>
+            var model = new PaginatedList<PermissionOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

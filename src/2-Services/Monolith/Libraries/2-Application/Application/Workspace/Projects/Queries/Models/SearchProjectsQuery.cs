@@ -1,10 +1,11 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Models
 {
-    public class SearchProjectsQuery:BaseQuery<PaginatedListReturnType<ProjectOutputDto>>
+    public class SearchProjectsQuery:BaseQuery<PaginatedList<ProjectOutputDto>>
     {
         public SearchProjectsQuery(int page, int recordsPerPage, string term)
         {

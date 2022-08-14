@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Common;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Models;

@@ -1,10 +1,11 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Models
 {
-    public class SearchBoardsQuery : BaseQuery<PaginatedListReturnType<BoardOutputDto>>
+    public class SearchBoardsQuery : BaseQuery<PaginatedList<BoardOutputDto>>
     {
         public SearchBoardsQuery(int page, int recordsPerPage, string term)
         {

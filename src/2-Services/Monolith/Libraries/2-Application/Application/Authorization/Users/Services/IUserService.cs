@@ -1,6 +1,6 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 

@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using System.Linq;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
 {

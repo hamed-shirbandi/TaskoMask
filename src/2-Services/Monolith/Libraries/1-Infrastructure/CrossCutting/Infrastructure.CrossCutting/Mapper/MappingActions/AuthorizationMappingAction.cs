@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
 namespace TaskoMask.Services.Monolith.Application.Mapper.MappingActions

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Web.MVC.Extensions;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Permissions;
 using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Enums;
 using TaskoMask.BuildingBlocks.Web.MVC.Filters;

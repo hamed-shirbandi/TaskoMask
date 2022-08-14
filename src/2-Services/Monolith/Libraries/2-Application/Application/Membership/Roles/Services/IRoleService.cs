@@ -1,9 +1,9 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Roles;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
 {

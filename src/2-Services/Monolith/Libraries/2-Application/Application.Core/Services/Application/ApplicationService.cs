@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Services.Monolith.Application.Core.Commands;
 using System;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using AutoMapper;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Queries;

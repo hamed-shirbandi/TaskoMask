@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Activities;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Activities;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.Models;
 

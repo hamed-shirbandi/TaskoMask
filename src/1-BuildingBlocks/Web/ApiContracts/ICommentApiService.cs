@@ -1,5 +1,5 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.BuildingBlocks.Web.ApiContracts
 {

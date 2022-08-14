@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models

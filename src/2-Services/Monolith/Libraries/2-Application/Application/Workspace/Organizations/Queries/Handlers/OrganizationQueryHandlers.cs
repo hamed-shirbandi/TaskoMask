@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
-using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Handlers
 {
@@ -21,7 +21,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Querie
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,
         IRequestHandler<GetOrganizationReportQuery, OrganizationReportDto>,
         IRequestHandler<GetOrganizationsByOwnerIdQuery, IEnumerable<OrganizationBasicInfoDto>>,
-        IRequestHandler<SearchOrganizationsQuery, PaginatedListReturnType<OrganizationOutputDto>>,
+        IRequestHandler<SearchOrganizationsQuery, PaginatedList<OrganizationOutputDto>>,
         IRequestHandler<GetOrganizationsCountQuery, long>
 
     {
@@ -104,7 +104,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Querie
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PaginatedListReturnType<OrganizationOutputDto>> Handle(SearchOrganizationsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<OrganizationOutputDto>> Handle(SearchOrganizationsQuery request, CancellationToken cancellationToken)
         {
             var organizations = _organizationRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var organizationsDto = _mapper.Map<IEnumerable<OrganizationOutputDto>>(organizations);
@@ -116,7 +116,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Querie
                 item.ProjectsCount = await _projectRepository.CountByOrganizationIdAsync(item.Id);
             }
 
-            return new PaginatedListReturnType<OrganizationOutputDto>
+            return new PaginatedList<OrganizationOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

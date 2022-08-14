@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services
 {
@@ -139,7 +140,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PaginatedListReturnType<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        public async Task<Result<PaginatedList<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await SendQueryAsync(new SearchTasksQuery(page, recordsPerPage, term));
         }

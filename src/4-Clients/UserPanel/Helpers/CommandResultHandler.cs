@@ -1,6 +1,6 @@
 ﻿using Blazored.Modal;
 using Blazored.Toast.Services;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 
 namespace TaskoMask.Clients.UserPanel.Helpers

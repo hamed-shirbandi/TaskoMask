@@ -1,10 +1,11 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models
 {
-    public class SearchCardsQuery : BaseQuery<PaginatedListReturnType<CardOutputDto>>
+    public class SearchCardsQuery : BaseQuery<PaginatedList<CardOutputDto>>
     {
         public SearchCardsQuery(int page, int recordsPerPage, string term)
         {

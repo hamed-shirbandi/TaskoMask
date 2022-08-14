@@ -1,9 +1,10 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
 {
@@ -15,7 +16,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id);
 
         Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId);
-        Task<Result<PaginatedListReturnType<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<PaginatedList<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string organizationId);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);

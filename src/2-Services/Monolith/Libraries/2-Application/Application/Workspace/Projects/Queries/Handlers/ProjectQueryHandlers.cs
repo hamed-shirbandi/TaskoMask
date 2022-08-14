@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Models;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
-using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Handlers
 {
     public class ProjectQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetProjectByIdQuery, ProjectOutputDto>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>,
-        IRequestHandler<SearchProjectsQuery, PaginatedListReturnType<ProjectOutputDto>>,
+        IRequestHandler<SearchProjectsQuery, PaginatedList<ProjectOutputDto>>,
         IRequestHandler<GetProjectsCountQuery, long>
 
     {
@@ -80,7 +80,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Han
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PaginatedListReturnType<ProjectOutputDto>> Handle(SearchProjectsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<ProjectOutputDto>> Handle(SearchProjectsQuery request, CancellationToken cancellationToken)
         {
             var projects = _projectRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var projectsDto = _mapper.Map<IEnumerable<ProjectOutputDto>>(projects);
@@ -92,7 +92,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Han
                 item.BoardsCount = await _boardRepository.CountByProjectIdAsync(item.Id);
             }
 
-            return new PaginatedListReturnType<ProjectOutputDto>
+            return new PaginatedList<ProjectOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

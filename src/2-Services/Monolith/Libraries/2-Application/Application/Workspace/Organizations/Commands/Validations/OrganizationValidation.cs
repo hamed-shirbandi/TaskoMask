@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Models;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 

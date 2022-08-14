@@ -1,10 +1,11 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services
 {
@@ -15,7 +16,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services
         Task<Result<TaskBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id);
         Task<Result<IEnumerable<TaskBasicInfoDto>>> GetListByCardIdAsync(string cardId);
-        Task<Result<PaginatedListReturnType<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<PaginatedList<TaskOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> MoveTaskToAnotherCardAsync(string taskId, string cardId);
         Task<Result<CommandResult>> DeleteAsync(string id);

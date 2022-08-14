@@ -1,7 +1,8 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {

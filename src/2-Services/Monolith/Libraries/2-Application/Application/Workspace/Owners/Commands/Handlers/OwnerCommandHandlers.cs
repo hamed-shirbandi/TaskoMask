@@ -1,13 +1,12 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;

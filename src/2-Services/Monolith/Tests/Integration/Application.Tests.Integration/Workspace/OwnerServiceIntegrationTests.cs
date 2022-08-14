@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures;
 using Xunit;
 

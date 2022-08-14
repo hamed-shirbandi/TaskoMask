@@ -18,7 +18,7 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\2-Services\Monolith\Libraries\2-Application\Application.Share\Application.Share.csproj" />
+	  <ProjectReference Include="..\Contracts\Contracts.csproj" />
 	</ItemGroup>
 
 </Project>

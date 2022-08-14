@@ -1,10 +1,11 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models
 {
-   public class SearchOwnersQuery:BaseQuery<PaginatedListReturnType<OwnerOutputDto>>
+    public class SearchOwnersQuery:BaseQuery<PaginatedList<OwnerOutputDto>>
     {
         public SearchOwnersQuery(int page, int recordsPerPage, string term)
         {

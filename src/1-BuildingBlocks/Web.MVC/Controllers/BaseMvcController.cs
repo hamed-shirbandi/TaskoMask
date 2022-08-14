@@ -1,4 +1,4 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using AutoMapper;

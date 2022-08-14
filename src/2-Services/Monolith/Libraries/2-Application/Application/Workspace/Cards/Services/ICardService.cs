@@ -1,9 +1,10 @@
-﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Share.ViewModels;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Services
 {
@@ -13,7 +14,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Services
         Task<Result<CommandResult>> UpdateAsync(UpdateCardDto input);
         Task<Result<IEnumerable<CardDetailsViewModel>>> GetListWithDetailsByBoardIdAsync(string boardId);
         Task<Result<CardBasicInfoDto>> GetByIdAsync(string id);
-        Task<Result<PaginatedListReturnType<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<PaginatedList<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string boardId);

@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Models
 {

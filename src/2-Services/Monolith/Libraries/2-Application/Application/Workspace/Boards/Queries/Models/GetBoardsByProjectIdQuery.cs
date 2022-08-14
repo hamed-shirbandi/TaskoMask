@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
 
 

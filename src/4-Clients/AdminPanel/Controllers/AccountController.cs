@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.CookieAuthentication;
 using DNTCaptcha.Core;

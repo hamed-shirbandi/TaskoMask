@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication;
 using TaskoMask.BuildingBlocks.Contracts.Models;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Web.Helpers;

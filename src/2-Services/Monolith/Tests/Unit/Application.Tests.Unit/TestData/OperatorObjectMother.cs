@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using System;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 
 namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Membership.TestData

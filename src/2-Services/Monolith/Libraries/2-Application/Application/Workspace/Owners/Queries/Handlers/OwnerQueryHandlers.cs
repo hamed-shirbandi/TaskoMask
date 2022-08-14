@@ -3,25 +3,25 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Queries;
-using TaskoMask.Services.Monolith.Application.Share.Resources;
-using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
-using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Handlers
 {
     public class OwnerQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOwnerByIdQuery, OwnerBasicInfoDto>,
         IRequestHandler<GetOwnerByUserNameQuery, OwnerBasicInfoDto>,
-        IRequestHandler<SearchOwnersQuery, PaginatedListReturnType<OwnerOutputDto>>,
+        IRequestHandler<SearchOwnersQuery, PaginatedList<OwnerOutputDto>>,
         IRequestHandler<GetOwnersCountQuery, long>
 
     {
@@ -102,7 +102,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Handl
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PaginatedListReturnType<OwnerOutputDto>> Handle(SearchOwnersQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<OwnerOutputDto>> Handle(SearchOwnersQuery request, CancellationToken cancellationToken)
         {
             var owners = _ownerRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
             var ownersDto = _mapper.Map<IEnumerable<OwnerOutputDto>>(owners);
@@ -121,7 +121,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Handl
             }
 
 
-            return new PaginatedListReturnType<OwnerOutputDto>
+            return new PaginatedList<OwnerOutputDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

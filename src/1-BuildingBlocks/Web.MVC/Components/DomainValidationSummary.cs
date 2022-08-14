@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Components
+namespace TaskoMask.BuildingBlocks.Web.MVC.Components
 {
     public class DomainValidationSummary : ViewComponent
     {

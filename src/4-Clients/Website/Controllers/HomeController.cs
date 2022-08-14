@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Monolith.Presentation.UI.Website.Controllers
 {

@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.Models
+namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.Models
 {
     public class JwtAuthenticationOptions
     {

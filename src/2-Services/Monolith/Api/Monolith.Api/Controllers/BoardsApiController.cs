@@ -2,7 +2,7 @@
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

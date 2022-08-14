@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Swagger
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
 {
     public class SwaggerOptions
     {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Filters;
+using TaskoMask.BuildingBlocks.Web.MVC.Filters;
 
 namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
 {

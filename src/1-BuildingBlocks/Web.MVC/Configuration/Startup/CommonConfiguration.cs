@@ -18,10 +18,10 @@ using TaskoMask.Services.Monolith.Domain.Core.Events;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Cookie;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.Cookie;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Startup
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
 {
 
     /// <summary>

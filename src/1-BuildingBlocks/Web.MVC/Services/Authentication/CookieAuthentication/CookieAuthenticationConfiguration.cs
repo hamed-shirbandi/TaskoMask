@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
+namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.CookieAuthentication
 {
     public static class CookieAuthenticationConfiguration
     {

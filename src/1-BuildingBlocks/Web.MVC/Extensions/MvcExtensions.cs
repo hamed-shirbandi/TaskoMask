@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Extensions
+namespace TaskoMask.BuildingBlocks.Web.MVC.Extensions
 {
     public static class MvcExtensions
     {

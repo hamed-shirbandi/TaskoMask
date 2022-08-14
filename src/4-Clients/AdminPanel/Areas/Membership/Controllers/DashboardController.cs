@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 using TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Area.Admin.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;

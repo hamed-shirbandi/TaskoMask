@@ -6,9 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.Models;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.Models;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.JwtAuthentication
+namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication
 {
     public static class JwtAuthenticationConfiguration
     {

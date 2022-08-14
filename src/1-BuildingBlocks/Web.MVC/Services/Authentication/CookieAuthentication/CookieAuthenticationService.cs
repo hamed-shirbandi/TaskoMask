@@ -6,7 +6,7 @@ using System.Security.Claims;
 using TaskoMask.Services.Monolith.Domain.Share.Models;
 using TaskoMask.BuildingBlocks.Web.Extensions;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
+namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.CookieAuthentication
 {
     /// <summary>
     /// Represents service using cookie for the authentication

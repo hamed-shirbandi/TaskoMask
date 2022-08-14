@@ -5,7 +5,7 @@ using TaskoMask.Services.Monolith.Application.Core.Commands;
 using AutoMapper;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers
+namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 {
     public class BaseApiController : Controller
     {

@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Services.Monolith.Domain.Share.Models;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.JwtAuthentication
+namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication
 {
     public interface IJwtAuthenticationService
     {

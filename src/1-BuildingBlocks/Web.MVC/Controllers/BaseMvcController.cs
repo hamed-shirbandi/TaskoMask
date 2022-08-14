@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using AutoMapper;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Helpers;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Models;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Enums;
+using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
+using TaskoMask.BuildingBlocks.Web.MVC.Models;
+using TaskoMask.BuildingBlocks.Web.MVC.Enums;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 using System;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers
+namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 {
     public class BaseMvcController : Controller
     {

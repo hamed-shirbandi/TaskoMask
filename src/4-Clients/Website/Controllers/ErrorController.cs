@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Models;
+using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
+using TaskoMask.BuildingBlocks.Web.MVC.Models;
 
 namespace TaskoMask.Services.Monolith.Presentation.UI.Website.Controllers
 {

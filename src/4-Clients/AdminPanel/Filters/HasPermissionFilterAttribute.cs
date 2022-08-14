@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using TaskoMask.Services.Monolith.Application.Membership.Permissions.Services;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Extensions;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Helpers;
+using TaskoMask.BuildingBlocks.Web.MVC.Extensions;
+using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
 
 namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Filters
 {

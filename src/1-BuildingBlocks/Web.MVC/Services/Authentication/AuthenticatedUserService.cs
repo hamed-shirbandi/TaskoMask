@@ -3,7 +3,7 @@ using System.Security.Claims;
 using TaskoMask.Services.Monolith.Domain.Share.Models;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication
+namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication
 {
     public class AuthenticatedUserService : IAuthenticatedUserService
     {

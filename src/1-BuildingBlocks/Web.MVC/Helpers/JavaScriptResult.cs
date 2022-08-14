@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Helpers
+namespace TaskoMask.BuildingBlocks.Web.MVC.Helpers
 {
     public class JavaScriptResult : ContentResult
     {

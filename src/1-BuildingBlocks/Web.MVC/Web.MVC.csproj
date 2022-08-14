@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<AssemblyName>TaskoMask.Services.Monolith.Presentation.Framework.Web</AssemblyName>
-		<RootNamespace>TaskoMask.Services.Monolith.Presentation.Framework.Web</RootNamespace>
+		<AssemblyName>TaskoMask.BuildingBlocks.Web.MVC</AssemblyName>
+		<RootNamespace>TaskoMask.BuildingBlocks.Web.MVC</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

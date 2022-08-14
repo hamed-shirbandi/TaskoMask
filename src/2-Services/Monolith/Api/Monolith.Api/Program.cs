@@ -1,5 +1,5 @@
 using Serilog;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Startup;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 Log.Information("Starting up");

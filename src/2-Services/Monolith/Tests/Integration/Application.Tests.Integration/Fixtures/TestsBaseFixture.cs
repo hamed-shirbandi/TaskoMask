@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Startup;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
 
 namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
 {

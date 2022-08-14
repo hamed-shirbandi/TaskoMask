@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Enums;
+using TaskoMask.BuildingBlocks.Web.MVC.Enums;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Helpers
+namespace TaskoMask.BuildingBlocks.Web.MVC.Helpers
 {
 
     /// <summary>

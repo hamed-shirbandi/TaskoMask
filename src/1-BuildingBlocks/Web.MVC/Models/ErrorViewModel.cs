@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Models
+namespace TaskoMask.BuildingBlocks.Web.MVC.Models
 {
     public class ErrorViewModel
     {

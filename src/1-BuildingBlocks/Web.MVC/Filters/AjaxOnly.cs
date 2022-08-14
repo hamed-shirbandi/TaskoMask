@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Routing;
-using TaskoMask.Services.Monolith.Presentation.Framework.Web.Extensions;
+using TaskoMask.BuildingBlocks.Web.MVC.Extensions;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Filters
+namespace TaskoMask.BuildingBlocks.Web.MVC.Filters
 {
     /// <summary>
     /// Determines whether the HttpRequest's X-Requested-With header has XMLHttpRequest value.

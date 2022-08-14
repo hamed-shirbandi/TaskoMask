@@ -95,6 +95,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Monolith", "Monolith", "{D9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "src\1-BuildingBlocks\Contracts\Contracts.csproj", "{1FC5169D-3E2D-493E-9F52-9A258D6423D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\1-BuildingBlocks\Domain\Domain.csproj", "{86092E93-2679-4D8F-A0B3-490BA6B08BBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,6 +207,10 @@ Global
 		{1FC5169D-3E2D-493E-9F52-9A258D6423D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FC5169D-3E2D-493E-9F52-9A258D6423D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FC5169D-3E2D-493E-9F52-9A258D6423D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86092E93-2679-4D8F-A0B3-490BA6B08BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86092E93-2679-4D8F-A0B3-490BA6B08BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86092E93-2679-4D8F-A0B3-490BA6B08BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86092E93-2679-4D8F-A0B3-490BA6B08BBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -251,6 +257,7 @@ Global
 		{E59BEA82-E497-4FDA-8A16-F48CD05BFBAC} = {D33831F5-8FD5-408F-90DF-7907CBACA8D0}
 		{D9DEC475-1137-480C-915A-6936ED65CE99} = {28FAC230-6460-4273-B0D4-CB8E00CBDB00}
 		{1FC5169D-3E2D-493E-9F52-9A258D6423D9} = {EE6A848E-1730-4442-AA9B-A12EBC85C644}
+		{86092E93-2679-4D8F-A0B3-490BA6B08BBE} = {EE6A848E-1730-4442-AA9B-A12EBC85C644}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15E4B299-A968-40A3-8192-CCF9082EE3BC}

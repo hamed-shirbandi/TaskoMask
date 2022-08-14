@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Http;
 using TaskoMask.Services.Monolith.Domain.Share.Models;
-using TaskoMask.Services.Monolith.Presentation.Framework.Share.Extensions;
+using TaskoMask.BuildingBlocks.Web.Extensions;
 using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.Models;
 
 namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.JwtAuthentication

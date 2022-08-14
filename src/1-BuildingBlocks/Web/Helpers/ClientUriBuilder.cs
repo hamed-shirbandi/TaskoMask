@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Web;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers
+namespace TaskoMask.BuildingBlocks.Web.Helpers
 {
     public class ClientUriBuilder
     {

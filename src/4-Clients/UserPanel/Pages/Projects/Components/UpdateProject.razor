@@ -1,6 +1,6 @@
 ﻿@using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects
-@inject TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectApiService
-@inject TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts.IOrganizationApiService OrganizationApiService
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IProjectApiService ProjectApiService
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IOrganizationApiService OrganizationApiService
 
 <EditForm Model="ProjectModel" OnValidSubmit="HandleUpdateProject">
 

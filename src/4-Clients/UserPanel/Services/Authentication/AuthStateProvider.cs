@@ -2,7 +2,7 @@ using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Headers;
 using System.Security.Claims;
-using TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers;
+using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers;
 
 namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Authentication

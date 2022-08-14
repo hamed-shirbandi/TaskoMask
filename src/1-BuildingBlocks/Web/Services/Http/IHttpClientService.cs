@@ -2,7 +2,7 @@
 
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Services.Http
+namespace TaskoMask.BuildingBlocks.Web.Services.Http
 {
     public  interface IHttpClientService
     {

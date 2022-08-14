@@ -9,8 +9,8 @@ using TaskoMask.Services.Monolith.Domain.Share.Models;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Domain.Share.Enums;
-using TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers;
-using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
+using TaskoMask.BuildingBlocks.Web.Helpers;
+using TaskoMask.BuildingBlocks.Web.ApiContracts;
 
 namespace TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI.Controllers
 {

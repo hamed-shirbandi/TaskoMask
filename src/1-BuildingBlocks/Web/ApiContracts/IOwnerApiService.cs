@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts
+namespace TaskoMask.BuildingBlocks.Web.ApiContracts
 {
     public interface IOwnerApiService
     {

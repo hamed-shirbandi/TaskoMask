@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
-using TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers;
+using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers;
-using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
+using TaskoMask.BuildingBlocks.Web.ApiContracts;
 
 namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Authentication
 {

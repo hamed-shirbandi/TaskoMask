@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using TaskoMask.Services.Monolith.Domain.Share.Models;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Extensions
+namespace TaskoMask.BuildingBlocks.Web.Extensions
 {
     public static class ClaimExtensions
     {

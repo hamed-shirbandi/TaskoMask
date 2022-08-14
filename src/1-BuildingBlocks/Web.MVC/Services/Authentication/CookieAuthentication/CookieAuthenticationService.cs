@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using TaskoMask.Services.Monolith.Domain.Share.Models;
-using TaskoMask.Services.Monolith.Presentation.Framework.Share.Extensions;
+using TaskoMask.BuildingBlocks.Web.Extensions;
 
 namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
 {

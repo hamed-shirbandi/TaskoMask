@@ -3,7 +3,7 @@
 using System.Net.Http.Json;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers
+namespace TaskoMask.BuildingBlocks.Web.Helpers
 {
     public static class HttpClientRetryHelper
     {

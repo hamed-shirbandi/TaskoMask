@@ -1,8 +1,8 @@
 ﻿using System.Net.Http.Json;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
-using TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers;
+using TaskoMask.BuildingBlocks.Web.Helpers;
 
-namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Services.Http
+namespace TaskoMask.BuildingBlocks.Web.Services.Http
 {
     /// <summary>
     /// 

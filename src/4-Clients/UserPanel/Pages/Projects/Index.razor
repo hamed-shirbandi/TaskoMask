@@ -1,7 +1,7 @@
 ﻿@page "/project/{ProjectId}"
 @using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Pages.Projects.Components
 @using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Shared
-@inject TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts.IProjectApiService ProjectApiService
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IProjectApiService ProjectApiService
 @implements IDisposable
 
 @if (Model != null)

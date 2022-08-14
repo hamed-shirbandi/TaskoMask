@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Controllers
+namespace TaskoMask.Clients.AdminPanle.Controllers
 {
     public class ErrorController : BaseMvcController
     {

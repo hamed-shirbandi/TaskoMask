@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Web.MVC.Models;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.Website.Controllers
+namespace TaskoMask.Clients.Website.Controllers
 {
     public class ErrorController : BaseMvcController
     {

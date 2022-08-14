@@ -4,14 +4,14 @@ using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.BuildingBlocks.Web.Configuration.Startup;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Authentication;
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.API;
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.DragDrop;
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Http;
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.ComponentMessage;
+using TaskoMask.Clients.UserPanel.Services.Authentication;
+using TaskoMask.Clients.UserPanel.Services.API;
+using TaskoMask.Clients.UserPanel.Services.DragDrop;
+using TaskoMask.Clients.UserPanel.Services.Http;
+using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Configuration
+namespace TaskoMask.Clients.UserPanel.Configuration
 {
 
     /// <summary>

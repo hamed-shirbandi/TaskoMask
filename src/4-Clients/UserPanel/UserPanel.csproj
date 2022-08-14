@@ -4,8 +4,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 
 		<ImplicitUsings>enable</ImplicitUsings>
-		<AssemblyName>TaskoMask.Services.Monolith.Presentation.UI.UserPanel</AssemblyName>
-		<RootNamespace>TaskoMask.Services.Monolith.Presentation.UI.UserPanel</RootNamespace>
+		<AssemblyName>TaskoMask.Clients.UserPanel</AssemblyName>
+		<RootNamespace>TaskoMask.Clients.UserPanel</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

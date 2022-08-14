@@ -1,8 +1,8 @@
 ﻿@using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards
 @using TaskoMask.Services.Monolith.Application.Share.ViewModels
-@using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Pages.Tasks.Components
+@using TaskoMask.Clients.UserPanel.Pages.Tasks.Components
 @inject TaskoMask.BuildingBlocks.Web.ApiContracts.ITaskApiService TaskApiService
-@inject TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.DragDrop.IDragDropService DragDropService
+@inject TaskoMask.Clients.UserPanel.Services.DragDrop.IDragDropService DragDropService
 
 <div class="card-deck">
     @foreach (var item in Model)

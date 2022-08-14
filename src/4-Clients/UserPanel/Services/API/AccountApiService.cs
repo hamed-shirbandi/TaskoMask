@@ -4,7 +4,7 @@ using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.API
+namespace TaskoMask.Clients.UserPanel.Services.API
 {
     public class AccountApiService : IAccountApiService
     {

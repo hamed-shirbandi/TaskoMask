@@ -12,7 +12,7 @@ using TaskoMask.BuildingBlocks.Web.MVC.Enums;
 using TaskoMask.BuildingBlocks.Web.MVC.Extensions;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
 {
 
     [Authorize]

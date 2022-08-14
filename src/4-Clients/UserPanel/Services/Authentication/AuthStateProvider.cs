@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using TaskoMask.BuildingBlocks.Web.Helpers;
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers;
+using TaskoMask.Clients.UserPanel.Helpers;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Authentication
+namespace TaskoMask.Clients.UserPanel.Services.Authentication
 {
     public class AuthStateProvider : AuthenticationStateProvider
     {

@@ -2,7 +2,7 @@
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Components
+namespace TaskoMask.Clients.AdminPanle.Components
 {
     public class UserMenu : ViewComponent
     {

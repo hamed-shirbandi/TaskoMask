@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.Services.Monolith.Domain.Core.Services;
-using TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Area.Admin.Models;
+using TaskoMask.Clients.AdminPanle.Area.Admin.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
 {
     [Authorize]
     [Area("membership")]

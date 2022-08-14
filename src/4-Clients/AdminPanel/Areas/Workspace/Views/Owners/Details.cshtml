@@ -29,7 +29,7 @@
         </div>
         <div id="tab-3">
             <div class="block-content">
-                @await Html.PartialAsync("_SetUserIsActive", new TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Models.SetUserActiveViewModel(id: Model.Owner.Id, isActive: Model.Owner.UserInfo.IsActive))
+                @await Html.PartialAsync("_SetUserIsActive", new TaskoMask.Clients.AdminPanle.Models.SetUserActiveViewModel(id: Model.Owner.Id, isActive: Model.Owner.UserInfo.IsActive))
             </div>
         </div>
     </div>

@@ -6,8 +6,8 @@
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <UserSecretsId>b786f536-e1c4-49fe-9d06-7247aedebda8</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    <AssemblyName>TaskoMask.Services.Monolith.Presentation.UI.Website</AssemblyName>
-    <RootNamespace>TaskoMask.Services.Monolith.Presentation.UI.Website</RootNamespace>
+    <AssemblyName>TaskoMask.Clients.Website</AssemblyName>
+    <RootNamespace>TaskoMask.Clients.Website</RootNamespace>
     
   </PropertyGroup>
 

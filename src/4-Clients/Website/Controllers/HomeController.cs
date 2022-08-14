@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.Website.Controllers
+namespace TaskoMask.Clients.Website.Controllers
 {
     public class HomeController : BaseMvcController
     {

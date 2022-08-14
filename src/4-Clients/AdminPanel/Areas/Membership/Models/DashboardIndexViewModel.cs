@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Area.Admin.Models
+namespace TaskoMask.Clients.AdminPanle.Area.Admin.Models
 {
     public class DashboardIndexViewModel
     {

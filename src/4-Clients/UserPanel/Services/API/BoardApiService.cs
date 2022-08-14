@@ -4,7 +4,7 @@ using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.API
+namespace TaskoMask.Clients.UserPanel.Services.API
 {
     public class BoardApiService : IBoardApiService
     {

@@ -8,7 +8,7 @@ using AutoMapper;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Controllers
+namespace TaskoMask.Clients.AdminPanle.Controllers
 {
     public class AccountController : BaseMvcController
     {

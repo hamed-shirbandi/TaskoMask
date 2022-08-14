@@ -1,4 +1,4 @@
-﻿namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.DragDrop
+﻿namespace TaskoMask.Clients.UserPanel.Services.DragDrop
 {
     public interface IDragDropService
     {

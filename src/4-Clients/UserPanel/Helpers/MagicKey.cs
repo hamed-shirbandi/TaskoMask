@@ -1,4 +1,4 @@
-﻿namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers
+﻿namespace TaskoMask.Clients.UserPanel.Helpers
 {
     public static class MagicKey
     {

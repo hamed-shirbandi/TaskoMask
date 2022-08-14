@@ -1,7 +1,7 @@
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel;
+using TaskoMask.Clients.UserPanel;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Configuration;
+using TaskoMask.Clients.UserPanel.Configuration;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

@@ -4,10 +4,10 @@ using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.BuildingBlocks.Web.Helpers;
-using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers;
+using TaskoMask.Clients.UserPanel.Helpers;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Authentication
+namespace TaskoMask.Clients.UserPanel.Services.Authentication
 {
     public class AuthenticationService : IAuthenticationService
     {

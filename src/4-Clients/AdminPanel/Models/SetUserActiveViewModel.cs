@@ -1,6 +1,6 @@
 ﻿
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Models
+namespace TaskoMask.Clients.AdminPanle.Models
 {
     public class SetUserActiveViewModel
     {

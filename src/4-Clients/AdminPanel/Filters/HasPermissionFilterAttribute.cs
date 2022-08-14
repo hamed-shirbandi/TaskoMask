@@ -5,7 +5,7 @@ using TaskoMask.Services.Monolith.Domain.Core.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Extensions;
 using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Filters
+namespace TaskoMask.Clients.AdminPanle.Filters
 {
     public class HasPermission : Attribute, IAsyncActionFilter
     {

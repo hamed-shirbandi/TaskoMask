@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Web.MVC.Filters;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Services;
 
-namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
+namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
 {
     [Authorize]
     [Area("Workspace")]

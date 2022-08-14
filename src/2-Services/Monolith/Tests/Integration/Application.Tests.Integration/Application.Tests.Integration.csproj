@@ -29,8 +29,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
-    <ProjectReference Include="..\..\..\Libraries\1-Infrastructure\Data\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj" />
-    <ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Infrastructure\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Application\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

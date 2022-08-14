@@ -3,7 +3,6 @@ using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
-using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.Services.Monolith.Application.Membership.Roles.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;

@@ -7,19 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{C0FFF437-0D09-4F24-9157-1D4B409B89C0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{03E9DC7E-C995-440B-A355-B095EDF06215}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{CC5F6FB4-4140-4427-8CD5-741363DE08F5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{CC5F6FB4-4140-4427-8CD5-741363DE08F5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Infrastructure", "1-Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{26659BC5-07F5-4AF0-B0F0-4B44628330B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DomainModel", "src\2-Services\Monolith\Libraries\3-Domain\Domain.DomainModel\Domain.DomainModel.csproj", "{CAE67B26-DAA9-4AA5-8E3D-8DB070B4052C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DomainModel", "src\2-Services\Monolith\Libraries\Domain\Domain.DomainModel\Domain.DomainModel.csproj", "{CAE67B26-DAA9-4AA5-8E3D-8DB070B4052C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "src\2-Services\Monolith\Libraries\1-Infrastructure\CrossCutting\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{E83B87F2-796F-4668-921C-39D7D9481B91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "src\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{E83B87F2-796F-4668-921C-39D7D9481B91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "src\2-Services\Monolith\Libraries\2-Application\Application.Core\Application.Core.csproj", "{47FB7805-B16B-4652-9045-ACB2932DDD27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "src\2-Services\Monolith\Libraries\Application\Application.Core\Application.Core.csproj", "{47FB7805-B16B-4652-9045-ACB2932DDD27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\2-Services\Monolith\Libraries\2-Application\Application\Application.csproj", "{D048BB35-F168-42C3-AD7E-FCCF56FCABB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\2-Services\Monolith\Libraries\Application\Application\Application.csproj", "{D048BB35-F168-42C3-AD7E-FCCF56FCABB9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monolith.Api", "src\2-Services\Monolith\Api\Monolith.Api\Monolith.Api.csproj", "{C015A73A-0C15-4AD8-9BD8-4CF74A601BAD}"
 EndProject
@@ -51,17 +51,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.API", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Acceptance.UI", "src\5-Tests\Acceptance\Tests.Acceptance.UI\Tests.Acceptance.UI.csproj", "{99ADF9A8-B7A9-44AA-85AA-9040A220CAD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DataModel", "src\2-Services\Monolith\Libraries\3-Domain\Domain.DataModel\Domain.DataModel.csproj", "{0FE32A14-B32D-4F36-8D37-CF11357884F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DataModel", "src\2-Services\Monolith\Libraries\Domain\Domain.DataModel\Domain.DataModel.csproj", "{0FE32A14-B32D-4F36-8D37-CF11357884F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Write", "src\2-Services\Monolith\Libraries\1-Infrastructure\Data\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj", "{02B20F07-FFBC-4E48-995A-80B85AED86F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Write", "src\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj", "{02B20F07-FFBC-4E48-995A-80B85AED86F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Read", "src\2-Services\Monolith\Libraries\1-Infrastructure\Data\Infrastructure.Data.Read\Infrastructure.Data.Read.csproj", "{17FC7A36-E7C1-4159-81DA-CBD06FEB937E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Read", "src\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.Data.Read\Infrastructure.Data.Read.csproj", "{17FC7A36-E7C1-4159-81DA-CBD06FEB937E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{D33831F5-8FD5-408F-90DF-7907CBACA8D0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{A5ACB1F9-60A6-46DB-9602-7987BE5941B7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Generator", "src\2-Services\Monolith\Libraries\1-Infrastructure\Data\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj", "{E59BEA82-E497-4FDA-8A16-F48CD05BFBAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Generator", "src\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj", "{E59BEA82-E497-4FDA-8A16-F48CD05BFBAC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", "{28FAC230-6460-4273-B0D4-CB8E00CBDB00}"
 EndProject
@@ -204,7 +200,7 @@ Global
 		{CC5F6FB4-4140-4427-8CD5-741363DE08F5} = {1BA9D23D-A4DE-4841-B047-AC1E8355F6A3}
 		{26659BC5-07F5-4AF0-B0F0-4B44628330B4} = {1BA9D23D-A4DE-4841-B047-AC1E8355F6A3}
 		{CAE67B26-DAA9-4AA5-8E3D-8DB070B4052C} = {CC5F6FB4-4140-4427-8CD5-741363DE08F5}
-		{E83B87F2-796F-4668-921C-39D7D9481B91} = {A5ACB1F9-60A6-46DB-9602-7987BE5941B7}
+		{E83B87F2-796F-4668-921C-39D7D9481B91} = {26659BC5-07F5-4AF0-B0F0-4B44628330B4}
 		{47FB7805-B16B-4652-9045-ACB2932DDD27} = {03E9DC7E-C995-440B-A355-B095EDF06215}
 		{D048BB35-F168-42C3-AD7E-FCCF56FCABB9} = {03E9DC7E-C995-440B-A355-B095EDF06215}
 		{C015A73A-0C15-4AD8-9BD8-4CF74A601BAD} = {C0FFF437-0D09-4F24-9157-1D4B409B89C0}
@@ -223,11 +219,9 @@ Global
 		{2298CBFE-DF32-47C3-9B42-D969E47A944E} = {FDA81CD0-E67C-4F8F-9C1B-7D2632581898}
 		{99ADF9A8-B7A9-44AA-85AA-9040A220CAD6} = {FDA81CD0-E67C-4F8F-9C1B-7D2632581898}
 		{0FE32A14-B32D-4F36-8D37-CF11357884F6} = {CC5F6FB4-4140-4427-8CD5-741363DE08F5}
-		{02B20F07-FFBC-4E48-995A-80B85AED86F0} = {D33831F5-8FD5-408F-90DF-7907CBACA8D0}
-		{17FC7A36-E7C1-4159-81DA-CBD06FEB937E} = {D33831F5-8FD5-408F-90DF-7907CBACA8D0}
-		{D33831F5-8FD5-408F-90DF-7907CBACA8D0} = {26659BC5-07F5-4AF0-B0F0-4B44628330B4}
-		{A5ACB1F9-60A6-46DB-9602-7987BE5941B7} = {26659BC5-07F5-4AF0-B0F0-4B44628330B4}
-		{E59BEA82-E497-4FDA-8A16-F48CD05BFBAC} = {D33831F5-8FD5-408F-90DF-7907CBACA8D0}
+		{02B20F07-FFBC-4E48-995A-80B85AED86F0} = {26659BC5-07F5-4AF0-B0F0-4B44628330B4}
+		{17FC7A36-E7C1-4159-81DA-CBD06FEB937E} = {26659BC5-07F5-4AF0-B0F0-4B44628330B4}
+		{E59BEA82-E497-4FDA-8A16-F48CD05BFBAC} = {26659BC5-07F5-4AF0-B0F0-4B44628330B4}
 		{D9DEC475-1137-480C-915A-6936ED65CE99} = {28FAC230-6460-4273-B0D4-CB8E00CBDB00}
 		{1FC5169D-3E2D-493E-9F52-9A258D6423D9} = {EE6A848E-1730-4442-AA9B-A12EBC85C644}
 		{86092E93-2679-4D8F-A0B3-490BA6B08BBE} = {EE6A848E-1730-4442-AA9B-A12EBC85C644}

@@ -11,7 +11,7 @@ using TaskoMask.Services.Monolith.Domain.Core.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI.Controllers
+namespace TaskoMask.Services.Monolith.API.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrganizationsApiController : BaseApiController, IOrganizationApiService

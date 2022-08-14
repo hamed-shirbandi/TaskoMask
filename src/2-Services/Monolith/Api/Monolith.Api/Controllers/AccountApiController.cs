@@ -12,7 +12,7 @@ using TaskoMask.Services.Monolith.Domain.Share.Enums;
 using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 
-namespace TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI.Controllers
+namespace TaskoMask.Services.Monolith.API.Controllers
 {
     /// <summary>
     /// 

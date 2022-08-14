@@ -5,18 +5,18 @@
 	  <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>7f763081-7ffe-4a61-b636-c05f18a8e18b</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    <AssemblyName>TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI</AssemblyName>
-    <RootNamespace>TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI</RootNamespace>
+    <AssemblyName>TaskoMask.Services.Monolith.API</AssemblyName>
+    <RootNamespace>TaskoMask.Services.Monolith.API</RootNamespace>
      
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\net6.0\TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net6.0\TaskoMask.Services.Monolith.API.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\net6.0\TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\net6.0\TaskoMask.Services.Monolith.API.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 	<ItemGroup>

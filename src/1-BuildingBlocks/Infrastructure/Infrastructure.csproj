@@ -1,9 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>TaskoMask.BuildingBlocks.Infrastructure</AssemblyName>
 		<RootNamespace>TaskoMask.BuildingBlocks.Infrastructure</RootNamespace>
 	</PropertyGroup>
-
+	<ItemGroup>
+	  <ProjectReference Include="..\Domain\Domain.csproj" />
+	</ItemGroup>
 </Project>

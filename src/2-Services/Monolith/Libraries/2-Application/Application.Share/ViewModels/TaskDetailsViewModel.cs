@@ -1,9 +1,9 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Activities;
-using TaskoMask.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Application.Share.Dtos.Workspace.Comments;
-using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Activities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
 
-namespace TaskoMask.Application.Share.ViewModels
+namespace TaskoMask.Services.Monolith.Application.Share.ViewModels
 {
     public class TaskDetailsViewModel
     {

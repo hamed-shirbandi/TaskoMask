@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskoMask.Domain.Core.Notifications
+namespace TaskoMask.Services.Monolith.Domain.Core.Notifications
 {
     /// <summary>
     /// 

@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
-using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Infrastructure.Data.Read.DbContext;
+using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Read.DataProviders
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders
 {
 
     /// <summary>

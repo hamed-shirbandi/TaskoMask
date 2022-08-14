@@ -1,10 +1,10 @@
-﻿using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Share.Dtos.Workspace.Boards;
-using TaskoMask.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 
-namespace TaskoMask.Application.Workspace.Boards.Services
+namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
 {
     public interface IBoardService: IApplicationService
     {

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace TaskoMask.Presentation.Framework.Web.Configuration.Captcha
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Captcha
 {
     public static class DNTCaptchaConfiguration
     {

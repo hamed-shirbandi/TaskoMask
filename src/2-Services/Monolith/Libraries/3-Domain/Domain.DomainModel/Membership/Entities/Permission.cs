@@ -1,7 +1,7 @@
-﻿using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Models;
 
 
-namespace TaskoMask.Domain.DomainModel.Membership.Entities
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities
 {
     public class Permission : BaseEntity
     {

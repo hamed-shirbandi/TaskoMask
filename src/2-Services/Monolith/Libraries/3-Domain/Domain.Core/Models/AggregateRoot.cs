@@ -2,10 +2,10 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
-using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Core.Notifications;
+using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.Services.Monolith.Domain.Core.Notifications;
 
-namespace TaskoMask.Domain.Core.Models
+namespace TaskoMask.Services.Monolith.Domain.Core.Models
 {
 
     /// <summary>

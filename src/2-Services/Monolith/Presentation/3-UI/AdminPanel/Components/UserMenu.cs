@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Membership.Operators.Services;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Components
+namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Components
 {
     public class UserMenu : ViewComponent
     {

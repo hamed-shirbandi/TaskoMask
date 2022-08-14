@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Domain.Core.Services
+namespace TaskoMask.Services.Monolith.Domain.Core.Services
 {
     public interface IEncryptionService
     {

@@ -1,6 +1,6 @@
-﻿@using TaskoMask.Application.Share.Dtos.Workspace.Comments
-@using TaskoMask.Domain.Share.Enums
-@inject TaskoMask.Presentation.Framework.Share.ApiContracts.ICommentApiService CommentApiService
+﻿@using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments
+@using TaskoMask.Services.Monolith.Domain.Share.Enums
+@inject TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts.ICommentApiService CommentApiService
 
 <EditForm Model="CommentModel" OnValidSubmit="HandleAddComment" class="form">
     <DataAnnotationsValidator />

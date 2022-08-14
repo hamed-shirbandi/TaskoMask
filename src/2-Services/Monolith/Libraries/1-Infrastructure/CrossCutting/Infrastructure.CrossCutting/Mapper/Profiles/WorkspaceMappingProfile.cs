@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Dtos.Workspace.Boards;
-using TaskoMask.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
-using TaskoMask.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Application.Share.Dtos.Workspace.Activities;
-using TaskoMask.Application.Share.Dtos.Workspace.Comments;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Activities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
 
-namespace TaskoMask.Application.Mapper.Profiles
+namespace TaskoMask.Services.Monolith.Application.Mapper.Profiles
 {
     public class WorkspaceMappingProfile : Profile
     {

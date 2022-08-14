@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
-using TaskoMask.Domain.Tests.Unit.TestData;
-using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;
 using Xunit;
 
-namespace TaskoMask.Domain.Tests.Unit.Authorization
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Authorization
 {
     public class UserUnitTests :TestsBase
     {

@@ -1,13 +1,13 @@
-﻿using TaskoMask.Application.Core.Commands;
+﻿using TaskoMask.Services.Monolith.Application.Core.Commands;
 using System;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using AutoMapper;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
 
-namespace TaskoMask.Application.Core.Services.Application
+namespace TaskoMask.Services.Monolith.Application.Core.Services.Application
 {
     public abstract class ApplicationService : IApplicationService
     {

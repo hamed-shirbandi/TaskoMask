@@ -1,4 +1,4 @@
-﻿namespace TaskoMask.Application.Share.Helpers
+﻿namespace TaskoMask.Services.Monolith.Application.Share.Helpers
 {
     public class CommandResult
     {

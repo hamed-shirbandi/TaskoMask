@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
 
-namespace TaskoMask.Presentation.Framework.Web.Components
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Components
 {
     public class DomainValidationSummary : ViewComponent
     {

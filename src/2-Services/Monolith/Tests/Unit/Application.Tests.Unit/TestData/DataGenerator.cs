@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Application.Tests.Unit.TestData
+namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 {
     internal static class DataGenerator
     {

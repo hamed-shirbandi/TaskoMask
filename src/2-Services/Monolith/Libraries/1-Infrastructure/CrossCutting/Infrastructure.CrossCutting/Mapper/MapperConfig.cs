@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using TaskoMask.Application.Mapper.Profiles;
+using TaskoMask.Services.Monolith.Application.Mapper.Profiles;
 
-namespace TaskoMask.Application.Mapper
+namespace TaskoMask.Services.Monolith.Application.Mapper
 {
 
     /// <summary>

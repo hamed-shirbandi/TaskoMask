@@ -1,11 +1,11 @@
-﻿using TaskoMask.Application.Core.Commands;
-using TaskoMask.Domain.Share.Enums;
+﻿using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
 
-namespace TaskoMask.Application.Workspace.Cards.Commands.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Models
 {
 
     public abstract class CardBaseCommand : BaseCommand

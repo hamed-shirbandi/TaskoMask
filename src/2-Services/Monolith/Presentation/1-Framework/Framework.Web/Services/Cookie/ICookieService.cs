@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Presentation.Framework.Web.Services.Cookie
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Cookie
 {
     public interface  ICookieService
     {

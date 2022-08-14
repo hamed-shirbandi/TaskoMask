@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Organizations.Commands.Models;
-using TaskoMask.Application.Workspace.Organizations.Queries.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Workspace.Projects.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Models;
 using System.Linq;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services.Application;
-using TaskoMask.Application.Workspace.Boards.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Models;
 
-namespace TaskoMask.Application.Workspace.Organizations.Services
+namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services
 {
     public class OrganizationService : ApplicationService, IOrganizationService
     {

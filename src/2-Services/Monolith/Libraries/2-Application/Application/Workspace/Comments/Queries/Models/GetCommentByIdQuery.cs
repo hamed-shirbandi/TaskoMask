@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Comments;
-using TaskoMask.Application.Core.Queries;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Workspace.Comments.Queries.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Models
 {
    
     public class GetCommentByIdQuery : BaseQuery<CommentBasicInfoDto>

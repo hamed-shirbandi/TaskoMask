@@ -1,7 +1,7 @@
-﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Projects
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Projects
 {
     public class ProjectAddedEvent : DomainEvent
     {

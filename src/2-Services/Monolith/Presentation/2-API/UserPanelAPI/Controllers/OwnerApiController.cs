@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Workspace.Owners.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OwnerApiController : BaseApiController, IOwnerApiService

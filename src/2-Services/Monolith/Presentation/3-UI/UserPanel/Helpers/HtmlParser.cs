@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Helpers
+namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers
 {
     public static class HtmlParser
     {

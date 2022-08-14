@@ -1,9 +1,9 @@
 ﻿
 
 using System.Net.Http.Json;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 
-namespace TaskoMask.Presentation.Framework.Share.Helpers
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers
 {
     public static class HttpClientRetryHelper
     {

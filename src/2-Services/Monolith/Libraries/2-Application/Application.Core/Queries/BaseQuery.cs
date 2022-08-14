@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace TaskoMask.Application.Core.Queries
+namespace TaskoMask.Services.Monolith.Application.Core.Queries
 {
 
     /// <summary>

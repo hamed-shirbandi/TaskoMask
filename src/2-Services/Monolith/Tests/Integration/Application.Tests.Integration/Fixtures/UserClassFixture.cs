@@ -1,12 +1,12 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Infrastructure.Data.Write.DbContext;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 using Xunit;
 
-namespace TaskoMask.Application.Tests.Integration.Fixtures
+namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
 {
 
     /// <summary>

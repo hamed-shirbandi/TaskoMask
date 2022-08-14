@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Application.Workspace.Projects.Commands.Models;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Workspace.Projects.Commands.Validations
+namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Validations
 {
     public abstract class ProjectValidation<TProjectCommand> : AbstractValidator<TProjectCommand> where TProjectCommand : ProjectBaseCommand
     {

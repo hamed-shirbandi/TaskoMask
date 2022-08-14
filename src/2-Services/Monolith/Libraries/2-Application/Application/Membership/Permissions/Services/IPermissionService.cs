@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Services.Application;
-using TaskoMask.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 
-namespace TaskoMask.Application.Membership.Permissions.Services
+namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Services
 {
     public interface IPermissionService : IApplicationService
     {

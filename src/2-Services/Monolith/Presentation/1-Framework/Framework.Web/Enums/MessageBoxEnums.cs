@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Presentation.Framework.Web.Enums
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Enums
 {
     public enum MessageType
     {

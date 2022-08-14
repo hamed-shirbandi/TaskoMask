@@ -1,11 +1,11 @@
-﻿using TaskoMask.Application.Core.Notifications;
+﻿using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using MediatR;
 using MediatR.Pipeline;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 
-namespace TaskoMask.Application.Core.Exceptions
+namespace TaskoMask.Services.Monolith.Application.Core.Exceptions
 {
     /// <summary>
     /// 

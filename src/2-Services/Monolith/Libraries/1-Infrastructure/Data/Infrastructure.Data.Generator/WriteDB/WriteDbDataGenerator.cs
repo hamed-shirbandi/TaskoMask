@@ -1,13 +1,13 @@
-﻿using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
-using TaskoMask.Infrastructure.Data.Generator.ReadDB;
+﻿using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB;
 
-namespace TaskoMask.Infrastructure.Data.Generator.WriteDB
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
 {
     internal static class WriteDbDataGenerator
     {

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Workspace.Comments.Services;
-using TaskoMask.Application.Share.Dtos.Workspace.Comments;
+using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
 using Microsoft.AspNetCore.Authorization;
-using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
+using TaskoMask.Services.Monolith.Application.Core.Services;
 
-namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CommentsApiController : BaseApiController, ICommentApiService

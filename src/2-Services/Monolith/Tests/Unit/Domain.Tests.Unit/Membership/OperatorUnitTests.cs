@@ -1,13 +1,13 @@
 ﻿using FluentAssertions;
 using System;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Tests.Unit.TestData;
-using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using Xunit;
 
-namespace TaskoMask.Domain.Tests.Unit.Membership
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Membership
 {
     public class OperatorUnitTests : TestsBase
     {

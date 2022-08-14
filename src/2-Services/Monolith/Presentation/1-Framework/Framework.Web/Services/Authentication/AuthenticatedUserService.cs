@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
-using TaskoMask.Domain.Share.Models;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Presentation.Framework.Web.Services.Authentication
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication
 {
     public class AuthenticatedUserService : IAuthenticatedUserService
     {

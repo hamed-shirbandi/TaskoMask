@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Application.Share.Dtos.Workspace.Cards
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards
 {
     public class AddCardDto: CardBaseDto
     {

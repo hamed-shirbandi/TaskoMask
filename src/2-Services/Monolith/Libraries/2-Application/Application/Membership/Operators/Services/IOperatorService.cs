@@ -1,11 +1,11 @@
-﻿using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 
-namespace TaskoMask.Application.Membership.Operators.Services
+namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
 {
     public interface IOperatorService: IApplicationService
     {

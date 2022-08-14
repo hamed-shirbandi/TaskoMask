@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Net;
 using System.Net.Http.Headers;
-using TaskoMask.Presentation.UI.UserPanel.Helpers;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Services.Http
+namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Http
 {
     /// <summary>
     /// 

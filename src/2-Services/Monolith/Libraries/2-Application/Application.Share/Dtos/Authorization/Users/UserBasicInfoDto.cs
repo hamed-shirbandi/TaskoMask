@@ -1,7 +1,7 @@
 ﻿
-using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 
-namespace TaskoMask.Application.Share.Dtos.Authorization.Users
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users
 {
     public class UserBasicInfoDto
     {

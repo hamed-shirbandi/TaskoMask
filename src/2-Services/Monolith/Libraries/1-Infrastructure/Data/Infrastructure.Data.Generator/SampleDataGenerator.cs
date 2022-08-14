@@ -1,8 +1,8 @@
 ﻿
-using TaskoMask.Infrastructure.Data.Generator.ReadDB;
-using TaskoMask.Infrastructure.Data.Generator.WriteDB;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB;
 
-namespace TaskoMask.Infrastructure.Data.Generator
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator
 {
 
     /// <summary>

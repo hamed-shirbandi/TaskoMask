@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
-namespace TaskoMask.Application.Mapper.MappingActions
+namespace TaskoMask.Services.Monolith.Application.Mapper.MappingActions
 {
     /// <summary>
     /// Mapping that needs to inject a dependency goes here

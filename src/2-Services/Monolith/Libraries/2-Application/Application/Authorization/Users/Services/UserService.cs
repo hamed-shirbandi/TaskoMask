@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Domain.DomainModel.Authorization.Data;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Application.Core.Services.Application;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Application.Core.Services;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Application.Core.Services;
 
-namespace TaskoMask.Application.Authorization.Users.Services
+namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 {
     public class UserService : ApplicationService, IUserService
     {

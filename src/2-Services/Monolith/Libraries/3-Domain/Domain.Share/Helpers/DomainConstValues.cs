@@ -1,6 +1,6 @@
 ﻿
 
-namespace TaskoMask.Domain.Share.Helpers
+namespace TaskoMask.Services.Monolith.Domain.Share.Helpers
 {
     public static class DomainConstValues
     {

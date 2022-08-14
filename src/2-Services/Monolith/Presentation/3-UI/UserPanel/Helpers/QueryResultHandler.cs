@@ -1,9 +1,9 @@
 ﻿using Blazored.Modal;
 using Blazored.Toast.Services;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.ComponentMessage;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Helpers
+namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers
 {
     public class QueryResultHandler<T>
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Domain.Core.Extensions
+namespace TaskoMask.Services.Monolith.Domain.Core.Extensions
 {
 
     /// <summary>

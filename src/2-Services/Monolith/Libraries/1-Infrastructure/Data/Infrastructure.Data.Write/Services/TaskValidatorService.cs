@@ -1,7 +1,7 @@
-﻿using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
+﻿using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 
-namespace TaskoMask.Infrastructure.Data.Write.Services
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Services
 {
         /// <summary>
         /// 

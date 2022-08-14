@@ -2,10 +2,10 @@ using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Headers;
 using System.Security.Claims;
-using TaskoMask.Presentation.Framework.Share.Helpers;
-using TaskoMask.Presentation.UI.UserPanel.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
+namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Authentication
 {
     public class AuthStateProvider : AuthenticationStateProvider
     {

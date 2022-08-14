@@ -1,10 +1,10 @@
 ﻿
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Domain.DataModel.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 
-namespace TaskoMask.Application.Mapper.MappingActions
+namespace TaskoMask.Services.Monolith.Application.Mapper.MappingActions
 {
     /// <summary>
     /// Mapping that needs to inject a dependency goes here

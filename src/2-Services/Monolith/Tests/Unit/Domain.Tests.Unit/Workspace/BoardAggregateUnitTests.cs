@@ -3,21 +3,21 @@ using MongoDB.Bson;
 using NSubstitute;
 using System;
 using System.Linq;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Tests.Unit.TestData;
-using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
-using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Boards;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Cards;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Boards;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Cards;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
 using Xunit;
 
-namespace TaskoMask.Domain.Tests.Unit.Workspace
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 {
     public class BoardAggregateUnitTests :TestsBase
     {

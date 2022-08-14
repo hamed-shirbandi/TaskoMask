@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Share.Dtos.Common;
-using TaskoMask.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Common;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Workspace.Owners
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners
 {
     public class OwnerBasicInfoDto 
     {

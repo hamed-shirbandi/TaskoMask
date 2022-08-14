@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Services
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services
 {
     /// <summary>
     /// Some validations that need persistence layer to do

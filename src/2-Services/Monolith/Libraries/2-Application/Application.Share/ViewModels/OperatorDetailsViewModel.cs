@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 
-namespace TaskoMask.Application.Share.ViewModels
+namespace TaskoMask.Services.Monolith.Application.Share.ViewModels
 {
     public class OperatorDetailsViewModel
     {

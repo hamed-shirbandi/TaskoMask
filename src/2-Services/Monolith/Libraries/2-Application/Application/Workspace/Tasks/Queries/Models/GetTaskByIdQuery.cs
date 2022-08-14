@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Workspace.Tasks.Queries.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models
 {
    
     public class GetTaskByIdQuery : BaseQuery<TaskBasicInfoDto>

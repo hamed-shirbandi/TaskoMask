@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Workspace.Organizations
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations
 {
     public abstract class OrganizationBaseDto
     {

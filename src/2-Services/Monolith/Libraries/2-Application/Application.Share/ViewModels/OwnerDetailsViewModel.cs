@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
 
-namespace TaskoMask.Application.Share.ViewModels
+namespace TaskoMask.Services.Monolith.Application.Share.ViewModels
 {
     public class OwnerDetailsViewModel
     {

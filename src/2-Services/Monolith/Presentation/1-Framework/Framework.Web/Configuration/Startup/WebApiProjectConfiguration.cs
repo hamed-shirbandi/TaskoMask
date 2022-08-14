@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication;
-using TaskoMask.Presentation.Framework.Web.Configuration.Swagger;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.JwtAuthentication;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Swagger;
 
-namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Startup
 {
 
     /// <summary>

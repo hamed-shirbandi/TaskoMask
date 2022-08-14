@@ -1,16 +1,16 @@
-﻿using TaskoMask.Application.Membership.Roles.Services;
+﻿using TaskoMask.Services.Monolith.Application.Membership.Roles.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
-using TaskoMask.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Presentation.Framework.Web.Filters;
-using TaskoMask.Presentation.Framework.Web.Extensions;
-using TaskoMask.Presentation.Framework.Web.Enums;
-using TaskoMask.Presentation.Framework.Web.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Filters;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Extensions;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Enums;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Helpers;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Areas.Membership.Controllers
 {
 
     [Authorize]

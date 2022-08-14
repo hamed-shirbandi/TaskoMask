@@ -2,20 +2,20 @@
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Workspace.Owners.Queries.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Collections.Generic;
-using TaskoMask.Domain.DomainModel.Authorization.Data;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 
-namespace TaskoMask.Application.Workspace.Owners.Queries.Handlers
+namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Handlers
 {
     public class OwnerQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOwnerByIdQuery, OwnerBasicInfoDto>,

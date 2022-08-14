@@ -1,7 +1,7 @@
-﻿using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Enums;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 
-namespace TaskoMask.Domain.DomainModel.Authorization.Entities
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities
 {
     public class User : BaseEntity
     {

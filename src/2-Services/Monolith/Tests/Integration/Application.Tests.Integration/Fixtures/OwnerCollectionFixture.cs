@@ -3,14 +3,14 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Organizations.Services;
-using TaskoMask.Application.Workspace.Owners.Services;
-using TaskoMask.Application.Workspace.Projects.Services;
-using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Infrastructure.Data.Read.DbContext;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
+using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 using Xunit;
 
-namespace TaskoMask.Application.Tests.Integration.Fixtures
+namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
 {
 
     [CollectionDefinition(nameof(OwnerCollectionFixture))]

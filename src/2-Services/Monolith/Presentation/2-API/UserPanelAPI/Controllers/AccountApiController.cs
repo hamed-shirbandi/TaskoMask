@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Workspace.Owners.Services;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication;
-using TaskoMask.Domain.Share.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Presentation.Framework.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.JwtAuthentication;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
 
-namespace TaskoMask.Presentation.API.UserPanelAPI.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.API.UserPanelAPI.Controllers
 {
     /// <summary>
     /// 

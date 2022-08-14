@@ -1,7 +1,7 @@
-﻿using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.Core.Events;
+﻿using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Events;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Boards
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Boards
 {
     public class BoardAddedEvent : DomainEvent
     {

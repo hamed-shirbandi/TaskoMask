@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using NSubstitute;
 using System;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
 
-namespace TaskoMask.Application.Tests.Unit.TestData
+namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 {
     public abstract class TestsBase : IDisposable
     {

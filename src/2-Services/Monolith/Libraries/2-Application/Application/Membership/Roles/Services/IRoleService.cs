@@ -1,11 +1,11 @@
-﻿using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using System.Collections.Generic;
-using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 
-namespace TaskoMask.Application.Membership.Roles.Services
+namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
 {
     public interface IRoleService : IApplicationService
     {

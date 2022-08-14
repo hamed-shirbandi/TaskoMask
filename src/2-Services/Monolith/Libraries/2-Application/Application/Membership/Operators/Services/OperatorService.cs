@@ -1,21 +1,21 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.Domain.DomainModel.Membership.Data;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 using System.Linq;
-using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Core.Services.Application;
-using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 
-namespace TaskoMask.Application.Membership.Operators.Services
+namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
 {
     public class OperatorService : ApplicationService, IOperatorService
     {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Membership.Roles
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles
 {
     public abstract class RoleBaseDto
     {

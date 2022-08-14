@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Application.Share.Dtos.Authorization.Users
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users
 {
     public class UserJwtTokenDto
     {

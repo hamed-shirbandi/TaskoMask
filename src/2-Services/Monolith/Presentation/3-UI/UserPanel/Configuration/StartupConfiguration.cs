@@ -2,15 +2,16 @@
 using Blazored.Modal;
 using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
-using TaskoMask.Presentation.Framework.Share.Configuration.Startup;
-using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Presentation.UI.UserPanel.Services.Authentication;
-using TaskoMask.Presentation.UI.UserPanel.Services.API;
-using TaskoMask.Presentation.UI.UserPanel.Services.DragDrop;
-using TaskoMask.Presentation.UI.UserPanel.Services.Http;
-using TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.Configuration.Startup;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Authentication;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.API;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.DragDrop;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Http;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.ComponentMessage;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Configuration
+namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Configuration
 {
 
     /// <summary>

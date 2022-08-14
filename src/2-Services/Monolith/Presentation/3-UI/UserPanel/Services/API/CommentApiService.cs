@@ -1,9 +1,9 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Comments;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Presentation.Framework.Share.Services.Http;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.Services.Http;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Services.API
+namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.API
 {
     public class CommentApiService : ICommentApiService
     {

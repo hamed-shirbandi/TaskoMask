@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Share.Dtos.Common;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Domain.Core.ValueObjects;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.Share.Models;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Common;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Domain.Core.ValueObjects;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
-namespace TaskoMask.Application.Mapper.Profiles
+namespace TaskoMask.Services.Monolith.Application.Mapper.Profiles
 {
     public class CommonMappingProfile : Profile
     {

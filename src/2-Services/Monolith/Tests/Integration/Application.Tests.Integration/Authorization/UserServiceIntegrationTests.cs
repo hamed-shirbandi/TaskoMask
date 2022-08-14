@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
 using System.Threading.Tasks;
-using TaskoMask.Application.Tests.Integration.Fixtures;
-using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 using Xunit;
 
 
-namespace TaskoMask.Application.Tests.Integration.Authorization
+namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Authorization
 {
     public class UserServiceIntegrationTests : IClassFixture<UserClassFixture>
     {

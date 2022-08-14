@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders
 {
     internal class BoardBuilder
     {

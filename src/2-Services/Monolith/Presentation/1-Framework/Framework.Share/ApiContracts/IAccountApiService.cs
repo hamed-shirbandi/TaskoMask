@@ -1,10 +1,10 @@
-﻿using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 
-namespace TaskoMask.Presentation.Framework.Share.ApiContracts
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts
 {
-    public  interface IAccountApiService
+    public interface IAccountApiService
     {
         Task<Result<UserJwtTokenDto>> Login(UserLoginDto input);
         Task<Result<UserJwtTokenDto>> Register(RegisterOwnerDto input);

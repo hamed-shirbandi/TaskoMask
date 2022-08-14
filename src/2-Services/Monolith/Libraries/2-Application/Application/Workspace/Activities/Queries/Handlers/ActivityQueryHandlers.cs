@@ -3,13 +3,13 @@ using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Activities.Queries.Models;
-using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Domain.DataModel.Data;
-using TaskoMask.Application.Share.Dtos.Workspace.Activities;
+using TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Activities;
 
-namespace TaskoMask.Application.Workspace.Activities.Queries.Handlers
+namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.Handlers
 {
     public class ActivityQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetActivitiesByTaskIdQuery, IEnumerable<ActivityBasicInfoDto>>

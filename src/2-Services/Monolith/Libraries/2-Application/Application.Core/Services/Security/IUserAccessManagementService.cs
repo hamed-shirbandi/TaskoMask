@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TaskoMask.Application.Core.Services
+namespace TaskoMask.Services.Monolith.Application.Core.Services
 {
     public interface IUserAccessManagementService
     {

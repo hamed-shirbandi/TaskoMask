@@ -1,6 +1,6 @@
-﻿using TaskoMask.Application.Share.Dtos.Common;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Common;
 
-namespace TaskoMask.Application.Share.Dtos.Workspace.Cards
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards
 {
     public class CardBasicInfoDto: CardBaseDto
     {

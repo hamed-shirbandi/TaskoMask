@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskoMask.Domain.Tests.Unit.TestData
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData
 {
     public abstract class TestsBase:IDisposable
     {

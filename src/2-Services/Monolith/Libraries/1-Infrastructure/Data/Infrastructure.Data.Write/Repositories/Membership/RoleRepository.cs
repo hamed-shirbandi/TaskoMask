@@ -4,12 +4,12 @@ using MongoDB.Driver.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Domain.DomainModel.Membership.Data;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.Write.DbContext;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Write.Repositories.Membership
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Membership
 {
     public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {

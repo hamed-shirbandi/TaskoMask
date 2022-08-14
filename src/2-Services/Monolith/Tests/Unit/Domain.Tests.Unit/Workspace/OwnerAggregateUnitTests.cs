@@ -2,18 +2,18 @@
 using MongoDB.Bson;
 using System;
 using System.Linq;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Tests.Unit.TestData;
-using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
-using TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Owners;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 using Xunit;
 
-namespace TaskoMask.Domain.Tests.Unit.Workspace
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 {
     public class OwnerAggregateUnitTests : TestsBase
     {

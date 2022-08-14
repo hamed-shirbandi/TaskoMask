@@ -1,28 +1,28 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Workspace.Owners.Commands.Models;
-using TaskoMask.Application.Workspace.Owners.Queries.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Workspace.Organizations.Queries.Models;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
-using TaskoMask.Application.Core.Services.Application;
-using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Workspace.Organizations.Services;
-using TaskoMask.Application.Workspace.Projects.Services;
-using TaskoMask.Application.Workspace.Boards.Services;
-using TaskoMask.Application.Workspace.Cards.Services;
-using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
-using TaskoMask.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Application.Share.Dtos.Workspace.Boards;
-using TaskoMask.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Cards.Services;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 using Microsoft.Extensions.Configuration;
 
-namespace TaskoMask.Application.Workspace.Owners.Services
+namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
 {
     public class OwnerService : ApplicationService, IOwnerService
     {

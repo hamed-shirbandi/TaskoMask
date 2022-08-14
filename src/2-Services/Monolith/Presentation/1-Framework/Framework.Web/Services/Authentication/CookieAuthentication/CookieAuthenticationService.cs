@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
-using TaskoMask.Domain.Share.Models;
-using TaskoMask.Presentation.Framework.Share.Extensions;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.Extensions;
 
-namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
 {
     /// <summary>
     /// Represents service using cookie for the authentication

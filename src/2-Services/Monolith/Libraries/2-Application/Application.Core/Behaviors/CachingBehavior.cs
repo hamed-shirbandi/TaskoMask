@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Core.Behaviors
+namespace TaskoMask.Services.Monolith.Application.Core.Behaviors
 {
 
     /// <summary>

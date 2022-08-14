@@ -1,6 +1,6 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Boards;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
 
-namespace TaskoMask.Application.Share.ViewModels
+namespace TaskoMask.Services.Monolith.Application.Share.ViewModels
 {
    public class BoardDetailsViewModel
     {

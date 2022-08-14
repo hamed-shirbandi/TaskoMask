@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Application.Share.Dtos.Workspace.Cards;
-using TaskoMask.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Cards;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Workspace.Cards.Queries.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models
 {
    
     public class GetCardsByBoardIdQuery : BaseQuery<IEnumerable<CardBasicInfoDto>>

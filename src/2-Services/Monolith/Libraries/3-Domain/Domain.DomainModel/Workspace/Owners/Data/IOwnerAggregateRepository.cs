@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Data
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data
 {
     public interface IOwnerAggregateRepository : IBaseAggregateRepository<Owner>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace TaskoMask.Domain.Core.Events
+namespace TaskoMask.Services.Monolith.Domain.Core.Events
 {
     /// <summary>
     /// 

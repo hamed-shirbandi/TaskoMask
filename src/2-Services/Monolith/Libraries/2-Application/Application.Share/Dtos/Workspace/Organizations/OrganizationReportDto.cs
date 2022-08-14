@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Workspace.Organizations
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations
 {
    public class OrganizationReportDto : ProjectReportDto
     {

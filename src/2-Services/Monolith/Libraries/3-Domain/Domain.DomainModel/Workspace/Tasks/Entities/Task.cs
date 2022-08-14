@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Comments;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Tasks;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Services;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Specifications;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.ValueObjects.Tasks;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Comments;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Tasks;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Specifications;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueObjects.Tasks;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities
 
 {
     public class Task : AggregateRoot

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace TaskoMask.Application.Core.Extensions
+namespace TaskoMask.Services.Monolith.Application.Core.Extensions
 {
 
     /// <summary>

@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Extensions;
-using TaskoMask.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.Services.Monolith.Application.Core.Extensions;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
 
-namespace TaskoMask.Application.Core.Behaviors
+namespace TaskoMask.Services.Monolith.Application.Core.Behaviors
 {
     /// <summary>
     /// automatic command validation by check annotation and fluent validation (if exist)

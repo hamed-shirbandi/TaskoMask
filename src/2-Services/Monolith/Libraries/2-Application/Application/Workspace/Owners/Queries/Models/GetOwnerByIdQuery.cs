@@ -1,9 +1,9 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Core.Queries;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
 
 
-namespace TaskoMask.Application.Workspace.Owners.Queries.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models
 {
     public class GetOwnerByIdQuery : BaseQuery<OwnerBasicInfoDto>
     {

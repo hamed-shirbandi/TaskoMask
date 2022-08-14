@@ -1,8 +1,8 @@
 using System.Security.Claims;
 using System.Text.Json;
-using TaskoMask.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
 
-namespace TaskoMask.Presentation.Framework.Share.Helpers
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers
 {
     /// <summary>
     /// From the Steve Sanderson’s Mission Control project:

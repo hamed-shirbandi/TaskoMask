@@ -3,17 +3,17 @@ using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 
-namespace TaskoMask.Application.Workspace.Tasks.Queries.Handlers
+namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handlers
 {
     public class TaskQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,

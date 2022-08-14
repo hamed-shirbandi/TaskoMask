@@ -1,14 +1,14 @@
-﻿using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Core.Commands;
+using TaskoMask.Services.Monolith.Application.Core.Commands;
 using AutoMapper;
-using TaskoMask.Presentation.Framework.Web.Helpers;
-using TaskoMask.Presentation.Framework.Web.Models;
-using TaskoMask.Presentation.Framework.Web.Enums;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Models;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Enums;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
 using System;
 
-namespace TaskoMask.Presentation.Framework.Web.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers
 {
     public class BaseMvcController : Controller
     {

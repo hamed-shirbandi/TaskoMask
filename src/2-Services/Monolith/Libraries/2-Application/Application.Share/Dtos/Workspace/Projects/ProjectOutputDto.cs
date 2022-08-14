@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Workspace.Projects
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects
 {
    public class ProjectOutputDto: ProjectBasicInfoDto
     {

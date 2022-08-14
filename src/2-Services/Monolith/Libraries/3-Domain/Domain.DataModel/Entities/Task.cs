@@ -1,9 +1,9 @@
-﻿using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.Share.Resources;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.DataModel.Entities
+namespace TaskoMask.Services.Monolith.Domain.DataModel.Entities
 {
     public class Task : BaseEntity
     {

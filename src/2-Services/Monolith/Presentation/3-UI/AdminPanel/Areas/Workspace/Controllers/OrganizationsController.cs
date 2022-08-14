@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
-using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Application.Workspace.Organizations.Services;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using System.Threading.Tasks;
-using TaskoMask.Presentation.Framework.Web.Filters;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Filters;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Areas.Workspace.Controllers
 {
     [Authorize]
     [Area("Workspace")]

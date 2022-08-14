@@ -3,12 +3,12 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
 using System.Linq;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Infrastructure.Data.Write.DbContext;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Write.DataProviders
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
 {
 
     /// <summary>

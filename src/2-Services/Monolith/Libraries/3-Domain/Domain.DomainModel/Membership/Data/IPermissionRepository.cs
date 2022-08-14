@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Domain.Core.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Data;
 
-namespace TaskoMask.Domain.DomainModel.Membership.Data
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data
 {
     public interface IPermissionRepository : IBaseRepository<Permission>
     {

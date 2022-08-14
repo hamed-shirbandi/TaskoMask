@@ -3,19 +3,19 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Domain.DomainModel.Membership.Data;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 
-namespace TaskoMask.Application.Membership.Permissions.Services
+namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Services
 {
     public class PermissionService : ApplicationService, IPermissionService
     {

@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Tests.Unit.TestData;
-using TaskoMask.Application.Workspace.Owners.Commands.Handlers;
-using TaskoMask.Application.Workspace.Owners.Commands.Models;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Services.Monolith.Application.Tests.Unit.TestData;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Handlers;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Owners;
 using Xunit;
 
-namespace TaskoMask.Application.Tests.Unit.Workspace
+namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Workspace
 {
     public class OwnerCommandHandlersUnitTests : TestsBase
     {

@@ -4,17 +4,17 @@ using NSubstitute;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Membership.Operators.Services;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Application.Tests.Unit.Membership.TestData;
-using TaskoMask.Application.Tests.Unit.TestData;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.DomainModel.Membership.Data;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Tests.Unit.Membership.TestData;
+using TaskoMask.Services.Monolith.Application.Tests.Unit.TestData;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using Xunit;
 
-namespace TaskoMask.Application.Tests.Unit.Membership
+namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Membership
 {
     public class OperatorServiceUnitTests: TestsBase
     {

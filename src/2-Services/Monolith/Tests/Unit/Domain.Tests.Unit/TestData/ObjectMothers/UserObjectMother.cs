@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
-namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
 {
     internal static class UserObjectMother
     {

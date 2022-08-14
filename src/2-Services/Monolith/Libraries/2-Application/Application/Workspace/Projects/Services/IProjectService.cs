@@ -1,11 +1,11 @@
-﻿using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Application.Share.ViewModels;
-using TaskoMask.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 
-namespace TaskoMask.Application.Workspace.Projects.Services
+namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
 {
     public interface IProjectService : IApplicationService
     {

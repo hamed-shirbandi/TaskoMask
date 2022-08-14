@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Boards;
-using TaskoMask.Application.Core.Queries;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Queries.Models.Boards
+namespace TaskoMask.Services.Monolith.Application.Queries.Models.Boards
 {
    
     public class GetBoardsCountQuery : BaseQuery<long>

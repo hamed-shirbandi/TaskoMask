@@ -1,6 +1,6 @@
-﻿using TaskoMask.Domain.Share.Models;
+﻿using TaskoMask.Services.Monolith.Domain.Share.Models;
 
-namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.CookieAuthentication
 {
     public interface ICookieAuthenticationService
     {

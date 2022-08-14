@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Workspace.Tasks.Commands.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Models
 {
     public class UpdateTaskCommand : TaskBaseCommand
     {

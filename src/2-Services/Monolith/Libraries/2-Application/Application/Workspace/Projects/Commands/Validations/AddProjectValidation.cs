@@ -1,6 +1,6 @@
-﻿using TaskoMask.Application.Workspace.Projects.Commands.Models;
+﻿using TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Models;
 
-namespace TaskoMask.Application.Workspace.Projects.Commands.Validations
+namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Validations
 {
    public class AddProjectValidation:ProjectValidation<AddProjectCommand>
     {

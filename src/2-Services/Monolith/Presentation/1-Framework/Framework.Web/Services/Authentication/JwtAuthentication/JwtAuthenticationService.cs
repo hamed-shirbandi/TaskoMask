@@ -4,11 +4,11 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Http;
-using TaskoMask.Domain.Share.Models;
-using TaskoMask.Presentation.Framework.Share.Extensions;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.Extensions;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.Models;
 
-namespace TaskoMask.Presentation.Framework.Web.Services.Authentication.JwtAuthentication
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.JwtAuthentication
 {
     public class JwtAuthenticationService :  IJwtAuthenticationService
     {

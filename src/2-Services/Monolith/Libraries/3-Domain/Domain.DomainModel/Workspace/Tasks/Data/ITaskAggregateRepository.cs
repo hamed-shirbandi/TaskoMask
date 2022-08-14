@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Data;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Data
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data
 {
     public interface ITaskAggregateRepository : IBaseAggregateRepository<Entities.Task>
     {

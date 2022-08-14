@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using System.Security.Claims;
-using TaskoMask.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
 
-namespace TaskoMask.Presentation.Framework.Share.Extensions
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Extensions
 {
     public static class ClaimExtensions
     {

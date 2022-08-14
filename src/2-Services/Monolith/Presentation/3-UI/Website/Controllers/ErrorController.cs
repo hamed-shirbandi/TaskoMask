@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Presentation.Framework.Web.Models;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Models;
 
-namespace TaskoMask.Presentation.UI.Website.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.UI.Website.Controllers
 {
     public class ErrorController : BaseMvcController
     {

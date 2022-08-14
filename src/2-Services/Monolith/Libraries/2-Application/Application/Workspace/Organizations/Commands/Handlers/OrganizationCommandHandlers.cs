@@ -1,18 +1,18 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Organizations.Commands.Models;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Application.Commands.Handlers.Organizations
+namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organizations
 {
     public class OrganizationCommandHandlers : BaseCommandHandler,
         IRequestHandler<AddOrganizationCommand, CommandResult>,

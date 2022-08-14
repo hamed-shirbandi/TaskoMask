@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.CookieAuthentication;
 using DNTCaptcha.Core;
-using TaskoMask.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
 using AutoMapper;
-using TaskoMask.Application.Membership.Operators.Services;
-using TaskoMask.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Controllers
 {
     public class AccountController : BaseMvcController
     {

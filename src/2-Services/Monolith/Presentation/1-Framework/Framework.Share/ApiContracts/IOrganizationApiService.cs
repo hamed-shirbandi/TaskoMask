@@ -1,8 +1,8 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Application.Share.ViewModels;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 
-namespace TaskoMask.Presentation.Framework.Share.ApiContracts
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts
 {
     public interface IOrganizationApiService
     {

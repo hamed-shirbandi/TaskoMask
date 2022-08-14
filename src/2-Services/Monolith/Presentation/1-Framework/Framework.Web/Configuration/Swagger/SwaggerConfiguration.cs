@@ -5,7 +5,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 
-namespace TaskoMask.Presentation.Framework.Web.Configuration.Swagger
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Swagger
 {
     public static class DNTCaptchaConfiguration
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskoMask.Application.Core.Queries
+namespace TaskoMask.Services.Monolith.Application.Core.Queries
 {
     /// <summary>
     /// to mark queries that we want to cache

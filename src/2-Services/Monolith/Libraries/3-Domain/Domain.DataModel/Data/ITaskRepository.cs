@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.Core.Data;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 
-namespace TaskoMask.Domain.DataModel.Data
+namespace TaskoMask.Services.Monolith.Domain.DataModel.Data
 {
     public interface ITaskRepository : IBaseRepository<Entities.Task>
     {

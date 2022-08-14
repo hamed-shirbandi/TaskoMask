@@ -1,7 +1,7 @@
 ﻿using System;
-using TaskoMask.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 
-namespace TaskoMask.Application.Core.Exceptions
+namespace TaskoMask.Services.Monolith.Application.Core.Exceptions
 {
 
     /// <summary>

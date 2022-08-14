@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Core.Data
+namespace TaskoMask.Services.Monolith.Domain.Core.Data
 {
     public interface IBaseAggregateRepository<TEntity>: IBaseRepository<TEntity> where TEntity: AggregateRoot
     {

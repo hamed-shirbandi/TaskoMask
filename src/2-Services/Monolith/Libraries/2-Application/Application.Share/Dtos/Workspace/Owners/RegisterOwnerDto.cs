@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Workspace.Owners
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners
 {
     public class RegisterOwnerDto
     {

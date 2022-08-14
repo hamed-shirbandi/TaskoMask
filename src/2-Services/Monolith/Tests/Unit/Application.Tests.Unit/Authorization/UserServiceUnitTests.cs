@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Authorization.Users.Services;
-using TaskoMask.Application.Core.Services;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Application.Tests.Unit.TestData;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.DomainModel.Authorization.Data;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Application.Core.Services;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Tests.Unit.TestData;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using Xunit;
 
-namespace TaskoMask.Application.Tests.Unit.Authorization
+namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Authorization
 {
     public class UserServiceUnitTests : TestsBase
     {

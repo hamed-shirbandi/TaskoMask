@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Boards;
-using TaskoMask.Application.Share.Dtos.Workspace.Projects;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Boards;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
 
-namespace TaskoMask.Application.Share.ViewModels
+namespace TaskoMask.Services.Monolith.Application.Share.ViewModels
 {
    public class ProjectDetailsViewModel
     {

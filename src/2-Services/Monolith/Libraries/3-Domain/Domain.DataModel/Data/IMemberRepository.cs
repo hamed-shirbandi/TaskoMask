@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.DataModel.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Data;
+using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 
-namespace TaskoMask.Domain.DataModel.Data
+namespace TaskoMask.Services.Monolith.Domain.DataModel.Data
 {
 
     public interface IMemberRepository : IBaseRepository<Member>

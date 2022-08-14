@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Workspace.Tasks;
-using TaskoMask.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Tasks;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Workspace.Tasks.Queries.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models
 {
     public class GetTasksByCardIdQuery : BaseQuery<IEnumerable<TaskBasicInfoDto>>
     {

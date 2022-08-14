@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards
 {
     public class BoardProjectId : BaseValueObject
     {

@@ -1,7 +1,7 @@
-﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Boards
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Boards
 {
     public class BoardDeletedEvent : DomainEvent
     {

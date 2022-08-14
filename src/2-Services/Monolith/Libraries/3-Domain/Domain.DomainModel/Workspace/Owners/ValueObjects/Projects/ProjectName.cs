@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Projects
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Projects
 {
     public class ProjectName : BaseValueObject
     {

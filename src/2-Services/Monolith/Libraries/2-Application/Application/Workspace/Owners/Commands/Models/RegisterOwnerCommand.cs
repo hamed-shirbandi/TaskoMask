@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Workspace.Owners.Commands.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models
 {
    public class RegisterOwnerCommand : OwnerBaseCommand
     {

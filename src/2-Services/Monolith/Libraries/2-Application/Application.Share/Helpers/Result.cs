@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Share.Helpers
+namespace TaskoMask.Services.Monolith.Application.Share.Helpers
 {
 
     /// <summary>

@@ -2,12 +2,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using TaskoMask.Infrastructure.Data.Generator;
-using TaskoMask.Infrastructure.Data.Read.DataProviders;
-using TaskoMask.Infrastructure.Data.Write.DataProviders;
-using TaskoMask.Presentation.Framework.Web.Configuration.Startup;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Startup;
 
-namespace TaskoMask.Application.Tests.Integration.Fixtures
+namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
 {
     /// <summary>
     /// Each test class must have its own fixture and each fixture initialize and dispose a unique database

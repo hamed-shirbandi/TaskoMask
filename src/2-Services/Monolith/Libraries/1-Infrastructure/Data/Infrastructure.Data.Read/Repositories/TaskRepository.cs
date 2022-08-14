@@ -3,13 +3,13 @@ using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Domain.DataModel.Data;
-using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.Read.DbContext;
+using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Read.Repositories
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories
 {
     public class TaskRepository : BaseRepository<Task>, ITaskRepository
     {

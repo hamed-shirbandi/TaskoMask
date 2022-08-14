@@ -1,11 +1,11 @@
-﻿using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using TaskoMask.Application.Core.Commands;
+using TaskoMask.Services.Monolith.Application.Core.Commands;
 using AutoMapper;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Presentation.Framework.Web.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers
 {
     public class BaseApiController : Controller
     {

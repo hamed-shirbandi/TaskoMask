@@ -3,18 +3,18 @@ using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Organizations.Queries.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
-using TaskoMask.Application.Core.Queries;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.DataModel.Data;
-using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 
-namespace TaskoMask.Application.Workspace.Organizations.Queries.Handlers
+namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Handlers
 {
     public class OrganizationQueryHandlers : BaseQueryHandler,
         IRequestHandler<GetOrganizationByIdQuery, OrganizationBasicInfoDto>,

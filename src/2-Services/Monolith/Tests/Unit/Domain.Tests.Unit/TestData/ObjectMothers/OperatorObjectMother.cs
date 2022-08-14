@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 
-namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
 {
     internal static class OperatorObjectMother
     {

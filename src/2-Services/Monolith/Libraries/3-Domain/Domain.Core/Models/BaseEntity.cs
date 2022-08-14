@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
-using TaskoMask.Domain.Core.ValueObjects;
+using TaskoMask.Services.Monolith.Domain.Core.ValueObjects;
 
-namespace TaskoMask.Domain.Core.Models
+namespace TaskoMask.Services.Monolith.Domain.Core.Models
 {
 
     /// <summary>

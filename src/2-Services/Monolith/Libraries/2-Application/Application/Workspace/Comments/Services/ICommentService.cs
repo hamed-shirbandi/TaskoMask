@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Workspace.Comments;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 
-namespace TaskoMask.Application.Workspace.Comments.Services
+namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
 {
     public  interface ICommentService
     {

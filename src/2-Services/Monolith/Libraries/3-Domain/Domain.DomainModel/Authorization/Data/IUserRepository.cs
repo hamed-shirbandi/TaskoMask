@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Domain.Core.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Data;
 
-namespace TaskoMask.Domain.DomainModel.Authorization.Data
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data
 {
     public interface IUserRepository : IBaseRepository<User>
     {

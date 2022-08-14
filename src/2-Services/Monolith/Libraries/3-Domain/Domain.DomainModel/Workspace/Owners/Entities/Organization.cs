@@ -1,12 +1,12 @@
-﻿using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Organizations;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Organizations;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities
 {
     public class Organization : BaseEntity
     {

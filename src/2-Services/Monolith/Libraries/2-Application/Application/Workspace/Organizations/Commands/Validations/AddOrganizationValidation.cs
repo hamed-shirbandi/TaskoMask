@@ -1,6 +1,6 @@
-﻿using TaskoMask.Application.Workspace.Organizations.Commands.Models;
+﻿using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Models;
 
-namespace TaskoMask.Application.Workspace.Organizations.Commands.Validations
+namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Validations
 {
    public class AddOrganizationValidation:OrganizationValidation<AddOrganizationCommand>
     {

@@ -1,4 +1,4 @@
-﻿namespace TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage
+﻿namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.ComponentMessage
 {
     public interface IComponentMessageService
     {

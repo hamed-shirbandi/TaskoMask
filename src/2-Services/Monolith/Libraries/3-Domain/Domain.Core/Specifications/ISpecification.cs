@@ -1,6 +1,6 @@
 ﻿
 
-namespace TaskoMask.Domain.Core.Specifications
+namespace TaskoMask.Services.Monolith.Domain.Core.Specifications
 {
     public interface ISpecification<TEntity> 
     {

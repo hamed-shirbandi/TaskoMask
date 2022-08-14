@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Workspace.Owners.Commands.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models
 {
     public class UpdateOwnerProfileCommand : OwnerBaseCommand
     {

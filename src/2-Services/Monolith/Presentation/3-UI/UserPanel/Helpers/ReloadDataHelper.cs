@@ -1,6 +1,6 @@
-﻿using TaskoMask.Presentation.UI.UserPanel.Services.ComponentMessage;
+﻿using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.ComponentMessage;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Helpers
+namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers
 {
     public static class ReloadDataHelper
     {

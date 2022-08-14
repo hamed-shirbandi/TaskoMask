@@ -1,11 +1,11 @@
 ﻿using MongoDB.Driver;
 using System.Threading.Tasks;
-using TaskoMask.Domain.DomainModel.Authorization.Data;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.Write.DbContext;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Write.Repositories.Authorization
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Authorization
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {

@@ -1,10 +1,10 @@
-﻿using TaskoMask.Application.Share.Helpers;
+﻿using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Core.Services.Application;
-using TaskoMask.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
 
-namespace TaskoMask.Application.Authorization.Users.Services
+namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 {
     public interface IUserService : IApplicationService
     {

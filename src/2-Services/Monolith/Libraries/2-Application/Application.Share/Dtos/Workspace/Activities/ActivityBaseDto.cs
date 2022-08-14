@@ -1,6 +1,6 @@
 ﻿
 
-namespace TaskoMask.Application.Share.Dtos.Workspace.Activities
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Activities
 {
     public abstract class ActivityBaseDto
     {

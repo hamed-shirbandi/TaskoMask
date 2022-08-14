@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TaskoMask.Domain.Core.Models
+namespace TaskoMask.Services.Monolith.Domain.Core.Models
 {
 
     /// <summary>

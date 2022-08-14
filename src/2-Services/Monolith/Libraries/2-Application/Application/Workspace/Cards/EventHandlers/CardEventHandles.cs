@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using System.Threading;
-using TaskoMask.Domain.DataModel.Data;
-using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Cards;
+using TaskoMask.Services.Monolith.Domain.DataModel.Data;
+using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Cards;
 
-namespace TaskoMask.Application.Workspace.Cards.EventHandlers
+namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.EventHandlers
 {
     /// <summary>
     /// Sync data between Write and Read DB

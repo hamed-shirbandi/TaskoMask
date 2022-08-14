@@ -1,10 +1,10 @@
-﻿using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.ValueObjects.Cards;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Core.Exceptions;
+﻿using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Cards;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
 {
     public class Card : BaseEntity
     {

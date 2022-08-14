@@ -1,18 +1,18 @@
-﻿using TaskoMask.Domain.Core.Models;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Models;
 using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Boards;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Members;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Events.Cards;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Specifications;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Boards;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Members;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Cards;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Specifications;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Entities
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
 {
     public class Board: AggregateRoot
     {

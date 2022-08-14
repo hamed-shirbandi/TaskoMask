@@ -9,19 +9,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RedisCache.Core;
-using TaskoMask.Application.Workspace.Boards.Commands.Models;
-using TaskoMask.Application.Core.Behaviors;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Application.Mapper;
-using TaskoMask.Application.Workspace.Organizations.Commands.Validations;
-using TaskoMask.Domain.Core.Events;
-using TaskoMask.Infrastructure.Data.Write.DataProviders;
-using TaskoMask.Infrastructure.Data.Read.DataProviders;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication;
-using TaskoMask.Presentation.Framework.Web.Services.Cookie;
+using TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Core.Behaviors;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
+using TaskoMask.Services.Monolith.Application.Mapper;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Validations;
+using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Cookie;
 
-namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Startup
 {
 
     /// <summary>

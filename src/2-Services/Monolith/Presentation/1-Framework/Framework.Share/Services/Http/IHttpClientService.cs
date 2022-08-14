@@ -1,8 +1,8 @@
 ﻿
 
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 
-namespace TaskoMask.Presentation.Framework.Share.Services.Http
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Services.Http
 {
     public  interface IHttpClientService
     {

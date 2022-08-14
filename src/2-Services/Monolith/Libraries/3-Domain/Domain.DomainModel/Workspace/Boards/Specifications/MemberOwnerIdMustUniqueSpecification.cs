@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using TaskoMask.Domain.Core.Specifications;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Services.Monolith.Domain.Core.Specifications;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Specifications
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Specifications
 {
 
     internal class MemberOwnerIdMustUniqueSpecification : ISpecification<Board>

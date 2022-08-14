@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Dtos.Common;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Mapper.MappingActions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Models;
-using TaskoMask.Domain.Core.ValueObjects;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Common;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Application.Mapper.MappingActions;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Models;
+using TaskoMask.Services.Monolith.Domain.Core.ValueObjects;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
-namespace TaskoMask.Application.Mapper.Profiles
+namespace TaskoMask.Services.Monolith.Application.Mapper.Profiles
 {
     public class AuthorizationMappingProfile : Profile
     {

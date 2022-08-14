@@ -2,9 +2,9 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Infrastructure.CrossCutting.Services.Security
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services.Security
 {
     public class EncryptionService : IEncryptionService
     {

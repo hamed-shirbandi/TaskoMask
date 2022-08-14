@@ -1,10 +1,10 @@
-﻿using TaskoMask.Application.Core.Commands;
+﻿using TaskoMask.Services.Monolith.Application.Core.Commands;
 using System.ComponentModel.DataAnnotations;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
 
-namespace TaskoMask.Application.Workspace.Projects.Commands.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Models
 {
     public abstract class ProjectBaseCommand : BaseCommand
     {

@@ -1,7 +1,7 @@
-﻿using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Tasks.Events.Tasks
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Tasks
 {
     public class TaskUpdatedEvent : DomainEvent
     {

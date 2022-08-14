@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Projects.Commands.Models;
-using TaskoMask.Application.Workspace.Projects.Queries.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Application.Share.ViewModels;
+using TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
+using TaskoMask.Services.Monolith.Application.Share.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Workspace.Boards.Queries.Models;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using System.Linq;
 
-namespace TaskoMask.Application.Workspace.Projects.Services
+namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
 {
     public class ProjectService : ApplicationService, IProjectService
     {

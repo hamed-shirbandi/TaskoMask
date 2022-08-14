@@ -1,8 +1,8 @@
-﻿using TaskoMask.Domain.DataModel.Entities;
-using TaskoMask.Domain.Share.Enums;
-using TaskoMask.Domain.DomainModel.Authorization.Entities;
+﻿using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
+using TaskoMask.Services.Monolith.Domain.Share.Enums;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
-namespace TaskoMask.Infrastructure.Data.Generator.ReadDB
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB
 {
     internal static class ReadDbDataGenerator
     {

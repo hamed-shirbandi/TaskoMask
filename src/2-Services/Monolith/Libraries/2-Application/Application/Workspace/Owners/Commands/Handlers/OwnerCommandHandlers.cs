@@ -1,18 +1,18 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Application.Workspace.Owners.Commands.Models;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Data;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 
-namespace TaskoMask.Application.Workspace.Owners.Commands.Handlers
+namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Handlers
 {
     public class OwnerCommandHandlers : BaseCommandHandler,
         IRequestHandler<RegisterOwnerCommand, CommandResult>,

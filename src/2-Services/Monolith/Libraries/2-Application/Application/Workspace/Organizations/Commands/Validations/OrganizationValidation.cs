@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using TaskoMask.Application.Workspace.Organizations.Commands.Models;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Workspace.Organizations.Commands.Validations
+namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Validations
 {
     public abstract class OrganizationValidation<TOrganizationCommand> : AbstractValidator<TOrganizationCommand> where TOrganizationCommand : OrganizationBaseCommand
     {

@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson;
 using System;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 
-namespace TaskoMask.Application.Tests.Unit.Membership.TestData
+namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Membership.TestData
 {
     internal static class OperatorObjectMother
     {

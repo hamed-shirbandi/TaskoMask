@@ -3,10 +3,10 @@ using Newtonsoft.Json;
 using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Events;
-using TaskoMask.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
 
-namespace TaskoMask.Infrastructure.Data.Write.EventSourcing
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.EventSourcing
 {
 
     /// <summary>

@@ -2,9 +2,9 @@
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
 
-namespace TaskoMask.Application.Core.Queries
+namespace TaskoMask.Services.Monolith.Application.Core.Queries
 {
 
 

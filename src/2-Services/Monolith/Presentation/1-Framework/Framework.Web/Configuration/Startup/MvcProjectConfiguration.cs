@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TaskoMask.Presentation.Framework.Web.Services.Authentication.CookieAuthentication;
-using TaskoMask.Presentation.Framework.Web.Configuration.Captcha;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Services.Authentication.CookieAuthentication;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Captcha;
 
-namespace TaskoMask.Presentation.Framework.Web.Configuration.Startup
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Web.Configuration.Startup
 {
 
     /// <summary>

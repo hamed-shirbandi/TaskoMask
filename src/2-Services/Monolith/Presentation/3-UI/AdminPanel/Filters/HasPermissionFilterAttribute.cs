@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using TaskoMask.Application.Membership.Permissions.Services;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Presentation.Framework.Web.Extensions;
-using TaskoMask.Presentation.Framework.Web.Helpers;
+using TaskoMask.Services.Monolith.Application.Membership.Permissions.Services;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Extensions;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Helpers;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Filters
+namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Filters
 {
     public class HasPermission : Attribute, IAsyncActionFilter
     {

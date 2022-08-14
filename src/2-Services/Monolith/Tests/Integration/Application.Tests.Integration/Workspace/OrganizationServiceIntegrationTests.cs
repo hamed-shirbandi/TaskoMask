@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Application.Share.Dtos.Workspace.Organizations;
-using TaskoMask.Application.Tests.Integration.Fixtures;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Organizations;
+using TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures;
 using Xunit;
 
 
-namespace TaskoMask.Application.Tests.Integration.Workspace
+namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Workspace
 {
 
     [Collection(nameof(OwnerCollectionFixture))]

@@ -1,9 +1,9 @@
 ﻿
 
 using System.ComponentModel.DataAnnotations;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Workspace.Boards.Commands.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Models
 {
     public class AddBoardCommand : BoardBaseCommand
     {

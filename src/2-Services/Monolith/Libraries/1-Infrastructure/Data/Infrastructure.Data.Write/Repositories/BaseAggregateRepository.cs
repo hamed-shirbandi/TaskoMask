@@ -1,14 +1,14 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Infrastructure.Data.Core.Repositories;
-using TaskoMask.Infrastructure.Data.Write.DbContext;
+using TaskoMask.Services.Monolith.Domain.Core.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Write.Repositories
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories
 {
     public class BaseAggregateRepository<TEntity> : BaseRepository<TEntity>, IBaseAggregateRepository<TEntity> where TEntity : AggregateRoot
     {

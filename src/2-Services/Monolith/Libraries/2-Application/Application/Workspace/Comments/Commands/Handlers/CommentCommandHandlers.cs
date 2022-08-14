@@ -1,18 +1,18 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Comments.Commands.Models;
-using TaskoMask.Application.Share.Resources;
-using TaskoMask.Application.Core.Commands;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.Exceptions;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 using MediatR;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Data;
-using TaskoMask.Domain.DomainModel.Workspace.Tasks.Entities;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 
-namespace TaskoMask.Application.Workspace.Comments.Commands.Handlers
+namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Handlers
 {
     public class CommentCommandHandlers : BaseCommandHandler,
         IRequestHandler<AddCommentCommand, CommandResult>,

@@ -1,6 +1,6 @@
-﻿using TaskoMask.Application.Core.Queries;
+﻿using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Workspace.Tasks.Queries.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models
 {
     public class GetTasksCountQuery : BaseQuery<long>
     {

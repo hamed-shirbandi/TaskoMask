@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Application.Core.Commands;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Workspace.Comments.Commands.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Models
 {
     public class DeleteCommentCommand : BaseCommand
     {

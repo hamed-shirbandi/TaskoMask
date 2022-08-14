@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Share.Dtos.Workspace.Projects;
-using TaskoMask.Application.Core.Queries;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Projects;
+using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Workspace.Projects.Queries.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Models
 {
     public class GetProjectByIdQuery : BaseQuery<ProjectOutputDto>
     {

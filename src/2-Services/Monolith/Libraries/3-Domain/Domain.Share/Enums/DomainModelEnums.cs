@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Domain.Share.Enums
+namespace TaskoMask.Services.Monolith.Domain.Share.Enums
 {
 
 

@@ -1,6 +1,6 @@
-﻿using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+﻿using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.Tests.Unit.TestData.DataBuilders
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders
 {
     internal class OwnerBuilder
     {

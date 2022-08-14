@@ -1,8 +1,8 @@
-﻿using TaskoMask.Domain.Core.Specifications;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Specifications;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications
 {
 
     /// <summary>

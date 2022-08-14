@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskoMask.Domain.Core.Events
+namespace TaskoMask.Services.Monolith.Domain.Core.Events
 {
     /// <summary>
     /// 

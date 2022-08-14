@@ -1,7 +1,7 @@
-﻿using TaskoMask.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Application.Share.Dtos.Membership.Roles;
+﻿using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
 
-namespace TaskoMask.Application.Share.ViewModels
+namespace TaskoMask.Services.Monolith.Application.Share.ViewModels
 {
     public class PermissionDetailsViewModel
     {

@@ -1,8 +1,8 @@
-﻿using TaskoMask.Domain.Core.Specifications;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
+﻿using TaskoMask.Services.Monolith.Domain.Core.Specifications;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Boards.Specifications
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Specifications
 {
     internal class BoardNameMustUniqueSpecification : ISpecification<Board>
     {

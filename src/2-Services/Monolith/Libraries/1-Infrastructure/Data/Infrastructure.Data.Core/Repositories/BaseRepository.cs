@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Domain.Core.Data;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Infrastructure.Data.Core.DbContext;
+using TaskoMask.Services.Monolith.Domain.Core.Data;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Core.DbContext;
 
-namespace TaskoMask.Infrastructure.Data.Core.Repositories
+namespace TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {

@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Application.Workspace.Organizations.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
-using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Presentation.UI.AdminPanle.Area.Admin.Models;
-using TaskoMask.Application.Workspace.Owners.Services;
-using TaskoMask.Application.Workspace.Projects.Services;
-using TaskoMask.Application.Workspace.Tasks.Services;
-using TaskoMask.Application.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Area.Admin.Models;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Areas.Membership.Controllers
 {
     [Authorize]
     [Area("membership")]

@@ -1,18 +1,18 @@
-﻿using TaskoMask.Application.Membership.Operators.Services;
+﻿using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using AutoMapper;
-using TaskoMask.Presentation.Framework.Web.Controllers;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Presentation.Framework.Web.Helpers;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Presentation.Framework.Web.Filters;
-using TaskoMask.Presentation.Framework.Web.Enums;
-using TaskoMask.Presentation.Framework.Web.Extensions;
-using TaskoMask.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Controllers;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Filters;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Enums;
+using TaskoMask.Services.Monolith.Presentation.Framework.Web.Extensions;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 
-namespace TaskoMask.Presentation.UI.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Areas.Membership.Controllers
 {
 
     [Authorize]

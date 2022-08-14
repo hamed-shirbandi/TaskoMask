@@ -1,6 +1,6 @@
-﻿@model TaskoMask.Application.Share.ViewModels.OperatorDetailsViewModel
-@using TaskoMask.Application.Share.Dtos.Authorization.Users
-@using TaskoMask.Application.Share.Dtos.Membership.Operators
+﻿@model TaskoMask.Services.Monolith.Application.Share.ViewModels.OperatorDetailsViewModel
+@using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users
+@using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators
 
 @{
     ViewBag.Title = "Update operator";
@@ -35,7 +35,7 @@
         </div>
         <div id="tab-4">
             <div class="block-content">
-                @await Html.PartialAsync("_SetUserIsActive", new TaskoMask.Presentation.UI.AdminPanle.Models.SetUserActiveViewModel(id: Model.Operator.Id, isActive: Model.Operator.UserInfo.IsActive))
+                @await Html.PartialAsync("_SetUserIsActive", new TaskoMask.Services.Monolith.Presentation.UI.AdminPanle.Models.SetUserActiveViewModel(id: Model.Operator.Id, isActive: Model.Operator.UserInfo.IsActive))
             </div>
         </div>
 

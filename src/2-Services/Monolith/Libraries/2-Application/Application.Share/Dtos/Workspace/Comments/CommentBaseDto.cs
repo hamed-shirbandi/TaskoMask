@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
 
-namespace TaskoMask.Application.Share.Dtos.Workspace.Comments
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments
 {
     public abstract class CommentBaseDto
     {

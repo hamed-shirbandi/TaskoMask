@@ -1,13 +1,13 @@
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
-using TaskoMask.Application.Share.Dtos.Authorization.Users;
-using TaskoMask.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Application.Share.Helpers;
-using TaskoMask.Presentation.Framework.Share.ApiContracts;
-using TaskoMask.Presentation.Framework.Share.Helpers;
-using TaskoMask.Presentation.UI.UserPanel.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.Helpers;
+using TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Helpers;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.ApiContracts;
 
-namespace TaskoMask.Presentation.UI.UserPanel.Services.Authentication
+namespace TaskoMask.Services.Monolith.Presentation.UI.UserPanel.Services.Authentication
 {
     public class AuthenticationService : IAuthenticationService
     {

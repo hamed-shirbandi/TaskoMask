@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson;
-using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.Domain.DomainModel.Workspace.Boards.Services;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 
-namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
 {
     internal static class BoardObjectMother
     {

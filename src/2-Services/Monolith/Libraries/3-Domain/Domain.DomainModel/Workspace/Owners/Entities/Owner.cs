@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Domain.Core.Exceptions;
-using TaskoMask.Domain.Core.Models;
-using TaskoMask.Domain.Share.Helpers;
-using TaskoMask.Domain.Share.Resources;
-using TaskoMask.Domain.Core.Services;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Organizations;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Owners;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Events.Projects;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Specifications;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
+using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Share.Helpers;
+using TaskoMask.Services.Monolith.Domain.Share.Resources;
+using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Organizations;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Owners;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Projects;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 
-namespace TaskoMask.Domain.DomainModel.Workspace.Owners.Entities
+namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities
 {
     /// <summary>
     /// Owners are those who manage their tasks in this system

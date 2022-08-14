@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.Presentation.Framework.Share.Services.Http;
+using TaskoMask.Services.Monolith.Presentation.Framework.Share.Services.Http;
 
-namespace TaskoMask.Presentation.Framework.Share.Configuration.Startup
+namespace TaskoMask.Services.Monolith.Presentation.Framework.Share.Configuration.Startup
 {
     /// <summary>
     /// Shared Configuration for Blazor and MVC and WebAPI projects

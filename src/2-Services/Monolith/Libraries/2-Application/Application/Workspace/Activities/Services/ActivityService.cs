@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Collections.Generic;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services.Application;
-using TaskoMask.Application.Share.Dtos.Workspace.Activities;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Activities;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Activities.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.Models;
 
-namespace TaskoMask.Application.Workspace.Activities.Services
+namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Services
 {
     public class ActivityService : ApplicationService, IActivityService
     {

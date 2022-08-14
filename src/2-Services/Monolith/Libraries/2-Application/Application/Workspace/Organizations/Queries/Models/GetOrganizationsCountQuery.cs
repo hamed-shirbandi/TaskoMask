@@ -1,6 +1,6 @@
-﻿using TaskoMask.Application.Core.Queries;
+﻿using TaskoMask.Services.Monolith.Application.Core.Queries;
 
-namespace TaskoMask.Application.Workspace.Organizations.Queries.Models
+namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models
 {
     public class GetOrganizationsCountQuery : BaseQuery<long>
     {

@@ -1,8 +1,8 @@
 ﻿using MongoDB.Bson;
-using TaskoMask.Domain.Tests.Unit.TestData.DataBuilders;
-using TaskoMask.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 
-namespace TaskoMask.Domain.Tests.Unit.TestData.ObjectMothers
+namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
 {
     internal static class OwnerObjectMother
     {

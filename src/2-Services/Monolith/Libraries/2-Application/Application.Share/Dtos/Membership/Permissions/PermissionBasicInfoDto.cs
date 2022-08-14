@@ -1,9 +1,9 @@
 ﻿
 
-using TaskoMask.Application.Share.Resources;
+using TaskoMask.Services.Monolith.Application.Share.Resources;
 using System.ComponentModel.DataAnnotations;
 
-namespace TaskoMask.Application.Share.Dtos.Membership.Permissions
+namespace TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions
 {
     public class PermissionBasicInfoDto
     {

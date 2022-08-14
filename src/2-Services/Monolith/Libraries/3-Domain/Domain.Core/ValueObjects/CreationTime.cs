@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TaskoMask.Domain.Core.Models;
+using TaskoMask.Services.Monolith.Domain.Core.Models;
 
-namespace TaskoMask.Domain.Core.ValueObjects
+namespace TaskoMask.Services.Monolith.Domain.Core.ValueObjects
 {
     /// <summary>
     ///

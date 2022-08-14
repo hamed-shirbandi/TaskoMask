@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Helpers;
+using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Application.Workspace.Comments.Commands.Models;
-using TaskoMask.Application.Workspace.Comments.Queries.Models;
-using TaskoMask.Application.Share.Dtos.Workspace.Comments;
-using TaskoMask.Application.Core.Notifications;
-using TaskoMask.Application.Core.Bus;
-using TaskoMask.Application.Core.Services.Application;
+using TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Models;
+using TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Models;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Comments;
+using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using System.Collections.Generic;
 
-namespace TaskoMask.Application.Workspace.Comments.Services
+namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
 {
     public class CommentService : ApplicationService, ICommentService
     {

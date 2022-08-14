@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using TaskoMask.Application.Share.Dtos.Membership.Operators;
-using TaskoMask.Application.Share.Dtos.Membership.Permissions;
-using TaskoMask.Application.Share.Dtos.Membership.Roles;
-using TaskoMask.Domain.DomainModel.Membership.Entities;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Permissions;
+using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
+using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 
-namespace TaskoMask.Application.Mapper.Profiles
+namespace TaskoMask.Services.Monolith.Application.Mapper.Profiles
 {
     public class MembershipMappingProfile : Profile
     {

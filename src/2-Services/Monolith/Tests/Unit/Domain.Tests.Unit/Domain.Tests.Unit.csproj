@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-	  <AssemblyName>TaskoMask.Domain.Tests.Unit</AssemblyName>
-	  <RootNamespace>TaskoMask.Domain.Tests.Unit</RootNamespace>
+	  <AssemblyName>TaskoMask.Services.Monolith.Domain.Tests.Unit</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Monolith.Domain.Tests.Unit</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

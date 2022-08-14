@@ -4,8 +4,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 
-		<AssemblyName>TaskoMask.Presentation.Framework.Share</AssemblyName>
-		<RootNamespace>TaskoMask.Presentation.Framework.Share</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Monolith.Presentation.Framework.Share</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Monolith.Presentation.Framework.Share</RootNamespace>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>TaskoMask.Application.Core</AssemblyName>
-    <RootNamespace>TaskoMask.Application.Core</RootNamespace>
+    <AssemblyName>TaskoMask.Services.Monolith.Application.Core</AssemblyName>
+    <RootNamespace>TaskoMask.Services.Monolith.Application.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

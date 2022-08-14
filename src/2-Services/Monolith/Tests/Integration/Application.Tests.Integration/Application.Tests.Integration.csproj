@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-	  <AssemblyName>TaskoMask.Application.Tests.Integration</AssemblyName>
-	  <RootNamespace>TaskoMask.Application.Tests.Integration</RootNamespace>
+	  <AssemblyName>TaskoMask.Services.Monolith.Application.Tests.Integration</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Monolith.Application.Tests.Integration</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

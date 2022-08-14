@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<AssemblyName>TaskoMask.Presentation.Framework.Web</AssemblyName>
-		<RootNamespace>TaskoMask.Presentation.Framework.Web</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Monolith.Presentation.Framework.Web</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Monolith.Presentation.Framework.Web</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

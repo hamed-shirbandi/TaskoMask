@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
 	  <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>TaskoMask.Presentation.UI.AdminPanle</AssemblyName>
-    <RootNamespace>TaskoMask.Presentation.UI.AdminPanle</RootNamespace>
+    <AssemblyName>TaskoMask.Services.Monolith.Presentation.UI.AdminPanle</AssemblyName>
+    <RootNamespace>TaskoMask.Services.Monolith.Presentation.UI.AdminPanle</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

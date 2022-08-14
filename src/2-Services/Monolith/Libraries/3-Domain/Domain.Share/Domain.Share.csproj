@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<AssemblyName>TaskoMask.Domain.Share</AssemblyName>
-		<RootNamespace>TaskoMask.Domain.Share</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Monolith.Domain.Share</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Monolith.Domain.Share</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 
 	</PropertyGroup>

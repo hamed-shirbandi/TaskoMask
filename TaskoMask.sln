@@ -103,6 +103,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\1-Buildi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "src\1-BuildingBlocks\Web\Web.csproj", "{D5601D6F-FD86-4DF6-AD25-B7F4ED7CE4C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.MVC", "src\1-BuildingBlocks\Web.MVC\Web.MVC.csproj", "{9A8EA36D-A38B-4D3C-956E-E6D313250A9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -229,6 +231,10 @@ Global
 		{D5601D6F-FD86-4DF6-AD25-B7F4ED7CE4C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5601D6F-FD86-4DF6-AD25-B7F4ED7CE4C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5601D6F-FD86-4DF6-AD25-B7F4ED7CE4C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8EA36D-A38B-4D3C-956E-E6D313250A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8EA36D-A38B-4D3C-956E-E6D313250A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8EA36D-A38B-4D3C-956E-E6D313250A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8EA36D-A38B-4D3C-956E-E6D313250A9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -279,6 +285,7 @@ Global
 		{D699B090-A062-4922-A46A-8288DDC1F308} = {EE6A848E-1730-4442-AA9B-A12EBC85C644}
 		{C3C6E255-0FFF-4E69-9C75-8A081874A41B} = {EE6A848E-1730-4442-AA9B-A12EBC85C644}
 		{D5601D6F-FD86-4DF6-AD25-B7F4ED7CE4C6} = {EE6A848E-1730-4442-AA9B-A12EBC85C644}
+		{9A8EA36D-A38B-4D3C-956E-E6D313250A9A} = {EE6A848E-1730-4442-AA9B-A12EBC85C644}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15E4B299-A968-40A3-8192-CCF9082EE3BC}

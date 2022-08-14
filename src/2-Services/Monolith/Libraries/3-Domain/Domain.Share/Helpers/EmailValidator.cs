@@ -29,22 +29,18 @@ namespace TaskoMask.Services.Monolith.Domain.Share.Helpers
                     return match.Groups[1].Value + domainName;
                 }
             }
-            catch (RegexMatchTimeoutException e)
+            catch
             {
                 return false;
             }
-            catch (ArgumentException e)
-            {
-                return false;
-            }
-
+         
             try
             {
                 return Regex.IsMatch(email,
                     @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
                     RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
             }
-            catch (RegexMatchTimeoutException)
+            catch
             {
                 return false;
             }

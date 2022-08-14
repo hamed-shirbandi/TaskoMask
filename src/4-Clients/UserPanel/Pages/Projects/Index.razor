@@ -1,6 +1,5 @@
 ﻿@page "/project/{ProjectId}"
 @using TaskoMask.Clients.UserPanel.Pages.Projects.Components
-@using TaskoMask.Clients.UserPanel.Shared
 @inject TaskoMask.BuildingBlocks.Web.ApiContracts.IProjectApiService ProjectApiService
 @implements IDisposable
 
@@ -10,7 +9,7 @@
         <Breadcrumb Model=@Model.Project></Breadcrumb>
 
         <div class="row">
-            <Boards Model=@Model.Boards ProjectId=@Model.Project.Id></Boards>
+            <TaskoMask.Clients.UserPanel.Shared.Boards Model=@Model.Boards ProjectId=@Model.Project.Id></TaskoMask.Clients.UserPanel.Shared.Boards>
         </div>
     </div>
 }

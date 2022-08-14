@@ -9,7 +9,6 @@ using TaskoMask.Clients.UserPanel.Services.API;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 using TaskoMask.Clients.UserPanel.Services.Http;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
-using TaskoMask.BuildingBlocks.Web.ApiContracts;
 
 namespace TaskoMask.Clients.UserPanel.Configuration
 {

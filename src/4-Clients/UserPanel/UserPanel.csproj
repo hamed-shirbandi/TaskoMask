@@ -18,8 +18,9 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.4" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 	</ItemGroup>
+
 	<ItemGroup>
-		<ProjectReference Include="..\..\1-Framework\Framework.Share\Framework.Share.csproj" />
+	  <ProjectReference Include="..\..\1-BuildingBlocks\Web\Web.csproj" />
 	</ItemGroup>
 
 </Project>

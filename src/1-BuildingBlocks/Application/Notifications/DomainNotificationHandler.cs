@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Domain.Notifications;
 
-namespace TaskoMask.Services.Monolith.Application.Core.Notifications
+namespace TaskoMask.BuildingBlocks.Application.Notifications
 {
 
     /// <summary>

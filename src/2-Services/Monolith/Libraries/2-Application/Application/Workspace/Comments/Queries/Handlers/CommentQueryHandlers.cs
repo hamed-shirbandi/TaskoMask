@@ -5,10 +5,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
-using TaskoMask.Services.Monolith.Application.Core.Exceptions;
-using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Application.Exceptions;
+using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 

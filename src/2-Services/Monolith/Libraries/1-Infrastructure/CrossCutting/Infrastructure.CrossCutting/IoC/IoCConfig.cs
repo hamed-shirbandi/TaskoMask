@@ -2,7 +2,7 @@
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.EventSourcing;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Bus;
 using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.Services.Monolith.Application.Membership.Roles.Services;
@@ -13,7 +13,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Membership;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;

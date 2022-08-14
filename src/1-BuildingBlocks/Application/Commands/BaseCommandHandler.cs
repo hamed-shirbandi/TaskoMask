@@ -1,12 +1,12 @@
-﻿using TaskoMask.Services.Monolith.Application.Core.Notifications;
+﻿using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Domain.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Domain.Events;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.BuildingBlocks.Application.Bus;
 
-namespace TaskoMask.Services.Monolith.Application.Core.Commands
+namespace TaskoMask.BuildingBlocks.Application.Commands
 {
     /// <summary>
     /// 

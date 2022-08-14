@@ -1,5 +1,5 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
-using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Application.Queries;
 
 namespace TaskoMask.Services.Monolith.Application.Queries.Models.Boards
 {

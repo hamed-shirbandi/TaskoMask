@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 
-namespace TaskoMask.Services.Monolith.Application.Core.Extensions
+namespace TaskoMask.BuildingBlocks.Application.Extensions
 {
 
     /// <summary>

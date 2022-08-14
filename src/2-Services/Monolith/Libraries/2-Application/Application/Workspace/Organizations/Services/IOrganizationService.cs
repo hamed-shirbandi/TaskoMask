@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
-using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services
 {

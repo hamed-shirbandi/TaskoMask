@@ -1,6 +1,6 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
-using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Application.Queries;
 
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models

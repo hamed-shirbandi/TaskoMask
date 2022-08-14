@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.BuildingBlocks.Application.Bus;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Bus
 {

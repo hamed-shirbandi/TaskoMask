@@ -1,6 +1,6 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.BuildingBlocks.Application.Commands;
 using AutoMapper;
 using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Models;

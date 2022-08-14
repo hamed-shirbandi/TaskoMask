@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
-using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Resources;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
 {

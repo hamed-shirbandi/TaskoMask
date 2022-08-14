@@ -1,7 +1,7 @@
 ﻿using System;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 
-namespace TaskoMask.Services.Monolith.Application.Core.Exceptions
+namespace TaskoMask.BuildingBlocks.Application.Exceptions
 {
 
     /// <summary>

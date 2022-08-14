@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Domain.Events;
 
-namespace TaskoMask.Services.Monolith.Application.Core.Behaviors
+namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {
 
     /// <summary>

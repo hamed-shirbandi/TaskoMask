@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
 {

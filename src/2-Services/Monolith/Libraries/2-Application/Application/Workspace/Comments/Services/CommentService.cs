@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
-using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using System.Collections.Generic;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
 {

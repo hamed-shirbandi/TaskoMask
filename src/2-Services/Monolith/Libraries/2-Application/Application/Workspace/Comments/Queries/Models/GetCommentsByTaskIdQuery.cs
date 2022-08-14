@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
-using TaskoMask.Services.Monolith.Application.Core.Queries;
+using TaskoMask.BuildingBlocks.Application.Queries;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Models
 {

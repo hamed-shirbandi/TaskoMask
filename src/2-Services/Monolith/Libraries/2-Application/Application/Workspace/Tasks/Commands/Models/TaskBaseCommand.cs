@@ -1,4 +1,4 @@
-﻿using TaskoMask.Services.Monolith.Application.Core.Commands;
+﻿using TaskoMask.BuildingBlocks.Application.Commands;
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;

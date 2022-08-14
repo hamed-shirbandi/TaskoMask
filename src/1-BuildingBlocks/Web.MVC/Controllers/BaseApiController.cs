@@ -1,7 +1,7 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using TaskoMask.Services.Monolith.Application.Core.Commands;
+using TaskoMask.BuildingBlocks.Application.Commands;
 using AutoMapper;
 using TaskoMask.BuildingBlocks.Domain.Services;
 

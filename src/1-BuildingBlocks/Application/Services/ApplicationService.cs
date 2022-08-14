@@ -1,13 +1,13 @@
-﻿using TaskoMask.Services.Monolith.Application.Core.Commands;
+﻿using TaskoMask.BuildingBlocks.Application.Commands;
 using System;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using AutoMapper;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Application.Core.Queries;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Queries;
+using TaskoMask.BuildingBlocks.Application.Bus;
 
-namespace TaskoMask.Services.Monolith.Application.Core.Services.Application
+namespace TaskoMask.BuildingBlocks.Application.Services
 {
     public abstract class ApplicationService : IApplicationService
     {
@@ -35,7 +35,7 @@ namespace TaskoMask.Services.Monolith.Application.Core.Services.Application
 
         #endregion
 
-        
+
         #region Protected Methods
 
 
@@ -56,7 +56,7 @@ namespace TaskoMask.Services.Monolith.Application.Core.Services.Application
                 return Result.Failure<CommandResult>(errors);
 
             //if there is any notification error so result is failed
-            if (errors.Count>0)
+            if (errors.Count > 0)
                 return Result.Failure<CommandResult>(errors, result.Message);
 
             return Result.Success(result, result.Message);
@@ -96,7 +96,7 @@ namespace TaskoMask.Services.Monolith.Application.Core.Services.Application
             GC.SuppressFinalize(this);
         }
 
-   
+
 
         #endregion
     }

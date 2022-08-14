@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Roles;
 using System.Collections.Generic;
@@ -11,10 +11,10 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
 using System.Linq;
-using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
 {

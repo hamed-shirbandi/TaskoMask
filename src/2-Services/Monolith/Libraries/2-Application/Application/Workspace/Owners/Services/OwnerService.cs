@@ -1,15 +1,14 @@
 ﻿using AutoMapper;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
-using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
@@ -22,6 +21,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using Microsoft.Extensions.Configuration;
 using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
 {

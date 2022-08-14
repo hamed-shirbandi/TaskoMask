@@ -6,13 +6,13 @@ using TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
-using TaskoMask.Services.Monolith.Application.Core.Services.Application;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Services
 {

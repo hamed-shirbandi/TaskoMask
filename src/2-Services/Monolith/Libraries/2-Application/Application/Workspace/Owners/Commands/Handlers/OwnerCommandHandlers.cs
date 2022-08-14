@@ -2,10 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Application.Core.Commands;
-using TaskoMask.Services.Monolith.Application.Core.Exceptions;
+using TaskoMask.BuildingBlocks.Application.Commands;
+using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;

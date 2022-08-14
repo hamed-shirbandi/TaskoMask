@@ -1,4 +1,4 @@
-﻿using TaskoMask.Services.Monolith.Application.Core.Commands;
+﻿using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using System.ComponentModel.DataAnnotations;
 using TaskoMask.BuildingBlocks.Contracts.Resources;

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using NSubstitute;
 using System;
-using TaskoMask.Services.Monolith.Application.Core.Bus;
-using TaskoMask.Services.Monolith.Application.Core.Notifications;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 
 namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 {

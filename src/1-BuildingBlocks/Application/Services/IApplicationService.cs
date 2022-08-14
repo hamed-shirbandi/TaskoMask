@@ -1,7 +1,7 @@
 ﻿
 using System.Threading.Tasks;
 
-namespace TaskoMask.Services.Monolith.Application.Core.Services.Application
+namespace TaskoMask.BuildingBlocks.Application.Services
 {
     public interface IApplicationService
     {

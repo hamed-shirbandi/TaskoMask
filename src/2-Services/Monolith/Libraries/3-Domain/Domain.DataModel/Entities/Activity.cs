@@ -1,6 +1,7 @@
-﻿using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+﻿using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DataModel.Entities
 {
@@ -11,6 +12,7 @@ namespace TaskoMask.Services.Monolith.Domain.DataModel.Entities
         /// </summary>
         public Activity( )
         {
+            SetId(ObjectId.GenerateNewId().ToString());
         }
 
         public string TaskId { get; set; }

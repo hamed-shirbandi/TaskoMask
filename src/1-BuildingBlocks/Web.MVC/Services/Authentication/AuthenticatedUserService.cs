@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using TaskoMask.BuildingBlocks.Contracts.Models;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication
 {

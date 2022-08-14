@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;

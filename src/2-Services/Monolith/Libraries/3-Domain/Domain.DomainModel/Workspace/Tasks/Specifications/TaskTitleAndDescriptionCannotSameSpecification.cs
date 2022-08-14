@@ -1,4 +1,4 @@
-﻿using TaskoMask.Services.Monolith.Domain.Core.Specifications;
+﻿using TaskoMask.BuildingBlocks.Domain.Specifications;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Specifications

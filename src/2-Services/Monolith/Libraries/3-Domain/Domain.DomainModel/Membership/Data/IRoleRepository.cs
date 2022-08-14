@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Domain.Core.Data;
+using TaskoMask.BuildingBlocks.Domain.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using System.Collections.Generic;
 

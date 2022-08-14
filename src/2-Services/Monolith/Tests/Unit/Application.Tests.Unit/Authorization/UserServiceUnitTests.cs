@@ -8,7 +8,7 @@ using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Tests.Unit.TestData;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;

@@ -5,7 +5,7 @@ using AutoMapper;
 using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Models;
 using TaskoMask.BuildingBlocks.Web.MVC.Enums;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using System;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers

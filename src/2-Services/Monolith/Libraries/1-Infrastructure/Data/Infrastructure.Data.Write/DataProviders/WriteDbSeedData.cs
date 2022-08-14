@@ -4,7 +4,7 @@ using MongoDB.Driver;
 using System;
 using System.Linq;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 

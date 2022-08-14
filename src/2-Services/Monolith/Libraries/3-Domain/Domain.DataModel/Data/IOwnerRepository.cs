@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Domain.Core.Data;
+using TaskoMask.BuildingBlocks.Domain.Data;
 using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 
 namespace TaskoMask.Services.Monolith.Domain.DataModel.Data

@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Domain.Core.Events;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Events;
+using TaskoMask.BuildingBlocks.Domain.Services;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.EventSourcing
 {

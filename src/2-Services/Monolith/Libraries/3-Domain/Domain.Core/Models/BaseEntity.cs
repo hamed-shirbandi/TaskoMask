@@ -13,7 +13,6 @@ namespace TaskoMask.Services.Monolith.Domain.Core.Models
 
         public BaseEntity()
         {
-            Id = ObjectId.GenerateNewId().ToString();
             CreationTime = CreationTime.Create();
         }
 
@@ -57,7 +56,6 @@ namespace TaskoMask.Services.Monolith.Domain.Core.Models
         protected void SetId(string id)
         {
             Id = id;
-            UpdateModifiedDateTime();
         }
 
 

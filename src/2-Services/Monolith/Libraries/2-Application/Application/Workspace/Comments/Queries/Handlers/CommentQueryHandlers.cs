@@ -11,7 +11,7 @@ using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Handlers
 {

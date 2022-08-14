@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
-using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.Services.Monolith.Application.Core.Behaviors
 {

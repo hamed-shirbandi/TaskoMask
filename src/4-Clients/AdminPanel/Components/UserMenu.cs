@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 
 namespace TaskoMask.Clients.AdminPanle.Components
 {

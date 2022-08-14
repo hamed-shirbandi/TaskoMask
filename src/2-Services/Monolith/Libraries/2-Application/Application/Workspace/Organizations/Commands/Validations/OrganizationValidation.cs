@@ -2,7 +2,7 @@
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Validations
 {

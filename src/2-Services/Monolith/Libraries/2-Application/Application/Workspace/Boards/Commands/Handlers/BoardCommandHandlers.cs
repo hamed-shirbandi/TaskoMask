@@ -12,7 +12,7 @@ using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Handlers
 {

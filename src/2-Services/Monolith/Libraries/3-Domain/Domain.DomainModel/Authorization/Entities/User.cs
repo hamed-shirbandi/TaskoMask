@@ -1,10 +1,15 @@
-﻿using TaskoMask.Services.Monolith.Domain.Core.Models;
+﻿using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities
 {
     public class User : BaseEntity
     {
+        public User()
+        {
+            SetId(ObjectId.GenerateNewId().ToString());
+        }
 
         public string UserName { get; set; }
 

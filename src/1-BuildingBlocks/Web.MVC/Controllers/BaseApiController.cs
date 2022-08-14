@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TaskoMask.Services.Monolith.Application.Core.Commands;
 using AutoMapper;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 {

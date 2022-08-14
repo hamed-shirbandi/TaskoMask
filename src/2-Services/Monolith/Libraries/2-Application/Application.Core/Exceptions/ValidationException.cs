@@ -1,5 +1,5 @@
 ﻿using System;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
 
 namespace TaskoMask.Services.Monolith.Application.Core.Exceptions
 {

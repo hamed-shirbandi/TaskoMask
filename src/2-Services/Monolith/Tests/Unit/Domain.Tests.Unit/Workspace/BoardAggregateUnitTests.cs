@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using NSubstitute;
 using System;
 using System.Linq;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
@@ -16,7 +16,7 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Car
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
 using Xunit;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 {

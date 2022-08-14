@@ -3,7 +3,7 @@ using MediatR;
 using MediatR.Pipeline;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
 
 namespace TaskoMask.Services.Monolith.Application.Core.Exceptions
 {

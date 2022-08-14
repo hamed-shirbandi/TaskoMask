@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Domain.Core.Data;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.BuildingBlocks.Domain.Data;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Core.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories

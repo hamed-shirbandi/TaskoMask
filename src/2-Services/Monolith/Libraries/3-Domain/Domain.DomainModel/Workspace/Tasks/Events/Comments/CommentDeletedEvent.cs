@@ -1,4 +1,4 @@
-﻿using TaskoMask.Services.Monolith.Domain.Core.Events;
+﻿using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Comments

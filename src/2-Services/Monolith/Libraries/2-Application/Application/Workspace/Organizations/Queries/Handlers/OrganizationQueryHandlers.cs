@@ -13,7 +13,7 @@ using TaskoMask.Services.Monolith.Application.Core.Notifications;
 using TaskoMask.Services.Monolith.Application.Share.Helpers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Handlers
 {

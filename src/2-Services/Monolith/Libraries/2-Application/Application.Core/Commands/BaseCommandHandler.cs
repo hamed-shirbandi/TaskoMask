@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Services.Monolith.Application.Core.Notifications;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.Services.Monolith.Application.Core.Bus;
 
 namespace TaskoMask.Services.Monolith.Application.Core.Commands

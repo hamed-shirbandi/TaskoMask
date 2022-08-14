@@ -1,8 +1,8 @@
-﻿using TaskoMask.Services.Monolith.Domain.Core.Models;
+﻿using TaskoMask.BuildingBlocks.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Boards;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Members;
@@ -11,7 +11,8 @@ using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Specifications;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
 {
@@ -26,6 +27,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
 
         private Board(string name, string description, string projectId, IBoardValidatorService boardValidatorService)
         {
+            SetId(ObjectId.GenerateNewId().ToString());
+
             Name = BoardName.Create(name);
             Description = BoardDescription.Create(description);
             ProjectId = BoardProjectId.Create(projectId);

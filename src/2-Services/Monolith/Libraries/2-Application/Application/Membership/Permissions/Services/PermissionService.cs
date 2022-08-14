@@ -14,7 +14,7 @@ using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Roles;
 using TaskoMask.Services.Monolith.Application.Share.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Services
 {

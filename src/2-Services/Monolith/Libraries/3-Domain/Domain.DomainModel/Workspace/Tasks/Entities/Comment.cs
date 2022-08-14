@@ -1,7 +1,8 @@
-﻿using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+﻿using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueObjects.Comments;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities
 {
@@ -19,6 +20,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entitie
 
         private Comment(string content)
         {
+            SetId(ObjectId.GenerateNewId().ToString());
+
             Content = CommentContent.Create(content);
             CheckPolicies();
         }

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Organizations;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Owners;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Projects;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities
 {

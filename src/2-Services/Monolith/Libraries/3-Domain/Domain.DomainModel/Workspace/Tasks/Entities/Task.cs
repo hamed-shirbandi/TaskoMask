@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Comments;
@@ -9,7 +9,8 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Task
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Specifications;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueObjects.Tasks;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities
 
@@ -25,6 +26,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entitie
 
         private Task(string title, string description, string cardId,string boardId, ITaskValidatorService taskValidatorService)
         {
+            SetId(ObjectId.GenerateNewId().ToString());
+
             Title = TaskTitle.Create(title);
             Description = TaskDescription.Create(description);
             CardId = TaskCardId.Create(cardId);

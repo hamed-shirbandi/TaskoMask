@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using TaskoMask.Services.Monolith.Application.Membership.Permissions.Services;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Extensions;
 using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
 

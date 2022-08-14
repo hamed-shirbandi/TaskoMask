@@ -1,8 +1,9 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
 {
@@ -17,6 +18,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
 
         private Card(string name, BoardCardType type)
         {
+            SetId(ObjectId.GenerateNewId().ToString());
+
             Name = CardName.Create(name);
             Type = CardType.Create(type);
 

@@ -1,9 +1,39 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>TaskoMask.BuildingBlocks.Domain</AssemblyName>
 		<RootNamespace>TaskoMask.BuildingBlocks.Domain</RootNamespace>
 	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="9.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="mongocsharpdriver" Version="2.14.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Contracts\Contracts.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Resources\DomainMessages.Designer.cs">
+	    <DependentUpon>DomainMessages.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\DomainMetadata.Designer.cs">
+	    <DependentUpon>DomainMetadata.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\DomainMessages.resx">
+	    <LastGenOutput>DomainMessages.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\DomainMetadata.resx">
+	    <LastGenOutput>DomainMetadata.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
 
 </Project>

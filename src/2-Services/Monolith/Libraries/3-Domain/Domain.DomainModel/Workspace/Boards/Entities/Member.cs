@@ -1,9 +1,10 @@
 ﻿
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Members;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
 {
@@ -21,6 +22,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
 
         private Member(string ownerId, BoardMemberAccessLevel accessLevel)
         {
+            SetId(ObjectId.GenerateNewId().ToString());
+
             OwnerId = MemberOwnerId.Create(ownerId);
             AccessLevel = MemberAccessLevel.Create(accessLevel);
 

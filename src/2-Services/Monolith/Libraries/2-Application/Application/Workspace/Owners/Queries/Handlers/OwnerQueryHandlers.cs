@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Handlers
 {

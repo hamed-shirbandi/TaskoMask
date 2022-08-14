@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using System;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;

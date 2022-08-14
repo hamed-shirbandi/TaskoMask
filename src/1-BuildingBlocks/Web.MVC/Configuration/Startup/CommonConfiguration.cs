@@ -14,10 +14,10 @@ using TaskoMask.Services.Monolith.Application.Core.Behaviors;
 using TaskoMask.Services.Monolith.Application.Core.Exceptions;
 using TaskoMask.Services.Monolith.Application.Mapper;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Validations;
-using TaskoMask.Services.Monolith.Domain.Core.Events;
+using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Cookie;
 

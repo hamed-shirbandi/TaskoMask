@@ -1,5 +1,6 @@
-﻿using System;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+﻿using MongoDB.Bson;
+using System;
+using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities
 {
@@ -10,6 +11,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities
     {
         public Role()
         {
+            SetId(ObjectId.GenerateNewId().ToString());
+
             PermissionsId = Array.Empty<string>();
         }
 

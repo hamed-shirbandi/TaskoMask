@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Services.Monolith.Domain.Core.Data;
+using TaskoMask.BuildingBlocks.Domain.Data;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data
 {

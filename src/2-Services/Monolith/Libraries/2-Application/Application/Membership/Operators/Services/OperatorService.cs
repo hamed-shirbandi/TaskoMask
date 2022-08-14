@@ -14,7 +14,7 @@ using System.Linq;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services.Application;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
 {

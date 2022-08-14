@@ -3,7 +3,7 @@ using TaskoMask.Services.Monolith.Application.Share.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Common;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Membership.Operators;
 using TaskoMask.Services.Monolith.Application.Share.Dtos.Workspace.Owners;
-using TaskoMask.Services.Monolith.Domain.Core.ValueObjects;
+using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;

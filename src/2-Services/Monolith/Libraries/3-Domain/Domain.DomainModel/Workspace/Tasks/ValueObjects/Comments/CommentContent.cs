@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.ValueObjects.Comments

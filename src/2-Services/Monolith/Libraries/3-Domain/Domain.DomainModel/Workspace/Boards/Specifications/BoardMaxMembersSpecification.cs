@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using TaskoMask.Services.Monolith.Domain.Core.Specifications;
+using TaskoMask.BuildingBlocks.Domain.Specifications;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 

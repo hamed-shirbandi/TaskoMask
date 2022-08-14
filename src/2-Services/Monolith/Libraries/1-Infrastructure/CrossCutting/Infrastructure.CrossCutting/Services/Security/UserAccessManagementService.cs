@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Services;
-using TaskoMask.Services.Monolith.Domain.Core.Services;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Models;

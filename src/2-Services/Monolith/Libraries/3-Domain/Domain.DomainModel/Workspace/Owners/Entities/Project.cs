@@ -1,9 +1,10 @@
-﻿using TaskoMask.Services.Monolith.Domain.Core.Exceptions;
-using TaskoMask.Services.Monolith.Domain.Core.Models;
+﻿using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Projects;
-using TaskoMask.Services.Monolith.Domain.Core.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities
 {
@@ -18,6 +19,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
 
         private Project(string name, string description )
         {
+            SetId(ObjectId.GenerateNewId().ToString());
+
             Name = ProjectName.Create(name);
             Description = ProjectDescription.Create(description) ;
 

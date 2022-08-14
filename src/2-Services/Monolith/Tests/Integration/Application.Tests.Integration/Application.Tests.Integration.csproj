@@ -22,12 +22,13 @@
   </ItemGroup>
 
 	<Target Name="CopyConfig" AfterTargets="AfterBuild">
-		<Copy SourceFiles="..\..\..\Presentation\3-UI\AdminPanel\appsettings.json" DestinationFolder="$(OutDir)" />
-		<Copy SourceFiles="..\..\..\Presentation\3-UI\AdminPanel\appsettings.Development.json" DestinationFolder="$(OutDir)" />
-		<Copy SourceFiles="..\..\..\Presentation\3-UI\AdminPanel\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\..\Api\Monolith.Api\appsettings.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\..\Api\Monolith.Api\appsettings.Development.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\..\Api\Monolith.Api\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
 	</Target>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
     <ProjectReference Include="..\..\..\Libraries\1-Infrastructure\Data\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj" />
     <ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />
   </ItemGroup>

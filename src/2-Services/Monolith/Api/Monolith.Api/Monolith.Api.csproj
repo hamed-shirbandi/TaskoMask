@@ -22,4 +22,7 @@
 	<ItemGroup>
 	  <Folder Include="logs\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
+	</ItemGroup>
 </Project>

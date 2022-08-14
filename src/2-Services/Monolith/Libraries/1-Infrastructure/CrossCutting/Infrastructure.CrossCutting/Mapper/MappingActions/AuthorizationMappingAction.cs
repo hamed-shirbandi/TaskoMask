@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
-namespace TaskoMask.Services.Monolith.Application.Mapper.MappingActions
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.MappingActions
 {
     /// <summary>
     /// Mapping that needs to inject a dependency goes here

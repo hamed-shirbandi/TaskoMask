@@ -18,7 +18,6 @@ using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspa
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Membership;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
 using TaskoMask.BuildingBlocks.Domain.Services;
-using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services.Security;
 using TaskoMask.BuildingBlocks.Domain.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
@@ -31,13 +30,15 @@ using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories;
+using TaskoMask.BuildingBlocks.Infrastructure.Repositories;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
+using TaskoMask.Services.Monolith.Infrastructure.Services.Security;
+using TaskoMask.BuildingBlocks.Infrastructure.Services.Security;
 
-namespace Infrastructure.CrossCutting.IoC
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
 {
 
     /// <summary>

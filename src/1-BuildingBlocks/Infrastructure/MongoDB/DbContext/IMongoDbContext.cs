@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using System.Collections.Generic;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.Data.Core.DbContext
+namespace TaskoMask.BuildingBlocks.Infrastructure.DbContext
 {
     public interface IMongoDbContext
     {

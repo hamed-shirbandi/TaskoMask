@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
@@ -7,7 +6,7 @@ using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services.Security
+namespace TaskoMask.Services.Monolith.Infrastructure.Services.Security
 {
     /// <summary>
     /// In this service we just focus on owner users (UserPanel users) and check their access permissions (for example, to prevent an owner to access another owners data)

@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using System.Linq;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.Data.Core.DbContext
+namespace TaskoMask.BuildingBlocks.Infrastructure.DbContext
 {
 
     /// <summary>

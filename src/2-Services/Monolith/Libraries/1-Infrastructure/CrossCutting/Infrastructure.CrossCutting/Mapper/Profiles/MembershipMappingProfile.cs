@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Permissions;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Roles;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 
-namespace TaskoMask.Services.Monolith.Application.Mapper.Profiles
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles
 {
     public class MembershipMappingProfile : Profile
     {

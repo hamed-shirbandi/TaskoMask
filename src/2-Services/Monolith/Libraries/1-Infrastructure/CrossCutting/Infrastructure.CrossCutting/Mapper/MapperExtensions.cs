@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace TaskoMask.Services.Monolith.Application.Mapper
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper
 {
 
 

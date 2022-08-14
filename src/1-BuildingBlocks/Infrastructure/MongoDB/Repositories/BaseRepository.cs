@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Domain.Data;
 using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Core.DbContext;
+using TaskoMask.BuildingBlocks.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories
+namespace TaskoMask.BuildingBlocks.Infrastructure.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {

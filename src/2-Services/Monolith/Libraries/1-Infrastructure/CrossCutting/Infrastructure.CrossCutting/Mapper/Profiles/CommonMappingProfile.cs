@@ -8,7 +8,7 @@ using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
-namespace TaskoMask.Services.Monolith.Application.Mapper.Profiles
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles
 {
     public class CommonMappingProfile : Profile
     {

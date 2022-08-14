@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using TaskoMask.BuildingBlocks.Domain.Services;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services.Security
+namespace TaskoMask.BuildingBlocks.Infrastructure.Services.Security
 {
     public class EncryptionService : IEncryptionService
     {

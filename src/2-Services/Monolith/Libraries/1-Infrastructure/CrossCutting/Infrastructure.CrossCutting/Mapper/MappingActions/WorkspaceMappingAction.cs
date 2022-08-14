@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 
-namespace TaskoMask.Services.Monolith.Application.Mapper.MappingActions
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.MappingActions
 {
     /// <summary>
     /// Mapping that needs to inject a dependency goes here

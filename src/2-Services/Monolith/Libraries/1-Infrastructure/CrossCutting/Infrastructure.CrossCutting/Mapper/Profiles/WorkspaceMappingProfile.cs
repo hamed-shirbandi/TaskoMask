@@ -9,7 +9,7 @@ using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Activities;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
 
-namespace TaskoMask.Services.Monolith.Application.Mapper.Profiles
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles
 {
     public class WorkspaceMappingProfile : Profile
     {

@@ -1,5 +1,5 @@
 ﻿
-using TaskoMask.Services.Monolith.Infrastructure.Data.Core.DbContext;
+using TaskoMask.BuildingBlocks.Infrastructure.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 {

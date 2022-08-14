@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Core.Repositories;
+using TaskoMask.BuildingBlocks.Infrastructure.Repositories;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Authorization

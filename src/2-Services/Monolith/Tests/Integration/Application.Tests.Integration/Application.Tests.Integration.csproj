@@ -30,7 +30,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\1-Infrastructure\Data\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj" />
     <ProjectReference Include="..\..\..\Libraries\2-Application\Application\Application.csproj" />
-    <ProjectReference Include="..\..\..\Presentation\1-Framework\Framework.Web\Framework.Web.csproj" />
   </ItemGroup>
 
 </Project>

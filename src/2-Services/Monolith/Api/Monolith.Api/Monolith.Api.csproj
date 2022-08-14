@@ -20,9 +20,6 @@
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\1-Framework\Framework.Web\Framework.Web.csproj" />
-	</ItemGroup>
-	<ItemGroup>
 	  <Folder Include="logs\" />
 	</ItemGroup>
 </Project>

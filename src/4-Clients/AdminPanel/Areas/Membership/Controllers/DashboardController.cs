@@ -10,6 +10,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
+using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
 {
@@ -29,7 +30,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
 
         #region Ctors
 
-        public DashboardController(IOrganizationService organizationService, IMapper mapper, IAuthenticatedUserService authenticatedUserService, IProjectService projectService, ITaskService taskService, IBoardService boardService, IOwnerService ownerService) : base(mapper, authenticatedUserService)
+        public DashboardController(IOrganizationService organizationService, IMapper mapper, IAuthenticatedUserService authenticatedUserService, IProjectService projectService, ITaskService taskService, IBoardService boardService, IOwnerService ownerService) : base( authenticatedUserService)
         {
             _organizationService = organizationService;
             _projectService = projectService;

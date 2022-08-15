@@ -25,7 +25,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
 
         #region Ctor
 
-        public RolesController(IRoleService roleService, IMapper mapper) : base(mapper)
+        public RolesController(IRoleService roleService, IMapper mapper) : base()
         {
             _roleService = roleService;
         }

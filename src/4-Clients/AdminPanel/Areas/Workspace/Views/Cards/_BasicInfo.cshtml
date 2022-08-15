@@ -11,7 +11,7 @@
 
     
         @Html.LabelFor(model => model.Type)
-        <input type="text" name="Type" value="@Model.Type.GetDisplayName()" class = "form-input-1" readOnly = "readonly" />
+        <input type="text" name="Type" value="@Model.Type.GetEnumDisplayName()" class = "form-input-1" readOnly = "readonly" />
 
         @Html.LabelFor(model => model.CreationTime.CreateDateTimeString)
         @Html.TextBoxFor(model => model.CreationTime.CreateDateTimeString, new { @class = "form-input-1", @readOnly = "readonly" })

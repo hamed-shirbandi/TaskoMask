@@ -11,6 +11,7 @@ using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.Services.Monolith.API.Controllers
 {

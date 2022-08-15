@@ -7,6 +7,8 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 using AutoMapper;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
 
 namespace TaskoMask.Clients.AdminPanle.Controllers
 {
@@ -24,7 +26,7 @@ namespace TaskoMask.Clients.AdminPanle.Controllers
 
 
 
-        public AccountController(IOperatorService ownerService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper, IUserService userService) : base(mapper)
+        public AccountController(IOperatorService ownerService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper, IUserService userService) : base()
         {
             _operatorService = ownerService;
             _cookieAuthenticationService = cookieAuthenticationService;
@@ -80,7 +82,7 @@ namespace TaskoMask.Clients.AdminPanle.Controllers
             if (!operatorQueryResult.IsSuccess)
                 return View(operatorQueryResult, input);
 
-            var user = _mapper.Map<AuthenticatedUser>(operatorQueryResult.Value);
+            var user = GetAuthenticatedUserModel(operatorQueryResult.Value);
             await _cookieAuthenticationService.SignInAsync(user, isPersistent: input.RememberMe);
 
             return RedirectToLocal(returnUrl);
@@ -115,6 +117,22 @@ namespace TaskoMask.Clients.AdminPanle.Controllers
                 return RedirectToAction(actionName: "index", controllerName: "Dashboard", routeValues: new { Area = "Membership" });
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private AuthenticatedUserModel GetAuthenticatedUserModel(OperatorBasicInfoDto owner)
+        {
+            return new AuthenticatedUserModel
+            {
+                Id = owner.Id,
+                DisplayName = owner.DisplayName,
+                Email = owner.Email,
+                UserName = owner.Email,
+            };
+        }
 
 
         #endregion

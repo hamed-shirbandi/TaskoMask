@@ -6,8 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
-using TaskoMask.BuildingBlocks.Infrastructure.Repositories;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
+using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Membership
 {

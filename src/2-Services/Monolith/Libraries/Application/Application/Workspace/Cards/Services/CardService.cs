@@ -26,7 +26,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Services
 
         #region Ctors
 
-        public CardService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, ITaskService taskService) : base(inMemoryBus, mapper, notifications)
+        public CardService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, ITaskService taskService) : base(inMemoryBus, mapper, notifications)
         {
             _taskService = taskService;
         }

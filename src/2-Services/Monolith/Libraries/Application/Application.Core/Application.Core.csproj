@@ -7,19 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-    <PackageReference Include="RedisCache.Core" Version="1.0.3" />
-    <PackageReference Include="FluentValidation" Version="10.3.5" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-  </ItemGroup>
-
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Application\Application.csproj" />
-    <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Contracts.csproj" />
-    <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Domain\Domain.csproj" />
   </ItemGroup>
 
 

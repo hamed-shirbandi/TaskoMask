@@ -11,6 +11,7 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organizations
 {

@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
-using TaskoMask.BuildingBlocks.Infrastructure.Repositories;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
+using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Authorization
 {

@@ -21,7 +21,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
 
         #region Ctor
 
-        public ProjectsController(IProjectService projectService, IMapper mapper) : base(mapper)
+        public ProjectsController(IProjectService projectService, IMapper mapper) : base()
         {
             _projectService = projectService;
         }

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.BuildingBlocks.Infrastructure.Repositories;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace

@@ -11,7 +11,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 
         protected IInMemoryBus _inMemoryBus;
         protected IMapper _iMapper;
-        protected IDomainNotificationHandler _domainNotificationHandler;
+        protected INotificationHandler _domainNotificationHandler;
 
 
 
@@ -44,7 +44,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
         {
             _inMemoryBus = Substitute.For<IInMemoryBus>();
             _iMapper = Substitute.For<IMapper>();
-            _domainNotificationHandler = Substitute.For<IDomainNotificationHandler>();
+            _domainNotificationHandler = Substitute.For<INotificationHandler>();
         }
 
 

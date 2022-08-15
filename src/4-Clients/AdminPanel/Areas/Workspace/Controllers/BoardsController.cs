@@ -22,7 +22,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
 
         #region Ctor
 
-        public BoardsController(IBoardService boardService, IMapper mapper) : base(mapper)
+        public BoardsController(IBoardService boardService, IMapper mapper) : base()
         {
             _boardService = boardService;
         }

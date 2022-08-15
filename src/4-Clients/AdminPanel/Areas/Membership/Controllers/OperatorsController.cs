@@ -28,7 +28,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
 
         #region Ctor
 
-        public OperatorsController(IOperatorService operatorService, IMapper mapper, IUserService userService) : base(mapper)
+        public OperatorsController(IOperatorService operatorService, IMapper mapper, IUserService userService) : base()
         {
             _operatorService = operatorService;
             _userService = userService;

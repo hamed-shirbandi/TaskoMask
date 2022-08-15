@@ -24,7 +24,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
 
         #region Ctor
 
-        public OwnersController(IOwnerService ownerService, IMapper mapper, IUserService userService) : base(mapper)
+        public OwnersController(IOwnerService ownerService, IMapper mapper, IUserService userService) : base()
         {
             _ownerService = ownerService;
             _userService = userService;

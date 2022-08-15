@@ -1,6 +1,6 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Specifications;
-using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
+using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications
 {

@@ -15,7 +15,7 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
     {
         #region Fields
 
-        protected readonly IDomainNotificationHandler _notifications;
+        protected readonly INotificationHandler _notifications;
         protected readonly IMapper _mapper;
 
 
@@ -25,7 +25,7 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
         #region Ctors
 
 
-        protected BaseQueryHandler(IMapper mapper, IDomainNotificationHandler notifications)
+        protected BaseQueryHandler(IMapper mapper, INotificationHandler notifications)
         {
             _mapper = mapper;
             _notifications = notifications;

@@ -31,7 +31,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Permissions.Service
 
         #region Ctor
 
-        public PermissionService(IPermissionRepository permissionRepository, IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IRoleRepository roleRepository, IOperatorRepository operatorRepository)
+        public PermissionService(IPermissionRepository permissionRepository, IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IRoleRepository roleRepository, IOperatorRepository operatorRepository)
             : base(inMemoryBus, mapper, notifications)
         {
             _permissionRepository = permissionRepository;

@@ -21,7 +21,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
 
         #region Ctor
 
-        public OrganizationsController(IOrganizationService organizationService, IMapper mapper) : base(mapper)
+        public OrganizationsController(IOrganizationService organizationService, IMapper mapper) : base()
         {
             _organizationService = organizationService;
         }

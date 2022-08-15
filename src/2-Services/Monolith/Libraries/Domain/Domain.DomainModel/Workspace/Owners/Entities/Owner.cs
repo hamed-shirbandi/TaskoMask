@@ -4,13 +4,13 @@ using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Organizations;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Owners;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Projects;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specifications;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities
 {

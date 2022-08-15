@@ -27,7 +27,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services
 
         #region Ctors
 
-        public TaskService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IActivityService activityService, ICommentService commentService) : base(inMemoryBus, mapper, notifications)
+        public TaskService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IActivityService activityService, ICommentService commentService) : base(inMemoryBus, mapper, notifications)
         {
             _activityService = activityService;
             _commentService = commentService;

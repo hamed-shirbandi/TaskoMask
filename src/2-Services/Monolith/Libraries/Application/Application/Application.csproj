@@ -8,8 +8,7 @@
 
   
   <ItemGroup>
-	  <ProjectReference Include="..\..\Infrastructure\Infrastructure.Data.Read\Infrastructure.Data.Read.csproj" />
-	  <ProjectReference Include="..\..\Infrastructure\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj" />
+
 	  <ProjectReference Include="..\..\Domain\Domain.DomainModel\Domain.DomainModel.csproj" />
 	  <ProjectReference Include="..\..\Domain\Domain.DataModel\Domain.DataModel.csproj" />
 	  <ProjectReference Include="..\Application.Core\Application.Core.csproj" />

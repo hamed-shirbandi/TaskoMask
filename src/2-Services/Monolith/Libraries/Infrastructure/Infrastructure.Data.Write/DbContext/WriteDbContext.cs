@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
-using TaskoMask.BuildingBlocks.Infrastructure.DbContext;
+using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
 {

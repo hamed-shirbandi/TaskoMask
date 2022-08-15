@@ -33,7 +33,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Han
 
         #region Ctors
 
-        public ProjectQueryHandlers(IProjectRepository projectRepository, IDomainNotificationHandler notifications, IMapper mapper, IBoardRepository boardRepository, IOrganizationRepository organizationRepository) : base(mapper, notifications)
+        public ProjectQueryHandlers(IProjectRepository projectRepository, INotificationHandler notifications, IMapper mapper, IBoardRepository boardRepository, IOrganizationRepository organizationRepository) : base(mapper, notifications)
         {
             _projectRepository = projectRepository;
             _boardRepository = boardRepository;

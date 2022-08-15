@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
-using TaskoMask.BuildingBlocks.Infrastructure.Repositories;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
+using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories
 {

@@ -20,17 +20,15 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         #region Fields
 
         private readonly IUserRepository _userRepository;
-        private readonly IEncryptionService _encryptionService;
 
         #endregion
 
         #region Ctors
 
-        public UserService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IUserRepository userRepository, IEncryptionService encryptionService)
+        public UserService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IUserRepository userRepository)
              : base(inMemoryBus, mapper, notifications)
         {
             _userRepository = userRepository;
-            _encryptionService = encryptionService;
         }
 
 
@@ -81,7 +79,7 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
                 return Result.Failure<bool>(message: ApplicationMessages.User_Is_Not_Active_And_Can_Not_Login);
 
 
-            var passwordHash = _encryptionService.CreatePasswordHash(password, user.PasswordSalt);
+            var passwordHash = EncryptionHelper.CreatePasswordHash(password, user.PasswordSalt);
             if (passwordHash != user.PasswordHash)
                 return Result.Failure<bool>(message: ApplicationMessages.User_Login_failed);
 
@@ -264,8 +262,8 @@ namespace TaskoMask.Services.Monolith.Application.Authorization.Users.Services
         /// </summary>
         private void SetPassword(User user, string password)
         {
-            user.PasswordSalt = _encryptionService.CreateSaltKey(5);
-            user.PasswordHash = _encryptionService.CreatePasswordHash(password, user.PasswordSalt);
+            user.PasswordSalt = EncryptionHelper.CreateSaltKey(5);
+            user.PasswordHash = EncryptionHelper.CreatePasswordHash(password, user.PasswordSalt);
         }
 
         #endregion

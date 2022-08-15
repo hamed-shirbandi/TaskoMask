@@ -16,7 +16,7 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
         #region Fields
 
 
-        private readonly IDomainNotificationHandler _notifications;
+        private readonly INotificationHandler _notifications;
 
 
         #endregion
@@ -25,7 +25,7 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
         #region Ctors
 
 
-        public ApplicationExceptionsHandler(IDomainNotificationHandler notifications)
+        public ApplicationExceptionsHandler(INotificationHandler notifications)
         {
             _notifications = notifications;
         }

@@ -29,14 +29,14 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             #region AuthenticatedUser
 
 
-            CreateMap<UserBasicInfoDto, AuthenticatedUser>();
+            CreateMap<UserBasicInfoDto, AuthenticatedUserModel>();
 
 
-            CreateMap<OwnerBasicInfoDto, AuthenticatedUser>()
+            CreateMap<OwnerBasicInfoDto, AuthenticatedUserModel>()
                   .ForMember(dest => dest.UserName, opt =>
                       opt.MapFrom(src => src.UserInfo.UserName));
 
-            CreateMap<OperatorBasicInfoDto, AuthenticatedUser>()
+            CreateMap<OperatorBasicInfoDto, AuthenticatedUserModel>()
                   .ForMember(dest => dest.UserName, opt =>
                       opt.MapFrom(src => src.UserInfo.UserName));
 

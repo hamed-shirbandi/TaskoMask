@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
 
         #region Ctors
 
-        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOwnerAggregateRepository ownerRepository, IUserService userService, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService, IConfiguration configuration)
+        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IOwnerAggregateRepository ownerRepository, IUserService userService, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService, IConfiguration configuration)
              : base(inMemoryBus, mapper, notifications)
         {
             _userService = userService;

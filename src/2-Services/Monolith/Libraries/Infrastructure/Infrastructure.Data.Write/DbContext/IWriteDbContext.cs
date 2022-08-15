@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Infrastructure.DbContext;
+﻿using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
 {

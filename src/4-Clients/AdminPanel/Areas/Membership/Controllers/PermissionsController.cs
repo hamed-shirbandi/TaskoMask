@@ -25,7 +25,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
 
         #region Ctor
 
-        public PermissionsController(IPermissionService permissionService, IMapper mapper) : base(mapper)
+        public PermissionsController(IPermissionService permissionService, IMapper mapper) : base()
         {
             _permissionService = permissionService;
 

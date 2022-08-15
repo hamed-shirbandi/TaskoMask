@@ -24,7 +24,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
 
         #region Ctors
 
-        public OrganizationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications ) : base(inMemoryBus, mapper, notifications)
+        public OrganizationService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications ) : base(inMemoryBus, mapper, notifications)
         {
         }
 

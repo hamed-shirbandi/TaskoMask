@@ -20,7 +20,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
 
         #region Ctors
 
-        public CommentService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
+        public CommentService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         {
         }
 

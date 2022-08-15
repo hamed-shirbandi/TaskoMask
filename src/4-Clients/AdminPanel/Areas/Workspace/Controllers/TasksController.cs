@@ -20,7 +20,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
 
         #region Ctor
 
-        public TasksController(ITaskService taskService, IMapper mapper) : base(mapper)
+        public TasksController(ITaskService taskService, IMapper mapper) : base()
         {
             _taskService = taskService;
         }

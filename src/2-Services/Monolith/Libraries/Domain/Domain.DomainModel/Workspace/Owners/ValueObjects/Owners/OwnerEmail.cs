@@ -4,7 +4,6 @@ using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.BuildingBlocks.Contracts.Extensions;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners
 {

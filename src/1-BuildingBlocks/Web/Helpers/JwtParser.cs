@@ -12,13 +12,13 @@ namespace TaskoMask.BuildingBlocks.Web.Helpers
     {
 
 
-        public static AuthenticatedUser ParseAuthenticatedUserModelFromJwt(string jwt)
+        public static AuthenticatedUserModel ParseAuthenticatedUserModelFromJwt(string jwt)
         {
             var payload = jwt.Split('.')[1];
 
             var jsonBytes = ParseBase64WithoutPadding(payload);
 
-            return JsonSerializer.Deserialize<AuthenticatedUser>(jsonBytes);
+            return JsonSerializer.Deserialize<AuthenticatedUserModel>(jsonBytes);
         }
 
 

@@ -21,7 +21,7 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
 
         #region Ctor
 
-        public CardsController(ICardService cardService, IMapper mapper) : base(mapper)
+        public CardsController(ICardService cardService, IMapper mapper) : base()
         {
             _cardService = cardService;
         }

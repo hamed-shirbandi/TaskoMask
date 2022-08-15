@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Domain.Events;
+using TaskoMask.BuildingBlocks.Domain.Services;
 
 namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {
@@ -21,14 +22,14 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
     {
         #region Fields
 
-        private readonly IEventStore _eventStore;
+        private readonly IEventStoreService _eventStore;
 
         #endregion
 
         #region Ctors
 
 
-        public EventStoringBehavior(IEventStore eventStore)
+        public EventStoringBehavior(IEventStoreService eventStore)
         {
             _eventStore = eventStore;
         }

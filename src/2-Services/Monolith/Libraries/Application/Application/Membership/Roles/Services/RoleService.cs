@@ -31,7 +31,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Roles.Services
 
         #region Ctors
 
-        public RoleService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IRoleRepository roleRepository, IOperatorRepository operatorRepository, IPermissionRepository permissionRepository) : base(inMemoryBus, mapper, notifications)
+        public RoleService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IRoleRepository roleRepository, IOperatorRepository operatorRepository, IPermissionRepository permissionRepository) : base(inMemoryBus, mapper, notifications)
         {
             _roleRepository = roleRepository;
             _operatorRepository = operatorRepository;

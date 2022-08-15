@@ -21,7 +21,6 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Authorization
     {
         #region Fields
 
-        private IEncryptionService _encryptionService;
         private IUserRepository _userRepository;
         private IUserService _userService;
         private List<User> _users;
@@ -154,8 +153,6 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Authorization
 
         protected override void TestClassFixtureSetup()
         {
-            _encryptionService = Substitute.For<IEncryptionService>();
-
             _users = DataGenerator.GenerateUserList();
             _userRepository = Substitute.For<IUserRepository>();
             _userRepository.GetByUserNameAsync(Arg.Is<string>(x => _users.Select(u => u.UserName).Contains(x))).Returns(args => _users.First(u => u.UserName == (string)args[0]));
@@ -172,7 +169,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Authorization
                 }
             });
 
-            _userService = new UserService(_inMemoryBus, _iMapper, _domainNotificationHandler, _userRepository, _encryptionService);
+            _userService = new UserService(_inMemoryBus, _iMapper, _domainNotificationHandler, _userRepository);
         }
 
 

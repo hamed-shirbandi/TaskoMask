@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Domain.Events;
-using TaskoMask.BuildingBlocks.Domain.Notifications;
 
 namespace TaskoMask.BuildingBlocks.Domain.Models
 {

@@ -35,7 +35,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Handle
 
         #region Ctors
 
-        public CardQueryHandlers(ICardRepository cardRepository, IDomainNotificationHandler notifications, IMapper mapper, ITaskRepository taskRepository, IBoardRepository boardRepository) : base(mapper, notifications)
+        public CardQueryHandlers(ICardRepository cardRepository, INotificationHandler notifications, IMapper mapper, ITaskRepository taskRepository, IBoardRepository boardRepository) : base(mapper, notifications)
         {
             _cardRepository = cardRepository;
             _taskRepository = taskRepository;

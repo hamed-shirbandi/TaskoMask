@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Commands;
-using TaskoMask.BuildingBlocks.Application.Extensions;
+using TaskoMask.BuildingBlocks.Contracts.Extensions;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 
 namespace TaskoMask.BuildingBlocks.Application.Behaviors
@@ -20,13 +20,13 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
         #region Fields
 
         private readonly IEnumerable<IValidator<TRequest>> _validators;
-        private readonly IDomainNotificationHandler _notifications;
+        private readonly INotificationHandler _notifications;
 
         #endregion
 
         #region Ctors
 
-        public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, IDomainNotificationHandler notifications)
+        public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, INotificationHandler notifications)
         {
             _validators = validators;
             _notifications = notifications;

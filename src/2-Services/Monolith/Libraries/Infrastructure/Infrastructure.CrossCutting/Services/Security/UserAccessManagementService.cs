@@ -5,6 +5,7 @@ using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
+using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Services.Security
 {
@@ -23,7 +24,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Services.Security
         private readonly IBoardRepository _boardRepository;
         private readonly ICardRepository _cardRepository;
         private readonly ITaskRepository _taskRepository;
-        private readonly AuthenticatedUser currentUser;
+        private readonly AuthenticatedUserModel currentUser;
 
         #endregion
 

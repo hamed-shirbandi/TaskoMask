@@ -38,7 +38,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Querie
 
         #region Ctors
 
-        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IDomainNotificationHandler notifications, IMapper mapper, IOwnerRepository ownerRepository, IProjectRepository projectRepository, IBoardRepository boardRepository, ICardRepository cardRepository, ITaskRepository taskRepository) : base(mapper, notifications)
+        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, INotificationHandler notifications, IMapper mapper, IOwnerRepository ownerRepository, IProjectRepository projectRepository, IBoardRepository boardRepository, ICardRepository cardRepository, ITaskRepository taskRepository) : base(mapper, notifications)
         {
             _organizationRepository = organizationRepository;
             _ownerRepository = ownerRepository;

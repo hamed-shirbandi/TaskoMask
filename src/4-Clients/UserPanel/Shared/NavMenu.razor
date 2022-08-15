@@ -71,7 +71,7 @@
 
         websiteUrl = Configuration["Url:Website"];
 
-        var user = await LocalStorageService.GetItemAsync<AuthenticatedUser>(MagicKey.Authenticated_User);
+        var user = await LocalStorageService.GetItemAsync<AuthenticatedUserModel>(MagicKey.Authenticated_User);
         if (user != null)
             userDisplayName = user.DisplayName;
 
@@ -112,7 +112,7 @@
     /// </summary>
     private async Task UpdateAuthenticatedUserInLocalStorage(OwnerBasicInfoDto user)
     {
-        var authenticatedUser = await LocalStorageService.GetItemAsync<AuthenticatedUser>(MagicKey.Authenticated_User);
+        var authenticatedUser = await LocalStorageService.GetItemAsync<AuthenticatedUserModel>(MagicKey.Authenticated_User);
         authenticatedUser.DisplayName = user.DisplayName;
         authenticatedUser.Email = user.Email;
         await LocalStorageService.SetItemAsync(MagicKey.Authenticated_User, authenticatedUser);

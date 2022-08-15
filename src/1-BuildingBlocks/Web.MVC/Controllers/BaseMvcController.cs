@@ -1,12 +1,9 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.BuildingBlocks.Application.Commands;
-using AutoMapper;
 using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Models;
 using TaskoMask.BuildingBlocks.Web.MVC.Enums;
-using TaskoMask.BuildingBlocks.Domain.Services;
-using System;
+using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 {
@@ -15,7 +12,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
         #region Fields
 
         private readonly IAuthenticatedUserService _authenticatedUserService;
-        protected readonly IMapper _mapper;
         protected int recordsPerPage;
         protected int pageSize;
         protected int totalItemCount;
@@ -27,22 +23,11 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 
         public BaseMvcController()
         {
-            InitialPagination();
-        }
-
-    
-
-        public BaseMvcController(IMapper mapper)
-        {
-            _mapper = mapper;
-            InitialPagination();
 
         }
 
-
-        public BaseMvcController(IMapper mapper, IAuthenticatedUserService authenticatedUserService)
+        public BaseMvcController(IAuthenticatedUserService authenticatedUserService)
         {
-            _mapper = mapper;
             _authenticatedUserService = authenticatedUserService;
             InitialPagination();
 
@@ -134,24 +119,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 
             return View(queryResult.Value);
         }
-
-
-
-
-        /// <summary>
-        /// return mapped data to view if result is success
-        /// return redirect to error page if result is failed
-        /// </summary>
-        protected IActionResult View<TQueryResult, TModel>(Result<TQueryResult> queryResult)
-        {
-            if (!queryResult.IsSuccess)
-                return RedirectToErrorPage(queryResult);
-
-            var model = _mapper.Map<TModel>(queryResult.Value);
-            return View(model);
-        }
-
-
       
 
         /// <summary>

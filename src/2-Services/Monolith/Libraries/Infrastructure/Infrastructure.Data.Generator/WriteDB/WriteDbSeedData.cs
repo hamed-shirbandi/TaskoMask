@@ -28,7 +28,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
             {
                 var _writeDbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
-                var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
                 var _boardValidatorService = serviceScope.ServiceProvider.GetService<IBoardValidatorService>();
                 var _taskValidatorService = serviceScope.ServiceProvider.GetService<ITaskValidatorService>();
 

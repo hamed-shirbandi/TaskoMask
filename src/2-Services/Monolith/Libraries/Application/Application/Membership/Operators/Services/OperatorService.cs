@@ -30,7 +30,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
 
         #region Ctors
 
-        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications, IOperatorRepository operatorRepository, IRoleRepository roleRepository, IUserService userService)
+        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IOperatorRepository operatorRepository, IRoleRepository roleRepository, IUserService userService)
              : base(inMemoryBus, mapper, notifications)
         {
             _operatorRepository = operatorRepository;

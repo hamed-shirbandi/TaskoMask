@@ -1,25 +1,11 @@
-﻿using FluentValidation;
-using MediatR;
-using MediatR.Pipeline;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RedisCache.Core;
-using TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Models;
-using TaskoMask.BuildingBlocks.Application.Behaviors;
-using TaskoMask.BuildingBlocks.Application.Exceptions;
-using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper;
-using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Validations;
-using TaskoMask.BuildingBlocks.Domain.Events;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
-using TaskoMask.BuildingBlocks.Domain.Services;
-using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Cookie;
-using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
 {
@@ -39,19 +25,9 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddHttpContextAccessor();
-            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
-            services.AddScoped<ICookieService, CookieService>();
-            services.AddMediatR(typeof(BoardBaseCommand));
-            services.AddExceptionHandlers();
-            services.AddBehaviors();
-            services.AddAutoMapperSetup();
-            //Load all fluent validation to use in ValidationBehaviour
-            services.AddValidatorsFromAssembly(typeof(AddOrganizationValidation).Assembly);
-            services.AddAutoMapperSetup();
-            services.AddRedisCache(options =>
-            {
-                configuration.GetSection("RedisCache").Bind(options);
-            });
+            services.AddAuthenticatedUserService();
+            services.AddCookieService();
+
             // If using Kestrel:
             services.Configure<KestrelServerOptions>(options =>
             {
@@ -62,7 +38,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
             {
                 options.AllowSynchronousIO = true;
             });
-            services.ConfigureIocContainer();
         }
 
 
@@ -77,33 +52,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            WriteDbInitialization.Initial(serviceProvider);
-            ReadDbInitialization.Initial(serviceProvider);
-            WriteDbSeedData.Seed(serviceProvider);
-
             app.UseHttpsRedirection();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AddBehaviors(this IServiceCollection services)
-        {
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
-            services.AddScoped<INotificationHandler<IDomainEvent>, EventStoringBehavior>();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AddExceptionHandlers(this IServiceCollection services)
-        {
-            services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
         }
 
 

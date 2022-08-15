@@ -17,8 +17,6 @@
 		<PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
-		<ProjectReference Include="..\..\2-Services\Monolith\Libraries\Application\Application\Application.csproj" />
 		<ProjectReference Include="..\Web\Web.csproj" />
 	</ItemGroup>
 

@@ -1,16 +1,13 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
-using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
-using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
+using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
+using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Services.Monolith.API.Controllers
 {
@@ -33,7 +30,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         /// <summary>
         /// 
         /// </summary>
-        public AccountApiController(IJwtAuthenticationService jwtAuthenticationService, IOwnerService ownerService, IMapper mapper, IUserService userService) : base(mapper)
+        public AccountApiController(IJwtAuthenticationService jwtAuthenticationService, IOwnerService ownerService, IUserService userService) : base()
         {
             _jwtAuthenticationService = jwtAuthenticationService;
             _ownerService = ownerService;
@@ -54,7 +51,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         [Route("account/login")]
         public async Task<Result<UserJwtTokenDto>> Login([FromBody] UserLoginDto input)
         {
-          
+
             //validate user password
             var validateQueryResult = await _userService.IsValidCredentialAsync(input.UserName, input.Password);
             if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
@@ -68,7 +65,7 @@ namespace TaskoMask.Services.Monolith.API.Controllers
 
 
             //map to jwt claims model
-            var user = _mapper.Map<AuthenticatedUser>(ownerQueryResult.Value);
+            var user = GetAuthenticatedUserModel(ownerQueryResult.Value);
 
             //generate jwt token
             var token = _jwtAuthenticationService.GenerateJwtToken(user);
@@ -112,14 +109,30 @@ namespace TaskoMask.Services.Monolith.API.Controllers
         /// <summary>
         /// 
         /// </summary>
-        private AuthenticatedUser GetAuthenticatedUserModel(string entityId, RegisterOwnerDto input)
+        private AuthenticatedUserModel GetAuthenticatedUserModel(string entityId, RegisterOwnerDto owner)
         {
-            return new AuthenticatedUser
+            return new AuthenticatedUserModel
             {
-                Id= entityId,
-                DisplayName= input.DisplayName,
-                Email= input.Email,
-                UserName= input.Email,
+                Id = entityId,
+                DisplayName = owner.DisplayName,
+                Email = owner.Email,
+                UserName = owner.Email,
+            };
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private AuthenticatedUserModel GetAuthenticatedUserModel(OwnerBasicInfoDto owner)
+        {
+            return new AuthenticatedUserModel
+            {
+                Id = owner.Id,
+                DisplayName = owner.DisplayName,
+                Email = owner.Email,
+                UserName = owner.Email,
             };
         }
 

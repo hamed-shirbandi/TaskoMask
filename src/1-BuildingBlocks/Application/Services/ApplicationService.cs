@@ -16,7 +16,7 @@ namespace TaskoMask.BuildingBlocks.Application.Services
 
         private readonly IInMemoryBus _inMemoryBus;
         protected readonly IMapper _mapper;
-        protected readonly IDomainNotificationHandler _notifications;
+        protected readonly INotificationHandler _notifications;
 
 
         #endregion
@@ -24,7 +24,7 @@ namespace TaskoMask.BuildingBlocks.Application.Services
         #region Ctors
 
 
-        public ApplicationService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications)
+        public ApplicationService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications)
         {
             _inMemoryBus = inMemoryBus;
             _mapper = mapper;

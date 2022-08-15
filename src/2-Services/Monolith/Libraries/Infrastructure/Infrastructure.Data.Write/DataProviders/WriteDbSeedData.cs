@@ -7,6 +7,7 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
 {
@@ -27,7 +28,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
             {
                 var _dbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
-                var _encryptionService = serviceScope.ServiceProvider.GetService<IEncryptionService>();
 
                 var _users = _dbContext.GetCollection<User>();
                 var _operators = _dbContext.GetCollection<Operator>();
@@ -35,7 +35,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
 
                 if (!_operators.AsQueryable().Any())
                 {
-                    var superUser = GetSuperUser(_configuration, _encryptionService);
+                    var superUser = GetSuperUser(_configuration);
                     _users.InsertOne(superUser);
 
                     var adminOperator = GetAdminOperator(superUser.Id, _configuration);
@@ -50,16 +50,16 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        private static User GetSuperUser(IConfiguration configuration, IEncryptionService encryptionService)
+        private static User GetSuperUser(IConfiguration configuration)
         {
-            var passwordSalt = encryptionService.CreateSaltKey(5);
+            var passwordSalt = EncryptionHelper.CreateSaltKey(5);
 
             return new User
             {
                 UserName = configuration["SuperUser:Email"],
                 IsActive = true,
                 PasswordSalt = passwordSalt,
-                PasswordHash = encryptionService.CreatePasswordHash(configuration["SuperUser:Password"], passwordSalt)
+                PasswordHash = EncryptionHelper.CreatePasswordHash(configuration["SuperUser:Password"], passwordSalt)
             };
 
         }

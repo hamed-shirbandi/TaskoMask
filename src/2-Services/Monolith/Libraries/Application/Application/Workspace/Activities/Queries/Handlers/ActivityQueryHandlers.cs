@@ -25,7 +25,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.H
 
         #region Ctors
 
-        public ActivityQueryHandlers(IActivityRepository activityRepository,IDomainNotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
+        public ActivityQueryHandlers(IActivityRepository activityRepository,INotificationHandler notifications, IMapper mapper) : base(mapper, notifications)
         {
             _activityRepository = activityRepository;
         }

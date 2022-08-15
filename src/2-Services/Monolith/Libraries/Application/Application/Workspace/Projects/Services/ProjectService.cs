@@ -24,7 +24,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
 
         #region Ctors
 
-        public ProjectService(IInMemoryBus inMemoryBus, IMapper mapper, IDomainNotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
+        public ProjectService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
         { }
 
 

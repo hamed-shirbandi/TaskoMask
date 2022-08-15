@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 using System;
+using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders
 {

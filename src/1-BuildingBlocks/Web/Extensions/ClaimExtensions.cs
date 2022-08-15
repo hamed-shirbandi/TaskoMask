@@ -7,7 +7,7 @@ namespace TaskoMask.BuildingBlocks.Web.Extensions
     public static class ClaimExtensions
     {
 
-        public static void AddList(this List<Claim> claims, AuthenticatedUser user)
+        public static void AddList(this List<Claim> claims, AuthenticatedUserModel user)
         {
             claims.Add(new Claim(ClaimTypes.Name, user.UserName));
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));

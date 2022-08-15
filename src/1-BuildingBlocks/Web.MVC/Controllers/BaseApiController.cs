@@ -1,9 +1,5 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using TaskoMask.BuildingBlocks.Application.Commands;
-using AutoMapper;
-using TaskoMask.BuildingBlocks.Domain.Services;
+﻿using Microsoft.AspNetCore.Mvc;
+using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 {
@@ -12,29 +8,14 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
         #region Fields
 
         private readonly IAuthenticatedUserService _authenticatedUserService;
-        protected readonly IMapper _mapper;
 
         #endregion
 
         #region Ctors
 
-        public BaseApiController()
+
+        public BaseApiController( )
         {
-
-        }
-
-
-        public BaseApiController(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
-
-
-
-        public BaseApiController(IMapper mapper, IAuthenticatedUserService authenticatedUserService)
-        {
-            _mapper = mapper;
-            _authenticatedUserService = authenticatedUserService;
         }
 
 
@@ -42,6 +23,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
         {
             _authenticatedUserService = authenticatedUserService;
         }
+
 
 
         #endregion

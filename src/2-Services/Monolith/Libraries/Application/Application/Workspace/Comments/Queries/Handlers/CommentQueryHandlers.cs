@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Han
 
         #region Ctors
 
-        public CommentQueryHandlers(ICommentRepository commentRepository, IDomainNotificationHandler notifications, IMapper mapper  ) : base(mapper, notifications)
+        public CommentQueryHandlers(ICommentRepository commentRepository, INotificationHandler notifications, IMapper mapper  ) : base(mapper, notifications)
         {
             _commentRepository = commentRepository;
         }

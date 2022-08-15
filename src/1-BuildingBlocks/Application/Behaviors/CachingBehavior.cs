@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using EasyCaching.Core;
+using MediatR;
 using Microsoft.Extensions.Configuration;
-using RedisCache.Core;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
@@ -13,11 +14,11 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
     /// <summary>
     /// Caching response of queries mareked with ICacheableQuery
     /// </summary>
-    public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest :BaseQuery<TResponse>
+    public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : BaseQuery<TResponse>
     {
         #region Fields
 
-        private readonly IRedisCacheService _redisCacheService;
+        private readonly IEasyCachingProvider _cachingProvider;
         private readonly IConfiguration _configuration;
 
         #endregion
@@ -25,9 +26,9 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
         #region Ctors
 
 
-        public CachingBehavior(IRedisCacheService redisCacheService, IConfiguration configuration)
+        public CachingBehavior(IEasyCachingProvider cachingProvider, IConfiguration configuration)
         {
-            _redisCacheService = redisCacheService;
+            _cachingProvider = cachingProvider;
             _configuration = configuration;
         }
 
@@ -53,12 +54,16 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
 
 
             var cacheKey = GenerateKeyFromRequest(request);
-            if (!_redisCacheService.TryGetValue(key: cacheKey, result: out TResponse response))
-            {
-                response = await next();
-                var cacheTimeInMinutes = int.Parse(_configuration["RedisCache:CacheTimeInMinutes"]);
-                await _redisCacheService.SetAsync(key: cacheKey, data: response, cacheTimeInMinutes: cacheTimeInMinutes);
-            }
+            var cachedResponse = await _cachingProvider.GetAsync<TResponse>(cacheKey);
+
+            if (cachedResponse.Value != null)
+                return cachedResponse.Value;
+
+            var response = await next();
+
+            var cacheTimeInMinutes = int.Parse(_configuration["Caching:CacheTimeInMinutes"]);
+            var expirationTime = DateTime.Now.AddMinutes(cacheTimeInMinutes);
+            await _cachingProvider.SetAsync(cacheKey, response, expirationTime.TimeOfDay);
 
             return response;
         }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Domain.Data;
-using TaskoMask.BuildingBlocks.Infrastructure.Bus;
+using TaskoMask.BuildingBlocks.Application.Bus;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {

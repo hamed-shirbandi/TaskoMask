@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Application.Bus;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {

@@ -6,7 +6,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Notifications;
-using TaskoMask.BuildingBlocks.Infrastructure.Bus;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;

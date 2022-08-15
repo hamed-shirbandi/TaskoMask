@@ -45,6 +45,7 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
 
+            services.AddEasyCaching(option=>option.UseInMemory());
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             return services;
         }

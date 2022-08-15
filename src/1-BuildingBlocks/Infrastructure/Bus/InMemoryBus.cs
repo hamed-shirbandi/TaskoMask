@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {

@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
-using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
-using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.Services.Monolith.Application.Membership.Roles.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Permissions.Services;
@@ -14,7 +12,6 @@ using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Membership;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
-using TaskoMask.BuildingBlocks.Domain.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
@@ -30,11 +27,11 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
-using TaskoMask.Services.Monolith.Infrastructure.Services.Security;
-using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure;
-using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mediator;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
 {
@@ -57,6 +54,9 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
             services.AddApplicationServices();
             services.AddInfrastructureReadDataServices();
             services.AddInfrastructureWriteDataServices();
+
+            services.AddAutoMapperSetup();
+            services.AddMediatorHandlers();
         }
 
 

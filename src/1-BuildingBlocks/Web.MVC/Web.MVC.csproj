@@ -9,7 +9,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="DNTCaptcha.Core" Version="4.1.0" />
-		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
 		<PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />

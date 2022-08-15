@@ -28,10 +28,10 @@ using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
 using TaskoMask.BuildingBlocks.Application.Services;
-using TaskoMask.BuildingBlocks.Infrastructure;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mediator;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services;
+using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
 {
@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
         /// <summary>
         /// 
         /// </summary>
-        public static void ConfigureIocContainer(this IServiceCollection services)
+        public static void AddProjectConfigureServices(this IServiceCollection services)
         {
             services.AddBuildingBlocksApplicationServices();
             services.AddBuildingBlocksInfrastructureServices();

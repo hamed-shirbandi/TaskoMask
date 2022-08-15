@@ -1,34 +1,28 @@
 using Serilog;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC;
 
-Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
-Log.Information("Starting up");
+var builder = WebApplication.CreateBuilder(args);
 
-try
+builder.AddCustomSerilog();
+
+builder.Services.AddProjectConfigureServices();
+
+builder.Services.AddMvcConfigureServices(builder.Configuration, builder.Environment);
+
+var app = builder.Build();
+
+app.UseSerilogRequestLogging();
+
+app.UseMvcProjectConfigure(app.Services, builder.Environment);
+
+app.UseEndpoints(endpoints =>
 {
-    var builder = WebApplication.CreateBuilder(args);
-    builder.Host.UseSerilog(((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration)));
-    builder.Services.AddMvcConfigureServices(builder.Configuration, builder.Environment);
-    var app = builder.Build();
-    app.UseSerilogRequestLogging();
-    app.UseMvcProjectConfigure(app.Services, builder.Environment);
-    app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 
-    });
-    app.Run();
-}
-catch (Exception ex)
-{
-    Log.Fatal(ex, "Unhandled exception");
-}
-finally
-{
-    Log.Information("Shut down complete");
-    Log.CloseAndFlush();
-}
+});
 
-
+app.Run();

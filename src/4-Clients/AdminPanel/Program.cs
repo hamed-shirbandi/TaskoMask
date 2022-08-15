@@ -1,43 +1,35 @@
 using Serilog;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC;
 
-Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
-Log.Information("Starting up");
+var builder = WebApplication.CreateBuilder(args);
 
-try
+builder.AddCustomSerilog();
+
+builder.Services.AddProjectConfigureServices();
+
+builder.Services.AddMvcConfigureServices(builder.Configuration, builder.Environment);
+
+var app = builder.Build();
+
+SampleDataGenerator.GenerateAndSeedSampleData(app.Services);
+
+app.UseSerilogRequestLogging();
+
+app.UseMvcProjectConfigure(app.Services, builder.Environment);
+
+app.UseEndpoints(endpoints =>
 {
-    var builder = WebApplication.CreateBuilder(args);
-    builder.Host.UseSerilog(((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration)));
-    builder.Services.AddMvcConfigureServices(builder.Configuration, builder.Environment);
-    var app = builder.Build();
+    endpoints.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
-    SampleDataGenerator.GenerateAndSeedSampleData(app.Services);
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Account}/{action=login}/{id?}");
 
-    app.UseSerilogRequestLogging();
-    app.UseMvcProjectConfigure(app.Services, builder.Environment);
-    app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapControllerRoute(
-            name: "areas",
-            pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
+});
 
-        endpoints.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Account}/{action=login}/{id?}");
-
-    });
-    app.Run();
-}
-catch (Exception ex)
-{
-    Log.Fatal(ex, "Unhandled exception");
-}
-finally
-{
-    Log.Information("Shut down complete");
-    Log.CloseAndFlush();
-}
-
-
+app.Run();

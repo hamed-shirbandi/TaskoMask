@@ -22,12 +22,34 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// </summary>
         public static void AddCommonConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
-
             services.AddHttpContextAccessor();
             services.AddAuthenticatedUserService();
             services.AddCookieService();
+            services.AddWebServerOptions();
+        }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void UseCommonConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
+
+            app.UseHttpsRedirection();
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddWebServerOptions(this IServiceCollection services)
+        {
             // If using Kestrel:
             services.Configure<KestrelServerOptions>(options =>
             {
@@ -39,22 +61,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
                 options.AllowSynchronousIO = true;
             });
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void UseCommonConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
-        {
-            if (app == null) throw new ArgumentNullException(nameof(app));
-
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-
-            app.UseHttpsRedirection();
-        }
-
 
     }
 }

@@ -7,27 +7,27 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\ContractsMessages.Designer.cs">
-	    <DependentUpon>ContractsMessages.resx</DependentUpon>
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	  </Compile>
-	  <Compile Update="Resources\ContractsMetadata.Designer.cs">
-	    <DependentUpon>ContractsMetadata.resx</DependentUpon>
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	  </Compile>
+		<Compile Update="Resources\ContractsMessages.Designer.cs">
+			<DependentUpon>ContractsMessages.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Resources\ContractsMetadata.Designer.cs">
+			<DependentUpon>ContractsMetadata.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\ContractsMessages.resx">
-	    <LastGenOutput>ContractsMessages.Designer.cs</LastGenOutput>
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\ContractsMetadata.resx">
-	    <LastGenOutput>ContractsMetadata.Designer.cs</LastGenOutput>
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	  </EmbeddedResource>
+		<EmbeddedResource Update="Resources\ContractsMessages.resx">
+			<LastGenOutput>ContractsMessages.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\ContractsMetadata.resx">
+			<LastGenOutput>ContractsMetadata.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
 	</ItemGroup>
 
 </Project>

@@ -22,5 +22,6 @@
   </ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
+		<ProjectReference Include="..\..\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
 	</ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 
-namespace TaskoMask.BuildingBlocks.Web.Configuration.Startup
+namespace TaskoMask.BuildingBlocks.Web.Configuration
 {
     /// <summary>
     /// Shared Configuration for Blazor and MVC and WebAPI projects

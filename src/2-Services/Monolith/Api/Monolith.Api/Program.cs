@@ -2,7 +2,7 @@ using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 Log.Information("Starting up");
@@ -11,7 +11,9 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
     builder.Host.UseSerilog(((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration)));
-    builder.Services.AddWebApiProjectConfigureServices(builder.Configuration);
+    builder.Services.AddWebApiConfigureServices(builder.Configuration);
+    builder.Services.ConfigureIocContainer();
+
     var app = builder.Build();
 
     app.UseSerilogRequestLogging();

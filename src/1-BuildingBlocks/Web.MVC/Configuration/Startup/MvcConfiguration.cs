@@ -12,13 +12,13 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
     /// <summary>
     /// 
     /// </summary>
-    public static  class MvcProjectConfiguration
+    public static  class MvcConfiguration
     {
 
         /// <summary>
         /// 
         /// </summary>
-        public static void AddMvcProjectConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
+        public static void AddMvcConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

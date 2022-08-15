@@ -24,9 +24,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
-	  <ProjectReference Include="..\..\Libraries\Application\Application\Application.csproj" />
-	  <ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj" />
-	  <ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.Data.Read\Infrastructure.Data.Read.csproj" />
-	  <ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj" />
+	  <ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
 	</ItemGroup>
 </Project>

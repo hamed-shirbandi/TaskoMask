@@ -12,14 +12,14 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
     /// <summary>
     /// 
     /// </summary>
-    public static class WebApiProjectConfiguration
+    public static class WebApiConfiguration
     {
 
 
         /// <summary>
         /// 
         /// </summary>
-        public static void AddWebApiProjectConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddWebApiConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

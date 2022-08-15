@@ -10,7 +10,7 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
     builder.Host.UseSerilog(((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration)));
-    builder.Services.AddMvcProjectConfigureServices(builder.Configuration, builder.Environment);
+    builder.Services.AddMvcConfigureServices(builder.Configuration, builder.Environment);
     var app = builder.Build();
 
     SampleDataGenerator.GenerateAndSeedSampleData(app.Services);

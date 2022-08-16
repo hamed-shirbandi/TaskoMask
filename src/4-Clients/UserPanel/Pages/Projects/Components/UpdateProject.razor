@@ -1,0 +1,148 @@
+﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IProjectApiService ProjectApiService
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IOrganizationApiService OrganizationApiService
+
+<EditForm Model="ProjectModel" OnValidSubmit="HandleUpdateProject">
+
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <InputText @bind-Value="ProjectModel.Name" placeholder="Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>ProjectModel.Name" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <InputText @bind-Value="ProjectModel.Description" placeholder="Description" class="form-control"></InputText>
+        <ValidationMessage For="()=>ProjectModel.Description" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+            <button type="submit" class="btn btn-primary float-left">Update</button>
+            <button @onclick="HandleDeleteProject" class="btn btn-danger text-white float-right">Delete</button>
+    </div>
+
+</EditForm>
+
+@code {
+
+
+    #region Fields and Parameters
+
+
+
+    /// <summary>
+    /// Get the project to update by its Id
+    /// </summary>
+    [Parameter]
+    public string Id { get; set; }
+
+
+
+    /// <summary>
+    /// Form Model
+    /// </summary>
+    UpdateProjectDto ProjectModel = new UpdateProjectDto();
+
+
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+
+
+    #endregion Fields and Parameters
+
+
+
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        await PrepareModelToUpdate();
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+    /// <summary>
+    /// Get model by Id from API
+    /// </summary>
+    private async Task PrepareModelToUpdate()
+    {
+  
+        var projectResult = await ProjectApiService.Get(Id);
+
+        if (projectResult.IsSuccess)
+        {
+            ProjectModel = new UpdateProjectDto
+                {
+                    Id = projectResult.Value.Id,
+                    Name = projectResult.Value.Name,
+                    Description = projectResult.Value.Description,
+                };
+        }
+        else
+        {
+            QueryResultHandler<ProjectOutputDto>.Init()
+                .WithResult(projectResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
+        }
+    }
+
+
+
+    /// <summary>
+    /// handle update model
+    /// </summary>
+    private async Task HandleUpdateProject()
+    {
+        var result = await ProjectApiService.Update(Id, ProjectModel);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithComponentMessageType(MessageType.Project_Updated)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
+    }
+
+
+
+    /// <summary>
+    /// handle delete item
+    /// </summary>
+    private async Task HandleDeleteProject()
+    {
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion Warning!", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        var confirmationModalResult = await confirmationModal.Result;
+
+        if (confirmationModalResult.Cancelled)
+            return;
+
+        var result = await ProjectApiService.Delete(Id);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithComponentMessageType(MessageType.Project_Deleted)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
+    }
+
+
+
+    #endregion private Methods
+
+}

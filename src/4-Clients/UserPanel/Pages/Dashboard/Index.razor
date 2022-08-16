@@ -1,0 +1,86 @@
+﻿@page "/"
+@using TaskoMask.Clients.UserPanel.Pages.Dashboard.Components
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IOrganizationApiService OrganizationApiService
+@implements IDisposable
+
+@if (DataIsloading)
+{
+    <div class="spinner-loading"></div>
+}
+else if (Model.OrganizationsDetailsList.Any())
+{
+    <div class="container">
+        <div id="dashboard_page" class="row">
+            <Workspace Model="@Model.OrganizationsDetailsList" />
+        </div>
+    </div>
+}
+
+
+
+@code {
+
+    PanelDashboardViewModel Model= new PanelDashboardViewModel();
+    bool DataIsloading = true;
+
+    /// <summary>
+    /// /
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        //subscribe to OnMessage event. It is used when another components need to send a message to this component
+        ComponentMessageService.OnMessage += ReloadDataHandler;
+
+        await LoadDataAsync();
+    }
+
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+    private async Task LoadDataAsync()
+    {
+        DataIsloading = true;
+      
+        var organizationsDetailsListResult = await OrganizationApiService.Get();
+        if (!organizationsDetailsListResult.IsSuccess)
+            ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToFragment(), organizationsDetailsListResult.Message);
+        else
+            Model.OrganizationsDetailsList = organizationsDetailsListResult.Value;
+        DataIsloading = false;
+    }
+
+
+
+    /// <summary>
+    ///This is a handler to be notified when some interesting events happened
+    /// </summary>
+    private async void ReloadDataHandler(MessageType messageType)
+    {
+        try
+        {
+            if (ReloadDataHelper.Dashboard_Index_Need_Reload(messageType))
+            {
+                await LoadDataAsync();
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            //Async task failure because of async void challenges
+        }
+    }
+
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public void Dispose()
+    {
+        // unsubscribe from OnMessage event
+        ComponentMessageService.OnMessage -= ReloadDataHandler;
+    }
+}

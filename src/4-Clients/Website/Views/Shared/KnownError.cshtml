@@ -1,0 +1,16 @@
+﻿@model TaskoMask.BuildingBlocks.Web.MVC.Models.ErrorViewModel
+@{
+    ViewData["Title"] = "Application Error";
+}
+
+<div class="alert alert-danger">
+    <h2 class="text-danger">@Model.Message</h2>
+    <hr />
+    <ul>
+        @foreach (var error in Model.Errors)
+        {
+            <li class="text-danger">@error</li>
+        }
+    </ul>
+</div>
+

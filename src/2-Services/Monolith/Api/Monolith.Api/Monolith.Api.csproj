@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>7f763081-7ffe-4a61-b636-c05f18a8e18b</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <AssemblyName>TaskoMask.Services.Monolith.API</AssemblyName>
+    <RootNamespace>TaskoMask.Services.Monolith.API</RootNamespace>
+     
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\net6.0\TaskoMask.Services.Monolith.API.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\net6.0\TaskoMask.Services.Monolith.API.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+	<ItemGroup>
+	  <Folder Include="logs\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
+	  <ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
+	</ItemGroup>
+</Project>

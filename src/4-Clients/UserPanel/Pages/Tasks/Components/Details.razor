@@ -1,0 +1,113 @@
+﻿@using TaskoMask.Clients.UserPanel.Pages.Tasks.Components
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.ITaskApiService TaskApiService
+@implements IDisposable
+
+<style>
+    .blazored-modal-header {
+        padding: 4px !important;
+    }
+</style>
+
+@if (DataIsloading)
+{
+    <div class="spinner-loading"></div>
+}
+else if (Model!=null)
+{
+    <div class="row m-0" id="task-details">
+        <div class="col-md-8">
+            <BasicInfo Model=@Model.Task></BasicInfo>
+            <Comments Model=@Model.Comments TaskId=@TaskId></Comments>
+        </div>
+        <hr />
+        <div class="col-md-4">
+            <State Model=@Model.Task></State>
+            <Activities Model=@Model.Activities></Activities>
+        </div>
+    </div>
+}
+@code {
+
+    [Parameter]
+    public string TaskId { get; set; }
+
+    TaskDetailsViewModel Model;
+
+    bool DataIsloading = true;
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        ComponentMessageService.OnMessage += ReloadDataHandler;
+
+        await GetTaskDetails();
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task GetTaskDetails()
+    {
+        DataIsloading = true;
+
+        var taskResult = await TaskApiService.GetDetails(TaskId);
+        if (taskResult.IsSuccess)
+            Model = taskResult.Value;
+        else
+        {
+            QueryResultHandler<TaskDetailsViewModel>.Init()
+            .WithResult(taskResult)
+            .ShowErrorToast(ToastService)
+            .CloseModal(ModalInstance);
+        }
+
+        DataIsloading = false;
+    }
+
+
+
+
+    /// <summary>
+    ///This is a handler to be notified when some interesting events happened
+    /// </summary>
+    private async void ReloadDataHandler(MessageType messageType)
+    {
+        try
+        {
+            if (ReloadDataHelper.Task_Details_Need_Reload(messageType))
+            {
+                await GetTaskDetails();
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            //Async task failure because of async void challenges
+        }
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public void Dispose()
+    {
+        // unsubscribe from OnMessage event
+        ComponentMessageService.OnMessage -= ReloadDataHandler;
+    }
+
+
+}

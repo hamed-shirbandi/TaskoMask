@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>TaskoMask.Services.Monolith.Domain</AssemblyName>
+    <RootNamespace>TaskoMask.Services.Monolith.Domain</RootNamespace>
+     
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>

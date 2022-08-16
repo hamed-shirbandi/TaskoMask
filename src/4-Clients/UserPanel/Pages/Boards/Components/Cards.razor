@@ -1,0 +1,69 @@
+﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards
+@using TaskoMask.BuildingBlocks.Contracts.ViewModels
+@using TaskoMask.Clients.UserPanel.Pages.Tasks.Components
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.ITaskApiService TaskApiService
+@inject TaskoMask.Clients.UserPanel.Services.DragDrop.IDragDropService DragDropService
+
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+        <div class="card task-card mb-2">
+            <h6 class="card-header">
+                @item.Card.Name
+
+                <a @onclick="@(()=>ShowUpdateCardModal(item.Card.Id))" class="float-right small text-warning">
+                    <span class="bi bi-pencil"></span>
+                </a>
+            </h6>
+            <div class="card-body px-1" ondrop="@(()=>HandleDrop(item.Card.Id))" ondragover="event.preventDefault();">
+                <Tasks Model=@item.Tasks CardId=@item.Card.Id></Tasks>
+            </div>
+            <div class="card-footer text-muted">
+               <AddTask CardId=@item.Card.Id></AddTask>
+
+            </div>
+        </div>
+    }
+
+    <TempCards CardsCount=@Model.Count() BoardId=@BoardId></TempCards>
+</div>
+
+
+
+@code {
+
+    [Parameter]
+    public string BoardId { get; set; }
+
+    [Parameter]
+    public IEnumerable<CardDetailsViewModel> Model { get; set; }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task HandleDrop(string cardId)
+    {
+        var draggedTaskId = DragDropService.GetDraggedData();
+        var result = await TaskApiService.MoveTaskToAnotherCard(draggedTaskId, cardId);
+
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithComponentMessageType(MessageType.Task_Moved)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(ComponentMessageService);
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void ShowUpdateCardModal(string cardId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Pages.Cards.Components.UpdateCard.CardId), cardId);
+        ModalService.Show<Pages.Cards.Components.UpdateCard>("Update Card", parameters, new ModalOptions { Class = "blazored-modal bg-light-gray" });
+    }
+
+}

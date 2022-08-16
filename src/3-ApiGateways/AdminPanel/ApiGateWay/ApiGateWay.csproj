@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>true</ImplicitUsings>
+		<AssemblyName>TaskoMask.ApiGateways.AdminPanel.ApiGateWay</AssemblyName>
+		<RootNamespace>TaskoMask.ApiGateways.AdminPanel.ApiGateWay</RootNamespace>
+		<UserSecretsId>d476194d-b08b-4330-9134-88c094bbf11e</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+	</ItemGroup>
+
+</Project>

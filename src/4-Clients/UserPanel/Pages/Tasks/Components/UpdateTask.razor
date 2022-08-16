@@ -1,0 +1,153 @@
+﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.ITaskApiService TaskApiService
+
+<EditForm Model="TaskModel" OnValidSubmit="HandleUpdateTask">
+
+    <DataAnnotationsValidator />
+
+    <input type="hidden" @bind="TaskModel.CardId" />
+
+
+    <div class="form-group">
+        <InputText @bind-Value="TaskModel.Title" placeholder="Title" class="form-control"></InputText>
+        <ValidationMessage For="()=>TaskModel.Title" class="text-danger"></ValidationMessage>
+    </div>
+
+
+    <div class="form-group">
+        <InputTextArea @bind-Value="TaskModel.Description" placeholder="Description" class="form-control" rows="8"></InputTextArea>
+        <ValidationMessage For="()=>TaskModel.Description" class="text-danger"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+            <button type="submit" class="btn btn-primary float-left">Update</button>
+            <button @onclick="HandleDeleteTask" class="btn btn-danger text-white float-right">Delete</button>
+    </div>
+
+</EditForm>
+
+@code {
+
+
+    #region Fields and Parameters
+
+
+
+    /// <summary>
+    /// Get the task to update by its Id
+    /// </summary>
+    [Parameter]
+    public string Id { get; set; }
+
+
+
+    /// <summary>
+    /// Form Model
+    /// </summary>
+    UpdateTaskDto TaskModel = new UpdateTaskDto();
+
+
+
+    /// <summary>
+    /// Access to current modal
+    /// </summary>
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
+
+
+
+
+    #endregion Fields and Parameters
+
+
+
+    #region Protected Methods
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        await PrepareModelToUpdate();
+
+    }
+
+
+    #endregion Protected Methods
+
+
+    #region private Methods
+
+
+
+    /// <summary>
+    /// Prepare the form model
+    /// </summary>
+    private async Task PrepareModelToUpdate()
+    {
+
+        var taskResult = await TaskApiService.Get(Id);
+
+        if (taskResult.IsSuccess)
+        {
+            TaskModel = new UpdateTaskDto
+                {
+                    Id = taskResult.Value.Id,
+                    Title = taskResult.Value.Title,
+                    Description = taskResult.Value.Description,
+                    CardId = taskResult.Value.CardId,
+                };
+        }
+        else
+        {
+            QueryResultHandler<TaskBasicInfoDto>.Init()
+                .WithResult(taskResult)
+                .ShowErrorToast(ToastService)
+                .CloseModal(ModalInstance);
+        }
+    }
+
+
+
+    /// <summary>
+    /// handle update model
+    /// </summary>
+    private async Task HandleUpdateTask()
+    {
+        var result = await TaskApiService.Update(Id, TaskModel);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithComponentMessageType(MessageType.Task_Updated)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
+    }
+
+
+
+    /// <summary>
+    /// handle delete item
+    /// </summary>
+    private async Task HandleDeleteTask()
+    {
+        var confirmationModal = ModalService.Show<Confirmation>("Deletion Warning!", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"});
+        var confirmationModalResult = await confirmationModal.Result;
+
+        if (confirmationModalResult.Cancelled)
+            return;
+
+        var result = await TaskApiService.Delete(Id);
+        CommandResultHandler.Init()
+            .WithResult(result)
+            .WithComponentMessageType(MessageType.Task_Deleted)
+            .ShowErrorToast(ToastService)
+            .PublishMessage(ComponentMessageService)
+            .CloseModal(ModalInstance);
+    }
+
+
+
+    #endregion private Methods
+
+}

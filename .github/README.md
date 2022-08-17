@@ -17,16 +17,7 @@
  <a href="https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors">
   <img src="https://img.shields.io/github/contributors/hamed-shirbandi/TaskoMask">
 </a>
-  <!--- 
-   <a href="#s">
-<img src="https://img.shields.io/github/workflow/status/hamed-shirbandi/TaskoMask/.NET%20Core%20Build">
-</a>
- ---> 
- 
-  
-
 </p>
-
 
 [TaskoMask](http://taskomask.ir/) is a free and open-source task management system based on .Net. This project is [online](http://taskomask.ir/), and everyone can use it as a team member or project owner.
 But the primary goal of this project is to be an effort to show how we can implement software technologies and patterns by .Net, so this can be used by developers who are looking for a real example project with real challenges. Please take a look at its [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki)!
@@ -36,12 +27,14 @@ Try it online:
 
 ![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/taskomask-all-in-one-2-2000px.jpg)
 # Documentation
-  - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
-  - [Domain Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Domain-Documentation)
   - [Architecture Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
+  - [Domain Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Domain-Documentation)
   - [API Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Rest-Api-Documentation)
+  - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
 
 # Design
+![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/development-architecture-1.jpg)
+
   * ### [Onion Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
   * ### Monolithic Architecture ([last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82))
   * ### [Microservices Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation) (work in progress)

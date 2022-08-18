@@ -33,12 +33,14 @@ Try it online:
   - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
 
 # Design
+<sub>(**Work In Progress**)</sub>
+
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/development-architecture.jpg)
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture.jpg)
 
   * ### [Onion Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
-  * ### Monolithic Architecture ([last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82))
-  * ### [Microservices Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation) (work in progress)
+  * ### Monolithic Architecture ([<sub>last commit</sub>](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82))
+  * ### [Microservices Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation) <sub>(work in progress)</sub>
     - [Strangler application pattern](https://microservices.io/refactoring/)
     - [Decompose by subdomain](https://microservices.io/patterns/decomposition/decompose-by-subdomain.html)
     - [Database per service](https://microservices.io/patterns/data/database-per-service.html)
@@ -55,10 +57,9 @@ Try it online:
     - [Service discovery](https://microservices.io/patterns/3rd-party-registration.html) : Kubernetes - Consul
     - [Circuit Breaker](https://microservices.io/patterns/reliability/circuit-breaker.html) : Polly
     - [Log aggregation](https://microservices.io/patterns/observability/application-logging.html) : Serilog - Seq
-    - [Application metrics](https://microservices.io/patterns/observability/application-metrics.html) : Opentelemetry-dotnet
-    - [Distributed tracing](https://microservices.io/patterns/observability/distributed-tracing.html) : Opentelemetry-dotnet
-    - [Exception tracking](https://microservices.io/patterns/observability/exception-tracking.html) : Opentelemetry-dotnet
-    - [Health check API](https://microservices.io/patterns/observability/health-check-api.html) : Opentelemetry-dotnet
+    - [Application metrics](https://microservices.io/patterns/observability/application-metrics.html) : Opentelemetry-dotnet - Prometheus
+    - [Distributed tracing](https://microservices.io/patterns/observability/distributed-tracing.html) : Opentelemetry-dotnet - Jaeger
+    - [Health check API](https://microservices.io/patterns/observability/health-check-api.html) : AspNetCore.HealthChecks
     - [IDP](https://en.wikipedia.org/wiki/Identity_provider) : DuendeSoftware IdentityServer
   * ### Testing (TDD & BDD)
     - [Unit Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Unit) : xUnit, FluenAssertion, NSubstitute
@@ -130,7 +131,7 @@ Try it online:
       -	[FluentValidation](https://docs.fluentvalidation.net/en/latest/) : building strongly-typed validation rules
       -	[Swagger](https://www.nuget.org/packages/Swashbuckle.AspNetCore) : expose Swagger JSON endpoints from APIs
       -	[Serilog](https://serilog.net/) : provides diagnostic logging
-      -	[Seq](https://datalust.co/seq) : collect application logs
+      - [AspNetCore.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) : ASP.NET Core Health Check
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/) : easily paging in ASP.NET Core MVC
       -	[EasyCaching](https://github.com/dotnetcore/EasyCaching) : caching library
   * ### Front-end:

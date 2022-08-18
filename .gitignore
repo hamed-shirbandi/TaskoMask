@@ -669,6 +669,4 @@ fabric.properties
 *.ncrunchsolution
 *.ncrunchproject
 *.feature.cs
-/wwwroot/bundled
-/Src/Presentation/3-UI/UserPanel/wwwroot/bundled/panel.min.css
-/Src/Presentation/3-UI/UserPanel/wwwroot/bundled
+**/wwwroot/bundled

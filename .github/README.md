@@ -34,6 +34,7 @@ Try it online:
 
 # Design
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/development-architecture.jpg)
+![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture.jpg)
 
   * ### [Onion Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
   * ### Monolithic Architecture ([last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82))

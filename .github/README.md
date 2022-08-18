@@ -25,7 +25,7 @@ But the primary goal of this project is to be an effort to show how we can imple
 Try it online:
 [`Website`](http://taskomask.ir/) - [`User Panel`](http://panel.taskomask.ir) - [`Admin Panel`](http://admin.taskomask.ir/) - [`API`](http://api.taskomask.ir/)
 
-![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/taskomask-all-in-one-2-2000px.jpg)
+![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Shots/taskomask-all-in-one-mobile.jpg)
 # Documentation
   - [Architecture Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
   - [Domain Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Domain-Documentation)
@@ -33,7 +33,7 @@ Try it online:
   - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
 
 # Design
-![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/development-architecture-1.jpg)
+![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/development-architecture.jpg)
 
   * ### [Onion Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
   * ### Monolithic Architecture ([last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82))

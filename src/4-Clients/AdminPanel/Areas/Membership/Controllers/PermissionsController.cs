@@ -10,7 +10,7 @@ using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Enums;
 using TaskoMask.BuildingBlocks.Web.MVC.Filters;
 
-namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Clients.AdminPanel.Areas.Membership.Controllers
 {
 
     [Authorize]

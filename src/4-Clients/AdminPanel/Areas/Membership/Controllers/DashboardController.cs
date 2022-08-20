@@ -12,7 +12,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 
-namespace TaskoMask.Clients.AdminPanle.Areas.Membership.Controllers
+namespace TaskoMask.Clients.AdminPanel.Areas.Membership.Controllers
 {
     [Authorize]
     [Area("membership")]

@@ -171,9 +171,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
                             foreach (var card in cards)
                                 boardAggregate.AddCard(Card.Create(card.Name, card.Type));
 
-
-                            boardAggregate.AddMember(Member.Create(owner.Id, BoardMemberAccessLevel.Writer));
-
                             items.Add(boardAggregate);
                         }
 

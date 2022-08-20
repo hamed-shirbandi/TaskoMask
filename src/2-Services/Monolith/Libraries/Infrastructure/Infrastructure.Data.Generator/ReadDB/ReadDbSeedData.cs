@@ -103,17 +103,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB
                         }
 
 
-                        foreach (var member in board.Members)
-                        {
-                            _members.InsertOne(new Member(member.Id)
-                            {
-                                OwnerId = member.OwnerId.Value,
-                                AccessLevel = member.AccessLevel.Value,
-                                BoardId=board.Id,
-                                ProjectId=project.Id,
-                                OrganizationId=project.OrganizationId,
-                            });
-                        }
                     }
 
 

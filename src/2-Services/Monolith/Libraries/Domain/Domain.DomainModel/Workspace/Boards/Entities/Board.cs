@@ -5,7 +5,6 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Boards;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Members;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Specifications;
@@ -33,7 +32,6 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
             Description = BoardDescription.Create(description);
             ProjectId = BoardProjectId.Create(projectId);
             Cards = new HashSet<Card>();
-            Members = new HashSet<Member>();
             
             CheckPolicies(boardValidatorService);
             AddDomainEvent(new BoardAddedEvent(Id, Name.Value, Description.Value, ProjectId.Value));
@@ -47,7 +45,6 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
         public BoardDescription Description { get; private set; }
         public BoardProjectId ProjectId { get; private set; }
         public ICollection<Card> Cards { get; private set; }
-        public ICollection<Member> Members { get; private set; }
 
 
         #endregion
@@ -140,55 +137,6 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
 
         #endregion
 
-        #region Public Member Methods
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void AddMember(Member member)
-        {
-            Members.Add(member);
-            AddDomainEvent(new MemberAddedEvent(member.Id, member.OwnerId.Value, member.AccessLevel.Value, Id));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void UpdateMemberAccessLevel(string id, BoardMemberAccessLevel accessLevel )
-        {
-            var member = Members.FirstOrDefault(p => p.Id == id);
-            if (member == null)
-                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Member));
-
-            member.Update(accessLevel);
-
-            AddDomainEvent(new MemberAccessLevelUpdatedEvent(member.Id, member.AccessLevel.Value));
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void DeleteMember(string id)
-        {
-            var member = Members.FirstOrDefault(p => p.Id == id);
-            if (member == null)
-                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Member));
-
-            Members.Remove(member);
-            AddDomainEvent(new MemberDeletedEvent(member.Id));
-        }
-
-
-
-
-        #endregion
-
         #region Private Methods
 
 
@@ -223,14 +171,9 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entiti
             if (!new BoardMaxCardsSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Max_Card_Count_Limitiation, DomainConstValues.Board_Max_Card_Count));
             
-            if (!new BoardMaxMembersSpecification().IsSatisfiedBy(this))
-                throw new DomainException(string.Format(DomainMessages.Max_Member_Count_Limitiation, DomainConstValues.Board_Max_Member_Count));
-
             if (!new CardNameMustUniqueSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Card));
 
-            if (!new MemberOwnerIdMustUniqueSpecification().IsSatisfiedBy(this))
-                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Member));
         }
 
 

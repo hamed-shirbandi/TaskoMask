@@ -56,9 +56,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders
 
             if (!collections.Has<Task>())
                 dbContext.CreateCollection<Task>();
-       
-            if (!collections.Has<Member>())
-                dbContext.CreateCollection<Member>();
 
             if (!collections.Has<Activity>("Activities"))
                 dbContext.CreateCollection<Activity>("Activities");

@@ -28,7 +28,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB
                 var _boards = _readDbContext.GetCollection<Board>();
                 var _cards = _readDbContext.GetCollection<Card>();
                 var _tasks = _readDbContext.GetCollection<Domain.DataModel.Entities.Task>();
-                var _members = _readDbContext.GetCollection<Member>();
 
                 var _ownerAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Owners.Entities.Owner>();
                 var _boardAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Boards.Entities.Board>();

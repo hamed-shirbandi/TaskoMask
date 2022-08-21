@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  apigateway:
+    image: ${DOCKER_REGISTRY-}userPanel-apigateway
+    build:
+      context: .
+      dockerfile: src/3-ApiGateways/UserPanel/ApiGateWay/Dockerfile
+
+  aggregator:
+    image: ${DOCKER_REGISTRY-}userPanel-aggregator
+    build:
+      context: .
+      dockerfile: src/3-ApiGateways/UserPanel/Aggregator/Dockerfile
+

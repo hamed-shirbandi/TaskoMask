@@ -87,13 +87,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdminPanel", "AdminPanel", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserPanel", "UserPanel", "{3BE40A54-3644-44C3-B4E7-D628F8541F4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateWay", "src\3-ApiGateways\UserPanel\ApiGateWay\ApiGateWay.csproj", "{C5B6047C-AD9D-4FF7-8B3C-5A567F47AD7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateWay", "src\3-ApiGateways\UserPanel\ApiGateWay\ApiGateWay.csproj", "{C5B6047C-AD9D-4FF7-8B3C-5A567F47AD7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aggregator", "src\3-ApiGateways\UserPanel\Aggregator\Aggregator.csproj", "{7ED1857A-DF8A-4289-95CC-D8943BBEB345}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\3-ApiGateways\UserPanel\Aggregator\Aggregator.csproj", "{7ED1857A-DF8A-4289-95CC-D8943BBEB345}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aggregator", "src\3-ApiGateways\AdminPanel\Aggregator\Aggregator.csproj", "{CF9820A3-E6ED-4B8B-8528-073B3796EA6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\3-ApiGateways\AdminPanel\Aggregator\Aggregator.csproj", "{CF9820A3-E6ED-4B8B-8528-073B3796EA6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateWay", "src\3-ApiGateways\AdminPanel\ApiGateWay\ApiGateWay.csproj", "{587F76F4-BB74-4E0C-8ABA-0456DDFB22AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateWay", "src\3-ApiGateways\AdminPanel\ApiGateWay\ApiGateWay.csproj", "{587F76F4-BB74-4E0C-8ABA-0456DDFB22AF}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -217,6 +219,10 @@ Global
 		{587F76F4-BB74-4E0C-8ABA-0456DDFB22AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{587F76F4-BB74-4E0C-8ABA-0456DDFB22AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{587F76F4-BB74-4E0C-8ABA-0456DDFB22AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

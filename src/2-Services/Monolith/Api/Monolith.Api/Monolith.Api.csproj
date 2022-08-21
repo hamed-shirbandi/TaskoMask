@@ -7,6 +7,8 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <AssemblyName>TaskoMask.Services.Monolith.Api</AssemblyName>
     <RootNamespace>TaskoMask.Services.Monolith.Api</RootNamespace>
+    <DockerfileContext>..\..\..\..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
      
   </PropertyGroup>
 
@@ -21,6 +23,9 @@
   </PropertyGroup>
 	<ItemGroup>
 	  <Folder Include="logs\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />

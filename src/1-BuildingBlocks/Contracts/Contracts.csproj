@@ -5,7 +5,15 @@
 		<AssemblyName>TaskoMask.BuildingBlocks.Contracts</AssemblyName>
 		<RootNamespace>TaskoMask.BuildingBlocks.Contracts</RootNamespace>
 	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\Release\net6.0\TaskoMask.BuildingBlocks.Contracts.xml</DocumentationFile>
+	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\net6.0\TaskoMask.BuildingBlocks.Contracts.xml</DocumentationFile>
+	</PropertyGroup>
+	
 	<ItemGroup>
 		<Compile Update="Resources\ContractsMessages.Designer.cs">
 			<DependentUpon>ContractsMessages.resx</DependentUpon>

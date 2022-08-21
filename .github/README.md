@@ -27,20 +27,18 @@ Try it online:
 
 ![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Shots/taskomask-all-in-one-mobile.jpg)
 # Documentation
-  - [Architecture Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
   - [Domain Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Domain-Documentation)
+  - [Architecture Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
   - [API Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Rest-Api-Documentation)
   - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
 
 # Design
-<sub>(**Work In Progress**)</sub>
-
-![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/development-architecture.jpg)
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture.jpg)
 
-  * ### [Onion Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
-  * ### Monolithic Architecture ([<sub>last commit</sub>](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82))
-  * ### [Microservices Architecture](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation) <sub>(work in progress)</sub>
+  * ### Onion Architecture
+  * ### Monolithic Architecture
+    - Until this [last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
+  * ### Microservices Architecture
     - [Strangler application pattern](https://microservices.io/refactoring/)
     - [Decompose by subdomain](https://microservices.io/patterns/decomposition/decompose-by-subdomain.html)
     - [Database per service](https://microservices.io/patterns/data/database-per-service.html)

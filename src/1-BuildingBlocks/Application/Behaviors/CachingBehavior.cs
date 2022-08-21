@@ -45,7 +45,7 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
             if (request is not ICacheableQuery cacheableQuery)
                 return await next();
 
-            var configurationCacheEnabled = bool.Parse(_configuration["RedisCache:Enabled"]);
+            var configurationCacheEnabled = bool.Parse(_configuration["Caching:Enabled"]);
             if (!configurationCacheEnabled)
                 return await next();
 

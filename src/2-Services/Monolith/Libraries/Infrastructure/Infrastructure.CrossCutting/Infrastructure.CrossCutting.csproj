@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Application\Application.csproj" />
+		<ProjectReference Include="..\Infrastructure.Data.Generator\Infrastructure.Data.Generator.csproj" />
 		<ProjectReference Include="..\Infrastructure.Data.Read\Infrastructure.Data.Read.csproj" />
 		<ProjectReference Include="..\Infrastructure.Data.Write\Infrastructure.Data.Write.csproj" />
 	</ItemGroup>

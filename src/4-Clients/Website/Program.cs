@@ -17,6 +17,8 @@ app.UseSerilogRequestLogging();
 
 app.UseMvcPreConfigured(app.Services, builder.Environment);
 
+app.Services.InitialAdnSeedDatabases();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(

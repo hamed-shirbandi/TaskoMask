@@ -1,5 +1,4 @@
 using Serilog;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC;
@@ -14,11 +13,13 @@ builder.Services.AddMvcPreConfigured(builder.Configuration, builder.Environment)
 
 var app = builder.Build();
 
-SampleDataGenerator.GenerateAndSeedSampleData(app.Services);
-
 app.UseSerilogRequestLogging();
 
 app.UseMvcPreConfigured(app.Services, builder.Environment);
+
+app.Services.InitialAdnSeedDatabases();
+
+app.Services.GenerateAndSeedSampleData();
 
 app.UseEndpoints(endpoints =>
 {

@@ -32,6 +32,10 @@ using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mediator;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
+using System;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
 {
@@ -58,6 +62,21 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
             services.AddAutoMapperSetup();
             services.AddMediatorHandlers();
         }
+
+
+        public static void InitialAdnSeedDatabases(this IServiceProvider serviceProvider)
+        {
+            WriteDbInitialization.Initial(serviceProvider);
+            ReadDbInitialization.Initial(serviceProvider);
+            WriteDbSeedData.Seed(serviceProvider);
+        }
+
+
+        public static void GenerateAndSeedSampleData(this IServiceProvider serviceProvider)
+        {
+            SampleDataGenerator.GenerateAndSeedSampleData(serviceProvider);
+        }
+
 
 
 

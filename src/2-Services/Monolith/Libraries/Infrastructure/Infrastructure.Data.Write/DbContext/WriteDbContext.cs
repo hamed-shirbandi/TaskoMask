@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+using Microsoft.Extensions.Options;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
 {
@@ -20,8 +21,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
         #region Ctors
 
 
-        public WriteDbContext(IConfiguration configuration)
-            :base(configuration["Mongo:Write:Database"], configuration["Mongo:Write:Connection"])
+        public WriteDbContext(IOptions<WriteDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
 
         }

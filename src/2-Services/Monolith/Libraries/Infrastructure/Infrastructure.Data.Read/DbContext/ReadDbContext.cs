@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+using Microsoft.Extensions.Options;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 {
@@ -21,8 +22,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
         #region Ctors
 
 
-        public ReadDbContext(IConfiguration configuration)
-            : base(configuration["Mongo:Read:Database"], configuration["Mongo:Read:Connection"])
+        public ReadDbContext(IOptions<ReadDbOptions> mongoDbOptions) : base(mongoDbOptions)
 
         {
 

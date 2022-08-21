@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Permissions.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Roles.Services;
@@ -11,6 +12,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
 {
@@ -35,6 +37,9 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
             services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<IActivityService, ActivityService>();
             services.AddScoped<ICommentService, CommentService>();
+
+            services.AddScoped<IUserAccessManagementService, UserAccessManagementService>();
+
 
         }
 

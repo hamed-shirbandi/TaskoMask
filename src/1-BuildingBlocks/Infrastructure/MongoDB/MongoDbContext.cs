@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MongoDB.Driver;
 using System.Linq;
+using Microsoft.Extensions.Options;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
@@ -12,8 +13,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
     {
         #region Fields
 
-        protected readonly string _dbName;
-        protected readonly string _connectionString;
+        protected readonly MongoDbOptions _mongoDbOptions;
         protected readonly IMongoDatabase _database;
         protected readonly IMongoClient _client;
 
@@ -22,13 +22,12 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
         #region Ctors
 
 
-        public MongoDbContext(string dbName, string connectionString)
+        public MongoDbContext(IOptions<MongoDbOptions> mongoDbOptions)
         {
-            _dbName = dbName;
-            _connectionString = connectionString;
-            MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(_connectionString));
+            _mongoDbOptions = mongoDbOptions.Value;
+            MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(_mongoDbOptions.Connection));
             _client = new MongoClient(settings);
-            _database = _client.GetDatabase(_dbName);
+            _database = _client.GetDatabase(_mongoDbOptions.DatabaseName);
         }
 
 
@@ -81,7 +80,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
         /// </summary>
         public void DropDatabase()
         {
-            _client.DropDatabase(_dbName);
+            _client.DropDatabase(_mongoDbOptions.DatabaseName);
         }
 
 

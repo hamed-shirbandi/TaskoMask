@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using TaskoMask.Services.Monolith.Application.Core.Services;
+using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
@@ -9,7 +10,6 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
-using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
@@ -26,21 +26,18 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
     public static class InfrastructureExtensions
     {
 
+        #region Public Methods
+
+
+
 
         /// <summary>
         /// 
         /// </summary>
-        public static void AddInfrastructureReadDataServices(this IServiceCollection services)
+        public static void AddInfrastructureReadDataServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IReadDbContext, ReadDbContext>();
-            services.AddScoped<IActivityRepository, ActivityRepository>();
-            services.AddScoped<IBoardRepository, BoardRepository>();
-            services.AddScoped<ICardRepository, CardRepository>();
-            services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
-            services.AddScoped<IOwnerRepository, OwnerRepository>();
-            services.AddScoped<IProjectRepository, ProjectRepository>();
-            services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddReadSideMongoDbContext(configuration);
+            services.AddReadSideRepositories();
         }
 
 
@@ -48,20 +45,12 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
         /// <summary>
         /// 
         /// </summary>
-        public static void AddInfrastructureWriteDataServices(this IServiceCollection services)
+        public static void AddInfrastructureWriteDataServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IWriteDbContext, WriteDbContext>();
-            services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
-            services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
-            services.AddScoped<ITaskAggregateRepository, TaskAggregateRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IOperatorRepository, OperatorRepository>();
-            services.AddScoped<IPermissionRepository, PermissionRepository>();
-            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddWriteSideMongoDbContext(configuration);
+            services.AddWriteSideRepositories();
+            services.AddDomainServices();
 
-            services.AddScoped<IUserAccessManagementService, UserAccessManagementService>();
-            services.AddScoped<ITaskValidatorService, TaskValidatorService>();
-            services.AddScoped<IBoardValidatorService, BoardValidatorService>();
         }
 
 
@@ -85,5 +74,85 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
         {
             SampleDataGenerator.GenerateAndSeedSampleData(serviceProvider);
         }
+
+
+
+
+
+        #endregion
+
+        #region Private Methods
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddWriteSideMongoDbContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            var options = configuration.GetSection("Mongo:Write");
+
+            services.AddScoped<IWriteDbContext, WriteDbContext>().AddOptions<WriteDbOptions>().Bind(options);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddWriteSideRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
+            services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
+            services.AddScoped<ITaskAggregateRepository, TaskAggregateRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IOperatorRepository, OperatorRepository>();
+            services.AddScoped<IPermissionRepository, PermissionRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddReadSideMongoDbContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            var options = configuration.GetSection("Mongo:Read");
+
+            services.AddScoped<IReadDbContext, ReadDbContext>().AddOptions<ReadDbOptions>().Bind(options);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddReadSideRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IActivityRepository, ActivityRepository>();
+            services.AddScoped<IBoardRepository, BoardRepository>();
+            services.AddScoped<ICardRepository, CardRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddDomainServices(this IServiceCollection services)
+        {
+            services.AddScoped<ITaskValidatorService, TaskValidatorService>();
+            services.AddScoped<IBoardValidatorService, BoardValidatorService>();
+        }
+
+
+        #endregion
     }
 }

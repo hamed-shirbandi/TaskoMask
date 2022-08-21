@@ -33,12 +33,22 @@ Try it online:
   - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
 
 # Design
+#### Work is in progress
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture.jpg)
 
   * ### Onion Architecture
   * ### Monolithic Architecture
-    - Until this [last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
+    <details>
+      <summary>click for details</summary>
+
+
+    - Architecture was Monolithic until this [last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
+    </details>
   * ### Microservices Architecture
+    <details>
+      <summary>click for details</summary>
+
+
     - [Strangler application pattern](https://microservices.io/refactoring/)
     - [Decompose by subdomain](https://microservices.io/patterns/decomposition/decompose-by-subdomain.html)
     - [Database per service](https://microservices.io/patterns/data/database-per-service.html)
@@ -59,7 +69,12 @@ Try it online:
     - [Distributed tracing](https://microservices.io/patterns/observability/distributed-tracing.html) : Opentelemetry-dotnet - Jaeger
     - [Health check API](https://microservices.io/patterns/observability/health-check-api.html) : AspNetCore.HealthChecks
     - [IDP](https://en.wikipedia.org/wiki/Identity_provider) : DuendeSoftware IdentityServer
+    </details>
   * ### Testing (TDD & BDD)
+    <details>
+      <summary>click for details</summary>
+
+
     - [Unit Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Unit) : xUnit, FluenAssertion, NSubstitute
     - [Integration Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Integration)
     - [API Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance/Tests.Acceptance.API)
@@ -88,7 +103,12 @@ Try it online:
         - [State Verification](http://xunitpatterns.com/ResultVerification.html)
         - [Output/Value Verification](http://xunitpatterns.com/ResultVerification.html)
         - [Interaction/Behavior Verification](http://xunitpatterns.com/ResultVerification.html)
+    </details>
   * ### DDD
+    <details>
+      <summary>click for details</summary>
+
+
     - Rich Domain Model (for core domain)
     - Anemic Domain Model (for less important subdomains)
     - Aggregate
@@ -101,9 +121,15 @@ Try it online:
     - Factory Method
     - Optimistic Concurrency
     - Separate Domain Model and Data Model
+    </details>
   * ### CQRS
+    <details>
+      <summary>click for details</summary>
+
+
     - Separate Read and Write Model
     - Separate Read Side DB and Write Side DB
+    </details>
   * ### Event Sourcing
   * ### Unit of Work
   * ### Repository
@@ -111,6 +137,10 @@ Try it online:
 
 # Implementation
   * ### Back-end:
+    <details>
+      <summary>click for details</summary>
+
+
       - .Net 6 
       - C#
       - ASP.NET Web API
@@ -132,7 +162,12 @@ Try it online:
       - [AspNetCore.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) : ASP.NET Core Health Check
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/) : easily paging in ASP.NET Core MVC
       -	[EasyCaching](https://github.com/dotnetcore/EasyCaching) : caching library
+    </details>
   * ### Front-end:
+    <details>
+      <summary>click for details</summary>
+
+
       - Blazor
         - Blazor Server ([last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/a6f036f91c2185861209191d9bb3e4ae01665f46/Src/Presentation/3-UI/UserPanel))
             - Cookie Authentication without ASP.NET Identity
@@ -151,7 +186,12 @@ Try it online:
       -	Bootstrap
       -	Jquery.noty
       -	Chart.js
+    </details>
   * ### Some other Features:
+    <details>
+      <summary>click for details</summary>
+
+
       -	Caching Behavior using Pipeline Pattern
       -	Validation Behavior using Pipeline Pattern (Check both Fluent Validation and Data Annotation Validation)
       -	Event Storing Behavior using Pipeline Pattern
@@ -160,6 +200,7 @@ Try it online:
       -	JWT Authentication
       -	Role Permission Base User Management without ASP.NET Identity
       -	Swagger UI with JWT Support
+    </details>
 
 # Contributing
 Contributions, issues, and feature requests are welcome. Any contributions you make are greatly appreciated.

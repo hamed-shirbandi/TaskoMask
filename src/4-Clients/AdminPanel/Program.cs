@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddCustomSerilog();
 
-builder.Services.AddProjectConfigureServices();
+builder.Services.AddProjectServices();
 
 builder.Services.AddMvcPreConfigured(builder.Configuration, builder.Environment);
 

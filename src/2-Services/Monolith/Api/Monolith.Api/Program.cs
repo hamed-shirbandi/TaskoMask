@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddCustomSerilog();
 
-builder.Services.AddProjectConfigureServices();
+builder.Services.AddProjectServices();
 
 builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
@@ -18,8 +18,6 @@ app.UseSerilogRequestLogging();
 app.UseWebApiPreConfigured(app.Services, builder.Environment);
 
 app.Services.InitialAdnSeedDatabases();
-
-
 
 app.UseEndpoints(endpoints =>
 {

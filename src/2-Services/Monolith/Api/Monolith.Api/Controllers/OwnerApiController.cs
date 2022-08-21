@@ -9,7 +9,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 
-namespace TaskoMask.Services.Monolith.API.Controllers
+namespace TaskoMask.Services.Monolith.Api.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OwnerApiController : BaseApiController, IOwnerApiService

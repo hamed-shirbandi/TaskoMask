@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Services.Monolith.API.Models
+namespace TaskoMask.Services.Monolith.Api.Models
 {
     public class HomeIndexViewModel
     {

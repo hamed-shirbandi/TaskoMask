@@ -18,7 +18,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void AddMvcConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
+        public static void AddMvcPreConfigured(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -28,7 +28,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
             {
                 configuration.GetSection("Authentication").Bind(options);
             });
-            services.AddCommonConfigureServices(configuration);
+            services.AddCommonServices(configuration);
         }
 
 
@@ -36,7 +36,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void UseMvcProjectConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
+        public static void UseMvcPreConfigured(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 
@@ -46,7 +46,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
                 app.UseHsts();
             }
 
-            app.UseCommonConfigure(serviceProvider, env);
+            app.UseCommonServices(serviceProvider, env);
            
             app.UseStaticFiles();
             app.UseRouting();

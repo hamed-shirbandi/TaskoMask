@@ -11,13 +11,13 @@ builder.AddCustomSerilog();
 
 builder.Services.AddProjectConfigureServices();
 
-builder.Services.AddWebApiConfigureServices(builder.Configuration);
+builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
 var app = builder.Build();
 
 app.UseSerilogRequestLogging();
 
-app.UseWebApiProjectConfigure(app.Services, builder.Environment);
+app.UseWebApiPreConfigured(app.Services, builder.Environment);
 
 WriteDbInitialization.Initial(app.Services);
 ReadDbInitialization.Initial(app.Services);

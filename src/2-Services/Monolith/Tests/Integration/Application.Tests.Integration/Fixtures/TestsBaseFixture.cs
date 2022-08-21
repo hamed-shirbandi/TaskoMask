@@ -108,7 +108,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
 
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 
-            services.AddCommonConfigureServices(configuration);
+            services.AddCommonServices(configuration);
 
             var serviceProvider = services.BuildServiceProvider();
 

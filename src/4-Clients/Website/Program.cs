@@ -9,13 +9,13 @@ builder.AddCustomSerilog();
 
 builder.Services.AddProjectConfigureServices();
 
-builder.Services.AddMvcConfigureServices(builder.Configuration, builder.Environment);
+builder.Services.AddMvcPreConfigured(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 
 app.UseSerilogRequestLogging();
 
-app.UseMvcProjectConfigure(app.Services, builder.Environment);
+app.UseMvcPreConfigured(app.Services, builder.Environment);
 
 app.UseEndpoints(endpoints =>
 {

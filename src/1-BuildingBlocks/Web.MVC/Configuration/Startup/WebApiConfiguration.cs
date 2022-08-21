@@ -19,7 +19,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void AddWebApiConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddWebApiPreConfigured(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -35,7 +35,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
             {
                 configuration.GetSection("Jwt").Bind(options);
             });
-            services.AddCommonConfigureServices(configuration);
+            services.AddCommonServices(configuration);
 
             services.AddCors();
 
@@ -46,7 +46,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void UseWebApiProjectConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
+        public static void UseWebApiPreConfigured(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 
@@ -54,7 +54,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
                 app.UseDeveloperExceptionPage();
 
             app.UseSwaggerPreConfigured();
-            app.UseCommonConfigure(serviceProvider, env);
+            app.UseCommonServices(serviceProvider, env);
 
             app.UseRouting();
             app.UseCors(builder => builder

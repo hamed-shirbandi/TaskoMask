@@ -20,7 +20,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void AddCommonConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddCommonServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHttpContextAccessor();
             services.AddAuthenticatedUserService();
@@ -33,7 +33,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void UseCommonConfigure(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
+        public static void UseCommonServices(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();

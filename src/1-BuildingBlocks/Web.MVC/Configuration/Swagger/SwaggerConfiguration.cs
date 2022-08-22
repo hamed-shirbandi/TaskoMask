@@ -34,7 +34,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
                 c.SwaggerDoc(options.Value.Version, new OpenApiInfo { Title = options.Value.Title, Version = options.Value.Version });
                 //include xml comments from xml files referred in appsetting
                 foreach (var includeXmlComment in options.Value.IncludeXmlComments.Split(","))
-                    c.IncludeXmlComments(string.Format(@"{0}\{1}", AppDomain.CurrentDomain.BaseDirectory, includeXmlComment));
+                    try { c.IncludeXmlComments(string.Format(@"{0}\{1}", AppDomain.CurrentDomain.BaseDirectory, includeXmlComment)); } catch { }
+
                 //define Bearer security
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {

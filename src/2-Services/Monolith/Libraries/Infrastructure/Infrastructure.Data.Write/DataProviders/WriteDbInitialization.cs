@@ -27,46 +27,10 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
             {
                 var dbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
 
-                CreateCollections(dbContext);
-
                 CreateIndexes(dbContext);
             }
         }
 
-
-
-        /// <summary>
-        /// Ensure collections created
-        /// </summary>
-        private static void CreateCollections(IWriteDbContext dbContext)
-        {
-            var collections = dbContext.Collections();
-
-            if (!collections.Has<Owner>())
-                dbContext.CreateCollection<Owner>();
-
-            if (!collections.Has<Board>())
-                dbContext.CreateCollection<Board>();
-
-            if (!collections.Has<Task>())
-                dbContext.CreateCollection<Task>();
-
-
-            if (!collections.Has<User>())
-                dbContext.CreateCollection<User>();
-
-            if (!collections.Has<Operator>())
-                dbContext.CreateCollection<Operator>();
-
-            if (!collections.Has<Role>())
-                dbContext.CreateCollection<Role>();
-
-            if (!collections.Has<Permission>())
-                dbContext.CreateCollection<Permission>();
-
-
-
-        }
 
 
 

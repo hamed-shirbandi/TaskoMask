@@ -46,6 +46,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
             if (string.IsNullOrEmpty(name))
                 name = typeof(TEntity).Name + "s";
 
+            // if collection not exist, it will be created by mongo
             return _database.GetCollection<TEntity>(name);
         }
 

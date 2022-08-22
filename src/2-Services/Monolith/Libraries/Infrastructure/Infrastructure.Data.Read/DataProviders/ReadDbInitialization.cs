@@ -93,7 +93,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders
             #region Comment Indexs
 
             dbContext.GetCollection<Comment>().Indexes.CreateOneAsync(new CreateIndexModel<Comment>(Builders<Comment>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Comment.Id), Unique = true }));
-            dbContext.GetCollection<Comment>().Indexes.CreateOneAsync(new CreateIndexModel<Comment>(Builders<Comment>.IndexKeys.Ascending(x => x.TaskId), new CreateIndexOptions() { Name = nameof(Comment.TaskId), Unique = true }));
+            dbContext.GetCollection<Comment>().Indexes.CreateOneAsync(new CreateIndexModel<Comment>(Builders<Comment>.IndexKeys.Ascending(x => x.TaskId), new CreateIndexOptions() { Name = nameof(Comment.TaskId), Unique = false }));
 
 
             #endregion

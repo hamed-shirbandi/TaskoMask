@@ -7,7 +7,6 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
-using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
 {
@@ -41,55 +40,57 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
         {
             #region Owner Indexs
 
-            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Email.Value), new CreateIndexOptions() { Name = "Email" }));
-            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName.Value), new CreateIndexOptions() { Name = "DisplayName" }));
+            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Owner.Id), Unique = true }));
+            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Email.Value), new CreateIndexOptions() { Name = nameof(Owner.Email) }));
+            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName.Value), new CreateIndexOptions() { Name = nameof(Owner.DisplayName) }));
 
 
             #endregion
 
             #region Board Indexs
 
-            dbContext.GetCollection<Board>().Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Board>().Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.ProjectId), new CreateIndexOptions() { Name = "ProjectId" }));
+            dbContext.GetCollection<Board>().Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Board.Id), Unique = true }));
+            dbContext.GetCollection<Board>().Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.ProjectId.Value), new CreateIndexOptions() { Name = nameof(Board.ProjectId) }));
 
 
             #endregion
 
             #region Task Indexs
 
-            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = "CardId" }));
+            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }));
+            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId.Value), new CreateIndexOptions() { Name = nameof(Task.CardId) }));
 
 
             #endregion
 
             #region User Indexs
 
-            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = "UserName", Unique = true }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(User.Id), Unique = true }));
+            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = nameof(User.UserName), Unique = true }));
 
 
             #endregion
 
             #region Operator Indexs
 
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = "Email" }));
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = "DisplayName" }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Operator.Id), Unique = true }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = nameof(Operator.Email) }));
+            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = nameof(Operator.DisplayName) }));
 
 
             #endregion
 
             #region Role Indexs
 
-            dbContext.GetCollection<Role>().Indexes.CreateOneAsync(new CreateIndexModel<Role>(Builders<Role>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Role>().Indexes.CreateOneAsync(new CreateIndexModel<Role>(Builders<Role>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Role.Id), Unique = true }));
+            dbContext.GetCollection<Role>().Indexes.CreateOneAsync(new CreateIndexModel<Role>(Builders<Role>.IndexKeys.Ascending(x => x.Name), new CreateIndexOptions() { Name = nameof(Role.Name), Unique = false }));
 
             #endregion
 
             #region Permission Indexs
 
-            dbContext.GetCollection<Permission>().Indexes.CreateOneAsync(new CreateIndexModel<Permission>(Builders<Permission>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = "Id", Unique = true }));
+            dbContext.GetCollection<Permission>().Indexes.CreateOneAsync(new CreateIndexModel<Permission>(Builders<Permission>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Permission.Id), Unique = true }));
+            dbContext.GetCollection<Permission>().Indexes.CreateOneAsync(new CreateIndexModel<Permission>(Builders<Permission>.IndexKeys.Ascending(x => x.SystemName), new CreateIndexOptions() { Name = nameof(Permission.SystemName), Unique = false }));
 
             #endregion
 

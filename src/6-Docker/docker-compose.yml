@@ -1,10 +1,9 @@
 version: '3.4'
 
 services:
-
-  monolith-api:
-    image: ${DOCKER_REGISTRY-}monolith-api
+  monolith.api:
+    image: ${DOCKER_REGISTRY-}monolithapi
     build:
-      context: .
+      context: ../..
       dockerfile: src/2-Services/Monolith/Api/Monolith.Api/Dockerfile
 

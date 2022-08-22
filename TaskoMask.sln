@@ -95,7 +95,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\3-ApiGate
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateWay", "src\3-ApiGateways\AdminPanel\ApiGateWay\ApiGateWay.csproj", "{587F76F4-BB74-4E0C-8ABA-0456DDFB22AF}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "src\6-Docker\docker-compose.dcproj", "{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

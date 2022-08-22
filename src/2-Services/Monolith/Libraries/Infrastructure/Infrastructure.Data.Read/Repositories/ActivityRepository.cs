@@ -14,7 +14,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories
         #region Fields
 
         private readonly IMongoCollection<Activity> _activities;
-        private const string activityCollectionName = "Activities";
+        private const string activityCollectionName = nameof(ReadDbContext.Activities);
         #endregion
 
         #region Ctors

@@ -1,9 +1,47 @@
 version: '3.4'
 
 services:
-  monolith.api:
-    image: ${DOCKER_REGISTRY-}monolithapi
+
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: unless-stopped
+    networks:
+      - taskomask-network
+    volumes:
+      - redis:/data/db
+
+  mongo:
+    container_name: mongo
+    image: mongo:4.4.6
+    restart: unless-stopped
+    networks:
+      - taskomask-network
+    volumes:
+      - mongo:/data/db
+    
+  monolith-api:
+    container_name: monolith-api
+    image: ${DOCKER_REGISTRY-}monolith-api
+    restart: on-failure
+    environment:
+      Mongo__Read__Connection: "mongodb://mongo:27017"
+      Mongo__Write__Connection: "mongodb://mongo:27017"
+      Redis__Connection: "redis:6379"
     build:
       context: ../..
       dockerfile: src/2-Services/Monolith/Api/Monolith.Api/Dockerfile
+    ports:
+      - 5001:80
+    networks:
+      - taskomask-network
+    depends_on:
+      - redis
+      - mongo
 
+networks:
+  taskomask-network:
+
+volumes:
+  redis:
+  mongo:

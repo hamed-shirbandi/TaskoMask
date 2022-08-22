@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using MongoDB.Driver;
-using System.Linq;
+﻿using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
@@ -55,46 +53,9 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
         /// <summary>
         /// 
         /// </summary>
-        public void CreateCollection<TEntity>(string name = "")
-        {
-            if (string.IsNullOrEmpty(name))
-                name = typeof(TEntity).Name + "s";
-
-            _database.CreateCollection(name);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public IList<string> Collections()
-        {
-            var collections = _database.ListCollections().ToList();
-            return collections.Select(c => c["name"].ToString()).ToList();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public void DropDatabase()
         {
             _client.DropDatabase(_mongoDbOptions.DatabaseName);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void DropCollection<TEntity>(string name = "")
-        {
-            if (string.IsNullOrEmpty(name))
-                name = typeof(TEntity).Name + "s";
-
-            _database.DropCollection(name);
         }
 
 

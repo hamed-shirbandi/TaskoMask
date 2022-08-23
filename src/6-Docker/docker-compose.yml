@@ -32,7 +32,8 @@ services:
       context: ../..
       dockerfile: src/2-Services/Monolith/Api/Monolith.Api/Dockerfile
     ports:
-      - 5001:80
+      - 5013:80
+      - 5014:443
     networks:
       - taskomask-network
     depends_on:

@@ -52,6 +52,16 @@ services:
     depends_on:
      - monolith-api
 
+  website-client:
+    container_name: website-client
+    image: website-client
+    build:
+      context: ../..
+      dockerfile: src/4-Clients/Website/Dockerfile
+    ports:
+      - "5008:80"
+      - "5009:443"
+
 networks:
   taskomask-network:
 

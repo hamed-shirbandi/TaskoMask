@@ -9,6 +9,7 @@
     <AssemblyName>TaskoMask.Clients.Website</AssemblyName>
     <RootNamespace>TaskoMask.Clients.Website</RootNamespace>
     <DockerfileContext>..\..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\6-Docker\docker-compose.dcproj</DockerComposeProjectPath>
     
   </PropertyGroup>
 

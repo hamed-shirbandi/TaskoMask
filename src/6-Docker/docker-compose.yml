@@ -1,7 +1,6 @@
 version: '3.4'
 
 services:
-
   redis:
     container_name: redis
     image: redis:alpine
@@ -40,9 +39,23 @@ services:
       - redis
       - mongo
 
+  user-panel-client:
+    container_name: user-panel-client
+    image: user-panel-client
+    build:
+      context: ../..
+      dockerfile: src/4-Clients/UserPanel/Dockerfile
+    ports:
+      - "8086:80"
+    volumes:
+      - taskomask:/usr/share/nginx/html
+    depends_on:
+     - monolith-api
+
 networks:
   taskomask-network:
 
 volumes:
+  taskomask:
   redis:
   mongo:

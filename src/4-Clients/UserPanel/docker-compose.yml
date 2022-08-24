@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  userpanelx2:
+    container_name: userpanelx2
+    image: userpanelx2
+    build:
+      context: ../../..
+      dockerfile: src/4-Clients/UserPanel/Dockerfile
+    ports:
+      - 8080:80

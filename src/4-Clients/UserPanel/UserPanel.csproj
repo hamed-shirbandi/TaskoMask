@@ -2,10 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Clients.UserPanel</AssemblyName>
 		<RootNamespace>TaskoMask.Clients.UserPanel</RootNamespace>
+		<DockerComposeProjectPath>..\..\6-Docker\docker-compose.dcproj</DockerComposeProjectPath>
+		<UserSecretsId>fdd4685f-7b2a-4c80-ac60-b3d2c26c081e</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -20,7 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\1-BuildingBlocks\Web\Web.csproj" />
+		<ProjectReference Include="..\..\1-BuildingBlocks\Web\Web.csproj" />
 	</ItemGroup>
 
 </Project>

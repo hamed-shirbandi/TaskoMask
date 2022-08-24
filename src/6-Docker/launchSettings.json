@@ -5,8 +5,9 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "mongo": "StartWithoutDebugging",
-        "monolith-api": "StartDebugging",
-        "redis": "StartWithoutDebugging"
+        "monolith-api": "StartWithoutDebugging",
+        "redis": "StartWithoutDebugging",
+        "user-panel-client": "StartWithoutDebugging"
       }
     }
   }

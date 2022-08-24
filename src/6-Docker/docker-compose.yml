@@ -46,9 +46,8 @@ services:
       context: ../..
       dockerfile: src/4-Clients/UserPanel/Dockerfile
     ports:
-      - "8086:80"
-    volumes:
-      - taskomask:/usr/share/nginx/html
+      - "5010:80"
+      - "5011:443"
     depends_on:
      - monolith-api
 
@@ -66,6 +65,5 @@ networks:
   taskomask-network:
 
 volumes:
-  taskomask:
   redis:
   mongo:

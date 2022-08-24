@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+
   redis:
     container_name: redis
     image: redis:alpine
@@ -31,8 +32,8 @@ services:
       context: ../..
       dockerfile: src/2-Services/Monolith/Api/Monolith.Api/Dockerfile
     ports:
-      - 5013:80
-      - 5014:443
+      - 5014:80
+      - 5015:443
     networks:
       - taskomask-network
     depends_on:

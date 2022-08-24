@@ -5,6 +5,9 @@
 	  <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>TaskoMask.Clients.AdminPanle</AssemblyName>
     <RootNamespace>TaskoMask.Clients.AdminPanle</RootNamespace>
+    <UserSecretsId>f705cc1c-916a-4e05-8123-c78b28f7591b</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>

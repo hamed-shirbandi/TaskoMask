@@ -8,6 +8,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <AssemblyName>TaskoMask.Clients.Website</AssemblyName>
     <RootNamespace>TaskoMask.Clients.Website</RootNamespace>
+    <DockerfileContext>..\..\..</DockerfileContext>
     
   </PropertyGroup>
 
@@ -22,6 +23,5 @@
   </ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
-		<ProjectReference Include="..\..\2-Services\Monolith\Libraries\Infrastructure\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
 	</ItemGroup>
 </Project>

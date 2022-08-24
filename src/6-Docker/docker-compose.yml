@@ -41,7 +41,7 @@ services:
 
   user-panel-client:
     container_name: user-panel-client
-    image: user-panel-client
+    image: ${DOCKER_REGISTRY-}user-panel-client
     build:
       context: ../..
       dockerfile: src/4-Clients/UserPanel/Dockerfile
@@ -53,7 +53,7 @@ services:
 
   website-client:
     container_name: website-client
-    image: website-client
+    image: ${DOCKER_REGISTRY-}website-client
     build:
       context: ../..
       dockerfile: src/4-Clients/Website/Dockerfile
@@ -61,9 +61,30 @@ services:
       - "5008:80"
       - "5009:443"
 
+  admin-panel-client:
+    container_name: admin-panel-client
+    image: ${DOCKER_REGISTRY-}admin-panel-client
+    restart: on-failure
+    environment:
+      Mongo__Read__Connection: "mongodb://mongo:27017"
+      Mongo__Write__Connection: "mongodb://mongo:27017"
+      Redis__Connection: "redis:6379"
+    build:
+      context: ../..
+      dockerfile: src/4-Clients/AdminPanel/Dockerfile
+    ports:
+      - 5012:80
+      - 5013:443
+    networks:
+      - taskomask-network
+    depends_on:
+      - redis
+      - mongo
+
 networks:
   taskomask-network:
 
 volumes:
   redis:
   mongo:
+

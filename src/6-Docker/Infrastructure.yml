@@ -1,0 +1,40 @@
+#----------------------------------------------------------------------------------
+#                                                                                  |
+# If you want to run or debug some clients or services you need to first make the  |
+# environment ready because they have some dependencies like MongoDB, Redis, etc.  |
+#                                                                                  |
+# Just run the below command through CLI and then the environment is ready:        |
+#                                                                                  |
+# ...\TaskoMask\src\6-Docker> docker-compose -f Infrastucture.yml up -d            |
+#                                                                                  |
+# For more informition go to releated the documentation on GitHub:                 |
+#                                                                                  |
+# https://github.com/hamed-shirbandi/TaskoMask/wiki/Development-Setup              |
+#----------------------------------------------------------------------------------
+
+version: '3.4'
+
+services:
+
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data/db
+
+  mongo:
+    container_name: mongo
+    image: mongo:4.4.6
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data/db   
+
+volumes:
+  redis:
+  mongo:
+

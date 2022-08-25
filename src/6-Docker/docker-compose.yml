@@ -1,3 +1,20 @@
+#----------------------------------------------------------------------------------
+#                                                                                  |
+# If you want to run all the clients and services and their dependencies without   |
+# needing to debug them, you can run the below commands through CLI:               |
+#                                                                                  |
+# ...\TaskoMask\src\6-Docker> docker-compose build                                 |
+# ...\TaskoMask\src\6-Docker> docker-compose up -d                                 |
+#                                                                                  |
+# But, if you need to do this in Visual Studio and debug some services, then you   |
+# can modify the launchSettings and set the desired services to StartDebugging and |
+# then select docker-compose in the debug items and click on DockerCompose         |
+#                                                                                  |
+# For more informition go to the releated documentation on GitHub:                 |
+#                                                                                  |
+# https://github.com/hamed-shirbandi/TaskoMask/wiki/Development-Setup              |
+#----------------------------------------------------------------------------------
+
 version: '3.4'
 
 services:

@@ -1,5 +1,5 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "http://userpanelgw.taskomask.ir"
+    "BaseUrl": "https://localhost:5001"
   }
 }

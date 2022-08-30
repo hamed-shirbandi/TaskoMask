@@ -7,10 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddOcelotWithSwaggerSupport((o) =>
 {
     o.Folder = "Configuration";
-}).AddEnvironmentVariables();
+});
 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddOcelot();
+
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 
 var app = builder.Build();

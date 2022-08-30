@@ -17,7 +17,7 @@ app.UseSerilogRequestLogging();
 
 app.UseMvcPreConfigured(app.Services, builder.Environment);
 
-app.Services.InitialAdnSeedDatabases();
+app.Services.InitialDatabasesAndSeedEssentialData();
 
 app.Services.GenerateAndSeedSampleData();
 

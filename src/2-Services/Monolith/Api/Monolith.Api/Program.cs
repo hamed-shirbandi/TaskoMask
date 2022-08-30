@@ -17,7 +17,7 @@ app.UseSerilogRequestLogging();
 
 app.UseWebApiPreConfigured(app.Services, builder.Environment);
 
-app.Services.InitialAdnSeedDatabases();
+app.Services.InitialDatabasesAndSeedEssentialData();
 
 app.UseEndpoints(endpoints =>
 {

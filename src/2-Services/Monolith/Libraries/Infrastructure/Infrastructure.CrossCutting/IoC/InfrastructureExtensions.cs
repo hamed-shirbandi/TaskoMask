@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
@@ -58,11 +57,11 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
         /// <summary>
         /// 
         /// </summary>
-        public static void InitialAdnSeedDatabases(this IServiceProvider serviceProvider)
+        public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
             WriteDbInitialization.Initial(serviceProvider);
             ReadDbInitialization.Initial(serviceProvider);
-            WriteDbSeedData.Seed(serviceProvider);
+            WriteDbSeedData.SeedEssentialData(serviceProvider);
         }
 
 

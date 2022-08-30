@@ -75,7 +75,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
         /// </summary>
         protected void SeedSampleData()
         {
-            WriteDbSeedData.Seed(_serviceProvider);
+            WriteDbSeedData.SeedEssentialData(_serviceProvider);
             ReadDbSeedData.Seed(_serviceProvider);
             SampleDataGenerator.GenerateAndSeedSampleData(_serviceProvider);
         }
@@ -124,7 +124,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
         {
             WriteDbInitialization.Initial(_serviceProvider);
             ReadDbInitialization.Initial(_serviceProvider);
-            WriteDbSeedData.Seed(_serviceProvider);
+            WriteDbSeedData.SeedEssentialData(_serviceProvider);
         }
 
 

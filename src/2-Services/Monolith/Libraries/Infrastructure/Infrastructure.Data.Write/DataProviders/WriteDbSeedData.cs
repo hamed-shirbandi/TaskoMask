@@ -22,7 +22,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
         /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
-        public static void Seed(IServiceProvider serviceProvider)
+        public static void SeedEssentialData(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {

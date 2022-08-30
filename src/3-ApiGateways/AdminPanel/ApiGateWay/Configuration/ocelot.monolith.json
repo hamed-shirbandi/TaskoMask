@@ -1,0 +1,17 @@
+{
+  "Routes": [
+    {
+      "SwaggerKey": "Monolith",
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          //Monolith.Api
+          "Host": "localhost",
+          "Port": 5014
+        }
+      ],
+      "UpstreamPathTemplate": "/apigw/{everything}"
+    }
+  ]
+}

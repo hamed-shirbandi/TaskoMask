@@ -19,6 +19,15 @@ version: '3.4'
 
 services:
 
+  seq:
+    container_name: seq
+    image: datalust/seq
+    restart: unless-stopped
+    networks:
+      - taskomask-network
+    volumes:
+      - seq:/data
+
   redis:
     container_name: redis
     image: redis:alpine
@@ -105,4 +114,5 @@ networks:
 volumes:
   redis:
   mongo:
+  seq:
 

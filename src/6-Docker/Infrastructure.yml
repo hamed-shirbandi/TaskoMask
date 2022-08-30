@@ -16,6 +16,16 @@ version: '3.4'
 
 services:
 
+  seq:
+    container_name: seq
+    image: datalust/seq
+    restart: unless-stopped
+    ports:
+      - "5340:80"
+      - 5341:5341
+    volumes:
+      - seq:/data
+
   redis:
     container_name: redis
     image: redis:alpine
@@ -37,4 +47,5 @@ services:
 volumes:
   redis:
   mongo:
+  seq:
 

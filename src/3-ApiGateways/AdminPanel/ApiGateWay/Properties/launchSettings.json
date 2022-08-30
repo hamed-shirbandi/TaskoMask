@@ -1,36 +1,21 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:5006",
-      "sslPort": 5007
-    }
-  },
-  "IIS Express": {
-    "commandName": "IISExpress",
-    "launchBrowser": true,
-    "environmentVariables": {
-      "ASPNETCORE_ENVIRONMENT": "Development"
-    }
-  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "ApiGateWay": {
+    "AdminPanelApiGateWay": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:5007;http://localhost:5006"
     },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "publishAllPorts": true,
       "useSSL": true
     }
   }
-
 }

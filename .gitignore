@@ -670,3 +670,4 @@ fabric.properties
 *.ncrunchproject
 *.feature.cs
 **/wwwroot/bundled
+ocelot.json

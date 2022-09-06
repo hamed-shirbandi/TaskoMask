@@ -13,8 +13,4 @@
 		<ProjectReference Include="..\Application\Application.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="CrossCutting\" />
-	</ItemGroup>
-
 </Project>

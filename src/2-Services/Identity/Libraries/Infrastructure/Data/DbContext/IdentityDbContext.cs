@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using Microsoft.Extensions.Options;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.Infrastructure.DbContext
+namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
 {
 
     /// <summary>

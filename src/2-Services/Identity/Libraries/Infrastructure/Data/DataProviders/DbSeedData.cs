@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Identity.Domain.Entities;
-using TaskoMask.Services.Identity.Infrastructure.DbContext;
+using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Identity.Infrastructure.DataProviders
+namespace TaskoMask.Services.Identity.Infrastructure.Data.DataProviders
 {
 
     /// <summary>

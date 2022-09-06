@@ -2,9 +2,9 @@
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Identity.Domain.Data;
 using TaskoMask.Services.Identity.Domain.Entities;
-using TaskoMask.Services.Identity.Infrastructure.DbContext;
+using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Identity.Infrastructure.Repositories
+namespace TaskoMask.Services.Identity.Infrastructure.Data.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {

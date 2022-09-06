@@ -1,2 +1,0 @@
-# Infrastructure.CrossCutting
-

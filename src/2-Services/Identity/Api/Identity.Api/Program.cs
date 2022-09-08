@@ -1,19 +1,27 @@
+using Serilog;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
+using TaskoMask.Services.Identity.Infrastructure.CrossCutting.IoC;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.AddCustomSerilog();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddProjectServices(builder.Configuration);
+
+builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
 var app = builder.Build();
 
+app.UseSerilogRequestLogging();
 
+app.UseWebApiPreConfigured(app.Services, builder.Environment);
 
-app.UseHttpsRedirection();
+app.Services.InitialDatabasAndSeedEssentialData();
 
-app.UseAuthorization();
-
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

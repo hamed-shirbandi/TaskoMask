@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Identity.Domain.Data;
+using TaskoMask.Services.Identity.Infrastructure.Data.DataProviders;
 using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 using TaskoMask.Services.Identity.Infrastructure.Data.Repositories;
 
@@ -23,6 +24,19 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.IoC
             services.AddDbContext(configuration);
             services.AddRepositories();
         }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void InitialDatabasAndSeedEssentialData(this IServiceProvider serviceProvider)
+        {
+            DbInitialization.Initial(serviceProvider);
+            DbSeedData.SeedEssentialData(serviceProvider);
+        }
+
 
 
         #endregion

@@ -15,7 +15,6 @@ using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Authorization;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Membership;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Services;
@@ -104,7 +103,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
             services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
             services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
             services.AddScoped<ITaskAggregateRepository, TaskAggregateRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOperatorRepository, OperatorRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();

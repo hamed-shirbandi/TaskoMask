@@ -17,10 +17,11 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
 using Xunit;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Test;
 
 namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 {
-    public class BoardAggregateUnitTests :TestsBase
+    public class BoardAggregateUnitTests :UnitTestsBase
     {
         #region Fields
 

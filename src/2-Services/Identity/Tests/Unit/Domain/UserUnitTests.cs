@@ -2,10 +2,11 @@
 using TaskoMask.Services.Identity.Domain.Tests.Unit.TestData.ObjectMothers;
 using Xunit;
 using FluentAssertions;
+using TaskoMask.BuildingBlocks.Test;
 
 namespace TaskoMask.Services.Identity.Domain.Tests.Unit
 {
-    public class UserUnitTests : TestsBase
+    public class UserUnitTests : UnitTestsBase
     {
 
         [Fact]

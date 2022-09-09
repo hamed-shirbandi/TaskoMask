@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using NSubstitute;
-using System;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Test;
 
 namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 {
-    public abstract class TestsBase : IDisposable
+    public abstract class TestsBase : UnitTestsBase
     {
 
         protected IInMemoryBus _inMemoryBus;
@@ -25,10 +25,10 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private void FixtureSetup()
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        protected override void FixtureSetup()
         {
             CommonFixtureSetup();
 
@@ -54,15 +54,6 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
         /// </summary>
         protected abstract void TestClassFixtureSetup();
 
-
-
-        /// <summary>
-        /// Run after each test method
-        /// </summary>
-        public void Dispose()
-        {
-
-        }
 
     }
 }

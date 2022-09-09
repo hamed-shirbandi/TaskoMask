@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
-using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData;
+using TaskoMask.BuildingBlocks.Test;
 using TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers;
 using Xunit;
 
 namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Authorization
 {
-    public class UserUnitTests :TestsBase
+    public class UserUnitTests : UnitTestsBase
     {
 
         [Fact]

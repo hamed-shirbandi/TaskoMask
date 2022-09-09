@@ -13,10 +13,11 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Events.Own
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 using Xunit;
 using TaskoMask.BuildingBlocks.Domain.Resources;
+using TaskoMask.BuildingBlocks.Test;
 
 namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 {
-    public class OwnerAggregateUnitTests : TestsBase
+    public class OwnerAggregateUnitTests : UnitTestsBase
     {
 
         [Fact]

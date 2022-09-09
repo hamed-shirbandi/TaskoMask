@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData
+﻿
+namespace TaskoMask.BuildingBlocks.Test
 {
-    public abstract class TestsBase:IDisposable
+    public abstract class UnitTestsBase:IDisposable
     {
 
         /// <summary>
         /// Run before each test method
         /// </summary>
-        public TestsBase()
+        public UnitTestsBase()
         {
             FixtureSetup();
         }

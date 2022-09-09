@@ -2,10 +2,11 @@
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Test;
 
 namespace TaskoMask.Services.Identity.Application.Tests.Unit.TestData
 {
-    public abstract class TestsBase : IDisposable
+    public abstract class TestsBase : UnitTestsBase
     {
 
         protected IInMemoryBus _inMemoryBus;
@@ -27,7 +28,7 @@ namespace TaskoMask.Services.Identity.Application.Tests.Unit.TestData
         /// <summary>
         /// 
         /// </summary>
-        private void FixtureSetup()
+        protected override void FixtureSetup()
         {
             CommonFixtureSetup();
 

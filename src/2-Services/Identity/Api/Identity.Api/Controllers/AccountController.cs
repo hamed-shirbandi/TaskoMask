@@ -10,7 +10,7 @@ namespace TaskoMask.Services.Identity.Api.Controllers
     /// <summary>
     /// 
     /// </summary>
-    public class AccountApiController : BaseApiController, IAccountApiService
+    public class AccountController : BaseApiController, IAccountApiService
     {
         #region Fields
 
@@ -23,7 +23,7 @@ namespace TaskoMask.Services.Identity.Api.Controllers
         /// <summary>
         /// 
         /// </summary>
-        public AccountApiController()
+        public AccountController()
         {
 
         }
@@ -41,6 +41,7 @@ namespace TaskoMask.Services.Identity.Api.Controllers
         [Route("account/login")]
         public async Task<Result<UserJwtTokenDto>> Login([FromBody] UserLoginDto input)
         {
+            //TODO refactor with Identity Server
             return Result.Success(value: new UserJwtTokenDto { JwtToken = "" });
         }
 
@@ -54,6 +55,8 @@ namespace TaskoMask.Services.Identity.Api.Controllers
         [Route("account/register")]
         public async Task<Result<UserJwtTokenDto>> Register([FromBody] RegisterOwnerDto input)
         {
+            //TODO refactor with Identity Server
+
             return Result.Success(value: new UserJwtTokenDto { JwtToken = "" });
         }
 

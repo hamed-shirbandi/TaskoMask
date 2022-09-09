@@ -121,7 +121,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\2-Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\2-Services\Identity\Tests\Unit\Domain\Domain.csproj", "{A21CC2FB-FAFA-40B2-8D87-9E2CC6A7A6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\2-Services\Identity\Tests\Integration\Application\Application.csproj", "{ED8C8790-42D2-4606-A1F2-BC0A3E54CB23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Tests.Integration", "src\2-Services\Identity\Tests\Integration\Identity.Tests.Integration\Identity.Tests.Integration.csproj", "{ED8C8790-42D2-4606-A1F2-BC0A3E54CB23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "src\1-BuildingBlocks\Test\Test.csproj", "{9A9549EB-1279-4FD3-8769-F17F925C22BF}"
 EndProject

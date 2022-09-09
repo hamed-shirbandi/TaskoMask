@@ -4,6 +4,10 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
+using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication;
+using TaskoMask.Services.Identity.Application.Users.Services;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 
 namespace TaskoMask.Services.Identity.Api.Controllers
 {
@@ -14,6 +18,8 @@ namespace TaskoMask.Services.Identity.Api.Controllers
     {
         #region Fields
 
+        private readonly IUserService _userService;
+        private readonly IJwtAuthenticationService _jwtAuthenticationService;
 
         #endregion
 
@@ -23,10 +29,12 @@ namespace TaskoMask.Services.Identity.Api.Controllers
         /// <summary>
         /// 
         /// </summary>
-        public AccountController()
+        public AccountController(IJwtAuthenticationService jwtAuthenticationService, IUserService userService) : base()
         {
-
+            _jwtAuthenticationService = jwtAuthenticationService;
+            _userService = userService;
         }
+
 
         #endregion
 
@@ -42,7 +50,26 @@ namespace TaskoMask.Services.Identity.Api.Controllers
         public async Task<Result<UserJwtTokenDto>> Login([FromBody] UserLoginDto input)
         {
             //TODO refactor with Identity Server
-            return Result.Success(value: new UserJwtTokenDto { JwtToken = "" });
+
+            //validate user password
+            var validateQueryResult = await _userService.IsValidCredentialAsync(input.UserName, input.Password);
+            if (!validateQueryResult.IsSuccess || !validateQueryResult.Value)
+                return Result.Failure<UserJwtTokenDto>(validateQueryResult.Errors, validateQueryResult.Message);
+
+
+            //get owner
+            var userQueryResult = await _userService.GetByUserNameAsync(input.UserName);
+            if (!userQueryResult.IsSuccess)
+                return Result.Failure<UserJwtTokenDto>(userQueryResult.Errors, userQueryResult.Message);
+
+
+            //map to jwt claims model
+            var user = GetAuthenticatedUserModel(userQueryResult.Value);
+
+            //generate jwt token
+            var token = _jwtAuthenticationService.GenerateJwtToken(user);
+
+            return Result.Success(value: new UserJwtTokenDto { JwtToken = token });
         }
 
 
@@ -57,7 +84,18 @@ namespace TaskoMask.Services.Identity.Api.Controllers
         {
             //TODO refactor with Identity Server
 
-            return Result.Success(value: new UserJwtTokenDto { JwtToken = "" });
+
+            //create owner with default workspace
+            var createCommandResult = await _userService.CreateAsync(input.Email, input.Password,UserType.Owner);
+            if (!createCommandResult.IsSuccess)
+                return Result.Failure<UserJwtTokenDto>(createCommandResult.Errors, createCommandResult.Message);
+
+            var user = GetAuthenticatedUserModel(createCommandResult.Value.EntityId,input);
+
+            //generate jwt token
+            var token = _jwtAuthenticationService.GenerateJwtToken(user);
+
+            return Result.Success(value: new UserJwtTokenDto { JwtToken = token });
         }
 
 
@@ -69,6 +107,35 @@ namespace TaskoMask.Services.Identity.Api.Controllers
 
         #region  Private Methods
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private AuthenticatedUserModel GetAuthenticatedUserModel( UserBasicInfoDto user)
+        {
+            return new AuthenticatedUserModel
+            {
+                Id = user.Id,
+                Email = user.UserName,
+                UserName = user.UserName,
+            };
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private AuthenticatedUserModel GetAuthenticatedUserModel(string id, RegisterOwnerDto owner)
+        {
+            return new AuthenticatedUserModel
+            {
+                Id = id,
+                DisplayName = owner.DisplayName,
+                Email = owner.Email,
+                UserName = owner.Email,
+            };
+        }
 
 
 

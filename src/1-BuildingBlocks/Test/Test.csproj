@@ -7,7 +7,6 @@
 	  <RootNamespace>TaskoMask.BuildingBlocks.Test</RootNamespace>
   </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
 		<PackageReference Include="xunit" Version="2.4.1" />

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Permissions.Services;
@@ -25,7 +24,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
         /// </summary>
         public static void AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IOperatorService, OperatorService>();
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddScoped<IRoleService, RoleService>();

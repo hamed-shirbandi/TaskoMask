@@ -104,11 +104,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateOrganization(string organizationId, string name, string description, IAuthenticatedUserService authenticatedUserService)
+        public void UpdateOrganization(string organizationId, string name, string description )
         {
-            if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
-                throw new DomainException(ContractsMessages.Access_Denied);
-
             var organization = GetOrganizationById(organizationId);
             organization.UpdateOrganization(name, description);
             AddDomainEvent(new OrganizationUpdatedEvent(organizationId, organization.Name.Value, organization.Description.Value));
@@ -119,11 +116,8 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         /// <summary>
         /// 
         /// </summary>
-        public void DeleteOrganization(string organizationId, IAuthenticatedUserService authenticatedUserService)
+        public void DeleteOrganization(string organizationId)
         {
-            if (!new JustOwnerCanUpdateOrganizationSpecification(authenticatedUserService).IsSatisfiedBy(this))
-                throw new DomainException(ContractsMessages.Access_Denied);
-
             var organization = GetOrganizationById(organizationId);
             Organizations.Remove(organization);
             AddDomainEvent(new OrganizationDeletedEvent(organizationId));

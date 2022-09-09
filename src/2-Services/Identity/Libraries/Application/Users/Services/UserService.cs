@@ -24,8 +24,8 @@ namespace TaskoMask.Services.Identity.Application.Users.Services
 
         #region Ctors
 
-        public UserService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IUserRepository userRepository)
-             : base(inMemoryBus, mapper, notifications)
+        public UserService( IMapper mapper, INotificationHandler notifications, IUserRepository userRepository)
+             : base( mapper, notifications)
         {
             _userRepository = userRepository;
         }

@@ -6,7 +6,6 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Models;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles
 {

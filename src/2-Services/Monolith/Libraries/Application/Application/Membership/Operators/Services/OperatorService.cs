@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using System.Linq;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Models;

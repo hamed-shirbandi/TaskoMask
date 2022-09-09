@@ -9,7 +9,6 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;

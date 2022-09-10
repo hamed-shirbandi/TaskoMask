@@ -75,33 +75,6 @@ namespace TaskoMask.Services.Identity.Api.Controllers
 
 
 
-        /// <summary>
-        /// register new owner - return jwt token if register is success
-        /// </summary>
-        [HttpPost]
-        [Route("account/register")]
-        public async Task<Result<UserJwtTokenDto>> Register([FromBody] RegisterOwnerDto input)
-        {
-            //TODO refactor with Identity Server
-
-
-            //create owner with default workspace
-            var createCommandResult = await _userService.CreateAsync(input.Email, input.Password,UserType.Owner);
-            if (!createCommandResult.IsSuccess)
-                return Result.Failure<UserJwtTokenDto>(createCommandResult.Errors, createCommandResult.Message);
-
-            var user = GetAuthenticatedUserModel(createCommandResult.Value.EntityId,input);
-
-            //generate jwt token
-            var token = _jwtAuthenticationService.GenerateJwtToken(user);
-
-            return Result.Success(value: new UserJwtTokenDto { JwtToken = token });
-        }
-
-
-
-
-
 
         #endregion
 
@@ -118,22 +91,6 @@ namespace TaskoMask.Services.Identity.Api.Controllers
                 Id = user.Id,
                 Email = user.UserName,
                 UserName = user.UserName,
-            };
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private AuthenticatedUserModel GetAuthenticatedUserModel(string id, RegisterOwnerDto owner)
-        {
-            return new AuthenticatedUserModel
-            {
-                Id = id,
-                DisplayName = owner.DisplayName,
-                Email = owner.Email,
-                UserName = owner.Email,
             };
         }
 

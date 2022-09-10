@@ -201,9 +201,9 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OwnerBasicInfoDto>> GetByUserNameAsync(string userName)
+        public async Task<Result<OwnerBasicInfoDto>> GetByEmailAsync(string email)
         {
-            return await SendQueryAsync(new GetOwnerByUserNameQuery(userName));
+            return await SendQueryAsync(new GetOwnerByEmailQuery(email));
         }
 
 

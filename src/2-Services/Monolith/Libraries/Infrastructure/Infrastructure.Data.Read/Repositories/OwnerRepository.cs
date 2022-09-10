@@ -34,6 +34,16 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories
         /// <summary>
         /// 
         /// </summary>
+        public async Task<Owner> GetByEmailAsync(string email)
+        {
+            return await _owners.Find(e => e.Email == email).FirstOrDefaultAsync();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public IEnumerable<Owner> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount)
         {
             var queryable = _owners.AsQueryable();

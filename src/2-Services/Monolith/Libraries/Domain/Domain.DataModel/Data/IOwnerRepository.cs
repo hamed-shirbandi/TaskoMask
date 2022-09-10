@@ -7,6 +7,8 @@ namespace TaskoMask.Services.Monolith.Domain.DataModel.Data
 
     public interface IOwnerRepository : IBaseRepository<Owner>
     {
+        Task<Owner> GetByEmailAsync(string email);
+
         IEnumerable<Owner> Search(int page, int recordsPerPage, string term, out int pageSize, out int totalItemCount);
     }
 }

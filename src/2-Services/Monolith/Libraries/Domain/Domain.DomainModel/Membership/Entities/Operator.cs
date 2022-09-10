@@ -2,6 +2,7 @@
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities
 {
@@ -14,13 +15,9 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id">shared key with User in authentication BC</param>
-        public Operator(string id)
+        public Operator()
         {
-            if (string.IsNullOrEmpty(id))
-                throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Id)));
-
-            base.SetId(id);
+            SetId(ObjectId.GenerateNewId().ToString());
 
             RolesId = Array.Empty<string>();
         }

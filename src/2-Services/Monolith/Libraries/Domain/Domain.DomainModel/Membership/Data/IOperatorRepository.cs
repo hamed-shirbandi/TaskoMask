@@ -7,6 +7,7 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data
 {
     public interface IOperatorRepository : IBaseRepository<Operator>
     {
+        Task<Operator> GetByEmailAsync(string email);
         Task<IEnumerable<Operator>> GetListByRoleIdAsync(string roleId);
         Task<long> CountByRoleIdAsync(string roleId);
     }

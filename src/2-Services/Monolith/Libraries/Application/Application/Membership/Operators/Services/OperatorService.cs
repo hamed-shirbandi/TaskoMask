@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using System.Linq;
-using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Application.Services;
@@ -23,18 +22,16 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
 
         private readonly IOperatorRepository _operatorRepository;
         private readonly IRoleRepository _roleRepository;
-        private readonly IUserService _userService;
 
         #endregion
 
         #region Ctors
 
-        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IOperatorRepository operatorRepository, IRoleRepository roleRepository, IUserService userService)
+        public OperatorService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IOperatorRepository operatorRepository, IRoleRepository roleRepository)
              : base(inMemoryBus, mapper, notifications)
         {
             _operatorRepository = operatorRepository;
             _roleRepository = roleRepository;
-            _userService = userService;
         }
 
 
@@ -49,20 +46,15 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
         /// </summary>
         public async Task<Result<CommandResult>> CreateAsync(OperatorUpsertDto input)
         {
-            //create authentication user info
-            var CreateUserCommandResult = await _userService.CreateAsync(input.UserName, input.Password,UserType.Operator);
-            if (!CreateUserCommandResult.IsSuccess)
-                return CreateUserCommandResult;
-
-
-            var @operator = new Operator(CreateUserCommandResult.Value.EntityId)
+            var @operator = new Operator()
             {
                 DisplayName = input.DisplayName,
                 Email = input.Email,
             };
 
-
             await _operatorRepository.CreateAsync(@operator);
+
+            //TODO publish OperatorCreatedEvent (to be handled by Identity service)
 
             return Result.Success(new CommandResult(entityId: @operator.Id), ContractsMessages.Create_Success);
 
@@ -80,17 +72,13 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
             if (@operator == null)
                 return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Operator));
 
-
-            //create authentication user info
-            var CreateUserCommandResult = await _userService.UpdateUserNameAsync(input.Id, input.UserName);
-            if (!CreateUserCommandResult.IsSuccess)
-                return CreateUserCommandResult;
-
             @operator.DisplayName = input.DisplayName;
             @operator.Email = input.Email;
             @operator.SetAsUpdated();
 
             await _operatorRepository.UpdateAsync(@operator);
+
+            //TODO publish OperatorUpdatedEvent (to be handled by Identity service)
 
             return Result.Success(new CommandResult(entityId: @operator.Id), ContractsMessages.Update_Success);
         }
@@ -123,20 +111,11 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
         /// </summary>
         public async Task<Result<OperatorBasicInfoDto>> GetByIdAsync(string id)
         {
-
-            var userQueryResult = await _userService.GetByIdAsync(id);
-            if (!userQueryResult.IsSuccess)
-                return Result.Failure<OperatorBasicInfoDto>(message: userQueryResult.Message);
-
-
             var @operator = await _operatorRepository.GetByIdAsync(id);
             if (@operator == null)
                 return Result.Failure<OperatorBasicInfoDto>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Operator));
 
             var model = _mapper.Map<OperatorBasicInfoDto>(@operator);
-
-            //add authentication info from user ti operator
-            model.UserInfo = userQueryResult.Value;
 
             return Result.Success(model);
         }
@@ -146,22 +125,13 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OperatorBasicInfoDto>> GetByUserNameAsync(string userName)
+        public async Task<Result<OperatorBasicInfoDto>> GetByEmailAsync(string userName)
         {
-            var userQueryResult = await _userService.GetByUserNameAsync(userName);
-            if (!userQueryResult.IsSuccess)
-                return Result.Failure<OperatorBasicInfoDto>(message: userQueryResult.Message);
-
-
-            var @operator = await _operatorRepository.GetByIdAsync(userQueryResult.Value.Id);
+            var @operator = await _operatorRepository.GetByEmailAsync(userName);
             if (@operator == null)
                 return Result.Failure<OperatorBasicInfoDto>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Operator));
 
-           
             var model = _mapper.Map<OperatorBasicInfoDto>(@operator);
-
-            //add authentication info from user ti operator
-            model.UserInfo = userQueryResult.Value;
 
             return Result.Success(model);
         }
@@ -177,16 +147,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
             var operatorsDto = _mapper.Map<IEnumerable<OperatorOutputDto>>(operators);
 
             foreach (var item in operatorsDto)
-            {
-                //add authentication info from user to operator
-                var userQueryResult = await _userService.GetByIdAsync(item.Id);
-                if (userQueryResult.IsSuccess)
-                    item.UserInfo = userQueryResult.Value;
-
-
                 item.RolesCount = item.RolesId.Length;
-
-            }
 
             return Result.Success(operatorsDto);
         }
@@ -203,13 +164,6 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
                 return Result.Failure<OperatorDetailsViewModel>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Operator));
 
             var operatorDto = _mapper.Map<OperatorBasicInfoDto>(@operator);
-
-            var userQueryResult = await _userService.GetByIdAsync(id);
-            if (!userQueryResult.IsSuccess)
-                return Result.Failure<OperatorDetailsViewModel>(message: userQueryResult.Message);
-
-            //add authentication info from user ti operator
-            operatorDto.UserInfo = userQueryResult.Value;
 
             var roles = await _roleRepository.GetListAsync();
 
@@ -250,8 +204,7 @@ namespace TaskoMask.Services.Monolith.Application.Membership.Operators.Services
             if (@operator == null)
                 return Result.Failure<CommandResult>(message: string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Operator));
 
-            //delete associated user
-            await _userService.DeleteAsync(@operator.Id);
+            //TODO publish OperatorDeletedEvent (to be handled by Identity service)
 
             @operator.SetAsDeleted();
             return Result.Success(new CommandResult(entityId: @operator.Id), ContractsMessages.Update_Success);

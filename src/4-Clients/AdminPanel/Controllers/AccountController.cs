@@ -78,7 +78,7 @@ namespace TaskoMask.Clients.AdminPanle.Controllers
                 return View(validateQueryResult, input);
 
             //get operator
-            var operatorQueryResult = await _operatorService.GetByUserNameAsync(input.UserName);
+            var operatorQueryResult = await _operatorService.GetByEmailAsync(input.UserName);
             if (!operatorQueryResult.IsSuccess)
                 return View(operatorQueryResult, input);
 

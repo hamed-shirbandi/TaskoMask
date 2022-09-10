@@ -6,7 +6,6 @@ using DNTCaptcha.Core;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using AutoMapper;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Membership.Operators;
 
@@ -18,7 +17,6 @@ namespace TaskoMask.Clients.AdminPanle.Controllers
 
         private readonly IOperatorService _operatorService;
         private readonly ICookieAuthenticationService _cookieAuthenticationService;
-        private readonly IUserService _userService;
 
         #endregion
 
@@ -26,11 +24,10 @@ namespace TaskoMask.Clients.AdminPanle.Controllers
 
 
 
-        public AccountController(IOperatorService ownerService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper, IUserService userService) : base()
+        public AccountController(IOperatorService ownerService, ICookieAuthenticationService cookieAuthenticationService, IMapper mapper ) : base()
         {
             _operatorService = ownerService;
             _cookieAuthenticationService = cookieAuthenticationService;
-            _userService = userService;
         }
 
 
@@ -72,10 +69,10 @@ namespace TaskoMask.Clients.AdminPanle.Controllers
                 return View(input);
 
 
-            //validate user password
-            var validateQueryResult = await _userService.IsValidCredentialAsync(input.UserName, input.Password);
-            if (!validateQueryResult.IsSuccess)
-                return View(validateQueryResult, input);
+            //TODO validate user password through Identity service
+            //var validateQueryResult = await _userService.IsValidCredentialAsync(input.UserName, input.Password);
+            //if (!validateQueryResult.IsSuccess)
+            //    return View(validateQueryResult, input);
 
             //get operator
             var operatorQueryResult = await _operatorService.GetByEmailAsync(input.UserName);

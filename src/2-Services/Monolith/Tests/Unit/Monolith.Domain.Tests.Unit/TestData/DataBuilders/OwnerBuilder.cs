@@ -4,7 +4,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders
 {
     internal class OwnerBuilder
     {
-        public string Id { get; private set; }
         public string Email { get; private set; }
         public string DisplayName { get; private set; }
 
@@ -18,13 +17,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders
         public static OwnerBuilder Init()
         {
             return new OwnerBuilder();
-        }
-
-
-        public OwnerBuilder WithId(string id)
-        {
-            Id = id;
-            return this;
         }
 
 
@@ -46,7 +38,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders
 
         public Owner RegisterOwner()
         {
-            return Owner.RegisterOwner(Id, DisplayName, Email);
+            return Owner.RegisterOwner(DisplayName, Email);
         }
 
 

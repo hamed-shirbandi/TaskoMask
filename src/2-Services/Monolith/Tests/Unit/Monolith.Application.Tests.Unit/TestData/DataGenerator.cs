@@ -18,7 +18,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 
             for (int i = 1; i <= number; i++)
             {
-                list.Add(new Operator(ObjectId.GenerateNewId().ToString())
+                list.Add(new Operator()
                 {
                     Email = $"email_{i}@test.com",
                 });
@@ -35,7 +35,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 
             for (int i = 1; i <= number; i++)
             {
-                var owner = Owner.RegisterOwner(ObjectId.GenerateNewId().ToString(), $"DisplayName_{i}", $"Email_{i}@mail.com");
+                var owner = Owner.RegisterOwner($"DisplayName_{i}", $"Email_{i}@mail.com");
                 owner.ClearDomainEvents();
                 list.Add(owner);
             }

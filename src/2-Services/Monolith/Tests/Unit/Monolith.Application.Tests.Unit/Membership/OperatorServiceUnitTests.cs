@@ -4,7 +4,6 @@ using NSubstitute;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Application.Tests.Unit.Membership.TestData;
@@ -22,7 +21,6 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Membership
 
         private IOperatorRepository _operatorRepository;
         private IRoleRepository _roleRepository;
-        private IUserService _userService;
         private IOperatorService _operatorService;
         private List<Operator> _operators;
 
@@ -78,10 +76,6 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Membership
 
             _roleRepository = Substitute.For<IRoleRepository>();
 
-            _userService = Substitute.For<IUserService>();
-            _userService.CreateAsync(Arg.Any<string>(), Arg.Any<string>(), UserType.Operator).Returns(Result.Success(new CommandResult(entityId: ObjectId.GenerateNewId().ToString())));
-            _userService.UpdateUserNameAsync(Arg.Is<string>(arg => _operators.Select(o => o.Id).Any(id => id == arg)), Arg.Any<string>()).Returns(args => Result.Success(new CommandResult(entityId: (string)args[0])));
-
             _operatorRepository = Substitute.For<IOperatorRepository>();
             _operatorRepository.GetByIdAsync(Arg.Is<string>(x => _operators.Any(u => u.Id == x))).Returns(args => _operators.First(u => u.Id == (string)args[0]));
             _operatorRepository.CreateAsync(Arg.Any<Operator>()).Returns(async args => _operators.Add((Operator)args[0]));
@@ -94,7 +88,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Membership
                     _operators.Add(((Operator)args[0]));
                 }
             });
-            _operatorService = new OperatorService(_inMemoryBus, _iMapper, _domainNotificationHandler, _operatorRepository, _roleRepository, _userService);
+            _operatorService = new OperatorService(_iMapper, _domainNotificationHandler, _operatorRepository, _roleRepository);
         }
 
 

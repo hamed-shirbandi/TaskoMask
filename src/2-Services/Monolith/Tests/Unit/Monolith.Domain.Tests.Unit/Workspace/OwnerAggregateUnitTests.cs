@@ -25,7 +25,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
         {
             //Arrange
             var ownerBuilder = OwnerBuilder.Init()
-                  .WithId(ObjectId.GenerateNewId().ToString())
                   .WithEmail("Test@email.com")
                   .WithDisplayName("Test Name");
 
@@ -34,7 +33,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 
 
             //Assert
-            owner.Id.Should().NotBeNullOrEmpty().And.Be(ownerBuilder.Id);
             owner.Email.Value.Should().NotBeNull().And.Be(ownerBuilder.Email);
             owner.DisplayName.Value.Should().NotBeNull().And.Be(ownerBuilder.DisplayName);
             owner.Organizations.Should().HaveCount(0);
@@ -50,7 +48,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
             //Arrange
             var expectedEventType = nameof(OwnerRegisteredEvent);
             var ownerBuilder = OwnerBuilder.Init()
-                              .WithId(ObjectId.GenerateNewId().ToString())
                               .WithEmail("Test@email.com")
                               .WithDisplayName("Test Name");
             //Act

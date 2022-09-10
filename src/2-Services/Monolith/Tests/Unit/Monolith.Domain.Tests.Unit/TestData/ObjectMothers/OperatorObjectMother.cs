@@ -11,7 +11,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
 
         public static Operator CreateNewOperator()
         {
-            return new Operator(_id)
+            return new Operator()
             {
                 DisplayName = _displayName,
                 Email = _email,
@@ -22,7 +22,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
 
         public static Operator CreateNewOperatorWithEmail(string email)
         {
-            return new Operator(_id)
+            return new Operator()
             {
                 DisplayName = _displayName,
                 Email = email,
@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
 
         public static Operator CreateNewOperatorWithId(string id)
         {
-            return new Operator(id)
+            return new Operator()
             {
                 DisplayName = _displayName,
                 Email = _email,

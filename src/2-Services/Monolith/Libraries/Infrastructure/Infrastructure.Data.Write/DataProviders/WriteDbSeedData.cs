@@ -35,9 +35,9 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
         /// <summary>
         /// 
         /// </summary>
-        private static Operator GetAdminOperator(string userId, IConfiguration configuration)
+        private static Operator GetAdminOperator(IConfiguration configuration)
         {
-            return new Operator(userId)
+            return new Operator()
             {
                 DisplayName = configuration["SuperUser:DisplayName"],
                 Email = configuration["SuperUser:Email"],

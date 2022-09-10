@@ -44,7 +44,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Hand
         /// </summary>
         public async Task<CommandResult> Handle(RegisterOwnerCommand request, CancellationToken cancellationToken)
         {
-            var owner = Owner.RegisterOwner(request.Id,request.DisplayName, request.Email);
+            var owner = Owner.RegisterOwner(request.DisplayName, request.Email);
 
             await _ownerAggregateRepository.CreateAsync(owner);
             await PublishDomainEventsAsync(owner.DomainEvents);

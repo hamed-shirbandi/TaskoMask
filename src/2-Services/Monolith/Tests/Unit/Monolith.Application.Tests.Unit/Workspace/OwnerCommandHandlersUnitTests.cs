@@ -37,7 +37,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Workspace
         {
             //Arrange
             var expectedUserId = ObjectId.GenerateNewId().ToString();
-            var createOwnerCommand = new RegisterOwnerCommand(expectedUserId, "Test_DisplayName", "Test@email.com", "Test_Password");
+            var createOwnerCommand = new RegisterOwnerCommand("Test_DisplayName", "Test@email.com", "Test_Password");
 
             //Act
             var result = await _ownerCommandHandlers.Handle(createOwnerCommand, CancellationToken.None);

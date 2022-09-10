@@ -11,6 +11,7 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Specificat
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueObjects.Owners;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Services;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities
 {
@@ -26,11 +27,10 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
 
         #region Ctors
 
-        private Owner(string id, string displayName, string email)
+        private Owner( string displayName, string email)
         {
-          
-            //shared key with User in authentication BC
-            base.SetId(id);
+
+            SetId(ObjectId.GenerateNewId().ToString());
 
             DisplayName = OwnerDisplayName.Create(displayName);
             Email = OwnerEmail.Create(email);
@@ -62,9 +62,9 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entiti
         /// </summary>
         /// <param name="id">Shared key with User in authentication BC</param>
         /// <returns></returns>
-        public static Owner RegisterOwner(string id, string displayName, string email)
+        public static Owner RegisterOwner( string displayName, string email)
         {
-            return new Owner(id, displayName, email);
+            return new Owner(displayName, email);
         }
 
 

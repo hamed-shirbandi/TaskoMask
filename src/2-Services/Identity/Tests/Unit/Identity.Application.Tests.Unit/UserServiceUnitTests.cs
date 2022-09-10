@@ -162,7 +162,7 @@ namespace TaskoMask.Services.Identity.Application.Tests.Unit
                 }
             });
 
-            _userService = new UserService(_inMemoryBus, _iMapper, _domainNotificationHandler, _userRepository);
+            _userService = new UserService(_iMapper, _domainNotificationHandler, _userRepository);
         }
 
 

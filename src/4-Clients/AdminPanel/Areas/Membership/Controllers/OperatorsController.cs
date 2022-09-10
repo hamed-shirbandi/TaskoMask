@@ -10,7 +10,6 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.BuildingBlocks.Web.MVC.Filters;
 using TaskoMask.BuildingBlocks.Web.MVC.Enums;
 using TaskoMask.BuildingBlocks.Web.MVC.Extensions;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 
 namespace TaskoMask.Clients.AdminPanel.Areas.Membership.Controllers
 {
@@ -22,16 +21,14 @@ namespace TaskoMask.Clients.AdminPanel.Areas.Membership.Controllers
         #region Fields
 
         private readonly IOperatorService _operatorService;
-        private readonly IUserService _userService;
 
         #endregion
 
         #region Ctor
 
-        public OperatorsController(IOperatorService operatorService, IMapper mapper, IUserService userService) : base()
+        public OperatorsController(IOperatorService operatorService, IMapper mapper) : base()
         {
             _operatorService = operatorService;
-            _userService = userService;
         }
 
         #endregion
@@ -141,8 +138,11 @@ namespace TaskoMask.Clients.AdminPanel.Areas.Membership.Controllers
                 return ScriptBox.ShowMessage(errors, MessageType.error);
             }
 
-            var cmdResult = await _userService.ResetPasswordAsync(input.Id,input.NewPassword);
-            return AjaxResult(cmdResult);
+            //TODO change pass through Identity service
+            //var cmdResult = await _userService.ResetPasswordAsync(input.Id,input.NewPassword);
+            //return AjaxResult(cmdResult);
+
+            return null;
         }
 
 
@@ -161,8 +161,11 @@ namespace TaskoMask.Clients.AdminPanel.Areas.Membership.Controllers
                 return ScriptBox.ShowMessage(errors, MessageType.error);
             }
 
-            var cmdResult = await _userService.ChangePasswordAsync(input.Id, input.OldPassword, input.NewPassword);
-            return AjaxResult(cmdResult);
+            //TODO change pass through Identity service
+            //var cmdResult = await _userService.ResetPasswordAsync(input.Id,input.NewPassword);
+            //return AjaxResult(cmdResult);
+
+            return null;
         }
 
 
@@ -175,8 +178,11 @@ namespace TaskoMask.Clients.AdminPanel.Areas.Membership.Controllers
         [IgnoreAntiforgeryToken]
         public async Task<JavaScriptResult> SetIsActive(string id, bool isActive)
         {
-            var cmdResult = await _userService.SetIsActiveAsync(id, isActive);
-            return AjaxResult(cmdResult,reloadPage:true);
+            //TODO SetIsActive through Identity service
+            //var cmdResult = await _userService.ResetPasswordAsync(input.Id,input.NewPassword);
+            //return AjaxResult(cmdResult);
+
+            return null;
 
         }
 

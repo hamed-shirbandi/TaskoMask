@@ -15,7 +15,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
         public static Owner RegisterOwner()
         {
             var owner= OwnerBuilder.Init()
-                   .WithId(_id)
                    .WithEmail(_email)
                    .WithDisplayName(_displayName)
                    .RegisterOwner();
@@ -30,7 +29,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
         public static Owner RegisterOwnerWithId(string id)
         {
             var owner = OwnerBuilder.Init()
-                   .WithId(id)
                    .WithEmail(_email)
                    .WithDisplayName(_displayName)
                    .RegisterOwner();
@@ -45,7 +43,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
         public static Owner RegisterOwnerWithDisplayName(string displayName)
         {
             var owner = OwnerBuilder.Init()
-                   .WithId(_id)
                    .WithEmail(_email)
                    .WithDisplayName(displayName)
                    .RegisterOwner();
@@ -60,7 +57,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.ObjectMothers
         public static Owner RegisterOwnerWithEmail(string email)
         {
             var owner = OwnerBuilder.Init()
-                   .WithId(_id)
                    .WithEmail(email)
                    .WithDisplayName(_displayName)
                    .RegisterOwner();

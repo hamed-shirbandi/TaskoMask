@@ -17,7 +17,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         #region Fields
 
         private readonly IAuthenticatedUserService _authenticatedUserService;
-        private readonly IUserRepository _userRepository;
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IProjectRepository _projectRepository;
         private readonly IBoardRepository _boardRepository;
@@ -29,7 +28,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
 
         #region Ctors
 
-        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, IOrganizationRepository organizationRepository, IProjectRepository projectRepository, ICardRepository cardRepository, ITaskRepository taskRepository, IUserRepository userRepository, IBoardRepository boardRepository)
+        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, IOrganizationRepository organizationRepository, IProjectRepository projectRepository, ICardRepository cardRepository, ITaskRepository taskRepository , IBoardRepository boardRepository)
         {
             _authenticatedUserService = authenticatedUserService;
             _organizationRepository = organizationRepository;
@@ -37,7 +36,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
             _projectRepository = projectRepository;
             _cardRepository = cardRepository;
             _taskRepository = taskRepository;
-            _userRepository = userRepository;
             _boardRepository = boardRepository;
         }
 
@@ -53,9 +51,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         /// </summary>
         public async Task<bool> CanAccessToOrganizationAsync(string organizationId)
         {
-            if (await CurrentUserIsNotAnOowner())
-                return true;
-
             var organization = await _organizationRepository.GetByIdAsync(organizationId);
 
             // handling null reference is not this class's business
@@ -73,9 +68,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         /// </summary>
         public async Task<bool> CanAccessToProjectAsync(string projectId)
         {
-            if (await CurrentUserIsNotAnOowner())
-                return true;
-
             var project = await _projectRepository.GetByIdAsync(projectId);
 
             // handling null reference is not this class's business
@@ -92,9 +84,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         /// </summary>
         public async Task<bool> CanAccessToBoardAsync(string boardId)
         {
-            if (await CurrentUserIsNotAnOowner())
-                return true;
-
             var board = await _boardRepository.GetByIdAsync(boardId);
 
             // handling null reference is not this class's business
@@ -111,9 +100,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         /// </summary>
         public async Task<bool> CanAccessToCardAsync(string cardId)
         {
-            if (await CurrentUserIsNotAnOowner())
-                return true;
-
             var card = await _cardRepository.GetByIdAsync(cardId);
 
             // handling null reference is not this class's business
@@ -130,9 +116,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         /// </summary>
         public async Task<bool> CanAccessToTaskAsync(string taskId)
         {
-            if (await CurrentUserIsNotAnOowner())
-                return true;
-
             var task = await _taskRepository.GetByIdAsync(taskId);
 
             // handling null reference is not this class's business
@@ -146,16 +129,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         #endregion
 
         #region Private Methods
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private async Task<bool> CurrentUserIsNotAnOowner()
-        {
-            var user = await _userRepository.GetByIdAsync(currentUser.Id);
-            return user.Type != UserType.Owner;
-        }
 
 
 

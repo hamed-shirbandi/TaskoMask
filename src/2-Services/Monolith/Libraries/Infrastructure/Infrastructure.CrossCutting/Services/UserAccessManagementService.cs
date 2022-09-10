@@ -4,7 +4,6 @@ using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Models;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Data;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services

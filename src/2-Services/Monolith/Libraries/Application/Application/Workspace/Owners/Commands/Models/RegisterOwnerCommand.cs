@@ -6,8 +6,8 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Mode
 {
    public class RegisterOwnerCommand : OwnerBaseCommand
     {
-        public RegisterOwnerCommand(string id, string displayName, string email,string password)
-      : base(id, displayName, email)
+        public RegisterOwnerCommand(string displayName, string email,string password)
+      : base(displayName, email)
         {
             Password = password;
         }

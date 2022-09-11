@@ -76,8 +76,6 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<CommandResult>> RegisterAsync(RegisterOwnerDto input)
         {
-            //TODO publish OwnerRegisteredEvent (to be handled by Identity service)
-
             var cmd = new RegisterOwnerCommand( displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);
         }
@@ -89,8 +87,6 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateProfileAsync(UpdateOwnerProfileDto input)
         {
-            //TODO publish OwnerUpdatedEvent (to be handled by Identity service)
-
             var cmd = new UpdateOwnerProfileCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
             return await SendCommandAsync(cmd);
         }

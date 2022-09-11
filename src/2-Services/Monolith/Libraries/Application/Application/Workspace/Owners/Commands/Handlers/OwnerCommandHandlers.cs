@@ -49,6 +49,8 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Hand
             await _ownerAggregateRepository.CreateAsync(owner);
             await PublishDomainEventsAsync(owner.DomainEvents);
 
+            //TODO publish OwnerRegisteredEvent (to be handled by Identity service)
+
             return new CommandResult(ContractsMessages.Create_Success, owner.Id.ToString());
         }
 
@@ -73,6 +75,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Hand
             await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
 
             await PublishDomainEventsAsync(owner.DomainEvents);
+            //TODO publish OwnerUpdatedEvent (to be handled by Identity service)
 
             return new CommandResult(ContractsMessages.Update_Success, owner.Id.ToString());
         }

@@ -67,7 +67,7 @@ namespace TaskoMask.Services.Identity.Api.Controllers
         /// </summary>
         [HttpPut]
         [Route("user/{userId}/resetPassword")]
-        public async Task<Result<CommandResult>> ResetPassword([FromBody] UserChangePasswordDto input)
+        public async Task<Result<CommandResult>> ResetPassword([FromBody] UserResetPasswordDto input)
         {
             return await _userService.ResetPasswordAsync(input.Id, input.NewPassword);
 

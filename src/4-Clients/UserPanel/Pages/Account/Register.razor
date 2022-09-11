@@ -2,6 +2,7 @@
 @attribute [AllowAnonymous]
 @using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners
 @inject TaskoMask.Clients.UserPanel.Services.Authentication.IAuthenticationService AuthenticationService
+@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IOwnerApiService OwnerApiService
 
 <section id="cover">
     <div id="cover-caption">
@@ -81,7 +82,7 @@
     private async Task HandleRegister()
     {
         isProcessing = true;
-        var registerResult = await AuthenticationService.Register(RegisterModel);
+        var registerResult = await OwnerApiService.Register(RegisterModel);
         if (registerResult.IsSuccess)
         {
             ComponentMessageService.SendMessage(MessageType.Owner_Registered);

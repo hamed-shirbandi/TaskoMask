@@ -40,27 +40,14 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
 
 
         /// <summary>
-        /// register new owner - return jwt token if register is success
+        /// register new owner
         /// </summary>
         [HttpPost]
         [Route("owner")]
         [AllowAnonymous]
-        public async Task<Result<UserJwtTokenDto>> Register([FromBody] RegisterOwnerDto input)
+        public async Task<Result<CommandResult>> Register(RegisterOwnerDto input)
         {
-            //TODO refactor with Identity Server
-
-
-            //create owner with default workspace
-            var createCommandResult = await _ownerService.RegisterAndSeedDefaultWorkspaceAsync(input);
-            if (!createCommandResult.IsSuccess)
-                return Result.Failure<UserJwtTokenDto>(createCommandResult.Errors, createCommandResult.Message);
-
-            var user = GetAuthenticatedUserModel(createCommandResult.Value.EntityId, input);
-
-            //generate jwt token
-            var token = _jwtAuthenticationService.GenerateJwtToken(user);
-
-            return Result.Success(value: new UserJwtTokenDto { JwtToken = token });
+            return  await _ownerService.RegisterAndSeedDefaultWorkspaceAsync(input);
         }
 
 

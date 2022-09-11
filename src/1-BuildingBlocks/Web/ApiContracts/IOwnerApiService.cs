@@ -7,5 +7,6 @@ namespace TaskoMask.BuildingBlocks.Web.ApiContracts
     {
         Task<Result<OwnerBasicInfoDto>> Get();
         Task<Result<CommandResult>> UpdateProfile(UpdateOwnerProfileDto input);
+        Task<Result<CommandResult>> Register(RegisterOwnerDto input);
     }
 }

@@ -36,14 +36,12 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Workspace
         public async Task Owner_Is_Registered()
         {
             //Arrange
-            var expectedUserId = ObjectId.GenerateNewId().ToString();
             var createOwnerCommand = new RegisterOwnerCommand("Test_DisplayName", "Test@email.com", "Test_Password");
 
             //Act
             var result = await _ownerCommandHandlers.Handle(createOwnerCommand, CancellationToken.None);
 
             //Assert
-            result.EntityId.Should().Be(expectedUserId);
             var createdUser = _owners.FirstOrDefault(u => u.Id == result.EntityId);
             createdUser.Email.Value.Should().Be(createOwnerCommand.Email);
             await _inMemoryBus.Received(1).Publish(Arg.Any<OwnerRegisteredEvent>());

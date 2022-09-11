@@ -27,19 +27,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Membership
         }
 
 
-        [Fact]
-        public void Operator_Is_Not_Constructed_When_Id_Is_Null()
-        {
-            //Arrange
-            var expectedMessage = string.Format(ContractsMessages.Null_Reference_Error, nameof(Operator.Id));
-
-            //Act
-            Action act = () => OperatorObjectMother.CreateNewOperatorWithId(null);
-
-            //Assert
-            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
-        }
-
 
 
         /// <summary>

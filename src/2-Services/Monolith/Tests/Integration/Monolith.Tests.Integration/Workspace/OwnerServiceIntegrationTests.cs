@@ -63,7 +63,6 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Workspace
             //Assert
             result.IsSuccess.Should().BeTrue();
             result.Value.Owner.Email.Should().Be(expectedOwner.Email);
-            result.Value.Organizations.Should().HaveCountGreaterThan(0);
         }
 
 

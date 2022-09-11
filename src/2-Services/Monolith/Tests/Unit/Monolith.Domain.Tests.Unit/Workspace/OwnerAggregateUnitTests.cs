@@ -64,21 +64,6 @@ namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 
 
         [Fact]
-        public void Owner_Is_Not_Registered_When_Id_Is_Null()
-        {
-            //Arrange
-            var expectedMessage = string.Format(ContractsMessages.Null_Reference_Error, nameof(Owner.Id));
-
-            //Act
-            Action act = () => OwnerObjectMother.RegisterOwnerWithId(null);
-
-            //Assert
-            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
-        }
-
-
-
-        [Fact]
         public void Owner_Is_Not_Registered_When_DisplayName_Is_Null()
         {
             //Arrange

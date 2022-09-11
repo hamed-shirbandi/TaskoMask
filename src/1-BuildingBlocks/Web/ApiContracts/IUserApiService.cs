@@ -7,6 +7,6 @@ namespace TaskoMask.BuildingBlocks.Web.ApiContracts
     {
         Task<Result<CommandResult>> SetIsActive(string userId, bool isActive);
         Task<Result<CommandResult>> ChangePassword(UserChangePasswordDto input);
-        Task<Result<CommandResult>> ResetPassword(UserChangePasswordDto input);
+        Task<Result<CommandResult>> ResetPassword(UserResetPasswordDto input);
     }
 }

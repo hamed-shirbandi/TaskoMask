@@ -4,7 +4,7 @@ using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Clients.UserPanel.Services.Authentication;
-using TaskoMask.Clients.UserPanel.Services.API;
+using TaskoMask.BuildingBlocks.Web.Services.API;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 using TaskoMask.Clients.UserPanel.Services.Http;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;

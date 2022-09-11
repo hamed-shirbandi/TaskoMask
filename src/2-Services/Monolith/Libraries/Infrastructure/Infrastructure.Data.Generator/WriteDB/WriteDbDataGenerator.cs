@@ -1,5 +1,4 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
@@ -11,29 +10,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
 {
     internal static class WriteDbDataGenerator
     {
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IEnumerable<User> GenerateUser(string prefix)
-        {
-            var items = new List<User>();
-
-            for (int i = 1; i <= 3; i++)
-            {
-                items.Add(new User
-                {
-                    IsActive = true,
-                    UserName = $"{prefix}_{i}@email.com",
-                    PasswordSalt = "test",
-                    PasswordHash = "test"
-                });
-            }
-
-            return items;
-        }
-
 
         /// <summary>
         /// 
@@ -82,72 +58,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
 
             return items;
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IEnumerable<Operator> GenerateOperator(IEnumerable<User> users, IEnumerable<Role> roles)
-        {
-            var items = new List<Operator>();
-            var i = 1;
-            foreach (var user in users)
-            {
-                var rolesId = roles.Select(p => p.Id).ToArray();
-                var rolesCount = roles.Count();
-                var roleTakeCount = i < rolesCount ? i : rolesCount;
-
-                items.Add(new Operator(user.Id)
-                {
-                    DisplayName = $"Operator {i}",
-                    Email = user.UserName,
-                    RolesId = rolesId.Take(roleTakeCount).ToArray(),
-                });
-
-                i++;
-            }
-
-            return items;
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IEnumerable<Owner> GenerateOwner(IEnumerable<User> users)
-        {
-            var items = new List<Owner>();
-            var owners = ReadDbDataGenerator.GenerateOwner(users);
-
-            foreach (var owner in owners)
-            {
-                var ownerAggregate = Owner.RegisterOwner(owner.Id, owner.DisplayName, owner.Email);
-
-                var organizations = ReadDbDataGenerator.GenerateOrganization();
-
-                foreach (var organization in organizations)
-                {
-                    var createdOrganization = Organization.CreateOrganization(organization.Name, organization.Description);
-                    ownerAggregate.AddOrganization(createdOrganization);
-
-                    var projects = ReadDbDataGenerator.GenerateProject();
-                    foreach (var project in projects)
-                        ownerAggregate.AddProject(createdOrganization.Id, Project.Create(project.Name, project.Description));
-
-                }
-
-
-                items.Add(ownerAggregate);
-            }
-
-            return items;
-        }
-
-
-
 
 
 

@@ -3,7 +3,6 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
@@ -33,7 +32,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
 
                 #region  collections
 
-                var _users = _writeDbContext.GetCollection<User>();
                 var _operators = _writeDbContext.GetCollection<Operator>();
                 var _roles = _writeDbContext.GetCollection<Role>();
                 var _permissions = _writeDbContext.GetCollection<Permission>();
@@ -53,27 +51,25 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
                     var roles = WriteDbDataGenerator.GenerateRole(permissions);
                     _roles.InsertMany(roles);
 
-                    var usersAsOperator = WriteDbDataGenerator.GenerateUser("Operator");
-                    _users.InsertMany(usersAsOperator);
 
 
-                    var operators = WriteDbDataGenerator.GenerateOperator(usersAsOperator, roles);
-                    _operators.InsertMany(operators);
+                    //var operators = WriteDbDataGenerator.GenerateOperator(usersAsOperator, roles);
+                    //_operators.InsertMany(operators);
 
 
-                    var usersAsOwner= WriteDbDataGenerator.GenerateUser("Owner");
-                    _users.InsertMany(usersAsOwner);
+                    //var usersAsOwner= WriteDbDataGenerator.GenerateUser("Owner");
+                    //_users.InsertMany(usersAsOwner);
 
-                    var owners = WriteDbDataGenerator.GenerateOwner(usersAsOwner);
-                    _ownerAggregate.InsertMany(owners);
-
-
-                    var boards = WriteDbDataGenerator.GenerateBoard(owners, _boardValidatorService);
-                    _boardAggregate.InsertMany(boards);
+                    //var owners = WriteDbDataGenerator.GenerateOwner(usersAsOwner);
+                    //_ownerAggregate.InsertMany(owners);
 
 
-                    var tasks = WriteDbDataGenerator.GenerateTasks(boards,_taskValidatorService);
-                    _taskAggregate.InsertMany(tasks);
+                    //var boards = WriteDbDataGenerator.GenerateBoard(owners, _boardValidatorService);
+                    //_boardAggregate.InsertMany(boards);
+
+
+                    //var tasks = WriteDbDataGenerator.GenerateTasks(boards,_taskValidatorService);
+                    //_taskAggregate.InsertMany(tasks);
 
 
                 }

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>3ae30fef-871a-4e54-8162-eef8f706c890</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<AssemblyName>TaskoMask.Services.Identity.Api</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Identity.Api</RootNamespace>
+		<DockerfileContext>..\..\..\..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
+		<ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -56,8 +56,6 @@ namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.ValueO
 
             if (Value.Length > DomainConstValues.Owner_DisplayName_Max_Length)
                 throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length));
-
-            //TODO should only contain alphabet and space ...
         }
 
 

@@ -47,8 +47,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB
                         {
                             DisplayName = owner.DisplayName.Value,
                             Email = owner.Email.Value,
-                            UserName = owner.Email.Value,
-                            IsActive = true
                         });
 
                         foreach (var organization in owner.Organizations)

@@ -7,7 +7,6 @@ using Microsoft.Extensions.Options;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
@@ -31,7 +30,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
             Owners = GetCollection<Owner>();
             Boards = GetCollection<Board>();
             Tasks = GetCollection<Task>();
-            Users = GetCollection<User>();
             Operators = GetCollection<Operator>();
             Roles = GetCollection<Role>();
             Permissions = GetCollection<Permission>();
@@ -46,7 +44,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
         public IMongoCollection<Owner> Owners { get; }
         public IMongoCollection<Board> Boards { get; }
         public IMongoCollection<Task> Tasks { get; }
-        public IMongoCollection<User> Users { get; }
         public IMongoCollection<Operator> Operators { get; }
         public IMongoCollection<Role> Roles { get; }
         public IMongoCollection<Permission> Permissions { get; }

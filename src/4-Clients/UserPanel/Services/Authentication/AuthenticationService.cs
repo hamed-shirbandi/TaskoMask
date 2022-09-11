@@ -1,7 +1,6 @@
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.Clients.UserPanel.Helpers;
@@ -44,16 +43,6 @@ namespace TaskoMask.Clients.UserPanel.Services.Authentication
 
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<UserJwtTokenDto>> Register(RegisterOwnerDto input)
-        {
-            var registerResult = await _accountApiService.Register(input);
-            return await SignInAsync(registerResult);
-        }
 
 
 

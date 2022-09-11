@@ -1,33 +1,12 @@
 ﻿using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB
 {
     internal static class ReadDbDataGenerator
     {
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IEnumerable<Owner> GenerateOwner(IEnumerable<User> users)
-        {
-            var items = new List<Owner>();
-            var i = 1;
-            foreach (var user in users)
-            {
-                items.Add(new Owner(user.Id)
-                {
-                    DisplayName = $"Owner {i}",
-                    Email = user.UserName,
-                });
-
-                i++;
-            }
-
-            return items;
-        }
-
+  
 
 
         /// <summary>

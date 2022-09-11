@@ -24,16 +24,14 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
         #region Fields
 
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
-        private readonly IAuthenticatedUserService _authenticatedUserService;
 
         #endregion
 
         #region Ctors
 
-        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus, IAuthenticatedUserService authenticatedUserService) : base(inMemoryBus)
+        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus) : base(inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
-            _authenticatedUserService = authenticatedUserService;
         }
 
         #endregion
@@ -74,7 +72,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
 
             var loadedVersion = owner.Version;
 
-            owner.UpdateOrganization(request.Id, request.Name, request.Description, _authenticatedUserService);
+            owner.UpdateOrganization(request.Id, request.Name, request.Description);
 
             await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
 
@@ -95,7 +93,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
 
             var loadedVersion = owner.Version;
 
-            owner.DeleteOrganization(request.Id, _authenticatedUserService);
+            owner.DeleteOrganization(request.Id);
 
             await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
 

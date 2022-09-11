@@ -33,6 +33,16 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Mem
         /// <summary>
         /// 
         /// </summary>
+        public async Task<Operator> GetByEmailAsync(string email)
+        {
+            return await _operators.Find(e => e.Email == email).FirstOrDefaultAsync();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<IEnumerable<Operator>> GetListByRoleIdAsync(string roleId)
         {
             return await _operators.Find(u => u.RolesId.Contains(roleId)).ToListAsync();

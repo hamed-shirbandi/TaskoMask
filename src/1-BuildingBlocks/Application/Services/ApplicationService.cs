@@ -33,6 +33,15 @@ namespace TaskoMask.BuildingBlocks.Application.Services
         }
 
 
+
+        public ApplicationService(IMapper mapper, INotificationHandler notifications)
+        {
+            _mapper = mapper;
+            _notifications = notifications;
+        }
+
+
+
         #endregion
 
 

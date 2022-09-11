@@ -8,6 +8,10 @@ using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Contracts.Services;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
@@ -17,19 +21,36 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         #region Fields
 
         private readonly IOwnerService _ownerService;
+        private readonly IJwtAuthenticationService _jwtAuthenticationService;
 
         #endregion
 
         #region Ctors
 
-        public OwnerApiController(IOwnerService ownerService, IAuthenticatedUserService authenticatedUserService) : base(authenticatedUserService)
+        public OwnerApiController(IOwnerService ownerService, IAuthenticatedUserService authenticatedUserService, IJwtAuthenticationService jwtAuthenticationService) : base(authenticatedUserService)
         {
             _ownerService = ownerService;
+            _jwtAuthenticationService = jwtAuthenticationService;
         }
 
         #endregion
 
         #region Public Methods
+
+
+
+        /// <summary>
+        /// register new owner
+        /// </summary>
+        [HttpPost]
+        [Route("owner")]
+        [AllowAnonymous]
+        public async Task<Result<CommandResult>> Register(RegisterOwnerDto input)
+        {
+            return  await _ownerService.RegisterAndSeedDefaultWorkspaceAsync(input);
+        }
+
+
 
 
 
@@ -58,6 +79,27 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
             return await _ownerService.UpdateProfileAsync(input);
         }
 
+
+
+        #endregion
+
+
+        #region Private Methods
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private AuthenticatedUserModel GetAuthenticatedUserModel(string id, RegisterOwnerDto owner)
+        {
+            return new AuthenticatedUserModel
+            {
+                Id = id,
+                DisplayName = owner.DisplayName,
+                Email = owner.Email,
+                UserName = owner.Email,
+            };
+        }
 
 
         #endregion

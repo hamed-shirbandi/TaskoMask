@@ -9,7 +9,6 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Queries.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
@@ -29,7 +28,6 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
     {
         #region Fields
 
-        private readonly IUserService _userService;
         private readonly IOrganizationService _organizationService;
         private readonly IProjectService _projectService;
         private readonly IBoardService _boardService;
@@ -40,10 +38,9 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
 
         #region Ctors
 
-        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IOwnerAggregateRepository ownerRepository, IUserService userService, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService, IConfiguration configuration)
+        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IOwnerAggregateRepository ownerRepository, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService, IConfiguration configuration)
              : base(inMemoryBus, mapper, notifications)
         {
-            _userService = userService;
             _organizationService = organizationService;
             _projectService = projectService;
             _boardService = boardService;
@@ -79,12 +76,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<CommandResult>> RegisterAsync(RegisterOwnerDto input)
         {
-            //create authentication user info
-            var createUserCommandResult = await _userService.CreateAsync(input.Email, input.Password,UserType.Owner);
-            if (!createUserCommandResult.IsSuccess)
-                return createUserCommandResult;
-
-            var cmd = new RegisterOwnerCommand(id: createUserCommandResult.Value.EntityId, displayName: input.DisplayName, email: input.Email, password: input.Password);
+            var cmd = new RegisterOwnerCommand( displayName: input.DisplayName, email: input.Email, password: input.Password);
             return await SendCommandAsync(cmd);
         }
 
@@ -95,11 +87,6 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<CommandResult>> UpdateProfileAsync(UpdateOwnerProfileDto input)
         {
-            //update authentication user UserName
-            var updateUserCommandResult = await _userService.UpdateUserNameAsync(input.Id, input.Email);
-            if (!updateUserCommandResult.IsSuccess)
-                return updateUserCommandResult;
-
             var cmd = new UpdateOwnerProfileCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
             return await SendCommandAsync(cmd);
         }
@@ -202,9 +189,9 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OwnerBasicInfoDto>> GetByUserNameAsync(string userName)
+        public async Task<Result<OwnerBasicInfoDto>> GetByEmailAsync(string email)
         {
-            return await SendQueryAsync(new GetOwnerByUserNameQuery(userName));
+            return await SendQueryAsync(new GetOwnerByEmailQuery(email));
         }
 
 

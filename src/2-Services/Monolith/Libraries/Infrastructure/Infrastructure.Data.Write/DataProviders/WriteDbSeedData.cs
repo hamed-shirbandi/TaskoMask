@@ -1,13 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
 using System;
-using System.Linq;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
-using TaskoMask.BuildingBlocks.Domain.Services;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
 {
@@ -29,49 +24,20 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
                 var _dbContext = serviceScope.ServiceProvider.GetService<IWriteDbContext>();
                 var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
 
-                var _users = _dbContext.GetCollection<User>();
-                var _operators = _dbContext.GetCollection<Operator>();
-
-
-                if (!_operators.AsQueryable().Any())
-                {
-                    var superUser = GetSuperUser(_configuration);
-                    _users.InsertOne(superUser);
-
-                    var adminOperator = GetAdminOperator(superUser.Id, _configuration);
-                    _operators.InsertOne(adminOperator);
-                }
-
+               // var _operators = _dbContext.GetCollection<Operator>();
+               // seed data here ...
             }
         }
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private static User GetSuperUser(IConfiguration configuration)
-        {
-            var passwordSalt = EncryptionHelper.CreateSaltKey(5);
-
-            return new User
-            {
-                UserName = configuration["SuperUser:Email"],
-                IsActive = true,
-                PasswordSalt = passwordSalt,
-                PasswordHash = EncryptionHelper.CreatePasswordHash(configuration["SuperUser:Password"], passwordSalt)
-            };
-
-        }
-
-
 
         /// <summary>
         /// 
         /// </summary>
-        private static Operator GetAdminOperator(string userId, IConfiguration configuration)
+        private static Operator GetAdminOperator(IConfiguration configuration)
         {
-            return new Operator(userId)
+            return new Operator()
             {
                 DisplayName = configuration["SuperUser:DisplayName"],
                 Email = configuration["SuperUser:Email"],

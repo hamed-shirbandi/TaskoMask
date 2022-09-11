@@ -6,7 +6,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Web.MVC.Filters;
 using TaskoMask.BuildingBlocks.Web.MVC.Helpers;
-using TaskoMask.Services.Monolith.Application.Authorization.Users.Services;
+using TaskoMask.BuildingBlocks.Web.ApiContracts;
 
 namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
 {
@@ -17,17 +17,17 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
         #region Fields
 
         private readonly IOwnerService _ownerService;
-        private readonly IUserService _userService;
+        private readonly IUserApiService _userApiService;
 
 
         #endregion
 
         #region Ctor
 
-        public OwnersController(IOwnerService ownerService, IMapper mapper, IUserService userService) : base()
+        public OwnersController(IOwnerService ownerService, IMapper mapper, IUserApiService userApiService) : base()
         {
             _ownerService = ownerService;
-            _userService = userService;
+            _userApiService = userApiService;
         }
 
         #endregion
@@ -104,9 +104,8 @@ namespace TaskoMask.Clients.AdminPanle.Areas.Workspace.Controllers
         [IgnoreAntiforgeryToken]
         public async Task<JavaScriptResult> SetIsActive(string id, bool isActive)
         {
-            var cmdResult = await _userService.SetIsActiveAsync(id, isActive);
-            return AjaxResult(cmdResult, reloadPage: true);
-
+            var cmdResult = await _userApiService.SetIsActive(id, isActive);
+            return AjaxResult(cmdResult);
         }
 
 

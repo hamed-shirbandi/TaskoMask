@@ -5,7 +5,6 @@ using System;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Authorization.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
@@ -59,14 +58,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
 
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }));
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId.Value), new CreateIndexOptions() { Name = nameof(Task.CardId) }));
-
-
-            #endregion
-
-            #region User Indexs
-
-            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(User.Id), Unique = true }));
-            dbContext.GetCollection<User>().Indexes.CreateOneAsync(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(x => x.UserName), new CreateIndexOptions() { Name = nameof(User.UserName), Unique = true }));
 
 
             #endregion

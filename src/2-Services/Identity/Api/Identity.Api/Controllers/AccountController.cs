@@ -2,19 +2,16 @@
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
-using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication;
 using TaskoMask.Services.Identity.Application.Users.Services;
-using TaskoMask.BuildingBlocks.Contracts.Enums;
 
 namespace TaskoMask.Services.Identity.Api.Controllers
 {
     /// <summary>
     /// 
     /// </summary>
-    public class AccountController : BaseApiController, IAccountApiService
+    public class AccountController : BaseApiController
     {
         #region Fields
 
@@ -43,7 +40,7 @@ namespace TaskoMask.Services.Identity.Api.Controllers
 
 
         /// <summary>
-        /// login owner - return jwt token if login is success
+        /// login user - return jwt token if login is success
         /// </summary>
         [HttpPost]
         [Route("account/login")]

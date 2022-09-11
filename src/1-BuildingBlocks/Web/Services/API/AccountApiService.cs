@@ -1,5 +1,4 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
@@ -36,16 +35,6 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PostAsync<UserJwtTokenDto>(url, input);
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<UserJwtTokenDto>> Register(RegisterOwnerDto input)
-        {
-            var url = $"/account/register";
-            return await _httpClientService.PostAsync<UserJwtTokenDto>(url, input);
-        }
 
 
         #endregion

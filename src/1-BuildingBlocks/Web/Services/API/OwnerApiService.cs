@@ -27,6 +27,18 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         #region Public Methods
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<CommandResult>> Register(RegisterOwnerDto input)
+        {
+            var url = $"/owner";
+            return await _httpClientService.PostAsync<CommandResult>(url, input);
+        }
+
+
+
         /// <summary>
         /// 
         /// </summary>

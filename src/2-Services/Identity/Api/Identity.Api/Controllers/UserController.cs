@@ -11,7 +11,7 @@ namespace TaskoMask.Services.Identity.Api.Controllers
     /// <summary>
     /// 
     /// </summary>
-    public class UserController : BaseApiController
+    public class UserController : BaseApiController, IUserApiService
     {
         #region Fields
 

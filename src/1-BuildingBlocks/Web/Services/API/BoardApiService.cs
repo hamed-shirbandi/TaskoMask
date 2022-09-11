@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 
-namespace TaskoMask.Clients.UserPanel.Services.API
+namespace TaskoMask.BuildingBlocks.Web.Services.API
 {
     public class BoardApiService : IBoardApiService
     {

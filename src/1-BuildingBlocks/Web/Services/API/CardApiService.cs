@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 
-namespace TaskoMask.Clients.UserPanel.Services.API
+namespace TaskoMask.BuildingBlocks.Web.Services.API
 {
     public class CardApiService : ICardApiService
     {

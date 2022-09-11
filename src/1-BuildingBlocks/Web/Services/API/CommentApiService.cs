@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 
-namespace TaskoMask.Clients.UserPanel.Services.API
+namespace TaskoMask.BuildingBlocks.Web.Services.API
 {
     public class CommentApiService : ICommentApiService
     {

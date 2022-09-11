@@ -6,7 +6,7 @@ using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 
-namespace TaskoMask.Clients.UserPanel.Services.API
+namespace TaskoMask.BuildingBlocks.Web.Services.API
 {
     public class OrganizationApiService : IOrganizationApiService
     {

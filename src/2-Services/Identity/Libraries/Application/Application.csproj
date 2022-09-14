@@ -12,4 +12,32 @@
 		<ProjectReference Include="..\Domain\Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="UseCases\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Resources\Application.Messages.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Application.Messages.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Application.Metadata.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Application.Metadata.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Application.Messages.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Application.Messages.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Application.Metadata.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Application.Metadata.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
 </Project>

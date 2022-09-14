@@ -1,25 +1,7 @@
-using Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
+using TaskoMask.Clients.Website.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddCustomSerilog();
-
-builder.Services.AddMvcPreConfigured(builder.Configuration, builder.Environment);
-
-var app = builder.Build();
-
-app.UseSerilogRequestLogging();
-
-app.UseMvcPreConfigured(app.Services, builder.Environment);
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
-
-});
+var app = builder.ConfigureServices().ConfigurePipeline();
 
 app.Run();

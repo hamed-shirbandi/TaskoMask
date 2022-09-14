@@ -23,10 +23,6 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.IoC
 
             services.AddBuildingBlocksInfrastructureServices();
 
-            services.AddApplicationServices();
-
-            services.AddInfrastructureServices(configuration);
-
             services.AddAutoMapperSetup();
         }
 

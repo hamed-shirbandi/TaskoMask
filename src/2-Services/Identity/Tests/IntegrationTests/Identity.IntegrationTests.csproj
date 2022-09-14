@@ -19,7 +19,15 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
-	  <ProjectReference Include="..\..\..\Libraries\Application\Application.csproj" />
+	  <ProjectReference Include="..\..\..\Libraries\Application\Identity.Application.csproj" />
+	  <ProjectReference Include="..\..\..\Libraries\Infrastructure\Identity.Infrastructure.csproj" />
 	</ItemGroup>
+
+	<Target Name="CopyConfig" AfterTargets="AfterBuild">
+		<Copy SourceFiles="..\..\..\Api\Identity.Api\appsettings.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\..\Api\Identity.Api\appsettings.Development.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\..\Api\Identity.Api\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
+	</Target>
+
 
 </Project>

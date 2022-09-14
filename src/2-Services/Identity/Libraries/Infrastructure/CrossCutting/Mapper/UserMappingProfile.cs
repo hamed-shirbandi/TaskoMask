@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
-using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper
 {
@@ -8,7 +6,6 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper
     {
         public UserMappingProfile()
         {
-            CreateMap<User, UserBasicInfoDto>();
         }
     }
 }

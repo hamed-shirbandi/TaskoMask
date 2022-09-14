@@ -12,4 +12,9 @@
 		<ProjectReference Include="..\Application\Application.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Data\DataProviders\" />
+	  <Folder Include="Data\DbContext\" />
+	</ItemGroup>
+
 </Project>

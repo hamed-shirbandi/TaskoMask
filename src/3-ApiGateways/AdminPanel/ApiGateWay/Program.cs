@@ -1,35 +1,7 @@
-using MMLib.SwaggerForOcelot.DependencyInjection;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
-using Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
+using TaskoMask.ApiGateways.AdminPanel.ApiGateWay.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddCustomSerilog();
-
-builder.Configuration.AddOcelotWithSwaggerSupport((o) =>
-{
-    o.Folder = "Configuration";
-});
-
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddOcelot();
-
-builder.Services.AddSwaggerForOcelot(builder.Configuration);
-
-var app = builder.Build();
-
-app.UseSerilogRequestLogging();
-
-app.UseStaticFiles();
-
-app.UseSwaggerForOcelotUI(opt =>
-{
-    opt.PathToSwaggerGenerator = "/swagger/docs";
-});
-
-app.UseOcelot().Wait();
+var app = builder.ConfigureServices().ConfigurePipeline();
 
 app.Run();

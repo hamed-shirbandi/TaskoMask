@@ -16,13 +16,13 @@ namespace TaskoMask.Clients.UserPanel.Configuration
     /// <summary>
     /// 
     /// </summary>
-    public static class StartupConfiguration
+    public static class HostingExtensions
     {
 
         /// <summary>
         /// 
         /// </summary>
-        public static void AddProjectConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

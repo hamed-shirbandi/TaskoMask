@@ -12,6 +12,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+		<PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.1.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

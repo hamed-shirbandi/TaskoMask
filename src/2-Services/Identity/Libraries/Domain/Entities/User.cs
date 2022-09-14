@@ -1,7 +1,8 @@
-﻿
+﻿using Microsoft.AspNetCore.Identity;
+
 namespace TaskoMask.Services.Identity.Domain.Entities
 {
-   public class User
+   public class User : IdentityUser<string>
     {
         public User()
         {

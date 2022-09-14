@@ -9,5 +9,6 @@ namespace TaskoMask.Services.Identity.Domain.Entities
 
         }
 
+        public bool IsActive { get; set; }
     }
 }

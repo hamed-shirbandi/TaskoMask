@@ -2,6 +2,7 @@ using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.IoC;
+using TaskoMask.Services.Identity.Infrastructure.Data.DataProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ app.UseSerilogRequestLogging();
 
 app.UseWebApiPreConfigured(app.Services, builder.Environment);
 
-//app.Services.InitialDatabasAndSeedEssentialData();
+DbSeedData.SeedEssentialData(app.Services);
 
 app.UseEndpoints(endpoints =>
 {

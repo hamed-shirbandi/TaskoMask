@@ -16,13 +16,13 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DataProviders
         /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
-        public static async Task SeedEssentialData(IServiceProvider serviceProvider)
+        public static void SeedEssentialData(IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
             var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
             var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
 
-            await SeedSuperUser(userManager, configuration);
+            SeedSuperUser(userManager, configuration).Wait();
         }
 
 

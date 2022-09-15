@@ -3,6 +3,7 @@ using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using Microsoft.Extensions.Configuration;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper;
+using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mediator;
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.IoC
 {
@@ -24,6 +25,9 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.IoC
             services.AddBuildingBlocksInfrastructureServices();
 
             services.AddAutoMapperSetup();
+
+            services.AddMediatorSetup();
+
         }
 
 

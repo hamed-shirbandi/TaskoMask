@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.Services.Identity.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
 {
@@ -19,6 +20,17 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
             services.AddBuildingBlocksInfrastructureServices();
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
+        {
+            serviceProvider.InitialDatabase();
+            serviceProvider.SeedEssentialData();
+        }
 
     }
 }

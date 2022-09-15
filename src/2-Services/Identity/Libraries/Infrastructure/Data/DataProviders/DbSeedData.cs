@@ -16,7 +16,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DataProviders
         /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
-        public static void SeedEssentialData(IServiceProvider serviceProvider)
+        public static void SeedEssentialData(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
             var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();

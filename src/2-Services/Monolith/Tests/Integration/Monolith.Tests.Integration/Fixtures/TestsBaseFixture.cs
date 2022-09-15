@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
-using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI;
 
 namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
 {
@@ -108,7 +108,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
 
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 
-            services.AddProjectServices(configuration);
+            services.AddModules(configuration);
 
             var serviceProvider = services.BuildServiceProvider();
 

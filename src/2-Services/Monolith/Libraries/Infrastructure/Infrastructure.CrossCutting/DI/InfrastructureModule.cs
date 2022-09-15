@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
@@ -9,22 +10,31 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Membership;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Services;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
 {
-    public static class InfrastructureExtensions
+    internal static class InfrastructureModule
     {
 
         #region Public Methods
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddBuildingBlocksInfrastructureServices();
+            services.AddInfrastructureWriteDataServices(configuration);
+            services.AddInfrastructureReadDataServices(configuration);
+        }
 
 
 
@@ -48,18 +58,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
             services.AddWriteSideRepositories();
             services.AddDomainServices();
 
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
-        {
-            WriteDbInitialization.Initial(serviceProvider);
-            ReadDbInitialization.Initial(serviceProvider);
-            WriteDbSeedData.SeedEssentialData(serviceProvider);
         }
 
 

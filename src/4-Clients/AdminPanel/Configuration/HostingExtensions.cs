@@ -1,7 +1,7 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
-using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI;
 
 namespace TaskoMask.Clients.AdminPanle.Configuration
 {
@@ -18,7 +18,7 @@ namespace TaskoMask.Clients.AdminPanle.Configuration
 
             builder.AddCustomSerilog();
 
-            builder.Services.AddProjectServices(builder.Configuration);
+            builder.Services.AddModules(builder.Configuration);
 
             builder.Services.AddMvcPreConfigured(builder.Configuration, builder.Environment);
 

@@ -1,6 +1,6 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.Services.Identity.Infrastructure.CrossCutting.IoC;
+using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Identity.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Services.Identity.Api.Configuration
@@ -14,9 +14,10 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// </summary>
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
-            builder.AddCustomSerilog();
 
-            builder.Services.AddProjectServices(builder.Configuration);
+            builder.Services.AddModules();
+
+            builder.AddCustomSerilog();
 
             builder.Services.AddRazorPages();
 

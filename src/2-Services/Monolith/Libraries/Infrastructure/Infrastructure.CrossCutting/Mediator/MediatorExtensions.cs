@@ -12,7 +12,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mediator
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceCollection AddMediatorHandlers(this IServiceCollection services)
+        public static IServiceCollection AddMediator(this IServiceCollection services)
         {
             //Load all commands and queries ...
             services.AddMediatR(typeof(BoardBaseCommand));

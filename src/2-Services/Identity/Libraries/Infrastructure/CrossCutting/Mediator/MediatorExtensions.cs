@@ -11,7 +11,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mediator
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceCollection AddMediatorSetup(this IServiceCollection services)
+        public static IServiceCollection AddMediator(this IServiceCollection services)
         {
             //Load all commands and queries ...
             services.AddMediatR(typeof(UserLoginUseCase));

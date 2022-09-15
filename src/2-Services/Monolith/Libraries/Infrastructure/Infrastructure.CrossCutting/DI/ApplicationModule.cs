@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Application.Services;
+using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
 using TaskoMask.Services.Monolith.Application.Membership.Permissions.Services;
@@ -13,10 +16,20 @@ using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
+namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
 {
-    public static class ApplicationExtensions
+    internal static class ApplicationModule
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddApplicationModule(this IServiceCollection services)
+        {
+            services.AddBuildingBlocksApplicationServices();
+            services.AddApplicationServices();
+        }
+
 
 
         /// <summary>
@@ -37,10 +50,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.IoC
             services.AddScoped<ICommentService, CommentService>();
 
             services.AddScoped<IUserAccessManagementService, UserAccessManagementService>();
-
-
         }
-
-
     }
 }

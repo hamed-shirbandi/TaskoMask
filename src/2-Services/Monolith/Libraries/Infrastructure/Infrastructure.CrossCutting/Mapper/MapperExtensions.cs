@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper
 {
@@ -10,13 +12,17 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper
     public static class MapperExtensions
     {
 
-
         /// <summary>
         /// 
         /// </summary>
-        public static string AddStaticSiteUrl( this string url, IConfiguration _configuration)
+        public static void AddAutoMapper(this IServiceCollection services)
         {
-            return string.IsNullOrEmpty(url) ? "" : _configuration["Url:StaticServer"] + url;
+            if (services == null) throw new ArgumentNullException(nameof(services));
+
+            //this will find all profiles in this layer (Infrastructure.CrossCutting)
+            services.AddAutoMapper(typeof(WorkspaceMappingProfile));
         }
+
+
     }
 }

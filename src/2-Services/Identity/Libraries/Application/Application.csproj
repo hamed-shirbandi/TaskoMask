@@ -8,12 +8,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.1.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Application\Application.csproj" />
 		<ProjectReference Include="..\Domain\Domain.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="UseCases\" />
 	</ItemGroup>
 
 	<ItemGroup>

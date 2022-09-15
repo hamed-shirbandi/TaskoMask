@@ -1,5 +1,5 @@
 @page
-@model TaskoMask.Services.Identity.Api.Pages.Login.Index
+@model TaskoMask.Services.Identity.Application.UseCases.UserLogin.UserLoginRequest
 
 <div class="login-page">
     <div class="lead">
@@ -17,28 +17,27 @@
 
                 <div class="card-body">
                     <form asp-page="/Account/Login/Index">
-                        <input type="hidden" asp-for="Input.ReturnUrl" />
+                        <input type="hidden" asp-for="UserLoginRequest.ReturnUrl" />
 
                         <div class="form-group">
-                            <label asp-for="Input.Username"></label>
-                            <input class="form-control" placeholder="Username" asp-for="Input.Username" autofocus>
+                            <label asp-for="UserLoginRequest.Username"></label>
+                            <input class="form-control" placeholder="Username" asp-for="UserLoginRequest.Username" autofocus>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Input.Password"></label>
-                            <input type="password" class="form-control" placeholder="Password" asp-for="Input.Password" autocomplete="off">
+                            <label asp-for="UserLoginRequest.Password"></label>
+                            <input type="password" class="form-control" placeholder="Password" asp-for="UserLoginRequest.Password" autocomplete="off">
                         </div>
 
                         <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input" asp-for="Input.RememberLogin">
-                                <label class="form-check-label" asp-for="Input.RememberLogin">
+                                <input class="form-check-input" asp-for="UserLoginRequest.RememberLogin">
+                                <label class="form-check-label" asp-for="UserLoginRequest.RememberLogin">
                                     Remember My Login
                                 </label>
                             </div>
                         </div>
 
-                        <button class="btn btn-primary" name="Input.Button" value="login">Login</button>
-                        <button class="btn btn-secondary" name="Input.Button" value="cancel">Cancel</button>
+                        <button class="btn btn-primary">Login</button>
                     </form>
                 </div>
             </div>

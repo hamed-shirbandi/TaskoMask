@@ -30,14 +30,14 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
         {
             var context = await _interaction.GetAuthorizationContextAsync(request.ReturnUrl);
 
-            var result = await _signInManager.PasswordSignInAsync(request.Username, request.Password, request.RememberLogin, lockoutOnFailure: true);
+            var result = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, request.RememberLogin, lockoutOnFailure: true);
             if (!result.Succeeded)
             {
-                await _events.RaiseAsync(new UserLoginFailureEvent(request.Username, "invalid credentials", clientId: context?.Client.ClientId));
+                await _events.RaiseAsync(new UserLoginFailureEvent(request.UserName, "invalid credentials", clientId: context?.Client.ClientId));
                 return Result.Failure(message: ApplicationMessages.InvalidCredentialsErrorMessage);
             }
 
-            var user = await _userManager.FindByNameAsync(request.Username);
+            var user = await _userManager.FindByNameAsync(request.UserName);
             await _userManager.AddLoginAsync(user, new UserLoginInfo("local", "local", "local"));
             await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId));
 

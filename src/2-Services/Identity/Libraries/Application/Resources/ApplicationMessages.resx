@@ -120,4 +120,7 @@
   <data name="InvalidCredentialsErrorMessage" xml:space="preserve">
     <value>Invalid username or password</value>
   </data>
+  <data name="InvalidReturnUrl" xml:space="preserve">
+    <value>Invalid return url</value>
+  </data>
 </root>

@@ -68,5 +68,14 @@ namespace TaskoMask.Services.Identity.Application.Resources {
                 return ResourceManager.GetString("InvalidCredentialsErrorMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid return url.
+        /// </summary>
+        public static string InvalidReturnUrl {
+            get {
+                return ResourceManager.GetString("InvalidReturnUrl", resourceCulture);
+            }
+        }
     }
 }

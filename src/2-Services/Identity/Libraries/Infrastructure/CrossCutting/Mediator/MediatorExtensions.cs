@@ -16,7 +16,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mediator
             //Load all commands and queries ...
             services.AddMediatR(typeof(UserLoginUseCase));
             //Load all fluent validation to use in ValidationBehaviour
-           // services.AddValidatorsFromAssembly(typeof(UserLoginUseValidation).Assembly);
+            services.AddValidatorsFromAssembly(typeof(UserLoginValidation<>).Assembly);
 
             return services;
         }

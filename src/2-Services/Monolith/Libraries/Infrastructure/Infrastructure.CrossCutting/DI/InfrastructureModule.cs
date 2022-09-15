@@ -10,8 +10,10 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories;
+using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Membership;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace;
@@ -19,7 +21,7 @@ using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Services;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
 {
-    internal static class InfrastructureModule
+    public static class InfrastructureModule
     {
 
         #region Public Methods
@@ -72,6 +74,17 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
 
 
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
+        {
+            WriteDbInitialization.Initial(serviceProvider);
+            ReadDbInitialization.Initial(serviceProvider);
+            WriteDbSeedData.SeedEssentialData(serviceProvider);
+        }
 
 
         #endregion

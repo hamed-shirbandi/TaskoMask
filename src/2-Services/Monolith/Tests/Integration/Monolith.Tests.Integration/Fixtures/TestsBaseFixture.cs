@@ -51,7 +51,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
         public TestsBaseFixture(string dbNameSuffix)
         {
             _serviceProvider = GetServiceProvider(dbNameSuffix);
-            InitializeDatabases();
+            _serviceProvider.InitialDatabasesAndSeedEssentialData();
         }
 
 
@@ -113,18 +113,6 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures
             var serviceProvider = services.BuildServiceProvider();
 
             return serviceProvider;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void InitializeDatabases()
-        {
-            WriteDbInitialization.Initial(_serviceProvider);
-            ReadDbInitialization.Initial(_serviceProvider);
-            WriteDbSeedData.SeedEssentialData(_serviceProvider);
         }
 
 

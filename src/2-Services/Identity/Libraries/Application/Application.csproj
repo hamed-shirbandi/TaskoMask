@@ -17,26 +17,26 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\Application.Messages.Designer.cs">
+	  <Compile Update="Resources\ApplicationMessages.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Application.Messages.resx</DependentUpon>
+	    <DependentUpon>ApplicationMessages.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Application.Metadata.Designer.cs">
+	  <Compile Update="Resources\ApplicationMetadata.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Application.Metadata.resx</DependentUpon>
+	    <DependentUpon>ApplicationMetadata.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\Application.Messages.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Application.Messages.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Resources\ApplicationMessages.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>ApplicationMessages.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Application.Metadata.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Application.Metadata.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Resources\ApplicationMetadata.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>ApplicationMetadata.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
 

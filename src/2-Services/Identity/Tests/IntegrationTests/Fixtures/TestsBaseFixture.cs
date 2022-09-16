@@ -49,7 +49,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         {
             _serviceProvider = GetServiceProvider(dbNameSuffix);
             _serviceProvider.InitialDatabase();
-            _serviceProvider.SeedEssentialData();
+            SeedSampleData();
         }
 
 
@@ -68,6 +68,16 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
 
 
 
+        /// <summary>
+        /// Seed some sample data in the database for the fixture
+        /// </summary>
+        protected void SeedSampleData()
+        {
+            _serviceProvider.SeedEssentialData();
+        }
+
+
+
         #endregion
 
         #region Private Methods
@@ -81,20 +91,19 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
             var services = new ServiceCollection();
 
             var configuration = new ConfigurationBuilder()
-                                //Copy from AdminPanel project during the build event
+                                //Copy from Identity.Api project during the build event
                                 .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
                                 .AddJsonFile("appsettings.Staging.json", optional: true)
                                 .AddJsonFile("appsettings.Development.json", optional: true)
                                 .AddInMemoryCollection(new[]
                                 {
-                                   new KeyValuePair<string,string>("Mongo:Write:Database", $"TaskoMask_WriteDB_Test_{dbNameSuffix}"),
-                                   new KeyValuePair<string,string>("Mongo:Read:Database", $"TaskoMask_ReadDB_Test_{dbNameSuffix}"),
+                                   new KeyValuePair<string,string>("ConnectionString:DatabaseName", $"IdentityDB_Test_{dbNameSuffix}")
                                 })
                                 .Build();
 
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 
-            services.AddModules();
+            services.AddModules(configuration);
 
             var serviceProvider = services.BuildServiceProvider();
 

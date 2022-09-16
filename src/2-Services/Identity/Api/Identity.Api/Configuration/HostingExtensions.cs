@@ -15,13 +15,11 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
 
-            builder.Services.AddModules();
+            builder.Services.AddModules(builder.Configuration);
 
             builder.AddCustomSerilog();
 
             builder.Services.AddRazorPages();
-
-            builder.Services.AddAspNetIdentity(builder.Configuration);
 
             builder.Services.AddIdentityServer();
 

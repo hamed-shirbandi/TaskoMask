@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.Services.Identity.Infrastructure.CrossCutting.AspNetIdentity;
 using TaskoMask.Services.Identity.Infrastructure.Data.DataProviders;
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
@@ -15,9 +17,10 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         /// <summary>
         /// 
         /// </summary>
-        public static void AddInfrastructureModule(this IServiceCollection services)
+        public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddBuildingBlocksInfrastructureServices();
+            services.AddAspNetIdentity(configuration);
         }
 
 

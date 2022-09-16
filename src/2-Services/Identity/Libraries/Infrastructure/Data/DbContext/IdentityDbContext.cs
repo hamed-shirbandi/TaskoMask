@@ -21,7 +21,10 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
         /// </summary>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("SqlConnection"));
+            var connection = _configuration.GetValue<string>("ConnectionString:Connection");
+            var databaseName = _configuration.GetValue<string>("ConnectionString:DatabaseName");
+
+            optionsBuilder.UseSqlServer(connection.Replace("[DatabaseName]", databaseName));
         }
 
 

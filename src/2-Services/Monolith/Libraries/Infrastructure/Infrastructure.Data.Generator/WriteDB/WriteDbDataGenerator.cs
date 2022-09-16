@@ -1,6 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
+﻿using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
@@ -10,57 +8,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
 {
     internal static class WriteDbDataGenerator
     {
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IEnumerable<Permission> GeneratePermission()
-        {
-            var items = new List<Permission>();
-
-            for (int i = 1; i <= 10; i++)
-            {
-                var groupNumber = i > 5 ? 1 : 0;
-                items.Add(new Permission
-                {
-                    DisplayName = $"Permission_{i}",
-                    SystemName = $"SystemName_{i}",
-                    GroupName = $"Group_{groupNumber}",
-                });
-            }
-
-            return items;
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IEnumerable<Role> GenerateRole(IEnumerable<Permission> permissions)
-        {
-            var items = new List<Role>();
-
-            for (int i = 1; i <= 5; i++)
-            {
-                var permissionsId = permissions.Select(p => p.Id).ToArray();
-                var permissionsCount = permissions.Count();
-                var permissionTakeCount = i < permissionsCount ? i : permissionsCount;
-
-                items.Add(new Role
-                {
-                    Name = $"Role Name {i}",
-                    Description = $"Test Description {i}",
-                    PermissionsId = permissionsId.Take(permissionTakeCount).ToArray(),
-                });
-            }
-
-            return items;
-        }
-
-
-
         /// <summary>
         /// 
         /// </summary>

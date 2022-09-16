@@ -1,5 +1,4 @@
 ﻿using MongoDB.Driver;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
@@ -32,10 +31,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
 
                 #region  collections
 
-                var _operators = _writeDbContext.GetCollection<Operator>();
-                var _roles = _writeDbContext.GetCollection<Role>();
-                var _permissions = _writeDbContext.GetCollection<Permission>();
-
                 var _ownerAggregate = _writeDbContext.GetCollection<Owner>();
                 var _boardAggregate = _writeDbContext.GetCollection<Board>();
                 var _taskAggregate = _writeDbContext.GetCollection<Domain.DomainModel.Workspace.Tasks.Entities.Task>();
@@ -45,17 +40,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.WriteDB
                 //if database is empty
                 if (!_ownerAggregate.AsQueryable().Any())
                 {
-                    var permissions = WriteDbDataGenerator.GeneratePermission();
-                    _permissions.InsertMany(permissions);
-
-                    var roles = WriteDbDataGenerator.GenerateRole(permissions);
-                    _roles.InsertMany(roles);
-
-
-
-                    //var operators = WriteDbDataGenerator.GenerateOperator(usersAsOperator, roles);
-                    //_operators.InsertMany(operators);
-
 
                     //var usersAsOwner= WriteDbDataGenerator.GenerateUser("Owner");
                     //_users.InsertMany(usersAsOwner);

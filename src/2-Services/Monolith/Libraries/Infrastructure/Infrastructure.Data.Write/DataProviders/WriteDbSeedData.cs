@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
@@ -28,22 +27,5 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
                // seed data here ...
             }
         }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static Operator GetAdminOperator(IConfiguration configuration)
-        {
-            return new Operator()
-            {
-                DisplayName = configuration["SuperUser:DisplayName"],
-                Email = configuration["SuperUser:Email"],
-            };
-
-        }
-
     }
 }

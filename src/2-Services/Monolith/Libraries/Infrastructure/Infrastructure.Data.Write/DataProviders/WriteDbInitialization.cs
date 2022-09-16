@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Membership.Entities;
 using System;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
@@ -59,29 +58,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }));
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId.Value), new CreateIndexOptions() { Name = nameof(Task.CardId) }));
 
-
-            #endregion
-
-            #region Operator Indexs
-
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Operator.Id), Unique = true }));
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = nameof(Operator.Email) }));
-            dbContext.GetCollection<Operator>().Indexes.CreateOneAsync(new CreateIndexModel<Operator>(Builders<Operator>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = nameof(Operator.DisplayName) }));
-
-
-            #endregion
-
-            #region Role Indexs
-
-            dbContext.GetCollection<Role>().Indexes.CreateOneAsync(new CreateIndexModel<Role>(Builders<Role>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Role.Id), Unique = true }));
-            dbContext.GetCollection<Role>().Indexes.CreateOneAsync(new CreateIndexModel<Role>(Builders<Role>.IndexKeys.Ascending(x => x.Name), new CreateIndexOptions() { Name = nameof(Role.Name), Unique = false }));
-
-            #endregion
-
-            #region Permission Indexs
-
-            dbContext.GetCollection<Permission>().Indexes.CreateOneAsync(new CreateIndexModel<Permission>(Builders<Permission>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Permission.Id), Unique = true }));
-            dbContext.GetCollection<Permission>().Indexes.CreateOneAsync(new CreateIndexModel<Permission>(Builders<Permission>.IndexKeys.Ascending(x => x.SystemName), new CreateIndexOptions() { Name = nameof(Permission.SystemName), Unique = false }));
 
             #endregion
 

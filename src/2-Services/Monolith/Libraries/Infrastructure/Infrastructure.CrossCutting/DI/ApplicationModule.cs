@@ -1,11 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Application.Services;
-using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.Services.Monolith.Application.Core.Services;
-using TaskoMask.Services.Monolith.Application.Membership.Operators.Services;
-using TaskoMask.Services.Monolith.Application.Membership.Permissions.Services;
-using TaskoMask.Services.Monolith.Application.Membership.Roles.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Services;
@@ -37,9 +32,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IOperatorService, OperatorService>();
-            services.AddScoped<IPermissionService, PermissionService>();
-            services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IOrganizationService, OrganizationService>();
             services.AddScoped<IProjectService, ProjectService>();

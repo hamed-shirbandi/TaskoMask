@@ -34,7 +34,7 @@ Try it online:
   - [Run with Docker Compose](https://github.com/hamed-shirbandi/TaskoMask/wiki/Development-Setup#how-to-run-with-docker-compose)
 
 # Design
-#### Work is in progress
+#### 🔴Work is in progress
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture-v1.jpg)
 
   * ### Onion Architecture

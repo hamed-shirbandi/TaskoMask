@@ -23,7 +23,7 @@
 But the primary goal of this project is to be an effort to show how we can implement software technologies and patterns by .Net, so this can be used by developers who are looking for a real example project with real challenges. Please take a look at its [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki)!
 
 Try it online:
-[`Website`](http://taskomask.ir/) - [`User Panel`](http://panel.taskomask.ir) - [`Admin Panel`](http://admin.taskomask.ir/) - [`API`](http://api.taskomask.ir/)
+[`Website`](http://taskomask.ir/) - [`User Panel`](http://panel.taskomask.ir) - [`API`](http://api.taskomask.ir/)
 
 ![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Shots/taskomask-all-in-one-mobile.jpg)
 # Documentation
@@ -38,6 +38,14 @@ Try it online:
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture.jpg)
 
   * ### Onion Architecture
+    <details>
+      <summary>click for details</summary>
+
+
+    - Architecture was Onion until this [last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
+    </details>
+  * ### Clean Architecture
+  * ### Vertical Slice Architecture
   * ### Monolithic Architecture
     <details>
       <summary>click for details</summary>
@@ -131,6 +139,7 @@ Try it online:
     - Separate Read and Write Model
     - Separate Read Side DB and Write Side DB
     </details>
+  * ### Use Case Driven Development
   * ### Event Sourcing
   * ### Unit of Work
   * ### Repository
@@ -146,8 +155,11 @@ Try it online:
       - C#
       - ASP.NET Web API
       - ASP.NET MVC
+      - ASP.NET Identity
       -	MongoDB
       -	Redis
+      - [Ocelot](https://ocelot.readthedocs.io/) : .NET core API Gateway
+      - [DuendeSoftware IdentityServer](https://xunit.net/) : OpenID Connect and OAuth 2.x framework for ASP.NET Core
       - [xUnit](https://xunit.net/) : testing framework
       -	[FluenAssertion](https://fluentassertions.com/) : write fluent assertions
       - [NSubstitute](https://nsubstitute.github.io/) : to make test double (Mock, stub, fake, spy)
@@ -231,6 +243,14 @@ Find Hamed around the web and feel free to ask your question.
 <a href="https://www.linkedin.com/in/hamed-shirbandi"><img alt="LinkedIn" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/LinkedIn-v2.png" width="35"></a><a href="https://www.instagram.com/hamedshirbandi"><img alt="Instagram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Instagram-v2.png" width="35"></a><a href="https://github.com/hamed-shirbandi"><img alt="GitHub" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/GitHub-v2.png" width="35"></a><a href="https://medium.com/@hamed.shirbandi"><img alt="Medium" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Medium-v2.png" width="35"></a><a href="https://www.nuget.org/profiles/hamed-shirbandi"><img alt="Nuget" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Nuget-v3.png" width="35"></a><a href="mailto:hamed.shirbandi@gmail.com"><img alt="Email" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Email-v2.png" width="35"></a><a href="https://t.me/hamed_shirbandi"><img alt="Telegram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Telegram-v2.png" width="35"></a><a href="https://twitter.com/hamed_shirbandi"><img alt="Twitter" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Twitter-v2.png" width="35"></a>
 
 # Change logs
+*	### Sep, 2022
+    - [x] Extract Identity Service
+    - [x] Add Identity Server as IDP
+    - [x] Add ASP.NET Identity
+    - [x] Add User Panel API Gateway
+    - [x] Refactor to Clean Architecture
+    - [x] Follow Vertical Slice Architecture
+    - [x] Follow Use Case Driven Development
 *	### Aug, 2022
     - [x] Migrate from Monolith to Microservices
 *	### July, 2022

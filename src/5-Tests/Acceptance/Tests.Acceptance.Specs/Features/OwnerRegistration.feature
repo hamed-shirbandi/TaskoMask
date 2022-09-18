@@ -1,6 +1,6 @@
 ﻿Feature: Owner Registration
 
-In order to manage my tasks
+In order to manage the tasks
 As an Owner
 John wants to register an account
 

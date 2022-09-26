@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         {
             _serviceProvider = GetServiceProvider(dbNameSuffix);
             _serviceProvider.InitialDatabase();
-            SeedSampleData();
+            _serviceProvider.SeedEssentialData();
         }
 
 
@@ -61,17 +61,6 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         {
             return _serviceProvider.GetRequiredService<T>();
         }
-
-
-
-        /// <summary>
-        /// Seed some sample data in the database for the fixture
-        /// </summary>
-        protected void SeedSampleData()
-        {
-            _serviceProvider.SeedEssentialData();
-        }
-
 
 
         #endregion

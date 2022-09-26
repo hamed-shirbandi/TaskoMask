@@ -13,18 +13,17 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
     /// </summary>
     public class UserClassFixture : TestsBaseFixture
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly IIdentityServerInteractionService _interaction;
-        private readonly IEventService _events;
+        public UserManager<User> UserManager;
+        public SignInManager<User> SignInManager;
+        public IIdentityServerInteractionService InteractionService;
+        public IEventService EventsService;
 
         public UserClassFixture() : base(dbNameSuffix: nameof(UserClassFixture))
         {
-            SeedSampleData();
-            _userManager = GetRequiredService<UserManager<User>>();
-            _signInManager = GetRequiredService<SignInManager<User>>();
-            _interaction = GetRequiredService<IIdentityServerInteractionService>();
-            _events = GetRequiredService<IEventService>();
+            UserManager = GetRequiredService<UserManager<User>>();
+            SignInManager = GetRequiredService<SignInManager<User>>();
+            InteractionService = GetRequiredService<IIdentityServerInteractionService>();
+            EventsService = GetRequiredService<IEventService>();
         }
 
 
@@ -34,7 +33,17 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         /// </summary>
         public async Task<User> GetSampleUserAsync()
         {
-            return await _userManager.Users.OrderBy(r => Guid.NewGuid()).Take(1).SingleOrDefaultAsync();
+            return await UserManager.Users.OrderBy(r => Guid.NewGuid()).Take(1).SingleOrDefaultAsync();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task SeedUserAsync(User user,string password)
+        {
+            await UserManager.CreateAsync(user,password);
         }
 
     }

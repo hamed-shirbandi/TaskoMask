@@ -12,33 +12,23 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IIdentityServerInteractionService _interaction;
-        private readonly IEventService _events;
 
 
-        public UserLoginUseCase(IIdentityServerInteractionService interaction, IEventService events, UserManager<User> userManager, SignInManager<User> signInManager)
+        public UserLoginUseCase(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _interaction = interaction;
-            _events = events;
         }
 
 
         public async Task<Result> Handle(UserLoginRequest request, CancellationToken cancellationToken)
         {
-            var context = await _interaction.GetAuthorizationContextAsync(request.ReturnUrl);
-
-            var result = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, request.RememberLogin, lockoutOnFailure: true);
-            if (!result.Succeeded)
-            {
-                await _events.RaiseAsync(new UserLoginFailureEvent(request.UserName, "invalid credentials", clientId: context?.Client.ClientId));
+            var signInAsync = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, request.RememberLogin, lockoutOnFailure: true);
+            if (!signInAsync.Succeeded)
                 return Result.Failure(message: ApplicationMessages.InvalidCredentialsErrorMessage);
-            }
 
             var user = await _userManager.FindByNameAsync(request.UserName);
             await _userManager.AddLoginAsync(user, new UserLoginInfo("local", "local", "local"));
-            await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId));
 
             return Result.Success();
         }

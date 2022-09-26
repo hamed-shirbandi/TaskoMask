@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaskoMask.BuildingBlocks.Contracts.Enums;
+﻿using FluentAssertions;
+using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 using TaskoMask.Services.Identity.IntegrationTests.Fixtures;
+using TaskoMask.Services.Identity.IntegrationTests.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
@@ -31,7 +28,29 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
         #region Test Methods
 
 
+        [Fact]
+        public async Task User_Is_Logged_In()
+        {
+            //Arrange
+            var password = "TestPass";
+            var email = "test@taskomask.ir";
+            var user = UserObjectMother.GetActiveUserWithEmail(email);
 
+            await _fixture.SeedUserAsync(user, password);
+
+            var useCase = new UserLoginUseCase(_fixture.UserManager, _fixture.SignInManager);
+            var userLoginRequest = new UserLoginRequest
+            {
+                UserName = email,
+                Password = password,
+            };
+
+            //Act
+            var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
+
+            //Assert
+            result.IsSuccess.Should().BeTrue();
+        }
 
 
         #endregion

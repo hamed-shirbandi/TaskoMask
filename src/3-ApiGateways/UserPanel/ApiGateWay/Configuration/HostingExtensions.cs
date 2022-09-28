@@ -1,3 +1,4 @@
+using Microsoft.IdentityModel.Tokens;
 using MMLib.SwaggerForOcelot.DependencyInjection;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -28,6 +29,19 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateWay.Configuration
             builder.Services.AddOcelot();
 
             builder.Services.AddSwaggerForOcelot(builder.Configuration);
+
+
+            var authenticationProviderKey = "IdentityApiKey";
+
+            builder.Services.AddAuthentication()
+             .AddJwtBearer(authenticationProviderKey, x =>
+             {
+                 x.Authority = "https://localhost:8013"; // IDENTITY SERVER URL
+                 x.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateAudience = false
+                 };
+             });
 
             return builder.Build();
         }

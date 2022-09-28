@@ -15,6 +15,7 @@
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 		<PackageReference Include="MMLib.SwaggerForOcelot" Version="5.2.0" />
 		<PackageReference Include="Ocelot" Version="18.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>

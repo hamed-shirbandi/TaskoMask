@@ -57,6 +57,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+
             app.UseAuthentication();
             app.UseAuthorization();
         }

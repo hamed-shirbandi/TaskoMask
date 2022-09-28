@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
 {
@@ -22,7 +21,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddControllersWithViews();
-            services.AddDNTCaptchaPreConfigured();
             services.AddCommonServices(configuration);
         }
 

@@ -3,18 +3,13 @@ using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
-using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Contracts.Services;
-using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OwnerApiController : BaseApiController, IOwnerApiService
     {
         #region Fields

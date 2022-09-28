@@ -21,7 +21,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddControllersWithViews();
-            services.AddCommonServices(configuration);
+            services.AddCommonServices();
         }
 
 

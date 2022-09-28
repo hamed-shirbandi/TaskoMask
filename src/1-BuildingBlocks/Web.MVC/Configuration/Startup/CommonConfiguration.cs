@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Cookie;
@@ -20,7 +19,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void AddCommonServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddCommonServices(this IServiceCollection services )
         {
             services.AddHttpContextAccessor();
             services.AddAuthenticatedUserService();

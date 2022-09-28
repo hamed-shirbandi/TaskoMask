@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
 {
-    public static class DNTCaptchaConfiguration
+    public static class SwaggerConfiguration
     {
 
         /// <summary>

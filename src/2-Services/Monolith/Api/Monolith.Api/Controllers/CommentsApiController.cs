@@ -1,16 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
-using Microsoft.AspNetCore.Authorization;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CommentsApiController : BaseApiController, ICommentApiService
     {
         #region Fields

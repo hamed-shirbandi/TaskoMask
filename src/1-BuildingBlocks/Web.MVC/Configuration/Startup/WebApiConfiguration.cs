@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
@@ -31,7 +32,9 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
                 configuration.GetSection("Swagger").Bind(options);
             });
 
-            services.AddCommonServices(configuration);
+            services.AddCommonServices();
+
+            services.AddJwtAuthentication(configuration);
 
             services.AddCors();
 

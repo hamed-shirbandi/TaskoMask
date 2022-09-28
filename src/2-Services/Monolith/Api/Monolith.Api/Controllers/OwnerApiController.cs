@@ -10,7 +10,6 @@ using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
-using TaskoMask.BuildingBlocks.Web.MVC.Services.Authentication.JwtAuthentication;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
@@ -21,16 +20,14 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         #region Fields
 
         private readonly IOwnerService _ownerService;
-        private readonly IJwtAuthenticationService _jwtAuthenticationService;
 
         #endregion
 
         #region Ctors
 
-        public OwnerApiController(IOwnerService ownerService, IAuthenticatedUserService authenticatedUserService, IJwtAuthenticationService jwtAuthenticationService) : base(authenticatedUserService)
+        public OwnerApiController(IOwnerService ownerService, IAuthenticatedUserService authenticatedUserService) : base(authenticatedUserService)
         {
             _ownerService = ownerService;
-            _jwtAuthenticationService = jwtAuthenticationService;
         }
 
         #endregion

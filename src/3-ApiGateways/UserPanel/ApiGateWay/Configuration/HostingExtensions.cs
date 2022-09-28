@@ -30,11 +30,8 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateWay.Configuration
 
             builder.Services.AddSwaggerForOcelot(builder.Configuration);
 
-
-            var authenticationProviderKey = "IdentityApiKey";
-
             builder.Services.AddAuthentication()
-             .AddJwtBearer(authenticationProviderKey, x =>
+             .AddJwtBearer(builder.Configuration["AuthenticationProviderKey"], x =>
              {
                  x.Authority = builder.Configuration["Url:IdentityServer"];
                  x.TokenValidationParameters = new TokenValidationParameters

@@ -3,15 +3,20 @@
     {
       "SwaggerKey": "Monolith",
       "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          //Monolith.Api
           "Host": "localhost",
-          "Port": 5014
+          "Port": 5015
         }
       ],
-      "UpstreamPathTemplate": "/apigw/{everything}"
+      "UpstreamPathTemplate": "/monolithService/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      }
+
     }
   ]
 }

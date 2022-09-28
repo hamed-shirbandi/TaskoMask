@@ -23,7 +23,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// </summary>
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
         {
-            new ApiScope(name:"Monolith.Api",displayName:"Monolith Api")
+            new ApiScope(name:"monolith.api",displayName:"Monolith Api")
         };
 
 
@@ -50,7 +50,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             {
                 new Secret("secret".Sha256())
             },
-            AllowedScopes = { "Monolith.Api" }
+            AllowedScopes = { "monolith.api" }
         };
 
 
@@ -67,7 +67,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             {
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile,
-                "Monolith.Api"
+                "monolith.api"
             }
         };
     }

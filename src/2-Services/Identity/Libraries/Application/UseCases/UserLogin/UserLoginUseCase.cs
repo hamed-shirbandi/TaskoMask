@@ -25,7 +25,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
         {
             var signInAsync = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, request.RememberLogin, lockoutOnFailure: true);
             if (!signInAsync.Succeeded)
-                return Result.Failure(message: ApplicationMessages.Invalid_Credentials_Error_Message);
+                return Result.Failure(message: ApplicationMessages.Invalid_Credentials);
 
             var user = await _userManager.FindByNameAsync(request.UserName);
             if (!user.IsActive)

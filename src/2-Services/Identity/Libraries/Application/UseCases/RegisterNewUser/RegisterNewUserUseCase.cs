@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
@@ -19,13 +20,17 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
 
         public async Task<Result> Handle(RegisterNewUserRequest request, CancellationToken cancellationToken)
         {
-            var user = new User
+            var existUser = await _userManager.FindByNameAsync(request.Email);
+            if (existUser != null)
+                return Result.Failure(message: ApplicationMessages.UserName_Already_Exist);
+
+            var newUser = new User
             {
-                Email=request.Email,
-                UserName=request.Email,
+                Email = request.Email,
+                UserName = request.Email,
             };
 
-            var result = await _userManager.CreateAsync(user, request.Password);
+            var result = await _userManager.CreateAsync(newUser, request.Password);
             if (!result.Succeeded)
             {
                 var errors = result.Errors.Select(e => e.Description).ToList();

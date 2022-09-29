@@ -72,9 +72,9 @@ namespace TaskoMask.Services.Identity.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid username or password.
         /// </summary>
-        public static string Invalid_Credentials_Error_Message {
+        public static string Invalid_Credentials {
             get {
-                return ResourceManager.GetString("Invalid_Credentials_Error_Message", resourceCulture);
+                return ResourceManager.GetString("Invalid_Credentials", resourceCulture);
             }
         }
         
@@ -84,6 +84,15 @@ namespace TaskoMask.Services.Identity.Application.Resources {
         public static string Invalid_ReturnUrl {
             get {
                 return ResourceManager.GetString("Invalid_ReturnUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserName already exist.
+        /// </summary>
+        public static string UserName_Already_Exist {
+            get {
+                return ResourceManager.GetString("UserName_Already_Exist", resourceCulture);
             }
         }
     }

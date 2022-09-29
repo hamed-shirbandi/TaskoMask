@@ -120,10 +120,13 @@
   <data name="Deactive_User_Can_Not_Login" xml:space="preserve">
     <value>Login is disabled for this account</value>
   </data>
-  <data name="Invalid_Credentials_Error_Message" xml:space="preserve">
+  <data name="Invalid_Credentials" xml:space="preserve">
     <value>Invalid username or password</value>
   </data>
   <data name="Invalid_ReturnUrl" xml:space="preserve">
     <value>Invalid return url</value>
+  </data>
+  <data name="UserName_Already_Exist" xml:space="preserve">
+    <value>UserName already exist</value>
   </data>
 </root>

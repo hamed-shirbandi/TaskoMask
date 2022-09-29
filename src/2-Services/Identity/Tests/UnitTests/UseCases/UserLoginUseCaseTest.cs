@@ -62,7 +62,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             //Assert
             result.IsSuccess.Should().BeFalse();
-            result.Message.Should().Be(ApplicationMessages.Invalid_Credentials_Error_Message);
+            result.Message.Should().Be(ApplicationMessages.Invalid_Credentials);
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Identity;
+using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.UnitTests.Fixtures;
@@ -36,6 +37,34 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             //Assert
             result.IsSuccess.Should().BeTrue();
+        }
+
+
+        [Fact]
+        public async Task User_Is_Not_Logged_In_With_Wrong_Password()
+        {
+            //Arrange
+            var userBuilder = UserBuilder.Init()
+                .WithUserName("test@taskomask.ir")
+                .WithEmail("test@taskomask.ir")
+                .WithPassword("TestPass")
+                .WithIsActive(true);
+
+            TestUsers.Add(userBuilder.Build());
+
+            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager);
+            var userLoginRequest = new UserLoginRequest
+            {
+                UserName = userBuilder.UserName,
+                Password = "wrongpass",
+            };
+
+            //Act
+            var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
+
+            //Assert
+            result.IsSuccess.Should().BeFalse();
+            result.Message.Should().Be(ApplicationMessages.InvalidCredentialsErrorMessage);
         }
 
     }

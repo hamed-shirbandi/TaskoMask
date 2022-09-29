@@ -1,10 +1,7 @@
 ﻿using FluentAssertions;
-using Microsoft.AspNetCore.Identity;
 using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
-using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.UnitTests.Fixtures;
-using TaskoMask.Services.Identity.UnitTests.Helpers;
 using TaskoMask.Services.Identity.UnitTests.TestData;
 using Xunit;
 
@@ -37,6 +34,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             //Assert
             result.IsSuccess.Should().BeTrue();
+            TestUserLogins.Should().HaveCount(1);
         }
 
 

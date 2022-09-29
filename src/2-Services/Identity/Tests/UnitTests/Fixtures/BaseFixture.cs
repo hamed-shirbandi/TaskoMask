@@ -16,7 +16,8 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
         public TestUserManager TestUserManager;
         public TestSignInManager TestSignInManager;
         public List<User> TestUsers;
-
+        public List<UserLogin> TestUserLogins;
+        
         public BaseFixture()
         {
 
@@ -28,6 +29,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
             TestUserManager = Substitute.For<TestUserManager>();
             TestSignInManager = Substitute.For<TestSignInManager>(TestUserManager);
             TestUsers = new List<User>();
+            TestUserLogins= new List<UserLogin>();
 
             TestSignInManager.PasswordSignInAsync(userName: Arg.Any<string>(), password: Arg.Any<string>(), isPersistent: Arg.Any<bool>(), lockoutOnFailure: Arg.Any<bool>()).Returns(args =>
             {
@@ -48,6 +50,23 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
                 TestUsers.Add((User)args[0]);
                 return new TestIdentityResult(true);
             });
+
+
+            TestUserManager.AddLoginAsync(user: Arg.Any<User>(), login: Arg.Any<UserLoginInfo>()).Returns(args =>
+            {
+                var user = (User)args[0];
+                var UserLoginInfo = (UserLoginInfo)args[1];
+                var userlogin = new UserLogin
+                {
+                    UserId=user.Id,
+                    LoginProvider= UserLoginInfo.LoginProvider,
+                    ProviderDisplayName= UserLoginInfo.ProviderDisplayName,
+                    ProviderKey= UserLoginInfo.ProviderKey,
+                };
+                TestUserLogins.Add(userlogin);
+                return new TestIdentityResult(true);
+            });
+            
         }
     }
 }

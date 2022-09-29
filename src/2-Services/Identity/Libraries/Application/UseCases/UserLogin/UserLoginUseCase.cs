@@ -27,8 +27,8 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
             if (!signInAsync.Succeeded)
                 return Result.Failure(message: ApplicationMessages.InvalidCredentialsErrorMessage);
 
-            //var user = await _userManager.FindByNameAsync(request.UserName);
-            //await _userManager.AddLoginAsync(user, new UserLoginInfo("local", "local", "local"));
+            var user = await _userManager.FindByNameAsync(request.UserName);
+            await _userManager.AddLoginAsync(user, new UserLoginInfo("local", "local", "local"));
 
             return Result.Success();
         }

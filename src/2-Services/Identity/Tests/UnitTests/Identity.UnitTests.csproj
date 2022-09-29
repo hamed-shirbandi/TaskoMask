@@ -24,8 +24,4 @@
 	  <ProjectReference Include="..\..\Libraries\Application\Application.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Fixtures\" />
-	</ItemGroup>
-
 </Project>

@@ -62,7 +62,36 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             //Assert
             result.IsSuccess.Should().BeFalse();
-            result.Message.Should().Be(ApplicationMessages.InvalidCredentialsErrorMessage);
+            result.Message.Should().Be(ApplicationMessages.Invalid_Credentials_Error_Message);
+        }
+
+
+        [Fact]
+        public async Task Deactive_User_Is_Not_Logged_In()
+        {
+            //Arrange
+            var userBuilder = UserBuilder.Init()
+                .WithUserName("test@taskomask.ir")
+                .WithEmail("test@taskomask.ir")
+                .WithPassword("TestPass")
+                .WithIsActive(false);
+
+            TestUsers.Add(userBuilder.Build());
+
+            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager);
+            var userLoginRequest = new UserLoginRequest
+            {
+                UserName = userBuilder.UserName,
+                Password = userBuilder.Password,
+            };
+
+            //Act
+            var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
+
+            //Assert
+            result.IsSuccess.Should().BeFalse();
+            result.Message.Should().Be(ApplicationMessages.Deactive_User_Can_Not_Login);
+
         }
 
     }

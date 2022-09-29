@@ -61,20 +61,29 @@ namespace TaskoMask.Services.Identity.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login is disabled for this account.
+        /// </summary>
+        public static string Deactive_User_Can_Not_Login {
+            get {
+                return ResourceManager.GetString("Deactive_User_Can_Not_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username or password.
         /// </summary>
-        public static string InvalidCredentialsErrorMessage {
+        public static string Invalid_Credentials_Error_Message {
             get {
-                return ResourceManager.GetString("InvalidCredentialsErrorMessage", resourceCulture);
+                return ResourceManager.GetString("Invalid_Credentials_Error_Message", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid return url.
         /// </summary>
-        public static string InvalidReturnUrl {
+        public static string Invalid_ReturnUrl {
             get {
-                return ResourceManager.GetString("InvalidReturnUrl", resourceCulture);
+                return ResourceManager.GetString("Invalid_ReturnUrl", resourceCulture);
             }
         }
     }

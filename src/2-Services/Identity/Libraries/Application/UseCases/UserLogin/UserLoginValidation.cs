@@ -12,7 +12,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
 
         private void ValidateReturnUrl()
         {
-            RuleFor(x => x.ReturnUrl).Must(uri => Uri.TryCreate(uri, UriKind.Absolute, out _)).When(x => !string.IsNullOrEmpty(x.ReturnUrl)).WithMessage(ApplicationMessages.InvalidReturnUrl);
+            RuleFor(x => x.ReturnUrl).Must(uri => Uri.TryCreate(uri, UriKind.Absolute, out _)).When(x => !string.IsNullOrEmpty(x.ReturnUrl)).WithMessage(ApplicationMessages.Invalid_ReturnUrl);
         }
     }
 }

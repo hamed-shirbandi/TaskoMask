@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="InvalidCredentialsErrorMessage" xml:space="preserve">
+  <data name="Deactive_User_Can_Not_Login" xml:space="preserve">
+    <value>Login is disabled for this account</value>
+  </data>
+  <data name="Invalid_Credentials_Error_Message" xml:space="preserve">
     <value>Invalid username or password</value>
   </data>
-  <data name="InvalidReturnUrl" xml:space="preserve">
+  <data name="Invalid_ReturnUrl" xml:space="preserve">
     <value>Invalid return url</value>
   </data>
 </root>

@@ -34,10 +34,7 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateWay.Configuration
              .AddJwtBearer(builder.Configuration["AuthenticationProviderKey"], x =>
              {
                  x.Authority = builder.Configuration["Url:IdentityServer"];
-                 x.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateAudience = false
-                 };
+                 x.TokenValidationParameters.ValidateAudience=false;
              });
 
             return builder.Build();

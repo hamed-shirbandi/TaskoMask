@@ -14,7 +14,7 @@
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "monolith.api", "openid", "profile" ]
+        "AllowedScopes": [ "monolith.api"]
       }
 
     }

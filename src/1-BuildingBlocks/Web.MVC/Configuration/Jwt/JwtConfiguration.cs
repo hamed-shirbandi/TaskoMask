@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Serilog;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt
 {
@@ -22,16 +20,14 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt
               options.TokenValidationParameters.ValidateAudience = false;
           });
 
-            var audience = configuration["Jwt:Audience"];
-            if (!string.IsNullOrEmpty(audience))
-            {
-                services.AddAuthorization(options =>
+            var allowedScope = configuration["Jwt:AllowedScope"];
+            services.AddAuthorization(options =>
                     options.AddPolicy("ApiScope", policy =>
                     {
                         policy.RequireAuthenticatedUser();
-                        policy.RequireClaim("scope", audience);
-                    }));
-            }
+                        policy.RequireClaim("scope", allowedScope);
+                    })
+                );
         }
 
 

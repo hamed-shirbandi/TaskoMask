@@ -35,7 +35,7 @@ Try it online:
 
 # Design
 #### 🔴Work is in progress
-![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture-v1.jpg)
+![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture-v2.jpg)
 
   * ### Onion Architecture
     <details>

@@ -6,7 +6,6 @@ using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Clients.UserPanel.Services.Authentication;
 using TaskoMask.BuildingBlocks.Web.Services.API;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
-using TaskoMask.Clients.UserPanel.Services.Http;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 using TaskoMask.BuildingBlocks.Web.Configuration;
 
@@ -47,17 +46,16 @@ namespace TaskoMask.Clients.UserPanel.Configuration
         /// </summary>
         private static void AddHttpServices(this IServiceCollection services, IConfiguration configuration)
         {
-            //add HttpClient with an Interceptor to add jwt token to all requests automatically
             services.AddHttpClient(
-                name: "UserPanelAPI",
+                name: "UserPanelApiGateWay",
                 configureClient: client =>
                 {
-                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelAPI"));
+                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateWay"));
                     client.Timeout = TimeSpan.FromSeconds(50);
-                }).AddHttpMessageHandler<HttpClientInterceptorService>();
+                }).AddHttpMessageHandler<IdentityServerAuthorizationHandler>();
 
-            services.AddScoped<HttpClientInterceptorService>();
-            services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelAPI"));
+            services.AddScoped<IdentityServerAuthorizationHandler>();
+            services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelApiGateWay"));
             services.HttpClientService();
 
         }

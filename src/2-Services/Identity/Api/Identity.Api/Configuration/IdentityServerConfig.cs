@@ -61,12 +61,19 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         public static Client UserPanel => new()
         {
             ClientId = "UserPanel",
-            AllowedGrantTypes = GrantTypes.ClientCredentials,
-            ClientSecrets =
-            {
-                new Secret("secret".Sha256())
-            },
-            AllowedScopes = { "monolith.api" }
+            AllowedGrantTypes = GrantTypes.Code,
+            RequirePkce = true,
+            RequireClientSecret = false,
+            AllowedCorsOrigins = { "https://localhost:5011" },
+            AllowedScopes =
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    ApiScopesConfig.Monolith_Read.Name,
+                    ApiScopesConfig.Monolith_Write.Name,
+                },
+            RedirectUris = { "https://localhost:5011/authentication/login-callback/" },
+            PostLogoutRedirectUris = { "https://localhost:5011/authentication/logout-callback/" },
         };
 
     }

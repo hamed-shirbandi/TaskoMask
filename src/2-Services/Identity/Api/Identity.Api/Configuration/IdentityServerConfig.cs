@@ -23,7 +23,8 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// </summary>
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
         {
-            new ApiScope(name:"monolith.api",displayName:"Monolith Api")
+           ApiScopesConfig.Monolith_Read,
+           ApiScopesConfig.Monolith_Write,
         };
 
 
@@ -38,6 +39,22 @@ namespace TaskoMask.Services.Identity.Api.Configuration
     }
 
 
+
+    /// <summary>
+    /// 
+    /// </summary>
+    static class ApiScopesConfig
+    {
+        public static ApiScope Monolith_Read => new(name: "monolith.read", displayName: "Monolith Read APIs");
+        public static ApiScope Monolith_Write => new(name: "monolith.write", displayName: "Monolith Write APIs");
+
+    }
+
+
+
+    /// <summary>
+    /// 
+    /// </summary>
     static class ClientsConfig
     {
 

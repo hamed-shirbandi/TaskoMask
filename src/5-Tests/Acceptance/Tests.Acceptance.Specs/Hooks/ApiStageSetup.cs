@@ -32,7 +32,7 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
         {
             if (Config.TestLevel== MagicKey.TestLevel.API_Level)
             {
-                var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At(Config.BaseApiUrl) });
+                var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At(Config.UserPanelApiGateWayBaseUrl) });
                 var stage = new Stage(cast);
                 _objectContainer.RegisterInstanceAs(stage);
             }

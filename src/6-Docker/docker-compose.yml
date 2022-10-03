@@ -88,26 +88,6 @@ services:
       - "5008:80"
       - "5009:443"
 
-  admin-panel-client:
-    container_name: admin-panel-client
-    image: ${DOCKER_REGISTRY-}admin-panel-client
-    restart: on-failure
-    environment:
-      Mongo__Read__Connection: "mongodb://mongo:27017"
-      Mongo__Write__Connection: "mongodb://mongo:27017"
-      Redis__Connection: "redis:6379"
-    build:
-      context: ../..
-      dockerfile: src/4-Clients/AdminPanel/Dockerfile
-    ports:
-      - 5012:80
-      - 5013:443
-    networks:
-      - taskomask-network
-    depends_on:
-      - redis
-      - mongo
-
 networks:
   taskomask-network:
 

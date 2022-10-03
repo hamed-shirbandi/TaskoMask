@@ -34,6 +34,10 @@ namespace TaskoMask.Clients.UserPanel.Configuration
             services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();
             services.AddBlazoredModal();
+            services.AddOidcAuthentication(options =>
+            {
+                configuration.Bind("oidc", options.ProviderOptions);
+            });
         }
 
 

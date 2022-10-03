@@ -12,24 +12,28 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt
         /// </summary>
         public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
+            var jwtOptions = configuration.GetSection("Jwt").Get<JwtOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-          .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-          {
-              options.Authority = configuration["Jwt:Authority"];
-              options.TokenValidationParameters.ValidateAudience = false;
-          });
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+                {
+                    options.Authority = jwtOptions.Authority;
+                    options.Audience = jwtOptions.Audience;
+                    options.TokenValidationParameters.ValidateAudience = true;
+                });
 
-            var allowedScope = configuration["Jwt:AllowedScope"];
+
             services.AddAuthorization(options =>
-                    options.AddPolicy("ApiScope", policy =>
+            {
+                foreach (var item in jwtOptions.Policies)
+                {
+                    options.AddPolicy(item.Name, policy =>
                     {
                         policy.RequireAuthenticatedUser();
-                        policy.RequireClaim("scope", allowedScope);
-                    })
-                );
+                        policy.RequireClaim("scope", item.AllowedScopes);
+                    });
+                }
+            });
         }
-
-
     }
 }

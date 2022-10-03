@@ -34,7 +34,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         public static IEnumerable<Client> Clients => new Client[]
         {
             ClientsConfig.UserPanel,
-            ClientsConfig.AdminPanel,
         };
     }
 
@@ -53,22 +52,5 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             AllowedScopes = { "monolith.api" }
         };
 
-
-        public static Client AdminPanel => new()
-        {
-            ClientId = "AdminPanel",
-            ClientSecrets = { new Secret("secret2".Sha256()) },
-            AllowedGrantTypes = GrantTypes.Code,
-            RedirectUris = { "https://localhost:5013/signin-oidc" },
-            PostLogoutRedirectUris = { "https://localhost:5013/signout-callback-oidc" },
-            AllowOfflineAccess = true,
-            UpdateAccessTokenClaimsOnRefresh = true,
-            AllowedScopes = new List<string>
-            {
-                IdentityServerConstants.StandardScopes.OpenId,
-                IdentityServerConstants.StandardScopes.Profile,
-                "monolith.api"
-            }
-        };
     }
 }

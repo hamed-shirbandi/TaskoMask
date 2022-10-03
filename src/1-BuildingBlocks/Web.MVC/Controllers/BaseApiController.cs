@@ -4,7 +4,6 @@ using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 {
-    [Authorize("ApiScope")]
     public class BaseApiController : Controller
     {
         #region Fields

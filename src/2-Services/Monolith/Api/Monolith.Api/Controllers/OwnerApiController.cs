@@ -10,6 +10,7 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
+    [Authorize("full-access")]
     public class OwnerApiController : BaseApiController, IOwnerApiService
     {
         #region Fields

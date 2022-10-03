@@ -9,9 +9,11 @@ using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Contracts.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
+    [Authorize("full-access")]
     public class OrganizationsApiController : BaseApiController, IOrganizationApiService
     {
         #region Fields

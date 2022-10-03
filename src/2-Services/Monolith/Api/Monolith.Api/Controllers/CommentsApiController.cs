@@ -5,9 +5,11 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
+    [Authorize("full-access")]
     public class CommentsApiController : BaseApiController, ICommentApiService
     {
         #region Fields

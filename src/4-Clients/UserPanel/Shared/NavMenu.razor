@@ -1,6 +1,9 @@
-﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 @inject TaskoMask.BuildingBlocks.Web.ApiContracts.IOwnerApiService OwnerApiService
+@inject NavigationManager Navigation
+@inject SignOutSessionStateManager SignOutManager
 @implements IDisposable
 
 <nav style="justify-content:normal !important; display:block; z-index:99;" class="navbar navbar-dark bg-dark fixed-top">
@@ -45,7 +48,7 @@
                     <i class="bi bi-person-circle"></i>
                     @(userDisplayName.Length<6?userDisplayName: userDisplayName.Substring(0, 5) + "...")
                 </a>
-                <a class="m-md-1 m-lg-1 btn btn-sm btn-danger" href="/logout">
+                <a class="m-md-1 m-lg-1 btn btn-sm btn-danger" @onclick="BeginSignOut">
                     <i class="bi bi-power"></i>
                 </a>
 
@@ -53,7 +56,7 @@
         </Authorized>
         <NotAuthorized>
             <div class="float-right">
-                <a class="m-md-1 m-lg-1 btn btn-sm btn-success" href="/login">
+                <a class="m-md-1 m-lg-1 btn btn-sm btn-success" href="authentication/login">
                     login
                 </a>
             </div>
@@ -62,8 +65,14 @@
 </nav>
 
 @code {
+
     string websiteUrl = "#";
     string userDisplayName = "";
+
+
+    /// <summary>
+    ///
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         //subscribe to OnMessage event. It is used when another components need to send a message to this component
@@ -76,6 +85,17 @@
             userDisplayName = user.DisplayName;
 
         await base.OnInitializedAsync();
+    }
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task BeginSignOut(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Navigation.NavigateTo("authentication/logout");
     }
 
 
@@ -117,6 +137,7 @@
         authenticatedUser.Email = user.Email;
         await LocalStorageService.SetItemAsync(MagicKey.Authenticated_User, authenticatedUser);
     }
+
 
 
     /// <summary>

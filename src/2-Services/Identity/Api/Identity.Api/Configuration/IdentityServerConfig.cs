@@ -32,6 +32,16 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// <summary>
         /// 
         /// </summary>
+        public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
+        {
+           ApiResourcesConfig.Monolith_Api,
+        };
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static IEnumerable<Client> Clients => new Client[]
         {
             ClientsConfig.UserPanel,
@@ -55,6 +65,20 @@ namespace TaskoMask.Services.Identity.Api.Configuration
     /// <summary>
     /// 
     /// </summary>
+    static class ApiResourcesConfig
+    {
+        public static ApiResource Monolith_Api => new("monolith.api", "Monolith Api")
+        {
+            Scopes = { ApiScopesConfig.Monolith_Read.Name, ApiScopesConfig.Monolith_Write.Name }
+        };
+
+    }
+
+
+
+    /// <summary>
+    /// 
+    /// </summary>
     static class ClientsConfig
     {
 
@@ -66,12 +90,12 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             RequireClientSecret = false,
             AllowedCorsOrigins = { "https://localhost:5011" },
             AllowedScopes =
-                {
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    ApiScopesConfig.Monolith_Read.Name,
-                    ApiScopesConfig.Monolith_Write.Name,
-                },
+            {
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile,
+                ApiScopesConfig.Monolith_Read.Name,
+                ApiScopesConfig.Monolith_Write.Name,
+            },
             RedirectUris = { "https://localhost:5011/authentication/login-callback/" },
             PostLogoutRedirectUris = { "https://localhost:5011/authentication/logout-callback/" },
         };

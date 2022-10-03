@@ -22,6 +22,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
                 })
                 .AddInMemoryIdentityResources(IdentityServerConfig.IdentityResources)
                 .AddInMemoryApiScopes(IdentityServerConfig.ApiScopes)
+                .AddInMemoryApiResources(IdentityServerConfig.ApiResources)
                 .AddInMemoryClients(IdentityServerConfig.Clients)
                 .AddAspNetIdentity<User>();
         }

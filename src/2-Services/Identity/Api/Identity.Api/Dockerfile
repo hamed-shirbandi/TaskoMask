@@ -8,6 +8,15 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/2-Services/Identity/Api/Identity.Api/Identity.Api.csproj", "src/2-Services/Identity/Api/Identity.Api/"]
+COPY ["src/1-BuildingBlocks/Web.MVC/Web.MVC.csproj", "src/1-BuildingBlocks/Web.MVC/"]
+COPY ["src/1-BuildingBlocks/Web/Web.csproj", "src/1-BuildingBlocks/Web/"]
+COPY ["src/1-BuildingBlocks/Contracts/Contracts.csproj", "src/1-BuildingBlocks/Contracts/"]
+COPY ["src/2-Services/Identity/Libraries/Infrastructure/Infrastructure.csproj", "src/2-Services/Identity/Libraries/Infrastructure/"]
+COPY ["src/1-BuildingBlocks/Infrastructure/Infrastructure.csproj", "src/1-BuildingBlocks/Infrastructure/"]
+COPY ["src/1-BuildingBlocks/Application/Application.csproj", "src/1-BuildingBlocks/Application/"]
+COPY ["src/1-BuildingBlocks/Domain/Domain.csproj", "src/1-BuildingBlocks/Domain/"]
+COPY ["src/2-Services/Identity/Libraries/Application/Application.csproj", "src/2-Services/Identity/Libraries/Application/"]
+COPY ["src/2-Services/Identity/Libraries/Domain/Domain.csproj", "src/2-Services/Identity/Libraries/Domain/"]
 RUN dotnet restore "src/2-Services/Identity/Api/Identity.Api/Identity.Api.csproj"
 COPY . .
 WORKDIR "/src/src/2-Services/Identity/Api/Identity.Api"
@@ -19,4 +28,4 @@ RUN dotnet publish "Identity.Api.csproj" -c Release -o /app/publish /p:UseAppHos
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Identity.Api.dll"]
+ENTRYPOINT ["dotnet", "TaskoMask.Services.Identity.Api.dll"]

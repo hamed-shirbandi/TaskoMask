@@ -95,6 +95,22 @@ services:
     depends_on:
       - sql
 
+  user-panel-api-gateway:
+    container_name: user-panel-api-gateway
+    image: ${DOCKER_REGISTRY-}user-panel-api-gateway
+    restart: on-failure
+    build:
+      context: ../..
+      dockerfile: src/3-ApiGateways/UserPanel/ApiGateWay/Dockerfile
+    ports:
+      - 5000:80
+      - 5001:443
+    networks:
+      - taskomask-network
+    depends_on:
+      - monolith-api
+      - identity-api
+
   user-panel-client:
     container_name: user-panel-client
     image: ${DOCKER_REGISTRY-}user-panel-client
@@ -105,7 +121,7 @@ services:
       - "5010:80"
       - "5011:443"
     depends_on:
-     - monolith-api
+     - user-panel-api-gateway
 
   website-client:
     container_name: website-client

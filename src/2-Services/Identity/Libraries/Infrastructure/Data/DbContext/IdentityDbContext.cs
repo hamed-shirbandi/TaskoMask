@@ -37,11 +37,11 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
             base.OnModelCreating(builder);
 
             builder.Entity<User>().ToTable("Users");
-            builder.Entity<IdentityRole<long>>().ToTable("Roles");
-            builder.Entity<IdentityUserToken<long>>().ToTable("UserTokens");
-            builder.Entity<IdentityUserRole<long>>().ToTable("UserRoles");
-            builder.Entity<IdentityRoleClaim<long>>().ToTable("RoleClaims");
-            builder.Entity<IdentityUserClaim<long>>().ToTable("UserClaims");
+            builder.Entity<IdentityRole<string>>().ToTable("Roles");
+            builder.Entity<UserToken>().ToTable("UserTokens");
+            builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles");
+            builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
+            builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims");
             builder.Entity<UserLogin>().ToTable("UserLogins");
         }
     }

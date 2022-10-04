@@ -78,6 +78,22 @@ services:
       - redis
       - mongo
 
+  identity-api:
+    container_name: identity-api
+    image: ${DOCKER_REGISTRY-}identity-api
+    restart: on-failure
+    environment:
+      ConnectionString__Connection: "Server=sql;Database=[DatabaseName];User=sa;Password=Your_password123;"
+    build:
+      context: ../..
+      dockerfile: src/2-Services/Identity/Api/Identity.Api/Dockerfile
+    ports:
+      - 5016:80
+      - 5017:443
+    networks:
+      - taskomask-network
+    depends_on:
+      - sql
 
   user-panel-client:
     container_name: user-panel-client

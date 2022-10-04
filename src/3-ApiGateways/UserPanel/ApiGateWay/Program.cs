@@ -1,4 +1,4 @@
-using TaskoMask.ApiGateways.UserPanel.ApiGateWay.Configuration;
+using TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

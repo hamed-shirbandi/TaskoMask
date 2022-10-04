@@ -8,7 +8,7 @@ namespace TaskoMask.Clients.UserPanel.Configuration
         public IdentityServerAuthorizationHandler(IConfiguration configuration, IAccessTokenProvider provider, NavigationManager navigationManager) : base(provider, navigationManager)
         {
             ConfigureHandler(
-                authorizedUrls: new[] { configuration["Url:UserPanelApiGateWay"] },
+                authorizedUrls: new[] { configuration["Url:UserPanelApiGateway"] },
                 scopes: configuration.GetSection("oidc:DefaultScopes").Get<string[]>());
         }
     }

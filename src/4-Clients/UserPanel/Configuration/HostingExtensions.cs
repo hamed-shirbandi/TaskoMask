@@ -47,15 +47,15 @@ namespace TaskoMask.Clients.UserPanel.Configuration
         private static void AddHttpServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHttpClient(
-                name: "UserPanelApiGateWay",
+                name: "UserPanelApiGateway",
                 configureClient: client =>
                 {
-                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateWay"));
+                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));
                     client.Timeout = TimeSpan.FromSeconds(50);
                 }).AddHttpMessageHandler<IdentityServerAuthorizationHandler>();
 
             services.AddScoped<IdentityServerAuthorizationHandler>();
-            services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelApiGateWay"));
+            services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelApiGateway"));
             services.HttpClientService();
 
         }

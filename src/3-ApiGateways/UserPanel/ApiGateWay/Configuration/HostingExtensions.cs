@@ -5,7 +5,7 @@ using Ocelot.Middleware;
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
-namespace TaskoMask.ApiGateways.UserPanel.ApiGateWay.Configuration
+namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
 {
     internal static class HostingExtensions
     {

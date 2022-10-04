@@ -101,7 +101,7 @@ services:
     restart: on-failure
     build:
       context: ../..
-      dockerfile: src/3-ApiGateways/UserPanel/ApiGateWay/Dockerfile
+      dockerfile: src/3-ApiGateways/UserPanel/ApiGateway/Dockerfile
     ports:
       - 5000:80
       - 5001:443

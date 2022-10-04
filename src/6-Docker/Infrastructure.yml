@@ -44,8 +44,21 @@ services:
     volumes:
       - mongo:/data/db   
 
+  sql:
+    container_name: sql
+    image: mcr.microsoft.com/mssql/server
+    restart: unless-stopped
+    environment:
+        SA_PASSWORD: "Your_password123"
+        ACCEPT_EULA: "Y"
+    networks:
+      - taskomask-network
+    volumes:
+      - sql:/var/opt/mssql/data
+
 volumes:
   redis:
   mongo:
   seq:
+  sql:
 

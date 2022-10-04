@@ -45,7 +45,19 @@ services:
       - taskomask-network
     volumes:
       - mongo:/data/db
-    
+
+  sql:
+    container_name: sql
+    image: mcr.microsoft.com/mssql/server
+    restart: unless-stopped
+    environment:
+        SA_PASSWORD: "Your_password123"
+        ACCEPT_EULA: "Y"
+    networks:
+      - taskomask-network
+    volumes:
+      - sql:/var/opt/mssql/data
+
   monolith-api:
     container_name: monolith-api
     image: ${DOCKER_REGISTRY-}monolith-api
@@ -65,6 +77,7 @@ services:
     depends_on:
       - redis
       - mongo
+
 
   user-panel-client:
     container_name: user-panel-client
@@ -95,4 +108,5 @@ volumes:
   redis:
   mongo:
   seq:
+  sql:
 

@@ -22,7 +22,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// </summary>
         public static void AddCommonServices(this IServiceCollection services )
         {
-            services.AddSharedService();
             services.AddHttpContextAccessor();
             services.AddAuthenticatedUserService();
             services.AddCookieService();

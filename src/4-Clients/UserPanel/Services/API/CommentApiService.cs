@@ -1,12 +1,11 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 
-namespace TaskoMask.BuildingBlocks.Web.Services.API
+namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class BoardApiService : IBoardApiService
+    public class CommentApiService : ICommentApiService
     {
         #region Fields
 
@@ -16,7 +15,7 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
 
         #region Ctor
 
-        public BoardApiService(IHttpClientService httpClientService)
+        public CommentApiService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }
@@ -26,38 +25,23 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         #region Public Methods
 
 
-
-
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardOutputDto>> Get(string id)
+        public async Task<Result<CommentBasicInfoDto>> Get(string id)
         {
-            var url = $"/boards/{id}";
-            return await _httpClientService.GetAsync<BoardOutputDto>(url);
+            var url = $"/comments/{id}";
+            return await _httpClientService.GetAsync<CommentBasicInfoDto>(url);
         }
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardDetailsViewModel>> GetDetails(string id)
+        public async Task<Result<CommandResult>> Add(AddCommentDto input)
         {
-            var url = $"/boards/{id}/details";
-            return await _httpClientService.GetAsync<BoardDetailsViewModel>(url);
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> Add(AddBoardDto input)
-        {
-            var url = $"/boards";
+            var url = $"/comments";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -66,12 +50,11 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id, UpdateBoardDto input)
+        public async Task<Result<CommandResult>> Update(string id,UpdateCommentDto input)
         {
-            var url = $"/boards/{id}";
+            var url = $"/comments/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
-
 
 
         /// <summary>
@@ -79,9 +62,10 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var url = $"/boards/{id}";
+            var url = $"/comments/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
+
 
 
         #endregion

@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 
-namespace TaskoMask.BuildingBlocks.Web.Services.API
+namespace TaskoMask.Clients.UserPanel.Services.API
 {
     public class OwnerApiService : IOwnerApiService
     {

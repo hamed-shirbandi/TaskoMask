@@ -1,12 +1,14 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
+using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 
-namespace TaskoMask.BuildingBlocks.Web.Services.API
+namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class CardApiService : ICardApiService
+    public class ProjectApiService : IProjectApiService
     {
         #region Fields
 
@@ -16,7 +18,7 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
 
         #region Ctor
 
-        public CardApiService(IHttpClientService httpClientService)
+        public ProjectApiService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }
@@ -29,10 +31,10 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CardBasicInfoDto>> Get(string id)
+        public async Task<Result<ProjectOutputDto>> Get(string id)
         {
-            var url = $"/cards/{id}";
-            return await _httpClientService.GetAsync<CardBasicInfoDto>(url);
+            var url = $"/projects/{id}";
+            return await _httpClientService.GetAsync<ProjectOutputDto>(url);
         }
 
 
@@ -41,9 +43,20 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string boardId)
+        public async Task<Result<ProjectDetailsViewModel>> GetDetails(string id)
         {
-            var url = $"/boards/{boardId}/cards";
+            var url = $"/projects/{id}/details";
+            return await _httpClientService.GetAsync<ProjectDetailsViewModel>(url);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string organizationId)
+        {
+            var url = $"/projects/getSelectListItems/{organizationId}";
             return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(url);
         }
 
@@ -52,9 +65,9 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(AddCardDto input)
+        public async Task<Result<CommandResult>> Add(AddProjectDto input)
         {
-            var url = $"/cards";
+            var url = $"/projects";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -63,11 +76,12 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id, UpdateCardDto input)
+        public async Task<Result<CommandResult>> Update(string id, UpdateProjectDto input)
         {
-            var url = $"/cards/{id}";
+            var url = $"/projects/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
+
 
 
         /// <summary>
@@ -75,11 +89,9 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var url = $"/cards/{id}";
+            var url = $"/projects/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
-
-
 
         #endregion
 

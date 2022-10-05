@@ -4,6 +4,8 @@ using Blazored.Toast;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 using TaskoMask.BuildingBlocks.Web.Configuration;
+using TaskoMask.BuildingBlocks.Web.ApiContracts;
+using TaskoMask.Clients.UserPanel.Services.API;
 
 namespace TaskoMask.Clients.UserPanel.Configuration
 {
@@ -25,7 +27,6 @@ namespace TaskoMask.Clients.UserPanel.Configuration
             services.AddApiServices();
             services.AddComponentMessageServices();
             services.AddDragDropServices();
-            services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();
             services.AddBlazoredModal();
             services.AddOidcAuthentication(options =>
@@ -79,5 +80,20 @@ namespace TaskoMask.Clients.UserPanel.Configuration
             services.AddScoped<IDragDropService, DragDropService>();
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddApiServices(this IServiceCollection services)
+        {
+            services.AddScoped<IOrganizationApiService, OrganizationApiService>();
+            services.AddScoped<IProjectApiService, ProjectApiService>();
+            services.AddScoped<IBoardApiService, BoardApiService>();
+            services.AddScoped<ICardApiService, CardApiService>();
+            services.AddScoped<ITaskApiService, TaskApiService>();
+            services.AddScoped<IOwnerApiService, OwnerApiService>();
+            services.AddScoped<ICommentApiService, CommentApiService>();
+        }
     }
 }

@@ -1,13 +1,12 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
-using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 
-namespace TaskoMask.BuildingBlocks.Web.Services.API
+namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class TaskApiService : ITaskApiService
+    public class BoardApiService : IBoardApiService
     {
         #region Fields
 
@@ -17,7 +16,7 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
 
         #region Ctor
 
-        public TaskApiService(IHttpClientService httpClientService)
+        public BoardApiService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }
@@ -27,13 +26,15 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         #region Public Methods
 
 
+
+
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TaskBasicInfoDto>> Get(string id)
+        public async Task<Result<BoardOutputDto>> Get(string id)
         {
-            var url = $"/tasks/{id}";
-            return await _httpClientService.GetAsync<TaskBasicInfoDto>(url);
+            var url = $"/boards/{id}";
+            return await _httpClientService.GetAsync<BoardOutputDto>(url);
         }
 
 
@@ -42,10 +43,10 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<TaskDetailsViewModel>> GetDetails(string id)
+        public async Task<Result<BoardDetailsViewModel>> GetDetails(string id)
         {
-            var url = $"/tasks/{id}/details";
-            return await _httpClientService.GetAsync<TaskDetailsViewModel>(url);
+            var url = $"/boards/{id}/details";
+            return await _httpClientService.GetAsync<BoardDetailsViewModel>(url);
         }
 
 
@@ -54,9 +55,9 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(AddTaskDto input)
+        public async Task<Result<CommandResult>> Add(AddBoardDto input)
         {
-            var url = $"/tasks";
+            var url = $"/boards";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -65,21 +66,10 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id,UpdateTaskDto input)
+        public async Task<Result<CommandResult>> Update(string id, UpdateBoardDto input)
         {
-            var url = $"/tasks/{id}";
+            var url = $"/boards/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<CommandResult>> MoveTaskToAnotherCard(string taskId, string cardId)
-        {
-            var url = $"/tasks/{taskId}/moveto/{cardId}";
-            return await _httpClientService.PutAsync<CommandResult>(url);
         }
 
 
@@ -89,7 +79,7 @@ namespace TaskoMask.BuildingBlocks.Web.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var url = $"/tasks/{id}";
+            var url = $"/boards/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 

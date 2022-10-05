@@ -33,31 +33,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Logout
         {
             LogoutId = logoutId;
 
-            var showLogoutPrompt = LogoutOptions.ShowLogoutPrompt;
-
-            if (User?.Identity.IsAuthenticated != true)
-            {
-                // if the user is not authenticated, then just show logged out page
-                showLogoutPrompt = false;
-            }
-            else
-            {
-                var context = await _interaction.GetLogoutContextAsync(LogoutId);
-                if (context?.ShowSignoutPrompt == false)
-                {
-                    // it's safe to automatically sign-out
-                    showLogoutPrompt = false;
-                }
-            }
-
-            if (showLogoutPrompt == false)
-            {
-                // if the request for logout was properly authenticated from IdentityServer, then
-                // we don't need to show the prompt and can just log the user out directly.
-                return await OnPost();
-            }
-
-            return Page();
+            return await OnPost();
         }
 
         public async Task<IActionResult> OnPost()

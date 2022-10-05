@@ -1,7 +1,13 @@
 @page
 @model TaskoMask.Services.Identity.Api.Pages.Logout.Index
 
-<h3 class=" py-2 ">Logout!</h3>
+<h3 class=" py-2 ">logout of TaskoMask!</h3>
 <div class="px-2">
-   logout of TaskoMask
+    <form asp-page="/Account/Logout/Index">
+        <input type="hidden" name="logoutId" value="@Model.LogoutId" />
+
+        <div class="form-group">
+            <button class="btn btn-primary">Logout</button>
+        </div>
+    </form>
 </div>

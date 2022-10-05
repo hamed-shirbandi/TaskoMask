@@ -45,7 +45,7 @@ namespace TaskoMask.Clients.UserPanel.Configuration
                 name: "UserPanelApiGateway",
                 configureClient: client =>
                 {
-                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway")+ "/monolithService");
+                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));
                     client.Timeout = TimeSpan.FromSeconds(50);
                 }).AddHttpMessageHandler<IdentityServerAuthorizationHandler>();
 

@@ -33,7 +33,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Register(RegisterOwnerDto input)
         {
-            var url = $"/owner";
+            var url = $"/monolithService/owner";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -44,7 +44,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<OwnerBasicInfoDto>> Get()
         {
-            var url = $"/owner";
+            var url = $"/monolithService/owner";
             return await _httpClientService.GetAsync<OwnerBasicInfoDto>(url);
         }
 
@@ -55,7 +55,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> UpdateProfile(UpdateOwnerProfileDto input)
         {
-            var url = $"/owner";
+            var url = $"/monolithService/owner";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 

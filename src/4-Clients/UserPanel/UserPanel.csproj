@@ -10,7 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
 		<PackageReference Include="Blazored.Toast" Version="3.2.2" />
 		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />

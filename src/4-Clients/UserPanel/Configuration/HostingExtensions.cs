@@ -1,9 +1,7 @@
 ﻿using Blazored.LocalStorage;
 using Blazored.Modal;
 using Blazored.Toast;
-using Microsoft.AspNetCore.Components.Authorization;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
-using TaskoMask.Clients.UserPanel.Services.Authentication;
 using TaskoMask.BuildingBlocks.Web.Services.API;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
@@ -26,7 +24,6 @@ namespace TaskoMask.Clients.UserPanel.Configuration
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddHttpServices(configuration);
-            services.AddAuthorizationServices();
             services.AddApiServices();
             services.AddComponentMessageServices();
             services.AddDragDropServices();
@@ -60,19 +57,7 @@ namespace TaskoMask.Clients.UserPanel.Configuration
 
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AddAuthorizationServices(this IServiceCollection services)
-        {
-            services.AddAuthorizationCore();
-            services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
-
-        }
-
+       
 
         /// <summary>
         /// 

@@ -1,8 +1,22 @@
 ﻿@attribute [AllowAnonymous]
 @page "/authentication/{action}"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-<RemoteAuthenticatorView Action="@Action" />
 
-@code{
+
+<section id="cover">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <div class="alert alert-warning">
+                        <RemoteAuthenticatorView Action="@Action" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
     [Parameter] public string? Action { get; set; }
 }

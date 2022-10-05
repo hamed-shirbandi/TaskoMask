@@ -1,12 +1,24 @@
 @using TaskoMask.Clients.UserPanel.Shared
 
-<CascadingBlazoredModal FocusFirstElement="false" ContentScrollable="true" DisableBackgroundCancel = "true">
+<CascadingBlazoredModal FocusFirstElement="false" ContentScrollable="true" DisableBackgroundCancel="true">
     <CascadingAuthenticationState>
         <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
             <Found Context="routeData">
                 <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                     <Authorizing>
-                        <p>Please wait, we are authorizing the user.</p>
+                        <section id="cover">
+                            <div id="cover-caption">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                                            <div class="alert alert-warning">
+                                                <p>Please wait, we are authorizing the user.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </Authorizing>
                     <NotAuthorized>
                         <LoginRedirect></LoginRedirect>
@@ -15,7 +27,20 @@
             </Found>
             <NotFound>
                 <LayoutView Layout="@typeof(MainLayout)">
-                    <p>Sorry, there's nothing at this address.</p>
+                    <section id="cover">
+                        <div id="cover-caption">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                                        <div class="alert alert-warning">
+                                            <p>Sorry, there's nothing at this address.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                  
                 </LayoutView>
             </NotFound>
         </Router>

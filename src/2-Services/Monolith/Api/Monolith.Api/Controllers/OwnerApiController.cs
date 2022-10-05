@@ -80,20 +80,6 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         #region Private Methods
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private AuthenticatedUserModel GetAuthenticatedUserModel(string id, RegisterOwnerDto owner)
-        {
-            return new AuthenticatedUserModel
-            {
-                Id = id,
-                DisplayName = owner.DisplayName,
-                Email = owner.Email,
-                UserName = owner.Email,
-            };
-        }
-
 
         #endregion
 

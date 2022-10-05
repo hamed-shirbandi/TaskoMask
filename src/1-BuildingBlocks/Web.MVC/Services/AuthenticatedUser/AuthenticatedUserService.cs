@@ -41,7 +41,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser
                 Id = user.FindFirstValue(ClaimTypes.NameIdentifier) ?? "",
                 Email = user.FindFirstValue(ClaimTypes.Email) ?? "",
                 UserName = user.FindFirstValue(ClaimTypes.Name) ?? "",
-                DisplayName = user.FindFirstValue(nameof(AuthenticatedUserModel.DisplayName)) ?? "",
             };
 
         }

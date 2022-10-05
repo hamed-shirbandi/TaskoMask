@@ -46,7 +46,7 @@
             <div class="float-right">
                 <a class="m-md-1 m-lg-1 btn btn-sm btn-warning" id="update_user_profile" @onclick="@(() => ModalService.Show<Pages.Owner.Components.UpdateOwner>("Update Profile", new ModalOptions { Class="blazored-modal w-75 w-md-50 bg-light-gray"}))">
                     <i class="bi bi-person-circle"></i>
-                    @(userDisplayName.Length<6?userDisplayName: userDisplayName.Substring(0, 5) + "...")
+                    @(userDisplayName.Length < 6 ? userDisplayName : userDisplayName.Substring(0, 5) + "...")
                 </a>
                 <a class="m-md-1 m-lg-1 btn btn-sm btn-danger" @onclick="BeginSignOut">
                     <i class="bi bi-power"></i>
@@ -80,9 +80,9 @@
 
         websiteUrl = Configuration["Url:Website"];
 
-        var user = await LocalStorageService.GetItemAsync<AuthenticatedUserModel>(MagicKey.Authenticated_User);
-        if (user != null)
-            userDisplayName = user.DisplayName;
+        await GetAndSetUserDisplayName();
+
+
 
         await base.OnInitializedAsync();
     }
@@ -107,14 +107,12 @@
     {
         try
         {
-            if ( ReloadDataHelper.NavMenu_Need_Reload(messageType))
+            if (ReloadDataHelper.NavMenu_Need_Reload(messageType))
             {
                 var ownerResult = await OwnerApiService.Get();
                 if (ownerResult.IsSuccess)
                 {
-                    await UpdateAuthenticatedUserInLocalStorage(ownerResult.Value);
-
-                    userDisplayName = ownerResult.Value.DisplayName;
+                    await GetAndSetUserDisplayName();
                     StateHasChanged();
                 }
             }
@@ -130,12 +128,11 @@
     /// <summary>
     ///
     /// </summary>
-    private async Task UpdateAuthenticatedUserInLocalStorage(OwnerBasicInfoDto user)
+    private async Task GetAndSetUserDisplayName()
     {
-        var authenticatedUser = await LocalStorageService.GetItemAsync<AuthenticatedUserModel>(MagicKey.Authenticated_User);
-        authenticatedUser.DisplayName = user.DisplayName;
-        authenticatedUser.Email = user.Email;
-        await LocalStorageService.SetItemAsync(MagicKey.Authenticated_User, authenticatedUser);
+        var ownerResult = await OwnerApiService.Get();
+        if (ownerResult.IsSuccess)
+            userDisplayName = ownerResult.Value.DisplayName;
     }
 
 

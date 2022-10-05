@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Application.Behaviors;
 using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
@@ -16,7 +17,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddApplicationModule(this IServiceCollection services)
         {
-            services.AddBuildingBlocksApplicationServices();
+            services.AddValidationBehaviour();
         }
 
 

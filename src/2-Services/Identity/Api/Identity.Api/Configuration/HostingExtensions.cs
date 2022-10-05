@@ -1,6 +1,5 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
 
 namespace TaskoMask.Services.Identity.Api.Configuration
@@ -17,10 +16,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             builder.AddCustomSerilog();
 
             builder.Services.AddRazorPages();
-
-            builder.Services.AddHttpContextAccessor();
-
-            builder.Services.AddAuthenticatedUserService();
 
             builder.Services.AddModules(builder.Configuration);
 

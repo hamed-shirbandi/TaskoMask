@@ -22,10 +22,6 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
             services.AddApplicationModule();
 
             services.AddInfrastructureModule(configuration);
-
-            services.AddAutoMapper();
-
-            services.AddMediator();
         }
     }
 }

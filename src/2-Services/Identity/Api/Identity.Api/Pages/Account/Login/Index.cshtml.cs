@@ -1,7 +1,7 @@
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 
 namespace TaskoMask.Services.Identity.Api.Pages.Login
@@ -12,7 +12,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
     {
         #region Fields
 
-        private readonly IMediator _mediator;
+        private readonly IInMemoryBus _inMemoryBus;
 
         [BindProperty]
         public UserLoginRequest UserLoginRequest { get; set; }
@@ -21,9 +21,9 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
 
         #region Ctors
 
-        public Index(IMediator mediator)
+        public Index(IInMemoryBus inMemoryBus)
         {
-            _mediator = mediator;
+            _inMemoryBus = inMemoryBus;
         }
 
         #endregion
@@ -52,7 +52,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
             if (!ModelState.IsValid)
                 return LoginFailed();
 
-            var loginRespone = await _mediator.Send(UserLoginRequest);
+            var loginRespone = await _inMemoryBus.Send(UserLoginRequest);
             if (loginRespone.IsSuccess)
                 return RedirectToReturnUrl(UserLoginRequest.ReturnUrl);
 

@@ -1,0 +1,239 @@
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.text-dark-hover:hover {
+    color: #343a40 !important;
+}
+
+.footer {
+    min-height: 60px;
+    line-height: 60px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.nav .nav-item .nav-link {
+    color: black !important;
+    font-size: medium;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.card {
+    margin-bottom: 6px !important;
+}
+
+.card-body small {
+    font-size: 13px;
+}
+
+.bg-warning {
+    background-color: #ffe14c !important;
+}
+
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+
+#cover {
+    /*background: #222 url('https://unsplash.it/1920/1080/?random') center center no-repeat;*/
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+#cover form:before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #212529;
+    z-index: -1;
+    border-radius: 10px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #091e4214;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #091e4221;
+}
+
+.validation-message {
+    color: #dc3545 !important;
+}
+
+.btn, a {
+    cursor: pointer !important;
+}
+
+#main {
+    min-height: 500px;
+}
+
+body {
+    padding-top: 5rem;
+}
+
+.blazored-toast-container {
+    z-index: 200 !important;
+}
+
+.blazored-modal-container {
+    z-index: 100 !important;
+}
+
+#footer p {
+    font-size: .75rem;
+}
+
+.min-height-9rem {
+    height: 9rem !important;
+}
+
+.min-height-22rem {
+    height: 22rem !important;
+}
+
+.bg-light-gray {
+    background-color: #ebecf0 !important;
+}
+
+.task-card {
+    background-color: #ebecf0 !important;
+}
+
+    .task-card > .card-header {
+        border: none;
+        background: #ebecf0 !important;
+    }
+
+    .task-card > .card-body {
+        min-height: 22rem !important;
+        max-height: 22rem !important;
+        overflow: auto;
+    }
+
+
+.task-item {
+    box-shadow: 0 1px 0 #091e4240;
+    cursor: pointer;
+    background: #fff;
+    transition: all ease-in 0.2s;
+}
+
+    .task-item:hover {
+        background: #ebecf0;
+        box-shadow: #091e4240 0px 1px 2px 0px, #091e4240 0px 1px 2px 1px;
+    }
+
+.card-hover:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px 0px inset;
+}
+
+
+#board-breadcrumb {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+
+    #board-breadcrumb > i {
+        color: white !important;
+    }
+
+    #board-breadcrumb > a {
+        color: white !important;
+    }
+
+    #board-breadcrumb > .breadcrumb-item {
+        color: white !important;
+    }
+
+        #board-breadcrumb > .breadcrumb-item > a {
+            color: white !important;
+        }
+
+.task-list-group {
+    border: 1px solid rgba(0,0,0,.125) !important;
+}
+
+.task-list-group-header {
+    background-color: #f8f9fa !important;
+    border: 0px !important;
+}
+
+.task-list-group-item {
+    background-color: #f8f9fa !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid rgba(0,0,0,.125) !important;
+    margin: 0px;
+}
+
+
+.btn-add-task {
+    box-shadow: 1px 1px 1px #091e4240;
+}
+
+
+/* MD breakpoint*/
+@media (min-width: 768px) {
+    /* CUSTOM WIDTHS */
+    .w-md-50 {
+        width: 50% !important;
+    }
+
+    .w-md-75 {
+        width: 75% !important;
+    }
+}
+
+.blazored-modal-title {
+    font-size: 1.5rem !important;
+}

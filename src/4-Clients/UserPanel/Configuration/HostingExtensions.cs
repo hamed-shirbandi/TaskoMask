@@ -1,5 +1,4 @@
-﻿using Blazored.LocalStorage;
-using Blazored.Modal;
+﻿using Blazored.Modal;
 using Blazored.Toast;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
@@ -46,7 +45,7 @@ namespace TaskoMask.Clients.UserPanel.Configuration
                 name: "UserPanelApiGateway",
                 configureClient: client =>
                 {
-                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));
+                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway")+ "/monolithService");
                     client.Timeout = TimeSpan.FromSeconds(50);
                 }).AddHttpMessageHandler<IdentityServerAuthorizationHandler>();
 

@@ -20,6 +20,8 @@ namespace TaskoMask.Services.Monolith.Api.Configuration
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
+            builder.Services.AddEndpointsApiExplorer();
+
             return builder.Build();
         }
 

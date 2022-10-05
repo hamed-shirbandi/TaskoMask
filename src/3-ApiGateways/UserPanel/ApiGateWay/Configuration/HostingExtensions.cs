@@ -30,6 +30,8 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
 
             builder.Services.AddSwaggerForOcelot(builder.Configuration);
 
+            builder.Services.AddCors();
+
             builder.Services.AddAuthentication()
              .AddJwtBearer(builder.Configuration["AuthenticationProviderKey"], x =>
              {
@@ -55,6 +57,11 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
             {
                 opt.PathToSwaggerGenerator = "/swagger/docs";
             });
+
+            app.UseCors(builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseOcelot().Wait();
 

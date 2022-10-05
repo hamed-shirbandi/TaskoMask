@@ -66,7 +66,6 @@ namespace TaskoMask.Clients.UserPanel.Configuration
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddScoped<IAccountApiService, AccountApiService>();
             services.AddScoped<IOrganizationApiService, OrganizationApiService>();
             services.AddScoped<IProjectApiService, ProjectApiService>();
             services.AddScoped<IBoardApiService, BoardApiService>();

@@ -1,8 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using Blazored.Modal;
 using Blazored.Toast;
-using TaskoMask.BuildingBlocks.Web.ApiContracts;
-using TaskoMask.BuildingBlocks.Web.Services.API;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 using TaskoMask.BuildingBlocks.Web.Configuration;
@@ -52,29 +50,12 @@ namespace TaskoMask.Clients.UserPanel.Configuration
                 }).AddHttpMessageHandler<IdentityServerAuthorizationHandler>();
 
             services.AddScoped<IdentityServerAuthorizationHandler>();
+           
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelApiGateway"));
-            services.HttpClientService();
+           
+            services.AddHttpClientService();
 
         }
-
-       
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AddApiServices(this IServiceCollection services)
-        {
-            if (services == null) throw new ArgumentNullException(nameof(services));
-
-            services.AddScoped<IOrganizationApiService, OrganizationApiService>();
-            services.AddScoped<IProjectApiService, ProjectApiService>();
-            services.AddScoped<IBoardApiService, BoardApiService>();
-            services.AddScoped<ICardApiService, CardApiService>();
-            services.AddScoped<ITaskApiService, TaskApiService>();
-            services.AddScoped<IOwnerApiService, OwnerApiService>();
-            services.AddScoped<ICommentApiService, CommentApiService>();
-        }
-
 
 
 

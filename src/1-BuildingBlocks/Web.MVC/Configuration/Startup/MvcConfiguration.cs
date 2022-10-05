@@ -16,7 +16,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// <summary>
         /// 
         /// </summary>
-        public static void AddMvcPreConfigured(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
+        public static void AddMvcPreConfigured(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

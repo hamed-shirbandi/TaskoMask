@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.Cookie;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
+using TaskoMask.BuildingBlocks.Web.Configuration;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
 {
@@ -21,6 +22,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         /// </summary>
         public static void AddCommonServices(this IServiceCollection services )
         {
+            services.AddSharedService();
             services.AddHttpContextAccessor();
             services.AddAuthenticatedUserService();
             services.AddCookieService();

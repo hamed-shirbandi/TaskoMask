@@ -16,7 +16,7 @@ namespace TaskoMask.Clients.Website.Configuration
 
             builder.AddCustomSerilog();
 
-            builder.Services.AddMvcPreConfigured(builder.Configuration, builder.Environment);
+            builder.Services.AddMvcPreConfigured();
 
             return builder.Build();
         }

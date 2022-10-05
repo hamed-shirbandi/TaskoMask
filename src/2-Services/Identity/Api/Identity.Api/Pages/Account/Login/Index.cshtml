@@ -1,40 +1,31 @@
 @page
-@model TaskoMask.Services.Identity.Application.UseCases.UserLogin.UserLoginRequest
+@model TaskoMask.Services.Identity.Api.Pages.Login.Index
 
+<h3 class=" py-2 ">Login to TaskoMask!</h3>
+<div class="px-2">
+    <form asp-page="/Account/Login/Index">
 
-<section id="cover">
-    <div id="cover-caption">
-        <div class="container">
-            <div class="row text-white">
-                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                    <h3 class=" py-2 ">Login to TaskoMask!</h3>
-                    <div class="px-2">
-                         <form asp-page="/Account/Login/Index">
+        <partial name="_ValidationSummary" />
 
-                            <partial name="_ValidationSummary" />
+        <input type="hidden" asp-for="UserLoginRequest.ReturnUrl" />
 
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Username" asp-for="UserName" autofocus>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" asp-for="RememberLogin">
-                                    <label class="form-check-label" asp-for="RememberLogin">
-                                        Remember My Login
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button id="loginBtn" type="submit" class="btn btn-success">Login</button>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="UserName" asp-for="UserLoginRequest.UserName">
+        </div>
+        <div class="form-group">
+            <input type="Password" class="form-control" placeholder="UserLoginRequest.Password" asp-for="UserLoginRequest.Password" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" asp-for="UserLoginRequest.RememberLogin">
+                <label class="form-check-label" asp-for="UserLoginRequest.RememberLogin">
+                    Remember My Login
+                </label>
             </div>
         </div>
-    </div>
-</section>
+        <div class="form-group">
+            <button id="loginBtn" type="submit" class="btn btn-success">Login</button>
+        </div>
+    </form>
+
+</div>

@@ -1,14 +1,8 @@
-using Duende.IdentityServer.Events;
-using Duende.IdentityServer.Models;
-using Duende.IdentityServer.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
-using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Api.Pages.Login
 {
@@ -60,7 +54,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
 
             var loginRespone = await _mediator.Send(UserLoginRequest);
             if (loginRespone.IsSuccess)
-                return Redirect(UserLoginRequest.ReturnUrl);
+                return RedirectToReturnUrl(UserLoginRequest.ReturnUrl);
 
             return LoginFailed(loginRespone.Message);
         }
@@ -77,12 +71,12 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
         /// <summary>
         /// 
         /// </summary>
-        private IActionResult LoginFailed(string errorMessage="")
+        private IActionResult LoginFailed(string errorMessage = "")
         {
             BuildModel(UserLoginRequest.ReturnUrl);
 
             if (!string.IsNullOrEmpty(errorMessage))
-                ModelState.AddModelError(string.Empty,errorMessage);
+                ModelState.AddModelError(string.Empty, errorMessage);
 
             return Page();
         }
@@ -102,6 +96,12 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
             };
         }
 
+
+
+        private IActionResult RedirectToReturnUrl(string returnUrl)
+        {
+            return Redirect(string.IsNullOrEmpty(returnUrl)?"/":returnUrl);
+        }
 
         #endregion
     }

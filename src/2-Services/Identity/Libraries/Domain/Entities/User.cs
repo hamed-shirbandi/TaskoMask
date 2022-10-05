@@ -6,7 +6,7 @@ namespace TaskoMask.Services.Identity.Domain.Entities
     {
         public User()
         {
-
+            Id= Guid.NewGuid().ToString();
         }
 
         public bool IsActive { get; set; }

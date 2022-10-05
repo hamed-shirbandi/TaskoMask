@@ -12,7 +12,7 @@ using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 namespace TaskoMask.Services.Identity.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20221004105228_init")]
+    [Migration("20221005133836_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

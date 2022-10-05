@@ -6,7 +6,7 @@ namespace TaskoMask.Services.Identity.Domain.Entities
     {
         public UserToken()
         {
-
+            
         }
     }
 }

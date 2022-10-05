@@ -88,7 +88,6 @@ services:
       context: ../..
       dockerfile: src/2-Services/Identity/Api/Identity.Api/Dockerfile
     ports:
-      - 5016:80
       - 5017:443
     networks:
       - taskomask-network

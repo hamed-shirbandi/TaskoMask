@@ -18,7 +18,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DataProviders
 
             var dbContext = serviceScope.ServiceProvider.GetService<IdentityDbContext>();
 
-            dbContext.Database.Migrate();
+            dbContext.Database.EnsureCreated();
         }
 
 

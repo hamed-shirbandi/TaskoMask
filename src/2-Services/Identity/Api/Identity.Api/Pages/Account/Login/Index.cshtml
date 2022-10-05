@@ -6,14 +6,16 @@
     <form asp-page="/Account/Login/Index">
 
         <partial name="_ValidationSummary" />
-
+    
         <input type="hidden" asp-for="UserLoginRequest.ReturnUrl" />
 
         <div class="form-group">
             <input class="form-control" placeholder="UserName" asp-for="UserLoginRequest.UserName">
+            <span asp-validation-for="UserLoginRequest.UserName" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="Password" class="form-control" placeholder="UserLoginRequest.Password" asp-for="UserLoginRequest.Password" autocomplete="off">
+            <input type="Password" class="form-control" placeholder="Password" asp-for="UserLoginRequest.Password" autocomplete="off">
+            <span asp-validation-for="UserLoginRequest.Password" class="text-danger"></span>
         </div>
         <div class="form-group">
             <div class="form-check">

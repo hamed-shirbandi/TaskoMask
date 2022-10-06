@@ -5,6 +5,7 @@ using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 using TaskoMask.BuildingBlocks.Web.Configuration;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.Clients.UserPanel.Services.API;
+using TaskoMask.Clients.UserPanel.Helpers;
 
 namespace TaskoMask.Clients.UserPanel.Configuration
 {
@@ -41,18 +42,22 @@ namespace TaskoMask.Clients.UserPanel.Configuration
         /// </summary>
         private static void AddHttpServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddHttpClient(
-                name: "UserPanelApiGateway",
-                configureClient: client =>
-                {
-                    client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));
-                    client.Timeout = TimeSpan.FromSeconds(50);
-                }).AddHttpMessageHandler<IdentityServerAuthorizationHandler>();
-
             services.AddScoped<IdentityServerAuthorizationHandler>();
-           
-            services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("UserPanelApiGateway"));
-           
+
+            //For Authorizeed APIs
+            services.AddHttpClient(name: MagicKey.Protected_UserPanelApiGateway_Client, configureClient: client =>
+            {
+                client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));
+                client.Timeout = TimeSpan.FromSeconds(50);
+            }).AddHttpMessageHandler<IdentityServerAuthorizationHandler>();
+
+            //For Anonymous APIs
+            services.AddHttpClient(name: MagicKey.Public_UserPanelApiGateway_Client, configureClient: client =>
+            {
+                client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));
+                client.Timeout = TimeSpan.FromSeconds(50);
+            });
+
             services.AddHttpClientService();
 
         }

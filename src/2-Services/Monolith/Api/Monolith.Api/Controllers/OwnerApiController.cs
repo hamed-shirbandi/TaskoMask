@@ -6,11 +6,10 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Services;
-using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
-    [Authorize("full-access")]
+    [Authorize("user-full-access")]
     public class OwnerApiController : BaseApiController, IOwnerApiService
     {
         #region Fields
@@ -38,9 +37,10 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         [HttpPost]
         [Route("owner")]
         [AllowAnonymous]
-        public async Task<Result<CommandResult>> Register(RegisterOwnerDto input)
+
+        public async Task<Result<CommandResult>> Register([FromBody] RegisterOwnerDto input)
         {
-            return  await _ownerService.RegisterAndSeedDefaultWorkspaceAsync(input);
+            return await _ownerService.RegisterAsync(input);
         }
 
 

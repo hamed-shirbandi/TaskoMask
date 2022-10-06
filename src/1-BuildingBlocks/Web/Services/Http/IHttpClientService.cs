@@ -13,5 +13,7 @@ namespace TaskoMask.BuildingBlocks.Web.Services.Http
         Task<Result<TResult>> DeleteAsync<TResult>(string url);
         Uri GetBaseAddress();
         void SetBaseAddress(string httpClientBaseAddress);
+        void SetHttpClient(string httpClientName);
+        IHttpClientService WithNamedClient(string httpClientName);
     }
 }

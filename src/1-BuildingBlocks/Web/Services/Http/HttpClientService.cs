@@ -11,8 +11,8 @@ namespace TaskoMask.BuildingBlocks.Web.Services.Http
     {
         #region Fields
 
-        private readonly HttpClient _httpClient;
-
+        private HttpClient _httpClient;
+        private readonly IHttpClientFactory _clientFactory;
 
         #endregion
 
@@ -23,9 +23,10 @@ namespace TaskoMask.BuildingBlocks.Web.Services.Http
         /// <summary>
         /// 
         /// </summary>
-        public HttpClientService(HttpClient httpClient)
+        public HttpClientService(IHttpClientFactory clientFactory)
         {
-            _httpClient = httpClient;
+            _httpClient = clientFactory.CreateClient();
+            _clientFactory = clientFactory;
         }
 
 
@@ -105,13 +106,33 @@ namespace TaskoMask.BuildingBlocks.Web.Services.Http
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
         public void SetBaseAddress(string httpClientBaseAddress)
         {
             _httpClient.BaseAddress = new Uri(httpClientBaseAddress);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SetHttpClient(string httpClientName)
+        {
+            _httpClient = _clientFactory.CreateClient(httpClientName);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IHttpClientService WithNamedClient(string httpClientName)
+        {
+            SetHttpClient(httpClientName);
+            return this;
         }
 
 

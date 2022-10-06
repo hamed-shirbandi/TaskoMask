@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
+using TaskoMask.BuildingBlocks.Application.Exceptions;
+using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mediator
 {
@@ -15,6 +17,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mediator
         {
             //Load all commands and queries ...
             services.AddMediatR(typeof(UserLoginUseCase));
+
             //Load all fluent validation to use in ValidationBehaviour
             services.AddValidatorsFromAssembly(typeof(UserLoginValidation<>).Assembly);
 

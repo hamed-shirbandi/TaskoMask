@@ -98,6 +98,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             },
             RedirectUris = { "https://localhost:5011/authentication/login-callback/" },
             PostLogoutRedirectUris = { "https://localhost:5011/authentication/logout-callback/" },
+            ClientUri= "https://localhost:5011"
         };
 
     }

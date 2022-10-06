@@ -22,11 +22,11 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddMediator();
             services.AddInMemoryBus();
             services.AddDbContext();
             services.AddAspNetIdentity(configuration);
             services.AddMapper();
-            services.AddMediator();
         }
 
 

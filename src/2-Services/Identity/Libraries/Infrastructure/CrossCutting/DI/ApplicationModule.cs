@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Application.Behaviors;
-using TaskoMask.BuildingBlocks.Application.Services;
+using TaskoMask.BuildingBlocks.Application.Exceptions;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
 {
@@ -18,6 +19,9 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         public static void AddApplicationModule(this IServiceCollection services)
         {
             services.AddValidationBehaviour();
+            services.AddApplicationExceptionsHandler();
+            services.AddDomainNotificationHandler();
+
         }
 
 

@@ -29,7 +29,9 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt
                 {
                     options.AddPolicy(item.Name, policy =>
                     {
-                        policy.RequireAuthenticatedUser();
+                        if (item.RequireAuthenticatedUser)
+                            policy.RequireAuthenticatedUser();
+
                         policy.RequireClaim("scope", item.AllowedScopes);
                     });
                 }

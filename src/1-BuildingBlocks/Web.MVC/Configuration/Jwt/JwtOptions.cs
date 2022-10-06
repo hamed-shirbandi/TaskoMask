@@ -11,6 +11,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt
     public class AuthorizationPolicy
     {
         public string Name { get; set; }
+        public bool RequireAuthenticatedUser { get; set; }
         public string[] AllowedScopes { get; set; }
     }
 }

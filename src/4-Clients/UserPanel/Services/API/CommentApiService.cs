@@ -5,19 +5,17 @@ using TaskoMask.BuildingBlocks.Web.Services.Http;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class CommentApiService : ICommentApiService
+    public class CommentApiService : BaseApiService, ICommentApiService
     {
         #region Fields
 
-        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public CommentApiService(IHttpClientService httpClientService)
+        public CommentApiService(IHttpClientService httpClientService) : base(httpClientService)
         {
-            _httpClientService = httpClientService;
         }
 
         #endregion

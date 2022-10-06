@@ -1,25 +1,23 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
-using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
+using TaskoMask.Clients.UserPanel.Helpers;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class OwnerApiService : IOwnerApiService
+    public class OwnerApiService : BaseApiService, IOwnerApiService
     {
         #region Fields
 
-        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public OwnerApiService(IHttpClientService httpClientService)
+        public OwnerApiService(IHttpClientService httpClientService):base(httpClientService)
         {
-            _httpClientService = httpClientService;
+
         }
 
         #endregion
@@ -34,6 +32,10 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         public async Task<Result<CommandResult>> Register(RegisterOwnerDto input)
         {
             var url = $"/monolithService/owner";
+
+            //because this api is anonymous (see HostingExtensions.AddHttpServices())
+            _httpClientService.SetHttpClient(MagicKey.Public_UserPanelApiGateway_Client);
+
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 

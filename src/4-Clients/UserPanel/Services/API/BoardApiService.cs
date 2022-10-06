@@ -6,19 +6,17 @@ using TaskoMask.BuildingBlocks.Web.Services.Http;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class BoardApiService : IBoardApiService
+    public class BoardApiService : BaseApiService, IBoardApiService
     {
         #region Fields
 
-        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public BoardApiService(IHttpClientService httpClientService)
+        public BoardApiService(IHttpClientService httpClientService) : base(httpClientService)
         {
-            _httpClientService = httpClientService;
         }
 
         #endregion

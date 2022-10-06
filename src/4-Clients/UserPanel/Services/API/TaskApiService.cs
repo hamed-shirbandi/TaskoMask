@@ -2,24 +2,21 @@
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Web.ApiContracts;
-using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class TaskApiService : ITaskApiService
+    public class TaskApiService : BaseApiService, ITaskApiService
     {
         #region Fields
 
-        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public TaskApiService(IHttpClientService httpClientService)
+        public TaskApiService(IHttpClientService httpClientService) : base(httpClientService)
         {
-            _httpClientService = httpClientService;
         }
 
         #endregion

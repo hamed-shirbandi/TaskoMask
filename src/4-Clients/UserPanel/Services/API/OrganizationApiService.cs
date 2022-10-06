@@ -8,19 +8,17 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class OrganizationApiService : IOrganizationApiService
+    public class OrganizationApiService : BaseApiService, IOrganizationApiService
     {
         #region Fields
 
-        private readonly IHttpClientService _httpClientService;
 
         #endregion
 
         #region Ctor
 
-        public OrganizationApiService(IHttpClientService httpClientService)
+        public OrganizationApiService(IHttpClientService httpClientService) : base(httpClientService)
         {
-            _httpClientService = httpClientService;
         }
 
         #endregion

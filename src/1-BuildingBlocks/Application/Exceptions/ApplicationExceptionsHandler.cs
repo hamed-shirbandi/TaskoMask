@@ -50,19 +50,19 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
                 _notifications.Add(exceptionType.Name, exception.Message);
 
 
-            if (exceptionType == typeof(DomainException))
+            if (exceptionType == typeof(ApplicationException))
             {
-                //log DomainException or ...
-            }
-
-            else if (exceptionType == typeof(ApplicationException))
-            {
-                //log ApplicationException or ...
+                //log ApplicationException ...
             }
 
             else if (exceptionType == typeof(ValidationException))
             {
-                //log ValidationException or ...
+                //log ValidationException ...
+            }
+
+            else if (exceptionType == typeof(DomainException))
+            {
+                //log DomainException ...
             }
 
             state.SetHandled(default);

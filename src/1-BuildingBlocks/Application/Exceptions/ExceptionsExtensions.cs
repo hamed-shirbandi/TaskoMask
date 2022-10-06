@@ -11,7 +11,7 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
         /// </summary>
         public static IServiceCollection AddApplicationExceptionsHandler(this IServiceCollection services)
         {
-           return  services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
+            return services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
         }
     }
 }

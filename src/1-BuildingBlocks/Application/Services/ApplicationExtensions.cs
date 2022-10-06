@@ -18,8 +18,8 @@ namespace TaskoMask.BuildingBlocks.Application.Services
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
 
-            services.AddApplicationBehaviors();
             services.AddApplicationExceptionsHandler();
+            services.AddApplicationBehaviors();
             services.AddDomainNotificationHandler();
 
             return services;

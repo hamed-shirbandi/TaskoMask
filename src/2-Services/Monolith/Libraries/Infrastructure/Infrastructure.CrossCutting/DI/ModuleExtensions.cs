@@ -18,13 +18,14 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddModules(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddMediator();
+
+            services.AddAutoMapper();
+
             services.AddApplicationModule();
 
             services.AddInfrastructureModule(configuration);
 
-            services.AddAutoMapper();
-
-            services.AddMediator();
         }
 
     }

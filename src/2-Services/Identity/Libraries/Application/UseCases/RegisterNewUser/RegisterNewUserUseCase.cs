@@ -37,6 +37,8 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
                 return Result.Failure(errors: errors, message: ContractsMessages.Create_Failed);
             }
 
+            //TODO publish NewUserRegistered event
+
             return Result.Success();
         }
     }

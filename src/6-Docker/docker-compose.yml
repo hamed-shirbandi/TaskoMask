@@ -84,7 +84,8 @@ services:
     restart: on-failure
     environment:
       ConnectionString__Connection: "Server=sql;Database=[DatabaseName];User=sa;Password=Your_password123;"
-    build:
+      Redis__Connection: "redis:6379"
+      build:
       context: ../..
       dockerfile: src/2-Services/Identity/Api/Identity.Api/Dockerfile
     ports:
@@ -93,6 +94,7 @@ services:
       - taskomask-network
     depends_on:
       - sql
+      - redis
 
   user-panel-api-gateway:
     container_name: user-panel-api-gateway

@@ -13,7 +13,7 @@ namespace TaskoMask.BuildingBlocks.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceCollection AddBuildingBlocksApplicationServices(this IServiceCollection services)
+        public static void AddBuildingBlocksApplicationServices(this IServiceCollection services)
         {
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
@@ -21,8 +21,6 @@ namespace TaskoMask.BuildingBlocks.Application.Services
             services.AddApplicationExceptionsHandler();
             services.AddApplicationBehaviors();
             services.AddDomainNotificationHandler();
-
-            return services;
         }
     }
 }

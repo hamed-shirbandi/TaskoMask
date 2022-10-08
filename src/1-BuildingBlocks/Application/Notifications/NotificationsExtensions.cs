@@ -9,10 +9,9 @@ namespace TaskoMask.BuildingBlocks.Application.Notifications
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceCollection AddDomainNotificationHandler(this IServiceCollection services)
+        public static void AddDomainNotificationHandler(this IServiceCollection services)
         {
-            return services.AddScoped<INotificationHandler, NotificationHandler>();
-
+            services.AddScoped<INotificationHandler, NotificationHandler>();
         }
     }
 }

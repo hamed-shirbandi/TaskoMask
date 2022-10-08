@@ -9,9 +9,9 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceCollection AddApplicationExceptionsHandler(this IServiceCollection services)
+        public static void AddApplicationExceptionsHandler(this IServiceCollection services)
         {
-            return services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
+            services.AddScoped(typeof(IRequestExceptionHandler<,,>), typeof(ApplicationExceptionsHandler<,,>));
         }
     }
 }

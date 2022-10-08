@@ -7,9 +7,6 @@
 		<RootNamespace>TaskoMask.Services.Owner.Domain</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
-	</ItemGroup>
-	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Domain\Domain.csproj" />
 	</ItemGroup>
 	

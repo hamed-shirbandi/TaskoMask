@@ -17,7 +17,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
                 .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
                 .Build();
 
-            return new IdentityDbContext(configuration);
+            return new OwnerDbContext(configuration);
         }
     }
 }

@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>TaskoMask.Services.TaskoMask.Services.Owner.Api</AssemblyName>
+		<RootNamespace>TaskoMask.Services.TaskoMask.Services.Owner.Api</RootNamespace>
+	</PropertyGroup>
+
+</Project>

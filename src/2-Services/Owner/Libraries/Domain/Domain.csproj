@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>TaskoMask.Services.Owner.Domain</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Owner.Domain</RootNamespace>
+	</PropertyGroup>
+
+</Project>

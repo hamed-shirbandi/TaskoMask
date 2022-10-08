@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "Owner.Api": {
+    "Owner.Write.Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

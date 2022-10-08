@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using TaskoMask.Services.Owner.Infrastructure.Data.DbContext;
-using System;
 
 namespace TaskoMask.Services.Owner.Infrastructure.Data.DataProviders
 {

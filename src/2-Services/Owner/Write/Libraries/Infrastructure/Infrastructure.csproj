@@ -15,7 +15,7 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
+		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
 		<ProjectReference Include="..\Application\Application.csproj" />
 	</ItemGroup>
 	

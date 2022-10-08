@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
 using TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI;
 
-namespace TaskoMask.Services.Owner.Api.Configuration
+namespace TaskoMask.Services.Owner.Write.Api.Configuration
 {
     internal static class HostingExtensions
     {

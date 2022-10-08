@@ -21,7 +21,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
             services.AddValidationBehaviour();
             services.AddApplicationExceptionsHandler();
             services.AddDomainNotificationHandler();
-
+            services.AddEventStoringBehavior();
         }
 
 

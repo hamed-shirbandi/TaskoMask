@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.AspNetIdentity;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mediator;
@@ -23,10 +24,11 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMediator();
+            services.AddMapper();
             services.AddInMemoryBus();
+            services.AddRedisEventStoreService();
             services.AddDbContext();
             services.AddAspNetIdentity(configuration);
-            services.AddMapper();
         }
 
 

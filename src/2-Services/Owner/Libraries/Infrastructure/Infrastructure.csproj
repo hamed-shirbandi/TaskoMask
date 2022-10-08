@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -6,5 +6,17 @@
 		<AssemblyName>TaskoMask.Services.Owner.Infrastructure</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Owner.Infrastructure</RootNamespace>
 	</PropertyGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
+		<ProjectReference Include="..\Application\Application.csproj" />
+	</ItemGroup>
+	
 </Project>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -6,5 +6,10 @@
 		<AssemblyName>TaskoMask.Services.TaskoMask.Services.Owner.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.TaskoMask.Services.Owner.Api</RootNamespace>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
+		<ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.csproj" />
+	</ItemGroup>
 
 </Project>

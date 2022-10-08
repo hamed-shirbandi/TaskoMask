@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -7,4 +7,9 @@
 		<RootNamespace>TaskoMask.Services.Owner.Application</RootNamespace>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Application\Application.csproj" />
+		<ProjectReference Include="..\Domain\Domain.csproj" />
+	</ItemGroup>
+	
 </Project>

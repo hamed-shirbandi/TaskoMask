@@ -2,13 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
-using TaskoMask.Services.Identity.Infrastructure.CrossCutting.AspNetIdentity;
-using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper;
-using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mediator;
-using TaskoMask.Services.Identity.Infrastructure.Data.DataProviders;
-using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Owner.Infrastructure.CrossCutting.Mapper;
+using TaskoMask.Services.Owner.Infrastructure.CrossCutting.Mediator;
 
-namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
+namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
 {
 
     /// <summary>
@@ -17,7 +14,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
     public static class InfrastructureModule
     {
 
-  
+
         /// <summary>
         /// 
         /// </summary>
@@ -27,19 +24,9 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
             services.AddMapper();
             services.AddInMemoryBus();
             services.AddRedisEventStoreService();
-            services.AddDbContext();
-            services.AddAspNetIdentity(configuration);
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void AddDbContext(this IServiceCollection services)
-        {
-            services.AddDbContext<IdentityDbContext>();
-        }
 
 
 
@@ -48,8 +35,8 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
-            serviceProvider.InitialDatabase();
-            serviceProvider.SeedEssentialData();
+            //serviceProvider.InitialDatabase();
+            //serviceProvider.SeedEssentialData();
         }
 
     }

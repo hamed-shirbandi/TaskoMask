@@ -1,8 +1,9 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
+using TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI;
 
-namespace TaskoMask.Services.Identity.Api.Configuration
+namespace TaskoMask.Services.Owner.Api.Configuration
 {
     internal static class HostingExtensions
     {
@@ -15,13 +16,9 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         {
             builder.AddCustomSerilog();
 
-            builder.Services.AddRazorPages();
-
             builder.Services.AddModules(builder.Configuration);
 
-            builder.Services.AddIdentityServer();
-
-            builder.Services.AddAuthentication();
+            builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
             return builder.Build();
         }
@@ -33,19 +30,17 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// </summary>
         public static WebApplication ConfigurePipeline(this WebApplication app)
         {
+
             app.UseSerilogRequestLogging();
 
-            if (app.Environment.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-
-            app.UseStaticFiles();
-            app.UseRouting();
-            app.UseIdentityServer();
-            app.UseAuthorization();
-
-            app.MapRazorPages().RequireAuthorization();
+            app.UseWebApiPreConfigured(app.Services, app.Environment);
 
             app.Services.InitialDatabasesAndSeedEssentialData();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             return app;
         }

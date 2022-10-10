@@ -1,9 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
+using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.Services.Owner.Infrastructure.CrossCutting.Mapper;
 using TaskoMask.Services.Owner.Infrastructure.CrossCutting.Mediator;
+using TaskoMask.Services.Owner.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
 {
@@ -20,13 +24,25 @@ namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddMediator();
             services.AddMapper();
             services.AddInMemoryBus();
             services.AddRedisEventStoreService();
+            services.AddDbContext(options =>
+            {
+                configuration.GetSection("EntityFramework").Bind(options);
+            });
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddDbContext(this IServiceCollection services, Action<EFDatabaseOptions> setupAction)
+        {
+            services.Configure(setupAction);
+            services.AddDbContext<OwnerDbContext>();
+        }
 
 
 

@@ -1,15 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 
 namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
 {
-    public class OwnerDbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class OwnerDbContext : EFBaseDbContext
     {
-        private readonly IConfiguration _configuration;
-
-        public OwnerDbContext(IConfiguration configuration)
+        public OwnerDbContext(IOptions<EFDatabaseOptions> options):base(options)
         {
-            _configuration = configuration;
         }
 
 
@@ -18,10 +16,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
         /// </summary>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connection = _configuration.GetValue<string>("ConnectionString:Connection");
-            var databaseName = _configuration.GetValue<string>("ConnectionString:DatabaseName");
-
-            optionsBuilder.UseSqlServer(connection.Replace("[DatabaseName]", databaseName));
+           base.OnConfiguring(optionsBuilder);
         }
 
 
@@ -32,7 +27,6 @@ namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
         }
     }
 }

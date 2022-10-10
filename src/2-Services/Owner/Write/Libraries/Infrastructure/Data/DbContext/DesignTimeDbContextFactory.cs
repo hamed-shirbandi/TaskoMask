@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 
 namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
 {
@@ -17,7 +19,10 @@ namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
                 .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
                 .Build();
 
-            return new OwnerDbContext(configuration);
+            var entityFrameworkSection = configuration.GetSection("EntityFramework").Get<EFDatabaseOptions>();
+            var dbOptions = Options.Create(entityFrameworkSection);
+
+            return new OwnerDbContext(dbOptions);
         }
     }
 }

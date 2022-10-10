@@ -245,7 +245,7 @@ Find Hamed around the web and feel free to ask your question.
 # Change logs
 *	### Sep, 2022
     - [x] Extract Identity Service
-    - [x] Add Identity Server as IDP
+    - [x] Add IdentityServer as IDP
     - [x] Add ASP.NET Identity
     - [x] Add User Panel API Gateway
     - [x] Refactor to Clean Architecture

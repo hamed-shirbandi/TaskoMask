@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<AssemblyName>TaskoMask.Services.Owner.UnitTests</AssemblyName>
-		<RootNamespace>TaskoMask.Services.Owner.UnitTests</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Owner.Write.UnitTests</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Owner.Write.UnitTests</RootNamespace>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 

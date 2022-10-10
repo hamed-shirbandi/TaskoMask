@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
-using TaskoMask.Services.Identity.Infrastructure.Data.DataProviders;
+using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
 {

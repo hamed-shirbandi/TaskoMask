@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.Infrastructure.Data.DataProviders
+namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
 {
 
     /// <summary>

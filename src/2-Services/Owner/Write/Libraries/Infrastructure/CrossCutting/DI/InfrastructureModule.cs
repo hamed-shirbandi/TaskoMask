@@ -51,8 +51,8 @@ namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
-            //serviceProvider.InitialDatabase();
-            //serviceProvider.SeedEssentialData();
+            serviceProvider.InitialDatabase<OwnerDbContext>();
+            // no need for seeding any data
         }
 
     }

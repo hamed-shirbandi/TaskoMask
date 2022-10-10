@@ -26,9 +26,9 @@
 	</ItemGroup>
 
 	<Target Name="CopyConfig" AfterTargets="AfterBuild">
-		<Copy SourceFiles="..\..\Api\Owner.Api\appsettings.json" DestinationFolder="$(OutDir)" />
-		<Copy SourceFiles="..\..\Api\Owner.Api\appsettings.Development.json" DestinationFolder="$(OutDir)" />
-		<Copy SourceFiles="..\..\Api\Owner.Api\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\Api\Owner.Write.Api\appsettings.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\Api\Owner.Write.Api\appsettings.Development.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\..\Api\Owner.Write.Api\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
 	</Target>
 
 

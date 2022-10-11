@@ -4,7 +4,7 @@ using System;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.EntityFramework
 {
-    public static class EFExtensions
+    public static class EFCoreExtensions
     {
 
         /// <summary>

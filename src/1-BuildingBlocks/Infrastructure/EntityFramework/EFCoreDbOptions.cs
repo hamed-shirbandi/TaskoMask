@@ -1,7 +1,7 @@
 ﻿
 namespace TaskoMask.BuildingBlocks.Infrastructure.EntityFramework
 {
-    public class EFDatabaseOptions
+    public class EFCoreDbOptions
     {
         public string Connection { get; set; }
         public string DatabaseName { get; set; }

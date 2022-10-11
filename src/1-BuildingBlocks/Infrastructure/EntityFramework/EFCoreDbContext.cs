@@ -3,11 +3,11 @@ using Microsoft.Extensions.Options;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.EntityFramework
 {
-    public abstract class EFBaseDbContext: DbContext
+    public abstract class EFCoreDbContext: DbContext
     {
-        private readonly EFDatabaseOptions _databaseOptions;
+        private readonly EFCoreDbOptions _databaseOptions;
 
-        public EFBaseDbContext(IOptions<EFDatabaseOptions> databaseOptions)
+        public EFCoreDbContext(IOptions<EFCoreDbOptions> databaseOptions)
         {
             _databaseOptions = databaseOptions.Value;
         }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Domain.Data;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using System;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
@@ -11,14 +10,15 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
     public static class MongoDbExtensions
     {
 
-
         /// <summary>
-        /// 
+        /// Drop database
         /// </summary>
-        public static IServiceCollection AddMongoDbBaseRepository(this IServiceCollection services)
+        public static void DropDatabase<TContext>(IServiceProvider serviceProvider) where TContext : MongoDbContext
         {
-            return services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            using var serviceScope = serviceProvider.CreateScope();
+            var dbContext = serviceScope.ServiceProvider.GetService<TContext>();
 
+            dbContext.DropDatabase();
         }
 
 

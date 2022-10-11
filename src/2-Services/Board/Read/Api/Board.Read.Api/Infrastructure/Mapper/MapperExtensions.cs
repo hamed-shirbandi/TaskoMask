@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.Mapper
+namespace TaskoMask.Services.Board.Read.Api.Infrastructure.Mapper
 {
 
     /// <summary>

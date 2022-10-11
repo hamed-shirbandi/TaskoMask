@@ -2,13 +2,13 @@
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using Microsoft.Extensions.Options;
 
-namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext
+namespace TaskoMask.Services.Board.Read.Api.Infrastructure.DbContext
 {
 
     /// <summary>
     /// 
     /// </summary>
-    public class OwnerReadDbContext : MongoDbContext
+    public class BoardReadDbContext : MongoDbContext
     {
         #region Fields
 
@@ -18,7 +18,7 @@ namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext
         #region Ctors
 
 
-        public OwnerReadDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
+        public BoardReadDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
             //Owners = GetCollection<Owner>();
             //Boards = GetCollection<Board>();

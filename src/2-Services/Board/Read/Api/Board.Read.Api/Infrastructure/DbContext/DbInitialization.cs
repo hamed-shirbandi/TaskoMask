@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext
+namespace TaskoMask.Services.Board.Read.Api.Infrastructure.DbContext
 {
 
     /// <summary>
@@ -11,15 +11,26 @@ namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext
 
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
+        {
+            serviceProvider.SeedEssentialData();
+            serviceProvider.CreateIndexes();
+        }
+
+
+
+        /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
-        public static void SeedEssentialData(IServiceProvider serviceProvider)
+        public static void SeedEssentialData(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
-            var _dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
-            var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
+            var dbContext = serviceScope.ServiceProvider.GetService<BoardReadDbContext>();
+            var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
 
-            // var _owners = _dbContext.GetCollection<Owner>();
+            // var boards = dbContext.GetCollection<Board>();
             // seed data ...
         }
 
@@ -28,14 +39,12 @@ namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext
         /// <summary>
         /// Create index for collections
         /// </summary>
-        public static void CreateIndexes( IServiceProvider serviceProvider)
+        public static void CreateIndexes(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
-            var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
+            var dbContext = serviceScope.ServiceProvider.GetService<BoardReadDbContext>();
 
             //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Owner.Id), Unique = true }));
-            //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Email.Value), new CreateIndexOptions() { Name = nameof(Owner.Email) }));
-            //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName.Value), new CreateIndexOptions() { Name = nameof(Owner.DisplayName) }));
         }
 
     }

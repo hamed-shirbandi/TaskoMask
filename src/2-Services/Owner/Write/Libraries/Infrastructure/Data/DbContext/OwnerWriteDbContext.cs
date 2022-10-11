@@ -4,9 +4,9 @@ using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 
 namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
 {
-    public class OwnerDbContext : EFBaseDbContext
+    public class OwnerWriteDbContext : EFBaseDbContext
     {
-        public OwnerDbContext(IOptions<EFDatabaseOptions> options):base(options)
+        public OwnerWriteDbContext(IOptions<EFDatabaseOptions> options):base(options)
         {
         }
 

@@ -41,7 +41,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
         public static void AddDbContext(this IServiceCollection services, Action<EFDatabaseOptions> setupAction)
         {
             services.Configure(setupAction);
-            services.AddDbContext<OwnerDbContext>();
+            services.AddDbContext<OwnerWriteDbContext>();
         }
 
 
@@ -51,7 +51,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
-            serviceProvider.InitialDatabase<OwnerDbContext>();
+            serviceProvider.InitialDatabase<OwnerWriteDbContext>();
             // no need for seeding any data
         }
 

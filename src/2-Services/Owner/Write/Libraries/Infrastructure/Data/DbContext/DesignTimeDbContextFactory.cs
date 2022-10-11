@@ -8,9 +8,9 @@ namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
     /// <summary>
     /// Only used by EF Tooling
     /// </summary>
-    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<OwnerDbContext>
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<OwnerWriteDbContext>
     {
-        public OwnerDbContext CreateDbContext(string[] args)
+        public OwnerWriteDbContext CreateDbContext(string[] args)
         {
 
             var configuration = new ConfigurationBuilder()
@@ -22,7 +22,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
             var entityFrameworkSection = configuration.GetSection("EntityFramework").Get<EFDatabaseOptions>();
             var dbOptions = Options.Create(entityFrameworkSection);
 
-            return new OwnerDbContext(dbOptions);
+            return new OwnerWriteDbContext(dbOptions);
         }
     }
 }

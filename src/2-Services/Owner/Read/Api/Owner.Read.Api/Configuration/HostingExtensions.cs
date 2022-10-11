@@ -4,9 +4,8 @@ using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
-using TaskoMask.Services.Owner.Read.Api.Infrastructure.CrossCutting.Mapper;
-using TaskoMask.Services.Owner.Read.Api.Infrastructure.CrossCutting.Mediator;
-using TaskoMask.Services.Owner.Read.Api.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext;
+using TaskoMask.Services.Owner.Read.Api.Infrastructure.Mapper;
 
 namespace TaskoMask.Services.Owner.Read.Api.Configuration
 {
@@ -48,7 +47,7 @@ namespace TaskoMask.Services.Owner.Read.Api.Configuration
 
             app.UseWebApiPreConfigured(app.Services, app.Environment);
 
-           // app.Services.InitialDatabasesAndSeedEssentialData();
+            app.Services.InitialDatabasesAndSeedEssentialData();
 
             app.UseEndpoints(endpoints =>
             {

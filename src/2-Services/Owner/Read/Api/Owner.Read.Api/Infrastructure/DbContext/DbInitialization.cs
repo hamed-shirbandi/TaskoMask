@@ -11,9 +11,20 @@ namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext
 
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
+        {
+            serviceProvider.SeedEssentialData();
+            serviceProvider.CreateIndexes();
+        }
+
+
+
+        /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
-        public static void SeedEssentialData(IServiceProvider serviceProvider)
+        public static void SeedEssentialData(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
             var _dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
@@ -28,7 +39,7 @@ namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext
         /// <summary>
         /// Create index for collections
         /// </summary>
-        public static void CreateIndexes( IServiceProvider serviceProvider)
+        public static void CreateIndexes(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();

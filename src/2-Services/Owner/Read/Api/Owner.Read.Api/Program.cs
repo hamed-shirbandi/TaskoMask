@@ -1,5 +1,8 @@
+
+using TaskoMask.Services.Owner.Read.Api.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+var app = builder.ConfigureServices().ConfigurePipeline();
 
 app.Run();

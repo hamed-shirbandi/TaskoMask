@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
-using TaskoMask.Services.Owner.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Board.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
+namespace TaskoMask.Services.Board.Infrastructure.CrossCutting.DI
 {
 
     /// <summary>
@@ -36,7 +36,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
         public static void AddDbContext(this IServiceCollection services, Action<EFCoreDbOptions> setupAction)
         {
             services.Configure(setupAction);
-            services.AddDbContext<OwnerWriteDbContext>();
+            services.AddDbContext<BoardWriteDbContext>();
         }
 
 
@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
-            serviceProvider.InitialDatabase<OwnerWriteDbContext>();
+            serviceProvider.InitialDatabase<BoardWriteDbContext>();
             // no need for seeding any data
         }
 

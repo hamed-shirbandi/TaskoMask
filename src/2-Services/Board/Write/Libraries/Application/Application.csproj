@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<AssemblyName>TaskoMask.Services.Owner.Application</AssemblyName>
-		<RootNamespace>TaskoMask.Services.Owner.Application</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Board.Application</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Board.Application</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

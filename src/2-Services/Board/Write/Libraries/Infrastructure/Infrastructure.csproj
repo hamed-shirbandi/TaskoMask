@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<AssemblyName>TaskoMask.Services.Owner.Infrastructure</AssemblyName>
-		<RootNamespace>TaskoMask.Services.Owner.Infrastructure</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Board.Infrastructure</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Board.Infrastructure</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">

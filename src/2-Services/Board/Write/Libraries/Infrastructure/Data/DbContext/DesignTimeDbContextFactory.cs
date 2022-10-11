@@ -3,14 +3,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 
-namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
+namespace TaskoMask.Services.Board.Infrastructure.Data.DbContext
 {
     /// <summary>
     /// Only used by EF Tooling
     /// </summary>
-    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<OwnerWriteDbContext>
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<BoardWriteDbContext>
     {
-        public OwnerWriteDbContext CreateDbContext(string[] args)
+        public BoardWriteDbContext CreateDbContext(string[] args)
         {
 
             var configuration = new ConfigurationBuilder()
@@ -22,7 +22,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
             var entityFrameworkSection = configuration.GetSection("EntityFramework").Get<EFCoreDbOptions>();
             var dbOptions = Options.Create(entityFrameworkSection);
 
-            return new OwnerWriteDbContext(dbOptions);
+            return new BoardWriteDbContext(dbOptions);
         }
     }
 }

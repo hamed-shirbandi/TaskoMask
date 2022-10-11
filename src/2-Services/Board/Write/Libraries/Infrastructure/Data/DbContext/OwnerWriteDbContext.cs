@@ -2,11 +2,11 @@
 using Microsoft.Extensions.Options;
 using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 
-namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
+namespace TaskoMask.Services.Board.Infrastructure.Data.DbContext
 {
-    public class OwnerWriteDbContext : EFCoreDbContext
+    public class BoardWriteDbContext : EFCoreDbContext
     {
-        public OwnerWriteDbContext(IOptions<EFCoreDbOptions> options):base(options)
+        public BoardWriteDbContext(IOptions<EFCoreDbOptions> options):base(options)
         {
         }
 

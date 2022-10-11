@@ -1,5 +1,5 @@
 
-using TaskoMask.Services.Owner.Write.Api.Configuration;
+using TaskoMask.Services.Board.Write.Api.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

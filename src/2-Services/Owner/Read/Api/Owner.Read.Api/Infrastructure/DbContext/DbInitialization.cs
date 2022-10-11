@@ -27,10 +27,10 @@ namespace TaskoMask.Services.Owner.Read.Api.Infrastructure.DbContext
         public static void SeedEssentialData(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
-            var _dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
-            var _configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
+            var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
+            var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
 
-            // var _owners = _dbContext.GetCollection<Owner>();
+            // var owners = dbContext.GetCollection<Owner>();
             // seed data ...
         }
 

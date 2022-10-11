@@ -30,7 +30,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Infrastructure\CrossCutting\" />
 	  <Folder Include="Domain\" />
 	  <Folder Include="Features\" />
 	</ItemGroup>

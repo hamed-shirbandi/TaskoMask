@@ -38,7 +38,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
         /// <summary>
         /// 
         /// </summary>
-        public static void AddDbContext(this IServiceCollection services, Action<EFDatabaseOptions> setupAction)
+        public static void AddDbContext(this IServiceCollection services, Action<EFCoreDbOptions> setupAction)
         {
             services.Configure(setupAction);
             services.AddDbContext<OwnerWriteDbContext>();

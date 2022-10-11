@@ -19,7 +19,7 @@ namespace TaskoMask.Services.Owner.Infrastructure.Data.DbContext
                 .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
                 .Build();
 
-            var entityFrameworkSection = configuration.GetSection("EntityFramework").Get<EFDatabaseOptions>();
+            var entityFrameworkSection = configuration.GetSection("EntityFramework").Get<EFCoreDbOptions>();
             var dbOptions = Options.Create(entityFrameworkSection);
 
             return new OwnerWriteDbContext(dbOptions);

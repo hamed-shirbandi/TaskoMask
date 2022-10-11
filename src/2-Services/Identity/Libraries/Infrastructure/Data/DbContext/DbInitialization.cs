@@ -9,7 +9,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
     /// <summary>
     /// 
     /// </summary>
-    public static class DbSeedData
+    public static class DbInitialization
     {
 
 

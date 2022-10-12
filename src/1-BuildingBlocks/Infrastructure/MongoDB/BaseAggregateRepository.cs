@@ -1,14 +1,11 @@
 ﻿using MongoDB.Driver;
-using System;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Domain.Data;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
-using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
-namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories
+namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
     public class BaseAggregateRepository<TEntity> : BaseRepository<TEntity>, IBaseAggregateRepository<TEntity> where TEntity : AggregateRoot
     {
@@ -20,7 +17,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories
 
         #region Ctors
 
-        public BaseAggregateRepository(IWriteDbContext dbContext) : base(dbContext)
+        public BaseAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _collection = dbContext.GetCollection<TEntity>();
         }

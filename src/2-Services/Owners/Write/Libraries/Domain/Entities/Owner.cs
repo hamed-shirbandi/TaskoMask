@@ -24,7 +24,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
 
         #region Ctors
 
-        private Owner( string displayName, string email)
+        private Owner(string displayName, string email)
         {
 
             SetId(ObjectId.GenerateNewId().ToString());
@@ -59,7 +59,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         /// </summary>
         /// <param name="id">Shared key with User in authentication BC</param>
         /// <returns></returns>
-        public static Owner RegisterOwner( string displayName, string email)
+        public static Owner RegisterOwner(string displayName, string email)
         {
             return new Owner(displayName, email);
         }
@@ -93,7 +93,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         public void AddOrganization(Organization organization)
         {
             Organizations.Add(organization);
-            AddDomainEvent(new OrganizationAddedEvent(organization.Id, organization.Name.Value, organization.Description.Value,this.Id));
+            AddDomainEvent(new OrganizationAddedEvent(organization.Id, organization.Name.Value, organization.Description.Value, this.Id));
         }
 
 
@@ -101,7 +101,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateOrganization(string organizationId, string name, string description )
+        public void UpdateOrganization(string organizationId, string name, string description)
         {
             var organization = GetOrganizationById(organizationId);
             organization.UpdateOrganization(name, description);
@@ -135,10 +135,10 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         public void AddProject(string organizationId, Project project)
         {
             var organization = GetOrganizationById(organizationId);
-            
+
             organization.AddProject(project);
 
-            AddDomainEvent(new ProjectAddedEvent(project.Id, project.Name.Value, project.Description.Value, organization.Id,Id));
+            AddDomainEvent(new ProjectAddedEvent(project.Id, project.Name.Value, project.Description.Value, organization.Id, Id));
         }
 
 
@@ -165,7 +165,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         public void DeleteProject(string projectId)
         {
             var organization = GetOrganizationByProjectId(projectId);
-          
+
             organization.DeleteProject(projectId);
 
             AddDomainEvent(new ProjectDeletedEvent(projectId));

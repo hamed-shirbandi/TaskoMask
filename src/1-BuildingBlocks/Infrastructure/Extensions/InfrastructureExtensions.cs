@@ -14,6 +14,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Extensions
         public static IServiceCollection AddBuildingBlocksInfrastructureServices(this IServiceCollection services)
         {
 
+            services.AddMongoDbBaseRepository();
             services.AddInMemoryBus();
             services.AddRedisEventStoreService();
 

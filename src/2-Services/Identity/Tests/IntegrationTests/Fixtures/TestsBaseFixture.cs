@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 
@@ -44,7 +45,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         public TestsBaseFixture(string dbNameSuffix)
         {
             _serviceProvider = GetServiceProvider(dbNameSuffix);
-            _serviceProvider.InitialDatabase();
+            _serviceProvider.InitialDatabase<IdentityDbContext>();
             _serviceProvider.SeedEssentialData();
         }
 
@@ -107,7 +108,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         /// </summary>
         public void Dispose()
         {
-            _serviceProvider.DropDatabase();
+            _serviceProvider.DropDatabase<IdentityDbContext>();
 
         }
 

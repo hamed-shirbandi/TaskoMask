@@ -7,7 +7,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
     /// <summary>
     /// 
     /// </summary>
-    public abstract class MongoDbContext
+    public abstract class MongoDbContext : IMongoDbContext
     {
         #region Fields
 

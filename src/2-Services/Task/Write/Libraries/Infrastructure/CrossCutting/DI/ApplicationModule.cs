@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Application.Behaviors;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 
-namespace TaskoMask.Services.Task.Infrastructure.CrossCutting.DI
+namespace TaskoMask.Services.Task.Write.Infrastructure.CrossCutting.DI
 {
 
     /// <summary>

@@ -4,7 +4,7 @@ using FluentValidation;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 
-namespace TaskoMask.Services.Task.Infrastructure.CrossCutting.Mediator
+namespace TaskoMask.Services.Task.Write.Infrastructure.CrossCutting.Mediator
 {
     public static class MediatorExtensions
     {

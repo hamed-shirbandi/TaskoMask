@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 
-namespace TaskoMask.Services.Task.Infrastructure.Data.DbContext
+namespace TaskoMask.Services.Task.Write.Infrastructure.Data.DbContext
 {
     public class TaskWriteDbContext : EFCoreDbContext
     {

@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 
-namespace TaskoMask.Services.Board.Infrastructure.Data.DbContext
+namespace TaskoMask.Services.Board.Write.Infrastructure.Data.DbContext
 {
     /// <summary>
     /// Only used by EF Tooling

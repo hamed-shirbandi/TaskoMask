@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<AssemblyName>TaskoMask.Services.Board.Domain</AssemblyName>
-		<RootNamespace>TaskoMask.Services.Board.Domain</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Board.Write.Domain</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Board.Write.Domain</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Domain\Domain.csproj" />

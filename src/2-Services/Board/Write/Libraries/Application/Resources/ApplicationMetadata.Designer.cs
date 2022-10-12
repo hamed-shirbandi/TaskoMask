@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskoMask.Services.Board.Application.Resources {
+namespace TaskoMask.Services.Board.Write.Application.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TaskoMask.Services.Board.Application.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Services.Board.Application.Resources.ApplicationMetadata", typeof(ApplicationMetadata).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Services.Board.Write.Application.Resources.ApplicationMetadata", typeof(ApplicationMetadata).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

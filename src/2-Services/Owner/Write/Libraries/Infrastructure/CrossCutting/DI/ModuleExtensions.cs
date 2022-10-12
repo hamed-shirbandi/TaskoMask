@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
+namespace TaskoMask.Services.Owner.Write.Infrastructure.CrossCutting.DI
 {
 
     /// <summary>

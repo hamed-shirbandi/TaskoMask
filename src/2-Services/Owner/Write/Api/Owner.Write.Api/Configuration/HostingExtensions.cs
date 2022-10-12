@@ -1,7 +1,7 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
-using TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI;
+using TaskoMask.Services.Owner.Write.Infrastructure.CrossCutting.DI;
 
 namespace TaskoMask.Services.Owner.Write.Api.Configuration
 {

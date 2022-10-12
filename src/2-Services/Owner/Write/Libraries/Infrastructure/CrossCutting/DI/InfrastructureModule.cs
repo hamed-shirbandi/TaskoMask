@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
-using TaskoMask.Services.Owner.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Owner.Write.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Owner.Infrastructure.CrossCutting.DI
+namespace TaskoMask.Services.Owner.Write.Infrastructure.CrossCutting.DI
 {
 
     /// <summary>

@@ -11,7 +11,7 @@ using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace
 {
-    public class OwnerAggregateRepository : BaseAggregateRepository<Owner>, IOwnerAggregateRepository
+    public class OwnerAggregateRepository : MongoDbBaseAggregateRepository<Owner>, IOwnerAggregateRepository
     {
         #region Fields
 

@@ -11,7 +11,7 @@ using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories
 {
-    public class TaskRepository : BaseRepository<Task>, ITaskRepository
+    public class TaskRepository : MongoDbBaseRepository<Task>, ITaskRepository
     {
         #region Fields
 

@@ -11,7 +11,7 @@ using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace
 {
-    public class BoardAggregateRepository : BaseAggregateRepository<Board>, IBoardAggregateRepository
+    public class BoardAggregateRepository : MongoDbBaseAggregateRepository<Board>, IBoardAggregateRepository
     {
         #region Fields
 

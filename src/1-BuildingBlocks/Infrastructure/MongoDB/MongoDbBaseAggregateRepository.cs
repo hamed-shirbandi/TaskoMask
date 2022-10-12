@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
-    public class BaseAggregateRepository<TEntity> : BaseRepository<TEntity>, IBaseAggregateRepository<TEntity> where TEntity : AggregateRoot
+    public class MongoDbBaseAggregateRepository<TEntity> : MongoDbBaseRepository<TEntity>, IBaseAggregateRepository<TEntity> where TEntity : AggregateRoot
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 
         #region Ctors
 
-        public BaseAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
+        public MongoDbBaseAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
         {
             _collection = dbContext.GetCollection<TEntity>();
         }

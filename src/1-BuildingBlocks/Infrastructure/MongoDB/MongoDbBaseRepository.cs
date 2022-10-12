@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
+    public class MongoDbBaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 
         #region Ctors
 
-        public BaseRepository(IMongoDbContext dbContext, string collectionName = "")
+        public MongoDbBaseRepository(IMongoDbContext dbContext, string collectionName = "")
         {
             _collection = dbContext.GetCollection<TEntity>(collectionName);
         }

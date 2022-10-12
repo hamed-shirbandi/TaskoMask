@@ -8,7 +8,7 @@ using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace
 {
-    public class TaskAggregateRepository : BaseAggregateRepository<Task>, ITaskAggregateRepository
+    public class TaskAggregateRepository : MongoDbBaseAggregateRepository<Task>, ITaskAggregateRepository
     {
         #region Fields
 

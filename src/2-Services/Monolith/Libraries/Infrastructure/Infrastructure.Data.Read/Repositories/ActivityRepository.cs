@@ -9,7 +9,7 @@ using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories
 {
-    public class ActivityRepository : BaseRepository<Activity>, IActivityRepository
+    public class ActivityRepository : MongoDbBaseRepository<Activity>, IActivityRepository
     {
         #region Fields
 

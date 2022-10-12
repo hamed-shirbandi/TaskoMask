@@ -17,7 +17,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
         /// </summary>
         public static IServiceCollection AddMongoDbBaseRepository(this IServiceCollection services)
         {
-            return services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            return services.AddScoped(typeof(IBaseRepository<>), typeof(MongoDbBaseRepository<>));
 
         }
 

@@ -16,7 +16,7 @@ namespace TaskoMask.Services.Task.Read.Api.Infrastructure.Mapper
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             //this will find all profiles in this layer
-            services.AddAutoMapper(typeof(OwnerMappingProfile));
+            services.AddAutoMapper(typeof(TaskMappingProfile));
         }
 
 

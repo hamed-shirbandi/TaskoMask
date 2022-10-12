@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>TaskoMask.Services.Boards.Write.Domain</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Boards.Write.Domain</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Domain\Domain.csproj" />
+	</ItemGroup>
+	
+</Project>

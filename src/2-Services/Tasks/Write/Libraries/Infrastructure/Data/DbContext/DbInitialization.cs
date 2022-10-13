@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 
 namespace TaskoMask.Services.Tasks.Write.Infrastructure.Data.DbContext
@@ -30,10 +29,8 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.Data.DbContext
         {
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<TaskWriteDbContext>();
-            var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
 
-            // var owners = dbContext.GetCollection<Owner>();
-            // seed data ...
+            // dbContext.Boards.InsertOneAsync(x)
         }
 
 
@@ -46,9 +43,9 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.Data.DbContext
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<TaskWriteDbContext>();
 
-            //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Owner.Id), Unique = true }));
-            //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Email.Value), new CreateIndexOptions() { Name = nameof(Owner.Email) }));
-            //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName.Value), new CreateIndexOptions() { Name = nameof(Owner.DisplayName) }));
+            dbContext.Tasks.Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }));
+            dbContext.Tasks.Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId.Value), new CreateIndexOptions() { Name = nameof(Task.CardId) }));
+
         }
 
     }

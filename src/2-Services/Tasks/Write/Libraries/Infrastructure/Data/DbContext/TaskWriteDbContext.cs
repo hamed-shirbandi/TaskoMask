@@ -12,11 +12,11 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.Data.DbContext
     {
         public TaskWriteDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            //Tasks = GetCollection<Task>();
+            Tasks = GetCollection<Task>();
         }
 
 
-        // public IMongoCollection<Task> Tasks { get; }
+        public IMongoCollection<Task> Tasks { get; }
 
     }
 }

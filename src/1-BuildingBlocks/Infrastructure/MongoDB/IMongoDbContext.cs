@@ -1,5 +1,4 @@
 ﻿using MongoDB.Driver;
-using System.Collections.Generic;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {

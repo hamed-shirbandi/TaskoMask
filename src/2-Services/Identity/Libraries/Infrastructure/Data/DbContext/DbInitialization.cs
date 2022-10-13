@@ -14,6 +14,20 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
 
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static void InitialDatabase(this IServiceProvider serviceProvider)
+        {
+            using var serviceScope = serviceProvider.CreateScope();
+
+            var dbContext = serviceScope.ServiceProvider.GetService<IdentityDbContext>();
+
+            dbContext.Database.EnsureCreated();
+        }
+
+
+
+        /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
         public static void SeedEssentialData(this IServiceProvider serviceProvider)
@@ -25,6 +39,19 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
             SeedSuperUser(userManager, configuration).Wait();
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void DropDatabase(this IServiceProvider serviceProvider) 
+        {
+            using var serviceScope = serviceProvider.CreateScope();
+
+            var dbContext = serviceScope.ServiceProvider.GetService<IdentityDbContext>();
+
+            dbContext.Database.EnsureDeleted();
+        }
 
 
         /// <summary>

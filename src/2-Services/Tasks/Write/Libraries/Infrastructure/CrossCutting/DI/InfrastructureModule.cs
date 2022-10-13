@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
-using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
+using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Tasks.Write.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Services.Tasks.Write.Infrastructure.CrossCutting.DI
@@ -22,10 +22,7 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.CrossCutting.DI
         {
             services.AddInMemoryBus();
             services.AddRedisEventStoreService();
-            services.AddDbContext(options =>
-            {
-                configuration.GetSection("EntityFramework").Bind(options);
-            });
+            services.AddMongoDbContext(configuration);
         }
 
 
@@ -33,21 +30,10 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.CrossCutting.DI
         /// <summary>
         /// 
         /// </summary>
-        public static void AddDbContext(this IServiceCollection services, Action<EFCoreDbOptions> setupAction)
+        private static void AddMongoDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure(setupAction);
-            services.AddDbContext<TaskWriteDbContext>();
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
-        {
-            serviceProvider.InitialDatabase<TaskWriteDbContext>();
-            // no need for seeding any data
+            var options = configuration.GetSection("MongoDB");
+            services.AddScoped<TaskWriteDbContext>().AddOptions<MongoDbOptions>().Bind(options);
         }
 
     }

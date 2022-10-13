@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Entities;
 
-namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext
+namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
 {
     public class OwnerAggregateRepository : MongoDbBaseAggregateRepository<Owner>, IOwnerAggregateRepository
     {

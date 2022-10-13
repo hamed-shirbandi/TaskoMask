@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
-using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.AspNetIdentity;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper;
@@ -48,7 +47,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
-            serviceProvider.InitialDatabase<IdentityDbContext>();
+            serviceProvider.InitialDatabase();
             serviceProvider.SeedEssentialData();
         }
 

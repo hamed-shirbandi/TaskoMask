@@ -1,32 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MongoDB.Driver;
+using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using Microsoft.Extensions.Options;
-using TaskoMask.BuildingBlocks.Infrastructure.EntityFramework;
 
 namespace TaskoMask.Services.Boards.Write.Infrastructure.Data.DbContext
 {
-    public class BoardWriteDbContext : EFCoreDbContext
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class BoardWriteDbContext : MongoDbContext
     {
-        public BoardWriteDbContext(IOptions<EFCoreDbOptions> options):base(options)
+        public BoardWriteDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
+            //Boards = GetCollection<Board>();
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-           base.OnConfiguring(optionsBuilder);
-        }
+       // public IMongoCollection<Board> Boards { get; }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-        }
     }
 }

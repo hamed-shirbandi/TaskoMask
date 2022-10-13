@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using TaskoMask.Services.Boards.Write.Domain.Entities;
 
 namespace TaskoMask.Services.Boards.Write.Infrastructure.Data.DbContext
 {
@@ -30,10 +31,9 @@ namespace TaskoMask.Services.Boards.Write.Infrastructure.Data.DbContext
         {
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<BoardWriteDbContext>();
-            var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
 
-            // var owners = dbContext.GetCollection<Owner>();
-            // seed data ...
+            // dbContext.Boards.InsertOneAsync(x)
+
         }
 
 
@@ -46,9 +46,9 @@ namespace TaskoMask.Services.Boards.Write.Infrastructure.Data.DbContext
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<BoardWriteDbContext>();
 
-            //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Owner.Id), Unique = true }));
-            //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Email.Value), new CreateIndexOptions() { Name = nameof(Owner.Email) }));
-            //dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName.Value), new CreateIndexOptions() { Name = nameof(Owner.DisplayName) }));
+            dbContext.Boards.Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Board.Id), Unique = true }));
+            dbContext.Boards.Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.ProjectId.Value), new CreateIndexOptions() { Name = nameof(Board.ProjectId) }));
+
         }
 
     }

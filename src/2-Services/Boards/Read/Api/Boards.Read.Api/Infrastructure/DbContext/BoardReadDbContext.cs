@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using Microsoft.Extensions.Options;
+using TaskoMask.Services.Boards.Read.Api.Domain;
 
 namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext
 {
@@ -20,9 +21,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext
 
         public BoardReadDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            //Owners = GetCollection<Owner>();
-            //Boards = GetCollection<Board>();
-            //Tasks = GetCollection<Task>();
+            Boards = GetCollection<Board>();
+            Cards = GetCollection<Card>();
         }
 
 
@@ -31,9 +31,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext
 
         #region Properties
 
-        //public IMongoCollection<Owner> Owners { get; }
-        //public IMongoCollection<Board> Boards { get; }
-        //public IMongoCollection<Task> Tasks { get; }
+        public IMongoCollection<Board> Boards { get; }
+        public IMongoCollection<Card> Cards { get; }
 
         #endregion
 

@@ -13,25 +13,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext
         /// <summary>
         /// 
         /// </summary>
-        public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
+        public static void InitialDatabases(this IServiceProvider serviceProvider)
         {
-            serviceProvider.SeedEssentialData();
             serviceProvider.CreateIndexes();
-        }
-
-
-
-        /// <summary>
-        /// Seed the necessary data that system needs
-        /// </summary>
-        public static void SeedEssentialData(this IServiceProvider serviceProvider)
-        {
-            using var serviceScope = serviceProvider.CreateScope();
-            var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
-            var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
-
-            // var owners = dbContext.GetCollection<Owner>();
-            // seed data ...
         }
 
 

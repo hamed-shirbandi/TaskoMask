@@ -7,6 +7,7 @@ using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Owners;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
@@ -19,7 +20,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
 
         #region Ctors
 
-        public OwnerApiController( IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(authenticatedUserService, inMemoryBus, notifications)
+        public OwnerApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(authenticatedUserService, inMemoryBus, notifications)
         {
         }
 
@@ -35,27 +36,9 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [HttpPost]
         [Route("owner")]
         [AllowAnonymous]
-
         public async Task<Result<CommandResult>> Register([FromBody] RegisterOwnerDto input)
         {
-            // return await _ownerService.RegisterAsync(input);
-            return Result.Failure<CommandResult>();
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// get current owner basic information
-        /// </summary>
-        [HttpGet]
-        [Route("owner")]
-        public async Task<Result<OwnerBasicInfoDto>> Get()
-        {
-           // return await _ownerService.GetByIdAsync(GetCurrentUserId());
-            return Result.Failure<OwnerBasicInfoDto>();
+            return await SendCommandAsync<RegiserOwnerRequest>(new(displayName: input.DisplayName, email: input.Email, password: input.Password));
         }
 
 
@@ -68,8 +51,9 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("owner")]
         public async Task<Result<CommandResult>> UpdateProfile([FromBody] UpdateOwnerProfileDto input)
         {
-            input.Id = GetCurrentUserId();
-           // return await _ownerService.UpdateProfileAsync(input);
+            //input.Id = GetCurrentUserId();
+            // return await _ownerService.UpdateProfileAsync(input);
+            //TODO 
             return Result.Failure<CommandResult>();
         }
 

@@ -8,6 +8,7 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Owners;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwnerProfile;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
@@ -51,10 +52,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("owner")]
         public async Task<Result<CommandResult>> UpdateProfile([FromBody] UpdateOwnerProfileDto input)
         {
-            //input.Id = GetCurrentUserId();
-            // return await _ownerService.UpdateProfileAsync(input);
-            //TODO 
-            return Result.Failure<CommandResult>();
+            return await SendCommandAsync<UpdateOwnerProfileRequest>(new(id: input.Id, displayName: input.DisplayName, email: input.Email));
         }
 
 

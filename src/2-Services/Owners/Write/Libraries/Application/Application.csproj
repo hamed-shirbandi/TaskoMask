@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Owners.Write.Application</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Owners.Write.Application</RootNamespace>
 	</PropertyGroup>
@@ -14,7 +13,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Consumers\" />
-	  <Folder Include="UseCases\Owners\UpdateOwnerProfile\" />
 	</ItemGroup>
 
 	<ItemGroup>

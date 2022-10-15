@@ -17,5 +17,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Web\Web.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Helpers\" />
+	</ItemGroup>
 
 </Project>

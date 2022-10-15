@@ -14,7 +14,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Consumers\" />
-	  <Folder Include="UseCases\" />
+	  <Folder Include="UseCases\Owners\UpdateOwnerProfile\" />
 	</ItemGroup>
 
 	<ItemGroup>

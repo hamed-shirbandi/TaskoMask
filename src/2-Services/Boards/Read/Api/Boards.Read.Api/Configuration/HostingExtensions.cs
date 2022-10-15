@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Application.Behaviors;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper;
 

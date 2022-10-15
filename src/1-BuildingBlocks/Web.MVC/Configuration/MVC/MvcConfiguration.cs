@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.Cookie;
 
-namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 {
 
     /// <summary>
@@ -21,7 +23,14 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddControllersWithViews();
-            services.AddCommonServices();
+
+            services.AddHttpContextAccessor();
+
+            services.AddAuthenticatedUserService();
+
+            services.AddCookieService();
+
+            services.AddWebServerOptions();
         }
 
 
@@ -39,13 +48,36 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
                 app.UseHsts();
             }
 
-            app.UseCommonServices(serviceProvider, env);
-           
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
+
             app.UseRouting();
+
             app.UseAuthentication();
+
             app.UseAuthorization();
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddWebServerOptions(this IServiceCollection services)
+        {
+            // If using Kestrel:
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+            // If using IIS:
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+        }
+
 
     }
 }

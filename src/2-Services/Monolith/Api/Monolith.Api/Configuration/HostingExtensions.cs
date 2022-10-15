@@ -1,6 +1,6 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI;
 
 namespace TaskoMask.Services.Monolith.Api.Configuration

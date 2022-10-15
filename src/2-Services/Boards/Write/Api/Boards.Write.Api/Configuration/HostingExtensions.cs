@@ -1,6 +1,6 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Boards.Write.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Boards.Write.Infrastructure.Data.DbContext;
 

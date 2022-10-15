@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.Cookie;
 
-namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 {
 
     /// <summary>
@@ -23,21 +26,24 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddControllers()
-               //prevent auto validate on model binding
-               .ConfigureApiBehaviorOptions(options => { options.SuppressModelStateInvalidFilter = true; });
+            services.AddControllers().WithPreventAutoValidation();
 
             services.AddSwaggerPreConfigured(options =>
             {
                 configuration.GetSection("Swagger").Bind(options);
             });
 
-            services.AddCommonServices();
+            services.AddHttpContextAccessor();
+
+            services.AddAuthenticatedUserService();
+
+            services.AddCookieService();
+
+            services.AddWebServerOptions();
 
             services.AddJwtAuthentication(configuration);
 
             services.AddCors();
-
         }
 
 
@@ -53,18 +59,32 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Startup
                 app.UseDeveloperExceptionPage();
 
             app.UseSwaggerPreConfigured();
-            app.UseCommonServices(serviceProvider, env);
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
+
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
             app.UseAuthentication();
+
             app.UseAuthorization();
         }
 
 
+
+        /// <summary>
+        /// Prevent auto validate on model binding
+        /// </summary>
+        private static IMvcBuilder WithPreventAutoValidation(this IMvcBuilder builder)
+        {
+            return builder.ConfigureApiBehaviorOptions(options =>
+                  {
+                      options.SuppressModelStateInvalidFilter = true;
+                  });
+        }
     }
 }

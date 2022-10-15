@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Clients.Website.Controllers
 {
-    public class HomeController : BaseMvcController
+    public class HomeController : Controller
     {
         #region Fields
 

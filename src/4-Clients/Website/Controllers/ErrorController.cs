@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Web.MVC.Models;
 
 namespace TaskoMask.Clients.Website.Controllers
 {
-    public class ErrorController : BaseMvcController
+    public class ErrorController : Controller
     {
         #region Fields
 

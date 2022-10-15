@@ -15,6 +15,7 @@
 		<PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\Application\Application.csproj" />
 		<ProjectReference Include="..\Web\Web.csproj" />
 	</ItemGroup>
 	<ItemGroup>

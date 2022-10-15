@@ -10,7 +10,7 @@ using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Owners;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
-    public class OwnerApiController : BaseApiController, IOwnerApiService
+    public class OwnerApiController : BaseApiController, IOwnerWriteApiService
     {
         #region Fields
 

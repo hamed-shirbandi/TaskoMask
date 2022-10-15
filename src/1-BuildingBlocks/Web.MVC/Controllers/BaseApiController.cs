@@ -5,6 +5,7 @@ using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 {
@@ -23,6 +24,12 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 
         public BaseApiController()
         {
+        }
+
+
+        public BaseApiController(IAuthenticatedUserService authenticatedUserService)
+        {
+            _authenticatedUserService = authenticatedUserService;
 
         }
 

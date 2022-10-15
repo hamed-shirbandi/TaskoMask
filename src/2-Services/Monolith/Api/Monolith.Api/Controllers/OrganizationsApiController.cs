@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
-using TaskoMask.BuildingBlocks.Web.ApiContracts;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Models;

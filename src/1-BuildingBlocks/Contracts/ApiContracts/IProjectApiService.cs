@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 
-namespace TaskoMask.BuildingBlocks.Web.ApiContracts
+namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts
 {
     public interface IProjectApiService
     {

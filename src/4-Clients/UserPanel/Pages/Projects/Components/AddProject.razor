@@ -1,6 +1,6 @@
 ﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects
-@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IProjectApiService ProjectApiService
-@inject TaskoMask.BuildingBlocks.Web.ApiContracts.IOrganizationApiService OrganizationApiService
+@inject TaskoMask.BuildingBlocks.Contracts.ApiContracts.IProjectApiService ProjectApiService
+@inject TaskoMask.BuildingBlocks.Contracts.ApiContracts.IOrganizationApiService OrganizationApiService
 
 <EditForm Model="ProjectModel" OnValidSubmit="HandleAddProject">
 

@@ -3,7 +3,7 @@ using Blazored.Toast;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 using TaskoMask.BuildingBlocks.Web.Configuration;
-using TaskoMask.BuildingBlocks.Web.ApiContracts;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.Clients.UserPanel.Services.API;
 using TaskoMask.Clients.UserPanel.Helpers;
 

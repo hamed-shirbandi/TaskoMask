@@ -1,6 +1,6 @@
 ﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments
 @using TaskoMask.BuildingBlocks.Contracts.Enums
-@inject TaskoMask.BuildingBlocks.Web.ApiContracts.ICommentApiService CommentApiService
+@inject TaskoMask.BuildingBlocks.Contracts.ApiContracts.ICommentApiService CommentApiService
 
 <EditForm Model="CommentModel" OnValidSubmit="HandleAddComment" class="form">
     <DataAnnotationsValidator />

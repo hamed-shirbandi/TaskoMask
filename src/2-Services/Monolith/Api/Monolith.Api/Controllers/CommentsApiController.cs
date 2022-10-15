@@ -3,7 +3,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Web.ApiContracts;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 

@@ -1,7 +1,7 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
-namespace TaskoMask.BuildingBlocks.Web.ApiContracts
+namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts
 {
     public interface IOwnerApiService
     {

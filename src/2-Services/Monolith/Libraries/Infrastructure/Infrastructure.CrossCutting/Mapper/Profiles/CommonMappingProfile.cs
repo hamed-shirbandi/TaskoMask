@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using TaskoMask.BuildingBlocks.Domain.ValueObjects;
@@ -26,12 +25,9 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             #region AuthenticatedUser
 
 
-            CreateMap<UserBasicInfoDto, AuthenticatedUserModel>();
-
-
             CreateMap<OwnerBasicInfoDto, AuthenticatedUserModel>()
                   .ForMember(dest => dest.UserName, opt =>
-                      opt.MapFrom(src => src.UserInfo.UserName));
+                      opt.MapFrom(src => src.Email));
 
             #endregion
         }

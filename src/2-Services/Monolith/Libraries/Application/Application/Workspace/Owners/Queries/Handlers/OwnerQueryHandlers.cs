@@ -9,7 +9,6 @@ using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
 using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Authorization.Users;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Models;

@@ -1,13 +1,14 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Projects;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts.OwProjectsners;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class ProjectApiService : BaseApiService, IProjectApiService
+    public class ProjectApiService : BaseApiService, IProjectWriteApiService, IProjectReadApiService
     {
         #region Fields
 

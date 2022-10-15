@@ -4,7 +4,6 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
     [Authorize("full-access")]
-    public class BoardsApiController : BaseApiController, IBoardApiService
+    public class BoardsApiController : BaseApiController
     {
         #region Fields
 

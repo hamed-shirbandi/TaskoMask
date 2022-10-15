@@ -3,7 +3,6 @@ using TaskoMask.Services.Monolith.Application.Workspace.Cards.Services;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Contracts.Models;
@@ -12,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
     [Authorize("full-access")]
-    public class CardsApiController : BaseApiController, ICardApiService
+    public class CardsApiController : BaseApiController
     {
         #region Fields
 

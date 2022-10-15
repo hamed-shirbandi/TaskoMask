@@ -1,5 +1,6 @@
-﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks
-@inject TaskoMask.BuildingBlocks.Contracts.ApiContracts.ITaskApiService TaskApiService
+﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
+    using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Tasks
+@inject TaskApiService TaskApiService
 
 <EditForm Model="TaskModel" OnValidSubmit="HandleAddTask" class="form">
     <DataAnnotationsValidator />

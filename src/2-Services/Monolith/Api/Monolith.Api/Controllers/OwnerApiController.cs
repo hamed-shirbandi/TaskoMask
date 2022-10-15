@@ -3,14 +3,13 @@ using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using Microsoft.AspNetCore.Authorization;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
     [Authorize("user-full-access")]
-    public class OwnerApiController : BaseApiController, IOwnerApiService
+    public class OwnerApiController : BaseApiController
     {
         #region Fields
 

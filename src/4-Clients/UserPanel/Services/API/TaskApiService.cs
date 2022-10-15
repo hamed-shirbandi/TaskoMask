@@ -1,12 +1,12 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Tasks;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class TaskApiService : BaseApiService, ITaskApiService
+    public class TaskApiService : BaseApiService, ITaskWriteApiService, ITaskReadApiService
     {
         #region Fields
 

@@ -1,11 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Comments;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class CommentApiService : BaseApiService, ICommentApiService
+    public class CommentApiService : BaseApiService, ICommentWriteApiService, ICommentReadApiService
     {
         #region Fields
 

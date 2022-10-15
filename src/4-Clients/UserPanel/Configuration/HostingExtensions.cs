@@ -3,7 +3,6 @@ using Blazored.Toast;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 using TaskoMask.BuildingBlocks.Web.Configuration;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.Clients.UserPanel.Services.API;
 using TaskoMask.Clients.UserPanel.Helpers;
 
@@ -91,13 +90,13 @@ namespace TaskoMask.Clients.UserPanel.Configuration
         /// </summary>
         private static void AddApiServices(this IServiceCollection services)
         {
-            services.AddScoped<IOrganizationApiService, OrganizationApiService>();
-            services.AddScoped<IProjectApiService, ProjectApiService>();
-            services.AddScoped<IBoardApiService, BoardApiService>();
-            services.AddScoped<ICardApiService, CardApiService>();
-            services.AddScoped<ITaskApiService, TaskApiService>();
-            services.AddScoped<IOwnerApiService, OwnerApiService>();
-            services.AddScoped<ICommentApiService, CommentApiService>();
+            services.AddScoped<OwnerApiService>();
+            services.AddScoped<OrganizationApiService>();
+            services.AddScoped<ProjectApiService>();
+            services.AddScoped<BoardApiService>();
+            services.AddScoped<CardApiService>();
+            services.AddScoped<TaskApiService>();
+            services.AddScoped<CommentApiService>();
         }
     }
 }

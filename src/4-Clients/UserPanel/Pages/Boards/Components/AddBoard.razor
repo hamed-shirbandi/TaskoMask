@@ -1,8 +1,8 @@
 ﻿@using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards
 @using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects
-@inject TaskoMask.BuildingBlocks.Contracts.ApiContracts.IBoardApiService BoardApiService
-@inject TaskoMask.BuildingBlocks.Contracts.ApiContracts.IProjectApiService ProjectApiService
-@inject TaskoMask.BuildingBlocks.Contracts.ApiContracts.IOrganizationApiService OrganizationApiService
+@inject BoardApiService BoardApiService
+@inject ProjectApiService ProjectApiService
+@inject OrganizationApiService OrganizationApiService
 
 <EditForm Model="BoardModel" OnValidSubmit="HandleAddBoard">
 

@@ -21,6 +21,11 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
         #region Ctors
 
 
+        public BaseApiController()
+        {
+
+        }
+
         public BaseApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus, INotificationHandler notifications)
         {
             _authenticatedUserService = authenticatedUserService;

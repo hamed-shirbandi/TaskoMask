@@ -1,12 +1,12 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Cards;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class CardApiService : BaseApiService, ICardApiService
+    public class CardApiService : BaseApiService, ICardWriteApiService, ICardReadApiService
     {
         #region Fields
 

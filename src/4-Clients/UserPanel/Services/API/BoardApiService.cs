@@ -1,12 +1,12 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Boards;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class BoardApiService : BaseApiService, IBoardApiService
+    public class BoardApiService : BaseApiService, IBoardWriteApiService, IBoardReadApiService
     {
         #region Fields
 

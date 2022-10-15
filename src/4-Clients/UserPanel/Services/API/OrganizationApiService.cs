@@ -1,14 +1,13 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
-using TaskoMask.BuildingBlocks.Web.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Organizations;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class OrganizationApiService : BaseApiService, IOrganizationApiService
+    public class OrganizationApiService : BaseApiService, IOrganizationWriteApiService, IOrganizationReadApiService
     {
         #region Fields
 

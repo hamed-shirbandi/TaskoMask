@@ -3,7 +3,6 @@ using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
@@ -13,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
     [Authorize("full-access")]
-    public class ProjectsApiController : BaseApiController, IProjectApiService
+    public class ProjectsApiController : BaseApiController
     {
         #region Fields
 

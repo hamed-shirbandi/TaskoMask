@@ -1,12 +1,12 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.Clients.UserPanel.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Owners;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class OwnerApiService : BaseApiService, IOwnerApiService
+    public class OwnerApiService : BaseApiService, IOwnerWriteApiService, IOwnerReadApiService
     {
         #region Fields
 

@@ -2,6 +2,7 @@
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
+    ///TODO delete this interface after removing monolith service
     public interface IMongoDbContext
     {
         /// <summary>

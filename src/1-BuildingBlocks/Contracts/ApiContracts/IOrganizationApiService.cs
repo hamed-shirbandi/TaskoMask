@@ -1,5 +1,5 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Models;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Threading.Tasks;

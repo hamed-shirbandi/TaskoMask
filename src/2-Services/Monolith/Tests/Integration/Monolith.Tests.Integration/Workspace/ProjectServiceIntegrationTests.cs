@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.Services.Monolith.Application.Tests.Integration.Fixtures;
 using Xunit;
 

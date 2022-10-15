@@ -7,7 +7,7 @@ using TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.Model
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Activities;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Activities;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.Handlers
 {

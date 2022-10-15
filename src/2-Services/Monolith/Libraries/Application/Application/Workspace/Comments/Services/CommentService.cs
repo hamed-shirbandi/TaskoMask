@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Models;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using System.Collections.Generic;

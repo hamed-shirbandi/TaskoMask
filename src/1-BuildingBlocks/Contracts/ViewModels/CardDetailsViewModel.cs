@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
 
 namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
 {

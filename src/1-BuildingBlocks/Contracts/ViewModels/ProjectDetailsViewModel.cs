@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 
 namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
 {

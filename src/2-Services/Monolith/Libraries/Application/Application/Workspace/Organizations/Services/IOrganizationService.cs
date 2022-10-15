@@ -1,7 +1,7 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Application.Services;

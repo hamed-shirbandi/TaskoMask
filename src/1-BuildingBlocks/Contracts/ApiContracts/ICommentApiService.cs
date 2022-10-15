@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 

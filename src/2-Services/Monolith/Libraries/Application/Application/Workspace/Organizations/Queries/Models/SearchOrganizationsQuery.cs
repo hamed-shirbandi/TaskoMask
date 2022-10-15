@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Models;

@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Models;

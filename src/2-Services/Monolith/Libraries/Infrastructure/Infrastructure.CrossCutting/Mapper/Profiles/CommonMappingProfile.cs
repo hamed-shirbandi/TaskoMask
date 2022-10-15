@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 

@@ -1,8 +1,8 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using System.Collections.Generic;
 
 namespace TaskoMask.BuildingBlocks.Contracts.ViewModels

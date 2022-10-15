@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Projects;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
 using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Activities;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Comments;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Activities;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles
 {

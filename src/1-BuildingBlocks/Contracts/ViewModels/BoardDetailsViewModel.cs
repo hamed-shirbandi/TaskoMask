@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Boards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 
 namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
 {

@@ -1,5 +1,5 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Owners;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Organizations;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using System.Collections.Generic;
 
 namespace TaskoMask.BuildingBlocks.Contracts.ViewModels

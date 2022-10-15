@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Activities;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Activities;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.Models;
 using TaskoMask.BuildingBlocks.Application.Services;

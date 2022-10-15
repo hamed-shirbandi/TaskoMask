@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Workspace.Cards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Notifications;

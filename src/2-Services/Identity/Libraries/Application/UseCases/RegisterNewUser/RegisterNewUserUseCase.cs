@@ -1,5 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Commands;
+using TaskoMask.BuildingBlocks.Application.Exceptions;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Identity.Application.Resources;
@@ -7,22 +14,32 @@ using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
 {
-    public class RegisterNewUserUseCase : IRequestHandler<RegisterNewUserRequest, Result>
+    public class RegisterNewUserUseCase : BaseCommandHandler, IRequestHandler<RegisterNewUserRequest, CommandResult>
     {
         private readonly UserManager<User> _userManager;
+        private readonly INotificationHandler _notifications;
 
 
-        public RegisterNewUserUseCase(UserManager<User> userManager)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RegisterNewUserUseCase(UserManager<User> userManager, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(inMemoryBus)
         {
             _userManager = userManager;
+            _notifications = notifications;
         }
 
 
-        public async Task<Result> Handle(RegisterNewUserRequest request, CancellationToken cancellationToken)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<CommandResult> Handle(RegisterNewUserRequest request, CancellationToken cancellationToken)
         {
             var existUser = await _userManager.FindByNameAsync(request.Email);
             if (existUser != null)
-                return Result.Failure(message: ApplicationMessages.UserName_Already_Exist);
+                throw new ApplicationException(ApplicationMessages.UserName_Already_Exist);
 
             var newUser = new User
             {
@@ -33,13 +50,28 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
             var result = await _userManager.CreateAsync(newUser, request.Password);
             if (!result.Succeeded)
             {
-                var errors = result.Errors.Select(e => e.Description).ToList();
-                return Result.Failure(errors: errors, message: ContractsMessages.Create_Failed);
+                NotifyValidationErrors(result);
+                throw new ApplicationException(ContractsMessages.Create_Failed);
             }
+
+            var registeredUser = await _userManager.FindByNameAsync(request.Email);
 
             //TODO publish NewUserRegistered event
 
-            return Result.Success();
+            return CommandResult.Create(ContractsMessages.Create_Success, registeredUser.Id);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void NotifyValidationErrors(IdentityResult identityResult)
+        {
+            var errors = identityResult.Errors.Select(e => e.Description).ToList();
+
+            foreach (var error in errors)
+                _notifications.Add(this.GetType().Name, error);
         }
     }
 }

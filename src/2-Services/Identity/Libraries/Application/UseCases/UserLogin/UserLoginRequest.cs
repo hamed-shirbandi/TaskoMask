@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using System.ComponentModel.DataAnnotations;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
 {
-    public class UserLoginRequest: IRequest<Result>
+    public class UserLoginRequest: BaseCommand
     {
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string UserName { get; set; }

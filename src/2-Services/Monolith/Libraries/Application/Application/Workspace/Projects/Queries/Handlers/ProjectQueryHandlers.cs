@@ -33,7 +33,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Han
 
         #region Ctors
 
-        public ProjectQueryHandlers(IProjectRepository projectRepository, INotificationHandler notifications, IMapper mapper, IBoardRepository boardRepository, IOrganizationRepository organizationRepository) : base(mapper, notifications)
+        public ProjectQueryHandlers(IProjectRepository projectRepository, IMapper mapper, IBoardRepository boardRepository, IOrganizationRepository organizationRepository) : base(mapper)
         {
             _projectRepository = projectRepository;
             _boardRepository = boardRepository;
@@ -52,7 +52,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Han
         public async Task<ProjectOutputDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
-            if (project == null )
+            if (project == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
 
             var dto = _mapper.Map<ProjectOutputDto>(project);

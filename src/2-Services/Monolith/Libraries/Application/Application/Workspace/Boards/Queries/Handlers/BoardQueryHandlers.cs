@@ -39,7 +39,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
         #region Ctors
 
 
-        public BoardQueryHandlers(IBoardRepository boardRepository, INotificationHandler notifications, IMapper mapper, IProjectRepository projectRepository, ICardRepository cardRepository, IOrganizationRepository organizationRepository) : base(mapper, notifications)
+        public BoardQueryHandlers(IBoardRepository boardRepository , IMapper mapper, IProjectRepository projectRepository, ICardRepository cardRepository, IOrganizationRepository organizationRepository) : base(mapper)
         {
             _boardRepository = boardRepository;
             _projectRepository = projectRepository;

@@ -38,7 +38,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Querie
 
         #region Ctors
 
-        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, INotificationHandler notifications, IMapper mapper, IOwnerRepository ownerRepository, IProjectRepository projectRepository, IBoardRepository boardRepository, ICardRepository cardRepository, ITaskRepository taskRepository) : base(mapper, notifications)
+        public OrganizationQueryHandlers(IOrganizationRepository organizationRepository, IMapper mapper, IOwnerRepository ownerRepository, IProjectRepository projectRepository, IBoardRepository boardRepository, ICardRepository cardRepository, ITaskRepository taskRepository) : base(mapper)
         {
             _organizationRepository = organizationRepository;
             _ownerRepository = ownerRepository;
@@ -89,7 +89,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Querie
             report.ProjectsCount = await _projectRepository.CountByOrganizationIdAsync(request.OrganizationId);
             report.BoardsCount = await _boardRepository.CountByProjectsIdAsync(request.ProjectsId);
 
-            var cardsId =  _cardRepository.GetCardsIdByBoardsId(request.BoardsId);
+            var cardsId = _cardRepository.GetCardsIdByBoardsId(request.BoardsId);
 
             report.BacklogTasksCount = await _taskRepository.CountByCardsIdAsync(cardsId, BoardCardType.Backlog);
             report.ToDoTasksCount = await _taskRepository.CountByCardsIdAsync(cardsId, BoardCardType.ToDo);

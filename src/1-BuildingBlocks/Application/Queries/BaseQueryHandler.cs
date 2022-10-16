@@ -1,7 +1,4 @@
 ﻿using AutoMapper;
-using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 
 namespace TaskoMask.BuildingBlocks.Application.Queries
@@ -15,7 +12,6 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
     {
         #region Fields
 
-        protected readonly INotificationHandler _notifications;
         protected readonly IMapper _mapper;
 
 
@@ -25,10 +21,9 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
         #region Ctors
 
 
-        protected BaseQueryHandler(IMapper mapper, INotificationHandler notifications)
+        protected BaseQueryHandler(IMapper mapper)
         {
             _mapper = mapper;
-            _notifications = notifications;
         }
 
 
@@ -37,14 +32,6 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
 
         #region Protected Methods
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected void NotifyValidationError<TQuery>(BaseQuery<TQuery> request, string error)
-        {
-            _notifications.Add(request.GetType().Name, error);
-        }
 
 
         #endregion

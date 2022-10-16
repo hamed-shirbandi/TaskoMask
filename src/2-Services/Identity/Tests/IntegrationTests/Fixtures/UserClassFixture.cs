@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
@@ -15,6 +17,8 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
     {
         public UserManager<User> UserManager;
         public SignInManager<User> SignInManager;
+        public INotificationHandler NotificationHandler;
+        public IInMemoryBus InMemoryBus;
         public IIdentityServerInteractionService InteractionService;
         public IEventService EventsService;
 
@@ -24,6 +28,8 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
             SignInManager = GetRequiredService<SignInManager<User>>();
             InteractionService = GetRequiredService<IIdentityServerInteractionService>();
             EventsService = GetRequiredService<IEventService>();
+            InMemoryBus = GetRequiredService<IInMemoryBus>();
+            NotificationHandler = GetRequiredService<INotificationHandler>();
         }
 
 

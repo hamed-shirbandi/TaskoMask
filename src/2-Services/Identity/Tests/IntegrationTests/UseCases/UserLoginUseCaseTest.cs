@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 using TaskoMask.Services.Identity.IntegrationTests.Fixtures;
 using TaskoMask.Services.Identity.IntegrationTests.TestData;
@@ -38,7 +39,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
 
             await _fixture.SeedUserAsync(user, password);
 
-            var useCase = new UserLoginUseCase(_fixture.UserManager, _fixture.SignInManager);
+            var useCase = new UserLoginUseCase(_fixture.UserManager, _fixture.SignInManager, _fixture.InMemoryBus);
             var userLoginRequest = new UserLoginRequest
             {
                 UserName = email,
@@ -49,7 +50,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
             var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
-            result.IsSuccess.Should().BeTrue();
+            result.Message.Should().Be(ContractsMessages.Operation_Success);
         }
 
 

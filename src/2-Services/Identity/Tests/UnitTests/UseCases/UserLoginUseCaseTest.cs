@@ -23,7 +23,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, InMemoryBus);
+            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
             var userLoginRequest = new UserLoginRequest
             {
                 UserName = userBuilder.UserName,
@@ -34,7 +34,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
-            result.Message.Should().Be(ContractsMessages.Operation_Success);
+            result.IsSuccess.Should().BeTrue();
             TestUserLogins.Should().HaveCount(1);
         }
 
@@ -53,7 +53,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, InMemoryBus);
+            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
             var userLoginRequest = new UserLoginRequest
             {
                 UserName = userBuilder.UserName,
@@ -82,7 +82,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, InMemoryBus);
+            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
             var userLoginRequest = new UserLoginRequest
             {
                 UserName = userBuilder.UserName,

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
@@ -19,6 +20,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
         public TestSignInManager TestSignInManager;
         public INotificationHandler NotificationHandler;
         public IInMemoryBus InMemoryBus;
+        public IMapper Mapper;
         
         public List<User> TestUsers;
         public List<UserLogin> TestUserLogins;
@@ -37,6 +39,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
             TestUserLogins= new List<UserLogin>();
             NotificationHandler = Substitute.For<INotificationHandler>();
             InMemoryBus = Substitute.For<IInMemoryBus>();
+            Mapper = Substitute.For<IMapper>();
 
             TestSignInManager.PasswordSignInAsync(userName: Arg.Any<string>(), password: Arg.Any<string>(), isPersistent: Arg.Any<bool>(), lockoutOnFailure: Arg.Any<bool>()).Returns(args =>
             {

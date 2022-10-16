@@ -54,7 +54,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
             if (!ModelState.IsValid)
                 return await LoginFailedAsync();
 
-            var loginRespone = await SendCommandAsync(UserLoginRequest);
+            var loginRespone = await SendQueryAsync(UserLoginRequest);
             if (loginRespone.IsSuccess)
                 return RedirectToReturnUrl(UserLoginRequest.ReturnUrl);
 

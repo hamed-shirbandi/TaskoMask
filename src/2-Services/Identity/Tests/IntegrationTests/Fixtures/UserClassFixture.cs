@@ -1,4 +1,5 @@
-﻿using Duende.IdentityServer.Services;
+﻿using AutoMapper;
+using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
@@ -19,6 +20,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         public SignInManager<User> SignInManager;
         public INotificationHandler NotificationHandler;
         public IInMemoryBus InMemoryBus;
+        public IMapper Mapper;
         public IIdentityServerInteractionService InteractionService;
         public IEventService EventsService;
 
@@ -29,6 +31,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
             InteractionService = GetRequiredService<IIdentityServerInteractionService>();
             EventsService = GetRequiredService<IEventService>();
             InMemoryBus = GetRequiredService<IInMemoryBus>();
+            Mapper = GetRequiredService<IMapper>();
             NotificationHandler = GetRequiredService<INotificationHandler>();
         }
 

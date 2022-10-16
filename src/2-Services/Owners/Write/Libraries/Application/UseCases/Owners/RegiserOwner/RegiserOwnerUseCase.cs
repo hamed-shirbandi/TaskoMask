@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwn
 
             //TODO publish OwnerRegisteredEvent (to be handled by Identity service)
 
-            return new CommandResult(ContractsMessages.Create_Success, owner.Id.ToString());
+            return CommandResult.Create(ContractsMessages.Create_Success, owner.Id.ToString());
         }
 
 

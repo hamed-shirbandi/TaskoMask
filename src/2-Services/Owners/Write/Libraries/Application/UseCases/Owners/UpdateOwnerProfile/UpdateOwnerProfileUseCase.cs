@@ -55,7 +55,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwne
             await PublishDomainEventsAsync(owner.DomainEvents);
             //TODO publish OwnerUpdatedEvent (to be handled by Identity service)
 
-            return new CommandResult(ContractsMessages.Update_Success, owner.Id.ToString());
+            return CommandResult.Create(ContractsMessages.Update_Success, owner.Id.ToString());
         }
 
         #endregion

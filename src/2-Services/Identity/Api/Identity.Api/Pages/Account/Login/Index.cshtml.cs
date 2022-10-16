@@ -1,20 +1,19 @@
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.VisualBasic;
 using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Web.MVC.Pages;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 
 namespace TaskoMask.Services.Identity.Api.Pages.Login
 {
     [SecurityHeaders]
     [AllowAnonymous]
-    public class Index : PageModel
+    public class Index : BasePageModel
     {
         #region Fields
 
-        private readonly IInMemoryBus _inMemoryBus;
         private readonly IIdentityServerInteractionService _interactionService;
 
         [BindProperty]
@@ -24,9 +23,8 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
 
         #region Ctors
 
-        public Index(IInMemoryBus inMemoryBus, IIdentityServerInteractionService interactionService)
+        public Index(IInMemoryBus inMemoryBus, IIdentityServerInteractionService interactionService, INotificationHandler notifications) :base(inMemoryBus, notifications)
         {
-            _inMemoryBus = inMemoryBus;
             _interactionService = interactionService;
         }
 
@@ -56,7 +54,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
             if (!ModelState.IsValid)
                 return await LoginFailedAsync();
 
-            var loginRespone = await _inMemoryBus.Send(UserLoginRequest);
+            var loginRespone = await SendCommandAsync(UserLoginRequest);
             if (loginRespone.IsSuccess)
                 return RedirectToReturnUrl(UserLoginRequest.ReturnUrl);
 

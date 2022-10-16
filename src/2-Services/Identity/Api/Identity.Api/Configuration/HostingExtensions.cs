@@ -1,4 +1,5 @@
 using Serilog;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
 
@@ -15,13 +16,11 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         {
             builder.AddCustomSerilog();
 
-            builder.Services.AddRazorPages();
+            builder.Services.AddRazorPagesPreConfigured();
 
             builder.Services.AddModules(builder.Configuration);
 
             builder.Services.AddIdentityServer();
-
-            builder.Services.AddAuthentication();
 
             return builder.Build();
         }
@@ -33,19 +32,16 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// </summary>
         public static WebApplication ConfigurePipeline(this WebApplication app)
         {
+
             app.UseSerilogRequestLogging();
 
-            if (app.Environment.IsDevelopment())
-                app.UseDeveloperExceptionPage();
+            app.UseRazorPagesPreConfigured(app.Environment);
 
-            app.UseStaticFiles();
-            app.UseRouting();
             app.UseIdentityServer();
-            app.UseAuthorization();
-
-            app.MapRazorPages().RequireAuthorization();
 
             app.Services.InitialDatabasesAndSeedEssentialData();
+
+            app.MapRazorPages().RequireAuthorization();
 
             return app;
         }

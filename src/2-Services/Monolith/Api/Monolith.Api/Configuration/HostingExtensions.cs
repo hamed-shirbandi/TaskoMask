@@ -33,7 +33,7 @@ namespace TaskoMask.Services.Monolith.Api.Configuration
 
             app.UseSerilogRequestLogging();
 
-            app.UseWebApiPreConfigured(app.Services, app.Environment);
+            app.UseWebApiPreConfigured(app.Environment);
 
             app.Services.InitialDatabasesAndSeedEssentialData();
 

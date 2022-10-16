@@ -31,7 +31,7 @@ namespace TaskoMask.Clients.Website.Configuration
 
             app.UseSerilogRequestLogging();
 
-            app.UseMvcPreConfigured(app.Services, app.Environment);
+            app.UseMvcPreConfigured(app.Environment);
 
             app.UseEndpoints(endpoints =>
             {

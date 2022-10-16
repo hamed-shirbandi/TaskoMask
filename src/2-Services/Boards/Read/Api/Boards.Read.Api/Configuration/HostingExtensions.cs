@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Configuration
 
             app.UseSerilogRequestLogging();
 
-            app.UseWebApiPreConfigured(app.Services, app.Environment);
+            app.UseWebApiPreConfigured(app.Environment);
 
             app.Services.InitialDatabases();
 

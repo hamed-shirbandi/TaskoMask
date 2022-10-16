@@ -51,7 +51,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static void UseWebApiPreConfigured(this IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
+        public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 

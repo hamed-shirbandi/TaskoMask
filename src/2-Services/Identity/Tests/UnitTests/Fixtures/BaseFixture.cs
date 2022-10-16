@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using NSubstitute;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Test;
 using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.UnitTests.Helpers;
@@ -15,9 +17,12 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
 
         public TestUserManager TestUserManager;
         public TestSignInManager TestSignInManager;
+        public INotificationHandler NotificationHandler;
+        public IInMemoryBus InMemoryBus;
+        
         public List<User> TestUsers;
         public List<UserLogin> TestUserLogins;
-        
+
         public BaseFixture()
         {
 
@@ -30,6 +35,8 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
             TestSignInManager = Substitute.For<TestSignInManager>(TestUserManager);
             TestUsers = new List<User>();
             TestUserLogins= new List<UserLogin>();
+            NotificationHandler = Substitute.For<INotificationHandler>();
+            InMemoryBus = Substitute.For<IInMemoryBus>();
 
             TestSignInManager.PasswordSignInAsync(userName: Arg.Any<string>(), password: Arg.Any<string>(), isPersistent: Arg.Any<bool>(), lockoutOnFailure: Arg.Any<bool>()).Returns(args =>
             {

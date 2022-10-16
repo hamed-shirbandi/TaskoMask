@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 using TaskoMask.Services.Identity.UnitTests.Fixtures;
@@ -22,7 +23,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager);
+            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, InMemoryBus);
             var userLoginRequest = new UserLoginRequest
             {
                 UserName = userBuilder.UserName,
@@ -33,7 +34,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
-            result.IsSuccess.Should().BeTrue();
+            result.Message.Should().Be(ContractsMessages.Operation_Success);
             TestUserLogins.Should().HaveCount(1);
         }
 
@@ -42,6 +43,8 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
         public async Task User_Is_Not_Logged_In_With_Wrong_Password()
         {
             //Arrange
+            var expectedMessage = ApplicationMessages.Invalid_Credentials;
+
             var userBuilder = UserBuilder.Init()
                 .WithUserName("test@taskomask.ir")
                 .WithEmail("test@taskomask.ir")
@@ -50,7 +53,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager);
+            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, InMemoryBus);
             var userLoginRequest = new UserLoginRequest
             {
                 UserName = userBuilder.UserName,
@@ -58,11 +61,10 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             };
 
             //Act
-            var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
+            Action act = async () => await useCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
-            result.IsSuccess.Should().BeFalse();
-            result.Message.Should().Be(ApplicationMessages.Invalid_Credentials);
+            act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
@@ -70,6 +72,8 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
         public async Task Deactive_User_Is_Not_Logged_In()
         {
             //Arrange
+            var expectedMessage = ApplicationMessages.Deactive_User_Can_Not_Login;
+
             var userBuilder = UserBuilder.Init()
                 .WithUserName("test@taskomask.ir")
                 .WithEmail("test@taskomask.ir")
@@ -78,7 +82,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager);
+            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, InMemoryBus);
             var userLoginRequest = new UserLoginRequest
             {
                 UserName = userBuilder.UserName,
@@ -86,11 +90,10 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             };
 
             //Act
-            var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
+            Action act = async () => await useCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
-            result.IsSuccess.Should().BeFalse();
-            result.Message.Should().Be(ApplicationMessages.Deactive_User_Can_Not_Login);
+            act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
 
         }
 

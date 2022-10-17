@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using System.Diagnostics.Contracts;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser;
 using TaskoMask.Services.Identity.IntegrationTests.Fixtures;
@@ -33,11 +32,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
         {
             //Arrange
             var useCase = new RegisterNewUserUseCase(_fixture.UserManager, _fixture.InMemoryBus, _fixture.NotificationHandler);
-            var request = new RegisterNewUserRequest
-            {
-                Email = "test@taskomask.ir",
-                Password = "TestPass",
-            };
+            var request = new RegisterNewUserRequest("test@taskomask.ir", "TestPass");
 
             //Act
             var result = await useCase.Handle(request, CancellationToken.None);

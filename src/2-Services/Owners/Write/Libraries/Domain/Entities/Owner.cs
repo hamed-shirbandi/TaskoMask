@@ -9,6 +9,7 @@ using TaskoMask.Services.Owners.Write.Domain.Specifications;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Owners;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using MongoDB.Bson;
+using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.Domain.Entities
 {
@@ -24,7 +25,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
 
         #region Ctors
 
-        private Owner(string displayName, string email)
+        private Owner(string displayName, string email, IOwnerValidatorService ownerValidatorService)
         {
 
             SetId(ObjectId.GenerateNewId().ToString());
@@ -33,7 +34,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
             Email = OwnerEmail.Create(email);
             Organizations = new HashSet<Organization>();
 
-            CheckPolicies();
+            CheckPolicies(ownerValidatorService);
 
             AddDomainEvent(new OwnerRegisteredEvent(Id, DisplayName.Value, Email.Value));
         }
@@ -59,9 +60,9 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         /// </summary>
         /// <param name="id">Shared key with User in authentication BC</param>
         /// <returns></returns>
-        public static Owner RegisterOwner(string displayName, string email)
+        public static Owner RegisterOwner(string displayName, string email, IOwnerValidatorService ownerValidatorService)
         {
-            return new Owner(displayName, email);
+            return new Owner(displayName, email, ownerValidatorService);
         }
 
 
@@ -69,10 +70,12 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         ///// <summary>
         /////  
         ///// </summary>
-        public void UpdateOwnerProfile(OwnerDisplayName displayName, OwnerEmail email)
+        public void UpdateOwnerProfile(OwnerDisplayName displayName, OwnerEmail email, IOwnerValidatorService ownerValidatorService)
         {
             DisplayName = displayName;
             Email = email;
+
+            CheckPolicies(ownerValidatorService);
 
             AddDomainEvent(new OwnerProfileUpdatedEvent(Id, displayName.Value, email.Value));
         }
@@ -181,7 +184,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         /// <summary>
         /// 
         /// </summary>
-        private void CheckPolicies()
+        private void CheckPolicies(IOwnerValidatorService ownerValidatorService)
         {
             if (string.IsNullOrEmpty(Id))
                 throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Id)));
@@ -191,6 +194,10 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
 
             if (Email == null)
                 throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Email)));
+
+            if (!new OwnerEmailMustUniqueSpecification(ownerValidatorService).IsSatisfiedBy(this))
+                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board));
+
         }
 
 

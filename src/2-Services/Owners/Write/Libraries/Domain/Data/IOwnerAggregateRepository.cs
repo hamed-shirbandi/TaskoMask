@@ -7,5 +7,6 @@ namespace TaskoMask.Services.Owners.Write.Domain.Data
     {
         Task<Owner> GetByOrganizationIdAsync(string organizationId);
         Task<Owner> GetByProjectIdAsync(string projectId);
+        bool ExistOwnerByEmail(string ownerId, string email);
     }
 }

@@ -49,6 +49,16 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool ExistOwnerByEmail(string ownerId, string email)
+        {
+            var owner = _owners.Find(e => e.Email.Value == email).FirstOrDefault();
+            return owner != null && owner.Id != ownerId;
+        }
+
+
         #endregion
 
         #region Private Methods

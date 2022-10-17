@@ -3,7 +3,7 @@
 namespace TaskoMask.Services.Tasks.Write.Domain.Services
 {
     /// <summary>
-    /// Some validations that need persistence layer to do
+    /// 
     /// </summary>
     public interface ITaskValidatorService
     {

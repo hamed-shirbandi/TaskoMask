@@ -3,7 +3,7 @@
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services
 {
     /// <summary>
-    /// Some validations that need persistence layer to do
+    /// 
     /// </summary>
     public interface ITaskValidatorService
     {

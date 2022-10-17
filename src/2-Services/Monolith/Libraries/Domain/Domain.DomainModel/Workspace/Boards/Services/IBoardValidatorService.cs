@@ -2,7 +2,7 @@
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services
 {
     /// <summary>
-    /// Some validations that need persistence layer to do
+    /// 
     /// </summary>
     public interface IBoardValidatorService
     {

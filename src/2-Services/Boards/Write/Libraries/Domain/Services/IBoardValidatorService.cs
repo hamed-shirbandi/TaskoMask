@@ -2,7 +2,7 @@
 namespace TaskoMask.Services.Boards.Write.Domain.Services
 {
     /// <summary>
-    /// Some validations that need persistence layer to do
+    /// 
     /// </summary>
     public interface IBoardValidatorService
     {

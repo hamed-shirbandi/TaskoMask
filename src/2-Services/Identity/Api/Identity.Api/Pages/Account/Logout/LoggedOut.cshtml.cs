@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace TaskoMask.Services.Identity.Api.Pages.Logout
+namespace TaskoMask.Services.Identity.Api.Pages.Account.Logout
 {
     [SecurityHeaders]
     [AllowAnonymous]

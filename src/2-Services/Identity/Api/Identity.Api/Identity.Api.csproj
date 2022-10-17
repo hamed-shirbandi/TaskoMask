@@ -3,8 +3,8 @@
   <PropertyGroup>
 	  <TargetFramework>net6.0</TargetFramework>
 	  <ImplicitUsings>enable</ImplicitUsings>
-	  <AssemblyName>TaskoMask.Services.TaskoMask.Services.Identity.Api</AssemblyName>
-	  <RootNamespace>TaskoMask.Services.TaskoMask.Services.Identity.Api</RootNamespace>
+	  <AssemblyName>TaskoMask.Services.Identity.Api</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Identity.Api</RootNamespace>
 	  <UserSecretsId>755a7a1d-10e7-4626-9a60-81b74933b0b3</UserSecretsId>
 	  <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	  <DockerfileContext>..\..\..\..\..</DockerfileContext>

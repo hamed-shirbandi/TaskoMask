@@ -24,11 +24,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             TestUsers.Add(userBuilder.Build());
 
             var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
-            var userLoginRequest = new UserLoginRequest
-            {
-                UserName = userBuilder.UserName,
-                Password = userBuilder.Password,
-            };
+            var userLoginRequest = new UserLoginRequest(userBuilder.UserName, userBuilder.Password,true);
 
             //Act
             var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
@@ -54,11 +50,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             TestUsers.Add(userBuilder.Build());
 
             var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
-            var userLoginRequest = new UserLoginRequest
-            {
-                UserName = userBuilder.UserName,
-                Password = "wrongpass",
-            };
+            var userLoginRequest = new UserLoginRequest(userBuilder.UserName, "wrongpass", true);
 
             //Act
             Action act = async () => await useCase.Handle(userLoginRequest, CancellationToken.None);
@@ -83,11 +75,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             TestUsers.Add(userBuilder.Build());
 
             var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
-            var userLoginRequest = new UserLoginRequest
-            {
-                UserName = userBuilder.UserName,
-                Password = userBuilder.Password,
-            };
+            var userLoginRequest = new UserLoginRequest(userBuilder.UserName, userBuilder.Password, true);
 
             //Act
             Action act = async () => await useCase.Handle(userLoginRequest, CancellationToken.None);

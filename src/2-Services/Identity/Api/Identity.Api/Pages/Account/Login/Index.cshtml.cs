@@ -6,7 +6,7 @@ using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Web.MVC.Pages;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 
-namespace TaskoMask.Services.Identity.Api.Pages.Login
+namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
 {
     [SecurityHeaders]
     [AllowAnonymous]
@@ -17,13 +17,13 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
         private readonly IIdentityServerInteractionService _interactionService;
 
         [BindProperty]
-        public UserLoginRequest UserLoginRequest { get; set; }
+        public InputModel Input { get; set; }
 
         #endregion
 
         #region Ctors
 
-        public Index(IInMemoryBus inMemoryBus, IIdentityServerInteractionService interactionService, INotificationHandler notifications) :base(inMemoryBus, notifications)
+        public Index(IInMemoryBus inMemoryBus, IIdentityServerInteractionService interactionService, INotificationHandler notifications) : base(inMemoryBus, notifications)
         {
             _interactionService = interactionService;
         }
@@ -39,7 +39,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
         /// </summary>
         public async Task<IActionResult> OnGet(string returnUrl)
         {
-           await BuildModelAsync(returnUrl);
+            await BuildModelAsync(returnUrl);
 
             return Page();
         }
@@ -54,9 +54,9 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
             if (!ModelState.IsValid)
                 return await LoginFailedAsync();
 
-            var loginRespone = await SendQueryAsync(UserLoginRequest);
+            var loginRespone = await SendQueryAsync(new UserLoginRequest(Input.UserName, Input.Password, Input.RememberLogin));
             if (loginRespone.IsSuccess)
-                return RedirectToReturnUrl(UserLoginRequest.ReturnUrl);
+                return RedirectToReturnUrl(Input.ReturnUrl);
 
             return await LoginFailedAsync(loginRespone.Message);
         }
@@ -75,7 +75,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
         /// </summary>
         private async Task<IActionResult> LoginFailedAsync(string errorMessage = "")
         {
-           await BuildModelAsync(UserLoginRequest.ReturnUrl);
+            await BuildModelAsync(Input.ReturnUrl);
 
             if (!string.IsNullOrEmpty(errorMessage))
                 ModelState.AddModelError(string.Empty, errorMessage);
@@ -95,7 +95,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Login
             var context = await _interactionService.GetAuthorizationContextAsync(returnUrl);
             ViewData["ClientUri"] = context?.Client.ClientUri;
 
-            UserLoginRequest = new UserLoginRequest
+            Input = new InputModel
             {
                 ReturnUrl = returnUrl
             };

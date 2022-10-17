@@ -40,11 +40,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
             await _fixture.SeedUserAsync(user, password);
 
             var useCase = new UserLoginUseCase(_fixture.UserManager, _fixture.SignInManager, _fixture.Mapper);
-            var userLoginRequest = new UserLoginRequest
-            {
-                UserName = email,
-                Password = password,
-            };
+            var userLoginRequest = new UserLoginRequest(email, password, true);
 
             //Act
             var result = await useCase.Handle(userLoginRequest, CancellationToken.None);

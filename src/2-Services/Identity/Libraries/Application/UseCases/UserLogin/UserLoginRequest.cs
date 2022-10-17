@@ -5,17 +5,23 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
 {
-    public class UserLoginRequest: BaseQuery<Result>
+    public class UserLoginRequest : BaseQuery<Result>
     {
-        [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
-        public string UserName { get; set; }
+        public UserLoginRequest(string userName, string password, bool rememberLogin)
+        {
+            UserName = userName;
+            Password = password;
+            RememberLogin = rememberLogin;
+        }
+
 
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
-        public string Password { get; set; }
+        public string UserName { get; }
 
-        public bool RememberLogin { get; set; }
+        [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
+        public string Password { get; }
 
-        public string ReturnUrl { get; set; }
+        public bool RememberLogin { get; }
 
     }
 }

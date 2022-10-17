@@ -1,6 +1,4 @@
 ﻿using FluentValidation;
-using System;
-using TaskoMask.Services.Identity.Application.Resources;
 
 namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
 {
@@ -8,12 +6,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
     {
         public UserLoginValidation()
         {
-            ValidateReturnUrl();
-        }
 
-        private void ValidateReturnUrl()
-        {
-            RuleFor(x => x.ReturnUrl).Must(uri => Uri.TryCreate(uri, UriKind.Absolute, out _)).When(x => !string.IsNullOrEmpty(x.ReturnUrl)).WithMessage(ApplicationMessages.Invalid_ReturnUrl);
         }
     }
 }

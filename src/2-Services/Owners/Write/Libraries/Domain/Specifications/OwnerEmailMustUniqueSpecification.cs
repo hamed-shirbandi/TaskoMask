@@ -4,10 +4,10 @@ using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.Domain.Specifications
 {
-    internal class OwnerNameMustUniqueSpecification : ISpecification<Owner>
+    internal class OwnerEmailMustUniqueSpecification : ISpecification<Owner>
     {
         private readonly IOwnerValidatorService _ownerValidatorService;
-        public OwnerNameMustUniqueSpecification(IOwnerValidatorService ownerValidatorService)
+        public OwnerEmailMustUniqueSpecification(IOwnerValidatorService ownerValidatorService)
         {
             _ownerValidatorService = ownerValidatorService;
         }

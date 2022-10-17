@@ -7,6 +7,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Entities;
+using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner
 {
@@ -16,15 +17,17 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwn
         #region Fields
 
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
+        private readonly IOwnerValidatorService _ownerValidatorService;
 
         #endregion
 
         #region Ctors
 
 
-        public RegiserOwnerUseCase(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus) : base(inMemoryBus)
+        public RegiserOwnerUseCase(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus, IOwnerValidatorService ownerValidatorService) : base(inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
+            _ownerValidatorService = ownerValidatorService;
         }
 
         #endregion
@@ -38,7 +41,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwn
         /// </summary>
         public async Task<CommandResult> Handle(RegiserOwnerRequest request, CancellationToken cancellationToken)
         {
-            var owner = Owner.RegisterOwner(request.DisplayName, request.Email);
+            var owner = Owner.RegisterOwner(request.DisplayName, request.Email, _ownerValidatorService);
 
             await _ownerAggregateRepository.CreateAsync(owner);
 

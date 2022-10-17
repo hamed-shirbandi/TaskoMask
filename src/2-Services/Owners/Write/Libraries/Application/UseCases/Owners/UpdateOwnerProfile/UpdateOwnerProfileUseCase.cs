@@ -8,6 +8,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
+using TaskoMask.Services.Owners.Write.Domain.Services;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Owners;
 
 namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwnerProfile
@@ -18,15 +19,17 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwne
         #region Fields
 
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
+        private readonly IOwnerValidatorService _ownerValidatorService;
 
         #endregion
 
         #region Ctors
 
 
-        public UpdateOwnerProfileUseCase(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus) : base(inMemoryBus)
+        public UpdateOwnerProfileUseCase(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus, IOwnerValidatorService ownerValidatorService) : base(inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
+            _ownerValidatorService = ownerValidatorService;
         }
 
         #endregion
@@ -46,9 +49,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwne
 
             var loadedVersion = owner.Version;
 
-            owner.UpdateOwnerProfile(
-                OwnerDisplayName.Create(request.DisplayName),
-                OwnerEmail.Create(request.Email));
+            owner.UpdateOwnerProfile(OwnerDisplayName.Create(request.DisplayName),OwnerEmail.Create(request.Email), _ownerValidatorService);
 
             await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
 

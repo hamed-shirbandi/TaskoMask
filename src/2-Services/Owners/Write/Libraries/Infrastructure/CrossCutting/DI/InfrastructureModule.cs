@@ -3,7 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+using TaskoMask.Services.Owners.Write.Domain.Services;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories;
 
 namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
 {
@@ -23,6 +25,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
             services.AddInMemoryBus();
             services.AddRedisEventStoreService();
             services.AddMongoDbContext(configuration);
+            services.AddDomainServices();
         }
 
 
@@ -36,5 +39,14 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
             services.AddScoped<OwnerWriteDbContext>().AddOptions<MongoDbOptions>().Bind(options);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddDomainServices(this IServiceCollection services)
+        {
+            services.AddScoped<IOwnerValidatorService, OwnerValidatorService>();
+        }
     }
 }

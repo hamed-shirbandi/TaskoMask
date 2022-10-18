@@ -9,6 +9,8 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using TaskoMask.Services.Owners.Read.Api.Features.GetOwnerById;
+using MediatR;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
@@ -78,8 +80,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
         /// </summary>
         private static void AddMediator(this IServiceCollection services)
         {
-            //Load all queries ...
-            // services.AddMediatR(typeof(OwnerQueryHandlers));
+            //Load all queries in this dll ...
+             services.AddMediatR(typeof(GetOwnerByIdHandler));
         }
     }
 }

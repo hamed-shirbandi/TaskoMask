@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
+using TaskoMask.Services.Owners.Read.Api.Domain;
 
 namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
 {
@@ -6,9 +8,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
     {
         public OwnerMappingProfile()
         {
-
-          //  CreateMap<Owner, OwnerBasicInfoDto>();
-
+            CreateMap<Owner, OwnerBasicInfoDto>();
         }
     }
 }

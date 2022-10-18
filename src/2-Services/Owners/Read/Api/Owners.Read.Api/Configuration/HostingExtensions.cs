@@ -6,6 +6,9 @@ using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {

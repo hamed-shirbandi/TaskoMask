@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Owners.Read.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Owners.Read.Api</RootNamespace>
 	</PropertyGroup>
@@ -27,10 +26,6 @@
 	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Features\" />
 	</ItemGroup>
 
 </Project>

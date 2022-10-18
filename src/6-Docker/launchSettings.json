@@ -5,10 +5,13 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "mongo": "StartWithoutDebugging",
-        "monolith-api": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
+        "seq": "StartWithoutDebugging",
+        "sql": "StartWithoutDebugging",
+        "monolith-api": "StartWithoutDebugging",
+        "identity-api": "StartWithoutDebugging",
+        "user-panel-api-gateway": "StartWithoutDebugging",
         "user-panel-client": "StartWithoutDebugging",
-        "admin-panel-client": "StartWithoutDebugging",
         "website-client": "StartWithoutDebugging"
       }
     }

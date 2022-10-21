@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskoMask.BuildingBlocks.Domain.Events;
@@ -8,11 +9,27 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
     public static class BehaviorsExtensions
     {
 
+
         /// <summary>
         /// 
         /// </summary>
-        public static void AddValidationBehaviour(this IServiceCollection services)
+        public static void AddApplicationBehaviors(this IServiceCollection services, Type validatorAssemblyMarkerType)
         {
+            services.AddValidationBehaviour(validatorAssemblyMarkerType);
+            services.AddCachingBehavior();
+            services.AddEventStoringBehavior();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddValidationBehaviour(this IServiceCollection services, Type validatorAssemblyMarkerType)
+        {
+            //Load all fluent validation to use in ValidationBehaviour
+            services.AddValidatorsFromAssembly(validatorAssemblyMarkerType.Assembly);
+
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         }
 
@@ -37,15 +54,5 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void AddApplicationBehaviors(this IServiceCollection services)
-        {
-            services.AddValidationBehaviour();
-            services.AddCachingBehavior();
-            services.AddEventStoringBehavior();
-        }
     }
 }

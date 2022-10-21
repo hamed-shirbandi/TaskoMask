@@ -26,7 +26,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
 
             builder.Services.AddCachingBehavior();
 
-            builder.Services.AddInMemoryBus();
+            builder.Services.AddBus();
 
             builder.Services.AddMongoDbContext(builder.Configuration);
 

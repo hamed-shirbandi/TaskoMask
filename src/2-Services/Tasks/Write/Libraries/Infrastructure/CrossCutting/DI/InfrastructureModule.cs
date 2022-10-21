@@ -20,7 +20,7 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddInMemoryBus();
+            services.AddBus();
             services.AddRedisEventStoreService();
             services.AddMongoDbContext(configuration);
         }

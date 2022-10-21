@@ -24,7 +24,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         {
             services.AddMediator();
             services.AddMapper();
-            services.AddInMemoryBus();
+            services.AddBus();
             services.AddRedisEventStoreService();
             services.AddDbContext();
             services.AddAspNetIdentity(configuration);

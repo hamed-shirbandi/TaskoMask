@@ -9,9 +9,28 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceCollection AddInMemoryBus(this IServiceCollection services)
+        public static void AddBus(this IServiceCollection services)
         {
-            return services.AddScoped<IInMemoryBus, InMemoryBus>();
+            services.AddInMemoryBus();
+            services.AddMessageBus();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddInMemoryBus(this IServiceCollection services)
+        {
+            services.AddScoped<IInMemoryBus, InMemoryBus>();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void AddMessageBus(this IServiceCollection services)
+        {
+            services.AddScoped<IMessageBus, MessageBus>();
         }
     }
 }

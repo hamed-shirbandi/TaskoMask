@@ -1,11 +1,11 @@
 using Serilog;
-using TaskoMask.BuildingBlocks.Application.Behaviors;
-using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper;
+using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.Services.Boards.Read.Api.Configuration
 {
@@ -20,13 +20,11 @@ namespace TaskoMask.Services.Boards.Read.Api.Configuration
         {
             builder.AddCustomSerilog();
 
-            builder.Services.AddMediator();
+            builder.Services.AddBuildingBlocksInfrastructure(builder.Configuration,typeof(Program), typeof(Program));
+
+            builder.Services.AddBuildingBlocksApplication(typeof(Program));
 
             builder.Services.AddMapper();
-
-            builder.Services.AddCachingBehavior();
-
-            builder.Services.AddBus();
 
             builder.Services.AddMongoDbContext(builder.Configuration);
 
@@ -68,15 +66,5 @@ namespace TaskoMask.Services.Boards.Read.Api.Configuration
             services.AddScoped<BoardReadDbContext>().AddOptions<MongoDbOptions>().Bind(options);
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AddMediator(this IServiceCollection services)
-        {
-            //Load all queries ...
-            // services.AddMediatR(typeof(OwnerQueryHandlers));
-        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
@@ -21,7 +20,8 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddApplicationModule(this IServiceCollection services)
         {
-            services.AddBuildingBlocksApplicationServices();
+            // services.AddBuildingBlocksApplication(typeof(SomeClassInApplicationLayer));
+
             services.AddApplicationServices();
         }
 

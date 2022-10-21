@@ -15,7 +15,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper
         /// <summary>
         /// 
         /// </summary>
-        public static void AddAutoMapper(this IServiceCollection services)
+        public static void AddMapper(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

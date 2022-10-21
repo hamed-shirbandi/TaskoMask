@@ -1,6 +1,4 @@
 using Serilog;
-using TaskoMask.BuildingBlocks.Application.Behaviors;
-using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
@@ -9,8 +7,8 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using TaskoMask.Services.Owners.Read.Api.Features.GetOwnerById;
-using MediatR;
+using TaskoMask.BuildingBlocks.Application.Services;
+using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
@@ -25,13 +23,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
         {
             builder.AddCustomSerilog();
 
-            builder.Services.AddMediator();
+            builder.Services.AddBuildingBlocksInfrastructure(builder.Configuration, typeof(Program), typeof(Program));
+
+            builder.Services.AddBuildingBlocksApplication(typeof(Program));
 
             builder.Services.AddMapper();
-
-            builder.Services.AddCachingBehavior();
-
-            builder.Services.AddBus();
 
             builder.Services.AddMongoDbContext(builder.Configuration);
 
@@ -73,15 +69,5 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
             services.AddScoped<OwnerReadDbContext>().AddOptions<MongoDbOptions>().Bind(options);
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AddMediator(this IServiceCollection services)
-        {
-            //Load all queries in this dll ...
-             services.AddMediatR(typeof(GetOwnerByIdHandler));
-        }
     }
 }

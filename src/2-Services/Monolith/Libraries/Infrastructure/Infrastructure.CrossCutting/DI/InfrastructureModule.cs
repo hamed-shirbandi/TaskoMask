@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
+using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
@@ -31,8 +31,12 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructureServices();
+            //services.AddBuildingBlocksInfrastructure(configuration, typeof(SomeClassInApplicationLayer), typeof(SomeClassInApplicationLayer));
+
+            services.AddMapper();
+
             services.AddInfrastructureWriteDataServices(configuration);
+
             services.AddInfrastructureReadDataServices(configuration);
         }
 

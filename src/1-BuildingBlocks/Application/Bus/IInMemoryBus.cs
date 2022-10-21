@@ -1,11 +1,14 @@
-﻿using MediatR;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Commands;
+using TaskoMask.BuildingBlocks.Application.Queries;
+using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Application.Bus
 {
     public interface IInMemoryBus
     {
-        Task<TResponse> Send<TResponse>(IRequest<TResponse> request);
-        Task Publish<TNotification>(TNotification notification) where TNotification : INotification;
+        Task<TCommandResult> SendCommand<TCommandResult>(InternalCommand<TCommandResult> command);
+        Task<TQueryResult> SendQuery<TQueryResult>(BaseQuery<TQueryResult> query);
+        Task PublishEvent(DomainEvent @event);
     }
 }

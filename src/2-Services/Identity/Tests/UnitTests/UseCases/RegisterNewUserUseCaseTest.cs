@@ -27,7 +27,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             TestUsers.Should().HaveCount(1);
             var registeredUser = TestUsers.FirstOrDefault(u => u.Id == result.EntityId);
             registeredUser.UserName.Should().Be(registerNewUserRequest.Email);
-            await InMemoryBus.Received(1).Publish(Arg.Any<NewUserRegistered>());
+            await InMemoryBus.Received(1).PublishEvent(Arg.Any<NewUserRegistered>());
         }
 
 

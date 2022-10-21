@@ -15,7 +15,7 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
         /// for enable caching set it to true beafor sending the query to bus like below:
         /// var query=new GetSomeQuery()
         /// query.EnableCache = false;
-        /// _inMemoryBus.Send(query)
+        /// _inMemoryBus.SendQuery(query)
         /// </summary>
         bool EnableCache { get; set; }
     }

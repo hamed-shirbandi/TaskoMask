@@ -1,6 +1,9 @@
 ﻿using MediatR;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Commands;
+using TaskoMask.BuildingBlocks.Application.Queries;
+using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {
@@ -32,9 +35,9 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         /// <summary>
         /// 
         /// </summary>
-        public async Task<TResponse> Send<TResponse>(IRequest<TResponse> request)
+        public async Task<TCommandResult> SendCommand<TCommandResult>(InternalCommand<TCommandResult> command)
         {
-            return await _mediator.Send(request);
+            return await _mediator.Send(command);
         }
 
 
@@ -42,9 +45,19 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         /// <summary>
         /// 
         /// </summary>
-        public async Task Publish<TNotification>(TNotification notification) where TNotification : INotification
+        public async Task<TQueryResult> SendQuery<TQueryResult>(BaseQuery<TQueryResult> query)
         {
-            await _mediator.Publish(notification);
+            return await _mediator.Send(query);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task PublishEvent(DomainEvent @event)
+        {
+            await _mediator.Publish(@event);
         }
 
 

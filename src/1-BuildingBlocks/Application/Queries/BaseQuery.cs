@@ -7,7 +7,7 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
     /// Mark BaseQuery with ICacheableQuery to catche the queries by CachingBehavior.
     /// If you need to cache a query just set the EnableCache to true beafore sending the query to bus
     /// </summary>
-    public abstract class BaseQuery<TQuery> : ICacheableQuery, IRequest<TQuery>
+    public abstract class BaseQuery<TQueryResult> : ICacheableQuery, IRequest<TQueryResult>
     {
         protected BaseQuery()
         {

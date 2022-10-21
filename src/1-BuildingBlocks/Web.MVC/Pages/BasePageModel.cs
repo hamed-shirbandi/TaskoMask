@@ -27,7 +27,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Pages
         /// </summary>
         protected async Task<Result<CommandResult>> SendCommandAsync<TCommand>(TCommand cmd) where TCommand : BaseCommand
         {
-            var result = await _inMemoryBus.Send(cmd);
+            var result = await _inMemoryBus.SendCommand(cmd);
 
             //get notification errors
             var errors = _notifications.GetErrors();
@@ -51,7 +51,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Pages
         /// </summary>
         protected async Task<Result<TQuery>> SendQueryAsync<TQuery>(BaseQuery<TQuery> query)
         {
-            var result = await _inMemoryBus.Send(query);
+            var result = await _inMemoryBus.SendQuery(query);
             if (_notifications.HasAny())
                 return Result.Failure<TQuery>(_notifications.GetErrors());
 

@@ -39,7 +39,7 @@ namespace TaskoMask.BuildingBlocks.Application.Commands
         protected async Task PublishDomainEventsAsync(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             foreach (var domainEvent in domainEvents)
-                await _inMemoryBus.Publish(domainEvent);
+                await _inMemoryBus.PublishEvent(domainEvent);
         }
 
 

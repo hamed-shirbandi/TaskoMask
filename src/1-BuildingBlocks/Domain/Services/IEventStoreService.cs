@@ -12,12 +12,12 @@ namespace TaskoMask.BuildingBlocks.Domain.Services
         /// <summary>
         /// 
         /// </summary>
-        void Save<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent;
+        void Save<TDomainEvent>(TDomainEvent @event) where TDomainEvent : DomainEvent;
 
         /// <summary>
         /// 
         /// </summary>
-        Task SaveAsync<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent;
+        Task SaveAsync<TDomainEvent>(TDomainEvent @event) where TDomainEvent : DomainEvent;
 
         /// <summary>
         /// 

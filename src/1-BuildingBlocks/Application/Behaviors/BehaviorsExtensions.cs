@@ -23,7 +23,7 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
         /// </summary>
         public static void AddEventStoringBehavior(this IServiceCollection services)
         {
-            services.AddScoped<INotificationHandler<IDomainEvent>, EventStoringBehavior>();
+            services.AddScoped<INotificationHandler<DomainEvent>, EventStoringBehavior>();
         }
 
 

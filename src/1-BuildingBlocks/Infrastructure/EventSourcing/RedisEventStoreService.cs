@@ -48,7 +48,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        public void Save<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent
+        public void Save<TDomainEvent>(TDomainEvent @event) where TDomainEvent : DomainEvent
         {
             var storedEvent = GetEventDataToStore(@event);
             string jsonData = ConvertDataToJson(storedEvent);
@@ -61,7 +61,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        public async Task SaveAsync<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent
+        public async Task SaveAsync<TDomainEvent>(TDomainEvent @event) where TDomainEvent : DomainEvent
         {
             var storedEvent = GetEventDataToStore(@event);
             string jsonData = ConvertDataToJson(storedEvent);
@@ -135,7 +135,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
         /// <summary>
         /// 
         /// </summary>
-        private StoredEvent GetEventDataToStore<TDomainEvent>(TDomainEvent @event) where TDomainEvent : IDomainEvent
+        private StoredEvent GetEventDataToStore<TDomainEvent>(TDomainEvent @event) where TDomainEvent : DomainEvent
         {
             var userId = _authenticatedUserService.GetUserId();
             return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.EventType, data: @event, userId: userId);

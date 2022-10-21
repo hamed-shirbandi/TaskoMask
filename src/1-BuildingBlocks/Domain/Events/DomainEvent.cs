@@ -8,7 +8,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Events
     /// <summary>
     /// 
     /// </summary>
-    public class DomainEvent : IDomainEvent
+    public class DomainEvent : INotification
     {
         public DomainEvent(string entityId, string entityType)
         {

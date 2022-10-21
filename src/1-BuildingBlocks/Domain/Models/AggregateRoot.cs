@@ -12,7 +12,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
     {
         #region Fields
 
-        private List<IDomainEvent> domainEvents;
+        private List<DomainEvent> domainEvents;
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
         public string Version { get; private set; }
 
 
-        public IReadOnlyCollection<IDomainEvent> DomainEvents => domainEvents?.AsReadOnly();
+        public IReadOnlyCollection<DomainEvent> DomainEvents => domainEvents?.AsReadOnly();
 
 
         #endregion
@@ -62,13 +62,13 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
         /// <summary>
         /// Add domain event
         /// </summary>
-        protected void AddDomainEvent(IDomainEvent domainEvent)
+        protected void AddDomainEvent(DomainEvent domainEvent)
         {
             CheckInvariants();
 
             UpdateAggregate();
 
-            domainEvents ??= new List<IDomainEvent>();
+            domainEvents ??= new List<DomainEvent>();
             this.domainEvents.Add(domainEvent);
         }
 

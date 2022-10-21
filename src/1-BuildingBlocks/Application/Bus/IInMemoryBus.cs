@@ -5,6 +5,9 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Application.Bus
 {
+    /// <summary>
+    /// It is used as a mediator to send and handle requests inside a single service
+    /// </summary>
     public interface IInMemoryBus
     {
         Task<TCommandResult> SendCommand<TCommandResult>(InternalCommand<TCommandResult> command);

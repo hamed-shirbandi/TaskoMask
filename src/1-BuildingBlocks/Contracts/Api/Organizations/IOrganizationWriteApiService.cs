@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Organizations
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Organizations
 {
     public interface IOrganizationWriteApiService
     {

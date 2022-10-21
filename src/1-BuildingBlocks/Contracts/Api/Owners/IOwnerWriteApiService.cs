@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Owners
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Owners
 {
     public interface IOwnerWriteApiService
     {

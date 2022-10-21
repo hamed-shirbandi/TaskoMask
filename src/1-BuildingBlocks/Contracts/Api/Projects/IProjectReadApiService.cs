@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Projects
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Projects
 {
     public interface IProjectReadApiService
     {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Cards
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Cards
 {
     public interface ICardWriteApiService
     {

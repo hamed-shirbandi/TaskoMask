@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Cards
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Cards
 {
     public interface ICardReadApiService
     {

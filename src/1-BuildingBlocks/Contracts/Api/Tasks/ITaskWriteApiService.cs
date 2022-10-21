@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Tasks
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Tasks
 {
     public interface ITaskWriteApiService
     {

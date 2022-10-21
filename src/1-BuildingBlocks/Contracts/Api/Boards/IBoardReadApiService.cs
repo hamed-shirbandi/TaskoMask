@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Boards
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Boards
 {
     public interface IBoardReadApiService
     {

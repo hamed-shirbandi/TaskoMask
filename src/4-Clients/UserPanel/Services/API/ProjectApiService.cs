@@ -3,8 +3,8 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Contracts.Models;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Projects;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts.OwProjectsners;
+using TaskoMask.BuildingBlocks.Contracts.Api.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Api.OwProjectsners;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Boards
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Boards
 {
     public interface IBoardWriteApiService
     {

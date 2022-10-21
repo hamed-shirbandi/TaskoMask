@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Organizations
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Organizations
 {
     public interface IOrganizationReadApiService
     {

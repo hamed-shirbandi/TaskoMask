@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.Clients.UserPanel.Helpers;
-using TaskoMask.BuildingBlocks.Contracts.ApiContracts.Owners;
+using TaskoMask.BuildingBlocks.Contracts.Api.Owners;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {

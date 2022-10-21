@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.OwProjectsners
+namespace TaskoMask.BuildingBlocks.Contracts.Api.OwProjectsners
 {
     public interface IProjectWriteApiService
     {

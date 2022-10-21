@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
 
-namespace TaskoMask.BuildingBlocks.Contracts.ApiContracts.Comments
+namespace TaskoMask.BuildingBlocks.Contracts.Api.Comments
 {
     public interface ICommentReadApiService
     {

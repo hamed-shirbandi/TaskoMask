@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Application.Services;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 
 namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
 {
@@ -15,7 +17,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddApplicationModule(this IServiceCollection services)
         {
-            // services.AddBuildingBlocksApplication(typeof(SomeClassInApplicationLayer));
+            services.AddBuildingBlocksApplication(typeof(RegiserOwnerValidation<>));
 
         }
 

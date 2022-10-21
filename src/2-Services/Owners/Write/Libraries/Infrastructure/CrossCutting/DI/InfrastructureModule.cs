@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories;
@@ -20,7 +22,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddBuildingBlocksInfrastructure(configuration, typeof(SomeClassInApplicationLayer), typeof(SomeClassInApplicationLayer));
+            services.AddBuildingBlocksInfrastructure(configuration, typeof(RegiserOwnerUseCase), typeof(RegiserOwnerUseCase));
 
             services.AddMongoDbContext(configuration);
 

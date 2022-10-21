@@ -1,26 +1,24 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Infrastructure.MassTransit;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {
     public static class BusExtensions
     {
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void AddBus(this IServiceCollection services)
-        {
-            services.AddInMemoryBus();
-            services.AddMessageBus();
-        }
-
 
         /// <summary>
         /// 
         /// </summary>
-        public static void AddInMemoryBus(this IServiceCollection services)
+        public static void AddInMemoryBus(this IServiceCollection services, params Type[] handlerAssemblyMarkerTypes)
         {
+            //Load all handlers in given assemblies
+            services.AddMediatR(handlerAssemblyMarkerTypes);
+
             services.AddScoped<IInMemoryBus, InMemoryBus>();
         }
 
@@ -28,9 +26,11 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         /// <summary>
         /// 
         /// </summary>
-        public static void AddMessageBus(this IServiceCollection services)
+        public static void AddMessageBus(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {
-            services.AddScoped<IMessageBus, MessageBus>();
+            services.AddMassTransitWithRabbitMqTransport(configuration, consumerAssemblyMarkerType);
+
+           services.AddScoped<IMessageBus, MessageBus>();
         }
     }
 }

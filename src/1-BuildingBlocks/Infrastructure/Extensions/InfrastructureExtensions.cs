@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using TaskoMask.BuildingBlocks.Infrastructure.Bus;
 using TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
-using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Extensions
 {
@@ -11,14 +12,11 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Extensions
         /// <summary>
         /// 
         /// </summary>
-        public static IServiceCollection AddBuildingBlocksInfrastructureServices(this IServiceCollection services)
+        public static void AddBuildingBlocksInfrastructure(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType, params Type[] handlerAssemblyMarkerTypes)
         {
-
-            services.AddBus();
-            services.AddMongoDbBaseRepository();
+            services.AddInMemoryBus(handlerAssemblyMarkerTypes);
+            services.AddMessageBus(configuration, consumerAssemblyMarkerType);
             services.AddRedisEventStoreService();
-
-            return services;
         }
     }
 }

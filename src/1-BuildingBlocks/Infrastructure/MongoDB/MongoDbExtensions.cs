@@ -11,18 +11,6 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
     public static class MongoDbExtensions
     {
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IServiceCollection AddMongoDbBaseRepository(this IServiceCollection services)
-        {
-            return services.AddScoped(typeof(IBaseRepository<>), typeof(MongoDbBaseRepository<>));
-
-        }
-
-
-
         /// <summary>
         /// Drop database
         /// </summary>

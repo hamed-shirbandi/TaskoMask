@@ -24,7 +24,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwn
         #region Ctors
 
 
-        public RegiserOwnerUseCase(IOwnerAggregateRepository ownerAggregateRepository, IInMemoryBus inMemoryBus, IOwnerValidatorService ownerValidatorService) : base(inMemoryBus)
+        public RegiserOwnerUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService) : base(messageBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
             _ownerValidatorService = ownerValidatorService;

@@ -13,7 +13,7 @@ namespace TaskoMask.BuildingBlocks.Application.Commands
         #region Fields
 
 
-        private readonly IInMemoryBus _inMemoryBus;
+        private readonly IMessageBus _messageBus;
 
 
         #endregion
@@ -21,9 +21,9 @@ namespace TaskoMask.BuildingBlocks.Application.Commands
         #region Ctors
 
 
-        protected BaseCommandHandler(IInMemoryBus inMemoryBus)
+        protected BaseCommandHandler(IMessageBus messageBus)
         {
-            _inMemoryBus = inMemoryBus;
+            _messageBus = messageBus;
         }
 
 
@@ -39,7 +39,7 @@ namespace TaskoMask.BuildingBlocks.Application.Commands
         protected async Task PublishDomainEventsAsync(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             foreach (var domainEvent in domainEvents)
-                await _inMemoryBus.PublishEvent(domainEvent);
+                await _messageBus.Publish(domainEvent);
         }
 
 

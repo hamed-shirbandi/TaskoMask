@@ -28,7 +28,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Ha
 
         #region Ctors
 
-        public CommentCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IInMemoryBus inMemoryBus) : base(inMemoryBus)
+        public CommentCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus) : base(messageBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
         }

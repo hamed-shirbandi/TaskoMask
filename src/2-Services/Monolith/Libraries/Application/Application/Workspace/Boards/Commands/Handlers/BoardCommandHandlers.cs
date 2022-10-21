@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Hand
         #region Ctors
 
 
-        public BoardCommandHandlers(IBoardAggregateRepository boardAggregateRepository, IInMemoryBus inMemoryBus, IBoardValidatorService boardValidatorService) : base(inMemoryBus)
+        public BoardCommandHandlers(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IBoardValidatorService boardValidatorService) : base(messageBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
             _boardValidatorService = boardValidatorService;

@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using MongoDB.Bson;
 using NSubstitute;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +43,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Workspace
             //Assert
             var createdUser = _owners.FirstOrDefault(u => u.Id == result.EntityId);
             createdUser.Email.Value.Should().Be(createOwnerCommand.Email);
-            await _inMemoryBus.Received(1).PublishEvent(Arg.Any<OwnerRegisteredEvent>());
+            await _messageBus.Received(1).Publish(Arg.Any<OwnerRegisteredEvent>());
         }
 
 
@@ -63,7 +62,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Workspace
             //Assert
             result.EntityId.Should().Be(ownerToUpdate.Id);
             ownerToUpdate.Email.Value.Should().Be(updateOwnerCommand.Email);
-            await _inMemoryBus.Received(1).PublishEvent(Arg.Any<OwnerProfileUpdatedEvent>());
+            await _messageBus.Received(1).Publish(Arg.Any<OwnerProfileUpdatedEvent>());
         }
 
 
@@ -91,7 +90,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Workspace
                 }
             });
 
-            _ownerCommandHandlers = new OwnerCommandHandlers(_ownerAggregateRepository, _inMemoryBus);
+            _ownerCommandHandlers = new OwnerCommandHandlers(_ownerAggregateRepository, _messageBus);
 
         }
 

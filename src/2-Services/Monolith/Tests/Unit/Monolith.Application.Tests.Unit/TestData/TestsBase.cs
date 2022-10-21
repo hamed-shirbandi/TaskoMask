@@ -9,7 +9,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
     public abstract class TestsBase : UnitTestsBase
     {
 
-        protected IInMemoryBus _inMemoryBus;
+        protected IMessageBus _messageBus;
         protected IMapper _iMapper;
         protected INotificationHandler _domainNotificationHandler;
 
@@ -42,7 +42,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
         /// </summary>
         private void CommonFixtureSetup()
         {
-            _inMemoryBus = Substitute.For<IInMemoryBus>();
+            _messageBus = Substitute.For<IMessageBus>();
             _iMapper = Substitute.For<IMapper>();
             _domainNotificationHandler = Substitute.For<INotificationHandler>();
         }

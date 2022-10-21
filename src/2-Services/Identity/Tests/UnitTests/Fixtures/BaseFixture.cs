@@ -19,7 +19,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
         public TestUserManager TestUserManager;
         public TestSignInManager TestSignInManager;
         public INotificationHandler NotificationHandler;
-        public IInMemoryBus InMemoryBus;
+        public IMessageBus MessageBus;
         public IMapper Mapper;
         
         public List<User> TestUsers;
@@ -38,7 +38,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
             TestUsers = new List<User>();
             TestUserLogins= new List<UserLogin>();
             NotificationHandler = Substitute.For<INotificationHandler>();
-            InMemoryBus = Substitute.For<IInMemoryBus>();
+            MessageBus = Substitute.For<IMessageBus>();
             Mapper = Substitute.For<IMapper>();
 
             TestSignInManager.PasswordSignInAsync(userName: Arg.Any<string>(), password: Arg.Any<string>(), isPersistent: Arg.Any<bool>(), lockoutOnFailure: Arg.Any<bool>()).Returns(args =>

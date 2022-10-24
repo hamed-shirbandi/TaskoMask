@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace TaskoMask.BuildingBlocks.Domain.Events
+namespace TaskoMask.BuildingBlocks.Domain.Models
 {
     /// <summary>
     /// 
     /// </summary>
     public class StoredEvent
     {
-        public StoredEvent(string entityId, string entityType, string eventType, string userId, object data )
+        public StoredEvent(string entityId, string entityType, string eventType, string userId, object data)
         {
             EntityId = entityId;
             EntityType = entityType;

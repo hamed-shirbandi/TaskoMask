@@ -38,8 +38,5 @@
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Events\" />
-	</ItemGroup>
 
 </Project>

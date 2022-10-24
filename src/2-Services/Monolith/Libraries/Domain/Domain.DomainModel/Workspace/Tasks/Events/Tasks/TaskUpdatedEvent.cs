@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Domain.Events;
+﻿using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Events.Tasks

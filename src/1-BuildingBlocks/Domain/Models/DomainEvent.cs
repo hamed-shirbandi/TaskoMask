@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace TaskoMask.BuildingBlocks.Domain.Events
+namespace TaskoMask.BuildingBlocks.Domain.Models
 {
 
     /// <summary>
@@ -14,7 +14,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Events
         {
             EntityId = entityId;
             EntityType = entityType;
-            EventType = this.GetType().Name;
+            EventType = GetType().Name;
             OccurredOn = DateTime.Now;
         }
 
@@ -22,13 +22,13 @@ namespace TaskoMask.BuildingBlocks.Domain.Events
         /// Use JsonIgnore to prevent adding it to Data prop in StoredEvent because it will map to EntityId prop in StoredEvent
         /// </summary>
         [JsonIgnore]
-        public string EntityId { get;  }
+        public string EntityId { get; }
 
         /// <summary>
         /// Use JsonIgnore to prevent adding it to Data prop in StoredEvent because it will map to EntityType prop in StoredEvent
         /// </summary>
         [JsonIgnore]
-        public string EntityType { get;  }
+        public string EntityType { get; }
 
         /// <summary>
         /// Use JsonIgnore to prevent adding it to Data prop in StoredEvent because it will map to EventType prop in StoredEvent

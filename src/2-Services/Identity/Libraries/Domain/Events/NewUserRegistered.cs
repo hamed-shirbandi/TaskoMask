@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Domain.Events;
+﻿using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Domain.Events

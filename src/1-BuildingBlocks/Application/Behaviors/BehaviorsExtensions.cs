@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using TaskoMask.BuildingBlocks.Domain.Events;
+using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {

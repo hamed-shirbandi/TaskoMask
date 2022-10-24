@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Domain.Models
 {

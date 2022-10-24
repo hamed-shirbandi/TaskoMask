@@ -1,5 +1,5 @@
 ﻿using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
-using TaskoMask.BuildingBlocks.Domain.Events;
+using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Events.Boards
 {

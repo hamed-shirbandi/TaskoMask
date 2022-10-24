@@ -1,6 +1,6 @@
-﻿using TaskoMask.BuildingBlocks.Domain.Events;
-using TaskoMask.BuildingBlocks.Contracts.Enums;
+﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Boards.Write.Domain.Entities;
+using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.Services.Boards.Write.Domain.Events.Cards
 {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Queries;
-using TaskoMask.BuildingBlocks.Domain.Events;
+using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.BuildingBlocks.Application.Bus
 {

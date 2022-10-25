@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Owners.Write.Domain.Events.Organizations;
+using TaskoMask.BuildingBlocks.Domain.EventContracts.Organizations;
 using TaskoMask.BuildingBlocks.Domain.EventContracts.Owners;
 using TaskoMask.Services.Owners.Write.Domain.Events.Projects;
 using TaskoMask.Services.Owners.Write.Domain.Specifications;

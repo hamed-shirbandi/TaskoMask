@@ -1,11 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.Services.Identity.Domain.Entities;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Identity.Domain.Events
+namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Identity
 {
     public class NewUserRegistered : DomainEvent
     {
-        public NewUserRegistered(string id, string userName, string email) : base(entityId: id, entityType: nameof(User))
+        public NewUserRegistered(string id, string userName, string email) : base(entityId: id, entityType: DomainMetadata.User)
         {
             Id = id;
             Email = email;

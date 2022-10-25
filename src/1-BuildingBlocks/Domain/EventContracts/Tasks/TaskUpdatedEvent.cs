@@ -1,11 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.Services.Tasks.Write.Domain.Entities;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Tasks.Write.Domain.Events.Tasks
+namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Tasks
 {
     public class TaskUpdatedEvent : DomainEvent
     {
-        public TaskUpdatedEvent(string id , string title, string description) : base(entityId: id, entityType: nameof(Task))
+        public TaskUpdatedEvent(string id , string title, string description) : base(entityId: id, entityType: DomainMetadata.Task)
         {
             Id = id;
             Title = title;

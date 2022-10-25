@@ -1,11 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.Services.Tasks.Write.Domain.Entities;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Tasks.Write.Domain.Events.Tasks
+namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Tasks
 {
     public class TaskMovedToAnotherCardEvent : DomainEvent
     {
-        public TaskMovedToAnotherCardEvent(string taskId, string cardId) : base(entityId: taskId, entityType: nameof(Task))
+        public TaskMovedToAnotherCardEvent(string taskId, string cardId) : base(entityId: taskId, entityType: DomainMetadata.Task)
         {
             TaskId = taskId;
             CardId = cardId;

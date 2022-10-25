@@ -1,12 +1,12 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Boards.Write.Domain.Entities;
 using TaskoMask.BuildingBlocks.Domain.Models;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Boards.Write.Domain.Events.Cards
+namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Cards
 {
     public class CardUpdatedEvent : DomainEvent
     {
-        public CardUpdatedEvent(string id, string name, BoardCardType type) : base(entityId: id, entityType: nameof(Card))
+        public CardUpdatedEvent(string id, string name, BoardCardType type) : base(entityId: id, entityType: DomainMetadata.Card)
         {
             Id = id;
             Name = name;

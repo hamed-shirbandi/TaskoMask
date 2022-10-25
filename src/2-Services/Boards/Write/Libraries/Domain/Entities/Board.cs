@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.EventContracts.Boards;
 using TaskoMask.Services.Boards.Write.Domain.ValueObjects.Boards;
-using TaskoMask.Services.Boards.Write.Domain.Events.Cards;
+using TaskoMask.BuildingBlocks.Domain.EventContracts.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Boards.Write.Domain.Specifications;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;

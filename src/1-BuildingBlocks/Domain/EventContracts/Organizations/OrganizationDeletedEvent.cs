@@ -1,6 +1,5 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.Services.Owners.Write.Domain.Entities;
 
 namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Organizations
 {

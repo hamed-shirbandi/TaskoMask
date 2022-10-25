@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
-using TaskoMask.BuildingBlocks.Domain.EventContracts.Boards;
 using TaskoMask.Services.Boards.Write.Domain.ValueObjects.Boards;
-using TaskoMask.BuildingBlocks.Domain.EventContracts.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.Services.Boards.Write.Domain.Specifications;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Boards.Write.Domain.Services;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using MongoDB.Bson;
+using TaskoMask.BuildingBlocks.Domain.EventContracts.Boards;
+using TaskoMask.BuildingBlocks.Domain.EventContracts.Cards;
 
 namespace TaskoMask.Services.Boards.Write.Domain.Entities
 {

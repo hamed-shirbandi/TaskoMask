@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Tasks.Write.Domain.Events.Comments;
+using TaskoMask.BuildingBlocks.Domain.EventContracts.Comments;
 using TaskoMask.BuildingBlocks.Domain.EventContracts.Tasks;
 using TaskoMask.Services.Tasks.Write.Domain.Services;
 using TaskoMask.Services.Tasks.Write.Domain.Specifications;

@@ -1,11 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.Services.Tasks.Write.Domain.Entities;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Tasks.Write.Domain.Events.Comments
+namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Comments
 {
     public class CommentAddedEvent : DomainEvent
     {
-        public CommentAddedEvent(string id, string content, string taskId) : base(entityId: id, entityType: nameof(Comment))
+        public CommentAddedEvent(string id, string content, string taskId) : base(entityId: id, entityType: DomainMetadata.Comment)
         {
             Id = id;
             Content = content;

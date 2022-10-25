@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.EventContracts.Organizations;
 using TaskoMask.BuildingBlocks.Domain.EventContracts.Owners;
-using TaskoMask.Services.Owners.Write.Domain.Events.Projects;
+using TaskoMask.BuildingBlocks.Domain.EventContracts.Projects;
 using TaskoMask.Services.Owners.Write.Domain.Specifications;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Owners;
 using TaskoMask.BuildingBlocks.Domain.Resources;

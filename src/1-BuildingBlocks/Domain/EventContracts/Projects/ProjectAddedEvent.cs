@@ -1,11 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.Services.Owners.Write.Domain.Entities;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Owners.Write.Domain.Events.Projects
+namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Projects
 {
     public class ProjectAddedEvent : DomainEvent
     {
-        public ProjectAddedEvent(string id, string name, string description, string organizationId, string ownerId) : base(entityId: id, entityType: nameof(Project))
+        public ProjectAddedEvent(string id, string name, string description, string organizationId, string ownerId) : base(entityId: id, entityType: DomainMetadata.Project)
         {
             Id = id;
             Name = name;

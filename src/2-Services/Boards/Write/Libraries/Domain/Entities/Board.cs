@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
-using TaskoMask.Services.Boards.Write.Domain.Events.Boards;
+using TaskoMask.BuildingBlocks.Domain.EventContracts.Boards;
 using TaskoMask.Services.Boards.Write.Domain.ValueObjects.Boards;
 using TaskoMask.Services.Boards.Write.Domain.Events.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Enums;

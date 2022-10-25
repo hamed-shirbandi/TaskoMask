@@ -1,11 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.Services.Boards.Write.Domain.Entities;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Boards.Write.Domain.Events.Boards
+namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Boards
 {
     public class BoardUpdatedEvent : DomainEvent
     {
-        public BoardUpdatedEvent(string id, string name, string description) : base(entityId: id, entityType: nameof(Board))
+        public BoardUpdatedEvent(string id, string name, string description) : base(entityId: id, entityType: DomainMetadata.Board)
         {
             Id = id;
             Name = name;

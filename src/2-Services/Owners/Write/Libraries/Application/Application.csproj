@@ -12,10 +12,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Consumers\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="Resources\ApplicationMessages.Designer.cs">
 	    <DependentUpon>ApplicationMessages.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>

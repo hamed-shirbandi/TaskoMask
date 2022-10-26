@@ -5,16 +5,17 @@ namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Owners
 {
     public class OwnerRegisteredEvent : DomainEvent
     {
-        public OwnerRegisteredEvent(string id, string displayName, string email) : base(entityId: id, entityType: DomainMetadata.Owner)
+        public OwnerRegisteredEvent(string id, string email,string password) : base(entityId: id, entityType: DomainMetadata.Owner)
         {
             Id = id;
-            DisplayName = displayName;
             Email = email;
+            Password = password;
+
         }
 
-
         public string Id { get; }
-        public string DisplayName { get; }
         public string Email { get; }
+        public string Password { get; }
+
     }
 }

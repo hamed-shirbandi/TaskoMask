@@ -47,8 +47,6 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwn
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            //TODO publish OwnerRegisteredEvent (to be handled by Identity service)
-
             return CommandResult.Create(ContractsMessages.Create_Success, owner.Id.ToString());
         }
 

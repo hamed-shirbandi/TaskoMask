@@ -3,9 +3,9 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.BuildingBlocks.Domain.EventContracts.Identity
 {
-    public class NewUserRegistered : DomainEvent
+    public class NewUserRegisteredEvent : DomainEvent
     {
-        public NewUserRegistered(string id, string userName, string email) : base(entityId: id, entityType: DomainMetadata.User)
+        public NewUserRegisteredEvent(string id, string userName, string email) : base(entityId: id, entityType: DomainMetadata.User)
         {
             Id = id;
             Email = email;

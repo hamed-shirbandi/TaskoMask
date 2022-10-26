@@ -56,8 +56,6 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
 
             var registeredUser = await _userManager.FindByNameAsync(request.Email);
 
-            //TODO publish NewUserRegistered event
-
             return CommandResult.Create(ContractsMessages.Create_Success, registeredUser.Id);
         }
 

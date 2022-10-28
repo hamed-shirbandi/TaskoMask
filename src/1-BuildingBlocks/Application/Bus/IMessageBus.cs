@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.BuildingBlocks.Application.Bus
@@ -8,6 +9,6 @@ namespace TaskoMask.BuildingBlocks.Application.Bus
     /// </summary>
     public interface IMessageBus
     {
-        Task Publish(DomainEvent @event);
+        Task Publish<TEvent>(TEvent @event) where TEvent: IntegrationEvent;
     }
 }

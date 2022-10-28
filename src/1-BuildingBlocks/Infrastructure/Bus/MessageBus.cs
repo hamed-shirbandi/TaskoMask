@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Domain.Models;
+using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {
@@ -34,7 +34,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         /// <summary>
         /// 
         /// </summary>
-        public async Task Publish(DomainEvent @event)
+        public async Task Publish<TEvent>(TEvent @event) where TEvent : IntegrationEvent
         {
             await _publishEndpoint.Publish(@event);
         }

@@ -17,7 +17,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
         {
             //Arrange
 
-            var useCase = new RegisterNewUserUseCase(TestUserManager, MessageBus, NotificationHandler);
+            var useCase = new RegisterNewUserUseCase(TestUserManager, MessageBus,InMemoryBus, NotificationHandler);
             var registerNewUserRequest = new RegisterNewUserRequest("test@taskomask.ir", "TestPass");
 
             //Act
@@ -27,7 +27,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             TestUsers.Should().HaveCount(1);
             var registeredUser = TestUsers.FirstOrDefault(u => u.Id == result.EntityId);
             registeredUser.UserName.Should().Be(registerNewUserRequest.Email);
-            await MessageBus.Received(1).Publish(Arg.Any<NewUserRegisteredEvent>());
+            await InMemoryBus.Received(1).PublishEvent(Arg.Any<NewUserRegisteredEvent>());
         }
 
 
@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new RegisterNewUserUseCase(TestUserManager, MessageBus, NotificationHandler);
+            var useCase = new RegisterNewUserUseCase(TestUserManager, MessageBus, InMemoryBus, NotificationHandler);
             var registerNewUserRequest = new RegisterNewUserRequest(userBuilder.Email, "NewPass");
 
             //Act

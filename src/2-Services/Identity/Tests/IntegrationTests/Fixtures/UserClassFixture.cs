@@ -20,6 +20,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         public SignInManager<User> SignInManager;
         public INotificationHandler NotificationHandler;
         public IMessageBus MessageBus;
+        public IInMemoryBus InMemoryBus;
         public IMapper Mapper;
         public IIdentityServerInteractionService InteractionService;
         public IEventService EventsService;
@@ -31,6 +32,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
             InteractionService = GetRequiredService<IIdentityServerInteractionService>();
             EventsService = GetRequiredService<IEventService>();
             MessageBus = GetRequiredService<IMessageBus>();
+            InMemoryBus = GetRequiredService<IInMemoryBus>();
             Mapper = GetRequiredService<IMapper>();
             NotificationHandler = GetRequiredService<INotificationHandler>();
         }

@@ -31,7 +31,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
         public async Task User_Is_Registered()
         {
             //Arrange
-            var useCase = new RegisterNewUserUseCase(_fixture.UserManager, _fixture.MessageBus, _fixture.NotificationHandler);
+            var useCase = new RegisterNewUserUseCase(_fixture.UserManager, _fixture.MessageBus, _fixture.InMemoryBus, _fixture.NotificationHandler);
             var request = new RegisterNewUserRequest("test@taskomask.ir", "TestPass");
 
             //Act

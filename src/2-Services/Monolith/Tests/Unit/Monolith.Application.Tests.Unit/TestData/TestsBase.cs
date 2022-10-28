@@ -10,6 +10,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
     {
 
         protected IMessageBus _messageBus;
+        protected IInMemoryBus _inMemoryBus;
         protected IMapper _iMapper;
         protected INotificationHandler _domainNotificationHandler;
 
@@ -43,6 +44,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
         private void CommonFixtureSetup()
         {
             _messageBus = Substitute.For<IMessageBus>();
+            _inMemoryBus = Substitute.For<IInMemoryBus>();
             _iMapper = Substitute.For<IMapper>();
             _domainNotificationHandler = Substitute.For<INotificationHandler>();
         }

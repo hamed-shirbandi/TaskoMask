@@ -30,7 +30,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
 
         #region Ctors
 
-        public TaskCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, ITaskValidatorService taskValidatorService, IBoardAggregateRepository boardAggregateRepository) : base(messageBus)
+        public TaskCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, ITaskValidatorService taskValidatorService, IBoardAggregateRepository boardAggregateRepository, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
             _taskValidatorService = taskValidatorService;

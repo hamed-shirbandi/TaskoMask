@@ -28,7 +28,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Ha
 
         #region Ctors
 
-        public ProjectCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus) : base(messageBus)
+        public ProjectCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }

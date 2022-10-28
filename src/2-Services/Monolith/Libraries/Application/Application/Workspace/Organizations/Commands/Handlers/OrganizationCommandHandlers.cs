@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Monolith.Application.Commands.Handlers.Organization
 
         #region Ctors
 
-        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus) : base(messageBus)
+        public OrganizationCommandHandlers(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }

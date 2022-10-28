@@ -24,7 +24,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
         /// <summary>
         /// 
         /// </summary>
-        public RegisterNewUserUseCase(UserManager<User> userManager, IMessageBus messageBus, INotificationHandler notifications) : base(messageBus)
+        public RegisterNewUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(messageBus,inMemoryBus)
         {
             _userManager = userManager;
             _notifications = notifications;

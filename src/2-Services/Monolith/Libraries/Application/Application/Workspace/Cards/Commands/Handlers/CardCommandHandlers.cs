@@ -28,7 +28,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Commands.Handl
 
         #region Ctors
 
-        public CardCommandHandlers(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus) : base(messageBus)
+        public CardCommandHandlers(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
         }

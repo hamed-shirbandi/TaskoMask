@@ -10,8 +10,8 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Boards.Write.Domain.Services;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using MongoDB.Bson;
-using TaskoMask.BuildingBlocks.Domain.EventContracts.Boards;
-using TaskoMask.BuildingBlocks.Domain.EventContracts.Cards;
+using TaskoMask.Services.Boards.Write.Domain.Events.Boards;
+using TaskoMask.Services.Boards.Write.Domain.Events.Cards;
 
 namespace TaskoMask.Services.Boards.Write.Domain.Entities
 {

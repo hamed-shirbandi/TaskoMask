@@ -2,7 +2,7 @@
 using NSubstitute;
 using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser;
-using TaskoMask.BuildingBlocks.Domain.EventContracts.Identity;
+using TaskoMask.Services.Identity.Domain.Events;
 using TaskoMask.Services.Identity.UnitTests.Fixtures;
 using TaskoMask.Services.Identity.UnitTests.TestData;
 using Xunit;

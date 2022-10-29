@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
+using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
@@ -47,7 +48,10 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwn
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            return CommandResult.Create(ContractsMessages.Create_Success, owner.Id.ToString());
+            //Here a SAGA Choreography is started by consuming OwnerRegistered by identity service
+            await PublishIntegrationEventAsync(new OwnerRegistered(owner.Id,owner.Email.Value,request.Password));
+
+            return CommandResult.Create(ContractsMessages.Create_Success, owner.Id);
         }
 
 

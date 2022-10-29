@@ -17,8 +17,5 @@
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
 		<ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Consumers\" />
-	</ItemGroup>
 
 </Project>

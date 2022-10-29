@@ -2,8 +2,9 @@
 
 namespace TaskoMask.BuildingBlocks.Contracts.Events
 {
-    public record OwnerRegistered(string Id, string Email, string DisplayName) : IntegrationEvent;
+    public record OwnerRegistered(string Id, string Email, string Password) : IntegrationEvent;
     public record OwnerProfileUpdated(string Id, string Email, string DisplayName) : IntegrationEvent;
+    public record OwnerRegisterationCompleted(string Id, string Email, string DisplayName) : IntegrationEvent;
 
 
     public record OrganizatonAdded(string Id, string Name, string Description, string OwnerId) : IntegrationEvent;

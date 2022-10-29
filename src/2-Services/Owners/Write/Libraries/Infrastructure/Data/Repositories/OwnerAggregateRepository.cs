@@ -32,6 +32,17 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
+        public async Task<Owner> GetByEmailAsync(string email)
+        {
+            return await _owners.Find(e => e.Email.Value == email).FirstOrDefaultAsync();
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Owner> GetByOrganizationIdAsync(string organizationId)
         {
             return await _owners.Find(e => e.Organizations.Any(c => c.Id == organizationId)).FirstOrDefaultAsync();

@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser;
+using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
 using TaskoMask.Services.Identity.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
 {
-    public class RegisterNewUserUseCaseTest : IClassFixture<UserClassFixture>
+    public class RegisterUserUseCaseTest : IClassFixture<UserClassFixture>
     {
 
         #region Fields
@@ -17,7 +17,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
 
         #region Ctor
 
-        public RegisterNewUserUseCaseTest(UserClassFixture fixture)
+        public RegisterUserUseCaseTest(UserClassFixture fixture)
         {
             _fixture = fixture;
         }
@@ -31,8 +31,8 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
         public async Task User_Is_Registered()
         {
             //Arrange
-            var useCase = new RegisterNewUserUseCase(_fixture.UserManager, _fixture.MessageBus, _fixture.InMemoryBus, _fixture.NotificationHandler);
-            var request = new RegisterNewUserRequest("test@taskomask.ir", "TestPass");
+            var useCase = new RegisterUserUseCase(_fixture.UserManager, _fixture.MessageBus, _fixture.InMemoryBus, _fixture.NotificationHandler);
+            var request = new RegisterUserRequest("test@taskomask.ir", "TestPass");
 
             //Act
             var result = await useCase.Handle(request, CancellationToken.None);

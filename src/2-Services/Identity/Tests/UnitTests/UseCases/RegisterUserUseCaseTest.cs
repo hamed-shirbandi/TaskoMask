@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using NSubstitute;
 using TaskoMask.Services.Identity.Application.Resources;
-using TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser;
+using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
 using TaskoMask.Services.Identity.Domain.Events;
 using TaskoMask.Services.Identity.UnitTests.Fixtures;
 using TaskoMask.Services.Identity.UnitTests.TestData;
@@ -9,7 +9,7 @@ using Xunit;
 
 namespace TaskoMask.Services.Identity.UnitTests.UseCases
 {
-    public class RegisterNewUserUseCaseTest : BaseFixture
+    public class RegisterUserUseCaseTest : BaseFixture
     {
 
         [Fact]
@@ -17,17 +17,17 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
         {
             //Arrange
 
-            var useCase = new RegisterNewUserUseCase(TestUserManager, MessageBus,InMemoryBus, NotificationHandler);
-            var registerNewUserRequest = new RegisterNewUserRequest("test@taskomask.ir", "TestPass");
+            var useCase = new RegisterUserUseCase(TestUserManager, MessageBus,InMemoryBus, NotificationHandler);
+            var registerUserRequest = new RegisterUserRequest("test@taskomask.ir", "TestPass");
 
             //Act
-            var result = await useCase.Handle(registerNewUserRequest, CancellationToken.None);
+            var result = await useCase.Handle(registerUserRequest, CancellationToken.None);
 
             //Assert
             TestUsers.Should().HaveCount(1);
             var registeredUser = TestUsers.FirstOrDefault(u => u.Id == result.EntityId);
-            registeredUser.UserName.Should().Be(registerNewUserRequest.Email);
-            await InMemoryBus.Received(1).PublishEvent(Arg.Any<NewUserRegisteredEvent>());
+            registeredUser.UserName.Should().Be(registerUserRequest.Email);
+            await InMemoryBus.Received(1).PublishEvent(Arg.Any<UserRegisteredEvent>());
         }
 
 
@@ -46,11 +46,11 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new RegisterNewUserUseCase(TestUserManager, MessageBus, InMemoryBus, NotificationHandler);
-            var registerNewUserRequest = new RegisterNewUserRequest(userBuilder.Email, "NewPass");
+            var useCase = new RegisterUserUseCase(TestUserManager, MessageBus, InMemoryBus, NotificationHandler);
+            var registerUserRequest = new RegisterUserRequest(userBuilder.Email, "NewPass");
 
             //Act
-            Action act = async () => await useCase.Handle(registerNewUserRequest, CancellationToken.None);
+            Action act = async () => await useCase.Handle(registerUserRequest, CancellationToken.None);
 
             //Assert
             act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));

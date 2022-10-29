@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
-using TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser;
+using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 
 namespace TaskoMask.Services.Identity.Api.Consumers
@@ -22,8 +22,8 @@ namespace TaskoMask.Services.Identity.Api.Consumers
 
         public override async Task ConsumeMessage(ConsumeContext<OwnerRegistered> context)
         {
-            var registerNewUser = new RegisterNewUserRequest(context.Message.Email, context.Message.Password);
-            var result = await SendCommandAsync(registerNewUser);
+            var registerUser = new RegisterUserRequest(context.Message.Email, context.Message.Password);
+            var result = await SendCommandAsync(registerUser);
             if (!result.IsSuccess)
                 throw new ConsumerFaultException(result.Message); // Cause to publish Fault<OwnerRegistered> message
         }

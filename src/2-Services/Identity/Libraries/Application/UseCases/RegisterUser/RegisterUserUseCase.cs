@@ -14,9 +14,9 @@ using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.Domain.Events;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
+namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
 {
-    public class RegisterNewUserUseCase : BaseCommandHandler, IRequestHandler<RegisterNewUserRequest, CommandResult>
+    public class RegisterUserUseCase : BaseCommandHandler, IRequestHandler<RegisterUserRequest, CommandResult>
     {
         private readonly UserManager<User> _userManager;
         private readonly INotificationHandler _notifications;
@@ -26,7 +26,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
         /// <summary>
         /// 
         /// </summary>
-        public RegisterNewUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(messageBus,inMemoryBus)
+        public RegisterUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(messageBus,inMemoryBus)
         {
             _userManager = userManager;
             _notifications = notifications;
@@ -37,7 +37,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommandResult> Handle(RegisterNewUserRequest request, CancellationToken cancellationToken)
+        public async Task<CommandResult> Handle(RegisterUserRequest request, CancellationToken cancellationToken)
         {
             var existUser = await _userManager.FindByNameAsync(request.Email);
             if (existUser != null)
@@ -58,9 +58,9 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
 
             var registeredUser = await _userManager.FindByNameAsync(request.Email);
 
-            await PublishDomainEventsAsync(new NewUserRegisteredEvent(registeredUser.Id, registeredUser.Email));
+            await PublishDomainEventsAsync(new UserRegisteredEvent(registeredUser.Id, registeredUser.Email));
            
-            await PublishIntegrationEventAsync(new NewUserRegistered(registeredUser.Email));
+            await PublishIntegrationEventAsync(new UserRegistered(registeredUser.Email));
             
             return CommandResult.Create(ContractsMessages.Create_Success, registeredUser.Id);
         }

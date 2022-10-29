@@ -12,7 +12,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Consumers
     /// it means everything is ok about the current owner registration and now we must publish OwnerRegisterationCompleted to be consumed by 
     /// owner read service for updating its database
     /// </summary>
-    public class UserRegisteredConsumer : BaseConsumer<NewUserRegistered>
+    public class UserRegisteredConsumer : BaseConsumer<UserRegistered>
     {
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
 
@@ -23,7 +23,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Consumers
         }
 
 
-        public override async Task ConsumeMessage(ConsumeContext<NewUserRegistered> context)
+        public override async Task ConsumeMessage(ConsumeContext<UserRegistered> context)
         {
             var owner = await _ownerAggregateRepository.GetByEmailAsync(context.Message.Email);
 

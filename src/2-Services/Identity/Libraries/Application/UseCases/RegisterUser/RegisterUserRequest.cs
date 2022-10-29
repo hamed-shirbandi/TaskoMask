@@ -2,12 +2,12 @@
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
+namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
 {
-    public class RegisterNewUserRequest: BaseCommand
+    public class RegisterUserRequest: BaseCommand
     {
 
-        public RegisterNewUserRequest(string email, string password)
+        public RegisterUserRequest(string email, string password)
         {
             Email = email;
             Email = password;

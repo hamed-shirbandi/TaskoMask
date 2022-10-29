@@ -7,10 +7,12 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Domain.Entities;
+using TaskoMask.Services.Identity.Domain.Events;
 
 namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
 {
@@ -56,6 +58,10 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterNewUser
 
             var registeredUser = await _userManager.FindByNameAsync(request.Email);
 
+            await PublishDomainEventsAsync(new NewUserRegisteredEvent(registeredUser.Id, registeredUser.Email));
+           
+            await PublishIntegrationEventAsync(new NewUserRegistered(registeredUser.Email));
+            
             return CommandResult.Create(ContractsMessages.Create_Success, registeredUser.Id);
         }
 

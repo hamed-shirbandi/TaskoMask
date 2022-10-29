@@ -4,18 +4,16 @@ using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Consumers
 {
-    public abstract class BaseConsumer<TMessage> : IConsumer<TMessage> where TMessage : DomainEvent
+    public abstract class BaseConsumer<TEvent> : IConsumer<TEvent> where TEvent : class
     {
 
         #region Fields
 
         private readonly IInMemoryBus _inMemoryBus;
         private readonly INotificationHandler _notifications;
-        protected readonly IMessageBus _messageBus;
 
         #endregion
 
@@ -23,11 +21,10 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Consumers
 
 
 
-        public BaseConsumer(IInMemoryBus inMemoryBus, INotificationHandler notifications, IMessageBus messageBus)
+        public BaseConsumer(IInMemoryBus inMemoryBus, INotificationHandler notifications)
         {
             _inMemoryBus = inMemoryBus;
             _notifications = notifications;
-            _messageBus = messageBus;
         }
 
 
@@ -41,17 +38,20 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Consumers
         /// 
         /// </summary>
 
-        public abstract Task ConsumeMessage(ConsumeContext<TMessage> context);
+        public abstract Task ConsumeMessage(ConsumeContext<TEvent> context);
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        public async Task Consume(ConsumeContext<TMessage> context)
+        public async Task Consume(ConsumeContext<TEvent> context)
         {
             await ConsumeMessage(context);
         }
+
+
+
 
 
         #endregion
@@ -99,9 +99,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Consumers
         }
 
 
-
         #endregion
-
 
         #region Private Methods
 

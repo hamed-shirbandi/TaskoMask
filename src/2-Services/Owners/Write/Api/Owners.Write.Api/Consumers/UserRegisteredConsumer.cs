@@ -7,7 +7,7 @@ using TaskoMask.Services.Owners.Write.Domain.Data;
 namespace TaskoMask.Services.Owners.Write.Api.Consumers
 {
     /// <summary>
-    /// UserRegistered consume by identity service and it publish UserRegistered after registering user for the owner
+    /// OwnerRegistered consume by identity service and it publish UserRegistered after registering user for the owner
     /// it means everything is ok about the current owner registration and now we must publish OwnerRegisterationCompleted to be consumed by 
     /// owner read service for updating its database
     /// </summary>

@@ -5,7 +5,6 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.Api.Owners;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwnerProfile;
@@ -21,7 +20,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
 
         #region Ctors
 
-        public OwnerApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(authenticatedUserService, inMemoryBus, notifications)
+        public OwnerApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -39,7 +38,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [AllowAnonymous]
         public async Task<Result<CommandResult>> Register([FromBody] RegisterOwnerDto input)
         {
-            return await SendCommandAsync<RegiserOwnerRequest>(new(displayName: input.DisplayName, email: input.Email, password: input.Password));
+            return await _inMemoryBus.SendCommand<RegiserOwnerRequest>(new(displayName: input.DisplayName, email: input.Email, password: input.Password));
         }
 
 
@@ -52,7 +51,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("owner")]
         public async Task<Result<CommandResult>> UpdateProfile([FromBody] UpdateOwnerProfileDto input)
         {
-            return await SendCommandAsync<UpdateOwnerProfileRequest>(new(id: input.Id, displayName: input.DisplayName, email: input.Email));
+            return await _inMemoryBus.SendCommand<UpdateOwnerProfileRequest>(new(id: input.Id, displayName: input.DisplayName, email: input.Email));
         }
 
 

@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
@@ -14,7 +13,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.GetOwnerById
     [Authorize("user-read-access")]
     public class GetOwnerByIdEndpoint : BaseApiController
     {
-        public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(authenticatedUserService, inMemoryBus, notifications)
+        public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -26,7 +25,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.GetOwnerById
         [Route("owner")]
         public async Task<Result<OwnerBasicInfoDto>> Get()
         {
-            return await SendQueryAsync(new GetOwnerByIdRequest(GetCurrentUserId()));
+            return await _inMemoryBus.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
         }
     }
 

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
+using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
@@ -26,7 +27,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwne
         #region Ctors
 
 
-        public UpdateOwnerProfileUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
+        public UpdateOwnerProfileUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
             _ownerValidatorService = ownerValidatorService;
@@ -47,14 +48,17 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwne
             if (owner == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
+            var oldEmail = owner.Email.Value;
             var loadedVersion = owner.Version;
 
-            owner.UpdateOwnerProfile(OwnerDisplayName.Create(request.DisplayName),OwnerEmail.Create(request.Email), _ownerValidatorService);
+            owner.UpdateOwnerProfile(OwnerDisplayName.Create(request.DisplayName), OwnerEmail.Create(request.Email), _ownerValidatorService);
 
             await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
 
             await PublishDomainEventsAsync(owner.DomainEvents);
-            //TODO publish OwnerUpdatedEvent (to be handled by Identity service)
+
+            //Here a SAGA Choreography is started by consuming OwnerProfileUpdated by identity service
+            await PublishIntegrationEventAsync(new OwnerProfileUpdated(owner.Id, oldEmail, NewEmail: owner.Email.Value));
 
             return CommandResult.Create(ContractsMessages.Update_Success, owner.Id.ToString());
         }

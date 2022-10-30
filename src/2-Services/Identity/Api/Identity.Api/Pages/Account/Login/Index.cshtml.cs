@@ -23,7 +23,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
 
         #region Ctors
 
-        public Index(IInMemoryBus inMemoryBus, IIdentityServerInteractionService interactionService, INotificationHandler notifications) : base(inMemoryBus, notifications)
+        public Index(IInMemoryBus inMemoryBus, IIdentityServerInteractionService interactionService) : base(inMemoryBus)
         {
             _interactionService = interactionService;
         }
@@ -54,7 +54,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
             if (!ModelState.IsValid)
                 return await LoginFailedAsync();
 
-            var loginRespone = await SendQueryAsync(new UserLoginRequest(Input.UserName, Input.Password, Input.RememberLogin));
+            var loginRespone = await _inMemoryBus.SendQuery(new UserLoginRequest(Input.UserName, Input.Password, Input.RememberLogin));
             if (loginRespone.IsSuccess)
                 return RedirectToReturnUrl(Input.ReturnUrl);
 

@@ -1,6 +1,5 @@
 ﻿using MassTransit;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.Services.Owners.Write.Domain.Data;
@@ -17,7 +16,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Consumers
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
 
 
-        public UserRegisteredConsumer(IInMemoryBus inMemoryBus, INotificationHandler notifications , IOwnerAggregateRepository ownerAggregateRepository) : base(inMemoryBus, notifications)
+        public UserRegisteredConsumer(IInMemoryBus inMemoryBus, IOwnerAggregateRepository ownerAggregateRepository) : base(inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }

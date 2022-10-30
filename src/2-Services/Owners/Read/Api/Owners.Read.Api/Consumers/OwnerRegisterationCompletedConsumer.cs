@@ -1,6 +1,5 @@
 ﻿using MassTransit;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
@@ -14,7 +13,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers
         private readonly OwnerReadDbContext _ownerReadDbContext;
 
 
-        public OwnerRegisterationCompletedConsumer(IInMemoryBus inMemoryBus, INotificationHandler notifications, OwnerReadDbContext ownerReadDbContext) : base(inMemoryBus, notifications)
+        public OwnerRegisterationCompletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext) : base(inMemoryBus)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
@@ -24,8 +23,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers
         {
             var owner = new Owner(context.Message.Id)
             {
-                DisplayName= context.Message.DisplayName,
-                Email= context.Message.Email,
+                DisplayName = context.Message.DisplayName,
+                Email = context.Message.Email,
             };
             await _ownerReadDbContext.Owners.InsertOneAsync(owner);
         }

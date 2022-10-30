@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Queries;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.BuildingBlocks.Application.Bus
@@ -10,8 +11,8 @@ namespace TaskoMask.BuildingBlocks.Application.Bus
     /// </summary>
     public interface IInMemoryBus
     {
-        Task<TCommandResult> SendCommand<TCommandResult>(InternalCommand<TCommandResult> command);
-        Task<TQueryResult> SendQuery<TQueryResult>(BaseQuery<TQueryResult> query);
+        Task<Result<CommandResult>> SendCommand<TCommand>(TCommand cmd) where TCommand : BaseCommand;
+        Task<Result<TQueryResult>> SendQuery<TQueryResult>(BaseQuery<TQueryResult> query);
         Task PublishEvent(DomainEvent @event);
     }
 }

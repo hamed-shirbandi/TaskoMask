@@ -77,7 +77,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         public async Task<Result<CommandResult>> RegisterAsync(RegisterOwnerDto input)
         {
             var cmd = new RegisterOwnerCommand( displayName: input.DisplayName, email: input.Email, password: input.Password);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -88,7 +88,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         public async Task<Result<CommandResult>> UpdateProfileAsync(UpdateOwnerProfileDto input)
         {
             var cmd = new UpdateOwnerProfileCommand(id: input.Id, displayName: input.DisplayName, email: input.Email);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -181,7 +181,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<OwnerBasicInfoDto>> GetByIdAsync(string id)
         {
-            return await SendQueryAsync(new GetOwnerByIdQuery(id));
+            return await _inMemoryBus.SendQuery(new GetOwnerByIdQuery(id));
         }
 
 
@@ -191,7 +191,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<OwnerBasicInfoDto>> GetByEmailAsync(string email)
         {
-            return await SendQueryAsync(new GetOwnerByEmailQuery(email));
+            return await _inMemoryBus.SendQuery(new GetOwnerByEmailQuery(email));
         }
 
 
@@ -201,7 +201,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<PaginatedList<OwnerOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
-            return await SendQueryAsync(new SearchOwnersQuery(page, recordsPerPage, term));
+            return await _inMemoryBus.SendQuery(new SearchOwnersQuery(page, recordsPerPage, term));
         }
 
 
@@ -216,7 +216,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
                 return Result.Failure<OwnerDetailsViewModel>(ownerQueryResult.Errors);
 
 
-            var organizationQueryResult = await SendQueryAsync(new GetOrganizationsByOwnerIdQuery(ownerQueryResult.Value.Id));
+            var organizationQueryResult = await _inMemoryBus.SendQuery(new GetOrganizationsByOwnerIdQuery(ownerQueryResult.Value.Id));
             if (!organizationQueryResult.IsSuccess)
                 return Result.Failure<OwnerDetailsViewModel>(organizationQueryResult.Errors);
 
@@ -237,7 +237,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync(new GetOwnersCountQuery());
+            return await _inMemoryBus.SendQuery(new GetOwnersCountQuery());
         }
 
 

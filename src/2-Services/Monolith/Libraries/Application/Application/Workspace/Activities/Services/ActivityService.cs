@@ -34,7 +34,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Services
         /// </summary>
         public async Task<Result<IEnumerable<ActivityBasicInfoDto>>> GetListByTaskIdAsync(string taskId)
         {
-            return await SendQueryAsync(new GetActivitiesByTaskIdQuery(taskId));
+            return await _inMemoryBus.SendQuery(new GetActivitiesByTaskIdQuery(taskId));
         }
 
 

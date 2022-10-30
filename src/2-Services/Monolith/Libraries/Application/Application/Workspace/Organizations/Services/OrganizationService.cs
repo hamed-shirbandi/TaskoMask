@@ -41,7 +41,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
         public async Task<Result<CommandResult>> AddAsync(AddOrganizationDto input)
         {
             var cmd = new AddOrganizationCommand(ownerId: input.OwnerId, name: input.Name, description: input.Description);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -52,7 +52,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
         public async Task<Result<CommandResult>> UpdateAsync(UpdateOrganizationDto input)
         {
             var cmd = new UpdateOrganizationCommand(id: input.Id, name: input.Name, description: input.Description);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -67,19 +67,19 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
                 return Result.Failure<OrganizationDetailsViewModel>(organizationQueryResult.Errors);
 
 
-            var projectsQueryResult = await SendQueryAsync(new GetProjectsByOrganizationIdQuery(id));
+            var projectsQueryResult = await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdQuery(id));
             if (!projectsQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(projectsQueryResult.Errors);
 
 
             var projectsId = projectsQueryResult.Value.Select(p => p.Id).ToArray();
-            var boardsQueryResult = await SendQueryAsync(new GetBoardsByProjectsIdQuery(projectsId));
+            var boardsQueryResult = await _inMemoryBus.SendQuery(new GetBoardsByProjectsIdQuery(projectsId));
             if (!boardsQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(boardsQueryResult.Errors);
 
 
             var boardsId = boardsQueryResult.Value.Select(p => p.Id).ToArray();
-            var organizationReportQueryResult = await SendQueryAsync(new GetOrganizationReportQuery(id, projectsId, boardsId));
+            var organizationReportQueryResult = await _inMemoryBus.SendQuery(new GetOrganizationReportQuery(id, projectsId, boardsId));
             if (!organizationReportQueryResult.IsSuccess)
                 return Result.Failure<OrganizationDetailsViewModel>(organizationReportQueryResult.Errors);
 
@@ -127,7 +127,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
         /// </summary>
         public async Task<Result<OrganizationBasicInfoDto>> GetByIdAsync(string id)
         {
-            return await SendQueryAsync(new GetOrganizationByIdQuery(id));
+            return await _inMemoryBus.SendQuery(new GetOrganizationByIdQuery(id));
         }
 
 
@@ -138,7 +138,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
         /// </summary>
         public async Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetListByOwnerIdAsync(string ownerId)
         {
-            return await SendQueryAsync(new GetOrganizationsByOwnerIdQuery(ownerId));
+            return await _inMemoryBus.SendQuery(new GetOrganizationsByOwnerIdQuery(ownerId));
         }
 
 
@@ -148,7 +148,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
         /// </summary>
         public async Task<Result<PaginatedList<OrganizationOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
-            return await SendQueryAsync(new SearchOrganizationsQuery(page, recordsPerPage, term));
+            return await _inMemoryBus.SendQuery(new SearchOrganizationsQuery(page, recordsPerPage, term));
         }
 
 
@@ -180,7 +180,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync(new GetOrganizationsCountQuery());
+            return await _inMemoryBus.SendQuery(new GetOrganizationsCountQuery());
         }
 
 
@@ -191,7 +191,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.Servic
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var cmd = new DeleteOrganizationCommand(id);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 

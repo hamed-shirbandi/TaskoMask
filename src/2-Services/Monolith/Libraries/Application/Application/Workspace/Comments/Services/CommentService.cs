@@ -36,7 +36,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
         /// </summary>
         public async Task<Result<CommentBasicInfoDto>> GetByIdAsync(string id)
         {
-            return await SendQueryAsync(new GetCommentByIdQuery(id));
+            return await _inMemoryBus.SendQuery(new GetCommentByIdQuery(id));
         }
 
 
@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
         /// </summary>
         public async Task<Result<IEnumerable<CommentBasicInfoDto>>> GetListByTaskIdAsync(string taskId)
         {
-            return await SendQueryAsync(new GetCommentsByTaskIdQuery(taskId));
+            return await _inMemoryBus.SendQuery(new GetCommentsByTaskIdQuery(taskId));
         }
 
 
@@ -57,7 +57,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
         public async Task<Result<CommandResult>> AddAsync(AddCommentDto input)
         {
             var cmd = new AddCommentCommand(taskId: input.TaskId, content: input.Content);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -68,7 +68,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
         public async Task<Result<CommandResult>> UpdateAsync(UpdateCommentDto input)
         {
             var cmd = new UpdateCommentCommand(id: input.Id, content: input.Content);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -79,7 +79,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var cmd = new DeleteCommentCommand(id);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 

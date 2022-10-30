@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         public async Task<Result<CommandResult>> AddAsync(AddProjectDto input)
         {
             var cmd = new AddProjectCommand(organizationId: input.OrganizationId, name: input.Name, description: input.Description);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -51,7 +51,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         public async Task<Result<CommandResult>> UpdateAsync(UpdateProjectDto input)
         {
             var cmd = new UpdateProjectCommand(id: input.Id, name: input.Name, description: input.Description);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -62,7 +62,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         /// </summary>
         public async Task<Result<ProjectOutputDto>> GetByIdAsync(string id)
         {
-            return await SendQueryAsync(new GetProjectByIdQuery(id));
+            return await _inMemoryBus.SendQuery(new GetProjectByIdQuery(id));
         }
 
 
@@ -76,7 +76,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
             if (!projectQueryResult.IsSuccess)
                 return Result.Failure<ProjectDetailsViewModel>(projectQueryResult.Errors);
 
-            var boardsQueryResult = await SendQueryAsync(new GetBoardsByProjectIdQuery(id));
+            var boardsQueryResult = await _inMemoryBus.SendQuery(new GetBoardsByProjectIdQuery(id));
             if (!boardsQueryResult.IsSuccess)
                 return Result.Failure<ProjectDetailsViewModel>(boardsQueryResult.Errors);
 
@@ -98,7 +98,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         /// </summary>
         public async Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId)
         {
-            return await SendQueryAsync(new GetProjectsByOrganizationIdQuery(organizationId));
+            return await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdQuery(organizationId));
         }
 
 
@@ -108,7 +108,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         /// </summary>
         public async Task<Result<PaginatedList<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
-            return await SendQueryAsync(new SearchProjectsQuery(page, recordsPerPage, term));
+            return await _inMemoryBus.SendQuery(new SearchProjectsQuery(page, recordsPerPage, term));
         }
 
 
@@ -140,7 +140,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync(new GetProjectsCountQuery());
+            return await _inMemoryBus.SendQuery(new GetProjectsCountQuery());
         }
 
 
@@ -151,7 +151,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var cmd = new DeleteProjectCommand(id);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 

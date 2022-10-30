@@ -43,7 +43,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
         public async Task<Result<CommandResult>> AddAsync(AddBoardDto input)
         {
             var cmd = new AddBoardCommand(name: input.Name, input.Description, input.ProjectId);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -54,7 +54,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
         public async Task<Result<CommandResult>> UpdateAsync(UpdateBoardDto input)
         {
             var cmd = new UpdateBoardCommand(id: input.Id, name: input.Name, description: input.Description);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 
@@ -65,7 +65,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
         /// </summary>
         public async Task<Result<BoardOutputDto>> GetByIdAsync(string id)
         {
-            return await SendQueryAsync(new GetBoardByIdQuery(id));
+            return await _inMemoryBus.SendQuery(new GetBoardByIdQuery(id));
 
         }
 
@@ -103,7 +103,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
         /// </summary>
         public async Task<Result<PaginatedList<BoardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
-            return await SendQueryAsync(new SearchBoardsQuery(page, recordsPerPage, term));
+            return await _inMemoryBus.SendQuery(new SearchBoardsQuery(page, recordsPerPage, term));
         }
 
 
@@ -113,7 +113,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
         /// </summary>
         public async Task<Result<long>> CountAsync()
         {
-            return await SendQueryAsync(new GetBoardsCountQuery());
+            return await _inMemoryBus.SendQuery(new GetBoardsCountQuery());
         }
 
 
@@ -124,7 +124,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var cmd = new DeleteBoardCommand(id);
-            return await SendCommandAsync(cmd);
+            return await _inMemoryBus.SendCommand(cmd);
         }
 
 

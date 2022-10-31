@@ -5,6 +5,8 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Api.Organizations;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
@@ -35,8 +37,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("organizations")]
         public async Task<Result<CommandResult>> Add([FromBody] AddOrganizationDto input)
         {
-            //input.OwnerId = GetCurrentUserId();
-            return Result.Failure<CommandResult>();
+            input.OwnerId = GetCurrentUserId();
+            return await _inMemoryBus.SendCommand<AddOrganizationRequest>(new(ownerId: input.OwnerId, name: input.Name, description: input.Description));
         }
 
 

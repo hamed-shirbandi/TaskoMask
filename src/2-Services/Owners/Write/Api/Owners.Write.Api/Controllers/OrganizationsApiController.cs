@@ -7,6 +7,7 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Api.Organizations;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.UpdateOrganization;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
@@ -50,8 +51,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("organizations/{id}")]
         public async Task<Result<CommandResult>> Update(string id,[FromBody] UpdateOrganizationDto input)
         {
-            return Result.Failure<CommandResult>();
-
+            return await _inMemoryBus.SendCommand<UpdateOrganizationRequest>(new(id: input.Id, name: input.Name, description: input.Description));
         }
 
 

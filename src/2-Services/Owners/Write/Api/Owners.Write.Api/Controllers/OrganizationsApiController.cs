@@ -5,9 +5,9 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Api.Organizations;
-using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.UpdateOrganization;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.DeleteOrganization;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
@@ -63,7 +63,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("organizations/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            return Result.Failure<CommandResult>();
+            return await _inMemoryBus.SendCommand<DeleteOrganizationRequest>(new(id));
         }
 
 

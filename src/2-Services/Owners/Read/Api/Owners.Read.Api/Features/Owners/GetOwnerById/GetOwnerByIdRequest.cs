@@ -1,7 +1,7 @@
 ﻿using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 
-namespace TaskoMask.Services.Owners.Read.Api.Features.GetOwnerById
+namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 {
     public class GetOwnerByIdRequest : BaseQuery<OwnerBasicInfoDto>
     {

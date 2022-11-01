@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-namespace TaskoMask.Services.Owners.Read.Api.Features.GetOwnerById
+namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 {
 
     [Authorize("user-read-access")]

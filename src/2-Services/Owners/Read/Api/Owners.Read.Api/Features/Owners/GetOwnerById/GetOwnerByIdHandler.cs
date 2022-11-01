@@ -10,7 +10,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Owners.Read.Api.Features.GetOwnerById
+namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 {
     public class GetOwnerByIdHandler : BaseQueryHandler, IRequestHandler<GetOwnerByIdRequest, OwnerBasicInfoDto>
     {

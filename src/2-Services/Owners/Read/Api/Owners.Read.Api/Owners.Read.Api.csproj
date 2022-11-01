@@ -28,4 +28,9 @@
 	  </Content>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Features\Projects\" />
+	  <Folder Include="Features\Organizations\" />
+	</ItemGroup>
+
 </Project>

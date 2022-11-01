@@ -11,7 +11,7 @@ using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.DeleteO
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
-    public class OrganizationsApiController : BaseApiController, IOrganizationWriteApiService
+    public class OrganizationsController : BaseApiController, IOrganizationWriteApiService
     {
         #region Fields
 
@@ -20,7 +20,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
 
         #region Ctors
 
-        public OrganizationsApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public OrganizationsController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 

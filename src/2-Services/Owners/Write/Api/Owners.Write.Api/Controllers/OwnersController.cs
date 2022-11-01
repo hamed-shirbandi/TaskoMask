@@ -11,7 +11,7 @@ using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwnerPro
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
-    public class OwnerApiController : BaseApiController, IOwnerWriteApiService
+    public class OwnersController : BaseApiController, IOwnerWriteApiService
     {
         #region Fields
 
@@ -20,7 +20,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
 
         #region Ctors
 
-        public OwnerApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public OwnersController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 

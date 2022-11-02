@@ -1,14 +1,19 @@
 ﻿using MediatR;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
+using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Entities;
+using TaskoMask.Services.Owners.Write.Domain.Events.Organizations;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization
@@ -26,7 +31,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Add
         #region Ctors
 
 
-        public AddOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
+        public AddOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
             _ownerValidatorService = ownerValidatorService;
@@ -49,14 +54,31 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Add
 
 
             var organization = Organization.CreateOrganization(request.Name, request.Description);
+
             owner.AddOrganization(organization);
 
             await _ownerAggregateRepository.UpdateAsync(owner);
+
             await PublishDomainEventsAsync(owner.DomainEvents);
+
+            var organizatonAdded = MapOrganizatonAddedIntegrationEvent(owner.DomainEvents);
+
+            await PublishIntegrationEventAsync(organizatonAdded);
 
             return new CommandResult(ContractsMessages.Create_Success, organization.Id);
         }
 
+
+        #endregion
+
+        #region Private Methods
+
+
+        private OrganizatonAdded MapOrganizatonAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        {
+            var OrganizationAddedDomainEvent = (OrganizationAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationAddedEvent));
+            return new OrganizatonAdded(OrganizationAddedDomainEvent.Id, OrganizationAddedDomainEvent.Name, OrganizationAddedDomainEvent.Description, OrganizationAddedDomainEvent.OwnerId);
+        }
 
 
         #endregion

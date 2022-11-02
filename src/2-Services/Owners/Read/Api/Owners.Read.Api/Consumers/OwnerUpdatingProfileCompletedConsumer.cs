@@ -25,7 +25,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers
             
             owner.Email = context.Message.Email;
             owner.DisplayName = context.Message.DisplayName;
-           
+            owner.SetAsUpdated();
+
             await _ownerReadDbContext.Owners.ReplaceOneAsync(p => p.Id == owner.Id, owner, new ReplaceOptions() { IsUpsert = false });
         }
     }

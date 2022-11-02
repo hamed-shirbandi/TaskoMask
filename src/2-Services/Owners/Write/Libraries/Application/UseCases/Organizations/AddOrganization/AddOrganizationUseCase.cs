@@ -61,9 +61,9 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Add
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            var organizatonAdded = MapOrganizatonAddedIntegrationEvent(owner.DomainEvents);
+            var organizationAdded = MapOrganizationAddedIntegrationEvent(owner.DomainEvents);
 
-            await PublishIntegrationEventAsync(organizatonAdded);
+            await PublishIntegrationEventAsync(organizationAdded);
 
             return new CommandResult(ContractsMessages.Create_Success, organization.Id);
         }
@@ -74,10 +74,10 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Add
         #region Private Methods
 
 
-        private OrganizatonAdded MapOrganizatonAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        private OrganizationAdded MapOrganizationAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var OrganizationAddedDomainEvent = (OrganizationAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationAddedEvent));
-            return new OrganizatonAdded(OrganizationAddedDomainEvent.Id, OrganizationAddedDomainEvent.Name, OrganizationAddedDomainEvent.Description, OrganizationAddedDomainEvent.OwnerId);
+            return new OrganizationAdded(OrganizationAddedDomainEvent.Id, OrganizationAddedDomainEvent.Name, OrganizationAddedDomainEvent.Description, OrganizationAddedDomainEvent.OwnerId);
         }
 
 

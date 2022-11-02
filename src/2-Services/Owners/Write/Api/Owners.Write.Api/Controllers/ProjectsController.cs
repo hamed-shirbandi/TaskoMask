@@ -5,9 +5,9 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Api.OwProjectsners;
-using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProject;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdateProject;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeleteProject;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
@@ -62,7 +62,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("projects/{id}")]
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            return Result.Failure<CommandResult>();
+            return await _inMemoryBus.SendCommand<DeleteProjectRequest>(new(id));
+
         }
 
 

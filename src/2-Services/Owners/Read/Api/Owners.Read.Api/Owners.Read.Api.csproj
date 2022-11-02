@@ -28,4 +28,8 @@
 	  </Content>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Consumers\Projects\" />
+	</ItemGroup>
+
 </Project>

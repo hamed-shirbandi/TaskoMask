@@ -6,7 +6,7 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 
-namespace TaskoMask.Services.Owners.Read.Api.Consumers
+namespace TaskoMask.Services.Owners.Read.Api.Consumers.Owners
 {
     public class OwnerUpdatingProfileCompletedConsumer : BaseConsumer<OwnerUpdatingProfileCompleted>
     {
@@ -22,7 +22,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers
         public override async Task ConsumeMessage(ConsumeContext<OwnerUpdatingProfileCompleted> context)
         {
             var owner = await _ownerReadDbContext.Owners.Find(e => e.Id == context.Message.Id).FirstOrDefaultAsync();
-            
+
             owner.Email = context.Message.Email;
             owner.DisplayName = context.Message.DisplayName;
             owner.SetAsUpdated();

@@ -6,7 +6,7 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 using System.Threading.Tasks;
 using TaskoMask.Services.Owners.Read.Api.Domain;
 
-namespace TaskoMask.Services.Owners.Read.Api.Consumers
+namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations
 {
     public class OrganizationAddedConsumer : BaseConsumer<OrganizationAdded>
     {

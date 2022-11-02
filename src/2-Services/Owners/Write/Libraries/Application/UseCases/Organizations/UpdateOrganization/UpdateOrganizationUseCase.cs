@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
@@ -7,10 +9,11 @@ using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
+using TaskoMask.Services.Owners.Write.Domain.Events.Organizations;
 using TaskoMask.Services.Owners.Write.Domain.Services;
-using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Owners;
 
 namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.UpdateOrganization
 {
@@ -56,10 +59,25 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Upd
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
+            var organizationUpdated = MapOrganizationUpdatedIntegrationEvent(owner.DomainEvents);
+
+            await PublishIntegrationEventAsync(organizationUpdated);
+
             return new CommandResult(ContractsMessages.Update_Success, request.Id);
         }
 
         #endregion
 
+        #region Private Methods
+
+
+        private OrganizationUpdated MapOrganizationUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        {
+            var organizationUpdatedDomainEvent = (OrganizationUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationUpdatedEvent));
+            return new OrganizationUpdated(organizationUpdatedDomainEvent.Id, organizationUpdatedDomainEvent.Name, organizationUpdatedDomainEvent.Description);
+        }
+
+
+        #endregion
     }
 }

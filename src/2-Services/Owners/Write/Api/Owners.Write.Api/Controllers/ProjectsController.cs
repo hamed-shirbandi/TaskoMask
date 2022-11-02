@@ -5,6 +5,8 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Api.OwProjectsners;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProject;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
@@ -35,7 +37,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("projects")]
         public async Task<Result<CommandResult>> Add([FromBody] AddProjectDto input)
         {
-            return Result.Failure<CommandResult>();
+            return await _inMemoryBus.SendCommand<AddProjectRequest>(new(organizationId: input.OrganizationId, name: input.Name, description: input.Description));
         }
 
 

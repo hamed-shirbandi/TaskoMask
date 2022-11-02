@@ -7,6 +7,7 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Api.OwProjectsners;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProject;
+using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdateProject;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
@@ -49,7 +50,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Controllers
         [Route("projects/{id}")]
         public async Task<Result<CommandResult>> Update(string id,[FromBody] UpdateProjectDto input)
         {
-            return Result.Failure<CommandResult>();
+            return await _inMemoryBus.SendCommand<UpdateProjectRequest>(new(id: input.Id, name: input.Name, description: input.Description));
         }
 
 

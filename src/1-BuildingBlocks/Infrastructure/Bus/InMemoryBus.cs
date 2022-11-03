@@ -23,9 +23,10 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 
         #region Ctors
 
-        public InMemoryBus(IMediator mediator)
+        public InMemoryBus(IMediator mediator, INotificationHandler notifications)
         {
             _mediator = mediator;
+            _notifications = notifications;
         }
 
 

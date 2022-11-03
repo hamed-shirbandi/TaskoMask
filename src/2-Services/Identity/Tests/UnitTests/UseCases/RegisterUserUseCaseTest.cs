@@ -17,7 +17,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
         {
             //Arrange
 
-            var useCase = new RegisterUserUseCase(TestUserManager, MessageBus,InMemoryBus, NotificationHandler);
+            var useCase = new RegisterUserUseCase(TestUserManager, MessageBus, InMemoryBus, NotificationHandler);
             var registerUserRequest = new RegisterUserRequest("test@taskomask.ir", "TestPass");
 
             //Act
@@ -34,7 +34,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
 
         [Fact]
-        public async Task User_Is_Not_Registered_With_Duplicated_UserName()
+        public void User_Is_Not_Registered_With_Duplicated_UserName()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.UserName_Already_Exist;

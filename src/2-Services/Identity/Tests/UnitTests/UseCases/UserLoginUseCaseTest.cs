@@ -36,7 +36,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
 
         [Fact]
-        public async Task User_Is_Not_Logged_In_With_Wrong_Password()
+        public void User_Is_Not_Logged_In_With_Wrong_Password()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.Invalid_Credentials;
@@ -61,7 +61,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
 
         [Fact]
-        public async Task Deactive_User_Is_Not_Logged_In()
+        public void Deactive_User_Is_Not_Logged_In()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.Deactive_User_Can_Not_Login;

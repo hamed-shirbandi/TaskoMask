@@ -8,10 +8,12 @@
 	
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DocumentationFile>bin\Release\net6.0\TaskoMask.BuildingBlocks.Contracts.xml</DocumentationFile>
+		<NoWarn>1701;1702;1591</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DocumentationFile>bin\Debug\net6.0\TaskoMask.BuildingBlocks.Contracts.xml</DocumentationFile>
+		<NoWarn>1701;1702;1591</NoWarn>
 	</PropertyGroup>
 	
 	<ItemGroup>

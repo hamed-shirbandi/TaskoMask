@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using TaskoMask.Services.Identity.Api.Extensions;
 using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Api.Pages.Account.Logout
@@ -58,7 +59,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Logout
                 if (idp != null && idp != Duende.IdentityServer.IdentityServerConstants.LocalIdentityProvider)
                 {
                     // we need to see if the provider supports external logout
-                    if (await HttpContext.GetSchemeSupportsSignOutAsync(idp))
+                    if (await HttpContext.GetSchemeSupportsSignOut(idp))
                     {
                         // build a return URL so the upstream provider will redirect back
                         // to us after the user has logged out. this allows us to then

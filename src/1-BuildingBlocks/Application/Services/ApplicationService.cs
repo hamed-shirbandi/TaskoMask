@@ -1,6 +1,4 @@
 ﻿using System;
-using AutoMapper;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Bus;
 
 namespace TaskoMask.BuildingBlocks.Application.Services
@@ -11,8 +9,6 @@ namespace TaskoMask.BuildingBlocks.Application.Services
 
 
         protected readonly IInMemoryBus _inMemoryBus;
-        protected readonly IMapper _mapper;
-        protected readonly INotificationHandler _notifications;
 
 
         #endregion
@@ -20,12 +16,9 @@ namespace TaskoMask.BuildingBlocks.Application.Services
         #region Ctors
 
 
-        public ApplicationService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications)
+        public ApplicationService(IInMemoryBus inMemoryBus)
         {
             _inMemoryBus = inMemoryBus;
-            _mapper = mapper;
-            _notifications = notifications;
-
         }
 
 

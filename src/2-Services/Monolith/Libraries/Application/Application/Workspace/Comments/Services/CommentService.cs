@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Services;
@@ -20,7 +18,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
 
         #region Ctors
 
-        public CommentService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
+        public CommentService(IInMemoryBus inMemoryBus) : base(inMemoryBus)
         {
         }
 

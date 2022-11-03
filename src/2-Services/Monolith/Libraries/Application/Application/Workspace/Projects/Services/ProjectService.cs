@@ -1,12 +1,10 @@
-﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using System.Linq;
@@ -24,7 +22,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
 
         #region Ctors
 
-        public ProjectService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
+        public ProjectService(IInMemoryBus inMemoryBus) : base(inMemoryBus)
         { }
 
 

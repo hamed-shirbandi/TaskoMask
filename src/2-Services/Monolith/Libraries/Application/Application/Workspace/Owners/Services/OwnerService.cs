@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Queries.Models;
@@ -38,8 +36,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Services
 
         #region Ctors
 
-        public OwnerService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IOwnerAggregateRepository ownerRepository, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService, IConfiguration configuration)
-             : base(inMemoryBus, mapper, notifications)
+        public OwnerService(IInMemoryBus inMemoryBus, IOwnerAggregateRepository ownerRepository, IOrganizationService organizationService, IProjectService projectService, IBoardService boardService, ICardService cardService, IConfiguration configuration): base(inMemoryBus)
         {
             _organizationService = organizationService;
             _projectService = projectService;

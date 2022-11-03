@@ -19,7 +19,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Services
 
         #region Ctors
 
-        public ActivityService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications) : base(inMemoryBus, mapper, notifications)
+        public ActivityService(IInMemoryBus inMemoryBus) : base(inMemoryBus)
         { }
 
 

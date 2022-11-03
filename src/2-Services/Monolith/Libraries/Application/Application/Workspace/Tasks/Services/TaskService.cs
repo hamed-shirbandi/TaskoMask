@@ -1,11 +1,9 @@
-﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
 using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models;
@@ -27,7 +25,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services
 
         #region Ctors
 
-        public TaskService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, IActivityService activityService, ICommentService commentService) : base(inMemoryBus, mapper, notifications)
+        public TaskService(IInMemoryBus inMemoryBus, IActivityService activityService, ICommentService commentService) : base(inMemoryBus)
         {
             _activityService = activityService;
             _commentService = commentService;

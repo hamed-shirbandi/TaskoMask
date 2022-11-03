@@ -1,12 +1,10 @@
-﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Models;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.Services.Monolith.Application.Queries.Models.Boards;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Services;
 using TaskoMask.BuildingBlocks.Contracts.Models;
@@ -24,7 +22,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
 
         #region Ctors
 
-        public BoardService(IInMemoryBus inMemoryBus, IMapper mapper, INotificationHandler notifications, ICardService cardService) : base(inMemoryBus, mapper, notifications)
+        public BoardService(IInMemoryBus inMemoryBus, ICardService cardService) : base(inMemoryBus)
         {
             _cardService = cardService;
         }

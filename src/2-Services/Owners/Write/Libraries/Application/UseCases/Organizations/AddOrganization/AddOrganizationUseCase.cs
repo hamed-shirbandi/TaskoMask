@@ -76,8 +76,8 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Add
 
         private OrganizationAdded MapOrganizationAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
-            var OrganizationAddedDomainEvent = (OrganizationAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationAddedEvent));
-            return new OrganizationAdded(OrganizationAddedDomainEvent.Id, OrganizationAddedDomainEvent.Name, OrganizationAddedDomainEvent.Description, OrganizationAddedDomainEvent.OwnerId);
+            var organizationAddedDomainEvent = (OrganizationAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationAddedEvent));
+            return new OrganizationAdded(organizationAddedDomainEvent.Id, organizationAddedDomainEvent.Name, organizationAddedDomainEvent.Description, organizationAddedDomainEvent.OwnerId);
         }
 
 

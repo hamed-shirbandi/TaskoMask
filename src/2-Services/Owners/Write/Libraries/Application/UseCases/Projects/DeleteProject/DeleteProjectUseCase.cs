@@ -1,13 +1,18 @@
 ﻿using MediatR;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
+using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
+using TaskoMask.Services.Owners.Write.Domain.Events.Projects;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeleteProject
@@ -54,8 +59,24 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeletePr
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
+            var projectDeleted = MapProjectDeletedIntegrationEvent(owner.DomainEvents);
+
+            await PublishIntegrationEventAsync(projectDeleted);
+
             return new CommandResult(ContractsMessages.Update_Success, request.Id);
         }
+
+        #endregion
+
+        #region Private Methods
+
+
+        private ProjectDeleted MapProjectDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        {
+            var projectDeletedDomainEvent = (ProjectDeletedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectDeletedEvent));
+            return new ProjectDeleted(projectDeletedDomainEvent.Id);
+        }
+
 
         #endregion
 

@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
@@ -7,8 +9,10 @@ using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
+using TaskoMask.Services.Owners.Write.Domain.Events.Projects;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Owners;
 
@@ -53,10 +57,28 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdatePr
             owner.UpdateProject(request.Id, request.Name, request.Description);
 
             await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
+
             await PublishDomainEventsAsync(owner.DomainEvents);
+
+            var projectUpdated = MapProjectUpdatedIntegrationEvent(owner.DomainEvents);
+
+            await PublishIntegrationEventAsync(projectUpdated);
 
             return new CommandResult(ContractsMessages.Update_Success, request.Id);
         }
+
+        #endregion
+
+        #region Private Methods
+
+
+        private ProjectUpdated MapProjectUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        {
+            var projectUpdatedDomainEvent = (ProjectUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectUpdatedEvent));
+            return new ProjectUpdated(projectUpdatedDomainEvent.Id, projectUpdatedDomainEvent.Name, projectUpdatedDomainEvent.Description);
+        }
+
+
 
         #endregion
 

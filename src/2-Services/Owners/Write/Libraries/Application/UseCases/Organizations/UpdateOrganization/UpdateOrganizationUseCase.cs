@@ -59,7 +59,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Upd
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            var organizationUpdated = MapOrganizationUpdatedIntegrationEvent(owner.DomainEvents);
+            var organizationUpdated = MapToOrganizationUpdatedIntegrationEvent(owner.DomainEvents);
 
             await PublishIntegrationEventAsync(organizationUpdated);
 
@@ -71,7 +71,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Upd
         #region Private Methods
 
 
-        private OrganizationUpdated MapOrganizationUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        private OrganizationUpdated MapToOrganizationUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var organizationUpdatedDomainEvent = (OrganizationUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationUpdatedEvent));
             return new OrganizationUpdated(organizationUpdatedDomainEvent.Id, organizationUpdatedDomainEvent.Name, organizationUpdatedDomainEvent.Description);

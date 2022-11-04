@@ -59,7 +59,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Del
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            var organizationDeleted = MapOrganizationDeletedIntegrationEvent(owner.DomainEvents);
+            var organizationDeleted = MapToOrganizationDeletedIntegrationEvent(owner.DomainEvents);
 
             await PublishIntegrationEventAsync(organizationDeleted);
 
@@ -71,7 +71,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Del
         #region Private Methods
 
 
-        private OrganizationDeleted MapOrganizationDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        private OrganizationDeleted MapToOrganizationDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var organizationDeletedDomainEvent = (OrganizationDeletedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationDeletedEvent));
             return new OrganizationDeleted(organizationDeletedDomainEvent.Id);

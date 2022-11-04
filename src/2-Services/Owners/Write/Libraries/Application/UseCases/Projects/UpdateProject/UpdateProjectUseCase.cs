@@ -60,7 +60,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdatePr
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            var projectUpdated = MapProjectUpdatedIntegrationEvent(owner.DomainEvents);
+            var projectUpdated = MapToProjectUpdatedIntegrationEvent(owner.DomainEvents);
 
             await PublishIntegrationEventAsync(projectUpdated);
 
@@ -72,7 +72,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdatePr
         #region Private Methods
 
 
-        private ProjectUpdated MapProjectUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        private ProjectUpdated MapToProjectUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var projectUpdatedDomainEvent = (ProjectUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectUpdatedEvent));
             return new ProjectUpdated(projectUpdatedDomainEvent.Id, projectUpdatedDomainEvent.Name, projectUpdatedDomainEvent.Description);

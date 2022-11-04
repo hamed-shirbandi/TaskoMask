@@ -59,7 +59,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeletePr
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            var projectDeleted = MapProjectDeletedIntegrationEvent(owner.DomainEvents);
+            var projectDeleted = MapToProjectDeletedIntegrationEvent(owner.DomainEvents);
 
             await PublishIntegrationEventAsync(projectDeleted);
 
@@ -71,7 +71,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeletePr
         #region Private Methods
 
 
-        private ProjectDeleted MapProjectDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        private ProjectDeleted MapToProjectDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var projectDeletedDomainEvent = (ProjectDeletedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectDeletedEvent));
             return new ProjectDeleted(projectDeletedDomainEvent.Id);

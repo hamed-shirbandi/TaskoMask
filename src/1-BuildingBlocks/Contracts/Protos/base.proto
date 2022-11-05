@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package TaskoMask.BuildingBlocks.Contracts.Protos;
+
+import "google/protobuf/timestamp.proto";
+
+
+message CreationTime{
+	google.protobuf.Timestamp CreateDateTime=1;
+	string CreateDateTimeString=2;
+	google.protobuf.Timestamp ModifiedDateTime=3;
+	string ModifiedDateTimeString=4;
+	int32 CreateDay=5;
+	int32 CreateMonth=6;
+	int32 CreateYear=7;
+}

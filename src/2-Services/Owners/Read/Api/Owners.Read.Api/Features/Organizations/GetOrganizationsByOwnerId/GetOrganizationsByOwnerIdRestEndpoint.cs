@@ -12,9 +12,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 {
 
     [Authorize("user-read-access")]
-    public class GetOrganizationsByOwnerIdEndpoint : BaseApiController
+    public class GetOrganizationsByOwnerIdRestEndpoint : BaseApiController
     {
-        public GetOrganizationsByOwnerIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public GetOrganizationsByOwnerIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 

@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
+using TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationsByOwnerId;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
@@ -33,6 +35,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
+            builder.Services.AddGrpc(options =>
+            {
+                options.Interceptors.Add<GrpcExceptionInterceptor>();
+            });
+
             return builder.Build();
         }
 
@@ -52,6 +59,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGrpcService<GetOrganizationsByOwnerIdGrpcEndpoint>();
                 endpoints.MapControllers();
             });
 

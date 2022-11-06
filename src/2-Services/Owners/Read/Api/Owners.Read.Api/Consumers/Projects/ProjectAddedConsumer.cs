@@ -26,6 +26,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers.Projects
                 Name = context.Message.Name,
                 Description = context.Message.Description,
                 OrganizationId = context.Message.OrganizationId,
+                OrganizationName = context.Message.OrganizationName,
                 OwnerId = context.Message.OwnerId,
             };
 

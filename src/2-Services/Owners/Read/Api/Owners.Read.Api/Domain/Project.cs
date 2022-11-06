@@ -23,6 +23,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Domain
         public string Name { get; set; }
         public string Description { get; set; }
         public string OrganizationId { get; set; }
+        public string OrganizationName { get; set; }
+
         public string OwnerId { get; set; }
 
 

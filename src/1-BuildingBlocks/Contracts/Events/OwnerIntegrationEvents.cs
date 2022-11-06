@@ -13,7 +13,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.Events
     public record OrganizationUpdated(string Id, string Name, string Description) : IntegrationEvent;
 
 
-    public record ProjectAdded(string Id, string Name, string Description, string OrganizationId, string OwnerId) : IntegrationEvent;
+    public record ProjectAdded(string Id, string Name, string Description, string OrganizationId, string OrganizationName, string OwnerId) : IntegrationEvent;
     public record ProjectDeleted(string Id) : IntegrationEvent;
     public record ProjectUpdated(string Id, string Name, string Description) : IntegrationEvent;
 

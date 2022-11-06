@@ -12,9 +12,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
 {
 
     [Authorize("user-read-access")]
-    public class GetProjectsByOrganizationIdEndpoint : BaseApiController
+    public class GetProjectsByOrganizationIdRestEndpoint : BaseApiController
     {
-        public GetProjectsByOrganizationIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public GetProjectsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 

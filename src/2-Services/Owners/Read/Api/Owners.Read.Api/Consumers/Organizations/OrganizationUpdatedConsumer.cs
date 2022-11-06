@@ -8,6 +8,11 @@ using MongoDB.Driver;
 
 namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations
 {
+    /// <summary>
+    /// Attention: OrganizationUpdated has 2 consumer
+    /// This one will update the organization itself
+    /// And the other will update OrganizationName for its projects
+    /// </summary>
     public class OrganizationUpdatedConsumer : BaseConsumer<OrganizationUpdated>
     {
         private readonly OwnerReadDbContext _ownerReadDbContext;

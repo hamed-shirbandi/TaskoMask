@@ -13,10 +13,8 @@
 		<PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
 		<PackageReference Include="Serilog.Exceptions" Version="8.1.0" />
 		<PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
-		<PackageReference Include="Google.Protobuf" Version="3.21.7" />
-		<PackageReference Include="Grpc.Net.Client" Version="2.49.0" />
-		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.49.0" />
 		<PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.49.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />

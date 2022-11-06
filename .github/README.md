@@ -67,7 +67,7 @@ Try it online:
     - [Docker-Compose](https://docs.docker.com/compose/)
     - [Kubernetes](https://kubernetes.io/)
     - [Messaging](https://microservices.io/patterns/communication-style/messaging.html) : MassTransit (RabbitMQ)
-    - [Remote Procedure Call](https://microservices.io/patterns/communication-style/rpi.html) : MagicOnion - gRPC
+    - [Remote Procedure Call](https://microservices.io/patterns/communication-style/rpi.html) : Grpc.AspNetCore
     - [Idempotent Consumer](https://microservices.io/patterns/communication-style/idempotent-consumer.html)
     - [API Gateway](https://microservices.io/patterns/apigateway.html) : Ocelot
     - [Backend for front-end](https://microservices.io/patterns/apigateway.html)
@@ -168,6 +168,7 @@ Try it online:
       - [Suzianna](https://github.com/suzianna/Suzianna) : writing acceptance tests, using Screenplay Pattern
       - [Selenium](https://www.nuget.org/packages/Selenium.WebDriver/) : supporting browser automation
       -	[MediatR](https://github.com/jbogard/MediatR) : simple mediator implementation
+      -	[Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore/) : gRPC library for ASP.NET Core
       -	[AutoMapper](https://automapper.org/) : an object-object mapper
       -	[FluentValidation](https://docs.fluentvalidation.net/en/latest/) : building strongly-typed validation rules
       -	[Swagger](https://www.nuget.org/packages/Swashbuckle.AspNetCore) : expose Swagger JSON endpoints from APIs

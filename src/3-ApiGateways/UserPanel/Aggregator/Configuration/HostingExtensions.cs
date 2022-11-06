@@ -2,6 +2,9 @@ using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetOrganizationsByOwnerIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectsByOrganizationIdGrpcService;
+using TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
 {
@@ -17,11 +20,18 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
 
             builder.AddCustomSerilog();
 
+            builder.Services.AddMapper();
+
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
-            builder.Services.AddGrpcClient<GetOrganizationsByOwnerIdGrpcServiceClient>(o =>
+            builder.Services.AddGrpcClient<GetOrganizationsByOwnerIdGrpcServiceClient>(options =>
             {
-                o.Address = new Uri("https://localhost:5021");
+                options.Address = new Uri(builder.Configuration["Url:Owner-Read-Service"]);
+            });
+
+            builder.Services.AddGrpcClient<GetProjectsByOrganizationIdGrpcServiceClient>(options =>
+            {
+                options.Address = new Uri(builder.Configuration["Url:Owner-Read-Service"]);
             });
 
             return builder.Build();

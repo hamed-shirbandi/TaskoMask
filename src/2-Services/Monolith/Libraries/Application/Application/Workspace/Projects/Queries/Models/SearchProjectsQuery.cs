@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Models
 {
-    public class SearchProjectsQuery:BaseQuery<PaginatedList<ProjectOutputDto>>
+    public class SearchProjectsQuery:BaseQuery<PaginatedList<ProjectBasicInfoDto>>
     {
         public SearchProjectsQuery(int page, int recordsPerPage, string term)
         {

@@ -12,11 +12,11 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
     {
         Task<Result<CommandResult>> AddAsync(AddProjectDto input);
         Task<Result<CommandResult>> UpdateAsync(UpdateProjectDto input);
-        Task<Result<ProjectOutputDto>> GetByIdAsync(string id);
+        Task<Result<ProjectBasicInfoDto>> GetByIdAsync(string id);
         Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id);
 
         Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetListByOrganizationIdAsync(string organizationId);
-        Task<Result<PaginatedList<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<PaginatedList<ProjectBasicInfoDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string organizationId);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);

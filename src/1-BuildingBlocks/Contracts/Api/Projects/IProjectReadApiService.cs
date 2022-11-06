@@ -9,7 +9,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.Api.Projects
 {
     public interface IProjectReadApiService
     {
-        Task<Result<ProjectOutputDto>> Get(string id);
+        Task<Result<ProjectBasicInfoDto>> Get(string id);
         Task<Result<ProjectDetailsViewModel>> GetDetails(string id);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string organizationId);
 

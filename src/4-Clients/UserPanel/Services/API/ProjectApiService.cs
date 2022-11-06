@@ -29,10 +29,10 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectOutputDto>> Get(string id)
+        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
         {
             var url = $"/monolithService/projects/{id}";
-            return await _httpClientService.GetAsync<ProjectOutputDto>(url);
+            return await _httpClientService.GetAsync<ProjectBasicInfoDto>(url);
         }
 
 

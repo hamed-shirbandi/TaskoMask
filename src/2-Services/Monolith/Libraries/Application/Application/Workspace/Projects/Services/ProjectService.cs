@@ -58,7 +58,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectOutputDto>> GetByIdAsync(string id)
+        public async Task<Result<ProjectBasicInfoDto>> GetByIdAsync(string id)
         {
             return await _inMemoryBus.SendQuery(new GetProjectByIdQuery(id));
         }
@@ -104,7 +104,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PaginatedList<ProjectOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        public async Task<Result<PaginatedList<ProjectBasicInfoDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await _inMemoryBus.SendQuery(new SearchProjectsQuery(page, recordsPerPage, term));
         }

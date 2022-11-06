@@ -209,7 +209,7 @@
             }
             else
             {
-                QueryResultHandler<ProjectOutputDto>.Init()
+                QueryResultHandler<ProjectBasicInfoDto>.Init()
                     .WithResult(projectResult)
                     .ShowErrorToast(ToastService)
                     .CloseModal(ModalInstance);

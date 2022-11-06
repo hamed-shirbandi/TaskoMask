@@ -12,9 +12,6 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
             CreateMap<Project, ProjectBasicInfoDto>();
 
             CreateMap<ProjectBasicInfoDto, ProjectBasicInfoGrpcResponse>();
-
-            CreateMap<ProjectOutputDto, ProjectBasicInfoGrpcResponse>();
-
         }
     }
 }

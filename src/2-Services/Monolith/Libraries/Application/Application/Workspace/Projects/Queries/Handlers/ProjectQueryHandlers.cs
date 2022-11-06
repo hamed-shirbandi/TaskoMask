@@ -17,9 +17,9 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Handlers
 {
     public class ProjectQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetProjectByIdQuery, ProjectOutputDto>,
+        IRequestHandler<GetProjectByIdQuery, ProjectBasicInfoDto>,
         IRequestHandler<GetProjectsByOrganizationIdQuery, IEnumerable<ProjectBasicInfoDto>>,
-        IRequestHandler<SearchProjectsQuery, PaginatedList<ProjectOutputDto>>,
+        IRequestHandler<SearchProjectsQuery, PaginatedList<ProjectBasicInfoDto>>,
         IRequestHandler<GetProjectsCountQuery, long>
 
     {
@@ -49,13 +49,13 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Han
         /// <summary>
         /// 
         /// </summary>
-        public async Task<ProjectOutputDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ProjectBasicInfoDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetByIdAsync(request.Id);
             if (project == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
 
-            var dto = _mapper.Map<ProjectOutputDto>(project);
+            var dto = _mapper.Map<ProjectBasicInfoDto>(project);
 
             //TODO refactore read model for board to decrease db queries
             var organization = await _organizationRepository.GetByIdAsync(project.OrganizationId);
@@ -80,19 +80,19 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.Queries.Han
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PaginatedList<ProjectOutputDto>> Handle(SearchProjectsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<ProjectBasicInfoDto>> Handle(SearchProjectsQuery request, CancellationToken cancellationToken)
         {
             var projects = _projectRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
-            var projectsDto = _mapper.Map<IEnumerable<ProjectOutputDto>>(projects);
+            var projectsDto = _mapper.Map<IEnumerable<ProjectBasicInfoDto>>(projects);
 
             foreach (var item in projectsDto)
             {
                 var organization = await _organizationRepository.GetByIdAsync(item.OrganizationId);
                 item.OrganizationName = organization?.Name;
-                item.BoardsCount = await _boardRepository.CountByProjectIdAsync(item.Id);
+                //item.BoardsCount = await _boardRepository.CountByProjectIdAsync(item.Id);
             }
 
-            return new PaginatedList<ProjectOutputDto>
+            return new PaginatedList<ProjectBasicInfoDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

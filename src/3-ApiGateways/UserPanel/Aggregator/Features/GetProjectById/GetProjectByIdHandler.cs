@@ -55,9 +55,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// <summary>
         /// 
         /// </summary>
-        private ProjectOutputDto MapToProjectDto(ProjectBasicInfoGrpcResponse projectGrpcResponse)
+        private ProjectBasicInfoDto MapToProjectDto(ProjectBasicInfoGrpcResponse projectGrpcResponse)
         {
-            return _mapper.Map<ProjectOutputDto>(projectGrpcResponse);
+            return _mapper.Map<ProjectBasicInfoDto>(projectGrpcResponse);
         }
 
 

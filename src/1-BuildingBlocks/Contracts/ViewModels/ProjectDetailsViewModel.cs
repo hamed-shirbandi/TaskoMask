@@ -6,7 +6,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
 {
    public class ProjectDetailsViewModel
     {
-        public ProjectOutputDto Project { get; set; }
+        public ProjectBasicInfoDto Project { get; set; }
         public IEnumerable<BoardBasicInfoDto> Boards { get; set; }
     }
 }

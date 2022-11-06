@@ -41,10 +41,10 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         /// </summary>
         [HttpGet]
         [Route("projects/{id}")]
-        public async Task<Result<ProjectOutputDto>> Get(string id)
+        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToProjectAsync(id))
-                return Result.Failure<ProjectOutputDto>(message: ContractsMessages.Access_Denied);
+                return Result.Failure<ProjectBasicInfoDto>(message: ContractsMessages.Access_Denied);
 
             return await _projectService.GetByIdAsync(id);
         }

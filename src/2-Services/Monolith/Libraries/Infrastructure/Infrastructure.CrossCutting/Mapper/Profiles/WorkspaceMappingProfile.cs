@@ -69,7 +69,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             #region Project
 
             CreateMap<Project, ProjectBasicInfoDto>();
-            CreateMap<Project, ProjectOutputDto>();
 
             #endregion
 

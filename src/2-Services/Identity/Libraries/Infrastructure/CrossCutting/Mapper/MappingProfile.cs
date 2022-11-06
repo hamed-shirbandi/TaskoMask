@@ -2,9 +2,9 @@
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper
 {
-    public class UserMappingProfile : Profile
+    public class MappingProfile : Profile
     {
-        public UserMappingProfile()
+        public MappingProfile()
         {
         }
     }

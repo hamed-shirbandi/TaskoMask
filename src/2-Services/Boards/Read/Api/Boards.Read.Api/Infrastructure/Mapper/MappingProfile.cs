@@ -2,9 +2,9 @@
 
 namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
 {
-    public class BoardMappingProfile : Profile
+    public class MappingProfile : Profile
     {
-        public BoardMappingProfile()
+        public MappingProfile()
         {
 
             //  CreateMap<Board, BoardBasicInfoDto>();

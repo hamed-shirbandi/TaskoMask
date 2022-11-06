@@ -17,7 +17,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddAutoMapper(typeof(UserMappingProfile));
+            services.AddAutoMapper(typeof(MappingProfile));
         }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.Mapper
 {
-    public class TaskMappingProfile : Profile
+    public class MappingProfile : Profile
     {
-        public TaskMappingProfile()
+        public MappingProfile()
         {
 
             //  CreateMap<Task, TaskBasicInfoDto>();

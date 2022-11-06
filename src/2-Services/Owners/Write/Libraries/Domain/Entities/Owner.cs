@@ -125,6 +125,18 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public Organization GetOrganizationById(string organizationId)
+        {
+            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
+            if (organization == null)
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Organization));
+            return organization;
+        }
+
+
 
         #endregion
 
@@ -234,18 +246,6 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
             return organization;
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private Organization GetOrganizationById(string organizationId)
-        {
-            var organization = Organizations.FirstOrDefault(p => p.Id == organizationId);
-            if (organization == null)
-                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Organization));
-            return organization;
-        }
 
         #endregion
     }

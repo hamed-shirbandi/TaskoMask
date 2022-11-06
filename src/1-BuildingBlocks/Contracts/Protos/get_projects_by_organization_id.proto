@@ -19,4 +19,5 @@ message GetProjectsByOrganizationIdGrpcResponse {
 	string name = 3;
 	string description = 4;
 	string organizationId = 5;
+	string organizationName = 6;
 }

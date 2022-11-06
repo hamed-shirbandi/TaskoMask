@@ -31,7 +31,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProje
         #region Ctors
 
 
-        public AddProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
+        public AddProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
             _ownerValidatorService = ownerValidatorService;
@@ -59,7 +59,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProje
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 
-            var projectAdded = MapToProjectAddedIntegrationEvent(owner.DomainEvents);
+            var projectAdded = MapToProjectAddedIntegrationEvent(owner);
 
             await PublishIntegrationEventAsync(projectAdded);
 
@@ -73,10 +73,13 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProje
         #region Private Methods
 
 
-        private ProjectAdded MapToProjectAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        private ProjectAdded MapToProjectAddedIntegrationEvent(Owner owner)
         {
-            var projectAddedDomainEvent = (ProjectAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectAddedEvent));
-            return new ProjectAdded(projectAddedDomainEvent.Id, projectAddedDomainEvent.Name, projectAddedDomainEvent.Description, projectAddedDomainEvent.OrganizationId, projectAddedDomainEvent.OwnerId);
+            var projectAddedDomainEvent = (ProjectAddedEvent)owner.DomainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectAddedEvent));
+
+            var organization = owner.GetOrganizationById(projectAddedDomainEvent.OrganizationId);
+
+            return new ProjectAdded(projectAddedDomainEvent.Id, projectAddedDomainEvent.Name, projectAddedDomainEvent.Description, projectAddedDomainEvent.OrganizationId, organization.Name.Value, projectAddedDomainEvent.OwnerId);
         }
 
 

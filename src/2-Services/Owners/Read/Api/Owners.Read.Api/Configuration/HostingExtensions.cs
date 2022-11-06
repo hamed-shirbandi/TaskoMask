@@ -11,6 +11,7 @@ using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationsByOwnerId;
+using TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrganizationId;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
@@ -60,6 +61,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<GetOrganizationsByOwnerIdGrpcEndpoint>();
+                endpoints.MapGrpcService<GetProjectsByOrganizationIdGrpcEndpoint>();
                 endpoints.MapControllers();
             });
 

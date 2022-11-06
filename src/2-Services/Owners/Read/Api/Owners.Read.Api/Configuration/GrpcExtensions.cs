@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationsByOwnerId;
+using TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById;
 using TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrganizationId;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
@@ -15,6 +16,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
         {
             endpoints.MapGrpcService<GetOrganizationsByOwnerIdGrpcEndpoint>();
             endpoints.MapGrpcService<GetProjectsByOrganizationIdGrpcEndpoint>();
+            endpoints.MapGrpcService<GetProjectByIdGrpcEndpoint>();
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
+using TaskoMask.BuildingBlocks.Contracts.Protos;
 using TaskoMask.Services.Owners.Read.Api.Domain;
 
 namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
@@ -9,6 +10,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
         public ProjectMappingProfile()
         {
             CreateMap<Project, ProjectBasicInfoDto>();
+
+            CreateMap<ProjectBasicInfoDto, GetProjectByIdGrpcResponse>();
+
+            CreateMap<ProjectOutputDto, GetProjectByIdGrpcResponse>();
+
         }
     }
 }

@@ -10,7 +10,12 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
         public MappingProfile()
         {
             CreateMap<GetOrganizationsByOwnerIdGrpcResponse, OrganizationBasicInfoDto>();
+
             CreateMap<GetProjectsByOrganizationIdGrpcRequest, ProjectBasicInfoDto>();
+
+            CreateMap<GetProjectByIdGrpcResponse, ProjectBasicInfoDto>();
+
+            CreateMap<GetProjectByIdGrpcResponse, ProjectOutputDto>();
         }
     }
 }

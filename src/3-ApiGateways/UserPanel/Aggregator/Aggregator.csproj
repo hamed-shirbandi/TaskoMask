@@ -23,6 +23,8 @@
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\base.proto" GrpcServices="Client"/>
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_organizations_by_owner_id.proto" GrpcServices="Client"/>
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_projects_by_organization_id.proto" GrpcServices="Client"/>
+		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_project_by_id.proto" GrpcServices="Client"/>
+
 	</ItemGroup>
 
 	<ItemGroup>

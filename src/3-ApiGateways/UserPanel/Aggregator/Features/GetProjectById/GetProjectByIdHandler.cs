@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using TaskoMask.BuildingBlocks.Application.Queries;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
@@ -34,13 +35,11 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// </summary>
         public async Task<ProjectDetailsViewModel> Handle(GetProjectByIdRequest request, CancellationToken cancellationToken)
         {
-            var projectGrpcResponse = _getProjectByIdGrpcServiceClient.Handle(new GetProjectByIdGrpcRequest { Id = request.Id });
 
             return new ProjectDetailsViewModel
             {
-                Project = MapToProjectDto(projectGrpcResponse),
-                //TODO get other details here
-                //Boards = ... ,
+                Project = GetProjectAndMapToDto(request.Id),
+                Boards = await GetBoardsAndMapToDto(request.Id),
             };
 
         }
@@ -55,9 +54,33 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// <summary>
         /// 
         /// </summary>
-        private ProjectBasicInfoDto MapToProjectDto(ProjectBasicInfoGrpcResponse projectGrpcResponse)
+        private ProjectBasicInfoDto GetProjectAndMapToDto(string projectId)
         {
+            var projectGrpcResponse = _getProjectByIdGrpcServiceClient.Handle(new GetProjectByIdGrpcRequest { Id = projectId });
+
             return _mapper.Map<ProjectBasicInfoDto>(projectGrpcResponse);
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Task<IEnumerable<BoardBasicInfoDto>> GetBoardsAndMapToDto(string projectId)
+        {
+            throw new NotImplementedException();
+
+            //TODO implement GetBoardsByProjectIdGrpc service and then uncomment the bellow codes
+
+            //var boardsDto = new List<BoardBasicInfoDto>();
+
+            //var boardsCall = _getBoardsByProjectIdGrpcServiceClient.Handle(new GetBoardsByProjectIdGrpcRequest { ProjectId = projectId });
+
+            //await foreach (var response in boardsCall.ResponseStream.ReadAllAsync())
+            //    boardsDto.Add(_mapper.Map<BoardBasicInfoDto>(response));
+
+            //return boardsDto;
         }
 
 

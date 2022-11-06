@@ -67,7 +67,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         /// <summary>
         /// 
         /// </summary>
-        private async Task<OrganizationDetailsViewModel> GetOrganizationDetailsAsync(GetOrganizationsByOwnerIdGrpcResponse organizationGrpcResponse)
+        private async Task<OrganizationDetailsViewModel> GetOrganizationDetailsAsync(OrganizationBasicInfoGrpcResponse organizationGrpcResponse)
         {
             return new OrganizationDetailsViewModel
             {
@@ -85,7 +85,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         /// <summary>
         /// 
         /// </summary>
-        private OrganizationBasicInfoDto MapToOrganizationDto(GetOrganizationsByOwnerIdGrpcResponse organizationGrpcResponse)
+        private OrganizationBasicInfoDto MapToOrganizationDto(OrganizationBasicInfoGrpcResponse organizationGrpcResponse)
         {
             return _mapper.Map<OrganizationBasicInfoDto>(organizationGrpcResponse);
         }

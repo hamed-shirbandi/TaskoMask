@@ -5,19 +5,9 @@ package TaskoMask.BuildingBlocks.Contracts.Protos;
 import "base.proto";
 
 service GetProjectByIdGrpcService {
-  rpc Handle (GetProjectByIdGrpcRequest) returns (GetProjectByIdGrpcResponse);
+  rpc Handle (GetProjectByIdGrpcRequest) returns (ProjectBasicInfoGrpcResponse);
 }
 
 message GetProjectByIdGrpcRequest {
   string Id = 1;
-}
-
-message GetProjectByIdGrpcResponse {
-
-	CreationTime CreationTime=1;
-	string id = 2;
-	string name = 3;
-	string description = 4;
-	string organizationId = 5;
-	string organizationName = 6;
 }

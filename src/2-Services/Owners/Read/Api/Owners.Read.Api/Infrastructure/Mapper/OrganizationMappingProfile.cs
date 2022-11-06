@@ -10,7 +10,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
         public OrganizationMappingProfile()
         {
             CreateMap<Organization, OrganizationBasicInfoDto>();
-            CreateMap<OrganizationBasicInfoDto, GetOrganizationsByOwnerIdGrpcResponse>();
+            CreateMap<OrganizationBasicInfoDto, OrganizationBasicInfoGrpcResponse>();
         }
     }
 }

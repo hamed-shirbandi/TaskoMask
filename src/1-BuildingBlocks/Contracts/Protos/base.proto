@@ -14,3 +14,14 @@ message CreationTime{
 	int32 CreateMonth=6;
 	int32 CreateYear=7;
 }
+
+
+message ProjectBasicInfoGrpcResponse {
+
+	CreationTime CreationTime=1;
+	string id = 2;
+	string name = 3;
+	string description = 4;
+	string organizationId = 5;
+	string organizationName = 6;
+}

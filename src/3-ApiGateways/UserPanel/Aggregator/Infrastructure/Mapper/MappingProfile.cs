@@ -9,13 +9,13 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<GetOrganizationsByOwnerIdGrpcResponse, OrganizationBasicInfoDto>();
+            CreateMap<OrganizationBasicInfoGrpcResponse, OrganizationBasicInfoDto>();
 
             CreateMap<GetProjectsByOrganizationIdGrpcRequest, ProjectBasicInfoDto>();
 
-            CreateMap<GetProjectByIdGrpcResponse, ProjectBasicInfoDto>();
+            CreateMap<ProjectBasicInfoGrpcResponse, ProjectBasicInfoDto>();
 
-            CreateMap<GetProjectByIdGrpcResponse, ProjectOutputDto>();
+            CreateMap<ProjectBasicInfoGrpcResponse, ProjectOutputDto>();
         }
     }
 }

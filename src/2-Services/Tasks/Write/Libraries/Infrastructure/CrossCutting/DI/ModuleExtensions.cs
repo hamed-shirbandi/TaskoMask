@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace TaskoMask.Services.Tasks.Write.Infrastructure.CrossCutting.DI
 {
@@ -14,9 +15,9 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.CrossCutting.DI
         /// <summary>
         /// 
         /// </summary>
-        public static void AddModules(this IServiceCollection services, IConfiguration configuration)
+        public static void AddModules(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {
-            services.AddInfrastructureModule(configuration);
+            services.AddInfrastructureModule(configuration, consumerAssemblyMarkerType);
 
             services.AddApplicationModule();
         }

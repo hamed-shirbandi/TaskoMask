@@ -19,9 +19,9 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.DI
         /// </summary>
         public static void AddModules(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration, typeof(Program), typeof(Program));
+            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(Program),handlerAssemblyMarkerTypes: typeof(Program));
 
-            services.AddBuildingBlocksApplication(typeof(Program));
+            services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
             services.AddMapper();
 

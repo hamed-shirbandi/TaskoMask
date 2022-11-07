@@ -1,6 +1,7 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
+using TaskoMask.Services.Identity.Api.Consumers;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
 
 namespace TaskoMask.Services.Identity.Api.Configuration
@@ -18,7 +19,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 
             builder.Services.AddRazorPagesPreConfigured();
 
-            builder.Services.AddModules(builder.Configuration);
+            builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType:typeof(OwnerRegisteredConsumer));
 
             builder.Services.AddIdentityServer();
 

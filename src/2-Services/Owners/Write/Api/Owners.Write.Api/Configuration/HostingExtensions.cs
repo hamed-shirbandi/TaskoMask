@@ -3,6 +3,7 @@ using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Owners.Write.Api.Consumers;
 
 namespace TaskoMask.Services.Owners.Write.Api.Configuration
 {
@@ -17,7 +18,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Configuration
         {
             builder.AddCustomSerilog();
 
-            builder.Services.AddModules(builder.Configuration);
+            builder.Services.AddModules(builder.Configuration,consumerAssemblyMarkerType:typeof(UserRegisteredConsumer));
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 

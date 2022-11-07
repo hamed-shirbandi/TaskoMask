@@ -17,7 +17,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddApplicationModule(this IServiceCollection services)
         {
-            services.AddBuildingBlocksApplication(typeof(RegiserOwnerValidation<>));
+            services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(RegiserOwnerValidation<>));
 
         }
 

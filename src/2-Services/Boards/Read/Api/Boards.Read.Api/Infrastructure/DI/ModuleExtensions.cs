@@ -13,15 +13,15 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DI
     public static class ModuleExtensions
     {
 
-  
+
         /// <summary>
         /// 
         /// </summary>
         public static void AddModules(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration, typeof(Program), typeof(Program));
+            services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType: typeof(Program), handlerAssemblyMarkerTypes: typeof(Program));
 
-            services.AddBuildingBlocksApplication(typeof(Program));
+            services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
             services.AddMapper();
 

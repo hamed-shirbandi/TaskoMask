@@ -14,9 +14,9 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         /// <summary>
         /// 
         /// </summary>
-        public static void AddModules(this IServiceCollection services, IConfiguration configuration)
+        public static void AddModules(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {
-            services.AddInfrastructureModule(configuration);
+            services.AddInfrastructureModule(configuration, consumerAssemblyMarkerType);
 
             services.AddApplicationModule();
         }

@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+using TaskoMask.Services.Owners.Read.Api.Consumers.Owners;
+using TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper;
 
@@ -21,9 +23,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DI
         /// </summary>
         public static void AddModules(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration, typeof(Program), typeof(Program));
+            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(OwnerRegisterationCompletedConsumer),handlerAssemblyMarkerTypes: typeof(GetOwnerByIdHandler));
 
-            services.AddBuildingBlocksApplication(typeof(Program));
+            services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
             services.AddMapper();
 

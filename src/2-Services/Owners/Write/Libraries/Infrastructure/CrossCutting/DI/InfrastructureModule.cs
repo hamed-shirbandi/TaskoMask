@@ -20,9 +20,9 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
         /// <summary>
         /// 
         /// </summary>
-        public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
+        public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {
-            services.AddBuildingBlocksInfrastructure(configuration, typeof(RegiserOwnerUseCase), typeof(RegiserOwnerUseCase));
+            services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType, typeof(RegiserOwnerUseCase));
 
             services.AddMongoDbContext(configuration);
 

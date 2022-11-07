@@ -17,7 +17,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.Configuration
         {
             builder.AddCustomSerilog();
 
-            builder.Services.AddModules(builder.Configuration);
+            builder.Services.AddModules(builder.Configuration,consumerAssemblyMarkerType:typeof(Program));
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 

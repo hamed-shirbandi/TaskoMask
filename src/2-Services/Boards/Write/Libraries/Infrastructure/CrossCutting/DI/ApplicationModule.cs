@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Application.Services;
+using TaskoMask.Services.Boards.Write.Application.Resources;
 
 namespace TaskoMask.Services.Boards.Write.Infrastructure.CrossCutting.DI
 {
@@ -15,7 +17,7 @@ namespace TaskoMask.Services.Boards.Write.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddApplicationModule(this IServiceCollection services)
         {
-           // services.AddBuildingBlocksApplication(typeof(SomeClassInApplicationLayer));
+            services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(ApplicationMessages));
 
         }
 

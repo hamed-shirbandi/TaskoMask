@@ -9,7 +9,7 @@ using Xunit;
 
 namespace TaskoMask.Services.Identity.UnitTests.UseCases
 {
-    public class RegisterUserUseCaseTest : BaseFixture
+    public class RegisterUserTests : BaseFixture
     {
 
         [Fact]

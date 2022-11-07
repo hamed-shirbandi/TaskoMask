@@ -7,7 +7,7 @@ using Xunit;
 
 namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
 {
-    public class UserLoginUseCaseTest : IClassFixture<UserClassFixture>
+    public class UserLoginTests : IClassFixture<UserClassFixture>
     {
 
         #region Fields
@@ -18,7 +18,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
 
         #region Ctor
 
-        public UserLoginUseCaseTest(UserClassFixture fixture)
+        public UserLoginTests(UserClassFixture fixture)
         {
             _fixture = fixture;
         }

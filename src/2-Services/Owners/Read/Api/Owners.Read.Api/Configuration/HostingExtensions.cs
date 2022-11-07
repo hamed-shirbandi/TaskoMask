@@ -54,7 +54,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
 
             app.UseWebApiPreConfigured(app.Environment);
 
-            app.Services.InitialDatabases();
+            app.Services.InitialDatabase();
 
             app.UseEndpoints(endpoints =>
             {

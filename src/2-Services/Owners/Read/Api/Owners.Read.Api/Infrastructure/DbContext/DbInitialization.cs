@@ -16,7 +16,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext
         /// <summary>
         /// 
         /// </summary>
-        public static void InitialDatabases(this IServiceProvider serviceProvider)
+        public static void InitialDatabase(this IServiceProvider serviceProvider)
         {
             serviceProvider.CreateIndexes();
         }

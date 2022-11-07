@@ -1,15 +1,11 @@
 using Serilog;
-using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
-using TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using TaskoMask.BuildingBlocks.Application.Services;
-using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
+using TaskoMask.Services.Owners.Read.Api.Infrastructure.DI;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
@@ -24,13 +20,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
         {
             builder.AddCustomSerilog();
 
-            builder.Services.AddBuildingBlocksInfrastructure(builder.Configuration, typeof(Program), typeof(Program));
-
-            builder.Services.AddBuildingBlocksApplication(typeof(Program));
-
-            builder.Services.AddMapper();
-
-            builder.Services.AddMongoDbContext(builder.Configuration);
+            builder.Services.AddModules(builder.Configuration);
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
@@ -66,15 +56,6 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AddMongoDbContext(this IServiceCollection services, IConfiguration configuration)
-        {
-            var options = configuration.GetSection("MongoDB");
-            services.AddScoped<OwnerReadDbContext>().AddOptions<MongoDbOptions>().Bind(options);
-        }
 
     }
 }

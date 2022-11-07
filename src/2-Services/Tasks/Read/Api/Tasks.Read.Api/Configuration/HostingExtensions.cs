@@ -6,6 +6,8 @@ using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Tasks.Read.Api.Infrastructure.Mapper;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
+using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DI;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Configuration
 {
@@ -20,15 +22,14 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
         {
             builder.AddCustomSerilog();
 
-            builder.Services.AddBuildingBlocksInfrastructure(builder.Configuration, typeof(Program), typeof(Program));
-
-            builder.Services.AddBuildingBlocksApplication(typeof(Program));
-
-            builder.Services.AddMapper();
-
-            builder.Services.AddMongoDbContext(builder.Configuration);
+            builder.Services.AddModules(builder.Configuration);
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
+
+            builder.Services.AddGrpc(options =>
+            {
+                options.Interceptors.Add<GrpcExceptionInterceptor>();
+            });
 
             return builder.Build();
         }
@@ -54,18 +55,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
 
             return app;
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void AddMongoDbContext(this IServiceCollection services, IConfiguration configuration)
-        {
-            var options = configuration.GetSection("MongoDB");
-            services.AddScoped<TaskReadDbContext>().AddOptions<MongoDbOptions>().Bind(options);
-        }
-
 
     }
 }

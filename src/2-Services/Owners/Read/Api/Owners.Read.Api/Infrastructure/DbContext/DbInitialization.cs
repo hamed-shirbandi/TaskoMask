@@ -24,9 +24,23 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext
 
 
         /// <summary>
+        /// Drop database
+        /// </summary>
+        public static void DropDatabase(this IServiceProvider serviceProvider)
+        {
+            using var serviceScope = serviceProvider.CreateScope();
+
+            var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
+
+            dbContext.DropDatabase();
+        }
+
+
+
+        /// <summary>
         /// Create index for collections
         /// </summary>
-        public static void CreateIndexes(this IServiceProvider serviceProvider)
+        private static void CreateIndexes(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();

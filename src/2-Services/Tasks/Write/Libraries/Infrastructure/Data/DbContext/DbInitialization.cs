@@ -25,9 +25,23 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.Data.DbContext
 
 
         /// <summary>
+        /// Drop database
+        /// </summary>
+        public static void DropDatabase(this IServiceProvider serviceProvider)
+        {
+            using var serviceScope = serviceProvider.CreateScope();
+
+            var dbContext = serviceScope.ServiceProvider.GetService<TaskWriteDbContext>();
+
+            dbContext.DropDatabase();
+        }
+
+
+
+        /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
-        public static void SeedEssentialData(this IServiceProvider serviceProvider)
+        private static void SeedEssentialData(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<TaskWriteDbContext>();
@@ -40,7 +54,7 @@ namespace TaskoMask.Services.Tasks.Write.Infrastructure.Data.DbContext
         /// <summary>
         /// Create index for collections
         /// </summary>
-        public static void CreateIndexes(this IServiceProvider serviceProvider)
+        private static void CreateIndexes(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<TaskWriteDbContext>();

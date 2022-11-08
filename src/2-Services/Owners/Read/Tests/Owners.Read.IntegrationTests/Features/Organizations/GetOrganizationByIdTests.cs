@@ -28,16 +28,16 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Organizations
 
 
         [Fact]
-        public async Task Organization_Is_Fetched()
+        public async Task Organization_Is_Fetched_By_Id()
         {
             //Arrange
             var expectedOrganization = OrganizationObjectMother.GetOrganization();
             await _fixture.SeedOrganizationAsync(expectedOrganization);
-            var getOwnerByIdHandler = new GetOrganizationByIdHandler(_fixture.DbContext, _fixture.Mapper);
+            var getOrganizationByIdHandler = new GetOrganizationByIdHandler(_fixture.DbContext, _fixture.Mapper);
             var request = new GetOrganizationByIdRequest(expectedOrganization.Id);
 
             //Act
-            var result = await getOwnerByIdHandler.Handle(request, CancellationToken.None);
+            var result = await getOrganizationByIdHandler.Handle(request, CancellationToken.None);
 
             //Assert
             result.Id.Should().Be(expectedOrganization.Id);

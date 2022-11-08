@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using TaskoMask.Services.Owners.Read.Api.Domain;
-using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
+﻿using TaskoMask.Services.Owners.Read.Api.Domain;
 
 namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
 {
@@ -10,13 +8,9 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
     /// </summary>
     public class OwnerClassFixture : TestsBaseFixture
     {
-        public IMapper Mapper;
-        public OwnerReadDbContext DbContext;
 
         public OwnerClassFixture() : base(dbNameSuffix: nameof(OwnerClassFixture))
         {
-            Mapper = GetRequiredService<IMapper>();
-            DbContext = GetRequiredService<OwnerReadDbContext>();
         }
 
 
@@ -29,7 +23,6 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
         {
             await DbContext.Owners.InsertOneAsync(owner);
         }
-
 
     }
 }

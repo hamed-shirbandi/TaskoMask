@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Test;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 
@@ -26,51 +27,40 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
     /// And get the fixture as a parameter in each test class constructor
     /// So the fixture initialize before all test methods in all test classes and then dispose after all tests run
     /// </summary>
-    public abstract class TestsBaseFixture : IDisposable
+    public abstract class TestsBaseFixture : IntegrationTestsBase
     {
-        #region Fields
 
-        private readonly IServiceProvider _serviceProvider;
 
-        #endregion
+        protected TestsBaseFixture(string dbNameSuffix) : base(dbNameSuffix)
+        {
+        }
 
-        #region Ctor
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="dbNameSuffix">To make a unique database for each fixture</param>
-        public TestsBaseFixture(string dbNameSuffix)
+        public override void InitialDatabase()
         {
-            _serviceProvider = GetServiceProvider(dbNameSuffix);
             _serviceProvider.InitialDatabase();
             _serviceProvider.SeedEssentialData();
         }
 
 
-        #endregion
-
-        #region Protected Methods
-
 
         /// <summary>
-        /// Get required services for each service
+        /// 
         /// </summary>
-        protected T GetRequiredService<T>()
+        public override void DropDatabase()
         {
-            return _serviceProvider.GetRequiredService<T>();
+            _serviceProvider.DropDatabase();
         }
 
-
-        #endregion
-
-        #region Private Methods
 
 
         /// <summary>
         /// 
         /// </summary>
-        private static IServiceProvider GetServiceProvider(string dbNameSuffix)
+        public override IServiceProvider GetServiceProvider(string dbNameSuffix)
         {
             var services = new ServiceCollection();
 
@@ -87,30 +77,11 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
 
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 
-            services.AddModules(configuration);
+            services.AddModules(configuration, typeof(TestsBaseFixture));
 
             var serviceProvider = services.BuildServiceProvider();
 
             return serviceProvider;
         }
-
-
-
-        #endregion
-
-        #region Dispose
-
-
-        /// <summary>
-        /// Dispose all resources that fixture used for tests
-        /// </summary>
-        public void Dispose()
-        {
-            _serviceProvider.DropDatabase();
-
-        }
-
-
-        #endregion
     }
 }

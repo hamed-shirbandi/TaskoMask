@@ -31,6 +31,4 @@
 		<Copy SourceFiles="..\..\Api\Owners.Read.Api\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
 	</Target>
 
-
-
 </Project>

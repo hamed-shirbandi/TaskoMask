@@ -1,55 +1,49 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AutoMapper;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+using TaskoMask.BuildingBlocks.Test;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DI;
 
 namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
 {
-    public abstract class TestsBaseFixture : IDisposable
+    public abstract class TestsBaseFixture : IntegrationTestsBase
     {
-        #region Fields
+        public readonly IMapper Mapper;
+        public readonly OwnerReadDbContext DbContext;
 
-        private readonly IServiceProvider _serviceProvider;
 
-        #endregion
+        protected TestsBaseFixture(string dbNameSuffix) : base(dbNameSuffix)
+        {
+            Mapper = GetRequiredService<IMapper>();
+            DbContext = GetRequiredService<OwnerReadDbContext>();
+        }
 
-        #region Ctor
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="dbNameSuffix">To make a unique database for each fixture</param>
-        public TestsBaseFixture(string dbNameSuffix)
+        public override void InitialDatabase()
         {
-            _serviceProvider = GetServiceProvider(dbNameSuffix);
             _serviceProvider.InitialDatabase();
         }
 
 
-        #endregion
-
-        #region Protected Methods
-
 
         /// <summary>
-        /// Get required services for each service
+        /// 
         /// </summary>
-        protected T GetRequiredService<T>()
+        public override void DropDatabase()
         {
-            return _serviceProvider.GetRequiredService<T>();
+            _serviceProvider.DropDatabase();
         }
 
-
-        #endregion
-
-        #region Private Methods
 
 
         /// <summary>
         /// 
         /// </summary>
-        private static IServiceProvider GetServiceProvider(string dbNameSuffix)
+        public override IServiceProvider GetServiceProvider(string dbNameSuffix)
         {
             var services = new ServiceCollection();
 
@@ -72,24 +66,5 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
 
             return serviceProvider;
         }
-
-
-
-        #endregion
-
-        #region Dispose
-
-
-        /// <summary>
-        /// Dispose all resources that fixture used for tests
-        /// </summary>
-        public void Dispose()
-        {
-            _serviceProvider.DropDatabase();
-
-        }
-
-
-        #endregion
     }
 }

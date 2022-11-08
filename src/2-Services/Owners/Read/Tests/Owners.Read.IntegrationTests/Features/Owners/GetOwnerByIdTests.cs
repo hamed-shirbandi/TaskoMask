@@ -1,9 +1,10 @@
 ﻿using FluentAssertions;
 using TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById;
+using TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures;
 using TaskoMask.Services.Owners.Read.IntegrationTests.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
+namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Owners
 {
     public class GetOwnerByIdTests : IClassFixture<OwnerClassFixture>
     {
@@ -33,7 +34,7 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
             var expectedOwner = OwnerObjectMother.GetOwnerWithEmail("test@email.com");
             await _fixture.SeedOwnerAsync(expectedOwner);
             var getOwnerByIdHandler = new GetOwnerByIdHandler(_fixture.DbContext, _fixture.Mapper);
-            var request = new GetOwnerByIdRequest("id");
+            var request = new GetOwnerByIdRequest(expectedOwner.Id);
 
             //Act
             var result = await getOwnerByIdHandler.Handle(request, CancellationToken.None);

@@ -13,7 +13,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
     /// <summary>
     /// 
     /// </summary>
-    public class BaseFixture : UnitTestsBase
+    public class TestsBaseFixture : UnitTestsBase
     {
 
         public TestUserManager TestUserManager;
@@ -26,7 +26,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
         public List<User> TestUsers;
         public List<UserLogin> TestUserLogins;
 
-        public BaseFixture()
+        public TestsBaseFixture()
         {
 
         }

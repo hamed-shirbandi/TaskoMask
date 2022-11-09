@@ -48,13 +48,13 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
             var services = new ServiceCollection();
 
             var configuration = new ConfigurationBuilder()
-                                //Copy from Identity.Api project during the build event
+                                //Copy from Owners.Read.Api project during the build event
                                 .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
                                 .AddJsonFile("appsettings.Staging.json", optional: true)
                                 .AddJsonFile("appsettings.Development.json", optional: true)
                                 .AddInMemoryCollection(new[]
                                 {
-                                   new KeyValuePair<string,string>("ConnectionString:DatabaseName", $"IdentityDB_Test_{dbNameSuffix}")
+                                   new KeyValuePair<string,string>("MongoDB:DatabaseName", $"Owners_Read_DB_{dbNameSuffix}")
                                 })
                                 .Build();
 

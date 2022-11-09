@@ -83,7 +83,7 @@ services:
     image: ${DOCKER_REGISTRY-}identity-api
     restart: on-failure
     environment:
-      ConnectionString__Connection: "Server=sql;Database=[DatabaseName];User=sa;Password=Your_password123;"
+      SQL__Connection: "Server=sql;Database=[DatabaseName];User=sa;Password=Your_password123;"
       Redis__Connection: "redis:6379"
       build:
       context: ../..

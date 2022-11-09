@@ -50,7 +50,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
                                 .AddJsonFile("appsettings.Development.json", optional: true)
                                 .AddInMemoryCollection(new[]
                                 {
-                                   new KeyValuePair<string,string>("ConnectionString:DatabaseName", $"IdentityDB_Test_{dbNameSuffix}")
+                                   new KeyValuePair<string,string>("SQL:DatabaseName", $"IdentityDB_Test_{dbNameSuffix}")
                                 })
                                 .Build();
 

@@ -28,7 +28,7 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Owners
 
 
         [Fact]
-        public async Task Owner_Is_Fetched()
+        public async Task Owner_Is_Fetched_By_Id()
         {
             //Arrange
             var expectedOwner = OwnerObjectMother.GetOwnerWithEmail("test@email.com");

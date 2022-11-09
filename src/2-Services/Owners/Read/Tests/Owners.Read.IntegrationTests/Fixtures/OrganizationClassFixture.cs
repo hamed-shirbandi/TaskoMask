@@ -9,7 +9,7 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures
     public class OrganizationClassFixture : TestsBaseFixture
     {
 
-        public OrganizationClassFixture() : base(dbNameSuffix: nameof(OwnerClassFixture))
+        public OrganizationClassFixture() : base(dbNameSuffix: nameof(OrganizationClassFixture))
         {
         }
 

@@ -4,6 +4,7 @@ using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Test;
 using TaskoMask.Services.Owners.Write.Domain.Data;
+using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 using TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
@@ -50,6 +51,26 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
         /// <summary>
         /// 
         /// </summary>
+        public async Task SeedOwnerAsync(Owner owner)
+        {
+            await OwnerAggregateRepository.CreateAsync(owner);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<Owner> GetOwnerAsync(string id)
+        {
+            return await OwnerAggregateRepository.GetByIdAsync(id);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public override IServiceProvider GetServiceProvider(string dbNameSuffix)
         {
             var services = new ServiceCollection();
@@ -67,7 +88,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
 
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 
-            services.AddModules(configuration,typeof(TestsBaseFixture));
+            services.AddModules(configuration, typeof(TestsBaseFixture));
 
             var serviceProvider = services.BuildServiceProvider();
 

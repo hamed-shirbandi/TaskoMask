@@ -23,17 +23,15 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Upd
         #region Fields
 
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
-        private readonly IOwnerValidatorService _ownerValidatorService;
 
         #endregion
 
         #region Ctors
 
 
-        public UpdateOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public UpdateOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
-            _ownerValidatorService = ownerValidatorService;
         }
 
         #endregion

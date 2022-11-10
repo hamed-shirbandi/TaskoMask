@@ -32,7 +32,9 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Owners
         public async Task Owner_Profile_Is_Updated_Properly()
         {
             //Arrange
-            var expectedOwner = OwnerObjectMother.RegisterAnOwner(_fixture.OwnerValidatorService);
+            var expectedOwner = OwnerObjectMother.GetAnOwner(_fixture.OwnerValidatorService);
+            await _fixture.SeedOwnerAsync(expectedOwner);
+
             var request = new UpdateOwnerProfileRequest(id: expectedOwner.Id, displayName: "TestNewName", email:"testNewMail@taskomask.ir");
             var updateOwnerProfileUseCase = new UpdateOwnerProfileUseCase(_fixture.OwnerAggregateRepository, _fixture.OwnerValidatorService, _fixture.MessageBus, _fixture.InMemoryBus);
 

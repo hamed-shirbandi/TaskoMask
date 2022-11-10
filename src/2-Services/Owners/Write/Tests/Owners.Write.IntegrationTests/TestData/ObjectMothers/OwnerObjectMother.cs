@@ -11,16 +11,12 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData.ObjectMother
         private const string _displayName= "Test DisplayName";
 
         
-        public static Owner RegisterAnOwner(IOwnerValidatorService ownerValidatorService)
+        public static Owner GetAnOwner(IOwnerValidatorService ownerValidatorService)
         {
-            var owner= OwnerBuilder.Init(ownerValidatorService)
+            return  OwnerBuilder.Init(ownerValidatorService)
                    .WithEmail(_email)
                    .WithDisplayName(_displayName)
                    .RegisterOwner();
-
-            owner.ClearDomainEvents();
-
-            return owner;
         }
     }
 }

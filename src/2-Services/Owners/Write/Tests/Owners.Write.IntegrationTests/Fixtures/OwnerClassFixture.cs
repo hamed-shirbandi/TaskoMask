@@ -1,4 +1,7 @@
 ﻿
+
+using TaskoMask.Services.Owners.Write.Domain.Entities;
+
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
 {
 
@@ -10,6 +13,15 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
 
         public OwnerClassFixture() : base(dbNameSuffix: nameof(OwnerClassFixture))
         {
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task SeedOwnerAsync(Owner owner)
+        {
+            await OwnerAggregateRepository.CreateAsync(owner);
         }
 
     }

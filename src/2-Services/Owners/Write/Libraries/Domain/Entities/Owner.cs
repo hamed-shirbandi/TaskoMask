@@ -187,6 +187,20 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Project GetProjectById(string projectId)
+        {
+            var organization = GetOrganizationByProjectId(projectId);
+            if (organization == null)
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Organization));
+          
+            return organization.GetProjectById(projectId);
+        }
+
+
         #endregion
 
         #region Private Methods

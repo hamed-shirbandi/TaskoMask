@@ -24,17 +24,15 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProje
         #region Fields
 
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
-        private readonly IOwnerValidatorService _ownerValidatorService;
 
         #endregion
 
         #region Ctors
 
 
-        public AddProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IOwnerValidatorService ownerValidatorService, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public AddProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
-            _ownerValidatorService = ownerValidatorService;
         }
 
         #endregion

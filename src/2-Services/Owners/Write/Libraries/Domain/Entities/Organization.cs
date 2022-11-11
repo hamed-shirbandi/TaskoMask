@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         /// <summary>
         /// 
         /// </summary>
-        public static Organization CreateOrganization(string name, string description )
+        public static Organization CreateOrganization(string name, string description)
         {
             return new Organization(name, description);
         }
@@ -91,9 +91,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         /// </summary>
         public void UpdateProject(string id, string name, string description)
         {
-            var project = Projects.FirstOrDefault(p => p.Id == id);
-            if (project == null)
-                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Project));
+            var project = GetProjectById(id);
 
             project.Update(name, description);
 
@@ -107,9 +105,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         /// </summary>
         public void DeleteProject(string id)
         {
-            var project = Projects.FirstOrDefault(p => p.Id == id);
-            if (project == null)
-                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Project));
+            var project = GetProjectById(id);
 
             Projects.Remove(project);
 
@@ -118,11 +114,23 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public Project GetProjectById(string projectId)
+        {
+            var project = Projects.FirstOrDefault(p => p.Id == projectId);
+            if (project == null)
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Project));
+
+            return project;
+        }
+
+
+
         #endregion
 
         #region Private Methods
-
-
 
 
 

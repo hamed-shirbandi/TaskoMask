@@ -1,8 +1,7 @@
-﻿
-using TaskoMask.Services.Owners.Write.Domain.Entities;
+﻿using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
-namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData.DataBuilders
+namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
 {
     internal class OwnerBuilder
     {
@@ -42,7 +41,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData.DataBuilders
 
         public Owner RegisterOwner()
         {
-            return Owner.RegisterOwner(DisplayName, Email,_ownerValidatorService);
+            return Owner.RegisterOwner(DisplayName, Email, _ownerValidatorService);
         }
 
 

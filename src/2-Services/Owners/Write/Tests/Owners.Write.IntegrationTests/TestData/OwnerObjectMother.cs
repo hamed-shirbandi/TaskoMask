@@ -35,5 +35,18 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
             owner.AddOrganization(organization);
             return owner;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Owner GetAnOwnerWithAnOrganizationAndProject(IOwnerValidatorService ownerValidatorService)
+        {
+            var owner = GetAnOwnerWithAnOrganization(ownerValidatorService);
+            var organization = owner.Organizations.FirstOrDefault();
+            var project = Project.Create("Test Name", "Test Description");
+            organization.AddProject(project);
+            return owner;
+        }
     }
 }

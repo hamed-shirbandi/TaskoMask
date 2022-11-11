@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwnerProfile;
 using TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Owners.Write.IntegrationTests.TestData.ObjectMothers;
+using TaskoMask.Services.Owners.Write.IntegrationTests.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Owners

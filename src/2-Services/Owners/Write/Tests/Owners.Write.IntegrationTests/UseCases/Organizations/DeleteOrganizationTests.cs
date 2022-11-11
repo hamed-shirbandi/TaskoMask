@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.DeleteOrganization;
 using TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Owners.Write.IntegrationTests.TestData.ObjectMothers;
+using TaskoMask.Services.Owners.Write.IntegrationTests.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organizations

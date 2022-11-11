@@ -6,8 +6,14 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
     internal static class OwnerObjectMother
     {
 
-        private const string _email = "Test@TaskoMask.ir";
-        private const string _displayName = "Test DisplayName";
+        /// <summary>
+        /// 
+        /// </summary>
+
+        public static Owner GetAnOwner(IOwnerValidatorService ownerValidatorService)
+        {
+            return Owner.RegisterOwner("Test DisplayName", "Test@TaskoMask.ir", ownerValidatorService);
+        }
 
 
 
@@ -15,12 +21,20 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
         /// 
         /// </summary>
 
-        public static Owner GetAnOwner(IOwnerValidatorService ownerValidatorService)
+        public static Organization GetAnOrganization()
         {
-            return OwnerBuilder.Init(ownerValidatorService)
-                   .WithEmail(_email)
-                   .WithDisplayName(_displayName)
-                   .RegisterOwner();
+            return Organization.CreateOrganization("Test Name", "Test Description");
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+
+        public static Project GetAProject()
+        {
+            return Project.Create("Test Name", "Test Description");
         }
 
 
@@ -31,10 +45,10 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
         public static Owner GetAnOwnerWithAnOrganization(IOwnerValidatorService ownerValidatorService)
         {
             var owner = GetAnOwner(ownerValidatorService);
-            var organization = Organization.CreateOrganization("Test Name", "Test Description");
-            owner.AddOrganization(organization);
+            owner.AddOrganization(GetAnOrganization());
             return owner;
         }
+
 
 
         /// <summary>
@@ -44,8 +58,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
         {
             var owner = GetAnOwnerWithAnOrganization(ownerValidatorService);
             var organization = owner.Organizations.FirstOrDefault();
-            var project = Project.Create("Test Name", "Test Description");
-            organization.AddProject(project);
+            owner.AddProject(organization.Id,GetAProject());
             return owner;
         }
     }

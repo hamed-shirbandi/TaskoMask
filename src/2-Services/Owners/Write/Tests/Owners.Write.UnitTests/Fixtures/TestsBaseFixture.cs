@@ -65,6 +65,8 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.Fixtures
                     Owners.Add(((Owner)args[0]));
                 }
             });
+
+            OwnerValidatorService.OwnerHasUniqueEmail(ownerId: Arg.Any<string>(), email: Arg.Any<string>()).Returns(arg => !Owners.Any(o => o.Id != (string)arg[0] && o.Email.Value == (string)arg[1]));
         }
 
 

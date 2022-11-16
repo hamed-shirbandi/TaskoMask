@@ -222,7 +222,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
                 throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Email)));
 
             if (!new OwnerEmailMustUniqueSpecification(ownerValidatorService).IsSatisfiedBy(this))
-                throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board));
+                throw new DomainException(DomainMessages.Email_Already_Exist);
 
         }
 

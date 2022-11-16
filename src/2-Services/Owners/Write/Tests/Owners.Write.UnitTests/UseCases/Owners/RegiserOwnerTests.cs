@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Domain.Events.Owners;
 using TaskoMask.Services.Owners.Write.UnitTests.Fixtures;
@@ -46,6 +48,20 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
 
 
 
+        [Fact]
+        public void Owner_Is_Not_Registered_When_Email_Is_Duplicated()
+        {
+            //Arrange
+            var expectedMessage = DomainMessages.Email_Already_Exist;
+            var existedUser = Owners.FirstOrDefault();
+            var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", existedUser.Email.Value, "Test_Password");
+
+            //Act
+            Action act =async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
 
 
         #endregion

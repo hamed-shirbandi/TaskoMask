@@ -61,6 +61,15 @@ namespace TaskoMask.BuildingBlocks.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email already exist.
+        /// </summary>
+        public static string Email_Already_Exist {
+            get {
+                return ResourceManager.GetString("Email_Already_Exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description cannot be same of name.
         /// </summary>
         public static string Equal_Name_And_Description_Error {

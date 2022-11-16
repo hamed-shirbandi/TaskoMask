@@ -86,6 +86,22 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
         }
 
 
+        [InlineData("Hamed Shirbandi just came back from the street after looking for some freedom in Iran! #MahsaAmini")]
+        [InlineData("Vihan Shirbandi was waiting to see his father (me)")]
+        [Theory]
+        public void Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_More_Than_Max(string displayName)
+        {
+            //Arrange
+            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
+            var regiserOwnerRequest = new RegiserOwnerRequest(displayName, "Test@email.com", "Test_Password");
+
+            //Act
+            Action act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
 
 
 

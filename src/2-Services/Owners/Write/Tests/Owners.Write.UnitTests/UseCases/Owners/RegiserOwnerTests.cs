@@ -86,6 +86,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
         }
 
 
+
         [InlineData("Hamed Shirbandi just came back from the street after looking for some freedom in Iran! #MahsaAmini")]
         [InlineData("Vihan Shirbandi was waiting to see his father (me)")]
         [Theory]
@@ -102,6 +103,24 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
+
+
+        [InlineData("Hamed@taskomask")]
+        [InlineData("Ha.Taskomask.ir")]
+        [InlineData("Ha.Taskomask")]
+        [Theory]
+        public void Owner_Is_Not_Registered_When_Email_Is_Not_Valid(string email)
+        {
+            //Arrange
+            var expectedMessage = DomainMessages.Invalid_Email_Address;
+            var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", email, "Test_Password");
+
+            //Act
+            Action act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
 
 
 

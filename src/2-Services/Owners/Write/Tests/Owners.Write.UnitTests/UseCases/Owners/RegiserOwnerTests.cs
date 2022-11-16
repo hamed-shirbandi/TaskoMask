@@ -1,11 +1,15 @@
 ﻿using FluentAssertions;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Domain.Events.Owners;
+using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Owners;
 using TaskoMask.Services.Owners.Write.UnitTests.Fixtures;
+using TaskoMask.Services.Owners.Write.UnitTests.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
@@ -62,6 +66,27 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
             //Assert
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
+
+
+
+        [InlineData("H")]
+        [InlineData("Ha")]
+        [Theory]
+        public void Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_Less_Than_Min(string displayName)
+        {
+            //Arrange
+            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
+            var regiserOwnerRequest = new RegiserOwnerRequest(displayName, "Test@email.com", "Test_Password");
+
+            //Act
+            Action act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
 
 
         #endregion

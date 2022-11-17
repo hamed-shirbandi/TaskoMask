@@ -43,8 +43,8 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
             var result = await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
 
             //Assert
-            var createdUser = Owners.FirstOrDefault(u => u.Id == result.EntityId);
-            createdUser.Email.Value.Should().Be(regiserOwnerRequest.Email);
+            var registeredOwner = Owners.FirstOrDefault(u => u.Id == result.EntityId);
+            registeredOwner.Email.Value.Should().Be(regiserOwnerRequest.Email);
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<OwnerRegisteredEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<OwnerRegistered>());
         }
@@ -56,8 +56,8 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
         {
             //Arrange
             var expectedMessage = DomainMessages.Email_Already_Exist;
-            var existedUser = Owners.FirstOrDefault();
-            var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", existedUser.Email.Value, "Test_Password");
+            var existedOwner = Owners.FirstOrDefault();
+            var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", existedOwner.Email.Value, "Test_Password");
 
             //Act
             Action act =async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);

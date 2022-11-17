@@ -34,15 +34,15 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
         public async Task Owner_Profile_Is_Updated()
         {
             //Arrange
-            var expectedUser = Owners.FirstOrDefault();
-            var updateOwnerProfileRequest = new UpdateOwnerProfileRequest(expectedUser.Id,"Test_New_DisplayName", "Test_New@email.com");
+            var expectedOwner = Owners.FirstOrDefault();
+            var updateOwnerProfileRequest = new UpdateOwnerProfileRequest(expectedOwner.Id,"Test_New_DisplayName", "Test_New@email.com");
 
             //Act
             var result = await _updateOwnerProfileUseCase.Handle(updateOwnerProfileRequest, CancellationToken.None);
 
             //Assert
-            result.EntityId.Should().Be(expectedUser.Id);
-            expectedUser.Email.Value.Should().Be(updateOwnerProfileRequest.Email);
+            result.EntityId.Should().Be(expectedOwner.Id);
+            expectedOwner.Email.Value.Should().Be(updateOwnerProfileRequest.Email);
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<OwnerProfileUpdatedEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<OwnerProfileUpdated>());
         }
@@ -53,9 +53,8 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
         public void Owner_Profile_Update_Throw_Exception_When_Owner_Not_Exist()
         {
             //Arrange
-            var expectedUserId ="Some_Id_That_Not_Exist";
+            var updateOwnerProfileRequest = new UpdateOwnerProfileRequest("Some_Id_That_Not_Exist", "Test_New_DisplayName", "Test_New@email.com");
             var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
-            var updateOwnerProfileRequest = new UpdateOwnerProfileRequest(expectedUserId, "Test_New_DisplayName", "Test_New@email.com");
 
             //Act
             Action act = async () => await _updateOwnerProfileUseCase.Handle(updateOwnerProfileRequest, CancellationToken.None);

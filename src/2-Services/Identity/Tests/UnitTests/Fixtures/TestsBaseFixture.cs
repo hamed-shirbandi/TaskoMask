@@ -13,7 +13,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
     /// <summary>
     /// 
     /// </summary>
-    public class TestsBaseFixture : UnitTestsBase
+    public abstract class TestsBaseFixture : UnitTestsBase
     {
 
         public TestUserManager TestUserManager;
@@ -22,22 +22,35 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
         public IMessageBus MessageBus;
         public IInMemoryBus InMemoryBus;
         public IMapper Mapper;
-        
+
         public List<User> TestUsers;
         public List<UserLogin> TestUserLogins;
 
-        public TestsBaseFixture()
-        {
 
+
+
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        protected override void FixtureSetup()
+        {
+            CommonFixtureSetup();
+
+            TestClassFixtureSetup();
         }
 
 
-        protected override void FixtureSetup()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CommonFixtureSetup()
         {
             TestUserManager = Substitute.For<TestUserManager>();
             TestSignInManager = Substitute.For<TestSignInManager>(TestUserManager);
             TestUsers = new List<User>();
-            TestUserLogins= new List<UserLogin>();
+            TestUserLogins = new List<UserLogin>();
             NotificationHandler = Substitute.For<INotificationHandler>();
             MessageBus = Substitute.For<IMessageBus>();
             InMemoryBus = Substitute.For<IInMemoryBus>();
@@ -57,7 +70,7 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
             });
 
 
-            TestUserManager.CreateAsync(user: Arg.Any<User>(),password: Arg.Any<string>()).Returns(args =>
+            TestUserManager.CreateAsync(user: Arg.Any<User>(), password: Arg.Any<string>()).Returns(args =>
             {
                 TestUsers.Add((User)args[0]);
                 return new TestIdentityResult(true);
@@ -70,15 +83,22 @@ namespace TaskoMask.Services.Identity.UnitTests.Fixtures
                 var UserLoginInfo = (UserLoginInfo)args[1];
                 var userlogin = new UserLogin
                 {
-                    UserId=user.Id,
-                    LoginProvider= UserLoginInfo.LoginProvider,
-                    ProviderDisplayName= UserLoginInfo.ProviderDisplayName,
-                    ProviderKey= UserLoginInfo.ProviderKey,
+                    UserId = user.Id,
+                    LoginProvider = UserLoginInfo.LoginProvider,
+                    ProviderDisplayName = UserLoginInfo.ProviderDisplayName,
+                    ProviderKey = UserLoginInfo.ProviderKey,
                 };
                 TestUserLogins.Add(userlogin);
                 return new TestIdentityResult(true);
             });
-            
+
         }
+
+
+
+        /// <summary>
+        /// Each test class should setup its own fixture
+        /// </summary>
+        protected abstract void TestClassFixtureSetup();
     }
 }

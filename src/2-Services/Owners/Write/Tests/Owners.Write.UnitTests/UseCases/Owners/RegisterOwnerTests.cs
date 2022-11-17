@@ -43,8 +43,8 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
             var result = await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
 
             //Assert
-            var createdUser = Owners.FirstOrDefault(u => u.Id == result.EntityId);
-            createdUser.Email.Value.Should().Be(regiserOwnerRequest.Email);
+            var registeredUser = Owners.FirstOrDefault(u => u.Id == result.EntityId);
+            registeredUser.Email.Value.Should().Be(regiserOwnerRequest.Email);
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<OwnerRegisteredEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<OwnerRegistered>());
         }

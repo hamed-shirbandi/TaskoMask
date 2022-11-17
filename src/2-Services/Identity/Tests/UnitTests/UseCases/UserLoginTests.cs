@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 using TaskoMask.Services.Identity.UnitTests.Fixtures;
@@ -10,6 +9,23 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 {
     public class UserLoginTests : TestsBaseFixture
     {
+
+        #region Fields
+
+        private UserLoginUseCase _userLoginUseCase;
+
+        #endregion
+
+        #region Ctor
+
+        public UserLoginTests()
+        {
+        }
+
+        #endregion
+
+        #region Test Methods
+
 
         [Fact]
         public async Task User_Is_Logged_In()
@@ -23,11 +39,10 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
-            var userLoginRequest = new UserLoginRequest(userBuilder.UserName, userBuilder.Password,true);
+            var userLoginRequest = new UserLoginRequest(userBuilder.UserName, userBuilder.Password, true);
 
             //Act
-            var result = await useCase.Handle(userLoginRequest, CancellationToken.None);
+            var result = await _userLoginUseCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
             result.IsSuccess.Should().BeTrue();
@@ -49,11 +64,10 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
             var userLoginRequest = new UserLoginRequest(userBuilder.UserName, "wrongpass", true);
 
             //Act
-            Action act = async () => await useCase.Handle(userLoginRequest, CancellationToken.None);
+            Action act = async () => await _userLoginUseCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
             act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
@@ -74,16 +88,28 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             TestUsers.Add(userBuilder.Build());
 
-            var useCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
             var userLoginRequest = new UserLoginRequest(userBuilder.UserName, userBuilder.Password, true);
 
             //Act
-            Action act = async () => await useCase.Handle(userLoginRequest, CancellationToken.None);
+            Action act = async () => await _userLoginUseCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
             act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
 
         }
+
+        #endregion
+
+        #region Fixture
+
+        protected override void TestClassFixtureSetup()
+        {
+            _userLoginUseCase = new UserLoginUseCase(TestUserManager, TestSignInManager, Mapper);
+        }
+
+        #endregion
+
+
 
     }
 }

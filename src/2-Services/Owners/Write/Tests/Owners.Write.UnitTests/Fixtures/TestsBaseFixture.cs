@@ -19,16 +19,6 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.Fixtures
 
 
 
-        /// <summary>
-        /// Run before each test method
-        /// </summary>
-        public TestsBaseFixture()
-        {
-            FixtureSetup();
-        }
-
-
-
         ///// <summary>
         ///// 
         ///// </summary>

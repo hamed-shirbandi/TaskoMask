@@ -9,7 +9,6 @@ using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Domain.Events.Owners;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Owners;
 using TaskoMask.Services.Owners.Write.UnitTests.Fixtures;
-using TaskoMask.Services.Owners.Write.UnitTests.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
@@ -35,7 +34,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_Is_Registered_Properly()
+        public async Task Owner_Is_Registered()
         {
             //Arrange
             var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", "Test@email.com", "Test_Password");

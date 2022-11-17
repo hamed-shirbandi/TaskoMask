@@ -31,7 +31,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_Profile_Is_Updated_Properly()
+        public async Task Owner_Profile_Is_Updated()
         {
             //Arrange
             var expectedUser = Owners.FirstOrDefault();

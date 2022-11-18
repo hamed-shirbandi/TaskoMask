@@ -1,7 +1,9 @@
 ﻿using FluentAssertions;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Domain.Events.Organizations;
@@ -49,6 +51,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
         }
 
 
+
         [Fact]
         public void Adding_Organization_Throw_Exception_When_Owner_Not_Exist()
         {
@@ -62,6 +65,28 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
             //Assert
             act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
+
+
+
+        [InlineData("test", "test")]
+        [InlineData("تست", "تست")]
+        [Theory]
+        public void Organization_Is_Not_Added_When_Name_And_Description_Are_The_Same(string name, string description)
+        {
+            //Arrange
+            var expectedOwner = Owners.FirstOrDefault();
+            var addOrganizationRequest = new AddOrganizationRequest(expectedOwner.Id, name, description);
+            var expectedMessage = DomainMessages.Equal_Name_And_Description_Error;
+
+            //Act
+            Action act = async () => await _addOrganizationUseCase.Handle(addOrganizationRequest, CancellationToken.None);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
 
 
 

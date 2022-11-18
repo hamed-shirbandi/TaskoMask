@@ -108,6 +108,24 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
 
 
 
+        [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
+        [Theory]
+        public void Organization_Is_Not_Added_When_Description_Lenght_Is_More_Than_Max(string description)
+        {
+            //Arrange
+            var expectedOwner = Owners.FirstOrDefault();
+            var addOrganizationRequest = new AddOrganizationRequest(expectedOwner.Id, "Test_Name", description);
+            var expectedMessage = string.Format(ContractsMetadata.Max_Length_Error, nameof(OrganizationDescription), DomainConstValues.Organization_Description_Max_Length);
+
+            //Act
+            Action act = async () => await _addOrganizationUseCase.Handle(addOrganizationRequest, CancellationToken.None);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
 
 
         #endregion

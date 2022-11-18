@@ -2,6 +2,7 @@
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Domain.Events.Organizations;
 using TaskoMask.Services.Owners.Write.UnitTests.Fixtures;
@@ -45,6 +46,21 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
             expectedOwner.Organizations.Should().Contain(o => o.Id == result.EntityId);
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<OrganizationAddedEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<OrganizationAdded>());
+        }
+
+
+        [Fact]
+        public void Adding_Organization_Throw_Exception_When_Owner_Not_Exist()
+        {
+            //Arrange
+            var addOrganizationRequest = new AddOrganizationRequest("Some_Owner_Id_That_Not_Exist", "Test_Name", "Test_Description");
+            var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
+
+            //Act
+            Action act = async () => await _addOrganizationUseCase.Handle(addOrganizationRequest, CancellationToken.None);
+
+            //Assert
+            act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 

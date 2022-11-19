@@ -149,6 +149,26 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
 
 
 
+        [Fact]
+        public async Task Organization_Is_Not_Added_When_Owner_Has_Added_Max_Organizations()
+        {
+            //Arrange
+            var expectedMaxOrganizationsCount = DomainConstValues.Owner_Max_Organizations_Count;
+            var expectedMessage = string.Format(DomainMessages.Max_Organizations_Count_Limitiation, expectedMaxOrganizationsCount);
+            var expectedOwner = OwnerObjectMother.GetAnOwnerWithMaxOrganizations(OwnerValidatorService,expectedMaxOrganizationsCount);
+            await OwnerAggregateRepository.CreateAsync(expectedOwner);
+            var addOrganizationRequest = new AddOrganizationRequest(expectedOwner.Id, "Test_Name", "Test_Description");
+
+            //Act
+            Action act = async () => await _addOrganizationUseCase.Handle(addOrganizationRequest, CancellationToken.None);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
+
         #endregion
 
         #region Fixture

@@ -1,4 +1,5 @@
-﻿using TaskoMask.Services.Owners.Write.Domain.Entities;
+﻿using System.Collections.Generic;
+using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.UnitTests.TestData
@@ -79,6 +80,23 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.TestData
             }
 
             return list;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Owner GetAnOwnerWithMaxOrganizations(IOwnerValidatorService ownerValidatorService,int expectedMaxOrganizationsCount)
+        {
+            var owner = GetAnOwner(ownerValidatorService);
+            for (int i = 1; i <= expectedMaxOrganizationsCount; i++)
+            {
+                var organization = Organization.CreateOrganization($"Test_Name_{i}", $"Test_Description_{i}");
+                owner.AddOrganization(organization);
+            }
+
+            return owner;
         }
     }
 }

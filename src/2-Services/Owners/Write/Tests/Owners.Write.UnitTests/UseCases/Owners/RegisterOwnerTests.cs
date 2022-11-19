@@ -52,7 +52,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
 
 
         [Fact]
-        public void Owner_Is_Not_Registered_When_Email_Is_Duplicated()
+        public void Owner_Is_Not_Registered_When_Email_Is_Not_Unique()
         {
             //Arrange
             var expectedMessage = DomainMessages.Email_Already_Exist;

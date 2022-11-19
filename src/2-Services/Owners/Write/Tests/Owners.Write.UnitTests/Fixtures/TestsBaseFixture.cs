@@ -46,10 +46,10 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.Fixtures
             OwnerAggregateRepository.GetByIdAsync(Arg.Is<string>(x => Owners.Any(u => u.Id == x))).Returns(args => Owners.First(u => u.Id == (string)args[0]));
             OwnerAggregateRepository.CreateAsync(Arg.Any<Owner>()).Returns(args => { Owners.Add((Owner)args[0]); return Task.CompletedTask; });
             OwnerAggregateRepository.UpdateAsync(Arg.Is<Owner>(x => Owners.Any(u => u.Id == x.Id))).Returns(args => {
-                var existUser = Owners.FirstOrDefault(u => u.Id == ((Owner)args[0]).Id);
-                if (existUser != null)
+                var existOwner = Owners.FirstOrDefault(u => u.Id == ((Owner)args[0]).Id);
+                if (existOwner != null)
                 {
-                    Owners.Remove(existUser);
+                    Owners.Remove(existOwner);
                     Owners.Add(((Owner)args[0]));
                 }
 

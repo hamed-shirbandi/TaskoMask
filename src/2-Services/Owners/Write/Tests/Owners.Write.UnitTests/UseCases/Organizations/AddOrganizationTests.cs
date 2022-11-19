@@ -55,7 +55,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
 
 
         [Fact]
-        public void Adding_Organization_Throw_Exception_When_Owner_Not_Exist()
+        public void Add_Organization_Throw_Exception_When_Owner_Not_Exist()
         {
             //Arrange
             var addOrganizationRequest = new AddOrganizationRequest("Some_Owner_Id_That_Not_Exist", "Test_Name", "Test_Description");

@@ -10,6 +10,7 @@ using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Events.Organizations;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Organizations;
 using TaskoMask.Services.Owners.Write.UnitTests.Fixtures;
+using TaskoMask.Services.Owners.Write.UnitTests.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
@@ -133,7 +134,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization);
             var existedOwner = Owners.FirstOrDefault();
-            var existedOrganization = Organization.CreateOrganization("Test_Name", "Test_Description");
+            var existedOrganization = OwnerObjectMother.GetAnOrganization();
             existedOwner.AddOrganization(existedOrganization);
             await OwnerAggregateRepository.UpdateAsync(existedOwner);
             var addOrganizationRequest = new AddOrganizationRequest(existedOwner.Id, existedOrganization.Name.Value, "Test_Description");

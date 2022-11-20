@@ -3,6 +3,7 @@ using MongoDB.Driver.Linq;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Entities;
+using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
 {
@@ -17,9 +18,9 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public OwnerAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
+        public OwnerAggregateRepository(OwnerWriteDbContext dbContext) : base(dbContext)
         {
-            _owners = dbContext.GetCollection<Owner>();
+            _owners = dbContext.Owners;
 
         }
 

@@ -1,10 +1,15 @@
 ﻿using FluentAssertions;
 using NSubstitute;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
 using TaskoMask.Services.Identity.Domain.Events;
 using TaskoMask.Services.Identity.UnitTests.Fixtures;
+using TaskoMask.Services.Identity.UnitTests.Helpers;
 using TaskoMask.Services.Identity.UnitTests.TestData;
 using Xunit;
 
@@ -50,7 +55,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
 
         [Fact]
-        public void User_Is_Not_Registered_When_UserName_Is_Duplicated()
+        public async Task User_Is_Not_Registered_When_Email_Is_Duplicated()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.UserName_Already_Exist;
@@ -60,15 +65,15 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
                 .WithPassword("TestPass")
                 .WithIsActive(true);
 
-            TestUsers.Add(userBuilder.Build());
+            await TestUserManager.CreateAsync(userBuilder.Build(), userBuilder.Password);
 
-            var registerUserRequest = new RegisterUserRequest(userBuilder.Email, "NewPass");
+            var registerUserRequest = new RegisterUserRequest(userBuilder.Email, "TestPass");
 
             //Act
-            Action act = async () => await _regiserUserUseCase.Handle(registerUserRequest, CancellationToken.None);
+            System.Func<Task> act = async () => await _regiserUserUseCase.Handle(registerUserRequest, CancellationToken.None);
 
             //Assert
-            act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+            await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
         #endregion

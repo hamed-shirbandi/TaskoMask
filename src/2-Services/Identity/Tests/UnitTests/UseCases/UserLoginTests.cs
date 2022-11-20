@@ -1,4 +1,7 @@
 ﻿using FluentAssertions;
+using System.Threading;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 using TaskoMask.Services.Identity.UnitTests.Fixtures;
@@ -51,7 +54,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
 
         [Fact]
-        public void User_Is_Not_Logged_In_With_Wrong_Password()
+        public async Task User_Is_Not_Logged_In_With_Wrong_Password()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.Invalid_Credentials;
@@ -67,15 +70,15 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             var userLoginRequest = new UserLoginRequest(userBuilder.UserName, "wrongpass", true);
 
             //Act
-            Action act = async () => await _userLoginUseCase.Handle(userLoginRequest, CancellationToken.None);
+            System.Func<Task> act = async () => await _userLoginUseCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
-            act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+            await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
         [Fact]
-        public void Deactive_User_Is_Not_Logged_In()
+        public async Task Deactive_User_Is_Not_Logged_In()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.Deactive_User_Can_Not_Login;
@@ -91,10 +94,10 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
             var userLoginRequest = new UserLoginRequest(userBuilder.UserName, userBuilder.Password, true);
 
             //Act
-            Action act = async () => await _userLoginUseCase.Handle(userLoginRequest, CancellationToken.None);
+            System.Func<Task> act = async () => await _userLoginUseCase.Handle(userLoginRequest, CancellationToken.None);
 
             //Assert
-            act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+            await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
 
         }
 

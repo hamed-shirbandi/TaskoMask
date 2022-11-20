@@ -1,5 +1,9 @@
 ﻿using FluentAssertions;
 using NSubstitute;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
@@ -50,17 +54,17 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
 
 
         [Fact]
-        public void Owner_Profile_Update_Throw_Exception_When_Owner_Not_Exist()
+        public async Task Owner_Profile_Update_Throw_Exception_When_Owner_Not_Exist()
         {
             //Arrange
             var updateOwnerProfileRequest = new UpdateOwnerProfileRequest("Some_Id_That_Not_Exist", "Test_New_DisplayName", "Test_New@email.com");
             var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
             //Act
-            Action act = async () => await _updateOwnerProfileUseCase.Handle(updateOwnerProfileRequest, CancellationToken.None);
+            System.Func<Task> act = async () => await _updateOwnerProfileUseCase.Handle(updateOwnerProfileRequest, CancellationToken.None);
 
             //Assert
-            act.Should().Throw<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+            await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 

@@ -1,5 +1,8 @@
 ﻿using FluentAssertions;
 using NSubstitute;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
@@ -52,7 +55,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
 
 
         [Fact]
-        public void Owner_Is_Not_Registered_When_Email_Is_Not_Unique()
+        public async Task Owner_Is_Not_Registered_When_Email_Is_Not_Unique()
         {
             //Arrange
             var expectedMessage = DomainMessages.Email_Already_Exist;
@@ -60,10 +63,10 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
             var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", existedOwner.Email.Value, "Test_Password");
 
             //Act
-            Action act =async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+            System.Func<Task> act =async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
 
             //Assert
-            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
@@ -71,17 +74,17 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
         [InlineData("H")]
         [InlineData("Ha")]
         [Theory]
-        public void Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_Less_Than_Min(string displayName)
+        public async Task Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_Less_Than_Min(string displayName)
         {
             //Arrange
             var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
             var regiserOwnerRequest = new RegiserOwnerRequest(displayName, "Test@email.com", "Test_Password");
 
             //Act
-            Action act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+            System.Func<Task> act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
 
             //Assert
-            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
@@ -89,17 +92,17 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
         [InlineData("Hamed Shirbandi just came back from the street after looking for some freedom in Iran! #MahsaAmini")]
         [InlineData("Vihan Shirbandi was waiting to see his father (me)")]
         [Theory]
-        public void Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_More_Than_Max(string displayName)
+        public async Task Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_More_Than_Max(string displayName)
         {
             //Arrange
             var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
             var regiserOwnerRequest = new RegiserOwnerRequest(displayName, "Test@email.com", "Test_Password");
 
             //Act
-            Action act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+            System.Func<Task> act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
 
             //Assert
-            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 
@@ -108,17 +111,17 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
         [InlineData("Ha.Taskomask.ir")]
         [InlineData("Ha.Taskomask")]
         [Theory]
-        public void Owner_Is_Not_Registered_When_Email_Is_Not_Valid(string email)
+        public async Task Owner_Is_Not_Registered_When_Email_Is_Not_Valid(string email)
         {
             //Arrange
             var expectedMessage = DomainMessages.Invalid_Email_Address;
             var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", email, "Test_Password");
 
             //Act
-            Action act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+            System.Func<Task> act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
 
             //Assert
-            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 

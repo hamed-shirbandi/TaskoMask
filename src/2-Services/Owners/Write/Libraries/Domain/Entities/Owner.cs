@@ -194,9 +194,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         public Project GetProjectById(string projectId)
         {
             var organization = GetOrganizationByProjectId(projectId);
-            if (organization == null)
-                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Organization));
-          
+
             return organization.GetProjectById(projectId);
         }
 
@@ -255,7 +253,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
         {
             var organization = Organizations.FirstOrDefault(p => p.Projects.Any(p => p.Id == projectId));
             if (organization == null)
-                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Organization));
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Project));
 
             return organization;
         }

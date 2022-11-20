@@ -7,18 +7,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Projects
 {
-    public class UpdateProjectTests : IClassFixture<ProjectClassFixture>
+    [Collection(nameof(ProjectCollectionFixture))]
+    public class UpdateProjectTests
     {
 
         #region Fields
 
-        private readonly ProjectClassFixture _fixture;
+        private readonly ProjectCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public UpdateProjectTests(ProjectClassFixture fixture)
+        public UpdateProjectTests(ProjectCollectionFixture fixture)
         {
             _fixture = fixture;
         }
@@ -49,7 +50,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Projects
 
             var updatedOwner = await _fixture.GetOwnerAsync(expectedOwner.Id);
             var updatedProject = updatedOwner.GetProjectById(expectedProject.Id);
-            updatedProject.Name.Should().Be(request.Name);
+            updatedProject.Name.Value.Should().Be(request.Name);
         }
 
 

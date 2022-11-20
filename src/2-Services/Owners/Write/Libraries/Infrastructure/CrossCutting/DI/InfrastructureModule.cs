@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
+using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories;
@@ -27,6 +28,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
             services.AddMongoDbContext(configuration);
 
             services.AddDomainServices();
+            services.AddRepositories();
         }
 
 
@@ -48,6 +50,16 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
         private static void AddDomainServices(this IServiceCollection services)
         {
             services.AddScoped<IOwnerValidatorService, OwnerValidatorService>();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void AddRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
         }
     }
 }

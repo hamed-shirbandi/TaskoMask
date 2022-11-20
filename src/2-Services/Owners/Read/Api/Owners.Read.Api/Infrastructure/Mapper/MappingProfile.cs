@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
@@ -11,6 +12,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
     {
         public MappingProfile()
         {
+            CreateMap<BuildingBlocks.Domain.ValueObjects.CreationTime, CreationTimeDto>()
+                .ForMember(dest => dest.CreateDateTimeString, opt =>
+                     opt.MapFrom(src => src.CreateDateTime.ToLongDateString()))
+                .ForMember(dest => dest.ModifiedDateTimeString, opt =>
+                     opt.MapFrom(src => src.ModifiedDateTime.ToLongDateString()));
 
             CreateMap<Owner, OwnerBasicInfoDto>();
 

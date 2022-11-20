@@ -34,7 +34,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<Owner> GetByEmailAsync(string email)
         {
-            return await _owners.Find(e => e.Email.Value == email).FirstOrDefaultAsync();
+            return await _owners.Find(o => o.Email.Value == email).FirstOrDefaultAsync();
 
         }
 
@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<Owner> GetByOrganizationIdAsync(string organizationId)
         {
-            return await _owners.Find(e => e.Organizations.Any(c => c.Id == organizationId)).FirstOrDefaultAsync();
+            return await _owners.Find(o => o.Organizations.Any(c => c.Id == organizationId)).FirstOrDefaultAsync();
         }
 
 
@@ -55,7 +55,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
         /// </summary>
         public async Task<Owner> GetByProjectIdAsync(string projectId)
         {
-            return await _owners.Find(e => e.Organizations.Any(c => c.Projects.Any(p=>p.Id == projectId))).FirstOrDefaultAsync();
+            return await _owners.Find(o => o.Organizations.Any(c => c.Projects.Any(p => p.Id == projectId))).FirstOrDefaultAsync();
         }
 
 
@@ -65,8 +65,7 @@ namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
         /// </summary>
         public bool ExistOwnerByEmail(string ownerId, string email)
         {
-            var owner = _owners.Find(e => e.Email.Value == email).FirstOrDefault();
-            return owner != null && owner.Id != ownerId;
+            return _owners.AsQueryable().Any(o => o.Id != ownerId && o.Email.Value == email);
         }
 
 

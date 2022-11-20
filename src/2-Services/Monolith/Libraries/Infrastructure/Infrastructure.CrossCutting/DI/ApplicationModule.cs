@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.Services.Monolith.Application.Core.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Cards.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
+using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Commands.Validations;
 using TaskoMask.Services.Monolith.Application.Workspace.Organizations.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Owners.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Projects.Services;
@@ -20,7 +22,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddApplicationModule(this IServiceCollection services)
         {
-            // services.AddBuildingBlocksApplication(typeof(SomeClassInApplicationLayer));
+            services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(OrganizationValidation<>));
 
             services.AddApplicationServices();
         }

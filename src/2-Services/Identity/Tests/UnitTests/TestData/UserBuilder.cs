@@ -59,12 +59,12 @@ namespace TaskoMask.Services.Identity.UnitTests.TestData
 
         public User Build()
         {
-           return  new User
+            return new User
             {
                 UserName = UserName,
                 Email = Email,
                 IsActive = IsActive,
-                PasswordHash=Password
+                PasswordHash = Password
             };
         }
 

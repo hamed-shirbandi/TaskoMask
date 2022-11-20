@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSubstitute;
+using System;
+using System.Collections.Generic;
 using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.UnitTests.Helpers

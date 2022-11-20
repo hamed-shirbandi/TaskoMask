@@ -6,18 +6,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Owners
 {
-    public class GetOwnerByIdTests : IClassFixture<OwnerClassFixture>
+    [Collection(nameof(OwnerCollectionFixture))]
+    public class GetOwnerByIdTests
     {
 
         #region Fields
 
-        private readonly OwnerClassFixture _fixture;
+        private readonly OwnerCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public GetOwnerByIdTests(OwnerClassFixture fixture)
+        public GetOwnerByIdTests(OwnerCollectionFixture fixture)
         {
             _fixture = fixture;
         }

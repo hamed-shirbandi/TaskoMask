@@ -6,18 +6,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Owners
 {
-    public class RegiserOwnerTests : IClassFixture<OwnerClassFixture>
+    [Collection(nameof(OwnerCollectionFixture))]
+    public class RegiserOwnerTests
     {
 
         #region Fields
 
-        private readonly OwnerClassFixture _fixture;
+        private readonly OwnerCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public RegiserOwnerTests(OwnerClassFixture fixture)
+        public RegiserOwnerTests(OwnerCollectionFixture fixture)
         {
             _fixture = fixture;
         }

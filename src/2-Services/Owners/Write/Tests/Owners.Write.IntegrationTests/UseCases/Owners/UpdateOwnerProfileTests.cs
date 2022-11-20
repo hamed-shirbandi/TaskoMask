@@ -7,18 +7,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Owners
 {
-    public class UpdateOwnerProfileTests : IClassFixture<OwnerClassFixture>
+    [Collection(nameof(OwnerCollectionFixture))]
+    public class UpdateOwnerProfileTests
     {
 
         #region Fields
 
-        private readonly OwnerClassFixture _fixture;
+        private readonly OwnerCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public UpdateOwnerProfileTests(OwnerClassFixture fixture)
+        public UpdateOwnerProfileTests(OwnerCollectionFixture fixture)
         {
             _fixture = fixture;
         }

@@ -6,18 +6,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Project
 {
-    public class GetProjectByIdTests : IClassFixture<ProjectClassFixture>
+    [Collection(nameof(ProjectCollectionFixture))]
+    public class GetProjectByIdTests
     {
 
         #region Fields
 
-        private readonly ProjectClassFixture _fixture;
+        private readonly ProjectCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public GetProjectByIdTests(ProjectClassFixture fixture)
+        public GetProjectByIdTests(ProjectCollectionFixture fixture)
         {
             _fixture = fixture;
         }

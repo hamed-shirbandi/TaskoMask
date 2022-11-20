@@ -2,7 +2,6 @@
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.DeleteOrganization;
 using TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures;
 using TaskoMask.Services.Owners.Write.IntegrationTests.TestData;
@@ -10,18 +9,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organizations
 {
-    public class DeleteOrganizationTests : IClassFixture<OrganizationClassFixture>
+    [Collection(nameof(OrganizationCollectionFixture))]
+    public class DeleteOrganizationTests
     {
 
         #region Fields
 
-        private readonly OrganizationClassFixture _fixture;
+        private readonly OrganizationCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public DeleteOrganizationTests(OrganizationClassFixture fixture)
+        public DeleteOrganizationTests(OrganizationCollectionFixture fixture)
         {
             _fixture = fixture;
         }
@@ -37,8 +37,8 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organization
             //Arrange
             var expectedMessage = string.Format(ContractsMessages.Not_Found, DomainMetadata.Organization);
             var expectedOwner = OwnerObjectMother.GetAnOwnerWithAnOrganization(_fixture.OwnerValidatorService);
-            var expectedOrganization = expectedOwner.Organizations.FirstOrDefault();
             await _fixture.SeedOwnerAsync(expectedOwner);
+            var expectedOrganization = expectedOwner.Organizations.FirstOrDefault();
 
             var request = new DeleteOrganizationRequest(expectedOrganization.Id);
             var deleteOrganizationUseCase = new DeleteOrganizationUseCase(_fixture.OwnerAggregateRepository, _fixture.MessageBus, _fixture.InMemoryBus);

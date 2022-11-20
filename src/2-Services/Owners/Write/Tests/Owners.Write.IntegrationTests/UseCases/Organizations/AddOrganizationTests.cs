@@ -7,18 +7,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organizations
 {
-    public class AddOrganizationTests : IClassFixture<OrganizationClassFixture>
+    [Collection(nameof(OrganizationCollectionFixture))]
+    public class AddOrganizationTests
     {
 
         #region Fields
 
-        private readonly OrganizationClassFixture _fixture;
+        private readonly OrganizationCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public AddOrganizationTests(OrganizationClassFixture fixture)
+        public AddOrganizationTests(OrganizationCollectionFixture fixture)
         {
             _fixture = fixture;
         }

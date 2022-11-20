@@ -9,18 +9,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Projects
 {
-    public class DeleteProjectTests : IClassFixture<ProjectClassFixture>
+    [Collection(nameof(ProjectCollectionFixture))]
+    public class DeleteProjectTests
     {
 
         #region Fields
 
-        private readonly ProjectClassFixture _fixture;
+        private readonly ProjectCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public DeleteProjectTests(ProjectClassFixture fixture)
+        public DeleteProjectTests(ProjectCollectionFixture fixture)
         {
             _fixture = fixture;
         }
@@ -36,9 +37,10 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Projects
             //Arrange
             var expectedMessage = string.Format(ContractsMessages.Not_Found, DomainMetadata.Project);
             var expectedOwner = OwnerObjectMother.GetAnOwnerWithAnOrganizationAndProject(_fixture.OwnerValidatorService);
+            await _fixture.SeedOwnerAsync(expectedOwner);
+
             var expectedOrganization = expectedOwner.Organizations.FirstOrDefault();
             var expectedProject = expectedOrganization.Projects.FirstOrDefault();
-            await _fixture.SeedOwnerAsync(expectedOwner);
 
             var request = new DeleteProjectRequest(expectedProject.Id);
             var deleteProjectUseCase = new DeleteProjectUseCase(_fixture.OwnerAggregateRepository, _fixture.MessageBus, _fixture.InMemoryBus);

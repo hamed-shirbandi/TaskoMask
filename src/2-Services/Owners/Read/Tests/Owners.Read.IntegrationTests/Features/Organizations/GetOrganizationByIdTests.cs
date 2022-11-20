@@ -6,18 +6,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Organizations
 {
-    public class GetOrganizationByIdTests : IClassFixture<OrganizationClassFixture>
+    [Collection(nameof(OrganizationCollectionFixture))]
+    public class GetOrganizationByIdTests
     {
 
         #region Fields
 
-        private readonly OrganizationClassFixture _fixture;
+        private readonly OrganizationCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public GetOrganizationByIdTests(OrganizationClassFixture fixture)
+        public GetOrganizationByIdTests(OrganizationCollectionFixture fixture)
         {
             _fixture = fixture;
         }

@@ -7,18 +7,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Projects
 {
-    public class AddProjectTests : IClassFixture<ProjectClassFixture>
+    [Collection(nameof(ProjectCollectionFixture))]
+    public class AddProjectTests
     {
 
         #region Fields
 
-        private readonly ProjectClassFixture _fixture;
+        private readonly ProjectCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public AddProjectTests(ProjectClassFixture fixture)
+        public AddProjectTests(ProjectCollectionFixture fixture)
         {
             _fixture = fixture;
         }
@@ -32,7 +33,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Projects
         public async Task Project_Is_Added_Properly()
         {
             //Arrange
-            var expectedOwner = OwnerObjectMother.GetAnOwner(_fixture.OwnerValidatorService);
+            var expectedOwner = OwnerObjectMother.GetAnOwnerWithAnOrganization(_fixture.OwnerValidatorService);
             var expectedOrganization = expectedOwner.Organizations.FirstOrDefault();
             await _fixture.SeedOwnerAsync(expectedOwner);
 
@@ -48,7 +49,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Projects
 
             var updatedOwner = await _fixture.GetOwnerAsync(expectedOwner.Id);
             var addedProject = updatedOwner.GetProjectById(result.EntityId);
-            addedProject.Name.Should().Be(request.Name);
+            addedProject.Name.Value.Should().Be(request.Name);
         }
 
 

@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using MongoDB.Driver;
-using MongoDB.Driver.Linq;
+using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Identity.Domain.Entities;
@@ -29,22 +27,13 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         {
             UserManager = GetRequiredService<UserManager<User>>();
             SignInManager = GetRequiredService<SignInManager<User>>();
-            InteractionService = GetRequiredService<IIdentityServerInteractionService>();
-            EventsService = GetRequiredService<IEventService>();
-            MessageBus = GetRequiredService<IMessageBus>();
-            InMemoryBus = GetRequiredService<IInMemoryBus>();
-            Mapper = GetRequiredService<IMapper>();
             NotificationHandler = GetRequiredService<INotificationHandler>();
-        }
+            Mapper = GetRequiredService<IMapper>();
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<User> GetSampleUserAsync()
-        {
-            return await UserManager.Users.OrderBy(r => Guid.NewGuid()).Take(1).SingleOrDefaultAsync();
+            InteractionService = Substitute.For<IIdentityServerInteractionService>();
+            EventsService = Substitute.For<IEventService>();
+            MessageBus = Substitute.For<IMessageBus>();
+            InMemoryBus = Substitute.For<IInMemoryBus>();
         }
 
 

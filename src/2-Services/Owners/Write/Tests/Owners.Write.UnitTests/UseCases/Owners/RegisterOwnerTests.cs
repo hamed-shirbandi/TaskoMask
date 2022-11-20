@@ -90,7 +90,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
 
 
         [InlineData("Hamed Shirbandi just came back from the street after looking for some freedom in Iran! #MahsaAmini")]
-        [InlineData("Vihan Shirbandi was waiting to see his father (me)")]
+        [InlineData("Vihan Shirbandi was waiting to see his father ( I am his father :D )")]
         [Theory]
         public async Task Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_More_Than_Max(string displayName)
         {

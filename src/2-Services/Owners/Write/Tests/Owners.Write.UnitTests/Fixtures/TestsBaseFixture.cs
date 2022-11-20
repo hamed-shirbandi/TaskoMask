@@ -1,4 +1,7 @@
 ﻿using NSubstitute;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Test;
 using TaskoMask.Services.Owners.Write.Domain.Data;
@@ -37,15 +40,22 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.Fixtures
         private void CommonFixtureSetup()
         {
             MessageBus = Substitute.For<IMessageBus>();
+
             InMemoryBus = Substitute.For<IInMemoryBus>();
-            OwnerAggregateRepository = Substitute.For<IOwnerAggregateRepository>();
+
+            Owners = OwnerObjectMother.GenerateOwnerList();
+
             OwnerValidatorService = Substitute.For<IOwnerValidatorService>();
+            OwnerValidatorService.OwnerHasUniqueEmail(ownerId: Arg.Any<string>(), email: Arg.Any<string>()).Returns(args =>
+            {
+                return Owners.Any(o => o.Id != (string)args[0] && o.Email.Value == (string)args[1]);
+            });
 
-            Owners = OwnerObjectMother.GenerateOwnerList(OwnerValidatorService);
-
-            OwnerAggregateRepository.GetByIdAsync(Arg.Is<string>(x => Owners.Any(u => u.Id == x))).Returns(args => Owners.First(u => u.Id == (string)args[0]));
+            OwnerAggregateRepository = Substitute.For<IOwnerAggregateRepository>();
+            OwnerAggregateRepository.GetByIdAsync(Arg.Is<string>(x => Owners.Any(o => o.Id == x))).Returns(args => Owners.First(u => u.Id == (string)args[0]));
             OwnerAggregateRepository.CreateAsync(Arg.Any<Owner>()).Returns(args => { Owners.Add((Owner)args[0]); return Task.CompletedTask; });
-            OwnerAggregateRepository.UpdateAsync(Arg.Is<Owner>(x => Owners.Any(u => u.Id == x.Id))).Returns(args => {
+            OwnerAggregateRepository.UpdateAsync(Arg.Is<Owner>(x => Owners.Any(o => o.Id == x.Id))).Returns(args =>
+            {
                 var existOwner = Owners.FirstOrDefault(u => u.Id == ((Owner)args[0]).Id);
                 if (existOwner != null)
                 {
@@ -56,7 +66,6 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.Fixtures
                 return Task.CompletedTask;
             });
 
-            OwnerValidatorService.OwnerHasUniqueEmail(ownerId: Arg.Any<string>(), email: Arg.Any<string>()).Returns(arg => !Owners.Any(o => o.Id != (string)arg[0] && o.Email.Value == (string)arg[1]));
         }
 
 

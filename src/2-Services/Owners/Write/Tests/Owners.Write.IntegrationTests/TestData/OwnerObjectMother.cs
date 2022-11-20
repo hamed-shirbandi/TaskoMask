@@ -12,7 +12,8 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
 
         public static Owner GetAnOwner(IOwnerValidatorService ownerValidatorService)
         {
-            return Owner.RegisterOwner("Test DisplayName", "Test@TaskoMask.ir", ownerValidatorService);
+            var randomName = GetRandomString(30);
+            return Owner.RegisterOwner(randomName, $"{randomName}@TaskoMask.ir", ownerValidatorService);
         }
 
 
@@ -23,7 +24,8 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
 
         public static Organization GetAnOrganization()
         {
-            return Organization.CreateOrganization("Test Name", "Test Description");
+            var randomName = GetRandomString(30);
+            return Organization.CreateOrganization(randomName, "Test Description");
         }
 
 
@@ -34,7 +36,8 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
 
         public static Project GetAProject()
         {
-            return Project.Create("Test Name", "Test Description");
+            var randomName = GetRandomString(30);
+            return Project.Create(randomName, "Test Description");
         }
 
 
@@ -61,5 +64,15 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
             owner.AddProject(organization.Id,GetAProject());
             return owner;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static string GetRandomString(int length)
+        {
+            return Guid.NewGuid().ToString().Substring(length);
+        }
+
     }
 }

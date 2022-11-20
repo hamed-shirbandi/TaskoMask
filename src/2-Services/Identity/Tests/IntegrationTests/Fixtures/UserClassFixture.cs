@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Duende.IdentityServer.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
@@ -27,6 +29,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         {
             UserManager = GetRequiredService<UserManager<User>>();
             SignInManager = GetRequiredService<SignInManager<User>>();
+            SignInManager.Context = new DefaultHttpContext { RequestServices = _serviceProvider };
             NotificationHandler = GetRequiredService<INotificationHandler>();
             Mapper = GetRequiredService<IMapper>();
 
@@ -41,9 +44,9 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
         /// <summary>
         /// 
         /// </summary>
-        public async Task SeedUserAsync(User user,string password)
+        public async Task SeedUserAsync(User user, string password)
         {
-            await UserManager.CreateAsync(user,password);
+            await UserManager.CreateAsync(user, password);
         }
 
     }

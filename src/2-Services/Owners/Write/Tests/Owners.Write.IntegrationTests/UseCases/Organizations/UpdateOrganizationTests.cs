@@ -7,18 +7,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organizations
 {
-    public class UpdateOrganizationTests : IClassFixture<OrganizationClassFixture>
+    [Collection(nameof(OrganizationCollectionFixture))]
+    public class UpdateOrganizationTests
     {
 
         #region Fields
 
-        private readonly OrganizationClassFixture _fixture;
+        private readonly OrganizationCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public UpdateOrganizationTests(OrganizationClassFixture fixture)
+        public UpdateOrganizationTests(OrganizationCollectionFixture fixture)
         {
             _fixture = fixture;
         }
@@ -48,7 +49,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organization
 
             var updatedOwner = await _fixture.GetOwnerAsync(expectedOwner.Id);
             var updatedOrganization = updatedOwner.GetOrganizationById(expectedOrganization.Id);
-            updatedOrganization.Name.Should().Be(request.Name);
+            updatedOrganization.Name.Value.Should().Be(request.Name);
         }
 
 

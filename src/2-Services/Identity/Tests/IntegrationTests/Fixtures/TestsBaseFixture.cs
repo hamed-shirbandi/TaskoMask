@@ -59,6 +59,8 @@ namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
 
             services.AddSingleton<IConfiguration>(provider => { return configuration; });
 
+            services.AddLogging();
+
             services.AddModules(configuration, typeof(TestsBaseFixture));
 
             var serviceProvider = services.BuildServiceProvider();

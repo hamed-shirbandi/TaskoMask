@@ -32,47 +32,6 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Integration.Workspace
 
 
 
-        [Fact]
-        public async Task Project_Is_Added()
-        {
-            //Arrange
-            var organization = await _fixture.GetSampleOrganizationAsync();
-            var dto = new AddProjectDto
-            {
-                Name = "Test Project Name",
-                Description = "Test Project Description",
-                OrganizationId = organization.Id,
-            };
-
-            //Act
-            var result = await _fixture.ProjectService.AddAsync(dto);
-
-            //Assert
-            result.IsSuccess.Should().BeTrue();
-            result.Value.EntityId.Should().NotBeNull();
-
-        }
-
-
-
-        [Fact]
-        public async Task Project_List_By_OrganizationId_Is_Fetched()
-        {
-            //Arrange
-            var expectedOrganization = await _fixture.GetSampleOrganizationAsync();
-
-            //Act
-            var result = await _fixture.ProjectService.GetListByOrganizationIdAsync(expectedOrganization.Id);
-
-            //Assert
-            result.IsSuccess.Should().BeTrue();
-            result.Value.Should().HaveCountGreaterThan(0);
-            var anyNotExpectedOrganizationId = result.Value.Any(o => o.OrganizationId != expectedOrganization.Id);
-            anyNotExpectedOrganizationId.Should().BeFalse();
-        }
-
-
-
         #endregion
 
     }

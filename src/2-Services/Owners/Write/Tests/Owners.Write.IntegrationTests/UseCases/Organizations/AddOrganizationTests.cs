@@ -47,7 +47,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organization
 
             var updatedOwner = await _fixture.GetOwnerAsync(expectedOwner.Id);
             var addedOrganization = updatedOwner.GetOrganizationById(result.EntityId);
-            addedOrganization.Name.Should().Be(request.Name);
+            addedOrganization.Name.Value.Should().Be(request.Name);
         }
 
 

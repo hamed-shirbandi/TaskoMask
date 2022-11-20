@@ -6,18 +6,19 @@ using Xunit;
 
 namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
 {
-    public class RegisterUserTests : IClassFixture<UserClassFixture>
+    [Collection(nameof(UserCollectionFixture))]
+    public class RegisterUserTests
     {
 
         #region Fields
 
-        private readonly UserClassFixture _fixture;
+        private readonly UserCollectionFixture _fixture;
 
         #endregion
 
         #region Ctor
 
-        public RegisterUserTests(UserClassFixture fixture)
+        public RegisterUserTests(UserCollectionFixture fixture)
         {
             _fixture = fixture;
         }

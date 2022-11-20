@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using TaskoMask.BuildingBlocks.Test;
+using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 

@@ -10,7 +10,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
         public RegisterUserRequest(string email, string password)
         {
             Email = email;
-            Email = password;
+            Password = password;
         }
 
 

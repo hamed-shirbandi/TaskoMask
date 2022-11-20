@@ -31,11 +31,11 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
         public async Task User_Is_Registered()
         {
             //Arrange
-            var useCase = new RegisterUserUseCase(_fixture.UserManager, _fixture.MessageBus, _fixture.InMemoryBus, _fixture.NotificationHandler);
+            var registerUserUseCase = new RegisterUserUseCase(_fixture.UserManager, _fixture.MessageBus, _fixture.InMemoryBus, _fixture.NotificationHandler);
             var request = new RegisterUserRequest("test@taskomask.ir", "TestPass");
 
             //Act
-            var result = await useCase.Handle(request, CancellationToken.None);
+            var result = await registerUserUseCase.Handle(request, CancellationToken.None);
 
             //Assert
             result.EntityId.Should().NotBeNullOrEmpty();

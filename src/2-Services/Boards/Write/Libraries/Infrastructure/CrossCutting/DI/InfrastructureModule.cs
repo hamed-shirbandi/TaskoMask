@@ -20,7 +20,7 @@ namespace TaskoMask.Services.Boards.Write.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {
-            services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType,handlerAssemblyMarkerTypes: typeof(ApplicationMessages));
+            services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType,handlerAssemblyMarkerType: typeof(ApplicationMessages));
 
             services.AddMongoDbContext(configuration);
         }

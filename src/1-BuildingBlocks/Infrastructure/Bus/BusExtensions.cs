@@ -14,10 +14,10 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         /// <summary>
         /// 
         /// </summary>
-        public static void AddInMemoryBus(this IServiceCollection services, params Type[] handlerAssemblyMarkerTypes)
+        public static void AddInMemoryBus(this IServiceCollection services, Type handlerAssemblyMarkerType)
         {
             //Load all handlers in given assemblies
-            services.AddMediatR(handlerAssemblyMarkerTypes);
+            services.AddMediatR(handlerAssemblyMarkerType);
 
             services.AddScoped<IInMemoryBus, InMemoryBus>();
         }
@@ -30,7 +30,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         {
             services.AddMassTransitWithRabbitMqTransport(configuration, consumerAssemblyMarkerType);
 
-           services.AddScoped<IMessageBus, MessageBus>();
+            services.AddScoped<IMessageBus, MessageBus>();
         }
     }
 }

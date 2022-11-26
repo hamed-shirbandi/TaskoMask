@@ -23,7 +23,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DI
         /// </summary>
         public static void AddModules(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(OwnerRegisterationCompletedConsumer),handlerAssemblyMarkerTypes: typeof(GetOwnerByIdHandler));
+            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(OwnerRegisterationCompletedConsumer),handlerAssemblyMarkerType: typeof(GetOwnerByIdHandler));
 
             services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 

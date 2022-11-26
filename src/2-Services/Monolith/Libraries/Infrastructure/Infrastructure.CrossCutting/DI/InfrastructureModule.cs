@@ -33,7 +33,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(OwnerCommandHandlers),handlerAssemblyMarkerTypes: typeof(OwnerCommandHandlers));
+            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(OwnerCommandHandlers),handlerAssemblyMarkerType: typeof(OwnerCommandHandlers));
 
             services.AddMapper();
 

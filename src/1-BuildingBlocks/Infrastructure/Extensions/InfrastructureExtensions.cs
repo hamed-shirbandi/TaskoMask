@@ -12,9 +12,9 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Extensions
         /// <summary>
         /// 
         /// </summary>
-        public static void AddBuildingBlocksInfrastructure(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType, params Type[] handlerAssemblyMarkerTypes)
+        public static void AddBuildingBlocksInfrastructure(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType, Type handlerAssemblyMarkerType)
         {
-            services.AddInMemoryBus(handlerAssemblyMarkerTypes);
+            services.AddInMemoryBus(handlerAssemblyMarkerType);
             services.AddMessageBus(configuration, consumerAssemblyMarkerType);
             services.AddRedisEventStoreService();
         }

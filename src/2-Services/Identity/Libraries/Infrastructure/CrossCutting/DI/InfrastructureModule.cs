@@ -21,7 +21,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration,Type consumerAssemblyMarkerType)
         {
-            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType, handlerAssemblyMarkerTypes:typeof(RegisterUserUseCase));
+            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType, handlerAssemblyMarkerType:typeof(RegisterUserUseCase));
 
             services.AddMapper();
 

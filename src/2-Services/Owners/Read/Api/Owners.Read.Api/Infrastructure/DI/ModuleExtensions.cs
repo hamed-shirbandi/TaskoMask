@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Owners.Read.Api.Consumers.Owners;
 using TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById;
@@ -27,7 +28,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DI
 
             services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
-            services.AddMapper();
+            services.AddMapper(typeof(MappingProfile));
 
             services.AddMongoDbContext(configuration);
         }

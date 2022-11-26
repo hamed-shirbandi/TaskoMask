@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.AspNetIdentity;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper;
@@ -23,7 +24,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
         {
             services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType, handlerAssemblyMarkerType:typeof(RegisterUserUseCase));
 
-            services.AddMapper();
+            services.AddMapper(typeof(MappingProfile));
 
             services.AddDbContext();
 

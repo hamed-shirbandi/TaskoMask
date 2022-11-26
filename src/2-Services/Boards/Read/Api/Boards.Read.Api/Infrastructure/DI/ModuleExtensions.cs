@@ -1,5 +1,6 @@
 ﻿using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper;
@@ -23,7 +24,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DI
 
             services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
-            services.AddMapper();
+            services.AddMapper(typeof(MappingProfile));
 
             services.AddMongoDbContext(configuration);
         }

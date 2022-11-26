@@ -1,11 +1,7 @@
 using Serilog;
-using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
-using TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper;
-using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
-using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DI;
 

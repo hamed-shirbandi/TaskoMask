@@ -30,7 +30,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organization
 
 
         [Fact]
-        public async Task Organization_Is_Updated_Properly()
+        public async Task Organization_Is_Updated()
         {
             //Arrange
             var expectedOwner = OwnerObjectMother.GetAnOwnerWithAnOrganization(_fixture.OwnerValidatorService);

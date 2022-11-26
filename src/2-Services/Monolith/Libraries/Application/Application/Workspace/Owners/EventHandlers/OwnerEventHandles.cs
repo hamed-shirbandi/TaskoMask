@@ -42,7 +42,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.EventHandlers
                 DisplayName= createdOwner.DisplayName,
                 Email= createdOwner.Email,
             };
-           await _ownerRepository.CreateAsync(owner);
+           await _ownerRepository.AddAsync(owner);
         }
 
 

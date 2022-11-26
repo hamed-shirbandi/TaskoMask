@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.EventHandle
                 Content = createdComment.Content,
                 TaskId = createdComment.TaskId,
             };
-            await _commentRepository.CreateAsync(comment);
+            await _commentRepository.AddAsync(comment);
         }
 
 

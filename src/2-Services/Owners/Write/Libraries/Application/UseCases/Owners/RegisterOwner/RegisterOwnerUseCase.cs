@@ -44,7 +44,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwn
         {
             var owner = Owner.RegisterOwner(request.DisplayName, request.Email, _ownerValidatorService);
 
-            await _ownerAggregateRepository.CreateAsync(owner);
+            await _ownerAggregateRepository.AddAsync(owner);
 
             await PublishDomainEventsAsync(owner.DomainEvents);
 

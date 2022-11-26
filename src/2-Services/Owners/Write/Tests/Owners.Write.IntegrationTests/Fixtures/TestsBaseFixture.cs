@@ -53,7 +53,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
         /// </summary>
         public async Task SeedOwnerAsync(Owner owner)
         {
-            await OwnerAggregateRepository.CreateAsync(owner);
+            await OwnerAggregateRepository.AddAsync(owner);
         }
 
 

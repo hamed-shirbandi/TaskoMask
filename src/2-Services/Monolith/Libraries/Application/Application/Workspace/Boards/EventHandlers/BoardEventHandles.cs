@@ -49,7 +49,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.EventHandlers
                 ProjectId = createdBoard.ProjectId,
                 OwnerId= project.OwnerId,
             };
-           await _boardRepository.CreateAsync(board);
+           await _boardRepository.AddAsync(board);
         }
 
 

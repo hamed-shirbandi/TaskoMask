@@ -79,7 +79,7 @@ namespace TaskoMask.Services.Monolith.Application.Tests.Unit.Workspace
 
             _ownerAggregateRepository = Substitute.For<IOwnerAggregateRepository>();
             _ownerAggregateRepository.GetByIdAsync(Arg.Is<string>(x => _owners.Any(u => u.Id == x))).Returns(args => _owners.First(u => u.Id == (string)args[0]));
-            _ownerAggregateRepository.CreateAsync(Arg.Any<Owner>()).Returns(async args => _owners.Add((Owner)args[0]));
+            _ownerAggregateRepository.AddAsync(Arg.Any<Owner>()).Returns(async args => _owners.Add((Owner)args[0]));
             _ownerAggregateRepository.UpdateAsync(Arg.Is<Owner>(x => _owners.Any(u => u.Id == x.Id))).Returns(async args =>
             {
                 var existUser = _owners.FirstOrDefault(u => u.Id == ((Owner)args[0]).Id);

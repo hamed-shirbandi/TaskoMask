@@ -7,7 +7,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Data
 {
     public interface IBaseRepository<TEntity>: IDisposable where TEntity: BaseEntity
     {
-        Task CreateAsync(TEntity entity);
+        Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
         Task DeleteAsync(string id);
         Task<TEntity> GetByIdAsync(string id);

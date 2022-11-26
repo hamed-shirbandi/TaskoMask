@@ -47,7 +47,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.EventHand
                 TaskId= createdTask.Id,
                 Description= $"Added to {card.Name}",
             };
-           await _activityRepository.CreateAsync(activity);
+           await _activityRepository.AddAsync(activity);
         }
 
 
@@ -62,7 +62,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.EventHand
                 TaskId = updatedTask.Id,
                 Description = "Task Updated",
             };
-            await _activityRepository.CreateAsync(activity);
+            await _activityRepository.AddAsync(activity);
 
         }
 
@@ -78,7 +78,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.EventHand
                 TaskId = deletedTask.Id,
                 Description = "Task Deleted",
             };
-            await _activityRepository.CreateAsync(activity);
+            await _activityRepository.AddAsync(activity);
 
         }
 
@@ -96,7 +96,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.EventHand
                 TaskId = movedToAnotherCardEvent.TaskId,
                 Description = $"Moved to {card.Name}",
             };
-            await _activityRepository.CreateAsync(activity);
+            await _activityRepository.AddAsync(activity);
 
         }
 

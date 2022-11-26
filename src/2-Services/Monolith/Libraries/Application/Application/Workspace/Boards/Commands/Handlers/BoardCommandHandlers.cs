@@ -49,7 +49,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Hand
         {
             var board = Board.AddBoard(request.Name, request.Description, request.ProjectId, _boardValidatorService);
 
-            await _boardAggregateRepository.CreateAsync(board);
+            await _boardAggregateRepository.AddAsync(board);
             await PublishDomainEventsAsync(board.DomainEvents);
 
             return new CommandResult(ContractsMessages.Create_Success, board.Id);

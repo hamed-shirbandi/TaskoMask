@@ -159,7 +159,7 @@ namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
             var expectedMaxOrganizationsCount = DomainConstValues.Owner_Max_Organizations_Count;
             var expectedMessage = string.Format(DomainMessages.Max_Organizations_Count_Limitiation, expectedMaxOrganizationsCount);
             var expectedOwner = OwnerObjectMother.GetAnOwnerWithMaxOrganizations(OwnerValidatorService, expectedMaxOrganizationsCount);
-            await OwnerAggregateRepository.CreateAsync(expectedOwner);
+            await OwnerAggregateRepository.AddAsync(expectedOwner);
             var addOrganizationRequest = new AddOrganizationRequest(expectedOwner.Id, "Test_Name", "Test_Description");
 
             //Act

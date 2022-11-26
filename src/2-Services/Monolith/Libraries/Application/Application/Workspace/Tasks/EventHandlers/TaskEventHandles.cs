@@ -57,7 +57,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.EventHandlers
                 OwnerId= board.OwnerId,
                 CardType= card.Type,
             };
-           await _taskRepository.CreateAsync(task);
+           await _taskRepository.AddAsync(task);
         }
 
 

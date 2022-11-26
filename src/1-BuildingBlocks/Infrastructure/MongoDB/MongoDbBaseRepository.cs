@@ -30,7 +30,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
         /// <summary>
         /// 
         /// </summary>
-        public virtual async Task CreateAsync(TEntity entity)
+        public virtual async Task AddAsync(TEntity entity)
         {
             await _collection.InsertOneAsync(entity);
         }

@@ -43,7 +43,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Organizations.EventH
                 Description= addedOrganization.Description,
                 OwnerId= addedOrganization.OwnerId,
             };
-           await _organizationRepository.CreateAsync(organization);
+           await _organizationRepository.AddAsync(organization);
         }
 
 

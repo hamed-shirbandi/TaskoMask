@@ -53,7 +53,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
 
             var task = Domain.DomainModel.Workspace.Tasks.Entities.Task.AddTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
 
-            await _taskAggregateRepository.CreateAsync(task);
+            await _taskAggregateRepository.AddAsync(task);
             await PublishDomainEventsAsync(task.DomainEvents);
 
             return new CommandResult(ContractsMessages.Create_Success, task.Id);

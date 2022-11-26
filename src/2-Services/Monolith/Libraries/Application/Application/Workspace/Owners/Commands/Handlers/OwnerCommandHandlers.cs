@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Hand
         {
             var owner = Owner.RegisterOwner(request.DisplayName, request.Email);
 
-            await _ownerAggregateRepository.CreateAsync(owner);
+            await _ownerAggregateRepository.AddAsync(owner);
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             //TODO publish OwnerRegisteredEvent (to be handled by Identity service)

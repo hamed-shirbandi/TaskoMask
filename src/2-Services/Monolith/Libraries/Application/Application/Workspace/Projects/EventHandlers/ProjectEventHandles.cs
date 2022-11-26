@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Projects.EventHandle
                 OrganizationId= addedProject.OrganizationId,
                 OwnerId = addedProject.OwnerId,
             };
-           await _projectRepository.CreateAsync(project);
+           await _projectRepository.AddAsync(project);
         }
 
 

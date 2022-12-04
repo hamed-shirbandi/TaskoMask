@@ -7,8 +7,8 @@ using TaskoMask.Services.Owners.Write.Domain.Data;
 namespace TaskoMask.Services.Owners.Write.Api.Consumers
 {
     /// <summary>
-    /// Fault<OwnerRegistered> happen when identity service cant consume OwnerRegistered
-    /// for  registering a user record for the registered owner
+    /// Fault OwnerRegistered happen when identity service cant consume OwnerRegistered
+    /// for registering a user record for the registered owner
     /// so the registered owner must be deleted from the database of ower write service
     /// </summary>
     public class FaultOwnerRegisteredConsumer : BaseConsumer<Fault<OwnerRegistered>>

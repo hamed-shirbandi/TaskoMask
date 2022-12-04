@@ -29,6 +29,8 @@ namespace TaskoMask.Services.Identity.Api.Configuration
            ApiScopesConfig.Owners_Write,
            ApiScopesConfig.Boards_Read,
            ApiScopesConfig.Boards_Write,
+           ApiScopesConfig.Tasks_Read,
+           ApiScopesConfig.Tasks_Write,
         };
 
 
@@ -41,6 +43,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
            ApiResourcesConfig.Monolith_Api,
            ApiResourcesConfig.Owners_Api,
            ApiResourcesConfig.Boards_Api,
+           ApiResourcesConfig.Tasks_Api,
         };
 
 
@@ -78,6 +81,11 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             Scopes = { ApiScopesConfig.Boards_Read.Name, ApiScopesConfig.Boards_Write.Name }
         };
 
+        public static ApiResource Tasks_Api => new("tasks.api", "Tasks Api")
+        {
+            Scopes = { ApiScopesConfig.Tasks_Read.Name, ApiScopesConfig.Tasks_Write.Name }
+        };
+
     }
 
 
@@ -105,6 +113,8 @@ namespace TaskoMask.Services.Identity.Api.Configuration
                 ApiScopesConfig.Owners_Write.Name,
                 ApiScopesConfig.Boards_Read.Name,
                 ApiScopesConfig.Boards_Write.Name,
+                ApiScopesConfig.Tasks_Read.Name,
+                ApiScopesConfig.Tasks_Write.Name,
             },
             RedirectUris = { "https://localhost:5011/authentication/login-callback/" },
             PostLogoutRedirectUris = { "https://localhost:5011/authentication/logout-callback/" },
@@ -130,6 +140,10 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 
         public static ApiScope Boards_Read => new(name: "boards.read", displayName: "Boards Read APIs");
         public static ApiScope Boards_Write => new(name: "boards.write", displayName: "Boards Write APIs");
+
+
+        public static ApiScope Tasks_Read => new(name: "tasks.read", displayName: "Tasks Read APIs");
+        public static ApiScope Tasks_Write => new(name: "tasks.write", displayName: "Tasks Write APIs");
 
     }
 

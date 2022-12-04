@@ -25,8 +25,8 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         {
            ApiScopesConfig.Monolith_Read,
            ApiScopesConfig.Monolith_Write,
-           ApiScopesConfig.Owner_Read,
-           ApiScopesConfig.Owner_Write,
+           ApiScopesConfig.Owners_Read,
+           ApiScopesConfig.Owners_Write,
         };
 
 
@@ -37,7 +37,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
         {
            ApiResourcesConfig.Monolith_Api,
-           ApiResourcesConfig.Owner_Api,
+           ApiResourcesConfig.Owners_Api,
         };
 
 
@@ -64,9 +64,9 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         };
 
 
-        public static ApiResource Owner_Api => new("owner.api", "Owner Api")
+        public static ApiResource Owners_Api => new("owners.api", "Owners Api")
         {
-            Scopes = { ApiScopesConfig.Owner_Read.Name, ApiScopesConfig.Owner_Write.Name }
+            Scopes = { ApiScopesConfig.Owners_Read.Name, ApiScopesConfig.Owners_Write.Name }
         };
 
     }
@@ -92,8 +92,8 @@ namespace TaskoMask.Services.Identity.Api.Configuration
                 IdentityServerConstants.StandardScopes.Profile,
                 ApiScopesConfig.Monolith_Read.Name,
                 ApiScopesConfig.Monolith_Write.Name,
-                ApiScopesConfig.Owner_Read.Name,
-                ApiScopesConfig.Owner_Write.Name,
+                ApiScopesConfig.Owners_Read.Name,
+                ApiScopesConfig.Owners_Write.Name,
             },
             RedirectUris = { "https://localhost:5011/authentication/login-callback/" },
             PostLogoutRedirectUris = { "https://localhost:5011/authentication/logout-callback/" },
@@ -112,8 +112,11 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         public static ApiScope Monolith_Read => new(name: "monolith.read", displayName: "Monolith Read APIs");
         public static ApiScope Monolith_Write => new(name: "monolith.write", displayName: "Monolith Write APIs");
 
-        public static ApiScope Owner_Read => new(name: "owner.read", displayName: "Owner Read APIs");
-        public static ApiScope Owner_Write => new(name: "owner.write", displayName: "Owner Write APIs");
+
+        public static ApiScope Owners_Read => new(name: "owners.read", displayName: "Owners Read APIs");
+        public static ApiScope Owners_Write => new(name: "owners.write", displayName: "Owners Write APIs");
+
+
     }
 
 }

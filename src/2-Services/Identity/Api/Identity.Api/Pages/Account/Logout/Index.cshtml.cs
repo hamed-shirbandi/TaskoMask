@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TaskoMask.Services.Identity.Api.Extensions;
+using TaskoMask.Services.Identity.Api.Configuration;
 using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Api.Pages.Account.Logout

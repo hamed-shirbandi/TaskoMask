@@ -1,4 +1,5 @@
-﻿using TaskoMask.Services.Identity.Domain.Entities;
+﻿using Microsoft.AspNetCore.Authentication;
+using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Api.Configuration
 {
@@ -25,6 +26,18 @@ namespace TaskoMask.Services.Identity.Api.Configuration
                 .AddInMemoryApiResources(IdentityServerConfig.ApiResources)
                 .AddInMemoryClients(IdentityServerConfig.Clients)
                 .AddAspNetIdentity<User>();
+        }
+
+
+
+        /// <summary>
+        /// Determines if the authentication scheme support signout.
+        /// </summary>
+        public static async Task<bool> GetSchemeSupportsSignOut(this HttpContext context, string scheme)
+        {
+            var provider = context.RequestServices.GetRequiredService<IAuthenticationHandlerProvider>();
+            var handler = await provider.GetHandlerAsync(context, scheme);
+            return (handler is IAuthenticationSignOutHandler);
         }
     }
 }

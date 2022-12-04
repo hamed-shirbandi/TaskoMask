@@ -6,6 +6,16 @@
 		<AssemblyName>TaskoMask.Services.Boards.Write.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Boards.Write.Api</RootNamespace>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\Release\net6.0\TaskoMask.Services.Boards.Write.Api.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\net6.0\TaskoMask.Services.Boards.Write.Api.xml</DocumentationFile>
+	</PropertyGroup>
+
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
 			<PrivateAssets>all</PrivateAssets>
@@ -13,12 +23,10 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
+	
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
 		<ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Consumers\" />
-	</ItemGroup>
-
+	
 </Project>

@@ -7,30 +7,17 @@
 		<RootNamespace>TaskoMask.Services.Tasks.Read.Api</RootNamespace>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <_ContentIncludedByDefault Remove="appsettings.Staging.json" />
-	</ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\Release\net6.0\TaskoMask.Services.Tasks.Read.Api.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\net6.0\TaskoMask.Services.Tasks.Read.Api.xml</DocumentationFile>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Update="appsettings.Development.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	  <Content Update="appsettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Features\" />
-	</ItemGroup>
-
+	
 </Project>

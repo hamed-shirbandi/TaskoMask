@@ -6,10 +6,13 @@
 		<RootNamespace>TaskoMask.Services.Owners.Read.Api</RootNamespace>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
-		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
-	</ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\Release\net6.0\TaskoMask.Services.Owners.Read.Api.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\net6.0\TaskoMask.Services.Owners.Read.Api.xml</DocumentationFile>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Grpc.Tools" Version="2.50.0">
@@ -25,4 +28,9 @@
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_project_by_id.proto" GrpcServices="Server" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
+		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
+	</ItemGroup>
+	
 </Project>

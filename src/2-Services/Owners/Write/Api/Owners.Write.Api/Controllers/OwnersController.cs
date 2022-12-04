@@ -11,6 +11,7 @@ using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwnerPro
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
+    [Authorize("user-write-access")]
     public class OwnersController : BaseApiController, IOwnerWriteApiService
     {
         #region Fields

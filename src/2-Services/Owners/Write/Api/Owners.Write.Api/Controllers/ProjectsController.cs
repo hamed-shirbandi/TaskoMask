@@ -8,9 +8,11 @@ using TaskoMask.BuildingBlocks.Contracts.Api.OwProjectsners;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProject;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdateProject;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeleteProject;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
+    [Authorize("user-write-access")]
     public class ProjectsController : BaseApiController, IProjectWriteApiService
     {
         #region Fields

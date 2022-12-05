@@ -2,20 +2,6 @@
   "Routes": [
     {
       "SwaggerKey": "Monolith",
-      "Priority": 2,
-      "DownstreamPathTemplate": "/owner",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5015
-        }
-      ],
-      "UpstreamPathTemplate": "/monolithService/owner",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    {
-      "SwaggerKey": "Monolith",
       "Priority": 0,
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

@@ -19,6 +19,16 @@
           "Url": "https://localhost:5021/swagger/v1/swagger.json"
         }
       ]
+    },
+    {
+      "Key": "Owners.Write",
+      "Config": [
+        {
+          "Name": "Owners Write APIs",
+          "Version": "v1",
+          "Url": "https://localhost:5019/swagger/v1/swagger.json"
+        }
+      ]
     }
   ]
 }

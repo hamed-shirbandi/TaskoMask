@@ -3,6 +3,8 @@
     {
       "SwaggerKey": "Owners.Read",
       "Priority": 0,
+      "UpstreamPathTemplate": "/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -11,8 +13,6 @@
           "Port": 5021
         }
       ],
-      "UpstreamPathTemplate": "/{everything}",
-      "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
         "AllowedScopes": [ "owners.read", "profile", "openid" ]

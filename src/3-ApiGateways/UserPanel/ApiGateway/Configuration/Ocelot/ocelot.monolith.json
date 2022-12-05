@@ -3,6 +3,8 @@
     {
       "SwaggerKey": "Monolith",
       "Priority": 0,
+      "UpstreamPathTemplate": "/monolithService/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -11,8 +13,6 @@
           "Port": 5015
         }
       ],
-      "UpstreamPathTemplate": "/monolithService/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
         "AllowedScopes": [ "monolith.read", "monolith.write", "profile", "openid" ]

@@ -2,13 +2,21 @@
   "SwaggerEndPoints": [
     {
       "Key": "Monolith",
-      //"TransformByOcelotConfig": false,
       "Config": [
         {
-          "Name": "Monolith API",
-          //"TakeServersFromDownstreamService": true,
+          "Name": "Monolith APIs",
           "Version": "v1",
           "Url": "https://localhost:5015/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Owners.Read",
+      "Config": [
+        {
+          "Name": "Owners Read APIs",
+          "Version": "v1",
+          "Url": "https://localhost:5021/swagger/v1/swagger.json"
         }
       ]
     }

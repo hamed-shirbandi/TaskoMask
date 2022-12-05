@@ -1,9 +1,10 @@
 {
+  // uaoa => userPanel api gateway owners aggregator
   "Routes": [
     {
       "SwaggerKey": "UserPanel.ApiGateway.Aggregator",
       "Priority": 0,
-      "UpstreamPathTemplate": "/owners/aggregator/{everything}",
+      "UpstreamPathTemplate": "/uaoa/{everything}",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

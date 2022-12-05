@@ -1,9 +1,10 @@
 {
+  // ows => owners write service
   "Routes": [
     {
       "SwaggerKey": "Owners.Write",
       "Priority": 1,
-      "UpstreamPathTemplate": "/owner",
+      "UpstreamPathTemplate": "/ows/owner",
       "UpstreamHttpMethod": [ "POST" ],
       "DownstreamPathTemplate": "/owner",
       "DownstreamScheme": "https",
@@ -17,7 +18,7 @@
     {
       "SwaggerKey": "Owners.Write",
       "Priority": 0,
-      "UpstreamPathTemplate": "/{everything}",
+      "UpstreamPathTemplate": "/ows/{everything}",
       "UpstreamHttpMethod": [ "PUT", "DELETE" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

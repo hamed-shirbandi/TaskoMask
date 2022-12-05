@@ -1,0 +1,23 @@
+{
+  "Routes": [
+    {
+      "SwaggerKey": "UserPanel.ApiGateway.Aggregator",
+      "Priority": 0,
+      "UpstreamPathTemplate": "/owners/aggregator/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "userPanel.apiGateway.aggregator.read", "profile", "openid" ]
+      }
+
+    }
+  ]
+}

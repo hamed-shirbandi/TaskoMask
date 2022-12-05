@@ -29,6 +29,16 @@
           "Url": "https://localhost:5019/swagger/v1/swagger.json"
         }
       ]
+    },
+    {
+      "Key": "UserPanel.ApiGateway.Aggregator",
+      "Config": [
+        {
+          "Name": "UserPanel ApiGateway Aggregator APIs",
+          "Version": "v1",
+          "Url": "https://localhost:5003/swagger/v1/swagger.json"
+        }
+      ]
     }
   ]
 }

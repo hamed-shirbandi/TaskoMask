@@ -42,7 +42,7 @@
     /// </summary>
     private async Task LoadDataAsync()
     {
-        var projectDetailsListResult = await ProjectApiService.GetDetails(ProjectId);
+        var projectDetailsListResult = await ProjectApiService.GetDetailsAsync(ProjectId);
         if (!projectDetailsListResult.IsSuccess)
             ToastService.ShowError(projectDetailsListResult.Errors.ParseToFragment(), projectDetailsListResult.Message);
         else

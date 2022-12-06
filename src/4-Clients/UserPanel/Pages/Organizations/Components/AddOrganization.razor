@@ -57,7 +57,7 @@
     /// </summary>
     private async Task HandAddOrganization()
     {
-        var result = await OrganizationApiService.Add(OrganizationModel);
+        var result = await OrganizationApiService.AddAsync(OrganizationModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Organization_Added)

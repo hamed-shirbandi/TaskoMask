@@ -61,7 +61,7 @@
     /// </summary>
     private async Task HandleAddComment()
     {
-        var result = await CommentApiService.Add(CommentModel);
+        var result = await CommentApiService.AddAsync(CommentModel);
         if (result.IsSuccess)
             CommentModel.Content = "";
 

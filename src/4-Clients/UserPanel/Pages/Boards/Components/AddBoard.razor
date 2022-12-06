@@ -139,7 +139,7 @@
     /// </summary>
     private async Task GetOrganizations()
     {
-        var organizationsResult = await OrganizationApiService.GetSelectListItems();
+        var organizationsResult = await OrganizationApiService.GetSelectListItemsAsync();
         if (!organizationsResult.IsSuccess)
         {
             QueryResultHandler<IEnumerable<SelectListItem>>.Init()
@@ -165,7 +165,7 @@
         if (string.IsNullOrEmpty(selectedOrganizationId))
             selectedOrganizationId = organizationsSelectList.First().Value;
 
-        var projectsResult = await ProjectApiService.GetSelectListItems(selectedOrganizationId);
+        var projectsResult = await ProjectApiService.GetSelectListItemsAsync(selectedOrganizationId);
         if (!projectsResult.IsSuccess)
         {
             QueryResultHandler<IEnumerable<SelectListItem>>.Init()
@@ -202,7 +202,7 @@
             selectedOrganizationId = OrganizationId;
         else if (!string.IsNullOrEmpty(ProjectId))
         {
-            var projectResult = await ProjectApiService.Get(ProjectId);
+            var projectResult = await ProjectApiService.GetAsync(ProjectId);
             if (projectResult.IsSuccess)
             {
                 selectedOrganizationId = projectResult.Value.OrganizationId;
@@ -225,7 +225,7 @@
     /// </summary>
     private async Task HandleAddBoard()
     {
-        var result = await BoardApiService.Add(BoardModel);
+        var result = await BoardApiService.AddAsync(BoardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Board_Added)

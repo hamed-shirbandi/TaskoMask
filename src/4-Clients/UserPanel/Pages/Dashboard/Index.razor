@@ -43,7 +43,7 @@ else if (Model.OrganizationsDetailsList.Any())
     {
         DataIsloading = true;
       
-        var organizationsDetailsListResult = await OrganizationApiService.Get();
+        var organizationsDetailsListResult = await OrganizationApiService.GetListAsync();
         if (!organizationsDetailsListResult.IsSuccess)
             ToastService.ShowError(organizationsDetailsListResult.Errors.ParseToFragment(), organizationsDetailsListResult.Message);
         else

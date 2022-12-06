@@ -62,7 +62,7 @@ else if (Model!=null)
     {
         DataIsloading = true;
 
-        var taskResult = await TaskApiService.GetDetails(TaskId);
+        var taskResult = await TaskApiService.GetDetailsAsync(TaskId);
         if (taskResult.IsSuccess)
             Model = taskResult.Value;
         else

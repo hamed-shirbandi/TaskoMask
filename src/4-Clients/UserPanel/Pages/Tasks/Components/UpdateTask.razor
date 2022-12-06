@@ -87,7 +87,7 @@
     private async Task PrepareModelToUpdate()
     {
 
-        var taskResult = await TaskApiService.Get(Id);
+        var taskResult = await TaskApiService.GetAsync(Id);
 
         if (taskResult.IsSuccess)
         {
@@ -115,7 +115,7 @@
     /// </summary>
     private async Task HandleUpdateTask()
     {
-        var result = await TaskApiService.Update(Id, TaskModel);
+        var result = await TaskApiService.UpdateAsync(Id, TaskModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Task_Updated)
@@ -137,7 +137,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await TaskApiService.Delete(Id);
+        var result = await TaskApiService.DeleteAsync(Id);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Task_Deleted)

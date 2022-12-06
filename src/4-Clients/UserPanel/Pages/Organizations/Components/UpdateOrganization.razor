@@ -80,7 +80,7 @@
     /// </summary>
     private async Task PrepareModelToUpdate()
     {
-        var organizationResult = await OrganizationApiService.Get(Id);
+        var organizationResult = await OrganizationApiService.GetAsync(Id);
 
         if (organizationResult.IsSuccess)
         {
@@ -110,7 +110,7 @@
     /// </summary>
     private async Task HandleUpdateOrganization()
     {
-        var result = await OrganizationApiService.Update(Id, OrganizationModel);
+        var result = await OrganizationApiService.UpdateAsync(Id, OrganizationModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Organization_Updated)
@@ -132,7 +132,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await OrganizationApiService.Delete(Id);
+        var result = await OrganizationApiService.DeleteAsync(Id);
         CommandResultHandler.Init()
      .WithResult(result)
      .WithComponentMessageType(MessageType.Organization_Deleted)

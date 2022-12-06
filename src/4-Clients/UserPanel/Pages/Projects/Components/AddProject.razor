@@ -99,7 +99,7 @@
     /// </summary>
     private async Task GetOrganizations()
     {
-        var organizationsResult = await OrganizationApiService.GetSelectListItems();
+        var organizationsResult = await OrganizationApiService.GetSelectListItemsAsync();
         if (!organizationsResult.IsSuccess)
         {
             QueryResultHandler<IEnumerable<SelectListItem>>.Init()
@@ -136,7 +136,7 @@
     /// </summary>
     private async Task HandleAddProject()
     {
-        var result = await ProjectApiService.Add(ProjectModel);
+        var result = await ProjectApiService.AddAsync(ProjectModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Project_Added)

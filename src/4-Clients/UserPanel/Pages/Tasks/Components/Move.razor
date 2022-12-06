@@ -62,7 +62,7 @@ else
     /// </summary>
     private async Task GetCardsSelectList()
     {
-        var cardsResult = await CardApiService.GetSelectListItems(BoardId);
+        var cardsResult = await CardApiService.GetSelectListItemsAsync(BoardId);
         if (cardsResult.IsSuccess)
             cardsSelectList = cardsResult.Value;
         else
@@ -75,7 +75,7 @@ else
     /// </summary>
     private async Task HandleMoveTaskToAnotherCard()
     {
-        var result = await TaskApiService.MoveTaskToAnotherCard(TaskId, CardId);
+        var result = await TaskApiService.MoveTaskToAnotherCardAsync(TaskId, CardId);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Task_Moved)

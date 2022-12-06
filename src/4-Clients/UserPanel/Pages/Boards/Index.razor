@@ -62,7 +62,7 @@ else if (Model!=null)
     {
         DataIsloading = true;
 
-        var boardDetailsListResult = await BoardApiService.GetDetails(BoardId);
+        var boardDetailsListResult = await BoardApiService.GetDetailsAsync(BoardId);
         if (!boardDetailsListResult.IsSuccess)
             ToastService.ShowError(boardDetailsListResult.Errors.ParseToFragment(), boardDetailsListResult.Message);
         else

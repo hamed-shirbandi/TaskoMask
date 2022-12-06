@@ -112,7 +112,7 @@
         {
             if (ReloadDataHelper.NavMenu_Need_Reload(messageType))
             {
-                var ownerResult = await OwnerApiService.Get();
+                var ownerResult = await OwnerApiService.GetAsync();
                 if (ownerResult.IsSuccess)
                 {
                     await GetAndSetUserDisplayName();
@@ -133,7 +133,7 @@
     /// </summary>
     private async Task GetAndSetUserDisplayName()
     {
-        var ownerResult = await OwnerApiService.Get();
+        var ownerResult = await OwnerApiService.GetAsync();
         if (ownerResult.IsSuccess)
             userDisplayName = ownerResult.Value.DisplayName;
     }

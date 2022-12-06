@@ -26,7 +26,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CardBasicInfoDto>> Get(string id)
+        public async Task<Result<CardBasicInfoDto>> GetAsync(string id)
         {
             var url = $"/gw/cards/{id}";
             return await _httpClientService.GetAsync<CardBasicInfoDto>(url);
@@ -38,7 +38,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string boardId)
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItemsAsync(string boardId)
         {
             var url = $"/gw/boards/{boardId}/cards";
             return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(url);
@@ -49,7 +49,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(AddCardDto input)
+        public async Task<Result<CommandResult>> AddAsync(AddCardDto input)
         {
             var url = $"/gw/cards";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
@@ -60,7 +60,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id, UpdateCardDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateCardDto input)
         {
             var url = $"/gw/cards/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
@@ -70,7 +70,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Delete(string id)
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var url = $"/gw/cards/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);

@@ -60,7 +60,7 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        var ownerResult = await OwnerApiService.Get();
+        var ownerResult = await OwnerApiService.GetAsync();
 
         if (ownerResult.IsSuccess)
         {
@@ -95,7 +95,7 @@
     /// </summary>
     private async Task HandleUpdateOwner()
     {
-        var result = await OwnerApiService.UpdateProfile(OwnerUpdateModel);
+        var result = await OwnerApiService.UpdateProfileAsync(OwnerUpdateModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Owner_Updated)

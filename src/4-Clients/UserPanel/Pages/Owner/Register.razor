@@ -81,7 +81,7 @@
     private async Task HandleRegister()
     {
         IsProcessing = true;
-        var registerResult = await OwnerApiService.Register(RegisterModel);
+        var registerResult = await OwnerApiService.RegisterAsync(RegisterModel);
         if (registerResult.IsSuccess)
         {
             ComponentMessageService.SendMessage(MessageType.Owner_Registered);

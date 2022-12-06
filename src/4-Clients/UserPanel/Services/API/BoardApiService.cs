@@ -28,7 +28,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardOutputDto>> Get(string id)
+        public async Task<Result<BoardOutputDto>> GetAsync(string id)
         {
             var url = $"/gw/boards/{id}";
             return await _httpClientService.GetAsync<BoardOutputDto>(url);
@@ -40,7 +40,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardDetailsViewModel>> GetDetails(string id)
+        public async Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id)
         {
             var url = $"/gw/boards/{id}/details";
             return await _httpClientService.GetAsync<BoardDetailsViewModel>(url);
@@ -52,7 +52,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(AddBoardDto input)
+        public async Task<Result<CommandResult>> AddAsync(AddBoardDto input)
         {
             var url = $"/gw/boards";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
@@ -63,7 +63,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id, UpdateBoardDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateBoardDto input)
         {
             var url = $"/gw/boards/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
@@ -74,7 +74,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Delete(string id)
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var url = $"/gw/boards/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);

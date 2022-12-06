@@ -46,7 +46,7 @@
     private async Task HandleDrop(string cardId)
     {
         var draggedTaskId = DragDropService.GetDraggedData();
-        var result = await TaskApiService.MoveTaskToAnotherCard(draggedTaskId, cardId);
+        var result = await TaskApiService.MoveTaskToAnotherCardAsync(draggedTaskId, cardId);
 
         CommandResultHandler.Init()
             .WithResult(result)

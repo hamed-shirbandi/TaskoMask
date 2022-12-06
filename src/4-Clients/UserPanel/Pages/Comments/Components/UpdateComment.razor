@@ -80,7 +80,7 @@
     private async Task PrepareModelToUpdate()
     {
 
-        var commentResult = await CommentApiService.Get(Id);
+        var commentResult = await CommentApiService.GetAsync(Id);
 
         if (commentResult.IsSuccess)
         {
@@ -107,7 +107,7 @@
     /// </summary>
     private async Task HandleUpdateComment()
     {
-        var result = await CommentApiService.Update(Id, CommentModel);
+        var result = await CommentApiService.UpdateAsync(Id, CommentModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Comment_Updated)
@@ -129,7 +129,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await CommentApiService.Delete(Id);
+        var result = await CommentApiService.DeleteAsync(Id);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Comment_Deleted)

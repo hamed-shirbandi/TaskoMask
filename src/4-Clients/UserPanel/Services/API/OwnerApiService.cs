@@ -28,7 +28,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Register(RegisterOwnerDto input)
+        public async Task<Result<CommandResult>> RegisterAsync(RegisterOwnerDto input)
         {
             var url = $"/gw/owner";
 
@@ -43,7 +43,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OwnerBasicInfoDto>> Get()
+        public async Task<Result<OwnerBasicInfoDto>> GetAsync()
         {
             var url = $"/gw/owner";
             return await _httpClientService.GetAsync<OwnerBasicInfoDto>(url);
@@ -54,7 +54,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateProfile(UpdateOwnerProfileDto input)
+        public async Task<Result<CommandResult>> UpdateProfileAsync(UpdateOwnerProfileDto input)
         {
             var url = $"/gw/owner";
             return await _httpClientService.PutAsync<CommandResult>(url, input);

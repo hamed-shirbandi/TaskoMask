@@ -80,7 +80,7 @@
     private async Task PrepareModelToUpdate()
     {
 
-        var cardResult = await CardApiService.Get(CardId);
+        var cardResult = await CardApiService.GetAsync(CardId);
 
         if (cardResult.IsSuccess)
         {
@@ -108,7 +108,7 @@
     /// </summary>
     private async Task HandleUpdateCard()
     {
-        var result = await CardApiService.Update(CardId, CardModel);
+        var result = await CardApiService.UpdateAsync(CardId, CardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Card_Updated)
@@ -130,7 +130,7 @@
         if (confirmationModalResult.Cancelled)
             return;
 
-        var result = await CardApiService.Delete(CardId);
+        var result = await CardApiService.DeleteAsync(CardId);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Card_Deleted)

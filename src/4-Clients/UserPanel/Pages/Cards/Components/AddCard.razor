@@ -79,7 +79,7 @@
     private async Task HandleAddCard()
     {
         CardModel.BoardId = BoardId;
-        var result = await CardApiService.Add(CardModel);
+        var result = await CardApiService.AddAsync(CardModel);
         CommandResultHandler.Init()
             .WithResult(result)
             .WithComponentMessageType(MessageType.Card_Added)

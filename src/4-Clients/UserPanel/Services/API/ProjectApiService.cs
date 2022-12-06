@@ -27,7 +27,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
+        public async Task<Result<ProjectBasicInfoDto>> GetAsync(string id)
         {
             var url = $"/gw/projects/{id}";
             return await _httpClientService.GetAsync<ProjectBasicInfoDto>(url);
@@ -39,7 +39,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectDetailsViewModel>> GetDetails(string id)
+        public async Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id)
         {
             var url = $"/gw/projects/{id}/details";
             return await _httpClientService.GetAsync<ProjectDetailsViewModel>(url);
@@ -50,7 +50,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems(string organizationId)
+        public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItemsAsync(string organizationId)
         {
             var url = $"/gw/projects/getSelectListItems/{organizationId}";
             return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(url);
@@ -61,7 +61,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Add(AddProjectDto input)
+        public async Task<Result<CommandResult>> AddAsync(AddProjectDto input)
         {
             var url = $"/gw/projects";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
@@ -72,7 +72,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Update(string id, UpdateProjectDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateProjectDto input)
         {
             var url = $"/gw/projects/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
@@ -83,7 +83,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommandResult>> Delete(string id)
+        public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var url = $"/gw/projects/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);

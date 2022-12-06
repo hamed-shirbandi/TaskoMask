@@ -31,7 +31,7 @@
       ]
     },
     {
-      "Key": "UserPanel.ApiGateway.Aggregator",
+      "Key": "Aggregator",
       "Config": [
         {
           "Name": "UserPanel ApiGateway Aggregator APIs",

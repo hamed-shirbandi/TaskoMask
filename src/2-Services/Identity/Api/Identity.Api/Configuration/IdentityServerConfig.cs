@@ -31,7 +31,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
            ApiScopesConfig.Boards_Write,
            ApiScopesConfig.Tasks_Read,
            ApiScopesConfig.Tasks_Write,
-           ApiScopesConfig.UserPanel_ApiGateway_Aggregator_Read,
         };
 
 
@@ -45,7 +44,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
            ApiResourcesConfig.Owners_Api,
            ApiResourcesConfig.Boards_Api,
            ApiResourcesConfig.Tasks_Api,
-           ApiResourcesConfig.UserPanel_ApiGateway_Aggregator_Api
+           ApiResourcesConfig.Aggregator_Api
         };
 
 
@@ -89,9 +88,9 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         };
 
 
-        public static ApiResource UserPanel_ApiGateway_Aggregator_Api => new("userPanel.apiGateway.aggregator.api", "UserPanel ApiGateway Aggregator Api")
+        public static ApiResource Aggregator_Api => new("aggregator.api", "UserPanel ApiGateway Aggregator Api")
         {
-            Scopes = { ApiScopesConfig.UserPanel_ApiGateway_Aggregator_Read.Name }
+            Scopes = { ApiScopesConfig.Owners_Read.Name, ApiScopesConfig.Boards_Read.Name, ApiScopesConfig.Tasks_Read.Name }
         };
     }
 
@@ -122,7 +121,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
                 ApiScopesConfig.Boards_Write.Name,
                 ApiScopesConfig.Tasks_Read.Name,
                 ApiScopesConfig.Tasks_Write.Name,
-                ApiScopesConfig.UserPanel_ApiGateway_Aggregator_Read.Name,
             },
             RedirectUris = { "https://localhost:5011/authentication/login-callback/" },
             PostLogoutRedirectUris = { "https://localhost:5011/authentication/logout-callback/" },
@@ -152,8 +150,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 
         public static ApiScope Tasks_Read => new(name: "tasks.read", displayName: "Tasks Read APIs");
         public static ApiScope Tasks_Write => new(name: "tasks.write", displayName: "Tasks Write APIs");
-
-        public static ApiScope UserPanel_ApiGateway_Aggregator_Read => new(name: "userPanel.apiGateway.aggregator.read", displayName: "UserPanel ApiGateway Aggregator Read APIs");
     }
 
 }

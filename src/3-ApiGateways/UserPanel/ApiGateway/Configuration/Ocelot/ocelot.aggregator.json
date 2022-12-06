@@ -1,10 +1,9 @@
 {
-  // uaoa => userPanel api gateway owners aggregator
   "Routes": [
     {
-      "SwaggerKey": "UserPanel.ApiGateway.Aggregator",
+      "SwaggerKey": "Aggregator",
       "Priority": 0,
-      "UpstreamPathTemplate": "/uaoa/{everything}",
+      "UpstreamPathTemplate": "/aggregator/{everything}",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
@@ -16,7 +15,7 @@
       ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "userPanel.apiGateway.aggregator.read", "profile", "openid" ]
+        "AllowedScopes": [ "owners.read", "boards.read", "tasks.read", "profile", "openid" ]
       }
 
     }

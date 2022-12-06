@@ -4,7 +4,6 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Contracts.Api.Organizations;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.UpdateOrganization;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.DeleteOrganization;
@@ -13,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
     [Authorize("user-write-access")]
-    public class OrganizationsController : BaseApiController, IOrganizationWriteApiService
+    public class OrganizationsController : BaseApiController
     {
         #region Fields
 

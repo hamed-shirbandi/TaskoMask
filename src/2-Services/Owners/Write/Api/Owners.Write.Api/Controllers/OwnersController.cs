@@ -5,14 +5,13 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Contracts.Api.Owners;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwnerProfile;
 
 namespace TaskoMask.Services.Owners.Write.Api.Controllers
 {
     [Authorize("user-write-access")]
-    public class OwnersController : BaseApiController, IOwnerWriteApiService
+    public class OwnersController : BaseApiController
     {
         #region Fields
 

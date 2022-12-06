@@ -3,11 +3,10 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using TaskoMask.BuildingBlocks.Web.Services.Http;
 using TaskoMask.BuildingBlocks.Contracts.Models;
-using TaskoMask.BuildingBlocks.Contracts.Api.Organizations;
 
 namespace TaskoMask.Clients.UserPanel.Services.API
 {
-    public class OrganizationApiService : BaseApiService, IOrganizationWriteApiService, IOrganizationReadApiService
+    public class OrganizationApiService : BaseApiService
     {
         #region Fields
 

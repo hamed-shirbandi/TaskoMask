@@ -28,7 +28,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommentBasicInfoDto>> Get(string id)
         {
-            var url = $"/monolithService/comments/{id}";
+            var url = $"/gw/comments/{id}";
             return await _httpClientService.GetAsync<CommentBasicInfoDto>(url);
         }
 
@@ -39,7 +39,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Add(AddCommentDto input)
         {
-            var url = $"/monolithService/comments";
+            var url = $"/gw/comments";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -50,7 +50,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Update(string id,UpdateCommentDto input)
         {
-            var url = $"/monolithService/comments/{id}";
+            var url = $"/gw/comments/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
@@ -60,7 +60,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var url = $"/monolithService/comments/{id}";
+            var url = $"/gw/comments/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 

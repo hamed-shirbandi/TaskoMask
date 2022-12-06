@@ -43,7 +43,7 @@ namespace TaskoMask.Clients.UserPanel.Configuration
         {
             services.AddScoped<IdentityServerAuthorizationHandler>();
 
-            //For Authorizeed APIs
+            //For Authorized APIs
             services.AddHttpClient(name: MagicKey.Protected_UserPanelApiGateway_Client, configureClient: client =>
             {
                 client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));

@@ -30,7 +30,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<OrganizationBasicInfoDto>> Get(string id)
         {
-            var url = $"/monolithService/organizations/{id}";
+            var url = $"/gw/organizations/{id}";
             return await _httpClientService.GetAsync<OrganizationBasicInfoDto>(url);
         }
 
@@ -41,7 +41,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> Get()
         {
-            var url = $"/monolithService/organizations";
+            var url = $"/gw/organizations";
             return await _httpClientService.GetAsync<IEnumerable<OrganizationDetailsViewModel>>(url);
         }
 
@@ -52,7 +52,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItems()
         {
-            var url = $"/monolithService/owner/organizations";
+            var url = $"/gw/owner/organizations";
             return await _httpClientService.GetAsync<IEnumerable<SelectListItem>>(url);
         }
 
@@ -64,7 +64,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Add(AddOrganizationDto input)
         {
-            var url = $"/monolithService/organizations";
+            var url = $"/gw/organizations";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -75,7 +75,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Update(string id, UpdateOrganizationDto input)
         {
-            var url = $"/monolithService/organizations/{id}";
+            var url = $"/gw/organizations/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
@@ -86,7 +86,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> Delete(string id)
         {
-            var url = $"/monolithService/organizations/{id}";
+            var url = $"/gw/organizations/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 

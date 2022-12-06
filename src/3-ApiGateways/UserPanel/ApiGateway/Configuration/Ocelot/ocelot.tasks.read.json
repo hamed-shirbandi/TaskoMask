@@ -1,0 +1,24 @@
+{
+  // ors => owners read service
+  "Routes": [
+    {
+      "SwaggerKey": "Owners.Read",
+      "Priority": 0,
+      "UpstreamPathTemplate": "/ors/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5021
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "owners.read", "profile", "openid" ]
+      }
+
+    }
+  ]
+}

@@ -3,7 +3,7 @@
     {
       "SwaggerKey": "Aggregator",
       "Priority": 0,
-      "UpstreamPathTemplate": "/aggregator/{everything}",
+      "UpstreamPathTemplate": "/gw/aggregator/{everything}",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

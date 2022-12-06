@@ -1,10 +1,9 @@
 {
-  // ors => owners read service
   "Routes": [
     {
       "SwaggerKey": "Owners.Read",
       "Priority": 0,
-      "UpstreamPathTemplate": "/ors/{everything}",
+      "UpstreamPathTemplate": "/gw/{everything}",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

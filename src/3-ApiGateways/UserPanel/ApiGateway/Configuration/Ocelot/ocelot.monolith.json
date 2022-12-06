@@ -1,10 +1,9 @@
 {
-  // ms => monolith service
   "Routes": [
     {
       "SwaggerKey": "Monolith",
       "Priority": 0,
-      "UpstreamPathTemplate": "/ms/{everything}",
+      "UpstreamPathTemplate": "/gw/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

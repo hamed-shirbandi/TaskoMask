@@ -1,22 +1,21 @@
 {
-  // ors => owners read service
   "Routes": [
     {
-      "SwaggerKey": "Owners.Read",
+      "SwaggerKey": "Tasks.Read",
       "Priority": 0,
-      "UpstreamPathTemplate": "/ors/{everything}",
+      "UpstreamPathTemplate": "/gw/{everything}",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5021
+          "Port": 5029
         }
       ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "owners.read", "profile", "openid" ]
+        "AllowedScopes": [ "tasks.read", "profile", "openid" ]
       }
 
     }

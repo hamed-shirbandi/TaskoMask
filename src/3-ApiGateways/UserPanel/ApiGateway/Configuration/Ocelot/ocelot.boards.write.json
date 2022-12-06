@@ -1,36 +1,21 @@
 {
-  // ows => owners write service
   "Routes": [
     {
-      "SwaggerKey": "Owners.Write",
-      "Priority": 1,
-      "UpstreamPathTemplate": "/ows/owner",
-      "UpstreamHttpMethod": [ "POST" ],
-      "DownstreamPathTemplate": "/owner",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5019
-        }
-      ]
-    },
-    {
-      "SwaggerKey": "Owners.Write",
+      "SwaggerKey": "Boards.Write",
       "Priority": 0,
-      "UpstreamPathTemplate": "/ows/{everything}",
-      "UpstreamHttpMethod": [ "PUT", "DELETE" ],
+      "UpstreamPathTemplate": "/gw/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "DELETE" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5019
+          "Port": 5023
         }
       ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "owners.write", "profile", "openid" ]
+        "AllowedScopes": [ "boards.write", "profile", "openid" ]
       }
     }
   ]

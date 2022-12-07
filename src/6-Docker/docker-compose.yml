@@ -248,6 +248,8 @@ services:
       - taskomask-network
     depends_on:
       - owners-read-api
+      - boards-read-api
+      - tasks-read-api
       - identity-api
 
   api-gateway:
@@ -265,7 +267,13 @@ services:
     depends_on:
       - monolith-api
       - owners-read-api
+      - owners-write-api
+      - boards-read-api
+      - boards-write-api
+      - tasks-read-api
+      - tasks-write-api
       - identity-api
+      - aggregator
 
   user-panel-client:
     container_name: user-panel-client

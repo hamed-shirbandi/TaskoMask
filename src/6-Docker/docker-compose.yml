@@ -87,6 +87,7 @@ services:
     depends_on:
       - redis
       - mongo
+      - rabbitmq
 
   owners-read-api:
     container_name: owners-read-api
@@ -95,7 +96,6 @@ services:
     environment:
       Mongo__Read__Connection: "mongodb://mongo:27017"
       Mongo__Write__Connection: "mongodb://mongo:27017"
-      Redis__Connection: "redis:6379"
       RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
@@ -141,7 +141,7 @@ services:
     networks:
       - taskomask-network
     depends_on:
-      - monolith-api
+      - owners-read-api
       - identity-api
 
   api-gateway:
@@ -158,6 +158,7 @@ services:
       - taskomask-network
     depends_on:
       - monolith-api
+      - owners-read-api
       - identity-api
 
   user-panel-client:
@@ -170,7 +171,7 @@ services:
       - "5010:80"
       - "5011:443"
     depends_on:
-     - user-panel-api-gateway
+     - api-gateway
 
   website-client:
     container_name: website-client

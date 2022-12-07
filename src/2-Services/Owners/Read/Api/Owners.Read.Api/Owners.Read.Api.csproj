@@ -4,6 +4,10 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>TaskoMask.Services.Owners.Read.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Owners.Read.Api</RootNamespace>
+		<UserSecretsId>5a6364b4-cc6f-4fa9-b2d3-b0040526bb00</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..\..\..\..</DockerfileContext>
+		<DockerComposeProjectPath>..\..\..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -21,6 +25,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
 	
 	<ItemGroup>

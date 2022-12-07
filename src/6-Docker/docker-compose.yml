@@ -107,8 +107,8 @@ services:
       - sql
       - redis
 
-  user-panel-api-gateway:
-    container_name: user-panel-api-gateway
+  api-gateway:
+    container_name: api-gateway
     image: ${DOCKER_REGISTRY-}user-panel-api-gateway
     restart: on-failure
     build:

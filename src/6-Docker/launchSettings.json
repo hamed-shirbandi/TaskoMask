@@ -8,9 +8,11 @@
         "redis": "StartWithoutDebugging",
         "seq": "StartWithoutDebugging",
         "sql": "StartWithoutDebugging",
+        "rabbitmq": "StartWithoutDebugging",
         "monolith-api": "StartWithoutDebugging",
+        "owners-read-api": "StartWithoutDebugging",
         "identity-api": "StartWithoutDebugging",
-        "user-panel-api-gateway": "StartWithoutDebugging",
+        "api-gateway": "StartWithoutDebugging",
         "user-panel-client": "StartWithoutDebugging",
         "website-client": "StartWithoutDebugging"
       }

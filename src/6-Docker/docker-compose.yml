@@ -109,6 +109,28 @@ services:
       - mongo
       - rabbitmq
 
+  owners-write-api:
+    container_name: owners-write-api
+    image: ${DOCKER_REGISTRY-}owners-write-api
+    restart: on-failure
+    environment:
+      Mongo__Read__Connection: "mongodb://mongo:27017"
+      Mongo__Write__Connection: "mongodb://mongo:27017"
+      Redis__Connection: "redis:6379"
+      RabbitMQ__Host: "rabbitmq"
+    build:
+      context: ../..
+      dockerfile: src/2-Services/Owners/Read/Api/Owners.Write.Api/Dockerfile
+    ports:
+      - 5020:80
+      - 5021:443
+    networks:
+      - taskomask-network
+    depends_on:
+      - redis
+      - mongo
+      - rabbitmq
+
   identity-api:
     container_name: identity-api
     image: ${DOCKER_REGISTRY-}identity-api
@@ -192,4 +214,5 @@ volumes:
   seq:
   sql:
   rabbitmq:
+
 

@@ -11,6 +11,7 @@
         "rabbitmq": "StartWithoutDebugging",
         "monolith-api": "StartWithoutDebugging",
         "owners-read-api": "StartWithoutDebugging",
+        "owners-write-api": "StartWithoutDebugging",
         "identity-api": "StartWithoutDebugging",
         "aggregator": "StartWithoutDebugging",
         "api-gateway": "StartWithoutDebugging",

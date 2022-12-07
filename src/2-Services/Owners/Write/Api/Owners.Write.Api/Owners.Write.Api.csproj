@@ -5,6 +5,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Owners.Write.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Owners.Write.Api</RootNamespace>
+		<UserSecretsId>0dd4049d-0324-4ff6-8a77-9a1b9cf12f56</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..\..\..\..</DockerfileContext>
+		<DockerComposeProjectPath>..\..\..\..\..\6-Docker\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

@@ -12,6 +12,7 @@
         "monolith-api": "StartWithoutDebugging",
         "owners-read-api": "StartWithoutDebugging",
         "identity-api": "StartWithoutDebugging",
+        "aggregator": "StartWithoutDebugging",
         "api-gateway": "StartWithoutDebugging",
         "user-panel-client": "StartWithoutDebugging",
         "website-client": "StartWithoutDebugging"

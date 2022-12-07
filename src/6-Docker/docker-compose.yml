@@ -128,9 +128,25 @@ services:
       - sql
       - redis
 
+  aggregator:
+    container_name: aggregator
+    image: ${DOCKER_REGISTRY-}aggregator
+    restart: on-failure
+    build:
+      context: ../..
+      dockerfile: src/3-ApiGateways/UserPanel/Aggregator/Dockerfile
+    ports:
+      - 5002:80
+      - 5003:443
+    networks:
+      - taskomask-network
+    depends_on:
+      - monolith-api
+      - identity-api
+
   api-gateway:
     container_name: api-gateway
-    image: ${DOCKER_REGISTRY-}user-panel-api-gateway
+    image: ${DOCKER_REGISTRY-}api-gateway
     restart: on-failure
     build:
       context: ../..

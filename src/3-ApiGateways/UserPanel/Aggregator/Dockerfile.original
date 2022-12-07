@@ -8,12 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/3-ApiGateways/UserPanel/Aggregator/Aggregator.csproj", "src/3-ApiGateways/UserPanel/Aggregator/"]
-COPY ["src/1-BuildingBlocks/Web.MVC/Web.MVC.csproj", "src/1-BuildingBlocks/Web.MVC/"]
-COPY ["src/1-BuildingBlocks/Infrastructure/Infrastructure.csproj", "src/1-BuildingBlocks/Infrastructure/"]
-COPY ["src/1-BuildingBlocks/Application/Application.csproj", "src/1-BuildingBlocks/Application/"]
-COPY ["src/1-BuildingBlocks/Domain/Domain.csproj", "src/1-BuildingBlocks/Domain/"]
-COPY ["src/1-BuildingBlocks/Contracts/Contracts.csproj", "src/1-BuildingBlocks/Contracts/"]
-COPY ["src/1-BuildingBlocks/Web/Web.csproj", "src/1-BuildingBlocks/Web/"]
 RUN dotnet restore "src/3-ApiGateways/UserPanel/Aggregator/Aggregator.csproj"
 COPY . .
 WORKDIR "/src/src/3-ApiGateways/UserPanel/Aggregator"
@@ -25,4 +19,4 @@ RUN dotnet publish "Aggregator.csproj" -c Release -o /app/publish /p:UseAppHost=
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "TaskoMask.ApiGateways.UserPanel.Aggregator.dll"]
+ENTRYPOINT ["dotnet", "Aggregator.dll"]

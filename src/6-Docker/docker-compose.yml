@@ -58,6 +58,15 @@ services:
     volumes:
       - sql:/var/opt/mssql/data
 
+  rabbitmq:
+    container_name: rabbitmq
+    image: masstransit/rabbitmq
+    restart: unless-stopped
+    networks:
+      - taskomask-network
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/mnesia/
+      
   monolith-api:
     container_name: monolith-api
     image: ${DOCKER_REGISTRY-}monolith-api
@@ -66,6 +75,7 @@ services:
       Mongo__Read__Connection: "mongodb://mongo:27017"
       Mongo__Write__Connection: "mongodb://mongo:27017"
       Redis__Connection: "redis:6379"
+      RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
       dockerfile: src/2-Services/Monolith/Api/Monolith.Api/Dockerfile
@@ -85,7 +95,8 @@ services:
     environment:
       SQL__Connection: "Server=sql;Database=[DatabaseName];User=sa;Password=Your_password123;"
       Redis__Connection: "redis:6379"
-      build:
+      RabbitMQ__Host: "rabbitmq"
+    build:
       context: ../..
       dockerfile: src/2-Services/Identity/Api/Identity.Api/Dockerfile
     ports:
@@ -142,4 +153,5 @@ volumes:
   mongo:
   seq:
   sql:
+  rabbitmq:
 

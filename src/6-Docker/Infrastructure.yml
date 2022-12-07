@@ -56,9 +56,20 @@ services:
     volumes:
       - sql:/var/opt/mssql/data
 
+  rabbitmq:
+    container_name: rabbitmq
+    image: masstransit/rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/mnesia/   
+
 volumes:
   redis:
   mongo:
   seq:
   sql:
+  rabbitmq:
 

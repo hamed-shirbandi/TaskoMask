@@ -15,6 +15,7 @@
         "boards-read-api": "StartWithoutDebugging",
         "boards-write-api": "StartWithoutDebugging",
         "tasks-read-api": "StartWithoutDebugging",
+        "tasks-write-api": "StartWithoutDebugging",
         "identity-api": "StartWithoutDebugging",
         "aggregator": "StartWithoutDebugging",
         "api-gateway": "StartWithoutDebugging",

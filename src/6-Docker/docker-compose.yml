@@ -193,6 +193,28 @@ services:
       - mongo
       - rabbitmq
 
+  tasks-write-api:
+    container_name: tasks-write-api
+    image: ${DOCKER_REGISTRY-}tasks-write-api
+    restart: on-failure
+    environment:
+      Mongo__Read__Connection: "mongodb://mongo:27017"
+      Mongo__Write__Connection: "mongodb://mongo:27017"
+      Redis__Connection: "redis:6379"
+      RabbitMQ__Host: "rabbitmq"
+    build:
+      context: ../..
+      dockerfile: src/2-Services/Tasks/Read/Api/Tasks.Write.Api/Dockerfile
+    ports:
+      - 5020:80
+      - 5021:443
+    networks:
+      - taskomask-network
+    depends_on:
+      - redis
+      - mongo
+      - rabbitmq
+
   identity-api:
     container_name: identity-api
     image: ${DOCKER_REGISTRY-}identity-api

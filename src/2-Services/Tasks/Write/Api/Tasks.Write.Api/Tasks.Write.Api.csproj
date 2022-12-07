@@ -5,6 +5,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Tasks.Write.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Tasks.Write.Api</RootNamespace>
+		<UserSecretsId>903c4a59-e93d-4e7f-98f6-b5278a2feea3</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..\..\..\..</DockerfileContext>
+		<DockerComposeProjectPath>..\..\..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
 

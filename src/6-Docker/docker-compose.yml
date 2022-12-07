@@ -131,6 +131,26 @@ services:
       - mongo
       - rabbitmq
 
+  boards-read-api:
+    container_name: boards-read-api
+    image: ${DOCKER_REGISTRY-}boards-read-api
+    restart: on-failure
+    environment:
+      Mongo__Read__Connection: "mongodb://mongo:27017"
+      Mongo__Write__Connection: "mongodb://mongo:27017"
+      RabbitMQ__Host: "rabbitmq"
+    build:
+      context: ../..
+      dockerfile: src/2-Services/Boards/Read/Api/Boards.Read.Api/Dockerfile
+    ports:
+      - 5020:80
+      - 5021:443
+    networks:
+      - taskomask-network
+    depends_on:
+      - mongo
+      - rabbitmq
+
   identity-api:
     container_name: identity-api
     image: ${DOCKER_REGISTRY-}identity-api

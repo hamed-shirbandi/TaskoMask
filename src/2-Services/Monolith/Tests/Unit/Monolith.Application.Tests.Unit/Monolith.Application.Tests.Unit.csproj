@@ -31,4 +31,8 @@
     <ProjectReference Include="..\..\..\Libraries\Application\Application\Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Workspace\" />
+  </ItemGroup>
+
 </Project>

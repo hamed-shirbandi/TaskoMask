@@ -17,16 +17,14 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.EventHandlers
         #region Fields
 
         private readonly IBoardRepository _boardRepository;
-        private readonly IProjectRepository _projectRepository;
 
         #endregion
 
         #region Ctors
 
-        public BoardEventHandles(IBoardRepository boardRepository, IProjectRepository projectRepository)
+        public BoardEventHandles(IBoardRepository boardRepository)
         {
             _boardRepository = boardRepository;
-            _projectRepository = projectRepository;
         }
 
         #endregion
@@ -39,15 +37,16 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.EventHandlers
         /// </summary>
         public async System.Threading.Tasks.Task Handle(BoardAddedEvent createdBoard, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetByIdAsync(createdBoard.ProjectId);
+            //TODO get project data from owner read service
+           // var project = await _projectRepository.GetByIdAsync(createdBoard.ProjectId);
 
             var board = new Board(createdBoard.Id)
             {
                 Name= createdBoard.Name,
                 Description= createdBoard.Description,
-                OrganizationId= project.OrganizationId,
+              //  OrganizationId= project.OrganizationId,
                 ProjectId = createdBoard.ProjectId,
-                OwnerId= project.OwnerId,
+              //  OwnerId= project.OwnerId,
             };
            await _boardRepository.AddAsync(board);
         }

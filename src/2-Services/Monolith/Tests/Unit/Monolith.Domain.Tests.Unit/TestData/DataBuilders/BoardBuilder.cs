@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 
 namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.TestData.DataBuilders
 {

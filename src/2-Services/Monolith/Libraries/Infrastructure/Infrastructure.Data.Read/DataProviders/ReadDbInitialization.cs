@@ -33,30 +33,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders
         /// </summary>
         private static void CreateIndexes(IReadDbContext dbContext)
         {
-            #region Owner Indexs
-
-            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Owner.Id), Unique = true }));
-            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = nameof(Owner.Email) }));
-            dbContext.GetCollection<Owner>().Indexes.CreateOneAsync(new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName), new CreateIndexOptions() { Name = nameof(Owner.DisplayName) }));
-
-
-            #endregion
-
-            #region Organization Indexs
-
-            dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Organization.Id), Unique = true }));
-            dbContext.GetCollection<Organization>().Indexes.CreateOneAsync(new CreateIndexModel<Organization>(Builders<Organization>.IndexKeys.Ascending(x => x.OwnerId), new CreateIndexOptions() { Name = nameof(Organization.OwnerId) }));
-
-
-            #endregion
-
-            #region Project Indexs
-
-            dbContext.GetCollection<Project>().Indexes.CreateOneAsync(new CreateIndexModel<Project>(Builders<Project>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Project.Id), Unique = true }));
-            dbContext.GetCollection<Project>().Indexes.CreateOneAsync(new CreateIndexModel<Project>(Builders<Project>.IndexKeys.Ascending(x => x.OrganizationId), new CreateIndexOptions() { Name = nameof(Project.OrganizationId) }));
-
-
-            #endregion
 
             #region Board Indexs
 

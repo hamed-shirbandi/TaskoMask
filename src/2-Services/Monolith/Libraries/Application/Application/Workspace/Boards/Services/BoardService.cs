@@ -95,17 +95,6 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
 
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Result<PaginatedList<BoardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
-        {
-            return await _inMemoryBus.SendQuery(new SearchBoardsQuery(page, recordsPerPage, term));
-        }
-
-
-
         /// <summary>
         /// 
         /// </summary>

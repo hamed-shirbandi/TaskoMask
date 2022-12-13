@@ -6,45 +6,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator.ReadDB
     internal static class ReadDbDataGenerator
     {
 
-  
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IEnumerable<Organization> GenerateOrganization()
-        {
-            var items = new List<Organization>();
-            for (int i = 1; i <= 2; i++)
-            {
-                items.Add(new Organization(i.ToString())
-                {
-                    Name = $"Organization_{i}",
-                    Description = $"Organization_{i} test description",
-                });
-            }
-            return items;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static IEnumerable<Project> GenerateProject()
-        {
-            var items = new List<Project>();
-            for (int i = 1; i < 2; i++)
-            {
-                items.Add(new Project(i.ToString())
-                {
-                    Name = $"Project_{i}",
-                    Description = $"Project_{i} test description",
-                });
-            }
-
-            return items;
-        }
 
 
 

@@ -25,9 +25,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 
         public ReadDbContext(IOptions<ReadDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            Owners = GetCollection<Owner>();
-            Organizations = GetCollection<Organization>();
-            Projects = GetCollection<Project>();
             Boards = GetCollection<Board>();
             Cards = GetCollection<Card>();
             Tasks = GetCollection<Task>();
@@ -41,9 +38,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 
         #region Properties
 
-        public IMongoCollection<Owner> Owners { get; }
-        public IMongoCollection<Organization> Organizations { get; }
-        public IMongoCollection<Project> Projects { get; }
         public IMongoCollection<Board> Boards { get; }
         public IMongoCollection<Card> Cards { get; }
         public IMongoCollection<Task> Tasks { get; }

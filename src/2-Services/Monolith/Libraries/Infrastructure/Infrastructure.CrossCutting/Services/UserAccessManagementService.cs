@@ -17,8 +17,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         #region Fields
 
         private readonly IAuthenticatedUserService _authenticatedUserService;
-        private readonly IOrganizationRepository _organizationRepository;
-        private readonly IProjectRepository _projectRepository;
         private readonly IBoardRepository _boardRepository;
         private readonly ICardRepository _cardRepository;
         private readonly ITaskRepository _taskRepository;
@@ -28,12 +26,10 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
 
         #region Ctors
 
-        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, IOrganizationRepository organizationRepository, IProjectRepository projectRepository, ICardRepository cardRepository, ITaskRepository taskRepository , IBoardRepository boardRepository)
+        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, ICardRepository cardRepository, ITaskRepository taskRepository , IBoardRepository boardRepository)
         {
             _authenticatedUserService = authenticatedUserService;
-            _organizationRepository = organizationRepository;
             currentUser = _authenticatedUserService.GetAuthenticatedUser();
-            _projectRepository = projectRepository;
             _cardRepository = cardRepository;
             _taskRepository = taskRepository;
             _boardRepository = boardRepository;
@@ -44,38 +40,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
 
         #region Public Methods
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<bool> CanAccessToOrganizationAsync(string organizationId)
-        {
-            var organization = await _organizationRepository.GetByIdAsync(organizationId);
-
-            // handling null reference is not this class's business
-            if (organization == null)
-                return true;
-
-            return organization.OwnerId == currentUser.Id;
-
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<bool> CanAccessToProjectAsync(string projectId)
-        {
-            var project = await _projectRepository.GetByIdAsync(projectId);
-
-            // handling null reference is not this class's business
-            if (project == null)
-                return true;
-
-            return project.OwnerId == currentUser.Id;
-        }
 
 
 

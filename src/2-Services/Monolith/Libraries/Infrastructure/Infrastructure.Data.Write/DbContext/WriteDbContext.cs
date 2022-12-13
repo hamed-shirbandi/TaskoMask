@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using MongoDB.Driver;
-using Microsoft.Extensions.Configuration;
-using System.Linq;
+﻿using MongoDB.Driver;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using Microsoft.Extensions.Options;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 
@@ -26,7 +22,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
 
         public WriteDbContext(IOptions<WriteDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            Owners = GetCollection<Owner>();
             Boards = GetCollection<Board>();
             Tasks = GetCollection<Task>();
         }
@@ -37,7 +32,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
 
         #region Properties
 
-        public IMongoCollection<Owner> Owners { get; }
         public IMongoCollection<Board> Boards { get; }
         public IMongoCollection<Task> Tasks { get; }
 

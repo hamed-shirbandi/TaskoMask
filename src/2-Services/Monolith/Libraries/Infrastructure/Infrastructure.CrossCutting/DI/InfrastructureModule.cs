@@ -7,7 +7,6 @@ using TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Handlers
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles;
@@ -115,7 +114,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         private static void AddWriteSideRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IOwnerAggregateRepository, OwnerAggregateRepository>();
             services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
             services.AddScoped<ITaskAggregateRepository, TaskAggregateRepository>();
         }
@@ -143,9 +141,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
             services.AddScoped<IBoardRepository, BoardRepository>();
             services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
-            services.AddScoped<IOwnerRepository, OwnerRepository>();
-            services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<ITaskRepository, TaskRepository>();
         }
 

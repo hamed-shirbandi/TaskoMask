@@ -57,28 +57,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             CreateMap<Board, BoardOutputDto>();
 
             #endregion
-
-            #region Organization
-
-            CreateMap<Organization, OrganizationBaseDto>();
-            CreateMap<Organization, OrganizationBasicInfoDto>();
-            CreateMap<Organization, OrganizationOutputDto>();
-
-            #endregion
-
-            #region Project
-
-            CreateMap<Project, ProjectBasicInfoDto>();
-
-            #endregion
-
-            #region Owner
-
-            CreateMap<Owner, OwnerBasicInfoDto>();
-            CreateMap<Owner, OwnerOutputDto>();
-
-
-            #endregion
         }
     }
 }

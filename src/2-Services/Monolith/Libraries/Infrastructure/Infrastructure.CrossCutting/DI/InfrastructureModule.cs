@@ -3,14 +3,13 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
-using TaskoMask.Services.Monolith.Application.Workspace.Owners.Commands.Handlers;
+using TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Handlers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Owners.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
-using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
@@ -35,7 +34,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(OwnerCommandHandlers),handlerAssemblyMarkerType: typeof(OwnerCommandHandlers));
+            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(BoardCommandHandlers),handlerAssemblyMarkerType: typeof(BoardCommandHandlers));
 
             services.AddMapper(typeof(WorkspaceMappingProfile));
 

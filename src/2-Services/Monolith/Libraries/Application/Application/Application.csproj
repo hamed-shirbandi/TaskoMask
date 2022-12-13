@@ -17,7 +17,6 @@
   <ItemGroup>
     <Folder Include="Workspace\Boards\Commands\Validations\" />
     <Folder Include="Workspace\Cards\Commands\Validations\" />
-    <Folder Include="Workspace\Owners\Commands\Validations\" />
     <Folder Include="Workspace\Tasks\Commands\Validations\" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ using TechTalk.SpecFlow.Assist;
 namespace TaskoMask.Tests.Acceptance.Specs.Steps
 {
     [Binding]
-    public class OwnerRegistrationSteps
+    public class RegiserOwnerSteps
     {
         #region Fields
 
@@ -24,7 +24,7 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
         /// 
         /// </summary>
         /// <param name="stage"> Initialized by TestsBaseHook</param>
-        public OwnerRegistrationSteps(Stage stage)
+        public RegiserOwnerSteps(Stage stage)
         {
             _stage = stage;
         }
@@ -77,8 +77,8 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
 
 
 
-        [Then(@"John have access to his profile")]
-        public void ThenJohnHaveAccessToHisProfile()
+        [Then(@"John has access to his profile")]
+        public void ThenJohnHasAccessToHisProfile()
         {
             var lastOwnerResult = _stage.ActorInTheSpotlight.AsksFor(DataFrom.LastOwner());
             lastOwnerResult.IsSuccess.Should().BeTrue();

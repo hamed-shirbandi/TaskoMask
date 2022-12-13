@@ -1,4 +1,4 @@
-﻿Feature: Owner Registration
+﻿Feature: Regiser Owner
 
 In order to manage the tasks
 As an Owner
@@ -14,7 +14,7 @@ Scenario: Registering online for a new owner account
 		| John        | John@email.com | John123  |
 	And John attempts to login
 	Then John login successfully
-	And John have access to his profile
+	And John has access to his profile
 
 
 @OwnerScenarios

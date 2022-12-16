@@ -14,4 +14,9 @@
 		<ProjectReference Include="..\Tests.Acceptance.Core\Tests.Acceptance.Core.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Questions\" />
+	  <Folder Include="Tasks\" />
+	</ItemGroup>
+
 </Project>

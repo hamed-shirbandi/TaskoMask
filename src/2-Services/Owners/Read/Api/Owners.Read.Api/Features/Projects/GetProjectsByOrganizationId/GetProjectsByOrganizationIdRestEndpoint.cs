@@ -12,9 +12,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
 {
 
     [Authorize("user-read-access")]
-    public class GetProjectsByOrganizationIdRestEndpoint : BaseApiController
+    public class ProjectsController : BaseApiController
     {
-        public GetProjectsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public ProjectsController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -25,7 +25,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
         /// </summary>
         [HttpGet]
         [Route("organizations/{organizationId}/projects")]
-        public async Task<Result<IEnumerable<ProjectBasicInfoDto>>> Get(string organizationId)
+        public async Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetProjectsByOrganizationId(string organizationId)
         {
             return await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdRequest(organizationId));
         }

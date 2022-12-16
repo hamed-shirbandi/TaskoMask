@@ -12,9 +12,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 {
 
     [Authorize("user-read-access")]
-    public class GetOrganizationsByOwnerIdRestEndpoint : BaseApiController
+    public partial class OrganizationsController : BaseApiController
     {
-        public GetOrganizationsByOwnerIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public OrganizationsController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -25,7 +25,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
         /// </summary>
         [HttpGet]
         [Route("organizations")]
-        public async Task<Result<IEnumerable<OrganizationBasicInfoDto>>> Get()
+        public async Task<Result<IEnumerable<OrganizationBasicInfoDto>>> GetOrganizationsByOwnerId()
         {
             return await _inMemoryBus.SendQuery(new GetOrganizationsByOwnerIdRequest(GetCurrentUserId()));
         }

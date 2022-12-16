@@ -10,9 +10,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
 {
 
     [Authorize("user-read-access")]
-    public class GetProjectByIdEndpoint : BaseApiController
+    public partial class ProjectsController : BaseApiController
     {
-        public GetProjectByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public ProjectsController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -23,7 +23,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// </summary>
         [HttpGet]
         [Route("projects/{id}")]
-        public async Task<Result<ProjectDetailsViewModel>> Get(string id)
+        public async Task<Result<ProjectDetailsViewModel>> GetProjectById(string id)
         {
             return await _inMemoryBus.SendQuery(new GetProjectByIdRequest(id));
         }

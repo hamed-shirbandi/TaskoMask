@@ -11,9 +11,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 {
 
     [Authorize("user-read-access")]
-    public class GetOwnerByIdEndpoint : BaseApiController
+    public partial class OwnersController : BaseApiController
     {
-        public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public OwnersController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -23,7 +23,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
         /// </summary>
         [HttpGet]
         [Route("owner")]
-        public async Task<Result<OwnerBasicInfoDto>> Get()
+        public async Task<Result<OwnerBasicInfoDto>> GetOwnerById()
         {
             return await _inMemoryBus.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
         }

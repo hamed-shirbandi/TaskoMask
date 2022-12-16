@@ -11,9 +11,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 {
 
     [Authorize("user-read-access")]
-    public class GetProjectByIdRestEndpoint : BaseApiController
+    public partial class ProjectsController : BaseApiController
     {
-        public GetProjectByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public ProjectsController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -24,7 +24,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
         /// </summary>
         [HttpGet]
         [Route("projects/{id}")]
-        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
+        public async Task<Result<ProjectBasicInfoDto>> GetProjectByIdRest(string id)
         {
             return await _inMemoryBus.SendQuery(new GetProjectByIdRequest(id));
         }

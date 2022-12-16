@@ -28,9 +28,20 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
+        public async Task<Result<OwnerBasicInfoDto>> GetAsync()
+        {
+            var url = $"/owners-read/owner";
+            return await _httpClientService.GetAsync<OwnerBasicInfoDto>(url);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<Result<CommandResult>> RegisterAsync(RegisterOwnerDto input)
         {
-            var url = $"/gw/owner";
+            var url = $"/owners-write/owner";
 
             //because this api is anonymous (see AddHttpServices Method in HostingExtensions class)
             _httpClientService.SetHttpClient(MagicKey.Public_UserPanelApiGateway_Client);
@@ -43,20 +54,9 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OwnerBasicInfoDto>> GetAsync()
-        {
-            var url = $"/gw/owner";
-            return await _httpClientService.GetAsync<OwnerBasicInfoDto>(url);
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public async Task<Result<CommandResult>> UpdateProfileAsync(UpdateOwnerProfileDto input)
         {
-            var url = $"/gw/owner";
+            var url = $"/owners-write/owner";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 

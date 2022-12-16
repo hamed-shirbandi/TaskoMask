@@ -3,7 +3,7 @@
     {
       "SwaggerKey": "Tasks.Read",
       "Priority": 0,
-      "UpstreamPathTemplate": "/gw/{everything}",
+      "UpstreamPathTemplate": "/tasks-read/{everything}",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

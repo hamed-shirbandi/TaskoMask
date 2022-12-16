@@ -3,7 +3,7 @@
     {
       "SwaggerKey": "Boards.Read",
       "Priority": 0,
-      "UpstreamPathTemplate": "/gw/{everything}",
+      "UpstreamPathTemplate": "/boards-read/{everything}",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

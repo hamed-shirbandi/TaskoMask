@@ -3,7 +3,7 @@
     {
       "SwaggerKey": "Monolith",
       "Priority": 0,
-      "UpstreamPathTemplate": "/gw/{everything}",
+      "UpstreamPathTemplate": "/monolith/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

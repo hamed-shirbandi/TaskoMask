@@ -29,7 +29,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<ProjectBasicInfoDto>> GetAsync(string id)
         {
-            var url = $"/gw/projects/{id}";
+            var url = $"/owners-read/projects/{id}";
             return await _httpClientService.GetAsync<ProjectBasicInfoDto>(url);
         }
 
@@ -41,7 +41,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id)
         {
-            var url = $"/gw/aggregator/projects/{id}";
+            var url = $"/owners-read/aggregator/projects/{id}";
             return await _httpClientService.GetAsync<ProjectDetailsViewModel>(url);
         }
 
@@ -52,7 +52,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItemsAsync(string organizationId)
         {
-            var url = $"/gw/organizations/{organizationId}/projects";
+            var url = $"/owners-read/organizations/{organizationId}/projects";
             var projectsResult = await _httpClientService.GetAsync<IEnumerable<ProjectBasicInfoDto>>(url);
             if (!projectsResult.IsSuccess)
                 return Result.Failure<IEnumerable<SelectListItem>>(projectsResult.Errors, projectsResult.Message);
@@ -68,7 +68,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> AddAsync(AddProjectDto input)
         {
-            var url = $"/gw/projects";
+            var url = $"/owners-write/projects";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -79,7 +79,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateProjectDto input)
         {
-            var url = $"/gw/projects/{id}";
+            var url = $"/owners-write/projects/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
@@ -90,7 +90,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
-            var url = $"/gw/projects/{id}";
+            var url = $"/owners-write/projects/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 

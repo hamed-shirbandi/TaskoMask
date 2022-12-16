@@ -3,7 +3,7 @@
     {
       "SwaggerKey": "Owners.Write",
       "Priority": 1,
-      "UpstreamPathTemplate": "/gw/owner",
+      "UpstreamPathTemplate": "/owners-write/owner",
       "UpstreamHttpMethod": [ "POST" ],
       "DownstreamPathTemplate": "/owner",
       "DownstreamScheme": "https",
@@ -17,7 +17,7 @@
     {
       "SwaggerKey": "Owners.Write",
       "Priority": 0,
-      "UpstreamPathTemplate": "/gw/{everything}",
+      "UpstreamPathTemplate": "/owners-write/{everything}",
       "UpstreamHttpMethod": [ "PUT", "DELETE" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",

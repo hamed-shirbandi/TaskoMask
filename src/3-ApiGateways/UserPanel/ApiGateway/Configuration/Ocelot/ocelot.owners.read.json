@@ -3,7 +3,7 @@
     {
       "SwaggerKey": "Owners.Read",
       "Priority": 0,
-      "UpstreamPathTemplate": "/gw/{everything}",
+      "UpstreamPathTemplate": "/owners-read/{everything}",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
@@ -17,7 +17,6 @@
         "AuthenticationProviderKey": "IdentityApiKey",
         "AllowedScopes": [ "owners.read", "profile", "openid" ]
       }
-
     }
   ]
 }

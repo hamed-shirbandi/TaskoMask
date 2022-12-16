@@ -5,7 +5,6 @@ As an Owner
 John wants to register an account
 
 @OwnerScenarios
-@API-Level
 @UI-Level
 Scenario: Registering online for a new owner account
 	Given John is not a registered member
@@ -18,7 +17,6 @@ Scenario: Registering online for a new owner account
 
 
 @OwnerScenarios
-@API-Level
 @UI-Level
 Scenario: Preventing registration with duplicate email
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 {
@@ -22,6 +23,10 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             services.AddRazorPages();
 
             services.AddAuthentication();
+
+            services.AddHttpContextAccessor();
+
+            services.AddAuthenticatedUserService();
         }
 
 

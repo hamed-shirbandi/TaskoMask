@@ -15,6 +15,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// </summary>
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
+
             builder.AddCustomSerilog();
 
             builder.Services.AddRazorPagesPreConfigured();
@@ -36,9 +37,9 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 
             app.UseSerilogRequestLogging();
 
-            app.UseRazorPagesPreConfigured(app.Environment);
-
             app.UseIdentityServer();
+
+            app.UseRazorPagesPreConfigured(app.Environment);
 
             app.Services.InitialDatabasesAndSeedEssentialData();
 

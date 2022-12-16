@@ -8,7 +8,7 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
     {
         private static IConfiguration _configuration;
         public static string TestLevel { get; private set; }
-        public static string UserPanelApiGatewayBaseUrl { get; private set; }
+        public static string ApiGatewayBaseUrl { get; private set; }
         public static string WebsiteBaseUrl { get; private set; }
         public static Assembly TestLevelAssembly { get; private set; }
 
@@ -17,7 +17,7 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         {
             _configuration = BuildConfiguration();
             TestLevel = _configuration["TestLevelToExecute"];
-            UserPanelApiGatewayBaseUrl = _configuration["Url:UserPanelApiGateway"];
+            ApiGatewayBaseUrl = _configuration["Url:ApiGateway"];
             WebsiteBaseUrl = _configuration["Url:Website"];
             TestLevelAssembly = GetTestLevelAssembly();
         }

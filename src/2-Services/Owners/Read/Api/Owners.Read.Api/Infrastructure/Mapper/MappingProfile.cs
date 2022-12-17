@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Google.Protobuf.WellKnownTypes;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
@@ -12,16 +13,18 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<BuildingBlocks.Domain.ValueObjects.CreationTime, CreationTimeDto>()
-                .ForMember(dest => dest.CreateDateTimeString, opt =>
-                     opt.MapFrom(src => src.CreateDateTime.ToLongDateString()))
-                .ForMember(dest => dest.ModifiedDateTimeString, opt =>
-                     opt.MapFrom(src => src.ModifiedDateTime.ToLongDateString()));
+            CreateMap<CreationTimeDto, CreationTime>()
+             .ForMember(dest => dest.CreateDateTime, opt =>
+                  opt.MapFrom(src => src.CreateDateTime.ToTimestamp()))
+            .ForMember(dest => dest.ModifiedDateTime, opt =>
+                  opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
 
             CreateMap<Owner, OwnerBasicInfoDto>();
 
             CreateMap<Organization, OrganizationBasicInfoDto>();
-            CreateMap<OrganizationBasicInfoDto, OrganizationBasicInfoGrpcResponse>();
+            CreateMap<OrganizationBasicInfoDto, OrganizationBasicInfoGrpcResponse>()
+            .ForMember(dest => dest.Description, opt =>
+                  opt.MapFrom(src => src.Description ?? string.Empty));
 
             CreateMap<Project, ProjectBasicInfoDto>();
             CreateMap<ProjectBasicInfoDto, ProjectBasicInfoGrpcResponse>();

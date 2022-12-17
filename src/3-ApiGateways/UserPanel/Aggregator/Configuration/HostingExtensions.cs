@@ -1,7 +1,7 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
-using TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper;
+using TaskoMask.ApiGateways.UserPanel.Aggregator.DI;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
 {
@@ -17,7 +17,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
 
             builder.AddCustomSerilog();
 
-            builder.Services.AddMapper();
+            builder.Services.AddModules(builder.Configuration);
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 

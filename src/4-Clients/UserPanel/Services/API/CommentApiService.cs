@@ -27,7 +27,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommentBasicInfoDto>> GetAsync(string id)
         {
-            var url = $"/tasks-read/comments/{id}";
+            var url = $"/monolith/comments/{id}";
             return await _httpClientService.GetAsync<CommentBasicInfoDto>(url);
         }
 
@@ -38,7 +38,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> AddAsync(AddCommentDto input)
         {
-            var url = $"/tasks-write/comments";
+            var url = $"/monolith/comments";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -49,7 +49,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(string id,UpdateCommentDto input)
         {
-            var url = $"/tasks-write/comments/{id}";
+            var url = $"/monolith/comments/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
@@ -59,7 +59,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
-            var url = $"/tasks-write/comments/{id}";
+            var url = $"/monolith/comments/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 

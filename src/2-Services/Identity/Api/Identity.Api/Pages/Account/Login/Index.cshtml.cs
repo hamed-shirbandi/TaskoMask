@@ -1,3 +1,4 @@
+using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -58,7 +59,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
             if (loginRespone.IsSuccess)
                 return RedirectToReturnUrl(Input.ReturnUrl);
 
-            return await LoginFailedAsync(loginRespone.Message);
+            return await LoginFailedAsync(loginRespone.Errors);
         }
 
 
@@ -73,12 +74,12 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
         /// <summary>
         /// 
         /// </summary>
-        private async Task<IActionResult> LoginFailedAsync(string errorMessage = "")
+        private async Task<IActionResult> LoginFailedAsync(IEnumerable<string> errors=null)
         {
             await BuildModelAsync(Input.ReturnUrl);
 
-            if (!string.IsNullOrEmpty(errorMessage))
-                ModelState.AddModelError(string.Empty, errorMessage);
+            foreach (var error in errors?? Enumerable.Empty<string>())
+                ModelState.AddModelError(string.Empty, error);
 
             return Page();
         }

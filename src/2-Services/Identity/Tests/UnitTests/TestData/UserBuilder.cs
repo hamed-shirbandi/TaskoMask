@@ -1,9 +1,11 @@
-﻿using TaskoMask.Services.Identity.Domain.Entities;
+﻿using System;
+using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.UnitTests.TestData
 {
     internal class UserBuilder
     {
+        public string Id { get; private set; }
         public string Email { get; private set; }
         public string UserName { get; private set; }
         public bool IsActive { get; private set; }
@@ -22,6 +24,13 @@ namespace TaskoMask.Services.Identity.UnitTests.TestData
             return new UserBuilder();
         }
 
+
+
+        public UserBuilder WithId(string id)
+        {
+            Id = id;
+            return this;
+        }
 
 
 
@@ -59,7 +68,7 @@ namespace TaskoMask.Services.Identity.UnitTests.TestData
 
         public User Build()
         {
-            return new User
+            return new User(Id)
             {
                 UserName = UserName,
                 Email = Email,

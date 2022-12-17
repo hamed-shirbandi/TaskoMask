@@ -22,7 +22,7 @@ namespace TaskoMask.Services.Identity.Api.Consumers
 
         public override async Task ConsumeMessage(ConsumeContext<OwnerRegistered> context)
         {
-            var registerUser = new RegisterUserRequest(context.Message.Email, context.Message.Password);
+            var registerUser = new RegisterUserRequest(context.Message.Id, context.Message.Email, context.Message.Password);
             var result = await _inMemoryBus.SendCommand(registerUser);
             if (!result.IsSuccess)
                 throw new ConsumerFaultException(result.Message); // Cause to publish Fault<OwnerRegistered> message

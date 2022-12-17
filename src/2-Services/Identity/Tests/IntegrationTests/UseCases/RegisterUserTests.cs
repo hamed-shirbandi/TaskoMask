@@ -32,8 +32,9 @@ namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
         public async Task User_Is_Registered()
         {
             //Arrange
+            var registeredOwnerId = Guid.NewGuid().ToString();
             var registerUserUseCase = new RegisterUserUseCase(_fixture.UserManager, _fixture.MessageBus, _fixture.InMemoryBus, _fixture.NotificationHandler);
-            var request = new RegisterUserRequest("test@taskomask.ir", "TestPass");
+            var request = new RegisterUserRequest(registeredOwnerId,"test@taskomask.ir", "TestPass");
 
             //Act
             var result = await registerUserUseCase.Handle(request, CancellationToken.None);

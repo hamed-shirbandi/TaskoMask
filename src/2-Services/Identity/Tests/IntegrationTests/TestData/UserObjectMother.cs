@@ -6,7 +6,7 @@ namespace TaskoMask.Services.Identity.IntegrationTests.TestData
     {
         public static User GetActiveUserWithEmail(string email)
         {
-            return new User
+            return new User(Guid.NewGuid().ToString())
             {
                 UserName = email,
                 Email = email,

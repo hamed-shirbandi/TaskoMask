@@ -4,9 +4,9 @@ namespace TaskoMask.Services.Identity.Domain.Entities
 {
    public class User : IdentityUser<string>
     {
-        public User()
+        public User(string id)
         {
-            Id= Guid.NewGuid().ToString();
+            Id= id;
         }
 
         public bool IsActive { get; set; }

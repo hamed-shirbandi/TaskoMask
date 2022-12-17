@@ -43,7 +43,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
             if (existUser != null)
                 throw new ApplicationException(ApplicationMessages.UserName_Already_Exist);
 
-            var newUser = new User
+            var newUser = new User(request.OwnerId)
             {
                 Email = request.Email,
                 UserName = request.Email,
@@ -57,13 +57,11 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
                 throw new ApplicationException(ContractsMessages.Create_Failed);
             }
 
-            var registeredUser = await _userManager.FindByNameAsync(request.Email);
-
-            await PublishDomainEventsAsync(new UserRegisteredEvent(registeredUser.Id, registeredUser.Email));
+            await PublishDomainEventsAsync(new UserRegisteredEvent(newUser.Id, newUser.Email));
            
-            await PublishIntegrationEventAsync(new UserRegistered(registeredUser.Email));
+            await PublishIntegrationEventAsync(new UserRegistered(newUser.Email));
             
-            return CommandResult.Create(ContractsMessages.Create_Success, registeredUser.Id);
+            return CommandResult.Create(ContractsMessages.Create_Success, newUser.Id);
         }
 
 

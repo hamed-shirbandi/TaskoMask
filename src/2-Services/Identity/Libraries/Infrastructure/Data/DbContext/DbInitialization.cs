@@ -64,7 +64,7 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
 
             if (await userManager.FindByEmailAsync(superUserEmail) == null)
             {
-                var superUser = new User
+                var superUser = new User(Guid.NewGuid().ToString())
                 {
                     UserName = superUserName,
                     Email = superUserEmail,

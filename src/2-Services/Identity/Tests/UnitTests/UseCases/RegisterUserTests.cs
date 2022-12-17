@@ -38,7 +38,8 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
         public async Task User_Is_Registered()
         {
             //Arrange
-            var registerUserRequest = new RegisterUserRequest("test@taskomask.ir", "TestPass");
+            var registeredOwnerId = System.Guid.NewGuid().ToString();
+            var registerUserRequest = new RegisterUserRequest(registeredOwnerId, "test@taskomask.ir", "TestPass");
 
             //Act
             var result = await _regiserUserUseCase.Handle(registerUserRequest, CancellationToken.None);
@@ -58,8 +59,10 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
         public async Task User_Is_Not_Registered_When_Email_Is_Duplicated()
         {
             //Arrange
+            var registeredOwnerId = System.Guid.NewGuid().ToString();
             var expectedMessage = ApplicationMessages.UserName_Already_Exist;
             var userBuilder = UserBuilder.Init()
+                .WithId(registeredOwnerId)
                 .WithUserName("test@taskomask.ir")
                 .WithEmail("test@taskomask.ir")
                 .WithPassword("TestPass")
@@ -67,7 +70,7 @@ namespace TaskoMask.Services.Identity.UnitTests.UseCases
 
             await TestUserManager.CreateAsync(userBuilder.Build(), userBuilder.Password);
 
-            var registerUserRequest = new RegisterUserRequest(userBuilder.Email, "TestPass");
+            var registerUserRequest = new RegisterUserRequest(registeredOwnerId,userBuilder.Email, "TestPass");
 
             //Act
             System.Func<Task> act = async () => await _regiserUserUseCase.Handle(registerUserRequest, CancellationToken.None);

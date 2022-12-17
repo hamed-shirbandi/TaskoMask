@@ -40,7 +40,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListAsync()
         {
-            var url = $"/owners-read/aggregator/organizations";
+            var url = $"/aggregator/organizations";
             return await _httpClientService.GetAsync<IEnumerable<OrganizationDetailsViewModel>>(url);
         }
 

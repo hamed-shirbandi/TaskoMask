@@ -41,7 +41,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id)
         {
-            var url = $"/owners-read/aggregator/projects/{id}";
+            var url = $"/aggregator/projects/{id}";
             return await _httpClientService.GetAsync<ProjectDetailsViewModel>(url);
         }
 

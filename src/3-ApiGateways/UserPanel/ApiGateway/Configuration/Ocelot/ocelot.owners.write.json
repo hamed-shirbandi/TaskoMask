@@ -18,7 +18,7 @@
       "SwaggerKey": "Owners.Write",
       "Priority": 0,
       "UpstreamPathTemplate": "/owners-write/{everything}",
-      "UpstreamHttpMethod": [ "PUT", "DELETE" ],
+      "UpstreamHttpMethod": [ "POST", "PUT", "DELETE" ],
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [

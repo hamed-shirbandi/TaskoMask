@@ -47,6 +47,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
             {
                 Email = request.Email,
                 UserName = request.Email,
+                IsActive=true
             };
 
             var result = await _userManager.CreateAsync(newUser, request.Password);

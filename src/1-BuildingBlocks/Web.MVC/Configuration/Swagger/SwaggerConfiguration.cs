@@ -2,8 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
 {
@@ -28,6 +26,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
             {
+                c.EnableAnnotations();
+
                 //Hide some unwanted methods from documentation
                 c.DocumentFilter<SwaggerHideInDocsFilter>();
                 //swagger doc info

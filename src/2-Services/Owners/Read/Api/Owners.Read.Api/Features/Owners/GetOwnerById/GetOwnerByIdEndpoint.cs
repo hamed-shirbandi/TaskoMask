@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
@@ -11,9 +12,10 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 {
 
     [Authorize("user-read-access")]
-    public partial class OwnersController : BaseApiController
+    [Tags("Owners")]
+    public class GetOwnerByIdEndpoint : BaseApiController
     {
-        public OwnersController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -23,7 +25,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
         /// </summary>
         [HttpGet]
         [Route("owner")]
-        public async Task<Result<OwnerBasicInfoDto>> GetOwnerById()
+        public async Task<Result<OwnerBasicInfoDto>> Get()
         {
             return await _inMemoryBus.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
         }

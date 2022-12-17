@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,9 +13,10 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
 {
 
     [Authorize("user-read-access")]
-    public class ProjectsController : BaseApiController
+    [Tags("Projects")]
+    public class GetProjectsByOrganizationIdRestEndpoint : BaseApiController
     {
-        public ProjectsController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public GetProjectsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -25,7 +27,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
         /// </summary>
         [HttpGet]
         [Route("organizations/{organizationId}/projects")]
-        public async Task<Result<IEnumerable<ProjectBasicInfoDto>>> GetProjectsByOrganizationId(string organizationId)
+        public async Task<Result<IEnumerable<ProjectBasicInfoDto>>> Get(string organizationId)
         {
             return await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdRequest(organizationId));
         }

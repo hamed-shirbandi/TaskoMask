@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
@@ -11,9 +12,10 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 {
 
     [Authorize("user-read-access")]
-    public partial class ProjectsController : BaseApiController
+    [Tags("Projects")]
+    public class GetProjectByIdRestEndpoint : BaseApiController
     {
-        public ProjectsController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public GetProjectByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 
@@ -24,7 +26,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
         /// </summary>
         [HttpGet]
         [Route("projects/{id}")]
-        public async Task<Result<ProjectBasicInfoDto>> GetProjectByIdRest(string id)
+        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
         {
             return await _inMemoryBus.SendQuery(new GetProjectByIdRequest(id));
         }

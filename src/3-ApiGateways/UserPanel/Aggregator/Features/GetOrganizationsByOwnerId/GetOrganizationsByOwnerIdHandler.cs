@@ -73,10 +73,10 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
             {
                 Organization = MapToOrganizationDto(organizationGrpcResponse),
                 Projects = await GetProjectsAndMapToDto(organizationGrpcResponse.Id),
-
                 //TODO get other details here
                 //Boards = ... ,
                 //Reports = ... ,
+                Reports = new OrganizationReportDto(),
             };
         }
 

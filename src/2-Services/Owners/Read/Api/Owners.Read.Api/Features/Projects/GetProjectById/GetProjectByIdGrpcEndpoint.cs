@@ -20,7 +20,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
         public override async Task<ProjectBasicInfoGrpcResponse> Handle(GetProjectByIdGrpcRequest request, ServerCallContext context)
         {
             var project = await _inMemoryBus.SendQuery(new GetProjectByIdRequest(request.Id));
-            return _mapper.Map<ProjectBasicInfoGrpcResponse>(project);
+            return _mapper.Map<ProjectBasicInfoGrpcResponse>(project.Value);
         }
     }
 

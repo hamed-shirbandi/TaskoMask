@@ -3,8 +3,8 @@
     public static class MagicKey
     {
         //For Authorized APIs
-        public const string Protected_UserPanelApiGateway_Client = "UserPanelApiGateway-Protected";
+        public const string Protected_ApiGateway_Client = "ApiGateway-Protected";
         ////For Anonymous APIs
-        public const string Public_UserPanelApiGateway_Client = "UserPanelApiGateway-Public";
+        public const string Public_ApiGateway_Client = "ApiGateway-Public";
     }
 }

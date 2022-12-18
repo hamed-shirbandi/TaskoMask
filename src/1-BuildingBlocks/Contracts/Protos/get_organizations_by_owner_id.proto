@@ -14,7 +14,7 @@ message GetOrganizationsByOwnerIdGrpcRequest {
 
 message OrganizationBasicInfoGrpcResponse {
 
-	CreationTime CreationTime=1;
+	CreationTime creationTime=1;
 	string id = 2;
 	string name = 3;
 	string description = 4;

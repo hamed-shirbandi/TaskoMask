@@ -44,16 +44,16 @@ namespace TaskoMask.Clients.UserPanel.Configuration
             services.AddScoped<IdentityServerAuthorizationHandler>();
 
             //For Authorized APIs
-            services.AddHttpClient(name: MagicKey.Protected_UserPanelApiGateway_Client, configureClient: client =>
+            services.AddHttpClient(name: MagicKey.Protected_ApiGateway_Client, configureClient: client =>
             {
-                client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));
+                client.BaseAddress = new Uri(configuration.GetValue<string>("Url:ApiGateway"));
                 client.Timeout = TimeSpan.FromSeconds(50);
             }).AddHttpMessageHandler<IdentityServerAuthorizationHandler>();
 
             //For Anonymous APIs
-            services.AddHttpClient(name: MagicKey.Public_UserPanelApiGateway_Client, configureClient: client =>
+            services.AddHttpClient(name: MagicKey.Public_ApiGateway_Client, configureClient: client =>
             {
-                client.BaseAddress = new Uri(configuration.GetValue<string>("Url:UserPanelApiGateway"));
+                client.BaseAddress = new Uri(configuration.GetValue<string>("Url:ApiGateway"));
                 client.Timeout = TimeSpan.FromSeconds(50);
             });
 

@@ -6,19 +6,19 @@ import "google/protobuf/timestamp.proto";
 
 
 message CreationTime{
-	google.protobuf.Timestamp CreateDateTime=1;
-	string CreateDateTimeString=2;
-	google.protobuf.Timestamp ModifiedDateTime=3;
-	string ModifiedDateTimeString=4;
-	int32 CreateDay=5;
-	int32 CreateMonth=6;
-	int32 CreateYear=7;
+	google.protobuf.Timestamp createDateTime=1;
+	string createDateTimeString=2;
+	google.protobuf.Timestamp modifiedDateTime=3;
+	string modifiedDateTimeString=4;
+	int32 createDay=5;
+	int32 createMonth=6;
+	int32 createYear=7;
 }
 
 
 message ProjectBasicInfoGrpcResponse {
 
-	CreationTime CreationTime=1;
+	CreationTime creationTime=1;
 	string id = 2;
 	string name = 3;
 	string description = 4;

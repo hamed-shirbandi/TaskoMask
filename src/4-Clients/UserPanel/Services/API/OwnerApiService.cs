@@ -44,7 +44,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             var url = $"/owners-write/owner";
 
             //because this api is anonymous (see AddHttpServices Method in HostingExtensions class)
-            _httpClientService.SetHttpClient(MagicKey.Public_UserPanelApiGateway_Client);
+            _httpClientService.SetHttpClient(MagicKey.Public_ApiGateway_Client);
 
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }

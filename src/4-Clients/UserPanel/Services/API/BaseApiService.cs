@@ -9,7 +9,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         protected readonly IHttpClientService _httpClientService;
 
 
-        public BaseApiService(IHttpClientService httpClientService,string clientName= MagicKey.Protected_UserPanelApiGateway_Client)
+        public BaseApiService(IHttpClientService httpClientService,string clientName= MagicKey.Protected_ApiGateway_Client)
         {
             _httpClientService = httpClientService.WithNamedClient(clientName);
         }

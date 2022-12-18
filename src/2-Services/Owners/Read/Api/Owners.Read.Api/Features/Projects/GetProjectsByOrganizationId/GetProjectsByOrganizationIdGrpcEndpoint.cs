@@ -19,9 +19,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
 
         public override async Task Handle(GetProjectsByOrganizationIdGrpcRequest request, IServerStreamWriter<ProjectBasicInfoGrpcResponse> responseStream, ServerCallContext context)
         {
-            var organizations = await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdRequest(request.OrganizationId));
-            foreach (var organization in organizations.Value)
-                await responseStream.WriteAsync(_mapper.Map<ProjectBasicInfoGrpcResponse>(organization));
+            var projects = await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdRequest(request.OrganizationId));
+            foreach (var project in projects.Value)
+                await responseStream.WriteAsync(_mapper.Map<ProjectBasicInfoGrpcResponse>(project));
         }
 
     }

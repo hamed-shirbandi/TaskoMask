@@ -27,7 +27,9 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
                   opt.MapFrom(src => src.Description ?? string.Empty));
 
             CreateMap<Project, ProjectBasicInfoDto>();
-            CreateMap<ProjectBasicInfoDto, ProjectBasicInfoGrpcResponse>();
+            CreateMap<ProjectBasicInfoDto, ProjectBasicInfoGrpcResponse>()
+            .ForMember(dest => dest.Description, opt =>
+                  opt.MapFrom(src => src.Description ?? string.Empty));
         }
     }
 }

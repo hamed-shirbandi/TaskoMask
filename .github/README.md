@@ -46,6 +46,7 @@ Try it online:
     </details>
   * ### Clean Architecture
   * ### Vertical Slice Architecture
+  * ### Feature Folder Structure
   * ### Monolithic Architecture
     <details>
       <summary>click for details</summary>

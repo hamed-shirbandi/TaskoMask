@@ -33,6 +33,13 @@ Try it online:
   - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
   - [Run with Docker Compose](https://github.com/hamed-shirbandi/TaskoMask/wiki/Development-Setup#how-to-run-with-docker-compose)
 
+# Plan and Progress
+All information presented after this section are the final goal and our big picture. Maybe at this time some of them are not ready yet. To see the progress and the timing for each task, please take a look at the following items:
+
+- [Milestones Page](https://github.com/hamed-shirbandi/TaskoMask/milestones)
+- [Current Sprint Board](https://github.com/users/hamed-shirbandi/projects/2/views/17)
+- [All Tasks Board](https://github.com/users/hamed-shirbandi/projects/2)
+
 # Design
 #### 🔴Work is in progress
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture-v2.jpg)

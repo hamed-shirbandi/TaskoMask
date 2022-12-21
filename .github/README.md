@@ -160,7 +160,7 @@ Try it online:
       -	MongoDB
       -	Redis
       - [Ocelot](https://ocelot.readthedocs.io/) : .NET core API Gateway
-      - [DuendeSoftware IdentityServer](https://xunit.net/) : OpenID Connect and OAuth 2.x framework for ASP.NET Core
+      - [DuendeSoftware IdentityServer](https://docs.duendesoftware.com/identityserver/v6) : OpenID Connect and OAuth 2.x framework for ASP.NET Core
       - [xUnit](https://xunit.net/) : testing framework
       -	[FluenAssertion](https://fluentassertions.com/) : write fluent assertions
       - [NSubstitute](https://nsubstitute.github.io/) : to make test double (Mock, stub, fake, spy)

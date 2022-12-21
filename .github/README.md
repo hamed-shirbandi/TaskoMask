@@ -168,6 +168,7 @@ All information presented after this section are the final goal and our big pict
       -	Redis
       - [Ocelot](https://ocelot.readthedocs.io/) : .NET core API Gateway
       - [DuendeSoftware IdentityServer](https://docs.duendesoftware.com/identityserver/v6) : OpenID Connect and OAuth 2.x framework for ASP.NET Core
+      - [MassTransit](https://masstransit-project.com/) : a framework on top of message transports such as RabbitMQ 
       - [xUnit](https://xunit.net/) : testing framework
       -	[FluenAssertion](https://fluentassertions.com/) : write fluent assertions
       - [NSubstitute](https://nsubstitute.github.io/) : to make test double (Mock, stub, fake, spy)

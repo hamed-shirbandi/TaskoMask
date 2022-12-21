@@ -1,2 +1,2 @@
-# Work In Progress!
-We are extracting owner-write-service as a micro service from Monolith service
+# Owner Write Service
+This service is extracted from Monolith service. To browse the code before extracting it you can go to [this link](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)

@@ -13,9 +13,9 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
 
     [Authorize("user-read-access")]
     [Tags("Boards")]
-    public class GetBoardByIdEndpoint : BaseApiController
+    public class GetBoardByIdRestEndpoint : BaseApiController
     {
-        public GetBoardByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public GetBoardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 

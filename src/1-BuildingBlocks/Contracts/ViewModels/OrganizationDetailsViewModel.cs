@@ -12,11 +12,11 @@ namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
         public OrganizationDetailsViewModel()
         {
             Projects = new List<ProjectBasicInfoDto>();
-            Boards = new List<BoardBasicInfoDto>();
+            Boards = new List<GetBoardDto>();
         }
         public OrganizationBasicInfoDto Organization { get; set; }
         public OrganizationReportDto Reports { get; set; }
         public IEnumerable<ProjectBasicInfoDto> Projects { get; set; }
-        public IEnumerable<BoardBasicInfoDto> Boards { get; set; }
+        public IEnumerable<GetBoardDto> Boards { get; set; }
     }
 }

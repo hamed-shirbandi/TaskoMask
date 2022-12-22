@@ -12,7 +12,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
         Task<Result<CommandResult>> AddAsync(AddBoardDto input);
         Task<Result<CommandResult>> UpdateAsync(UpdateBoardDto input);
         Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id);
-        Task<Result<BoardOutputDto>> GetByIdAsync(string id);
+        Task<Result<GetBoardDto>> GetByIdAsync(string id);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);
     }

@@ -61,7 +61,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<BoardOutputDto>> GetByIdAsync(string id)
+        public async Task<Result<GetBoardDto>> GetByIdAsync(string id)
         {
             return await _inMemoryBus.SendQuery(new GetBoardByIdQuery(id));
 

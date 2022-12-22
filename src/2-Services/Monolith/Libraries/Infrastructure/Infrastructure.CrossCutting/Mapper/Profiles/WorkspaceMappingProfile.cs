@@ -53,8 +53,8 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
 
             #region Board
 
-            CreateMap<Board, BoardBasicInfoDto>();
-            CreateMap<Board, BoardOutputDto>();
+            CreateMap<Board, GetBoardDto>();
+            CreateMap<Board, GetBoardDto>();
 
             #endregion
         }

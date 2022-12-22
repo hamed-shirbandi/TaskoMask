@@ -8,7 +8,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<Board, BoardOutputDto>();
+            CreateMap<Board, GetBoardDto>();
         }
     }
 }

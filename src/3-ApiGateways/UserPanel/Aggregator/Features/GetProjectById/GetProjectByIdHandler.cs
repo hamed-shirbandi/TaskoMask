@@ -67,9 +67,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// <summary>
         /// 
         /// </summary>
-        private async Task<IEnumerable<BoardBasicInfoDto>> GetBoardsAndMapToDto(string projectId)
+        private async Task<IEnumerable<GetBoardDto>> GetBoardsAndMapToDto(string projectId)
         {
-            return new List<BoardBasicInfoDto>();
+            return new List<GetBoardDto>();
 
             //TODO implement GetBoardsByProjectIdGrpc service and then uncomment the bellow codes
 

@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Application.Queries;
 namespace TaskoMask.Services.Monolith.Application.Queries.Models.Boards
 {
    
-    public class GetBoardByIdQuery : BaseQuery<BoardOutputDto>
+    public class GetBoardByIdQuery : BaseQuery<GetBoardDto>
     {
         public GetBoardByIdQuery(string id)
         {

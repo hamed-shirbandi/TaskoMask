@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 
 namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
 {
-    public class GetBoardByIdRequest : BaseQuery<BoardOutputDto>
+    public class GetBoardByIdRequest : BaseQuery<GetBoardDto>
     {
         public GetBoardByIdRequest(string id)
         {

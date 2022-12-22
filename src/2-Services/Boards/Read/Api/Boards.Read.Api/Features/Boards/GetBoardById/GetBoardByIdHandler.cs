@@ -12,7 +12,7 @@ using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 
 namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
 {
-    public class GetBoardByIdHandler : BaseQueryHandler, IRequestHandler<GetBoardByIdRequest, BoardOutputDto>
+    public class GetBoardByIdHandler : BaseQueryHandler, IRequestHandler<GetBoardByIdRequest, GetBoardDto>
     {
         #region Fields
 
@@ -36,14 +36,14 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
         /// <summary>
         /// 
         /// </summary>
-        public async Task<BoardOutputDto> Handle(GetBoardByIdRequest request, CancellationToken cancellationToken)
+        public async Task<GetBoardDto> Handle(GetBoardByIdRequest request, CancellationToken cancellationToken)
         {
             var board = await _boardReadDbContext.Boards.Find(e => e.Id == request.Id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
             if (board == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
-            return _mapper.Map<BoardOutputDto>(board);
+            return _mapper.Map<GetBoardDto>(board);
         }
 
 

@@ -4,6 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
 using TaskoMask.Services.Boards.Read.Api.Domain;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 using Google.Protobuf.WellKnownTypes;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 
 namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
 {
@@ -23,6 +24,9 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
             CreateMap<GetBoardDto, GetBoardByIdGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
+
+
+            CreateMap<CardBasicInfoDto, GetCardByIdGrpcResponse>();
         }
     }
 }

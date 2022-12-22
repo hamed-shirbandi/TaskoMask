@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package TaskoMask.BuildingBlocks.Contracts.Protos;
+
+import "base.proto";
+
+service GetCardsByBoardIdGrpcService {
+  rpc Handle (GetCardsByBoardIdGrpcRequest) returns (stream GetCardsByBoardIdGrpcResponse);
+}
+
+
+message GetCardsByBoardIdGrpcRequest {
+  string boardId = 1;
+}
+
+message GetCardsByBoardIdGrpcResponse {
+
+	CreationTime creationTime=1;
+	string id = 2;
+	string name = 3;
+	int32 type = 4;
+	string boardId = 5;
+	string projectId = 6;
+	string organizationId = 7;
+	string ownerId = 8;
+}

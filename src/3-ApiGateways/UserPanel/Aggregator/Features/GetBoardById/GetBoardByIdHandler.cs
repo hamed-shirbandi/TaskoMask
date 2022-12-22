@@ -55,8 +55,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
         /// </summary>
         private GetBoardDto GetBoardAndMapToDto(string boardId)
         {
-            //TODO get the board from board read service by an RPC call
-            return new GetBoardDto();
+            var boardGrpcResponse = _getBoardByIdGrpcServiceClient.Handle(new GetBoardByIdGrpcRequest { Id = boardId });
+
+            return _mapper.Map<GetBoardDto>(boardGrpcResponse);
         }
 
 

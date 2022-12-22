@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Boards.Read.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Boards.Read.Api</RootNamespace>
 		<UserSecretsId>ad97a501-340f-470b-bd59-307501d3568c</UserSecretsId>

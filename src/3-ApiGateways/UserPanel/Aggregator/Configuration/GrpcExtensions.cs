@@ -1,6 +1,7 @@
 ﻿using static TaskoMask.BuildingBlocks.Contracts.Protos.GetOrganizationsByOwnerIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectByIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectsByOrganizationIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardByIdGrpcService;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
 {
@@ -24,10 +25,14 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
                 options.Address = new Uri(configuration["Url:Owner-Read-Service"]);
             });
 
-
             services.AddGrpcClient<GetProjectByIdGrpcServiceClient>(options =>
             {
                 options.Address = new Uri(configuration["Url:Owner-Read-Service"]);
+            });
+
+            services.AddGrpcClient<GetBoardByIdGrpcServiceClient>(options =>
+            {
+                options.Address = new Uri(configuration["Url:Board-Read-Service"]);
             });
         }
 

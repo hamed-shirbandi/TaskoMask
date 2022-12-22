@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
+using TaskoMask.Services.Boards.Read.Api.Domain;
 
 namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
 {
@@ -6,9 +8,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
     {
         public MappingProfile()
         {
-
-            //  CreateMap<Board, BoardBasicInfoDto>();
-
+            CreateMap<Board, BoardOutputDto>();
         }
     }
 }

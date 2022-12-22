@@ -36,8 +36,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
 
             #region Activity
 
-            CreateMap<Activity, ActivityBaseDto>();
-            CreateMap<Activity, ActivityBasicInfoDto>();
+            CreateMap<Activity, GetTaskActivityDto>();
 
 
             #endregion

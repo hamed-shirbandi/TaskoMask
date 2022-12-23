@@ -8,6 +8,6 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Services
 {
     public interface IActivityService : IApplicationService
     {
-        Task<Result<IEnumerable<ActivityBasicInfoDto>>> GetListByTaskIdAsync(string taskId);
+        Task<Result<IEnumerable<GetTaskActivityDto>>> GetListByTaskIdAsync(string taskId);
     }
 }

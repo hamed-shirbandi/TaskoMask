@@ -18,9 +18,9 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handlers
 {
     public class BoardQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetBoardByIdQuery, BoardOutputDto>,
-        IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<BoardBasicInfoDto>>,
-        IRequestHandler<GetBoardsByProjectsIdQuery, IEnumerable<BoardBasicInfoDto>>,
+        IRequestHandler<GetBoardByIdQuery, GetBoardDto>,
+        IRequestHandler<GetBoardsByProjectIdQuery, IEnumerable<GetBoardDto>>,
+        IRequestHandler<GetBoardsByProjectsIdQuery, IEnumerable<GetBoardDto>>,
         IRequestHandler<GetBoardsCountQuery, long>
         
 
@@ -51,7 +51,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
         /// <summary>
         /// 
         /// </summary>
-        public async Task<BoardOutputDto> Handle(GetBoardByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetBoardDto> Handle(GetBoardByIdQuery request, CancellationToken cancellationToken)
         {
             var board = await _boardRepository.GetByIdAsync(request.Id);
             if (board == null)
@@ -61,7 +61,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
            // var project = await _projectRepository.GetByIdAsync(board.ProjectId);
            // var organization = await _organizationRepository.GetByIdAsync(project.OrganizationId);
          
-            var dto= _mapper.Map<BoardOutputDto>(board);
+            var dto= _mapper.Map<GetBoardDto>(board);
            // dto.ProjectName = project.Name;
            // dto.OrganizationName = organization.Name;
 
@@ -73,10 +73,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<BoardBasicInfoDto>> Handle(GetBoardsByProjectIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetBoardDto>> Handle(GetBoardsByProjectIdQuery request, CancellationToken cancellationToken)
         {
             var boards = await _boardRepository.GetListByProjectIdAsync(request.ProjectId);
-            return _mapper.Map<IEnumerable<BoardBasicInfoDto>>(boards);
+            return _mapper.Map<IEnumerable<GetBoardDto>>(boards);
         }
 
         
@@ -85,10 +85,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Handl
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<BoardBasicInfoDto>> Handle(GetBoardsByProjectsIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetBoardDto>> Handle(GetBoardsByProjectsIdQuery request, CancellationToken cancellationToken)
         {
             var boards = await _boardRepository.GetListByProjectsIdAsync(request.ProjectsId);
-            return _mapper.Map<IEnumerable<BoardBasicInfoDto>>(boards);
+            return _mapper.Map<IEnumerable<GetBoardDto>>(boards);
         }
 
 

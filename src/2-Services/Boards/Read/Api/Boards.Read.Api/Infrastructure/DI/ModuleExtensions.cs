@@ -1,7 +1,10 @@
-﻿using TaskoMask.BuildingBlocks.Application.Services;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper;
 
@@ -20,7 +23,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DI
         /// </summary>
         public static void AddModules(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType: typeof(Program), handlerAssemblyMarkerType: typeof(Program));
+            services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType: typeof(Program), handlerAssemblyMarkerType: typeof(GetBoardByIdHandler));
 
             services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 

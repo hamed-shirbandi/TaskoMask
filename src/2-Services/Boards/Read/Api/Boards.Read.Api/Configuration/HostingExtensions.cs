@@ -4,6 +4,8 @@ using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DI;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace TaskoMask.Services.Boards.Read.Api.Configuration
 {
@@ -47,6 +49,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Configuration
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapGrpcServices();
             });
 
             return app;

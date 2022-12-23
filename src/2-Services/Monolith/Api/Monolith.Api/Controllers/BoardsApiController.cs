@@ -38,10 +38,10 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         /// </summary>
         [HttpGet]
         [Route("boards/{id}")]
-        public async Task<Result<BoardOutputDto>> Get(string id)
+        public async Task<Result<GetBoardDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToBoardAsync(id))
-                return Result.Failure<BoardOutputDto>(message: ContractsMessages.Access_Denied);
+                return Result.Failure<GetBoardDto>(message: ContractsMessages.Access_Denied);
 
             return await _boardService.GetByIdAsync(id);
         }

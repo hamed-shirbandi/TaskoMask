@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Boards.Read.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Boards.Read.Api</RootNamespace>
 		<UserSecretsId>ad97a501-340f-470b-bd59-307501d3568c</UserSecretsId>
@@ -22,9 +21,26 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Grpc.Tools" Version="2.50.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
 	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\base.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_board_by_id.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_cards_by_board_id.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_boards_by_project_id.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_boards_by_organization_id.proto" GrpcServices="Server" />
+	</ItemGroup>
+	
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />

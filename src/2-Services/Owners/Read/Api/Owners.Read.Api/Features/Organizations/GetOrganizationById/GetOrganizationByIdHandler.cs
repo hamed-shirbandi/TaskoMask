@@ -38,12 +38,12 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
         /// </summary>
         public async Task<OrganizationBasicInfoDto> Handle(GetOrganizationByIdRequest request, CancellationToken cancellationToken)
         {
-            var owner = await _ownerReadDbContext.Organizations.Find(e => e.Id == request.Id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
+            var organization = await _ownerReadDbContext.Organizations.Find(e => e.Id == request.Id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
-            if (owner == null)
+            if (organization == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Organization);
 
-            return _mapper.Map<OrganizationBasicInfoDto>(owner);
+            return _mapper.Map<OrganizationBasicInfoDto>(organization);
         }
 
 

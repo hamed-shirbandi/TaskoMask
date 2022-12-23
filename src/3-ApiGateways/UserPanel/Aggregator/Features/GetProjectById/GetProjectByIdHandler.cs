@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using Grpc.Core;
 using MediatR;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByProjectIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectByIdGrpcService;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
@@ -14,14 +16,16 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         #region Fields
 
         private readonly GetProjectByIdGrpcServiceClient _getProjectByIdGrpcServiceClient;
+        private readonly GetBoardsByProjectIdGrpcServiceClient _getBoardsByProjectIdGrpcServiceClient;
 
         #endregion
 
         #region Ctors
 
-        public GetProjectByIdHandler(IMapper mapper, GetProjectByIdGrpcServiceClient getProjectByIdGrpcServiceClient) : base(mapper)
+        public GetProjectByIdHandler(IMapper mapper, GetProjectByIdGrpcServiceClient getProjectByIdGrpcServiceClient, GetBoardsByProjectIdGrpcServiceClient getBoardsByProjectIdGrpcServiceClient) : base(mapper)
         {
             _getProjectByIdGrpcServiceClient = getProjectByIdGrpcServiceClient;
+            _getBoardsByProjectIdGrpcServiceClient = getBoardsByProjectIdGrpcServiceClient;
         }
 
         #endregion
@@ -38,8 +42,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
 
             return new ProjectDetailsViewModel
             {
-                Project = GetProjectAndMapToDto(request.Id),
-                Boards = await GetBoardsAndMapToDto(request.Id),
+                Project =await GetProjectAsync(request.Id, cancellationToken),
+                Boards = await GetBoardsAsync(request.Id, cancellationToken),
             };
 
         }
@@ -54,9 +58,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// <summary>
         /// 
         /// </summary>
-        private ProjectBasicInfoDto GetProjectAndMapToDto(string projectId)
+        private async Task<ProjectBasicInfoDto> GetProjectAsync(string projectId, CancellationToken cancellationToken)
         {
-            var projectGrpcResponse = _getProjectByIdGrpcServiceClient.Handle(new GetProjectByIdGrpcRequest { Id = projectId });
+            var projectGrpcResponse =await _getProjectByIdGrpcServiceClient.HandleAsync(new GetProjectByIdGrpcRequest { Id = projectId }, cancellationToken: cancellationToken);
 
             return _mapper.Map<ProjectBasicInfoDto>(projectGrpcResponse);
         }
@@ -67,20 +71,16 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// <summary>
         /// 
         /// </summary>
-        private async Task<IEnumerable<BoardBasicInfoDto>> GetBoardsAndMapToDto(string projectId)
+        private async Task<IEnumerable<GetBoardDto>> GetBoardsAsync(string projectId, CancellationToken cancellationToken)
         {
-            return new List<BoardBasicInfoDto>();
+            var boards = new List<GetBoardDto>();
 
-            //TODO implement GetBoardsByProjectIdGrpc service and then uncomment the bellow codes
+            var boardsGrpcCall = _getBoardsByProjectIdGrpcServiceClient.Handle(new GetBoardsByProjectIdGrpcRequest { ProjectId = projectId },cancellationToken: cancellationToken);
 
-            //var boardsDto = new List<BoardBasicInfoDto>();
+            await foreach (var response in boardsGrpcCall.ResponseStream.ReadAllAsync())
+                boards.Add(_mapper.Map<GetBoardDto>(response));
 
-            //var boardsCall = _getBoardsByProjectIdGrpcServiceClient.Handle(new GetBoardsByProjectIdGrpcRequest { ProjectId = projectId });
-
-            //await foreach (var response in boardsCall.ResponseStream.ReadAllAsync())
-            //    boardsDto.Add(_mapper.Map<BoardBasicInfoDto>(response));
-
-            //return boardsDto;
+            return boards;
         }
 
 

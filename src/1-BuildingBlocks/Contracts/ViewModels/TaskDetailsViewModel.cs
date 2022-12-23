@@ -10,7 +10,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
     {
         public TaskBasicInfoDto Task { get; set; }
         public CardBasicInfoDto Card { get; set; }
-        public IEnumerable<ActivityBasicInfoDto> Activities { get; set; }
+        public IEnumerable<GetTaskActivityDto> Activities { get; set; }
         public IEnumerable<CommentBasicInfoDto> Comments { get; set; }
     }
 }

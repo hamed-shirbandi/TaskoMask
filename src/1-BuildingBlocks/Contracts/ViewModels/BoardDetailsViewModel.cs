@@ -9,7 +9,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
         {
             Cards = new List<CardDetailsViewModel>();
         }
-        public BoardOutputDto Board { get; set; }
+        public GetBoardDto Board { get; set; }
         public IEnumerable<CardDetailsViewModel> Cards { get; set; }
     }
 }

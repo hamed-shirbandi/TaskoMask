@@ -25,6 +25,10 @@ namespace TaskoMask.Services.Boards.Read.Api.Domain
         public string OrganizationId { get; set; }
         public string OwnerId { get; set; }
 
+        //TODO set these properties on publishing related events from the write side
+        public string ProjectName { get; set; }
+        public string OrganizationName { get; set; }
+
 
         #region Update private properties
 

@@ -6,7 +6,7 @@ using TaskoMask.BuildingBlocks.Application.Queries;
 namespace TaskoMask.Services.Monolith.Application.Workspace.Boards.Queries.Models
 {
    
-    public class GetBoardsByProjectIdQuery : BaseQuery<IEnumerable<BoardBasicInfoDto>>
+    public class GetBoardsByProjectIdQuery : BaseQuery<IEnumerable<GetBoardDto>>
     {
         public GetBoardsByProjectIdQuery(string projectId)
         {

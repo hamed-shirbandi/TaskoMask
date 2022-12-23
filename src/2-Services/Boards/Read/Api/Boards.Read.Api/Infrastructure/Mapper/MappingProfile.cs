@@ -31,6 +31,11 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
                   opt.MapFrom(src => src.Description ?? string.Empty));
 
 
+            CreateMap<GetBoardDto, GetBoardsByOrganizationIdGrpcResponse>()
+            .ForMember(dest => dest.Description, opt =>
+                  opt.MapFrom(src => src.Description ?? string.Empty));
+
+
             CreateMap<CardBasicInfoDto, GetCardsByBoardIdGrpcResponse>();
         }
     }

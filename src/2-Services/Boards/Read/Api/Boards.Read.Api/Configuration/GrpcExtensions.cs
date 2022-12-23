@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById;
+using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByOrganizationId;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectId;
 using TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardsByBoardId;
 
@@ -17,6 +18,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Configuration
             endpoints.MapGrpcService<GetBoardByIdGrpcEndpoint>();
             endpoints.MapGrpcService<GetCardsByBoardIdGrpcEndpoint>();
             endpoints.MapGrpcService<GetBoardsByProjectIdGrpcEndpoint>();
+            endpoints.MapGrpcService<GetBoardsByOrganizationIdGrpcEndpoint>();
+            
         }
 
 

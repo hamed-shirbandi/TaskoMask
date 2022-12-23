@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Grpc.Core;
+using MassTransit;
 using MediatR;
-using System.Threading;
 using TaskoMask.BuildingBlocks.Application.Queries;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
@@ -40,21 +41,28 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         /// </summary>
         public async Task<IEnumerable<OrganizationDetailsViewModel>> Handle(GetOrganizationsByOwnerIdRequest request, CancellationToken cancellationToken)
         {
-            var organizationsDetails = new List<OrganizationDetailsViewModel>();
+            var organizations = new List<OrganizationDetailsViewModel>();
 
-            var organizationsCall = _getOrganizationsByOwnerIdGrpcServiceClient.Handle(new GetOrganizationsByOwnerIdGrpcRequest { OwnerId = request.OwnerId });
+            var organizationsGrpcCall = _getOrganizationsByOwnerIdGrpcServiceClient.Handle(new GetOrganizationsByOwnerIdGrpcRequest { OwnerId = request.OwnerId });
 
-            while (await organizationsCall.ResponseStream.MoveNext(cancellationToken))
+            while (await organizationsGrpcCall.ResponseStream.MoveNext(cancellationToken))
             {
-                var currentOrganization = organizationsCall.ResponseStream.Current;
+                var currentOrganizationGrpcResponse = organizationsGrpcCall.ResponseStream.Current;
 
-                var organizationDetails = await GetOrganizationDetailsAsync(currentOrganization);
-
-                organizationsDetails.Add(organizationDetails);
+                organizations.Add(new OrganizationDetailsViewModel
+                {
+                    Organization = MapToOrganization(currentOrganizationGrpcResponse),
+                    Projects = await GetProjectsAsync(currentOrganizationGrpcResponse.Id),
+                    Boards = await GetBoardssAsync(currentOrganizationGrpcResponse.Id),
+                    //TODO get other details here
+                    //Reports = ... ,
+                    Reports = new OrganizationReportDto(),
+                });
             }
 
-            return organizationsDetails.AsEnumerable();
+            return organizations.AsEnumerable();
         }
+
 
 
 
@@ -67,25 +75,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         /// <summary>
         /// 
         /// </summary>
-        private async Task<OrganizationDetailsViewModel> GetOrganizationDetailsAsync(OrganizationBasicInfoGrpcResponse organizationGrpcResponse)
-        {
-            return new OrganizationDetailsViewModel
-            {
-                Organization = MapToOrganizationDto(organizationGrpcResponse),
-                Projects = await GetProjectsAndMapToDto(organizationGrpcResponse.Id),
-                //TODO get other details here
-                //Boards = ... ,
-                //Reports = ... ,
-                Reports = new OrganizationReportDto(),
-            };
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private OrganizationBasicInfoDto MapToOrganizationDto(OrganizationBasicInfoGrpcResponse organizationGrpcResponse)
+        private OrganizationBasicInfoDto MapToOrganization(OrganizationBasicInfoGrpcResponse organizationGrpcResponse)
         {
             return _mapper.Map<OrganizationBasicInfoDto>(organizationGrpcResponse);
         }
@@ -95,16 +85,26 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         /// <summary>
         /// 
         /// </summary>
-        private async Task<IEnumerable<ProjectBasicInfoDto>> GetProjectsAndMapToDto(string organizationId)
+        private async Task<IEnumerable<ProjectBasicInfoDto>> GetProjectsAsync(string organizationId)
         {
-            var projectsDto = new List<ProjectBasicInfoDto>();
+            var projects = new List<ProjectBasicInfoDto>();
 
-            var projectsCall = _getProjectsByOrganizationIdGrpcServiceClient.Handle(new GetProjectsByOrganizationIdGrpcRequest { OrganizationId = organizationId });
+            var projectsGrpcCall = _getProjectsByOrganizationIdGrpcServiceClient.Handle(new GetProjectsByOrganizationIdGrpcRequest { OrganizationId = organizationId });
 
-            await foreach (var response in projectsCall.ResponseStream.ReadAllAsync())
-                projectsDto.Add(_mapper.Map<ProjectBasicInfoDto>(response));
+            await foreach (var response in projectsGrpcCall.ResponseStream.ReadAllAsync())
+                projects.Add(_mapper.Map<ProjectBasicInfoDto>(response));
 
-            return projectsDto;
+            return projects;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task<IEnumerable<GetBoardDto>> GetBoardssAsync(string id)
+        {
+            throw new NotImplementedException();
         }
 
 

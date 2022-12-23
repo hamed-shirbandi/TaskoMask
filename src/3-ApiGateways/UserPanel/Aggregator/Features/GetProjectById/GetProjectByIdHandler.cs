@@ -73,14 +73,14 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// </summary>
         private async Task<IEnumerable<GetBoardDto>> GetBoardsAsync(string projectId, CancellationToken cancellationToken)
         {
-            var boardsDto = new List<GetBoardDto>();
+            var boards = new List<GetBoardDto>();
 
-            var boardsCall = _getBoardsByProjectIdGrpcServiceClient.Handle(new GetBoardsByProjectIdGrpcRequest { ProjectId = projectId },cancellationToken: cancellationToken);
+            var boardsGrpcCall = _getBoardsByProjectIdGrpcServiceClient.Handle(new GetBoardsByProjectIdGrpcRequest { ProjectId = projectId },cancellationToken: cancellationToken);
 
-            await foreach (var response in boardsCall.ResponseStream.ReadAllAsync())
-                boardsDto.Add(_mapper.Map<GetBoardDto>(response));
+            await foreach (var response in boardsGrpcCall.ResponseStream.ReadAllAsync())
+                boards.Add(_mapper.Map<GetBoardDto>(response));
 
-            return boardsDto;
+            return boards;
         }
 
 

@@ -3,6 +3,7 @@ using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectByIdGrpcService
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectsByOrganizationIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardByIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetCardsByBoardIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByProjectIdGrpcService;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
 {
@@ -32,6 +33,11 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
             });
 
             services.AddGrpcClient<GetBoardByIdGrpcServiceClient>(options =>
+            {
+                options.Address = new Uri(configuration["Url:Board-Read-Service"]);
+            });
+
+            services.AddGrpcClient<GetBoardsByProjectIdGrpcServiceClient>(options =>
             {
                 options.Address = new Uri(configuration["Url:Board-Read-Service"]);
             });

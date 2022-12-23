@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Grpc.Core;
-using MassTransit;
 using MediatR;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
@@ -8,6 +7,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByOrganizationIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetOrganizationsByOwnerIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectsByOrganizationIdGrpcService;
 
@@ -19,15 +19,17 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
 
         private readonly GetOrganizationsByOwnerIdGrpcServiceClient _getOrganizationsByOwnerIdGrpcServiceClient;
         private readonly GetProjectsByOrganizationIdGrpcServiceClient _getProjectsByOrganizationIdGrpcServiceClient;
+        private readonly GetBoardsByOrganizationIdGrpcServiceClient _getBoardsByOrganizationIdGrpcServiceClient;
 
         #endregion
 
         #region Ctors
 
-        public GetOrganizationsByOwnerIdHandler(IMapper mapper, GetOrganizationsByOwnerIdGrpcServiceClient getOrganizationsByOwnerIdGrpcServiceClient, GetProjectsByOrganizationIdGrpcServiceClient getProjectsByOrganizationIdGrpcServiceClient) : base(mapper)
+        public GetOrganizationsByOwnerIdHandler(IMapper mapper, GetOrganizationsByOwnerIdGrpcServiceClient getOrganizationsByOwnerIdGrpcServiceClient, GetProjectsByOrganizationIdGrpcServiceClient getProjectsByOrganizationIdGrpcServiceClient, GetBoardsByOrganizationIdGrpcServiceClient getBoardsByOrganizationIdGrpcServiceClient) : base(mapper)
         {
             _getOrganizationsByOwnerIdGrpcServiceClient = getOrganizationsByOwnerIdGrpcServiceClient;
             _getProjectsByOrganizationIdGrpcServiceClient = getProjectsByOrganizationIdGrpcServiceClient;
+            _getBoardsByOrganizationIdGrpcServiceClient = getBoardsByOrganizationIdGrpcServiceClient;
         }
 
         #endregion
@@ -53,7 +55,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
                 {
                     Organization = MapToOrganization(currentOrganizationGrpcResponse),
                     Projects = await GetProjectsAsync(currentOrganizationGrpcResponse.Id),
-                    Boards = await GetBoardssAsync(currentOrganizationGrpcResponse.Id),
+                    Boards = await GetBoardsAsync(currentOrganizationGrpcResponse.Id),
                     //TODO get other details here
                     //Reports = ... ,
                     Reports = new OrganizationReportDto(),
@@ -102,9 +104,15 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         /// <summary>
         /// 
         /// </summary>
-        private async Task<IEnumerable<GetBoardDto>> GetBoardssAsync(string id)
+        private async Task<IEnumerable<GetBoardDto>> GetBoardsAsync(string organizationId)
         {
-            throw new NotImplementedException();
+            var boards = new List<GetBoardDto>();
+            var boardsGrpcCall = _getBoardsByOrganizationIdGrpcServiceClient.Handle(new GetBoardsByOrganizationIdGrpcRequest { ProjectId = organizationId });
+
+            await foreach (var response in boardsGrpcCall.ResponseStream.ReadAllAsync())
+                boards.Add(_mapper.Map<GetBoardDto>(response));
+
+            return boards;
         }
 
 

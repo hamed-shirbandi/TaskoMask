@@ -23,6 +23,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
 
             CreateMap<GetBoardsByProjectIdGrpcResponse, GetBoardDto>();
 
+            CreateMap<GetBoardsByOrganizationIdGrpcResponse, GetBoardDto>();
+            
             CreateMap<GetBoardByIdGrpcResponse, GetBoardDto>();
         }
     }

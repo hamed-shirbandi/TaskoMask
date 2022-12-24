@@ -17,7 +17,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
                 .ForMember(dest => dest.ModifiedDateTime, opt =>
                       opt.MapFrom(src => src.ModifiedDateTime.ToDateTime()));
 
-            CreateMap<OrganizationBasicInfoGrpcResponse, OrganizationBasicInfoDto>();
+            CreateMap<OrganizationBasicInfoGrpcResponse, GetOrganizationDto>();
 
             CreateMap<ProjectBasicInfoGrpcResponse, ProjectBasicInfoDto>();
 

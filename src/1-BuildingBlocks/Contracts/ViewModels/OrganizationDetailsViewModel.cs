@@ -14,7 +14,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
             Projects = new List<ProjectBasicInfoDto>();
             Boards = new List<GetBoardDto>();
         }
-        public OrganizationBasicInfoDto Organization { get; set; }
+        public GetOrganizationDto Organization { get; set; }
         public OrganizationReportDto Reports { get; set; }
         public IEnumerable<ProjectBasicInfoDto> Projects { get; set; }
         public IEnumerable<GetBoardDto> Boards { get; set; }

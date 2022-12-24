@@ -12,7 +12,7 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationById
 {
-    public class GetOrganizationByIdHandler : BaseQueryHandler, IRequestHandler<GetOrganizationByIdRequest, OrganizationBasicInfoDto>
+    public class GetOrganizationByIdHandler : BaseQueryHandler, IRequestHandler<GetOrganizationByIdRequest, GetOrganizationDto>
     {
         #region Fields
 
@@ -36,14 +36,14 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
         /// <summary>
         /// 
         /// </summary>
-        public async Task<OrganizationBasicInfoDto> Handle(GetOrganizationByIdRequest request, CancellationToken cancellationToken)
+        public async Task<GetOrganizationDto> Handle(GetOrganizationByIdRequest request, CancellationToken cancellationToken)
         {
             var organization = await _ownerReadDbContext.Organizations.Find(e => e.Id == request.Id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
             if (organization == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Organization);
 
-            return _mapper.Map<OrganizationBasicInfoDto>(organization);
+            return _mapper.Map<GetOrganizationDto>(organization);
         }
 
 

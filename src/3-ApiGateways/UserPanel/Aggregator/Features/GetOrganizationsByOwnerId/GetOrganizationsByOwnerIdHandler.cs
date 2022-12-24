@@ -77,9 +77,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         /// <summary>
         /// 
         /// </summary>
-        private OrganizationBasicInfoDto MapToOrganization(OrganizationBasicInfoGrpcResponse organizationGrpcResponse)
+        private GetOrganizationDto MapToOrganization(OrganizationBasicInfoGrpcResponse organizationGrpcResponse)
         {
-            return _mapper.Map<OrganizationBasicInfoDto>(organizationGrpcResponse);
+            return _mapper.Map<GetOrganizationDto>(organizationGrpcResponse);
         }
 
 

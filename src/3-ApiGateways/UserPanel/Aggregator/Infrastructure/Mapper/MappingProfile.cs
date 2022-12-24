@@ -19,7 +19,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
 
             CreateMap<OrganizationBasicInfoGrpcResponse, GetOrganizationDto>();
 
-            CreateMap<ProjectBasicInfoGrpcResponse, GetProjectDto>();
+            CreateMap<GetProjectGrpcResponse, GetProjectDto>();
 
             CreateMap<GetBoardsByProjectIdGrpcResponse, GetBoardDto>();
 

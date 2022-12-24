@@ -17,11 +17,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
             _mapper = mapper;
         }
 
-        public override async Task Handle(GetProjectsByOrganizationIdGrpcRequest request, IServerStreamWriter<ProjectBasicInfoGrpcResponse> responseStream, ServerCallContext context)
+        public override async Task Handle(GetProjectsByOrganizationIdGrpcRequest request, IServerStreamWriter<GetProjectGrpcResponse> responseStream, ServerCallContext context)
         {
             var projects = await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdRequest(request.OrganizationId));
             foreach (var project in projects.Value)
-                await responseStream.WriteAsync(_mapper.Map<ProjectBasicInfoGrpcResponse>(project));
+                await responseStream.WriteAsync(_mapper.Map<GetProjectGrpcResponse>(project));
         }
 
     }

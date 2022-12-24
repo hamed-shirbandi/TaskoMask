@@ -17,10 +17,10 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
             _mapper = mapper;
         }
 
-        public override async Task<ProjectBasicInfoGrpcResponse> Handle(GetProjectByIdGrpcRequest request, ServerCallContext context)
+        public override async Task<GetProjectGrpcResponse> Handle(GetProjectByIdGrpcRequest request, ServerCallContext context)
         {
             var project = await _inMemoryBus.SendQuery(new GetProjectByIdRequest(request.Id));
-            return _mapper.Map<ProjectBasicInfoGrpcResponse>(project.Value);
+            return _mapper.Map<GetProjectGrpcResponse>(project.Value);
         }
     }
 

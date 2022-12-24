@@ -5,7 +5,7 @@ package TaskoMask.BuildingBlocks.Contracts.Protos;
 import "base.proto";
 
 service GetProjectByIdGrpcService {
-  rpc Handle (GetProjectByIdGrpcRequest) returns (ProjectBasicInfoGrpcResponse);
+  rpc Handle (GetProjectByIdGrpcRequest) returns (GetProjectGrpcResponse);
 }
 
 message GetProjectByIdGrpcRequest {

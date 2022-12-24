@@ -5,7 +5,7 @@ package TaskoMask.BuildingBlocks.Contracts.Protos;
 import "google/protobuf/timestamp.proto";
 
 
-message CreationTime{
+message CreationTimeGrpcResponse{
 	google.protobuf.Timestamp createDateTime=1;
 	string createDateTimeString=2;
 	google.protobuf.Timestamp modifiedDateTime=3;
@@ -16,7 +16,7 @@ message CreationTime{
 }
 
 
-message ProjectBasicInfoGrpcResponse {
+message GetProjectGrpcResponse {
 
 	CreationTime creationTime=1;
 	string id = 2;
@@ -25,3 +25,4 @@ message ProjectBasicInfoGrpcResponse {
 	string organizationId = 5;
 	string organizationName = 6;
 }
+

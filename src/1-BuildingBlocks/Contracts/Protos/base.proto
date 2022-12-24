@@ -18,7 +18,7 @@ message CreationTimeGrpcResponse{
 
 message GetProjectGrpcResponse {
 
-	CreationTime creationTime=1;
+	CreationTimeGrpcResponse creationTime=1;
 	string id = 2;
 	string name = 3;
 	string description = 4;
@@ -29,7 +29,7 @@ message GetProjectGrpcResponse {
 
 message GetBoardGrpcResponse {
 
-	CreationTime creationTime=1;
+	CreationTimeGrpcResponse creationTime=1;
 	string id = 2;
 	string name = 3;
 	string description = 4;

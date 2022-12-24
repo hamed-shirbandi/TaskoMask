@@ -15,7 +15,7 @@ message GetCardsByBoardIdGrpcRequest {
 
 message GetCardGrpcResponse {
 
-	CreationTime creationTime=1;
+	CreationTimeGrpcResponse creationTime=1;
 	string id = 2;
 	string name = 3;
 	int32 type = 4;

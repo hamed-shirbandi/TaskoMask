@@ -13,7 +13,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<CreationTimeDto, CreationTime>()
+            CreateMap<CreationTimeDto, CreationTimeGrpcResponse>()
              .ForMember(dest => dest.CreateDateTime, opt =>
                   opt.MapFrom(src => src.CreateDateTime.ToTimestamp()))
             .ForMember(dest => dest.ModifiedDateTime, opt =>

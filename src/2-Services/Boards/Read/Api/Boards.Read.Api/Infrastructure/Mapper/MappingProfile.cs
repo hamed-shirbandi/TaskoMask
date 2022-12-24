@@ -21,22 +21,22 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
                       opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
 
 
-            CreateMap<GetBoardDto, GetBoardByIdGrpcResponse>()
+            CreateMap<GetBoardDto, GetBoardGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
 
 
-            CreateMap<GetBoardDto, GetBoardsByProjectIdGrpcResponse>()
+            CreateMap<GetBoardDto, GetBoardGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
 
 
-            CreateMap<GetBoardDto, GetBoardsByOrganizationIdGrpcResponse>()
+            CreateMap<GetBoardDto, GetBoardGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
 
 
-            CreateMap<GetCardDto, GetCardsByBoardIdGrpcResponse>();
+            CreateMap<GetCardDto, GetCardGrpcResponse>();
         }
     }
 }

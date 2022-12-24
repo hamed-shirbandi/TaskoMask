@@ -17,10 +17,10 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
             _mapper = mapper;
         }
 
-        public override async Task<GetBoardByIdGrpcResponse> Handle(GetBoardByIdGrpcRequest request, ServerCallContext context)
+        public override async Task<GetBoardGrpcResponse> Handle(GetBoardByIdGrpcRequest request, ServerCallContext context)
         {
             var board = await _inMemoryBus.SendQuery(new GetBoardByIdRequest(request.Id));
-            return _mapper.Map<GetBoardByIdGrpcResponse>(board.Value);
+            return _mapper.Map<GetBoardGrpcResponse>(board.Value);
         }
     }
 

@@ -87,14 +87,14 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         /// <summary>
         /// 
         /// </summary>
-        private async Task<IEnumerable<ProjectBasicInfoDto>> GetProjectsAsync(string organizationId)
+        private async Task<IEnumerable<GetProjectDto>> GetProjectsAsync(string organizationId)
         {
-            var projects = new List<ProjectBasicInfoDto>();
+            var projects = new List<GetProjectDto>();
 
             var projectsGrpcCall = _getProjectsByOrganizationIdGrpcServiceClient.Handle(new GetProjectsByOrganizationIdGrpcRequest { OrganizationId = organizationId });
 
             await foreach (var response in projectsGrpcCall.ResponseStream.ReadAllAsync())
-                projects.Add(_mapper.Map<ProjectBasicInfoDto>(response));
+                projects.Add(_mapper.Map<GetProjectDto>(response));
 
             return projects;
         }

@@ -26,7 +26,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
         /// </summary>
         [HttpGet]
         [Route("projects/{id}")]
-        public async Task<Result<ProjectBasicInfoDto>> Get(string id)
+        public async Task<Result<GetProjectDto>> Get(string id)
         {
             return await _inMemoryBus.SendQuery(new GetProjectByIdRequest(id));
         }

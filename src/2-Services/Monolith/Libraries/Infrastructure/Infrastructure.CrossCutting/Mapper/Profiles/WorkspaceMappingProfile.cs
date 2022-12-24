@@ -18,10 +18,10 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             #region Task
 
             CreateMap<Task, TaskBaseDto>();
-            CreateMap<Task, TaskBasicInfoDto>();
+            CreateMap<Task, GetTaskDto>();
             CreateMap<Task, UpdateTaskDto>();
-            CreateMap<TaskBasicInfoDto, UpdateTaskDto>();
-            CreateMap<Task, TaskOutputDto>();
+            CreateMap<GetTaskDto, UpdateTaskDto>();
+            CreateMap<Task, GetTaskDto>();
 
 
             #endregion

@@ -27,10 +27,10 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<ProjectBasicInfoDto>> GetAsync(string id)
+        public async Task<Result<GetProjectDto>> GetAsync(string id)
         {
             var url = $"/owners-read/projects/{id}";
-            return await _httpClientService.GetAsync<ProjectBasicInfoDto>(url);
+            return await _httpClientService.GetAsync<GetProjectDto>(url);
         }
 
 
@@ -53,7 +53,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItemsAsync(string organizationId)
         {
             var url = $"/owners-read/organizations/{organizationId}/projects";
-            var projectsResult = await _httpClientService.GetAsync<IEnumerable<ProjectBasicInfoDto>>(url);
+            var projectsResult = await _httpClientService.GetAsync<IEnumerable<GetProjectDto>>(url);
             if (!projectsResult.IsSuccess)
                 return Result.Failure<IEnumerable<SelectListItem>>(projectsResult.Errors, projectsResult.Message);
 
@@ -103,7 +103,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        private IEnumerable<SelectListItem> MapToSelectListItem(IEnumerable<ProjectBasicInfoDto> projects)
+        private IEnumerable<SelectListItem> MapToSelectListItem(IEnumerable<GetProjectDto> projects)
         {
             var items = new List<SelectListItem>();
             foreach (var item in projects)

@@ -17,10 +17,10 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handlers
 {
     public class TaskQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetTaskByIdQuery, TaskBasicInfoDto>,
-        IRequestHandler<GetTasksByCardIdQuery, IEnumerable<TaskBasicInfoDto>>,
-        IRequestHandler<GetPendingTasksByBoardsIdQuery, IEnumerable<TaskBasicInfoDto>>,
-        IRequestHandler<SearchTasksQuery, PaginatedList<TaskOutputDto>>,
+        IRequestHandler<GetTaskByIdQuery, GetTaskDto>,
+        IRequestHandler<GetTasksByCardIdQuery, IEnumerable<GetTaskDto>>,
+        IRequestHandler<GetPendingTasksByBoardsIdQuery, IEnumerable<GetTaskDto>>,
+        IRequestHandler<SearchTasksQuery, PaginatedList<GetTaskDto>>,
         IRequestHandler<GetTasksCountQuery, long>
 
     {
@@ -51,13 +51,13 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
         /// <summary>
         /// 
         /// </summary>
-        public async Task<TaskBasicInfoDto> Handle(GetTaskByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetTaskDto> Handle(GetTaskByIdQuery request, CancellationToken cancellationToken)
         {
             var task = await _taskRepository.GetByIdAsync(request.Id);
             if (task == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
-            return _mapper.Map<TaskBasicInfoDto>(task);
+            return _mapper.Map<GetTaskDto>(task);
         }
 
 
@@ -66,10 +66,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<TaskBasicInfoDto>> Handle(GetTasksByCardIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetTaskDto>> Handle(GetTasksByCardIdQuery request, CancellationToken cancellationToken)
         {
             var tasks = await _taskRepository.GetListByCardIdAsync(request.CardId);
-            return _mapper.Map<IEnumerable<TaskBasicInfoDto>>(tasks);
+            return _mapper.Map<IEnumerable<GetTaskDto>>(tasks);
         }
 
 
@@ -77,10 +77,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<TaskBasicInfoDto>> Handle(GetPendingTasksByBoardsIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetTaskDto>> Handle(GetPendingTasksByBoardsIdQuery request, CancellationToken cancellationToken)
         {
             var tasks = await _taskRepository.GetPendingTasksByBoardsIdAsync(request.BoardsId, request.TakeCount);
-            return _mapper.Map<IEnumerable<TaskBasicInfoDto>>(tasks);
+            return _mapper.Map<IEnumerable<GetTaskDto>>(tasks);
         }
 
 
@@ -89,10 +89,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PaginatedList<TaskOutputDto>> Handle(SearchTasksQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<GetTaskDto>> Handle(SearchTasksQuery request, CancellationToken cancellationToken)
         {
             var tasks = _taskRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
-            var tasksDto = _mapper.Map<IEnumerable<TaskOutputDto>>(tasks);
+            var tasksDto = _mapper.Map<IEnumerable<GetTaskDto>>(tasks);
 
             foreach (var item in tasksDto)
             {
@@ -100,7 +100,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
                 item.CardName = card?.Name;
             }
 
-            return new PaginatedList<TaskOutputDto>
+            return new PaginatedList<GetTaskDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

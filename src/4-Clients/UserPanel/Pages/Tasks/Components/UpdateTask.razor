@@ -101,7 +101,7 @@
         }
         else
         {
-            QueryResultHandler<TaskBasicInfoDto>.Init()
+            QueryResultHandler<GetTaskDto>.Init()
                 .WithResult(taskResult)
                 .ShowErrorToast(ToastService)
                 .CloseModal(ModalInstance);

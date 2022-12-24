@@ -82,7 +82,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
                 {
                     Card = MapToCard(currentCardGrpcResponse),
                     //TODO get tasks from task service
-                    Tasks = new List<TaskBasicInfoDto>(),
+                    Tasks = new List<GetTaskDto>(),
                 });
             }
 

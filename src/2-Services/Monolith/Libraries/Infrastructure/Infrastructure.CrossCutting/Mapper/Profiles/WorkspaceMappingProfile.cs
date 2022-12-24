@@ -43,10 +43,10 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
 
             #region Card
 
-            CreateMap<Card, CardBasicInfoDto>();
+            CreateMap<Card, GetCardDto>();
             CreateMap<Card, UpdateCardDto>();
-            CreateMap<CardBasicInfoDto, UpdateCardDto>();
-            CreateMap<Card, CardOutputDto>();
+            CreateMap<GetCardDto, UpdateCardDto>();
+            CreateMap<Card, GetCardDto>();
 
             #endregion
 

@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 
 namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
 {
-    public class GetCardByIdRequest : BaseQuery<CardBasicInfoDto>
+    public class GetCardByIdRequest : BaseQuery<GetCardDto>
     {
         public GetCardByIdRequest(string id)
         {

@@ -40,10 +40,10 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         /// </summary>
         [HttpGet]
         [Route("cards/{id}")]
-        public async Task<Result<CardBasicInfoDto>> Get(string id)
+        public async Task<Result<GetCardDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToCardAsync(id))
-                return Result.Failure<CardBasicInfoDto>(message: ContractsMessages.Access_Denied);
+                return Result.Failure<GetCardDto>(message: ContractsMessages.Access_Denied);
 
             return await _cardService.GetByIdAsync(id);
         }

@@ -94,9 +94,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
         /// <summary>
         /// 
         /// </summary>
-        private CardBasicInfoDto MapToCard(GetCardsByBoardIdGrpcResponse cardGrpcResponse)
+        private GetCardDto MapToCard(GetCardsByBoardIdGrpcResponse cardGrpcResponse)
         {
-            return _mapper.Map<CardBasicInfoDto>(cardGrpcResponse);
+            return _mapper.Map<GetCardDto>(cardGrpcResponse);
         }
 
 

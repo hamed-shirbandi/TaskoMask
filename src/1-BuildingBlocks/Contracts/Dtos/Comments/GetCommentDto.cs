@@ -2,7 +2,7 @@
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Comments
 {
-    public class CommentBasicInfoDto: CommentBaseDto
+    public class GetCommentDto: CommentBaseDto
     {
         public CreationTimeDto CreationTime { get; set; }
 

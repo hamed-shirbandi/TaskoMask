@@ -15,8 +15,8 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Handlers
 {
     public class CommentQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetCommentByIdQuery, CommentBasicInfoDto>,
-         IRequestHandler<GetCommentsByTaskIdQuery, IEnumerable<CommentBasicInfoDto>>
+        IRequestHandler<GetCommentByIdQuery, GetCommentDto>,
+         IRequestHandler<GetCommentsByTaskIdQuery, IEnumerable<GetCommentDto>>
 
 
     {
@@ -43,13 +43,13 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Han
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CommentBasicInfoDto> Handle(GetCommentByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetCommentDto> Handle(GetCommentByIdQuery request, CancellationToken cancellationToken)
         {
             var comment = await _commentRepository.GetByIdAsync(request.Id);
             if (comment == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Comment);
 
-            return _mapper.Map<CommentBasicInfoDto>(comment);
+            return _mapper.Map<GetCommentDto>(comment);
         }
 
 
@@ -57,10 +57,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Queries.Han
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<CommentBasicInfoDto>> Handle(GetCommentsByTaskIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetCommentDto>> Handle(GetCommentsByTaskIdQuery request, CancellationToken cancellationToken)
         {
             var comments = await _commentRepository.GetListByTaskIdAsync(request.TaskId);
-            return _mapper.Map<IEnumerable<CommentBasicInfoDto>>(comments);
+            return _mapper.Map<IEnumerable<GetCommentDto>>(comments);
         }
 
 

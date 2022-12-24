@@ -93,7 +93,7 @@
         }
         else
         {
-            QueryResultHandler<CommentBasicInfoDto>.Init()
+            QueryResultHandler<GetCommentDto>.Init()
                 .WithResult(commentResult)
                 .ShowErrorToast(ToastService)
                 .CloseModal(ModalInstance);

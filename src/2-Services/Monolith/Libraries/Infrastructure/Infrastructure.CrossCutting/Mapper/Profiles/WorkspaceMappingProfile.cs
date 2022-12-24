@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             #region Comments
 
             CreateMap<Comment, CommentBaseDto>();
-            CreateMap<Comment, CommentBasicInfoDto>();
+            CreateMap<Comment, GetCommentDto>();
 
 
             #endregion

@@ -23,7 +23,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
 
             CreateMap<Organization, GetOrganizationDto>();
 
-            CreateMap<GetOrganizationDto, OrganizationBasicInfoGrpcResponse>()
+            CreateMap<GetOrganizationDto, GetOrganizationGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
 

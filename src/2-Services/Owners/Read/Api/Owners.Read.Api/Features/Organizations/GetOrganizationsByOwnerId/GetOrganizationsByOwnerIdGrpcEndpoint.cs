@@ -16,11 +16,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
             _mapper = mapper;
         }
 
-        public override async Task Handle(GetOrganizationsByOwnerIdGrpcRequest request, IServerStreamWriter<OrganizationBasicInfoGrpcResponse> responseStream, ServerCallContext context)
+        public override async Task Handle(GetOrganizationsByOwnerIdGrpcRequest request, IServerStreamWriter<GetOrganizationGrpcResponse> responseStream, ServerCallContext context)
         {
             var organizations = await _inMemoryBus.SendQuery(new GetOrganizationsByOwnerIdRequest(request.OwnerId));
             foreach (var organization in organizations.Value)
-                await responseStream.WriteAsync(_mapper.Map<OrganizationBasicInfoGrpcResponse>(organization));
+                await responseStream.WriteAsync(_mapper.Map<GetOrganizationGrpcResponse>(organization));
         }
 
     }

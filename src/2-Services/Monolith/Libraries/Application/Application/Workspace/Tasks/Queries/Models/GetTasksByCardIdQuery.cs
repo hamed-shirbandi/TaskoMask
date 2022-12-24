@@ -9,7 +9,7 @@ using TaskoMask.BuildingBlocks.Application.Queries;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models
 {
-    public class GetTasksByCardIdQuery : BaseQuery<IEnumerable<TaskBasicInfoDto>>
+    public class GetTasksByCardIdQuery : BaseQuery<IEnumerable<GetTaskDto>>
     {
         public GetTasksByCardIdQuery(string cardId)
         {

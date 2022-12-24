@@ -2,7 +2,7 @@
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations
 {
-    public class OrganizationBasicInfoDto : OrganizationBaseDto
+    public class GetOrganizationDto : OrganizationBaseDto
     {
         public CreationTimeDto CreationTime { get; set; }
     }

@@ -11,21 +11,17 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<CreationTime,  CreationTimeDto> ()
+            CreateMap<CreationTimeGrpcResponse,  CreationTimeDto> ()
                  .ForMember(dest => dest.CreateDateTime, opt =>
                       opt.MapFrom(src => src.CreateDateTime.ToDateTime()))
                 .ForMember(dest => dest.ModifiedDateTime, opt =>
                       opt.MapFrom(src => src.ModifiedDateTime.ToDateTime()));
 
-            CreateMap<OrganizationBasicInfoGrpcResponse, OrganizationBasicInfoDto>();
+            CreateMap<GetOrganizationGrpcResponse, GetOrganizationDto>();
 
-            CreateMap<ProjectBasicInfoGrpcResponse, ProjectBasicInfoDto>();
+            CreateMap<GetProjectGrpcResponse, GetProjectDto>();
 
-            CreateMap<GetBoardsByProjectIdGrpcResponse, GetBoardDto>();
-
-            CreateMap<GetBoardsByOrganizationIdGrpcResponse, GetBoardDto>();
-            
-            CreateMap<GetBoardByIdGrpcResponse, GetBoardDto>();
+            CreateMap<GetBoardGrpcResponse, GetBoardDto>();
         }
     }
 }

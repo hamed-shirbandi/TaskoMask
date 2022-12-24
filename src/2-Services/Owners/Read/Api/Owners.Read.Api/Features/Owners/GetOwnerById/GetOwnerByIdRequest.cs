@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 {
-    public class GetOwnerByIdRequest : BaseQuery<OwnerBasicInfoDto>
+    public class GetOwnerByIdRequest : BaseQuery<GetOwnerDto>
     {
         public GetOwnerByIdRequest(string id)
         {

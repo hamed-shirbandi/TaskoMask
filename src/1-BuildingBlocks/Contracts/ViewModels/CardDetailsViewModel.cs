@@ -6,7 +6,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
 {
    public class CardDetailsViewModel
     {
-        public CardBasicInfoDto Card { get; set; }
-        public IEnumerable<TaskBasicInfoDto> Tasks { get; set; }
+        public GetCardDto Card { get; set; }
+        public IEnumerable<GetTaskDto> Tasks { get; set; }
     }
 }

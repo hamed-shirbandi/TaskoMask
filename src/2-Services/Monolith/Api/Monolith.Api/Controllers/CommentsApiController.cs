@@ -38,7 +38,7 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         /// </summary>
         [HttpGet]
         [Route("comments/{id}")]
-        public async Task<Result<CommentBasicInfoDto>> Get(string id)
+        public async Task<Result<GetCommentDto>> Get(string id)
         {
             return await _commentService.GetByIdAsync(id);
         }

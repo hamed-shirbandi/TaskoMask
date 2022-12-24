@@ -94,7 +94,7 @@
         }
         else
         {
-            QueryResultHandler<OrganizationBasicInfoDto>.Init()
+            QueryResultHandler<GetOrganizationDto>.Init()
                 .WithResult(organizationResult)
                 .ShowErrorToast(ToastService)
                 .CloseModal(ModalInstance);

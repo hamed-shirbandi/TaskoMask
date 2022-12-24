@@ -18,10 +18,10 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             #region Task
 
             CreateMap<Task, TaskBaseDto>();
-            CreateMap<Task, TaskBasicInfoDto>();
+            CreateMap<Task, GetTaskDto>();
             CreateMap<Task, UpdateTaskDto>();
-            CreateMap<TaskBasicInfoDto, UpdateTaskDto>();
-            CreateMap<Task, TaskOutputDto>();
+            CreateMap<GetTaskDto, UpdateTaskDto>();
+            CreateMap<Task, GetTaskDto>();
 
 
             #endregion
@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             #region Comments
 
             CreateMap<Comment, CommentBaseDto>();
-            CreateMap<Comment, CommentBasicInfoDto>();
+            CreateMap<Comment, GetCommentDto>();
 
 
             #endregion
@@ -43,10 +43,10 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
 
             #region Card
 
-            CreateMap<Card, CardBasicInfoDto>();
+            CreateMap<Card, GetCardDto>();
             CreateMap<Card, UpdateCardDto>();
-            CreateMap<CardBasicInfoDto, UpdateCardDto>();
-            CreateMap<Card, CardOutputDto>();
+            CreateMap<GetCardDto, UpdateCardDto>();
+            CreateMap<Card, GetCardDto>();
 
             #endregion
 

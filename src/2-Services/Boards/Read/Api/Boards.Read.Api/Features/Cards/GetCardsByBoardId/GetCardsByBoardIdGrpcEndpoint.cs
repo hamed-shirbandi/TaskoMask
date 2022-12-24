@@ -17,11 +17,11 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardsByBoardId
             _mapper = mapper;
         }
 
-        public override async Task Handle(GetCardsByBoardIdGrpcRequest request, IServerStreamWriter<GetCardsByBoardIdGrpcResponse> responseStream, ServerCallContext context)
+        public override async Task Handle(GetCardsByBoardIdGrpcRequest request, IServerStreamWriter<GetCardGrpcResponse> responseStream, ServerCallContext context)
         {
             var cards = await _inMemoryBus.SendQuery(new GetCardsByBoardIdRequest(request.BoardId));
             foreach (var card in cards.Value)
-                await responseStream.WriteAsync(_mapper.Map<GetCardsByBoardIdGrpcResponse>(card));
+                await responseStream.WriteAsync(_mapper.Map<GetCardGrpcResponse>(card));
         }
     }
 

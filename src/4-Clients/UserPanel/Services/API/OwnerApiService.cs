@@ -28,10 +28,10 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<OwnerBasicInfoDto>> GetAsync()
+        public async Task<Result<GetOwnerDto>> GetAsync()
         {
             var url = $"/owners-read/owner";
-            return await _httpClientService.GetAsync<OwnerBasicInfoDto>(url);
+            return await _httpClientService.GetAsync<GetOwnerDto>(url);
         }
 
 

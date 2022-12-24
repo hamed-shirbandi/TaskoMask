@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Application.Queries;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models
 {
-    public class GetPendingTasksByBoardsIdQuery : BaseQuery<IEnumerable<TaskBasicInfoDto>>
+    public class GetPendingTasksByBoardsIdQuery : BaseQuery<IEnumerable<GetTaskDto>>
     {
         public GetPendingTasksByBoardsIdQuery(string[] boardsId, int takeCount)
         {

@@ -12,7 +12,7 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 {
-    public class GetProjectByIdHandler : BaseQueryHandler, IRequestHandler<GetProjectByIdRequest, ProjectBasicInfoDto>
+    public class GetProjectByIdHandler : BaseQueryHandler, IRequestHandler<GetProjectByIdRequest, GetProjectDto>
     {
         #region Fields
 
@@ -36,14 +36,14 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
         /// <summary>
         /// 
         /// </summary>
-        public async Task<ProjectBasicInfoDto> Handle(GetProjectByIdRequest request, CancellationToken cancellationToken)
+        public async Task<GetProjectDto> Handle(GetProjectByIdRequest request, CancellationToken cancellationToken)
         {
             var project = await _ownerReadDbContext.Projects.Find(e => e.Id == request.Id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
             if (project == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
 
-            return _mapper.Map<ProjectBasicInfoDto>(project);
+            return _mapper.Map<GetProjectDto>(project);
         }
 
 

@@ -25,7 +25,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
             #region AuthenticatedUser
 
 
-            CreateMap<OwnerBasicInfoDto, AuthenticatedUserModel>()
+            CreateMap<GetOwnerDto, AuthenticatedUserModel>()
                   .ForMember(dest => dest.UserName, opt =>
                       opt.MapFrom(src => src.Email));
 

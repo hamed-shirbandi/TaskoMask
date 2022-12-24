@@ -17,9 +17,9 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Handlers
 {
     public class CardQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetCardByIdQuery, CardBasicInfoDto>,
-         IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<CardBasicInfoDto>>,
-        IRequestHandler<SearchCardsQuery, PaginatedList<CardOutputDto>>,
+        IRequestHandler<GetCardByIdQuery, GetCardDto>,
+         IRequestHandler<GetCardsByBoardIdQuery, IEnumerable<GetCardDto>>,
+        IRequestHandler<SearchCardsQuery, PaginatedList<GetCardDto>>,
         IRequestHandler<GetCardsCountQuery, long>
 
 
@@ -51,13 +51,13 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Handle
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CardBasicInfoDto> Handle(GetCardByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetCardDto> Handle(GetCardByIdQuery request, CancellationToken cancellationToken)
         {
             var card = await _cardRepository.GetByIdAsync(request.Id);
             if (card == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
 
-            return _mapper.Map<CardBasicInfoDto>(card);
+            return _mapper.Map<GetCardDto>(card);
         }
 
 
@@ -65,10 +65,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Handle
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<CardBasicInfoDto>> Handle(GetCardsByBoardIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetCardDto>> Handle(GetCardsByBoardIdQuery request, CancellationToken cancellationToken)
         {
             var cards = await _cardRepository.GetListByBoardIdAsync(request.BoardId);
-            return _mapper.Map<IEnumerable<CardBasicInfoDto>>(cards);
+            return _mapper.Map<IEnumerable<GetCardDto>>(cards);
         }
 
 
@@ -77,19 +77,18 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Handle
         /// <summary>
         /// 
         /// </summary>
-        public async Task<PaginatedList<CardOutputDto>> Handle(SearchCardsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<GetCardDto>> Handle(SearchCardsQuery request, CancellationToken cancellationToken)
         {
             var cards = _cardRepository.Search(request.Page, request.RecordsPerPage, request.Term, out var pageNumber, out var totalCount);
-            var cardsDto = _mapper.Map<IEnumerable<CardOutputDto>>(cards);
+            var cardsDto = _mapper.Map<IEnumerable<GetCardDto>>(cards);
 
             foreach (var item in cardsDto)
             {
                 var board = await _boardRepository.GetByIdAsync(item.BoardId);
                 item.BoardName = board?.Name;
-                item.TasksCount = await _taskRepository.CountByCardIdAsync(item.Id);
             }
 
-            return new PaginatedList<CardOutputDto>
+            return new PaginatedList<GetCardDto>
             {
                 TotalCount = totalCount,
                 PageNumber = pageNumber,

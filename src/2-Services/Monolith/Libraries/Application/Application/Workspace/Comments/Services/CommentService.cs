@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommentBasicInfoDto>> GetByIdAsync(string id)
+        public async Task<Result<GetCommentDto>> GetByIdAsync(string id)
         {
             return await _inMemoryBus.SendQuery(new GetCommentByIdQuery(id));
         }
@@ -42,7 +42,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Comments.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<CommentBasicInfoDto>>> GetListByTaskIdAsync(string taskId)
+        public async Task<Result<IEnumerable<GetCommentDto>>> GetListByTaskIdAsync(string taskId)
         {
             return await _inMemoryBus.SendQuery(new GetCommentsByTaskIdQuery(taskId));
         }

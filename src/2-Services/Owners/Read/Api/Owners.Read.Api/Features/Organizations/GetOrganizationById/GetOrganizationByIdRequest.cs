@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationById
 {
-    public class GetOrganizationByIdRequest : BaseQuery<OrganizationBasicInfoDto>
+    public class GetOrganizationByIdRequest : BaseQuery<GetOrganizationDto>
     {
         public GetOrganizationByIdRequest(string id)
         {

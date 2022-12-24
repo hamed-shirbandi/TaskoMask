@@ -59,7 +59,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CardBasicInfoDto>> GetByIdAsync(string id)
+        public async Task<Result<GetCardDto>> GetByIdAsync(string id)
         {
             return await _inMemoryBus.SendQuery(new GetCardByIdQuery(id));
         }
@@ -122,7 +122,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<PaginatedList<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term)
+        public async Task<Result<PaginatedList<GetCardDto>>> SearchAsync(int page, int recordsPerPage, string term)
         {
             return await _inMemoryBus.SendQuery(new SearchCardsQuery(page, recordsPerPage, term));
         }

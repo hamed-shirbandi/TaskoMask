@@ -12,7 +12,7 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 {
-    public class GetOwnerByIdHandler : BaseQueryHandler, IRequestHandler<GetOwnerByIdRequest, OwnerBasicInfoDto>
+    public class GetOwnerByIdHandler : BaseQueryHandler, IRequestHandler<GetOwnerByIdRequest, GetOwnerDto>
     {
         #region Fields
 
@@ -36,14 +36,14 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
         /// <summary>
         /// 
         /// </summary>
-        public async Task<OwnerBasicInfoDto> Handle(GetOwnerByIdRequest request, CancellationToken cancellationToken)
+        public async Task<GetOwnerDto> Handle(GetOwnerByIdRequest request, CancellationToken cancellationToken)
         {
             var owner = await _ownerReadDbContext.Owners.Find(e => e.Id == request.Id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
             if (owner == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
-            return _mapper.Map<OwnerBasicInfoDto>(owner);
+            return _mapper.Map<GetOwnerDto>(owner);
         }
 
 

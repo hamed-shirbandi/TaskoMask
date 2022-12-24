@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Application.Queries;
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Models
 {
    
-    public class GetTaskByIdQuery : BaseQuery<TaskBasicInfoDto>
+    public class GetTaskByIdQuery : BaseQuery<GetTaskDto>
     {
         public GetTaskByIdQuery(string id)
         {

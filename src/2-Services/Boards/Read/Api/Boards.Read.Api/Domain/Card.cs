@@ -24,7 +24,9 @@ namespace TaskoMask.Services.Boards.Read.Api.Domain
         public string Name { get; set; }
         public BoardCardType Type { get; set; }
         public string BoardId { get; set; }
+
         //Set this property on publishing related events from the write side
+        public string BoardName { get; set; }
         public string ProjectId { get; set; }
         public string OrganizationId { get; set; }
         public string OwnerId { get; set; }

@@ -58,11 +58,11 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         /// <summary>
         /// 
         /// </summary>
-        private async Task<ProjectBasicInfoDto> GetProjectAsync(string projectId, CancellationToken cancellationToken)
+        private async Task<GetProjectDto> GetProjectAsync(string projectId, CancellationToken cancellationToken)
         {
             var projectGrpcResponse =await _getProjectByIdGrpcServiceClient.HandleAsync(new GetProjectByIdGrpcRequest { Id = projectId }, cancellationToken: cancellationToken);
 
-            return _mapper.Map<ProjectBasicInfoDto>(projectGrpcResponse);
+            return _mapper.Map<GetProjectDto>(projectGrpcResponse);
         }
 
 

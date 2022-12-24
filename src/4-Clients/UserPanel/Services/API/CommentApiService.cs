@@ -25,10 +25,10 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<CommentBasicInfoDto>> GetAsync(string id)
+        public async Task<Result<GetCommentDto>> GetAsync(string id)
         {
             var url = $"/monolith/comments/{id}";
-            return await _httpClientService.GetAsync<CommentBasicInfoDto>(url);
+            return await _httpClientService.GetAsync<GetCommentDto>(url);
         }
 
 

@@ -82,7 +82,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
                 {
                     Card = MapToCard(currentCardGrpcResponse),
                     //TODO get tasks from task service
-                    Tasks = new List<TaskBasicInfoDto>(),
+                    Tasks = new List<GetTaskDto>(),
                 });
             }
 
@@ -94,9 +94,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
         /// <summary>
         /// 
         /// </summary>
-        private CardBasicInfoDto MapToCard(GetCardsByBoardIdGrpcResponse cardGrpcResponse)
+        private GetCardDto MapToCard(GetCardGrpcResponse cardGrpcResponse)
         {
-            return _mapper.Map<CardBasicInfoDto>(cardGrpcResponse);
+            return _mapper.Map<GetCardDto>(cardGrpcResponse);
         }
 
 

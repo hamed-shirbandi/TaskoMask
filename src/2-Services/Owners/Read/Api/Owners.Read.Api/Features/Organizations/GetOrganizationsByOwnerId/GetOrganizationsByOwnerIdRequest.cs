@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationsByOwnerId
 {
-    public class GetOrganizationsByOwnerIdRequest : BaseQuery<IEnumerable<OrganizationBasicInfoDto>>
+    public class GetOrganizationsByOwnerIdRequest : BaseQuery<IEnumerable<GetOrganizationDto>>
     {
         public GetOrganizationsByOwnerIdRequest(string ownerId)
         {

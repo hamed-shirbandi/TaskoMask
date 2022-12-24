@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models
 {
-    public class SearchCardsQuery : BaseQuery<PaginatedList<CardOutputDto>>
+    public class SearchCardsQuery : BaseQuery<PaginatedList<GetCardDto>>
     {
         public SearchCardsQuery(int page, int recordsPerPage, string term)
         {

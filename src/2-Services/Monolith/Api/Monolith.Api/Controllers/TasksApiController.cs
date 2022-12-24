@@ -40,10 +40,10 @@ namespace TaskoMask.Services.Monolith.Api.Controllers
         /// </summary>
         [HttpGet]
         [Route("tasks/{id}")]
-        public async Task<Result<TaskBasicInfoDto>> Get(string id)
+        public async Task<Result<GetTaskDto>> Get(string id)
         {
             if (!await _userAccessManagementService.CanAccessToTaskAsync(id))
-                return Result.Failure<TaskBasicInfoDto>(message: ContractsMessages.Access_Denied);
+                return Result.Failure<GetTaskDto>(message: ContractsMessages.Access_Denied);
 
             return await _taskService.GetByIdAsync(id);
         }

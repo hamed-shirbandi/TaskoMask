@@ -12,7 +12,7 @@ using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 
 namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
 {
-    public class GetCardByIdHandler : BaseQueryHandler, IRequestHandler<GetCardByIdRequest, CardBasicInfoDto>
+    public class GetCardByIdHandler : BaseQueryHandler, IRequestHandler<GetCardByIdRequest, GetCardDto>
     {
         #region Fields
 
@@ -36,14 +36,14 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
         /// <summary>
         /// 
         /// </summary>
-        public async Task<CardBasicInfoDto> Handle(GetCardByIdRequest request, CancellationToken cancellationToken)
+        public async Task<GetCardDto> Handle(GetCardByIdRequest request, CancellationToken cancellationToken)
         {
             var card = await _boardReadDbContext.Cards.Find(e => e.Id == request.Id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
             if (card == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
 
-            return _mapper.Map<CardBasicInfoDto>(card);
+            return _mapper.Map<GetCardDto>(card);
         }
 
 

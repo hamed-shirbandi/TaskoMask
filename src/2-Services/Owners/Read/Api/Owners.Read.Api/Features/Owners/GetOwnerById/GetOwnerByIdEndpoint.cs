@@ -25,7 +25,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
         /// </summary>
         [HttpGet]
         [Route("owner")]
-        public async Task<Result<OwnerBasicInfoDto>> Get()
+        public async Task<Result<GetOwnerDto>> Get()
         {
             return await _inMemoryBus.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
         }

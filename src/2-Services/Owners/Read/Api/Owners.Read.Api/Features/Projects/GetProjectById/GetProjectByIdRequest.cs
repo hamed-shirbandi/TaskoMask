@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 {
-    public class GetProjectByIdRequest : BaseQuery<ProjectBasicInfoDto>
+    public class GetProjectByIdRequest : BaseQuery<GetProjectDto>
     {
         public GetProjectByIdRequest(string id)
         {

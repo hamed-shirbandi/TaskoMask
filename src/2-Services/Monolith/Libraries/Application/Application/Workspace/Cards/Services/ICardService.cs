@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Cards.Services
         Task<Result<CommandResult>> AddAsync(AddCardDto input);
         Task<Result<CommandResult>> UpdateAsync(UpdateCardDto input);
         Task<Result<IEnumerable<CardDetailsViewModel>>> GetListWithDetailsByBoardIdAsync(string boardId);
-        Task<Result<CardBasicInfoDto>> GetByIdAsync(string id);
-        Task<Result<PaginatedList<CardOutputDto>>> SearchAsync(int page, int recordsPerPage, string term);
+        Task<Result<GetCardDto>> GetByIdAsync(string id);
+        Task<Result<PaginatedList<GetCardDto>>> SearchAsync(int page, int recordsPerPage, string term);
         Task<Result<long>> CountAsync();
         Task<Result<CommandResult>> DeleteAsync(string id);
         Task<Result<IEnumerable<SelectListItem>>> GetSelectListAsync(string boardId);

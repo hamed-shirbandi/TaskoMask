@@ -13,23 +13,23 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<CreationTimeDto, CreationTime>()
+            CreateMap<CreationTimeDto, CreationTimeGrpcResponse>()
              .ForMember(dest => dest.CreateDateTime, opt =>
                   opt.MapFrom(src => src.CreateDateTime.ToTimestamp()))
             .ForMember(dest => dest.ModifiedDateTime, opt =>
                   opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
 
-            CreateMap<Owner, OwnerBasicInfoDto>();
+            CreateMap<Owner, GetOwnerDto>();
 
-            CreateMap<Organization, OrganizationBasicInfoDto>();
+            CreateMap<Organization, GetOrganizationDto>();
 
-            CreateMap<OrganizationBasicInfoDto, OrganizationBasicInfoGrpcResponse>()
+            CreateMap<GetOrganizationDto, GetOrganizationGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
 
-            CreateMap<Project, ProjectBasicInfoDto>();
+            CreateMap<Project, GetProjectDto>();
 
-            CreateMap<ProjectBasicInfoDto, ProjectBasicInfoGrpcResponse>()
+            CreateMap<GetProjectDto, GetProjectGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
         }

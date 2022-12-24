@@ -5,7 +5,7 @@ package TaskoMask.BuildingBlocks.Contracts.Protos;
 import "base.proto";
 
 service GetCardsByBoardIdGrpcService {
-  rpc Handle (GetCardsByBoardIdGrpcRequest) returns (stream GetCardsByBoardIdGrpcResponse);
+  rpc Handle (GetCardsByBoardIdGrpcRequest) returns (stream GetCardGrpcResponse);
 }
 
 
@@ -13,7 +13,7 @@ message GetCardsByBoardIdGrpcRequest {
   string boardId = 1;
 }
 
-message GetCardsByBoardIdGrpcResponse {
+message GetCardGrpcResponse {
 
 	CreationTime creationTime=1;
 	string id = 2;

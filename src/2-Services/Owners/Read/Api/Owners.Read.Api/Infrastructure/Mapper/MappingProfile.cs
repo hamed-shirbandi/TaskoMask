@@ -19,7 +19,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper
             .ForMember(dest => dest.ModifiedDateTime, opt =>
                   opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
 
-            CreateMap<Owner, OwnerBasicInfoDto>();
+            CreateMap<Owner, GetOwnerDto>();
 
             CreateMap<Organization, GetOrganizationDto>();
 

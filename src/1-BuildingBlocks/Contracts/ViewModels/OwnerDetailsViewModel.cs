@@ -11,7 +11,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
 
         }
 
-        public OwnerBasicInfoDto Owner { get; set; }
+        public GetOwnerDto Owner { get; set; }
         public IEnumerable<GetOrganizationDto> Organizations { get; set; }
 
     }

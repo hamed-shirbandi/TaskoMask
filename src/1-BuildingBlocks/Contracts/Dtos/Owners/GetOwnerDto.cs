@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Owners
 {
-    public class OwnerBasicInfoDto 
+    public class GetOwnerDto 
     {
         public string Id { get; set; }
 

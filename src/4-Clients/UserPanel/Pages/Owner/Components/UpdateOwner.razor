@@ -74,7 +74,7 @@
         }
         else
         {
-            QueryResultHandler<OwnerBasicInfoDto>.Init()
+            QueryResultHandler<GetOwnerDto>.Init()
                 .WithResult(ownerResult)
                 .ShowErrorToast(ToastService)
                 .CloseModal(ModalInstance);

@@ -42,6 +42,20 @@ namespace TaskoMask.Services.Boards.Write.Api.Controllers
             return await _inMemoryBus.SendCommand<AddBoardRequest>(new(projectId: input.ProjectId, name: input.Name, description: input.Description));
         }
 
+
+
+        /// <summary>
+        /// Update an existing board
+        /// </summary>
+        [HttpPut]
+        [Route("boards/{id}")]
+        public async Task<Result<CommandResult>> Update(string id,[FromBody] UpdateBoardDto input)
+        {
+            return await _inMemoryBus.SendCommand<UpdateBoardRequest>(new(id: input.Id, name: input.Name, description: input.Description));
+        }
+
+
+
         #endregion
 
     }

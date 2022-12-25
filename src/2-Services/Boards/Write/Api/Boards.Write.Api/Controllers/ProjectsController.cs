@@ -56,6 +56,19 @@ namespace TaskoMask.Services.Boards.Write.Api.Controllers
 
 
 
+        /// <summary>
+        /// Delete a board
+        /// </summary>
+        [HttpDelete]
+        [Route("boards/{id}")]
+        public async Task<Result<CommandResult>> Delete(string id)
+        {
+            return await _inMemoryBus.SendCommand<DeleteBoardRequest>(new(id));
+
+        }
+
+
+
         #endregion
 
     }

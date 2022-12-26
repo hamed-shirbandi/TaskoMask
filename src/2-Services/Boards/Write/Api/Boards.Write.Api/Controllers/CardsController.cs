@@ -56,6 +56,18 @@ namespace TaskoMask.Services.Cards.Write.Api.Controllers
 
 
 
+        /// <summary>
+        /// Delete a card
+        /// </summary>
+        [HttpDelete]
+        [Route("cards/{id}")]
+        public async Task<Result<CommandResult>> Delete(string id)
+        {
+            return await _inMemoryBus.SendCommand<DeleteCardRequest>(new(id));
+        }
+
+
+
         #endregion
 
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
@@ -56,7 +57,7 @@ namespace TaskoMask.Services.Boards.Write.Application.UseCases.Cards.AddCard
 
             await PublishDomainEventsAsync(board.DomainEvents);
 
-            var cardAdded = MapToCardAddedIntegrationEvent(board.DomainEvents);
+            var cardAdded = MapToCardAddedIntegrationEvent(board);
 
             await PublishIntegrationEventAsync(cardAdded);
 
@@ -69,10 +70,14 @@ namespace TaskoMask.Services.Boards.Write.Application.UseCases.Cards.AddCard
         #region Private Methods
 
 
-        private CardAdded MapToCardAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+        private CardAdded MapToCardAddedIntegrationEvent(Board board)
         {
-            var cardAddedDomainEvent = (CardAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CardAddedEvent));
-            return new CardAdded(cardAddedDomainEvent.Id, cardAddedDomainEvent.Name, cardAddedDomainEvent.Type, cardAddedDomainEvent.BoardId);
+            //TODO get project from owner read service via rpc
+            var project = new GetProjectDto();
+
+            var cardAddedDomainEvent = (CardAddedEvent)board.DomainEvents.FirstOrDefault(e => e.EventType == nameof(CardAddedEvent));
+           
+            return new CardAdded(board.Id, cardAddedDomainEvent.Name, cardAddedDomainEvent.Type, cardAddedDomainEvent.BoardId, project.Id, project.OrganizationId, project.OwnerId);
         }
 
 

@@ -44,6 +44,18 @@ namespace TaskoMask.Services.Cards.Write.Api.Controllers
 
 
 
+        /// <summary>
+        /// Update an existing card
+        /// </summary>
+        [HttpPut]
+        [Route("cards/{id}")]
+        public async Task<Result<CommandResult>> Update(string id,[FromBody] UpdateCardDto input)
+        {
+            return await _inMemoryBus.SendCommand<UpdateCardRequest>(new(id: input.Id, name: input.Name, type: input.Type));
+        }
+
+
+
         #endregion
 
     }

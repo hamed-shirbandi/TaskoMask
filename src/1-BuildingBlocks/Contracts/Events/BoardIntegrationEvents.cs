@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Events
 {
-    public record BoardAdded(string Id, string Name, string Description, string ProjectId): IntegrationEvent;
+    public record BoardAdded(string Id, string Name, string Description, string ProjectId) : IntegrationEvent;
     public record BoardDeleted(string Id) : IntegrationEvent;
     public record BoardUpdated(string Id, string Name, string Description) : IntegrationEvent;
 

@@ -5,6 +5,7 @@ using TaskoMask.Services.Boards.Read.Api.Domain;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 using Google.Protobuf.WellKnownTypes;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 
 namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
 {
@@ -20,11 +21,11 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
                  .ForMember(dest => dest.ModifiedDateTime, opt =>
                       opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
 
+            CreateMap<GetProjectGrpcResponse, GetProjectDto>();
 
             CreateMap<GetBoardDto, GetBoardGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
-
 
             CreateMap<GetCardDto, GetCardGrpcResponse>();
         }

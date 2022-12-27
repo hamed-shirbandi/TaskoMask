@@ -8,6 +8,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Projects
     {
         [Display(Name = nameof(ContractsMetadata.OrganizationName), ResourceType = typeof(ContractsMetadata))]
         public string OrganizationName { get; set; }
+        public string OwnerId { get; set; }
 
         public CreationTimeDto CreationTime { get; set; }
     }

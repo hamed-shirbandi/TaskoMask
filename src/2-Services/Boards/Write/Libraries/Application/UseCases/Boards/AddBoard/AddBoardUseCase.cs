@@ -69,11 +69,8 @@ namespace TaskoMask.Services.Boards.Write.Application.UseCases.Boards.AddBoard
 
         private BoardAdded MapToBoardAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
-            //TODO get project from owner read service via rpc
-            var project = new GetProjectDto();
-
             var boardAddedDomainEvent = (BoardAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(BoardAddedEvent));
-            return new BoardAdded(boardAddedDomainEvent.Id, boardAddedDomainEvent.Name, boardAddedDomainEvent.Description, boardAddedDomainEvent.ProjectId, project.Name, project.OrganizationId, project.OrganizationName, project.OwnerId);
+            return new BoardAdded(boardAddedDomainEvent.Id, boardAddedDomainEvent.Name, boardAddedDomainEvent.Description, boardAddedDomainEvent.ProjectId);
         }
 
 

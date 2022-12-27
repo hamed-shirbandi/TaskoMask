@@ -5,6 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 using System.Threading.Tasks;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Boards.Read.Api.Domain;
+using MongoDB.Driver;
 
 namespace TaskoMask.Services.Boards.Read.Api.Consumers.Cards
 {
@@ -21,14 +22,16 @@ namespace TaskoMask.Services.Boards.Read.Api.Consumers.Cards
 
         public override async Task ConsumeMessage(ConsumeContext<CardAdded> context)
         {
+            var board = await _boardReadDbContext.Boards.Find(b => b.Id == context.Message.BoardId).FirstOrDefaultAsync();
+           
             var card = new Card(context.Message.Id)
             {
                 Name = context.Message.Name,
                 Type = context.Message.Type,
                 BoardId = context.Message.BoardId,
-                ProjectId = context.Message.ProjectId,
-                OrganizationId= context.Message.OrganizationId,
-                OwnerId = context.Message.OwnerId,
+                ProjectId = board.ProjectId,
+                OrganizationId= board.OrganizationId,
+                OwnerId = board.OwnerId,
             };
 
             await _boardReadDbContext.Cards.InsertOneAsync(card);

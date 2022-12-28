@@ -21,6 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\Api\Boards.Read.Api\Boards.Read.Api.csproj" />
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
 	</ItemGroup>
 
@@ -29,7 +30,5 @@
 		<Copy SourceFiles="..\..\Api\Boards.Read.Api\appsettings.Development.json" DestinationFolder="$(OutDir)" />
 		<Copy SourceFiles="..\..\Api\Boards.Read.Api\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
 	</Target>
-
-
 
 </Project>

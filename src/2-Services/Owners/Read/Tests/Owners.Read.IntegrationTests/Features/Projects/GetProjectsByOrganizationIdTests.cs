@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Project
 
 
         [Fact]
-        public async Task Projects_Is_Fetched_By_OrganizationId()
+        public async Task Projects_Are_Fetched_By_OrganizationId()
         {
             //Arrange
             var expectedProject = ProjectObjectMother.GetProject();

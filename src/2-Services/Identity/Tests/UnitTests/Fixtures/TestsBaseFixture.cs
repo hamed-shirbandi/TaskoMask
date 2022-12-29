@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
-using TaskoMask.BuildingBlocks.Test;
+using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.UnitTests.Helpers;
 

@@ -3,26 +3,26 @@ using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Test.TestBase;
-using TaskoMask.Services.Owners.Write.Domain.Data;
-using TaskoMask.Services.Owners.Write.Domain.Entities;
-using TaskoMask.Services.Owners.Write.Domain.Services;
-using TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI;
-using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Boards.Write.Domain.Data;
+using TaskoMask.Services.Boards.Write.Domain.Entities;
+using TaskoMask.Services.Boards.Write.Domain.Services;
+using TaskoMask.Services.Boards.Write.Infrastructure.CrossCutting.DI;
+using TaskoMask.Services.Boards.Write.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
+namespace TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures
 {
     public abstract class TestsBaseFixture : IntegrationTestsBase
     {
-        public readonly IOwnerAggregateRepository OwnerAggregateRepository;
-        public readonly IOwnerValidatorService OwnerValidatorService;
+        public readonly IBoardAggregateRepository BoardAggregateRepository;
+        public readonly IBoardValidatorService BoardValidatorService;
         public readonly IMessageBus MessageBus;
         public readonly IInMemoryBus InMemoryBus;
 
 
         protected TestsBaseFixture(string dbNameSuffix) : base(dbNameSuffix)
         {
-            OwnerAggregateRepository = GetRequiredService<IOwnerAggregateRepository>();
-            OwnerValidatorService = GetRequiredService<IOwnerValidatorService>();
+            BoardAggregateRepository = GetRequiredService<IBoardAggregateRepository>();
+            BoardValidatorService = GetRequiredService<IBoardValidatorService>();
             MessageBus = Substitute.For<IMessageBus>();
             InMemoryBus = Substitute.For<IInMemoryBus>();
         }
@@ -51,9 +51,9 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
         /// <summary>
         /// 
         /// </summary>
-        public async Task SeedOwnerAsync(Owner owner)
+        public async Task SeedBoardAsync(Board board)
         {
-            await OwnerAggregateRepository.AddAsync(owner);
+            await BoardAggregateRepository.AddAsync(board);
         }
 
 
@@ -61,9 +61,9 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Owner> GetOwnerAsync(string id)
+        public async Task<Board> GetBoardAsync(string id)
         {
-            return await OwnerAggregateRepository.GetByIdAsync(id);
+            return await BoardAggregateRepository.GetByIdAsync(id);
         }
 
 
@@ -76,13 +76,13 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
             var services = new ServiceCollection();
 
             var configuration = new ConfigurationBuilder()
-                                //Copy from Owners.Write.Api project during the build event
+                                //Copy from Boards.Write.Api card during the build event
                                 .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
                                 .AddJsonFile("appsettings.Staging.json", optional: true)
                                 .AddJsonFile("appsettings.Development.json", optional: true)
                                 .AddInMemoryCollection(new[]
                                 {
-                                   new KeyValuePair<string,string>("MongoDB:DatabaseName", $"Owners_Write_DB_{dbNameSuffix}")
+                                   new KeyValuePair<string,string>("MongoDB:DatabaseName", $"Boards_Write_DB_{dbNameSuffix}")
                                 })
                                 .Build();
 

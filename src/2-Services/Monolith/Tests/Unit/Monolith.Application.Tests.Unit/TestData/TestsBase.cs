@@ -2,7 +2,7 @@
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
-using TaskoMask.BuildingBlocks.Test;
+using TaskoMask.BuildingBlocks.Test.TestBase;
 
 namespace TaskoMask.Services.Monolith.Application.Tests.Unit.TestData
 {

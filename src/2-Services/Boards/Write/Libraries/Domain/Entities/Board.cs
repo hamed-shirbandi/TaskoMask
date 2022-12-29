@@ -49,7 +49,7 @@ namespace TaskoMask.Services.Boards.Write.Domain.Entities
 
         #endregion
 
-        #region Public Board Methods
+        #region Board Behaviors
 
 
 
@@ -90,7 +90,7 @@ namespace TaskoMask.Services.Boards.Write.Domain.Entities
 
         #endregion
 
-        #region Public Card Methods
+        #region Card Behaviors
 
 
 
@@ -135,9 +135,22 @@ namespace TaskoMask.Services.Boards.Write.Domain.Entities
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public Card GetCardById(string cardId)
+        {
+            var card = Cards.FirstOrDefault(p => p.Id == cardId);
+            if (card == null)
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Card));
+
+            return card;
+        }
+
+
         #endregion
 
-        #region Private Methods
+        #region Methods
 
 
 

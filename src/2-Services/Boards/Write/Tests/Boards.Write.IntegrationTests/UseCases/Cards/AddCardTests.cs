@@ -48,8 +48,10 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
             result.Message.Should().Be(ContractsMessages.Create_Success);
 
             var updatedBoard = await _fixture.GetBoardAsync(expectedBoard.Id);
-            var addedCard = updatedBoard.Cards.FirstOrDefault(c => c.Id == result.EntityId);
+            var addedCard = updatedBoard.GetCardById(result.EntityId);
+
             addedCard.Name.Value.Should().Be(request.Name);
+            addedCard.Type.Value.Should().Be(request.Type);
         }
 
 

@@ -17,7 +17,7 @@ using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.ValueObjects.Boards;
 using Xunit;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.BuildingBlocks.Test;
+using TaskoMask.BuildingBlocks.Test.TestBase;
 
 namespace TaskoMask.Services.Monolith.Domain.Tests.Unit.Workspace
 {

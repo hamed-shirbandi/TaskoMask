@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Test;
+using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Boards.Write.Domain.Data;
 using TaskoMask.Services.Boards.Write.Domain.Entities;
 using TaskoMask.Services.Boards.Write.Domain.Services;

@@ -49,7 +49,8 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
             result.Message.Should().Be(ContractsMessages.Update_Success);
 
             var updatedBoard = await _fixture.GetBoardAsync(expectedBoard.Id);
-            var updatedCard = updatedBoard.Cards.FirstOrDefault(c => c.Id == expectedCard.Id);
+            var updatedCard = updatedBoard.GetCardById(expectedCard.Id);
+
             updatedCard.Name.Value.Should().Be(request.Name);
             updatedCard.Type.Value.Should().Be(request.Type);
         }

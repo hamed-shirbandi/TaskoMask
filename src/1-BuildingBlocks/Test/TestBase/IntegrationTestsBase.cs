@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace TaskoMask.BuildingBlocks.Test
+namespace TaskoMask.BuildingBlocks.Test.TestBase
 {
 
     /// <summary>
@@ -81,7 +81,7 @@ namespace TaskoMask.BuildingBlocks.Test
         /// </summary>
         public void Dispose()
         {
-           DropDatabase();
+            DropDatabase();
         }
 
     }

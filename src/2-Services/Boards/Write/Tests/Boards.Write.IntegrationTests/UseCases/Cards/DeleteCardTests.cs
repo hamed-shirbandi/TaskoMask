@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Cards.DeleteCard;
 using TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures;
@@ -51,8 +52,8 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
             result.Message.Should().Be(ContractsMessages.Update_Success);
 
             var updatedBoard = await _fixture.GetBoardAsync(expectedBoard.Id);
-            var deletedCard = updatedBoard.Cards.FirstOrDefault(c => c.Id == result.EntityId);
-            deletedCard.Should().BeNull();
+            Action act = () => updatedBoard.GetCardById(expectedCard.Id);
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 

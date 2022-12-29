@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
+using TaskoMask.BuildingBlocks.Test.TestData;
 using TaskoMask.Services.Boards.Write.Domain.Entities;
 using TaskoMask.Services.Boards.Write.Domain.Services;
 
@@ -14,7 +15,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.TestData
 
         public static Board GetABoard(IBoardValidatorService boardValidatorService)
         {
-            return Board.AddBoard(name: GetRandomString(10),description: GetRandomString(30),projectId: ObjectId.GenerateNewId().ToString(), boardValidatorService);
+            return Board.AddBoard(name: TestDataGenerator.GetRandomName(10), description: TestDataGenerator.GetRandomString(20), projectId: ObjectId.GenerateNewId().ToString(), boardValidatorService);
         }
 
 
@@ -25,7 +26,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.TestData
 
         public static Card GetACard()
         {
-            return Card.Create(name: GetRandomString(10), type: BoardCardType.ToDo);
+            return Card.Create(name: TestDataGenerator.GetRandomName(10), type: BoardCardType.ToDo);
 
         }
 
@@ -39,16 +40,6 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.TestData
             var board = GetABoard(boardValidatorService);
             board.AddCard(GetACard());
             return board;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static string GetRandomString(int length)
-        {
-            return Guid.NewGuid().ToString().Substring(length);
         }
 
     }

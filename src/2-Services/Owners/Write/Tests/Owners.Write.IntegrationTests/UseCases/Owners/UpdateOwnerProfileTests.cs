@@ -36,7 +36,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Owners
             var expectedOwner = OwnerObjectMother.GetAnOwner(_fixture.OwnerValidatorService);
             await _fixture.SeedOwnerAsync(expectedOwner);
 
-            var request = new UpdateOwnerProfileRequest(id: expectedOwner.Id, displayName: "TestNewName", email:"testNewMail@taskomask.ir");
+            var request = new UpdateOwnerProfileRequest(id: expectedOwner.Id, displayName: "Test New Name", email:"testNewMail@taskomask.ir");
             var updateOwnerProfileUseCase = new UpdateOwnerProfileUseCase(_fixture.OwnerAggregateRepository, _fixture.OwnerValidatorService, _fixture.MessageBus, _fixture.InMemoryBus);
 
             //Act
@@ -45,6 +45,10 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Owners
             //Assert
             result.EntityId.Should().Be(expectedOwner.Id);
             result.Message.Should().Be(ContractsMessages.Update_Success);
+
+            var updatedOwner = await _fixture.GetOwnerAsync(expectedOwner.Id);
+            updatedOwner.DisplayName.Value.Should().Be(request.DisplayName);
+            updatedOwner.Email.Value.Should().Be(request.Email);
         }
 
 

@@ -1,7 +1,6 @@
-﻿
-namespace TaskoMask.BuildingBlocks.Test
+﻿namespace TaskoMask.BuildingBlocks.Test.TestBase
 {
-    public abstract class UnitTestsBase:IDisposable
+    public abstract class UnitTestsBase : IDisposable
     {
 
         /// <summary>

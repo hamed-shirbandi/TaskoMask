@@ -1,4 +1,5 @@
-﻿using TaskoMask.Services.Owners.Write.Domain.Entities;
+﻿using TaskoMask.BuildingBlocks.Test.TestData;
+using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
@@ -12,8 +13,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
 
         public static Owner GetAnOwner(IOwnerValidatorService ownerValidatorService)
         {
-            var randomName = GetRandomString(30);
-            return Owner.RegisterOwner(randomName, $"{randomName}@TaskoMask.ir", ownerValidatorService);
+            return Owner.RegisterOwner(displayName: TestDataGenerator.GetRandomName(10), TestDataGenerator.GetRandomEmail(), ownerValidatorService);
         }
 
 
@@ -24,8 +24,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
 
         public static Organization GetAnOrganization()
         {
-            var randomName = GetRandomString(30);
-            return Organization.CreateOrganization(randomName, "Test Description");
+            return Organization.CreateOrganization(TestDataGenerator.GetRandomName(10), TestDataGenerator.GetRandomString(20));
         }
 
 
@@ -36,8 +35,7 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
 
         public static Project GetAProject()
         {
-            var randomName = GetRandomString(30);
-            return Project.Create(randomName, "Test Description");
+            return Project.Create(TestDataGenerator.GetRandomName(10), TestDataGenerator.GetRandomString(20));
         }
 
 
@@ -63,15 +61,6 @@ namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
             var organization = owner.Organizations.FirstOrDefault();
             owner.AddProject(organization.Id,GetAProject());
             return owner;
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static string GetRandomString(int length)
-        {
-            return Guid.NewGuid().ToString().Substring(length);
         }
 
     }

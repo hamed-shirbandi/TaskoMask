@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using TaskoMask.BuildingBlocks.Test.TestData;
 using TaskoMask.Services.Boards.Read.Api.Domain;
 
 namespace TaskoMask.Services.Boards.Read.IntegrationTests.TestData
@@ -9,13 +10,13 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.TestData
         {
             return new Board(ObjectId.GenerateNewId().ToString())
             {
-                Name = "Test Name",
-                Description = "Test Description",
+                Name = TestDataGenerator.GetRandomName(10),
+                Description = TestDataGenerator.GetRandomString(20),
                 OwnerId = ObjectId.GenerateNewId().ToString(),
                 OrganizationId = ObjectId.GenerateNewId().ToString(),
                 ProjectId = ObjectId.GenerateNewId().ToString(),
-                OrganizationName = "Test Organization Name",
-                ProjectName = "Test Project Name",
+                OrganizationName = TestDataGenerator.GetRandomName(10),
+                ProjectName = TestDataGenerator.GetRandomName(10),
             };
         }
 

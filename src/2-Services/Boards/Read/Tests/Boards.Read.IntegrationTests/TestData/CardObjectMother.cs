@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
+using TaskoMask.BuildingBlocks.Test.TestData;
 using TaskoMask.Services.Boards.Read.Api.Domain;
 
 namespace TaskoMask.Services.Boards.Read.IntegrationTests.TestData
@@ -10,13 +11,13 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.TestData
         {
             return new Card(ObjectId.GenerateNewId().ToString())
             {
-                Name = "Test Name",
+                Name = TestDataGenerator.GetRandomName(10),
                 Type = BoardCardType.ToDo,
                 BoardId = ObjectId.GenerateNewId().ToString(),
                 ProjectId = ObjectId.GenerateNewId().ToString(),
                 OrganizationId = ObjectId.GenerateNewId().ToString(),
                 OwnerId = ObjectId.GenerateNewId().ToString(),
-                BoardName = "Test Board Name",
+                BoardName = TestDataGenerator.GetRandomName(10),
             };
         }
 

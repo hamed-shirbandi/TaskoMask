@@ -37,7 +37,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
 
         #endregion
 
-        #region Public Methods
+        #region Behaviors
 
 
 
@@ -68,7 +68,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.Entities
 
         #endregion
 
-        #region Private Methods
+        #region Methods
 
 
         /// <summary>

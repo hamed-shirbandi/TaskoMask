@@ -54,6 +54,26 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
         }
 
 
+        [InlineData("test", "test")]
+        [InlineData("تست", "تست")]
+        [Theory]
+        public async Task Board_Is_Not_Added_When_Name_And_Description_Are_The_Same(string name, string description)
+        {
+            //Arrange
+            var expectedBoard = Boards.FirstOrDefault();
+            var addBoardRequest = new AddBoardRequest(expectedBoard.Id, name, description);
+            var expectedMessage = DomainMessages.Equal_Name_And_Description_Error;
+
+            //Act
+            Func<Task> act = async () => await _addBoardUseCase.Handle(addBoardRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
+
 
         #endregion
 

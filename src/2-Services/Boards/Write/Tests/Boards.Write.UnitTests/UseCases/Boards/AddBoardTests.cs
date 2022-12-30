@@ -73,6 +73,26 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
 
+        [InlineData("Th")]
+        [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
+        [Theory]
+        public async Task Board_Is_Not_Added_When_Name_Lenght_Is_Less_Than_Min_Or_More_Than_Max(string name)
+        {
+            //Arrange
+            var expectedBoard = Boards.FirstOrDefault();
+            var addBoardRequest = new AddBoardRequest(expectedBoard.Id, name, "Test_Description");
+            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length);
+
+            //Act
+            Func<Task> act = async () => await _addBoardUseCase.Handle(addBoardRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
+
 
 
         #endregion

@@ -92,6 +92,23 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
 
+        [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
+        [Theory]
+        public async Task Board_Is_Not_Added_When_Description_Lenght_Is_More_Than_Max(string description)
+        {
+            //Arrange
+            var expectedBoard = Boards.FirstOrDefault();
+            var addBoardRequest = new AddBoardRequest(expectedBoard.Id, "Test_Name", description);
+            var expectedMessage = string.Format(ContractsMetadata.Max_Length_Error, nameof(BoardDescription), DomainConstValues.Board_Description_Max_Length);
+
+            //Act
+            Func<Task> act = async () => await _addBoardUseCase.Handle(addBoardRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
 
 
 

@@ -34,6 +34,26 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
         #region Test Methods
 
 
+        [Fact]
+        public async Task Board_Is_Added()
+        {
+            //Arrange
+            var addBoardRequest = new AddBoardRequest(projectId: ObjectId.GenerateNewId().ToString(), "Test_Name", "Test_Description");
+
+            //Act
+            var result = await _addBoardUseCase.Handle(addBoardRequest, CancellationToken.None);
+
+            //Assert
+            result.Message.Should().Be(ContractsMessages.Create_Success);
+            result.EntityId.Should().NotBeNull();
+            var addedBoard = Boards.FirstOrDefault(u => u.Id == result.EntityId);
+            addedBoard.Should().NotBeNull();
+            addedBoard.Name.Value.Should().Be(addBoardRequest.Name);
+            await InMemoryBus.Received(1).PublishEvent(Arg.Any<BoardAddedEvent>());
+            await MessageBus.Received(1).Publish(Arg.Any<BoardAdded>());
+        }
+
+
 
         #endregion
 

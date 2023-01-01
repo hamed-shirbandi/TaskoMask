@@ -41,7 +41,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.TestData
 
 
 
-        public BoardBuilder WithDisplayName(string description)
+        public BoardBuilder WithDescription(string description)
         {
             Description = description;
             return this;
@@ -49,7 +49,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.TestData
 
 
 
-        public BoardBuilder WithProjectIde(string projectId)
+        public BoardBuilder WithProjectId(string projectId)
         {
             ProjectId = projectId;
             return this;
@@ -57,7 +57,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.TestData
 
 
 
-        public Board AddBoard()
+        public Board Build()
         {
             var board = Board.AddBoard(Name, Description, ProjectId, ValidatorService);
             board.ClearDomainEvents();

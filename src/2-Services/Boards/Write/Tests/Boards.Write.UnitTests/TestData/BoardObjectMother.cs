@@ -13,11 +13,14 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.TestData
         /// 
         /// </summary>
 
-        public static Board GetABoard(IBoardValidatorService boardValidatorService)
+        public static Board CreateBoard(IBoardValidatorService boardValidatorService)
         {
-            var board= Board.AddBoard(name: TestDataGenerator.GetRandomName(10), description: TestDataGenerator.GetRandomString(20), projectId: ObjectId.GenerateNewId().ToString(), boardValidatorService);
-            board.ClearDomainEvents();
-            return board;
+            return BoardBuilder.Init()
+                .WithValidatorService(boardValidatorService)
+                .WithName(TestDataGenerator.GetRandomName(10))
+                .WithDescription(TestDataGenerator.GetRandomName(20))
+                .WithProjectId(ObjectId.GenerateNewId().ToString())
+                .Build();
         }
 
 
@@ -25,8 +28,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.TestData
         /// <summary>
         /// 
         /// </summary>
-
-        public static Card GetACard()
+        public static Card CreateCard()
         {
             return Card.Create(name: TestDataGenerator.GetRandomName(10), type: BoardCardType.ToDo);
         }
@@ -36,16 +38,25 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.TestData
         /// <summary>
         /// 
         /// </summary>
-        public static List<Board> GenerateBoardsList(IBoardValidatorService boardValidatorService,int number = 3)
+        public static Board CreateBoardWithOneCard(IBoardValidatorService boardValidatorService)
+        {
+            var board = CreateBoard(boardValidatorService);
+            board.AddCard(CreateCard());
+            board.ClearDomainEvents();
+            return board;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static List<Board> GenerateBoardsList(IBoardValidatorService boardValidatorService, int number = 3)
         {
             var list = new List<Board>();
-            var projectId = ObjectId.GenerateNewId().ToString();
-            for (int i = 1; i <= number; i++)
-            {
-                var board = Board.AddBoard($"Test Name {i}", $"Test Description {i}", projectId, boardValidatorService);
-                board.ClearDomainEvents();
-                list.Add(board);
-            }
+
+            while (number-- > 0)
+                list.Add(CreateBoard(boardValidatorService));
 
             return list;
         }

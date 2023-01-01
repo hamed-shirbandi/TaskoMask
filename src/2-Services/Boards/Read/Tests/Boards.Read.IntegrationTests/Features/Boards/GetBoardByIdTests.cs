@@ -29,10 +29,10 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.Features.Boards
 
 
         [Fact]
-        public async Task Board_Is_Fetched_By_Id()
+        public async Task Board_is_fetched_by_Id()
         {
             //Arrange
-            var expectedBoard = BoardObjectMother.GetBoard();
+            var expectedBoard = BoardObjectMother.CreateBoard();
             await _fixture.SeedBoardAsync(expectedBoard);
             var getBoardByIdHandler = new GetBoardByIdHandler(_fixture.DbContext, _fixture.Mapper);
             var request = new GetBoardByIdRequest(expectedBoard.Id);

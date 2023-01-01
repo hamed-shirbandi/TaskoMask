@@ -7,7 +7,7 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.TestData
 {
     internal static class CardObjectMother
     {
-        public static Card GetCard()
+        public static Card CreateCard()
         {
             return new Card(ObjectId.GenerateNewId().ToString())
             {

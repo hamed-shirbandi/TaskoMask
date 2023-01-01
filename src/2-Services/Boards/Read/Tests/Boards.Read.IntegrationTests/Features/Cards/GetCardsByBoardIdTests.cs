@@ -29,10 +29,10 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.Features.Card
 
 
         [Fact]
-        public async Task Cards_Are_Fetched_By_BoardId()
+        public async Task Cards_are_fetched_by_board_Id()
         {
             //Arrange
-            var expectedCard = CardObjectMother.GetCard();
+            var expectedCard = CardObjectMother.CreateCard();
             await _fixture.SeedCardAsync(expectedCard);
             var getCardsByBoardIdHandler = new GetCardsByBoardIdHandler(_fixture.DbContext, _fixture.Mapper);
             var request = new GetCardsByBoardIdRequest(expectedCard.BoardId);
@@ -41,8 +41,8 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.Features.Card
             var result = await getCardsByBoardIdHandler.Handle(request, CancellationToken.None);
 
             //Assert
-            result.Should().HaveCount(1);
-            result.FirstOrDefault().Name.Should().Be(expectedCard.Name);
+            result.Should().HaveCountGreaterThanOrEqualTo(1);
+            result.Should().Contain(c => c.Id == expectedCard.Id);
         }
 
 

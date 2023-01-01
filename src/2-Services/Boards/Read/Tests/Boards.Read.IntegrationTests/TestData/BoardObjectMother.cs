@@ -6,7 +6,7 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.TestData
 {
     internal static class BoardObjectMother
     {
-        public static Board GetBoard()
+        public static Board CreateBoard()
         {
             return new Board(ObjectId.GenerateNewId().ToString())
             {

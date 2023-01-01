@@ -29,10 +29,10 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.Features.Boards
 
 
         [Fact]
-        public async Task Boards_Are_Fetched_By_ProjectId()
+        public async Task Boards_are_fetched_by_project_Id()
         {
             //Arrange
-            var expectedBoard = BoardObjectMother.GetBoard();
+            var expectedBoard = BoardObjectMother.CreateBoard();
             await _fixture.SeedBoardAsync(expectedBoard);
             var getBoardsByProjectIdHandler = new GetBoardsByProjectIdHandler(_fixture.DbContext, _fixture.Mapper);
             var request = new GetBoardsByProjectIdRequest(expectedBoard.ProjectId);
@@ -41,8 +41,8 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.Features.Boards
             var result = await getBoardsByProjectIdHandler.Handle(request, CancellationToken.None);
 
             //Assert
-            result.Should().HaveCount(1);
-            result.FirstOrDefault().Name.Should().Be(expectedBoard.Name);
+            result.Should().HaveCountGreaterThanOrEqualTo(1);
+            result.Should().Contain(c => c.Id == expectedBoard.Id);
         }
 
 

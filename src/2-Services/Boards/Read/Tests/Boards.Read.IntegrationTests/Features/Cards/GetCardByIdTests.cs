@@ -29,10 +29,10 @@ namespace TaskoMask.Services.Boards.Read.IntegrationTests.Features.Card
 
 
         [Fact]
-        public async Task Card_Is_Fetched_By_Id()
+        public async Task Card_is_fetched_by_Id()
         {
             //Arrange
-            var expectedCard = CardObjectMother.GetCard();
+            var expectedCard = CardObjectMother.CreateCard();
             await _fixture.SeedCardAsync(expectedCard);
             var getCardByIdHandler = new GetCardByIdHandler(_fixture.DbContext, _fixture.Mapper);
             var request = new GetCardByIdRequest(expectedCard.Id);

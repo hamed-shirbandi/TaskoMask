@@ -34,6 +34,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
         #region Test Methods
 
 
+
         [Fact]
         public async Task Board_Is_Added()
         {
@@ -52,6 +53,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<BoardAddedEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<BoardAdded>());
         }
+
 
 
         [InlineData("test", "test")]

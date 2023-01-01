@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Boards.Write.Application.UseCases.Cards.UpdateCard
         {
             var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
             if (board == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
 
             var loadedVersion = board.Version;
 

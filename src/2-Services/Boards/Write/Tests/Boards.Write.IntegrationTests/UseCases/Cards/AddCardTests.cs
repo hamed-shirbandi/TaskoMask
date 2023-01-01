@@ -31,10 +31,10 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
 
 
         [Fact]
-        public async Task Card_Is_Added()
+        public async Task Card_is_added()
         {
             //Arrange
-            var expectedBoard = BoardObjectMother.GetABoardWithACard(_fixture.BoardValidatorService);
+            var expectedBoard = BoardObjectMother.CreateBoard(_fixture.BoardValidatorService);
             await _fixture.SeedBoardAsync(expectedBoard);
 
             var request = new AddCardRequest(boardId: expectedBoard.Id, name: "Test Name", type: BoardCardType.ToDo);

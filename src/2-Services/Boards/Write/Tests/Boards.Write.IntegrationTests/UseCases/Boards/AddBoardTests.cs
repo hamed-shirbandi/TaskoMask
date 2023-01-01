@@ -30,7 +30,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Board_Is_Added()
+        public async Task Board_is_added()
         {
             //Arrange
             var request = new AddBoardRequest(name: "Test Name", description: "Test Description", projectId: ObjectId.GenerateNewId().ToString());

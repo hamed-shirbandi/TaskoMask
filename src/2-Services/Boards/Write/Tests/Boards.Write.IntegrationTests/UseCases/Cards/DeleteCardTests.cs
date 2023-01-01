@@ -36,7 +36,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
         {
             //Arrange
             var expectedMessage = string.Format(ContractsMessages.Not_Found, DomainMetadata.Card);
-            var expectedBoard = BoardObjectMother.GetABoardWithACard(_fixture.BoardValidatorService);
+            var expectedBoard = BoardObjectMother.CreateBoardWithCard(_fixture.BoardValidatorService);
             await _fixture.SeedBoardAsync(expectedBoard);
 
             var expectedCard = expectedBoard.Cards.FirstOrDefault();

@@ -30,10 +30,10 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Board_Is_Deleted()
+        public async Task Board_is_deleted()
         {
             //Arrange
-            var expectedBoard = BoardObjectMother.GetABoard(_fixture.BoardValidatorService);
+            var expectedBoard = BoardObjectMother.CreateBoard(_fixture.BoardValidatorService);
             await _fixture.SeedBoardAsync(expectedBoard);
 
             var request = new DeleteBoardRequest(expectedBoard.Id);

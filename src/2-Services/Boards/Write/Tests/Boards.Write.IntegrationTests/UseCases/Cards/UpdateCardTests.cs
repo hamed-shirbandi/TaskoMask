@@ -34,7 +34,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
         public async Task Card_Is_Updated()
         {
             //Arrange
-            var expectedBoard = BoardObjectMother.GetABoardWithACard(_fixture.BoardValidatorService);
+            var expectedBoard = BoardObjectMother.CreateBoardWithCard(_fixture.BoardValidatorService);
             var expectedCard = expectedBoard.Cards.FirstOrDefault();
             await _fixture.SeedBoardAsync(expectedBoard);
 

@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Board_Is_Deleted()
+        public async Task Board_is_deleted()
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();
@@ -55,11 +55,11 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Deleting_A_Board_Will_Throw_An_Exception_When_Id_Is_Not_Existed()
+        public async Task Deleting_a_board_will_throw_an_exception_if_Id_is_not_existed()
         {
             //Arrange
-            var notExistedBoard = ObjectId.GenerateNewId().ToString();
-            var deleteBoardRequest = new DeleteBoardRequest(notExistedBoard);
+            var notExistedBoardId = ObjectId.GenerateNewId().ToString();
+            var deleteBoardRequest = new DeleteBoardRequest(notExistedBoardId);
             var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             //Act

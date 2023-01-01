@@ -36,7 +36,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Board_Is_Added()
+        public async Task Board_is_added()
         {
             //Arrange
             var addBoardRequest = new AddBoardRequest(projectId: ObjectId.GenerateNewId().ToString(), "Test_Name", "Test_Description");
@@ -47,9 +47,11 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
             //Assert
             result.Message.Should().Be(ContractsMessages.Create_Success);
             result.EntityId.Should().NotBeNull();
+
             var addedBoard = Boards.FirstOrDefault(u => u.Id == result.EntityId);
             addedBoard.Should().NotBeNull();
             addedBoard.Name.Value.Should().Be(addBoardRequest.Name);
+
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<BoardAddedEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<BoardAdded>());
         }
@@ -59,7 +61,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
         [InlineData("test", "test")]
         [InlineData("تست", "تست")]
         [Theory]
-        public async Task Board_Is_Not_Added_When_Name_And_Description_Are_The_Same(string name, string description)
+        public async Task Board_is_not_added_if_name_and_description_are_the_same(string name, string description)
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();
@@ -78,7 +80,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
         [InlineData("Th")]
         [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
         [Theory]
-        public async Task Board_Is_Not_Added_When_Name_Lenght_Is_Less_Than_Min_Or_More_Than_Max(string name)
+        public async Task Board_is_not_added_if_name_lenght_is_less_than_min_or_more_than_max(string name)
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();
@@ -96,7 +98,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
         [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
         [Theory]
-        public async Task Board_Is_Not_Added_When_Description_Lenght_Is_More_Than_Max(string description)
+        public async Task Board_is_not_added_if_description_lenght_is_more_than_max(string description)
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();
@@ -113,7 +115,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Board_Is_Not_Added_When_Name_Is_Not_Unique()
+        public async Task Board_is_not_added_if_name_is_not_unique()
         {
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board);

@@ -35,7 +35,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Cards
 
 
         [Fact]
-        public async Task Card_Is_Updated()
+        public async Task Card_is_updated()
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();
@@ -61,7 +61,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Cards
 
 
         [Fact]
-        public async Task Updating_A_Card_Will_Throw_An_Exception_When_Id_Is_Not_Existed()
+        public async Task Updating_a_card_will_throw_an_exception_if_Id_is_not_existed()
         {
             //Arrange
             var notExistedCardId = ObjectId.GenerateNewId().ToString();

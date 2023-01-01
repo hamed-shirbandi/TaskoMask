@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Board_Is_Updated()
+        public async Task Board_is_updated()
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();
@@ -53,11 +53,11 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Updating_A_Board_Will_Throw_An_Exception_When_Id_Is_Not_Existed()
+        public async Task Updatting_a_board_will_throw_an_exception_if_Id_is_not_existed()
         {
             //Arrange
-            var notExistedBoard = ObjectId.GenerateNewId().ToString();
-            var updateBoardRequest = new UpdateBoardRequest(notExistedBoard, "Test_New_Name", "Test_New_Description");
+            var notExistedBoardId = ObjectId.GenerateNewId().ToString();
+            var updateBoardRequest = new UpdateBoardRequest(notExistedBoardId, "Test_New_Name", "Test_New_Description");
             var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
 
             //Act

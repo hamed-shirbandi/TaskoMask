@@ -75,7 +75,6 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Cards
         }
 
 
-
         #endregion
 
         #region Fixture

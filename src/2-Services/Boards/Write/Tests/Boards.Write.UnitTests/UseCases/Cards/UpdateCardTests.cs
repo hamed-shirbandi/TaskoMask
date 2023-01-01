@@ -6,7 +6,6 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Cards.UpdateCard;
-using TaskoMask.Services.Boards.Write.Application.UseCases.Cards.UpdateCard;
 using TaskoMask.Services.Boards.Write.Domain.Events.Cards;
 using TaskoMask.Services.Boards.Write.UnitTests.Fixtures;
 using TaskoMask.Services.Boards.Write.UnitTests.TestData;

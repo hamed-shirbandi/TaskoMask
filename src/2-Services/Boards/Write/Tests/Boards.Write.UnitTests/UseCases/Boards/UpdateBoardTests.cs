@@ -53,6 +53,21 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
 
+        [Fact]
+        public async Task Updating_A_Board_Will_Change_Its_Version()
+        {
+            //Arrange
+            var expectedBoard = Boards.FirstOrDefault();
+            var previousVersion = expectedBoard.Version;
+            var updateBoardRequest = new UpdateBoardRequest(expectedBoard.Id, "Test_New_Name", "Test_New_Description");
+
+            //Act
+            await _updateBoardUseCase.Handle(updateBoardRequest, CancellationToken.None);
+
+            //Assert
+            expectedBoard.Version.Should().NotBeNullOrEmpty().And.NotBe(previousVersion);
+        }
+
 
         #endregion
 

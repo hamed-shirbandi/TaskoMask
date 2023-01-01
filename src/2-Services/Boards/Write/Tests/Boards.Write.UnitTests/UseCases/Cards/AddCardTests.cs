@@ -58,6 +58,23 @@ namespace TaskoMask.Services.Cards.Write.UnitTests.UseCases.Cards
 
 
 
+        [Fact]
+        public async Task Adding_A_Card_Will_Throw_An_Exception_When_Board_Id_Is_Not_Existed()
+        {
+            //Arrange
+            var notExistedBoard = ObjectId.GenerateNewId().ToString();
+            var addCardRequest = new AddCardRequest(notExistedBoard, "Test_Name", BoardCardType.ToDo);
+            var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
+
+            //Act
+            Func<Task> act = async () => await _addCardUseCase.Handle(addCardRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
 
         #endregion
 

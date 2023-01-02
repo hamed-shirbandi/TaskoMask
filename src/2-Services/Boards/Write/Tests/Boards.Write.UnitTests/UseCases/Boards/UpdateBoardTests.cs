@@ -70,7 +70,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Updating_A_Board_Will_Change_Its_Version()
+        public async Task Updating_a_board_will_change_its_version()
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();

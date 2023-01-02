@@ -24,7 +24,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.TestData
         /// 
         /// </summary>
 
-        public static Card CreateACard()
+        public static Card CreateCard()
         {
             return Card.Create(name: TestDataGenerator.GetRandomName(10), type: BoardCardType.ToDo);
 
@@ -38,7 +38,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.TestData
         public static Board CreateBoardWithCard(IBoardValidatorService boardValidatorService)
         {
             var board = CreateBoard(boardValidatorService);
-            board.AddCard(CreateACard());
+            board.AddCard(CreateCard());
             return board;
         }
 

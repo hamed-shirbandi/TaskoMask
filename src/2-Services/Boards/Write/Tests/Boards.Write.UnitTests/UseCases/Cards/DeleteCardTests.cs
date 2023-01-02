@@ -4,6 +4,7 @@ using NSubstitute;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Cards.DeleteCard;
 using TaskoMask.Services.Boards.Write.Domain.Events.Cards;
@@ -42,6 +43,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Cards
             var expectedCard = BoardObjectMother.CreateCard();
             expectedBoard.AddCard(expectedCard);
             var deleteCardRequest = new DeleteCardRequest(expectedCard.Id);
+            var expectedMessage = string.Format(ContractsMessages.Not_Found, DomainMetadata.Card);
 
             //Act
             var result = await _deleteCardUseCase.Handle(deleteCardRequest, CancellationToken.None);
@@ -50,8 +52,11 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Cards
             result.Message.Should().Be(ContractsMessages.Update_Success);
             result.EntityId.Should().Be(expectedCard.Id);
 
-            var deletedCard = expectedBoard.GetCardById(expectedCard.Id);
-            deletedCard.Should().BeNull();
+            //Act
+            Action act = () => expectedBoard.GetCardById(expectedCard.Id);
+
+            //Assert
+            act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
 
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<CardDeletedEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<CardDeleted>());

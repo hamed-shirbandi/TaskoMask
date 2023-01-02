@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.Fixtures
             BoardValidatorService = Substitute.For<IBoardValidatorService>();
             BoardValidatorService.BoardHasUniqueName(boardId: Arg.Any<string>(), projectId: Arg.Any<string>(), boardName: Arg.Any<string>()).Returns(args =>
             {
-                return !Boards.Any(o =>o.ProjectId.Value== (string)args[1] && o.Id != (string)args[0] && o.Name.Value == (string)args[2]);
+                return !Boards.Any(o => o.ProjectId.Value == (string)args[1] && o.Id != (string)args[0] && o.Name.Value == (string)args[2]);
             });
 
             BoardAggregateRepository = Substitute.For<IBoardAggregateRepository>();
@@ -62,6 +62,7 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.Fixtures
 
                 return Task.CompletedTask;
             });
+
             BoardAggregateRepository.DeleteAsync(Arg.Is<string>(x => Boards.Any(o => o.Id == x))).Returns(args =>
             {
                 var board = Boards.FirstOrDefault(u => u.Id == (string)args[0]);
@@ -70,7 +71,10 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.Fixtures
 
                 return Task.CompletedTask;
             });
-
+            BoardAggregateRepository.GetByCardIdAsync(Arg.Is<string>(x => x.Any())).Returns(args =>
+            {
+                return Boards.FirstOrDefault(u => u.Cards.Any(c => c.Id == (string)args[0]));
+            });
         }
 
 

@@ -62,6 +62,14 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.Fixtures
 
                 return Task.CompletedTask;
             });
+            BoardAggregateRepository.DeleteAsync(Arg.Is<string>(x => Boards.Any(o => o.Id == x))).Returns(args =>
+            {
+                var board = Boards.FirstOrDefault(u => u.Id == (string)args[0]);
+                if (board != null)
+                    Boards.Remove(board);
+
+                return Task.CompletedTask;
+            });
 
         }
 

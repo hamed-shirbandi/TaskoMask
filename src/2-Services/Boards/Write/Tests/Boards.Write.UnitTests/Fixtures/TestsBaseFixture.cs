@@ -62,7 +62,17 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.Fixtures
 
                 return Task.CompletedTask;
             });
+            BoardAggregateRepository.ConcurrencySafeUpdate(Arg.Is<Board>(x => Boards.Any(o => o.Id == x.Id)),Arg.Is<string>(x=>x.Any())).Returns(args =>
+            {
+                var existBoard = Boards.FirstOrDefault(u => u.Id == ((Board)args[0]).Id && u.Version == (string)args[1]);
+                if (existBoard != null)
+                {
+                    Boards.Remove(existBoard);
+                    Boards.Add(((Board)args[0]));
+                }
 
+                return Task.CompletedTask;
+            });
             BoardAggregateRepository.DeleteAsync(Arg.Is<string>(x => Boards.Any(o => o.Id == x))).Returns(args =>
             {
                 var board = Boards.FirstOrDefault(u => u.Id == (string)args[0]);

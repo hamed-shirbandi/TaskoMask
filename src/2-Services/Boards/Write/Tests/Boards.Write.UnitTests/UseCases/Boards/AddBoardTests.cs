@@ -115,12 +115,12 @@ namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
 
 
         [Fact]
-        public async Task Board_is_not_added_if_name_is_not_unique()
+        public async Task Board_is_not_added_if_name_is_not_unique_in_a_project()
         {
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board);
             var existedBoard = Boards.FirstOrDefault();
-            var addBoardRequest = new AddBoardRequest(existedBoard.Id, existedBoard.Name.Value, "Test_Description");
+            var addBoardRequest = new AddBoardRequest(existedBoard.ProjectId.Value, existedBoard.Name.Value, "Test_Description");
 
             //Act
             Func<Task> act = async () => await _addBoardUseCase.Handle(addBoardRequest, CancellationToken.None);

@@ -35,7 +35,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_Profile_Is_Updated()
+        public async Task Owner_Profile_is_updated()
         {
             //Arrange
             var expectedOwner = Owners.FirstOrDefault();
@@ -54,7 +54,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_Profile_Update_Throw_Exception_When_Owner_Not_Exist()
+        public async Task Owner_profile_update_throw_exception_when_owner_not_exist()
         {
             //Arrange
             var updateOwnerProfileRequest = new UpdateOwnerProfileRequest("Some_Id_That_Not_Exist", "Test_New_DisplayName", "Test_New@email.com");

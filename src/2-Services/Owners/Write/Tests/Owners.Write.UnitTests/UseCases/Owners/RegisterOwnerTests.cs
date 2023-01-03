@@ -37,7 +37,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_Is_Registered()
+        public async Task Owner_is_registered()
         {
             //Arrange
             var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", "Test@email.com", "Test_Password");
@@ -55,7 +55,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_Is_Not_Registered_When_Email_Is_Not_Unique()
+        public async Task Owner_is_not_registered_if_email_is_not_unique()
         {
             //Arrange
             var expectedMessage = DomainMessages.Email_Already_Exist;
@@ -74,7 +74,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
         [InlineData("H")]
         [InlineData("Ha")]
         [Theory]
-        public async Task Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_Less_Than_Min(string displayName)
+        public async Task Owner_is_not_registered_if_displayName_lenght_is_less_than_min(string displayName)
         {
             //Arrange
             var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
@@ -92,7 +92,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
         [InlineData("Hamed Shirbandi just came back from the street after looking for some freedom in Iran! #MahsaAmini")]
         [InlineData("Vihan Shirbandi was waiting to see his father ( I am his father :D )")]
         [Theory]
-        public async Task Owner_Is_Not_Registered_When_DisplayName_Lenght_Is_More_Than_Max(string displayName)
+        public async Task Owner_is_not_registered_if_displayName_lenght_is_more_than_max(string displayName)
         {
             //Arrange
             var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
@@ -111,7 +111,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
         [InlineData("Ha.Taskomask.ir")]
         [InlineData("Ha.Taskomask")]
         [Theory]
-        public async Task Owner_Is_Not_Registered_When_Email_Is_Not_Valid(string email)
+        public async Task Owner_is_not_registered_if_email_is_not_valid(string email)
         {
             //Arrange
             var expectedMessage = DomainMessages.Invalid_Email_Address;

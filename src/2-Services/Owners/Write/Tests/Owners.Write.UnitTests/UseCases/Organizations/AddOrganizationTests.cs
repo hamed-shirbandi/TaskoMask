@@ -39,7 +39,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 
 
         [Fact]
-        public async Task Organization_Is_Added()
+        public async Task Organization_is_added()
         {
             //Arrange
             var expectedOwner = Owners.FirstOrDefault();
@@ -59,7 +59,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 
 
         [Fact]
-        public async Task Add_Organization_Throw_Exception_When_Owner_Not_Exist()
+        public async Task Add_organization_throw_exception_if_owner_not_exist()
         {
             //Arrange
             var addOrganizationRequest = new AddOrganizationRequest("Some_Owner_Id_That_Not_Exist", "Test_Name", "Test_Description");
@@ -77,7 +77,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
         [InlineData("test", "test")]
         [InlineData("تست", "تست")]
         [Theory]
-        public async Task Organization_Is_Not_Added_When_Name_And_Description_Are_The_Same(string name, string description)
+        public async Task Organization_is_not_added_if_name_and_description_are_the_same(string name, string description)
         {
             //Arrange
             var expectedOwner = Owners.FirstOrDefault();
@@ -96,7 +96,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
         [InlineData("Th")]
         [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
         [Theory]
-        public async Task Organization_Is_Not_Added_When_Name_Lenght_Is_Less_Than_Min_Or_More_Than_Max(string name)
+        public async Task Organization_is_not_added_if_name_lenght_is_less_than_min_or_more_than_max(string name)
         {
             //Arrange
             var expectedOwner = Owners.FirstOrDefault();
@@ -115,7 +115,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 
         [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
         [Theory]
-        public async Task Organization_Is_Not_Added_When_Description_Lenght_Is_More_Than_Max(string description)
+        public async Task Organization_is_not_added_if_description_lenght_is_more_than_max(string description)
         {
             //Arrange
             var expectedOwner = Owners.FirstOrDefault();
@@ -132,7 +132,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 
 
         [Fact]
-        public async Task Organization_Is_Not_Added_When_Name_Is_Not_Unique()
+        public async Task Organization_is_not_added_if_name_is_not_unique()
         {
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization);
@@ -153,7 +153,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 
 
         [Fact]
-        public async Task Organization_Is_Not_Added_When_Owner_Has_Added_Max_Organizations()
+        public async Task Organization_is_not_added_if_owner_has_added_max_organizations()
         {
             //Arrange
             var expectedMaxOrganizationsCount = DomainConstValues.Owner_Max_Organizations_Count;

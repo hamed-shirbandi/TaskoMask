@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdateProject;
-using TaskoMask.Services.Owners.Write.UnitTests.Fixtures;
+using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
 
-namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Projects
+namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 {
     public class UpdateProjectTests : TestsBaseFixture
     {

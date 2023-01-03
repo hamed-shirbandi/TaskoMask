@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<AssemblyName>TaskoMask.Services.Owners.Write.UnitTests</AssemblyName>
-		<RootNamespace>TaskoMask.Services.Owners.Write.UnitTests</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Owners.Write.Tests.Unit</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Owners.Write.Tests.Unit</RootNamespace>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 

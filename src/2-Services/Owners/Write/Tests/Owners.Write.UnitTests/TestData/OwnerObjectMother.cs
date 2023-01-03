@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
-namespace TaskoMask.Services.Owners.Write.UnitTests.TestData
+namespace TaskoMask.Services.Owners.Write.Tests.Unit.TestData
 {
     internal static class OwnerObjectMother
     {

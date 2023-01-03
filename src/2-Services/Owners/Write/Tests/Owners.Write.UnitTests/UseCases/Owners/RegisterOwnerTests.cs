@@ -11,10 +11,10 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.RegiserOwner;
 using TaskoMask.Services.Owners.Write.Domain.Events.Owners;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Owners;
-using TaskoMask.Services.Owners.Write.UnitTests.Fixtures;
+using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
 using Xunit;
 
-namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Owners
+namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 {
     public class RegiserOwnerTests : TestsBaseFixture
     {

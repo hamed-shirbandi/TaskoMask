@@ -9,7 +9,7 @@ using TaskoMask.Services.Owners.Write.Domain.Services;
 using TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures
+namespace TaskoMask.Services.Owners.Write.Tests.Integration.Fixtures
 {
     public abstract class TestsBaseFixture : IntegrationTestsBase
     {

@@ -7,9 +7,9 @@ using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
-using TaskoMask.Services.Owners.Write.UnitTests.TestData;
+using TaskoMask.Services.Owners.Write.Tests.Unit.TestData;
 
-namespace TaskoMask.Services.Owners.Write.UnitTests.Fixtures
+namespace TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures
 {
     public abstract class TestsBaseFixture : UnitTestsBase
     {

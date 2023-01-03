@@ -2,7 +2,7 @@
 using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
-namespace TaskoMask.Services.Owners.Write.IntegrationTests.TestData
+namespace TaskoMask.Services.Owners.Write.Tests.Integration.TestData
 {
     internal static class OwnerObjectMother
     {

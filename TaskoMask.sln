@@ -127,9 +127,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\2-Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\2-Services\Owners\Write\Libraries\Domain\Domain.csproj", "{86072E9D-AD98-4B94-87DA-28B40AE3154D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Write.IntegrationTests", "src\2-Services\Owners\Write\Tests\Owners.Write.IntegrationTests\Owners.Write.IntegrationTests.csproj", "{39C9F6B8-3591-4EBA-8F29-B4D591612BA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Write.Tests.Integration", "src\2-Services\Owners\Write\Tests\Owners.Write.IntegrationTests\Owners.Write.Tests.Integration.csproj", "{39C9F6B8-3591-4EBA-8F29-B4D591612BA2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Write.UnitTests", "src\2-Services\Owners\Write\Tests\Owners.Write.UnitTests\Owners.Write.UnitTests.csproj", "{E9A5DDC7-4728-4AB1-BC21-6D1D0A5F8B1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Write.Tests.Unit", "src\2-Services\Owners\Write\Tests\Owners.Write.UnitTests\Owners.Write.Tests.Unit.csproj", "{E9A5DDC7-4728-4AB1-BC21-6D1D0A5F8B1F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Read", "Read", "{1BF09D99-B934-4949-A848-BEF474F6EEB5}"
 EndProject

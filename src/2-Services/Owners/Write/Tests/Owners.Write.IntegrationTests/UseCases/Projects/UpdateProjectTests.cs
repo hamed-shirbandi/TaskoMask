@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdateProject;
-using TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Owners.Write.IntegrationTests.TestData;
+using TaskoMask.Services.Owners.Write.Tests.Integration.Fixtures;
+using TaskoMask.Services.Owners.Write.Tests.Integration.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Projects
+namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
 {
     [Collection(nameof(ProjectCollectionFixture))]
     public class UpdateProjectTests

@@ -3,11 +3,11 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.DeleteOrganization;
-using TaskoMask.Services.Owners.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Owners.Write.IntegrationTests.TestData;
+using TaskoMask.Services.Owners.Write.Tests.Integration.Fixtures;
+using TaskoMask.Services.Owners.Write.Tests.Integration.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Owners.Write.IntegrationTests.UseCases.Organizations
+namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizations
 {
     [Collection(nameof(OrganizationCollectionFixture))]
     public class DeleteOrganizationTests

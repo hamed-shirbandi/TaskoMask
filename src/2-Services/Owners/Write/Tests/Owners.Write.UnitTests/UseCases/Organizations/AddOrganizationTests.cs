@@ -12,11 +12,11 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrganization;
 using TaskoMask.Services.Owners.Write.Domain.Events.Organizations;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Organizations;
-using TaskoMask.Services.Owners.Write.UnitTests.Fixtures;
-using TaskoMask.Services.Owners.Write.UnitTests.TestData;
+using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
+using TaskoMask.Services.Owners.Write.Tests.Unit.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Owners.Write.UnitTests.UseCases.Organizations
+namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 {
     public class AddOrganizationTests : TestsBaseFixture
     {

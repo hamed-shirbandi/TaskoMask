@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Cards.DeleteCard;
 using TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Boards.Write.IntegrationTests.TestData;
+using TaskoMask.Services.Boards.Write.TestsBase.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
@@ -36,7 +36,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
         {
             //Arrange
             var expectedMessage = string.Format(ContractsMessages.Not_Found, DomainMetadata.Card);
-            var expectedBoard = BoardObjectMother.CreateBoardWithCard(_fixture.BoardValidatorService);
+            var expectedBoard = BoardObjectMother.CreateBoardWithOneCard(_fixture.BoardValidatorService);
             await _fixture.SeedBoardAsync(expectedBoard);
 
             var expectedCard = expectedBoard.Cards.FirstOrDefault();

@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Boards.DeleteBoard;
 using TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Boards.Write.IntegrationTests.TestData;
+using TaskoMask.Services.Boards.Write.TestsBase.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Boards

@@ -139,9 +139,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{FA98F2BA-A0E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A12B4AA2-F3E5-4B3D-B6A4-395117D5CE61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owners.Read.Api", "src\2-Services\Owners\Read\Api\Owners.Read.Api\Owners.Read.Api.csproj", "{C0ECAF68-34F6-4C1C-A70E-AD2BCE91315F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Read.Api", "src\2-Services\Owners\Read\Api\Owners.Read.Api\Owners.Read.Api.csproj", "{C0ECAF68-34F6-4C1C-A70E-AD2BCE91315F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owners.Read.IntegrationTests", "src\2-Services\Owners\Read\Tests\Owners.Read.IntegrationTests\Owners.Read.IntegrationTests.csproj", "{91C76287-B903-4A8A-A849-4E0D69B147CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Read.IntegrationTests", "src\2-Services\Owners\Read\Tests\Owners.Read.IntegrationTests\Owners.Read.IntegrationTests.csproj", "{91C76287-B903-4A8A-A849-4E0D69B147CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Boards", "Boards", "{4BD46D9C-13C0-4A50-B72B-BDD51ACC0904}"
 EndProject
@@ -206,6 +206,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tasks.Write.IntegrationTests", "src\2-Services\Tasks\Write\Tests\Tasks.Write.IntegrationTests\Tasks.Write.IntegrationTests.csproj", "{213A19A4-511C-4D9C-9A59-4620B24B2FC3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tasks.Write.UnitTests", "src\2-Services\Tasks\Write\Tests\Tasks.Write.UnitTests\Tasks.Write.UnitTests.csproj", "{28D60F3A-19B5-4209-94F3-9B4F937C7BA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boards.Write.TestsBase", "src\2-Services\Boards\Write\Tests\Boards.Write.TestsBase\Boards.Write.TestsBase.csproj", "{23E52127-118C-4ADF-8C5B-59F0C31AE5EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -445,6 +447,10 @@ Global
 		{28D60F3A-19B5-4209-94F3-9B4F937C7BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28D60F3A-19B5-4209-94F3-9B4F937C7BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28D60F3A-19B5-4209-94F3-9B4F937C7BA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23E52127-118C-4ADF-8C5B-59F0C31AE5EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23E52127-118C-4ADF-8C5B-59F0C31AE5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23E52127-118C-4ADF-8C5B-59F0C31AE5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23E52127-118C-4ADF-8C5B-59F0C31AE5EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -546,6 +552,7 @@ Global
 		{6B038627-BBC8-430A-85C6-DE8D98C41D06} = {D952F7EB-1581-48D3-A7FB-896CCDA22452}
 		{213A19A4-511C-4D9C-9A59-4620B24B2FC3} = {83CDDAC8-2332-4BB4-9FB4-809617EE71FC}
 		{28D60F3A-19B5-4209-94F3-9B4F937C7BA2} = {83CDDAC8-2332-4BB4-9FB4-809617EE71FC}
+		{23E52127-118C-4ADF-8C5B-59F0C31AE5EC} = {C40D2507-0D08-4FC4-B7FB-714E58DB1322}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15E4B299-A968-40A3-8192-CCF9082EE3BC}

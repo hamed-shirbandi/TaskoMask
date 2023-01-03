@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Boards.Write.Domain.Data;
 using TaskoMask.Services.Boards.Write.Domain.Entities;
 using TaskoMask.Services.Boards.Write.Domain.Services;
-using TaskoMask.Services.Boards.Write.UnitTests.TestData;
+using TaskoMask.Services.Boards.Write.TestsBase.TestData;
 
 namespace TaskoMask.Services.Boards.Write.UnitTests.Fixtures
 {

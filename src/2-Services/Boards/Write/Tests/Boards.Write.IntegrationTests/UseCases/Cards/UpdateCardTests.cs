@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Cards.UpdateCard;
 using TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Boards.Write.IntegrationTests.TestData;
+using TaskoMask.Services.Boards.Write.TestsBase.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
@@ -34,7 +34,7 @@ namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
         public async Task Card_Is_Updated()
         {
             //Arrange
-            var expectedBoard = BoardObjectMother.CreateBoardWithCard(_fixture.BoardValidatorService);
+            var expectedBoard = BoardObjectMother.CreateBoardWithOneCard(_fixture.BoardValidatorService);
             var expectedCard = expectedBoard.Cards.FirstOrDefault();
             await _fixture.SeedBoardAsync(expectedBoard);
 

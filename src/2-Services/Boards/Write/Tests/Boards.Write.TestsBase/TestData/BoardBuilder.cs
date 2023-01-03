@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Services.Boards.Write.Domain.Entities;
 using TaskoMask.Services.Boards.Write.Domain.Services;
 
-namespace TaskoMask.Services.Boards.Write.UnitTests.TestData
+namespace TaskoMask.Services.Boards.Write.TestsBase.TestData
 {
-    internal class BoardBuilder
+    public class BoardBuilder
     {
         public IBoardValidatorService ValidatorService { get; private set; }
         public string Name { get; private set; }

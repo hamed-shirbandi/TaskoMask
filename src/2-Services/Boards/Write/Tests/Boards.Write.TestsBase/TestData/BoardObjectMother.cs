@@ -1,12 +1,13 @@
 ﻿using MongoDB.Bson;
+using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Test.TestData;
 using TaskoMask.Services.Boards.Write.Domain.Entities;
 using TaskoMask.Services.Boards.Write.Domain.Services;
 
-namespace TaskoMask.Services.Boards.Write.UnitTests.TestData
+namespace TaskoMask.Services.Boards.Write.TestsBase.TestData
 {
-    internal static class BoardObjectMother
+    public static class BoardObjectMother
     {
 
         /// <summary>

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-	  <AssemblyName>TaskoMask.Services.Boards.Write.TestsBase</AssemblyName>
-	  <RootNamespace>TaskoMask.Services.Boards.Write.TestsBase</RootNamespace>
+	  <AssemblyName>TaskoMask.Services.Boards.Write.Tests.Base</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Boards.Write.Tests.Base</RootNamespace>
   </PropertyGroup>
 
 	<ItemGroup>

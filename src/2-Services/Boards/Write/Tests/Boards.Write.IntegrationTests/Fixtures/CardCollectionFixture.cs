@@ -1,7 +1,7 @@
 ﻿
 using Xunit;
 
-namespace TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures
+namespace TaskoMask.Services.Boards.Write.Tests.Integration.Fixtures
 {
 
 

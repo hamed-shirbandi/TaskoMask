@@ -2,10 +2,10 @@
 using MongoDB.Bson;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Boards.AddBoard;
-using TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures;
+using TaskoMask.Services.Boards.Write.Tests.Integration.Fixtures;
 using Xunit;
 
-namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Boards
+namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
 {
     [Collection(nameof(BoardCollectionFixture))]
     public class AddBoardTests

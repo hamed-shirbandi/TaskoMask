@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Services.Boards.Write.Domain.Entities;
 using TaskoMask.Services.Boards.Write.Domain.Services;
 
-namespace TaskoMask.Services.Boards.Write.TestsBase.TestData
+namespace TaskoMask.Services.Boards.Write.Tests.Base.TestData
 {
     public class BoardBuilder
     {

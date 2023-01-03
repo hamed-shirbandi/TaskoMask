@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Boards.UpdateBoard;
-using TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Boards.Write.TestsBase.TestData;
+using TaskoMask.Services.Boards.Write.Tests.Integration.Fixtures;
+using TaskoMask.Services.Boards.Write.Tests.Base.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Boards
+namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
 {
     [Collection(nameof(BoardCollectionFixture))]
     public class UpdateBoardTests

@@ -3,11 +3,11 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Cards.DeleteCard;
-using TaskoMask.Services.Boards.Write.IntegrationTests.Fixtures;
-using TaskoMask.Services.Boards.Write.TestsBase.TestData;
+using TaskoMask.Services.Boards.Write.Tests.Integration.Fixtures;
+using TaskoMask.Services.Boards.Write.Tests.Base.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Boards.Write.IntegrationTests.UseCases.Cards
+namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Cards
 {
     [Collection(nameof(CardCollectionFixture))]
     public class DeleteCardTests

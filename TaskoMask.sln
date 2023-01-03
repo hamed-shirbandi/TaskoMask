@@ -171,9 +171,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\2-Services\Bo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\2-Services\Boards\Write\Libraries\Infrastructure\Infrastructure.csproj", "{9A4DB3B0-EB3D-4234-8175-3456E8B59923}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Write.IntegrationTests", "src\2-Services\Boards\Write\Tests\Boards.Write.IntegrationTests\Boards.Write.IntegrationTests.csproj", "{F2F6BBF4-0109-4226-8252-A1FF2E7DCCCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Write.Tests.Integration", "src\2-Services\Boards\Write\Tests\Boards.Write.IntegrationTests\Boards.Write.Tests.Integration.csproj", "{F2F6BBF4-0109-4226-8252-A1FF2E7DCCCA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Write.UnitTests", "src\2-Services\Boards\Write\Tests\Boards.Write.UnitTests\Boards.Write.UnitTests.csproj", "{ED525D9F-84C3-4101-BDB3-A7F3CC2AA864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Write.Tests.Unit", "src\2-Services\Boards\Write\Tests\Boards.Write.UnitTests\Boards.Write.Tests.Unit.csproj", "{ED525D9F-84C3-4101-BDB3-A7F3CC2AA864}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{7596453D-2748-4207-94E9-14C2891B3CBC}"
 EndProject
@@ -207,7 +207,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tasks.Write.IntegrationTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tasks.Write.UnitTests", "src\2-Services\Tasks\Write\Tests\Tasks.Write.UnitTests\Tasks.Write.UnitTests.csproj", "{28D60F3A-19B5-4209-94F3-9B4F937C7BA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boards.Write.TestsBase", "src\2-Services\Boards\Write\Tests\Boards.Write.TestsBase\Boards.Write.TestsBase.csproj", "{23E52127-118C-4ADF-8C5B-59F0C31AE5EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Write.Tests.Base", "src\2-Services\Boards\Write\Tests\Boards.Write.TestsBase\Boards.Write.Tests.Base.csproj", "{23E52127-118C-4ADF-8C5B-59F0C31AE5EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

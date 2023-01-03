@@ -6,10 +6,10 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Application.UseCases.Boards.DeleteBoard;
 using TaskoMask.Services.Boards.Write.Domain.Events.Boards;
-using TaskoMask.Services.Boards.Write.UnitTests.Fixtures;
+using TaskoMask.Services.Boards.Write.Tests.Unit.Fixtures;
 using Xunit;
 
-namespace TaskoMask.Services.Boards.Write.UnitTests.UseCases.Boards
+namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
 {
     public class DeleteBoardTests : TestsBaseFixture
     {

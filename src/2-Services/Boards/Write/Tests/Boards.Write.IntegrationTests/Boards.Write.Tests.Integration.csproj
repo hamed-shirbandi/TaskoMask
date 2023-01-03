@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-	  <AssemblyName>TaskoMask.Services.Boards.Write.IntegrationTests</AssemblyName>
-	  <RootNamespace>TaskoMask.Services.Boards.Write.IntegrationTests</RootNamespace>
+	  <AssemblyName>TaskoMask.Services.Boards.Write.Tests.Integration</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Boards.Write.Tests.Integration</RootNamespace>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -22,7 +22,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.csproj" />
-		<ProjectReference Include="..\Boards.Write.TestsBase\Boards.Write.TestsBase.csproj" />
+		<ProjectReference Include="..\Boards.Write.TestsBase\Boards.Write.Tests.Base.csproj" />
 	</ItemGroup>
 
 	<Target Name="CopyConfig" AfterTargets="AfterBuild">

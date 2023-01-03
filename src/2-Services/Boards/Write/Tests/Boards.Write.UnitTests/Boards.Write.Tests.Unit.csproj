@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<AssemblyName>TaskoMask.Services.Boards.Write.UnitTests</AssemblyName>
-		<RootNamespace>TaskoMask.Services.Boards.Write.UnitTests</RootNamespace>
+		<AssemblyName>TaskoMask.Services.Boards.Write.Tests.Unit</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Boards.Write.Tests.Unit</RootNamespace>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
@@ -22,7 +22,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Libraries\Application\Application.csproj" />
-		<ProjectReference Include="..\Boards.Write.TestsBase\Boards.Write.TestsBase.csproj" />
+		<ProjectReference Include="..\Boards.Write.TestsBase\Boards.Write.Tests.Base.csproj" />
 	</ItemGroup>
 
 </Project>

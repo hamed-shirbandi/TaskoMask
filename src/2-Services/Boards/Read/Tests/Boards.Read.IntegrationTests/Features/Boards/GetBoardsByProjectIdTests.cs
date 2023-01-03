@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectId;
-using TaskoMask.Services.Boards.Read.IntegrationTests.Fixtures;
-using TaskoMask.Services.Boards.Read.IntegrationTests.TestData;
+using TaskoMask.Services.Boards.Read.Tests.Integration.Fixtures;
+using TaskoMask.Services.Boards.Read.Tests.Integration.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Boards.Read.IntegrationTests.Features.Boards
+namespace TaskoMask.Services.Boards.Read.Tests.Integration.Features.Boards
 {
     [Collection(nameof(BoardCollectionFixture))]
     public class GetBoardsByProjectIdTests

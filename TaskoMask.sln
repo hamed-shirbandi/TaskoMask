@@ -161,7 +161,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C40D2507
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Read.Api", "src\2-Services\Boards\Read\Api\Boards.Read.Api\Boards.Read.Api.csproj", "{F262D2E9-9C6D-475D-81C8-2F86E70AF2DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Read.IntegrationTests", "src\2-Services\Boards\Read\Tests\Boards.Read.IntegrationTests\Boards.Read.IntegrationTests.csproj", "{C7A5206C-2BFF-400A-95E9-F3D6698FA885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Read.Tests.Integration", "src\2-Services\Boards\Read\Tests\Boards.Read.IntegrationTests\Boards.Read.Tests.Integration.csproj", "{C7A5206C-2BFF-400A-95E9-F3D6698FA885}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boards.Write.Api", "src\2-Services\Boards\Write\Api\Boards.Write.Api\Boards.Write.Api.csproj", "{DBF69DBD-6DD8-4271-8D33-079FF2A4F312}"
 EndProject

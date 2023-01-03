@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Services.Boards.Read.Api.Domain;
 using Xunit;
 
-namespace TaskoMask.Services.Boards.Read.IntegrationTests.Fixtures
+namespace TaskoMask.Services.Boards.Read.Tests.Integration.Fixtures
 {
 
 

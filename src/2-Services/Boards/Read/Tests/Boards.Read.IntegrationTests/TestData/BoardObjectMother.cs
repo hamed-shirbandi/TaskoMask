@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Test.TestData;
 using TaskoMask.Services.Boards.Read.Api.Domain;
 
-namespace TaskoMask.Services.Boards.Read.IntegrationTests.TestData
+namespace TaskoMask.Services.Boards.Read.Tests.Integration.TestData
 {
     internal static class BoardObjectMother
     {

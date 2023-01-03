@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DI;
 
-namespace TaskoMask.Services.Boards.Read.IntegrationTests.Fixtures
+namespace TaskoMask.Services.Boards.Read.Tests.Integration.Fixtures
 {
     public abstract class TestsBaseFixture : IntegrationTestsBase
     {

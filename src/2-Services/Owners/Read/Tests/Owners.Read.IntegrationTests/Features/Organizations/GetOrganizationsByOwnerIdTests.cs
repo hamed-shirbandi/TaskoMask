@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Organization
 
 
         [Fact]
-        public async Task Organizations_Are_Fetched_By_OwnerId()
+        public async Task Organizations_are_fetched_by_owner_Id()
         {
             //Arrange
             var expectedOrganization = OrganizationObjectMother.GetOrganization();

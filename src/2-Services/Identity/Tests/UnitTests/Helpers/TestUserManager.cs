@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.UnitTests.Helpers
+namespace TaskoMask.Services.Identity.Tests.Unit.Helpers
 {
     public class TestUserManager : UserManager<User>
     {

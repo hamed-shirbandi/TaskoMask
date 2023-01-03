@@ -1,7 +1,7 @@
 ﻿using System;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.UnitTests.TestData
+namespace TaskoMask.Services.Identity.Tests.Unit.TestData
 {
     internal class UserBuilder
     {

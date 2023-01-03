@@ -1,6 +1,6 @@
 ﻿using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.IntegrationTests.TestData
+namespace TaskoMask.Services.Identity.Tests.Integration.TestData
 {
     internal static class UserObjectMother
     {

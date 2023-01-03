@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
-using TaskoMask.Services.Identity.IntegrationTests.Fixtures;
-using TaskoMask.Services.Identity.IntegrationTests.TestData;
+using TaskoMask.Services.Identity.Tests.Integration.Fixtures;
+using TaskoMask.Services.Identity.Tests.Integration.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Identity.IntegrationTests.UseCases
+namespace TaskoMask.Services.Identity.Tests.Integration.UseCases
 {
     [Collection(nameof(UserCollectionFixture))]
     public class UserLoginTests

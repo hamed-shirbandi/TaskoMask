@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace TaskoMask.Services.Identity.UnitTests.Helpers
+namespace TaskoMask.Services.Identity.Tests.Unit.Helpers
 {
     public class TestIdentityResult : IdentityResult
     {

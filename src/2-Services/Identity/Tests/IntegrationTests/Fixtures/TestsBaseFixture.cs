@@ -7,7 +7,7 @@ using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
+namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures
 {
     public abstract class TestsBaseFixture : IntegrationTestsBase
     {

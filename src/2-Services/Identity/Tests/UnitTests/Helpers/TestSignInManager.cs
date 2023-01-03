@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 using NSubstitute;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.UnitTests.Helpers
+namespace TaskoMask.Services.Identity.Tests.Unit.Helpers
 {
     public class TestSignInManager : SignInManager<User>
     {

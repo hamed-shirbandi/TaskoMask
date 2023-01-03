@@ -8,7 +8,7 @@ using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.Services.Identity.Domain.Entities;
 using Xunit;
 
-namespace TaskoMask.Services.Identity.IntegrationTests.Fixtures
+namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures
 {
 
 

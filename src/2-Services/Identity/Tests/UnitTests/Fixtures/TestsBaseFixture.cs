@@ -7,9 +7,9 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Identity.Domain.Entities;
-using TaskoMask.Services.Identity.UnitTests.Helpers;
+using TaskoMask.Services.Identity.Tests.Unit.Helpers;
 
-namespace TaskoMask.Services.Identity.UnitTests.Fixtures
+namespace TaskoMask.Services.Identity.Tests.Unit.Fixtures
 {
 
     /// <summary>

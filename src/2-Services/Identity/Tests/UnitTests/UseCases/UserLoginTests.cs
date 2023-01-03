@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
-using TaskoMask.Services.Identity.UnitTests.Fixtures;
-using TaskoMask.Services.Identity.UnitTests.TestData;
+using TaskoMask.Services.Identity.Tests.Unit.Fixtures;
+using TaskoMask.Services.Identity.Tests.Unit.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Identity.UnitTests.UseCases
+namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 {
     public class UserLoginTests : TestsBaseFixture
     {

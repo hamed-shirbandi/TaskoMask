@@ -35,7 +35,7 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
 
         [Fact]
-        public async Task User_Is_Registered()
+        public async Task User_is_registered()
         {
             //Arrange
             var registeredOwnerId = System.Guid.NewGuid().ToString();
@@ -56,7 +56,7 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
 
         [Fact]
-        public async Task User_Is_Not_Registered_When_Email_Is_Duplicated()
+        public async Task User_is_not_registered_if_email_is_duplicated()
         {
             //Arrange
             var registeredOwnerId = System.Guid.NewGuid().ToString();

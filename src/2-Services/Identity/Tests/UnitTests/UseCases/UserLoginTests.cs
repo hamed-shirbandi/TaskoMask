@@ -31,7 +31,7 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
 
         [Fact]
-        public async Task User_Is_Logged_In()
+        public async Task User_is_logged_in()
         {
             //Arrange
             var userBuilder = UserBuilder.Init()
@@ -54,7 +54,7 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
 
         [Fact]
-        public async Task User_Is_Not_Logged_In_With_Wrong_Password()
+        public async Task User_is_not_logged_in_with_wrong_password()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.Invalid_Credentials;
@@ -78,7 +78,7 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
 
         [Fact]
-        public async Task Deactive_User_Is_Not_Logged_In()
+        public async Task Deactive_user_is_not_logged_in()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.Deactive_User_Can_Not_Login;

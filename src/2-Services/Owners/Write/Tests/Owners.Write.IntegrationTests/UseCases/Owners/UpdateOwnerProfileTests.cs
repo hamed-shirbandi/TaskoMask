@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Owners.UpdateOwnerProfile;
+using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using TaskoMask.Services.Owners.Write.Tests.Integration.Fixtures;
-using TaskoMask.Services.Owners.Write.Tests.Integration.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
@@ -33,7 +33,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
         public async Task Owner_Profile_Is_Updated()
         {
             //Arrange
-            var expectedOwner = OwnerObjectMother.GetAnOwner(_fixture.OwnerValidatorService);
+            var expectedOwner = OwnerObjectMother.CreateOwner(_fixture.OwnerValidatorService);
             await _fixture.SeedOwnerAsync(expectedOwner);
 
             var request = new UpdateOwnerProfileRequest(id: expectedOwner.Id, displayName: "Test New Name", email:"testNewMail@taskomask.ir");

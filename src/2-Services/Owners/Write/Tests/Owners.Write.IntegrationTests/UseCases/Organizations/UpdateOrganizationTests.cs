@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.UpdateOrganization;
+using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using TaskoMask.Services.Owners.Write.Tests.Integration.Fixtures;
-using TaskoMask.Services.Owners.Write.Tests.Integration.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizations
@@ -33,7 +33,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
         public async Task Organization_Is_Updated()
         {
             //Arrange
-            var expectedOwner = OwnerObjectMother.GetAnOwnerWithAnOrganization(_fixture.OwnerValidatorService);
+            var expectedOwner = OwnerObjectMother.CreateOwnerWithOneOrganization(_fixture.OwnerValidatorService);
             var expectedOrganization = expectedOwner.Organizations.FirstOrDefault();
             await _fixture.SeedOwnerAsync(expectedOwner);
 

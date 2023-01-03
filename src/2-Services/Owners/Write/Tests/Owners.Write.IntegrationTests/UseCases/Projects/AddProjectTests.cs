@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProject;
+using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using TaskoMask.Services.Owners.Write.Tests.Integration.Fixtures;
-using TaskoMask.Services.Owners.Write.Tests.Integration.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
@@ -33,7 +33,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
         public async Task Project_Is_Added()
         {
             //Arrange
-            var expectedOwner = OwnerObjectMother.GetAnOwnerWithAnOrganization(_fixture.OwnerValidatorService);
+            var expectedOwner = OwnerObjectMother.CreateOwnerWithOneOrganization(_fixture.OwnerValidatorService);
             var expectedOrganization = expectedOwner.Organizations.FirstOrDefault();
             await _fixture.SeedOwnerAsync(expectedOwner);
 

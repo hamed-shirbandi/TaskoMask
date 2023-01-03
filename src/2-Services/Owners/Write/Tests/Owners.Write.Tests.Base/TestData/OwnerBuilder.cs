@@ -1,9 +1,9 @@
 ﻿using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
-namespace TaskoMask.Services.Owners.Write.Tests.Unit.TestData
+namespace TaskoMask.Services.Owners.Write.Tests.Base.TestData
 {
-    internal class OwnerBuilder
+    public class OwnerBuilder
     {
         public IOwnerValidatorService ValidatorService { get; private set; }
         public string Email { get; private set; }
@@ -21,7 +21,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.TestData
         }
 
 
-        public OwnerBuilder WithEmail(IOwnerValidatorService validatorService)
+        public OwnerBuilder WithValidatorService(IOwnerValidatorService validatorService)
         {
             ValidatorService = validatorService;
             return this;
@@ -44,11 +44,11 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.TestData
 
 
 
-        public Owner RegisterOwner()
+        public Owner Build()
         {
-            return Owner.RegisterOwner(DisplayName, Email, ValidatorService);
+            var owner = Owner.RegisterOwner(DisplayName, Email, ValidatorService);
+            owner.ClearDomainEvents();
+            return owner;
         }
-
-
     }
 }

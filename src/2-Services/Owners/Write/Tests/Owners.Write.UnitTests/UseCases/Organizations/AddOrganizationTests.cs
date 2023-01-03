@@ -13,7 +13,7 @@ using TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.AddOrga
 using TaskoMask.Services.Owners.Write.Domain.Events.Organizations;
 using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Organizations;
 using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
-using TaskoMask.Services.Owners.Write.Tests.Unit.TestData;
+using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using Xunit;
 
 namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
@@ -137,7 +137,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             //Arrange
             var expectedMessage = string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization);
             var existedOwner = Owners.FirstOrDefault();
-            var existedOrganization = OwnerObjectMother.GetAnOrganization();
+            var existedOrganization = OwnerObjectMother.CreateOrganization();
             existedOwner.AddOrganization(existedOrganization);
             await OwnerAggregateRepository.UpdateAsync(existedOwner);
             var addOrganizationRequest = new AddOrganizationRequest(existedOwner.Id, existedOrganization.Name.Value, "Test_Description");
@@ -158,7 +158,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             //Arrange
             var expectedMaxOrganizationsCount = DomainConstValues.Owner_Max_Organizations_Count;
             var expectedMessage = string.Format(DomainMessages.Max_Organizations_Count_Limitiation, expectedMaxOrganizationsCount);
-            var expectedOwner = OwnerObjectMother.GetAnOwnerWithMaxOrganizations(OwnerValidatorService, expectedMaxOrganizationsCount);
+            var expectedOwner = OwnerObjectMother.CreateOwnerWithMaxOrganizations(OwnerValidatorService, expectedMaxOrganizationsCount);
             await OwnerAggregateRepository.AddAsync(expectedOwner);
             var addOrganizationRequest = new AddOrganizationRequest(expectedOwner.Id, "Test_Name", "Test_Description");
 

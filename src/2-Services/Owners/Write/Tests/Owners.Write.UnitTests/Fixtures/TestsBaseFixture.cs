@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Services;
-using TaskoMask.Services.Owners.Write.Tests.Unit.TestData;
+using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 
 namespace TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures
 {
@@ -43,9 +43,8 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures
 
             InMemoryBus = Substitute.For<IInMemoryBus>();
 
-            Owners = OwnerObjectMother.GenerateOwnerList();
+            Owners = GenerateOwnerList();
 
-            OwnerValidatorService = Substitute.For<IOwnerValidatorService>();
             OwnerValidatorService.OwnerHasUniqueEmail(ownerId: Arg.Any<string>(), email: Arg.Any<string>()).Returns(args =>
             {
                 return !Owners.Any(o => o.Id != (string)args[0] && o.Email.Value == (string)args[1]);
@@ -74,6 +73,18 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures
         /// Each test class should setup its own fixture
         /// </summary>
         protected abstract void TestClassFixtureSetup();
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private List<Owner> GenerateOwnerList()
+        {
+            var ownerValidatorService = Substitute.For<IOwnerValidatorService>();
+            ownerValidatorService.OwnerHasUniqueEmail(ownerId: Arg.Any<string>(), email: Arg.Any<string>()).Returns(true);
+            return OwnerObjectMother.GenerateOwnersList(ownerValidatorService);
+        }
 
     }
 }

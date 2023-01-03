@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrganizationId;
-using TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures;
-using TaskoMask.Services.Owners.Read.IntegrationTests.TestData;
+using TaskoMask.Services.Owners.Read.Tests.Integration.Fixtures;
+using TaskoMask.Services.Owners.Read.Tests.Integration.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Project
+namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Project
 {
     [Collection(nameof(ProjectCollectionFixture))]
     public class GetProjectsByOrganizationIdTests

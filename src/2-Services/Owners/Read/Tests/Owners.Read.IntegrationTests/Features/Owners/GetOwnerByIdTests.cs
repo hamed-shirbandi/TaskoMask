@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById;
-using TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures;
-using TaskoMask.Services.Owners.Read.IntegrationTests.TestData;
+using TaskoMask.Services.Owners.Read.Tests.Integration.Fixtures;
+using TaskoMask.Services.Owners.Read.Tests.Integration.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Owners.Read.IntegrationTests.Features.Owners
+namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Owners
 {
     [Collection(nameof(OwnerCollectionFixture))]
     public class GetOwnerByIdTests

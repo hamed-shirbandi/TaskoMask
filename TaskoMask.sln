@@ -141,7 +141,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A12B4AA2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Read.Api", "src\2-Services\Owners\Read\Api\Owners.Read.Api\Owners.Read.Api.csproj", "{C0ECAF68-34F6-4C1C-A70E-AD2BCE91315F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Read.IntegrationTests", "src\2-Services\Owners\Read\Tests\Owners.Read.IntegrationTests\Owners.Read.IntegrationTests.csproj", "{91C76287-B903-4A8A-A849-4E0D69B147CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owners.Read.Tests.Integration", "src\2-Services\Owners\Read\Tests\Owners.Read.IntegrationTests\Owners.Read.Tests.Integration.csproj", "{91C76287-B903-4A8A-A849-4E0D69B147CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Boards", "Boards", "{4BD46D9C-13C0-4A50-B72B-BDD51ACC0904}"
 EndProject

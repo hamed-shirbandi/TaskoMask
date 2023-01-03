@@ -30,7 +30,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
 
 
         [Fact]
-        public async Task Project_Is_Updated()
+        public async Task Project_is_updated()
         {
             //Arrange
             var expectedOwner = OwnerObjectMother.CreateOwnerWithOneOrganizationAndOneProject(_fixture.OwnerValidatorService);

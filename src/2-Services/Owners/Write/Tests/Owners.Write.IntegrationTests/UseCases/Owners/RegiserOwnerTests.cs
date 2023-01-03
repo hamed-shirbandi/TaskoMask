@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_Is_Registered()
+        public async Task Owner_is_registered()
         {
             //Arrange
             var request = new RegiserOwnerRequest(displayName:"Test Name",email:"test@taskomask.ir",password:"TestPass");

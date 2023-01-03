@@ -30,7 +30,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
 
 
         [Fact]
-        public async Task Organization_Is_Added()
+        public async Task Organization_is_added()
         {
             //Arrange
             var expectedOwner = OwnerObjectMother.CreateOwner(_fixture.OwnerValidatorService);

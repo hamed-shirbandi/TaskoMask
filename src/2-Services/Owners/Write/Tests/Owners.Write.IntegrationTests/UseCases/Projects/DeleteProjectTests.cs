@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
 
 
         [Fact]
-        public async Task Project_Is_Deleted()
+        public async Task Project_is_deleted()
         {
             //Arrange
             var expectedMessage = string.Format(ContractsMessages.Not_Found, DomainMetadata.Project);

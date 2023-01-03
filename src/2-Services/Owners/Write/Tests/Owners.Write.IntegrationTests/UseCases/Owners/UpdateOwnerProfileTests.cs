@@ -30,7 +30,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_Profile_Is_Updated()
+        public async Task Owner_profile_is_updated()
         {
             //Arrange
             var expectedOwner = OwnerObjectMother.CreateOwner(_fixture.OwnerValidatorService);

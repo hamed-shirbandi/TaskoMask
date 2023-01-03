@@ -29,7 +29,7 @@ namespace TaskoMask.Services.Identity.Tests.Integration.UseCases
 
 
         [Fact]
-        public async Task User_Is_Registered()
+        public async Task User_is_registered()
         {
             //Arrange
             var registeredOwnerId = Guid.NewGuid().ToString();

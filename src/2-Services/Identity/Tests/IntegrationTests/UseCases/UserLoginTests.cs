@@ -26,12 +26,11 @@ namespace TaskoMask.Services.Identity.Tests.Integration.UseCases
 
         #endregion
 
-
         #region Test Methods
 
 
         [Fact]
-        public async Task User_Is_Logged_In()
+        public async Task User_is_logged_in()
         {
             //Arrange
             var password = "TestPass";

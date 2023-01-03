@@ -31,7 +31,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Cards
 
 
         [Fact]
-        public async Task Card_Is_Updated()
+        public async Task Card_is_updated()
         {
             //Arrange
             var expectedBoard = BoardObjectMother.CreateBoardWithOneCard(_fixture.BoardValidatorService);

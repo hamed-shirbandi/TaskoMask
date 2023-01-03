@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Cards
 
 
         [Fact]
-        public async Task Card_Is_Deleted()
+        public async Task Card_is_deleted()
         {
             //Arrange
             var expectedMessage = string.Format(ContractsMessages.Not_Found, DomainMetadata.Card);

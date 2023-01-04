@@ -13,19 +13,22 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<Board, GetBoardDto>();
 
             CreateMap<CreationTimeDto, CreationTimeGrpcResponse>()
-                 .ForMember(dest => dest.CreateDateTime, opt =>
-                      opt.MapFrom(src => src.CreateDateTime.ToTimestamp()))
-                 .ForMember(dest => dest.ModifiedDateTime, opt =>
-                      opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
+                .ForMember(dest => dest.CreateDateTime, opt =>
+                    opt.MapFrom(src => src.CreateDateTime.ToTimestamp()))
+                .ForMember(dest => dest.ModifiedDateTime, opt =>
+                    opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
 
             CreateMap<GetProjectGrpcResponse, GetProjectDto>();
+
+            CreateMap<Board, GetBoardDto>();
 
             CreateMap<GetBoardDto, GetBoardGrpcResponse>()
             .ForMember(dest => dest.Description, opt =>
                   opt.MapFrom(src => src.Description ?? string.Empty));
+
+            CreateMap<Card, GetCardDto>();
 
             CreateMap<GetCardDto, GetCardGrpcResponse>();
         }

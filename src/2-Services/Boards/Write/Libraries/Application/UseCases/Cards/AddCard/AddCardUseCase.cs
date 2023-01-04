@@ -61,7 +61,7 @@ namespace TaskoMask.Services.Boards.Write.Application.UseCases.Cards.AddCard
 
             await PublishIntegrationEventAsync(cardAdded);
 
-            return new CommandResult(ContractsMessages.Create_Success, board.Id);
+            return new CommandResult(ContractsMessages.Create_Success, card.Id);
         }
 
 

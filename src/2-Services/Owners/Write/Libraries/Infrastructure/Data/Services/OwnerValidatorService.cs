@@ -2,7 +2,7 @@
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 
-namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories
+namespace TaskoMask.Services.Owners.Write.Infrastructure.Data.Services
 {
 
     /// <summary>

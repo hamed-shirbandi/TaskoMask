@@ -7,6 +7,7 @@ using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Services;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.DbContext;
 using TaskoMask.Services.Owners.Write.Infrastructure.Data.Repositories;
+using TaskoMask.Services.Owners.Write.Infrastructure.Data.Services;
 
 namespace TaskoMask.Services.Owners.Write.Infrastructure.CrossCutting.DI
 {

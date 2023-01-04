@@ -22,7 +22,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.csproj" />
-		<ProjectReference Include="..\Boards.Write.TestsBase\Boards.Write.Tests.Base.csproj" />
+		<ProjectReference Include="..\Boards.Write.Tests.Base\Boards.Write.Tests.Base.csproj" />
 	</ItemGroup>
 
 	<Target Name="CopyConfig" AfterTargets="AfterBuild">

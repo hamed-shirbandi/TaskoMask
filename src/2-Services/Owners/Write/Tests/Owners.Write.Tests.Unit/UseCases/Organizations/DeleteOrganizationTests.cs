@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using MongoDB.Bson;
 using NSubstitute;
 using System;
 using System.Linq;
@@ -62,6 +63,24 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<OrganizationDeletedEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<OrganizationDeleted>());
         }
+
+
+
+        [Fact]
+        public async Task Deleting_an_organization_will_throw_an_exception_if_Id_is_not_existed()
+        {
+            //Arrange
+            var notExistedOrganizationId = ObjectId.GenerateNewId().ToString();
+            var deleteOrganizationRequest = new DeleteOrganizationRequest(notExistedOrganizationId);
+            var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Organization);
+
+            //Act
+            Func<Task> act = async () => await _deleteOrganizationUseCase.Handle(deleteOrganizationRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
 
 
         #endregion

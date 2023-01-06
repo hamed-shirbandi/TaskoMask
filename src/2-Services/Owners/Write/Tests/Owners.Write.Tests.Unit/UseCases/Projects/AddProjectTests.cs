@@ -105,6 +105,28 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 
 
 
+        [InlineData("Th")]
+        [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
+        [Theory]
+        public async Task Project_is_not_added_if_name_lenght_is_less_than_min_or_more_than_max(string name)
+        {
+            //Arrange
+            var expectedOwner = Owners.FirstOrDefault();
+            var expectedOrganization = OwnerObjectMother.CreateOrganization();
+            expectedOwner.AddOrganization(expectedOrganization);
+
+            var addProjectRequest = new AddProjectRequest(expectedOrganization.Id, name, "Test Description");
+            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(ProjectName), DomainConstValues.Project_Name_Min_Length, DomainConstValues.Project_Name_Max_Length);
+
+            //Act
+            System.Func<Task> act = async () => await _addProjectUseCase.Handle(addProjectRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
 
 
         #endregion

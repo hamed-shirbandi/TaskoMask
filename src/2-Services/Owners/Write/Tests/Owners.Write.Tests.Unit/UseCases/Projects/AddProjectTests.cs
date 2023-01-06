@@ -83,6 +83,29 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 
 
 
+        [InlineData("test", "test")]
+        [InlineData("تست", "تست")]
+        [Theory]
+        public async Task Project_is_not_added_if_name_and_description_are_the_same(string name, string description)
+        {
+            //Arrange
+            var expectedOwner = Owners.FirstOrDefault();
+            var expectedOrganization = OwnerObjectMother.CreateOrganization();
+            expectedOwner.AddOrganization(expectedOrganization);
+
+            var addProjectRequest = new AddProjectRequest(expectedOrganization.Id, name, description);
+            var expectedMessage = DomainMessages.Equal_Name_And_Description_Error;
+
+            //Act
+            System.Func<Task> act = async () => await _addProjectUseCase.Handle(addProjectRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
+
 
         #endregion
 

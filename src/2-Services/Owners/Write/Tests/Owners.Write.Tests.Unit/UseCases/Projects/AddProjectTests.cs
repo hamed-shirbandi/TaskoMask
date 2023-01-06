@@ -149,6 +149,28 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 
 
 
+        [Fact]
+        public async Task Project_is_not_added_if_name_is_not_unique()
+        {
+            //Arrange
+            var expectedMessage = string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Project);
+            var expectedOwner = Owners.FirstOrDefault();
+            var expectedOrganization = OwnerObjectMother.CreateOrganization();
+            var expectedProject = OwnerObjectMother.CreateProject();
+            expectedOwner.AddOrganization(expectedOrganization);
+            expectedOwner.AddProject(expectedOrganization.Id,expectedProject);
+
+            var addProjectRequest = new AddProjectRequest(expectedOrganization.Id, expectedProject.Name.Value, "Test_Description");
+
+            //Act
+            System.Func<Task> act = async () => await _addProjectUseCase.Handle(addProjectRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
         #endregion
 
         #region Fixture

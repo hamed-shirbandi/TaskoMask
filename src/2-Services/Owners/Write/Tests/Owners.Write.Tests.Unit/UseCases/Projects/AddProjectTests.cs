@@ -64,6 +64,26 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
             await MessageBus.Received(1).Publish(Arg.Any<ProjectAdded>());
         }
 
+
+
+        [Fact]
+        public async Task Add_project_throw_exception_if_organization_id_is_not_existed()
+        {
+            //Arrange
+            var notExistedOrganizationId = ObjectId.GenerateNewId().ToString();
+            var addProjectRequest = new AddProjectRequest(notExistedOrganizationId, "Test Name", "Test_Description");
+            var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
+
+            //Act
+            System.Func<Task> act = async () => await _addProjectUseCase.Handle(addProjectRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
+
         #endregion
 
         #region Fixture

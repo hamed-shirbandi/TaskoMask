@@ -8,7 +8,6 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeleteProject;
-using TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeleteProject;
 using TaskoMask.Services.Owners.Write.Domain.Events.Projects;
 using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
@@ -66,6 +65,23 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<ProjectDeletedEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<ProjectDeleted>());
+        }
+
+
+
+        [Fact]
+        public async Task Deleting_an_project_will_throw_an_exception_if_Id_is_not_existed()
+        {
+            //Arrange
+            var notExistedProjectId = ObjectId.GenerateNewId().ToString();
+            var deleteProjectRequest = new DeleteProjectRequest(notExistedProjectId);
+            var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
+
+            //Act
+            Func<Task> act = async () => await _deleteProjectUseCase.Handle(deleteProjectRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
 

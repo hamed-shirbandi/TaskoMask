@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using MongoDB.Bson;
 using NSubstitute;
 using System.Linq;
 using System.Threading;
@@ -54,10 +55,11 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 
 
         [Fact]
-        public async Task Owner_profile_update_throw_exception_when_owner_not_exist()
+        public async Task Owner_profile_update_throw_exception_when_owner_id_is_not_existed()
         {
             //Arrange
-            var updateOwnerProfileRequest = new UpdateOwnerProfileRequest("Some_Id_That_Not_Exist", "Test_New_DisplayName", "Test_New@email.com");
+            var notExistedOwnerId = ObjectId.GenerateNewId().ToString();
+            var updateOwnerProfileRequest = new UpdateOwnerProfileRequest(notExistedOwnerId, "Test_New_DisplayName", "Test_New@email.com");
             var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
             //Act

@@ -15,6 +15,7 @@ using TaskoMask.Services.Owners.Write.Domain.ValueObjects.Organizations;
 using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
 using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using Xunit;
+using MongoDB.Bson;
 
 namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 {
@@ -59,10 +60,11 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 
 
         [Fact]
-        public async Task Add_organization_throw_exception_if_owner_not_exist()
+        public async Task Add_organization_throw_exception_if_owner_id_is_not_existed()
         {
             //Arrange
-            var addOrganizationRequest = new AddOrganizationRequest("Some_Owner_Id_That_Not_Exist", "Test_Name", "Test_Description");
+            var notExistedOwnerId = ObjectId.GenerateNewId().ToString();
+            var addOrganizationRequest = new AddOrganizationRequest(notExistedOwnerId, "Test_Name", "Test_Description");
             var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
 
             //Act

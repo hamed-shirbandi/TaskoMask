@@ -4,6 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Monolith.Domain.DataModel.Entities
 {
+    // To be Deleted
     public class Board : BaseEntity
     {
         /// <summary>

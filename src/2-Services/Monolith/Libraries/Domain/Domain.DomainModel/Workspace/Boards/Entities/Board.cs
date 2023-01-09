@@ -15,6 +15,8 @@ using MongoDB.Bson;
 
 namespace TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Entities
 {
+    // To be Deleted
+
     public class Board: AggregateRoot
     {
         #region Fields

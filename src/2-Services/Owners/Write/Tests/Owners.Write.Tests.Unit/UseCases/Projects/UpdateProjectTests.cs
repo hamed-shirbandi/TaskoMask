@@ -66,6 +66,23 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 
 
 
+        [Fact]
+        public async Task Updating_an_project_will_throw_an_exception_if_Id_is_not_existed()
+        {
+            //Arrange
+            var notExistedProjectId = ObjectId.GenerateNewId().ToString();
+            var updateProjectRequest = new UpdateProjectRequest(notExistedProjectId, "Test New Name", "Test New Description");
+            var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
+
+            //Act
+            Func<Task> act = async () => await _updateProjectUseCase.Handle(updateProjectRequest, CancellationToken.None);
+
+            //Assert
+            await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
+        }
+
+
+
         #endregion
 
         #region Fixture

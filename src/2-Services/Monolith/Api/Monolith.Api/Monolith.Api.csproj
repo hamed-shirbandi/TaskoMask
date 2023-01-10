@@ -23,6 +23,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Folder Include="logs\" />
+		<Folder Include="Models\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />

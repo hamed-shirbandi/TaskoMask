@@ -22,7 +22,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
 
         public WriteDbContext(IOptions<WriteDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            Boards = GetCollection<Board>();
             Tasks = GetCollection<Task>();
         }
 
@@ -31,8 +30,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
         #endregion
 
         #region Properties
-
-        public IMongoCollection<Board> Boards { get; }
         public IMongoCollection<Task> Tasks { get; }
 
         #endregion

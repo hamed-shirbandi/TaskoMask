@@ -17,7 +17,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Generator
         public static void GenerateAndSeedSampleData(IServiceProvider serviceProvider)
         {
             WriteDbSeedData.SeedSampleData(serviceProvider);
-            ReadDbSeedData.SyncSampleDataWithWriteDB(serviceProvider);
         }
 
     }

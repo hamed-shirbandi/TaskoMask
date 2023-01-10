@@ -114,7 +114,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         private static void AddWriteSideRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IBoardAggregateRepository, BoardAggregateRepository>();
             services.AddScoped<ITaskAggregateRepository, TaskAggregateRepository>();
         }
 
@@ -138,8 +137,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         private static void AddReadSideRepositories(this IServiceCollection services)
         {
             services.AddScoped<IActivityRepository, ActivityRepository>();
-            services.AddScoped<IBoardRepository, BoardRepository>();
-            services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ITaskRepository, TaskRepository>();
         }
@@ -153,7 +150,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         private static void AddDomainServices(this IServiceCollection services)
         {
             services.AddScoped<ITaskValidatorService, TaskValidatorService>();
-            services.AddScoped<IBoardValidatorService, BoardValidatorService>();
         }
 
 

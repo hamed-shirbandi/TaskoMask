@@ -33,27 +33,10 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders
         /// </summary>
         private static void CreateIndexes(IReadDbContext dbContext)
         {
-
-            #region Board Indexs
-
-            dbContext.GetCollection<Board>().Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Board.Id), Unique = true }));
-            dbContext.GetCollection<Board>().Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.ProjectId), new CreateIndexOptions() { Name = nameof(Board.ProjectId) }));
-
-
-            #endregion
-
             #region Task Indexs
 
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }));
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = nameof(Task.CardId) }));
-
-
-            #endregion
-
-            #region Card Indexs
-
-            dbContext.GetCollection<Card>().Indexes.CreateOneAsync(new CreateIndexModel<Card>(Builders<Card>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Card.Id), Unique = true }));
-            dbContext.GetCollection<Card>().Indexes.CreateOneAsync(new CreateIndexModel<Card>(Builders<Card>.IndexKeys.Ascending(x => x.BoardId), new CreateIndexOptions() { Name = nameof(Card.BoardId), Unique = false }));
 
 
             #endregion

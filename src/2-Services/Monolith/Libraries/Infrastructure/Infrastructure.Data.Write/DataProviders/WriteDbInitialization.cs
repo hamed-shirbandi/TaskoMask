@@ -35,14 +35,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
         /// </summary>
         private static void CreateIndexes(IWriteDbContext dbContext)
         {
-            #region Board Indexs
-
-            dbContext.GetCollection<Board>().Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Board.Id), Unique = true }));
-            dbContext.GetCollection<Board>().Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.ProjectId.Value), new CreateIndexOptions() { Name = nameof(Board.ProjectId) }));
-
-
-            #endregion
-
             #region Task Indexs
 
             dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }));
@@ -50,7 +42,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders
 
 
             #endregion
-
         }
 
 

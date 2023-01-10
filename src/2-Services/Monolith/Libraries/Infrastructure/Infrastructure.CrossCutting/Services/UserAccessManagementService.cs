@@ -17,8 +17,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
         #region Fields
 
         private readonly IAuthenticatedUserService _authenticatedUserService;
-        private readonly IBoardRepository _boardRepository;
-        private readonly ICardRepository _cardRepository;
         private readonly ITaskRepository _taskRepository;
         private readonly AuthenticatedUserModel currentUser;
 
@@ -26,52 +24,17 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Services
 
         #region Ctors
 
-        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, ICardRepository cardRepository, ITaskRepository taskRepository , IBoardRepository boardRepository)
+        public UserAccessManagementService(IAuthenticatedUserService authenticatedUserService, ITaskRepository taskRepository )
         {
             _authenticatedUserService = authenticatedUserService;
             currentUser = _authenticatedUserService.GetAuthenticatedUser();
-            _cardRepository = cardRepository;
             _taskRepository = taskRepository;
-            _boardRepository = boardRepository;
         }
 
 
         #endregion
 
         #region Public Methods
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<bool> CanAccessToBoardAsync(string boardId)
-        {
-            var board = await _boardRepository.GetByIdAsync(boardId);
-
-            // handling null reference is not this class's business
-            if (board == null)
-                return true;
-
-            return board.OwnerId == currentUser.Id;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<bool> CanAccessToCardAsync(string cardId)
-        {
-            var card = await _cardRepository.GetByIdAsync(cardId);
-
-            // handling null reference is not this class's business
-            if (card == null)
-                return true;
-
-            return card.OwnerId == currentUser.Id;
-        }
 
 
 

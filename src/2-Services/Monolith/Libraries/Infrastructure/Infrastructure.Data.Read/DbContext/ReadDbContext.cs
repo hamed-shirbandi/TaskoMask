@@ -25,8 +25,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 
         public ReadDbContext(IOptions<ReadDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            Boards = GetCollection<Board>();
-            Cards = GetCollection<Card>();
             Tasks = GetCollection<Task>();
             Comments = GetCollection<Comment>();
             Activities = GetCollection<Activity>(nameof(Activities));
@@ -38,8 +36,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 
         #region Properties
 
-        public IMongoCollection<Board> Boards { get; }
-        public IMongoCollection<Card> Cards { get; }
         public IMongoCollection<Task> Tasks { get; }
         public IMongoCollection<Comment> Comments { get; }
         public IMongoCollection<Activity> Activities { get; }

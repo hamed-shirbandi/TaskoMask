@@ -22,5 +22,11 @@
     <ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
     <ProjectReference Include="..\..\..\Libraries\Domain\Domain.DomainModel\Domain.DomainModel.csproj" />
   </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="TestData\DataBuilders\" />
+    <Folder Include="TestData\ObjectMothers\" />
+    <Folder Include="Workspace\" />
+  </ItemGroup>
 
 </Project>

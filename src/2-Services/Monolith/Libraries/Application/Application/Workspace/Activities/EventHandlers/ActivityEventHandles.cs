@@ -18,16 +18,14 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.EventHand
         #region Fields
 
         private readonly IActivityRepository _activityRepository;
-        private readonly ICardRepository _cardRepository;
 
         #endregion
 
         #region Ctors
 
-        public TaskEventHandles(IActivityRepository activityRepository, ICardRepository cardRepository)
+        public TaskEventHandles(IActivityRepository activityRepository)
         {
             _activityRepository = activityRepository;
-            _cardRepository = cardRepository;
         }
 
         #endregion
@@ -40,12 +38,11 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.EventHand
         /// </summary>
         public async System.Threading.Tasks.Task Handle(TaskAddedEvent createdTask, CancellationToken cancellationToken)
         {
-            var card = await _cardRepository.GetByIdAsync(createdTask.CardId);
 
             var activity = new Activity()
             {
                 TaskId= createdTask.Id,
-                Description= $"Added to {card.Name}",
+                Description= "Added to {card.Name}",
             };
            await _activityRepository.AddAsync(activity);
         }
@@ -89,12 +86,11 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.EventHand
         /// </summary>
         public async System.Threading.Tasks.Task Handle(TaskMovedToAnotherCardEvent movedToAnotherCardEvent, CancellationToken cancellationToken)
         {
-            var card = await _cardRepository.GetByIdAsync(movedToAnotherCardEvent.CardId);
 
             var activity = new Activity()
             {
                 TaskId = movedToAnotherCardEvent.TaskId,
-                Description = $"Moved to {card.Name}",
+                Description = "Moved to {card.Name}",
             };
             await _activityRepository.AddAsync(activity);
 

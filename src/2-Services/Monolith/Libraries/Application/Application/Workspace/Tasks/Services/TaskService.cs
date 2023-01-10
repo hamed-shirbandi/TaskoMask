@@ -6,7 +6,6 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
-using TaskoMask.Services.Monolith.Application.Workspace.Cards.Queries.Models;
 using TaskoMask.Services.Monolith.Application.Workspace.Activities.Services;
 using TaskoMask.Services.Monolith.Application.Workspace.Comments.Services;
 using TaskoMask.BuildingBlocks.Contracts.Models;
@@ -94,9 +93,9 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services
                 return Result.Failure<TaskDetailsViewModel>(taskQueryResult.Errors);
 
 
-            var cardQueryResult = await _inMemoryBus.SendQuery(new GetCardByIdQuery(taskQueryResult.Value.CardId));
-            if (!cardQueryResult.IsSuccess)
-                return Result.Failure<TaskDetailsViewModel>(cardQueryResult.Errors);
+            //var cardQueryResult = await _inMemoryBus.SendQuery(new GetCardByIdQuery(taskQueryResult.Value.CardId));
+            //if (!cardQueryResult.IsSuccess)
+            //    return Result.Failure<TaskDetailsViewModel>(cardQueryResult.Errors);
 
 
             var activitiesQueryResult = await _activityService.GetListByTaskIdAsync(id);
@@ -113,7 +112,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Services
             var taskDetail = new TaskDetailsViewModel
             {
                 Task = taskQueryResult.Value,
-                Card = cardQueryResult.Value,
+               // Card = cardQueryResult.Value,
                 Activities= activitiesQueryResult.Value,
                 Comments= commentsQueryResult.Value,
             };

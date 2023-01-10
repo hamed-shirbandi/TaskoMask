@@ -28,17 +28,15 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
         #region Fields
 
         private readonly ITaskRepository _taskRepository;
-        private readonly ICardRepository _cardRepository;
 
 
         #endregion
 
         #region Ctors
 
-        public TaskQueryHandlers(ITaskRepository taskRepository, IMapper mapper, ICardRepository cardRepository) : base(mapper)
+        public TaskQueryHandlers(ITaskRepository taskRepository, IMapper mapper) : base(mapper)
         {
             _taskRepository = taskRepository;
-            _cardRepository = cardRepository;
         }
 
         #endregion
@@ -96,8 +94,8 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Queries.Handle
 
             foreach (var item in tasksDto)
             {
-                var card = await _cardRepository.GetByIdAsync(item.CardId);
-                item.CardName = card?.Name;
+               // var card = await _cardRepository.GetByIdAsync(item.CardId);
+               // item.CardName = card?.Name;
             }
 
             return new PaginatedList<GetTaskDto>

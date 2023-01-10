@@ -9,7 +9,6 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handlers
@@ -23,18 +22,16 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
         #region Fields
 
         private readonly ITaskAggregateRepository _taskAggregateRepository;
-        private readonly IBoardAggregateRepository _boardAggregateRepository;
         private readonly ITaskValidatorService _taskValidatorService;
 
         #endregion
 
         #region Ctors
 
-        public TaskCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, ITaskValidatorService taskValidatorService, IBoardAggregateRepository boardAggregateRepository, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
+        public TaskCommandHandlers(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, ITaskValidatorService taskValidatorService, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
             _taskValidatorService = taskValidatorService;
-            _boardAggregateRepository = boardAggregateRepository;
         }
 
         #endregion
@@ -47,11 +44,12 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handl
         /// </summary>
         public async Task<CommandResult> Handle(AddTaskCommand request, CancellationToken cancellationToken)
         {
-            var board = await _boardAggregateRepository.GetByCardIdAsync(request.CardId);
-            if (board == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
+            //var board = await _boardAggregateRepository.GetByCardIdAsync(request.CardId);
+            //if (board == null)
+            //    throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Board);
+            var boardId = "";
 
-            var task = Domain.DomainModel.Workspace.Tasks.Entities.Task.AddTask(request.Title, request.Description, request.CardId, board.Id, _taskValidatorService);
+            var task = Domain.DomainModel.Workspace.Tasks.Entities.Task.AddTask(request.Title, request.Description, request.CardId, boardId, _taskValidatorService);
 
             await _taskAggregateRepository.AddAsync(task);
             await PublishDomainEventsAsync(task.DomainEvents);

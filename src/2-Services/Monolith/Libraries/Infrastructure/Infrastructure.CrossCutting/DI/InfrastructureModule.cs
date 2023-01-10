@@ -3,10 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
-using TaskoMask.Services.Monolith.Application.Workspace.Boards.Commands.Handlers;
+using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handlers;
 using TaskoMask.Services.Monolith.Domain.DataModel.Data;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Data;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Boards.Services;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
 using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles;
@@ -33,7 +31,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(BoardCommandHandlers),handlerAssemblyMarkerType: typeof(BoardCommandHandlers));
+            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(TaskCommandHandlers),handlerAssemblyMarkerType: typeof(TaskCommandHandlers));
 
             services.AddMapper(typeof(WorkspaceMappingProfile));
 

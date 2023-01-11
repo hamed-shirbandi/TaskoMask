@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TaskoMask.Services.Monolith.Api.Controllers
 {
+    //To be refactored into tasks read service
     [Authorize("full-access")]
     public class TasksApiController : BaseApiController
     {

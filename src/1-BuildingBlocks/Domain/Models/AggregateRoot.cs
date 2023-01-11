@@ -7,7 +7,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
     /// <summary>
     ///
     /// </summary>
-    public abstract class AggregateRoot : BaseEntity
+    public abstract class AggregateRoot : Entity
     {
         #region Fields
 
@@ -92,7 +92,6 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
         private void UpdateAggregate()
         {
             SetVersion();
-            UpdateModifiedDateTime();
         }
 
 

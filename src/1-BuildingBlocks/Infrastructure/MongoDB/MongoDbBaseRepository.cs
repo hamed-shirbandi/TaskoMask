@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
-    public class MongoDbBaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
+    public class MongoDbBaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : Entity
     {
         #region Fields
 

@@ -7,7 +7,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
     /// <summary>
     ///
     /// </summary>
-    public abstract class BaseEntity
+    public abstract class BaseEntity: Entity
     {
         #region Ctors
 
@@ -21,7 +21,6 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
 
         #region Properties
 
-        public string Id { get; private set; }
         public CreationTime CreationTime { get; private set; }
 
 
@@ -47,19 +46,6 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
         {
             CreationTime = CreationTime.UpdateModifiedDateTime();
         }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected void SetId(string id)
-        {
-            Id = id;
-        }
-
-
-
 
         #endregion
 

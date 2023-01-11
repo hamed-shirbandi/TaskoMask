@@ -48,7 +48,7 @@ namespace TaskoMask.Services.Owners.Write.Domain.ValueObjects.Projects
                 return;
 
             if (Value.Length > DomainConstValues.Project_Description_Max_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Max_Length_Error, nameof(ProjectName), DomainConstValues.Project_Description_Max_Length));
+                throw new DomainException(string.Format(ContractsMetadata.Max_Length_Error, nameof(ProjectDescription), DomainConstValues.Project_Description_Max_Length));
 
         }
 

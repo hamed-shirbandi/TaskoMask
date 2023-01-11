@@ -10,7 +10,7 @@ using TaskoMask.Services.Boards.Write.Domain.Events.Cards;
 using TaskoMask.Services.Boards.Write.Tests.Unit.Fixtures;
 using Xunit;
 
-namespace TaskoMask.Services.Cards.Write.UnitTests.UseCases.Cards
+namespace TaskoMask.Services.Cards.Write.Tests.Unit.UseCases.Cards
 {
     public class AddCardTests : TestsBaseFixture
     {

@@ -45,6 +45,8 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures
 
             Owners = GenerateOwnerList();
 
+            OwnerValidatorService = Substitute.For<IOwnerValidatorService>();
+
             OwnerValidatorService.OwnerHasUniqueEmail(ownerId: Arg.Any<string>(), email: Arg.Any<string>()).Returns(args =>
             {
                 return !Owners.Any(o => o.Id != (string)args[0] && o.Email.Value == (string)args[1]);
@@ -63,6 +65,14 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures
                 }
 
                 return Task.CompletedTask;
+            });
+            OwnerAggregateRepository.GetByOrganizationIdAsync(Arg.Is<string>(x => x.Any())).Returns(args =>
+            {
+                return Owners.FirstOrDefault(u => u.Organizations.Any(c => c.Id == (string)args[0]));
+            });
+            OwnerAggregateRepository.GetByProjectIdAsync(Arg.Is<string>(x => x.Any())).Returns(args =>
+            {
+                return Owners.FirstOrDefault(u => u.Organizations.Any(c => c.Projects.Any(p => p.Id == (string)args[0])));
             });
 
         }

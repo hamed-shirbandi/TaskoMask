@@ -47,7 +47,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Upd
         {
             var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.Id);
             if (owner == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Organization);
 
             var loadedVersion = owner.Version;
 

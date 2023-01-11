@@ -13,7 +13,6 @@ using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Events.Projects;
-using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeleteProject
 {
@@ -47,7 +46,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeletePr
         {
             var owner = await _ownerAggregateRepository.GetByProjectIdAsync(request.Id);
             if (owner == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
 
             var loadedVersion = owner.Version;
 

@@ -72,7 +72,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
             //Arrange
             var notExistedOrganizationId = ObjectId.GenerateNewId().ToString();
             var addProjectRequest = new AddProjectRequest(notExistedOrganizationId, "Test Name", "Test_Description");
-            var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
+            var expectedMessage = string.Format(ContractsMessages.Data_Not_exist, DomainMetadata.Organization);
 
             //Act
             System.Func<Task> act = async () => await _addProjectUseCase.Handle(addProjectRequest, CancellationToken.None);
@@ -133,12 +133,12 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
         public async Task Project_is_not_added_if_description_lenght_is_more_than_max(string description)
         {
             //Arrange
+            var expectedMessage = string.Format(ContractsMetadata.Max_Length_Error, nameof(ProjectDescription), DomainConstValues.Project_Description_Max_Length);
             var expectedOwner = Owners.FirstOrDefault();
             var expectedOrganization = OwnerObjectMother.CreateOrganization();
             expectedOwner.AddOrganization(expectedOrganization);
 
             var addProjectRequest = new AddProjectRequest(expectedOrganization.Id, "Test Name", description);
-            var expectedMessage = string.Format(ContractsMetadata.Max_Length_Error, nameof(ProjectDescription), DomainConstValues.Project_Description_Max_Length);
 
             //Act
             System.Func<Task> act = async () => await _addProjectUseCase.Handle(addProjectRequest, CancellationToken.None);

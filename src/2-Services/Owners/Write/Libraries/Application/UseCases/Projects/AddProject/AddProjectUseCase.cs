@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,12 +8,10 @@ using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Domain.Data;
 using TaskoMask.Services.Owners.Write.Domain.Entities;
 using TaskoMask.Services.Owners.Write.Domain.Events.Projects;
-using TaskoMask.Services.Owners.Write.Domain.Services;
 
 namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProject
 {
@@ -48,7 +45,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProje
         {
             var owner = await _ownerAggregateRepository.GetByOrganizationIdAsync(request.OrganizationId);
             if (owner == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Organization);
 
             var project = Project.Create(request.Name, request.Description);
             owner.AddProject(request.OrganizationId, project);

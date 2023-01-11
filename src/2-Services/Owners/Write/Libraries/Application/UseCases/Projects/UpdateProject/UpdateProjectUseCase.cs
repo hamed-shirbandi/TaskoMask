@@ -48,7 +48,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdatePr
         {
             var owner = await _ownerAggregateRepository.GetByProjectIdAsync(request.Id);
             if (owner == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
 
             var loadedVersion = owner.Version;
 

@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Services
         /// <summary>
         /// 
         /// </summary>
-        public async Task<Result<IEnumerable<GetTaskActivityDto>>> GetListByTaskIdAsync(string taskId)
+        public async Task<Result<IEnumerable<GetActivityDto>>> GetListByTaskIdAsync(string taskId)
         {
             return await _inMemoryBus.SendQuery(new GetActivitiesByTaskIdQuery(taskId));
         }

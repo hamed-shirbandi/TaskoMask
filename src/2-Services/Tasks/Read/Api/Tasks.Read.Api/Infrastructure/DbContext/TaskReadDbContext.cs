@@ -21,7 +21,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext
 
         public TaskReadDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            Tasks = GetCollection<Domain.Task>();
+            Tasks = GetCollection<Task>();
             Comments = GetCollection<Comment>();
             Activities = GetCollection<Activity>(nameof(Activities));
         }
@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext
 
         #region Properties
 
-        public IMongoCollection<Domain.Task> Tasks { get; }
+        public IMongoCollection<Task> Tasks { get; }
         public IMongoCollection<Comment> Comments { get; }
         public IMongoCollection<Activity> Activities { get; }
 

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
+using TaskoMask.Services.Tasks.Read.Api.Domain;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.Mapper
 {
@@ -7,7 +9,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.Mapper
         public MappingProfile()
         {
 
-            //  CreateMap<Task, TaskBasicInfoDto>();
+            CreateMap<Task, GetTaskDto>();
 
         }
     }

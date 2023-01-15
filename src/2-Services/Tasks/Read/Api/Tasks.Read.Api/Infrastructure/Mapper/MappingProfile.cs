@@ -30,7 +30,10 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.Mapper
             CreateMap<GetCommentDto, GetCommentGrpcResponse>();
 
             CreateMap<Activity, GetActivityDto>();
-            
+
+            CreateMap<GetActivityDto, GetActivityGrpcResponse>();
+
+
         }
     }
 }

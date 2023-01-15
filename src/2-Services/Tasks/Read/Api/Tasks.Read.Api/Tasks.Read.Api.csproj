@@ -31,6 +31,7 @@
 	<ItemGroup>
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\base.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_task_by_id.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_comments_by_task_id.proto" GrpcServices="Server" />
 	</ItemGroup>
 	
 	<ItemGroup>

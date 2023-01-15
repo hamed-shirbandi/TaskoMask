@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package TaskoMask.BuildingBlocks.Contracts.Protos;
+
+import "base.proto";
+
+service GetCommentsByTaskIdGrpcService {
+  rpc Handle (GetCommentsByTaskIdGrpcRequest) returns (stream GetCommentGrpcResponse);
+}
+
+
+message GetCommentsByTaskIdGrpcRequest {
+  string taskId = 1;
+}
+
+
+message GetCommentGrpcResponse {
+  CreationTimeGrpcResponse creationTime=1;
+  string id = 2;
+  string content = 3;
+  string taskId = 4;
+}

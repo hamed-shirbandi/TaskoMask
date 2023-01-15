@@ -21,9 +21,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.50.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\base.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_task_by_id.proto" GrpcServices="Server" />
+	</ItemGroup>
+	
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />

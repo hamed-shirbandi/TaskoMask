@@ -4,6 +4,10 @@ using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectsByOrganization
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardByIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetCardsByBoardIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByProjectIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetTaskByIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetCommentsByTaskIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetActivitiesByTaskIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetTasksByCardIdGrpcService;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
 {
@@ -45,6 +49,26 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
             services.AddGrpcClient<GetCardsByBoardIdGrpcServiceClient>(options =>
             {
                 options.Address = new Uri(configuration["Url:Board-Read-Service"]);
+            });
+
+            services.AddGrpcClient<GetTaskByIdGrpcServiceClient>(options =>
+            {
+                options.Address = new Uri(configuration["Url:Task-Read-Service"]);
+            });
+
+            services.AddGrpcClient<GetTasksByCardIdGrpcServiceClient>(options =>
+            {
+                options.Address = new Uri(configuration["Url:Task-Read-Service"]);
+            });
+
+            services.AddGrpcClient<GetCommentsByTaskIdGrpcServiceClient>(options =>
+            {
+                options.Address = new Uri(configuration["Url:Task-Read-Service"]);
+            });
+
+            services.AddGrpcClient<GetActivitiesByTaskIdGrpcServiceClient>(options =>
+            {
+                options.Address = new Uri(configuration["Url:Task-Read-Service"]);
             });
         }
 

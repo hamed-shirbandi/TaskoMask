@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Grpc.Core;
 using MediatR;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
@@ -8,6 +9,7 @@ using TaskoMask.BuildingBlocks.Contracts.Protos;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardByIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetCardsByBoardIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetTasksByCardIdGrpcService;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
 {
@@ -17,15 +19,17 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
 
         private readonly GetBoardByIdGrpcServiceClient _getBoardByIdGrpcServiceClient;
         private readonly GetCardsByBoardIdGrpcServiceClient _getCardsByBoardIdGrpcServiceClient;
+        private readonly GetTasksByCardIdGrpcServiceClient _getTasksByCardIdGrpcServiceClient;
 
         #endregion
 
         #region Ctors
 
-        public GetBoardByIdHandler(IMapper mapper, GetBoardByIdGrpcServiceClient getBoardByIdGrpcServiceClient, GetCardsByBoardIdGrpcServiceClient getCardsByBoardIdGrpcServiceClient) : base(mapper)
+        public GetBoardByIdHandler(IMapper mapper, GetBoardByIdGrpcServiceClient getBoardByIdGrpcServiceClient, GetCardsByBoardIdGrpcServiceClient getCardsByBoardIdGrpcServiceClient, GetTasksByCardIdGrpcServiceClient getTasksByCardIdGrpcServiceClient) : base(mapper)
         {
             _getBoardByIdGrpcServiceClient = getBoardByIdGrpcServiceClient;
             _getCardsByBoardIdGrpcServiceClient = getCardsByBoardIdGrpcServiceClient;
+            _getTasksByCardIdGrpcServiceClient = getTasksByCardIdGrpcServiceClient;
         }
 
         #endregion
@@ -81,12 +85,28 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
                 cards.Add(new CardDetailsViewModel
                 {
                     Card = MapToCard(currentCardGrpcResponse),
-                    //TODO get tasks from task service
-                    Tasks = new List<GetTaskDto>(),
+                    Tasks = await GetTasksAsync(currentCardGrpcResponse.Id),
                 });
             }
 
             return cards.AsEnumerable();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task<IEnumerable<GetTaskDto>> GetTasksAsync(string cardId)
+        {
+            var tasks = new List<GetTaskDto>();
+
+            var tasksGrpcCall = _getTasksByCardIdGrpcServiceClient.Handle(new GetTasksByCardIdGrpcRequest { CardId = cardId });
+
+            await foreach (var response in tasksGrpcCall.ResponseStream.ReadAllAsync())
+                tasks.Add(_mapper.Map<GetTaskDto>(response));
+
+            return tasks;
         }
 
 

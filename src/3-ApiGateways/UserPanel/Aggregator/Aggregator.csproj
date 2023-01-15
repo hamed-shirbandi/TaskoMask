@@ -38,6 +38,11 @@
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_boards_by_project_id.proto" GrpcServices="Client"/>
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_boards_by_organization_id.proto" GrpcServices="Client"/>
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_cards_by_board_id.proto" GrpcServices="Client"/>
+		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_task_by_id.proto" GrpcServices="Client" />
+		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_comments_by_task_id.proto" GrpcServices="Client" />
+		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_activities_by_task_id.proto" GrpcServices="Client" />
+		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_tasks_by_card_id.proto" GrpcServices="Client" />
+		
 
 	</ItemGroup>
 

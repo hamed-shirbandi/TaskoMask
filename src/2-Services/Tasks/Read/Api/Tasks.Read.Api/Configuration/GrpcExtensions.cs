@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Routing;
 using TaskoMask.Services.Tasks.Read.Api.Features.Activities.GetActivitiesByTaskId;
 using TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentsByTaskId;
 using TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById;
+using TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTasksByCardId;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Configuration
 {
@@ -15,6 +16,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
         public static void MapGrpcServices(this IEndpointRouteBuilder endpoints)
         {
             endpoints.MapGrpcService<GetTaskByIdGrpcEndpoint>();
+            endpoints.MapGrpcService<GetTasksByCardIdGrpcEndpoint>();
             endpoints.MapGrpcService<GetCommentsByTaskIdGrpcEndpoint>();
             endpoints.MapGrpcService<GetActivitiesByTaskIdGrpcEndpoint>();
         }

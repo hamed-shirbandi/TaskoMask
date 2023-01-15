@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package TaskoMask.BuildingBlocks.Contracts.Protos;
+
+import "base.proto";
+
+service GetTasksByCardIdGrpcService {
+  rpc Handle (GetTasksByCardIdGrpcRequest) returns (stream GetTaskGrpcResponse);
+}
+
+
+message GetTasksByCardIdGrpcRequest {
+  string cardId = 1;
+}
+

@@ -12,7 +12,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Activities;
 namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.Handlers
 {
     public class ActivityQueryHandlers : BaseQueryHandler,
-        IRequestHandler<GetActivitiesByTaskIdQuery, IEnumerable<GetTaskActivityDto>>
+        IRequestHandler<GetActivitiesByTaskIdQuery, IEnumerable<GetActivityDto>>
 
     {
 
@@ -40,10 +40,10 @@ namespace TaskoMask.Services.Monolith.Application.Workspace.Activities.Queries.H
         /// <summary>
         /// 
         /// </summary>
-        public async Task<IEnumerable<GetTaskActivityDto>> Handle(GetActivitiesByTaskIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetActivityDto>> Handle(GetActivitiesByTaskIdQuery request, CancellationToken cancellationToken)
         {
             var activities = await _activityRepository.GetListByTaskIdAsync(request.TaskId);
-            return _mapper.Map<IEnumerable<GetTaskActivityDto>>(activities);
+            return _mapper.Map<IEnumerable<GetActivityDto>>(activities);
         }
 
 

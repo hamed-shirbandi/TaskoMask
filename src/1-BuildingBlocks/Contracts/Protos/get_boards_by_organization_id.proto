@@ -10,5 +10,5 @@ service GetBoardsByOrganizationIdGrpcService {
 
 
 message GetBoardsByOrganizationIdGrpcRequest {
-  string projectId = 1;
+  string organizationId = 1;
 }

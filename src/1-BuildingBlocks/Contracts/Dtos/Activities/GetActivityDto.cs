@@ -2,7 +2,7 @@
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Activities
 {
-    public class GetTaskActivityDto
+    public class GetActivityDto
     {
         public string Id { get; set; }
 

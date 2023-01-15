@@ -48,6 +48,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGrpcServices();
                 endpoints.MapControllers();
             });
 

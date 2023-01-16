@@ -5,7 +5,6 @@
 
     <DataAnnotationsValidator />
 
-    <input type="hidden" @bind="TaskModel.CardId" />
 
 
     <div class="form-group">
@@ -96,7 +95,6 @@
                     Id = taskResult.Value.Id,
                     Title = taskResult.Value.Title,
                     Description = taskResult.Value.Description,
-                    CardId = taskResult.Value.CardId,
                 };
         }
         else

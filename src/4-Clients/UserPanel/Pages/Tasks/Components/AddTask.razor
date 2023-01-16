@@ -5,6 +5,7 @@
 <EditForm Model="TaskModel" OnValidSubmit="HandleAddTask" class="form">
     <DataAnnotationsValidator />
     <input type="hidden" @bind="TaskModel.CardId" />
+    <input type="hidden" @bind="TaskModel.BoardId" />
 
     <div class="row">
         <div class="col-lg-12">
@@ -29,6 +30,8 @@
     [Parameter]
     public string CardId { get; set; }
 
+    [Parameter]
+    public string BoardId { get; set; }
 
     AddTaskDto TaskModel = new AddTaskDto();
 
@@ -43,6 +46,7 @@
     protected override Task OnInitializedAsync()
     {
         TaskModel.CardId = CardId;
+        TaskModel.BoardId = BoardId;
 
         return base.OnInitializedAsync();
     }

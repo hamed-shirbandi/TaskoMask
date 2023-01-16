@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Tasks.Write.Application</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Tasks.Write.Application</RootNamespace>
 	</PropertyGroup>
@@ -10,10 +9,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Application\Application.csproj" />
 		<ProjectReference Include="..\Domain\Domain.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="UseCases\" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -29,6 +29,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
                 options.Interceptors.Add<GrpcExceptionInterceptor>();
             });
 
+            builder.Services.AddGrpcClients(builder.Configuration);
+
             return builder.Build();
         }
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Activities;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
@@ -33,6 +34,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.Mapper
 
             CreateMap<GetActivityDto, GetActivityGrpcResponse>();
 
+            CreateMap<GetCardGrpcResponse, GetCardDto>();
 
         }
     }

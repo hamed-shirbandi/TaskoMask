@@ -32,6 +32,7 @@
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\base.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_board_by_id.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_cards_by_board_id.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_card_by_id.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_boards_by_project_id.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_boards_by_organization_id.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_project_by_id.proto" GrpcServices="Client" />

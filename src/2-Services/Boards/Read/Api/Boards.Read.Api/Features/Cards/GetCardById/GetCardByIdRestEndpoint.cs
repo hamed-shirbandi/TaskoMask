@@ -13,9 +13,9 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
 
     [Authorize("user-read-access")]
     [Tags("Cards")]
-    public class GetCardByIdEndpoint : BaseApiController
+    public class GetCardByIdRestEndpoint : BaseApiController
     {
-        public GetCardByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
+        public GetCardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
         {
         }
 

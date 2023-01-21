@@ -53,4 +53,16 @@ message GetTaskGrpcResponse {
 	string boardId = 9;
 }
 
+message GetCardGrpcResponse {
+
+	CreationTimeGrpcResponse creationTime=1;
+	string id = 2;
+	string name = 3;
+	int32 type = 4;
+	string boardId = 5;
+	string projectId = 6;
+	string organizationId = 7;
+	string ownerId = 8;
+}
+
 

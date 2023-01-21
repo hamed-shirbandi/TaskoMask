@@ -6,7 +6,9 @@ using System;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByOrganizationId;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectId;
+using TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById;
 using TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardsByBoardId;
+using TaskoMask.Services.Cards.Read.Api.Features.Cards.GetCardById;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectByIdGrpcService;
 
 namespace TaskoMask.Services.Boards.Read.Api.Configuration
@@ -23,7 +25,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Configuration
             endpoints.MapGrpcService<GetCardsByBoardIdGrpcEndpoint>();
             endpoints.MapGrpcService<GetBoardsByProjectIdGrpcEndpoint>();
             endpoints.MapGrpcService<GetBoardsByOrganizationIdGrpcEndpoint>();
-            
+            endpoints.MapGrpcService<GetCardByIdGrpcEndpoint>();
         }
 
 
@@ -36,7 +38,6 @@ namespace TaskoMask.Services.Boards.Read.Api.Configuration
             {
                 options.Address = new Uri(configuration["Url:Owner-Read-Service"]);
             });
-
         }
 
 

@@ -1,22 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
-namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks
+namespace TaskoMask.Services.Tasks.Write.Application.UseCases.Tasks.UpdateTask
 {
-    public class UpdateTaskDto
+    public class UpdateTaskRequest : BaseCommand
     {
-        public string Id { get; set; }
+        public UpdateTaskRequest(string id, string title, string description)
+        {
+            Id = id;
+            Title = title;
+            Description = description;
+        }
+
+        [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
+        public string Id { get; }
 
 
-        [Display(Name = nameof(ContractsMetadata.Title), ResourceType = typeof(ContractsMetadata))]
         [StringLength(DomainConstValues.Task_Title_Max_Length, MinimumLength = DomainConstValues.Task_Title_Min_Length, ErrorMessageResourceName = nameof(ContractsMetadata.Length_Error), ErrorMessageResourceType = typeof(ContractsMetadata))]
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
-        public string Title { get; set; }
+        public string Title { get; }
 
 
-        [Display(Name = nameof(ContractsMetadata.Description), ResourceType = typeof(ContractsMetadata))]
         [MaxLength(DomainConstValues.Task_Description_Max_Length, ErrorMessageResourceName = nameof(ContractsMetadata.Max_Length_Error), ErrorMessageResourceType = typeof(ContractsMetadata))]
-        public string Description { get; set; }
+        public string Description { get; }
+
+
     }
 }

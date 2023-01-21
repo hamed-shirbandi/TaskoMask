@@ -70,9 +70,9 @@ namespace TaskoMask.Services.Tasks.Write.Domain.Entities
         /// <summary>
         /// 
         /// </summary>
-        public void UpdateTask(string name , string description, ITaskValidatorService taskValidatorService)
+        public void UpdateTask(string title, string description, ITaskValidatorService taskValidatorService)
         {
-            Title = TaskTitle.Create(name);
+            Title = TaskTitle.Create(title);
             Description = TaskDescription.Create(description);
 
             CheckPolicies(taskValidatorService);

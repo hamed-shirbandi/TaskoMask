@@ -34,6 +34,8 @@
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_comments_by_task_id.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_activities_by_task_id.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_tasks_by_card_id.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_card_by_id.proto" GrpcServices="Client" />
+
 	</ItemGroup>
 	
 	<ItemGroup>

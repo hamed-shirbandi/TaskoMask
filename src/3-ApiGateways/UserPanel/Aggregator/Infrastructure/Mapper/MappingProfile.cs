@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
+using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
@@ -22,6 +23,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
             CreateMap<GetProjectGrpcResponse, GetProjectDto>();
 
             CreateMap<GetBoardGrpcResponse, GetBoardDto>();
+
+            CreateMap<GetCardGrpcResponse, GetCardDto>();
         }
     }
 }

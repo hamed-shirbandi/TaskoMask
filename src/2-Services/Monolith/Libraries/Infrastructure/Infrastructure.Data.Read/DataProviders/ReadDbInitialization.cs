@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
 using System;
 
@@ -33,29 +32,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders
         /// </summary>
         private static void CreateIndexes(IReadDbContext dbContext)
         {
-            #region Task Indexs
-
-            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }));
-            dbContext.GetCollection<Task>().Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId), new CreateIndexOptions() { Name = nameof(Task.CardId) }));
-
-
-            #endregion
-
-            #region Activity Indexs
-
-            dbContext.GetCollection<Activity>(nameof(ReadDbContext.Activities)).Indexes.CreateOneAsync(new CreateIndexModel<Activity>(Builders<Activity>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Activity.Id), Unique = true }));
-            dbContext.GetCollection<Activity>(nameof(ReadDbContext.Activities)).Indexes.CreateOneAsync(new CreateIndexModel<Activity>(Builders<Activity>.IndexKeys.Ascending(x => x.TaskId), new CreateIndexOptions() { Name = nameof(Activity.TaskId), Unique = false }));
-
-
-            #endregion
-
-            #region Comment Indexs
-
-            dbContext.GetCollection<Comment>().Indexes.CreateOneAsync(new CreateIndexModel<Comment>(Builders<Comment>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Comment.Id), Unique = true }));
-            dbContext.GetCollection<Comment>().Indexes.CreateOneAsync(new CreateIndexModel<Comment>(Builders<Comment>.IndexKeys.Ascending(x => x.TaskId), new CreateIndexOptions() { Name = nameof(Comment.TaskId), Unique = false }));
-
-
-            #endregion
         }
 
 

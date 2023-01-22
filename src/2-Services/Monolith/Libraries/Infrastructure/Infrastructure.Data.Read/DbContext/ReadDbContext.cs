@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using System.Linq;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using Microsoft.Extensions.Options;
-using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 {
@@ -25,9 +24,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 
         public ReadDbContext(IOptions<ReadDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            Tasks = GetCollection<Task>();
-            Comments = GetCollection<Comment>();
-            Activities = GetCollection<Activity>(nameof(Activities));
         }
 
 
@@ -36,9 +32,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext
 
         #region Properties
 
-        public IMongoCollection<Task> Tasks { get; }
-        public IMongoCollection<Comment> Comments { get; }
-        public IMongoCollection<Activity> Activities { get; }
 
 
         #endregion

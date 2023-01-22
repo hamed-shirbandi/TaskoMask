@@ -11,4 +11,8 @@
     <ProjectReference Include="..\..\Domain\Domain.DataModel\Domain.DataModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

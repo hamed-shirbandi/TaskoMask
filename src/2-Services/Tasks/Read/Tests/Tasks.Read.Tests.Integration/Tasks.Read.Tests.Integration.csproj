@@ -24,6 +24,10 @@
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="TestData\" />
+	</ItemGroup>
+
 	<Target Name="CopyConfig" AfterTargets="AfterBuild">
 		<Copy SourceFiles="..\..\Api\Tasks.Read.Api\appsettings.json" DestinationFolder="$(OutDir)" />
 		<Copy SourceFiles="..\..\Api\Tasks.Read.Api\appsettings.Development.json" DestinationFolder="$(OutDir)" />

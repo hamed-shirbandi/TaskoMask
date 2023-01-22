@@ -6,6 +6,15 @@
     <RootNamespace>TaskoMask.Services.Monolith.Application</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Workspace\Boards\**" />
+    <Compile Remove="Workspace\Cards\**" />
+    <EmbeddedResource Remove="Workspace\Boards\**" />
+    <EmbeddedResource Remove="Workspace\Cards\**" />
+    <None Remove="Workspace\Boards\**" />
+    <None Remove="Workspace\Cards\**" />
+  </ItemGroup>
+
   
   <ItemGroup>
 
@@ -13,10 +22,9 @@
 	  <ProjectReference Include="..\..\Domain\Domain.DataModel\Domain.DataModel.csproj" />
 	  <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
   </ItemGroup>
+
   
   <ItemGroup>
-    <Folder Include="Workspace\Boards\Commands\Validations\" />
-    <Folder Include="Workspace\Cards\Commands\Validations\" />
-    <Folder Include="Workspace\Tasks\Commands\Validations\" />
+    <Folder Include="Workspace\" />
   </ItemGroup>
 </Project>

@@ -3,10 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
-using TaskoMask.Services.Monolith.Application.Workspace.Tasks.Commands.Handlers;
-using TaskoMask.Services.Monolith.Domain.DataModel.Data;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Data;
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Services;
 using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
@@ -31,7 +27,7 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(TaskCommandHandlers),handlerAssemblyMarkerType: typeof(TaskCommandHandlers));
+            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(InfrastructureModule),handlerAssemblyMarkerType: typeof(InfrastructureModule));
 
             services.AddMapper(typeof(WorkspaceMappingProfile));
 
@@ -112,7 +108,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         private static void AddWriteSideRepositories(this IServiceCollection services)
         {
-            services.AddScoped<ITaskAggregateRepository, TaskAggregateRepository>();
         }
 
 
@@ -134,9 +129,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         private static void AddReadSideRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IActivityRepository, ActivityRepository>();
-            services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<ITaskRepository, TaskRepository>();
         }
 
 
@@ -147,7 +139,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
         /// </summary>
         private static void AddDomainServices(this IServiceCollection services)
         {
-            services.AddScoped<ITaskValidatorService, TaskValidatorService>();
         }
 
 

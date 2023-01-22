@@ -17,7 +17,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 
         #region Ctors
 
-        public MongoDbBaseAggregateRepository(IMongoDbContext dbContext) : base(dbContext)
+        public MongoDbBaseAggregateRepository(MongoDbContext dbContext) : base(dbContext)
         {
             _collection = dbContext.GetCollection<TEntity>();
         }

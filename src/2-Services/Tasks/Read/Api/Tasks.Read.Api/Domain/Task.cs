@@ -23,7 +23,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Domain
 
         public string Title { get; set; }
         public string Description { get; set; }
-        //TODO set CardName on publishing related events from the write side
         public string CardName { get; set; }
         public string CardId { get; set; }
         public string BoardId { get; set; }

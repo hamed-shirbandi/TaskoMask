@@ -63,7 +63,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Add
 
             await PublishIntegrationEventAsync(organizationAdded);
 
-            return new CommandResult(ContractsMessages.Create_Success, organization.Id);
+            return CommandResult.Create(ContractsMessages.Create_Success, organization.Id);
         }
 
 

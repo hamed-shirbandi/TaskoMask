@@ -61,7 +61,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Organizations.Upd
 
             await PublishIntegrationEventAsync(organizationUpdated);
 
-            return new CommandResult(ContractsMessages.Update_Success, request.Id);
+            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
         }
 
         #endregion

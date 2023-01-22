@@ -58,7 +58,7 @@ namespace TaskoMask.Services.Boards.Write.Application.UseCases.Boards.DeleteBoar
 
             await PublishIntegrationEventAsync(boardDeleted);
 
-            return new CommandResult(ContractsMessages.Update_Success, request.Id);
+            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
         }
 
         #endregion

@@ -58,7 +58,7 @@ namespace TaskoMask.Services.Boards.Write.Application.UseCases.Boards.AddBoard
 
             await PublishIntegrationEventAsync(boardAdded);
 
-            return new CommandResult(ContractsMessages.Create_Success, board.Id);
+            return CommandResult.Create(ContractsMessages.Create_Success, board.Id);
         }
 
 

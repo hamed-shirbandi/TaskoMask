@@ -52,7 +52,7 @@ namespace TaskoMask.Services.Tasks.Write.Application.UseCases.Tasks.MoveTaskToAn
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Task);
 
             if (task.CardId.Value == request.CardId)
-                return new CommandResult(ContractsMessages.Update_Success, request.TaskId);
+                return CommandResult.Create(ContractsMessages.Update_Success, request.TaskId);
 
             var loadedVersion = task.Version;
 
@@ -66,7 +66,7 @@ namespace TaskoMask.Services.Tasks.Write.Application.UseCases.Tasks.MoveTaskToAn
 
             await PublishIntegrationEventAsync(taskMovedToAnotherCard);
 
-            return new CommandResult(ContractsMessages.Update_Success, request.TaskId);
+            return CommandResult.Create(ContractsMessages.Update_Success, request.TaskId);
         }
 
         #endregion

@@ -23,7 +23,7 @@ namespace TaskoMask.Clients.UserPanel.Helpers
         /// </summary>
         public static CommandResultHandler Init()
         {
-            return new CommandResultHandler();
+            return CommandResult.CreateHandler();
         }
 
 

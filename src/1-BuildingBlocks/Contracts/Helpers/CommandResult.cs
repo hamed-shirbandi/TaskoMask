@@ -2,8 +2,7 @@
 {
     public class CommandResult
     {
-        //TODO set this ctor private after removing monolith service
-        public CommandResult(string message = "", string entityId = "")
+        private CommandResult(string message = "", string entityId = "")
         {
             EntityId = entityId;
             Message = message;

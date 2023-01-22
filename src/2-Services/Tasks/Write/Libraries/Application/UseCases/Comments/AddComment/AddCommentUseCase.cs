@@ -60,7 +60,7 @@ namespace TaskoMask.Services.Tasks.Write.Application.UseCases.Comments.AddCommen
 
             await PublishIntegrationEventAsync(commentAdded);
 
-            return new CommandResult(ContractsMessages.Create_Success, comment.Id);
+            return CommandResult.Create(ContractsMessages.Create_Success, comment.Id);
         }
 
 

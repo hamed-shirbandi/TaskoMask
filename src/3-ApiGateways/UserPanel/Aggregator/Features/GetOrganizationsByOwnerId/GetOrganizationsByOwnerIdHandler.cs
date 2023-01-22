@@ -56,8 +56,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
                     Organization = MapToOrganization(currentOrganizationGrpcResponse),
                     Projects = await GetProjectsAsync(currentOrganizationGrpcResponse.Id),
                     Boards = await GetBoardsAsync(currentOrganizationGrpcResponse.Id),
-                    //TODO get other details here
-                    //Reports = ... ,
+                    //Will be done by issue #143
                     Reports = new OrganizationReportDto(),
                 });
             }

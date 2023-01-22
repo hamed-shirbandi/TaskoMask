@@ -63,7 +63,7 @@ namespace TaskoMask.Services.Tasks.Write.Application.UseCases.Tasks.UpdateTask
 
             await PublishIntegrationEventAsync(taskUpdated);
 
-            return new CommandResult(ContractsMessages.Update_Success, request.Id);
+            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
         }
 
         #endregion

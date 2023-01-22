@@ -58,7 +58,7 @@ namespace TaskoMask.Services.Tasks.Write.Application.UseCases.Tasks.DeleteTask
 
             await PublishIntegrationEventAsync(taskDeleted);
 
-            return new CommandResult(ContractsMessages.Update_Success, request.Id);
+            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
         }
 
         #endregion

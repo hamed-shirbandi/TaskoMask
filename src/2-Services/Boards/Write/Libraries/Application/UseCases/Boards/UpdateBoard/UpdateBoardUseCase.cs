@@ -63,7 +63,7 @@ namespace TaskoMask.Services.Boards.Write.Application.UseCases.Boards.UpdateBoar
 
             await PublishIntegrationEventAsync(boardUpdated);
 
-            return new CommandResult(ContractsMessages.Update_Success, request.Id);
+            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
         }
 
         #endregion

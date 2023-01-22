@@ -55,7 +55,7 @@ namespace TaskoMask.Services.Tasks.Write.Application.UseCases.Tasks.AddTask
 
             await PublishIntegrationEventAsync(taskAdded);
 
-            return new CommandResult(ContractsMessages.Create_Success, task.Id);
+            return CommandResult.Create(ContractsMessages.Create_Success, task.Id);
         }
 
 

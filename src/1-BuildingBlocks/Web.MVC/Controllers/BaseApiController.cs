@@ -16,19 +16,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
         #region Ctors
 
 
-        ///TODO delete this ctor after removing monolith service
-        public BaseApiController()
-        {
-        }
-
-
-        ///TODO delete this ctor after removing monolith service
-        public BaseApiController(IAuthenticatedUserService authenticatedUserService)
-        {
-            _authenticatedUserService = authenticatedUserService;
-        }
-
-
         public BaseApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus )
         {
             _authenticatedUserService = authenticatedUserService;

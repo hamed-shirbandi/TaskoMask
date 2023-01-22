@@ -17,7 +17,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 
         #region Ctors
 
-        public MongoDbBaseRepository(IMongoDbContext dbContext, string collectionName = "")
+        public MongoDbBaseRepository(MongoDbContext dbContext, string collectionName = "")
         {
             _collection = dbContext.GetCollection<TEntity>(collectionName);
         }

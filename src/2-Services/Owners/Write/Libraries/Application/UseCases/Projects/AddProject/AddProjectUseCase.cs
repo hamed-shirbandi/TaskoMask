@@ -58,7 +58,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.AddProje
 
             await PublishIntegrationEventAsync(projectAdded);
 
-            return new CommandResult(ContractsMessages.Create_Success, project.Id);
+            return CommandResult.Create(ContractsMessages.Create_Success, project.Id);
         }
 
 

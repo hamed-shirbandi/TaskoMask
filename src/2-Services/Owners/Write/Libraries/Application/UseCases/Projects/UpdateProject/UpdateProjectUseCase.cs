@@ -62,7 +62,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.UpdatePr
 
             await PublishIntegrationEventAsync(projectUpdated);
 
-            return new CommandResult(ContractsMessages.Update_Success, request.Id);
+            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
         }
 
         #endregion

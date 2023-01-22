@@ -60,7 +60,7 @@ namespace TaskoMask.Services.Owners.Write.Application.UseCases.Projects.DeletePr
 
             await PublishIntegrationEventAsync(projectDeleted);
 
-            return new CommandResult(ContractsMessages.Update_Success, request.Id);
+            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
         }
 
         #endregion

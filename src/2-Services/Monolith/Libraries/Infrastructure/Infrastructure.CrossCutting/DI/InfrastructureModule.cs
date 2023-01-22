@@ -7,11 +7,8 @@ using TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profiles;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Generator;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Read.DbContext;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Read.Repositories;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DataProviders;
 using TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Repositories.Workspace;
-using TaskoMask.Services.Monolith.Infrastructure.Data.Write.Services;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.DI
 {

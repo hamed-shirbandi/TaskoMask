@@ -5,7 +5,6 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
-using TaskoMask.Services.Monolith.Domain.DataModel.Entities;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Activities;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
 
@@ -15,31 +14,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.CrossCutting.Mapper.Profile
     {
         public WorkspaceMappingProfile()
         {
-            #region Task
-
-            CreateMap<Task, TaskBaseDto>();
-            CreateMap<Task, GetTaskDto>();
-            CreateMap<Task, UpdateTaskDto>();
-            CreateMap<GetTaskDto, UpdateTaskDto>();
-            CreateMap<Task, GetTaskDto>();
-
-
-            #endregion
-
-            #region Comments
-
-            CreateMap<Comment, CommentBaseDto>();
-            CreateMap<Comment, GetCommentDto>();
-
-
-            #endregion
-
-            #region Activity
-
-            CreateMap<Activity, GetActivityDto>();
-
-
-            #endregion
         }
     }
 }

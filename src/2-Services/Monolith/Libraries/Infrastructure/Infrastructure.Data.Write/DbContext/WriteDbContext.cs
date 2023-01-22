@@ -2,7 +2,6 @@
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using Microsoft.Extensions.Options;
 
-using TaskoMask.Services.Monolith.Domain.DomainModel.Workspace.Tasks.Entities;
 
 namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
 {
@@ -22,7 +21,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
 
         public WriteDbContext(IOptions<WriteDbOptions> mongoDbOptions) : base(mongoDbOptions)
         {
-            Tasks = GetCollection<Task>();
         }
 
 
@@ -30,7 +28,6 @@ namespace TaskoMask.Services.Monolith.Infrastructure.Data.Write.DbContext
         #endregion
 
         #region Properties
-        public IMongoCollection<Task> Tasks { get; }
 
         #endregion
 

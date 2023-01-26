@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Tasks.Read.Tests.Integration</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Tasks.Read.Tests.Integration</RootNamespace>
 		<IsPackable>false</IsPackable>
@@ -21,6 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\Api\Tasks.Read.Api\Tasks.Read.Api.csproj" />
 		<ProjectReference Include="..\..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
 	</ItemGroup>
 
@@ -29,7 +29,5 @@
 		<Copy SourceFiles="..\..\Api\Tasks.Read.Api\appsettings.Development.json" DestinationFolder="$(OutDir)" />
 		<Copy SourceFiles="..\..\Api\Tasks.Read.Api\appsettings.Staging.json" DestinationFolder="$(OutDir)" />
 	</Target>
-
-
 
 </Project>

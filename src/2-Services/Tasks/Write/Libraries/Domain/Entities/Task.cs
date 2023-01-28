@@ -11,6 +11,7 @@ using TaskoMask.Services.Tasks.Write.Domain.Specifications;
 using TaskoMask.Services.Tasks.Write.Domain.ValueObjects.Tasks;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using MongoDB.Bson;
+using System;
 
 namespace TaskoMask.Services.Tasks.Write.Domain.Entities
 
@@ -149,6 +150,19 @@ namespace TaskoMask.Services.Tasks.Write.Domain.Entities
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Comment GetCommentById(string commentId)
+        {
+            var comment = Comments.FirstOrDefault(p => p.Id == commentId);
+            if (comment == null)
+                throw new DomainException(string.Format(ContractsMessages.Not_Found, DomainMetadata.Comment));
+
+            return comment;
+        }
+
         #endregion
 
         #region Private Methods
@@ -186,7 +200,6 @@ namespace TaskoMask.Services.Tasks.Write.Domain.Entities
         {
   
         }
-
 
 
         #endregion

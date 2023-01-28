@@ -11,8 +11,4 @@
     <ProjectReference Include="..\..\Libraries\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="TestData\" />
-  </ItemGroup>
-
 </Project>

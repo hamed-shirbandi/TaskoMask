@@ -46,7 +46,7 @@ namespace TaskoMask.Services.Tasks.Write.Application.UseCases.Comments.DeleteCom
         {
             var task = await _taskAggregateRepository.GetByCommentIdAsync(request.Id);
             if (task == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
+                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Comment);
 
             var loadedVersion = task.Version;
 

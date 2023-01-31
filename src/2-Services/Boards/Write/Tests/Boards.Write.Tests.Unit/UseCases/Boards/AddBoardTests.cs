@@ -64,8 +64,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
         public async Task Board_is_not_added_if_name_and_description_are_the_same(string name, string description)
         {
             //Arrange
-            var expectedBoard = Boards.FirstOrDefault();
-            var addBoardRequest = new AddBoardRequest(expectedBoard.Id, name, description);
+            var addBoardRequest = new AddBoardRequest(projectId:ObjectId.GenerateNewId().ToString(), name, description);
             var expectedMessage = DomainMessages.Equal_Name_And_Description_Error;
 
             //Act
@@ -83,8 +82,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
         public async Task Board_is_not_added_if_name_lenght_is_less_than_min_or_more_than_max(string name)
         {
             //Arrange
-            var expectedBoard = Boards.FirstOrDefault();
-            var addBoardRequest = new AddBoardRequest(expectedBoard.Id, name, "Test_Description");
+            var addBoardRequest = new AddBoardRequest(projectId: ObjectId.GenerateNewId().ToString(), name, "Test_Description");
             var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length);
 
             //Act
@@ -102,7 +100,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();
-            var addBoardRequest = new AddBoardRequest(expectedBoard.Id, "Test_Name", description);
+            var addBoardRequest = new AddBoardRequest(projectId: ObjectId.GenerateNewId().ToString(), "Test_Name", description);
             var expectedMessage = string.Format(ContractsMetadata.Max_Length_Error, nameof(BoardDescription), DomainConstValues.Board_Description_Max_Length);
 
             //Act

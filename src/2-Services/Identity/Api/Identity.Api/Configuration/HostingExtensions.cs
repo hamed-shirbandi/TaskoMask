@@ -1,5 +1,6 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Identity.Api.Consumers;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
@@ -24,6 +25,8 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 
             builder.Services.AddIdentityServer();
 
+            builder.Services.AddCaptcha();
+
             return builder.Build();
         }
 
@@ -45,6 +48,8 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 
             app.MapRazorPages().RequireAuthorization();
 
+            app.UseCaptchaPreConfigured();
+            
             return app;
         }
     }

@@ -12,7 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="DNTCaptcha.Core" Version="4.4.1" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
 		  <PrivateAssets>all</PrivateAssets>

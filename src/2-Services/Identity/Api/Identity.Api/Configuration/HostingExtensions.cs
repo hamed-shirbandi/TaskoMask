@@ -24,6 +24,8 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType:typeof(OwnerRegisteredConsumer));
 
             builder.Services.AddIdentityServer();
+            
+            builder.Services.AddControllers();
 
             builder.Services.AddCaptcha();
 

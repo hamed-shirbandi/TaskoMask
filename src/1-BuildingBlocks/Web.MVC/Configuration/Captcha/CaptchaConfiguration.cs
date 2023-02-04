@@ -24,8 +24,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha
                         })
                     .Identifier("dntCaptcha")
             );
-            
-            services.AddControllers();
         }
 
         public static void UseCaptchaPreConfigured(this IApplicationBuilder app)

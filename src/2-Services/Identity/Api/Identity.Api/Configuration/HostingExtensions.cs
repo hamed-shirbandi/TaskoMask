@@ -52,7 +52,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

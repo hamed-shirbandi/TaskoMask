@@ -1,7 +1,6 @@
 ﻿using TaskoMask.Services.Identity.Api.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-
 var app = builder
     .ConfigureServices()
     .ConfigurePipeline();

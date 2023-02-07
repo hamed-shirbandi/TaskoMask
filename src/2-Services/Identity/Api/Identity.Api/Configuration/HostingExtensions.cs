@@ -1,5 +1,6 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Identity.Api.Consumers;
 using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
@@ -23,6 +24,10 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType:typeof(OwnerRegisteredConsumer));
 
             builder.Services.AddIdentityServer();
+            
+            builder.Services.AddControllers();
+
+            builder.Services.AddCaptcha();
 
             return builder.Build();
         }
@@ -44,7 +49,14 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             app.Services.InitialDatabasesAndSeedEssentialData();
 
             app.MapRazorPages().RequireAuthorization();
-
+            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+                
             return app;
         }
     }

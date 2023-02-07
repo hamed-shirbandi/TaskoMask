@@ -17,6 +17,28 @@
             <input type="Password" class="form-control" placeholder="Password" asp-for="Input.Password" autocomplete="off">
             <span asp-validation-for="Input.Password" class="text-danger"></span>
         </div>
+    <div class="mb-3">
+	    <div>
+					<dnt-captcha asp-captcha-generator-max="20"
+								 asp-captcha-generator-min="1"
+								 asp-captcha-generator-language="English"
+								 asp-captcha-generator-display-mode="SumOfTwoNumbers"
+								 asp-use-relative-urls="true"
+								 asp-placeholder="Please Enter The Sum Of Two Numbers."
+								 asp-validation-error-message="Please Enter The Sum Of Two Numbers."
+								 asp-font-name="Tahoma"
+								 asp-font-size="45"
+								 asp-fore-color="#FFFFFF"
+								 asp-back-color="#17202A"
+								 asp-text-box-class="form-control"
+								 asp-text-box-template="<div class='input-group'>{0}</div>"
+								 asp-validation-message-class="text-danger"
+								 asp-refresh-button-class="bi-arrow-counterclockwise btn-lg"
+								 asp-show-refresh-button="true"
+								 asp-dir="ltr"
+								 />
+				</div>
+			</div>
         <div class="form-group">
             <div class="form-check">
                 <input class="form-check-input" asp-for="Input.RememberLogin">

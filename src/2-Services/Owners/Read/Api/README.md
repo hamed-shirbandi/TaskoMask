@@ -1,2 +1,0 @@
-# Owner Read Service
-This service is extracted from Monolith service. To browse the code before extracting it you can go to [this link](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)

@@ -1,10 +1,10 @@
 ﻿using MassTransit;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
 using TaskoMask.BuildingBlocks.Contracts.Events;
+using System.Threading.Tasks;
 
 namespace TaskoMask.Services.Identity.Api.Consumers
 {

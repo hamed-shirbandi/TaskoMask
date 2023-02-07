@@ -2,7 +2,6 @@
 
   <PropertyGroup>
 	  <TargetFramework>net6.0</TargetFramework>
-	  <ImplicitUsings>enable</ImplicitUsings>
 	  <AssemblyName>TaskoMask.Services.Identity.Api</AssemblyName>
 	  <RootNamespace>TaskoMask.Services.Identity.Api</RootNamespace>
 	  <UserSecretsId>755a7a1d-10e7-4626-9a60-81b74933b0b3</UserSecretsId>
@@ -12,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+	  <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.1.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
 		  <PrivateAssets>all</PrivateAssets>
@@ -22,10 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
-    <ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\" />
-  </ItemGroup>
 </Project>

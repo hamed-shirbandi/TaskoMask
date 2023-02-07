@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskoMask.Services.Identity.Application.Resources {
+namespace TaskoMask.Services.Identity.Api.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace TaskoMask.Services.Identity.Application.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ApplicationMetadata {
+    public class ApplicationMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ApplicationMetadata() {
+        internal ApplicationMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TaskoMask.Services.Identity.Application.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Services.Identity.Application.Resources.ApplicationMetadata", typeof(ApplicationMetadata).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskoMask.Services.Identity.Api.Resources.ApplicationMessages", typeof(ApplicationMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,42 @@ namespace TaskoMask.Services.Identity.Application.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login is disabled for this account.
+        /// </summary>
+        public static string Deactive_User_Can_Not_Login {
+            get {
+                return ResourceManager.GetString("Deactive_User_Can_Not_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid username or password.
+        /// </summary>
+        public static string Invalid_Credentials {
+            get {
+                return ResourceManager.GetString("Invalid_Credentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid return url.
+        /// </summary>
+        public static string Invalid_ReturnUrl {
+            get {
+                return ResourceManager.GetString("Invalid_ReturnUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserName already exist.
+        /// </summary>
+        public static string UserName_Already_Exist {
+            get {
+                return ResourceManager.GetString("UserName_Already_Exist", resourceCulture);
             }
         }
     }

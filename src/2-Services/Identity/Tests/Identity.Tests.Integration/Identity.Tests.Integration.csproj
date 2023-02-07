@@ -21,7 +21,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
-	  <ProjectReference Include="..\..\Libraries\Infrastructure\Infrastructure.csproj" />
+	  <ProjectReference Include="..\..\Api\Identity.Api\Identity.Api.csproj" />
 	</ItemGroup>
 
 	<Target Name="CopyConfig" AfterTargets="AfterBuild">

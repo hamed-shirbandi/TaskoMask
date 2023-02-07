@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;

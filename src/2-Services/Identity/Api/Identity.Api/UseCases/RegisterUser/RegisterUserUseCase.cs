@@ -10,7 +10,7 @@ using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Identity.Application.Resources;
+using TaskoMask.Services.Identity.Api.Resources;
 using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.Domain.Events;
 

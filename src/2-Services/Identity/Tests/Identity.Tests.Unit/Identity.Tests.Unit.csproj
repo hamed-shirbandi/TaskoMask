@@ -20,7 +20,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
-	  <ProjectReference Include="..\..\Libraries\Application\Application.csproj" />
+	  <ProjectReference Include="..\..\Api\Identity.Api\Identity.Api.csproj" />
 	</ItemGroup>
 
 </Project>

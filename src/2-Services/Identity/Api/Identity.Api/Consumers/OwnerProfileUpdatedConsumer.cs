@@ -4,6 +4,7 @@ using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.Services.Identity.Application.UseCases.UpdateUser;
+using System.Threading.Tasks;
 
 namespace TaskoMask.Services.Identity.Api.Consumers
 {

@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
-using TaskoMask.Services.Identity.Application.Resources;
+using TaskoMask.Services.Identity.Api.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
 using TaskoMask.Services.Identity.Domain.Events;
 using TaskoMask.Services.Identity.Tests.Unit.Fixtures;

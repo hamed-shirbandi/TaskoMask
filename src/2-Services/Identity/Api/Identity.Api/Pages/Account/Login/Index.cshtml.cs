@@ -1,12 +1,10 @@
 using DNTCaptcha.Core;
-using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Web.MVC.Pages;
+using TaskoMask.Services.Identity.Application.Resources;
 using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
 
 namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
@@ -19,7 +17,6 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
 
         private readonly IIdentityServerInteractionService _interactionService;
         private readonly IDNTCaptchaValidatorService _validatorService;
-        private readonly DNTCaptchaOptions _captchaOptions;
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -30,11 +27,9 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
 
         public Index(IInMemoryBus inMemoryBus,
             IIdentityServerInteractionService interactionService,
-            IDNTCaptchaValidatorService validatorService,
-            IOptions<DNTCaptchaOptions> options) : base(inMemoryBus)
+            IDNTCaptchaValidatorService validatorService) : base(inMemoryBus)
         {
             _validatorService = validatorService;
-            _captchaOptions = options == null ? throw new ArgumentNullException(nameof(options)) : options.Value;
             _interactionService = interactionService;
         }
 
@@ -59,15 +54,15 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
         /// <summary>
         /// 
         /// </summary>
+
         public async Task<IActionResult> OnPost()
         {
+            if (!_validatorService.HasRequestValidCaptchaEntry(Language.English, DisplayMode.SumOfTwoNumbers))
+                ModelState.AddModelError("", ApplicationMessages.Captcha_Is_Not_Valid);
+
             if (!ModelState.IsValid)
                 return await LoginFailedAsync();
-            if (!_validatorService.HasRequestValidCaptchaEntry(Language.English, DisplayMode.SumOfTwoNumbers))
-            {
-                this.ModelState.AddModelError(_captchaOptions.CaptchaComponent.CaptchaInputName, "Please enter the security code as a number.");
-                return await LoginFailedAsync();
-            }
+
             var loginRespone = await _inMemoryBus.SendQuery(new UserLoginRequest(Input.UserName, Input.Password, Input.RememberLogin));
             if (loginRespone.IsSuccess)
                 return RedirectToReturnUrl(Input.ReturnUrl);

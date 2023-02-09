@@ -61,6 +61,15 @@ namespace TaskoMask.Services.Identity.Api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter the sum of two numbers.
+        /// </summary>
+        public static string Captcha_Is_Not_Valid {
+            get {
+                return ResourceManager.GetString("Captcha_Is_Not_Valid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login is disabled for this account.
         /// </summary>
         public static string Deactive_User_Can_Not_Login {

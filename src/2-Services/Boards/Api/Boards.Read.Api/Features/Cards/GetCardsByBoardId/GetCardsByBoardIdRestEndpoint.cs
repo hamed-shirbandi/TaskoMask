@@ -26,7 +26,6 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardsByBoardId
         /// get card info
         /// </summary>
         [HttpGet]
-        [Route("cards/{id}")]
         [Route("boards/{boardId}/cards")]
         public async Task<Result<IEnumerable<GetCardDto>>> Get(string boardId)
         {

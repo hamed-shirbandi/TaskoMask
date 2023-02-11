@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	  <AssemblyName>TaskoMask.Services.Owners.Write.Tests.Base</AssemblyName>
+	  <RootNamespace>TaskoMask.Services.Owners.Write.Tests.Base</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
+    <ProjectReference Include="..\..\Api\Owners.Write.Api\Owners.Write.Api.csproj" />
+  </ItemGroup>
+
+</Project>

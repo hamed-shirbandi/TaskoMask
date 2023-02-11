@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
@@ -49,14 +51,9 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             app.Services.InitialDatabasesAndSeedEssentialData();
 
             app.MapRazorPages().RequireAuthorization();
-            
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
-                
+
+            app.MapControllers();
+
             return app;
         }
     }

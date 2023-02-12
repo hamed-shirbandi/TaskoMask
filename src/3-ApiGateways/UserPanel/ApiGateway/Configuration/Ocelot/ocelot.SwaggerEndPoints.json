@@ -1,16 +1,6 @@
 {
   "SwaggerEndPoints": [
     {
-      "Key": "Monolith",
-      "Config": [
-        {
-          "Name": "Monolith APIs",
-          "Version": "v1",
-          "Url": "https://localhost:5015/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
       "Key": "Owners.Read",
       "Config": [
         {

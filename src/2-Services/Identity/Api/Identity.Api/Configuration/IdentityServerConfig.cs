@@ -24,8 +24,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// </summary>
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
         {
-           ApiScopesConfig.Monolith_Read,
-           ApiScopesConfig.Monolith_Write,
            ApiScopesConfig.Owners_Read,
            ApiScopesConfig.Owners_Write,
            ApiScopesConfig.Boards_Read,
@@ -41,7 +39,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// </summary>
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
         {
-           ApiResourcesConfig.Monolith_Api,
            ApiResourcesConfig.Owners_Api,
            ApiResourcesConfig.Boards_Api,
            ApiResourcesConfig.Tasks_Api,
@@ -66,11 +63,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
     /// </summary>
     static class ApiResourcesConfig
     {
-        public static ApiResource Monolith_Api => new("monolith.api", "Monolith Api")
-        {
-            Scopes = { ApiScopesConfig.Monolith_Read.Name, ApiScopesConfig.Monolith_Write.Name }
-        };
-
 
         public static ApiResource Owners_Api => new("owners.api", "Owners Api")
         {
@@ -114,8 +106,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             {
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile,
-                ApiScopesConfig.Monolith_Read.Name,
-                ApiScopesConfig.Monolith_Write.Name,
                 ApiScopesConfig.Owners_Read.Name,
                 ApiScopesConfig.Owners_Write.Name,
                 ApiScopesConfig.Boards_Read.Name,
@@ -137,9 +127,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
     /// </summary>
     static class ApiScopesConfig
     {
-        public static ApiScope Monolith_Read => new(name: "monolith.read", displayName: "Monolith Read APIs");
-        public static ApiScope Monolith_Write => new(name: "monolith.write", displayName: "Monolith Write APIs");
-
 
         public static ApiScope Owners_Read => new(name: "owners.read", displayName: "Owners Read APIs");
         public static ApiScope Owners_Write => new(name: "owners.write", displayName: "Owners Write APIs");

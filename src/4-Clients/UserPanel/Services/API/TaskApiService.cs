@@ -28,7 +28,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<GetTaskDto>> GetAsync(string id)
         {
-            var url = $"/monolith/tasks/{id}";
+            var url = $"/tasks/{id}";
             return await _httpClientService.GetAsync<GetTaskDto>(url);
         }
 
@@ -40,7 +40,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id)
         {
-            var url = $"/monolith/tasks/{id}/details";
+            var url = $"/tasks/{id}/details";
             return await _httpClientService.GetAsync<TaskDetailsViewModel>(url);
         }
 
@@ -52,7 +52,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> AddAsync(AddTaskDto input)
         {
-            var url = $"/monolith/tasks";
+            var url = $"/tasks";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -63,7 +63,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(string id,UpdateTaskDto input)
         {
-            var url = $"/monolith/tasks/{id}";
+            var url = $"/tasks/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
@@ -74,7 +74,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> MoveTaskToAnotherCardAsync(string taskId, string cardId)
         {
-            var url = $"/monolith/tasks/{taskId}/moveto/{cardId}";
+            var url = $"/tasks/{taskId}/moveto/{cardId}";
             return await _httpClientService.PutAsync<CommandResult>(url);
         }
 
@@ -85,7 +85,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
-            var url = $"/monolith/tasks/{id}";
+            var url = $"/tasks/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 

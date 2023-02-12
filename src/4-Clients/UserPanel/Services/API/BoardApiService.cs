@@ -30,7 +30,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<GetBoardDto>> GetAsync(string id)
         {
-            var url = $"/monolith/boards/{id}";
+            var url = $"/boards/{id}";
             return await _httpClientService.GetAsync<GetBoardDto>(url);
         }
 
@@ -42,7 +42,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id)
         {
-            var url = $"/monolith/boards/{id}/details";
+            var url = $"/boards/{id}/details";
             return await _httpClientService.GetAsync<BoardDetailsViewModel>(url);
         }
 
@@ -54,7 +54,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> AddAsync(AddBoardDto input)
         {
-            var url = $"/monolith/boards";
+            var url = $"/boards";
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
@@ -65,7 +65,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateBoardDto input)
         {
-            var url = $"/monolith/boards/{id}";
+            var url = $"/boards/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
@@ -76,7 +76,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
-            var url = $"/monolith/boards/{id}";
+            var url = $"/boards/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
 

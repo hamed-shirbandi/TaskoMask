@@ -253,7 +253,29 @@ Find Hamed around the web and feel free to ask your questions.
 <a href="https://www.linkedin.com/in/hamed-shirbandi"><img alt="LinkedIn" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/LinkedIn-v2.png" width="35"></a><a href="https://www.instagram.com/hamedshirbandi"><img alt="Instagram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Instagram-v2.png" width="35"></a><a href="https://github.com/hamed-shirbandi"><img alt="GitHub" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/GitHub-v2.png" width="35"></a><a href="https://medium.com/@hamed.shirbandi"><img alt="Medium" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Medium-v2.png" width="35"></a><a href="https://www.nuget.org/profiles/hamed-shirbandi"><img alt="Nuget" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Nuget-v3.png" width="35"></a><a href="mailto:hamed.shirbandi@gmail.com"><img alt="Email" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Email-v2.png" width="35"></a><a href="https://t.me/hamed_shirbandi"><img alt="Telegram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Telegram-v2.png" width="35"></a><a href="https://twitter.com/hamed_shirbandi"><img alt="Twitter" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Twitter-v2.png" width="35"></a>
 
 # Change logs
+  <details>
+    <summary>2023</summary>
+
+*	### Feb, 2023
+    - [x] Simplify Write Service Architecture 
+    - [x] Implement Unit Tests for Task Services
+    - [x] Implement Integration Tests for Task Services
+*	### Jan, 2023
+    - [x] Extract Task Write Service
+    - [x] Extract Task Read Service
+    - [x] Remove Monolith Service
+    - [x] Simplify Write Service Architecture 
+  </details>
+
+
+  <details>
+    <summary>2022</summary>
+
 *	### Dec, 2022
+    - [x] Extract Board Write Service
+    - [x] Extract Board Read Service
+    - [x] Implement Integration Tests for Board Services
+    - [x] Implement Unit Tests for Board Services
     - [x] Handle RPC requests by gRPC
     - [x] Extract API Gateway Aggregator
     - [x] Complete API Gateway Configs by Ocelot
@@ -287,6 +309,12 @@ Find Hamed around the web and feel free to ask your questions.
     - [x] Full refactor Domain model with DDD concepts
     - [x] Separate Domain Model and Data Model
     - [x] Separate Read Side and Write Side Database
+
+  </details>
+    
+  <details>
+    <summary>2021</summary>
+      
 *	### Dec, 2021
     - [x] Upgrade to .NET 6
 *	### Nov, 2021
@@ -301,6 +329,12 @@ Find Hamed around the web and feel free to ask your questions.
     - [x] Implement API with ASP.NET Web API
 *	### Jul, 2021
     - [x] Full refactore
+  
+  </details>
+  
+  <details>
+    <summary>2020</summary>
+      
 *	### Nov, 2020
     - [x] Upgrad from net 3.1 to net 5
     - [x] Implement user panel with ASP.NET MVC
@@ -309,3 +343,4 @@ Find Hamed around the web and feel free to ask your questions.
     - [x] Implement Anemic Domain Model
     - [x] Create Repository
   
+  </details>

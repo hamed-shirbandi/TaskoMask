@@ -19,8 +19,7 @@
 </a>
 </p>
 
-[TaskoMask](http://taskomask.ir/) is a free and open-source task management system based on .Net. This project is [online](http://taskomask.ir/), and everyone can use it as a team member or project owner.
-But the primary goal of this project is to be an effort to show how we can implement software technologies and patterns by .Net, so this can be used by developers who are looking for a real example project with real challenges. Please take a look at its [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki)!
+[TaskoMask](http://taskomask.ir/) is a free and open-source task management system based on .Net. The primary goal of this project is to be an effort to show how we can design and develop a real software product based on advanced concepts like DDD, TDD, BDD, Microservices, etc. Where the experience of using them in a real product is mostly hidden behind software companies. Please take a look at its [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki)!
 
 Try it online:
 [`Website`](http://taskomask.ir/) - [`User Panel`](http://panel.taskomask.ir) - [`API`](http://api.taskomask.ir/)
@@ -34,7 +33,7 @@ Try it online:
   - [Run with Docker Compose](https://github.com/hamed-shirbandi/TaskoMask/wiki/Development-Setup#how-to-run-with-docker-compose)
 
 # Plan and Progress
-All information presented after this section are the final goal and our big picture. Maybe at this time some of them are not ready yet. To see the progress and the timing for each task, please take a look at the following items:
+All information presented after this section are the final goal and our big picture. Maybe at this time some of them are not ready yet. To see the plan and progress, please take a look at the following items:
 
 - [Milestones Page](https://github.com/hamed-shirbandi/TaskoMask/milestones)
 - [Current Sprint Board](https://github.com/users/hamed-shirbandi/projects/2/views/17)
@@ -49,7 +48,7 @@ All information presented after this section are the final goal and our big pict
       <summary>click for details</summary>
 
 
-    - Architecture was Onion until this [last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
+    - It was Onion Architecture before refactoring [(browse the codes here)](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
     </details>
   * ### Clean Architecture
   * ### Vertical Slice Architecture
@@ -59,7 +58,7 @@ All information presented after this section are the final goal and our big pict
       <summary>click for details</summary>
 
 
-    - Architecture was Monolithic until this [last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
+    - It was Monolithic Architecture before refactoring [(browse the codes here)](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
     </details>
   * ### Microservices Architecture
     <details>
@@ -192,8 +191,9 @@ All information presented after this section are the final goal and our big pict
 
 
       - Blazor
-        - Blazor Server ([last commit](https://github.com/hamed-shirbandi/TaskoMask/tree/a6f036f91c2185861209191d9bb3e4ae01665f46/Src/Presentation/3-UI/UserPanel))
+        - Blazor Server
             - Cookie Authentication without ASP.NET Identity
+            - It was Blazor Server befor refactoring it to WebAssembly ([browse the codes here](https://github.com/hamed-shirbandi/TaskoMask/tree/a6f036f91c2185861209191d9bb3e4ae01665f46/Src/Presentation/3-UI/UserPanel))
         - Blazor WebAssembly (standalone)
             - JWT Authentication
         - Comunication between components
@@ -226,7 +226,7 @@ All information presented after this section are the final goal and our big pict
     </details>
 
 # Contributing
-Contributions, issues, and feature requests are welcome. Any contributions you make are greatly appreciated.
+Contributions, issues, and questions are welcome. Any contributions you make are greatly appreciated.
   >Please see the [Contribution Guide](https://github.com/hamed-shirbandi/TaskoMask/tree/master/docs/CONTRIBUTING.md) and follow the instructions to be a part of this project.
 
 This project exists thanks to all the people who [contribute](https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors).
@@ -248,7 +248,7 @@ We need your support by giving a star or contributing or sharing this project wi
 
 # Author & License
 This project is developed by [Hamed Shirbandi](https://github.com/hamed-shirbandi) under [MIT](https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE) licensed.
-Find Hamed around the web and feel free to ask your question.
+Find Hamed around the web and feel free to ask your questions.
 
 <a href="https://www.linkedin.com/in/hamed-shirbandi"><img alt="LinkedIn" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/LinkedIn-v2.png" width="35"></a><a href="https://www.instagram.com/hamedshirbandi"><img alt="Instagram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Instagram-v2.png" width="35"></a><a href="https://github.com/hamed-shirbandi"><img alt="GitHub" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/GitHub-v2.png" width="35"></a><a href="https://medium.com/@hamed.shirbandi"><img alt="Medium" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Medium-v2.png" width="35"></a><a href="https://www.nuget.org/profiles/hamed-shirbandi"><img alt="Nuget" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Nuget-v3.png" width="35"></a><a href="mailto:hamed.shirbandi@gmail.com"><img alt="Email" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Email-v2.png" width="35"></a><a href="https://t.me/hamed_shirbandi"><img alt="Telegram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Telegram-v2.png" width="35"></a><a href="https://twitter.com/hamed_shirbandi"><img alt="Twitter" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Twitter-v2.png" width="35"></a>
 

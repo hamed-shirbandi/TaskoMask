@@ -7,7 +7,6 @@ using Microsoft.Extensions.Hosting;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
-using TaskoMask.BuildingBlocks.Web.MVC.Services.Cookie;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 {
@@ -36,8 +35,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             services.AddHttpContextAccessor();
 
             services.AddAuthenticatedUserService();
-
-            services.AddCookieService();
 
             services.AddWebServerOptions();
 

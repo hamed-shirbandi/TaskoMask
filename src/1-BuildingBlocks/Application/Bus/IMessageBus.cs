@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Domain.Models;
 namespace TaskoMask.BuildingBlocks.Application.Bus
 {
     /// <summary>
-    /// It is used as a message broker to enable microservices communicating each other
+    /// It is used as a message broker to enable microservices communicating each other (out-process)
     /// </summary>
     public interface IMessageBus
     {

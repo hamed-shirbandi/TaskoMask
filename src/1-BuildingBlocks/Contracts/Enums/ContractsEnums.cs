@@ -4,20 +4,6 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 namespace TaskoMask.BuildingBlocks.Contracts.Enums
 {
 
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public enum BoardMemberAccessLevel
-    {
-        [Display(Name = nameof(ContractsMetadata.BoardMemberAccessLevel_Reader), ResourceType = typeof(ContractsMetadata))]
-        Reader = 0,
-        [Display(Name = nameof(ContractsMetadata.BoardMemberAccessLevel_Writer), ResourceType = typeof(ContractsMetadata))]
-        Writer = 1,
-    }
-
-
-
     /// <summary>
     /// 
     /// </summary>
@@ -34,14 +20,5 @@ namespace TaskoMask.BuildingBlocks.Contracts.Enums
 
     }
 
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public enum UserType
-    {
-        Owner = 0,
-        Operator = 1
-    }
 
 }

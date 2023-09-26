@@ -12,7 +12,7 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {
 
     /// <summary>
-    /// Caching response of queries mareked with ICacheableQuery
+    /// Caching response for queries that are mareked by ICacheableQuery
     /// </summary>
     public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : BaseQuery<TResponse>
     {
@@ -42,14 +42,17 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
         /// </summary>
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
+            // ignore command requests
             if (request is not ICacheableQuery cacheableQuery)
                 return await next();
 
-            var configurationCacheEnabled = bool.Parse(_configuration["Caching:Enabled"]);
-            if (!configurationCacheEnabled)
+            //ignore caching if it is not enabled globaly from configurations
+            var configurationCachingEnabled = bool.Parse(_configuration["Caching:Enabled"]);
+            if (!configurationCachingEnabled)
                 return await next();
 
-            if (!cacheableQuery.EnableCache)
+            //ignore caching for this request if caching is not enabled
+            if (!cacheableQuery.CachingIsEnabled())
                 return await next();
 
 

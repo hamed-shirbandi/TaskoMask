@@ -12,11 +12,12 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
     public interface ICacheableQuery
     {
         /// <summary>
-        /// for enable caching set it to true beafor sending the query to bus like below:
+        /// To enable caching for a query, call EnableCaching() beafor sending the query:
         /// var query=new GetSomeQuery()
-        /// query.EnableCache = false;
+        /// query.EnableCaching();
         /// _inMemoryBus.SendQuery(query)
         /// </summary>
-        bool EnableCache { get; set; }
+        void EnableCaching();
+        bool CachingIsEnabled();
     }
 }

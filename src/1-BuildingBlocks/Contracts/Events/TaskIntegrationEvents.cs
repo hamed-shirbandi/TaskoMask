@@ -1,6 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Models;
-
-namespace TaskoMask.BuildingBlocks.Contracts.Events
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Events
 {
     public record TaskAdded(string Id, string Title, string Description, string CardId, string BoardId) : IntegrationEvent;
     public record TaskDeleted(string Id) : IntegrationEvent;

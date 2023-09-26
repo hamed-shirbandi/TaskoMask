@@ -1,6 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Contracts.Models;
-
-namespace TaskoMask.BuildingBlocks.Contracts.Events
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Events
 {
     public record OwnerRegistered(string Id, string Email, string Password) : IntegrationEvent;
     public record OwnerRegisterationCompleted(string Id, string Email, string DisplayName) : IntegrationEvent;

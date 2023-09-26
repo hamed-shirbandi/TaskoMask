@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Contracts.Events;
 
 namespace TaskoMask.BuildingBlocks.Application.Commands
 {

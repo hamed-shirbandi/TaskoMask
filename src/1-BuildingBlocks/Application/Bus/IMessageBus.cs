@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Events;
-using TaskoMask.BuildingBlocks.Domain.Models;
+
 
 namespace TaskoMask.BuildingBlocks.Application.Bus
 {

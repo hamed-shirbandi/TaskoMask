@@ -16,7 +16,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         /// </summary>
         public static void AddInMemoryBus(this IServiceCollection services, Type handlerAssemblyMarkerType)
         {
-            //Load all handlers in given assemblies
+            //Load all handlers from given assemblies
             services.AddMediatR(handlerAssemblyMarkerType);
 
             services.AddScoped<IInMemoryBus, InMemoryBus>();

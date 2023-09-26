@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
-using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 
 namespace TaskoMask.Services.Tasks.Write.Api.Domain.ValueObjects.Comments
 {

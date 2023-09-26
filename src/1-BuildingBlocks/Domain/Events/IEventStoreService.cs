@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.BuildingBlocks.Domain.Models;
 
-namespace TaskoMask.BuildingBlocks.Domain.Services
+namespace TaskoMask.BuildingBlocks.Domain.Events
 {
     /// <summary>
     /// 

@@ -1,4 +1,4 @@
-﻿namespace TaskoMask.BuildingBlocks.Domain.Models
+﻿namespace TaskoMask.BuildingBlocks.Domain.Entities
 {
     /// <summary>
     ///

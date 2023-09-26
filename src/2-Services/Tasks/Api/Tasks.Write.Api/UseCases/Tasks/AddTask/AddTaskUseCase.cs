@@ -8,7 +8,7 @@ using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.BuildingBlocks.Domain.Models;
+using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Data;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Events.Tasks;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Services;

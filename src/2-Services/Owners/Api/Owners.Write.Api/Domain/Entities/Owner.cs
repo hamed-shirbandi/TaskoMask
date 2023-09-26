@@ -1,5 +1,4 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Exceptions;
-using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Owners.Write.Api.Domain.Events.Organizations;
@@ -12,6 +11,7 @@ using MongoDB.Bson;
 using TaskoMask.Services.Owners.Write.Api.Domain.Services;
 using System.Linq;
 using System.Collections.Generic;
+using TaskoMask.BuildingBlocks.Domain.Entities;
 
 namespace TaskoMask.Services.Owners.Write.Api.Domain.Entities
 {

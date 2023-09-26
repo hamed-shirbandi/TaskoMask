@@ -1,19 +1,17 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 
-namespace TaskoMask.BuildingBlocks.Domain.Models
+namespace TaskoMask.BuildingBlocks.Domain.Entities
 {
-    //To be updated
-
     /// <summary>
     ///
     /// </summary>
-    public abstract class BaseEntity: Entity
+    public abstract class BaseEntity : Entity
     {
         #region Ctors
 
         public BaseEntity()
         {
-            CreationTime = CreationTime.Create();
+            CreationTime = CreationTime.CreateNowDateTime();
         }
 
 

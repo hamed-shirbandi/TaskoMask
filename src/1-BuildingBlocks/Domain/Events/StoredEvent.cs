@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskoMask.BuildingBlocks.Domain.Models
+namespace TaskoMask.BuildingBlocks.Domain.Events
 {
     /// <summary>
     /// 

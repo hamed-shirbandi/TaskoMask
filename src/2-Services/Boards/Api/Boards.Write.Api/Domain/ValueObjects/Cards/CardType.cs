@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
-using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 
 namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Cards
 {

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using TaskoMask.BuildingBlocks.Domain.Events;
 
-namespace TaskoMask.BuildingBlocks.Domain.Models
+namespace TaskoMask.BuildingBlocks.Domain.Entities
 {
 
     /// <summary>
@@ -68,7 +69,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Models
             UpdateAggregate();
 
             domainEvents ??= new List<DomainEvent>();
-            this.domainEvents.Add(domainEvent);
+            domainEvents.Add(domainEvent);
         }
 
 

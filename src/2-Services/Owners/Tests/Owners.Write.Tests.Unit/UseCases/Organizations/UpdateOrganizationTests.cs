@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using FluentAssertions;
-using TaskoMask.Services.Owners.Write.Api.Domain.Events.Organizations;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Organizations;
 using MongoDB.Bson;
 using System;
 using TaskoMask.BuildingBlocks.Domain.Resources;

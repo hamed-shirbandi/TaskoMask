@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Events.Tasks;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Tasks;
 using TaskoMask.Services.Tasks.Write.Tests.Unit.Fixtures;
 using Xunit;
 

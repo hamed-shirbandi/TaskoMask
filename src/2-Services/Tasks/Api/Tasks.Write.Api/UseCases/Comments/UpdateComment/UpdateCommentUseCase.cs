@@ -11,8 +11,8 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Data;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Events.Comments;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Comments;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
 {

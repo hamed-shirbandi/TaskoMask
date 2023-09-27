@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.Services.Owners.Write.Api.Domain.Data;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
 using System.Threading.Tasks;
 
 namespace TaskoMask.Services.Owners.Write.Api.Consumers

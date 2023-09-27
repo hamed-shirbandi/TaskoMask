@@ -1,5 +1,5 @@
-﻿using TaskoMask.Services.Owners.Write.Api.Domain.Entities;
-using TaskoMask.Services.Owners.Write.Api.Domain.Services;
+﻿using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 
 namespace TaskoMask.Services.Owners.Write.Tests.Base.TestData
 {

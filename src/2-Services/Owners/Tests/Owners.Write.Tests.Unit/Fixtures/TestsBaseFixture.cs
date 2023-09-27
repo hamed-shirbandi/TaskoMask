@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Test.TestBase;
-using TaskoMask.Services.Owners.Write.Api.Domain.Data;
-using TaskoMask.Services.Owners.Write.Api.Domain.Entities;
-using TaskoMask.Services.Owners.Write.Api.Domain.Services;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 
 namespace TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures

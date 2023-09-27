@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Test.TestBase;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Data;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Entities;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Services;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 using TaskoMask.Services.Tasks.Write.Api.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext;
 

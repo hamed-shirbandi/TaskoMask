@@ -10,7 +10,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrganization;
-using TaskoMask.Services.Owners.Write.Api.Domain.Events.Organizations;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Organizations;
 using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
 using Xunit;

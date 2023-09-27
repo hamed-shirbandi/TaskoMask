@@ -1,8 +1,8 @@
 ﻿using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Test.TestBase;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Data;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Services;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 using TaskoMask.Services.Tasks.Write.Tests.Base.TestData;
 
 namespace TaskoMask.Services.Tasks.Write.Tests.Unit.Fixtures

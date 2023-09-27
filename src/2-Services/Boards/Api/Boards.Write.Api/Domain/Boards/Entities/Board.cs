@@ -2,18 +2,18 @@
 using System.Linq;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
-using TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Boards;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Boards.Write.Api.Domain.Specifications;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Specifications;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.Services.Boards.Write.Api.Domain.Services;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using MongoDB.Bson;
-using TaskoMask.Services.Boards.Write.Api.Domain.Events.Boards;
-using TaskoMask.Services.Boards.Write.Api.Domain.Events.Cards;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Boards;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 using TaskoMask.BuildingBlocks.Domain.Entities;
 
-namespace TaskoMask.Services.Boards.Write.Api.Domain.Entities
+namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 {
     public class Board: AggregateRoot
     {

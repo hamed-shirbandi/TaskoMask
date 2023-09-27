@@ -1,5 +1,5 @@
 ﻿
-namespace TaskoMask.Services.Boards.Write.Api.Domain.Services
+namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services
 {
     /// <summary>
     /// 

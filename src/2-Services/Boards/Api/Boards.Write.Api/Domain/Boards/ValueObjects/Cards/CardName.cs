@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 
-namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Boards
+namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Cards
 {
-    public class BoardProjectId : BaseValueObject
+    public class CardName : BaseValueObject
     {
         #region Properties
 
@@ -17,7 +18,7 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Boards
 
         #region Ctors
 
-        public BoardProjectId(string value)
+        public CardName(string value)
         {
             Value = value;
 
@@ -33,9 +34,9 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Boards
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static BoardProjectId Create(string value)
+        public static CardName Create(string value)
         {
-            return new BoardProjectId(value);
+            return new CardName(value);
         }
 
 
@@ -46,7 +47,13 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Boards
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
-                throw new DomainException(string.Format(ContractsMetadata.Required, nameof(BoardProjectId)));
+                throw new DomainException(string.Format(ContractsMetadata.Required, nameof(CardName)));
+
+            if (Value.Length< DomainConstValues.Card_Name_Min_Length)
+                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(CardName), DomainConstValues.Card_Name_Min_Length, DomainConstValues.Card_Name_Max_Length));
+
+            if (Value.Length > DomainConstValues.Card_Name_Max_Length)
+                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(CardName), DomainConstValues.Card_Name_Min_Length, DomainConstValues.Card_Name_Max_Length));
 
         }
 

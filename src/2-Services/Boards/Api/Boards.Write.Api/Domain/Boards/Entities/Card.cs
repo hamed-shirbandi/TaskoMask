@@ -1,11 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Cards;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using MongoDB.Bson;
 using TaskoMask.BuildingBlocks.Domain.Entities;
 
-namespace TaskoMask.Services.Boards.Write.Api.Domain.Entities
+namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 {
     public class Card : BaseEntity
     {

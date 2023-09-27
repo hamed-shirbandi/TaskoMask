@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 
-namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Boards
+namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards
 {
     public class BoardName : BaseValueObject
     {

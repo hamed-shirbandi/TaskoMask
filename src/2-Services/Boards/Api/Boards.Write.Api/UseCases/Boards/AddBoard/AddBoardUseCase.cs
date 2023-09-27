@@ -10,10 +10,10 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Events;
-using TaskoMask.Services.Boards.Write.Api.Domain.Data;
-using TaskoMask.Services.Boards.Write.Api.Domain.Entities;
-using TaskoMask.Services.Boards.Write.Api.Domain.Events.Boards;
-using TaskoMask.Services.Boards.Write.Api.Domain.Services;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Data;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Boards;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard
 {

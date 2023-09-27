@@ -1,8 +1,8 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Specifications;
-using TaskoMask.Services.Boards.Write.Api.Domain.Entities;
-using TaskoMask.Services.Boards.Write.Api.Domain.Services;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services;
 
-namespace TaskoMask.Services.Boards.Write.Api.Domain.Specifications
+namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Specifications
 {
     internal class BoardNameMustUniqueSpecification : ISpecification<Board>
     {

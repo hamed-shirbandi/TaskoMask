@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
-using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 
-namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Cards
+namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards
 {
-    public class CardType : BaseValueObject
+    public class BoardProjectId : BaseValueObject
     {
         #region Properties
 
-        public BoardCardType Value { get; private set; }
+        public string Value { get; private set; }
 
 
         #endregion
 
         #region Ctors
 
-        public CardType(BoardCardType value)
+        public BoardProjectId(string value)
         {
             Value = value;
 
@@ -35,9 +33,9 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Cards
         /// <summary>
         /// Factory method for creating new object
         /// </summary>
-        public static CardType Create(BoardCardType value)
+        public static BoardProjectId Create(string value)
         {
-            return new CardType(value);
+            return new BoardProjectId(value);
         }
 
 
@@ -47,7 +45,9 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.ValueObjects.Cards
         /// </summary>
         protected override void CheckPolicies()
         {
-           
+            if (string.IsNullOrEmpty(Value))
+                throw new DomainException(string.Format(ContractsMetadata.Required, nameof(BoardProjectId)));
+
         }
 
 

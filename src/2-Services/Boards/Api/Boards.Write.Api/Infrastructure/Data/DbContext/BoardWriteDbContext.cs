@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using Microsoft.Extensions.Options;
-using TaskoMask.Services.Boards.Write.Api.Domain.Entities;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities;
 
 namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.DbContext
 {

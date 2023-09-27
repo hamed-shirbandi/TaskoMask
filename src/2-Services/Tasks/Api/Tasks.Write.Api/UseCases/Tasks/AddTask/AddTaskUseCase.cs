@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
         /// </summary>
         public async Task<CommandResult> Handle(AddTaskRequest request, CancellationToken cancellationToken)
         {
-            var task = Domain.Entities.Task.AddTask(request.Title, request.Description,request.CardId, request.BoardId, _taskValidatorService);
+            var task = Domain.Tasks.Entities.Task.AddTask(request.Title, request.Description,request.CardId, request.BoardId, _taskValidatorService);
 
             await _taskAggregateRepository.AddAsync(task);
 

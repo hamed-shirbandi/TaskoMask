@@ -14,7 +14,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.Fixtures
         protected IInMemoryBus InMemoryBus;
         protected ITaskAggregateRepository TaskAggregateRepository;
         protected ITaskValidatorService TaskValidatorService;
-        protected List<Api.Domain.Entities.Task> Tasks;
+        protected List<Api.Domain.Tasks.Entities.Task> Tasks;
 
 
 
@@ -54,25 +54,25 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.Fixtures
 
             TaskAggregateRepository = Substitute.For<ITaskAggregateRepository>();
             TaskAggregateRepository.GetByIdAsync(Arg.Is<string>(x => Tasks.Any(o => o.Id == x))).Returns(args => Tasks.First(u => u.Id == (string)args[0]));
-            TaskAggregateRepository.AddAsync(Arg.Any<Api.Domain.Entities.Task>()).Returns(args => { Tasks.Add((Api.Domain.Entities.Task)args[0]); return Task.CompletedTask; });
-            TaskAggregateRepository.UpdateAsync(Arg.Is<Api.Domain.Entities.Task>(x => Tasks.Any(o => o.Id == x.Id))).Returns(args =>
+            TaskAggregateRepository.AddAsync(Arg.Any<Api.Domain.Tasks.Entities.Task>()).Returns(args => { Tasks.Add((Api.Domain.Tasks.Entities.Task)args[0]); return Task.CompletedTask; });
+            TaskAggregateRepository.UpdateAsync(Arg.Is<Api.Domain.Tasks.Entities.Task>(x => Tasks.Any(o => o.Id == x.Id))).Returns(args =>
             {
-                var existTask = Tasks.FirstOrDefault(u => u.Id == ((Api.Domain.Entities.Task)args[0]).Id);
+                var existTask = Tasks.FirstOrDefault(u => u.Id == ((Api.Domain.Tasks.Entities.Task)args[0]).Id);
                 if (existTask != null)
                 {
                     Tasks.Remove(existTask);
-                    Tasks.Add(((Api.Domain.Entities.Task)args[0]));
+                    Tasks.Add(((Api.Domain.Tasks.Entities.Task)args[0]));
                 }
 
                 return Task.CompletedTask;
             });
-            TaskAggregateRepository.ConcurrencySafeUpdate(Arg.Is<Api.Domain.Entities.Task>(x => Tasks.Any(o => o.Id == x.Id)),Arg.Is<string>(x=>x.Any())).Returns(args =>
+            TaskAggregateRepository.ConcurrencySafeUpdate(Arg.Is<Api.Domain.Tasks.Entities.Task>(x => Tasks.Any(o => o.Id == x.Id)),Arg.Is<string>(x=>x.Any())).Returns(args =>
             {
-                var existTask = Tasks.FirstOrDefault(u => u.Id == ((Api.Domain.Entities.Task)args[0]).Id && u.Version == (string)args[1]);
+                var existTask = Tasks.FirstOrDefault(u => u.Id == ((Api.Domain.Tasks.Entities.Task)args[0]).Id && u.Version == (string)args[1]);
                 if (existTask != null)
                 {
                     Tasks.Remove(existTask);
-                    Tasks.Add(((Api.Domain.Entities.Task)args[0]));
+                    Tasks.Add(((Api.Domain.Tasks.Entities.Task)args[0]));
                 }
 
                 return Task.CompletedTask;
@@ -103,7 +103,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.Fixtures
         /// <summary>
         /// 
         /// </summary>
-        private List<Api.Domain.Entities.Task> GenerateTasksList()
+        private List<Api.Domain.Tasks.Entities.Task> GenerateTasksList()
         {
             var taskValidatorService = Substitute.For<ITaskValidatorService>();
             taskValidatorService.TaskHasUniqueName(taskId: Arg.Any<string>(), boardId: Arg.Any<string>(), taskTitle: Arg.Any<string>()).Returns(true);

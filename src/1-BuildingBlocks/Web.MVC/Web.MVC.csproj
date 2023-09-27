@@ -8,6 +8,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Helpers\**" />
+	  <EmbeddedResource Remove="Helpers\**" />
+	  <None Remove="Helpers\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="DNTCaptcha.Core" Version="4.4.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
@@ -21,9 +27,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 		<ProjectReference Include="..\Web\Web.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Helpers\" />
 	</ItemGroup>
 
 </Project>

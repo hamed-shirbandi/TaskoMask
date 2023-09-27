@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using TaskoMask.BuildingBlocks.Domain.Models;
 
 namespace TaskoMask.BuildingBlocks.Domain.ValueObjects
 {
@@ -21,9 +20,9 @@ namespace TaskoMask.BuildingBlocks.Domain.ValueObjects
 
         #region Ctors
 
-        private CreationTime()
+        private CreationTime(DateTime dateTime)
         {
-            CreateDateTime = DateTime.Now;
+            CreateDateTime = dateTime;
             ModifiedDateTime = CreateDateTime;
             CreateDay = CreateDateTime.Day;
             CreateMonth = CreateDateTime.Month;
@@ -39,29 +38,21 @@ namespace TaskoMask.BuildingBlocks.Domain.ValueObjects
 
 
         /// <summary>
-        /// Factory method for creating new object
+        ///
         /// </summary>
-        public static CreationTime Create()
+        public static CreationTime CreateNowDateTime()
         {
-            return new CreationTime();
+            return new CreationTime(DateTime.Now);
         }
 
 
 
         /// <summary>
-        /// Value objects are immutable.
-        /// Changing it creates a new object
+        /// 
         /// </summary>
         public CreationTime UpdateModifiedDateTime()
         {
-            return new CreationTime
-            {
-                ModifiedDateTime = DateTime.Now,
-                CreateDateTime = this.CreateDateTime,
-                CreateDay = this.CreateDateTime.Day,
-                CreateMonth = this.CreateDateTime.Month,
-                CreateYear = this.CreateDateTime.Year,
-            };
+            return new CreationTime(DateTime.Now);
         }
 
 

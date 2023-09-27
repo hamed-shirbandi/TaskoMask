@@ -9,10 +9,10 @@ using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.BuildingBlocks.Domain.Models;
+using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.Services.Boards.Write.Api.Domain.Data;
-using TaskoMask.Services.Boards.Write.Api.Domain.Events.Cards;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Data;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard
 {

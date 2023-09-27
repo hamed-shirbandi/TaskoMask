@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Entities;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;
 
 namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext
 {

@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard;
-using TaskoMask.Services.Boards.Write.Api.Domain.Events.Cards;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 using TaskoMask.Services.Boards.Write.Tests.Unit.Fixtures;
 using TaskoMask.Services.Boards.Write.Tests.Base.TestData;
 using Xunit;

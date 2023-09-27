@@ -1,5 +1,5 @@
-﻿using TaskoMask.BuildingBlocks.Domain.Models;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using TaskoMask.BuildingBlocks.Domain.Entities;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Domain
 {

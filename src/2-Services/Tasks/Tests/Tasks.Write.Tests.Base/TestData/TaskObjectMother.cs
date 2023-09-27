@@ -1,8 +1,8 @@
 ﻿using MongoDB.Bson;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Test.TestData;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Entities;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Services;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 
 namespace TaskoMask.Services.Tasks.Write.Tests.Base.TestData
 {

@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Events.Comments;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Comments;
 using TaskoMask.Services.Tasks.Write.Tests.Unit.Fixtures;
 using TaskoMask.Services.Tasks.Write.Tests.Base.TestData;
 using Xunit;

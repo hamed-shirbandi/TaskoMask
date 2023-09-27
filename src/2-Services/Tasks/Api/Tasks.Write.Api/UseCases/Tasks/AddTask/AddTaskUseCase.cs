@@ -8,10 +8,10 @@ using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Data;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Events.Tasks;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Services;
+using TaskoMask.BuildingBlocks.Domain.Events;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Tasks;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
 {
@@ -45,7 +45,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
         /// </summary>
         public async Task<CommandResult> Handle(AddTaskRequest request, CancellationToken cancellationToken)
         {
-            var task = Domain.Entities.Task.AddTask(request.Title, request.Description,request.CardId, request.BoardId, _taskValidatorService);
+            var task = Domain.Tasks.Entities.Task.AddTask(request.Title, request.Description,request.CardId, request.BoardId, _taskValidatorService);
 
             await _taskAggregateRepository.AddAsync(task);
 

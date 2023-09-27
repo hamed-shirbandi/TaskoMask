@@ -8,9 +8,9 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.Services.Owners.Write.Api.Domain.Data;
-using TaskoMask.Services.Owners.Write.Api.Domain.Services;
-using TaskoMask.Services.Owners.Write.Api.Domain.ValueObjects.Owners;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Owners;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
 {

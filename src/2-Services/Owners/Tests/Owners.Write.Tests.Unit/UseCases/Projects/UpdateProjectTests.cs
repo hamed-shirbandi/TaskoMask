@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject;
-using TaskoMask.Services.Owners.Write.Api.Domain.Events.Projects;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Projects;
 using TaskoMask.Services.Owners.Write.Tests.Base.TestData;
 using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
 using Xunit;

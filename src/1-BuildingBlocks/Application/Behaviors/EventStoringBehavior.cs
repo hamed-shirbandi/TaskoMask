@@ -7,16 +7,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Commands;
-using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.BuildingBlocks.Domain.Services;
+using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {
 
     /// <summary>
-    /// Each command must have at least one event to save changes in event store
+    /// Each command must have at least one event to save its changes in event store
     /// So this notification handler act as a behavior and makes it easy to store events without repeating the creation of event handler
-    /// However events can have another handlers to do another things like sending an email or update some other entities
+    /// However events can have other handlers to do other things like sending an email or update some other entities, etc.
     /// </summary>
     public class EventStoringBehavior : INotificationHandler<DomainEvent>
     {

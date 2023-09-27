@@ -1,6 +1,6 @@
 ﻿
-using TaskoMask.Services.Boards.Write.Api.Domain.Data;
-using TaskoMask.Services.Boards.Write.Api.Domain.Services;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Data;
+using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services;
 
 namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.Services
 {

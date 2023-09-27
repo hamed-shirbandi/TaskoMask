@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Contracts.Events;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {

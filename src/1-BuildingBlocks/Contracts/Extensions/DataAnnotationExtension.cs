@@ -22,18 +22,5 @@ namespace TaskoMask.BuildingBlocks.Contracts.Extensions
             return Validator.TryValidateObject(obj, new ValidationContext(obj), results, true);
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static object GetDisplayName<TObject>(this TObject obj) where TObject : class
-        {
-            return typeof(TObject).CustomAttributes.Any() ?
-                typeof(TObject).CustomAttributes.First().ConstructorArguments.First().Value :
-                nameof(TObject);
-        }
-
-
     }
 }

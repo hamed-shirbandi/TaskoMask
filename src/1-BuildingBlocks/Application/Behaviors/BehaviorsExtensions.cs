@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using TaskoMask.BuildingBlocks.Domain.Models;
+using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {
@@ -27,7 +27,7 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
         /// </summary>
         public static void AddValidationBehaviour(this IServiceCollection services, Type validatorAssemblyMarkerType)
         {
-            //Load all fluent validation to use in ValidationBehaviour
+            //Load all fluent validation classes to be used in ValidationBehaviour
             services.AddValidatorsFromAssembly(validatorAssemblyMarkerType.Assembly);
 
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));

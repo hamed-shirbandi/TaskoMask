@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskoMask.BuildingBlocks.Domain.Models;
+using TaskoMask.BuildingBlocks.Domain.Entities;
 
 namespace TaskoMask.BuildingBlocks.Domain.Data
 {

@@ -1,5 +1,5 @@
-﻿using TaskoMask.Services.Tasks.Write.Api.Domain.Data;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Services;
+﻿using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 
 namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.Services
 {

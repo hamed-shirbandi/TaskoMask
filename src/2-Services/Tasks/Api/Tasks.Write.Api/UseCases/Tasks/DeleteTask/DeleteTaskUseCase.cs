@@ -9,10 +9,10 @@ using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.BuildingBlocks.Domain.Models;
+using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Data;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Events.Tasks;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
+using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Tasks;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;
-using TaskoMask.BuildingBlocks.Domain.Models;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.BuildingBlocks.Domain.Entities;
 
 namespace TaskoMask.Services.Owners.Read.Api.Domain
 {

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Domain.Models;
-using TaskoMask.BuildingBlocks.Contracts.Models;
+using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Application.Commands
 {

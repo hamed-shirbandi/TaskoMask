@@ -9,7 +9,7 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile;
-using TaskoMask.Services.Owners.Write.Api.Domain.Events.Owners;
+using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Owners;
 using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
 using Xunit;
 

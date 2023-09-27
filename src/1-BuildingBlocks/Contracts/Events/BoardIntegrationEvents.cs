@@ -1,6 +1,5 @@
 ﻿
 using TaskoMask.BuildingBlocks.Contracts.Enums;
-using TaskoMask.BuildingBlocks.Contracts.Models;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Events
 {

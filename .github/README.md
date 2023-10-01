@@ -19,10 +19,13 @@
 </a>
 </p>
 
-[TaskoMask](http://taskomask.ir/) is a free and open-source task management system based on .Net. The primary goal of this project is to be an effort to show how we can design and develop a real software product based on advanced concepts like DDD, TDD, BDD, Microservices, etc. Where the experience of using them in a real product is mostly hidden behind software companies. Please take a look at its [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki)!
+[TaskoMask](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation) is an open-source task management system built on the .Net framework. The primary objective of this project is to demonstrate the practical application of advanced software development concepts such as DDD (Domain-Driven Design), TDD (Test-Driven Development), BDD (Behavior-Driven Development), and Microservices.
 
-Try it online:
-[`Website`](http://taskomask.ir/) - [`User Panel`](http://panel.taskomask.ir) - [`API`](http://api.taskomask.ir/)
+In many cases, the experience of applying these concepts to real-world software products is often obscured by proprietary software companies. TaskoMask seeks to provide transparency and insight into their usage.
+
+We invite you to explore our project's [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki) for more information
+
+Try it [[online](http://taskomask.ir)]
 
 ![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Shots/taskomask-all-in-one-mobile.jpg)
 # Documentation
@@ -33,33 +36,21 @@ Try it online:
   - [Run with Docker Compose](https://github.com/hamed-shirbandi/TaskoMask/wiki/Development-Setup#how-to-run-with-docker-compose)
 
 # Plan and Progress
-All information presented after this section are the final goal and our big picture. Maybe at this time some of them are not ready yet. To see the plan and progress, please take a look at the following items:
+All the information presented beyond this section represents our project's final objectives and the broader vision. It's important to note that some of these elements may still be a work in progress. To gain insight into our project's roadmap and track our progress, please refer to the following items:
 
 - [Milestones Page](https://github.com/hamed-shirbandi/TaskoMask/milestones)
-- [Current Sprint Board](https://github.com/users/hamed-shirbandi/projects/2/views/18)
+- [Current Sprint Board](https://github.com/users/hamed-shirbandi/projects/2/views/17)
 - [All Tasks Board](https://github.com/users/hamed-shirbandi/projects/2)
 
 # Design
 #### 🔴Work is in progress
+Here is a comprehensive list of the patterns, principles, approaches, and methodologies that we have incorporated into our project's design. It's important to note that these have been included as examples to showcase their usage within a project. In a real-world design, you would need to carefully evaluate and select the most appropriate ones based on your project's specific trade-offs and requirements.
+
 ![development architecture](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Architecture/deployment-architecture-v2.jpg)
 
-  * ### Onion Architecture
-    <details>
-      <summary>click for details</summary>
-
-
-    - It was Onion Architecture before refactoring [(browse the codes here)](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
-    </details>
   * ### Clean Architecture
   * ### Vertical Slice Architecture
   * ### Feature Folder Structure
-  * ### Monolithic Architecture
-    <details>
-      <summary>click for details</summary>
-
-
-    - It was Monolithic Architecture before refactoring [(browse the codes here)](https://github.com/hamed-shirbandi/TaskoMask/tree/af7f7418c7811ecf2db3bb9324bd070e37eb7a82)
-    </details>
   * ### Microservices Architecture
     <details>
       <summary>click for details</summary>
@@ -153,6 +144,8 @@ All information presented after this section are the final goal and our big pict
   * ### Notification
 
 # Implementation
+Here is a comprehensive list of the tools and technologies we have employed to implement this project.
+
   * ### Back-end:
     <details>
       <summary>click for details</summary>
@@ -226,10 +219,11 @@ All information presented after this section are the final goal and our big pict
     </details>
 
 # Contributing
-Contributions, issues, and questions are welcome. Any contributions you make are greatly appreciated.
-  >Please see the [Contribution Guide](https://github.com/hamed-shirbandi/TaskoMask/tree/master/docs/CONTRIBUTING.md) and follow the instructions to be a part of this project.
+We welcome contributions, issue reports, and questions from the community. Any contributions you make are highly valued and appreciated.
 
-This project exists thanks to all the people who [contribute](https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors).
+  >Please refer to our [Contribution Guide](https://github.com/hamed-shirbandi/TaskoMask/tree/master/docs/CONTRIBUTING.md) for detailed instructions on how to get involved in this project.
+
+This project thrives and evolves thanks to the dedicated individuals who [contribute](https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors) their time and expertise
 
 <a href="https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors">
   
@@ -243,12 +237,10 @@ This project exists thanks to all the people who [contribute](https://github.com
 * [Learning By Doing (podcats)](https://topenddevs.com/podcasts/adventures-in-net/episodes/learning-by-doing-net-122)
 
 # Supporting
-We work hard to make something useful for .NET community, so please give a star ⭐ if this project helped you!
-We need your support by giving a star or contributing or sharing this project with anyone who can benefit from it.
+We are dedicated to creating a valuable resource for the .NET community. If this project has been beneficial to you, please consider showing your support by giving it a ⭐ star. Your support is crucial, whether through starring the project, contributing, or sharing it with anyone who can benefit. You can also join the conversation on Twitter by using the hashtag [#taskomask](https://twitter.com/search?q=%23taskomask).
 
 # Author & License
-This project is developed by [Hamed Shirbandi](https://github.com/hamed-shirbandi) under [MIT](https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE) licensed.
-Find Hamed around the web and feel free to ask your questions.
+This project is authored by [Hamed Shirbandi](https://github.com/hamed-shirbandi) and is licensed under the [MIT](https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE) License. You can find Hamed across various online platforms, and please don't hesitate to reach out if you have any questions or inquiries.
 
 <a href="https://www.linkedin.com/in/hamed-shirbandi"><img alt="LinkedIn" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/LinkedIn-v2.png" width="35"></a><a href="https://www.instagram.com/hamedshirbandi"><img alt="Instagram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Instagram-v2.png" width="35"></a><a href="https://github.com/hamed-shirbandi"><img alt="GitHub" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/GitHub-v2.png" width="35"></a><a href="https://medium.com/@hamed.shirbandi"><img alt="Medium" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Medium-v2.png" width="35"></a><a href="https://www.nuget.org/profiles/hamed-shirbandi"><img alt="Nuget" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Nuget-v3.png" width="35"></a><a href="mailto:hamed.shirbandi@gmail.com"><img alt="Email" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Email-v2.png" width="35"></a><a href="https://t.me/hamed_shirbandi"><img alt="Telegram" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Telegram-v2.png" width="35"></a><a href="https://twitter.com/hamed_shirbandi"><img alt="Twitter" src="https://github.com/hamed-shirbandi/hamed-shirbandi/blob/main/docs/Twitter-v2.png" width="35"></a>
 

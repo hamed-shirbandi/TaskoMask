@@ -50,7 +50,6 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
 
   * ### Clean Architecture
   * ### Vertical Slice Architecture
-  * ### Feature Folder Structure
   * ### Microservices Architecture
     <details>
       <summary>click for details</summary>
@@ -96,9 +95,9 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
     - Test Data Builder
     - Test Hooks
     - Test Doubles
-    - Dummy
-    - Stub
-    - Mock
+        - Dummy
+        - Stub
+        - Mock
     - Teardown
         - [Sandbox](http://xunitpatterns.com/Database%20Sandbox.html)
     - Fixture Management
@@ -110,6 +109,7 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
         - [State Verification](http://xunitpatterns.com/ResultVerification.html)
         - [Output/Value Verification](http://xunitpatterns.com/ResultVerification.html)
         - [Interaction/Behavior Verification](http://xunitpatterns.com/ResultVerification.html)
+    - Living Documentation
     </details>
   * ### DDD
     <details>
@@ -134,12 +134,11 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
       <summary>click for details</summary>
 
 
-    - Separate Read and Write Model
-    - Separate Read Side DB and Write Side DB
+    - Separated Read and Write Model
+    - Separated Read and Write DB
     </details>
   * ### Use Case Driven Development
   * ### Event Sourcing
-  * ### Unit of Work
   * ### Repository
   * ### Notification
 
@@ -232,9 +231,8 @@ This project thrives and evolves thanks to the dedicated individuals who [contri
 </a>
 
 # Articles And Tutorials
-* [Real-world open-source project based on .NET 6 with DDD, ES, CQRS concepts](https://medium.com/@hamed.shirbandi/real-world-open-source-project-based-on-ddd-es-cqrs-af261cc24353)
-* [How to Blazor articles](https://medium.com/@hamed.shirbandi/how-to-blazor-articles-2bda783d9502)
-* [Learning By Doing (podcats)](https://topenddevs.com/podcasts/adventures-in-net/episodes/learning-by-doing-net-122)
+* Read my articles on [Medium](https://medium.com/@hamed.shirbandi)
+* Follow the hashtag [#taskomask](https://twitter.com/search?q=%23taskomask) on Twitter 
 
 # Supporting
 We are dedicated to creating a valuable resource for the .NET community. If this project has been beneficial to you, please consider showing your support by giving it a ⭐ star. Your support is crucial, whether through starring the project, contributing, or sharing it with anyone who can benefit. You can also join the conversation on Twitter by using the hashtag [#taskomask](https://twitter.com/search?q=%23taskomask).

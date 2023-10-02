@@ -31,15 +31,14 @@ Try it [[online](http://taskomask.ir)]
 # Documentation
   - [Domain Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Domain-Documentation)
   - [Architecture Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Architecture-Documentation)
-  - [API Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/Rest-Api-Documentation)
-  - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
   - [Run with Docker Compose](https://github.com/hamed-shirbandi/TaskoMask/wiki/Development-Setup#how-to-run-with-docker-compose)
+  - [User Guide Documentation](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation)
 
 # Plan and Progress
 All the information presented beyond this section represents our project's final objectives and the broader vision. It's important to note that some of these elements may still be a work in progress. To gain insight into our project's roadmap and track our progress, please refer to the following items:
 
 - [Milestones Page](https://github.com/hamed-shirbandi/TaskoMask/milestones)
-- [Current Sprint Board](https://github.com/users/hamed-shirbandi/projects/2/views/17)
+- [Current Sprint Board](https://github.com/users/hamed-shirbandi/projects/2/views/18)
 - [All Tasks Board](https://github.com/users/hamed-shirbandi/projects/2)
 
 # Design
@@ -50,6 +49,7 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
 
   * ### Clean Architecture
   * ### Vertical Slice Architecture
+  * ### Feature Folder Structure
   * ### Microservices Architecture
     <details>
       <summary>click for details</summary>

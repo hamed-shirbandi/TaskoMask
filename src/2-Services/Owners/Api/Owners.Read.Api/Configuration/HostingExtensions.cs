@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DI;
+using TaskoMask.BuildingBlocks.Web.Grpc.Configuration;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
@@ -24,10 +25,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
-            builder.Services.AddGrpc(options =>
-            {
-                options.Interceptors.Add<GrpcExceptionInterceptor>();
-            });
+            builder.Services.AddGrpcPreConfigured();
 
             return builder.Build();
         }

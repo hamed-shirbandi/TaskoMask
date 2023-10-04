@@ -25,7 +25,7 @@ namespace TaskoMask.Services.Identity.Api.Consumers
             var registerUser = new UpdateUserRequest(context.Message.OldEmail, context.Message.NewEmail);
             var result = await _inMemoryBus.SendCommand(registerUser);
             if (!result.IsSuccess)
-                throw new ConsumerFaultException(result.Message); // Cause to publish Fault<OwnerProfileUpdated> message
+                throw new MessageConsumerFaultException(result.Message); // Cause to publish Fault<OwnerProfileUpdated> message
         }
     }
 }

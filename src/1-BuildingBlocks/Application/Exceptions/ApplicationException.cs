@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Domain.Exceptions;
+﻿using TaskoMask.BuildingBlocks.Contracts.Exceptions;
 
 namespace TaskoMask.BuildingBlocks.Application.Exceptions
 {
@@ -6,7 +6,7 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class ApplicationException : DomainException
+    public class ApplicationException : ManagedException
     {
         #region Ctors
 

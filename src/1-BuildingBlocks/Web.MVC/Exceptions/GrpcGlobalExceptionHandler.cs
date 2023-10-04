@@ -1,5 +1,6 @@
 using Grpc.Core;
 using Grpc.Core.Interceptors;
+using Microsoft.Extensions.Logging;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions
 {
@@ -8,6 +9,13 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions
     /// </summary>
     public class GrpcGlobalExceptionHandler : Interceptor
     {
+        private readonly ILogger _logger;
+
+        public GrpcGlobalExceptionHandler(ILogger logger)
+        {
+            this._logger = logger;
+        }
+
         public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(
             TRequest request,
             ServerCallContext context,
@@ -19,6 +27,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions
             }
             catch (Exception exception)
             {
+                _logger.LogError(exception, exception.Message);
+
                 throw new RpcException(new Status(StatusCode.Cancelled, exception.Message));
             }
         }

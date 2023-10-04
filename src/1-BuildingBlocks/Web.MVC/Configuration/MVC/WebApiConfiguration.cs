@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MonoApi.Services.Afrr.Activations.Api.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
@@ -55,6 +55,9 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseGlobalExceptionHandler();
+
+
             app.UseSwaggerPreConfigured();
 
             app.UseHttpsRedirection();
@@ -76,12 +79,20 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
         /// <summary>
         /// Prevent auto validate on model binding
         /// </summary>
-        private static IMvcBuilder WithPreventAutoValidation(this IMvcBuilder builder)
+        private static void WithPreventAutoValidation(this IMvcBuilder builder)
         {
-            return builder.ConfigureApiBehaviorOptions(options =>
+            builder.ConfigureApiBehaviorOptions(options =>
                   {
                       options.SuppressModelStateInvalidFilter = true;
                   });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void UseGlobalExceptionHandler(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<HttpGlobalExceptionHandler>();
         }
     }
 }

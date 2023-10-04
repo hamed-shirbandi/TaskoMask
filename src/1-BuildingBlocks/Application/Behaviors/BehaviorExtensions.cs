@@ -6,7 +6,7 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {
-    public static class BehaviorsExtensions
+    public static class BehaviorExtensions
     {
 
 

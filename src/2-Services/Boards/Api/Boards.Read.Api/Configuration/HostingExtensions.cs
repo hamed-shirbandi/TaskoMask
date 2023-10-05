@@ -2,10 +2,9 @@ using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
-using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DI;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+using TaskoMask.BuildingBlocks.Web.Grpc.Configuration;
 
 namespace TaskoMask.Services.Boards.Read.Api.Configuration
 {
@@ -24,10 +23,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Configuration
 
             builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
-            builder.Services.AddGrpc(options =>
-            {
-                options.Interceptors.Add<GrpcExceptionInterceptor>();
-            });
+            builder.Services.AddGrpcPreConfigured();
 
             builder.Services.AddGrpcClients(builder.Configuration);
 

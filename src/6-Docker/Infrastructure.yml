@@ -1,3 +1,4 @@
+---
 #----------------------------------------------------------------------------------
 #                                                                                  |
 # If you want to run or debug some clients or services you need to first make the  |
@@ -5,17 +6,16 @@
 #                                                                                  |
 # Just run the below command through CLI and then the environment is ready:        |
 #                                                                                  |
-# ...\TaskoMask\src\6-Docker> docker-compose -f Infrastucture.yml up -d            |
+# ...\TaskoMask\src\6-Docker> docker-compose -f Infrastructure.yml up -d            |
 #                                                                                  |
-# For more informition go to releated the documentation on GitHub:                 |
+# For more informition go to the releated documentation on GitHub:                 |
 #                                                                                  |
 # https://github.com/hamed-shirbandi/TaskoMask/wiki/Development-Setup              |
 #----------------------------------------------------------------------------------
 
-version: '3.4'
+version: "3.4"
 
 services:
-
   seq:
     container_name: seq
     image: datalust/seq
@@ -25,6 +25,8 @@ services:
       - 5341:5341
     volumes:
       - seq:/data
+    environment:
+      ACCEPT_EULA: "Y"
 
   redis:
     container_name: redis
@@ -42,15 +44,16 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - mongo:/data/db   
+      - mongo:/data/db
 
   sql:
     container_name: sql
     image: mcr.microsoft.com/mssql/server
     restart: unless-stopped
+    user: root
     environment:
-        SA_PASSWORD: "Your_password123"
-        ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Your_pass_!@2#33"
+      ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
     volumes:
@@ -64,7 +67,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     volumes:
-      - rabbitmq:/var/lib/rabbitmq/mnesia/   
+      - rabbitmq:/var/lib/rabbitmq/mnesia/
 
 volumes:
   redis:
@@ -72,4 +75,3 @@ volumes:
   seq:
   sql:
   rabbitmq:
-

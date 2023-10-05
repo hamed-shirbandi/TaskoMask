@@ -4,9 +4,9 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions
     /// <summary>
     /// 
     /// </summary>
-    public class ConsumerFaultException : Exception
+    public class MessageConsumerFaultException : Exception
     {
-        public ConsumerFaultException(string message): base(message)
+        public MessageConsumerFaultException(string message): base(message)
         {
         }
 

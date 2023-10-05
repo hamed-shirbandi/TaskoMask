@@ -672,3 +672,4 @@ fabric.properties
 **/wwwroot/bundled
 ocelot.json
 /src/2-Services/Identity/Api/Identity.Api/keys
+/src/6-Docker/mssqldata/Entropy.bin

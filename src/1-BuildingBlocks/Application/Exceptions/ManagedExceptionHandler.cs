@@ -1,38 +1,38 @@
 ﻿using TaskoMask.BuildingBlocks.Application.Notifications;
-using MediatR;
 using MediatR.Pipeline;
 using System.Threading;
 using System.Threading.Tasks;
-using TaskoMask.BuildingBlocks.Domain.Exceptions;
+using Microsoft.Extensions.Logging;
+using TaskoMask.BuildingBlocks.Contracts.Exceptions;
+using System.Text.Json;
 
 namespace TaskoMask.BuildingBlocks.Application.Exceptions
 {
     /// <summary>
-    /// 
+    /// Handle all managed exceptions (DomainException,ApplicationException,ValidationException)
     /// </summary>
-    public class ApplicationExceptionsHandler<TRequest, TResponse, TException>
-        : IRequestExceptionHandler<TRequest, TResponse, TException> where TException : DomainException
+    public class ManagedExceptionHandler<TRequest, TResponse, TException>
+        : IRequestExceptionHandler<TRequest, TResponse, TException> where TException : ManagedException
     {
         #region Fields
 
 
         private readonly INotificationHandler _notifications;
-
+        private readonly ILogger<ManagedExceptionHandler<TRequest, TResponse, TException>> _logger;
 
         #endregion
-
 
         #region Ctors
 
 
-        public ApplicationExceptionsHandler(INotificationHandler notifications)
+        public ManagedExceptionHandler(INotificationHandler notifications, ILogger<ManagedExceptionHandler<TRequest, TResponse, TException>> logger)
         {
             _notifications = notifications;
+            this._logger = logger;
         }
 
 
         #endregion
-
 
         #region Handler
 
@@ -45,25 +45,11 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
         {
             var exceptionType = exception.GetType();
 
-            //notification exception error message if exist
+            //notify exception message if any
             if (!string.IsNullOrEmpty(exception.Message))
                 _notifications.Add(exceptionType.Name, exception.Message);
 
-
-            if (exceptionType == typeof(ApplicationException))
-            {
-                //log ApplicationException ...
-            }
-
-            else if (exceptionType == typeof(ValidationException))
-            {
-                //log ValidationException ...
-            }
-
-            else if (exceptionType == typeof(DomainException))
-            {
-                //log DomainException ...
-            }
+            _logger.LogWarning(exception, $"request : {JsonSerializer.Serialize(request)}");
 
             state.SetHandled(default);
 

@@ -25,6 +25,8 @@ services:
       - 5341:5341
     volumes:
       - seq:/data
+    environment:
+      ACCEPT_EULA: "Y"
 
   redis:
     container_name: redis
@@ -48,8 +50,9 @@ services:
     container_name: sql
     image: mcr.microsoft.com/mssql/server
     restart: unless-stopped
+    user: root
     environment:
-      SA_PASSWORD: "Your_password123"
+      SA_PASSWORD: "Your_pass_!@2#33"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"

@@ -18,14 +18,14 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
 
 
         private readonly INotificationHandler _notifications;
-        private readonly ILogger _logger;
+        private readonly ILogger<UnmanagedExceptionHandler<TRequest, TResponse, TException>> _logger;
 
         #endregion
 
         #region Ctors
 
 
-        public UnmanagedExceptionHandler(INotificationHandler notifications, ILogger logger)
+        public UnmanagedExceptionHandler(INotificationHandler notifications, ILogger<UnmanagedExceptionHandler<TRequest, TResponse, TException>> logger)
         {
             _notifications = notifications;
             this._logger = logger;

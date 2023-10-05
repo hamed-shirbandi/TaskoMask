@@ -7,9 +7,9 @@ namespace MonoApi.Services.Afrr.Activations.Api.Helpers;
 
 public class HttpGlobalExceptionHandler : IMiddleware
 {
-    private readonly ILogger _logger;
+    private readonly ILogger<HttpGlobalExceptionHandler> _logger;
 
-    public HttpGlobalExceptionHandler(ILogger logger)
+    public HttpGlobalExceptionHandler(ILogger<HttpGlobalExceptionHandler> logger)
     {
         this._logger = logger;
     }

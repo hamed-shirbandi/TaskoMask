@@ -120,7 +120,7 @@ services:
       RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
-      dockerfile: src/2-Services/Owners/Read/Api/Owners.Write.Api/Dockerfile
+      dockerfile: src/2-Services/Owners/Read/Api/Owners.Read.Api/Dockerfile
     ports:
       - 5020:80
       - 5021:443

@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "src\3-ApiGate
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "src\3-ApiGateways\UserPanel\Aggregator\Aggregator.csproj", "{7ED1857A-DF8A-4289-95CC-D8943BBEB345}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "src\6-Docker\docker-compose.dcproj", "{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "src\7-Docker\docker-compose.dcproj", "{1D9C2F8D-A17E-476C-B458-7F9C046F5A25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{3C1EE73E-D1FB-4AA8-A6C8-3D999236CCCB}"
 EndProject

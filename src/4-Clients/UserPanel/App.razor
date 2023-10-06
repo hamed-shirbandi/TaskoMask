@@ -1,4 +1,3 @@
-@using TaskoMask.Clients.UserPanel.Shared
 
 <CascadingBlazoredModal FocusFirstElement="false" ContentScrollable="true" DisableBackgroundCancel="true">
     <CascadingAuthenticationState>
@@ -21,7 +20,7 @@
                         </section>
                     </Authorizing>
                     <NotAuthorized>
-                        <LoginRedirect></LoginRedirect>
+                        <TaskoMask.Clients.UserPanel.Shared.LoginRedirect></TaskoMask.Clients.UserPanel.Shared.LoginRedirect>
                     </NotAuthorized>
                 </AuthorizeRouteView>
             </Found>

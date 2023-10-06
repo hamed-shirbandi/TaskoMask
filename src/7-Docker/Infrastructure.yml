@@ -6,7 +6,7 @@
 #                                                                                  |
 # Just run the below command through CLI and then the environment is ready:        |
 #                                                                                  |
-# ...\TaskoMask\src\6-Docker> docker-compose -f Infrastructure.yml up -d            |
+# ...\TaskoMask\src\7-Docker> docker-compose -f Infrastructure.yml up -d            |
 #                                                                                  |
 # For more informition go to the releated documentation on GitHub:                 |
 #                                                                                  |

@@ -1,6 +1,7 @@
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions
 {
@@ -27,7 +28,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, exception.Message);
+                _logger.LogError(exception, $"request : {JsonSerializer.Serialize(request)}");
 
                 throw new RpcException(new Status(StatusCode.Cancelled, exception.Message));
             }

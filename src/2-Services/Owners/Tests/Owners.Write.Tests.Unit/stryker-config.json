@@ -12,6 +12,7 @@
     ],
     "reporters": [
       "html",
+      "dashboard",
       "progress"
     ],
     "project-info": {

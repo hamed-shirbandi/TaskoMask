@@ -20,6 +20,4 @@ jobs:
         run: ./build.ps1 RestoreDotNetTool --skip
       - name: Mutation Test
         working-directory: ./src/2-Services/Identity/Tests/Identity.Tests.Unit
-        run: dotnet stryker --reporter dashboard
-        env:
-          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+        run: dotnet stryker --reporter dashboard --dashboard-api-key 8dddccf5-538c-4388-ada2-791a98293fe2

@@ -26,7 +26,7 @@ class Build : NukeBuild
     readonly Solution Solution;
 
     [Parameter]
-    AbsolutePath TestResultDirectory = RootDirectory + "/Artifacts/Test-Results/";
+    AbsolutePath TestResultDirectory = RootDirectory + "/.nuke/Artifacts/Test-Results/";
 
     Target Information => _ => _
         .Executes(() =>

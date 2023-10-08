@@ -12,8 +12,7 @@
     ],
     "reporters": [
       "html",
-      "progress",
-      "dashboard"
+      "progress"
     ],
     "project-info": {
       "module": "TaskoMask",

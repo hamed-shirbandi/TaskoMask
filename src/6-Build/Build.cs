@@ -29,7 +29,6 @@ class Build : NukeBuild
     AbsolutePath TestResultDirectory = RootDirectory + "/Artifacts/Test-Results/";
 
     Target Information => _ => _
-        .Before(Preparation)
         .Executes(() =>
         {
             Log.Information($"Solution path : {Solution}");
@@ -43,6 +42,13 @@ class Build : NukeBuild
         .Executes(() =>
         {
             TestResultDirectory.CreateOrCleanDirectory();
+        });
+
+    Target RestoreDotNetTool => _ => _
+        .DependsOn(RunUnitTests)
+        .Executes(() =>
+        {
+            DotNet(arguments: "tool restore");
         });
 
     Target Clean => _ => _
@@ -91,14 +97,20 @@ class Build : NukeBuild
                     .SetCoverletOutput(TestResultDirectory + $"{z.Name}.xml")));
         });
 
-
     Target RunMutationTests => _ => _
-    .DependsOn(RunUnitTests)
-    .Executes(() =>
-    {
-        var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith(".Tests.Unit"));
+        .DependsOn(RunUnitTests, RestoreDotNetTool)
+        .Executes(() =>
+        {
+            //It uses dashboard report for CI
+            string report = "--reporter dashboard";
 
-        foreach (var testProject in testProjects)
-           DotNet(workingDirectory: testProject.Directory, arguments: "stryker --since");
-    });
+            //It uses reports specified in reports section in stryker-config.json
+            if (IsLocalBuild)
+                report = "";
+
+            var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith(".Tests.Unit"));
+
+            foreach (var testProject in testProjects)
+                DotNet(workingDirectory: testProject.Directory, arguments: $"stryker --since {report}");
+        });
 }

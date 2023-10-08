@@ -110,6 +110,6 @@ class Build : NukeBuild
             var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith(".Tests.Unit"));
 
             foreach (var testProject in testProjects)
-                DotNet(workingDirectory: testProject.Directory, arguments: $"dotnet-stryker {reporter}");
+                DotNet(workingDirectory: testProject.Directory, arguments: $"stryker {reporter}");
         });
 }

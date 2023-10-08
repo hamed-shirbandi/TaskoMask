@@ -18,6 +18,10 @@
       "module": "TaskoMask",
       "name": "github.com/hamed-shirbandi/taskomask",
       "version": "master"
+    },
+    "since": {
+      "target": "master",
+      "enabled": true
     }
   }
 }

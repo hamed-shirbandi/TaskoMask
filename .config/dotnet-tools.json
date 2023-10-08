@@ -1,0 +1,8 @@
+{
+  "dotnet-stryker": {
+    "version": "3.10.0",
+    "commands": [
+      "dotnet-stryker"
+    ]
+  }
+}

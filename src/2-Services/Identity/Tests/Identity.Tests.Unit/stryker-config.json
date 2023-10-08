@@ -1,0 +1,18 @@
+{
+  "stryker-config": {
+    "solution": "../../../../../TaskoMask.sln",
+    "project": "Identity.Api.csproj",
+    "thresholds": {
+      "high": 90,
+      "low": 60,
+      "break": 30
+    },
+    "mutate": [
+      "**/*UseCase.cs"
+    ],
+    "reporters": [
+      "html",
+      "progress"
+    ]
+  }
+}

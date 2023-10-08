@@ -2,21 +2,25 @@ name: build
 
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
   push:
-    branches: [ "master" ]
-
+    branches: ["master"]
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
-    - name: Run nuke build
-      run: ./build.ps1
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      - name: Build
+        run: ./build.ps1 Compile
+      - name: Unit Test
+        run: ./build.ps1 RunUnitTests --skip Compile
+      - name: Mutation Test
+        run: ./build.ps1 RunMutationTests --skip RunUnitTests
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}

@@ -76,6 +76,8 @@
               "Information",
               "Preparation",
               "Restore",
+              "RestoreDotNetTool",
+              "RunMutationTests",
               "RunUnitTests"
             ]
           }
@@ -95,6 +97,8 @@
               "Information",
               "Preparation",
               "Restore",
+              "RestoreDotNetTool",
+              "RunMutationTests",
               "RunUnitTests"
             ]
           }

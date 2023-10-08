@@ -22,6 +22,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Boards.Write.Tests.Base\Boards.Write.Tests.Base.csproj" />
+		<ProjectReference Include="..\..\Api\Boards.Write.Api\Boards.Write.Api.csproj" />
 	</ItemGroup>
 
 </Project>

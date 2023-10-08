@@ -1,0 +1,23 @@
+{
+  "stryker-config": {
+    "solution": "../../../../../TaskoMask.sln",
+    "project": "Owners.Write.Api.csproj",
+    "thresholds": {
+      "high": 90,
+      "low": 60,
+      "break": 30
+    },
+    "mutate": [
+      "**/*UseCase.cs"
+    ],
+    "reporters": [
+      "html",
+      "progress"
+    ],
+    "project-info": {
+      "module": "TaskoMask",
+      "name": "github.com/hamed-shirbandi/taskomask",
+      "version": "master"
+    }
+  }
+}

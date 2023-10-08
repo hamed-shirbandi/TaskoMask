@@ -14,11 +14,10 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.Tools.NuGet.NuGetTasks;
 using static Nuke.Common.Tools.NuGet.NuGetPackSettingsExtensions;
 using Nuke.Common.IO;
-using Nuke.Common.Utilities.Collections;
 
 class Build : NukeBuild
 {
-    public static int Main() => Execute<Build>(x => x.RunUnitTests);
+    public static int Main() => Execute<Build>(x => x.RunMutationTests);
 
     [Parameter]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
@@ -27,10 +26,9 @@ class Build : NukeBuild
     readonly Solution Solution;
 
     [Parameter]
-    AbsolutePath TestResultDirectory = RootDirectory + "/Artifacts/Test-Results/";
+    AbsolutePath TestResultDirectory = RootDirectory + "/.nuke/Artifacts/Test-Results/";
 
     Target Information => _ => _
-        .Before(Preparation)
         .Executes(() =>
         {
             Log.Information($"Solution path : {Solution}");
@@ -44,6 +42,12 @@ class Build : NukeBuild
         .Executes(() =>
         {
             TestResultDirectory.CreateOrCleanDirectory();
+        });
+
+    Target RestoreDotNetTool => _ => _
+        .Executes(() =>
+        {
+            DotNet(arguments: "tool restore");
         });
 
     Target Clean => _ => _
@@ -90,5 +94,22 @@ class Build : NukeBuild
                     .SetProjectFile(z)
                     .AddLoggers($"trx;LogFileName={z.Name}.trx")
                     .SetCoverletOutput(TestResultDirectory + $"{z.Name}.xml")));
+        });
+
+    Target RunMutationTests => _ => _
+        .DependsOn(RunUnitTests,RestoreDotNetTool)
+        .Executes(() =>
+        {
+            //It uses dashboard report for CI
+            string report = "--reporter dashboard";
+
+            //It uses reports specified in reports section in stryker-config.json
+            if (IsLocalBuild)
+                report = "";
+
+            var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith(".Tests.Unit"));
+
+            foreach (var testProject in testProjects)
+                DotNet(workingDirectory: testProject.Directory, arguments: $"stryker {report}");
         });
 }

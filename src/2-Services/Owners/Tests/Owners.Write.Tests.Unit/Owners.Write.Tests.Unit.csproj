@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Owners.Write.Tests.Base\Owners.Write.Tests.Base.csproj" />
+		<ProjectReference Include="..\..\Api\Owners.Write.Api\Owners.Write.Api.csproj" />
 	</ItemGroup>
 
 </Project>

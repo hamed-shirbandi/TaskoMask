@@ -16,11 +16,11 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-      - name: build
+      - name: Build
         run: ./build.ps1 Compile
-      - name: unit test
-        run: ./build.ps1 RunUnitTests
-      - name: mutation test
-        run: ./build.ps1 RunMutationTests
+      - name: Unit Test
+        run: ./build.ps1 RunUnitTests --skip Compile
+      - name: Mutation Test
+        run: ./build.ps1 RunMutationTests --skip RunUnitTests
         env:
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}

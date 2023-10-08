@@ -45,7 +45,6 @@ class Build : NukeBuild
         });
 
     Target RestoreDotNetTool => _ => _
-        .DependsOn(RunUnitTests)
         .Executes(() =>
         {
             DotNet(arguments: "tool restore");
@@ -98,7 +97,7 @@ class Build : NukeBuild
         });
 
     Target RunMutationTests => _ => _
-        .DependsOn(RunUnitTests, RestoreDotNetTool)
+        .DependsOn(RunUnitTests,RestoreDotNetTool)
         .Executes(() =>
         {
             //It uses dashboard report for CI

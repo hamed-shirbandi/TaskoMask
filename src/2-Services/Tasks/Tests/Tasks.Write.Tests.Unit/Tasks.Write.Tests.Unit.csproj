@@ -22,6 +22,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Tasks.Write.Tests.Base\Tasks.Write.Tests.Base.csproj" />
+		<ProjectReference Include="..\..\Api\Tasks.Write.Api\Tasks.Write.Api.csproj" />
 	</ItemGroup>
 
 </Project>

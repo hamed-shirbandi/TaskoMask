@@ -1,0 +1,12 @@
+{
+  "stryker-config": {
+    "solution": "TaskoMask.sln",
+    "reporters": [
+      "html",
+      "progress"
+    ],
+    "mutate": [
+      "**/*.Tests.Unit/*"
+    ]
+  }
+}

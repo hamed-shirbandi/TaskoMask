@@ -14,11 +14,10 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.Tools.NuGet.NuGetTasks;
 using static Nuke.Common.Tools.NuGet.NuGetPackSettingsExtensions;
 using Nuke.Common.IO;
-using Nuke.Common.Utilities.Collections;
 
 class Build : NukeBuild
 {
-    public static int Main() => Execute<Build>(x => x.RunUnitTests);
+    public static int Main() => Execute<Build>(x => x.RunMutationTests);
 
     [Parameter]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
@@ -91,4 +90,15 @@ class Build : NukeBuild
                     .AddLoggers($"trx;LogFileName={z.Name}.trx")
                     .SetCoverletOutput(TestResultDirectory + $"{z.Name}.xml")));
         });
+
+
+    Target RunMutationTests => _ => _
+    //.DependsOn(RunUnitTests)
+    .Executes(() =>
+    {
+        var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith(".Tests.Unit"));
+
+        foreach (var testProject in testProjects)
+           DotNet(workingDirectory: testProject.Directory, arguments: "stryker --since");
+    });
 }

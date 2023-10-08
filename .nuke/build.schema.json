@@ -76,6 +76,7 @@
               "Information",
               "Preparation",
               "Restore",
+              "RunMutationTests",
               "RunUnitTests"
             ]
           }
@@ -95,6 +96,7 @@
               "Information",
               "Preparation",
               "Restore",
+              "RunMutationTests",
               "RunUnitTests"
             ]
           }

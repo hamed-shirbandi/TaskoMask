@@ -12,7 +12,13 @@
     ],
     "reporters": [
       "html",
-      "progress"
-    ]
+      "progress",
+      "dashboard"
+    ],
+    "project-info": {
+      "module": "TaskoMask",
+      "name": "github.com/hamed-shirbandi/taskomask",
+      "version": "master"
+    }
   }
 }

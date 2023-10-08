@@ -93,7 +93,7 @@ class Build : NukeBuild
 
 
     Target RunMutationTests => _ => _
-    //.DependsOn(RunUnitTests)
+    .DependsOn(RunUnitTests)
     .Executes(() =>
     {
         var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith(".Tests.Unit"));

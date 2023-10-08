@@ -5,7 +5,8 @@
 <p align="left">
 
 [![build and test](https://github.com/hamed-shirbandi/TaskoMask/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/hamed-shirbandi/TaskoMask/actions/workflows/ci.yml)
-  <a href="https://github.com/hamed-shirbandi/TaskoMask/issues">
+[![Mutation testing](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fhamed-shirbandi%2FTaskoMask%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/hamed-shirbandi/TaskoMask/master)
+<a href="https://github.com/hamed-shirbandi/TaskoMask/issues">
   <img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask">
 </a>
  <a href="http://taskomask.ir">

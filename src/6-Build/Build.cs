@@ -100,16 +100,16 @@ class Build : NukeBuild
         .DependsOn(RunUnitTests,RestoreDotNetTool)
         .Executes(() =>
         {
-            //It will add dashboard report for CI
-            string report = "--reporter dashboard";
+            //It will add dashboard reporter for CI
+            string reporter = "--reporter dashboard";
 
-            //It just uses the reports specified in reports section in stryker-config.json
+            //It just uses the reporters specified in reporters section in stryker-config.json
             if (IsLocalBuild)
-                report = "";
+                reporter = "";
 
             var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith(".Tests.Unit"));
 
             foreach (var testProject in testProjects)
-                DotNet(workingDirectory: testProject.Directory, arguments: $"dotnet-stryker {report}");
+                DotNet(workingDirectory: testProject.Directory, arguments: $"dotnet-stryker {reporter}");
         });
 }

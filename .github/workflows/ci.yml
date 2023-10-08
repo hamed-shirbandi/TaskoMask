@@ -16,8 +16,11 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-      - name: Tool Restor
-        run: ./build.ps1 RestoreDotNetTool --skip
+      - name: Build
+        run: ./build.ps1 Compile
+      - name: Unit Test
+        run: ./build.ps1 RunUnitTests --skip Compile
       - name: Mutation Test
-        working-directory: ./src/2-Services/Identity/Tests/Identity.Tests.Unit
-        run: dotnet stryker --reporter dashboard --dashboard-api-key 8dddccf5-538c-4388-ada2-791a98293fe2
+        run: ./build.ps1 RunMutationTests --skip RunUnitTests
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}

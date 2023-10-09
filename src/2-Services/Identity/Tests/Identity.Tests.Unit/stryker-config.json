@@ -15,13 +15,13 @@
       "progress"
     ],
     "project-info": {
-      "module": "TaskoMask",
+      "module": "TaskoMask-Identity",
       "name": "github.com/hamed-shirbandi/TaskoMask",
       "version": "master"
     },
     "since": {
       "target": "master",
-      "enabled": true
+      "enabled": false
     }
   }
 }

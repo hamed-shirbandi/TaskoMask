@@ -87,7 +87,7 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
     - API Testing
     - UI Testing
     - Acceptance Testing
-    - Mutation Testing
+    - Mutation Testing (check [dashboard reporter](https://dashboard.stryker-mutator.io/reports/github.com/hamed-shirbandi/TaskoMask/master#mutant))
     - [Screenplay Pattern](https://serenity-js.org/handbook/design/screenplay-pattern.html#:~:text=The%20Screenplay%20Pattern%20is%20a,testing%20and%20software%20engineering%20habits.)
     - Well written Acceptance Tests organized in :
         - [Business Rule Layer](https://www.oreilly.com/library/view/bdd-in-action/9781617291654/)
@@ -215,6 +215,7 @@ Here is a comprehensive list of the tools and technologies we have employed to i
       - [Feature Branch Workflow](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/Branch-Conventions.md)
       - [Conventional Commits](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/Commit-Conventions.md)
       - [GitHub Actions](https://github.com/hamed-shirbandi/TaskoMask/blob/master/.github/workflows/ci.yml)
+      -  Mutation testing [dashboard reporter](https://dashboard.stryker-mutator.io/reports/github.com/hamed-shirbandi/TaskoMask/master#mutant)
       -	Caching Behavior using Pipeline Pattern
       -	Validation Behavior using Pipeline Pattern (Check both Fluent Validation and Data Annotation Validation)
       -	Event Storing Behavior using Pipeline Pattern
@@ -259,6 +260,7 @@ This project is authored by [Hamed Shirbandi](https://github.com/hamed-shirbandi
     - [x] Implement build system using nuke 
     - [x] Implement Mutation Testing using Stryker
     - [x] Integrate CI with nuke and stryker
+    - [x] Mutation testing [dashboard reporter](https://dashboard.stryker-mutator.io/reports/github.com/hamed-shirbandi/TaskoMask/master#mutant)
 *	### Sep, 2023
     - [x] Global Code Refactoring 
     - [x] Handle Managed and Unmanaged Exceptions

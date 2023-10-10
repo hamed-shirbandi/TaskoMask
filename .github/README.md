@@ -82,13 +82,14 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
       <summary>click for details</summary>
 
 
-    - [Unit Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Unit) : xUnit, FluenAssertion, NSubstitute
-    - [Integration Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Integration)
-    - [API Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance/Tests.Acceptance.API)
-    - [UI Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance/Tests.Acceptance.UI): Selenium
-    - [Acceptance Testing](https://github.com/hamed-shirbandi/TaskoMask/tree/master/Src/Tests/Acceptance) : Gherkin, SpecFlow
-    - [Screenplay Pattern](https://serenity-js.org/handbook/design/screenplay-pattern.html#:~:text=The%20Screenplay%20Pattern%20is%20a,testing%20and%20software%20engineering%20habits.) : Suzianna
-    - Well written tests organized in :
+    - Unit Testing
+    - Integration Testing
+    - API Testing
+    - UI Testing
+    - Acceptance Testing
+    - Mutation Testing
+    - [Screenplay Pattern](https://serenity-js.org/handbook/design/screenplay-pattern.html#:~:text=The%20Screenplay%20Pattern%20is%20a,testing%20and%20software%20engineering%20habits.)
+    - Well written Acceptance Tests organized in :
         - [Business Rule Layer](https://www.oreilly.com/library/view/bdd-in-action/9781617291654/)
         - [Business Flow Layer](https://www.oreilly.com/library/view/bdd-in-action/9781617291654/)
         - [Technical Layer](https://www.oreilly.com/library/view/bdd-in-action/9781617291654/)
@@ -117,9 +118,9 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
       <summary>click for details</summary>
 
 
-    - Rich Domain Model (for core domain)
-    - Anemic Domain Model (for less important subdomains)
+    - Rich Domain Model
     - Aggregate
+    - Entity
     - Value Object
     - Domain Event
     - Domain Service
@@ -177,6 +178,8 @@ Here is a comprehensive list of the tools and technologies we have employed to i
       - [AspNetCore.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) : ASP.NET Core Health Check
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/) : easily paging in ASP.NET Core MVC
       -	[EasyCaching](https://github.com/dotnetcore/EasyCaching) : caching library
+      -	[stryker-net](https://github.com/stryker-mutator/stryker-net): Mutation testing for .NET
+      -	[nuke](https://github.com/nuke-build/nuke): Build System for C#/.NET
     </details>
   * ### Front-end:
     <details>
@@ -208,13 +211,17 @@ Here is a comprehensive list of the tools and technologies we have employed to i
       <summary>click for details</summary>
 
 
+      - Continuous Integration
+      - [Feature Branch Workflow](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/Branch-Conventions.md)
+      - [Conventional Commits](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/Commit-Conventions.md)
+      - [GitHub Actions](https://github.com/hamed-shirbandi/TaskoMask/blob/master/.github/workflows/ci.yml)
       -	Caching Behavior using Pipeline Pattern
       -	Validation Behavior using Pipeline Pattern (Check both Fluent Validation and Data Annotation Validation)
       -	Event Storing Behavior using Pipeline Pattern
       - Exception Handling
       -	Cookie Authentication
       -	JWT Authentication
-      -	Role Permission Base User Management without ASP.NET Identity
+      -	Role Permission Base User Management without ASP.NET Identity (check Domain documentation)
       -	Swagger UI with JWT Support
     </details>
 
@@ -247,6 +254,15 @@ This project is authored by [Hamed Shirbandi](https://github.com/hamed-shirbandi
   <details>
     <summary>2023</summary>
 
+
+*	### Oct, 2023
+    - [x] Implement build system using nuke 
+    - [x] Implement Mutation Testing using Stryker
+    - [x] Integrate CI with nuke and stryker
+*	### Sep, 2023
+    - [x] Global Code Refactoring 
+    - [x] Handle Managed and Unmanaged Exceptions
+    - [x] Log Managed and Unmanaged Exceptions 
 *	### Feb, 2023
     - [x] Simplify Write Service Architecture 
     - [x] Implement Unit Tests for Task Services

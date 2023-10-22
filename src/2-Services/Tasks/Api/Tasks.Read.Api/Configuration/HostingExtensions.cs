@@ -7,6 +7,7 @@ using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Web.Grpc.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Configuration
 {
@@ -37,12 +38,12 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app)
+        public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
         {
 
             app.UseSerilogRequestLogging();
 
-            app.UseWebApiPreConfigured(app.Environment);
+            app.UseWebApiPreConfigured(app.Environment, configuration);
 
             app.Services.InitialDatabase();
 

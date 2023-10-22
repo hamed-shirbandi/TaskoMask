@@ -31,12 +31,12 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app)
+        public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
         {
 
             app.UseSerilogRequestLogging();
 
-            app.UseWebApiPreConfigured(app.Environment);
+            app.UseWebApiPreConfigured(app.Environment, configuration);
 
             app.UseEndpoints(endpoints =>
             {

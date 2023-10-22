@@ -3,6 +3,7 @@ using MMLib.SwaggerForOcelot.DependencyInjection;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
 namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
@@ -32,6 +33,8 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
 
             builder.Services.AddCors();
 
+            builder.Services.AddMetrics(builder.Configuration);
+
             builder.Services.AddAuthentication()
              .AddJwtBearer(builder.Configuration["AuthenticationProviderKey"], x =>
              {
@@ -47,7 +50,7 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app)
+        public static WebApplication ConfigurePipeline(this WebApplication app,IConfiguration configuration)
         {
             app.UseSerilogRequestLogging();
 
@@ -62,6 +65,8 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
             .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader());
+
+            app.UseMetrics(configuration);
 
             app.UseOcelot().Wait();
 

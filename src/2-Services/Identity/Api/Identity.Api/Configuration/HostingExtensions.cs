@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
@@ -21,7 +22,7 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 
             builder.AddCustomSerilog();
 
-            builder.Services.AddRazorPagesPreConfigured();
+            builder.Services.AddRazorPagesPreConfigured(builder.Configuration);
 
             builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType:typeof(OwnerRegisteredConsumer));
 
@@ -39,14 +40,14 @@ namespace TaskoMask.Services.Identity.Api.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app)
+        public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
         {
 
             app.UseSerilogRequestLogging();
 
             app.UseIdentityServer();
 
-            app.UseRazorPagesPreConfigured(app.Environment);
+            app.UseRazorPagesPreConfigured(app.Environment, configuration);
 
             app.Services.InitialDatabasesAndSeedEssentialData();
 

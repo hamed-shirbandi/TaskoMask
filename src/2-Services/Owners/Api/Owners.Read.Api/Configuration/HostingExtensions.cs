@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DI;
 using TaskoMask.BuildingBlocks.Web.Grpc.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
@@ -35,12 +36,12 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app)
+        public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
         {
 
             app.UseSerilogRequestLogging();
 
-            app.UseWebApiPreConfigured(app.Environment);
+            app.UseWebApiPreConfigured(app.Environment, configuration);
 
             app.Services.InitialDatabase();
 

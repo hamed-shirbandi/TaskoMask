@@ -4,6 +4,7 @@ using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
 using TaskoMask.Services.Boards.Write.Api.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.DbContext;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 
 namespace TaskoMask.Services.Boards.Write.Api.Configuration
 {
@@ -30,12 +31,12 @@ namespace TaskoMask.Services.Boards.Write.Api.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app)
+        public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
         {
 
             app.UseSerilogRequestLogging();
 
-            app.UseWebApiPreConfigured(app.Environment);
+            app.UseWebApiPreConfigured(app.Environment, configuration);
 
             app.Services.InitialDatabasesAndSeedEssentialData();
 

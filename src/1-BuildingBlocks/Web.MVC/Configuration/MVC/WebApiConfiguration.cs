@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MonoApi.Services.Afrr.Activations.Api.Helpers;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
@@ -41,6 +43,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             services.AddJwtAuthentication(configuration);
 
             services.AddCors();
+
+            services.AddMetrics(configuration);
         }
 
 
@@ -48,7 +52,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env,IConfiguration configuration)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 
@@ -68,6 +72,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+
+            app.UseMetrics(configuration);
 
             app.UseAuthentication();
 

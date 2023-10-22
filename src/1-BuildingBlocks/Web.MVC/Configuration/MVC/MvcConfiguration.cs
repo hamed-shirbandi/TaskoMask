@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Prometheus;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
@@ -17,7 +20,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static void AddMvcPreConfigured(this IServiceCollection services)
+        public static void AddMvcPreConfigured(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -28,6 +31,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             services.AddAuthenticatedUserService();
 
             services.AddWebServerOptions();
+
+            services.AddMetrics(configuration);
         }
 
 
@@ -35,7 +40,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static void UseMvcPreConfigured(this IApplicationBuilder app , IWebHostEnvironment env)
+        public static void UseMvcPreConfigured(this IApplicationBuilder app , IWebHostEnvironment env, IConfiguration configuration)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 
@@ -50,6 +55,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseMetrics(configuration);
 
             app.UseAuthentication();
 

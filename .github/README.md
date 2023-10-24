@@ -3,21 +3,12 @@
 
   
 <p align="left">
-
 [![build and test](https://github.com/hamed-shirbandi/TaskoMask/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/hamed-shirbandi/TaskoMask/actions/workflows/ci.yml)
 [![Mutation testing](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fhamed-shirbandi%2FTaskoMask%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/hamed-shirbandi/TaskoMask/master)
-<a href="https://github.com/hamed-shirbandi/TaskoMask/issues">
-  <img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask">
-</a>
- <a href="http://taskomask.ir">
-  <img src="https://img.shields.io/website?url=http://taskomask.ir">
-</a>
-   <a href="https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE">
- <img src="https://img.shields.io/github/license/hamed-shirbandi/TaskoMask">
-</a>
- <a href="https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors">
-  <img src="https://img.shields.io/github/contributors/hamed-shirbandi/TaskoMask">
-</a>
+<a href="https://github.com/hamed-shirbandi/TaskoMask/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask"></a>
+<a href="http://taskomask.ir"> <img src="https://img.shields.io/website?url=http://taskomask.ir"></a>
+<a href="https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE"><img src="https://img.shields.io/github/license/hamed-shirbandi/TaskoMask"></a>
+<a href="https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors"><img src="https://img.shields.io/github/contributors/hamed-shirbandi/TaskoMask"></a>
 </p>
 
 [TaskoMask](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation) is an open-source task management system built on the .Net framework. The primary objective of this project is to demonstrate the practical application of advanced software development concepts such as DDD (Domain-Driven Design), TDD (Test-Driven Development), BDD (Behavior-Driven Development), and Microservices.
@@ -72,7 +63,7 @@ Here is a comprehensive list of the patterns, principles, approaches, and method
     - [Service discovery](https://microservices.io/patterns/3rd-party-registration.html) : Kubernetes - Consul
     - [Circuit Breaker](https://microservices.io/patterns/reliability/circuit-breaker.html) : Polly
     - [Log aggregation](https://microservices.io/patterns/observability/application-logging.html) : Serilog - Seq
-    - [Application metrics](https://microservices.io/patterns/observability/application-metrics.html) : Opentelemetry-dotnet - Prometheus
+    - [Application metrics](https://microservices.io/patterns/observability/application-metrics.html) : prometheus-net
     - [Distributed tracing](https://microservices.io/patterns/observability/distributed-tracing.html) : Opentelemetry-dotnet - Jaeger
     - [Health check API](https://microservices.io/patterns/observability/health-check-api.html) : AspNetCore.HealthChecks
     - [IDP](https://en.wikipedia.org/wiki/Identity_provider) : DuendeSoftware IdentityServer
@@ -159,6 +150,8 @@ Here is a comprehensive list of the tools and technologies we have employed to i
       - ASP.NET Identity
       -	MongoDB
       -	Redis
+      - Entity Framework
+      - SQL
       - [Ocelot](https://ocelot.readthedocs.io/) : .NET core API Gateway
       - [DuendeSoftware IdentityServer](https://docs.duendesoftware.com/identityserver/v6) : OpenID Connect and OAuth 2.x framework for ASP.NET Core
       - [MassTransit](https://masstransit-project.com/) : a framework on top of message transports such as RabbitMQ 
@@ -176,6 +169,7 @@ Here is a comprehensive list of the tools and technologies we have employed to i
       -	[Swagger](https://www.nuget.org/packages/Swashbuckle.AspNetCore) : expose Swagger JSON endpoints from APIs
       -	[Serilog](https://serilog.net/) : provides diagnostic logging
       - [AspNetCore.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) : ASP.NET Core Health Check
+      - [prometheus-net](https://github.com/prometheus-net/prometheus-net) : .NET library to instrument your code with Prometheus metrics
       -	[MvcPagedList.Core](https://www.nuget.org/packages/MvcPagedList.Core/) : easily paging in ASP.NET Core MVC
       -	[EasyCaching](https://github.com/dotnetcore/EasyCaching) : caching library
       -	[stryker-net](https://github.com/stryker-mutator/stryker-net): Mutation testing for .NET
@@ -257,6 +251,7 @@ This project is authored by [Hamed Shirbandi](https://github.com/hamed-shirbandi
 
 
 *	### Oct, 2023
+    - [x] Instrument with Prometheus metrics 
     - [x] Implement build system using nuke 
     - [x] Implement Mutation Testing using Stryker
     - [x] Integrate CI with nuke and stryker

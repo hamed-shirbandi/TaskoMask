@@ -9,7 +9,6 @@
         "seq": "StartWithoutDebugging",
         "sql": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "monolith-api": "StartWithoutDebugging",
         "owners-read-api": "StartWithoutDebugging",
         "owners-write-api": "StartWithoutDebugging",
         "boards-read-api": "StartWithoutDebugging",

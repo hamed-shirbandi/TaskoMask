@@ -16,7 +16,7 @@ namespace TaskoMask.Clients.Website.Configuration
 
             builder.AddCustomSerilog();
 
-            builder.Services.AddMvcPreConfigured();
+            builder.Services.AddMvcPreConfigured(builder.Configuration);
 
             return builder.Build();
         }
@@ -26,12 +26,12 @@ namespace TaskoMask.Clients.Website.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app)
+        public static WebApplication ConfigurePipeline(this WebApplication app,IConfiguration configuration)
         {
 
             app.UseSerilogRequestLogging();
 
-            app.UseMvcPreConfigured(app.Environment);
+            app.UseMvcPreConfigured(app.Environment, configuration);
 
             app.UseEndpoints(endpoints =>
             {

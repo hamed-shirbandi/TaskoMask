@@ -67,28 +67,6 @@ services:
     volumes:
       - rabbitmq:/var/lib/rabbitmq/mnesia/
       
-  monolith-api:
-    container_name: monolith-api
-    image: ${DOCKER_REGISTRY-}monolith-api
-    restart: on-failure
-    environment:
-      Mongo__Read__Connection: "mongodb://mongo:27017"
-      Mongo__Write__Connection: "mongodb://mongo:27017"
-      Redis__Connection: "redis:6379"
-      RabbitMQ__Host: "rabbitmq"
-    build:
-      context: ../..
-      dockerfile: src/2-Services/Monolith/Api/Monolith.Api/Dockerfile
-    ports:
-      - 5014:80
-      - 5015:443
-    networks:
-      - taskomask-network
-    depends_on:
-      - redis
-      - mongo
-      - rabbitmq
-
   owners-read-api:
     container_name: owners-read-api
     image: ${DOCKER_REGISTRY-}owners-read-api
@@ -122,8 +100,8 @@ services:
       context: ../..
       dockerfile: src/2-Services/Owners/Read/Api/Owners.Read.Api/Dockerfile
     ports:
-      - 5020:80
-      - 5021:443
+      - 5018:80
+      - 5019:443
     networks:
       - taskomask-network
     depends_on:
@@ -143,8 +121,8 @@ services:
       context: ../..
       dockerfile: src/2-Services/Boards/Read/Api/Boards.Read.Api/Dockerfile
     ports:
-      - 5020:80
-      - 5021:443
+      - 5024:80
+      - 5025:443
     networks:
       - taskomask-network
     depends_on:
@@ -164,8 +142,8 @@ services:
       context: ../..
       dockerfile: src/2-Services/Boards/Read/Api/Boards.Write.Api/Dockerfile
     ports:
-      - 5020:80
-      - 5021:443
+      - 5022:80
+      - 5023:443
     networks:
       - taskomask-network
     depends_on:
@@ -185,8 +163,8 @@ services:
       context: ../..
       dockerfile: src/2-Services/Tasks/Read/Api/Tasks.Read.Api/Dockerfile
     ports:
-      - 5020:80
-      - 5021:443
+      - 5028:80
+      - 5029:443
     networks:
       - taskomask-network
     depends_on:
@@ -206,8 +184,8 @@ services:
       context: ../..
       dockerfile: src/2-Services/Tasks/Read/Api/Tasks.Write.Api/Dockerfile
     ports:
-      - 5020:80
-      - 5021:443
+      - 5026:80
+      - 5027:443
     networks:
       - taskomask-network
     depends_on:
@@ -265,7 +243,6 @@ services:
     networks:
       - taskomask-network
     depends_on:
-      - monolith-api
       - owners-read-api
       - owners-write-api
       - boards-read-api

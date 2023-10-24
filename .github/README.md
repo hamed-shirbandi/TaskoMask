@@ -3,13 +3,23 @@
 
   
 <p align="left">
+
 [![build and test](https://github.com/hamed-shirbandi/TaskoMask/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/hamed-shirbandi/TaskoMask/actions/workflows/ci.yml)
 [![Mutation testing](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fhamed-shirbandi%2FTaskoMask%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/hamed-shirbandi/TaskoMask/master)
-<a href="https://github.com/hamed-shirbandi/TaskoMask/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask"></a>
-<a href="http://taskomask.ir"> <img src="https://img.shields.io/website?url=http://taskomask.ir"></a>
-<a href="https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE"><img src="https://img.shields.io/github/license/hamed-shirbandi/TaskoMask"></a>
-<a href="https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors"><img src="https://img.shields.io/github/contributors/hamed-shirbandi/TaskoMask"></a>
+<a href="https://github.com/hamed-shirbandi/TaskoMask/issues">
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask">
+</a>
+<a href="http://taskomask.ir">
+<img src="https://img.shields.io/website?url=http://taskomask.ir">
+</a>
+<a href="https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE">
+<img src="https://img.shields.io/github/license/hamed-shirbandi/TaskoMask">
+</a>
+<a href="https://github.com/hamed-shirbandi/TaskoMask/graphs/contributors">
+<img src="https://img.shields.io/github/contributors/hamed-shirbandi/TaskoMask">
+</a>
 </p>
+
 
 [TaskoMask](https://github.com/hamed-shirbandi/TaskoMask/wiki/User-Guide-Documentation) is an open-source task management system built on the .Net framework. The primary objective of this project is to demonstrate the practical application of advanced software development concepts such as DDD (Domain-Driven Design), TDD (Test-Driven Development), BDD (Behavior-Driven Development), and Microservices.
 

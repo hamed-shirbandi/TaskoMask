@@ -28,7 +28,7 @@ class Build : NukeBuild
     [Parameter]
     AbsolutePath TestResultDirectory = RootDirectory + "/.nuke/Artifacts/Test-Results/";
 
-    Target Information => _ => _
+    Target LogInformation => _ => _
         .Executes(() =>
         {
             Log.Information($"Solution path : {Solution}");
@@ -38,13 +38,13 @@ class Build : NukeBuild
         });
 
     Target Preparation => _ => _
-        .DependsOn(Information)
+        .DependsOn(LogInformation)
         .Executes(() =>
         {
             TestResultDirectory.CreateOrCleanDirectory();
         });
 
-    Target RestoreDotNetTool => _ => _
+    Target RestoreDotNetTools => _ => _
         .Executes(() =>
         {
             DotNet(arguments: "tool restore");
@@ -97,7 +97,7 @@ class Build : NukeBuild
         });
 
     Target RunMutationTests => _ => _
-        .DependsOn(RunUnitTests,RestoreDotNetTool)
+        .DependsOn(RunUnitTests,RestoreDotNetTools)
         .Executes(() =>
         {
             //It will add dashboard reporter for CI

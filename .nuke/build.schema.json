@@ -73,10 +73,10 @@
             "enum": [
               "Clean",
               "Compile",
-              "Information",
+              "LogInformation",
               "Preparation",
               "Restore",
-              "RestoreDotNetTool",
+              "RestoreDotNetTools",
               "RunMutationTests",
               "RunUnitTests"
             ]
@@ -94,10 +94,10 @@
             "enum": [
               "Clean",
               "Compile",
-              "Information",
+              "LogInformation",
               "Preparation",
               "Restore",
-              "RestoreDotNetTool",
+              "RestoreDotNetTools",
               "RunMutationTests",
               "RunUnitTests"
             ]

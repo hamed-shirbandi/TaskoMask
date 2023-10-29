@@ -5,6 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.Services.Identity.Tests.Integration</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Identity.Tests.Integration</RootNamespace>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -4,6 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>TaskoMask.Tests.Acceptance.API</AssemblyName>
 		<RootNamespace>TaskoMask.Tests.Acceptance.API</RootNamespace>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-	  <AssemblyName>TaskoMask.Services.Owners.Write.Tests.Integration</AssemblyName>
-	  <RootNamespace>TaskoMask.Services.Owners.Write.Tests.Integration</RootNamespace>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>TaskoMask.Services.Owners.Write.Tests.Integration</AssemblyName>
+		<RootNamespace>TaskoMask.Services.Owners.Write.Tests.Integration</RootNamespace>
+		<IsPackable>false</IsPackable>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />

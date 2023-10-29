@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
 	  <AssemblyName>TaskoMask.Services.Owners.Write.Tests.Base</AssemblyName>
 	  <RootNamespace>TaskoMask.Services.Owners.Write.Tests.Base</RootNamespace>
+	  <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>

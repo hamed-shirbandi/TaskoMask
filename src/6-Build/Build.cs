@@ -74,8 +74,26 @@ class Build : NukeBuild
                     .SetConfiguration(Configuration));
         });
 
+    Target Lint => _ => _
+    .DependsOn(Compile)
+    .Executes(() =>
+    {
+        DotNet("csharpier .");
+        DotNet("format style --verbosity diagnostic");
+        DotNet("format analyzers --verbosity diagnostic");
+    });
+
+    Target LintCheck => _ => _
+.DependsOn(Compile)
+.Executes(() =>
+{
+    DotNet("csharpier --check .");
+    DotNet("format style --verify-no-changes --verbosity diagnostic");
+    DotNet("format analyzers --verify-no-changes --verbosity diagnostic");
+});
+
     Target RunUnitTests => _ => _
-        .DependsOn(Compile)
+        .DependsOn(LintCheck)
         .Executes(() =>
         {
             var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith("Tests.Unit"));

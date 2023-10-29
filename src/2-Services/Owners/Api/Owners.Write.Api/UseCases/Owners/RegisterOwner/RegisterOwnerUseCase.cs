@@ -13,7 +13,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner
 {
     public class RegiserOwnerUseCase : BaseCommandHandler, IRequestHandler<RegiserOwnerRequest, CommandResult>
-
     {
         #region Fields
 
@@ -25,7 +24,13 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner
         #region Ctors
 
 
-        public RegiserOwnerUseCase(IOwnerAggregateRepository ownerAggregateRepository, IOwnerValidatorService ownerValidatorService, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus,inMemoryBus)
+        public RegiserOwnerUseCase(
+            IOwnerAggregateRepository ownerAggregateRepository,
+            IOwnerValidatorService ownerValidatorService,
+            IMessageBus messageBus,
+            IInMemoryBus inMemoryBus
+        )
+            : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
             _ownerValidatorService = ownerValidatorService;
@@ -38,7 +43,7 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(RegiserOwnerRequest request, CancellationToken cancellationToken)
         {
@@ -49,14 +54,11 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner
             await PublishDomainEventsAsync(owner.DomainEvents);
 
             //Here a SAGA Choreography is started by consuming OwnerRegistered by identity service
-            await PublishIntegrationEventAsync(new OwnerRegistered(owner.Id,owner.Email.Value,request.Password));
+            await PublishIntegrationEventAsync(new OwnerRegistered(owner.Id, owner.Email.Value, request.Password));
 
             return CommandResult.Create(ContractsMessages.Create_Success, owner.Id);
         }
 
-
-
         #endregion
-
     }
 }

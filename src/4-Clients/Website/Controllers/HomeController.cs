@@ -11,10 +11,7 @@ namespace TaskoMask.Clients.Website.Controllers
 
         #region Ctors
 
-        public HomeController()
-        {
-
-        }
+        public HomeController() { }
 
         #endregion
 
@@ -24,18 +21,13 @@ namespace TaskoMask.Clients.Website.Controllers
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IActionResult Index()
         {
             return View();
         }
 
-
-
-
-
         #endregion
-
     }
 }

@@ -9,17 +9,12 @@ namespace TaskoMask.Services.Owners.Write.Tests.Base.TestData
         public string Email { get; private set; }
         public string DisplayName { get; private set; }
 
-
-        private OwnerBuilder()
-        {
-        }
-
+        private OwnerBuilder() { }
 
         public static OwnerBuilder Init()
         {
             return new OwnerBuilder();
         }
-
 
         public OwnerBuilder WithValidatorService(IOwnerValidatorService validatorService)
         {
@@ -27,22 +22,17 @@ namespace TaskoMask.Services.Owners.Write.Tests.Base.TestData
             return this;
         }
 
-
-
         public OwnerBuilder WithEmail(string email)
         {
             Email = email;
             return this;
         }
 
-
         public OwnerBuilder WithDisplayName(string displayName)
         {
             DisplayName = displayName;
             return this;
         }
-
-
 
         public Owner Build()
         {

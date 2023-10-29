@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment
 {
-    public class DeleteCommentRequest: BaseCommand
+    public class DeleteCommentRequest : BaseCommand
     {
         public DeleteCommentRequest(string id)
         {
@@ -14,6 +14,5 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment
 
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Id { get; }
-
     }
 }

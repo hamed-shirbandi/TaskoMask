@@ -17,7 +17,6 @@ using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Tasks;
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
 {
     public class DeleteTaskUseCase : BaseCommandHandler, IRequestHandler<DeleteTaskRequest, CommandResult>
-
     {
         #region Fields
 
@@ -28,7 +27,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
         #region Ctors
 
 
-        public DeleteTaskUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public DeleteTaskUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
         }
@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(DeleteTaskRequest request, CancellationToken cancellationToken)
         {
@@ -72,8 +72,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
             return new TaskDeleted(taskDeletedDomainEvent.Id);
         }
 
-
         #endregion
-
     }
 }

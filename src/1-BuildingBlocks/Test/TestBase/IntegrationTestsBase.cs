@@ -2,7 +2,6 @@
 
 namespace TaskoMask.BuildingBlocks.Test.TestBase
 {
-
     /// <summary>
     /// Here are some tips related to Integration Testing:
     /// -----------------------------------------------------------------------
@@ -28,12 +27,10 @@ namespace TaskoMask.BuildingBlocks.Test.TestBase
     /// </summary>
     public abstract class IntegrationTestsBase : IDisposable
     {
-
         protected readonly IServiceProvider _serviceProvider;
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="dbNameSuffix">To make a unique database for each fixture</param>
         public IntegrationTestsBase(string dbNameSuffix)
@@ -42,39 +39,28 @@ namespace TaskoMask.BuildingBlocks.Test.TestBase
             InitialDatabase();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public abstract void InitialDatabase();
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public abstract void DropDatabase();
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public abstract IServiceProvider GetServiceProvider(string dbNameSuffix);
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected T GetRequiredService<T>()
         {
             return _serviceProvider.GetRequiredService<T>();
         }
-
-
 
         /// <summary>
         ///
@@ -83,6 +69,5 @@ namespace TaskoMask.BuildingBlocks.Test.TestBase
         {
             DropDatabase();
         }
-
     }
 }

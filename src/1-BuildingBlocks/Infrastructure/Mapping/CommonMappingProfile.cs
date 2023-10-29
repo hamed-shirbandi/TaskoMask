@@ -9,10 +9,8 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Mapping
         public CommonMappingProfile()
         {
             CreateMap<CreationTime, CreationTimeDto>()
-             .ForMember(dest => dest.CreateDateTimeString, opt =>
-                  opt.MapFrom(src => src.CreateDateTime.ToLongDateString()))
-             .ForMember(dest => dest.ModifiedDateTimeString, opt =>
-                  opt.MapFrom(src => src.ModifiedDateTime.ToLongDateString()));
+                .ForMember(dest => dest.CreateDateTimeString, opt => opt.MapFrom(src => src.CreateDateTime.ToLongDateString()))
+                .ForMember(dest => dest.ModifiedDateTimeString, opt => opt.MapFrom(src => src.ModifiedDateTime.ToLongDateString()));
         }
     }
 }

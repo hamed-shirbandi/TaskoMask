@@ -11,16 +11,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrganizationId
 {
-
     [Authorize("user-read-access")]
     [Tags("Projects")]
     public class GetProjectsByOrganizationIdRestEndpoint : BaseApiController
     {
-        public GetProjectsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetProjectsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get projects for an organization
@@ -32,5 +28,4 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
             return await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdRequest(organizationId));
         }
     }
-
 }

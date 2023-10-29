@@ -17,16 +17,15 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
         #region Ctors
 
-        private Project(string name, string description )
+        private Project(string name, string description)
         {
             SetId(ObjectId.GenerateNewId().ToString());
 
             Name = ProjectName.Create(name);
-            Description = ProjectDescription.Create(description) ;
+            Description = ProjectDescription.Create(description);
 
             CheckPolicies();
         }
-
 
         #endregion
 
@@ -42,19 +41,17 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Project Create(string name, string description)
         {
             return new Project(name, description);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public void Update(string name, string description )
+        public void Update(string name, string description)
         {
             Description = ProjectDescription.Create(description);
             Name = ProjectName.Create(name);
@@ -63,16 +60,13 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             CheckPolicies();
         }
 
-
-
-
         #endregion
 
         #region Methods
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void CheckPolicies()
         {
@@ -81,11 +75,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
             if (!new ProjectNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
-
         }
 
-
         #endregion
-
     }
 }

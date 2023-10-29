@@ -5,9 +5,8 @@ using TaskoMask.Services.Owners.Read.Api.Domain;
 
 namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class OwnerReadDbContext : MongoDbContext
     {
@@ -19,14 +18,13 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext
         #region Ctors
 
 
-        public OwnerReadDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
+        public OwnerReadDbContext(IOptions<MongoDbOptions> mongoDbOptions)
+            : base(mongoDbOptions)
         {
             Owners = GetCollection<Owner>();
             Organizations = GetCollection<Organization>();
             Projects = GetCollection<Project>();
         }
-
-
 
         #endregion
 
@@ -37,6 +35,5 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext
         public IMongoCollection<Project> Projects { get; }
 
         #endregion
-
     }
 }

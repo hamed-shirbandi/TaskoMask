@@ -15,7 +15,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
 {
     public class UpdateCardTests : TestsBaseFixture
     {
-
         #region Fields
 
         private UpdateCardUseCase _updateCardUseCase;
@@ -24,9 +23,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
 
         #region Ctor
 
-        public UpdateCardTests()
-        {
-        }
+        public UpdateCardTests() { }
 
         #endregion
 
@@ -41,7 +38,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
             var expectedBoard = Boards.FirstOrDefault();
             var expectedCard = BoardObjectMother.CreateCard();
             expectedBoard.AddCard(expectedCard);
-            var updateCardRequest = new UpdateCardRequest(expectedCard.Id,"Test New Name",BoardCardType.Done);
+            var updateCardRequest = new UpdateCardRequest(expectedCard.Id, "Test New Name", BoardCardType.Done);
 
             //Act
             var result = await _updateCardUseCase.Handle(updateCardRequest, CancellationToken.None);
@@ -58,8 +55,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
             await MessageBus.Received(1).Publish(Arg.Any<CardUpdated>());
         }
 
-
-
         [Fact]
         public async Task Updating_a_card_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -74,8 +69,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         #endregion
 

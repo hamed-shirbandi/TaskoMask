@@ -8,16 +8,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetTaskById
 {
-
     [Authorize("user-read-access")]
     [Tags("Tasks")]
     public class GetTaskByIdEndpoint : BaseApiController
     {
-        public GetTaskByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetTaskByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get task detail information
@@ -29,5 +25,4 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetTaskById
             return await _inMemoryBus.SendQuery(new GetTaskByIdRequest(id));
         }
     }
-
 }

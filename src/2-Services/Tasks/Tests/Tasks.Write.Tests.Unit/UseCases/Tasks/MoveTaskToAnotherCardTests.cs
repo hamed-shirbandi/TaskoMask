@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
 {
     public class MoveTaskToAnotherCardTests : TestsBaseFixture
     {
-
         #region Fields
 
         private MoveTaskToAnotherCardUseCase _moveTaskToAnotherCardUseCase;
@@ -21,9 +20,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
 
         #region Ctor
 
-        public MoveTaskToAnotherCardTests()
-        {
-        }
+        public MoveTaskToAnotherCardTests() { }
 
         #endregion
 
@@ -51,15 +48,13 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
             await MessageBus.Received(1).Publish(Arg.Any<TaskMovedToAnotherCard>());
         }
 
-
-
         #endregion
 
         #region Fixture
 
         protected override void TestClassFixtureSetup()
         {
-            _moveTaskToAnotherCardUseCase = new MoveTaskToAnotherCardUseCase(TaskAggregateRepository, MessageBus, InMemoryBus,TaskValidatorService);
+            _moveTaskToAnotherCardUseCase = new MoveTaskToAnotherCardUseCase(TaskAggregateRepository, MessageBus, InMemoryBus, TaskValidatorService);
         }
 
         #endregion

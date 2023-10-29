@@ -10,9 +10,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentById
             Id = id;
         }
 
-
         public string Id { get; }
-
-
     }
 }

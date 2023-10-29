@@ -12,11 +12,9 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<CreationTimeGrpcResponse,  CreationTimeDto> ()
-                 .ForMember(dest => dest.CreateDateTime, opt =>
-                      opt.MapFrom(src => src.CreateDateTime.ToDateTime()))
-                .ForMember(dest => dest.ModifiedDateTime, opt =>
-                      opt.MapFrom(src => src.ModifiedDateTime.ToDateTime()));
+            CreateMap<CreationTimeGrpcResponse, CreationTimeDto>()
+                .ForMember(dest => dest.CreateDateTime, opt => opt.MapFrom(src => src.CreateDateTime.ToDateTime()))
+                .ForMember(dest => dest.ModifiedDateTime, opt => opt.MapFrom(src => src.ModifiedDateTime.ToDateTime()));
 
             CreateMap<GetOrganizationGrpcResponse, GetOrganizationDto>();
 

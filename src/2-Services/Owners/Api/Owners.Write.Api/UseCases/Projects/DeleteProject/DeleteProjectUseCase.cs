@@ -17,7 +17,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Projects;
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
 {
     public class DeleteProjectUseCase : BaseCommandHandler, IRequestHandler<DeleteProjectRequest, CommandResult>
-
     {
         #region Fields
 
@@ -28,7 +27,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
         #region Ctors
 
 
-        public DeleteProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public DeleteProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }
@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(DeleteProjectRequest request, CancellationToken cancellationToken)
         {
@@ -74,8 +74,6 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
             return new ProjectDeleted(projectDeletedDomainEvent.Id);
         }
 
-
         #endregion
-
     }
 }

@@ -14,7 +14,6 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Cards
 
         public BoardCardType Value { get; private set; }
 
-
         #endregion
 
         #region Ctors
@@ -40,28 +39,19 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Cards
             return new CardType(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        protected override void CheckPolicies()
-        {
-           
-        }
-
-
+        protected override void CheckPolicies() { }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

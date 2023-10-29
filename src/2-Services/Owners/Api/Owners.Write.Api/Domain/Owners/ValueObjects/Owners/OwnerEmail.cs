@@ -8,14 +8,13 @@ using TaskoMask.BuildingBlocks.Domain.ValueObjects;
 namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Owners
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class OwnerEmail : BaseValueObject
     {
         #region Properties
 
         public string Value { get; private set; }
-
 
         #endregion
 
@@ -42,10 +41,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Owners
             return new OwnerEmail(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckPolicies()
         {
@@ -53,27 +50,37 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Owners
                 throw new DomainException(string.Format(ContractsMetadata.Required, nameof(OwnerEmail)));
 
             if (Value.Length < DomainConstValues.Owner_Email_Min_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(OwnerEmail), DomainConstValues.Owner_Email_Min_Length, DomainConstValues.Owner_Email_Max_Length));
+                throw new DomainException(
+                    string.Format(
+                        ContractsMetadata.Length_Error,
+                        nameof(OwnerEmail),
+                        DomainConstValues.Owner_Email_Min_Length,
+                        DomainConstValues.Owner_Email_Max_Length
+                    )
+                );
 
             if (Value.Length > DomainConstValues.Owner_Email_Max_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(OwnerEmail), DomainConstValues.Owner_Email_Min_Length, DomainConstValues.Owner_Email_Max_Length));
+                throw new DomainException(
+                    string.Format(
+                        ContractsMetadata.Length_Error,
+                        nameof(OwnerEmail),
+                        DomainConstValues.Owner_Email_Min_Length,
+                        DomainConstValues.Owner_Email_Max_Length
+                    )
+                );
 
             if (!EmailValidator.IsValid(Value))
                 throw new DomainException(DomainMessages.Invalid_Email_Address);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

@@ -12,10 +12,7 @@ namespace TaskoMask.Clients.Website.Controllers
 
         #region Ctors
 
-        public ErrorController()
-        {
-        }
-
+        public ErrorController() { }
 
         #endregion
 
@@ -24,33 +21,23 @@ namespace TaskoMask.Clients.Website.Controllers
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public IActionResult Known(string message )
+        public IActionResult Known(string message)
         {
-            var model = new ErrorViewModel
-            {
-                Message = message,
-            };
+            var model = new ErrorViewModel { Message = message, };
 
             return View("KnownError", model);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IActionResult Unknown()
         {
             return View("Error");
         }
 
-
-
-        
         #endregion
-
     }
 }

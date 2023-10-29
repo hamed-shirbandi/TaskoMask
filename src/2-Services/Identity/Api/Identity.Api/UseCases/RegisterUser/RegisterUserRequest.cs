@@ -4,9 +4,8 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
 {
-    public class RegisterUserRequest: BaseCommand
+    public class RegisterUserRequest : BaseCommand
     {
-
         public RegisterUserRequest(string ownerId, string email, string password)
         {
             OwnerId = ownerId;
@@ -17,15 +16,10 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string OwnerId { get; }
 
-
-
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Email { get; }
 
-
-
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Password { get; }
-
     }
 }

@@ -10,19 +10,18 @@ using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
-    public static  class MvcConfiguration
+    public static class MvcConfiguration
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddMvcPreConfigured(this IServiceCollection services, IConfiguration configuration)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
 
             services.AddControllersWithViews();
 
@@ -35,14 +34,13 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             services.AddMetrics(configuration);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static void UseMvcPreConfigured(this IApplicationBuilder app , IWebHostEnvironment env, IConfiguration configuration)
+        public static void UseMvcPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
         {
-            if (app == null) throw new ArgumentNullException(nameof(app));
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
 
             if (!env.IsDevelopment())
             {
@@ -63,10 +61,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             app.UseAuthorization();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddWebServerOptions(this IServiceCollection services)
         {
@@ -81,7 +77,5 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
                 options.AllowSynchronousIO = true;
             });
         }
-
-
     }
 }

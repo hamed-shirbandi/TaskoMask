@@ -10,7 +10,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
     [Collection(nameof(BoardCollectionFixture))]
     public class DeleteBoardTests
     {
-
         #region Fields
 
         private readonly BoardCollectionFixture _fixture;
@@ -49,7 +48,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
             var deletedBoard = await _fixture.GetBoardAsync(expectedBoard.Id);
             deletedBoard.Should().BeNull();
         }
-
 
         #endregion
     }

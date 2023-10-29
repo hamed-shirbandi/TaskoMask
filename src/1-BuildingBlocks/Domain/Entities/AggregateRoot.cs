@@ -4,7 +4,6 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Domain.Entities
 {
-
     /// <summary>
     ///
     /// </summary>
@@ -23,7 +22,6 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
             SetVersion();
         }
 
-
         #endregion
 
         #region Properties
@@ -34,9 +32,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
         /// </summary>
         public string Version { get; private set; }
 
-
         public IReadOnlyCollection<DomainEvent> DomainEvents => domainEvents?.AsReadOnly();
-
 
         #endregion
 
@@ -50,8 +46,6 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
         {
             domainEvents?.Clear();
         }
-
-
 
         #endregion
 
@@ -72,15 +66,12 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
             domainEvents.Add(domainEvent);
         }
 
-
-
         /// <summary>
         /// Check invariants for each entity
         /// Invariants are kind of validation that made the entity in true state
         /// Should be Called in the end of process for the entity
         /// </summary>
         protected abstract void CheckInvariants();
-
 
         #endregion
 
@@ -95,8 +86,6 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
             SetVersion();
         }
 
-
-
         /// <summary>
         /// Vesion must change after each aggregate update
         /// </summary>
@@ -105,9 +94,6 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
             Version = Guid.NewGuid().ToString();
         }
 
-
-
         #endregion
-
     }
 }

@@ -17,7 +17,6 @@ using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard
 {
     public class UpdateCardUseCase : BaseCommandHandler, IRequestHandler<UpdateCardRequest, CommandResult>
-
     {
         #region Fields
 
@@ -28,7 +27,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard
         #region Ctors
 
 
-        public UpdateCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public UpdateCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
         }
@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(UpdateCardRequest request, CancellationToken cancellationToken)
         {
@@ -73,7 +73,6 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard
             var cardUpdatedDomainEvent = (CardUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CardUpdatedEvent));
             return new CardUpdated(cardUpdatedDomainEvent.Id, cardUpdatedDomainEvent.Name, cardUpdatedDomainEvent.Type);
         }
-
 
         #endregion
     }

@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Boards
 {
-    public class GetBoardDto: BoardBaseDto
+    public class GetBoardDto : BoardBaseDto
     {
         public string OwnerId { get; set; }
 
@@ -17,6 +17,5 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Boards
         public string OrganizationName { get; set; }
 
         public CreationTimeDto CreationTime { get; set; }
-
     }
 }

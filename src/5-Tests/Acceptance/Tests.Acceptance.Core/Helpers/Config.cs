@@ -12,7 +12,6 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         public static string WebsiteBaseUrl { get; private set; }
         public static Assembly TestLevelAssembly { get; private set; }
 
-
         static Config()
         {
             _configuration = BuildConfiguration();
@@ -22,8 +21,6 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
             TestLevelAssembly = GetTestLevelAssembly();
         }
 
-
-
         /// <summary>
         /// When tests run, you need to specify what type of test level must handle it
         /// If you want to run tests from UI level you must set UI-Level for TestLevelToExecute in appsettings
@@ -32,24 +29,21 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         private static Assembly GetTestLevelAssembly()
         {
             if (TestLevel == MagicKey.TestLevel.API_Level)
-               return  Assembly.Load("TaskoMask.Tests.Acceptance.API");
+                return Assembly.Load("TaskoMask.Tests.Acceptance.API");
             else // For "UI-Level"
-               return  Assembly.Load("TaskoMask.Tests.Acceptance.UI");
+                return Assembly.Load("TaskoMask.Tests.Acceptance.UI");
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static IConfiguration BuildConfiguration()
         {
             return new ConfigurationBuilder()
-                                .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
-                                .AddJsonFile("appsettings.Staging.json", optional: true)
-                                .AddJsonFile("appsettings.Development.json", optional: true)
-                                .Build();
+                .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
+                .AddJsonFile("appsettings.Staging.json", optional: true)
+                .AddJsonFile("appsettings.Development.json", optional: true)
+                .Build();
         }
-
     }
 }

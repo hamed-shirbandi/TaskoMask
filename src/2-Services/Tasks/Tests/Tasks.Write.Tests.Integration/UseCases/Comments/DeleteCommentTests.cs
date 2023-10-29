@@ -16,7 +16,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Comments
     [Collection(nameof(CommentCollectionFixture))]
     public class DeleteCommentTests
     {
-
         #region Fields
 
         private readonly CommentCollectionFixture _fixture;
@@ -59,7 +58,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Comments
             Action act = () => updatedTask.GetCommentById(expectedComment.Id);
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
 
         #endregion
     }

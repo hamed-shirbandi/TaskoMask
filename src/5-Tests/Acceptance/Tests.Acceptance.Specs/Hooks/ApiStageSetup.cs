@@ -17,7 +17,6 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
             _objectContainer = objectContainer;
         }
 
-
         /// <summary>
         /// This hook runs beafor each senario with API-Level tag
         /// ************* Important point *************
@@ -30,7 +29,7 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
         [BeforeScenario(MagicKey.TestLevel.API_Level)]
         public void StageSetup()
         {
-            if (Config.TestLevel== MagicKey.TestLevel.API_Level)
+            if (Config.TestLevel == MagicKey.TestLevel.API_Level)
             {
                 var cast = Cast.WhereEveryoneCan(new List<IAbility> { CallAnApi.At(Config.ApiGatewayBaseUrl) });
                 var stage = new Stage(cast);

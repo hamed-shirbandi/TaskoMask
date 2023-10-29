@@ -2,9 +2,8 @@
 
 namespace TaskoMask.BuildingBlocks.Application.Exceptions
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ApplicationException : ManagedException
     {
@@ -12,20 +11,16 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public ApplicationException(string message) : base(message)
-        {
-        }
-
+        public ApplicationException(string message)
+            : base(message) { }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public ApplicationException(string message, string metadata) : base(string.Format(message, metadata))
-        {
-        }
-
+        public ApplicationException(string message, string metadata)
+            : base(string.Format(message, metadata)) { }
 
         #endregion
     }

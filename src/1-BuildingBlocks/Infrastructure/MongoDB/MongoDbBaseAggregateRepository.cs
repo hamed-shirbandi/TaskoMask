@@ -7,7 +7,8 @@ using TaskoMask.BuildingBlocks.Domain.Entities;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
-    public class MongoDbBaseAggregateRepository<TEntity> : MongoDbBaseRepository<TEntity>, IBaseAggregateRepository<TEntity> where TEntity : AggregateRoot
+    public class MongoDbBaseAggregateRepository<TEntity> : MongoDbBaseRepository<TEntity>, IBaseAggregateRepository<TEntity>
+        where TEntity : AggregateRoot
     {
         #region Fields
 
@@ -17,12 +18,11 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 
         #region Ctors
 
-        public MongoDbBaseAggregateRepository(MongoDbContext dbContext) : base(dbContext)
+        public MongoDbBaseAggregateRepository(MongoDbContext dbContext)
+            : base(dbContext)
         {
             _collection = dbContext.GetCollection<TEntity>();
         }
-
-
 
         #endregion
 
@@ -33,23 +33,24 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task ConcurrencySafeUpdate(TEntity entity, string loadedVersion)
         {
             await CheckIfVersionIsChangedAndThrowExceptionAsync(entity.Id, loadedVersion);
-            await _collection.ReplaceOneAsync(p => p.Id == entity.Id && p.Version == loadedVersion, entity, new ReplaceOptions() { IsUpsert = false });
+            await _collection.ReplaceOneAsync(
+                p => p.Id == entity.Id && p.Version == loadedVersion,
+                entity,
+                new ReplaceOptions() { IsUpsert = false }
+            );
         }
-
-
-
 
         #endregion
 
         #region Private Methods
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task CheckIfVersionIsChangedAndThrowExceptionAsync(string id, string loadedVersion)
         {
@@ -59,6 +60,5 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
         }
 
         #endregion
-
     }
 }

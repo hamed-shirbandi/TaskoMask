@@ -18,7 +18,6 @@ using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Comments;
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment
 {
     public class AddCommentUseCase : BaseCommandHandler, IRequestHandler<AddCommentRequest, CommandResult>
-
     {
         #region Fields
 
@@ -29,7 +28,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment
         #region Ctors
 
 
-        public AddCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public AddCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
         }
@@ -41,7 +41,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(AddCommentRequest request, CancellationToken cancellationToken)
         {
@@ -63,7 +63,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment
             return CommandResult.Create(ContractsMessages.Create_Success, comment.Id);
         }
 
-
         #endregion
 
         #region Private Methods
@@ -72,12 +71,10 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment
         private CommentAdded MapToCommentAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var commentAddedDomainEvent = (CommentAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CommentAddedEvent));
-           
+
             return new CommentAdded(commentAddedDomainEvent.Id, commentAddedDomainEvent.Content, commentAddedDomainEvent.TaskId);
         }
 
-
         #endregion
-
     }
 }

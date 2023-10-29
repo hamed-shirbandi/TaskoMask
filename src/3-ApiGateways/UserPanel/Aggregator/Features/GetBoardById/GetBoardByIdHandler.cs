@@ -25,7 +25,13 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
 
         #region Ctors
 
-        public GetBoardByIdHandler(IMapper mapper, GetBoardByIdGrpcServiceClient getBoardByIdGrpcServiceClient, GetCardsByBoardIdGrpcServiceClient getCardsByBoardIdGrpcServiceClient, GetTasksByCardIdGrpcServiceClient getTasksByCardIdGrpcServiceClient) : base(mapper)
+        public GetBoardByIdHandler(
+            IMapper mapper,
+            GetBoardByIdGrpcServiceClient getBoardByIdGrpcServiceClient,
+            GetCardsByBoardIdGrpcServiceClient getCardsByBoardIdGrpcServiceClient,
+            GetTasksByCardIdGrpcServiceClient getTasksByCardIdGrpcServiceClient
+        )
+            : base(mapper)
         {
             _getBoardByIdGrpcServiceClient = getBoardByIdGrpcServiceClient;
             _getCardsByBoardIdGrpcServiceClient = getCardsByBoardIdGrpcServiceClient;
@@ -39,7 +45,7 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<BoardDetailsViewModel> Handle(GetBoardByIdRequest request, CancellationToken cancellationToken)
         {
@@ -50,7 +56,6 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
             };
         }
 
-
         #endregion
 
         #region Private Methods
@@ -58,19 +63,20 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<GetBoardDto> GetBoardAsync(string boardId, CancellationToken cancellationToken)
         {
-            var boardGrpcResponse = await _getBoardByIdGrpcServiceClient.HandleAsync(new GetBoardByIdGrpcRequest { Id = boardId },cancellationToken: cancellationToken);
+            var boardGrpcResponse = await _getBoardByIdGrpcServiceClient.HandleAsync(
+                new GetBoardByIdGrpcRequest { Id = boardId },
+                cancellationToken: cancellationToken
+            );
 
             return _mapper.Map<GetBoardDto>(boardGrpcResponse);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<IEnumerable<CardDetailsViewModel>> GetCardsAsync(string boardId, CancellationToken cancellationToken)
         {
@@ -82,20 +88,16 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
             {
                 var currentCardGrpcResponse = cardsGrpcCall.ResponseStream.Current;
 
-                cards.Add(new CardDetailsViewModel
-                {
-                    Card = MapToCard(currentCardGrpcResponse),
-                    Tasks = await GetTasksAsync(currentCardGrpcResponse.Id),
-                });
+                cards.Add(
+                    new CardDetailsViewModel { Card = MapToCard(currentCardGrpcResponse), Tasks = await GetTasksAsync(currentCardGrpcResponse.Id), }
+                );
             }
 
             return cards.AsEnumerable();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<IEnumerable<GetTaskDto>> GetTasksAsync(string cardId)
         {
@@ -109,19 +111,14 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
             return tasks;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private GetCardDto MapToCard(GetCardGrpcResponse cardGrpcResponse)
         {
             return _mapper.Map<GetCardDto>(cardGrpcResponse);
         }
 
-
-
         #endregion
-
     }
 }

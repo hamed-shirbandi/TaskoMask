@@ -9,7 +9,6 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Project
     [Collection(nameof(ProjectCollectionFixture))]
     public class GetProjectByIdTests
     {
-
         #region Fields
 
         private readonly ProjectCollectionFixture _fixture;
@@ -44,7 +43,6 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Project
             result.Id.Should().Be(expectedProject.Id);
             result.Name.Should().Be(expectedProject.Name);
         }
-
 
         #endregion
     }

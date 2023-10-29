@@ -5,10 +5,9 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations
 {
-   public class OrganizationReportDto : ProjectReportDto
+    public class OrganizationReportDto : ProjectReportDto
     {
         [Display(Name = nameof(ContractsMetadata.ProjectsCount), ResourceType = typeof(ContractsMetadata))]
         public long ProjectsCount { get; set; }
-
     }
 }

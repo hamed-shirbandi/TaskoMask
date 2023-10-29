@@ -7,16 +7,14 @@ namespace TaskoMask.Tests.Acceptance.Core.Screenplay.Questions
 {
     public abstract class LastOwnerQuestion : IQuestion<Result<OwnerBasicInfoDto>>
     {
-        public LastOwnerQuestion( )
-        {
-        }
-
+        public LastOwnerQuestion() { }
 
         public Result<OwnerBasicInfoDto> AnsweredBy(Actor actor)
         {
             return GetLastOwner(actor);
         }
 
-        protected abstract Result<OwnerBasicInfoDto> GetLastOwner<T>(T actor) where T : Actor;
+        protected abstract Result<OwnerBasicInfoDto> GetLastOwner<T>(T actor)
+            where T : Actor;
     }
 }

@@ -1,12 +1,10 @@
-﻿
-using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Data;
+﻿using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Data;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services;
 
 namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.Services
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class BoardValidatorService : IBoardValidatorService
     {
@@ -17,9 +15,8 @@ namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.Services
             _boardRepository = boardRepository;
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool BoardHasUniqueName(string boardId, string projectId, string boardName)
         {

@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
 {
-
     [Authorize("user-write-access")]
     [Tags("Comments")]
     public class UpdateCommentEndpoint : BaseApiController
     {
-        public UpdateCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public UpdateCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Update an existing comment
@@ -31,5 +27,4 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
             return await _inMemoryBus.SendCommand<UpdateCommentRequest>(new(input.Id, input.Content));
         }
     }
-
 }

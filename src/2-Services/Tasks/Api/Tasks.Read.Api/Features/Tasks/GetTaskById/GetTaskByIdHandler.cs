@@ -22,7 +22,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById
 
         #region Ctors
 
-        public GetTaskByIdHandler(TaskReadDbContext taskReadDbContext, IMapper mapper) : base(mapper)
+        public GetTaskByIdHandler(TaskReadDbContext taskReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _taskReadDbContext = taskReadDbContext;
         }
@@ -34,7 +35,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<GetTaskDto> Handle(GetTaskByIdRequest request, CancellationToken cancellationToken)
         {
@@ -45,8 +46,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById
 
             return _mapper.Map<GetTaskDto>(task);
         }
-
-
 
         #endregion
 

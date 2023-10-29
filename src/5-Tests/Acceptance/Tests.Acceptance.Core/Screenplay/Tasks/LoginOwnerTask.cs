@@ -14,15 +14,15 @@ namespace TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks
             OwnerLoginDto = ownerLoginDto;
         }
 
-
-        public void PerformAs<T>(T actor) where T : Actor
+        public void PerformAs<T>(T actor)
+            where T : Actor
         {
             var result = DoLogin(actor);
 
             actor.Remember(MagicKey.Owner.Login_Result, result);
         }
 
-
-        protected abstract bool DoLogin<T>(T actor) where T : Actor;
+        protected abstract bool DoLogin<T>(T actor)
+            where T : Actor;
     }
 }

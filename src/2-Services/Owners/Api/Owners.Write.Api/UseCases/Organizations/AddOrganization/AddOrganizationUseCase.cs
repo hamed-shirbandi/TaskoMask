@@ -19,7 +19,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganization
 {
     public class AddOrganizationUseCase : BaseCommandHandler, IRequestHandler<AddOrganizationRequest, CommandResult>
-
     {
         #region Fields
 
@@ -30,7 +29,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganiza
         #region Ctors
 
 
-        public AddOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public AddOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }
@@ -42,14 +42,13 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganiza
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(AddOrganizationRequest request, CancellationToken cancellationToken)
         {
             var owner = await _ownerAggregateRepository.GetByIdAsync(request.OwnerId);
             if (owner == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
-
 
             var organization = Organization.CreateOrganization(request.Name, request.Description);
 
@@ -66,7 +65,6 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganiza
             return CommandResult.Create(ContractsMessages.Create_Success, organization.Id);
         }
 
-
         #endregion
 
         #region Private Methods
@@ -74,12 +72,16 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganiza
 
         private OrganizationAdded MapToOrganizationAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
-            var organizationAddedDomainEvent = (OrganizationAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationAddedEvent));
-            return new OrganizationAdded(organizationAddedDomainEvent.Id, organizationAddedDomainEvent.Name, organizationAddedDomainEvent.Description, organizationAddedDomainEvent.OwnerId);
+            var organizationAddedDomainEvent = (OrganizationAddedEvent)
+                domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationAddedEvent));
+            return new OrganizationAdded(
+                organizationAddedDomainEvent.Id,
+                organizationAddedDomainEvent.Name,
+                organizationAddedDomainEvent.Description,
+                organizationAddedDomainEvent.OwnerId
+            );
         }
 
-
         #endregion
-
     }
 }

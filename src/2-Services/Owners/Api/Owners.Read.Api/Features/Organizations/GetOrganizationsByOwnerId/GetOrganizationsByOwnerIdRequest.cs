@@ -12,6 +12,5 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
         }
 
         public string OwnerId { get; }
-
     }
 }

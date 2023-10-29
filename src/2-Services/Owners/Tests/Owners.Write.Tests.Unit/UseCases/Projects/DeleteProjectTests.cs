@@ -19,7 +19,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 {
     public class DeleteProjectTests : TestsBaseFixture
     {
-
         #region Fields
 
         private DeleteProjectUseCase _deleteProjectUseCase;
@@ -28,9 +27,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 
         #region Ctor
 
-        public DeleteProjectTests()
-        {
-        }
+        public DeleteProjectTests() { }
 
         #endregion
 
@@ -67,8 +64,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
             await MessageBus.Received(1).Publish(Arg.Any<ProjectDeleted>());
         }
 
-
-
         [Fact]
         public async Task Deleting_an_project_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -83,8 +78,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         #endregion
 

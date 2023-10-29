@@ -10,7 +10,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
     [Collection(nameof(BoardCollectionFixture))]
     public class UpdateBoardTests
     {
-
         #region Fields
 
         private readonly BoardCollectionFixture _fixture;
@@ -37,7 +36,12 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
             await _fixture.SeedBoardAsync(expectedBoard);
 
             var request = new UpdateBoardRequest(id: expectedBoard.Id, name: "Test New Name", description: "Test New Description");
-            var updateBoardUseCase = new UpdateBoardUseCase(_fixture.BoardAggregateRepository, _fixture.MessageBus, _fixture.InMemoryBus,_fixture.BoardValidatorService);
+            var updateBoardUseCase = new UpdateBoardUseCase(
+                _fixture.BoardAggregateRepository,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus,
+                _fixture.BoardValidatorService
+            );
 
             //Act
             var result = await updateBoardUseCase.Handle(request, CancellationToken.None);
@@ -50,7 +54,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
             updatedBoard.Name.Value.Should().Be(request.Name);
             updatedBoard.Description.Value.Should().Be(request.Description);
         }
-
 
         #endregion
     }

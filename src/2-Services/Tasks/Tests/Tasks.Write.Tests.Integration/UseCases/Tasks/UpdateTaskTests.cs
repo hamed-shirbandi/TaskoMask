@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Tasks
     [Collection(nameof(TaskCollectionFixture))]
     public class UpdateTaskTests
     {
-
         #region Fields
 
         private readonly TaskCollectionFixture _fixture;
@@ -39,7 +38,12 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Tasks
             await _fixture.SeedTaskAsync(expectedTask);
 
             var request = new UpdateTaskRequest(id: expectedTask.Id, title: "Test New Title", description: "Test New Description");
-            var updateTaskUseCase = new UpdateTaskUseCase(_fixture.TaskAggregateRepository, _fixture.MessageBus, _fixture.InMemoryBus,_fixture.TaskValidatorService);
+            var updateTaskUseCase = new UpdateTaskUseCase(
+                _fixture.TaskAggregateRepository,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus,
+                _fixture.TaskValidatorService
+            );
 
             //Act
             var result = await updateTaskUseCase.Handle(request, CancellationToken.None);
@@ -52,7 +56,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Tasks
             updatedTask.Title.Value.Should().Be(request.Title);
             updatedTask.Description.Value.Should().Be(request.Description);
         }
-
 
         #endregion
     }

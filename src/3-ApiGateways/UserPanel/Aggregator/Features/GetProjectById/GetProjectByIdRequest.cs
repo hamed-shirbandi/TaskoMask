@@ -11,6 +11,5 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
         }
 
         public string Id { get; }
-
     }
 }

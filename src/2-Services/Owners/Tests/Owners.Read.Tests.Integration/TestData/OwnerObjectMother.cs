@@ -7,12 +7,7 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.TestData
     {
         public static Owner GetOwnerWithEmail(string email)
         {
-            return new Owner(ObjectId.GenerateNewId().ToString())
-            {
-                DisplayName = email,
-                Email = email,
-            };
+            return new Owner(ObjectId.GenerateNewId().ToString()) { DisplayName = email, Email = email, };
         }
-
     }
 }

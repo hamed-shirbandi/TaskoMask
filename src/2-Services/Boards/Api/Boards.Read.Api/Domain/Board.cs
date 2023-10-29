@@ -7,7 +7,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Domain
     public class Board : BaseEntity
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id">Id Must sync with write side DB</param>
         public Board(string id)
@@ -18,7 +18,6 @@ namespace TaskoMask.Services.Boards.Read.Api.Domain
             base.SetId(id);
         }
 
-
         public string Name { get; set; }
         public string Description { get; set; }
         public string ProjectId { get; set; }
@@ -26,7 +25,6 @@ namespace TaskoMask.Services.Boards.Read.Api.Domain
         public string OwnerId { get; set; }
         public string ProjectName { get; set; }
         public string OrganizationName { get; set; }
-
 
         #region Update private properties
 

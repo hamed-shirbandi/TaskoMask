@@ -22,7 +22,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 
         #region Ctors
 
-        public GetOrganizationByIdHandler(OwnerReadDbContext ownerReadDbContext, IMapper mapper) : base(mapper)
+        public GetOrganizationByIdHandler(OwnerReadDbContext ownerReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
@@ -34,19 +35,19 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<GetOrganizationDto> Handle(GetOrganizationByIdRequest request, CancellationToken cancellationToken)
         {
-            var organization = await _ownerReadDbContext.Organizations.Find(e => e.Id == request.Id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
+            var organization = await _ownerReadDbContext.Organizations
+                .Find(e => e.Id == request.Id)
+                .FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
             if (organization == null)
                 throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Organization);
 
             return _mapper.Map<GetOrganizationDto>(organization);
         }
-
-
 
         #endregion
 

@@ -9,16 +9,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
 {
-
     [Authorize("user-write-access")]
     [Tags("Projects")]
     public class DeleteProjectEndpoint : BaseApiController
     {
-        public DeleteProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public DeleteProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Delete a project
@@ -29,7 +25,5 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
         {
             return await _inMemoryBus.SendCommand<DeleteProjectRequest>(new(id));
         }
-
     }
-
 }

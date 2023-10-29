@@ -18,7 +18,6 @@ using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask
 {
     public class UpdateTaskUseCase : BaseCommandHandler, IRequestHandler<UpdateTaskRequest, CommandResult>
-
     {
         #region Fields
 
@@ -30,7 +29,13 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask
         #region Ctors
 
 
-        public UpdateTaskUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus, ITaskValidatorService taskValidatorService) : base(messageBus, inMemoryBus)
+        public UpdateTaskUseCase(
+            ITaskAggregateRepository taskAggregateRepository,
+            IMessageBus messageBus,
+            IInMemoryBus inMemoryBus,
+            ITaskValidatorService taskValidatorService
+        )
+            : base(messageBus, inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
             _taskValidatorService = taskValidatorService;
@@ -43,7 +48,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(UpdateTaskRequest request, CancellationToken cancellationToken)
         {
@@ -76,7 +81,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask
             var taskUpdatedDomainEvent = (TaskUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(TaskUpdatedEvent));
             return new TaskUpdated(taskUpdatedDomainEvent.Id, taskUpdatedDomainEvent.Title, taskUpdatedDomainEvent.Description);
         }
-
 
         #endregion
     }

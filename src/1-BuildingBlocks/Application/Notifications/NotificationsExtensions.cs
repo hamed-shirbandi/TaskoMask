@@ -5,9 +5,8 @@ namespace TaskoMask.BuildingBlocks.Application.Notifications
 {
     public static class NotificationsExtensions
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddDomainNotificationHandler(this IServiceCollection services)
         {

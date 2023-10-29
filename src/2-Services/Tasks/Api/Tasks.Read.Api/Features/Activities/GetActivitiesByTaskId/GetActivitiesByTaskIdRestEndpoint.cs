@@ -11,16 +11,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Features.Activities.GetActivitiesByTaskId
 {
-
     [Authorize("user-read-access")]
     [Tags("Activities")]
     public class GetActivitiesByTaskIdRestEndpoint : BaseApiController
     {
-        public GetActivitiesByTaskIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetActivitiesByTaskIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get activities for a task
@@ -32,5 +28,4 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Activities.GetActivitiesByT
             return await _inMemoryBus.SendQuery(new GetActivitiesByTaskIdRequest(taskId));
         }
     }
-
 }

@@ -4,7 +4,6 @@ namespace TaskoMask.Clients.UserPanel.Helpers
 {
     public static class HtmlParser
     {
-
         /// <summary>
         /// Parse errors list to Fragment to show by Toast service
         /// </summary>
@@ -16,20 +15,18 @@ namespace TaskoMask.Clients.UserPanel.Helpers
                 return content;
 
             foreach (var error in errors)
-                content += AddMarkupContent( $"<text><strong>-</strong> {error} <br/></text>");
+                content += AddMarkupContent($"<text><strong>-</strong> {error} <br/></text>");
 
             return content;
         }
 
-     
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        private static RenderFragment AddMarkupContent(string txt) => builder =>
-        {
-            builder.AddMarkupContent(1, txt);
-        };
-
+        private static RenderFragment AddMarkupContent(string txt) =>
+            builder =>
+            {
+                builder.AddMarkupContent(1, txt);
+            };
     }
 }

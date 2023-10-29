@@ -14,6 +14,5 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.TestData
                 TaskId = ObjectId.GenerateNewId().ToString(),
             };
         }
-
     }
 }

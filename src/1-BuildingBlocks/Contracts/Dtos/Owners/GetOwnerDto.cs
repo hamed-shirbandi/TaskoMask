@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Owners
 {
-    public class GetOwnerDto 
+    public class GetOwnerDto
     {
         public string Id { get; set; }
 
@@ -15,6 +15,5 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Owners
 
         [Display(Name = nameof(ContractsMetadata.Email), ResourceType = typeof(ContractsMetadata))]
         public string Email { get; set; }
-
     }
 }

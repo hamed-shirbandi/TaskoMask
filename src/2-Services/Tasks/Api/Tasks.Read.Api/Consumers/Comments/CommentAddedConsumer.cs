@@ -12,22 +12,17 @@ namespace TaskoMask.Services.Tasks.Read.Api.Consumers.Comments
     {
         private readonly TaskReadDbContext _taskReadDbContext;
 
-
-        public CommentAddedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext) : base(inMemoryBus)
+        public CommentAddedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
+            : base(inMemoryBus)
         {
             _taskReadDbContext = taskReadDbContext;
         }
 
-
         public override async System.Threading.Tasks.Task ConsumeMessage(ConsumeContext<CommentAdded> context)
         {
             var task = await _taskReadDbContext.Tasks.Find(b => b.Id == context.Message.TaskId).FirstOrDefaultAsync();
-           
-            var comment = new Comment(context.Message.Id)
-            {
-                Content = context.Message.Content,
-                TaskId = context.Message.TaskId,
-            };
+
+            var comment = new Comment(context.Message.Id) { Content = context.Message.Content, TaskId = context.Message.TaskId, };
 
             await _taskReadDbContext.Comments.InsertOneAsync(comment);
         }

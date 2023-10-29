@@ -4,16 +4,13 @@ using System;
 
 namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.CrossCutting.DI
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class ModuleExtensions
     {
-
-  
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddModules(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {

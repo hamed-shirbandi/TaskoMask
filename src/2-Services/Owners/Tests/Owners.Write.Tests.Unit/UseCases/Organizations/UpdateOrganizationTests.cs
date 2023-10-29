@@ -18,7 +18,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 {
     public class UpdateOrganizationTests : TestsBaseFixture
     {
-
         #region Fields
 
         private UpdateOrganizationUseCase _updateOrganizationUseCase;
@@ -27,9 +26,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 
         #region Ctor
 
-        public UpdateOrganizationTests()
-        {
-        }
+        public UpdateOrganizationTests() { }
 
         #endregion
 
@@ -61,8 +58,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             await MessageBus.Received(1).Publish(Arg.Any<OrganizationUpdated>());
         }
 
-
-
         [Fact]
         public async Task Updating_an_organization_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -77,8 +72,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         #endregion
 

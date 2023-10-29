@@ -11,20 +11,12 @@ namespace TaskoMask.Services.Identity.Tests.Unit.TestData
         public bool IsActive { get; private set; }
         public string Password { get; private set; }
 
-
-        private UserBuilder()
-        {
-
-        }
-
-
+        private UserBuilder() { }
 
         public static UserBuilder Init()
         {
             return new UserBuilder();
         }
-
-
 
         public UserBuilder WithId(string id)
         {
@@ -32,15 +24,11 @@ namespace TaskoMask.Services.Identity.Tests.Unit.TestData
             return this;
         }
 
-
-
         public UserBuilder WithEmail(string email)
         {
             Email = email;
             return this;
         }
-
-
 
         public UserBuilder WithUserName(string userName)
         {
@@ -48,23 +36,17 @@ namespace TaskoMask.Services.Identity.Tests.Unit.TestData
             return this;
         }
 
-
-
         public UserBuilder WithIsActive(bool isActive)
         {
             IsActive = isActive;
             return this;
         }
 
-
-
         public UserBuilder WithPassword(string password)
         {
             Password = password;
             return this;
         }
-
-
 
         public User Build()
         {
@@ -76,7 +58,5 @@ namespace TaskoMask.Services.Identity.Tests.Unit.TestData
                 PasswordHash = Password
             };
         }
-
-
     }
 }

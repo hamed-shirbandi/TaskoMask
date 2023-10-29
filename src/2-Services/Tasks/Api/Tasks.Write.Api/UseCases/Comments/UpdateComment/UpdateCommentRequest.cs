@@ -16,10 +16,12 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Id { get; }
 
-
-        [MaxLength(DomainConstValues.Comment_Content_Max_Length, ErrorMessageResourceName = nameof(ContractsMetadata.Max_Length_Error), ErrorMessageResourceType = typeof(ContractsMetadata))]
+        [MaxLength(
+            DomainConstValues.Comment_Content_Max_Length,
+            ErrorMessageResourceName = nameof(ContractsMetadata.Max_Length_Error),
+            ErrorMessageResourceType = typeof(ContractsMetadata)
+        )]
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Content { get; }
-
     }
 }

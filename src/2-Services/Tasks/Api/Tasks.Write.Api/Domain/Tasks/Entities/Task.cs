@@ -14,7 +14,6 @@ using System;
 using TaskoMask.BuildingBlocks.Domain.Entities;
 
 namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
-
 {
     public class Task : AggregateRoot
     {
@@ -25,7 +24,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
 
         #region Ctors
 
-        private Task(string title, string description, string cardId,string boardId, ITaskValidatorService taskValidatorService)
+        private Task(string title, string description, string cardId, string boardId, ITaskValidatorService taskValidatorService)
         {
             SetId(ObjectId.GenerateNewId().ToString());
 
@@ -37,7 +36,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
 
             CheckPolicies(taskValidatorService);
 
-            AddDomainEvent(new TaskAddedEvent(Id, Title.Value, Description.Value, CardId.Value,BoardId.Value));
+            AddDomainEvent(new TaskAddedEvent(Id, Title.Value, Description.Value, CardId.Value, BoardId.Value));
         }
 
         #endregion
@@ -50,7 +49,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
         public TaskCardId CardId { get; private set; }
         public ICollection<Comment> Comments { get; private set; }
 
-
         #endregion
 
         #region Public Task Methods
@@ -59,17 +57,15 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Task AddTask(string title, string description, string cardId, string boardId, ITaskValidatorService taskValidatorService)
         {
             return new Task(title, description, cardId, boardId, taskValidatorService);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void UpdateTask(string title, string description, ITaskValidatorService taskValidatorService)
         {
@@ -81,10 +77,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
             AddDomainEvent(new TaskUpdatedEvent(Id, Title.Value, Description.Value));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void MoveTaskToAnotherCard(string cardId)
         {
@@ -92,16 +86,13 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
             AddDomainEvent(new TaskMovedToAnotherCardEvent(Id, CardId.Value));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void DeleteTask()
         {
             AddDomainEvent(new TaskDeletedEvent(Id));
         }
-
 
         #endregion
 
@@ -110,7 +101,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void AddComment(Comment comment)
         {
@@ -118,10 +109,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
             AddDomainEvent(new CommentAddedEvent(comment.Id, comment.Content.Value, Id));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void UpdateComment(string id, string content)
         {
@@ -134,10 +123,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
             AddDomainEvent(new CommentUpdatedEvent(comment.Id, comment.Content.Value));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void DeleteComment(string id)
         {
@@ -149,10 +136,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
             AddDomainEvent(new CommentDeletedEvent(comment.Id));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Comment GetCommentById(string commentId)
         {
@@ -170,11 +155,10 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void CheckPolicies(ITaskValidatorService taskValidatorService)
         {
-          
             if (CardId == null)
                 throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(CardId)));
 
@@ -186,21 +170,15 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
 
             if (!new TaskTitleMustUniqueSpecification(taskValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Task));
-           
+
             if (!new MaxTasksSpecification(taskValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Max_Task_Count_Limitiation, DomainConstValues.Board_Max_Task_Count));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        protected override void CheckInvariants()
-        {
-  
-        }
-
+        protected override void CheckInvariants() { }
 
         #endregion
     }

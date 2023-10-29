@@ -7,15 +7,14 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Specifications
     internal class TaskTitleMustUniqueSpecification : ISpecification<Task>
     {
         private readonly ITaskValidatorService _taskValidatorService;
+
         public TaskTitleMustUniqueSpecification(ITaskValidatorService taskValidatorService)
         {
             _taskValidatorService = taskValidatorService;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSatisfiedBy(Task task)
         {

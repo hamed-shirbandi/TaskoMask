@@ -16,7 +16,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
 {
     public class AddTaskTests : TestsBaseFixture
     {
-
         #region Fields
 
         private AddTaskUseCase _addTaskUseCase;
@@ -25,9 +24,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
 
         #region Ctor
 
-        public AddTaskTests()
-        {
-        }
+        public AddTaskTests() { }
 
         #endregion
 
@@ -39,7 +36,12 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
         public async Task Task_is_added()
         {
             //Arrange
-            var addTaskRequest = new AddTaskRequest(cardId: ObjectId.GenerateNewId().ToString(), boardId: ObjectId.GenerateNewId().ToString(), "Test_Title", "Test_Description");
+            var addTaskRequest = new AddTaskRequest(
+                cardId: ObjectId.GenerateNewId().ToString(),
+                boardId: ObjectId.GenerateNewId().ToString(),
+                "Test_Title",
+                "Test_Description"
+            );
 
             //Act
             var result = await _addTaskUseCase.Handle(addTaskRequest, CancellationToken.None);
@@ -56,15 +58,18 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
             await MessageBus.Received(1).Publish(Arg.Any<TaskAdded>());
         }
 
-
-
         [InlineData("test", "test")]
         [InlineData("تست", "تست")]
         [Theory]
         public async Task Task_is_not_added_if_title_and_description_are_the_same(string name, string description)
         {
             //Arrange
-            var addTaskRequest = new AddTaskRequest(cardId: ObjectId.GenerateNewId().ToString(), boardId: ObjectId.GenerateNewId().ToString(), name, description);
+            var addTaskRequest = new AddTaskRequest(
+                cardId: ObjectId.GenerateNewId().ToString(),
+                boardId: ObjectId.GenerateNewId().ToString(),
+                name,
+                description
+            );
             var expectedMessage = DomainMessages.Equal_Name_And_Description_Error;
 
             //Act
@@ -74,8 +79,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
         [InlineData("Th")]
         [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
         [Theory]
@@ -83,8 +86,18 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
         {
             //Arrange
             var expectedTask = Tasks.FirstOrDefault();
-            var addTaskRequest = new AddTaskRequest(cardId: ObjectId.GenerateNewId().ToString(), boardId: ObjectId.GenerateNewId().ToString(), name, "Test_Description");
-            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(TaskTitle), DomainConstValues.Task_Title_Min_Length, DomainConstValues.Task_Title_Max_Length);
+            var addTaskRequest = new AddTaskRequest(
+                cardId: ObjectId.GenerateNewId().ToString(),
+                boardId: ObjectId.GenerateNewId().ToString(),
+                name,
+                "Test_Description"
+            );
+            var expectedMessage = string.Format(
+                ContractsMetadata.Length_Error,
+                nameof(TaskTitle),
+                DomainConstValues.Task_Title_Min_Length,
+                DomainConstValues.Task_Title_Max_Length
+            );
 
             //Act
             Func<Task> act = async () => await _addTaskUseCase.Handle(addTaskRequest, CancellationToken.None);
@@ -92,8 +105,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
             //Assert
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [Fact]
         public async Task Task_is_not_added_if_title_is_not_unique_in_a_board()
@@ -110,15 +121,13 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
         #endregion
 
         #region Fixture
 
         protected override void TestClassFixtureSetup()
         {
-            _addTaskUseCase = new AddTaskUseCase(TaskAggregateRepository, MessageBus, InMemoryBus,TaskValidatorService);
+            _addTaskUseCase = new AddTaskUseCase(TaskAggregateRepository, MessageBus, InMemoryBus, TaskValidatorService);
         }
 
         #endregion

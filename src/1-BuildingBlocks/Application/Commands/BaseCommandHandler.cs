@@ -7,7 +7,7 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 namespace TaskoMask.BuildingBlocks.Application.Commands
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class BaseCommandHandler
     {
@@ -16,7 +16,6 @@ namespace TaskoMask.BuildingBlocks.Application.Commands
 
         private readonly IMessageBus _messageBus;
         private readonly IInMemoryBus _inMemoryBus;
-
 
         #endregion
 
@@ -28,7 +27,6 @@ namespace TaskoMask.BuildingBlocks.Application.Commands
             _messageBus = messageBus;
             _inMemoryBus = inMemoryBus;
         }
-
 
         #endregion
 
@@ -45,9 +43,6 @@ namespace TaskoMask.BuildingBlocks.Application.Commands
                 await PublishDomainEventsAsync(domainEvent);
         }
 
-
-
-
         /// <summary>
         /// publish domain events (in-process)
         /// </summary>
@@ -56,18 +51,14 @@ namespace TaskoMask.BuildingBlocks.Application.Commands
             await _inMemoryBus.PublishEvent(domainEvent);
         }
 
-
-
-
-
         /// <summary>
         /// publish integration events (out-process)
         /// </summary>
-        protected async Task PublishIntegrationEventAsync<TEvent>(TEvent @event) where TEvent : IntegrationEvent
+        protected async Task PublishIntegrationEventAsync<TEvent>(TEvent @event)
+            where TEvent : IntegrationEvent
         {
             await _messageBus.Publish(@event);
         }
-
 
         #endregion
 

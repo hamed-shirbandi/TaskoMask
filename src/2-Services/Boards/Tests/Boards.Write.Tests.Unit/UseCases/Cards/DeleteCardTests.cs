@@ -16,7 +16,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
 {
     public class DeleteCardTests : TestsBaseFixture
     {
-
         #region Fields
 
         private DeleteCardUseCase _deleteCardUseCase;
@@ -25,9 +24,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
 
         #region Ctor
 
-        public DeleteCardTests()
-        {
-        }
+        public DeleteCardTests() { }
 
         #endregion
 
@@ -62,8 +59,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
             await MessageBus.Received(1).Publish(Arg.Any<CardDeleted>());
         }
 
-
-
         [Fact]
         public async Task Deleting_a_card_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -78,7 +73,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Cards
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
 
         #endregion
 

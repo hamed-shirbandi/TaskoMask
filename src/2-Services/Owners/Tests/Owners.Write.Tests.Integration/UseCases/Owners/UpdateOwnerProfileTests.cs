@@ -10,7 +10,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
     [Collection(nameof(OwnerCollectionFixture))]
     public class UpdateOwnerProfileTests
     {
-
         #region Fields
 
         private readonly OwnerCollectionFixture _fixture;
@@ -36,8 +35,13 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
             var expectedOwner = OwnerObjectMother.CreateOwner(_fixture.OwnerValidatorService);
             await _fixture.SeedOwnerAsync(expectedOwner);
 
-            var request = new UpdateOwnerProfileRequest(id: expectedOwner.Id, displayName: "Test New Name", email:"testNewMail@taskomask.ir");
-            var updateOwnerProfileUseCase = new UpdateOwnerProfileUseCase(_fixture.OwnerAggregateRepository, _fixture.OwnerValidatorService, _fixture.MessageBus, _fixture.InMemoryBus);
+            var request = new UpdateOwnerProfileRequest(id: expectedOwner.Id, displayName: "Test New Name", email: "testNewMail@taskomask.ir");
+            var updateOwnerProfileUseCase = new UpdateOwnerProfileUseCase(
+                _fixture.OwnerAggregateRepository,
+                _fixture.OwnerValidatorService,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus
+            );
 
             //Act
             var result = await updateOwnerProfileUseCase.Handle(request, CancellationToken.None);
@@ -50,7 +54,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
             updatedOwner.DisplayName.Value.Should().Be(request.DisplayName);
             updatedOwner.Email.Value.Should().Be(request.Email);
         }
-
 
         #endregion
     }

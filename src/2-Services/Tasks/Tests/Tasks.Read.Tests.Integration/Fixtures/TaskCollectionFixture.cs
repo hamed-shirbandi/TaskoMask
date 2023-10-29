@@ -3,10 +3,8 @@ using Xunit;
 
 namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Fixtures
 {
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [CollectionDefinition(nameof(TaskCollectionFixture))]
     public class TaskCollectionFixtureDefinition : ICollectionFixture<TaskCollectionFixture>
@@ -16,28 +14,20 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Fixtures
         // ICollectionFixture<> interfaces.
     }
 
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class TaskCollectionFixture : TestsBaseFixture
     {
-
-        public TaskCollectionFixture() : base(dbNameSuffix: nameof(TaskCollectionFixture))
-        {
-        }
-
-
-
+        public TaskCollectionFixture()
+            : base(dbNameSuffix: nameof(TaskCollectionFixture)) { }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async System.Threading.Tasks.Task SeedTaskAsync(Task task)
         {
             await DbContext.Tasks.InsertOneAsync(task);
         }
-
     }
 }

@@ -19,11 +19,11 @@ namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public BoardAggregateRepository(BoardWriteDbContext dbContext) : base(dbContext)
+        public BoardAggregateRepository(BoardWriteDbContext dbContext)
+            : base(dbContext)
         {
             _boards = dbContext.GetCollection<Board>();
         }
-
 
         #endregion
 
@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.Repositories
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool ExistBoard(string boardId, string projectId, string boardName)
         {
@@ -40,16 +40,13 @@ namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.Repositories
             return board != null && board.Id != boardId;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Board> GetByCardIdAsync(string cardId)
         {
             return await _boards.Find(e => e.Cards.Any(c => c.Id == cardId)).FirstOrDefaultAsync();
         }
-
 
         #endregion
 
@@ -58,6 +55,5 @@ namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.Repositories
 
 
         #endregion
-
     }
 }

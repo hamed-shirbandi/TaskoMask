@@ -14,14 +14,11 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
             CreationTime = CreationTime.CreateNowDateTime();
         }
 
-
         #endregion
 
         #region Properties
 
         public CreationTime CreationTime { get; private set; }
-
-
 
         #endregion
 
@@ -38,7 +35,7 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected void UpdateModifiedDateTime()
         {
@@ -46,6 +43,5 @@ namespace TaskoMask.BuildingBlocks.Domain.Entities
         }
 
         #endregion
-
     }
 }

@@ -16,13 +16,11 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
         #region Ctors
 
 
-        public BaseApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus )
+        public BaseApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
         {
             _authenticatedUserService = authenticatedUserService;
             _inMemoryBus = inMemoryBus;
         }
-
-
 
         #endregion
 
@@ -32,24 +30,20 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected string GetCurrentUserName()
         {
             return _authenticatedUserService.GetUserName();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected string GetCurrentUserId()
         {
             return _authenticatedUserService.GetUserId();
         }
-
-
 
         #endregion
 
@@ -57,6 +51,5 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers
 
 
         #endregion
-
     }
 }

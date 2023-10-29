@@ -6,7 +6,6 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
 {
     public static class EmailValidator
     {
-
         public static bool IsValid(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -15,8 +14,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
             try
             {
                 // Normalize the domain
-                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
-                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper, RegexOptions.None, TimeSpan.FromMilliseconds(200));
 
                 // Examines the domain part of the email and normalizes it.
                 string DomainMapper(Match match)
@@ -37,9 +35,7 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
 
             try
             {
-                return Regex.IsMatch(email,
-                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+                return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
             }
             catch
             {

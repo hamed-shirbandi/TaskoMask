@@ -11,7 +11,6 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
     {
         public IdentityDbContext CreateDbContext(string[] args)
         {
-
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)

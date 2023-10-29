@@ -15,7 +15,8 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
     /// <summary>
     /// Automatic validation by checking data annotation and fluent validations (if any)
     /// </summary>
-    public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : BaseCommand
+    public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : BaseCommand
     {
         #region Fields
 
@@ -39,7 +40,7 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
@@ -53,10 +54,7 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
                 throw new Exceptions.ValidationException();
 
             return await next();
-
         }
-
-
 
         #endregion
 
@@ -66,11 +64,11 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private bool ValidateDataAnnotationValidation(BaseCommand request)
         {
-            //try validate data annotations 
+            //try validate data annotations
             if (request.Validate(out var results))
                 return true;
 
@@ -81,10 +79,8 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
             return false;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<bool> ValidateFluentValidation(TRequest request, CancellationToken cancellationToken)
         {
@@ -99,10 +95,7 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
                 NotifyValidationError(request, failure.ErrorMessage);
 
             return false;
-
         }
-
-
 
         /// <summary>
         /// add error to notifications
@@ -111,7 +104,6 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
         {
             _notifications.Add(request.GetType().Name, error);
         }
-
 
         #endregion
     }

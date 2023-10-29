@@ -15,15 +15,14 @@ namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.Repositories
 
         protected readonly IMongoCollection<Owner> _owners;
 
-
         #endregion
 
         #region Ctors
 
-        public OwnerAggregateRepository(OwnerWriteDbContext dbContext) : base(dbContext)
+        public OwnerAggregateRepository(OwnerWriteDbContext dbContext)
+            : base(dbContext)
         {
             _owners = dbContext.Owners;
-
         }
 
         #endregion
@@ -33,44 +32,36 @@ namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.Repositories
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Owner> GetByEmailAsync(string email)
         {
             return await _owners.Find(o => o.Email.Value == email).FirstOrDefaultAsync();
-
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Owner> GetByOrganizationIdAsync(string organizationId)
         {
             return await _owners.Find(o => o.Organizations.Any(c => c.Id == organizationId)).FirstOrDefaultAsync();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Owner> GetByProjectIdAsync(string projectId)
         {
             return await _owners.Find(o => o.Organizations.Any(c => c.Projects.Any(p => p.Id == projectId))).FirstOrDefaultAsync();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool ExistOwnerByEmail(string ownerId, string email)
         {
             return _owners.AsQueryable().Any(o => o.Id != ownerId && o.Email.Value == email);
         }
-
 
         #endregion
 
@@ -79,6 +70,5 @@ namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.Repositories
 
 
         #endregion
-
     }
 }

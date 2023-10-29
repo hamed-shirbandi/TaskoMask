@@ -22,7 +22,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
 
         #region Ctors
 
-        public GetBoardByIdHandler(BoardReadDbContext boardReadDbContext, IMapper mapper) : base(mapper)
+        public GetBoardByIdHandler(BoardReadDbContext boardReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _boardReadDbContext = boardReadDbContext;
         }
@@ -34,7 +35,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<GetBoardDto> Handle(GetBoardByIdRequest request, CancellationToken cancellationToken)
         {
@@ -45,8 +46,6 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
 
             return _mapper.Map<GetBoardDto>(board);
         }
-
-
 
         #endregion
 

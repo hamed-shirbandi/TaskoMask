@@ -10,20 +10,19 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
 {
     internal static class HostingExtensions
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
-
             builder.AddCustomSerilog();
 
-            builder.Configuration.AddOcelotWithSwaggerSupport((o) =>
-            {
-                o.Folder = "Configuration/Ocelot";
-            });
+            builder.Configuration.AddOcelotWithSwaggerSupport(
+                (o) =>
+                {
+                    o.Folder = "Configuration/Ocelot";
+                }
+            );
 
             builder.Services.AddEndpointsApiExplorer();
 
@@ -35,22 +34,24 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
 
             builder.Services.AddMetrics(builder.Configuration);
 
-            builder.Services.AddAuthentication()
-             .AddJwtBearer(builder.Configuration["AuthenticationProviderKey"], x =>
-             {
-                 x.Authority = builder.Configuration["Url:IdentityServer"];
-                 x.TokenValidationParameters.ValidateAudience = false;
-             });
+            builder.Services
+                .AddAuthentication()
+                .AddJwtBearer(
+                    builder.Configuration["AuthenticationProviderKey"],
+                    x =>
+                    {
+                        x.Authority = builder.Configuration["Url:IdentityServer"];
+                        x.TokenValidationParameters.ValidateAudience = false;
+                    }
+                );
 
             return builder.Build();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app,IConfiguration configuration)
+        public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
         {
             app.UseSerilogRequestLogging();
 
@@ -61,10 +62,7 @@ namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
                 opt.PathToSwaggerGenerator = "/swagger/docs";
             });
 
-            app.UseCors(builder => builder
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseMetrics(configuration);
 

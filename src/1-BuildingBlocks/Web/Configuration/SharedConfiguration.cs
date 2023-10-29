@@ -8,16 +8,12 @@ namespace TaskoMask.BuildingBlocks.Web.Configuration
     /// </summary>
     public static class SharedConfiguration
     {
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddHttpClientService(this IServiceCollection services)
         {
             services.AddScoped<IHttpClientService, HttpClientService>();
         }
-
     }
 }

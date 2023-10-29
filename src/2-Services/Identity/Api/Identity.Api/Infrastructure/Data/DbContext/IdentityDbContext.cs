@@ -6,7 +6,17 @@ using Microsoft.Extensions.Configuration;
 
 namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
 {
-    public class IdentityDbContext : IdentityDbContext<User, IdentityRole<string>, string, IdentityUserClaim<string>, IdentityUserRole<string>, UserLogin, IdentityRoleClaim<string>, UserToken>
+    public class IdentityDbContext
+        : IdentityDbContext<
+            User,
+            IdentityRole<string>,
+            string,
+            IdentityUserClaim<string>,
+            IdentityUserRole<string>,
+            UserLogin,
+            IdentityRoleClaim<string>,
+            UserToken
+        >
     {
         private readonly IConfiguration _configuration;
 
@@ -15,9 +25,8 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
             _configuration = configuration;
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,10 +36,8 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
             optionsBuilder.UseSqlServer(connection.Replace("[DatabaseName]", databaseName));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void OnModelCreating(ModelBuilder builder)
         {

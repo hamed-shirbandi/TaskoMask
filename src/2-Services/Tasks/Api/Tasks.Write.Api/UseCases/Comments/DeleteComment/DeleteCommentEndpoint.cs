@@ -9,16 +9,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment
 {
-
     [Authorize("user-write-access")]
     [Tags("Comments")]
     public class DeleteCommentEndpoint : BaseApiController
     {
-        public DeleteCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public DeleteCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Delete an existing comment
@@ -30,5 +26,4 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment
             return await _inMemoryBus.SendCommand<DeleteCommentRequest>(new(id));
         }
     }
-
 }

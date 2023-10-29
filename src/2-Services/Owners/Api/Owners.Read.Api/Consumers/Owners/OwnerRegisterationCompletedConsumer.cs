@@ -12,20 +12,15 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers.Owners
     {
         private readonly OwnerReadDbContext _ownerReadDbContext;
 
-
-        public OwnerRegisterationCompletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext) : base(inMemoryBus)
+        public OwnerRegisterationCompletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
+            : base(inMemoryBus)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
 
-
         public override async Task ConsumeMessage(ConsumeContext<OwnerRegisterationCompleted> context)
         {
-            var owner = new Owner(context.Message.Id)
-            {
-                DisplayName = context.Message.DisplayName,
-                Email = context.Message.Email,
-            };
+            var owner = new Owner(context.Message.Id) { DisplayName = context.Message.DisplayName, Email = context.Message.Email, };
             await _ownerReadDbContext.Owners.InsertOneAsync(owner);
         }
     }

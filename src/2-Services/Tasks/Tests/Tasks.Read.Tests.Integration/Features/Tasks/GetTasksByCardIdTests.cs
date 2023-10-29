@@ -11,7 +11,6 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Features.Tasks
     [Collection(nameof(TaskCollectionFixture))]
     public class GetTasksByCardIdTests
     {
-
         #region Fields
 
         private readonly TaskCollectionFixture _fixture;
@@ -46,7 +45,6 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Features.Tasks
             result.Should().HaveCountGreaterThanOrEqualTo(1);
             result.Should().Contain(c => c.Id == expectedTask.Id);
         }
-
 
         #endregion
     }

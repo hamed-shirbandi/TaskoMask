@@ -16,7 +16,6 @@ using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
 {
     public class AddTaskUseCase : BaseCommandHandler, IRequestHandler<AddTaskRequest, CommandResult>
-
     {
         #region Fields
 
@@ -28,7 +27,13 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
         #region Ctors
 
 
-        public AddTaskUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus, ITaskValidatorService taskValidatorService) : base(messageBus, inMemoryBus)
+        public AddTaskUseCase(
+            ITaskAggregateRepository taskAggregateRepository,
+            IMessageBus messageBus,
+            IInMemoryBus inMemoryBus,
+            ITaskValidatorService taskValidatorService
+        )
+            : base(messageBus, inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
             _taskValidatorService = taskValidatorService;
@@ -41,11 +46,11 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(AddTaskRequest request, CancellationToken cancellationToken)
         {
-            var task = Domain.Tasks.Entities.Task.AddTask(request.Title, request.Description,request.CardId, request.BoardId, _taskValidatorService);
+            var task = Domain.Tasks.Entities.Task.AddTask(request.Title, request.Description, request.CardId, request.BoardId, _taskValidatorService);
 
             await _taskAggregateRepository.AddAsync(task);
 
@@ -58,7 +63,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
             return CommandResult.Create(ContractsMessages.Create_Success, task.Id);
         }
 
-
         #endregion
 
         #region Private Methods
@@ -67,11 +71,15 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
         private TaskAdded MapToTaskAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var taskAddedDomainEvent = (TaskAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(TaskAddedEvent));
-            return new TaskAdded(taskAddedDomainEvent.Id, taskAddedDomainEvent.Title, taskAddedDomainEvent.Description, taskAddedDomainEvent.CardId, taskAddedDomainEvent.BoardId);
+            return new TaskAdded(
+                taskAddedDomainEvent.Id,
+                taskAddedDomainEvent.Title,
+                taskAddedDomainEvent.Description,
+                taskAddedDomainEvent.CardId,
+                taskAddedDomainEvent.BoardId
+            );
         }
 
-
         #endregion
-
     }
 }

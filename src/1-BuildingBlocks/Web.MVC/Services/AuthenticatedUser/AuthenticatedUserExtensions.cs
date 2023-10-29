@@ -5,9 +5,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser
 {
     public static class AuthenticatedUserExtensions
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IServiceCollection AddAuthenticatedUserService(this IServiceCollection services)
         {

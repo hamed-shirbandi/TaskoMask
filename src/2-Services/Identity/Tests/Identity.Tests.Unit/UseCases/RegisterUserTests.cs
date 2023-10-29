@@ -25,9 +25,7 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
         #region Ctor
 
-        public RegisterUserTests()
-        {
-        }
+        public RegisterUserTests() { }
 
         #endregion
 
@@ -52,16 +50,14 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
             await MessageBus.Received(1).Publish(Arg.Any<UserRegistered>());
         }
 
-
-
-
         [Fact]
         public async Task User_is_not_registered_if_email_is_duplicated()
         {
             //Arrange
             var registeredOwnerId = System.Guid.NewGuid().ToString();
             var expectedMessage = ApplicationMessages.UserName_Already_Exist;
-            var userBuilder = UserBuilder.Init()
+            var userBuilder = UserBuilder
+                .Init()
                 .WithId(registeredOwnerId)
                 .WithUserName("test@taskomask.ir")
                 .WithEmail("test@taskomask.ir")
@@ -70,7 +66,7 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
             await TestUserManager.CreateAsync(userBuilder.Build(), userBuilder.Password);
 
-            var registerUserRequest = new RegisterUserRequest(registeredOwnerId,userBuilder.Email, "TestPass");
+            var registerUserRequest = new RegisterUserRequest(registeredOwnerId, userBuilder.Email, "TestPass");
 
             //Act
             System.Func<Task> act = async () => await _regiserUserUseCase.Handle(registerUserRequest, CancellationToken.None);

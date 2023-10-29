@@ -1,6 +1,4 @@
 ﻿namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations
 {
-    public class AddOrganizationDto : OrganizationBaseDto
-    {
-    }
+    public class AddOrganizationDto : OrganizationBaseDto { }
 }

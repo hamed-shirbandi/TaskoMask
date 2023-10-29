@@ -46,7 +46,6 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Features.Activities
             result.Should().Contain(c => c.Id == expectedActivity.Id);
         }
 
-
         #endregion
     }
 }

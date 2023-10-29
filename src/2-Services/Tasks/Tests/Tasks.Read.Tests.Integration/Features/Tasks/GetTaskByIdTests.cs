@@ -11,7 +11,6 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Features.Tasks
     [Collection(nameof(TaskCollectionFixture))]
     public class GetTaskByIdTests
     {
-
         #region Fields
 
         private readonly TaskCollectionFixture _fixture;
@@ -46,7 +45,6 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Features.Tasks
             result.Id.Should().Be(expectedTask.Id);
             result.Title.Should().Be(expectedTask.Title);
         }
-
 
         #endregion
     }

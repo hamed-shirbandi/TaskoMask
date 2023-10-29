@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrganization
 {
-
     [Authorize("user-write-access")]
     [Tags("Organizations")]
     public class DeleteOrganizationEndpoint : BaseApiController
     {
-        public DeleteOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public DeleteOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Delete an organization
@@ -31,5 +27,4 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrgan
             return await _inMemoryBus.SendCommand<DeleteOrganizationRequest>(new(id));
         }
     }
-
 }

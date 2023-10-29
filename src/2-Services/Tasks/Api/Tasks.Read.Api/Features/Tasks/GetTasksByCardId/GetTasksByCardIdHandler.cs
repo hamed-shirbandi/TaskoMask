@@ -21,7 +21,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTasksByCardId
 
         #region Ctors
 
-        public GetTasksByCardIdHandler(TaskReadDbContext taskReadDbContext, IMapper mapper) : base(mapper)
+        public GetTasksByCardIdHandler(TaskReadDbContext taskReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _taskReadDbContext = taskReadDbContext;
         }
@@ -33,7 +34,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTasksByCardId
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<IEnumerable<GetTaskDto>> Handle(GetTasksByCardIdRequest request, CancellationToken cancellationToken)
         {
@@ -41,8 +42,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTasksByCardId
 
             return _mapper.Map<IEnumerable<GetTaskDto>>(tasks);
         }
-
-
 
         #endregion
 

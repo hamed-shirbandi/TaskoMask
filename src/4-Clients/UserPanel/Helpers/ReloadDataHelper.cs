@@ -4,20 +4,13 @@ namespace TaskoMask.Clients.UserPanel.Helpers
 {
     public static class ReloadDataHelper
     {
-
-
         public static bool Dashboard_Index_Need_Reload(MessageType messageType)
         {
-            if (OrganizationIsChanged(messageType)
-                || ProjectIsChanged(messageType)
-                || BoardIsChanged(messageType)
-                )
+            if (OrganizationIsChanged(messageType) || ProjectIsChanged(messageType) || BoardIsChanged(messageType))
                 return true;
 
             return false;
         }
-
-
 
         public static bool Project_Index_Need_Reload(MessageType messageType)
         {
@@ -27,8 +20,6 @@ namespace TaskoMask.Clients.UserPanel.Helpers
             return false;
         }
 
-
-
         public static bool Task_Details_Need_Reload(MessageType messageType)
         {
             if (TaskIsChanged(messageType) || CommentIsChanged(messageType))
@@ -36,7 +27,6 @@ namespace TaskoMask.Clients.UserPanel.Helpers
 
             return false;
         }
-
 
         public static bool NavMenu_Need_Reload(MessageType messageType)
         {
@@ -46,8 +36,6 @@ namespace TaskoMask.Clients.UserPanel.Helpers
             return false;
         }
 
-
-
         public static bool Board_Index_Need_Reload(MessageType messageType)
         {
             if (CardIsChanged(messageType) || TaskIsChanged(messageType))
@@ -56,15 +44,10 @@ namespace TaskoMask.Clients.UserPanel.Helpers
             return false;
         }
 
-
-
         private static bool CardIsChanged(MessageType messageType)
         {
-            return messageType == MessageType.Card_Added
-                 || messageType == MessageType.Card_Deleted
-                 || messageType == MessageType.Card_Updated;
+            return messageType == MessageType.Card_Added || messageType == MessageType.Card_Deleted || messageType == MessageType.Card_Updated;
         }
-
 
         private static bool TaskIsChanged(MessageType messageType)
         {
@@ -74,23 +57,17 @@ namespace TaskoMask.Clients.UserPanel.Helpers
                 || messageType == MessageType.Task_Updated;
         }
 
-
         private static bool OwnerIsChanged(MessageType messageType)
         {
             return messageType == MessageType.Owner_Updated
-                 || messageType == MessageType.Owner_Registered
-                 || messageType == MessageType.Owner_Loggedin;
+                || messageType == MessageType.Owner_Registered
+                || messageType == MessageType.Owner_Loggedin;
         }
-
-
 
         private static bool BoardIsChanged(MessageType messageType)
         {
-            return messageType == MessageType.Board_Added
-                || messageType == MessageType.Board_Deleted
-                || messageType == MessageType.Board_Updated;
+            return messageType == MessageType.Board_Added || messageType == MessageType.Board_Deleted || messageType == MessageType.Board_Updated;
         }
-
 
         private static bool ProjectIsChanged(MessageType messageType)
         {
@@ -99,7 +76,6 @@ namespace TaskoMask.Clients.UserPanel.Helpers
                 || messageType == MessageType.Project_Updated;
         }
 
-
         private static bool OrganizationIsChanged(MessageType messageType)
         {
             return messageType == MessageType.Organization_Added
@@ -107,15 +83,11 @@ namespace TaskoMask.Clients.UserPanel.Helpers
                 || messageType == MessageType.Organization_Updated;
         }
 
-
-
         private static bool CommentIsChanged(MessageType messageType)
         {
             return messageType == MessageType.Comment_Added
                 || messageType == MessageType.Comment_Deleted
                 || messageType == MessageType.Comment_Updated;
         }
-
-
     }
 }

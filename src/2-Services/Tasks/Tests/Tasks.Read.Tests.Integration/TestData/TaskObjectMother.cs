@@ -19,9 +19,8 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.TestData
                 BoardId = ObjectId.GenerateNewId().ToString(),
                 CardId = ObjectId.GenerateNewId().ToString(),
                 CardName = TestDataGenerator.GetRandomName(10),
-                CardType =BoardCardType.Backlog,
+                CardType = BoardCardType.Backlog,
             };
         }
-
     }
 }

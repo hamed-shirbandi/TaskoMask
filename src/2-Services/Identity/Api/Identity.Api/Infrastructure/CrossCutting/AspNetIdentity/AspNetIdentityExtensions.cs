@@ -8,15 +8,12 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.AspNetIdentity
 {
     internal static class AspNetIdentityExtensions
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddAspNetIdentity(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentity<User, IdentityRole<string>>()
-                .AddEntityFrameworkStores<IdentityDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddIdentity<User, IdentityRole<string>>().AddEntityFrameworkStores<IdentityDbContext>().AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {

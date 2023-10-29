@@ -1,5 +1,4 @@
-﻿
-namespace TaskoMask.Tests.Acceptance.Core.Models
+﻿namespace TaskoMask.Tests.Acceptance.Core.Models
 {
     public class UserJwtTokenDto
     {

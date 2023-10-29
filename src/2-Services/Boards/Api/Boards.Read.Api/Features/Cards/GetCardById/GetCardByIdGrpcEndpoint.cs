@@ -7,11 +7,11 @@ using TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById;
 
 namespace TaskoMask.Services.Cards.Read.Api.Features.Cards.GetCardById
 {
-
     public class GetCardByIdGrpcEndpoint : GetCardByIdGrpcService.GetCardByIdGrpcServiceBase
     {
         private readonly IInMemoryBus _inMemoryBus;
         private readonly IMapper _mapper;
+
         public GetCardByIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
         {
             _inMemoryBus = inMemoryBus;
@@ -24,5 +24,4 @@ namespace TaskoMask.Services.Cards.Read.Api.Features.Cards.GetCardById
             return _mapper.Map<GetCardGrpcResponse>(board.Value);
         }
     }
-
 }

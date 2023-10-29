@@ -11,6 +11,5 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
         }
 
         public string OwnerId { get; }
-
     }
 }

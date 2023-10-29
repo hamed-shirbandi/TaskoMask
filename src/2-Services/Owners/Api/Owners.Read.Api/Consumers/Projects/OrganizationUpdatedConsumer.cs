@@ -12,12 +12,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers.Projects
     {
         private readonly OwnerReadDbContext _ownerReadDbContext;
 
-
-        public OrganizationUpdatedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext) : base(inMemoryBus)
+        public OrganizationUpdatedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
+            : base(inMemoryBus)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
-
 
         public override async Task ConsumeMessage(ConsumeContext<OrganizationUpdated> context)
         {

@@ -11,7 +11,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Cards
     [Collection(nameof(CardCollectionFixture))]
     public class AddCardTests
     {
-
         #region Fields
 
         private readonly CardCollectionFixture _fixture;
@@ -53,7 +52,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Cards
             addedCard.Name.Value.Should().Be(request.Name);
             addedCard.Type.Value.Should().Be(request.Type);
         }
-
 
         #endregion
     }

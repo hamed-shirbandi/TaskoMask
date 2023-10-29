@@ -3,11 +3,8 @@ using Xunit;
 
 namespace TaskoMask.Services.Boards.Read.Tests.Integration.Fixtures
 {
-
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [CollectionDefinition(nameof(CardCollectionFixture))]
     public class CardCollectionFixtureDefinition : ICollectionFixture<CardCollectionFixture>
@@ -17,28 +14,20 @@ namespace TaskoMask.Services.Boards.Read.Tests.Integration.Fixtures
         // ICollectionFixture<> interfaces.
     }
 
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class CardCollectionFixture : TestsBaseFixture
     {
-
-        public CardCollectionFixture() : base(dbNameSuffix: nameof(CardCollectionFixture))
-        {
-        }
-
-
-
+        public CardCollectionFixture()
+            : base(dbNameSuffix: nameof(CardCollectionFixture)) { }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task SeedCardAsync(Card card)
         {
             await DbContext.Cards.InsertOneAsync(card);
         }
-
     }
 }

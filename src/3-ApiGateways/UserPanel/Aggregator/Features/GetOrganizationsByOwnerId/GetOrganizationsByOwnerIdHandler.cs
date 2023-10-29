@@ -13,7 +13,9 @@ using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectsByOrganization
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsByOwnerId
 {
-    public class GetOrganizationsByOwnerIdHandler : BaseQueryHandler, IRequestHandler<GetOrganizationsByOwnerIdRequest, IEnumerable<OrganizationDetailsViewModel>>
+    public class GetOrganizationsByOwnerIdHandler
+        : BaseQueryHandler,
+            IRequestHandler<GetOrganizationsByOwnerIdRequest, IEnumerable<OrganizationDetailsViewModel>>
     {
         #region Fields
 
@@ -25,7 +27,13 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
 
         #region Ctors
 
-        public GetOrganizationsByOwnerIdHandler(IMapper mapper, GetOrganizationsByOwnerIdGrpcServiceClient getOrganizationsByOwnerIdGrpcServiceClient, GetProjectsByOrganizationIdGrpcServiceClient getProjectsByOrganizationIdGrpcServiceClient, GetBoardsByOrganizationIdGrpcServiceClient getBoardsByOrganizationIdGrpcServiceClient) : base(mapper)
+        public GetOrganizationsByOwnerIdHandler(
+            IMapper mapper,
+            GetOrganizationsByOwnerIdGrpcServiceClient getOrganizationsByOwnerIdGrpcServiceClient,
+            GetProjectsByOrganizationIdGrpcServiceClient getProjectsByOrganizationIdGrpcServiceClient,
+            GetBoardsByOrganizationIdGrpcServiceClient getBoardsByOrganizationIdGrpcServiceClient
+        )
+            : base(mapper)
         {
             _getOrganizationsByOwnerIdGrpcServiceClient = getOrganizationsByOwnerIdGrpcServiceClient;
             _getProjectsByOrganizationIdGrpcServiceClient = getProjectsByOrganizationIdGrpcServiceClient;
@@ -39,33 +47,37 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public async Task<IEnumerable<OrganizationDetailsViewModel>> Handle(GetOrganizationsByOwnerIdRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<OrganizationDetailsViewModel>> Handle(
+            GetOrganizationsByOwnerIdRequest request,
+            CancellationToken cancellationToken
+        )
         {
             var organizations = new List<OrganizationDetailsViewModel>();
 
-            var organizationsGrpcCall = _getOrganizationsByOwnerIdGrpcServiceClient.Handle(new GetOrganizationsByOwnerIdGrpcRequest { OwnerId = request.OwnerId });
+            var organizationsGrpcCall = _getOrganizationsByOwnerIdGrpcServiceClient.Handle(
+                new GetOrganizationsByOwnerIdGrpcRequest { OwnerId = request.OwnerId }
+            );
 
             while (await organizationsGrpcCall.ResponseStream.MoveNext(cancellationToken))
             {
                 var currentOrganizationGrpcResponse = organizationsGrpcCall.ResponseStream.Current;
 
-                organizations.Add(new OrganizationDetailsViewModel
-                {
-                    Organization = MapToOrganization(currentOrganizationGrpcResponse),
-                    Projects = await GetProjectsAsync(currentOrganizationGrpcResponse.Id),
-                    Boards = await GetBoardsAsync(currentOrganizationGrpcResponse.Id),
-                    //Will be done by issue #143
-                    Reports = new OrganizationReportDto(),
-                });
+                organizations.Add(
+                    new OrganizationDetailsViewModel
+                    {
+                        Organization = MapToOrganization(currentOrganizationGrpcResponse),
+                        Projects = await GetProjectsAsync(currentOrganizationGrpcResponse.Id),
+                        Boards = await GetBoardsAsync(currentOrganizationGrpcResponse.Id),
+                        //Will be done by issue #143
+                        Reports = new OrganizationReportDto(),
+                    }
+                );
             }
 
             return organizations.AsEnumerable();
         }
-
-
-
 
         #endregion
 
@@ -74,23 +86,23 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private GetOrganizationDto MapToOrganization(GetOrganizationGrpcResponse organizationGrpcResponse)
         {
             return _mapper.Map<GetOrganizationDto>(organizationGrpcResponse);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<IEnumerable<GetProjectDto>> GetProjectsAsync(string organizationId)
         {
             var projects = new List<GetProjectDto>();
 
-            var projectsGrpcCall = _getProjectsByOrganizationIdGrpcServiceClient.Handle(new GetProjectsByOrganizationIdGrpcRequest { OrganizationId = organizationId });
+            var projectsGrpcCall = _getProjectsByOrganizationIdGrpcServiceClient.Handle(
+                new GetProjectsByOrganizationIdGrpcRequest { OrganizationId = organizationId }
+            );
 
             await foreach (var response in projectsGrpcCall.ResponseStream.ReadAllAsync())
                 projects.Add(_mapper.Map<GetProjectDto>(response));
@@ -98,15 +110,15 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
             return projects;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<IEnumerable<GetBoardDto>> GetBoardsAsync(string organizationId)
         {
             var boards = new List<GetBoardDto>();
-            var boardsGrpcCall = _getBoardsByOrganizationIdGrpcServiceClient.Handle(new GetBoardsByOrganizationIdGrpcRequest { OrganizationId = organizationId });
+            var boardsGrpcCall = _getBoardsByOrganizationIdGrpcServiceClient.Handle(
+                new GetBoardsByOrganizationIdGrpcRequest { OrganizationId = organizationId }
+            );
 
             await foreach (var response in boardsGrpcCall.ResponseStream.ReadAllAsync())
                 boards.Add(_mapper.Map<GetBoardDto>(response));
@@ -114,9 +126,6 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
             return boards;
         }
 
-
-
         #endregion
-
     }
 }

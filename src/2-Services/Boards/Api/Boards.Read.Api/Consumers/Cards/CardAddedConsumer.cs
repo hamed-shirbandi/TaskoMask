@@ -13,24 +13,23 @@ namespace TaskoMask.Services.Boards.Read.Api.Consumers.Cards
     {
         private readonly BoardReadDbContext _boardReadDbContext;
 
-
-        public CardAddedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext) : base(inMemoryBus)
+        public CardAddedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
+            : base(inMemoryBus)
         {
             _boardReadDbContext = boardReadDbContext;
         }
 
-
         public override async Task ConsumeMessage(ConsumeContext<CardAdded> context)
         {
             var board = await _boardReadDbContext.Boards.Find(b => b.Id == context.Message.BoardId).FirstOrDefaultAsync();
-           
+
             var card = new Card(context.Message.Id)
             {
                 Name = context.Message.Name,
                 Type = context.Message.Type,
                 BoardId = context.Message.BoardId,
                 ProjectId = board.ProjectId,
-                OrganizationId= board.OrganizationId,
+                OrganizationId = board.OrganizationId,
                 OwnerId = board.OwnerId,
             };
 

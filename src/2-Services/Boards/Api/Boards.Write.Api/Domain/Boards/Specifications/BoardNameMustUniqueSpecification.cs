@@ -7,13 +7,14 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Specifications
     internal class BoardNameMustUniqueSpecification : ISpecification<Board>
     {
         private readonly IBoardValidatorService _boardValidatorService;
+
         public BoardNameMustUniqueSpecification(IBoardValidatorService boardValidatorService)
         {
             _boardValidatorService = boardValidatorService;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSatisfiedBy(Board board)
         {

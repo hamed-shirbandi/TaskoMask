@@ -2,15 +2,13 @@
 
 namespace TaskoMask.Tests.Acceptance.Core.Helpers
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IResult
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSuccess { get; set; }
 
@@ -19,16 +17,14 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         /// </summary>
         public string Message { get; set; }
 
-
         /// <summary>
         ///
         /// </summary>
         public List<string> Errors { get; set; }
     }
 
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public struct Result : IResult
     {
@@ -40,7 +36,6 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
 
         public List<string> Errors { get; set; }
 
-
         #endregion
 
         #region Ctors
@@ -48,12 +43,10 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
 
         public Result(bool isSuccess, string message, List<string> errors)
         {
-
             IsSuccess = isSuccess;
             Message = message;
             Errors = errors ?? new List<string>();
         }
-
 
         #endregion
 
@@ -65,36 +58,26 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
             return new Result(true, message, default);
         }
 
-
-
-        public static Result Failure( List<string> errors = default, string message = "")
+        public static Result Failure(List<string> errors = default, string message = "")
         {
             return new Result(false, message, errors);
         }
 
-
-
-        public static Result<TValue> Success<TValue>(TValue value = default,string message = "" )
+        public static Result<TValue> Success<TValue>(TValue value = default, string message = "")
         {
             return new Result<TValue>(true, message, value, default);
         }
 
-
-
-        public static Result<TValue> Failure<TValue>(List<string> errors= default, string message= "")
+        public static Result<TValue> Failure<TValue>(List<string> errors = default, string message = "")
         {
             return new Result<TValue>(false, message, default, errors);
         }
 
-
-
         #endregion
     }
 
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public struct Result<TValue> : IResult
     {
@@ -106,7 +89,6 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         public List<string> Errors { get; set; }
         public TValue Value { get; set; }
 
-
         #endregion
 
         #region Ctors
@@ -114,14 +96,11 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
 
         public Result(bool isSuccess, string message, TValue value, List<string> errors)
         {
-
             IsSuccess = isSuccess;
             Message = message;
             Value = value;
             Errors = errors ?? new List<string>();
         }
-
-    
 
         #endregion
     }

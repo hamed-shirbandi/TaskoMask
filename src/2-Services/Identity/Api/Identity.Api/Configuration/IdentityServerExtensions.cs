@@ -8,13 +8,13 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 {
     internal static class IdentityServerExtensions
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static void AddIdentityServer(this IServiceCollection services )
+        public static void AddIdentityServer(this IServiceCollection services)
         {
-            services.AddIdentityServer(options =>
+            services
+                .AddIdentityServer(options =>
                 {
                     options.Events.RaiseErrorEvents = true;
                     options.Events.RaiseInformationEvents = true;
@@ -30,8 +30,6 @@ namespace TaskoMask.Services.Identity.Api.Configuration
                 .AddInMemoryClients(IdentityServerConfig.Clients)
                 .AddAspNetIdentity<User>();
         }
-
-
 
         /// <summary>
         /// Determines if the authentication scheme support signout.

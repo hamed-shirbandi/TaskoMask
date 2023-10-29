@@ -9,16 +9,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard
 {
-
     [Authorize("user-write-access")]
     [Tags("Boards")]
     public class DeleteBoardEndpoint : BaseApiController
     {
-        public DeleteBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public DeleteBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Delete a board
@@ -30,5 +26,4 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard
             return await _inMemoryBus.SendCommand<DeleteBoardRequest>(new(id));
         }
     }
-
 }

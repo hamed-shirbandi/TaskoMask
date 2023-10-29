@@ -11,16 +11,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationsByOwnerId
 {
-
     [Authorize("user-read-access")]
     [Tags("Organizations")]
     public class GetOrganizationsByOwnerIdRestEndpoint : BaseApiController
     {
-        public GetOrganizationsByOwnerIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetOrganizationsByOwnerIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get organizations for current owner
@@ -32,5 +28,4 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
             return await _inMemoryBus.SendQuery(new GetOrganizationsByOwnerIdRequest(GetCurrentUserId()));
         }
     }
-
 }

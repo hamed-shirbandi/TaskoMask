@@ -9,16 +9,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
 {
-
     [Authorize("user-write-access")]
     [Tags("Cards")]
     public class DeleteCardEndpoint : BaseApiController
     {
-        public DeleteCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public DeleteCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Delete a card
@@ -30,5 +26,4 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
             return await _inMemoryBus.SendCommand<DeleteCardRequest>(new(id));
         }
     }
-
 }

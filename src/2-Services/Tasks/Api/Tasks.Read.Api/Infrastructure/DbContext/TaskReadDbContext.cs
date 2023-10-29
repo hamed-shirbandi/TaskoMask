@@ -5,9 +5,8 @@ using TaskoMask.Services.Tasks.Read.Api.Domain;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class TaskReadDbContext : MongoDbContext
     {
@@ -19,14 +18,13 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext
         #region Ctors
 
 
-        public TaskReadDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
+        public TaskReadDbContext(IOptions<MongoDbOptions> mongoDbOptions)
+            : base(mongoDbOptions)
         {
             Tasks = GetCollection<Task>();
             Comments = GetCollection<Comment>();
             Activities = GetCollection<Activity>(nameof(Activities));
         }
-
-
 
         #endregion
 
@@ -37,6 +35,5 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext
         public IMongoCollection<Activity> Activities { get; }
 
         #endregion
-
     }
 }

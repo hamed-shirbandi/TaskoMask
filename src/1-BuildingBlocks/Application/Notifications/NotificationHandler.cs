@@ -3,9 +3,8 @@ using System.Linq;
 
 namespace TaskoMask.BuildingBlocks.Application.Notifications
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class NotificationHandler : INotificationHandler
     {
@@ -18,7 +17,7 @@ namespace TaskoMask.BuildingBlocks.Application.Notifications
 
         public void Add(string key, string value)
         {
-            var notification = new Notification(key,value);
+            var notification = new Notification(key, value);
             _notifications.Add(notification);
         }
 
@@ -29,9 +28,8 @@ namespace TaskoMask.BuildingBlocks.Application.Notifications
 
         public List<string> GetErrors()
         {
-            return _notifications.Select(n=>n.Value).ToList();
+            return _notifications.Select(n => n.Value).ToList();
         }
-
 
         public List<Notification> GetList()
         {
@@ -40,23 +38,19 @@ namespace TaskoMask.BuildingBlocks.Application.Notifications
 
         public List<Notification> GetListAndReset()
         {
-            var notifications=  _notifications;
+            var notifications = _notifications;
             Reset();
             return notifications;
         }
-
 
         public bool HasAny()
         {
             return _notifications.Any();
         }
 
-
         public void Reset()
         {
             _notifications = new List<Notification>();
         }
-
-        
     }
 }

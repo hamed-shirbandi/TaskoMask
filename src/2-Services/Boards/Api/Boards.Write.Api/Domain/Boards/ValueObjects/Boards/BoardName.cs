@@ -13,7 +13,6 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards
 
         public string Value { get; private set; }
 
-
         #endregion
 
         #region Ctors
@@ -39,36 +38,43 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards
             return new BoardName(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
                 throw new DomainException(string.Format(ContractsMetadata.Required, nameof(BoardName)));
 
-            if (Value.Length< DomainConstValues.Board_Name_Min_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length));
+            if (Value.Length < DomainConstValues.Board_Name_Min_Length)
+                throw new DomainException(
+                    string.Format(
+                        ContractsMetadata.Length_Error,
+                        nameof(BoardName),
+                        DomainConstValues.Board_Name_Min_Length,
+                        DomainConstValues.Board_Name_Max_Length
+                    )
+                );
 
             if (Value.Length > DomainConstValues.Board_Name_Max_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length));
-
+                throw new DomainException(
+                    string.Format(
+                        ContractsMetadata.Length_Error,
+                        nameof(BoardName),
+                        DomainConstValues.Board_Name_Min_Length,
+                        DomainConstValues.Board_Name_Max_Length
+                    )
+                );
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

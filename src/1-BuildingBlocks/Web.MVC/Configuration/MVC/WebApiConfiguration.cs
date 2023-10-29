@@ -12,20 +12,18 @@ using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class WebApiConfiguration
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddWebApiPreConfigured(this IServiceCollection services, IConfiguration configuration)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
 
             services.AddControllers().WithPreventAutoValidation();
 
@@ -47,20 +45,18 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             services.AddMetrics(configuration);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env,IConfiguration configuration)
+        public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
         {
-            if (app == null) throw new ArgumentNullException(nameof(app));
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
 
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
             app.UseGlobalExceptionHandler();
-
 
             app.UseSwaggerPreConfigured();
 
@@ -68,10 +64,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 
             app.UseRouting();
 
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseMetrics(configuration);
 
@@ -80,21 +73,19 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             app.UseAuthorization();
         }
 
-
-
         /// <summary>
         /// Prevent auto validate on model binding
         /// </summary>
         private static void WithPreventAutoValidation(this IMvcBuilder builder)
         {
             builder.ConfigureApiBehaviorOptions(options =>
-                  {
-                      options.SuppressModelStateInvalidFilter = true;
-                  });
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static void UseGlobalExceptionHandler(this IApplicationBuilder app)
         {

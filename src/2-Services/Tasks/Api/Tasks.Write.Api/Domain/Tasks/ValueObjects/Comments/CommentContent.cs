@@ -11,7 +11,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.ValueObjects.Comments
 
         public string Value { get; private set; }
 
-
         #endregion
 
         #region Ctors
@@ -37,10 +36,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.ValueObjects.Comments
             return new CommentContent(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckPolicies()
         {
@@ -48,18 +45,14 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.ValueObjects.Comments
                 throw new DomainException(string.Format(ContractsMetadata.Required, nameof(CommentContent)));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Organiz
 
         public string Value { get; private set; }
 
-
         #endregion
 
         #region Ctors
@@ -38,36 +37,43 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Organiz
             return new OrganizationName(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
                 throw new DomainException(string.Format(ContractsMetadata.Required, nameof(OrganizationName)));
 
-            if (Value.Length< DomainConstValues.Organization_Name_Min_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(OrganizationName), DomainConstValues.Organization_Name_Min_Length, DomainConstValues.Organization_Name_Max_Length));
+            if (Value.Length < DomainConstValues.Organization_Name_Min_Length)
+                throw new DomainException(
+                    string.Format(
+                        ContractsMetadata.Length_Error,
+                        nameof(OrganizationName),
+                        DomainConstValues.Organization_Name_Min_Length,
+                        DomainConstValues.Organization_Name_Max_Length
+                    )
+                );
 
             if (Value.Length > DomainConstValues.Organization_Name_Max_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Length_Error, nameof(OrganizationName), DomainConstValues.Organization_Name_Min_Length, DomainConstValues.Organization_Name_Max_Length));
-
+                throw new DomainException(
+                    string.Format(
+                        ContractsMetadata.Length_Error,
+                        nameof(OrganizationName),
+                        DomainConstValues.Organization_Name_Min_Length,
+                        DomainConstValues.Organization_Name_Max_Length
+                    )
+                );
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

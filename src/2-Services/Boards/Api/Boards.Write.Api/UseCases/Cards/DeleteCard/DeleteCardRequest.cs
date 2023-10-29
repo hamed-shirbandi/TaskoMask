@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
 {
-    public class DeleteCardRequest: BaseCommand
+    public class DeleteCardRequest : BaseCommand
     {
         public DeleteCardRequest(string id)
         {
@@ -14,6 +14,5 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
 
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Id { get; }
-
     }
 }

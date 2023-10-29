@@ -46,7 +46,6 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Features.Comments
             result.Should().Contain(c => c.Id == expectedComment.Id);
         }
 
-
         #endregion
     }
 }

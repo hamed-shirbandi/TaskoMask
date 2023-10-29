@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards
 
         public string Value { get; private set; }
 
-
         #endregion
 
         #region Ctors
@@ -38,30 +37,23 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards
             return new BoardProjectId(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
                 throw new DomainException(string.Format(ContractsMetadata.Required, nameof(BoardProjectId)));
-
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

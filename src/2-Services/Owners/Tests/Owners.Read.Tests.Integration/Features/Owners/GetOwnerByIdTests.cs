@@ -9,7 +9,6 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Owners
     [Collection(nameof(OwnerCollectionFixture))]
     public class GetOwnerByIdTests
     {
-
         #region Fields
 
         private readonly OwnerCollectionFixture _fixture;
@@ -44,7 +43,6 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Owners
             result.Id.Should().Be(expectedOwner.Id);
             result.Email.Should().Be(expectedOwner.Email);
         }
-
 
         #endregion
     }

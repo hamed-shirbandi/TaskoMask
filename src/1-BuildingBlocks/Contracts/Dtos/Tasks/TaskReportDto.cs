@@ -5,7 +5,6 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks
 {
     public class TaskReportDto
     {
-
         [Display(Name = nameof(ContractsMetadata.ToDoTasksCount), ResourceType = typeof(ContractsMetadata))]
         public long ToDoTasksCount { get; set; }
 
@@ -14,7 +13,6 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks
 
         [Display(Name = nameof(ContractsMetadata.DoneTasksCount), ResourceType = typeof(ContractsMetadata))]
         public long DoneTasksCount { get; set; }
-
 
         [Display(Name = nameof(ContractsMetadata.BacklogTasksCount), ResourceType = typeof(ContractsMetadata))]
         public long BacklogTasksCount { get; set; }

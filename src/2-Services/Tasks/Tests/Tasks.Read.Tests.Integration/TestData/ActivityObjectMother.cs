@@ -8,12 +8,7 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.TestData
     {
         public static Activity CreateActivity()
         {
-            return new Activity()
-            {
-                Description = TestDataGenerator.GetRandomString(20),
-                TaskId = ObjectId.GenerateNewId().ToString(),
-            };
+            return new Activity() { Description = TestDataGenerator.GetRandomString(20), TaskId = ObjectId.GenerateNewId().ToString(), };
         }
-
     }
 }

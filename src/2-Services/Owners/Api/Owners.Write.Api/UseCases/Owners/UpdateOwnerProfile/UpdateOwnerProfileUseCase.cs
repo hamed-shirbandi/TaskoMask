@@ -15,7 +15,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Owners;
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
 {
     public class UpdateOwnerProfileUseCase : BaseCommandHandler, IRequestHandler<UpdateOwnerProfileRequest, CommandResult>
-
     {
         #region Fields
 
@@ -27,7 +26,13 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
         #region Ctors
 
 
-        public UpdateOwnerProfileUseCase(IOwnerAggregateRepository ownerAggregateRepository, IOwnerValidatorService ownerValidatorService, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public UpdateOwnerProfileUseCase(
+            IOwnerAggregateRepository ownerAggregateRepository,
+            IOwnerValidatorService ownerValidatorService,
+            IMessageBus messageBus,
+            IInMemoryBus inMemoryBus
+        )
+            : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
             _ownerValidatorService = ownerValidatorService;
@@ -40,7 +45,7 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(UpdateOwnerProfileRequest request, CancellationToken cancellationToken)
         {
@@ -64,6 +69,5 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
         }
 
         #endregion
-
     }
 }

@@ -11,15 +11,11 @@ namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures
 {
     public abstract class TestsBaseFixture : IntegrationTestsBase
     {
-
-
-        protected TestsBaseFixture(string dbNameSuffix) : base(dbNameSuffix)
-        {
-        }
-
+        protected TestsBaseFixture(string dbNameSuffix)
+            : base(dbNameSuffix) { }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override void InitialDatabase()
         {
@@ -27,37 +23,33 @@ namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures
             _serviceProvider.SeedEssentialData();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override void DropDatabase()
         {
             _serviceProvider.DropDatabase();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override IServiceProvider GetServiceProvider(string dbNameSuffix)
         {
             var services = new ServiceCollection();
 
             var configuration = new ConfigurationBuilder()
-                                //Copy from Identity.Api project during the build event
-                                .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
-                                .AddJsonFile("appsettings.Staging.json", optional: true)
-                                .AddJsonFile("appsettings.Development.json", optional: true)
-                                .AddInMemoryCollection(new[]
-                                {
-                                   new KeyValuePair<string,string>("SQL:DatabaseName", $"IdentityDB_Test_{dbNameSuffix}")
-                                })
-                                .Build();
+                //Copy from Identity.Api project during the build event
+                .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
+                .AddJsonFile("appsettings.Staging.json", optional: true)
+                .AddJsonFile("appsettings.Development.json", optional: true)
+                .AddInMemoryCollection(new[] { new KeyValuePair<string, string>("SQL:DatabaseName", $"IdentityDB_Test_{dbNameSuffix}") })
+                .Build();
 
-            services.AddSingleton<IConfiguration>(provider => { return configuration; });
+            services.AddSingleton<IConfiguration>(provider =>
+            {
+                return configuration;
+            });
 
             services.AddLogging();
 

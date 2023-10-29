@@ -10,15 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrganization
 {
-
     [Authorize("user-write-access")]
     [Tags("Organizations")]
     public class UpdateOrganizationEndpoint : BaseApiController
     {
-        public UpdateOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
+        public UpdateOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Update an existing organization
@@ -30,5 +27,4 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrgan
             return await _inMemoryBus.SendCommand<UpdateOrganizationRequest>(new(id: input.Id, name: input.Name, description: input.Description));
         }
     }
-
 }

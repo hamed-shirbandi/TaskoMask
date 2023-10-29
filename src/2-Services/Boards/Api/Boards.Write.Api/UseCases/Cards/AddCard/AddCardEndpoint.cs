@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard
 {
-
     [Authorize("user-write-access")]
     [Tags("Cards")]
     public class AddCardEndpoint : BaseApiController
     {
-        public AddCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public AddCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Add new card
@@ -31,5 +27,4 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard
             return await _inMemoryBus.SendCommand<AddCardRequest>(new(boardId: input.BoardId, name: input.Name, type: input.Type));
         }
     }
-
 }

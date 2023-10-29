@@ -3,13 +3,13 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask
 {
-    public abstract class UpdateTaskValidation<TRequest> : AbstractValidator<TRequest> where TRequest : UpdateTaskRequest
+    public abstract class UpdateTaskValidation<TRequest> : AbstractValidator<TRequest>
+        where TRequest : UpdateTaskRequest
     {
         public UpdateTaskValidation()
         {
             ValidateDescription();
         }
-
 
         private void ValidateDescription()
         {

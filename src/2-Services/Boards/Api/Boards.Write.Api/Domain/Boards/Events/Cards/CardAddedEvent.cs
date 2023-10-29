@@ -6,7 +6,8 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards
 {
     public class CardAddedEvent : DomainEvent
     {
-        public CardAddedEvent(string id, string name, BoardCardType type, string boardId) : base(entityId: id, entityType: DomainMetadata.Card)
+        public CardAddedEvent(string id, string name, BoardCardType type, string boardId)
+            : base(entityId: id, entityType: DomainMetadata.Card)
         {
             Id = id;
             Name = name;

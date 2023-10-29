@@ -11,20 +11,21 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper;
 
 namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DI
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class ModuleExtensions
     {
-
-  
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddModules(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType: typeof(OwnerRegisterationCompletedConsumer),handlerAssemblyMarkerType: typeof(GetOwnerByIdHandler));
+            services.AddBuildingBlocksInfrastructure(
+                configuration,
+                consumerAssemblyMarkerType: typeof(OwnerRegisterationCompletedConsumer),
+                handlerAssemblyMarkerType: typeof(GetOwnerByIdHandler)
+            );
 
             services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
@@ -33,16 +34,13 @@ namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DI
             services.AddMongoDbContext(configuration);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static void AddMongoDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             var options = configuration.GetSection("MongoDB");
             services.AddScoped<OwnerReadDbContext>().AddOptions<MongoDbOptions>().Bind(options);
         }
-
     }
 }

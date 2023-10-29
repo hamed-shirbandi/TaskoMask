@@ -16,7 +16,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
 {
     public class AddBoardTests : TestsBaseFixture
     {
-
         #region Fields
 
         private AddBoardUseCase _addBoardUseCase;
@@ -25,9 +24,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
 
         #region Ctor
 
-        public AddBoardTests()
-        {
-        }
+        public AddBoardTests() { }
 
         #endregion
 
@@ -56,15 +53,13 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             await MessageBus.Received(1).Publish(Arg.Any<BoardAdded>());
         }
 
-
-
         [InlineData("test", "test")]
         [InlineData("تست", "تست")]
         [Theory]
         public async Task Board_is_not_added_if_name_and_description_are_the_same(string name, string description)
         {
             //Arrange
-            var addBoardRequest = new AddBoardRequest(projectId:ObjectId.GenerateNewId().ToString(), name, description);
+            var addBoardRequest = new AddBoardRequest(projectId: ObjectId.GenerateNewId().ToString(), name, description);
             var expectedMessage = DomainMessages.Equal_Name_And_Description_Error;
 
             //Act
@@ -74,8 +69,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
         [InlineData("Th")]
         [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
         [Theory]
@@ -83,7 +76,12 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
         {
             //Arrange
             var addBoardRequest = new AddBoardRequest(projectId: ObjectId.GenerateNewId().ToString(), name, "Test_Description");
-            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(BoardName), DomainConstValues.Board_Name_Min_Length, DomainConstValues.Board_Name_Max_Length);
+            var expectedMessage = string.Format(
+                ContractsMetadata.Length_Error,
+                nameof(BoardName),
+                DomainConstValues.Board_Name_Min_Length,
+                DomainConstValues.Board_Name_Max_Length
+            );
 
             //Act
             Func<Task> act = async () => await _addBoardUseCase.Handle(addBoardRequest, CancellationToken.None);
@@ -92,16 +90,20 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
-        [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
+        [InlineData(
+            "This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test"
+        )]
         [Theory]
         public async Task Board_is_not_added_if_description_lenght_is_more_than_max(string description)
         {
             //Arrange
             var expectedBoard = Boards.FirstOrDefault();
             var addBoardRequest = new AddBoardRequest(projectId: ObjectId.GenerateNewId().ToString(), "Test_Name", description);
-            var expectedMessage = string.Format(ContractsMetadata.Max_Length_Error, nameof(BoardDescription), DomainConstValues.Board_Description_Max_Length);
+            var expectedMessage = string.Format(
+                ContractsMetadata.Max_Length_Error,
+                nameof(BoardDescription),
+                DomainConstValues.Board_Description_Max_Length
+            );
 
             //Act
             Func<Task> act = async () => await _addBoardUseCase.Handle(addBoardRequest, CancellationToken.None);
@@ -109,8 +111,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             //Assert
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [Fact]
         public async Task Board_is_not_added_if_name_is_not_unique_in_a_project()
@@ -127,15 +127,13 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
         #endregion
 
         #region Fixture
 
         protected override void TestClassFixtureSetup()
         {
-            _addBoardUseCase = new AddBoardUseCase(BoardAggregateRepository, MessageBus, InMemoryBus,BoardValidatorService);
+            _addBoardUseCase = new AddBoardUseCase(BoardAggregateRepository, MessageBus, InMemoryBus, BoardValidatorService);
         }
 
         #endregion

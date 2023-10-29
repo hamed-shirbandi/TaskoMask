@@ -10,9 +10,6 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
             Id = id;
         }
 
-
         public string Id { get; }
-
-
     }
 }

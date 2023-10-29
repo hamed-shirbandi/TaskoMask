@@ -21,7 +21,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByOrganiza
 
         #region Ctors
 
-        public GetBoardsByOrganizationIdHandler(BoardReadDbContext boardReadDbContext, IMapper mapper) : base(mapper)
+        public GetBoardsByOrganizationIdHandler(BoardReadDbContext boardReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _boardReadDbContext = boardReadDbContext;
         }
@@ -33,16 +34,17 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByOrganiza
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<IEnumerable<GetBoardDto>> Handle(GetBoardsByOrganizationIdRequest request, CancellationToken cancellationToken)
         {
-            var boards = await _boardReadDbContext.Boards.AsQueryable().Where(e => e.OrganizationId == request.OrganizationId).ToListAsync(cancellationToken);
+            var boards = await _boardReadDbContext.Boards
+                .AsQueryable()
+                .Where(e => e.OrganizationId == request.OrganizationId)
+                .ToListAsync(cancellationToken);
 
             return _mapper.Map<IEnumerable<GetBoardDto>>(boards);
         }
-
-
 
         #endregion
 

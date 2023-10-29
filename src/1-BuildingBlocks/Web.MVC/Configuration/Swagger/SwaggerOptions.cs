@@ -1,5 +1,4 @@
-﻿
-namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
+﻿namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
 {
     public class SwaggerOptions
     {

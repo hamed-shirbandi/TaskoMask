@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard
 {
-    public class DeleteBoardRequest: BaseCommand
+    public class DeleteBoardRequest : BaseCommand
     {
         public DeleteBoardRequest(string id)
         {
@@ -14,6 +14,5 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard
 
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Id { get; }
-
     }
 }

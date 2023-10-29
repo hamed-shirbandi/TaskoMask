@@ -14,9 +14,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
         #region Ctor
 
-        public TaskApiService(IHttpClientService httpClientService) : base(httpClientService)
-        {
-        }
+        public TaskApiService(IHttpClientService httpClientService)
+            : base(httpClientService) { }
 
         #endregion
 
@@ -24,7 +23,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<GetTaskDto>> GetAsync(string id)
         {
@@ -32,11 +31,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<GetTaskDto>(url);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<TaskDetailsViewModel>> GetDetailsAsync(string id)
         {
@@ -44,11 +40,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<TaskDetailsViewModel>(url);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> AddAsync(AddTaskDto input)
         {
@@ -56,21 +49,17 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public async Task<Result<CommandResult>> UpdateAsync(string id,UpdateTaskDto input)
+        public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateTaskDto input)
         {
             var url = $"/tasks/{id}";
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> MoveTaskToAnotherCardAsync(string taskId, string cardId)
         {
@@ -78,17 +67,14 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PutAsync<CommandResult>(url);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var url = $"/tasks/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
-
 
         #endregion
 
@@ -97,6 +83,5 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         #endregion
-
     }
 }

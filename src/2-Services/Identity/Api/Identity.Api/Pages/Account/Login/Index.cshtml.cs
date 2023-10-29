@@ -28,9 +28,8 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
 
         #region Ctors
 
-        public Index(IInMemoryBus inMemoryBus,
-            IIdentityServerInteractionService interactionService,
-            IDNTCaptchaValidatorService validatorService) : base(inMemoryBus)
+        public Index(IInMemoryBus inMemoryBus, IIdentityServerInteractionService interactionService, IDNTCaptchaValidatorService validatorService)
+            : base(inMemoryBus)
         {
             _validatorService = validatorService;
             _interactionService = interactionService;
@@ -43,7 +42,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<IActionResult> OnGet(string returnUrl)
         {
@@ -52,10 +51,8 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
             return Page();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         public async Task<IActionResult> OnPost()
@@ -73,9 +70,6 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
             return await LoginFailedAsync(loginRespone.Errors);
         }
 
-
-
-
         #endregion
 
         #region Private Methods
@@ -83,7 +77,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<IActionResult> LoginFailedAsync(IEnumerable<string> errors = null)
         {
@@ -95,25 +89,16 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Login
             return Page();
         }
 
-
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task BuildModelAsync(string returnUrl)
         {
             var context = await _interactionService.GetAuthorizationContextAsync(returnUrl);
             ViewData["ClientUri"] = context?.Client.ClientUri;
 
-            Input = new InputModel
-            {
-                ReturnUrl = returnUrl
-            };
+            Input = new InputModel { ReturnUrl = returnUrl };
         }
-
-
 
         private IActionResult RedirectToReturnUrl(string returnUrl)
         {

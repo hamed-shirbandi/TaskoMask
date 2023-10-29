@@ -15,7 +15,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
 {
     public class UpdateCommentTests : TestsBaseFixture
     {
-
         #region Fields
 
         private UpdateCommentUseCase _updateCommentUseCase;
@@ -24,9 +23,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
 
         #region Ctor
 
-        public UpdateCommentTests()
-        {
-        }
+        public UpdateCommentTests() { }
 
         #endregion
 
@@ -41,7 +38,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
             var expectedTask = Tasks.FirstOrDefault();
             var expectedComment = TaskObjectMother.CreateComment();
             expectedTask.AddComment(expectedComment);
-            var updateCommentRequest = new UpdateCommentRequest(expectedComment.Id,"Test New Content");
+            var updateCommentRequest = new UpdateCommentRequest(expectedComment.Id, "Test New Content");
 
             //Act
             var result = await _updateCommentUseCase.Handle(updateCommentRequest, CancellationToken.None);
@@ -57,8 +54,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
             await MessageBus.Received(1).Publish(Arg.Any<CommentUpdated>());
         }
 
-
-
         [Fact]
         public async Task Updating_a_comment_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -73,8 +68,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         #endregion
 

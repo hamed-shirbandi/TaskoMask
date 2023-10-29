@@ -1,6 +1,4 @@
-﻿
-
-namespace TaskoMask.Tests.Acceptance.Core.Models
+﻿namespace TaskoMask.Tests.Acceptance.Core.Models
 {
     public class OwnerBasicInfoDto
     {
@@ -9,6 +7,5 @@ namespace TaskoMask.Tests.Acceptance.Core.Models
         public string DisplayName { get; set; }
 
         public string Email { get; set; }
-
     }
 }

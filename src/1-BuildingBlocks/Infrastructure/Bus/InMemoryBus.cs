@@ -10,7 +10,7 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class InMemoryBus : IInMemoryBus
     {
@@ -29,7 +29,6 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
             _notifications = notifications;
         }
 
-
         #endregion
 
         #region Public Methods
@@ -40,16 +39,17 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public async Task<Result<CommandResult>> SendCommand<TCommand>(TCommand cmd) where TCommand : BaseCommand
+        public async Task<Result<CommandResult>> SendCommand<TCommand>(TCommand cmd)
+            where TCommand : BaseCommand
         {
             var result = await _mediator.Send(cmd);
 
             //get notification errors
             var errors = _notifications.GetErrors();
 
-            //result is null when throw application or domain exception 
+            //result is null when throw application or domain exception
             if (result == null)
                 return Result.Failure<CommandResult>(errors);
 
@@ -60,11 +60,8 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
             return Result.Success(result, result.Message);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<TQueryResult>> SendQuery<TQueryResult>(BaseQuery<TQueryResult> query)
         {
@@ -75,17 +72,13 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
             return Result.Success(result);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task PublishEvent(DomainEvent @event)
         {
             await _mediator.Publish(@event);
         }
-
 
         #endregion
 
@@ -96,4 +89,3 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         #endregion
     }
 }
-

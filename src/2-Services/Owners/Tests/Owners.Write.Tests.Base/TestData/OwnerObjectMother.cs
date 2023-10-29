@@ -8,43 +8,37 @@ namespace TaskoMask.Services.Owners.Write.Tests.Base.TestData
 {
     public static class OwnerObjectMother
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Owner CreateOwner(IOwnerValidatorService ownerValidatorService)
         {
-            return OwnerBuilder.Init()
+            return OwnerBuilder
+                .Init()
                 .WithValidatorService(ownerValidatorService)
                 .WithDisplayName(TestDataGenerator.GetRandomName(10))
                 .WithEmail(TestDataGenerator.GetRandomEmail())
                 .Build();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Organization CreateOrganization()
         {
-            return Organization.CreateOrganization(name: TestDataGenerator.GetRandomName(10),description: TestDataGenerator.GetRandomString(20));
+            return Organization.CreateOrganization(name: TestDataGenerator.GetRandomName(10), description: TestDataGenerator.GetRandomString(20));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Project CreateProject()
         {
             return Project.Create(name: TestDataGenerator.GetRandomName(10), description: TestDataGenerator.GetRandomString(20));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static List<Owner> GenerateOwnersList(IOwnerValidatorService ownerValidatorService, int number = 3)
         {
@@ -56,10 +50,8 @@ namespace TaskoMask.Services.Owners.Write.Tests.Base.TestData
             return list;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Owner CreateOwnerWithMaxOrganizations(IOwnerValidatorService ownerValidatorService, int expectedMaxOrganizationsCount)
         {
@@ -73,10 +65,8 @@ namespace TaskoMask.Services.Owners.Write.Tests.Base.TestData
             return owner;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Owner CreateOwnerWithOneOrganization(IOwnerValidatorService ownerValidatorService)
         {
@@ -86,17 +76,15 @@ namespace TaskoMask.Services.Owners.Write.Tests.Base.TestData
             return owner;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Owner CreateOwnerWithOneOrganizationAndOneProject(IOwnerValidatorService ownerValidatorService)
         {
             var owner = CreateOwner(ownerValidatorService);
             var organization = CreateOrganization();
             owner.AddOrganization(organization);
-            owner.AddProject(organization.Id,CreateProject());
+            owner.AddProject(organization.Id, CreateProject());
             owner.ClearDomainEvents();
             return owner;
         }

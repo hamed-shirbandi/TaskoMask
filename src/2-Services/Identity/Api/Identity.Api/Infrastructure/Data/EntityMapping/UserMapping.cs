@@ -10,6 +10,4 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
             builder.Property(x => x.Id).ValueGeneratedNever();
         }
     }
-    
-
 }

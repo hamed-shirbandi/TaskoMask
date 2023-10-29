@@ -1,6 +1,4 @@
-﻿
-
-namespace TaskoMask.BuildingBlocks.Contracts.Helpers
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Helpers
 {
     public static class DomainConstValues
     {
@@ -9,14 +7,12 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
         public const int Organization_Description_Min_Length = 3;
         public const int Organization_Description_Max_Length = 100;
         public const int Organization_Max_Projects_Count = 6;
-        
 
         public const int Project_Name_Min_Length = 3;
         public const int Project_Name_Max_Length = 50;
         public const int Project_Description_Min_Length = 3;
         public const int Project_Description_Max_Length = 100;
         public const int Project_Max_Board_Count = 6;
-
 
         public const int Board_Name_Min_Length = 3;
         public const int Board_Name_Max_Length = 50;
@@ -31,28 +27,21 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
         public const int Card_Description_Min_Length = 3;
         public const int Card_Description_Max_Length = 100;
 
-
         public const int Task_Title_Min_Length = 3;
         public const int Task_Title_Max_Length = 50;
         public const int Task_Description_Min_Length = 3;
         public const int Task_Description_Max_Length = 2048;
 
-
         public const int Owner_DisplayName_Min_Length = 3;
         public const int Owner_DisplayName_Max_Length = 50;
         public const int Owner_Max_Organizations_Count = 6;
 
-        
         public const int User_Password_Min_Length = 4;
         public const int User_Password_Max_Length = 50;
-
-
 
         public const int Owner_Email_Min_Length = 5;
         public const int Owner_Email_Max_Length = 50;
 
-        
         public const int Comment_Content_Max_Length = 512;
-
     }
 }

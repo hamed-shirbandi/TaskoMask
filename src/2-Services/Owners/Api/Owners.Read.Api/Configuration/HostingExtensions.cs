@@ -13,10 +13,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
     internal static class HostingExtensions
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
@@ -31,14 +29,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
             return builder.Build();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
         {
-
             app.UseSerilogRequestLogging();
 
             app.UseWebApiPreConfigured(app.Environment, configuration);
@@ -53,8 +48,5 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
 
             return app;
         }
-
-
-
     }
 }

@@ -14,10 +14,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
         #region Ctor
 
-        public OwnerApiService(IHttpClientService httpClientService):base(httpClientService)
-        {
-
-        }
+        public OwnerApiService(IHttpClientService httpClientService)
+            : base(httpClientService) { }
 
         #endregion
 
@@ -26,7 +24,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<GetOwnerDto>> GetAsync()
         {
@@ -34,10 +32,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<GetOwnerDto>(url);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> RegisterAsync(RegisterOwnerDto input)
         {
@@ -49,10 +45,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> UpdateProfileAsync(UpdateOwnerProfileDto input)
         {
@@ -67,6 +61,5 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         #endregion
-
     }
 }

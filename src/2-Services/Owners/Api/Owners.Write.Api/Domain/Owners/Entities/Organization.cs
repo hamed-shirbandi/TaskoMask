@@ -29,8 +29,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             CheckPolicies();
         }
 
-
-
         #endregion
 
         #region Properties
@@ -46,17 +44,15 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Organization CreateOrganization(string name, string description)
         {
             return new Organization(name, description);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void UpdateOrganization(string name, string description)
         {
@@ -68,9 +64,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             CheckPolicies();
         }
 
-
-
-
         #endregion
 
         #region Project Behaviors
@@ -78,7 +71,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void AddProject(Project project)
         {
@@ -86,10 +79,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             base.UpdateModifiedDateTime();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void UpdateProject(string id, string name, string description)
         {
@@ -100,10 +91,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             base.UpdateModifiedDateTime();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void DeleteProject(string id)
         {
@@ -114,10 +103,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             base.UpdateModifiedDateTime();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Project GetProjectById(string projectId)
         {
@@ -128,8 +115,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             return project;
         }
 
-
-
         #endregion
 
         #region Methods
@@ -137,7 +122,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void CheckPolicies()
         {
@@ -146,11 +131,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
             if (!new OrganizationNameAndDescriptionCannotSameSpecification().IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Equal_Name_And_Description_Error);
-
         }
 
-
         #endregion
-
     }
 }

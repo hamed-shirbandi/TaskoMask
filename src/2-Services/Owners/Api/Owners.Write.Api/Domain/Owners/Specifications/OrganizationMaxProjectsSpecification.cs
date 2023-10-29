@@ -7,9 +7,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications
 {
     internal class OrganizationMaxProjectsSpecification : ISpecification<Owner>
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSatisfiedBy(Owner owner)
         {

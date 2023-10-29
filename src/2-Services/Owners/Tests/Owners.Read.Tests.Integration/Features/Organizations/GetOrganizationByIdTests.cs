@@ -9,7 +9,6 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Organization
     [Collection(nameof(OrganizationCollectionFixture))]
     public class GetOrganizationByIdTests
     {
-
         #region Fields
 
         private readonly OrganizationCollectionFixture _fixture;
@@ -44,7 +43,6 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.Features.Organization
             result.Id.Should().Be(expectedOrganization.Id);
             result.Name.Should().Be(expectedOrganization.Name);
         }
-
 
         #endregion
     }

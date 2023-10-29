@@ -18,7 +18,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrganization
 {
     public class DeleteOrganizationUseCase : BaseCommandHandler, IRequestHandler<DeleteOrganizationRequest, CommandResult>
-
     {
         #region Fields
 
@@ -29,7 +28,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrgan
         #region Ctors
 
 
-        public DeleteOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public DeleteOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }
@@ -41,7 +41,7 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrgan
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(DeleteOrganizationRequest request, CancellationToken cancellationToken)
         {
@@ -71,12 +71,11 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrgan
 
         private OrganizationDeleted MapToOrganizationDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
-            var organizationDeletedDomainEvent = (OrganizationDeletedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationDeletedEvent));
+            var organizationDeletedDomainEvent = (OrganizationDeletedEvent)
+                domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationDeletedEvent));
             return new OrganizationDeleted(organizationDeletedDomainEvent.Id);
         }
 
-
         #endregion
-
     }
 }

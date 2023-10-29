@@ -1,8 +1,4 @@
-﻿
-namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Cards
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Cards
 {
-    public class AddCardDto: CardBaseDto
-    {
-
-    }
+    public class AddCardDto : CardBaseDto { }
 }

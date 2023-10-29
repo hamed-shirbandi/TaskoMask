@@ -15,16 +15,13 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.Mapper
         public MappingProfile()
         {
             CreateMap<CreationTimeDto, CreationTimeGrpcResponse>()
-                .ForMember(dest => dest.CreateDateTime, opt =>
-                    opt.MapFrom(src => src.CreateDateTime.ToTimestamp()))
-                .ForMember(dest => dest.ModifiedDateTime, opt =>
-                    opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
+                .ForMember(dest => dest.CreateDateTime, opt => opt.MapFrom(src => src.CreateDateTime.ToTimestamp()))
+                .ForMember(dest => dest.ModifiedDateTime, opt => opt.MapFrom(src => src.ModifiedDateTime.ToTimestamp()));
 
             CreateMap<Task, GetTaskDto>();
 
             CreateMap<GetTaskDto, GetTaskGrpcResponse>()
-            .ForMember(dest => dest.Description, opt =>
-                  opt.MapFrom(src => src.Description ?? string.Empty));
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description ?? string.Empty));
 
             CreateMap<Comment, GetCommentDto>();
 
@@ -35,7 +32,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Infrastructure.Mapper
             CreateMap<GetActivityDto, GetActivityGrpcResponse>();
 
             CreateMap<GetCardGrpcResponse, GetCardDto>();
-
         }
     }
 }

@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Cards
 {
-    public class GetCardDto: CardBaseDto
+    public class GetCardDto : CardBaseDto
     {
         [Display(Name = nameof(ContractsMetadata.BoardName), ResourceType = typeof(ContractsMetadata))]
         public string BoardName { get; set; }
@@ -16,7 +16,5 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Cards
         public string OwnerId { get; set; }
 
         public CreationTimeDto CreationTime { get; set; }
-
     }
-
 }

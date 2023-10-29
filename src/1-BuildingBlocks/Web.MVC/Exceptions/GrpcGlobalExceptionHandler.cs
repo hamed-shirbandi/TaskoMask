@@ -20,7 +20,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions
         public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(
             TRequest request,
             ServerCallContext context,
-            UnaryServerMethod<TRequest, TResponse> continuation)
+            UnaryServerMethod<TRequest, TResponse> continuation
+        )
         {
             try
             {

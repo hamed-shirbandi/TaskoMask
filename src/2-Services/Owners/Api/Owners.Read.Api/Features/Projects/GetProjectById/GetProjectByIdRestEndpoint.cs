@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 {
-
     [Authorize("user-read-access")]
     [Tags("Projects")]
     public class GetProjectByIdRestEndpoint : BaseApiController
     {
-        public GetProjectByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetProjectByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get project basic info
@@ -31,5 +27,4 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
             return await _inMemoryBus.SendQuery(new GetProjectByIdRequest(id));
         }
     }
-
 }

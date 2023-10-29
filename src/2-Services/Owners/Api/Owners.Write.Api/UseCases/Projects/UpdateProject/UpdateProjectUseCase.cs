@@ -19,7 +19,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Owners;
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject
 {
     public class UpdateProjectUseCase : BaseCommandHandler, IRequestHandler<UpdateProjectRequest, CommandResult>
-
     {
         #region Fields
 
@@ -30,7 +29,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject
         #region Ctors
 
 
-        public UpdateProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public UpdateProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }
@@ -42,7 +42,7 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(UpdateProjectRequest request, CancellationToken cancellationToken)
         {
@@ -76,9 +76,6 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject
             return new ProjectUpdated(projectUpdatedDomainEvent.Id, projectUpdatedDomainEvent.Name, projectUpdatedDomainEvent.Description);
         }
 
-
-
         #endregion
-
     }
 }

@@ -10,9 +10,6 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
             Id = id;
         }
 
-
         public string Id { get; }
-
-
     }
 }

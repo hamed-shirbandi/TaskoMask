@@ -8,9 +8,8 @@ namespace TaskoMask.BuildingBlocks.Application.Services
 {
     public static class ApplicationExtensions
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddBuildingBlocksApplication(this IServiceCollection services, Type validatorAssemblyMarkerType)
         {

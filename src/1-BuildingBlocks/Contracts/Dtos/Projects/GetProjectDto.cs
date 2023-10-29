@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Projects
 {
-    public class GetProjectDto: ProjectBaseDto
+    public class GetProjectDto : ProjectBaseDto
     {
         [Display(Name = nameof(ContractsMetadata.OrganizationName), ResourceType = typeof(ContractsMetadata))]
         public string OrganizationName { get; set; }

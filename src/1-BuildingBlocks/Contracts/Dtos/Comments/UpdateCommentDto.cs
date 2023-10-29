@@ -1,8 +1,4 @@
-﻿
-namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Comments
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Comments
 {
-    public class UpdateCommentDto: CommentBaseDto
-    {
-
-    }
+    public class UpdateCommentDto : CommentBaseDto { }
 }

@@ -12,12 +12,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers.Owners
     {
         private readonly OwnerReadDbContext _ownerReadDbContext;
 
-
-        public OwnerUpdatingProfileCompletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext) : base(inMemoryBus)
+        public OwnerUpdatingProfileCompletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
+            : base(inMemoryBus)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
-
 
         public override async Task ConsumeMessage(ConsumeContext<OwnerUpdatingProfileCompleted> context)
         {

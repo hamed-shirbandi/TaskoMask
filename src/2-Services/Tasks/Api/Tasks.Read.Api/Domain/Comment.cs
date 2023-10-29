@@ -9,9 +9,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Domain
     /// </summary>
     public class Comment : BaseEntity
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id">Id Must sync with write side DB</param>
         public Comment(string id)
@@ -22,10 +21,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Domain
             base.SetId(id);
         }
 
-
         public string Content { get; set; }
         public string TaskId { get; set; }
-
 
         #region Update private properties
 
@@ -35,6 +32,5 @@ namespace TaskoMask.Services.Tasks.Read.Api.Domain
         }
 
         #endregion
-
     }
 }

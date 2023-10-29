@@ -13,7 +13,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
 {
     public class UpdateTaskTests : TestsBaseFixture
     {
-
         #region Fields
 
         private UpdateTaskUseCase _updateTaskUseCase;
@@ -22,9 +21,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
 
         #region Ctor
 
-        public UpdateTaskTests()
-        {
-        }
+        public UpdateTaskTests() { }
 
         #endregion
 
@@ -51,7 +48,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
             await MessageBus.Received(1).Publish(Arg.Any<TaskUpdated>());
         }
 
-
         [Fact]
         public async Task Updatting_a_task_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -66,8 +62,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [Fact]
         public async Task Updating_a_task_will_change_its_version()
@@ -84,14 +78,13 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Tasks
             expectedTask.Version.Should().NotBeNullOrEmpty().And.NotBe(previousVersion);
         }
 
-
         #endregion
 
         #region Fixture
 
         protected override void TestClassFixtureSetup()
         {
-            _updateTaskUseCase = new UpdateTaskUseCase(TaskAggregateRepository, MessageBus, InMemoryBus,TaskValidatorService);
+            _updateTaskUseCase = new UpdateTaskUseCase(TaskAggregateRepository, MessageBus, InMemoryBus, TaskValidatorService);
         }
 
         #endregion

@@ -13,7 +13,6 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards
 
         public string Value { get; private set; }
 
-
         #endregion
 
         #region Ctors
@@ -39,34 +38,28 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.ValueObjects.Boards
             return new BoardDescription(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckPolicies()
         {
             if (string.IsNullOrEmpty(Value))
                 return;
 
-           
             if (Value.Length > DomainConstValues.Board_Description_Max_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Max_Length_Error, nameof(BoardDescription), DomainConstValues.Board_Description_Max_Length));
-
+                throw new DomainException(
+                    string.Format(ContractsMetadata.Max_Length_Error, nameof(BoardDescription), DomainConstValues.Board_Description_Max_Length)
+                );
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

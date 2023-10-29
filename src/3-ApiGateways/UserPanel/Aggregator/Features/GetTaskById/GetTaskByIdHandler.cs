@@ -27,7 +27,13 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetTaskById
 
         #region Ctors
 
-        public GetTaskByIdHandler(IMapper mapper, GetTaskByIdGrpcServiceClient getTaskByIdGrpcServiceClient, GetActivitiesByTaskIdGrpcServiceClient getActivitiesByTaskIdGrpcServiceClient, GetCommentsByTaskIdGrpcServiceClient getCommentsByTaskIdGrpcServiceClient) : base(mapper)
+        public GetTaskByIdHandler(
+            IMapper mapper,
+            GetTaskByIdGrpcServiceClient getTaskByIdGrpcServiceClient,
+            GetActivitiesByTaskIdGrpcServiceClient getActivitiesByTaskIdGrpcServiceClient,
+            GetCommentsByTaskIdGrpcServiceClient getCommentsByTaskIdGrpcServiceClient
+        )
+            : base(mapper)
         {
             _getTaskByIdGrpcServiceClient = getTaskByIdGrpcServiceClient;
             _getActivitiesByTaskIdGrpcServiceClient = getActivitiesByTaskIdGrpcServiceClient;
@@ -41,20 +47,17 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetTaskById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<TaskDetailsViewModel> Handle(GetTaskByIdRequest request, CancellationToken cancellationToken)
         {
-
             return new TaskDetailsViewModel
             {
-                Task =await GetTaskAsync(request.Id, cancellationToken),
+                Task = await GetTaskAsync(request.Id, cancellationToken),
                 Comments = await GetCommentsAsync(request.Id, cancellationToken),
                 Activities = await GetActivitiesAsync(request.Id, cancellationToken),
             };
-
         }
-
 
         #endregion
 
@@ -63,26 +66,29 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetTaskById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<GetTaskDto> GetTaskAsync(string taskId, CancellationToken cancellationToken)
         {
-            var projectGrpcResponse =await _getTaskByIdGrpcServiceClient.HandleAsync(new GetTaskByIdGrpcRequest { Id = taskId }, cancellationToken: cancellationToken);
+            var projectGrpcResponse = await _getTaskByIdGrpcServiceClient.HandleAsync(
+                new GetTaskByIdGrpcRequest { Id = taskId },
+                cancellationToken: cancellationToken
+            );
 
             return _mapper.Map<GetTaskDto>(projectGrpcResponse);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<IEnumerable<GetCommentDto>> GetCommentsAsync(string taskId, CancellationToken cancellationToken)
         {
             var comments = new List<GetCommentDto>();
 
-            var commentsGrpcCall = _getCommentsByTaskIdGrpcServiceClient.Handle(new GetCommentsByTaskIdGrpcRequest { TaskId = taskId },cancellationToken: cancellationToken);
+            var commentsGrpcCall = _getCommentsByTaskIdGrpcServiceClient.Handle(
+                new GetCommentsByTaskIdGrpcRequest { TaskId = taskId },
+                cancellationToken: cancellationToken
+            );
 
             await foreach (var response in commentsGrpcCall.ResponseStream.ReadAllAsync())
                 comments.Add(_mapper.Map<GetCommentDto>(response));
@@ -90,16 +96,17 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetTaskById
             return comments;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<IEnumerable<GetActivityDto>> GetActivitiesAsync(string taskId, CancellationToken cancellationToken)
         {
             var activities = new List<GetActivityDto>();
 
-            var activitiesGrpcCall = _getActivitiesByTaskIdGrpcServiceClient.Handle(new GetActivitiesByTaskIdGrpcRequest { TaskId = taskId }, cancellationToken: cancellationToken);
+            var activitiesGrpcCall = _getActivitiesByTaskIdGrpcServiceClient.Handle(
+                new GetActivitiesByTaskIdGrpcRequest { TaskId = taskId },
+                cancellationToken: cancellationToken
+            );
 
             await foreach (var response in activitiesGrpcCall.ResponseStream.ReadAllAsync())
                 activities.Add(_mapper.Map<GetActivityDto>(response));
@@ -107,11 +114,6 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetTaskById
             return activities;
         }
 
-
-
-
-
         #endregion
-
     }
 }

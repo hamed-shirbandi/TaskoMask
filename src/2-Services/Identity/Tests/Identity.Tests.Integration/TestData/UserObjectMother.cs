@@ -13,6 +13,5 @@ namespace TaskoMask.Services.Identity.Tests.Integration.TestData
                 IsActive = true,
             };
         }
-
     }
 }

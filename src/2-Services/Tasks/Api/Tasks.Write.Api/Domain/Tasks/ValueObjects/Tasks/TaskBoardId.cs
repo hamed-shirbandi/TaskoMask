@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.ValueObjects.Tasks
 
         public string Value { get; private set; }
 
-
         #endregion
 
         #region Ctors
@@ -38,10 +37,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.ValueObjects.Tasks
             return new TaskBoardId(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckPolicies()
         {
@@ -49,18 +46,14 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.ValueObjects.Tasks
                 throw new DomainException(string.Format(ContractsMetadata.Required, nameof(TaskBoardId)));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

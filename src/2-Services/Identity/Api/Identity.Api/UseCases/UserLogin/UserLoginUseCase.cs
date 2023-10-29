@@ -17,17 +17,21 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
-
-        public UserLoginUseCase(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper) : base(mapper)
+        public UserLoginUseCase(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper)
+            : base(mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
 
-
         public async Task<Result> Handle(UserLoginRequest request, CancellationToken cancellationToken)
         {
-            var signInAsync = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, request.RememberLogin, lockoutOnFailure: true);
+            var signInAsync = await _signInManager.PasswordSignInAsync(
+                request.UserName,
+                request.Password,
+                request.RememberLogin,
+                lockoutOnFailure: true
+            );
             if (!signInAsync.Succeeded)
                 throw new ApplicationException(ApplicationMessages.Invalid_Credentials);
 
@@ -38,7 +42,6 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
             await _userManager.AddLoginAsync(user, new UserLoginInfo("local", "local", "local"));
 
             return Result.Success(ContractsMessages.Operation_Success);
-
         }
     }
 }

@@ -7,16 +7,13 @@ using TaskoMask.Services.Identity.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class DbInitialization
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void InitialDatabase(this IServiceProvider serviceProvider)
         {
@@ -26,8 +23,6 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
 
             dbContext.Database.EnsureCreated();
         }
-
-
 
         /// <summary>
         /// Seed the necessary data that system needs
@@ -41,12 +36,10 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
             SeedSuperUser(userManager, configuration).Wait();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static void DropDatabase(this IServiceProvider serviceProvider) 
+        public static void DropDatabase(this IServiceProvider serviceProvider)
         {
             using var serviceScope = serviceProvider.CreateScope();
 
@@ -55,9 +48,8 @@ namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
             dbContext.Database.EnsureDeleted();
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async static Task SeedSuperUser(UserManager<User> userManager, IConfiguration configuration)
         {

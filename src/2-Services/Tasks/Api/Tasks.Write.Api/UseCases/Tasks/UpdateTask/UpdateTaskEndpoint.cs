@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask
 {
-
     [Authorize("user-write-access")]
     [Tags("Tasks")]
     public class UpdateTaskEndpoint : BaseApiController
     {
-        public UpdateTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public UpdateTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Update an existing task
@@ -31,5 +27,4 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask
             return await _inMemoryBus.SendCommand<UpdateTaskRequest>(new(id: input.Id, title: input.Title, description: input.Description));
         }
     }
-
 }

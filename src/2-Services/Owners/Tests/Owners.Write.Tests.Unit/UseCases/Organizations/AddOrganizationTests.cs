@@ -21,7 +21,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 {
     public class AddOrganizationTests : TestsBaseFixture
     {
-
         #region Fields
 
         private AddOrganizationUseCase _addOrganizationUseCase;
@@ -30,9 +29,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
 
         #region Ctor
 
-        public AddOrganizationTests()
-        {
-        }
+        public AddOrganizationTests() { }
 
         #endregion
 
@@ -57,8 +54,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             await MessageBus.Received(1).Publish(Arg.Any<OrganizationAdded>());
         }
 
-
-
         [Fact]
         public async Task Add_organization_throw_exception_if_owner_id_is_not_existed()
         {
@@ -73,8 +68,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             //Assert
             await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [InlineData("test", "test")]
         [InlineData("تست", "تست")]
@@ -93,8 +86,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
         [InlineData("Th")]
         [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
         [Theory]
@@ -103,7 +94,12 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             //Arrange
             var expectedOwner = Owners.FirstOrDefault();
             var addOrganizationRequest = new AddOrganizationRequest(expectedOwner.Id, name, "Test_Description");
-            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OrganizationName), DomainConstValues.Organization_Name_Min_Length, DomainConstValues.Organization_Name_Max_Length);
+            var expectedMessage = string.Format(
+                ContractsMetadata.Length_Error,
+                nameof(OrganizationName),
+                DomainConstValues.Organization_Name_Min_Length,
+                DomainConstValues.Organization_Name_Max_Length
+            );
 
             //Act
             System.Func<Task> act = async () => await _addOrganizationUseCase.Handle(addOrganizationRequest, CancellationToken.None);
@@ -112,17 +108,20 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
-
-        [InlineData("This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test")]
+        [InlineData(
+            "This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test This is a Test"
+        )]
         [Theory]
         public async Task Organization_is_not_added_if_description_lenght_is_more_than_max(string description)
         {
             //Arrange
             var expectedOwner = Owners.FirstOrDefault();
             var addOrganizationRequest = new AddOrganizationRequest(expectedOwner.Id, "Test_Name", description);
-            var expectedMessage = string.Format(ContractsMetadata.Max_Length_Error, nameof(OrganizationDescription), DomainConstValues.Organization_Description_Max_Length);
+            var expectedMessage = string.Format(
+                ContractsMetadata.Max_Length_Error,
+                nameof(OrganizationDescription),
+                DomainConstValues.Organization_Description_Max_Length
+            );
 
             //Act
             System.Func<Task> act = async () => await _addOrganizationUseCase.Handle(addOrganizationRequest, CancellationToken.None);
@@ -130,8 +129,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             //Assert
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [Fact]
         public async Task Organization_is_not_added_if_name_is_not_unique()
@@ -151,9 +148,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
-
         [Fact]
         public async Task Organization_is_not_added_if_owner_has_added_max_organizations()
         {
@@ -170,9 +164,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Organizations
             //Assert
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
-
 
         #endregion
 

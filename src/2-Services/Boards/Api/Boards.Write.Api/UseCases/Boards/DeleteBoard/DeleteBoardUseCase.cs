@@ -17,7 +17,6 @@ using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Boards;
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard
 {
     public class DeleteBoardUseCase : BaseCommandHandler, IRequestHandler<DeleteBoardRequest, CommandResult>
-
     {
         #region Fields
 
@@ -28,7 +27,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard
         #region Ctors
 
 
-        public DeleteBoardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public DeleteBoardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
         }
@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(DeleteBoardRequest request, CancellationToken cancellationToken)
         {
@@ -72,8 +72,6 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard
             return new BoardDeleted(boardDeletedDomainEvent.Id);
         }
 
-
         #endregion
-
     }
 }

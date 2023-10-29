@@ -5,9 +5,8 @@ using TaskoMask.Services.Boards.Read.Api.Domain;
 
 namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class BoardReadDbContext : MongoDbContext
     {
@@ -19,13 +18,12 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext
         #region Ctors
 
 
-        public BoardReadDbContext(IOptions<MongoDbOptions> mongoDbOptions) : base(mongoDbOptions)
+        public BoardReadDbContext(IOptions<MongoDbOptions> mongoDbOptions)
+            : base(mongoDbOptions)
         {
             Boards = GetCollection<Board>();
             Cards = GetCollection<Card>();
         }
-
-
 
         #endregion
 
@@ -35,6 +33,5 @@ namespace TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext
         public IMongoCollection<Card> Cards { get; }
 
         #endregion
-
     }
 }

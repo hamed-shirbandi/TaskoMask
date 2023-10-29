@@ -4,12 +4,10 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 
 namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications
 {
-
     internal class ProjectNameMustUniqueSpecification : ISpecification<Owner>
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSatisfiedBy(Owner owner)
         {

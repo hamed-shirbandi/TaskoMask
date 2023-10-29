@@ -16,7 +16,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
 {
     public class DeleteCommentTests : TestsBaseFixture
     {
-
         #region Fields
 
         private DeleteCommentUseCase _deleteCommentUseCase;
@@ -25,9 +24,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
 
         #region Ctor
 
-        public DeleteCommentTests()
-        {
-        }
+        public DeleteCommentTests() { }
 
         #endregion
 
@@ -62,8 +59,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
             await MessageBus.Received(1).Publish(Arg.Any<CommentDeleted>());
         }
 
-
-
         [Fact]
         public async Task Deleting_a_comment_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -78,7 +73,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
 
         #endregion
 

@@ -1,8 +1,4 @@
-﻿
-
-namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Projects
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Projects
 {
-    public class AddProjectDto : ProjectBaseDto
-    {
-    }
+    public class AddProjectDto : ProjectBaseDto { }
 }

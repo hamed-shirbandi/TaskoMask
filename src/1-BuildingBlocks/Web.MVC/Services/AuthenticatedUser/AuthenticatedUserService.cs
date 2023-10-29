@@ -11,7 +11,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser
 
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-
         #endregion
 
         #region Ctors
@@ -28,7 +27,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthenticatedUserModel GetAuthenticatedUser()
         {
@@ -42,13 +41,10 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser
                 Email = user.FindFirstValue(ClaimTypes.Email) ?? "",
                 UserName = user.FindFirstValue(ClaimTypes.Name) ?? "",
             };
-
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string GetUserId()
         {
@@ -58,11 +54,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser
             return user.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string GetUserName()
         {
@@ -72,19 +65,13 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser
             return user.FindFirstValue(ClaimTypes.Name) ?? "";
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsAuthenticated()
         {
             return _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated;
         }
-
-
-
 
         #endregion
 
@@ -93,6 +80,5 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser
 
 
         #endregion
-
     }
 }

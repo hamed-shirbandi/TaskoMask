@@ -8,16 +8,12 @@
             Message = message;
         }
 
-
         public static CommandResult Create(string message = "", string entityId = "")
         {
             return new CommandResult(message, entityId);
         }
 
-
         public string EntityId { get; }
         public string Message { get; }
-
     }
-
 }

@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
 {
-
     [Authorize("user-write-access")]
     [Tags("Owners")]
     public class UpdateOwnerProfileEndpoint : BaseApiController
     {
-        public UpdateOwnerProfileEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public UpdateOwnerProfileEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Update current owner
@@ -30,7 +26,5 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
         {
             return await _inMemoryBus.SendCommand<UpdateOwnerProfileRequest>(new(id: input.Id, displayName: input.DisplayName, email: input.Email));
         }
-
     }
-
 }

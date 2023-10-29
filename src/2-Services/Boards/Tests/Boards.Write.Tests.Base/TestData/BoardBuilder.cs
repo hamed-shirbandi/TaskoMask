@@ -10,20 +10,12 @@ namespace TaskoMask.Services.Boards.Write.Tests.Base.TestData
         public string Description { get; private set; }
         public string ProjectId { get; private set; }
 
-
-
-        private BoardBuilder()
-        {
-        }
-
-
+        private BoardBuilder() { }
 
         public static BoardBuilder Init()
         {
             return new BoardBuilder();
         }
-
-
 
         public BoardBuilder WithValidatorService(IBoardValidatorService validatorService)
         {
@@ -31,15 +23,11 @@ namespace TaskoMask.Services.Boards.Write.Tests.Base.TestData
             return this;
         }
 
-
-
         public BoardBuilder WithName(string name)
         {
             Name = name;
             return this;
         }
-
-
 
         public BoardBuilder WithDescription(string description)
         {
@@ -47,15 +35,11 @@ namespace TaskoMask.Services.Boards.Write.Tests.Base.TestData
             return this;
         }
 
-
-
         public BoardBuilder WithProjectId(string projectId)
         {
             ProjectId = projectId;
             return this;
         }
-
-
 
         public Board Build()
         {
@@ -63,7 +47,5 @@ namespace TaskoMask.Services.Boards.Write.Tests.Base.TestData
             board.ClearDomainEvents();
             return board;
         }
-
-
     }
 }

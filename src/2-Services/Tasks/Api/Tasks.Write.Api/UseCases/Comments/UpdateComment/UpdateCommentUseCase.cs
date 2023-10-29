@@ -17,7 +17,6 @@ using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Comments;
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
 {
     public class UpdateCommentUseCase : BaseCommandHandler, IRequestHandler<UpdateCommentRequest, CommandResult>
-
     {
         #region Fields
 
@@ -28,7 +27,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
         #region Ctors
 
 
-        public UpdateCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public UpdateCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
         }
@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(UpdateCommentRequest request, CancellationToken cancellationToken)
         {
@@ -73,7 +73,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
             var commentUpdatedDomainEvent = (CommentUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CommentUpdatedEvent));
             return new CommentUpdated(commentUpdatedDomainEvent.Id, commentUpdatedDomainEvent.Content);
         }
-
 
         #endregion
     }

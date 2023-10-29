@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Tasks
     [Collection(nameof(TaskCollectionFixture))]
     public class DeleteTaskTests
     {
-
         #region Fields
 
         private readonly TaskCollectionFixture _fixture;
@@ -51,7 +50,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Tasks
             var deletedTask = await _fixture.GetTaskAsync(expectedTask.Id);
             deletedTask.Should().BeNull();
         }
-
 
         #endregion
     }

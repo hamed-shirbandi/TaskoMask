@@ -1,5 +1,4 @@
-﻿
-namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt
+﻿namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt
 {
     public class JwtOptions
     {

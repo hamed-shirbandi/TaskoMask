@@ -3,15 +3,13 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Helpers
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IResult
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSuccess { get; set; }
 
@@ -20,16 +18,14 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
         /// </summary>
         public string Message { get; set; }
 
-
         /// <summary>
         ///
         /// </summary>
         public List<string> Errors { get; set; }
     }
 
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public struct Result : IResult
     {
@@ -41,7 +37,6 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
 
         public List<string> Errors { get; set; }
 
-
         #endregion
 
         #region Ctors
@@ -50,13 +45,12 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
         public Result(bool isSuccess, string message, List<string> errors)
         {
             if (message == "")
-                message = isSuccess?ContractsMessages.Operation_Success: ContractsMessages.Operation_Failed;
+                message = isSuccess ? ContractsMessages.Operation_Success : ContractsMessages.Operation_Failed;
 
             IsSuccess = isSuccess;
             Message = message;
             Errors = errors ?? new List<string>();
         }
-
 
         #endregion
 
@@ -68,36 +62,26 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
             return new Result(true, message, default);
         }
 
-
-
-        public static Result Failure( List<string> errors = default, string message = "")
+        public static Result Failure(List<string> errors = default, string message = "")
         {
             return new Result(false, message, errors);
         }
 
-
-
-        public static Result<TValue> Success<TValue>(TValue value = default,string message = "" )
+        public static Result<TValue> Success<TValue>(TValue value = default, string message = "")
         {
             return new Result<TValue>(true, message, value, default);
         }
 
-
-
-        public static Result<TValue> Failure<TValue>(List<string> errors= default, string message= "")
+        public static Result<TValue> Failure<TValue>(List<string> errors = default, string message = "")
         {
             return new Result<TValue>(false, message, default, errors);
         }
 
-
-
         #endregion
     }
 
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public struct Result<TValue> : IResult
     {
@@ -108,7 +92,6 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
         public string Message { get; set; }
         public List<string> Errors { get; set; }
         public TValue Value { get; set; }
-
 
         #endregion
 
@@ -125,8 +108,6 @@ namespace TaskoMask.BuildingBlocks.Contracts.Helpers
             Value = value;
             Errors = errors ?? new List<string>();
         }
-
-    
 
         #endregion
     }

@@ -13,9 +13,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
 {
     public static class GrpcExtensions
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void MapGrpcServices(this IEndpointRouteBuilder endpoints)
         {
@@ -25,9 +24,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
             endpoints.MapGrpcService<GetActivitiesByTaskIdGrpcEndpoint>();
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddGrpcClients(this IServiceCollection services, IConfiguration configuration)
         {
@@ -36,6 +34,5 @@ namespace TaskoMask.Services.Tasks.Read.Api.Configuration
                 options.Address = new Uri(configuration["Url:Board-Read-Service"]);
             });
         }
-
     }
 }

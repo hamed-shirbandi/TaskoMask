@@ -22,7 +22,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
 
         #region Ctors
 
-        public GetCardByIdHandler(BoardReadDbContext boardReadDbContext, IMapper mapper) : base(mapper)
+        public GetCardByIdHandler(BoardReadDbContext boardReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _boardReadDbContext = boardReadDbContext;
         }
@@ -34,7 +35,7 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<GetCardDto> Handle(GetCardByIdRequest request, CancellationToken cancellationToken)
         {
@@ -45,8 +46,6 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
 
             return _mapper.Map<GetCardDto>(card);
         }
-
-
 
         #endregion
 

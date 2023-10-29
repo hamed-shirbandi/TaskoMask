@@ -11,6 +11,5 @@ namespace TaskoMask.BuildingBlocks.Application.Notifications
         List<Notification> GetListAndReset();
         bool HasAny();
         void Reset();
-
     }
 }

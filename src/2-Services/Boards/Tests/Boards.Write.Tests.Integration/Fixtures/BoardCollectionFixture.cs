@@ -1,12 +1,9 @@
-﻿
-using Xunit;
+﻿using Xunit;
 
 namespace TaskoMask.Services.Boards.Write.Tests.Integration.Fixtures
 {
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [CollectionDefinition(nameof(BoardCollectionFixture))]
     public class BoardCollectionFixtureDefinition : ICollectionFixture<BoardCollectionFixture>
@@ -16,16 +13,12 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.Fixtures
         // ICollectionFixture<> interfaces.
     }
 
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class BoardCollectionFixture : TestsBaseFixture
     {
-        public BoardCollectionFixture() : base(dbNameSuffix: nameof(BoardCollectionFixture))
-        {
-        }
-
+        public BoardCollectionFixture()
+            : base(dbNameSuffix: nameof(BoardCollectionFixture)) { }
     }
 }

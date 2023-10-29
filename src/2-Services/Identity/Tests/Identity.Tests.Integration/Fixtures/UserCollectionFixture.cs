@@ -10,10 +10,8 @@ using Xunit;
 
 namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures
 {
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [CollectionDefinition(nameof(UserCollectionFixture))]
     public class OwnerCollectionFixtureDefinition : ICollectionFixture<UserCollectionFixture>
@@ -23,11 +21,8 @@ namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures
         // ICollectionFixture<> interfaces.
     }
 
-
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class UserCollectionFixture : TestsBaseFixture
     {
@@ -40,7 +35,8 @@ namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures
         public IIdentityServerInteractionService InteractionService;
         public IEventService EventsService;
 
-        public UserCollectionFixture() : base(dbNameSuffix: nameof(UserCollectionFixture))
+        public UserCollectionFixture()
+            : base(dbNameSuffix: nameof(UserCollectionFixture))
         {
             UserManager = GetRequiredService<UserManager<User>>();
             SignInManager = GetRequiredService<SignInManager<User>>();
@@ -54,15 +50,12 @@ namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures
             InMemoryBus = Substitute.For<IInMemoryBus>();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task SeedUserAsync(User user, string password)
         {
             await UserManager.CreateAsync(user, password);
         }
-
     }
 }

@@ -12,22 +12,19 @@ namespace TaskoMask.Services.Identity.Api.Configuration
 {
     internal static class HostingExtensions
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
-
             builder.AddCustomSerilog();
 
             builder.Services.AddRazorPagesPreConfigured(builder.Configuration);
 
-            builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType:typeof(OwnerRegisteredConsumer));
+            builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType: typeof(OwnerRegisteredConsumer));
 
             builder.Services.AddIdentityServer();
-            
+
             builder.Services.AddControllers();
 
             builder.Services.AddCaptcha();
@@ -35,14 +32,11 @@ namespace TaskoMask.Services.Identity.Api.Configuration
             return builder.Build();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
         {
-
             app.UseSerilogRequestLogging();
 
             app.UseIdentityServer();

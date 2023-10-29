@@ -16,7 +16,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Projects;
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject
 {
     public class AddProjectUseCase : BaseCommandHandler, IRequestHandler<AddProjectRequest, CommandResult>
-
     {
         #region Fields
 
@@ -27,7 +26,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject
         #region Ctors
 
 
-        public AddProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public AddProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }
@@ -39,7 +39,7 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(AddProjectRequest request, CancellationToken cancellationToken)
         {
@@ -61,8 +61,6 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject
             return CommandResult.Create(ContractsMessages.Create_Success, project.Id);
         }
 
-
-
         #endregion
 
         #region Private Methods
@@ -74,11 +72,16 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject
 
             var organization = owner.GetOrganizationById(projectAddedDomainEvent.OrganizationId);
 
-            return new ProjectAdded(projectAddedDomainEvent.Id, projectAddedDomainEvent.Name, projectAddedDomainEvent.Description, projectAddedDomainEvent.OrganizationId, organization.Name.Value, projectAddedDomainEvent.OwnerId);
+            return new ProjectAdded(
+                projectAddedDomainEvent.Id,
+                projectAddedDomainEvent.Name,
+                projectAddedDomainEvent.Description,
+                projectAddedDomainEvent.OrganizationId,
+                organization.Name.Value,
+                projectAddedDomainEvent.OwnerId
+            );
         }
 
-
-        #endregion 
-
+        #endregion
     }
 }

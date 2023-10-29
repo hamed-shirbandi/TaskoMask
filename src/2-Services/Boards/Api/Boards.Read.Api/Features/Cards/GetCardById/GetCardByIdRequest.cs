@@ -10,9 +10,6 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
             Id = id;
         }
 
-
         public string Id { get; }
-
-
     }
 }

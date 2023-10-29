@@ -4,25 +4,18 @@
     {
         private string _data;
 
-        public DragDropService()
-        {
-
-        }
-
-
+        public DragDropService() { }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string GetDraggedData()
         {
             return _data;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void SetDraggedData(string data)
         {

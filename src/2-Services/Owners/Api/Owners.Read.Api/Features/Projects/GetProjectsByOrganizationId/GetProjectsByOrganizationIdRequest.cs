@@ -12,6 +12,5 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
         }
 
         public string OrganizationId { get; }
-
     }
 }

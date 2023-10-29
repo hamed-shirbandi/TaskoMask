@@ -5,7 +5,6 @@ using System;
 
 namespace TaskoMask.Tests.Acceptance.UI.Suzianna
 {
-
     /// <summary>
     /// This is an extension for Suzianna
     /// Because it's not support working with web pages as an ability
@@ -15,26 +14,21 @@ namespace TaskoMask.Tests.Acceptance.UI.Suzianna
         public IWebDriver Driver { get; private set; }
         public string BaseUrl { get; private set; }
 
-
         private BrowseWebPage(string baseUrl)
         {
             BaseUrl = baseUrl;
             Driver = new ChromeDriver(Environment.CurrentDirectory);
         }
 
-
         public static BrowseWebPage At(string baseApiUrl)
         {
             return new BrowseWebPage(baseApiUrl);
         }
-
 
         public void Dispose()
         {
             Driver.Close();
             Driver?.Dispose();
         }
-
-
     }
 }

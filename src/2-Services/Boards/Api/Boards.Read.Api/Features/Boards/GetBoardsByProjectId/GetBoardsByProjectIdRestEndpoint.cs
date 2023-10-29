@@ -11,16 +11,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectId
 {
-
     [Authorize("user-read-access")]
     [Tags("Boards")]
     public class GetBoardsByProjectIdRestEndpoint : BaseApiController
     {
-        public GetBoardsByProjectIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetBoardsByProjectIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get boards for a project
@@ -32,5 +28,4 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectI
             return await _inMemoryBus.SendQuery(new GetBoardsByProjectIdRequest(projectId));
         }
     }
-
 }

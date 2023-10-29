@@ -15,9 +15,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
         #region Ctor
 
-        public OrganizationApiService(IHttpClientService httpClientService) : base(httpClientService)
-        {
-        }
+        public OrganizationApiService(IHttpClientService httpClientService)
+            : base(httpClientService) { }
 
         #endregion
 
@@ -25,7 +24,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<GetOrganizationDto>> GetAsync(string id)
         {
@@ -33,10 +32,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<GetOrganizationDto>(url);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<IEnumerable<OrganizationDetailsViewModel>>> GetListAsync()
         {
@@ -44,26 +41,22 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<IEnumerable<OrganizationDetailsViewModel>>(url);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItemsAsync()
         {
             var url = $"/owners-read/organizations";
-            var organizationsResult= await _httpClientService.GetAsync<IEnumerable<GetOrganizationDto>>(url);
+            var organizationsResult = await _httpClientService.GetAsync<IEnumerable<GetOrganizationDto>>(url);
             if (!organizationsResult.IsSuccess)
                 return Result.Failure<IEnumerable<SelectListItem>>(organizationsResult.Errors, organizationsResult.Message);
-           
-            var selectListItems= MapToSelectListItem(organizationsResult.Value);
+
+            var selectListItems = MapToSelectListItem(organizationsResult.Value);
             return Result.Success(selectListItems);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> AddAsync(AddOrganizationDto input)
         {
@@ -71,10 +64,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateOrganizationDto input)
         {
@@ -82,10 +73,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
@@ -100,26 +89,19 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private IEnumerable<SelectListItem> MapToSelectListItem(IEnumerable<GetOrganizationDto> organizations)
         {
             var items = new List<SelectListItem>();
             foreach (var item in organizations)
             {
-                items.Add(new SelectListItem
-                {
-                    Text=item.Name,
-                    Value=item.Id
-                });
+                items.Add(new SelectListItem { Text = item.Name, Value = item.Id });
             }
 
             return items;
         }
 
-
-
         #endregion
-
     }
 }

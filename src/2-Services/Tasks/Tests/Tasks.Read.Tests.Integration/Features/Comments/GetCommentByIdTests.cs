@@ -46,7 +46,6 @@ namespace TaskoMask.Services.Tasks.Read.Tests.Integration.Features.Comments
             result.Content.Should().Be(expectedComment.Content);
         }
 
-
         #endregion
     }
 }

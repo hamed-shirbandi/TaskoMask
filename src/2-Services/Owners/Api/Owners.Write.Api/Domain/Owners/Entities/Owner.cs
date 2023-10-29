@@ -29,7 +29,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
         private Owner(string displayName, string email, IOwnerValidatorService ownerValidatorService)
         {
-
             SetId(ObjectId.GenerateNewId().ToString());
 
             DisplayName = OwnerDisplayName.Create(displayName);
@@ -40,8 +39,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
             AddDomainEvent(new OwnerRegisteredEvent(Id, DisplayName.Value, Email.Value));
         }
-
-
 
         #endregion
 
@@ -58,17 +55,15 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Owner RegisterOwner(string displayName, string email, IOwnerValidatorService ownerValidatorService)
         {
             return new Owner(displayName, email, ownerValidatorService);
         }
 
-
-
         ///// <summary>
-        /////  
+        /////
         ///// </summary>
         public void UpdateOwnerProfile(OwnerDisplayName displayName, OwnerEmail email, IOwnerValidatorService ownerValidatorService)
         {
@@ -80,10 +75,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             AddDomainEvent(new OwnerProfileUpdatedEvent(Id, displayName.Value, email.Value));
         }
 
-
-
-
-
         #endregion
 
         #region Organization Behaviors
@@ -91,7 +82,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void AddOrganization(Organization organization)
         {
@@ -99,10 +90,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             AddDomainEvent(new OrganizationAddedEvent(organization.Id, organization.Name.Value, organization.Description.Value, this.Id));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void UpdateOrganization(string organizationId, string name, string description)
         {
@@ -111,10 +100,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             AddDomainEvent(new OrganizationUpdatedEvent(organizationId, organization.Name.Value, organization.Description.Value));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void DeleteOrganization(string organizationId)
         {
@@ -123,10 +110,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             AddDomainEvent(new OrganizationDeletedEvent(organizationId));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Organization GetOrganizationById(string organizationId)
         {
@@ -136,8 +121,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             return organization;
         }
 
-
-
         #endregion
 
         #region Project Behaviors
@@ -145,7 +128,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void AddProject(string organizationId, Project project)
         {
@@ -156,10 +139,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             AddDomainEvent(new ProjectAddedEvent(project.Id, project.Name.Value, project.Description.Value, organization.Id, Id));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void UpdateProject(string projectId, string name, string description)
         {
@@ -172,10 +153,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             AddDomainEvent(new ProjectUpdatedEvent(project.Id, project.Name.Value, project.Description.Value));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void DeleteProject(string projectId)
         {
@@ -186,10 +165,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             AddDomainEvent(new ProjectDeletedEvent(projectId));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Project GetProjectById(string projectId)
         {
@@ -198,7 +175,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
             return organization.GetProjectById(projectId);
         }
 
-
         #endregion
 
         #region Methods
@@ -206,7 +182,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void CheckPolicies(IOwnerValidatorService ownerValidatorService)
         {
@@ -221,33 +197,32 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
             if (!new OwnerEmailMustUniqueSpecification(ownerValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(DomainMessages.Email_Already_Exist);
-
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckInvariants()
         {
             if (!new OwnerMaxOrganizationsSpecification().IsSatisfiedBy(this))
-                throw new DomainException(string.Format(DomainMessages.Max_Organizations_Count_Limitiation, DomainConstValues.Owner_Max_Organizations_Count));
+                throw new DomainException(
+                    string.Format(DomainMessages.Max_Organizations_Count_Limitiation, DomainConstValues.Owner_Max_Organizations_Count)
+                );
 
             if (!new OrganizationNameMustUniqueSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Organization));
 
             if (!new OrganizationMaxProjectsSpecification().IsSatisfiedBy(this))
-                throw new DomainException(string.Format(DomainMessages.Max_Projects_Count_Limitiation, DomainConstValues.Organization_Max_Projects_Count));
+                throw new DomainException(
+                    string.Format(DomainMessages.Max_Projects_Count_Limitiation, DomainConstValues.Organization_Max_Projects_Count)
+                );
 
             if (!new ProjectNameMustUniqueSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Project));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private Organization GetOrganizationByProjectId(string projectId)
         {
@@ -257,7 +232,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities
 
             return organization;
         }
-
 
         #endregion
     }

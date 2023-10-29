@@ -40,17 +40,15 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Card Create(string name, BoardCardType type)
         {
             return new Card(name, type);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Update(string name, BoardCardType type)
         {
@@ -61,9 +59,6 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
             CheckPolicies();
         }
 
-
-
-
         #endregion
 
         #region Private Methods
@@ -71,7 +66,7 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void CheckPolicies()
         {
@@ -80,9 +75,7 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 
             if (Type == null)
                 throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Type)));
-
         }
-
 
         #endregion
     }

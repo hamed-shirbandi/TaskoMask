@@ -6,9 +6,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Domain
 {
     public class Project : BaseEntity
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id">Id Must sync with write side DB</param>
         public Project(string id)
@@ -19,14 +18,12 @@ namespace TaskoMask.Services.Owners.Read.Api.Domain
             base.SetId(id);
         }
 
-
         public string Name { get; set; }
         public string Description { get; set; }
         public string OrganizationId { get; set; }
         public string OrganizationName { get; set; }
 
         public string OwnerId { get; set; }
-
 
         #region Update private properties
 
@@ -36,6 +33,5 @@ namespace TaskoMask.Services.Owners.Read.Api.Domain
         }
 
         #endregion
-
     }
 }

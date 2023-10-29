@@ -1,17 +1,18 @@
-﻿
-
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.BuildingBlocks.Web.Helpers
 {
     public static class HttpClientRetryHelper
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static async Task<Result<TResult>> RetryAsync<TResult>(Func<Task<HttpResponseMessage>> sendHttpRequestAsync, int maxRetryCount = 3, int retryTimeoutInMilliseconds = 200)
+        public static async Task<Result<TResult>> RetryAsync<TResult>(
+            Func<Task<HttpResponseMessage>> sendHttpRequestAsync,
+            int maxRetryCount = 3,
+            int retryTimeoutInMilliseconds = 200
+        )
         {
             var errors = new List<string> { };
             var retryCount = 1;
@@ -41,7 +42,6 @@ namespace TaskoMask.BuildingBlocks.Web.Helpers
                         ++retryCount;
                     }
                 }
-
             }
 
             return Result.Failure<TResult>(message: $"Request failed!", errors: errors);

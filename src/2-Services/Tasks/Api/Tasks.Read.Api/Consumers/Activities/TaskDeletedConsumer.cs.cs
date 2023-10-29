@@ -12,20 +12,15 @@ namespace TaskoMask.Services.Tasks.Read.Api.Consumers.Activities
     {
         private readonly TaskReadDbContext _taskReadDbContext;
 
-
-        public TaskDeletedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext) : base(inMemoryBus)
+        public TaskDeletedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
+            : base(inMemoryBus)
         {
             _taskReadDbContext = taskReadDbContext;
         }
 
-
         public override async Task ConsumeMessage(ConsumeContext<TaskDeleted> context)
         {
-            var activity = new Domain.Activity()
-            {
-                TaskId = context.Message.Id,
-                Description = "Task Deleted",
-            };
+            var activity = new Domain.Activity() { TaskId = context.Message.Id, Description = "Task Deleted", };
 
             await _taskReadDbContext.Activities.InsertOneAsync(activity);
         }

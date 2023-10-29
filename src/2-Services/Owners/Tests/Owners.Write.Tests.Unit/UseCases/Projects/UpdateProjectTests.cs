@@ -18,7 +18,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 {
     public class UpdateProjectTests : TestsBaseFixture
     {
-
         #region Fields
 
         private UpdateProjectUseCase _updateProjectUseCase;
@@ -27,9 +26,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
 
         #region Ctor
 
-        public UpdateProjectTests()
-        {
-        }
+        public UpdateProjectTests() { }
 
         #endregion
 
@@ -64,8 +61,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
             await MessageBus.Received(1).Publish(Arg.Any<ProjectUpdated>());
         }
 
-
-
         [Fact]
         public async Task Updating_an_project_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -80,8 +75,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Projects
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         #endregion
 

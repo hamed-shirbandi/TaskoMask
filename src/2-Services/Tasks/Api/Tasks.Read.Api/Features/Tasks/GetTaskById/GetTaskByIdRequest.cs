@@ -10,9 +10,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById
             Id = id;
         }
 
-
         public string Id { get; }
-
-
     }
 }

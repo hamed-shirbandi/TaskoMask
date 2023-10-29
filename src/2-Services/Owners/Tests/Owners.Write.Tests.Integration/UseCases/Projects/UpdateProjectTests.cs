@@ -10,7 +10,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
     [Collection(nameof(ProjectCollectionFixture))]
     public class UpdateProjectTests
     {
-
         #region Fields
 
         private readonly ProjectCollectionFixture _fixture;
@@ -52,7 +51,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
             var updatedProject = updatedOwner.GetProjectById(expectedProject.Id);
             updatedProject.Name.Value.Should().Be(request.Name);
         }
-
 
         #endregion
     }

@@ -1,5 +1,4 @@
-﻿
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using TaskoMask.Tests.Acceptance.Core.Helpers;
 using TaskoMask.Tests.Acceptance.Core.Models;
 using TaskoMask.Tests.Acceptance.Core.Screenplay.Questions;
@@ -10,10 +9,8 @@ namespace TaskoMask.Tests.Acceptance.UI.Questions
 {
     public class LastOwnerUiQuestion : LastOwnerQuestion
     {
-        public LastOwnerUiQuestion()
-        {
+        public LastOwnerUiQuestion() { }
 
-        }
         protected override Result<OwnerBasicInfoDto> GetLastOwner<T>(T actor)
         {
             var ability = actor.FindAbility<BrowseWebPage>();
@@ -22,15 +19,17 @@ namespace TaskoMask.Tests.Acceptance.UI.Questions
             ability.Driver.Navigate().GoToUrl(dashboardUrl);
             ability.Driver.FindElement(By.Id("update_user_profile")).Click();
 
-            var updateFormExist= ability.Driver.WaitForElementToExist(By.Id("user_update_profile_form"));
+            var updateFormExist = ability.Driver.WaitForElementToExist(By.Id("user_update_profile_form"));
             if (!updateFormExist)
                 return Result.Failure<OwnerBasicInfoDto>();
 
-            return Result.Success(new OwnerBasicInfoDto
-            {
-                Email= ability.Driver.FindElement(By.Id("user_profile_email")).GetAttribute("value"),
-                DisplayName= ability.Driver.FindElement(By.Id("user_profile_displayname")).GetAttribute("value"),
-            });
+            return Result.Success(
+                new OwnerBasicInfoDto
+                {
+                    Email = ability.Driver.FindElement(By.Id("user_profile_email")).GetAttribute("value"),
+                    DisplayName = ability.Driver.FindElement(By.Id("user_profile_displayname")).GetAttribute("value"),
+                }
+            );
         }
     }
 }

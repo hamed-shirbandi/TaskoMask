@@ -9,7 +9,6 @@ namespace TaskoMask.Services.Identity.Tests.Integration.UseCases
     [Collection(nameof(UserCollectionFixture))]
     public class RegisterUserTests
     {
-
         #region Fields
 
         private readonly UserCollectionFixture _fixture;
@@ -33,8 +32,13 @@ namespace TaskoMask.Services.Identity.Tests.Integration.UseCases
         {
             //Arrange
             var registeredOwnerId = Guid.NewGuid().ToString();
-            var registerUserUseCase = new RegisterUserUseCase(_fixture.UserManager, _fixture.MessageBus, _fixture.InMemoryBus, _fixture.NotificationHandler);
-            var request = new RegisterUserRequest(registeredOwnerId,"test@taskomask.ir", "TestPass");
+            var registerUserUseCase = new RegisterUserUseCase(
+                _fixture.UserManager,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus,
+                _fixture.NotificationHandler
+            );
+            var request = new RegisterUserRequest(registeredOwnerId, "test@taskomask.ir", "TestPass");
 
             //Act
             var result = await registerUserUseCase.Handle(request, CancellationToken.None);
@@ -43,7 +47,6 @@ namespace TaskoMask.Services.Identity.Tests.Integration.UseCases
             result.EntityId.Should().NotBeNullOrEmpty();
             result.Message.Should().Be(ContractsMessages.Create_Success);
         }
-
 
         #endregion
     }

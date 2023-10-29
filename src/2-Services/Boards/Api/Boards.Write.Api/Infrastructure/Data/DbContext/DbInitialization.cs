@@ -6,24 +6,19 @@ using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities;
 
 namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.DbContext
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class DbInitialization
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
             serviceProvider.SeedEssentialData();
             serviceProvider.CreateIndexes();
         }
-
-
 
         /// <summary>
         /// Drop database
@@ -37,8 +32,6 @@ namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.DbContext
             dbContext.DropDatabase();
         }
 
-
-
         /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
@@ -48,10 +41,7 @@ namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.DbContext
             var dbContext = serviceScope.ServiceProvider.GetService<BoardWriteDbContext>();
 
             // dbContext.Boards.InsertOneAsync(x)
-
         }
-
-
 
         /// <summary>
         /// Create index for collections
@@ -61,10 +51,18 @@ namespace TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.DbContext
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<BoardWriteDbContext>();
 
-            dbContext.Boards.Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Board.Id), Unique = true }));
-            dbContext.Boards.Indexes.CreateOneAsync(new CreateIndexModel<Board>(Builders<Board>.IndexKeys.Ascending(x => x.ProjectId.Value), new CreateIndexOptions() { Name = nameof(Board.ProjectId) }));
-
+            dbContext.Boards.Indexes.CreateOneAsync(
+                new CreateIndexModel<Board>(
+                    Builders<Board>.IndexKeys.Ascending(x => x.Id),
+                    new CreateIndexOptions() { Name = nameof(Board.Id), Unique = true }
+                )
+            );
+            dbContext.Boards.Indexes.CreateOneAsync(
+                new CreateIndexModel<Board>(
+                    Builders<Board>.IndexKeys.Ascending(x => x.ProjectId.Value),
+                    new CreateIndexOptions() { Name = nameof(Board.ProjectId) }
+                )
+            );
         }
-
     }
 }

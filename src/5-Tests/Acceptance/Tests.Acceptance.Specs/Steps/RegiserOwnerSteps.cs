@@ -21,7 +21,7 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
         #region Ctor
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stage"> Initialized by TestsBaseHook</param>
         public RegiserOwnerSteps(Stage stage)
@@ -41,8 +41,6 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
             _stage.ShineSpotlightOn("John");
         }
 
-
-
         [When(@"John registers for a new account")]
         public void WhenJohnRegistersForANewAccount(Table table)
         {
@@ -50,21 +48,13 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
             _stage.ActorInTheSpotlight.AttemptsTo(Perform.RegisterOwner(_ownerRegisterDto));
         }
 
-
-
         [When(@"John attempts to login")]
         public void WhenJohnAttemptsToLogin()
         {
-            var ownerLoginDto = new OwnerLoginDto
-            {
-                UserName = _ownerRegisterDto.Email,
-                Password = _ownerRegisterDto.Password,
-            };
+            var ownerLoginDto = new OwnerLoginDto { UserName = _ownerRegisterDto.Email, Password = _ownerRegisterDto.Password, };
 
             _stage.ActorInTheSpotlight.AttemptsTo(Perform.LoginOwner(ownerLoginDto));
         }
-
-
 
         [Then(@"John login successfully")]
         public void ThenJohnLoginSuccessfully()
@@ -75,8 +65,6 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
             loginResult.Should().BeTrue();
         }
 
-
-
         [Then(@"John has access to his profile")]
         public void ThenJohnHasAccessToHisProfile()
         {
@@ -84,8 +72,6 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
             lastOwnerResult.IsSuccess.Should().BeTrue();
             lastOwnerResult.Value.Email.Should().Be(_ownerRegisterDto.Email);
         }
-
-
 
         #endregion
 
@@ -103,15 +89,11 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
             _stage.ActorInTheSpotlight.AttemptsTo(Perform.RegisterOwner(_ownerRegisterDto));
         }
 
-
-
         [Given(@"Jane is not a registered member")]
         public void GivenJaneIsNotARegisteredMember()
         {
             _stage.ShineSpotlightOn("Jane");
         }
-
-
 
         [When(@"Jane registers for a new account with John's email")]
         public void WhenJaneRegistersForANewAccountWithJohnsEmail(Table table)
@@ -120,8 +102,6 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
             _stage.ActorInTheSpotlight.AttemptsTo(Perform.RegisterOwner(_ownerRegisterDto));
         }
 
-
-
         [Then(@"Jane can not register")]
         public void ThenJaneCanNotRegister()
         {
@@ -129,9 +109,6 @@ namespace TaskoMask.Tests.Acceptance.Specs.Steps
             registerResult.Should().BeFalse();
         }
 
-
-
         #endregion
-
     }
 }

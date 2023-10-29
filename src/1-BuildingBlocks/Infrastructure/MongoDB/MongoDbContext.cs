@@ -3,11 +3,10 @@ using Microsoft.Extensions.Options;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
-    public abstract class MongoDbContext 
+    public abstract class MongoDbContext
     {
         #region Fields
 
@@ -28,8 +27,6 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
             _database = _client.GetDatabase(_mongoDbOptions.DatabaseName);
         }
 
-
-
         #endregion
 
         #region Public Methods
@@ -37,7 +34,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IMongoCollection<TEntity> GetCollection<TEntity>(string name = "")
         {
@@ -47,19 +44,14 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
             return _database.GetCollection<TEntity>(name);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void DropDatabase()
         {
             _client.DropDatabase(_mongoDbOptions.DatabaseName);
         }
 
-
-
         #endregion
-
     }
 }

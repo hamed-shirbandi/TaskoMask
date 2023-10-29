@@ -6,11 +6,11 @@ using TaskoMask.BuildingBlocks.Contracts.Protos;
 
 namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
 {
-
     public class GetBoardByIdGrpcEndpoint : GetBoardByIdGrpcService.GetBoardByIdGrpcServiceBase
     {
         private readonly IInMemoryBus _inMemoryBus;
         private readonly IMapper _mapper;
+
         public GetBoardByIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
         {
             _inMemoryBus = inMemoryBus;
@@ -23,5 +23,4 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
             return _mapper.Map<GetBoardGrpcResponse>(board.Value);
         }
     }
-
 }

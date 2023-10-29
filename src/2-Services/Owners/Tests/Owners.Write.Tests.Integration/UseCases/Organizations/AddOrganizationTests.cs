@@ -10,7 +10,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
     [Collection(nameof(OrganizationCollectionFixture))]
     public class AddOrganizationTests
     {
-
         #region Fields
 
         private readonly OrganizationCollectionFixture _fixture;
@@ -50,7 +49,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
             var addedOrganization = updatedOwner.GetOrganizationById(result.EntityId);
             addedOrganization.Name.Value.Should().Be(request.Name);
         }
-
 
         #endregion
     }

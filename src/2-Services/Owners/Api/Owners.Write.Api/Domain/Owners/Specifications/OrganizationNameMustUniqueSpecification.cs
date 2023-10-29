@@ -6,9 +6,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications
 {
     internal class OrganizationNameMustUniqueSpecification : ISpecification<Owner>
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSatisfiedBy(Owner owner)
         {

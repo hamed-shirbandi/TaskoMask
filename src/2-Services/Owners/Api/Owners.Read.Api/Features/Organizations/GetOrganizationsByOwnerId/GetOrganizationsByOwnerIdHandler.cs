@@ -11,7 +11,9 @@ using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationsByOwnerId
 {
-    public class GetOrganizationsByOwnerIdHandler : BaseQueryHandler, IRequestHandler<GetOrganizationsByOwnerIdRequest, IEnumerable<GetOrganizationDto>>
+    public class GetOrganizationsByOwnerIdHandler
+        : BaseQueryHandler,
+            IRequestHandler<GetOrganizationsByOwnerIdRequest, IEnumerable<GetOrganizationDto>>
     {
         #region Fields
 
@@ -21,7 +23,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 
         #region Ctors
 
-        public GetOrganizationsByOwnerIdHandler(OwnerReadDbContext ownerReadDbContext, IMapper mapper) : base(mapper)
+        public GetOrganizationsByOwnerIdHandler(OwnerReadDbContext ownerReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
@@ -33,7 +36,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<IEnumerable<GetOrganizationDto>> Handle(GetOrganizationsByOwnerIdRequest request, CancellationToken cancellationToken)
         {
@@ -41,8 +44,6 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 
             return _mapper.Map<IEnumerable<GetOrganizationDto>>(organizations);
         }
-
-
 
         #endregion
 

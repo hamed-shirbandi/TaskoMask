@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject
 {
-
     [Authorize("user-write-access")]
     [Tags("Projects")]
     public class UpdateProjectEndpoint : BaseApiController
     {
-        public UpdateProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public UpdateProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Update an existing project
@@ -30,7 +26,5 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject
         {
             return await _inMemoryBus.SendCommand<UpdateProjectRequest>(new(id: input.Id, name: input.Name, description: input.Description));
         }
-
     }
-
 }

@@ -13,7 +13,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
 {
     public class UpdateBoardTests : TestsBaseFixture
     {
-
         #region Fields
 
         private UpdateBoardUseCase _updateBoardUseCase;
@@ -22,9 +21,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
 
         #region Ctor
 
-        public UpdateBoardTests()
-        {
-        }
+        public UpdateBoardTests() { }
 
         #endregion
 
@@ -51,7 +48,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             await MessageBus.Received(1).Publish(Arg.Any<BoardUpdated>());
         }
 
-
         [Fact]
         public async Task Updatting_a_board_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -66,8 +62,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [Fact]
         public async Task Updating_a_board_will_change_its_version()
@@ -84,14 +78,13 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             expectedBoard.Version.Should().NotBeNullOrEmpty().And.NotBe(previousVersion);
         }
 
-
         #endregion
 
         #region Fixture
 
         protected override void TestClassFixtureSetup()
         {
-            _updateBoardUseCase = new UpdateBoardUseCase(BoardAggregateRepository, MessageBus, InMemoryBus,BoardValidatorService);
+            _updateBoardUseCase = new UpdateBoardUseCase(BoardAggregateRepository, MessageBus, InMemoryBus, BoardValidatorService);
         }
 
         #endregion

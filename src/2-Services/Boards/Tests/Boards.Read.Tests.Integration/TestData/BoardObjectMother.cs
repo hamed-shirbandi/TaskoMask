@@ -19,6 +19,5 @@ namespace TaskoMask.Services.Boards.Read.Tests.Integration.TestData
                 ProjectName = TestDataGenerator.GetRandomName(10),
             };
         }
-
     }
 }

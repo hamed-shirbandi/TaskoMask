@@ -6,7 +6,6 @@ using TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks;
 
 namespace TaskoMask.Tests.Acceptance.Core.Screenplay
 {
-
     /// <summary>
     /// Perform holds all Tasks
     /// It is used just to bring out technical decisions from spec definitions
@@ -14,26 +13,20 @@ namespace TaskoMask.Tests.Acceptance.Core.Screenplay
     /// </summary>
     public static class Perform
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ITask LoginOwner(OwnerLoginDto ownerLoginDto)
         {
             return Factory.CreateTask<LoginOwnerTask>(ownerLoginDto);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ITask RegisterOwner(OwnerRegisterDto ownerRegisterDto)
         {
             return Factory.CreateTask<RegisterOwnerTask>(ownerRegisterDto);
-
         }
-
-
     }
 }

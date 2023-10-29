@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
     [Collection(nameof(ProjectCollectionFixture))]
     public class DeleteProjectTests
     {
-
         #region Fields
 
         private readonly ProjectCollectionFixture _fixture;
@@ -56,7 +55,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Projects
             Action act = () => updatedOwner.GetProjectById(expectedProject.Id);
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
 
         #endregion
     }

@@ -10,6 +10,5 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Activities
         public string Description { get; set; }
 
         public CreationTimeDto CreationTime { get; set; }
-
     }
 }

@@ -9,14 +9,14 @@ namespace TaskoMask.Services.Boards.Write.Tests.Base.TestData
 {
     public static class BoardObjectMother
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         public static Board CreateBoard(IBoardValidatorService boardValidatorService)
         {
-            return BoardBuilder.Init()
+            return BoardBuilder
+                .Init()
                 .WithValidatorService(boardValidatorService)
                 .WithName(TestDataGenerator.GetRandomName(10))
                 .WithDescription(TestDataGenerator.GetRandomName(20))
@@ -24,20 +24,16 @@ namespace TaskoMask.Services.Boards.Write.Tests.Base.TestData
                 .Build();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Card CreateCard()
         {
             return Card.Create(name: TestDataGenerator.GetRandomName(10), type: BoardCardType.ToDo);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Board CreateBoardWithOneCard(IBoardValidatorService boardValidatorService)
         {
@@ -47,10 +43,8 @@ namespace TaskoMask.Services.Boards.Write.Tests.Base.TestData
             return board;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static List<Board> GenerateBoardsList(IBoardValidatorService boardValidatorService, int number = 3)
         {

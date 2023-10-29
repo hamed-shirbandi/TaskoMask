@@ -10,7 +10,6 @@ namespace TaskoMask.Services.Identity.Tests.Integration.UseCases
     [Collection(nameof(UserCollectionFixture))]
     public class UserLoginTests
     {
-
         #region Fields
 
         private readonly UserCollectionFixture _fixture;
@@ -48,7 +47,6 @@ namespace TaskoMask.Services.Identity.Tests.Integration.UseCases
             //Assert
             result.Message.Should().Be(ContractsMessages.Operation_Success);
         }
-
 
         #endregion
     }

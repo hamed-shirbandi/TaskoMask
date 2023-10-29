@@ -10,20 +10,21 @@ using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class InfrastructureModule
     {
-
-  
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration,Type consumerAssemblyMarkerType)
+        public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {
-            services.AddBuildingBlocksInfrastructure(configuration,consumerAssemblyMarkerType, handlerAssemblyMarkerType:typeof(RegisterUserUseCase));
+            services.AddBuildingBlocksInfrastructure(
+                configuration,
+                consumerAssemblyMarkerType,
+                handlerAssemblyMarkerType: typeof(RegisterUserUseCase)
+            );
 
             services.AddMapper(typeof(MappingProfile));
 
@@ -32,26 +33,21 @@ namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI
             services.AddAspNetIdentity(configuration);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddDbContext(this IServiceCollection services)
         {
             services.AddDbContext<IdentityDbContext>();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
             serviceProvider.InitialDatabase();
             serviceProvider.SeedEssentialData();
         }
-
     }
 }

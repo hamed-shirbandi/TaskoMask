@@ -6,7 +6,7 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class MessageBus : IMessageBus
     {
@@ -23,7 +23,6 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
             _publishEndpoint = publishEndpoint;
         }
 
-
         #endregion
 
         #region Public Methods
@@ -32,13 +31,13 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public async Task Publish<TEvent>(TEvent @event) where TEvent : IntegrationEvent
+        public async Task Publish<TEvent>(TEvent @event)
+            where TEvent : IntegrationEvent
         {
             await _publishEndpoint.Publish(@event);
         }
-
 
         #endregion
 
@@ -49,4 +48,3 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.Bus
         #endregion
     }
 }
-

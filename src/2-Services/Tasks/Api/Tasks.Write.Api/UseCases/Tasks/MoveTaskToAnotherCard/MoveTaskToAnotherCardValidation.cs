@@ -2,15 +2,11 @@
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCard
 {
-    public abstract class MoveTaskToAnotherCardValidation<TRequest> : AbstractValidator<TRequest> where TRequest : MoveTaskToAnotherCardRequest
+    public abstract class MoveTaskToAnotherCardValidation<TRequest> : AbstractValidator<TRequest>
+        where TRequest : MoveTaskToAnotherCardRequest
     {
-        public MoveTaskToAnotherCardValidation()
-        {
-        }
+        public MoveTaskToAnotherCardValidation() { }
 
-
-        private void ValidateDescription()
-        {
-        }
+        private void ValidateDescription() { }
     }
 }

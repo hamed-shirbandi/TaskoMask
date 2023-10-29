@@ -18,7 +18,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrganization
 {
     public class UpdateOrganizationUseCase : BaseCommandHandler, IRequestHandler<UpdateOrganizationRequest, CommandResult>
-
     {
         #region Fields
 
@@ -29,7 +28,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrgan
         #region Ctors
 
 
-        public UpdateOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public UpdateOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }
@@ -41,7 +41,7 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrgan
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(UpdateOrganizationRequest request, CancellationToken cancellationToken)
         {
@@ -71,10 +71,14 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrgan
 
         private OrganizationUpdated MapToOrganizationUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
-            var organizationUpdatedDomainEvent = (OrganizationUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationUpdatedEvent));
-            return new OrganizationUpdated(organizationUpdatedDomainEvent.Id, organizationUpdatedDomainEvent.Name, organizationUpdatedDomainEvent.Description);
+            var organizationUpdatedDomainEvent = (OrganizationUpdatedEvent)
+                domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationUpdatedEvent));
+            return new OrganizationUpdated(
+                organizationUpdatedDomainEvent.Id,
+                organizationUpdatedDomainEvent.Name,
+                organizationUpdatedDomainEvent.Description
+            );
         }
-
 
         #endregion
     }

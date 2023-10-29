@@ -12,16 +12,13 @@ using System;
 
 namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class InfrastructureModule
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {
@@ -33,10 +30,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI
             services.AddRepositories();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static void AddMongoDbContext(this IServiceCollection services, IConfiguration configuration)
         {
@@ -44,20 +39,16 @@ namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI
             services.AddScoped<OwnerWriteDbContext>().AddOptions<MongoDbOptions>().Bind(options);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static void AddDomainServices(this IServiceCollection services)
         {
             services.AddScoped<IOwnerValidatorService, OwnerValidatorService>();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static void AddRepositories(this IServiceCollection services)
         {

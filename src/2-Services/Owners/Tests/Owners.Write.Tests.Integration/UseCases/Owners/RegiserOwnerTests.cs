@@ -9,7 +9,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
     [Collection(nameof(OwnerCollectionFixture))]
     public class RegiserOwnerTests
     {
-
         #region Fields
 
         private readonly OwnerCollectionFixture _fixture;
@@ -32,8 +31,13 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
         public async Task Owner_is_registered()
         {
             //Arrange
-            var request = new RegiserOwnerRequest(displayName:"Test Name",email:"test@taskomask.ir",password:"TestPass");
-            var regiserOwnerUseCase = new RegiserOwnerUseCase(_fixture.OwnerAggregateRepository, _fixture.OwnerValidatorService, _fixture.MessageBus, _fixture.InMemoryBus);
+            var request = new RegiserOwnerRequest(displayName: "Test Name", email: "test@taskomask.ir", password: "TestPass");
+            var regiserOwnerUseCase = new RegiserOwnerUseCase(
+                _fixture.OwnerAggregateRepository,
+                _fixture.OwnerValidatorService,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus
+            );
 
             //Act
             var result = await regiserOwnerUseCase.Handle(request, CancellationToken.None);
@@ -42,7 +46,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Owners
             result.EntityId.Should().NotBeNull();
             result.Message.Should().Be(ContractsMessages.Create_Success);
         }
-
 
         #endregion
     }

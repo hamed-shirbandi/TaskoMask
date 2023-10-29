@@ -21,7 +21,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentsByTaskI
 
         #region Ctors
 
-        public GetCommentsByTaskIdHandler(TaskReadDbContext taskReadDbContext, IMapper mapper) : base(mapper)
+        public GetCommentsByTaskIdHandler(TaskReadDbContext taskReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _taskReadDbContext = taskReadDbContext;
         }
@@ -33,7 +34,7 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentsByTaskI
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<IEnumerable<GetCommentDto>> Handle(GetCommentsByTaskIdRequest request, CancellationToken cancellationToken)
         {
@@ -41,8 +42,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentsByTaskI
 
             return _mapper.Map<IEnumerable<GetCommentDto>>(comments);
         }
-
-
 
         #endregion
 

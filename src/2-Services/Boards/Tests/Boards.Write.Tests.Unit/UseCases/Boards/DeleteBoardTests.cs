@@ -13,7 +13,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
 {
     public class DeleteBoardTests : TestsBaseFixture
     {
-
         #region Fields
 
         private DeleteBoardUseCase _deleteBoardUseCase;
@@ -22,9 +21,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
 
         #region Ctor
 
-        public DeleteBoardTests()
-        {
-        }
+        public DeleteBoardTests() { }
 
         #endregion
 
@@ -52,8 +49,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             await MessageBus.Received(1).Publish(Arg.Any<BoardDeleted>());
         }
 
-
-
         [Fact]
         public async Task Deleting_a_board_will_throw_an_exception_if_Id_is_not_existed()
         {
@@ -68,7 +63,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.UseCases.Boards
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
 
         #endregion
 

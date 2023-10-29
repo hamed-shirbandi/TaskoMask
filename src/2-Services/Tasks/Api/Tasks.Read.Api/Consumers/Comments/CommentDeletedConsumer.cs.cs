@@ -12,12 +12,11 @@ namespace TaskoMask.Services.Tasks.Read.Api.Consumers.Comments
     {
         private readonly TaskReadDbContext _taskReadDbContext;
 
-
-        public CommentDeletedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext) : base(inMemoryBus)
+        public CommentDeletedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
+            : base(inMemoryBus)
         {
             _taskReadDbContext = taskReadDbContext;
         }
-
 
         public override async Task ConsumeMessage(ConsumeContext<CommentDeleted> context)
         {

@@ -8,19 +8,18 @@ using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
-    public static  class RazorPagesConfiguration
+    public static class RazorPagesConfiguration
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddRazorPagesPreConfigured(this IServiceCollection services, IConfiguration configuration)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
 
             services.AddRazorPages();
 
@@ -33,14 +32,13 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
             services.AddMetrics(configuration);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void UseRazorPagesPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
         {
-            if (app == null) throw new ArgumentNullException(nameof(app));
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
 
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
@@ -53,7 +51,5 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
 
             app.UseAuthorization();
         }
-
-
     }
 }

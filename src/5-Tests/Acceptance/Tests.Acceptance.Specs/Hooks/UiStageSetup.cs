@@ -12,11 +12,11 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
     {
         private readonly IObjectContainer _objectContainer;
         private BrowseWebPage browseWebPage;
+
         public UiStageSetup(IObjectContainer objectContainer)
         {
             _objectContainer = objectContainer;
         }
-
 
         /// <summary>
         /// This hook runs beafor each senario with UI-Level tag
@@ -38,9 +38,6 @@ namespace TaskoMask.Tests.Acceptance.Specs.Hooks
                 _objectContainer.RegisterInstanceAs(stage);
             }
         }
-
-
-
 
         /// <summary>
         /// This hook runs after each senario with UI-Level tag

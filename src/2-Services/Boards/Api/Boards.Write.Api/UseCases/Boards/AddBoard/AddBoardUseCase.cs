@@ -18,7 +18,6 @@ using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services;
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard
 {
     public class AddBoardUseCase : BaseCommandHandler, IRequestHandler<AddBoardRequest, CommandResult>
-
     {
         #region Fields
 
@@ -30,7 +29,13 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard
         #region Ctors
 
 
-        public AddBoardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus, IBoardValidatorService boardValidatorService) : base(messageBus, inMemoryBus)
+        public AddBoardUseCase(
+            IBoardAggregateRepository boardAggregateRepository,
+            IMessageBus messageBus,
+            IInMemoryBus inMemoryBus,
+            IBoardValidatorService boardValidatorService
+        )
+            : base(messageBus, inMemoryBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
             _boardValidatorService = boardValidatorService;
@@ -43,12 +48,11 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(AddBoardRequest request, CancellationToken cancellationToken)
         {
-
-            var board = Board.AddBoard(request.Name, request.Description,request.ProjectId, _boardValidatorService);
+            var board = Board.AddBoard(request.Name, request.Description, request.ProjectId, _boardValidatorService);
 
             await _boardAggregateRepository.AddAsync(board);
 
@@ -61,7 +65,6 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard
             return CommandResult.Create(ContractsMessages.Create_Success, board.Id);
         }
 
-
         #endregion
 
         #region Private Methods
@@ -70,11 +73,14 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard
         private BoardAdded MapToBoardAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var boardAddedDomainEvent = (BoardAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(BoardAddedEvent));
-            return new BoardAdded(boardAddedDomainEvent.Id, boardAddedDomainEvent.Name, boardAddedDomainEvent.Description, boardAddedDomainEvent.ProjectId);
+            return new BoardAdded(
+                boardAddedDomainEvent.Id,
+                boardAddedDomainEvent.Name,
+                boardAddedDomainEvent.Description,
+                boardAddedDomainEvent.ProjectId
+            );
         }
 
-
         #endregion
-
     }
 }

@@ -16,7 +16,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Consumers
     {
         private readonly IOwnerAggregateRepository _ownerAggregateRepository;
 
-        public FaultOwnerRegisteredConsumer(IInMemoryBus inMemoryBus, IOwnerAggregateRepository ownerAggregateRepository) : base(inMemoryBus)
+        public FaultOwnerRegisteredConsumer(IInMemoryBus inMemoryBus, IOwnerAggregateRepository ownerAggregateRepository)
+            : base(inMemoryBus)
         {
             _ownerAggregateRepository = ownerAggregateRepository;
         }

@@ -10,26 +10,18 @@ namespace TaskoMask.Clients.UserPanel.Helpers
         private Result<CommandResult> _result;
         private MessageType _messageType;
 
-
-        private CommandResultHandler()
-        {
-
-        }
-
-
+        private CommandResultHandler() { }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CommandResultHandler Init()
         {
             return new CommandResultHandler();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CommandResultHandler WithResult(Result<CommandResult> result)
         {
@@ -37,10 +29,8 @@ namespace TaskoMask.Clients.UserPanel.Helpers
             return this;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CommandResultHandler WithComponentMessageType(MessageType messageType)
         {
@@ -48,10 +38,8 @@ namespace TaskoMask.Clients.UserPanel.Helpers
             return this;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CommandResultHandler ShowToast(IToastService toastService)
         {
@@ -60,13 +48,10 @@ namespace TaskoMask.Clients.UserPanel.Helpers
             else
                 toastService.ShowError(_result.Errors.ParseToFragment(), _result.Message);
             return this;
-
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CommandResultHandler ShowErrorToast(IToastService toastService)
         {
@@ -75,10 +60,8 @@ namespace TaskoMask.Clients.UserPanel.Helpers
             return this;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CommandResultHandler PublishMessage(IComponentMessageService messageService)
         {
@@ -87,19 +70,14 @@ namespace TaskoMask.Clients.UserPanel.Helpers
             return this;
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CommandResultHandler CloseModal(BlazoredModalInstance modalInstance)
         {
             if (_result.IsSuccess)
                 modalInstance.CloseAsync();
             return this;
-
         }
-
     }
 }

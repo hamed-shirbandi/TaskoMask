@@ -7,7 +7,6 @@ using TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks;
 
 namespace TaskoMask.Tests.Acceptance.Core.Screenplay
 {
-
     /// <summary>
     /// Perform holds all Questions
     /// It is used just to bring out technical decisions from spec definitions
@@ -15,9 +14,8 @@ namespace TaskoMask.Tests.Acceptance.Core.Screenplay
     /// </summary>
     public static class DataFrom
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IQuestion<Result<OwnerBasicInfoDto>> LastOwner()
         {

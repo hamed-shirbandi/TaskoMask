@@ -3,10 +3,8 @@ using Xunit;
 
 namespace TaskoMask.Services.Owners.Read.Tests.Integration.Fixtures
 {
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [CollectionDefinition(nameof(OwnerCollectionFixture))]
     public class OwnerCollectionFixtureDefinition : ICollectionFixture<OwnerCollectionFixture>
@@ -16,28 +14,20 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.Fixtures
         // ICollectionFixture<> interfaces.
     }
 
-
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class OwnerCollectionFixture : TestsBaseFixture
     {
-
-        public OwnerCollectionFixture() : base(dbNameSuffix: nameof(OwnerCollectionFixture))
-        {
-        }
-
-
-
+        public OwnerCollectionFixture()
+            : base(dbNameSuffix: nameof(OwnerCollectionFixture)) { }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task SeedOwnerAsync(Owner owner)
         {
             await DbContext.Owners.InsertOneAsync(owner);
         }
-
     }
 }

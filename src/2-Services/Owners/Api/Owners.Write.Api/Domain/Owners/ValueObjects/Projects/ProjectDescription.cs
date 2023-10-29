@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Project
 
         public string Value { get; private set; }
 
-
         #endregion
 
         #region Ctors
@@ -38,10 +37,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Project
             return new ProjectDescription(value);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckPolicies()
         {
@@ -49,22 +46,19 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Project
                 return;
 
             if (Value.Length > DomainConstValues.Project_Description_Max_Length)
-                throw new DomainException(string.Format(ContractsMetadata.Max_Length_Error, nameof(ProjectDescription), DomainConstValues.Project_Description_Max_Length));
-
+                throw new DomainException(
+                    string.Format(ContractsMetadata.Max_Length_Error, nameof(ProjectDescription), DomainConstValues.Project_Description_Max_Length)
+                );
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }
 
-
         #endregion
-
     }
 }

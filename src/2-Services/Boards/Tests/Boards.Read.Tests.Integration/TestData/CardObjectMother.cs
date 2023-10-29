@@ -20,6 +20,5 @@ namespace TaskoMask.Services.Boards.Read.Tests.Integration.TestData
                 BoardName = TestDataGenerator.GetRandomName(10),
             };
         }
-
     }
 }

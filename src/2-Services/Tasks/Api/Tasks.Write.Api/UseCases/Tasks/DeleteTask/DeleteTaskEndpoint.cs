@@ -9,16 +9,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
 {
-
     [Authorize("user-write-access")]
     [Tags("Tasks")]
     public class DeleteTaskEndpoint : BaseApiController
     {
-        public DeleteTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public DeleteTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Delete an existing task
@@ -30,5 +26,4 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
             return await _inMemoryBus.SendCommand<DeleteTaskRequest>(new(id));
         }
     }
-
 }

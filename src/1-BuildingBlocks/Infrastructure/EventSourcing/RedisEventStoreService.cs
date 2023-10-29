@@ -8,9 +8,8 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class RedisEventStoreService : IEventStoreService
     {
@@ -37,7 +36,6 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
             _authenticatedUserService = authenticatedUserService;
         }
 
-
         #endregion
 
         #region Public Methods
@@ -45,34 +43,32 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public void Save<TDomainEvent>(TDomainEvent @event) where TDomainEvent : DomainEvent
+        public void Save<TDomainEvent>(TDomainEvent @event)
+            where TDomainEvent : DomainEvent
         {
             var storedEvent = GetEventDataToStore(@event);
             string jsonData = ConvertDataToJson(storedEvent);
             _redisDb.ListLeftPush(MakeKey(@event.EntityId, @event.EntityType), jsonData);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public async Task SaveAsync<TDomainEvent>(TDomainEvent @event) where TDomainEvent : DomainEvent
+        public async Task SaveAsync<TDomainEvent>(TDomainEvent @event)
+            where TDomainEvent : DomainEvent
         {
             var storedEvent = GetEventDataToStore(@event);
             string jsonData = ConvertDataToJson(storedEvent);
             await _redisDb.ListLeftPushAsync(MakeKey(@event.EntityId, @event.EntityType), jsonData);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public async Task<List<TStoredEvent>> GetListAsync<TStoredEvent>(string entityId, string entityType) where TStoredEvent : StoredEvent
+        public async Task<List<TStoredEvent>> GetListAsync<TStoredEvent>(string entityId, string entityType)
+            where TStoredEvent : StoredEvent
         {
             var data = new List<TStoredEvent>();
             var jsonList = await _redisDb.ListRangeAsync(MakeKey(entityId, entityType));
@@ -82,8 +78,6 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
             return data;
         }
 
-
-
         #endregion
 
         #region Private Methods
@@ -91,7 +85,7 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private string MakeKey(string entityId, string entityType)
         {
@@ -104,20 +98,16 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
             return entityId;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private string ConvertDataToJson(object eventData)
         {
             return JsonConvert.SerializeObject(eventData);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private ConfigurationOptions GetRedisConfigurationOptions()
         {
@@ -129,18 +119,22 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing
             };
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        private StoredEvent GetEventDataToStore<TDomainEvent>(TDomainEvent @event) where TDomainEvent : DomainEvent
+        private StoredEvent GetEventDataToStore<TDomainEvent>(TDomainEvent @event)
+            where TDomainEvent : DomainEvent
         {
             var userId = _authenticatedUserService.GetUserId();
-            return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.EventType, data: @event, userId: userId);
+            return new StoredEvent(
+                entityId: @event.EntityId,
+                entityType: @event.EntityType,
+                eventType: @event.EventType,
+                data: @event,
+                userId: userId
+            );
         }
 
         #endregion
-
     }
 }

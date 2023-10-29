@@ -14,15 +14,11 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
         /// </summary>
         public static IDictionary<string, Type> GetScreenplayTypes(this Assembly assembly)
         {
-            return assembly.GetExportedTypes()
-                .Where(t => t.IsTask() || t.IsQuestion())
-                .ToDictionary(t => t.BaseType.Name, t => t);
+            return assembly.GetExportedTypes().Where(t => t.IsTask() || t.IsQuestion()).ToDictionary(t => t.BaseType.Name, t => t);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static T GetInstanceOf<T>(this IDictionary<string, Type> types, object[] parameters)
         {
@@ -30,20 +26,16 @@ namespace TaskoMask.Tests.Acceptance.Core.Helpers
             return (T)Activator.CreateInstance(type, parameters);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static bool IsTask(this Type type)
         {
             return type.BaseType.GetInterfaces().Contains(typeof(ITask));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static bool IsQuestion(this Type type)
         {

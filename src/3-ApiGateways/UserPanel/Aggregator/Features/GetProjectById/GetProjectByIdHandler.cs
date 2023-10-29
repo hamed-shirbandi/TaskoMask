@@ -22,7 +22,12 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
 
         #region Ctors
 
-        public GetProjectByIdHandler(IMapper mapper, GetProjectByIdGrpcServiceClient getProjectByIdGrpcServiceClient, GetBoardsByProjectIdGrpcServiceClient getBoardsByProjectIdGrpcServiceClient) : base(mapper)
+        public GetProjectByIdHandler(
+            IMapper mapper,
+            GetProjectByIdGrpcServiceClient getProjectByIdGrpcServiceClient,
+            GetBoardsByProjectIdGrpcServiceClient getBoardsByProjectIdGrpcServiceClient
+        )
+            : base(mapper)
         {
             _getProjectByIdGrpcServiceClient = getProjectByIdGrpcServiceClient;
             _getBoardsByProjectIdGrpcServiceClient = getBoardsByProjectIdGrpcServiceClient;
@@ -35,19 +40,16 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<ProjectDetailsViewModel> Handle(GetProjectByIdRequest request, CancellationToken cancellationToken)
         {
-
             return new ProjectDetailsViewModel
             {
-                Project =await GetProjectAsync(request.Id, cancellationToken),
+                Project = await GetProjectAsync(request.Id, cancellationToken),
                 Boards = await GetBoardsAsync(request.Id, cancellationToken),
             };
-
         }
-
 
         #endregion
 
@@ -56,26 +58,29 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<GetProjectDto> GetProjectAsync(string projectId, CancellationToken cancellationToken)
         {
-            var projectGrpcResponse =await _getProjectByIdGrpcServiceClient.HandleAsync(new GetProjectByIdGrpcRequest { Id = projectId }, cancellationToken: cancellationToken);
+            var projectGrpcResponse = await _getProjectByIdGrpcServiceClient.HandleAsync(
+                new GetProjectByIdGrpcRequest { Id = projectId },
+                cancellationToken: cancellationToken
+            );
 
             return _mapper.Map<GetProjectDto>(projectGrpcResponse);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<IEnumerable<GetBoardDto>> GetBoardsAsync(string projectId, CancellationToken cancellationToken)
         {
             var boards = new List<GetBoardDto>();
 
-            var boardsGrpcCall = _getBoardsByProjectIdGrpcServiceClient.Handle(new GetBoardsByProjectIdGrpcRequest { ProjectId = projectId },cancellationToken: cancellationToken);
+            var boardsGrpcCall = _getBoardsByProjectIdGrpcServiceClient.Handle(
+                new GetBoardsByProjectIdGrpcRequest { ProjectId = projectId },
+                cancellationToken: cancellationToken
+            );
 
             await foreach (var response in boardsGrpcCall.ResponseStream.ReadAllAsync())
                 boards.Add(_mapper.Map<GetBoardDto>(response));
@@ -83,10 +88,6 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById
             return boards;
         }
 
-
-
-
         #endregion
-
     }
 }

@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Logout
     {
         private readonly IIdentityServerInteractionService _interactionService;
 
-
         public LoggedOut(IIdentityServerInteractionService interactionService)
         {
             _interactionService = interactionService;
@@ -24,7 +23,7 @@ namespace TaskoMask.Services.Identity.Api.Pages.Account.Logout
             var logout = await _interactionService.GetLogoutContextAsync(logoutId);
             var postLogoutRedirectUri = logout?.PostLogoutRedirectUri;
 
-            return Redirect(postLogoutRedirectUri??"/");
+            return Redirect(postLogoutRedirectUri ?? "/");
         }
     }
 }

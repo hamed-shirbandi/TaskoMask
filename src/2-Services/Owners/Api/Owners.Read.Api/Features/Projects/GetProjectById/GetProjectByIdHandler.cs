@@ -22,7 +22,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 
         #region Ctors
 
-        public GetProjectByIdHandler(OwnerReadDbContext ownerReadDbContext, IMapper mapper) : base(mapper)
+        public GetProjectByIdHandler(OwnerReadDbContext ownerReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
@@ -34,7 +35,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<GetProjectDto> Handle(GetProjectByIdRequest request, CancellationToken cancellationToken)
         {
@@ -45,8 +46,6 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 
             return _mapper.Map<GetProjectDto>(project);
         }
-
-
 
         #endregion
 

@@ -11,20 +11,12 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Base.TestData
         public string CardId { get; private set; }
         public string BoardId { get; private set; }
 
-
-
-        private TaskBuilder()
-        {
-        }
-
-
+        private TaskBuilder() { }
 
         public static TaskBuilder Init()
         {
             return new TaskBuilder();
         }
-
-
 
         public TaskBuilder WithValidatorService(ITaskValidatorService validatorService)
         {
@@ -32,15 +24,11 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Base.TestData
             return this;
         }
 
-
-
         public TaskBuilder WithTitle(string title)
         {
             Title = title;
             return this;
         }
-
-
 
         public TaskBuilder WithDescription(string description)
         {
@@ -48,15 +36,11 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Base.TestData
             return this;
         }
 
-
-
         public TaskBuilder WithCardId(string cardId)
         {
             CardId = cardId;
             return this;
         }
-
-
 
         public TaskBuilder WithBoardId(string boardId)
         {
@@ -64,15 +48,11 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Base.TestData
             return this;
         }
 
-
-
         public Task Build()
         {
-            var task = Task.AddTask(Title, Description, CardId, BoardId,ValidatorService);
+            var task = Task.AddTask(Title, Description, CardId, BoardId, ValidatorService);
             task.ClearDomainEvents();
             return task;
         }
-
-
     }
 }

@@ -8,9 +8,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
 {
     public static class GrpcExtensions
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void MapGrpcServices(this IEndpointRouteBuilder endpoints)
         {
@@ -18,7 +17,5 @@ namespace TaskoMask.Services.Owners.Read.Api.Configuration
             endpoints.MapGrpcService<GetProjectsByOrganizationIdGrpcEndpoint>();
             endpoints.MapGrpcService<GetProjectByIdGrpcEndpoint>();
         }
-
-
     }
 }

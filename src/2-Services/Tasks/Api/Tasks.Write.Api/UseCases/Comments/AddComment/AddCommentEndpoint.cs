@@ -10,15 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment
 {
-
     [Authorize("user-write-access")]
     [Tags("Comments")]
     public class AddCommentEndpoint : BaseApiController
     {
-        public AddCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
+        public AddCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Add new comment to task
@@ -30,5 +27,4 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment
             return await _inMemoryBus.SendCommand<AddCommentRequest>(new(input.TaskId, input.Content));
         }
     }
-
 }

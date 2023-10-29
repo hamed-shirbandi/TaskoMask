@@ -7,9 +7,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Domain
 {
     public class Task : BaseEntity
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id">Id Must sync with write side DB</param>
         public Task(string id)
@@ -19,7 +18,6 @@ namespace TaskoMask.Services.Tasks.Read.Api.Domain
 
             base.SetId(id);
         }
-
 
         public string Title { get; set; }
         public string Description { get; set; }

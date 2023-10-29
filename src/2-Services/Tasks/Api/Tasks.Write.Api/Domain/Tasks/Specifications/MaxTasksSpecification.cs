@@ -8,18 +8,18 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Specifications
     internal class MaxTasksSpecification : ISpecification<Task>
     {
         private readonly ITaskValidatorService _taskValidatorService;
+
         public MaxTasksSpecification(ITaskValidatorService taskValidatorService)
         {
             _taskValidatorService = taskValidatorService;
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSatisfiedBy(Task task)
         {
-            return _taskValidatorService.CanAddNewTaskToBoard(task.BoardId.Value,DomainConstValues.Board_Max_Task_Count);
+            return _taskValidatorService.CanAddNewTaskToBoard(task.BoardId.Value, DomainConstValues.Board_Max_Task_Count);
         }
     }
 }

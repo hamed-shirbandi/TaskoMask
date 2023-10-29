@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Tasks
     [Collection(nameof(TaskCollectionFixture))]
     public class AddTaskTests
     {
-
         #region Fields
 
         private readonly TaskCollectionFixture _fixture;
@@ -35,8 +34,18 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Tasks
         public async Task Task_is_added()
         {
             //Arrange
-            var request = new AddTaskRequest(title: "Test Title", description: "Test Description", cardId: ObjectId.GenerateNewId().ToString(), boardId: ObjectId.GenerateNewId().ToString());
-            var addTaskUseCase = new AddTaskUseCase(_fixture.TaskAggregateRepository, _fixture.MessageBus, _fixture.InMemoryBus,_fixture.TaskValidatorService);
+            var request = new AddTaskRequest(
+                title: "Test Title",
+                description: "Test Description",
+                cardId: ObjectId.GenerateNewId().ToString(),
+                boardId: ObjectId.GenerateNewId().ToString()
+            );
+            var addTaskUseCase = new AddTaskUseCase(
+                _fixture.TaskAggregateRepository,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus,
+                _fixture.TaskValidatorService
+            );
 
             //Act
             var result = await addTaskUseCase.Handle(request, CancellationToken.None);
@@ -44,9 +53,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Tasks
             //Assert
             result.EntityId.Should().NotBeNull();
             result.Message.Should().Be(ContractsMessages.Create_Success);
-
         }
-
 
         #endregion
     }

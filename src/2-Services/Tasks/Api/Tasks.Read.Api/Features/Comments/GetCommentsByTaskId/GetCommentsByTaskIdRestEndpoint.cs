@@ -11,16 +11,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentsByTaskId
 {
-
     [Authorize("user-read-access")]
     [Tags("Comments")]
     public class GetCommentsByTaskIdRestEndpoint : BaseApiController
     {
-        public GetCommentsByTaskIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetCommentsByTaskIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get comments for a task
@@ -32,5 +28,4 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentsByTaskI
             return await _inMemoryBus.SendQuery(new GetCommentsByTaskIdRequest(taskId));
         }
     }
-
 }

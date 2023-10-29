@@ -14,7 +14,6 @@ namespace TaskoMask.Services.Cards.Write.Tests.Unit.UseCases.Cards
 {
     public class AddCardTests : TestsBaseFixture
     {
-
         #region Fields
 
         private AddCardUseCase _addCardUseCase;
@@ -23,9 +22,7 @@ namespace TaskoMask.Services.Cards.Write.Tests.Unit.UseCases.Cards
 
         #region Ctor
 
-        public AddCardTests()
-        {
-        }
+        public AddCardTests() { }
 
         #endregion
 
@@ -56,8 +53,6 @@ namespace TaskoMask.Services.Cards.Write.Tests.Unit.UseCases.Cards
             await MessageBus.Received(1).Publish(Arg.Any<CardAdded>());
         }
 
-
-
         [Fact]
         public async Task Adding_a_card_will_throw_an_exception_if_board_Id_is_not_existed()
         {
@@ -72,9 +67,6 @@ namespace TaskoMask.Services.Cards.Write.Tests.Unit.UseCases.Cards
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
-
 
         #endregion
 

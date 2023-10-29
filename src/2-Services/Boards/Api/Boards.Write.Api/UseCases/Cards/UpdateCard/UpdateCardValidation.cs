@@ -2,10 +2,9 @@
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard
 {
-    public abstract class UpdateCardValidation<TRequest> : AbstractValidator<TRequest> where TRequest : UpdateCardRequest
+    public abstract class UpdateCardValidation<TRequest> : AbstractValidator<TRequest>
+        where TRequest : UpdateCardRequest
     {
-        public UpdateCardValidation()
-        {
-        }
+        public UpdateCardValidation() { }
     }
 }

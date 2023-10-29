@@ -10,9 +10,6 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
             Id = id;
         }
 
-
         public string Id { get; }
-
-
     }
 }

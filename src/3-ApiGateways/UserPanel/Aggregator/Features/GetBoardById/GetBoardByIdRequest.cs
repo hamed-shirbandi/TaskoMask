@@ -11,6 +11,5 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById
         }
 
         public string Id { get; }
-
     }
 }

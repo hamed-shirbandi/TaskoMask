@@ -29,8 +29,6 @@ namespace TaskoMask.BuildingBlocks.Domain.ValueObjects
             CreateYear = CreateDateTime.Year;
         }
 
-
-
         #endregion
 
         #region  Methods
@@ -45,20 +43,16 @@ namespace TaskoMask.BuildingBlocks.Domain.ValueObjects
             return new CreationTime(DateTime.Now);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreationTime UpdateModifiedDateTime()
         {
             return new CreationTime(DateTime.Now);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override IEnumerable<object> GetEqualityComponents()
         {
@@ -69,17 +63,10 @@ namespace TaskoMask.BuildingBlocks.Domain.ValueObjects
             yield return CreateYear;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        protected override void CheckPolicies()
-        {
-            
-        }
-
-
+        protected override void CheckPolicies() { }
 
         #endregion
     }

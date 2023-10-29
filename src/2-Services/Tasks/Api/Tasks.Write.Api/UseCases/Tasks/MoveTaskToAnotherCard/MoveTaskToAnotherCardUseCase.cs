@@ -18,7 +18,6 @@ using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCard
 {
     public class MoveTaskToAnotherCardUseCase : BaseCommandHandler, IRequestHandler<MoveTaskToAnotherCardRequest, CommandResult>
-
     {
         #region Fields
 
@@ -30,7 +29,13 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCar
         #region Ctors
 
 
-        public MoveTaskToAnotherCardUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus, ITaskValidatorService taskValidatorService) : base(messageBus, inMemoryBus)
+        public MoveTaskToAnotherCardUseCase(
+            ITaskAggregateRepository taskAggregateRepository,
+            IMessageBus messageBus,
+            IInMemoryBus inMemoryBus,
+            ITaskValidatorService taskValidatorService
+        )
+            : base(messageBus, inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
             _taskValidatorService = taskValidatorService;
@@ -43,7 +48,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCar
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(MoveTaskToAnotherCardRequest request, CancellationToken cancellationToken)
         {
@@ -76,10 +81,10 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCar
 
         private TaskMovedToAnotherCard MapToTaskMovedToAnotherCardIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
-            var taskMovedToAnotherCardEvent = (TaskMovedToAnotherCardEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(TaskMovedToAnotherCardEvent));
+            var taskMovedToAnotherCardEvent = (TaskMovedToAnotherCardEvent)
+                domainEvents.FirstOrDefault(e => e.EventType == nameof(TaskMovedToAnotherCardEvent));
             return new TaskMovedToAnotherCard(taskMovedToAnotherCardEvent.TaskId, taskMovedToAnotherCardEvent.CardId);
         }
-
 
         #endregion
     }

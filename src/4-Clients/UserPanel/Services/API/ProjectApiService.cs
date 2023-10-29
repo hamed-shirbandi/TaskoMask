@@ -15,9 +15,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
         #region Ctor
 
-        public ProjectApiService(IHttpClientService httpClientService) : base(httpClientService)
-        {
-        }
+        public ProjectApiService(IHttpClientService httpClientService)
+            : base(httpClientService) { }
 
         #endregion
 
@@ -25,7 +24,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<GetProjectDto>> GetAsync(string id)
         {
@@ -33,11 +32,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<GetProjectDto>(url);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<ProjectDetailsViewModel>> GetDetailsAsync(string id)
         {
@@ -45,10 +41,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<ProjectDetailsViewModel>(url);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<IEnumerable<SelectListItem>>> GetSelectListItemsAsync(string organizationId)
         {
@@ -61,10 +55,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return Result.Success(selectListItems);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> AddAsync(AddProjectDto input)
         {
@@ -72,10 +64,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateProjectDto input)
         {
@@ -83,10 +73,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
@@ -101,27 +89,19 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private IEnumerable<SelectListItem> MapToSelectListItem(IEnumerable<GetProjectDto> projects)
         {
             var items = new List<SelectListItem>();
             foreach (var item in projects)
             {
-                items.Add(new SelectListItem
-                {
-                    Text = item.Name,
-                    Value = item.Id
-                });
+                items.Add(new SelectListItem { Text = item.Name, Value = item.Id });
             }
 
             return items;
         }
 
-
-
-
         #endregion
-
     }
 }

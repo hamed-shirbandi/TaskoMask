@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 {
     public class UserLoginTests : TestsBaseFixture
     {
-
         #region Fields
 
         private UserLoginUseCase _userLoginUseCase;
@@ -21,9 +20,7 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
         #region Ctor
 
-        public UserLoginTests()
-        {
-        }
+        public UserLoginTests() { }
 
         #endregion
 
@@ -34,7 +31,8 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
         public async Task User_is_logged_in()
         {
             //Arrange
-            var userBuilder = UserBuilder.Init()
+            var userBuilder = UserBuilder
+                .Init()
                 .WithUserName("test@taskomask.ir")
                 .WithEmail("test@taskomask.ir")
                 .WithPassword("TestPass")
@@ -52,14 +50,14 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
             TestUserLogins.Should().HaveCount(1);
         }
 
-
         [Fact]
         public async Task User_is_not_logged_in_with_wrong_password()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.Invalid_Credentials;
 
-            var userBuilder = UserBuilder.Init()
+            var userBuilder = UserBuilder
+                .Init()
                 .WithUserName("test@taskomask.ir")
                 .WithEmail("test@taskomask.ir")
                 .WithPassword("TestPass")
@@ -76,14 +74,14 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
             await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
         [Fact]
         public async Task Deactive_user_is_not_logged_in()
         {
             //Arrange
             var expectedMessage = ApplicationMessages.Deactive_User_Can_Not_Login;
 
-            var userBuilder = UserBuilder.Init()
+            var userBuilder = UserBuilder
+                .Init()
                 .WithUserName("test@taskomask.ir")
                 .WithEmail("test@taskomask.ir")
                 .WithPassword("TestPass")
@@ -98,7 +96,6 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
 
             //Assert
             await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
-
         }
 
         #endregion
@@ -111,8 +108,5 @@ namespace TaskoMask.Services.Identity.Tests.Unit.UseCases
         }
 
         #endregion
-
-
-
     }
 }

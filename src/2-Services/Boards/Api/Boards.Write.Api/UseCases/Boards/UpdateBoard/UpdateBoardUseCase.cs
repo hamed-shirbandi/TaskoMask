@@ -18,7 +18,6 @@ using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services;
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.UpdateBoard
 {
     public class UpdateBoardUseCase : BaseCommandHandler, IRequestHandler<UpdateBoardRequest, CommandResult>
-
     {
         #region Fields
 
@@ -30,7 +29,13 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.UpdateBoard
         #region Ctors
 
 
-        public UpdateBoardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus, IBoardValidatorService boardValidatorService) : base(messageBus, inMemoryBus)
+        public UpdateBoardUseCase(
+            IBoardAggregateRepository boardAggregateRepository,
+            IMessageBus messageBus,
+            IInMemoryBus inMemoryBus,
+            IBoardValidatorService boardValidatorService
+        )
+            : base(messageBus, inMemoryBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
             _boardValidatorService = boardValidatorService;
@@ -43,7 +48,7 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.UpdateBoard
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(UpdateBoardRequest request, CancellationToken cancellationToken)
         {
@@ -76,7 +81,6 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.UpdateBoard
             var boardUpdatedDomainEvent = (BoardUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(BoardUpdatedEvent));
             return new BoardUpdated(boardUpdatedDomainEvent.Id, boardUpdatedDomainEvent.Name, boardUpdatedDomainEvent.Description);
         }
-
 
         #endregion
     }

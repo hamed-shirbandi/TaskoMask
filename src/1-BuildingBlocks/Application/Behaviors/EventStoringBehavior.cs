@@ -11,7 +11,6 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 
 namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {
-
     /// <summary>
     /// Each command must have at least one event to save its changes in event store
     /// So this notification handler act as a behavior and makes it easy to store events without repeating the creation of event handler
@@ -33,22 +32,18 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
             _eventStore = eventStore;
         }
 
-
         #endregion
 
         #region Public Methods
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task Handle(DomainEvent request, CancellationToken cancellationToken)
         {
             await _eventStore.SaveAsync(request);
         }
-
-
-
 
         #endregion
 

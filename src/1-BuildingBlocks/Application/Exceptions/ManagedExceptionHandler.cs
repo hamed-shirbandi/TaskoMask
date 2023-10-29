@@ -11,8 +11,8 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
     /// <summary>
     /// Handle all managed exceptions (DomainException,ApplicationException,ValidationException)
     /// </summary>
-    public class ManagedExceptionHandler<TRequest, TResponse, TException>
-        : IRequestExceptionHandler<TRequest, TResponse, TException> where TException : ManagedException
+    public class ManagedExceptionHandler<TRequest, TResponse, TException> : IRequestExceptionHandler<TRequest, TResponse, TException>
+        where TException : ManagedException
     {
         #region Fields
 
@@ -31,7 +31,6 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
             this._logger = logger;
         }
 
-
         #endregion
 
         #region Handler
@@ -39,7 +38,7 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
         {
@@ -55,7 +54,6 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
 
             return Task.CompletedTask;
         }
-
 
         #endregion
     }

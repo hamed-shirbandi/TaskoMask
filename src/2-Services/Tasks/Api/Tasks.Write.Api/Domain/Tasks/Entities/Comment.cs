@@ -39,18 +39,15 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Comment Create(string content)
         {
             return new Comment(content);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Update(string content)
         {
@@ -60,7 +57,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
             CheckPolicies();
         }
 
-
         #endregion
 
         #region Private Methods
@@ -68,14 +64,13 @@ namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void CheckPolicies()
         {
             if (Content == null)
                 throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Content)));
         }
-
 
         #endregion
     }

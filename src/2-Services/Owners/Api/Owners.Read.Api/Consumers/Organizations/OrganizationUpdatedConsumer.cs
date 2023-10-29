@@ -12,12 +12,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations
     {
         private readonly OwnerReadDbContext _ownerReadDbContext;
 
-
-        public OrganizationUpdatedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext) : base(inMemoryBus)
+        public OrganizationUpdatedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
+            : base(inMemoryBus)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
-
 
         public override async Task ConsumeMessage(ConsumeContext<OrganizationUpdated> context)
         {
@@ -27,7 +26,11 @@ namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations
             organization.Description = context.Message.Description;
             organization.SetAsUpdated();
 
-            await _ownerReadDbContext.Organizations.ReplaceOneAsync(p => p.Id == organization.Id, organization, new ReplaceOptions() { IsUpsert = false });
+            await _ownerReadDbContext.Organizations.ReplaceOneAsync(
+                p => p.Id == organization.Id,
+                organization,
+                new ReplaceOptions() { IsUpsert = false }
+            );
         }
     }
 }

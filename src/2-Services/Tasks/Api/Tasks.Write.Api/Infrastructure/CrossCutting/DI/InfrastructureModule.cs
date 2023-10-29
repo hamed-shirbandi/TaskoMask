@@ -12,20 +12,21 @@ using TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.Services;
 
 namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.CrossCutting.DI
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class InfrastructureModule
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration,Type consumerAssemblyMarkerType)
+        public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
         {
-            services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType, handlerAssemblyMarkerType: typeof(ApplicationMessages));
+            services.AddBuildingBlocksInfrastructure(
+                configuration,
+                consumerAssemblyMarkerType,
+                handlerAssemblyMarkerType: typeof(ApplicationMessages)
+            );
 
             services.AddMongoDbContext(configuration);
 
@@ -34,10 +35,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.CrossCutting.DI
             services.AddRepositories();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static void AddMongoDbContext(this IServiceCollection services, IConfiguration configuration)
         {
@@ -45,20 +44,16 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.CrossCutting.DI
             services.AddScoped<TaskWriteDbContext>().AddOptions<MongoDbOptions>().Bind(options);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static void AddDomainServices(this IServiceCollection services)
         {
             services.AddScoped<ITaskValidatorService, TaskValidatorService>();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private static void AddRepositories(this IServiceCollection services)
         {

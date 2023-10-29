@@ -13,11 +13,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
 {
     public static class GrpcExtensions
     {
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void AddGrpcClients(this IServiceCollection services, IConfiguration configuration)
         {
@@ -71,7 +68,5 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration
                 options.Address = new Uri(configuration["Url:Task-Read-Service"]);
             });
         }
-
-
     }
 }

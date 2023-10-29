@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Pages
 {
-    public class BasePageModel: PageModel
+    public class BasePageModel : PageModel
     {
         protected readonly IInMemoryBus _inMemoryBus;
 
@@ -11,6 +11,5 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Pages
         {
             _inMemoryBus = inMemoryBus;
         }
-
     }
 }

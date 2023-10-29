@@ -1,10 +1,8 @@
-﻿
-
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.BuildingBlocks.Web.Services.Http
 {
-    public  interface IHttpClientService
+    public interface IHttpClientService
     {
         Task<Result<TResult>> PostAsync<TResult>(string url, object input);
         Task<Result<TResult>> PutAsync<TResult>(string url, object input);

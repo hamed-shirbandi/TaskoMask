@@ -18,7 +18,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 {
     public class RegiserOwnerTests : TestsBaseFixture
     {
-
         #region Fields
 
         private RegiserOwnerUseCase _regiserOwnerUseCase;
@@ -27,9 +26,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 
         #region Ctor
 
-        public RegiserOwnerTests()
-        {
-        }
+        public RegiserOwnerTests() { }
 
         #endregion
 
@@ -52,8 +49,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
             await MessageBus.Received(1).Publish(Arg.Any<OwnerRegistered>());
         }
 
-
-
         [Fact]
         public async Task Owner_is_not_registered_if_email_is_not_unique()
         {
@@ -63,13 +58,11 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
             var regiserOwnerRequest = new RegiserOwnerRequest("Test_DisplayName", existedOwner.Email.Value, "Test_Password");
 
             //Act
-            System.Func<Task> act =async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
+            System.Func<Task> act = async () => await _regiserOwnerUseCase.Handle(regiserOwnerRequest, CancellationToken.None);
 
             //Assert
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [InlineData("H")]
         [InlineData("Ha")]
@@ -77,7 +70,12 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
         public async Task Owner_is_not_registered_if_displayName_lenght_is_less_than_min(string displayName)
         {
             //Arrange
-            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
+            var expectedMessage = string.Format(
+                ContractsMetadata.Length_Error,
+                nameof(OwnerDisplayName),
+                DomainConstValues.Owner_DisplayName_Min_Length,
+                DomainConstValues.Owner_DisplayName_Max_Length
+            );
             var regiserOwnerRequest = new RegiserOwnerRequest(displayName, "Test@email.com", "Test_Password");
 
             //Act
@@ -86,8 +84,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
             //Assert
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [InlineData("Hamed Shirbandi just came back from the street after looking for some freedom in Iran! #MahsaAmini")]
         [InlineData("Vihan Shirbandi was waiting to see his father ( I am his father :D )")]
@@ -95,7 +91,12 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
         public async Task Owner_is_not_registered_if_displayName_lenght_is_more_than_max(string displayName)
         {
             //Arrange
-            var expectedMessage = string.Format(ContractsMetadata.Length_Error, nameof(OwnerDisplayName), DomainConstValues.Owner_DisplayName_Min_Length, DomainConstValues.Owner_DisplayName_Max_Length);
+            var expectedMessage = string.Format(
+                ContractsMetadata.Length_Error,
+                nameof(OwnerDisplayName),
+                DomainConstValues.Owner_DisplayName_Min_Length,
+                DomainConstValues.Owner_DisplayName_Max_Length
+            );
             var regiserOwnerRequest = new RegiserOwnerRequest(displayName, "Test@email.com", "Test_Password");
 
             //Act
@@ -104,8 +105,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
             //Assert
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         [InlineData("Hamed@taskomask")]
         [InlineData("Ha.Taskomask.ir")]
@@ -123,8 +122,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
             //Assert
             await act.Should().ThrowAsync<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
 
         #endregion
 

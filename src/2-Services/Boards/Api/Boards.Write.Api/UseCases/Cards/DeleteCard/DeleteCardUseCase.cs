@@ -17,7 +17,6 @@ using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
 {
     public class DeleteCardUseCase : BaseCommandHandler, IRequestHandler<DeleteCardRequest, CommandResult>
-
     {
         #region Fields
 
@@ -28,7 +27,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
         #region Ctors
 
 
-        public DeleteCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public DeleteCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
         }
@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(DeleteCardRequest request, CancellationToken cancellationToken)
         {
@@ -74,8 +74,6 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
             return new CardDeleted(cardDeletedDomainEvent.Id);
         }
 
-
         #endregion
-
     }
 }

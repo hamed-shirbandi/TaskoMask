@@ -2,10 +2,7 @@
 {
     public class SelectListItem
     {
-        public SelectListItem()
-        {
-
-        }
+        public SelectListItem() { }
 
         public bool Selected { get; set; }
         public string Text { get; set; }

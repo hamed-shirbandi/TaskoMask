@@ -5,9 +5,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications
 {
     internal class OrganizationNameAndDescriptionCannotSameSpecification : ISpecification<Organization>
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSatisfiedBy(Organization organization)
         {

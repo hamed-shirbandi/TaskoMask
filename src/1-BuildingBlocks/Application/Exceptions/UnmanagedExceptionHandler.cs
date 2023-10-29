@@ -11,8 +11,8 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
     /// <summary>
     /// Handle all unmanaged exceptions
     /// </summary>
-    public class UnmanagedExceptionHandler<TRequest, TResponse, TException>
-        : IRequestExceptionHandler<TRequest, TResponse, TException> where TException : Exception
+    public class UnmanagedExceptionHandler<TRequest, TResponse, TException> : IRequestExceptionHandler<TRequest, TResponse, TException>
+        where TException : Exception
     {
         #region Fields
 
@@ -25,12 +25,14 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
         #region Ctors
 
 
-        public UnmanagedExceptionHandler(INotificationHandler notifications, ILogger<UnmanagedExceptionHandler<TRequest, TResponse, TException>> logger)
+        public UnmanagedExceptionHandler(
+            INotificationHandler notifications,
+            ILogger<UnmanagedExceptionHandler<TRequest, TResponse, TException>> logger
+        )
         {
             _notifications = notifications;
             this._logger = logger;
         }
-
 
         #endregion
 
@@ -39,7 +41,7 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
         {
@@ -51,7 +53,6 @@ namespace TaskoMask.BuildingBlocks.Application.Exceptions
 
             return Task.CompletedTask;
         }
-
 
         #endregion
     }

@@ -5,24 +5,19 @@ using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;
 
 namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class DbInitialization
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void InitialDatabasesAndSeedEssentialData(this IServiceProvider serviceProvider)
         {
             serviceProvider.SeedEssentialData();
             serviceProvider.CreateIndexes();
         }
-
-
 
         /// <summary>
         /// Drop database
@@ -36,8 +31,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext
             dbContext.DropDatabase();
         }
 
-
-
         /// <summary>
         /// Seed the necessary data that system needs
         /// </summary>
@@ -49,8 +42,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext
             // dbContext.Boards.InsertOneAsync(x)
         }
 
-
-
         /// <summary>
         /// Create index for collections
         /// </summary>
@@ -59,10 +50,18 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext
             using var serviceScope = serviceProvider.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetService<TaskWriteDbContext>();
 
-            dbContext.Tasks.Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.Id), new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }));
-            dbContext.Tasks.Indexes.CreateOneAsync(new CreateIndexModel<Task>(Builders<Task>.IndexKeys.Ascending(x => x.CardId.Value), new CreateIndexOptions() { Name = nameof(Task.CardId) }));
-
+            dbContext.Tasks.Indexes.CreateOneAsync(
+                new CreateIndexModel<Task>(
+                    Builders<Task>.IndexKeys.Ascending(x => x.Id),
+                    new CreateIndexOptions() { Name = nameof(Task.Id), Unique = true }
+                )
+            );
+            dbContext.Tasks.Indexes.CreateOneAsync(
+                new CreateIndexModel<Task>(
+                    Builders<Task>.IndexKeys.Ascending(x => x.CardId.Value),
+                    new CreateIndexOptions() { Name = nameof(Task.CardId) }
+                )
+            );
         }
-
     }
 }

@@ -1,12 +1,11 @@
 ﻿using OpenQA.Selenium;
 using Selenium.WebDriver.WaitExtensions;
 
-
 namespace TaskoMask.Tests.Acceptance.UI.Helpers
 {
     internal static class WebDriverExtensions
     {
-        public static bool WaitForElementToExist(this IWebDriver driver, By by, int millisecond=5000)
+        public static bool WaitForElementToExist(this IWebDriver driver, By by, int millisecond = 5000)
         {
             try
             {

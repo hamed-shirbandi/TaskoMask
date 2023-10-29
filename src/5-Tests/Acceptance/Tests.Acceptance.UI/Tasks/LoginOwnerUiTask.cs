@@ -11,11 +11,8 @@ namespace TaskoMask.Tests.Acceptance.UI.Tasks
     {
         private string loginUrl;
 
-        public LoginOwnerUiTask(OwnerLoginDto ownerLoginDto):base(ownerLoginDto)
-        {
-
-        }
-
+        public LoginOwnerUiTask(OwnerLoginDto ownerLoginDto)
+            : base(ownerLoginDto) { }
 
         protected override bool DoLogin<T>(T actor)
         {

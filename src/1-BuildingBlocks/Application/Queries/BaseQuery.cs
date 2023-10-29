@@ -2,7 +2,6 @@
 
 namespace TaskoMask.BuildingBlocks.Application.Queries
 {
-
     /// <summary>
     /// Mark BaseQuery with ICacheableQuery to enable catching for queries by CachingBehavior.
     /// </summary>
@@ -14,12 +13,11 @@ namespace TaskoMask.BuildingBlocks.Application.Queries
             EnableCache = false;
         }
 
-
         public bool EnableCache { get; private set; }
 
         public bool CachingIsEnabled()
         {
-           return EnableCache ;
+            return EnableCache;
         }
 
         public void EnableCaching()

@@ -14,7 +14,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Comments
     [Collection(nameof(CommentCollectionFixture))]
     public class UpdateCommentTests
     {
-
         #region Fields
 
         private readonly CommentCollectionFixture _fixture;
@@ -56,7 +55,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Integration.UseCases.Comments
 
             updatedComment.Content.Value.Should().Be(request.Content);
         }
-
 
         #endregion
     }

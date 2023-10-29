@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
 {
-    public class DeleteTaskRequest: BaseCommand
+    public class DeleteTaskRequest : BaseCommand
     {
         public DeleteTaskRequest(string id)
         {
@@ -14,6 +14,5 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask
 
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Id { get; }
-
     }
 }

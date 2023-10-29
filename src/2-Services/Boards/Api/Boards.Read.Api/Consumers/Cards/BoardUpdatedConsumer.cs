@@ -12,12 +12,11 @@ namespace TaskoMask.Services.Boards.Read.Api.Consumers.Cards
     {
         private readonly BoardReadDbContext _boardReadDbContext;
 
-
-        public BoardUpdatedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext) : base(inMemoryBus)
+        public BoardUpdatedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
+            : base(inMemoryBus)
         {
             _boardReadDbContext = boardReadDbContext;
         }
-
 
         public override async Task ConsumeMessage(ConsumeContext<BoardUpdated> context)
         {

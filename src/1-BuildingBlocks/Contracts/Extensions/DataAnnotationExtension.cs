@@ -4,16 +4,13 @@ using System.Linq;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Extensions
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class DataAnnotationExtension
     {
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool Validate<TObject>(this TObject obj, out ICollection<ValidationResult> results)
         {
@@ -21,6 +18,5 @@ namespace TaskoMask.BuildingBlocks.Contracts.Extensions
 
             return Validator.TryValidateObject(obj, new ValidationContext(obj), results, true);
         }
-
     }
 }

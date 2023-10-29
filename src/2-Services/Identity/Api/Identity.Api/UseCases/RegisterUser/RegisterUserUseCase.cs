@@ -21,21 +21,23 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
         private readonly UserManager<User> _userManager;
         private readonly INotificationHandler _notifications;
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public RegisterUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(messageBus,inMemoryBus)
+        public RegisterUserUseCase(
+            UserManager<User> userManager,
+            IMessageBus messageBus,
+            IInMemoryBus inMemoryBus,
+            INotificationHandler notifications
+        )
+            : base(messageBus, inMemoryBus)
         {
             _userManager = userManager;
             _notifications = notifications;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(RegisterUserRequest request, CancellationToken cancellationToken)
         {
@@ -47,7 +49,7 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
             {
                 Email = request.Email,
                 UserName = request.Email,
-                IsActive=true
+                IsActive = true
             };
 
             var result = await _userManager.CreateAsync(newUser, request.Password);
@@ -58,16 +60,14 @@ namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
             }
 
             await PublishDomainEventsAsync(new UserRegisteredEvent(newUser.Id, newUser.Email));
-           
+
             await PublishIntegrationEventAsync(new UserRegistered(newUser.Email));
-            
+
             return CommandResult.Create(ContractsMessages.Create_Success, newUser.Id);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void NotifyValidationErrors(IdentityResult identityResult)
         {

@@ -19,7 +19,6 @@ using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard
 {
     public class AddCardUseCase : BaseCommandHandler, IRequestHandler<AddCardRequest, CommandResult>
-
     {
         #region Fields
 
@@ -30,7 +29,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard
         #region Ctors
 
 
-        public AddCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public AddCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _boardAggregateRepository = boardAggregateRepository;
         }
@@ -42,7 +42,7 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(AddCardRequest request, CancellationToken cancellationToken)
         {
@@ -64,7 +64,6 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard
             return CommandResult.Create(ContractsMessages.Create_Success, card.Id);
         }
 
-
         #endregion
 
         #region Private Methods
@@ -73,12 +72,10 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard
         private CardAdded MapToCardAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
         {
             var cardAddedDomainEvent = (CardAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CardAddedEvent));
-           
+
             return new CardAdded(cardAddedDomainEvent.Id, cardAddedDomainEvent.Name, cardAddedDomainEvent.Type, cardAddedDomainEvent.BoardId);
         }
 
-
         #endregion
-
     }
 }

@@ -7,9 +7,8 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
 {
     public static class SwaggerConfiguration
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IServiceCollection AddSwaggerPreConfigured(this IServiceCollection services, Action<SwaggerOptions> setupAction)
         {
@@ -34,41 +33,45 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
                 c.SwaggerDoc(options.Value.Version, new OpenApiInfo { Title = options.Value.Title, Version = options.Value.Version });
                 //include xml comments from xml files referred in appsetting
                 foreach (var includeXmlComment in options.Value.IncludeXmlComments.Split(","))
-                    try { c.IncludeXmlComments(string.Format(@"{0}\{1}", AppDomain.CurrentDomain.BaseDirectory, includeXmlComment)); } catch { }
+                    try
+                    {
+                        c.IncludeXmlComments(string.Format(@"{0}\{1}", AppDomain.CurrentDomain.BaseDirectory, includeXmlComment));
+                    }
+                    catch { }
 
                 //define Bearer security
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-                {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
-                });
-                //add Bearer input to swagger ui to authorize by a jwt token that get from login api
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
+                c.AddSecurityDefinition(
+                    "Bearer",
+                    new OpenApiSecurityScheme()
                     {
-                          new OpenApiSecurityScheme
+                        Name = "Authorization",
+                        Type = SecuritySchemeType.ApiKey,
+                        Scheme = "Bearer",
+                        BearerFormat = "JWT",
+                        In = ParameterLocation.Header,
+                        Description =
+                            "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
+                    }
+                );
+                //add Bearer input to swagger ui to authorize by a jwt token that get from login api
+                c.AddSecurityRequirement(
+                    new OpenApiSecurityRequirement
+                    {
+                        {
+                            new OpenApiSecurityScheme
                             {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = "Bearer"
-                                }
+                                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
                             },
                             Array.Empty<string>()
+                        }
                     }
-                });
+                );
             });
             return services;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IApplicationBuilder UseSwaggerPreConfigured(this IApplicationBuilder app)
         {
@@ -82,7 +85,6 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
-
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
@@ -91,10 +93,7 @@ namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger
                 c.RoutePrefix = "";
             });
 
-
             return app;
         }
-
-
     }
 }

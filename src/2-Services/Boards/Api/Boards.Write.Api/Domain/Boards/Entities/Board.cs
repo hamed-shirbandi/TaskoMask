@@ -15,7 +15,7 @@ using TaskoMask.BuildingBlocks.Domain.Entities;
 
 namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 {
-    public class Board: AggregateRoot
+    public class Board : AggregateRoot
     {
         #region Fields
 
@@ -32,7 +32,7 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
             Description = BoardDescription.Create(description);
             ProjectId = BoardProjectId.Create(projectId);
             Cards = new HashSet<Card>();
-            
+
             CheckPolicies(boardValidatorService);
             AddDomainEvent(new BoardAddedEvent(Id, Name.Value, Description.Value, ProjectId.Value));
         }
@@ -46,7 +46,6 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
         public BoardProjectId ProjectId { get; private set; }
         public ICollection<Card> Cards { get; private set; }
 
-
         #endregion
 
         #region Board Behaviors
@@ -55,17 +54,15 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Board AddBoard(string name, string description, string projectId, IBoardValidatorService boardValidatorService)
         {
             return new Board(name, description, projectId, boardValidatorService);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void UpdateBoard(string name, string description, IBoardValidatorService boardValidatorService)
         {
@@ -76,17 +73,13 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
             AddDomainEvent(new BoardUpdatedEvent(Id, Name.Value, Description.Value));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void DeleteBoard()
         {
             AddDomainEvent(new BoardDeletedEvent(Id));
         }
-
-
 
         #endregion
 
@@ -95,18 +88,16 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void AddCard(Card card)
         {
             Cards.Add(card);
-            AddDomainEvent(new CardAddedEvent(card.Id, card.Name.Value,card.Type.Value, Id));
+            AddDomainEvent(new CardAddedEvent(card.Id, card.Name.Value, card.Type.Value, Id));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void UpdateCard(string id, string name, BoardCardType type)
         {
@@ -119,10 +110,8 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
             AddDomainEvent(new CardUpdatedEvent(card.Id, card.Name.Value, card.Type.Value));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void DeleteCard(string id)
         {
@@ -134,9 +123,8 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
             AddDomainEvent(new CardDeletedEvent(card.Id));
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Card GetCardById(string cardId)
         {
@@ -147,7 +135,6 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
             return card;
         }
 
-
         #endregion
 
         #region Methods
@@ -155,14 +142,13 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void CheckPolicies(IBoardValidatorService boardValidatorService)
         {
-           
             if (Name == null)
                 throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(Name)));
-           
+
             if (ProjectId == null)
                 throw new DomainException(string.Format(ContractsMessages.Null_Reference_Error, nameof(ProjectId)));
 
@@ -171,25 +157,19 @@ namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities
 
             if (!new BoardNameMustUniqueSpecification(boardValidatorService).IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Board));
-
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void CheckInvariants()
         {
             if (!new BoardMaxCardsSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Max_Card_Count_Limitiation, DomainConstValues.Board_Max_Card_Count));
-            
+
             if (!new CardNameMustUniqueSpecification().IsSatisfiedBy(this))
                 throw new DomainException(string.Format(DomainMessages.Name_Already_Exist, DomainMetadata.Card));
-
         }
-
-
 
         #endregion
     }

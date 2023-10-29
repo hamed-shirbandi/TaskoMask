@@ -17,7 +17,6 @@ using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Comments;
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment
 {
     public class DeleteCommentUseCase : BaseCommandHandler, IRequestHandler<DeleteCommentRequest, CommandResult>
-
     {
         #region Fields
 
@@ -28,7 +27,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment
         #region Ctors
 
 
-        public DeleteCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus) : base(messageBus, inMemoryBus)
+        public DeleteCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+            : base(messageBus, inMemoryBus)
         {
             _taskAggregateRepository = taskAggregateRepository;
         }
@@ -40,7 +40,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(DeleteCommentRequest request, CancellationToken cancellationToken)
         {
@@ -74,8 +74,6 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment
             return new CommentDeleted(commentDeletedDomainEvent.Id);
         }
 
-
         #endregion
-
     }
 }

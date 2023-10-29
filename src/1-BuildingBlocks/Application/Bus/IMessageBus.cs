@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 
-
 namespace TaskoMask.BuildingBlocks.Application.Bus
 {
     /// <summary>
@@ -9,6 +8,7 @@ namespace TaskoMask.BuildingBlocks.Application.Bus
     /// </summary>
     public interface IMessageBus
     {
-        Task Publish<TEvent>(TEvent @event) where TEvent: IntegrationEvent;
+        Task Publish<TEvent>(TEvent @event)
+            where TEvent : IntegrationEvent;
     }
 }

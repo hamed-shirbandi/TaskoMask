@@ -12,9 +12,8 @@ namespace TaskoMask.Services.Owners.Read.Tests.Integration.TestData
             {
                 Name = TestDataGenerator.GetRandomName(10),
                 Description = TestDataGenerator.GetRandomString(20),
-                OwnerId= ObjectId.GenerateNewId().ToString(),
+                OwnerId = ObjectId.GenerateNewId().ToString(),
             };
         }
-
     }
 }

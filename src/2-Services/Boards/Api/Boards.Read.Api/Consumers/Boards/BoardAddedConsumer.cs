@@ -18,29 +18,32 @@ namespace TaskoMask.Services.Boards.Read.Api.Consumers.Boards
         private readonly GetProjectByIdGrpcServiceClient _getProjectByIdGrpcServiceClient;
         protected readonly IMapper _mapper;
 
-
-        public BoardAddedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext, GetProjectByIdGrpcServiceClient getProjectByIdGrpcServiceClient, IMapper mapper) : base(inMemoryBus)
+        public BoardAddedConsumer(
+            IInMemoryBus inMemoryBus,
+            BoardReadDbContext boardReadDbContext,
+            GetProjectByIdGrpcServiceClient getProjectByIdGrpcServiceClient,
+            IMapper mapper
+        )
+            : base(inMemoryBus)
         {
             _boardReadDbContext = boardReadDbContext;
             _getProjectByIdGrpcServiceClient = getProjectByIdGrpcServiceClient;
             _mapper = mapper;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override async Task ConsumeMessage(ConsumeContext<BoardAdded> context)
         {
-            var project =await GetProjectFromRpcClientAsync(context.Message.ProjectId);
+            var project = await GetProjectFromRpcClientAsync(context.Message.ProjectId);
 
             var board = new Board(context.Message.Id)
             {
                 Name = context.Message.Name,
                 Description = context.Message.Description,
                 ProjectId = context.Message.ProjectId,
-                OrganizationId= project.OrganizationId,
+                OrganizationId = project.OrganizationId,
                 OrganizationName = project.OrganizationName,
                 ProjectName = project.Name,
                 OwnerId = project.OwnerId,
@@ -49,17 +52,14 @@ namespace TaskoMask.Services.Boards.Read.Api.Consumers.Boards
             await _boardReadDbContext.Boards.InsertOneAsync(board);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task<GetProjectDto> GetProjectFromRpcClientAsync(string projectId)
         {
             var projectGrpcResponse = await _getProjectByIdGrpcServiceClient.HandleAsync(new GetProjectByIdGrpcRequest { Id = projectId });
-            
+
             return _mapper.Map<GetProjectDto>(projectGrpcResponse);
         }
-
     }
 }

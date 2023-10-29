@@ -10,11 +10,11 @@ using TaskoMask.BuildingBlocks.Application.Queries;
 
 namespace TaskoMask.BuildingBlocks.Application.Behaviors
 {
-
     /// <summary>
     /// Caching response for queries that are mareked by ICacheableQuery
     /// </summary>
-    public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : BaseQuery<TResponse>
+    public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : BaseQuery<TResponse>
     {
         #region Fields
 
@@ -32,13 +32,12 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
             _configuration = configuration;
         }
 
-
         #endregion
 
         #region Public Methods
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
@@ -55,7 +54,6 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
             if (!cacheableQuery.CachingIsEnabled())
                 return await next();
 
-
             var cacheKey = GenerateKeyFromRequest(request);
             var cachedResponse = await _cachingProvider.GetAsync<TResponse>(cacheKey);
 
@@ -71,15 +69,13 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
             return response;
         }
 
-
-
         #endregion
 
         #region Private Methods
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private string GenerateKeyFromRequest(TRequest request)
         {
@@ -97,7 +93,6 @@ namespace TaskoMask.BuildingBlocks.Application.Behaviors
 
             return key;
         }
-
 
         #endregion
     }

@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
 {
-
     [Authorize("user-read-access")]
     [Tags("Boards")]
     public class GetBoardByIdRestEndpoint : BaseApiController
     {
-        public GetBoardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetBoardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get board info
@@ -31,5 +27,4 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById
             return await _inMemoryBus.SendQuery(new GetBoardByIdRequest(id));
         }
     }
-
 }

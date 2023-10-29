@@ -10,6 +10,5 @@ namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
         }
 
         public IEnumerable<OrganizationDetailsViewModel> OrganizationsDetailsList { get; set; }
-
     }
 }

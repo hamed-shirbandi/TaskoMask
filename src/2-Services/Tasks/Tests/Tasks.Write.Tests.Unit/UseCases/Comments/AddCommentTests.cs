@@ -13,7 +13,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
 {
     public class AddCommentTests : TestsBaseFixture
     {
-
         #region Fields
 
         private AddCommentUseCase _addCommentUseCase;
@@ -22,9 +21,7 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
 
         #region Ctor
 
-        public AddCommentTests()
-        {
-        }
+        public AddCommentTests() { }
 
         #endregion
 
@@ -54,8 +51,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
             await MessageBus.Received(1).Publish(Arg.Any<CommentAdded>());
         }
 
-
-
         [Fact]
         public async Task Adding_a_comment_will_throw_an_exception_if_task_Id_is_not_existed()
         {
@@ -70,9 +65,6 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Unit.UseCases.Comments
             //Assert
             await act.Should().ThrowAsync<BuildingBlocks.Application.Exceptions.ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
-
-
 
         #endregion
 

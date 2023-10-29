@@ -22,7 +22,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 
         #region Ctors
 
-        public GetOwnerByIdHandler(OwnerReadDbContext ownerReadDbContext, IMapper mapper) : base(mapper)
+        public GetOwnerByIdHandler(OwnerReadDbContext ownerReadDbContext, IMapper mapper)
+            : base(mapper)
         {
             _ownerReadDbContext = ownerReadDbContext;
         }
@@ -34,7 +35,7 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<GetOwnerDto> Handle(GetOwnerByIdRequest request, CancellationToken cancellationToken)
         {
@@ -45,8 +46,6 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 
             return _mapper.Map<GetOwnerDto>(owner);
         }
-
-
 
         #endregion
 

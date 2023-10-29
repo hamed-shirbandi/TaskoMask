@@ -9,7 +9,6 @@ namespace TaskoMask.Services.Boards.Read.Tests.Integration.Features.Card
     [Collection(nameof(CardCollectionFixture))]
     public class GetCardByIdTests
     {
-
         #region Fields
 
         private readonly CardCollectionFixture _fixture;
@@ -44,7 +43,6 @@ namespace TaskoMask.Services.Boards.Read.Tests.Integration.Features.Card
             result.Id.Should().Be(expectedCard.Id);
             result.Name.Should().Be(expectedCard.Name);
         }
-
 
         #endregion
     }

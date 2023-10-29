@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Cards
     [Collection(nameof(CardCollectionFixture))]
     public class DeleteCardTests
     {
-
         #region Fields
 
         private readonly CardCollectionFixture _fixture;
@@ -55,7 +54,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Cards
             Action act = () => updatedBoard.GetCardById(expectedCard.Id);
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
 
         #endregion
     }

@@ -7,11 +7,14 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MassTransit
 {
     public static class MassTransitExtensions
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static void AddMassTransitWithRabbitMqTransport(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
+        public static void AddMassTransitWithRabbitMqTransport(
+            this IServiceCollection services,
+            IConfiguration configuration,
+            Type consumerAssemblyMarkerType
+        )
         {
             var rabbitMqOptions = configuration.GetSection("RabbitMQ").Get<RabbitMqOptions>();
 
@@ -19,20 +22,27 @@ namespace TaskoMask.BuildingBlocks.Infrastructure.MassTransit
             {
                 x.AddConsumers(consumerAssemblyMarkerType.Assembly);
 
-                x.UsingRabbitMq((context, cfg) =>
-                {
-                    cfg.Host(rabbitMqOptions.Host, h =>
+                x.UsingRabbitMq(
+                    (context, cfg) =>
                     {
-                        h.Username(rabbitMqOptions.UserName);
-                        h.Password(rabbitMqOptions.Password);
-                    });
+                        cfg.Host(
+                            rabbitMqOptions.Host,
+                            h =>
+                            {
+                                h.Username(rabbitMqOptions.UserName);
+                                h.Password(rabbitMqOptions.Password);
+                            }
+                        );
 
-                    cfg.ReceiveEndpoint(rabbitMqOptions.ExchangeName, e =>
-                    {
-                        e.ConfigureConsumers(context);
-                    });
-                });
-
+                        cfg.ReceiveEndpoint(
+                            rabbitMqOptions.ExchangeName,
+                            e =>
+                            {
+                                e.ConfigureConsumers(context);
+                            }
+                        );
+                    }
+                );
             });
         }
     }

@@ -6,9 +6,6 @@ namespace TaskoMask.Services.Identity.Api.Pages
     [AllowAnonymous]
     public class Index : PageModel
     {
-
-        public void OnGet()
-        {
-        }
+        public void OnGet() { }
     }
 }

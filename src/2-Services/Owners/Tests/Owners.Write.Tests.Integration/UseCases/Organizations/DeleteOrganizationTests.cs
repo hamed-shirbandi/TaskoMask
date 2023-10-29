@@ -12,7 +12,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
     [Collection(nameof(OrganizationCollectionFixture))]
     public class DeleteOrganizationTests
     {
-
         #region Fields
 
         private readonly OrganizationCollectionFixture _fixture;
@@ -41,7 +40,11 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
             var expectedOrganization = expectedOwner.Organizations.FirstOrDefault();
 
             var request = new DeleteOrganizationRequest(expectedOrganization.Id);
-            var deleteOrganizationUseCase = new DeleteOrganizationUseCase(_fixture.OwnerAggregateRepository, _fixture.MessageBus, _fixture.InMemoryBus);
+            var deleteOrganizationUseCase = new DeleteOrganizationUseCase(
+                _fixture.OwnerAggregateRepository,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus
+            );
 
             //Act
             var result = await deleteOrganizationUseCase.Handle(request, CancellationToken.None);
@@ -54,7 +57,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
             Action act = () => updatedOwner.GetOrganizationById(expectedOrganization.Id);
             act.Should().Throw<DomainException>().Where(e => e.Message.Equals(expectedMessage));
         }
-
 
         #endregion
     }

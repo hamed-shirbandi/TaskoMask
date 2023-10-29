@@ -4,9 +4,6 @@ namespace TaskoMask.Services.Identity.Domain.Entities
 {
     public class UserToken : IdentityUserToken<string>
     {
-        public UserToken()
-        {
-            
-        }
+        public UserToken() { }
     }
 }

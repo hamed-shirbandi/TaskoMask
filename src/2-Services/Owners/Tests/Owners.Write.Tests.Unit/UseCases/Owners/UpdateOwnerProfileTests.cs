@@ -17,7 +17,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 {
     public class UpdateOwnerProfileTests : TestsBaseFixture
     {
-
         #region Fields
 
         private UpdateOwnerProfileUseCase _updateOwnerProfileUseCase;
@@ -26,9 +25,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
 
         #region Ctor
 
-        public UpdateOwnerProfileTests()
-        {
-        }
+        public UpdateOwnerProfileTests() { }
 
         #endregion
 
@@ -40,7 +37,7 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
         {
             //Arrange
             var expectedOwner = Owners.FirstOrDefault();
-            var updateOwnerProfileRequest = new UpdateOwnerProfileRequest(expectedOwner.Id,"Test_New_DisplayName", "Test_New@email.com");
+            var updateOwnerProfileRequest = new UpdateOwnerProfileRequest(expectedOwner.Id, "Test_New_DisplayName", "Test_New@email.com");
 
             //Act
             var result = await _updateOwnerProfileUseCase.Handle(updateOwnerProfileRequest, CancellationToken.None);
@@ -51,8 +48,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
             await InMemoryBus.Received(1).PublishEvent(Arg.Any<OwnerProfileUpdatedEvent>());
             await MessageBus.Received(1).Publish(Arg.Any<OwnerProfileUpdated>());
         }
-
-
 
         [Fact]
         public async Task Owner_profile_update_throw_exception_when_owner_id_is_not_existed()
@@ -69,15 +64,13 @@ namespace TaskoMask.Services.Owners.Write.Tests.Unit.UseCases.Owners
             await act.Should().ThrowAsync<ApplicationException>().Where(e => e.Message.Equals(expectedMessage));
         }
 
-
-
         #endregion
 
         #region Fixture
 
         protected override void TestClassFixtureSetup()
         {
-            _updateOwnerProfileUseCase = new UpdateOwnerProfileUseCase(OwnerAggregateRepository,OwnerValidatorService, MessageBus, InMemoryBus);
+            _updateOwnerProfileUseCase = new UpdateOwnerProfileUseCase(OwnerAggregateRepository, OwnerValidatorService, MessageBus, InMemoryBus);
         }
 
         #endregion

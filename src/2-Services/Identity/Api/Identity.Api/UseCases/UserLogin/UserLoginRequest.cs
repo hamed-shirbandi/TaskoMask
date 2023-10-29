@@ -14,7 +14,6 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
             RememberLogin = rememberLogin;
         }
 
-
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string UserName { get; }
 
@@ -22,6 +21,5 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
         public string Password { get; }
 
         public bool RememberLogin { get; }
-
     }
 }

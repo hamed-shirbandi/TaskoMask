@@ -10,7 +10,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
     [Collection(nameof(OrganizationCollectionFixture))]
     public class UpdateOrganizationTests
     {
-
         #region Fields
 
         private readonly OrganizationCollectionFixture _fixture;
@@ -38,7 +37,11 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
             await _fixture.SeedOwnerAsync(expectedOwner);
 
             var request = new UpdateOrganizationRequest(id: expectedOrganization.Id, name: "Test New Name", description: "Test New Description");
-            var updateOrganizationUseCase = new UpdateOrganizationUseCase(_fixture.OwnerAggregateRepository, _fixture.MessageBus, _fixture.InMemoryBus);
+            var updateOrganizationUseCase = new UpdateOrganizationUseCase(
+                _fixture.OwnerAggregateRepository,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus
+            );
 
             //Act
             var result = await updateOrganizationUseCase.Handle(request, CancellationToken.None);
@@ -51,7 +54,6 @@ namespace TaskoMask.Services.Owners.Write.Tests.Integration.UseCases.Organizatio
             var updatedOrganization = updatedOwner.GetOrganizationById(expectedOrganization.Id);
             updatedOrganization.Name.Value.Should().Be(request.Name);
         }
-
 
         #endregion
     }

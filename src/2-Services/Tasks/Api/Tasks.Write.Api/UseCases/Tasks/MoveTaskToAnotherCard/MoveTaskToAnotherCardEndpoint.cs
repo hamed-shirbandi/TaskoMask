@@ -9,26 +9,21 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCard
 {
-
     [Authorize("user-write-access")]
     [Tags("Tasks")]
     public class MoveTaskToAnotherCardEndpoint : BaseApiController
     {
-        public MoveTaskToAnotherCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public MoveTaskToAnotherCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Move a task to another card
         /// </summary>
         [HttpPut]
         [Route("tasks/{taskId}/moveto/{cardId}")]
-        public async Task<Result<CommandResult>> Put(string taskId,string cardId)
+        public async Task<Result<CommandResult>> Put(string taskId, string cardId)
         {
             return await _inMemoryBus.SendCommand<MoveTaskToAnotherCardRequest>(new(taskId, cardId));
         }
     }
-
 }

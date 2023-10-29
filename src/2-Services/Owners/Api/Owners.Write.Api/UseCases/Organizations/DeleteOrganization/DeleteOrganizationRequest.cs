@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrganization
 {
-    public class DeleteOrganizationRequest: BaseCommand
+    public class DeleteOrganizationRequest : BaseCommand
     {
         public DeleteOrganizationRequest(string id)
         {
@@ -14,6 +14,5 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrgan
 
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Id { get; }
-
     }
 }

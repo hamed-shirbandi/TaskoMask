@@ -9,11 +9,9 @@ namespace TaskoMask.Tests.Acceptance.UI.Tasks
     public class RegisterOwnerUiTask : RegisterOwnerTask
     {
         private string registerUrl;
-        public RegisterOwnerUiTask(OwnerRegisterDto ownerRegisterDto) : base(ownerRegisterDto)
-        {
 
-        }
-
+        public RegisterOwnerUiTask(OwnerRegisterDto ownerRegisterDto)
+            : base(ownerRegisterDto) { }
 
         protected override bool DoRegister<T>(T actor)
         {
@@ -31,6 +29,5 @@ namespace TaskoMask.Tests.Acceptance.UI.Tasks
 
             return ability.Driver.WaitForElementToExist(By.Id("dashboard_page"));
         }
-
     }
 }

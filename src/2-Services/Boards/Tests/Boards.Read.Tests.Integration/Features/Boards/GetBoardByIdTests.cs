@@ -9,7 +9,6 @@ namespace TaskoMask.Services.Boards.Read.Tests.Integration.Features.Boards
     [Collection(nameof(BoardCollectionFixture))]
     public class GetBoardByIdTests
     {
-
         #region Fields
 
         private readonly BoardCollectionFixture _fixture;
@@ -44,7 +43,6 @@ namespace TaskoMask.Services.Boards.Read.Tests.Integration.Features.Boards
             result.Id.Should().Be(expectedBoard.Id);
             result.Name.Should().Be(expectedBoard.Name);
         }
-
 
         #endregion
     }

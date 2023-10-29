@@ -11,16 +11,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTasksByCardId
 {
-
     [Authorize("user-read-access")]
     [Tags("Tasks")]
     public class GetTasksByCardIdRestEndpoint : BaseApiController
     {
-        public GetTasksByCardIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public GetTasksByCardIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get tasks for a card
@@ -32,5 +28,4 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTasksByCardId
             return await _inMemoryBus.SendQuery(new GetTasksByCardIdRequest(cardId));
         }
     }
-
 }

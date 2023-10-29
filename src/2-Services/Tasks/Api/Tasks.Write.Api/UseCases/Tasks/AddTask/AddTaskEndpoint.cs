@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
 {
-
     [Authorize("user-write-access")]
     [Tags("Tasks")]
     public class AddTaskEndpoint : BaseApiController
     {
-        public AddTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public AddTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Add new task to board
@@ -28,8 +24,9 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask
         [Route("tasks")]
         public async Task<Result<CommandResult>> Post([FromBody] AddTaskDto input)
         {
-            return await _inMemoryBus.SendCommand<AddTaskRequest>(new(cardId: input.CardId, boardId: input.BoardId, title: input.Title, description: input.Description));
+            return await _inMemoryBus.SendCommand<AddTaskRequest>(
+                new(cardId: input.CardId, boardId: input.BoardId, title: input.Title, description: input.Description)
+            );
         }
     }
-
 }

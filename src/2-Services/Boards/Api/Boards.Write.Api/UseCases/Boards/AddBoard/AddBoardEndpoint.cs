@@ -10,16 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard
 {
-
     [Authorize("user-write-access")]
     [Tags("Boards")]
     public class AddBoardEndpoint : BaseApiController
     {
-        public AddBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
-
+        public AddBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// Add new board
@@ -31,5 +27,4 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard
             return await _inMemoryBus.SendCommand<AddBoardRequest>(new(projectId: input.ProjectId, name: input.Name, description: input.Description));
         }
     }
-
 }

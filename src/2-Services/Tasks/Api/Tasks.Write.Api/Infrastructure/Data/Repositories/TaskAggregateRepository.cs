@@ -18,7 +18,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.Repositories
 
         #region Ctors
 
-        public TaskAggregateRepository(TaskWriteDbContext dbContext) : base(dbContext)
+        public TaskAggregateRepository(TaskWriteDbContext dbContext)
+            : base(dbContext)
         {
             _tasks = dbContext.GetCollection<Task>();
         }
@@ -31,7 +32,7 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.Repositories
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool ExistTask(string taskId, string boardId, string taskTitle)
         {
@@ -39,28 +40,21 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.Repositories
             return task != null && task.Id != taskId;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public long CountByBoardId(string boardId)
         {
-            return _tasks.CountDocuments(t=>t.BoardId.Value==boardId);
+            return _tasks.CountDocuments(t => t.BoardId.Value == boardId);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async System.Threading.Tasks.Task<Task> GetByCommentIdAsync(string commentId)
         {
             return await _tasks.Find(e => e.Comments.Any(c => c.Id == commentId)).FirstOrDefaultAsync();
         }
-
-
 
         #endregion
 
@@ -69,6 +63,5 @@ namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.Repositories
 
 
         #endregion
-
     }
 }

@@ -8,14 +8,14 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Base.TestData
 {
     public static class TaskObjectMother
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         public static Task CreateTask(ITaskValidatorService taskValidatorService)
         {
-            return TaskBuilder.Init()
+            return TaskBuilder
+                .Init()
                 .WithValidatorService(taskValidatorService)
                 .WithTitle(TestDataGenerator.GetRandomName(10))
                 .WithDescription(TestDataGenerator.GetRandomName(20))
@@ -24,20 +24,16 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Base.TestData
                 .Build();
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Comment CreateComment()
         {
             return Comment.Create(content: TestDataGenerator.GetRandomName(20));
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Task CreateTaskWithOneComment(ITaskValidatorService taskValidatorService)
         {
@@ -47,10 +43,8 @@ namespace TaskoMask.Services.Tasks.Write.Tests.Base.TestData
             return task;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static List<Task> GenerateTasksList(ITaskValidatorService taskValidatorService, int number = 3)
         {

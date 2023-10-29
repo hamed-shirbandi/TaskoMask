@@ -4,9 +4,8 @@ using System;
 
 namespace TaskoMask.BuildingBlocks.Domain.Events
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class DomainEvent : INotification
     {

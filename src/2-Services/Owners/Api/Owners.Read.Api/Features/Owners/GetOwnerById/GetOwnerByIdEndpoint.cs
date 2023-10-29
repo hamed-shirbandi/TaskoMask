@@ -10,15 +10,12 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
 {
-
     [Authorize("user-read-access")]
     [Tags("Owners")]
     public class GetOwnerByIdEndpoint : BaseApiController
     {
-        public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus) : base(authenticatedUserService, inMemoryBus)
-        {
-        }
-
+        public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+            : base(authenticatedUserService, inMemoryBus) { }
 
         /// <summary>
         /// get current owner basic information
@@ -30,5 +27,4 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
             return await _inMemoryBus.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
         }
     }
-
 }

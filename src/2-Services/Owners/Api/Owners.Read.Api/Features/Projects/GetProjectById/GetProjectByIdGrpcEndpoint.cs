@@ -6,11 +6,11 @@ using TaskoMask.BuildingBlocks.Contracts.Protos;
 
 namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
 {
-
     public class GetProjectByIdGrpcEndpoint : GetProjectByIdGrpcService.GetProjectByIdGrpcServiceBase
     {
         private readonly IInMemoryBus _inMemoryBus;
         private readonly IMapper _mapper;
+
         public GetProjectByIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
         {
             _inMemoryBus = inMemoryBus;
@@ -23,5 +23,4 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById
             return _mapper.Map<GetProjectGrpcResponse>(project.Value);
         }
     }
-
 }

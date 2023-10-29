@@ -14,9 +14,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
         #region Ctor
 
-        public BoardApiService(IHttpClientService httpClientService) : base(httpClientService)
-        {
-        }
+        public BoardApiService(IHttpClientService httpClientService)
+            : base(httpClientService) { }
 
         #endregion
 
@@ -26,7 +25,7 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<GetBoardDto>> GetAsync(string id)
         {
@@ -34,11 +33,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<GetBoardDto>(url);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<BoardDetailsViewModel>> GetDetailsAsync(string id)
         {
@@ -46,11 +42,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.GetAsync<BoardDetailsViewModel>(url);
         }
 
-
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> AddAsync(AddBoardDto input)
         {
@@ -58,10 +51,8 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PostAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> UpdateAsync(string id, UpdateBoardDto input)
         {
@@ -69,17 +60,14 @@ namespace TaskoMask.Clients.UserPanel.Services.API
             return await _httpClientService.PutAsync<CommandResult>(url, input);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<Result<CommandResult>> DeleteAsync(string id)
         {
             var url = $"/boards/{id}";
             return await _httpClientService.DeleteAsync<CommandResult>(url);
         }
-
 
         #endregion
 
@@ -88,6 +76,5 @@ namespace TaskoMask.Clients.UserPanel.Services.API
 
 
         #endregion
-
     }
 }

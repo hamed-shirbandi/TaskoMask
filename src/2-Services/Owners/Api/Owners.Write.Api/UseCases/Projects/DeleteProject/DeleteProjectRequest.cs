@@ -5,7 +5,7 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
 {
-    public class DeleteProjectRequest: BaseCommand
+    public class DeleteProjectRequest : BaseCommand
     {
         public DeleteProjectRequest(string id)
         {
@@ -14,6 +14,5 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
 
         [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
         public string Id { get; }
-
     }
 }

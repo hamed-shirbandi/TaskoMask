@@ -21,21 +21,18 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UpdateUser
         private readonly UserManager<User> _userManager;
         private readonly INotificationHandler _notifications;
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public UpdateUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications) : base(messageBus,inMemoryBus)
+        public UpdateUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications)
+            : base(messageBus, inMemoryBus)
         {
             _userManager = userManager;
             _notifications = notifications;
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public async Task<CommandResult> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
         {
@@ -52,18 +49,16 @@ namespace TaskoMask.Services.Identity.Application.UseCases.UpdateUser
                 NotifyValidationErrors(result);
                 throw new ApplicationException(ContractsMessages.Update_Failed);
             }
-          
+
             await PublishDomainEventsAsync(new UserUpdatedEvent(user.Id, user.Email));
-           
+
             await PublishIntegrationEventAsync(new UserUpdated(user.Email));
-            
+
             return CommandResult.Create(ContractsMessages.Update_Success, user.Id);
         }
 
-
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void NotifyValidationErrors(IdentityResult identityResult)
         {

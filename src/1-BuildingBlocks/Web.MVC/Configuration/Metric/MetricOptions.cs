@@ -25,7 +25,6 @@
         /// </summary>
         public bool HttpMetricsEnabled { get; set; }
 
-
         /// <summary>
         /// The library enables various default metrics and integrations by default.
         /// If these default metrics are not desirable, set SuppressDefaultMetrics to true.

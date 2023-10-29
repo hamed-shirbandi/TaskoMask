@@ -10,7 +10,6 @@ namespace TaskoMask.BuildingBlocks.Application.Services
 
         protected readonly IInMemoryBus _inMemoryBus;
 
-
         #endregion
 
         #region Ctors
@@ -21,8 +20,6 @@ namespace TaskoMask.BuildingBlocks.Application.Services
             _inMemoryBus = inMemoryBus;
         }
 
-
-
         #endregion
 
 
@@ -31,14 +28,12 @@ namespace TaskoMask.BuildingBlocks.Application.Services
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Dispose()
         {
             GC.SuppressFinalize(this);
         }
-
-
 
         #endregion
     }

@@ -13,12 +13,8 @@ namespace TaskoMask.Services.Identity.Api.Consumers
     /// </summary>
     public class OwnerProfileUpdatedConsumer : BaseConsumer<OwnerProfileUpdated>
     {
-
-
-        public OwnerProfileUpdatedConsumer(IInMemoryBus inMemoryBus) : base(inMemoryBus)
-        {
-        }
-
+        public OwnerProfileUpdatedConsumer(IInMemoryBus inMemoryBus)
+            : base(inMemoryBus) { }
 
         public override async Task ConsumeMessage(ConsumeContext<OwnerProfileUpdated> context)
         {

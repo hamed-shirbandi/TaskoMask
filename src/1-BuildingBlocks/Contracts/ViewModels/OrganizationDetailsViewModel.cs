@@ -7,13 +7,14 @@ using System.Collections.Generic;
 
 namespace TaskoMask.BuildingBlocks.Contracts.ViewModels
 {
-   public class OrganizationDetailsViewModel
+    public class OrganizationDetailsViewModel
     {
         public OrganizationDetailsViewModel()
         {
             Projects = new List<GetProjectDto>();
             Boards = new List<GetBoardDto>();
         }
+
         public GetOrganizationDto Organization { get; set; }
         public OrganizationReportDto Reports { get; set; }
         public IEnumerable<GetProjectDto> Projects { get; set; }

@@ -10,7 +10,6 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
     [Collection(nameof(BoardCollectionFixture))]
     public class AddBoardTests
     {
-
         #region Fields
 
         private readonly BoardCollectionFixture _fixture;
@@ -34,7 +33,12 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
         {
             //Arrange
             var request = new AddBoardRequest(name: "Test Name", description: "Test Description", projectId: ObjectId.GenerateNewId().ToString());
-            var addBoardUseCase = new AddBoardUseCase(_fixture.BoardAggregateRepository, _fixture.MessageBus, _fixture.InMemoryBus,_fixture.BoardValidatorService);
+            var addBoardUseCase = new AddBoardUseCase(
+                _fixture.BoardAggregateRepository,
+                _fixture.MessageBus,
+                _fixture.InMemoryBus,
+                _fixture.BoardValidatorService
+            );
 
             //Act
             var result = await addBoardUseCase.Handle(request, CancellationToken.None);
@@ -42,9 +46,7 @@ namespace TaskoMask.Services.Boards.Write.Tests.Integration.UseCases.Boards
             //Assert
             result.EntityId.Should().NotBeNull();
             result.Message.Should().Be(ContractsMessages.Create_Success);
-
         }
-
 
         #endregion
     }

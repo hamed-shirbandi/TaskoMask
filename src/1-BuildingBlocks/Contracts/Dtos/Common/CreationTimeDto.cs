@@ -6,7 +6,6 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Common
 {
     public class CreationTimeDto
     {
-
         [Display(Name = nameof(ContractsMetadata.CreateDateTime), ResourceType = typeof(ContractsMetadata))]
         public DateTime CreateDateTime { get; set; }
 
@@ -15,7 +14,6 @@ namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Common
 
         [Display(Name = nameof(ContractsMetadata.ModifiedDateTime), ResourceType = typeof(ContractsMetadata))]
         public DateTime ModifiedDateTime { get; set; }
-
 
         [Display(Name = nameof(ContractsMetadata.ModifiedDateTime), ResourceType = typeof(ContractsMetadata))]
         public string ModifiedDateTimeString { get; set; }

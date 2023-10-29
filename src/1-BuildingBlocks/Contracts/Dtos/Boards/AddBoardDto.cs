@@ -1,7 +1,4 @@
-﻿
-namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Boards
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Boards
 {
-    public class AddBoardDto : BoardBaseDto
-    {
-    }
+    public class AddBoardDto : BoardBaseDto { }
 }

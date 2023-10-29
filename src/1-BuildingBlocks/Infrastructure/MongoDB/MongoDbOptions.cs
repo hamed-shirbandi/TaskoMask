@@ -1,5 +1,4 @@
-﻿
-namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
+﻿namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
 {
     public class MongoDbOptions
     {

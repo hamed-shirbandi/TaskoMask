@@ -4,8 +4,5 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Boards
 {
-    public class BoardReportDto: TaskReportDto
-    {
-
-    }
+    public class BoardReportDto : TaskReportDto { }
 }

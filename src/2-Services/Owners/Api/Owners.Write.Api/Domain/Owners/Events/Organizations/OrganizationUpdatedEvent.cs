@@ -5,7 +5,8 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Organizations
 {
     public class OrganizationUpdatedEvent : DomainEvent
     {
-        public OrganizationUpdatedEvent(string id, string name, string description) : base(entityId: id, entityType: DomainMetadata.Organization)
+        public OrganizationUpdatedEvent(string id, string name, string description)
+            : base(entityId: id, entityType: DomainMetadata.Organization)
         {
             Id = id;
             Name = name;
@@ -13,7 +14,7 @@ namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Organizations
         }
 
         public string Id { get; }
-        public string Name { get;  }
+        public string Name { get; }
         public string Description { get; }
     }
 }

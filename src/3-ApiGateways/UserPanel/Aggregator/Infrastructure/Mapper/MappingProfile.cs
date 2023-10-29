@@ -6,23 +6,22 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 
-namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper
+namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper;
+
+public class MappingProfile : Profile
 {
-    public class MappingProfile : Profile
+    public MappingProfile()
     {
-        public MappingProfile()
-        {
-            CreateMap<CreationTimeGrpcResponse, CreationTimeDto>()
-                .ForMember(dest => dest.CreateDateTime, opt => opt.MapFrom(src => src.CreateDateTime.ToDateTime()))
-                .ForMember(dest => dest.ModifiedDateTime, opt => opt.MapFrom(src => src.ModifiedDateTime.ToDateTime()));
+        CreateMap<CreationTimeGrpcResponse, CreationTimeDto>()
+            .ForMember(dest => dest.CreateDateTime, opt => opt.MapFrom(src => src.CreateDateTime.ToDateTime()))
+            .ForMember(dest => dest.ModifiedDateTime, opt => opt.MapFrom(src => src.ModifiedDateTime.ToDateTime()));
 
-            CreateMap<GetOrganizationGrpcResponse, GetOrganizationDto>();
+        CreateMap<GetOrganizationGrpcResponse, GetOrganizationDto>();
 
-            CreateMap<GetProjectGrpcResponse, GetProjectDto>();
+        CreateMap<GetProjectGrpcResponse, GetProjectDto>();
 
-            CreateMap<GetBoardGrpcResponse, GetBoardDto>();
+        CreateMap<GetBoardGrpcResponse, GetBoardDto>();
 
-            CreateMap<GetCardGrpcResponse, GetCardDto>();
-        }
+        CreateMap<GetCardGrpcResponse, GetCardDto>();
     }
 }

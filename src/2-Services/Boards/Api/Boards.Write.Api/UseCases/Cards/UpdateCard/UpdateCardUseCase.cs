@@ -14,66 +14,65 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Data;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 
-namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard
+namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard;
+
+public class UpdateCardUseCase : BaseCommandHandler, IRequestHandler<UpdateCardRequest, CommandResult>
 {
-    public class UpdateCardUseCase : BaseCommandHandler, IRequestHandler<UpdateCardRequest, CommandResult>
+    #region Fields
+
+    private readonly IBoardAggregateRepository _boardAggregateRepository;
+
+    #endregion
+
+    #region Ctors
+
+
+    public UpdateCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+        : base(messageBus, inMemoryBus)
     {
-        #region Fields
-
-        private readonly IBoardAggregateRepository _boardAggregateRepository;
-
-        #endregion
-
-        #region Ctors
-
-
-        public UpdateCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-            : base(messageBus, inMemoryBus)
-        {
-            _boardAggregateRepository = boardAggregateRepository;
-        }
-
-        #endregion
-
-        #region Handlers
-
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<CommandResult> Handle(UpdateCardRequest request, CancellationToken cancellationToken)
-        {
-            var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
-            if (board == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
-
-            var loadedVersion = board.Version;
-
-            board.UpdateCard(request.Id, request.Name, request.Type);
-
-            await _boardAggregateRepository.ConcurrencySafeUpdate(board, loadedVersion);
-
-            await PublishDomainEventsAsync(board.DomainEvents);
-
-            var cardUpdated = MapToCardUpdatedIntegrationEvent(board.DomainEvents);
-
-            await PublishIntegrationEventAsync(cardUpdated);
-
-            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-
-        private CardUpdated MapToCardUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
-        {
-            var cardUpdatedDomainEvent = (CardUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CardUpdatedEvent));
-            return new CardUpdated(cardUpdatedDomainEvent.Id, cardUpdatedDomainEvent.Name, cardUpdatedDomainEvent.Type);
-        }
-
-        #endregion
+        _boardAggregateRepository = boardAggregateRepository;
     }
+
+    #endregion
+
+    #region Handlers
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<CommandResult> Handle(UpdateCardRequest request, CancellationToken cancellationToken)
+    {
+        var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
+        if (board == null)
+            throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
+
+        var loadedVersion = board.Version;
+
+        board.UpdateCard(request.Id, request.Name, request.Type);
+
+        await _boardAggregateRepository.ConcurrencySafeUpdate(board, loadedVersion);
+
+        await PublishDomainEventsAsync(board.DomainEvents);
+
+        var cardUpdated = MapToCardUpdatedIntegrationEvent(board.DomainEvents);
+
+        await PublishIntegrationEventAsync(cardUpdated);
+
+        return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
+    }
+
+    #endregion
+
+    #region Private Methods
+
+
+    private CardUpdated MapToCardUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+    {
+        var cardUpdatedDomainEvent = (CardUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CardUpdatedEvent));
+        return new CardUpdated(cardUpdatedDomainEvent.Id, cardUpdatedDomainEvent.Name, cardUpdatedDomainEvent.Type);
+    }
+
+    #endregion
 }

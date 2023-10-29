@@ -5,69 +5,68 @@ using System;
 using System.Threading.Tasks;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
+namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+
+/// <summary>
+///
+/// </summary>
+public static class DbInitialization
 {
     /// <summary>
     ///
     /// </summary>
-    public static class DbInitialization
+    public static void InitialDatabase(this IServiceProvider serviceProvider)
     {
-        /// <summary>
-        ///
-        /// </summary>
-        public static void InitialDatabase(this IServiceProvider serviceProvider)
+        using var serviceScope = serviceProvider.CreateScope();
+
+        var dbContext = serviceScope.ServiceProvider.GetService<IdentityDbContext>();
+
+        dbContext.Database.EnsureCreated();
+    }
+
+    /// <summary>
+    /// Seed the necessary data that system needs
+    /// </summary>
+    public static void SeedEssentialData(this IServiceProvider serviceProvider)
+    {
+        using var serviceScope = serviceProvider.CreateScope();
+        var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
+        var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
+
+        SeedSuperUser(userManager, configuration).Wait();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public static void DropDatabase(this IServiceProvider serviceProvider)
+    {
+        using var serviceScope = serviceProvider.CreateScope();
+
+        var dbContext = serviceScope.ServiceProvider.GetService<IdentityDbContext>();
+
+        dbContext.Database.EnsureDeleted();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    private static async Task SeedSuperUser(UserManager<User> userManager, IConfiguration configuration)
+    {
+        var superUserEmail = configuration["Identity:SuperUser:Email"];
+        var superUserName = configuration["Identity:SuperUser:UserName"];
+
+        if (await userManager.FindByEmailAsync(superUserEmail) == null)
         {
-            using var serviceScope = serviceProvider.CreateScope();
-
-            var dbContext = serviceScope.ServiceProvider.GetService<IdentityDbContext>();
-
-            dbContext.Database.EnsureCreated();
-        }
-
-        /// <summary>
-        /// Seed the necessary data that system needs
-        /// </summary>
-        public static void SeedEssentialData(this IServiceProvider serviceProvider)
-        {
-            using var serviceScope = serviceProvider.CreateScope();
-            var configuration = serviceScope.ServiceProvider.GetService<IConfiguration>();
-            var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
-
-            SeedSuperUser(userManager, configuration).Wait();
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static void DropDatabase(this IServiceProvider serviceProvider)
-        {
-            using var serviceScope = serviceProvider.CreateScope();
-
-            var dbContext = serviceScope.ServiceProvider.GetService<IdentityDbContext>();
-
-            dbContext.Database.EnsureDeleted();
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        private async static Task SeedSuperUser(UserManager<User> userManager, IConfiguration configuration)
-        {
-            var superUserEmail = configuration["Identity:SuperUser:Email"];
-            var superUserName = configuration["Identity:SuperUser:UserName"];
-
-            if (await userManager.FindByEmailAsync(superUserEmail) == null)
+            var superUser = new User(Guid.NewGuid().ToString())
             {
-                var superUser = new User(Guid.NewGuid().ToString())
-                {
-                    UserName = superUserName,
-                    Email = superUserEmail,
-                    IsActive = true,
-                };
+                UserName = superUserName,
+                Email = superUserEmail,
+                IsActive = true,
+            };
 
-                var password = configuration["Identity:SuperUser:Password"];
-                await userManager.CreateAsync(superUser, password);
-            }
+            var password = configuration["Identity:SuperUser:Password"];
+            await userManager.CreateAsync(superUser, password);
         }
     }
 }

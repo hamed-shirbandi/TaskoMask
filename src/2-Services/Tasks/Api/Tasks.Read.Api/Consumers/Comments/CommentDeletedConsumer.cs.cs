@@ -1,26 +1,25 @@
 ﻿using MassTransit;
-using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
-using TaskoMask.BuildingBlocks.Contracts.Events;
-using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext;
-using System.Threading.Tasks;
 using MongoDB.Driver;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
+using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Tasks.Read.Api.Consumers.Comments
+namespace TaskoMask.Services.Tasks.Read.Api.Consumers.Comments;
+
+public class CommentDeletedConsumer : BaseConsumer<CommentDeleted>
 {
-    public class CommentDeletedConsumer : BaseConsumer<CommentDeleted>
+    private readonly TaskReadDbContext _taskReadDbContext;
+
+    public CommentDeletedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
+        : base(inMemoryBus)
     {
-        private readonly TaskReadDbContext _taskReadDbContext;
+        _taskReadDbContext = taskReadDbContext;
+    }
 
-        public CommentDeletedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
-            : base(inMemoryBus)
-        {
-            _taskReadDbContext = taskReadDbContext;
-        }
-
-        public override async Task ConsumeMessage(ConsumeContext<CommentDeleted> context)
-        {
-            await _taskReadDbContext.Comments.DeleteOneAsync(p => p.Id == context.Message.Id);
-        }
+    public override async Task ConsumeMessage(ConsumeContext<CommentDeleted> context)
+    {
+        await _taskReadDbContext.Comments.DeleteOneAsync(p => p.Id == context.Message.Id);
     }
 }

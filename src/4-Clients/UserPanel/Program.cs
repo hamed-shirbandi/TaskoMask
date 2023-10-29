@@ -1,12 +1,18 @@
-using TaskoMask.Clients.UserPanel;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using TaskoMask.Clients.UserPanel;
 using TaskoMask.Clients.UserPanel.Configuration;
 
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
-builder.RootComponents.Add<App>("#app");
-builder.RootComponents.Add<HeadOutlet>("head::after");
+internal class Program
+{
+    private static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.RootComponents.Add<App>("#app");
+        builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.ConfigureServices(builder.Configuration);
+        builder.Services.ConfigureServices(builder.Configuration);
 
-await builder.Build().RunAsync();
+        await builder.Build().RunAsync();
+    }
+}

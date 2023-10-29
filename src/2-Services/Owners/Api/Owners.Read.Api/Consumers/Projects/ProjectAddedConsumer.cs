@@ -1,35 +1,34 @@
 ﻿using MassTransit;
-using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
-using TaskoMask.BuildingBlocks.Contracts.Events;
-using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.Services.Owners.Read.Api.Domain;
+using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Owners.Read.Api.Consumers.Projects
+namespace TaskoMask.Services.Owners.Read.Api.Consumers.Projects;
+
+public class ProjectAddedConsumer : BaseConsumer<ProjectAdded>
 {
-    public class ProjectAddedConsumer : BaseConsumer<ProjectAdded>
+    private readonly OwnerReadDbContext _ownerReadDbContext;
+
+    public ProjectAddedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
+        : base(inMemoryBus)
     {
-        private readonly OwnerReadDbContext _ownerReadDbContext;
+        _ownerReadDbContext = ownerReadDbContext;
+    }
 
-        public ProjectAddedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-            : base(inMemoryBus)
+    public override async Task ConsumeMessage(ConsumeContext<ProjectAdded> context)
+    {
+        var project = new Project(context.Message.Id)
         {
-            _ownerReadDbContext = ownerReadDbContext;
-        }
+            Name = context.Message.Name,
+            Description = context.Message.Description,
+            OrganizationId = context.Message.OrganizationId,
+            OrganizationName = context.Message.OrganizationName,
+            OwnerId = context.Message.OwnerId,
+        };
 
-        public override async Task ConsumeMessage(ConsumeContext<ProjectAdded> context)
-        {
-            var project = new Project(context.Message.Id)
-            {
-                Name = context.Message.Name,
-                Description = context.Message.Description,
-                OrganizationId = context.Message.OrganizationId,
-                OrganizationName = context.Message.OrganizationName,
-                OwnerId = context.Message.OwnerId,
-            };
-
-            await _ownerReadDbContext.Projects.InsertOneAsync(project);
-        }
+        await _ownerReadDbContext.Projects.InsertOneAsync(project);
     }
 }

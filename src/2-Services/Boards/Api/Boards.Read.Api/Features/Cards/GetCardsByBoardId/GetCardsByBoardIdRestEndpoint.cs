@@ -9,23 +9,22 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardsByBoardId
-{
-    [Authorize("user-read-access")]
-    [Tags("Cards")]
-    public class GetCardsByBoardIdRestEndpoint : BaseApiController
-    {
-        public GetCardsByBoardIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-            : base(authenticatedUserService, inMemoryBus) { }
+namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardsByBoardId;
 
-        /// <summary>
-        /// get card info
-        /// </summary>
-        [HttpGet]
-        [Route("boards/{boardId}/cards")]
-        public async Task<Result<IEnumerable<GetCardDto>>> Get(string boardId)
-        {
-            return await _inMemoryBus.SendQuery(new GetCardsByBoardIdRequest(boardId));
-        }
+[Authorize("user-read-access")]
+[Tags("Cards")]
+public class GetCardsByBoardIdRestEndpoint : BaseApiController
+{
+    public GetCardsByBoardIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+        : base(authenticatedUserService, inMemoryBus) { }
+
+    /// <summary>
+    /// get card info
+    /// </summary>
+    [HttpGet]
+    [Route("boards/{boardId}/cards")]
+    public async Task<Result<IEnumerable<GetCardDto>>> Get(string boardId)
+    {
+        return await _inMemoryBus.SendQuery(new GetCardsByBoardIdRequest(boardId));
     }
 }

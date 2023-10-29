@@ -19,7 +19,13 @@ dotnet_diagnostic.IDE0058.severity = silent # Expression value is never used
 dotnet_diagnostic.IDE0072.severity = silent # missing cases to "=>" switch expression
 dotnet_diagnostic.IDE0090.severity = silent # Use implicit new
 dotnet_diagnostic.IDE0270.severity = silent # Simplify null check
-dotnet_diagnostic.IDE0005.severity = silent # Remove unnecessary using directives (VS new update has a problem with IDE0005. We are using CS8019 instead)
+dotnet_diagnostic.IDE0005.severity = error # Remove unnecessary using directives (using CS8019 instead)
+
+
+dotnet_diagnostic.IDE0060.severity = silent # Remove unused parameter
+dotnet_diagnostic.IDE1006.severity = error # Naming rule violation
+dotnet_diagnostic.IDE0130.severity = silent # Namespace does not match folder structure (using dotnet_style_namespace_match_folder instead)
+
 
 # https://github.com/dotnet/aspnetcore/issues/47912
 dotnet_diagnostic.IDE0005.severity = none # bugfix

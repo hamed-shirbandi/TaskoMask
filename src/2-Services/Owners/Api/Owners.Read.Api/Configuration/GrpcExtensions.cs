@@ -4,18 +4,17 @@ using TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizations
 using TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById;
 using TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrganizationId;
 
-namespace TaskoMask.Services.Owners.Read.Api.Configuration
+namespace TaskoMask.Services.Owners.Read.Api.Configuration;
+
+public static class GrpcExtensions
 {
-    public static class GrpcExtensions
+    /// <summary>
+    ///
+    /// </summary>
+    public static void MapGrpcServices(this IEndpointRouteBuilder endpoints)
     {
-        /// <summary>
-        ///
-        /// </summary>
-        public static void MapGrpcServices(this IEndpointRouteBuilder endpoints)
-        {
-            endpoints.MapGrpcService<GetOrganizationsByOwnerIdGrpcEndpoint>();
-            endpoints.MapGrpcService<GetProjectsByOrganizationIdGrpcEndpoint>();
-            endpoints.MapGrpcService<GetProjectByIdGrpcEndpoint>();
-        }
+        endpoints.MapGrpcService<GetOrganizationsByOwnerIdGrpcEndpoint>();
+        endpoints.MapGrpcService<GetProjectsByOrganizationIdGrpcEndpoint>();
+        endpoints.MapGrpcService<GetProjectByIdGrpcEndpoint>();
     }
 }

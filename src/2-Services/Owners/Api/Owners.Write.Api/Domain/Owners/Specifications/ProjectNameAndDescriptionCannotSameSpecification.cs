@@ -1,16 +1,15 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Specifications;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 
-namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications
+namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications;
+
+internal class ProjectNameAndDescriptionCannotSameSpecification : ISpecification<Project>
 {
-    internal class ProjectNameAndDescriptionCannotSameSpecification : ISpecification<Project>
+    /// <summary>
+    ///
+    /// </summary>
+    public bool IsSatisfiedBy(Project project)
     {
-        /// <summary>
-        ///
-        /// </summary>
-        public bool IsSatisfiedBy(Project project)
-        {
-            return project.Name.Value.ToLower() != project.Description.Value?.ToLower();
-        }
+        return project.Name.Value.ToLower() != project.Description.Value?.ToLower();
     }
 }

@@ -13,69 +13,66 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Projects;
-using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
-using TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Owners;
 
-namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject
+namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject;
+
+public class UpdateProjectUseCase : BaseCommandHandler, IRequestHandler<UpdateProjectRequest, CommandResult>
 {
-    public class UpdateProjectUseCase : BaseCommandHandler, IRequestHandler<UpdateProjectRequest, CommandResult>
+    #region Fields
+
+    private readonly IOwnerAggregateRepository _ownerAggregateRepository;
+
+    #endregion
+
+    #region Ctors
+
+
+    public UpdateProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+        : base(messageBus, inMemoryBus)
     {
-        #region Fields
-
-        private readonly IOwnerAggregateRepository _ownerAggregateRepository;
-
-        #endregion
-
-        #region Ctors
-
-
-        public UpdateProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-            : base(messageBus, inMemoryBus)
-        {
-            _ownerAggregateRepository = ownerAggregateRepository;
-        }
-
-        #endregion
-
-        #region Handlers
-
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<CommandResult> Handle(UpdateProjectRequest request, CancellationToken cancellationToken)
-        {
-            var owner = await _ownerAggregateRepository.GetByProjectIdAsync(request.Id);
-            if (owner == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
-
-            var loadedVersion = owner.Version;
-
-            owner.UpdateProject(request.Id, request.Name, request.Description);
-
-            await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
-
-            await PublishDomainEventsAsync(owner.DomainEvents);
-
-            var projectUpdated = MapToProjectUpdatedIntegrationEvent(owner.DomainEvents);
-
-            await PublishIntegrationEventAsync(projectUpdated);
-
-            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-
-        private ProjectUpdated MapToProjectUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
-        {
-            var projectUpdatedDomainEvent = (ProjectUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectUpdatedEvent));
-            return new ProjectUpdated(projectUpdatedDomainEvent.Id, projectUpdatedDomainEvent.Name, projectUpdatedDomainEvent.Description);
-        }
-
-        #endregion
+        _ownerAggregateRepository = ownerAggregateRepository;
     }
+
+    #endregion
+
+    #region Handlers
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<CommandResult> Handle(UpdateProjectRequest request, CancellationToken cancellationToken)
+    {
+        var owner = await _ownerAggregateRepository.GetByProjectIdAsync(request.Id);
+        if (owner == null)
+            throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
+
+        var loadedVersion = owner.Version;
+
+        owner.UpdateProject(request.Id, request.Name, request.Description);
+
+        await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
+
+        await PublishDomainEventsAsync(owner.DomainEvents);
+
+        var projectUpdated = MapToProjectUpdatedIntegrationEvent(owner.DomainEvents);
+
+        await PublishIntegrationEventAsync(projectUpdated);
+
+        return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
+    }
+
+    #endregion
+
+    #region Private Methods
+
+
+    private ProjectUpdated MapToProjectUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+    {
+        var projectUpdatedDomainEvent = (ProjectUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectUpdatedEvent));
+        return new ProjectUpdated(projectUpdatedDomainEvent.Id, projectUpdatedDomainEvent.Name, projectUpdatedDomainEvent.Description);
+    }
+
+    #endregion
 }

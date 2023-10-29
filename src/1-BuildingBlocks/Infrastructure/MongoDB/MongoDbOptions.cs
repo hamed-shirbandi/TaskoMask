@@ -1,8 +1,7 @@
-﻿namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB
+﻿namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
+
+public class MongoDbOptions
 {
-    public class MongoDbOptions
-    {
-        public string Connection { get; set; }
-        public string DatabaseName { get; set; }
-    }
+    public string Connection { get; set; }
+    public string DatabaseName { get; set; }
 }

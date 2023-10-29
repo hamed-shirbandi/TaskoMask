@@ -10,38 +10,32 @@ using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Identity.Api.Resources;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin
+namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin;
+
+public class UserLoginUseCase : BaseQueryHandler, IRequestHandler<UserLoginRequest, Result>
 {
-    public class UserLoginUseCase : BaseQueryHandler, IRequestHandler<UserLoginRequest, Result>
+    private readonly UserManager<User> _userManager;
+    private readonly SignInManager<User> _signInManager;
+
+    public UserLoginUseCase(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper)
+        : base(mapper)
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+        _userManager = userManager;
+        _signInManager = signInManager;
+    }
 
-        public UserLoginUseCase(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper)
-            : base(mapper)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-        }
+    public async Task<Result> Handle(UserLoginRequest request, CancellationToken cancellationToken)
+    {
+        var signInAsync = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, request.RememberLogin, lockoutOnFailure: true);
+        if (!signInAsync.Succeeded)
+            throw new ApplicationException(ApplicationMessages.Invalid_Credentials);
 
-        public async Task<Result> Handle(UserLoginRequest request, CancellationToken cancellationToken)
-        {
-            var signInAsync = await _signInManager.PasswordSignInAsync(
-                request.UserName,
-                request.Password,
-                request.RememberLogin,
-                lockoutOnFailure: true
-            );
-            if (!signInAsync.Succeeded)
-                throw new ApplicationException(ApplicationMessages.Invalid_Credentials);
+        var user = await _userManager.FindByNameAsync(request.UserName);
+        if (!user.IsActive)
+            throw new ApplicationException(ApplicationMessages.Deactive_User_Can_Not_Login);
 
-            var user = await _userManager.FindByNameAsync(request.UserName);
-            if (!user.IsActive)
-                throw new ApplicationException(ApplicationMessages.Deactive_User_Can_Not_Login);
+        await _userManager.AddLoginAsync(user, new UserLoginInfo("local", "local", "local"));
 
-            await _userManager.AddLoginAsync(user, new UserLoginInfo("local", "local", "local"));
-
-            return Result.Success(ContractsMessages.Operation_Success);
-        }
+        return Result.Success(ContractsMessages.Operation_Success);
     }
 }

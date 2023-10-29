@@ -1,32 +1,30 @@
 ﻿using OpenQA.Selenium;
-using System;
 using TaskoMask.Tests.Acceptance.Core.Models;
 using TaskoMask.Tests.Acceptance.Core.Screenplay.Tasks;
 using TaskoMask.Tests.Acceptance.UI.Helpers;
 using TaskoMask.Tests.Acceptance.UI.Suzianna;
 
-namespace TaskoMask.Tests.Acceptance.UI.Tasks
+namespace TaskoMask.Tests.Acceptance.UI.Tasks;
+
+public class LoginOwnerUiTask : LoginOwnerTask
 {
-    public class LoginOwnerUiTask : LoginOwnerTask
+    private string loginUrl;
+
+    public LoginOwnerUiTask(OwnerLoginDto ownerLoginDto)
+        : base(ownerLoginDto) { }
+
+    protected override bool DoLogin<T>(T actor)
     {
-        private string loginUrl;
+        var ability = actor.FindAbility<BrowseWebPage>();
 
-        public LoginOwnerUiTask(OwnerLoginDto ownerLoginDto)
-            : base(ownerLoginDto) { }
+        loginUrl = $"{ability.BaseUrl}/login";
+        ability.Driver.Navigate().GoToUrl(loginUrl);
 
-        protected override bool DoLogin<T>(T actor)
-        {
-            var ability = actor.FindAbility<BrowseWebPage>();
+        ability.Driver.FindElement(By.Id("Input_UserName")).SendKeys(OwnerLoginDto.UserName);
+        ability.Driver.FindElement(By.Id("Input_Password")).SendKeys(OwnerLoginDto.Password);
 
-            loginUrl = $"{ability.BaseUrl}/login";
-            ability.Driver.Navigate().GoToUrl(loginUrl);
+        ability.Driver.FindElement(By.Id("loginBtn")).Click();
 
-            ability.Driver.FindElement(By.Id("Input_UserName")).SendKeys(OwnerLoginDto.UserName);
-            ability.Driver.FindElement(By.Id("Input_Password")).SendKeys(OwnerLoginDto.Password);
-
-            ability.Driver.FindElement(By.Id("loginBtn")).Click();
-
-            return ability.Driver.WaitForElementToExist(By.Id("dashboard_page"));
-        }
+        return ability.Driver.WaitForElementToExist(By.Id("dashboard_page"));
     }
 }

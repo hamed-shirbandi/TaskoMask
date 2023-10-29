@@ -8,23 +8,22 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationById
-{
-    [Authorize("user-read-access")]
-    [Tags("Organizations")]
-    public class GetOrganizationByIdEndpoint : BaseApiController
-    {
-        public GetOrganizationByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-            : base(authenticatedUserService, inMemoryBus) { }
+namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizationById;
 
-        /// <summary>
-        /// get organization basic info
-        /// </summary>
-        [HttpGet]
-        [Route("organizations/{id}")]
-        public async Task<Result<GetOrganizationDto>> Get(string id)
-        {
-            return await _inMemoryBus.SendQuery(new GetOrganizationByIdRequest(id));
-        }
+[Authorize("user-read-access")]
+[Tags("Organizations")]
+public class GetOrganizationByIdEndpoint : BaseApiController
+{
+    public GetOrganizationByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+        : base(authenticatedUserService, inMemoryBus) { }
+
+    /// <summary>
+    /// get organization basic info
+    /// </summary>
+    [HttpGet]
+    [Route("organizations/{id}")]
+    public async Task<Result<GetOrganizationDto>> Get(string id)
+    {
+        return await _inMemoryBus.SendQuery(new GetOrganizationByIdRequest(id));
     }
 }

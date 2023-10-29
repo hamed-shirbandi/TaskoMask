@@ -1,22 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
-namespace TaskoMask.BuildingBlocks.Contracts.Extensions
+namespace TaskoMask.BuildingBlocks.Contracts.Extensions;
+
+/// <summary>
+///
+/// </summary>
+public static class DataAnnotationExtension
 {
     /// <summary>
     ///
     /// </summary>
-    public static class DataAnnotationExtension
+    public static bool Validate<TObject>(this TObject obj, out ICollection<ValidationResult> results)
     {
-        /// <summary>
-        ///
-        /// </summary>
-        public static bool Validate<TObject>(this TObject obj, out ICollection<ValidationResult> results)
-        {
-            results = new List<ValidationResult>();
+        results = new List<ValidationResult>();
 
-            return Validator.TryValidateObject(obj, new ValidationContext(obj), results, true);
-        }
+        return Validator.TryValidateObject(obj, new ValidationContext(obj), results, true);
     }
 }

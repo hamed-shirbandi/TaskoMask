@@ -1,25 +1,24 @@
-﻿using TaskoMask.BuildingBlocks.Domain.Specifications;
-using TaskoMask.BuildingBlocks.Contracts.Helpers;
+﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Domain.Specifications;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 
-namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Specifications
+namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Specifications;
+
+internal class MaxTasksSpecification : ISpecification<Task>
 {
-    internal class MaxTasksSpecification : ISpecification<Task>
+    private readonly ITaskValidatorService _taskValidatorService;
+
+    public MaxTasksSpecification(ITaskValidatorService taskValidatorService)
     {
-        private readonly ITaskValidatorService _taskValidatorService;
+        _taskValidatorService = taskValidatorService;
+    }
 
-        public MaxTasksSpecification(ITaskValidatorService taskValidatorService)
-        {
-            _taskValidatorService = taskValidatorService;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool IsSatisfiedBy(Task task)
-        {
-            return _taskValidatorService.CanAddNewTaskToBoard(task.BoardId.Value, DomainConstValues.Board_Max_Task_Count);
-        }
+    /// <summary>
+    ///
+    /// </summary>
+    public bool IsSatisfiedBy(Task task)
+    {
+        return _taskValidatorService.CanAddNewTaskToBoard(task.BoardId.Value, DomainConstValues.BOARD_MAX_TASK_COUNT);
     }
 }

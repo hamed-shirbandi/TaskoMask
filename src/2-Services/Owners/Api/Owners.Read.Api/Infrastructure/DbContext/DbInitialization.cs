@@ -3,97 +3,93 @@ using MongoDB.Driver;
 using System;
 using TaskoMask.Services.Owners.Read.Api.Domain;
 
-namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext
+namespace TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
+
+/// <summary>
+///
+/// </summary>
+public static class DbInitialization
 {
     /// <summary>
     ///
     /// </summary>
-    public static class DbInitialization
+    public static void InitialDatabase(this IServiceProvider serviceProvider)
     {
-        /// <summary>
-        ///
-        /// </summary>
-        public static void InitialDatabase(this IServiceProvider serviceProvider)
-        {
-            serviceProvider.CreateIndexes();
-        }
+        serviceProvider.CreateIndexes();
+    }
 
-        /// <summary>
-        /// Drop database
-        /// </summary>
-        public static void DropDatabase(this IServiceProvider serviceProvider)
-        {
-            using var serviceScope = serviceProvider.CreateScope();
+    /// <summary>
+    /// Drop database
+    /// </summary>
+    public static void DropDatabase(this IServiceProvider serviceProvider)
+    {
+        using var serviceScope = serviceProvider.CreateScope();
 
-            var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
+        var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
 
-            dbContext.DropDatabase();
-        }
+        dbContext.DropDatabase();
+    }
 
-        /// <summary>
-        /// Create index for collections
-        /// </summary>
-        private static void CreateIndexes(this IServiceProvider serviceProvider)
-        {
-            using var serviceScope = serviceProvider.CreateScope();
-            var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
+    /// <summary>
+    /// Create index for collections
+    /// </summary>
+    private static void CreateIndexes(this IServiceProvider serviceProvider)
+    {
+        using var serviceScope = serviceProvider.CreateScope();
+        var dbContext = serviceScope.ServiceProvider.GetService<OwnerReadDbContext>();
 
-            #region Owner Indexs
+        #region Owner Indexs
 
-            dbContext.Owners.Indexes.CreateOneAsync(
-                new CreateIndexModel<Owner>(
-                    Builders<Owner>.IndexKeys.Ascending(x => x.Id),
-                    new CreateIndexOptions() { Name = nameof(Owner.Id), Unique = true }
-                )
-            );
-            dbContext.Owners.Indexes.CreateOneAsync(
-                new CreateIndexModel<Owner>(
-                    Builders<Owner>.IndexKeys.Ascending(x => x.Email),
-                    new CreateIndexOptions() { Name = nameof(Owner.Email) }
-                )
-            );
-            dbContext.Owners.Indexes.CreateOneAsync(
-                new CreateIndexModel<Owner>(
-                    Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName),
-                    new CreateIndexOptions() { Name = nameof(Owner.DisplayName) }
-                )
-            );
+        dbContext.Owners.Indexes.CreateOneAsync(
+            new CreateIndexModel<Owner>(
+                Builders<Owner>.IndexKeys.Ascending(x => x.Id),
+                new CreateIndexOptions() { Name = nameof(Owner.Id), Unique = true }
+            )
+        );
+        dbContext.Owners.Indexes.CreateOneAsync(
+            new CreateIndexModel<Owner>(Builders<Owner>.IndexKeys.Ascending(x => x.Email), new CreateIndexOptions() { Name = nameof(Owner.Email) })
+        );
+        dbContext.Owners.Indexes.CreateOneAsync(
+            new CreateIndexModel<Owner>(
+                Builders<Owner>.IndexKeys.Ascending(x => x.DisplayName),
+                new CreateIndexOptions() { Name = nameof(Owner.DisplayName) }
+            )
+        );
 
-            #endregion
+        #endregion
 
-            #region Organization Indexs
+        #region Organization Indexs
 
-            dbContext.Organizations.Indexes.CreateOneAsync(
-                new CreateIndexModel<Organization>(
-                    Builders<Organization>.IndexKeys.Ascending(x => x.Id),
-                    new CreateIndexOptions() { Name = nameof(Organization.Id), Unique = true }
-                )
-            );
-            dbContext.Organizations.Indexes.CreateOneAsync(
-                new CreateIndexModel<Organization>(
-                    Builders<Organization>.IndexKeys.Ascending(x => x.OwnerId),
-                    new CreateIndexOptions() { Name = nameof(Organization.OwnerId) }
-                )
-            );
+        dbContext.Organizations.Indexes.CreateOneAsync(
+            new CreateIndexModel<Organization>(
+                Builders<Organization>.IndexKeys.Ascending(x => x.Id),
+                new CreateIndexOptions() { Name = nameof(Organization.Id), Unique = true }
+            )
+        );
+        dbContext.Organizations.Indexes.CreateOneAsync(
+            new CreateIndexModel<Organization>(
+                Builders<Organization>.IndexKeys.Ascending(x => x.OwnerId),
+                new CreateIndexOptions() { Name = nameof(Organization.OwnerId) }
+            )
+        );
 
-            #endregion
+        #endregion
 
-            #region Project Indexs
+        #region Project Indexs
 
-            dbContext.Projects.Indexes.CreateOneAsync(
-                new CreateIndexModel<Project>(
-                    Builders<Project>.IndexKeys.Ascending(x => x.Id),
-                    new CreateIndexOptions() { Name = nameof(Project.Id), Unique = true }
-                )
-            );
-            dbContext.Projects.Indexes.CreateOneAsync(
-                new CreateIndexModel<Project>(
-                    Builders<Project>.IndexKeys.Ascending(x => x.OrganizationId),
-                    new CreateIndexOptions() { Name = nameof(Project.OrganizationId) }
-                )
-            );
+        dbContext.Projects.Indexes.CreateOneAsync(
+            new CreateIndexModel<Project>(
+                Builders<Project>.IndexKeys.Ascending(x => x.Id),
+                new CreateIndexOptions() { Name = nameof(Project.Id), Unique = true }
+            )
+        );
+        dbContext.Projects.Indexes.CreateOneAsync(
+            new CreateIndexModel<Project>(
+                Builders<Project>.IndexKeys.Ascending(x => x.OrganizationId),
+                new CreateIndexOptions() { Name = nameof(Project.OrganizationId) }
+            )
+        );
 
-            #endregion
-        }
+        #endregion
     }
 }

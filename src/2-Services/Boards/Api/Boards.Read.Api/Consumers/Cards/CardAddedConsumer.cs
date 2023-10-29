@@ -1,39 +1,38 @@
 ﻿using MassTransit;
-using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
-using TaskoMask.BuildingBlocks.Contracts.Events;
-using System.Threading.Tasks;
-using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
-using TaskoMask.Services.Boards.Read.Api.Domain;
 using MongoDB.Driver;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
+using TaskoMask.Services.Boards.Read.Api.Domain;
+using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Boards.Read.Api.Consumers.Cards
+namespace TaskoMask.Services.Boards.Read.Api.Consumers.Cards;
+
+public class CardAddedConsumer : BaseConsumer<CardAdded>
 {
-    public class CardAddedConsumer : BaseConsumer<CardAdded>
+    private readonly BoardReadDbContext _boardReadDbContext;
+
+    public CardAddedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
+        : base(inMemoryBus)
     {
-        private readonly BoardReadDbContext _boardReadDbContext;
+        _boardReadDbContext = boardReadDbContext;
+    }
 
-        public CardAddedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
-            : base(inMemoryBus)
+    public override async Task ConsumeMessage(ConsumeContext<CardAdded> context)
+    {
+        var board = await _boardReadDbContext.Boards.Find(b => b.Id == context.Message.BoardId).FirstOrDefaultAsync();
+
+        var card = new Card(context.Message.Id)
         {
-            _boardReadDbContext = boardReadDbContext;
-        }
+            Name = context.Message.Name,
+            Type = context.Message.Type,
+            BoardId = context.Message.BoardId,
+            ProjectId = board.ProjectId,
+            OrganizationId = board.OrganizationId,
+            OwnerId = board.OwnerId,
+        };
 
-        public override async Task ConsumeMessage(ConsumeContext<CardAdded> context)
-        {
-            var board = await _boardReadDbContext.Boards.Find(b => b.Id == context.Message.BoardId).FirstOrDefaultAsync();
-
-            var card = new Card(context.Message.Id)
-            {
-                Name = context.Message.Name,
-                Type = context.Message.Type,
-                BoardId = context.Message.BoardId,
-                ProjectId = board.ProjectId,
-                OrganizationId = board.OrganizationId,
-                OwnerId = board.OwnerId,
-            };
-
-            await _boardReadDbContext.Cards.InsertOneAsync(card);
-        }
+        await _boardReadDbContext.Cards.InsertOneAsync(card);
     }
 }

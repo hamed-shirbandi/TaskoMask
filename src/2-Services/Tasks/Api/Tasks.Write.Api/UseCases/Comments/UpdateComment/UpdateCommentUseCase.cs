@@ -14,66 +14,65 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Comments;
 
-namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment
+namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment;
+
+public class UpdateCommentUseCase : BaseCommandHandler, IRequestHandler<UpdateCommentRequest, CommandResult>
 {
-    public class UpdateCommentUseCase : BaseCommandHandler, IRequestHandler<UpdateCommentRequest, CommandResult>
+    #region Fields
+
+    private readonly ITaskAggregateRepository _taskAggregateRepository;
+
+    #endregion
+
+    #region Ctors
+
+
+    public UpdateCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+        : base(messageBus, inMemoryBus)
     {
-        #region Fields
-
-        private readonly ITaskAggregateRepository _taskAggregateRepository;
-
-        #endregion
-
-        #region Ctors
-
-
-        public UpdateCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-            : base(messageBus, inMemoryBus)
-        {
-            _taskAggregateRepository = taskAggregateRepository;
-        }
-
-        #endregion
-
-        #region Handlers
-
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<CommandResult> Handle(UpdateCommentRequest request, CancellationToken cancellationToken)
-        {
-            var task = await _taskAggregateRepository.GetByCommentIdAsync(request.Id);
-            if (task == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Comment);
-
-            var loadedVersion = task.Version;
-
-            task.UpdateComment(request.Id, request.Content);
-
-            await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
-
-            await PublishDomainEventsAsync(task.DomainEvents);
-
-            var commentUpdated = MapToCommentUpdatedIntegrationEvent(task.DomainEvents);
-
-            await PublishIntegrationEventAsync(commentUpdated);
-
-            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-
-        private CommentUpdated MapToCommentUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
-        {
-            var commentUpdatedDomainEvent = (CommentUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CommentUpdatedEvent));
-            return new CommentUpdated(commentUpdatedDomainEvent.Id, commentUpdatedDomainEvent.Content);
-        }
-
-        #endregion
+        _taskAggregateRepository = taskAggregateRepository;
     }
+
+    #endregion
+
+    #region Handlers
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<CommandResult> Handle(UpdateCommentRequest request, CancellationToken cancellationToken)
+    {
+        var task = await _taskAggregateRepository.GetByCommentIdAsync(request.Id);
+        if (task == null)
+            throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Comment);
+
+        var loadedVersion = task.Version;
+
+        task.UpdateComment(request.Id, request.Content);
+
+        await _taskAggregateRepository.ConcurrencySafeUpdate(task, loadedVersion);
+
+        await PublishDomainEventsAsync(task.DomainEvents);
+
+        var commentUpdated = MapToCommentUpdatedIntegrationEvent(task.DomainEvents);
+
+        await PublishIntegrationEventAsync(commentUpdated);
+
+        return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
+    }
+
+    #endregion
+
+    #region Private Methods
+
+
+    private CommentUpdated MapToCommentUpdatedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+    {
+        var commentUpdatedDomainEvent = (CommentUpdatedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CommentUpdatedEvent));
+        return new CommentUpdated(commentUpdatedDomainEvent.Id, commentUpdatedDomainEvent.Content);
+    }
+
+    #endregion
 }

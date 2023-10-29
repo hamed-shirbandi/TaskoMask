@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext
+namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+
+public class UserMapping
 {
-    public class UserMapping
+    public UserMapping(EntityTypeBuilder<User> builder)
     {
-        public UserMapping(EntityTypeBuilder<User> builder)
-        {
-            builder.Property(x => x.Id).ValueGeneratedNever();
-        }
+        builder.Property(x => x.Id).ValueGeneratedNever();
     }
 }

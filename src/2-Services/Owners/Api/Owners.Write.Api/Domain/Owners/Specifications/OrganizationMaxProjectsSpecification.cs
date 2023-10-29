@@ -1,22 +1,23 @@
 ﻿using System.Linq;
-using TaskoMask.BuildingBlocks.Domain.Specifications;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Domain.Specifications;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 
-namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications
-{
-    internal class OrganizationMaxProjectsSpecification : ISpecification<Owner>
-    {
-        /// <summary>
-        ///
-        /// </summary>
-        public bool IsSatisfiedBy(Owner owner)
-        {
-            foreach (var organization in owner.Organizations)
-                if (organization.Projects.Count() > DomainConstValues.Organization_Max_Projects_Count)
-                    return false;
+namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications;
 
-            return true;
+internal class OrganizationMaxProjectsSpecification : ISpecification<Owner>
+{
+    /// <summary>
+    ///
+    /// </summary>
+    public bool IsSatisfiedBy(Owner owner)
+    {
+        foreach (var organization in owner.Organizations)
+        {
+            if (organization.Projects.Count() > DomainConstValues.ORGANIZATION_MAX_PROJECTS_COUNT)
+                return false;
         }
+
+        return true;
     }
 }

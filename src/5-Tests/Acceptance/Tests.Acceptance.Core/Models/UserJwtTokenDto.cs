@@ -1,7 +1,6 @@
-﻿namespace TaskoMask.Tests.Acceptance.Core.Models
+﻿namespace TaskoMask.Tests.Acceptance.Core.Models;
+
+public class UserJwtTokenDto
 {
-    public class UserJwtTokenDto
-    {
-        public string JwtToken { get; set; }
-    }
+    public string JwtToken { get; set; }
 }

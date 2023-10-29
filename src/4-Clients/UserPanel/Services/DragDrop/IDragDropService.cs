@@ -1,8 +1,7 @@
-﻿namespace TaskoMask.Clients.UserPanel.Services.DragDrop
+﻿namespace TaskoMask.Clients.UserPanel.Services.DragDrop;
+
+public interface IDragDropService
 {
-    public interface IDragDropService
-    {
-        void SetDraggedData(string data);
-        string GetDraggedData();
-    }
+    void SetDraggedData(string data);
+    string GetDraggedData();
 }

@@ -1,21 +1,20 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
-using Microsoft.Extensions.Options;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;
 
-namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext
-{
-    /// <summary>
-    ///
-    /// </summary>
-    public class TaskWriteDbContext : MongoDbContext
-    {
-        public TaskWriteDbContext(IOptions<MongoDbOptions> mongoDbOptions)
-            : base(mongoDbOptions)
-        {
-            Tasks = GetCollection<Task>();
-        }
+namespace TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext;
 
-        public IMongoCollection<Task> Tasks { get; }
+/// <summary>
+///
+/// </summary>
+public class TaskWriteDbContext : MongoDbContext
+{
+    public TaskWriteDbContext(IOptions<MongoDbOptions> mongoDbOptions)
+        : base(mongoDbOptions)
+    {
+        Tasks = GetCollection<Task>();
     }
+
+    public IMongoCollection<Task> Tasks { get; }
 }

@@ -9,81 +9,80 @@ using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Services;
 using TaskoMask.Services.Boards.Write.Api.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Boards.Write.Api.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Boards.Write.Tests.Integration.Fixtures
+namespace TaskoMask.Services.Boards.Write.Tests.Integration.Fixtures;
+
+public abstract class TestsBaseFixture : IntegrationTestsBase
 {
-    public abstract class TestsBaseFixture : IntegrationTestsBase
+    public readonly IBoardAggregateRepository _boardAggregateRepository;
+    public readonly IBoardValidatorService _boardValidatorService;
+    public readonly IMessageBus _messageBus;
+    public readonly IInMemoryBus _inMemoryBus;
+
+    protected TestsBaseFixture(string dbNameSuffix)
+        : base(dbNameSuffix)
     {
-        public readonly IBoardAggregateRepository BoardAggregateRepository;
-        public readonly IBoardValidatorService BoardValidatorService;
-        public readonly IMessageBus MessageBus;
-        public readonly IInMemoryBus InMemoryBus;
+        _boardAggregateRepository = GetRequiredService<IBoardAggregateRepository>();
+        _boardValidatorService = GetRequiredService<IBoardValidatorService>();
+        _messageBus = Substitute.For<IMessageBus>();
+        _inMemoryBus = Substitute.For<IInMemoryBus>();
+    }
 
-        protected TestsBaseFixture(string dbNameSuffix)
-            : base(dbNameSuffix)
+    /// <summary>
+    ///
+    /// </summary>
+    public override void InitialDatabase()
+    {
+        _serviceProvider.InitialDatabasesAndSeedEssentialData();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public override void DropDatabase()
+    {
+        _serviceProvider.DropDatabase();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task SeedBoardAsync(Board board)
+    {
+        await _boardAggregateRepository.AddAsync(board);
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<Board> GetBoardAsync(string id)
+    {
+        return await _boardAggregateRepository.GetByIdAsync(id);
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public override IServiceProvider GetServiceProvider(string dbNameSuffix)
+    {
+        var services = new ServiceCollection();
+
+        var configuration = new ConfigurationBuilder()
+            //Copy from Boards.Write.Api card during the build event
+            .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
+            .AddJsonFile("appsettings.Staging.json", optional: true)
+            .AddJsonFile("appsettings.Development.json", optional: true)
+            .AddInMemoryCollection(new[] { new KeyValuePair<string, string>("MongoDB:DatabaseName", $"Boards_Write_DB_{dbNameSuffix}") })
+            .Build();
+
+        services.AddSingleton<IConfiguration>(provider =>
         {
-            BoardAggregateRepository = GetRequiredService<IBoardAggregateRepository>();
-            BoardValidatorService = GetRequiredService<IBoardValidatorService>();
-            MessageBus = Substitute.For<IMessageBus>();
-            InMemoryBus = Substitute.For<IInMemoryBus>();
-        }
+            return configuration;
+        });
 
-        /// <summary>
-        ///
-        /// </summary>
-        public override void InitialDatabase()
-        {
-            _serviceProvider.InitialDatabasesAndSeedEssentialData();
-        }
+        services.AddModules(configuration, typeof(TestsBaseFixture));
 
-        /// <summary>
-        ///
-        /// </summary>
-        public override void DropDatabase()
-        {
-            _serviceProvider.DropDatabase();
-        }
+        var serviceProvider = services.BuildServiceProvider();
 
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task SeedBoardAsync(Board board)
-        {
-            await BoardAggregateRepository.AddAsync(board);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<Board> GetBoardAsync(string id)
-        {
-            return await BoardAggregateRepository.GetByIdAsync(id);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public override IServiceProvider GetServiceProvider(string dbNameSuffix)
-        {
-            var services = new ServiceCollection();
-
-            var configuration = new ConfigurationBuilder()
-                //Copy from Boards.Write.Api card during the build event
-                .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
-                .AddJsonFile("appsettings.Staging.json", optional: true)
-                .AddJsonFile("appsettings.Development.json", optional: true)
-                .AddInMemoryCollection(new[] { new KeyValuePair<string, string>("MongoDB:DatabaseName", $"Boards_Write_DB_{dbNameSuffix}") })
-                .Build();
-
-            services.AddSingleton<IConfiguration>(provider =>
-            {
-                return configuration;
-            });
-
-            services.AddModules(configuration, typeof(TestsBaseFixture));
-
-            var serviceProvider = services.BuildServiceProvider();
-
-            return serviceProvider;
-        }
+        return serviceProvider;
     }
 }

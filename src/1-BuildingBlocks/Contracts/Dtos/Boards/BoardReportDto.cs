@@ -1,8 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
-using TaskoMask.BuildingBlocks.Contracts.Resources;
+﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
 
-namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Boards
-{
-    public class BoardReportDto : TaskReportDto { }
-}
+namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
+
+public class BoardReportDto : TaskReportDto { }

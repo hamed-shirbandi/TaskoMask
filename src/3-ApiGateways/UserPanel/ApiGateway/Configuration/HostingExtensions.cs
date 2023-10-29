@@ -1,4 +1,3 @@
-using Microsoft.IdentityModel.Tokens;
 using MMLib.SwaggerForOcelot.DependencyInjection;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -6,69 +5,68 @@ using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
-namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration
-{
-    internal static class HostingExtensions
-    {
-        /// <summary>
-        ///
-        /// </summary>
-        public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
-        {
-            builder.AddCustomSerilog();
+namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration;
 
-            builder.Configuration.AddOcelotWithSwaggerSupport(
-                (o) =>
+internal static class HostingExtensions
+{
+    /// <summary>
+    ///
+    /// </summary>
+    public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
+    {
+        builder.AddCustomSerilog();
+
+        builder.Configuration.AddOcelotWithSwaggerSupport(
+            (o) =>
+            {
+                o.Folder = "Configuration/Ocelot";
+            }
+        );
+
+        builder.Services.AddEndpointsApiExplorer();
+
+        builder.Services.AddOcelot();
+
+        builder.Services.AddSwaggerForOcelot(builder.Configuration);
+
+        builder.Services.AddCors();
+
+        builder.Services.AddMetrics(builder.Configuration);
+
+        builder.Services
+            .AddAuthentication()
+            .AddJwtBearer(
+                builder.Configuration["AuthenticationProviderKey"],
+                x =>
                 {
-                    o.Folder = "Configuration/Ocelot";
+                    x.Authority = builder.Configuration["Url:IdentityServer"];
+                    x.TokenValidationParameters.ValidateAudience = false;
                 }
             );
 
-            builder.Services.AddEndpointsApiExplorer();
+        return builder.Build();
+    }
 
-            builder.Services.AddOcelot();
+    /// <summary>
+    ///
+    /// </summary>
+    public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
+    {
+        app.UseSerilogRequestLogging();
 
-            builder.Services.AddSwaggerForOcelot(builder.Configuration);
+        app.UseStaticFiles();
 
-            builder.Services.AddCors();
-
-            builder.Services.AddMetrics(builder.Configuration);
-
-            builder.Services
-                .AddAuthentication()
-                .AddJwtBearer(
-                    builder.Configuration["AuthenticationProviderKey"],
-                    x =>
-                    {
-                        x.Authority = builder.Configuration["Url:IdentityServer"];
-                        x.TokenValidationParameters.ValidateAudience = false;
-                    }
-                );
-
-            return builder.Build();
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
+        app.UseSwaggerForOcelotUI(opt =>
         {
-            app.UseSerilogRequestLogging();
+            opt.PathToSwaggerGenerator = "/swagger/docs";
+        });
 
-            app.UseStaticFiles();
+        app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-            app.UseSwaggerForOcelotUI(opt =>
-            {
-                opt.PathToSwaggerGenerator = "/swagger/docs";
-            });
+        app.UseMetrics(configuration);
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+        app.UseOcelot().Wait();
 
-            app.UseMetrics(configuration);
-
-            app.UseOcelot().Wait();
-
-            return app;
-        }
+        return app;
     }
 }

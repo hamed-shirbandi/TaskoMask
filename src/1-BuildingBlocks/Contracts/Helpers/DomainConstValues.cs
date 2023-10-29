@@ -1,47 +1,46 @@
-﻿namespace TaskoMask.BuildingBlocks.Contracts.Helpers
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Helpers;
+
+public static class DomainConstValues
 {
-    public static class DomainConstValues
-    {
-        public const int Organization_Name_Min_Length = 3;
-        public const int Organization_Name_Max_Length = 50;
-        public const int Organization_Description_Min_Length = 3;
-        public const int Organization_Description_Max_Length = 100;
-        public const int Organization_Max_Projects_Count = 6;
+    public const int ORGANIZATION_NAME_MIN_LENGTH = 3;
+    public const int ORGANIZATION_NAME_MAX_LENGTH = 50;
+    public const int ORGANIZATION_DESCRIPTION_MIN_LENGTH = 3;
+    public const int ORGANIZATION_DESCRIPTION_MAX_LENGTH = 100;
+    public const int ORGANIZATION_MAX_PROJECTS_COUNT = 6;
 
-        public const int Project_Name_Min_Length = 3;
-        public const int Project_Name_Max_Length = 50;
-        public const int Project_Description_Min_Length = 3;
-        public const int Project_Description_Max_Length = 100;
-        public const int Project_Max_Board_Count = 6;
+    public const int PROJECT_NAME_MIN_LENGTH = 3;
+    public const int PROJECT_NAME_MAX_LENGTH = 50;
+    public const int PROJECT_DESCRIPTION_MIN_LENGTH = 3;
+    public const int PROJECT_DESCRIPTION_MAX_LENGTH = 100;
+    public const int PROJECT_MAX_BOARD_COUNT = 6;
 
-        public const int Board_Name_Min_Length = 3;
-        public const int Board_Name_Max_Length = 50;
-        public const int Board_Description_Min_Length = 3;
-        public const int Board_Description_Max_Length = 100;
-        public const int Board_Max_Card_Count = 10;
-        public const int Board_Max_Task_Count = 1000;
-        public const int Board_Max_Member_Count = 10;
+    public const int BOARD_NAME_MIN_LENGTH = 3;
+    public const int BOARD_NAME_MAX_LENGTH = 50;
+    public const int BOARD_DESCRIPTION_MIN_LENGTH = 3;
+    public const int BOARD_DESCRIPTION_MAX_LENGTH = 100;
+    public const int BOARD_MAX_CARD_COUNT = 10;
+    public const int BOARD_MAX_TASK_COUNT = 1000;
+    public const int BOARD_MAX_MEMBER_COUNT = 10;
 
-        public const int Card_Name_Min_Length = 3;
-        public const int Card_Name_Max_Length = 50;
-        public const int Card_Description_Min_Length = 3;
-        public const int Card_Description_Max_Length = 100;
+    public const int CARD_NAME_MIN_LENGTH = 3;
+    public const int CARD_NAME_MAX_LENGTH = 50;
+    public const int CARD_DESCRIPTION_MIN_LENGTH = 3;
+    public const int CARD_DESCRIPTION_MAX_LENGTH = 100;
 
-        public const int Task_Title_Min_Length = 3;
-        public const int Task_Title_Max_Length = 50;
-        public const int Task_Description_Min_Length = 3;
-        public const int Task_Description_Max_Length = 2048;
+    public const int TASK_TITLE_MIN_LENGTH = 3;
+    public const int TASK_TITLE_MAX_LENGTH = 50;
+    public const int TASK_DESCRIPTION_MIN_LENGTH = 3;
+    public const int TASK_DESCRIPTION_MAX_LENGTH = 2048;
 
-        public const int Owner_DisplayName_Min_Length = 3;
-        public const int Owner_DisplayName_Max_Length = 50;
-        public const int Owner_Max_Organizations_Count = 6;
+    public const int OWNER_DISPLAYNAME_MIN_LENGTH = 3;
+    public const int OWNER_DISPLAYNAME_MAX_LENGTH = 50;
+    public const int OWNER_MAX_ORGANIZATIONS_COUNT = 6;
 
-        public const int User_Password_Min_Length = 4;
-        public const int User_Password_Max_Length = 50;
+    public const int USER_PASSWORD_MIN_LENGTH = 4;
+    public const int USER_PASSWORD_MAX_LENGTH = 50;
 
-        public const int Owner_Email_Min_Length = 5;
-        public const int Owner_Email_Max_Length = 50;
+    public const int OWNER_EMAIL_MIN_LENGTH = 5;
+    public const int OWNER_EMAIL_MAX_LENGTH = 50;
 
-        public const int Comment_Content_Max_Length = 512;
-    }
+    public const int COMMENT_CONTENT_MAX_LENGTH = 512;
 }

@@ -1,16 +1,15 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Enums;
 
-namespace TaskoMask.BuildingBlocks.Contracts.Events
-{
-    public record BoardAdded(string Id, string Name, string Description, string ProjectId) : IntegrationEvent;
+namespace TaskoMask.BuildingBlocks.Contracts.Events;
 
-    public record BoardDeleted(string Id) : IntegrationEvent;
+public record BoardAdded(string Id, string Name, string Description, string ProjectId) : IIntegrationEvent;
 
-    public record BoardUpdated(string Id, string Name, string Description) : IntegrationEvent;
+public record BoardDeleted(string Id) : IIntegrationEvent;
 
-    public record CardAdded(string Id, string Name, BoardCardType Type, string BoardId) : IntegrationEvent;
+public record BoardUpdated(string Id, string Name, string Description) : IIntegrationEvent;
 
-    public record CardDeleted(string Id) : IntegrationEvent;
+public record CardAdded(string Id, string Name, BoardCardType Type, string BoardId) : IIntegrationEvent;
 
-    public record CardUpdated(string Id, string Name, BoardCardType Type) : IntegrationEvent;
-}
+public record CardDeleted(string Id) : IIntegrationEvent;
+
+public record CardUpdated(string Id, string Name, BoardCardType Type) : IIntegrationEvent;

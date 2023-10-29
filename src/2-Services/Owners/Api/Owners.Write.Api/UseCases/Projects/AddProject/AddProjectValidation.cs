@@ -1,19 +1,18 @@
 ﻿using FluentValidation;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject
-{
-    public abstract class AddProjectValidation<TRequest> : AbstractValidator<TRequest>
-        where TRequest : AddProjectRequest
-    {
-        public AddProjectValidation()
-        {
-            ValidateDescription();
-        }
+namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject;
 
-        private void ValidateDescription()
-        {
-            RuleFor(o => o.Description).NotEqual(o => o.Name).WithMessage(DomainMessages.Equal_Name_And_Description_Error);
-        }
+public abstract class AddProjectValidation<TRequest> : AbstractValidator<TRequest>
+    where TRequest : AddProjectRequest
+{
+    public AddProjectValidation()
+    {
+        ValidateDescription();
+    }
+
+    private void ValidateDescription()
+    {
+        RuleFor(o => o.Description).NotEqual(o => o.Name).WithMessage(DomainMessages.Equal_Name_And_Description_Error);
     }
 }

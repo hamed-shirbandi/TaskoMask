@@ -11,7 +11,7 @@ public class HttpGlobalExceptionHandler : IMiddleware
 
     public HttpGlobalExceptionHandler(ILogger<HttpGlobalExceptionHandler> logger)
     {
-        this._logger = logger;
+        _logger = logger;
     }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)

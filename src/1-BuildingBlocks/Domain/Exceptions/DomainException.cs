@@ -1,13 +1,12 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Exceptions;
 
-namespace TaskoMask.BuildingBlocks.Domain.Exceptions
+namespace TaskoMask.BuildingBlocks.Domain.Exceptions;
+
+/// <summary>
+///
+/// </summary>
+public class DomainException : ManagedException
 {
-    /// <summary>
-    ///
-    /// </summary>
-    public class DomainException : ManagedException
-    {
-        public DomainException(string message)
-            : base(message) { }
-    }
+    public DomainException(string message)
+        : base(message) { }
 }

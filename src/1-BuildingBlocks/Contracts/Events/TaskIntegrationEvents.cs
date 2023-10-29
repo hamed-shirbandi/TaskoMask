@@ -1,16 +1,15 @@
-﻿namespace TaskoMask.BuildingBlocks.Contracts.Events
-{
-    public record TaskAdded(string Id, string Title, string Description, string CardId, string BoardId) : IntegrationEvent;
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Events;
 
-    public record TaskDeleted(string Id) : IntegrationEvent;
+public record TaskAdded(string Id, string Title, string Description, string CardId, string BoardId) : IIntegrationEvent;
 
-    public record TaskUpdated(string Id, string Title, string Description) : IntegrationEvent;
+public record TaskDeleted(string Id) : IIntegrationEvent;
 
-    public record TaskMovedToAnotherCard(string TaskId, string CardId) : IntegrationEvent;
+public record TaskUpdated(string Id, string Title, string Description) : IIntegrationEvent;
 
-    public record CommentAdded(string Id, string Content, string TaskId) : IntegrationEvent;
+public record TaskMovedToAnotherCard(string TaskId, string CardId) : IIntegrationEvent;
 
-    public record CommentDeleted(string Id) : IntegrationEvent;
+public record CommentAdded(string Id, string Content, string TaskId) : IIntegrationEvent;
 
-    public record CommentUpdated(string Id, string Content) : IntegrationEvent;
-}
+public record CommentDeleted(string Id) : IIntegrationEvent;
+
+public record CommentUpdated(string Id, string Content) : IIntegrationEvent;

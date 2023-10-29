@@ -8,23 +8,22 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById
-{
-    [Authorize("user-read-access")]
-    [Tags("Owners")]
-    public class GetOwnerByIdEndpoint : BaseApiController
-    {
-        public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-            : base(authenticatedUserService, inMemoryBus) { }
+namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById;
 
-        /// <summary>
-        /// get current owner basic information
-        /// </summary>
-        [HttpGet]
-        [Route("owner")]
-        public async Task<Result<GetOwnerDto>> Get()
-        {
-            return await _inMemoryBus.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
-        }
+[Authorize("user-read-access")]
+[Tags("Owners")]
+public class GetOwnerByIdEndpoint : BaseApiController
+{
+    public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+        : base(authenticatedUserService, inMemoryBus) { }
+
+    /// <summary>
+    /// get current owner basic information
+    /// </summary>
+    [HttpGet]
+    [Route("owner")]
+    public async Task<Result<GetOwnerDto>> Get()
+    {
+        return await _inMemoryBus.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
     }
 }

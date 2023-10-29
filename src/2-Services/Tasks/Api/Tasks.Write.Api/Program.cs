@@ -1,8 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using TaskoMask.Services.Tasks.Write.Api.Configuration;
 
-var builder = WebApplication.CreateBuilder(args);
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.ConfigureServices().ConfigurePipeline(builder.Configuration);
+        var app = builder.ConfigureServices().ConfigurePipeline(builder.Configuration);
 
-app.Run();
+        app.Run();
+    }
+}

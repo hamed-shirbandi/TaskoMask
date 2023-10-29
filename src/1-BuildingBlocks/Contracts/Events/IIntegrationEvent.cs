@@ -1,4 +1,3 @@
-﻿namespace TaskoMask.BuildingBlocks.Contracts.Events
-{
-    public interface IntegrationEvent { }
-}
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Events;
+
+public interface IIntegrationEvent { }

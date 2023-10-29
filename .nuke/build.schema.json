@@ -73,6 +73,8 @@
             "enum": [
               "Clean",
               "Compile",
+              "Lint",
+              "LintCheck",
               "LogInformation",
               "Preparation",
               "Restore",
@@ -94,6 +96,8 @@
             "enum": [
               "Clean",
               "Compile",
+              "Lint",
+              "LintCheck",
               "LogInformation",
               "Preparation",
               "Restore",

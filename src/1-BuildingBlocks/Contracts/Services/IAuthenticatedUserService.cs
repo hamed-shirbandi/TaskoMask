@@ -1,12 +1,11 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Models;
 
-namespace TaskoMask.BuildingBlocks.Contracts.Services
+namespace TaskoMask.BuildingBlocks.Contracts.Services;
+
+public interface IAuthenticatedUserService
 {
-    public interface IAuthenticatedUserService
-    {
-        bool IsAuthenticated();
-        string GetUserId();
-        string GetUserName();
-        AuthenticatedUserModel GetAuthenticatedUser();
-    }
+    bool IsAuthenticated();
+    string GetUserId();
+    string GetUserName();
+    AuthenticatedUserModel GetAuthenticatedUser();
 }

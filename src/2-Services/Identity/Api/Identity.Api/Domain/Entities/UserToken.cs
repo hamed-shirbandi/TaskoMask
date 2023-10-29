@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace TaskoMask.Services.Identity.Domain.Entities
+namespace TaskoMask.Services.Identity.Domain.Entities;
+
+public class UserToken : IdentityUserToken<string>
 {
-    public class UserToken : IdentityUserToken<string>
-    {
-        public UserToken() { }
-    }
+    public UserToken() { }
 }

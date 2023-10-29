@@ -1,6 +1,3 @@
-﻿using System.Threading.Tasks;
+﻿namespace TaskoMask.BuildingBlocks.Application.Services;
 
-namespace TaskoMask.BuildingBlocks.Application.Services
-{
-    public interface IApplicationService { }
-}
+public interface IApplicationService { }

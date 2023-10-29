@@ -1,13 +1,10 @@
-﻿using System;
+﻿namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 
-namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions
+/// <summary>
+///
+/// </summary>
+public class MessageConsumerFaultException : Exception
 {
-    /// <summary>
-    ///
-    /// </summary>
-    public class MessageConsumerFaultException : Exception
-    {
-        public MessageConsumerFaultException(string message)
-            : base(message) { }
-    }
+    public MessageConsumerFaultException(string message)
+        : base(message) { }
 }

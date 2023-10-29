@@ -1,18 +1,17 @@
 ﻿using System.Linq;
-using TaskoMask.BuildingBlocks.Domain.Specifications;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
+using TaskoMask.BuildingBlocks.Domain.Specifications;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 
-namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications
+namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Specifications;
+
+internal class OwnerMaxOrganizationsSpecification : ISpecification<Owner>
 {
-    internal class OwnerMaxOrganizationsSpecification : ISpecification<Owner>
+    /// <summary>
+    ///
+    /// </summary>
+    public bool IsSatisfiedBy(Owner owner)
     {
-        /// <summary>
-        ///
-        /// </summary>
-        public bool IsSatisfiedBy(Owner owner)
-        {
-            return owner.Organizations.Count() <= DomainConstValues.Owner_Max_Organizations_Count;
-        }
+        return owner.Organizations.Count() <= DomainConstValues.OWNER_MAX_ORGANIZATIONS_COUNT;
     }
 }

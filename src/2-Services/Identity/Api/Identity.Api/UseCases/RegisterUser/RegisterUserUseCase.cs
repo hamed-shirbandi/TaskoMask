@@ -14,67 +14,61 @@ using TaskoMask.Services.Identity.Api.Resources;
 using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.Domain.Events;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser
+namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
+
+public class RegisterUserUseCase : BaseCommandHandler, IRequestHandler<RegisterUserRequest, CommandResult>
 {
-    public class RegisterUserUseCase : BaseCommandHandler, IRequestHandler<RegisterUserRequest, CommandResult>
+    private readonly UserManager<User> _userManager;
+    private readonly INotificationHandler _notifications;
+
+    /// <summary>
+    ///
+    /// </summary>
+    public RegisterUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications)
+        : base(messageBus, inMemoryBus)
     {
-        private readonly UserManager<User> _userManager;
-        private readonly INotificationHandler _notifications;
+        _userManager = userManager;
+        _notifications = notifications;
+    }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public RegisterUserUseCase(
-            UserManager<User> userManager,
-            IMessageBus messageBus,
-            IInMemoryBus inMemoryBus,
-            INotificationHandler notifications
-        )
-            : base(messageBus, inMemoryBus)
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<CommandResult> Handle(RegisterUserRequest request, CancellationToken cancellationToken)
+    {
+        var existUser = await _userManager.FindByNameAsync(request.Email);
+        if (existUser != null)
+            throw new ApplicationException(ApplicationMessages.UserName_Already_Exist);
+
+        var newUser = new User(request.OwnerId)
         {
-            _userManager = userManager;
-            _notifications = notifications;
+            Email = request.Email,
+            UserName = request.Email,
+            IsActive = true
+        };
+
+        var result = await _userManager.CreateAsync(newUser, request.Password);
+        if (!result.Succeeded)
+        {
+            NotifyValidationErrors(result);
+            throw new ApplicationException(ContractsMessages.Create_Failed);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<CommandResult> Handle(RegisterUserRequest request, CancellationToken cancellationToken)
-        {
-            var existUser = await _userManager.FindByNameAsync(request.Email);
-            if (existUser != null)
-                throw new ApplicationException(ApplicationMessages.UserName_Already_Exist);
+        await PublishDomainEventsAsync(new UserRegisteredEvent(newUser.Id, newUser.Email));
 
-            var newUser = new User(request.OwnerId)
-            {
-                Email = request.Email,
-                UserName = request.Email,
-                IsActive = true
-            };
+        await PublishIntegrationEventAsync(new UserRegistered(newUser.Email));
 
-            var result = await _userManager.CreateAsync(newUser, request.Password);
-            if (!result.Succeeded)
-            {
-                NotifyValidationErrors(result);
-                throw new ApplicationException(ContractsMessages.Create_Failed);
-            }
+        return CommandResult.Create(ContractsMessages.Create_Success, newUser.Id);
+    }
 
-            await PublishDomainEventsAsync(new UserRegisteredEvent(newUser.Id, newUser.Email));
+    /// <summary>
+    ///
+    /// </summary>
+    private void NotifyValidationErrors(IdentityResult identityResult)
+    {
+        var errors = identityResult.Errors.Select(e => e.Description).ToList();
 
-            await PublishIntegrationEventAsync(new UserRegistered(newUser.Email));
-
-            return CommandResult.Create(ContractsMessages.Create_Success, newUser.Id);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        private void NotifyValidationErrors(IdentityResult identityResult)
-        {
-            var errors = identityResult.Errors.Select(e => e.Description).ToList();
-
-            foreach (var error in errors)
-                _notifications.Add(this.GetType().Name, error);
-        }
+        foreach (var error in errors)
+            _notifications.Add(GetType().Name, error);
     }
 }

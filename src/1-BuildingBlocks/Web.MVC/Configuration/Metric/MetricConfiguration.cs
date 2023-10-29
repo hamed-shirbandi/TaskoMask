@@ -3,47 +3,46 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Prometheus;
 
-namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
+
+public static class MetricConfiguration
 {
-    public static class MetricConfiguration
+    public static void AddMetrics(this IServiceCollection services, IConfiguration configuration)
     {
-        public static void AddMetrics(this IServiceCollection services, IConfiguration configuration)
+        var metricOptions = configuration.GetSection("Metric").Get<MetricOptions>();
+
+        //It starts the metrics exporter as a background service using a stand alone kestrel
+        if (metricOptions.StandAloneKestrelServerEnabled)
         {
-            var metricOptions = configuration.GetSection("Metric").Get<MetricOptions>();
-
-            //It starts the metrics exporter as a background service using a stand alone kestrel
-            if (metricOptions.StandAloneKestrelServerEnabled)
+            services.AddMetricServer(options =>
             {
-                services.AddMetricServer(options =>
-                {
-                    options.Port = metricOptions.Port;
-                    options.Url = metricOptions.Url;
-                    options.Hostname = metricOptions.Hostname;
-                });
-            }
-
-            //Inject IMetricFactory to be used in application objects instead of coupling their implementation with Metrics
-            services.AddSingleton<IMetricFactory>(Metrics.DefaultFactory);
+                options.Port = metricOptions.Port;
+                options.Url = metricOptions.Url;
+                options.Hostname = metricOptions.Hostname;
+            });
         }
 
-        public static void UseMetrics(this IApplicationBuilder app, IConfiguration configuration)
+        //Inject IMetricFactory to be used in application objects instead of coupling their implementation with Metrics
+        services.AddSingleton<IMetricFactory>(Metrics.DefaultFactory);
+    }
+
+    public static void UseMetrics(this IApplicationBuilder app, IConfiguration configuration)
+    {
+        var metricOptions = configuration.GetSection("Metric").Get<MetricOptions>();
+
+        //If kestrel server is not enabled then use current app server
+        if (!metricOptions.StandAloneKestrelServerEnabled)
+            app.UseMetricServer(metricOptions.Port, metricOptions.Url);
+
+        if (metricOptions.HttpMetricsEnabled)
         {
-            var metricOptions = configuration.GetSection("Metric").Get<MetricOptions>();
-
-            //If kestrel server is not enabled then use current app server
-            if (!metricOptions.StandAloneKestrelServerEnabled)
-                app.UseMetricServer(metricOptions.Port, metricOptions.Url);
-
-            if (metricOptions.HttpMetricsEnabled)
+            app.UseHttpMetrics(options =>
             {
-                app.UseHttpMetrics(options =>
-                {
-                    options.AddCustomLabel("host", context => context.Request.Host.Host);
-                });
-            }
-
-            if (metricOptions.SuppressDefaultMetrics)
-                Metrics.SuppressDefaultMetrics();
+                options.AddCustomLabel("host", context => context.Request.Host.Host);
+            });
         }
+
+        if (metricOptions.SuppressDefaultMetrics)
+            Metrics.SuppressDefaultMetrics();
     }
 }

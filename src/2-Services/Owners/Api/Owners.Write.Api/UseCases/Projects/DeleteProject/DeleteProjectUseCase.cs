@@ -14,66 +14,65 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Projects;
 
-namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject
+namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject;
+
+public class DeleteProjectUseCase : BaseCommandHandler, IRequestHandler<DeleteProjectRequest, CommandResult>
 {
-    public class DeleteProjectUseCase : BaseCommandHandler, IRequestHandler<DeleteProjectRequest, CommandResult>
+    #region Fields
+
+    private readonly IOwnerAggregateRepository _ownerAggregateRepository;
+
+    #endregion
+
+    #region Ctors
+
+
+    public DeleteProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+        : base(messageBus, inMemoryBus)
     {
-        #region Fields
-
-        private readonly IOwnerAggregateRepository _ownerAggregateRepository;
-
-        #endregion
-
-        #region Ctors
-
-
-        public DeleteProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-            : base(messageBus, inMemoryBus)
-        {
-            _ownerAggregateRepository = ownerAggregateRepository;
-        }
-
-        #endregion
-
-        #region Handlers
-
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<CommandResult> Handle(DeleteProjectRequest request, CancellationToken cancellationToken)
-        {
-            var owner = await _ownerAggregateRepository.GetByProjectIdAsync(request.Id);
-            if (owner == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
-
-            var loadedVersion = owner.Version;
-
-            owner.DeleteProject(request.Id);
-
-            await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
-
-            await PublishDomainEventsAsync(owner.DomainEvents);
-
-            var projectDeleted = MapToProjectDeletedIntegrationEvent(owner.DomainEvents);
-
-            await PublishIntegrationEventAsync(projectDeleted);
-
-            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-
-        private ProjectDeleted MapToProjectDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
-        {
-            var projectDeletedDomainEvent = (ProjectDeletedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectDeletedEvent));
-            return new ProjectDeleted(projectDeletedDomainEvent.Id);
-        }
-
-        #endregion
+        _ownerAggregateRepository = ownerAggregateRepository;
     }
+
+    #endregion
+
+    #region Handlers
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<CommandResult> Handle(DeleteProjectRequest request, CancellationToken cancellationToken)
+    {
+        var owner = await _ownerAggregateRepository.GetByProjectIdAsync(request.Id);
+        if (owner == null)
+            throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Project);
+
+        var loadedVersion = owner.Version;
+
+        owner.DeleteProject(request.Id);
+
+        await _ownerAggregateRepository.ConcurrencySafeUpdate(owner, loadedVersion);
+
+        await PublishDomainEventsAsync(owner.DomainEvents);
+
+        var projectDeleted = MapToProjectDeletedIntegrationEvent(owner.DomainEvents);
+
+        await PublishIntegrationEventAsync(projectDeleted);
+
+        return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
+    }
+
+    #endregion
+
+    #region Private Methods
+
+
+    private ProjectDeleted MapToProjectDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+    {
+        var projectDeletedDomainEvent = (ProjectDeletedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(ProjectDeletedEvent));
+        return new ProjectDeleted(projectDeletedDomainEvent.Id);
+    }
+
+    #endregion
 }

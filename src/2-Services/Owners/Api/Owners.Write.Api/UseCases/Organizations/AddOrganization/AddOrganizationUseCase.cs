@@ -14,74 +14,71 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Organizations;
-using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 
-namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganization
+namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganization;
+
+public class AddOrganizationUseCase : BaseCommandHandler, IRequestHandler<AddOrganizationRequest, CommandResult>
 {
-    public class AddOrganizationUseCase : BaseCommandHandler, IRequestHandler<AddOrganizationRequest, CommandResult>
+    #region Fields
+
+    private readonly IOwnerAggregateRepository _ownerAggregateRepository;
+
+    #endregion
+
+    #region Ctors
+
+
+    public AddOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+        : base(messageBus, inMemoryBus)
     {
-        #region Fields
-
-        private readonly IOwnerAggregateRepository _ownerAggregateRepository;
-
-        #endregion
-
-        #region Ctors
-
-
-        public AddOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-            : base(messageBus, inMemoryBus)
-        {
-            _ownerAggregateRepository = ownerAggregateRepository;
-        }
-
-        #endregion
-
-        #region Handlers
-
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<CommandResult> Handle(AddOrganizationRequest request, CancellationToken cancellationToken)
-        {
-            var owner = await _ownerAggregateRepository.GetByIdAsync(request.OwnerId);
-            if (owner == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
-
-            var organization = Organization.CreateOrganization(request.Name, request.Description);
-
-            owner.AddOrganization(organization);
-
-            await _ownerAggregateRepository.UpdateAsync(owner);
-
-            await PublishDomainEventsAsync(owner.DomainEvents);
-
-            var organizationAdded = MapToOrganizationAddedIntegrationEvent(owner.DomainEvents);
-
-            await PublishIntegrationEventAsync(organizationAdded);
-
-            return CommandResult.Create(ContractsMessages.Create_Success, organization.Id);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-
-        private OrganizationAdded MapToOrganizationAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
-        {
-            var organizationAddedDomainEvent = (OrganizationAddedEvent)
-                domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationAddedEvent));
-            return new OrganizationAdded(
-                organizationAddedDomainEvent.Id,
-                organizationAddedDomainEvent.Name,
-                organizationAddedDomainEvent.Description,
-                organizationAddedDomainEvent.OwnerId
-            );
-        }
-
-        #endregion
+        _ownerAggregateRepository = ownerAggregateRepository;
     }
+
+    #endregion
+
+    #region Handlers
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<CommandResult> Handle(AddOrganizationRequest request, CancellationToken cancellationToken)
+    {
+        var owner = await _ownerAggregateRepository.GetByIdAsync(request.OwnerId);
+        if (owner == null)
+            throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Owner);
+
+        var organization = Organization.CreateOrganization(request.Name, request.Description);
+
+        owner.AddOrganization(organization);
+
+        await _ownerAggregateRepository.UpdateAsync(owner);
+
+        await PublishDomainEventsAsync(owner.DomainEvents);
+
+        var organizationAdded = MapToOrganizationAddedIntegrationEvent(owner.DomainEvents);
+
+        await PublishIntegrationEventAsync(organizationAdded);
+
+        return CommandResult.Create(ContractsMessages.Create_Success, organization.Id);
+    }
+
+    #endregion
+
+    #region Private Methods
+
+
+    private OrganizationAdded MapToOrganizationAddedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+    {
+        var organizationAddedDomainEvent = (OrganizationAddedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(OrganizationAddedEvent));
+        return new OrganizationAdded(
+            organizationAddedDomainEvent.Id,
+            organizationAddedDomainEvent.Name,
+            organizationAddedDomainEvent.Description,
+            organizationAddedDomainEvent.OwnerId
+        );
+    }
+
+    #endregion
 }

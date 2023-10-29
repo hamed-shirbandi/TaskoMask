@@ -1,34 +1,30 @@
-using Serilog;
-using System.Linq;
 using Nuke.Common;
+using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.Coverlet;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Tools.NuGet;
-using static Nuke.Common.EnvironmentInfo;
-using static Nuke.Common.IO.FileSystemTasks;
-using static Nuke.Common.IO.PathConstruction;
+using Serilog;
+using System.Linq;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using static Nuke.Common.Tools.NuGet.NuGetTasks;
 using static Nuke.Common.Tools.NuGet.NuGetPackSettingsExtensions;
-using Nuke.Common.IO;
 
-class Build : NukeBuild
+internal class Build : NukeBuild
 {
     public static int Main() => Execute<Build>(x => x.RunMutationTests);
 
     [Parameter]
-    readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+    private readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
     [Solution]
-    readonly Solution Solution;
+    private readonly Solution Solution;
 
     [Parameter]
-    AbsolutePath TestResultDirectory = RootDirectory + "/.nuke/Artifacts/Test-Results/";
+    private readonly AbsolutePath TestResultDirectory = RootDirectory + "/.nuke/Artifacts/Test-Results/";
 
-    Target LogInformation =>
+    private Target LogInformation =>
         _ =>
             _.Executes(() =>
             {
@@ -38,7 +34,7 @@ class Build : NukeBuild
                 Log.Information($"TestResultDirectory : {TestResultDirectory}");
             });
 
-    Target Preparation =>
+    private Target Preparation =>
         _ =>
             _.DependsOn(LogInformation)
                 .Executes(() =>
@@ -46,14 +42,14 @@ class Build : NukeBuild
                     TestResultDirectory.CreateOrCleanDirectory();
                 });
 
-    Target RestoreDotNetTools =>
+    private Target RestoreDotNetTools =>
         _ =>
             _.Executes(() =>
             {
                 DotNet(arguments: "tool restore");
             });
 
-    Target Clean =>
+    private Target Clean =>
         _ =>
             _.DependsOn(Preparation)
                 .Executes(() =>
@@ -61,7 +57,7 @@ class Build : NukeBuild
                     DotNetClean();
                 });
 
-    Target Restore =>
+    private Target Restore =>
         _ =>
             _.DependsOn(Clean)
                 .Executes(() =>
@@ -69,7 +65,7 @@ class Build : NukeBuild
                     DotNetRestore(a => a.SetProjectFile(Solution));
                 });
 
-    Target Compile =>
+    private Target Compile =>
         _ =>
             _.DependsOn(Restore)
                 .Executes(() =>
@@ -77,7 +73,7 @@ class Build : NukeBuild
                     DotNetBuild(a => a.SetProjectFile(Solution).SetNoRestore(true).SetConfiguration(Configuration));
                 });
 
-    Target Lint =>
+    private Target Lint =>
         _ =>
             _.DependsOn(Compile)
                 .Executes(() =>
@@ -87,17 +83,19 @@ class Build : NukeBuild
                     DotNet("format analyzers --verbosity diagnostic");
                 });
 
-    Target LintCheck =>
+    private Target LintCheck =>
         _ =>
             _.DependsOn(Compile)
                 .Executes(() =>
                 {
                     DotNet("csharpier --check .");
+
                     DotNet("format style --verify-no-changes --verbosity diagnostic");
+
                     DotNet("format analyzers --verify-no-changes --verbosity diagnostic");
                 });
 
-    Target RunUnitTests =>
+    private Target RunUnitTests =>
         _ =>
             _.DependsOn(LintCheck)
                 .Executes(() =>
@@ -125,7 +123,7 @@ class Build : NukeBuild
                     );
                 });
 
-    Target RunMutationTests =>
+    private Target RunMutationTests =>
         _ =>
             _.DependsOn(RunUnitTests, RestoreDotNetTools)
                 .Executes(() =>

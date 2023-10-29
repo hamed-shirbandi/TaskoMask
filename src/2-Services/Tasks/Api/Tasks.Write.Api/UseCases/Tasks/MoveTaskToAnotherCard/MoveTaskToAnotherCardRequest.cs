@@ -2,20 +2,19 @@
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
-namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCard
+namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCard;
+
+public class MoveTaskToAnotherCardRequest : BaseCommand
 {
-    public class MoveTaskToAnotherCardRequest : BaseCommand
+    public MoveTaskToAnotherCardRequest(string taskId, string cardId)
     {
-        public MoveTaskToAnotherCardRequest(string taskId, string cardId)
-        {
-            TaskId = taskId;
-            CardId = cardId;
-        }
-
-        [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
-        public string TaskId { get; }
-
-        [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
-        public string CardId { get; }
+        TaskId = taskId;
+        CardId = cardId;
     }
+
+    [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
+    public string TaskId { get; }
+
+    [Required(ErrorMessageResourceName = nameof(ContractsMetadata.Required), ErrorMessageResourceType = typeof(ContractsMetadata))]
+    public string CardId { get; }
 }

@@ -4,21 +4,20 @@ using TaskoMask.BuildingBlocks.Application.Behaviors;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 
-namespace TaskoMask.BuildingBlocks.Application.Services
-{
-    public static class ApplicationExtensions
-    {
-        /// <summary>
-        ///
-        /// </summary>
-        public static void AddBuildingBlocksApplication(this IServiceCollection services, Type validatorAssemblyMarkerType)
-        {
-            if (services == null)
-                throw new ArgumentNullException(nameof(services));
+namespace TaskoMask.BuildingBlocks.Application.Services;
 
-            services.AddApplicationExceptionHandlers();
-            services.AddApplicationBehaviors(validatorAssemblyMarkerType);
-            services.AddDomainNotificationHandler();
-        }
+public static class ApplicationExtensions
+{
+    /// <summary>
+    ///
+    /// </summary>
+    public static void AddBuildingBlocksApplication(this IServiceCollection services, Type validatorAssemblyMarkerType)
+    {
+        if (services == null)
+            throw new ArgumentNullException(nameof(services));
+
+        services.AddApplicationExceptionHandlers();
+        services.AddApplicationBehaviors(validatorAssemblyMarkerType);
+        services.AddDomainNotificationHandler();
     }
 }

@@ -14,66 +14,65 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Data;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 
-namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard
+namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard;
+
+public class DeleteCardUseCase : BaseCommandHandler, IRequestHandler<DeleteCardRequest, CommandResult>
 {
-    public class DeleteCardUseCase : BaseCommandHandler, IRequestHandler<DeleteCardRequest, CommandResult>
+    #region Fields
+
+    private readonly IBoardAggregateRepository _boardAggregateRepository;
+
+    #endregion
+
+    #region Ctors
+
+
+    public DeleteCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
+        : base(messageBus, inMemoryBus)
     {
-        #region Fields
-
-        private readonly IBoardAggregateRepository _boardAggregateRepository;
-
-        #endregion
-
-        #region Ctors
-
-
-        public DeleteCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-            : base(messageBus, inMemoryBus)
-        {
-            _boardAggregateRepository = boardAggregateRepository;
-        }
-
-        #endregion
-
-        #region Handlers
-
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<CommandResult> Handle(DeleteCardRequest request, CancellationToken cancellationToken)
-        {
-            var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
-            if (board == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
-
-            var loadedVersion = board.Version;
-
-            board.DeleteCard(request.Id);
-
-            await _boardAggregateRepository.ConcurrencySafeUpdate(board, loadedVersion);
-
-            await PublishDomainEventsAsync(board.DomainEvents);
-
-            var cardDeleted = MapToCardDeletedIntegrationEvent(board.DomainEvents);
-
-            await PublishIntegrationEventAsync(cardDeleted);
-
-            return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-
-        private CardDeleted MapToCardDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
-        {
-            var cardDeletedDomainEvent = (CardDeletedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CardDeletedEvent));
-            return new CardDeleted(cardDeletedDomainEvent.Id);
-        }
-
-        #endregion
+        _boardAggregateRepository = boardAggregateRepository;
     }
+
+    #endregion
+
+    #region Handlers
+
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<CommandResult> Handle(DeleteCardRequest request, CancellationToken cancellationToken)
+    {
+        var board = await _boardAggregateRepository.GetByCardIdAsync(request.Id);
+        if (board == null)
+            throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.Card);
+
+        var loadedVersion = board.Version;
+
+        board.DeleteCard(request.Id);
+
+        await _boardAggregateRepository.ConcurrencySafeUpdate(board, loadedVersion);
+
+        await PublishDomainEventsAsync(board.DomainEvents);
+
+        var cardDeleted = MapToCardDeletedIntegrationEvent(board.DomainEvents);
+
+        await PublishIntegrationEventAsync(cardDeleted);
+
+        return CommandResult.Create(ContractsMessages.Update_Success, request.Id);
+    }
+
+    #endregion
+
+    #region Private Methods
+
+
+    private CardDeleted MapToCardDeletedIntegrationEvent(IReadOnlyCollection<DomainEvent> domainEvents)
+    {
+        var cardDeletedDomainEvent = (CardDeletedEvent)domainEvents.FirstOrDefault(e => e.EventType == nameof(CardDeletedEvent));
+        return new CardDeleted(cardDeletedDomainEvent.Id);
+    }
+
+    #endregion
 }

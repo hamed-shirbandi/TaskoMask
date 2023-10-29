@@ -4,92 +4,90 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MonoApi.Services.Afrr.Activations.Api.Helpers;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
-namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+
+/// <summary>
+///
+/// </summary>
+public static class WebApiConfiguration
 {
     /// <summary>
     ///
     /// </summary>
-    public static class WebApiConfiguration
+    public static void AddWebApiPreConfigured(this IServiceCollection services, IConfiguration configuration)
     {
-        /// <summary>
-        ///
-        /// </summary>
-        public static void AddWebApiPreConfigured(this IServiceCollection services, IConfiguration configuration)
+        if (services == null)
+            throw new ArgumentNullException(nameof(services));
+
+        services.AddControllers().WithPreventAutoValidation();
+
+        services.AddSwaggerPreConfigured(options =>
         {
-            if (services == null)
-                throw new ArgumentNullException(nameof(services));
+            configuration.GetSection("Swagger").Bind(options);
+        });
 
-            services.AddControllers().WithPreventAutoValidation();
+        services.AddHttpContextAccessor();
 
-            services.AddSwaggerPreConfigured(options =>
-            {
-                configuration.GetSection("Swagger").Bind(options);
-            });
+        services.AddAuthenticatedUserService();
 
-            services.AddHttpContextAccessor();
+        services.AddWebServerOptions();
 
-            services.AddAuthenticatedUserService();
+        services.AddJwtAuthentication(configuration);
 
-            services.AddWebServerOptions();
+        services.AddCors();
 
-            services.AddJwtAuthentication(configuration);
+        services.AddMetrics(configuration);
+    }
 
-            services.AddCors();
+    /// <summary>
+    ///
+    /// </summary>
+    public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
+    {
+        if (app == null)
+            throw new ArgumentNullException(nameof(app));
 
-            services.AddMetrics(configuration);
-        }
+        if (env.IsDevelopment())
+            app.UseDeveloperExceptionPage();
 
-        /// <summary>
-        ///
-        /// </summary>
-        public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
+        app.UseGlobalExceptionHandler();
+
+        app.UseSwaggerPreConfigured();
+
+        app.UseHttpsRedirection();
+
+        app.UseRouting();
+
+        app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+        app.UseMetrics(configuration);
+
+        app.UseAuthentication();
+
+        app.UseAuthorization();
+    }
+
+    /// <summary>
+    /// Prevent auto validate on model binding
+    /// </summary>
+    private static void WithPreventAutoValidation(this IMvcBuilder builder)
+    {
+        builder.ConfigureApiBehaviorOptions(options =>
         {
-            if (app == null)
-                throw new ArgumentNullException(nameof(app));
+            options.SuppressModelStateInvalidFilter = true;
+        });
+    }
 
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-
-            app.UseGlobalExceptionHandler();
-
-            app.UseSwaggerPreConfigured();
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-
-            app.UseMetrics(configuration);
-
-            app.UseAuthentication();
-
-            app.UseAuthorization();
-        }
-
-        /// <summary>
-        /// Prevent auto validate on model binding
-        /// </summary>
-        private static void WithPreventAutoValidation(this IMvcBuilder builder)
-        {
-            builder.ConfigureApiBehaviorOptions(options =>
-            {
-                options.SuppressModelStateInvalidFilter = true;
-            });
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        private static void UseGlobalExceptionHandler(this IApplicationBuilder app)
-        {
-            app.UseMiddleware<HttpGlobalExceptionHandler>();
-        }
+    /// <summary>
+    ///
+    /// </summary>
+    private static void UseGlobalExceptionHandler(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<HttpGlobalExceptionHandler>();
     }
 }

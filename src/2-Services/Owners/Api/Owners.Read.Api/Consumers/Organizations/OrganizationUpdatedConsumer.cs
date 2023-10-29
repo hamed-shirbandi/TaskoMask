@@ -1,36 +1,35 @@
 ﻿using MassTransit;
-using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
-using TaskoMask.BuildingBlocks.Contracts.Events;
-using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
-using System.Threading.Tasks;
 using MongoDB.Driver;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
+using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations
+namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations;
+
+public class OrganizationUpdatedConsumer : BaseConsumer<OrganizationUpdated>
 {
-    public class OrganizationUpdatedConsumer : BaseConsumer<OrganizationUpdated>
+    private readonly OwnerReadDbContext _ownerReadDbContext;
+
+    public OrganizationUpdatedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
+        : base(inMemoryBus)
     {
-        private readonly OwnerReadDbContext _ownerReadDbContext;
+        _ownerReadDbContext = ownerReadDbContext;
+    }
 
-        public OrganizationUpdatedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-            : base(inMemoryBus)
-        {
-            _ownerReadDbContext = ownerReadDbContext;
-        }
+    public override async Task ConsumeMessage(ConsumeContext<OrganizationUpdated> context)
+    {
+        var organization = await _ownerReadDbContext.Organizations.Find(e => e.Id == context.Message.Id).FirstOrDefaultAsync();
 
-        public override async Task ConsumeMessage(ConsumeContext<OrganizationUpdated> context)
-        {
-            var organization = await _ownerReadDbContext.Organizations.Find(e => e.Id == context.Message.Id).FirstOrDefaultAsync();
+        organization.Name = context.Message.Name;
+        organization.Description = context.Message.Description;
+        organization.SetAsUpdated();
 
-            organization.Name = context.Message.Name;
-            organization.Description = context.Message.Description;
-            organization.SetAsUpdated();
-
-            await _ownerReadDbContext.Organizations.ReplaceOneAsync(
-                p => p.Id == organization.Id,
-                organization,
-                new ReplaceOptions() { IsUpsert = false }
-            );
-        }
+        await _ownerReadDbContext.Organizations.ReplaceOneAsync(
+            p => p.Id == organization.Id,
+            organization,
+            new ReplaceOptions() { IsUpsert = false }
+        );
     }
 }

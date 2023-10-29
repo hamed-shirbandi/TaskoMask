@@ -1,33 +1,32 @@
 ﻿using MassTransit;
-using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
-using TaskoMask.BuildingBlocks.Contracts.Events;
-using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.Services.Owners.Read.Api.Domain;
+using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations
+namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations;
+
+public class OrganizationAddedConsumer : BaseConsumer<OrganizationAdded>
 {
-    public class OrganizationAddedConsumer : BaseConsumer<OrganizationAdded>
+    private readonly OwnerReadDbContext _ownerReadDbContext;
+
+    public OrganizationAddedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
+        : base(inMemoryBus)
     {
-        private readonly OwnerReadDbContext _ownerReadDbContext;
+        _ownerReadDbContext = ownerReadDbContext;
+    }
 
-        public OrganizationAddedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-            : base(inMemoryBus)
+    public override async Task ConsumeMessage(ConsumeContext<OrganizationAdded> context)
+    {
+        var organization = new Organization(context.Message.Id)
         {
-            _ownerReadDbContext = ownerReadDbContext;
-        }
+            Name = context.Message.Name,
+            Description = context.Message.Description,
+            OwnerId = context.Message.OwnerId,
+        };
 
-        public override async Task ConsumeMessage(ConsumeContext<OrganizationAdded> context)
-        {
-            var organization = new Organization(context.Message.Id)
-            {
-                Name = context.Message.Name,
-                Description = context.Message.Description,
-                OwnerId = context.Message.OwnerId,
-            };
-
-            await _ownerReadDbContext.Organizations.InsertOneAsync(organization);
-        }
+        await _ownerReadDbContext.Organizations.InsertOneAsync(organization);
     }
 }

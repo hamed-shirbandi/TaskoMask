@@ -1,26 +1,25 @@
 ﻿using MassTransit;
-using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
-using TaskoMask.BuildingBlocks.Contracts.Events;
-using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
-using System.Threading.Tasks;
 using MongoDB.Driver;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
+using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations
+namespace TaskoMask.Services.Owners.Read.Api.Consumers.Organizations;
+
+public class OrganizationDeletedConsumer : BaseConsumer<OrganizationDeleted>
 {
-    public class OrganizationDeletedConsumer : BaseConsumer<OrganizationDeleted>
+    private readonly OwnerReadDbContext _ownerReadDbContext;
+
+    public OrganizationDeletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
+        : base(inMemoryBus)
     {
-        private readonly OwnerReadDbContext _ownerReadDbContext;
+        _ownerReadDbContext = ownerReadDbContext;
+    }
 
-        public OrganizationDeletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-            : base(inMemoryBus)
-        {
-            _ownerReadDbContext = ownerReadDbContext;
-        }
-
-        public override async Task ConsumeMessage(ConsumeContext<OrganizationDeleted> context)
-        {
-            await _ownerReadDbContext.Organizations.DeleteOneAsync(p => p.Id == context.Message.Id);
-        }
+    public override async Task ConsumeMessage(ConsumeContext<OrganizationDeleted> context)
+    {
+        await _ownerReadDbContext.Organizations.DeleteOneAsync(p => p.Id == context.Message.Id);
     }
 }

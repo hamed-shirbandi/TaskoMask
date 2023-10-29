@@ -1,35 +1,33 @@
 ﻿using AutoMapper;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 
-namespace TaskoMask.BuildingBlocks.Application.Queries
+namespace TaskoMask.BuildingBlocks.Application.Queries;
+
+/// <summary>
+///
+/// </summary>
+public abstract class BaseQueryHandler
 {
-    /// <summary>
-    ///
-    /// </summary>
-    public abstract class BaseQueryHandler
+    #region Fields
+
+    protected readonly IMapper _mapper;
+
+    #endregion
+
+
+    #region Ctors
+
+
+    protected BaseQueryHandler(IMapper mapper)
     {
-        #region Fields
-
-        protected readonly IMapper _mapper;
-
-        #endregion
-
-
-        #region Ctors
-
-
-        protected BaseQueryHandler(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
-
-        #endregion
-
-
-        #region Protected Methods
-
-
-
-        #endregion
+        _mapper = mapper;
     }
+
+    #endregion
+
+
+    #region Protected Methods
+
+
+
+    #endregion
 }

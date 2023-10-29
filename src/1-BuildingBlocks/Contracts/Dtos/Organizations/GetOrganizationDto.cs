@@ -1,9 +1,8 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
 
-namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations
+namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
+
+public class GetOrganizationDto : OrganizationBaseDto
 {
-    public class GetOrganizationDto : OrganizationBaseDto
-    {
-        public CreationTimeDto CreationTime { get; set; }
-    }
+    public CreationTimeDto CreationTime { get; set; }
 }

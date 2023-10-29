@@ -1,9 +1,8 @@
-﻿namespace TaskoMask.BuildingBlocks.Contracts.Models
+﻿namespace TaskoMask.BuildingBlocks.Contracts.Models;
+
+public class AuthenticatedUserModel
 {
-    public class AuthenticatedUserModel
-    {
-        public string Id { get; set; }
-        public string Email { get; set; }
-        public string UserName { get; set; }
-    }
+    public string Id { get; set; }
+    public string Email { get; set; }
+    public string UserName { get; set; }
 }

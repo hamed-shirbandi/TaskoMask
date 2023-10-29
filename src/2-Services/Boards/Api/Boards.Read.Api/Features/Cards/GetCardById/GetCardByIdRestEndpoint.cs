@@ -8,23 +8,22 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById
-{
-    [Authorize("user-read-access")]
-    [Tags("Cards")]
-    public class GetCardByIdRestEndpoint : BaseApiController
-    {
-        public GetCardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-            : base(authenticatedUserService, inMemoryBus) { }
+namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById;
 
-        /// <summary>
-        /// get card info
-        /// </summary>
-        [HttpGet]
-        [Route("cards/{id}")]
-        public async Task<Result<GetCardDto>> Get(string id)
-        {
-            return await _inMemoryBus.SendQuery(new GetCardByIdRequest(id));
-        }
+[Authorize("user-read-access")]
+[Tags("Cards")]
+public class GetCardByIdRestEndpoint : BaseApiController
+{
+    public GetCardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+        : base(authenticatedUserService, inMemoryBus) { }
+
+    /// <summary>
+    /// get card info
+    /// </summary>
+    [HttpGet]
+    [Route("cards/{id}")]
+    public async Task<Result<GetCardDto>> Get(string id)
+    {
+        return await _inMemoryBus.SendQuery(new GetCardByIdRequest(id));
     }
 }

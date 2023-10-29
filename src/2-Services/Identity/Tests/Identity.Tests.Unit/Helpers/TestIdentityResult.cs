@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace TaskoMask.Services.Identity.Tests.Unit.Helpers
+namespace TaskoMask.Services.Identity.Tests.Unit.Helpers;
+
+public class TestIdentityResult : IdentityResult
 {
-    public class TestIdentityResult : IdentityResult
+    public TestIdentityResult(bool succeeded = false)
     {
-        public TestIdentityResult(bool succeeded = false)
-        {
-            Succeeded = succeeded;
-        }
+        Succeeded = succeeded;
     }
 }

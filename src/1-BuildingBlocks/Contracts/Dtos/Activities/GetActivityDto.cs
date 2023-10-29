@@ -1,14 +1,13 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
 
-namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Activities
+namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Activities;
+
+public class GetActivityDto
 {
-    public class GetActivityDto
-    {
-        public string Id { get; set; }
+    public string Id { get; set; }
 
-        public string TaskId { get; set; }
-        public string Description { get; set; }
+    public string TaskId { get; set; }
+    public string Description { get; set; }
 
-        public CreationTimeDto CreationTime { get; set; }
-    }
+    public CreationTimeDto CreationTime { get; set; }
 }

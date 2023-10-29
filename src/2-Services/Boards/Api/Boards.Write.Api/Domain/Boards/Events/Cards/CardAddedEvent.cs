@@ -2,22 +2,21 @@
 using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards
-{
-    public class CardAddedEvent : DomainEvent
-    {
-        public CardAddedEvent(string id, string name, BoardCardType type, string boardId)
-            : base(entityId: id, entityType: DomainMetadata.Card)
-        {
-            Id = id;
-            Name = name;
-            Type = type;
-            BoardId = boardId;
-        }
+namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Events.Cards;
 
-        public string Id { get; }
-        public string Name { get; private set; }
-        public BoardCardType Type { get; private set; }
-        public string BoardId { get; private set; }
+public class CardAddedEvent : DomainEvent
+{
+    public CardAddedEvent(string id, string name, BoardCardType type, string boardId)
+        : base(entityId: id, entityType: DomainMetadata.Card)
+    {
+        Id = id;
+        Name = name;
+        Type = type;
+        BoardId = boardId;
     }
+
+    public string Id { get; }
+    public string Name { get; private set; }
+    public BoardCardType Type { get; private set; }
+    public string BoardId { get; private set; }
 }

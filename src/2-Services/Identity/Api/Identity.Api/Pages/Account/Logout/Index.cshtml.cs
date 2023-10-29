@@ -11,69 +11,68 @@ using System.Threading.Tasks;
 using TaskoMask.Services.Identity.Api.Configuration;
 using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.Api.Pages.Account.Logout
+namespace TaskoMask.Services.Identity.Api.Pages.Account.Logout;
+
+[SecurityHeaders]
+[AllowAnonymous]
+public class Index : PageModel
 {
-    [SecurityHeaders]
-    [AllowAnonymous]
-    public class Index : PageModel
+    private readonly SignInManager<User> _signInManager;
+    private readonly IIdentityServerInteractionService _interaction;
+    private readonly IEventService _events;
+
+    [BindProperty]
+    public string LogoutId { get; set; }
+
+    public Index(SignInManager<User> signInManager, IIdentityServerInteractionService interaction, IEventService events)
     {
-        private readonly SignInManager<User> _signInManager;
-        private readonly IIdentityServerInteractionService _interaction;
-        private readonly IEventService _events;
+        _signInManager = signInManager;
+        _interaction = interaction;
+        _events = events;
+    }
 
-        [BindProperty]
-        public string LogoutId { get; set; }
+    public async Task<IActionResult> OnGet(string logoutId)
+    {
+        LogoutId = logoutId;
 
-        public Index(SignInManager<User> signInManager, IIdentityServerInteractionService interaction, IEventService events)
+        return await OnPost();
+    }
+
+    public async Task<IActionResult> OnPost()
+    {
+        if (User?.Identity.IsAuthenticated == true)
         {
-            _signInManager = signInManager;
-            _interaction = interaction;
-            _events = events;
-        }
+            // if there's no current logout context, we need to create one
+            // this captures necessary info from the current logged in user
+            // this can still return null if there is no context needed
+            LogoutId ??= await _interaction.CreateLogoutContextAsync();
 
-        public async Task<IActionResult> OnGet(string logoutId)
-        {
-            LogoutId = logoutId;
+            // delete local authentication cookie
+            await _signInManager.SignOutAsync();
 
-            return await OnPost();
-        }
+            // raise the logout event
+            await _events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName()));
 
-        public async Task<IActionResult> OnPost()
-        {
-            if (User?.Identity.IsAuthenticated == true)
+            // see if we need to trigger federated logout
+            var idp = User.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
+
+            // if it's a local login we can ignore this workflow
+            if (idp != null && idp != Duende.IdentityServer.IdentityServerConstants.LocalIdentityProvider)
             {
-                // if there's no current logout context, we need to create one
-                // this captures necessary info from the current logged in user
-                // this can still return null if there is no context needed
-                LogoutId ??= await _interaction.CreateLogoutContextAsync();
-
-                // delete local authentication cookie
-                await _signInManager.SignOutAsync();
-
-                // raise the logout event
-                await _events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName()));
-
-                // see if we need to trigger federated logout
-                var idp = User.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
-
-                // if it's a local login we can ignore this workflow
-                if (idp != null && idp != Duende.IdentityServer.IdentityServerConstants.LocalIdentityProvider)
+                // we need to see if the provider supports external logout
+                if (await HttpContext.GetSchemeSupportsSignOut(idp))
                 {
-                    // we need to see if the provider supports external logout
-                    if (await HttpContext.GetSchemeSupportsSignOut(idp))
-                    {
-                        // build a return URL so the upstream provider will redirect back
-                        // to us after the user has logged out. this allows us to then
-                        // complete our single sign-out processing.
-                        string url = Url.Page("/Account/Logout/Loggedout", new { logoutId = LogoutId });
+                    // build a return URL so the upstream provider will redirect back
+                    // to us after the user has logged out. this allows us to then
+                    // complete our single sign-out processing.
+                    string url = Url.Page("/Account/Logout/Loggedout", new { logoutId = LogoutId });
 
-                        // this triggers a redirect to the external provider for sign-out
-                        return SignOut(new AuthenticationProperties { RedirectUri = url }, idp);
-                    }
+                    // this triggers a redirect to the external provider for sign-out
+                    return SignOut(new AuthenticationProperties { RedirectUri = url }, idp);
                 }
             }
-
-            return RedirectToPage("/Account/Logout/LoggedOut", new { logoutId = LogoutId });
         }
+
+        return RedirectToPage("/Account/Logout/LoggedOut", new { logoutId = LogoutId });
     }
 }

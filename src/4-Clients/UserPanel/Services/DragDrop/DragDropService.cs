@@ -1,25 +1,24 @@
-﻿namespace TaskoMask.Clients.UserPanel.Services.DragDrop
+﻿namespace TaskoMask.Clients.UserPanel.Services.DragDrop;
+
+public class DragDropService : IDragDropService
 {
-    public class DragDropService : IDragDropService
+    private string data;
+
+    public DragDropService() { }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public string GetDraggedData()
     {
-        private string _data;
+        return data;
+    }
 
-        public DragDropService() { }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public string GetDraggedData()
-        {
-            return _data;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public void SetDraggedData(string data)
-        {
-            _data = data;
-        }
+    /// <summary>
+    ///
+    /// </summary>
+    public void SetDraggedData(string data)
+    {
+        this.data = data;
     }
 }

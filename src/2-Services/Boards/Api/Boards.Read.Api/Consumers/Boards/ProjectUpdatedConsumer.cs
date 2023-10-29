@@ -1,33 +1,32 @@
 ﻿using MassTransit;
-using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
-using TaskoMask.BuildingBlocks.Contracts.Events;
-using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
-using System.Threading.Tasks;
 using MongoDB.Driver;
+using System.Threading.Tasks;
+using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Contracts.Events;
+using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
+using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 
-namespace TaskoMask.Services.Boards.Read.Api.Consumers.Boards
+namespace TaskoMask.Services.Boards.Read.Api.Consumers.Boards;
+
+public class ProjectUpdatedConsumer : BaseConsumer<ProjectUpdated>
 {
-    public class ProjectUpdatedConsumer : BaseConsumer<ProjectUpdated>
+    private readonly BoardReadDbContext _boardReadDbContext;
+
+    public ProjectUpdatedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
+        : base(inMemoryBus)
     {
-        private readonly BoardReadDbContext _boardReadDbContext;
+        _boardReadDbContext = boardReadDbContext;
+    }
 
-        public ProjectUpdatedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
-            : base(inMemoryBus)
+    public override async Task ConsumeMessage(ConsumeContext<ProjectUpdated> context)
+    {
+        var boards = await _boardReadDbContext.Boards.Find(e => e.ProjectId == context.Message.Id).ToListAsync();
+
+        foreach (var board in boards)
         {
-            _boardReadDbContext = boardReadDbContext;
-        }
-
-        public override async Task ConsumeMessage(ConsumeContext<ProjectUpdated> context)
-        {
-            var boards = await _boardReadDbContext.Boards.Find(e => e.ProjectId == context.Message.Id).ToListAsync();
-
-            foreach (var board in boards)
-            {
-                board.ProjectName = context.Message.Name;
-                board.SetAsUpdated();
-                await _boardReadDbContext.Boards.ReplaceOneAsync(p => p.Id == board.Id, board, new ReplaceOptions() { IsUpsert = false });
-            }
+            board.ProjectName = context.Message.Name;
+            board.SetAsUpdated();
+            await _boardReadDbContext.Boards.ReplaceOneAsync(p => p.Id == board.Id, board, new ReplaceOptions() { IsUpsert = false });
         }
     }
 }

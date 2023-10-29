@@ -14,58 +14,57 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Identity.Domain.Entities;
 using TaskoMask.Services.Identity.Domain.Events;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.UpdateUser
+namespace TaskoMask.Services.Identity.Application.UseCases.UpdateUser;
+
+public class UpdateUserUseCase : BaseCommandHandler, IRequestHandler<UpdateUserRequest, CommandResult>
 {
-    public class UpdateUserUseCase : BaseCommandHandler, IRequestHandler<UpdateUserRequest, CommandResult>
+    private readonly UserManager<User> _userManager;
+    private readonly INotificationHandler _notifications;
+
+    /// <summary>
+    ///
+    /// </summary>
+    public UpdateUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications)
+        : base(messageBus, inMemoryBus)
     {
-        private readonly UserManager<User> _userManager;
-        private readonly INotificationHandler _notifications;
+        _userManager = userManager;
+        _notifications = notifications;
+    }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public UpdateUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications)
-            : base(messageBus, inMemoryBus)
+    /// <summary>
+    ///
+    /// </summary>
+    public async Task<CommandResult> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
+    {
+        var user = await _userManager.FindByNameAsync(request.OldEmail);
+        if (user == null)
+            throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.User);
+
+        user.Email = request.NewEmail;
+        user.UserName = request.NewEmail;
+
+        var result = await _userManager.UpdateAsync(user);
+        if (!result.Succeeded)
         {
-            _userManager = userManager;
-            _notifications = notifications;
+            NotifyValidationErrors(result);
+            throw new ApplicationException(ContractsMessages.Update_Failed);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public async Task<CommandResult> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
-        {
-            var user = await _userManager.FindByNameAsync(request.OldEmail);
-            if (user == null)
-                throw new ApplicationException(ContractsMessages.Data_Not_exist, DomainMetadata.User);
+        await PublishDomainEventsAsync(new UserUpdatedEvent(user.Id, user.Email));
 
-            user.Email = request.NewEmail;
-            user.UserName = request.NewEmail;
+        await PublishIntegrationEventAsync(new UserUpdated(user.Email));
 
-            var result = await _userManager.UpdateAsync(user);
-            if (!result.Succeeded)
-            {
-                NotifyValidationErrors(result);
-                throw new ApplicationException(ContractsMessages.Update_Failed);
-            }
+        return CommandResult.Create(ContractsMessages.Update_Success, user.Id);
+    }
 
-            await PublishDomainEventsAsync(new UserUpdatedEvent(user.Id, user.Email));
+    /// <summary>
+    ///
+    /// </summary>
+    private void NotifyValidationErrors(IdentityResult identityResult)
+    {
+        var errors = identityResult.Errors.Select(e => e.Description).ToList();
 
-            await PublishIntegrationEventAsync(new UserUpdated(user.Email));
-
-            return CommandResult.Create(ContractsMessages.Update_Success, user.Id);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        private void NotifyValidationErrors(IdentityResult identityResult)
-        {
-            var errors = identityResult.Errors.Select(e => e.Description).ToList();
-
-            foreach (var error in errors)
-                _notifications.Add(this.GetType().Name, error);
-        }
+        foreach (var error in errors)
+            _notifications.Add(GetType().Name, error);
     }
 }

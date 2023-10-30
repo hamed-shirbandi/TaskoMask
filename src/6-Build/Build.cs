@@ -113,7 +113,7 @@ internal class Build : NukeBuild
     /// </summary>
     private Target Lint =>
         _ =>
-            _.DependsOn(Compile)
+            _.DependsOn(Compile, RestoreDotNetTools)
                 .Executes(() =>
                 {
                     // Only on local we want to apply linting changes to the source code
@@ -181,7 +181,7 @@ internal class Build : NukeBuild
     /// </summary>
     private Target RunMutationTests =>
         _ =>
-            _.DependsOn(RunUnitTests, RestoreDotNetTools)
+            _.DependsOn(RunUnitTests)
                 .Executes(() =>
                 {
                     //It will add dashboard reporter for CI

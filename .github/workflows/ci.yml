@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: ./build.ps1 Compile
       - name: Lint Check
-        run: ./build.ps1 LintCheck --skip Compile
+        run: ./build.ps1 LintCheck --skip lint
       - name: Unit Test
         run: ./build.ps1 RunUnitTests --skip LintCheck
       - name: Mutation Test

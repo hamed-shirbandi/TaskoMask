@@ -24,6 +24,6 @@ public class UpdateOrganizationEndpoint : BaseApiController
     [Route("organizations/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateOrganizationDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateOrganizationRequest>(new(id: input.Id, name: input.Name, description: input.Description));
+        return await _inMemoryBus.SendCommand<UpdateOrganizationRequest>(new(id: id, name: input.Name, description: input.Description));
     }
 }

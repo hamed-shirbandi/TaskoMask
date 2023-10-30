@@ -24,6 +24,6 @@ public class UpdateBoardEndpoint : BaseApiController
     [Route("boards/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateBoardDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateBoardRequest>(new(id: input.Id, name: input.Name, description: input.Description));
+        return await _inMemoryBus.SendCommand<UpdateBoardRequest>(new(id: id, name: input.Name, description: input.Description));
     }
 }

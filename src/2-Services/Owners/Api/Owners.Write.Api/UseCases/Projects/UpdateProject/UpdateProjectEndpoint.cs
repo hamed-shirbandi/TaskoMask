@@ -24,6 +24,6 @@ public class UpdateProjectEndpoint : BaseApiController
     [Route("projects/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateProjectDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateProjectRequest>(new(id: input.Id, name: input.Name, description: input.Description));
+        return await _inMemoryBus.SendCommand<UpdateProjectRequest>(new(id: id, name: input.Name, description: input.Description));
     }
 }

@@ -24,6 +24,6 @@ public class UpdateCardEndpoint : BaseApiController
     [Route("cards/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateCardDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateCardRequest>(new(id: input.Id, name: input.Name, type: input.Type));
+        return await _inMemoryBus.SendCommand<UpdateCardRequest>(new(id: id, name: input.Name, type: input.Type));
     }
 }

@@ -5,7 +5,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>TaskoMask.Build</AssemblyName>
 		<RootNamespace>TaskoMask.Build</RootNamespace>
-		<NoWarn>CS0649;CS0169;CA1050;CA1822;CA2211;IDE1006</NoWarn>
+		<NoWarn>IDE0051;CS0649;CS0169;CA1050;CA1822;CA2211;IDE1006</NoWarn>
 		<NukeTelemetryVersion>1</NukeTelemetryVersion>
 		<IsPackable>false</IsPackable>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>

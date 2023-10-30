@@ -13,6 +13,11 @@ using static Nuke.Common.Tools.NuGet.NuGetPackSettingsExtensions;
 
 internal class Build : NukeBuild
 {
+    /// <summary>
+    /// It will be run when you run the nuke command without any target
+    /// The best practice is to always run it before pushing the changes to source
+    /// Run directyly : cmd> nuke
+    /// </summary>
     public static int Main() => Execute<Build>(x => x.RunMutationTests);
 
     [Parameter]
@@ -24,6 +29,10 @@ internal class Build : NukeBuild
     [Parameter]
     private readonly AbsolutePath TestResultDirectory = RootDirectory + "/.nuke/Artifacts/Test-Results/";
 
+    /// <summary>
+    /// I just logs some information
+    /// Run directyly : cmd> nuke LogInformation
+    /// </summary>
     private Target LogInformation =>
         _ =>
             _.Executes(() =>
@@ -34,6 +43,10 @@ internal class Build : NukeBuild
                 Log.Information($"TestResultDirectory : {TestResultDirectory}");
             });
 
+    /// <summary>
+    /// I prepare the build artifacts
+    /// Run directyly : cmd> nuke Preparation
+    /// </summary>
     private Target Preparation =>
         _ =>
             _.DependsOn(LogInformation)
@@ -42,6 +55,11 @@ internal class Build : NukeBuild
                     TestResultDirectory.CreateOrCleanDirectory();
                 });
 
+    /// <summary>
+    /// It will restore all the dotnet tools mentioned in ./.config/dotnet-tools.json
+    /// We use those tools in the following (like stryker and csharpier)
+    /// Run directyly : cmd> nuke RestoreDotNetTools
+    /// </summary>
     private Target RestoreDotNetTools =>
         _ =>
             _.Executes(() =>
@@ -49,6 +67,10 @@ internal class Build : NukeBuild
                 DotNet(arguments: "tool restore");
             });
 
+    /// <summary>
+    /// It will clean the solution
+    /// Run directyly : cmd> nuke Clean
+    /// </summary>
     private Target Clean =>
         _ =>
             _.DependsOn(Preparation)
@@ -57,6 +79,10 @@ internal class Build : NukeBuild
                     DotNetClean();
                 });
 
+    /// <summary>
+    /// It will restore all the nuget packages
+    /// Run directyly : cmd> nuke Restore
+    /// </summary>
     private Target Restore =>
         _ =>
             _.DependsOn(Clean)
@@ -65,6 +91,10 @@ internal class Build : NukeBuild
                     DotNetRestore(a => a.SetProjectFile(Solution));
                 });
 
+    /// <summary>
+    /// It will Compile the solution
+    /// Run directyly : cmd> nuke Compile
+    /// </summary>
     private Target Compile =>
         _ =>
             _.DependsOn(Restore)
@@ -73,19 +103,37 @@ internal class Build : NukeBuild
                     DotNetBuild(a => a.SetProjectFile(Solution).SetNoRestore(true).SetConfiguration(Configuration));
                 });
 
+    /// <summary>
+    /// It will lint the source code based on the rules specified in .editorconfig and csharpier
+    /// It will run csharpier command to apply all the csharpier default rules (we can not change them)
+    /// Then it will run dotnet format command to apply all the rules based on .editorconfig
+    /// If there are any violations, it will try to fix them automatically. But some of them like namming rules should be done manualy
+    /// In that case it will show you the file path and the reason of failure.
+    /// Run directyly : cmd> nuke Lint
+    /// </summary>
     private Target Lint =>
         _ =>
             _.DependsOn(Compile)
                 .Executes(() =>
                 {
+                    // Only on local we want to apply linting changes to the source code
+                    if (!IsLocalBuild)
+                        return;
+
                     DotNet("csharpier .");
-                    DotNet("format style --verbosity diagnostic");
+                    DotNet("format style  --verbosity diagnostic");
                     DotNet("format analyzers --verbosity diagnostic");
                 });
 
+    /// <summary>
+    /// It is almost the same as Lint but in this step, it only checks if there is still any rule violation or not.
+    /// It doesn't apply any change to the source code.
+    /// If there is any violation, it will break the build and log the reason
+    /// Run directyly : cmd> nuke LintCheck
+    /// </summary>
     private Target LintCheck =>
         _ =>
-            _.DependsOn(Compile)
+            _.DependsOn(Lint)
                 .Executes(() =>
                 {
                     DotNet("csharpier --check .");
@@ -95,6 +143,10 @@ internal class Build : NukeBuild
                     DotNet("format analyzers --verify-no-changes --verbosity diagnostic");
                 });
 
+    /// <summary>
+    /// It will run all the unit tests
+    /// Run directyly : cmd> nuke RunUnitTests
+    /// </summary>
     private Target RunUnitTests =>
         _ =>
             _.DependsOn(LintCheck)
@@ -123,6 +175,10 @@ internal class Build : NukeBuild
                     );
                 });
 
+    /// <summary>
+    /// It will run mutation testing against our unit tests
+    /// Run directyly : cmd> nuke RunMutationTests
+    /// </summary>
     private Target RunMutationTests =>
         _ =>
             _.DependsOn(RunUnitTests, RestoreDotNetTools)

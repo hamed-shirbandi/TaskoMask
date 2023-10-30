@@ -4,11 +4,11 @@ root = true
 # C# files
 [*.cs]
 
-# Here we set all rule violations as compile errors
+# Here we set all microsoft's IDExxxx rule violations as compile errors
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/
 dotnet_analyzer_diagnostic.category-Style.severity = error
 
 # Here we ignore some rule violdations that they are not really important for us
-# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/
 dotnet_diagnostic.IDE0008.severity = silent # Explicit type, not var
 dotnet_diagnostic.IDE0010.severity = silent # missing cases to "case" switch expression
 dotnet_diagnostic.IDE0039.severity = silent # lambda vs local function
@@ -19,25 +19,18 @@ dotnet_diagnostic.IDE0058.severity = silent # Expression value is never used
 dotnet_diagnostic.IDE0072.severity = silent # missing cases to "=>" switch expression
 dotnet_diagnostic.IDE0090.severity = silent # Use implicit new
 dotnet_diagnostic.IDE0270.severity = silent # Simplify null check
-dotnet_diagnostic.IDE0005.severity = error # Remove unnecessary using directives (using CS8019 instead)
-
-
-dotnet_diagnostic.IDE0060.severity = silent # Remove unused parameter
-dotnet_diagnostic.IDE1006.severity = error # Naming rule violation
 dotnet_diagnostic.IDE0130.severity = silent # Namespace does not match folder structure (using dotnet_style_namespace_match_folder instead)
-
-
 # https://github.com/dotnet/aspnetcore/issues/47912
-dotnet_diagnostic.IDE0005.severity = none # bugfix
+ dotnet_diagnostic.IDE0005.severity = none # Remove unnecessary using directives (using CS8019 instead)
+ dotnet_diagnostic.CS8019.severity = error # Remove unnecessary using directives
 
-dotnet_diagnostic.IDE0009.severity = warning
-
+ 
 # Here we set some rules for unused codes (classes, methods, parameters, etc.)
-dotnet_diagnostic.CA1801.severity = error
-dotnet_diagnostic.CA1804.severity = error
-dotnet_diagnostic.CA1811.severity = error
-dotnet_diagnostic.CA1823.severity = error
-dotnet_diagnostic.CS8019.severity = error # Remove unnecessary using directives
+dotnet_diagnostic.CA1801.severity = error # Review unused parameters
+dotnet_diagnostic.CA1804.severity = error # Remove unused locals
+dotnet_diagnostic.CA1811.severity = error # Avoid uncalled private code
+dotnet_diagnostic.CA1823.severity = error # Avoid unused private fields
+
 
 #### Core EditorConfig Options ####
 

@@ -25,11 +25,6 @@ public class DeleteCommentTests : TestsBaseFixture
 
     public DeleteCommentTests() { }
 
-    public DeleteCommentTests(DeleteCommentUseCase deleteCommentUseCase)
-    {
-        this.deleteCommentUseCase = deleteCommentUseCase;
-    }
-
     #endregion
 
     #region Test Methods

@@ -1,20 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-	  <AssemblyName>TaskoMask.Tests.Acceptance.UI</AssemblyName>
-	  <RootNamespace>TaskoMask.Tests.Acceptance.UI</RootNamespace>
-	  <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AssemblyName>TaskoMask.Tests.Acceptance.UI</AssemblyName>
+		<RootNamespace>TaskoMask.Tests.Acceptance.UI</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Tests.Acceptance.Core\Tests.Acceptance.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Tests.Acceptance.Core\Tests.Acceptance.Core.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-	  <PackageReference Include="Selenium.WebDriver" Version="4.1.1" />
-	  <PackageReference Include="Selenium.WebDriver.WaitExtensions" Version="2.0.0" />
+	<ItemGroup>
+		<PackageReference Include="Selenium.WebDriver" Version="4.1.1" />
+		<PackageReference Include="Selenium.WebDriver.WaitExtensions" Version="2.0.0" />
 
-  </ItemGroup>
+	</ItemGroup>
 
 </Project>

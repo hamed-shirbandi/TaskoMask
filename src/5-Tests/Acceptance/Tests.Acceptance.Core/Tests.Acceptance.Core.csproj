@@ -4,7 +4,6 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>TaskoMask.Tests.Acceptance.Core</AssemblyName>
 		<RootNamespace>TaskoMask.Tests.Acceptance.Core</RootNamespace>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Suzianna.Core" Version="1.1.0" />

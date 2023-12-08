@@ -6,7 +6,6 @@
 		<AssemblyName>TaskoMask.Services.Owners.Write.Tests.Integration</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Owners.Write.Tests.Integration</RootNamespace>
 		<IsPackable>false</IsPackable>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

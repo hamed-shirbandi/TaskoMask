@@ -5,13 +5,12 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>TaskoMask.BuildingBlocks.Web.MVC</AssemblyName>
 		<RootNamespace>TaskoMask.BuildingBlocks.Web.MVC</RootNamespace>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Helpers\**" />
-	  <EmbeddedResource Remove="Helpers\**" />
-	  <None Remove="Helpers\**" />
+		<Compile Remove="Helpers\**" />
+		<EmbeddedResource Remove="Helpers\**" />
+		<None Remove="Helpers\**" />
 	</ItemGroup>
 
 	<ItemGroup>

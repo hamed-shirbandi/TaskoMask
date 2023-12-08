@@ -9,7 +9,6 @@
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..\..\..</DockerfileContext>
 		<DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -21,7 +20,7 @@
 		<DocumentationFile>bin\Debug\net6.0\TaskoMask.ApiGateways.UserPanel.Aggregator.xml</DocumentationFile>
 		<NoWarn>1701;1702;1591</NoWarn>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 		<PackageReference Include="Grpc.Tools" Version="2.50.0">
@@ -29,7 +28,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\base.proto" GrpcServices="Client"/>
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_organizations_by_owner_id.proto" GrpcServices="Client"/>
@@ -43,12 +42,12 @@
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_comments_by_task_id.proto" GrpcServices="Client" />
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_activities_by_task_id.proto" GrpcServices="Client" />
 		<Protobuf Include="..\..\..\1-BuildingBlocks\Contracts\Protos\get_tasks_by_card_id.proto" GrpcServices="Client" />
-		
+
 
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
 	</ItemGroup>
-	
+
 </Project>

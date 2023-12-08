@@ -4,7 +4,6 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>TaskoMask.BuildingBlocks.Domain</AssemblyName>
 		<RootNamespace>TaskoMask.BuildingBlocks.Domain</RootNamespace>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="MediatR" Version="9.0.0" />
@@ -14,6 +13,6 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Contracts\Contracts.csproj" />
+		<ProjectReference Include="..\Contracts\Contracts.csproj" />
 	</ItemGroup>
 </Project>

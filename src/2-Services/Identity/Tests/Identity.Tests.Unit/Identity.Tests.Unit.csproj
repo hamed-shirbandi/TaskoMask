@@ -4,7 +4,6 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>TaskoMask.Services.Identity.Tests.Unit</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Identity.Tests.Unit</RootNamespace>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -20,8 +19,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
-	  <ProjectReference Include="..\..\Api\Identity.Api\Identity.Api.csproj" />
+		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Test\Test.csproj" />
+		<ProjectReference Include="..\..\Api\Identity.Api\Identity.Api.csproj" />
 	</ItemGroup>
 
 </Project>

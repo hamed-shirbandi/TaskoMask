@@ -8,7 +8,6 @@
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..\..\..\..</DockerfileContext>
 		<DockerComposeProjectPath>..\..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -29,9 +28,9 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
 	</ItemGroup>
-	
+
 </Project>

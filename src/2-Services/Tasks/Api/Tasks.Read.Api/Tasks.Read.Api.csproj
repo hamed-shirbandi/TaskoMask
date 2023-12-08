@@ -8,7 +8,6 @@
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..\..\..\..</DockerfileContext>
 		<DockerComposeProjectPath>..\..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -28,7 +27,7 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<Protobuf Include="..\..\..\..\1-BuildingBlocks\Contracts\Protos\base.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_task_by_id.proto" GrpcServices="Server" />
@@ -38,10 +37,10 @@
 		<Protobuf Include="..\..\..\..\1-BuildingBlocks\Contracts\Protos\get_card_by_id.proto" GrpcServices="Client" />
 
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Infrastructure\Infrastructure.csproj" />
 		<ProjectReference Include="..\..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
 	</ItemGroup>
-	
+
 </Project>

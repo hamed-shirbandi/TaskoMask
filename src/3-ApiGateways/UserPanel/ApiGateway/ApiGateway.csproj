@@ -9,7 +9,6 @@
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..\..\..</DockerfileContext>
 		<DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -20,7 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
+		<ProjectReference Include="..\..\..\1-BuildingBlocks\Web.MVC\Web.MVC.csproj" />
 	</ItemGroup>
 
 </Project>

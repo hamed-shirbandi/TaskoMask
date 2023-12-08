@@ -7,7 +7,6 @@
 		<RootNamespace>TaskoMask.Clients.UserPanel</RootNamespace>
 		<DockerComposeProjectPath>..\..\7-Docker\docker-compose.dcproj</DockerComposeProjectPath>
 		<UserSecretsId>fdd4685f-7b2a-4c80-ac60-b3d2c26c081e</UserSecretsId>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

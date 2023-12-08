@@ -10,7 +10,6 @@
 		<RootNamespace>TaskoMask.Clients.Website</RootNamespace>
 		<DockerfileContext>..\..\..</DockerfileContext>
 		<DockerComposeProjectPath>..\..\7-Docker\docker-compose.dcproj</DockerComposeProjectPath>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

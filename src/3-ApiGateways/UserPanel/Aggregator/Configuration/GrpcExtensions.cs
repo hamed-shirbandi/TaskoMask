@@ -1,5 +1,6 @@
 ﻿using static TaskoMask.BuildingBlocks.Contracts.Protos.GetActivitiesByTaskIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardByIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByOrganizationIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByProjectIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetCardsByBoardIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetCommentsByTaskIdGrpcService;
@@ -39,6 +40,11 @@ public static class GrpcExtensions
         });
 
         services.AddGrpcClient<GetBoardsByProjectIdGrpcServiceClient>(options =>
+        {
+            options.Address = new Uri(configuration["Url:Board-Read-Service"]);
+        });
+
+        services.AddGrpcClient<GetBoardsByOrganizationIdGrpcServiceClient>(options =>
         {
             options.Address = new Uri(configuration["Url:Board-Read-Service"]);
         });

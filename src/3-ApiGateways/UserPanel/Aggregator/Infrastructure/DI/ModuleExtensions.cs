@@ -1,4 +1,4 @@
-﻿using TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsByOwnerId;
+﻿using TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById;
 using TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.Mapper;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
@@ -19,7 +19,7 @@ public static class ModuleExtensions
         services.AddBuildingBlocksInfrastructure(
             configuration,
             consumerAssemblyMarkerType: typeof(Program),
-            handlerAssemblyMarkerType: typeof(GetOrganizationsByOwnerIdHandler)
+            handlerAssemblyMarkerType: typeof(GetBoardByIdHandler)
         );
 
         services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));

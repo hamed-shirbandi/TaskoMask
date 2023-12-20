@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Contracts.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-public class BaseApiController : Controller
+public abstract class BaseApiController : Controller
 {
     #region Fields
 

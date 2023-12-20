@@ -50,11 +50,12 @@ services:
     container_name: sql
     image: mcr.microsoft.com/mssql/server
     restart: unless-stopped
+    user: root
     environment:
-        SA_PASSWORD: "Your_password123"
-        ACCEPT_EULA: "Y"
-    networks:
-      - taskomask-network
+      SA_PASSWORD: "Your_pass_!@2#33"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
     volumes:
       - sql:/var/opt/mssql/data
 
@@ -77,7 +78,7 @@ services:
       RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
-      dockerfile: src/2-Services/Owners/Read/Api/Owners.Read.Api/Dockerfile
+      dockerfile: src/2-Services/Owners/Api/Owners.Read.Api/Dockerfile
     ports:
       - 5020:80
       - 5021:443
@@ -98,7 +99,7 @@ services:
       RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
-      dockerfile: src/2-Services/Owners/Read/Api/Owners.Read.Api/Dockerfile
+      dockerfile: src/2-Services/Owners/Api/Owners.Read.Api/Dockerfile
     ports:
       - 5018:80
       - 5019:443
@@ -119,7 +120,7 @@ services:
       RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
-      dockerfile: src/2-Services/Boards/Read/Api/Boards.Read.Api/Dockerfile
+      dockerfile: src/2-Services/Boards/Api/Boards.Read.Api/Dockerfile
     ports:
       - 5024:80
       - 5025:443
@@ -140,7 +141,7 @@ services:
       RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
-      dockerfile: src/2-Services/Boards/Read/Api/Boards.Write.Api/Dockerfile
+      dockerfile: src/2-Services/Boards/Api/Boards.Write.Api/Dockerfile
     ports:
       - 5022:80
       - 5023:443
@@ -161,7 +162,7 @@ services:
       RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
-      dockerfile: src/2-Services/Tasks/Read/Api/Tasks.Read.Api/Dockerfile
+      dockerfile: src/2-Services/Tasks/Api/Tasks.Read.Api/Dockerfile
     ports:
       - 5028:80
       - 5029:443
@@ -182,7 +183,7 @@ services:
       RabbitMQ__Host: "rabbitmq"
     build:
       context: ../..
-      dockerfile: src/2-Services/Tasks/Read/Api/Tasks.Write.Api/Dockerfile
+      dockerfile: src/2-Services/Tasks/Api/Tasks.Write.Api/Dockerfile
     ports:
       - 5026:80
       - 5027:443

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Notifications;
-using TaskoMask.Services.Identity.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
 using Xunit;
 
 namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures;

@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
-using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
+using TaskoMask.Services.Identity.Api.UseCases.UserLogin;
 using TaskoMask.Services.Identity.Tests.Integration.Fixtures;
 using TaskoMask.Services.Identity.Tests.Integration.TestData;
 using Xunit;

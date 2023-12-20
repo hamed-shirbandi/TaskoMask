@@ -1,10 +1,10 @@
 ﻿using TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsByOwnerId;
-using TaskoMask.ApiGateways.UserPanel.Aggregator.Mapper;
+using TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.Mapper;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 
-namespace TaskoMask.ApiGateways.UserPanel.Aggregator.DI;
+namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.DI;
 
 /// <summary>
 ///

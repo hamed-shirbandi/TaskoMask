@@ -4,7 +4,7 @@ using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
-using TaskoMask.Services.Identity.Application.UseCases.UpdateUser;
+using TaskoMask.Services.Identity.Api.UseCases.UpdateUser;
 
 namespace TaskoMask.Services.Identity.Api.Consumers;
 

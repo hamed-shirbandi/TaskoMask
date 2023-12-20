@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Application.Services;
-using TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner;
+using TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 
 namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI;
 

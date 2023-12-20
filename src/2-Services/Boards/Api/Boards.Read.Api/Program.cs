@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using TaskoMask.Services.Boards.Read.Api.Configuration;
 
+namespace TaskoMask.Services.Boards.Read.Api;
+
 internal class Program
 {
     private static void Main(string[] args)

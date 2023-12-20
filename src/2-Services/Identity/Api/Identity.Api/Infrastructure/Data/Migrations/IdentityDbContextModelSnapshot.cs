@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
-using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
 
 #nullable disable
 

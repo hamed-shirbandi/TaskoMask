@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Test.TestBase;
-using TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
-using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.DI;
+using TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
 
 namespace TaskoMask.Services.Identity.Tests.Integration.Fixtures;
 

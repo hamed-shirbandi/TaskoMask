@@ -11,10 +11,10 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Resources;
-using TaskoMask.Services.Identity.Domain.Entities;
-using TaskoMask.Services.Identity.Domain.Events;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Domain.Events;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.UpdateUser;
+namespace TaskoMask.Services.Identity.Api.UseCases.UpdateUser;
 
 public class UpdateUserUseCase : BaseCommandHandler, IRequestHandler<UpdateUserRequest, CommandResult>
 {

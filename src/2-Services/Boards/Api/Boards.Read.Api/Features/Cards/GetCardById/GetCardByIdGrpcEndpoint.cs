@@ -3,9 +3,8 @@ using Grpc.Core;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
-using TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById;
 
-namespace TaskoMask.Services.Cards.Read.Api.Features.Cards.GetCardById;
+namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById;
 
 public class GetCardByIdGrpcEndpoint : GetCardByIdGrpcService.GetCardByIdGrpcServiceBase
 {

@@ -10,7 +10,7 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 
-namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner;
+namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 
 public class RegiserOwnerUseCase : BaseCommandHandler, IRequestHandler<RegiserOwnerRequest, CommandResult>
 {

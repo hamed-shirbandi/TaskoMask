@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.UpdateUser;
+namespace TaskoMask.Services.Identity.Api.UseCases.UpdateUser;
 
 public class UpdateUserRequest : BaseCommand
 {

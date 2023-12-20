@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MonoApi.Services.Afrr.Activations.Api.Helpers;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
+using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
-namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 
 /// <summary>
 ///
@@ -42,6 +42,8 @@ public static class WebApiConfiguration
         services.AddCors();
 
         services.AddMetrics(configuration);
+
+        services.AddGlobalExceptionHandler();
     }
 
     /// <summary>
@@ -89,5 +91,13 @@ public static class WebApiConfiguration
     private static void UseGlobalExceptionHandler(this IApplicationBuilder app)
     {
         app.UseMiddleware<HttpGlobalExceptionHandler>();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    private static void AddGlobalExceptionHandler(this IServiceCollection services)
+    {
+        services.AddTransient<HttpGlobalExceptionHandler>();
     }
 }

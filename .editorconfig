@@ -19,7 +19,6 @@ dotnet_diagnostic.IDE0058.severity = silent # Expression value is never used
 dotnet_diagnostic.IDE0072.severity = silent # missing cases to "=>" switch expression
 dotnet_diagnostic.IDE0090.severity = silent # Use implicit new
 dotnet_diagnostic.IDE0270.severity = silent # Simplify null check
-dotnet_diagnostic.IDE0130.severity = silent # Namespace does not match folder structure (using dotnet_style_namespace_match_folder instead)
 # https://github.com/dotnet/aspnetcore/issues/47912
  dotnet_diagnostic.IDE0005.severity = none # Remove unnecessary using directives (using CS8019 instead)
  dotnet_diagnostic.CS8019.severity = error # Remove unnecessary using directives

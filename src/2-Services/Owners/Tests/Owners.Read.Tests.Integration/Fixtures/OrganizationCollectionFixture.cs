@@ -1,7 +1,7 @@
 ﻿using TaskoMask.Services.Owners.Read.Api.Domain;
 using Xunit;
 
-namespace TaskoMask.Services.Owners.Read.Tests.Integration.Fixtures;
+namespace TaskoMask.Services.Owners.Read.IntegrationTests.Fixtures;
 
 /// <summary>
 ///

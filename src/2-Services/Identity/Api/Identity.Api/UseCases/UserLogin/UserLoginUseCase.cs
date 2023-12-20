@@ -7,10 +7,10 @@ using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
 using TaskoMask.Services.Identity.Api.Resources;
-using TaskoMask.Services.Identity.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin;
+namespace TaskoMask.Services.Identity.Api.UseCases.UserLogin;
 
 public class UserLoginUseCase : BaseQueryHandler, IRequestHandler<UserLoginRequest, Result>
 {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper;
+namespace TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.Mapper;
 
 public class MappingProfile : Profile
 {

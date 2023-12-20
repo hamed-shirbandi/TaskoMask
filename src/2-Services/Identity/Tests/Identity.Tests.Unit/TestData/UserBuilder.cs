@@ -1,4 +1,4 @@
-﻿using TaskoMask.Services.Identity.Domain.Entities;
+﻿using TaskoMask.Services.Identity.Api.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Tests.Unit.TestData;
 

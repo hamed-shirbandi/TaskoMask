@@ -4,12 +4,11 @@ using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.Coverlet;
 using Nuke.Common.Tools.DotNet;
-using Nuke.Common.Tools.GitVersion;
-using Nuke.Common.Tools.NuGet;
 using Serilog;
 using System.Linq;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using static Nuke.Common.Tools.NuGet.NuGetPackSettingsExtensions;
+
+namespace TaskoMask.Build;
 
 internal class Build : NukeBuild
 {

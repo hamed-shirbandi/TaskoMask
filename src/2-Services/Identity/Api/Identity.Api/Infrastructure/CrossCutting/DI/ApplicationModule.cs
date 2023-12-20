@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Application.Services;
-using TaskoMask.Services.Identity.Application.UseCases.UpdateUser;
+using TaskoMask.Services.Identity.Api.UseCases.UpdateUser;
 
-namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
+namespace TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.DI;
 
 /// <summary>
 ///

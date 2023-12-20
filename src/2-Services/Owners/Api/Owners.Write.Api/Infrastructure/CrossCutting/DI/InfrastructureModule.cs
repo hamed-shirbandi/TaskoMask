@@ -8,7 +8,7 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.DbContext;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.Repositories;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.Services;
-using TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner;
+using TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 
 namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI;
 

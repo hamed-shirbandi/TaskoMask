@@ -1,5 +1,5 @@
 using Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
 namespace TaskoMask.Clients.Website.Configuration;

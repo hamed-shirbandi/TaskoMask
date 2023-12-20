@@ -1,5 +1,7 @@
 using TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration;
 
+namespace TaskoMask.ApiGateways.UserPanel.Aggregator;
+
 internal class Program
 {
     private static void Main(string[] args)

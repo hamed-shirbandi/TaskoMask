@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+namespace TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
 
 /// <summary>
 /// Only used by EF Tooling

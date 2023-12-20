@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.Services.Identity.Domain.Entities;
-using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.AspNetIdentity;
+namespace TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.AspNetIdentity;
 
 internal static class AspNetIdentityExtensions
 {

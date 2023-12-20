@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Serilog;
-using TaskoMask.BuildingBlocks.Web.Grpc.Configuration;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Grpc;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DI;

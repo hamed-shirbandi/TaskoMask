@@ -1,7 +1,7 @@
 ﻿using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 
-namespace TaskoMask.Services.Identity.Domain.Events;
+namespace TaskoMask.Services.Identity.Api.Domain.Events;
 
 public class UserRegisteredEvent : DomainEvent
 {

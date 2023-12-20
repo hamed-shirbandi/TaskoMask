@@ -3,9 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
-using TaskoMask.Services.Identity.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
 
-namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+namespace TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
 
 /// <summary>
 ///

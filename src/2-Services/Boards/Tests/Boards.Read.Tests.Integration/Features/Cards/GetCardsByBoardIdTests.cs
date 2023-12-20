@@ -4,7 +4,7 @@ using TaskoMask.Services.Boards.Read.Tests.Integration.Fixtures;
 using TaskoMask.Services.Boards.Read.Tests.Integration.TestData;
 using Xunit;
 
-namespace TaskoMask.Services.Boards.Read.Tests.Integration.Features.Card;
+namespace TaskoMask.Services.Boards.Read.Tests.Integration.Features.Cards;
 
 [Collection(nameof(CardCollectionFixture))]
 public class GetCardsByBoardIdTests

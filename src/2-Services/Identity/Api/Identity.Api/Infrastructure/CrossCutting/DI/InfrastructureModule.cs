@@ -3,12 +3,12 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
-using TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
-using TaskoMask.Services.Identity.Infrastructure.CrossCutting.AspNetIdentity;
-using TaskoMask.Services.Identity.Infrastructure.CrossCutting.Mapper;
-using TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.AspNetIdentity;
+using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.Mapper;
+using TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Identity.Api.UseCases.RegisterUser;
 
-namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
+namespace TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.DI;
 
 /// <summary>
 ///

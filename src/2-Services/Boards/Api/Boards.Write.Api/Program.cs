@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using TaskoMask.Services.Boards.Write.Api.Configuration;
 
+namespace TaskoMask.Services.Boards.Write.Api;
+
 internal class Program
 {
     private static void Main(string[] args)

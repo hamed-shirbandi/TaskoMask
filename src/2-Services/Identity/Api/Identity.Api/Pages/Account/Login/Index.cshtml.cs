@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Web.MVC.Pages;
 using TaskoMask.Services.Identity.Api.Resources;
-using TaskoMask.Services.Identity.Application.UseCases.UserLogin;
+using TaskoMask.Services.Identity.Api.UseCases.UserLogin;
 
 namespace TaskoMask.Services.Identity.Api.Pages.Account.Login;
 

@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.UserLogin;
+namespace TaskoMask.Services.Identity.Api.UseCases.UserLogin;
 
 public class UserLoginRequest : BaseQuery<Result>
 {

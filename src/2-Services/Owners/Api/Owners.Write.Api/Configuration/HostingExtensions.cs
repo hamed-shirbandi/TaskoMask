@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Owners.Write.Api.Consumers;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI;

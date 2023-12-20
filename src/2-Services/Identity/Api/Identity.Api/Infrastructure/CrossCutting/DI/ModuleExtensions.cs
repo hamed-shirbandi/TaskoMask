@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace TaskoMask.Services.Identity.Infrastructure.CrossCutting.DI;
+namespace TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.DI;
 
 /// <summary>
 ///

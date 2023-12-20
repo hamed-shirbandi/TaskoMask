@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
-namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 
 /// <summary>
 ///

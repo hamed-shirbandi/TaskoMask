@@ -1,5 +1,7 @@
 using TaskoMask.Clients.Website.Configuration;
 
+namespace TaskoMask.Clients.Website;
+
 internal class Program
 {
     private static void Main(string[] args)

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSubstitute;
-using TaskoMask.Services.Identity.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Tests.Unit.Helpers;
 

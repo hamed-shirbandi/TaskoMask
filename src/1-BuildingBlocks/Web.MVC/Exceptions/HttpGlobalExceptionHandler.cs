@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Net;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
-namespace MonoApi.Services.Afrr.Activations.Api.Helpers;
+namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 
 public class HttpGlobalExceptionHandler : IMiddleware
 {

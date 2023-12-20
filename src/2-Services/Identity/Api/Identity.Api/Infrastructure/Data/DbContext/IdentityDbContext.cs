@@ -2,9 +2,10 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using TaskoMask.Services.Identity.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Infrastructure.Data.EntityMapping;
 
-namespace TaskoMask.Services.Identity.Infrastructure.Data.DbContext;
+namespace TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
 
 public class IdentityDbContext
     : IdentityDbContext<

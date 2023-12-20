@@ -3,7 +3,7 @@ using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
-namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner;
+namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 
 public class RegiserOwnerRequest : BaseCommand
 {

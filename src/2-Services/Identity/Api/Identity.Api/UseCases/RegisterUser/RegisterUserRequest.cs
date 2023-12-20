@@ -2,7 +2,7 @@
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
+namespace TaskoMask.Services.Identity.Api.UseCases.RegisterUser;
 
 public class RegisterUserRequest : BaseCommand
 {

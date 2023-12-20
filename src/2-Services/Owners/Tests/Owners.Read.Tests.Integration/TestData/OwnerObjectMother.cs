@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using TaskoMask.Services.Owners.Read.Api.Domain;
 
-namespace TaskoMask.Services.Owners.Read.Tests.Integration.TestData;
+namespace TaskoMask.Services.Owners.Read.IntegrationTests.TestData;
 
 internal static class OwnerObjectMother
 {

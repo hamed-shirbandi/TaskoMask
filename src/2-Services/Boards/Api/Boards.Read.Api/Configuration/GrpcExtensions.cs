@@ -6,8 +6,8 @@ using System;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByOrganizationId;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectId;
+using TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById;
 using TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardsByBoardId;
-using TaskoMask.Services.Cards.Read.Api.Features.Cards.GetCardById;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectByIdGrpcService;
 
 namespace TaskoMask.Services.Boards.Read.Api.Configuration;

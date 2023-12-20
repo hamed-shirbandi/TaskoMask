@@ -10,7 +10,7 @@ using TaskoMask.BuildingBlocks.Domain.Exceptions;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Events.Owners;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.ValueObjects.Owners;
-using TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner;
+using TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 using TaskoMask.Services.Owners.Write.Tests.Unit.Fixtures;
 using Xunit;
 

@@ -1,6 +1,6 @@
 using Serilog;
-using TaskoMask.ApiGateways.UserPanel.Aggregator.DI;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration;
+using TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.DI;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration;

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-using TaskoMask.Services.Identity.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Api.Configuration;
 

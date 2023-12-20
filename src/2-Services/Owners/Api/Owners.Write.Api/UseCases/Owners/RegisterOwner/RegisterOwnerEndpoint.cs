@@ -8,7 +8,7 @@ using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
-namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegiserOwner;
+namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 
 [Authorize("user-write-access")]
 [Tags("Owners")]

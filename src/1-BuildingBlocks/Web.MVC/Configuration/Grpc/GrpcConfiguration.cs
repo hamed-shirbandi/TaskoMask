@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 
-namespace TaskoMask.BuildingBlocks.Web.Grpc.Configuration;
+namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Grpc;
 
 /// <summary>
 ///

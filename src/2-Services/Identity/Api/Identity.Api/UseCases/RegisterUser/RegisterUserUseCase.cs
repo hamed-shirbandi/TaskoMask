@@ -10,11 +10,11 @@ using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
+using TaskoMask.Services.Identity.Api.Domain.Entities;
+using TaskoMask.Services.Identity.Api.Domain.Events;
 using TaskoMask.Services.Identity.Api.Resources;
-using TaskoMask.Services.Identity.Domain.Entities;
-using TaskoMask.Services.Identity.Domain.Events;
 
-namespace TaskoMask.Services.Identity.Application.UseCases.RegisterUser;
+namespace TaskoMask.Services.Identity.Api.UseCases.RegisterUser;
 
 public class RegisterUserUseCase : BaseCommandHandler, IRequestHandler<RegisterUserRequest, CommandResult>
 {

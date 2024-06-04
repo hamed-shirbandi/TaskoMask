@@ -19,6 +19,8 @@ public class MappingProfile : Profile
 
         CreateMap<Owner, GetOwnerDto>();
 
+        CreateMap<GetOrganizationReportGrpcResponse, OrganizationReportDto>();
+
         CreateMap<Organization, GetOrganizationDto>();
 
         CreateMap<GetOrganizationDto, GetOrganizationGrpcResponse>()

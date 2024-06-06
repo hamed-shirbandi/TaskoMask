@@ -75,15 +75,9 @@ public class GetOrganizationReportByIdHandler : BaseQueryHandler, IRequestHandle
         #endregion
 
         #region Board Reports
-        var boards = new List<GetBoardDto>();
-        var boardsGrpcCall = _getBoardsByOrganizationIdGrpcServiceClient.Handle(
-            new GetBoardsByOrganizationIdGrpcRequest { OrganizationId = organization.Id }
-        );
 
-        await foreach (var response in boardsGrpcCall.ResponseStream.ReadAllAsync())
-            boards.Add(_mapper.Map<GetBoardDto>(response));
-
-        organizationReportDto.BoardsCount = boards?.Count ?? 0;
+        var boards = (await GetBoardsAsync(organization.Id)).ToList();
+        organizationReportDto.BoardsCount = boards.Any() ? boards.Count : 0;
         #endregion
 
         #region Task Reports
@@ -196,6 +190,19 @@ public class GetOrganizationReportByIdHandler : BaseQueryHandler, IRequestHandle
             tasks.Add(_mapper.Map<GetTaskDto>(response));
 
         return tasks;
+    }
+
+    private async Task<IEnumerable<GetBoardDto>> GetBoardsAsync(string organizationId)
+    {
+        var boards = new List<GetBoardDto>();
+        var boardsGrpcCall = _getBoardsByOrganizationIdGrpcServiceClient.Handle(
+            new GetBoardsByOrganizationIdGrpcRequest { OrganizationId = organizationId }
+        );
+
+        await foreach (var response in boardsGrpcCall.ResponseStream.ReadAllAsync())
+            boards.Add(_mapper.Map<GetBoardDto>(response));
+
+        return boards;
     }
 
     private GetCardDto MapToCard(GetCardGrpcResponse cardGrpcResponse)

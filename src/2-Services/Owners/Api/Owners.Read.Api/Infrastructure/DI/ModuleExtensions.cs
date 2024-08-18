@@ -1,11 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
-using TaskoMask.Services.Owners.Read.Api.Consumers.Owners;
-using TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Owners.Read.Api.Infrastructure.Mapper;
 
@@ -23,11 +20,10 @@ public static class ModuleExtensions
     {
         services.AddBuildingBlocksInfrastructure(
             configuration,
-            consumerAssemblyMarkerType: typeof(OwnerRegisterationCompletedConsumer),
-            handlerAssemblyMarkerType: typeof(GetOwnerByIdHandler)
+            consumerAssemblyMarkerType: typeof(Program),
+            validatorAssemblyMarkerType: typeof(Program),
+            handlerAssemblyMarkerType: typeof(Program)
         );
-
-        services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
         services.AddMapper(typeof(MappingProfile));
 

@@ -5,7 +5,6 @@ using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.Services.Identity.Api.Consumers;
 using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.DI;
 
 namespace TaskoMask.Services.Identity.Api.Configuration;
@@ -21,7 +20,7 @@ internal static class HostingExtensions
 
         builder.Services.AddRazorPagesPreConfigured(builder.Configuration);
 
-        builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType: typeof(OwnerRegisteredConsumer));
+        builder.Services.AddModules(builder.Configuration);
 
         builder.Services.AddIdentityServer();
 

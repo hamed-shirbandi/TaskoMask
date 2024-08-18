@@ -50,7 +50,7 @@ public abstract class TestsBaseFixture : IntegrationTestsBase
 
         services.AddLogging();
 
-        services.AddModules(configuration, typeof(TestsBaseFixture));
+        services.AddModules(configuration);
 
         var serviceProvider = services.BuildServiceProvider();
 

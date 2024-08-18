@@ -8,7 +8,7 @@ using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.Extensions;
 
-namespace TaskoMask.BuildingBlocks.Application.Behaviors;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Behaviors;
 
 /// <summary>
 /// Automatic validation by checking data annotation and fluent validations (if any)
@@ -49,7 +49,7 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
         var isValidDataAnnotationValidation = ValidateDataAnnotationValidation(request);
 
         if (!isValidFluentValidation || !isValidDataAnnotationValidation)
-            throw new Exceptions.ValidationException();
+            throw new Application.Exceptions.ValidationException();
 
         return await next();
     }

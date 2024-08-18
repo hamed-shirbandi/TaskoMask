@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.Services.Owners.Write.Api.Consumers;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.DbContext;
 
@@ -18,7 +17,7 @@ internal static class HostingExtensions
     {
         builder.AddCustomSerilog();
 
-        builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType: typeof(UserRegisteredConsumer));
+        builder.Services.AddModules(builder.Configuration);
 
         builder.Services.AddWebApiPreConfigured(builder.Configuration);
 

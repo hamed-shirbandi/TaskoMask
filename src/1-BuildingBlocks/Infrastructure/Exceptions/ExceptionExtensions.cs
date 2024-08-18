@@ -1,7 +1,7 @@
 ﻿using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace TaskoMask.BuildingBlocks.Application.Exceptions;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Exceptions;
 
 public static class ExceptionExtensions
 {

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
@@ -22,10 +21,9 @@ public static class ModuleExtensions
         services.AddBuildingBlocksInfrastructure(
             configuration,
             consumerAssemblyMarkerType: typeof(Program),
-            handlerAssemblyMarkerType: typeof(Program)
+            handlerAssemblyMarkerType: typeof(Program),
+            validatorAssemblyMarkerType: typeof(Program)
         );
-
-        services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
         services.AddMapper(typeof(MappingProfile));
 

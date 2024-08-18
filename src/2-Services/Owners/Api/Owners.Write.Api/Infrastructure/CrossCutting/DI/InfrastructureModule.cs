@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
@@ -8,7 +7,6 @@ using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.DbContext;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.Repositories;
 using TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.Services;
-using TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 
 namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI;
 
@@ -20,9 +18,14 @@ public static class InfrastructureModule
     /// <summary>
     ///
     /// </summary>
-    public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
+    public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType, typeof(RegiserOwnerUseCase));
+        services.AddBuildingBlocksInfrastructure(
+            configuration,
+            consumerAssemblyMarkerType: typeof(Program),
+            handlerAssemblyMarkerType: typeof(Program),
+            validatorAssemblyMarkerType: typeof(Program)
+        );
 
         services.AddMongoDbContext(configuration);
 

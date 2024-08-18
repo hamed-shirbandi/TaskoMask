@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Contracts.Exceptions;
 
-namespace TaskoMask.BuildingBlocks.Application.Exceptions;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Exceptions;
 
 /// <summary>
 /// Handle all managed exceptions (DomainException,ApplicationException,ValidationException)

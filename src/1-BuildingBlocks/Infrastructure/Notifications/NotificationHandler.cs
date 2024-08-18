@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TaskoMask.BuildingBlocks.Application.Notifications;
 
-namespace TaskoMask.BuildingBlocks.Application.Notifications;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Notifications;
 
 /// <summary>
 ///

@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Notifications;
 
-namespace TaskoMask.BuildingBlocks.Application.Exceptions;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Exceptions;
 
 /// <summary>
 /// Handle all unmanaged exceptions

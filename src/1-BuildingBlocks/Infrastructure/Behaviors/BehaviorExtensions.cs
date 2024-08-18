@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskoMask.BuildingBlocks.Domain.Events;
 
-namespace TaskoMask.BuildingBlocks.Application.Behaviors;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Behaviors;
 
 public static class BehaviorExtensions
 {

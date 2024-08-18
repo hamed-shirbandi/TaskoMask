@@ -81,7 +81,7 @@ public abstract class TestsBaseFixture : IntegrationTestsBase
             return configuration;
         });
 
-        services.AddModules(configuration, typeof(TestsBaseFixture));
+        services.AddModules(configuration);
 
         var serviceProvider = services.BuildServiceProvider();
 

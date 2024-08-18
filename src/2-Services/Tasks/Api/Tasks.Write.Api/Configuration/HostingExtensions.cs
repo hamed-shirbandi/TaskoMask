@@ -17,7 +17,7 @@ internal static class HostingExtensions
     {
         builder.AddCustomSerilog();
 
-        builder.Services.AddModules(builder.Configuration, consumerAssemblyMarkerType: typeof(Program));
+        builder.Services.AddModules(builder.Configuration);
 
         builder.Services.AddWebApiPreConfigured(builder.Configuration);
 

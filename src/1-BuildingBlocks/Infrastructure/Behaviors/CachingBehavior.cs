@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Queries;
 
-namespace TaskoMask.BuildingBlocks.Application.Behaviors;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Behaviors;
 
 /// <summary>
 /// Caching response for queries that are mareked by ICacheableQuery

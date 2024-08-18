@@ -1,6 +1,4 @@
-﻿using TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById;
-using TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.Mapper;
-using TaskoMask.BuildingBlocks.Application.Services;
+﻿using TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.Mapper;
 using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 
@@ -19,10 +17,9 @@ public static class ModuleExtensions
         services.AddBuildingBlocksInfrastructure(
             configuration,
             consumerAssemblyMarkerType: typeof(Program),
-            handlerAssemblyMarkerType: typeof(GetBoardByIdHandler)
+            handlerAssemblyMarkerType: typeof(Program),
+            validatorAssemblyMarkerType: typeof(Program)
         );
-
-        services.AddBuildingBlocksApplication(validatorAssemblyMarkerType: typeof(Program));
 
         services.AddMapper(typeof(MappingProfile));
     }

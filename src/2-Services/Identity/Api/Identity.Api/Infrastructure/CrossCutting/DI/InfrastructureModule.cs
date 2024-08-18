@@ -6,7 +6,6 @@ using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.AspNetIdentity;
 using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.Mapper;
 using TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
-using TaskoMask.Services.Identity.Api.UseCases.RegisterUser;
 
 namespace TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.DI;
 
@@ -18,9 +17,14 @@ public static class InfrastructureModule
     /// <summary>
     ///
     /// </summary>
-    public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration, Type consumerAssemblyMarkerType)
+    public static void AddInfrastructureModule(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddBuildingBlocksInfrastructure(configuration, consumerAssemblyMarkerType, handlerAssemblyMarkerType: typeof(RegisterUserUseCase));
+        services.AddBuildingBlocksInfrastructure(
+            configuration,
+            consumerAssemblyMarkerType: typeof(Program),
+            handlerAssemblyMarkerType: typeof(Program),
+            validatorAssemblyMarkerType: typeof(Program)
+        );
 
         services.AddMapper(typeof(MappingProfile));
 

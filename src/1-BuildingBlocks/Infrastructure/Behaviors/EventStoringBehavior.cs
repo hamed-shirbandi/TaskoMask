@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Domain.Events;
 
-namespace TaskoMask.BuildingBlocks.Application.Behaviors;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Behaviors;
 
 /// <summary>
 /// Each command must have at least one event to save its changes in event store

@@ -3,8 +3,7 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject;
 
-public abstract class AddProjectValidation<TRequest> : AbstractValidator<TRequest>
-    where TRequest : AddProjectRequest
+public sealed class AddProjectValidation : AbstractValidator<AddProjectRequest>
 {
     public AddProjectValidation()
     {

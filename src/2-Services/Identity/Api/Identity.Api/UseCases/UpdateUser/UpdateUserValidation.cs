@@ -2,8 +2,7 @@
 
 namespace TaskoMask.Services.Identity.Api.UseCases.UpdateUser;
 
-public abstract class UpdateUserValidation<TRequest> : AbstractValidator<TRequest>
-    where TRequest : UpdateUserRequest
+public sealed class UpdateUserValidation : AbstractValidator<UpdateUserRequest>
 {
     public UpdateUserValidation() { }
 }

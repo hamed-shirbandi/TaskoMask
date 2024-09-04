@@ -2,8 +2,7 @@
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile;
 
-public abstract class UpdateOwnerProfileValidation<TRequest> : AbstractValidator<TRequest>
-    where TRequest : UpdateOwnerProfileRequest
+public sealed class UpdateOwnerProfileValidation : AbstractValidator<UpdateOwnerProfileRequest>
 {
     public UpdateOwnerProfileValidation() { }
 }

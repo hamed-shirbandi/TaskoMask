@@ -108,7 +108,7 @@ internal class Build : NukeBuild
     /// Then it will run dotnet format command to apply all the rules based on .editorconfig
     /// If there are any violations, it will try to fix them automatically. But some of them like namming rules should be done manualy
     /// In that case it will show you the file path and the reason of failure.
-    /// Run directyly : cmd> nuke Lint
+    /// Run directly : cmd> nuke Lint
     /// </summary>
     private Target Lint =>
         _ =>

@@ -2,8 +2,7 @@
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask;
 
-public abstract class DeleteTaskValidation<TRequest> : AbstractValidator<TRequest>
-    where TRequest : DeleteTaskRequest
+public sealed class DeleteTaskValidation : AbstractValidator<DeleteTaskRequest>
 {
     public DeleteTaskValidation() { }
 }

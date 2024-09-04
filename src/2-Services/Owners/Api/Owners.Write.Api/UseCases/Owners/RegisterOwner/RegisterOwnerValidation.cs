@@ -2,8 +2,7 @@
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 
-public abstract class RegiserOwnerValidation<TRequest> : AbstractValidator<TRequest>
-    where TRequest : RegiserOwnerRequest
+public sealed class RegiserOwnerValidation : AbstractValidator<RegiserOwnerRequest>
 {
     public RegiserOwnerValidation() { }
 }

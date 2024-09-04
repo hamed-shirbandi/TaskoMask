@@ -2,8 +2,7 @@
 
 namespace TaskoMask.Services.Identity.Api.UseCases.RegisterUser;
 
-public abstract class RegisterUserValidation<TRequest> : AbstractValidator<TRequest>
-    where TRequest : RegisterUserRequest
+public sealed class RegisterUserValidation : AbstractValidator<RegisterUserRequest>
 {
     public RegisterUserValidation() { }
 }

@@ -3,8 +3,7 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrganization;
 
-public abstract class UpdateOrganizationValidation<TRequest> : AbstractValidator<TRequest>
-    where TRequest : UpdateOrganizationRequest
+public sealed class UpdateOrganizationValidation : AbstractValidator<UpdateOrganizationRequest>
 {
     public UpdateOrganizationValidation()
     {

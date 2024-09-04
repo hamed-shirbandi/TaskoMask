@@ -22,11 +22,10 @@ public static class InfrastructureExtensions
         Type validatorAssemblyMarkerType
     )
     {
+        services.AddInMemoryBus(handlerAssemblyMarkerType);
         services.AddApplicationExceptionHandlers();
         services.AddApplicationBehaviors(validatorAssemblyMarkerType);
         services.AddDomainNotificationHandler();
-
-        services.AddInMemoryBus(handlerAssemblyMarkerType);
         services.AddMessageBus(configuration, consumerAssemblyMarkerType);
         services.AddRedisEventStoreService();
     }

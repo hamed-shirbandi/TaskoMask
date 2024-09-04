@@ -3,8 +3,7 @@ using TaskoMask.BuildingBlocks.Domain.Resources;
 
 namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.UpdateBoard;
 
-public abstract class UpdateBoardValidation<TRequest> : AbstractValidator<TRequest>
-    where TRequest : UpdateBoardRequest
+public sealed class UpdateBoardValidation : AbstractValidator<UpdateBoardRequest>
 {
     public UpdateBoardValidation()
     {

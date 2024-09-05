@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>TaskoMask.Services.Owners.Write.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Owners.Write.Api</RootNamespace>
 		<UserSecretsId>0dd4049d-0324-4ff6-8a77-9a1b9cf12f56</UserSecretsId>

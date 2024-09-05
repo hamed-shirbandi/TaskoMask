@@ -19,6 +19,14 @@ dotnet_diagnostic.IDE0058.severity = silent # Expression value is never used
 dotnet_diagnostic.IDE0072.severity = silent # missing cases to "=>" switch expression
 dotnet_diagnostic.IDE0090.severity = silent # Use implicit new
 dotnet_diagnostic.IDE0270.severity = silent # Simplify null check
+dotnet_diagnostic.IDE0290.severity = silent # Use primary constructor
+dotnet_diagnostic.IDE0028.severity = silent # Use collection initializers or expressions
+dotnet_diagnostic.IDE0301.severity = silent # Use collection expression for empty
+dotnet_diagnostic.IDE0300.severity = silent # Use collection expression for array
+dotnet_diagnostic.CA1859.severity = silent # Use concrete types when possible for improved performance
+
+
+
 # https://github.com/dotnet/aspnetcore/issues/47912
  dotnet_diagnostic.IDE0005.severity = none # Remove unnecessary using directives (using CS8019 instead)
  dotnet_diagnostic.CS8019.severity = error # Remove unnecessary using directives

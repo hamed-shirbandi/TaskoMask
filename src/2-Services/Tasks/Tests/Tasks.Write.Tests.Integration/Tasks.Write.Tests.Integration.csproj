@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>TaskoMask.Services.Tasks.Write.Tests.Integration</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Tasks.Write.Tests.Integration</RootNamespace>
 		<IsPackable>false</IsPackable>

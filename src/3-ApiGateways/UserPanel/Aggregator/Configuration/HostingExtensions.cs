@@ -32,10 +32,7 @@ internal static class HostingExtensions
 
         app.UseWebApiPreConfigured(app.Environment, configuration);
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
+        app.MapControllers();
 
         return app;
     }

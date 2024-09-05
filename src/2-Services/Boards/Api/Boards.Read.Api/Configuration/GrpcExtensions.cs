@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -17,13 +16,13 @@ public static class GrpcExtensions
     /// <summary>
     ///
     /// </summary>
-    public static void MapGrpcServices(this IEndpointRouteBuilder endpoints)
+    public static void MapGrpcServices(this WebApplication app)
     {
-        endpoints.MapGrpcService<GetBoardByIdGrpcEndpoint>();
-        endpoints.MapGrpcService<GetCardsByBoardIdGrpcEndpoint>();
-        endpoints.MapGrpcService<GetBoardsByProjectIdGrpcEndpoint>();
-        endpoints.MapGrpcService<GetBoardsByOrganizationIdGrpcEndpoint>();
-        endpoints.MapGrpcService<GetCardByIdGrpcEndpoint>();
+        app.MapGrpcService<GetBoardByIdGrpcEndpoint>();
+        app.MapGrpcService<GetCardsByBoardIdGrpcEndpoint>();
+        app.MapGrpcService<GetBoardsByProjectIdGrpcEndpoint>();
+        app.MapGrpcService<GetBoardsByOrganizationIdGrpcEndpoint>();
+        app.MapGrpcService<GetCardByIdGrpcEndpoint>();
     }
 
     /// <summary>

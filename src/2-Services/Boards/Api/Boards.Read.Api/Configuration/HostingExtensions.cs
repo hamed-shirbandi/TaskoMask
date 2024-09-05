@@ -40,11 +40,9 @@ internal static class HostingExtensions
 
         app.Services.InitialDatabase();
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-            endpoints.MapGrpcServices();
-        });
+        app.MapControllers();
+
+        app.MapGrpcServices();
 
         return app;
     }

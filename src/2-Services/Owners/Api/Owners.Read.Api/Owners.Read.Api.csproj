@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>TaskoMask.Services.Owners.Read.Api</AssemblyName>
 		<RootNamespace>TaskoMask.Services.Owners.Read.Api</RootNamespace>
 		<UserSecretsId>5a6364b4-cc6f-4fa9-b2d3-b0040526bb00</UserSecretsId>

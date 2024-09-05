@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>TaskoMask.BuildingBlocks.Domain</AssemblyName>
 		<RootNamespace>TaskoMask.BuildingBlocks.Domain</RootNamespace>
 	</PropertyGroup>
@@ -9,7 +9,7 @@
 		<PackageReference Include="MediatR" Version="9.0.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="MongoDB.Driver" Version="2.17.0" />
+		<PackageReference Include="MongoDB.Driver" Version="2.28.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
 	</ItemGroup>
 	<ItemGroup>

@@ -27,10 +27,7 @@ internal static class HostingExtensions
 
         app.UseMvcPreConfigured(app.Environment, configuration);
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
-        });
+        app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
         return app;
     }

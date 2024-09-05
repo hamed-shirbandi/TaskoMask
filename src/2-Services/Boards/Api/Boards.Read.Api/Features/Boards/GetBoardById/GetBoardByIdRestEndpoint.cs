@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ using TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 
 namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById;
 
-[Authorize("user-read-access")]
+//[Authorize("user-read-access")]
 [Tags("Boards")]
 public class GetBoardByIdRestEndpoint : BaseApiController
 {

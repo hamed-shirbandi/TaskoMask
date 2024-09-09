@@ -23,5 +23,7 @@ public class MappingProfile : Profile
         CreateMap<GetBoardGrpcResponse, GetBoardDto>();
 
         CreateMap<GetCardGrpcResponse, GetCardDto>();
+
+        CreateMap<GetOrganizationReportGrpcResponse, OrganizationReportDto>();
     }
 }

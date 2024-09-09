@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Common;
+using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 
 namespace TaskoMask.BuildingBlocks.Contracts.Dtos.Tasks;
@@ -8,6 +9,7 @@ public class GetTaskDto : TaskBaseDto
 {
     [Display(Name = nameof(ContractsMetadata.OrganizationName), ResourceType = typeof(ContractsMetadata))]
     public string CardName { get; set; }
+    public BoardCardType CardType { get; set; }
 
     public string BoardId { get; set; }
 

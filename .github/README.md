@@ -257,6 +257,15 @@ This project is authored by [Hamed Shirbandi](https://github.com/hamed-shirbandi
 
 # Change logs
   <details>
+    <summary>2024</summary>
+
+
+*	### Sep, 2024
+    - [x] Upgrade to .NET 8 
+  </details>
+
+
+  <details>
     <summary>2023</summary>
 
 

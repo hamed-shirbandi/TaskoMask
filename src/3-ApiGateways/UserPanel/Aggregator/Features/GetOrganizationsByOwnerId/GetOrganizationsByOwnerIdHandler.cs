@@ -8,6 +8,7 @@ using TaskoMask.BuildingBlocks.Contracts.Dtos.Projects;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 using TaskoMask.BuildingBlocks.Contracts.ViewModels;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByOrganizationIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetOrganizationReportIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetOrganizationsByOwnerIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectsByOrganizationIdGrpcService;
 
@@ -22,6 +23,8 @@ public class GetOrganizationsByOwnerIdHandler
     private readonly GetOrganizationsByOwnerIdGrpcServiceClient _getOrganizationsByOwnerIdGrpcServiceClient;
     private readonly GetProjectsByOrganizationIdGrpcServiceClient _getProjectsByOrganizationIdGrpcServiceClient;
     private readonly GetBoardsByOrganizationIdGrpcServiceClient _getBoardsByOrganizationIdGrpcServiceClient;
+    private readonly GetOrganizationReportIdGrpcServiceClient _getOrganizationReportIdGrpcServiceClient;
+
 
     #endregion
 
@@ -31,13 +34,15 @@ public class GetOrganizationsByOwnerIdHandler
         IMapper mapper,
         GetOrganizationsByOwnerIdGrpcServiceClient getOrganizationsByOwnerIdGrpcServiceClient,
         GetProjectsByOrganizationIdGrpcServiceClient getProjectsByOrganizationIdGrpcServiceClient,
-        GetBoardsByOrganizationIdGrpcServiceClient getBoardsByOrganizationIdGrpcServiceClient
+        GetBoardsByOrganizationIdGrpcServiceClient getBoardsByOrganizationIdGrpcServiceClient,
+        GetOrganizationReportIdGrpcServiceClient getOrganizationReportIdGrpcServiceClient
     )
         : base(mapper)
     {
         _getOrganizationsByOwnerIdGrpcServiceClient = getOrganizationsByOwnerIdGrpcServiceClient;
         _getProjectsByOrganizationIdGrpcServiceClient = getProjectsByOrganizationIdGrpcServiceClient;
         _getBoardsByOrganizationIdGrpcServiceClient = getBoardsByOrganizationIdGrpcServiceClient;
+        _getOrganizationReportIdGrpcServiceClient = getOrganizationReportIdGrpcServiceClient;
     }
 
     #endregion
@@ -67,8 +72,7 @@ public class GetOrganizationsByOwnerIdHandler
                     Organization = MapToOrganization(currentOrganizationGrpcResponse),
                     Projects = await GetProjectsAsync(currentOrganizationGrpcResponse.Id),
                     Boards = await GetBoardsAsync(currentOrganizationGrpcResponse.Id),
-                    //Will be done by issue #143
-                    Reports = new OrganizationReportDto(),
+                    Reports = await GetReportAsync(currentOrganizationGrpcResponse.Id, cancellationToken)
                 }
             );
         }
@@ -123,5 +127,17 @@ public class GetOrganizationsByOwnerIdHandler
         return boards;
     }
 
+
+    /// <summary>
+    ///
+    /// </summary>
+    private async Task<OrganizationReportDto> GetReportAsync(string organizationId, CancellationToken cancellationToken)
+    {
+        var reportGrpcResponse = await _getOrganizationReportIdGrpcServiceClient.HandleAsync(
+            new GetOrganizationReportIdGrpcRequest { OrganizationId = organizationId, },
+            cancellationToken: cancellationToken
+        );
+        return _mapper.Map<OrganizationReportDto>(reportGrpcResponse);
+    }
     #endregion
 }

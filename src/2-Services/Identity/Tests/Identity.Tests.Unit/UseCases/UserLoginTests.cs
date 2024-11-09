@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.Services.Identity.Api.Resources;
 using TaskoMask.Services.Identity.Api.UseCases.UserLogin;

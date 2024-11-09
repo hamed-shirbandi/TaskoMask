@@ -1,5 +1,5 @@
-﻿using MassTransit;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using MassTransit;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
@@ -19,7 +19,7 @@ public class TaskDeletedConsumer : BaseConsumer<TaskDeleted>
 
     public override async Task ConsumeMessage(ConsumeContext<TaskDeleted> context)
     {
-        var activity = new Domain.Activity() { TaskId = context.Message.Id, Description = "Task Deleted", };
+        var activity = new Domain.Activity() { TaskId = context.Message.Id, Description = "Task Deleted" };
 
         await _taskReadDbContext.Activities.InsertOneAsync(activity);
     }

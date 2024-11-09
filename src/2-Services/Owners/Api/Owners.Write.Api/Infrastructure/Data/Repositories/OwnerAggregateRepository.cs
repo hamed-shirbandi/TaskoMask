@@ -1,7 +1,7 @@
-﻿using MongoDB.Driver;
-using MongoDB.Driver.Linq;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;

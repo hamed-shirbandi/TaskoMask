@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using TaskoMask.Services.Tasks.Read.Api.Features.Activities.GetActivitiesByTaskId;
 using TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentsByTaskId;
 using TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById;

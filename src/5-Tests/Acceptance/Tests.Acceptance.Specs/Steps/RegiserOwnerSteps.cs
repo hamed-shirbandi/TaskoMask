@@ -51,7 +51,7 @@ public class RegiserOwnerSteps
     [When(@"John attempts to login")]
     public void WhenJohnAttemptsToLogin()
     {
-        var ownerLoginDto = new OwnerLoginDto { UserName = ownerRegisterDto.Email, Password = ownerRegisterDto.Password, };
+        var ownerLoginDto = new OwnerLoginDto { UserName = ownerRegisterDto.Email, Password = ownerRegisterDto.Password };
 
         _stage.ActorInTheSpotlight.AttemptsTo(Perform.LoginOwner(ownerLoginDto));
     }

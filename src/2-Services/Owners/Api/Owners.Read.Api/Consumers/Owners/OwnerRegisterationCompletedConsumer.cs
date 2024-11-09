@@ -1,5 +1,5 @@
-﻿using MassTransit;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using MassTransit;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
@@ -20,7 +20,7 @@ public class OwnerRegisterationCompletedConsumer : BaseConsumer<OwnerRegisterati
 
     public override async Task ConsumeMessage(ConsumeContext<OwnerRegisterationCompleted> context)
     {
-        var owner = new Owner(context.Message.Id) { DisplayName = context.Message.DisplayName, Email = context.Message.Email, };
+        var owner = new Owner(context.Message.Id) { DisplayName = context.Message.DisplayName, Email = context.Message.Email };
         await _ownerReadDbContext.Owners.InsertOneAsync(owner);
     }
 }

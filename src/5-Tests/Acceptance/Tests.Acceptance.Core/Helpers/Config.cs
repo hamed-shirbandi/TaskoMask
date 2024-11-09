@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using System.Reflection;
+﻿using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace TaskoMask.Tests.Acceptance.Core.Helpers;
 

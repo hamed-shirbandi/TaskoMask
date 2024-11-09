@@ -1,7 +1,7 @@
-﻿using BoDi;
+﻿using System.Collections.Generic;
+using BoDi;
 using Suzianna.Core.Screenplay;
 using Suzianna.Rest.Screenplay.Abilities;
-using System.Collections.Generic;
 using TaskoMask.Tests.Acceptance.Core.Helpers;
 using TechTalk.SpecFlow;
 

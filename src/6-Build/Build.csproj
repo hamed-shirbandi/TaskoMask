@@ -11,8 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Nuke.Common" Version="7.0.6" />
-		<PackageReference Include="Serilog" Version="3.0.1" />
+		<PackageReference Include="Nuke.Common" Version="8.1.4" />
 	</ItemGroup>
 
 </Project>

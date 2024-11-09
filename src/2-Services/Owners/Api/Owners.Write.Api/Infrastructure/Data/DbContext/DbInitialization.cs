@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using System;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 
 namespace TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.DbContext;

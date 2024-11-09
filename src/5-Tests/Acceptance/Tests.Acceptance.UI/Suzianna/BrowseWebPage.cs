@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Suzianna.Core.Screenplay;
-using System;
 
 namespace TaskoMask.Tests.Acceptance.UI.Suzianna;
 

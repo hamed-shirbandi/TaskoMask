@@ -1,7 +1,7 @@
-﻿using MassTransit;
+﻿using System;
+using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MassTransit;
 

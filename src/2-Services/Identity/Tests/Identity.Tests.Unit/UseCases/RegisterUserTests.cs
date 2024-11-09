@@ -1,8 +1,8 @@
-﻿using FluentAssertions;
-using NSubstitute;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
+using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.Services.Identity.Api.Domain.Events;

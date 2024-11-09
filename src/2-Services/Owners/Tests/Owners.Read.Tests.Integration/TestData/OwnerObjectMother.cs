@@ -7,6 +7,6 @@ internal static class OwnerObjectMother
 {
     public static Owner GetOwnerWithEmail(string email)
     {
-        return new Owner(ObjectId.GenerateNewId().ToString()) { DisplayName = email, Email = email, };
+        return new Owner(ObjectId.GenerateNewId().ToString()) { DisplayName = email, Email = email };
     }
 }

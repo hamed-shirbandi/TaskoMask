@@ -1,6 +1,6 @@
-﻿using MediatR;
+﻿using System;
+using MediatR;
 using Newtonsoft.Json;
-using System;
 
 namespace TaskoMask.BuildingBlocks.Domain.Events;
 

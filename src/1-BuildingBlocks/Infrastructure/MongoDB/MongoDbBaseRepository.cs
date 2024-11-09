@@ -1,7 +1,7 @@
-﻿using MongoDB.Driver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MongoDB.Driver;
 using TaskoMask.BuildingBlocks.Domain.Data;
 using TaskoMask.BuildingBlocks.Domain.Entities;
 

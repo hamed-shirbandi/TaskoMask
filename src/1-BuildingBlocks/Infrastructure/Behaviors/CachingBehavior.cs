@@ -1,11 +1,11 @@
-﻿using EasyCaching.Core;
-using MediatR;
-using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using EasyCaching.Core;
+using MediatR;
+using Microsoft.Extensions.Configuration;
 using TaskoMask.BuildingBlocks.Application.Queries;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Behaviors;

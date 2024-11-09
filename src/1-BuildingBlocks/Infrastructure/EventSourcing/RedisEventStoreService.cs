@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using StackExchange.Redis;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Services;
 using TaskoMask.BuildingBlocks.Domain.Events;
 
@@ -115,7 +115,7 @@ public class RedisEventStoreService : IEventStoreService
         {
             EndPoints = { _configuration["Redis:Connection"] },
             Password = _configuration["Redis:Password"],
-            Ssl = false
+            Ssl = false,
         };
     }
 

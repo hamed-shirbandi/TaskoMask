@@ -1,6 +1,6 @@
-﻿using Duende.IdentityServer;
+﻿using System.Collections.Generic;
+using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
-using System.Collections.Generic;
 
 namespace TaskoMask.Services.Identity.Api.Configuration;
 
@@ -10,7 +10,7 @@ internal static class IdentityServerConfig
     ///
     /// </summary>
     public static IEnumerable<IdentityResource> IdentityResources =>
-        new IdentityResource[] { new IdentityResources.OpenId(), new IdentityResources.Profile(), };
+        new IdentityResource[] { new IdentityResources.OpenId(), new IdentityResources.Profile() };
 
     /// <summary>
     ///
@@ -35,13 +35,13 @@ internal static class IdentityServerConfig
             ApiResourcesConfig.Owners_Api,
             ApiResourcesConfig.Boards_Api,
             ApiResourcesConfig.Tasks_Api,
-            ApiResourcesConfig.Aggregator_Api
+            ApiResourcesConfig.Aggregator_Api,
         };
 
     /// <summary>
     ///
     /// </summary>
-    public static IEnumerable<Client> Clients => new Client[] { ClientsConfig.UserPanel, };
+    public static IEnumerable<Client> Clients => new Client[] { ClientsConfig.UserPanel };
 }
 
 /// <summary>
@@ -61,7 +61,7 @@ internal static class ApiResourcesConfig
     public static ApiResource Aggregator_Api =>
         new("aggregator.api", "UserPanel ApiGateway Aggregator Api")
         {
-            Scopes = { ApiScopesConfig.Owners_Read.Name, ApiScopesConfig.Boards_Read.Name, ApiScopesConfig.Tasks_Read.Name }
+            Scopes = { ApiScopesConfig.Owners_Read.Name, ApiScopesConfig.Boards_Read.Name, ApiScopesConfig.Tasks_Read.Name },
         };
 }
 
@@ -91,7 +91,7 @@ internal static class ClientsConfig
             },
             RedirectUris = { "https://localhost:5011/authentication/login-callback/" },
             PostLogoutRedirectUris = { "https://localhost:5011/authentication/logout-callback/" },
-            ClientUri = "https://localhost:5011"
+            ClientUri = "https://localhost:5011",
         };
 }
 

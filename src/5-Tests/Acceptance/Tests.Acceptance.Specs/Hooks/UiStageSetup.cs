@@ -1,6 +1,6 @@
-﻿using BoDi;
+﻿using System.Collections.Generic;
+using BoDi;
 using Suzianna.Core.Screenplay;
-using System.Collections.Generic;
 using TaskoMask.Tests.Acceptance.Core.Helpers;
 using TaskoMask.Tests.Acceptance.UI.Suzianna;
 using TechTalk.SpecFlow;

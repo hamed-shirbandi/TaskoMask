@@ -1,7 +1,7 @@
-﻿using NSubstitute;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;

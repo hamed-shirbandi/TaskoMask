@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
 using MediatR;
 using MongoDB.Driver;
-using System.Threading;
-using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Organizations;
@@ -39,8 +39,8 @@ public class GetOrganizationByIdHandler : BaseQueryHandler, IRequestHandler<GetO
     /// </summary>
     public async Task<GetOrganizationDto> Handle(GetOrganizationByIdRequest request, CancellationToken cancellationToken)
     {
-        var organization = await _ownerReadDbContext.Organizations
-            .Find(e => e.Id == request.Id)
+        var organization = await _ownerReadDbContext
+            .Organizations.Find(e => e.Id == request.Id)
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
         if (organization == null)

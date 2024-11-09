@@ -39,8 +39,8 @@ internal static class HostingExtensions
 
         builder.Services.AddMetrics(builder.Configuration);
 
-        builder.Services
-            .AddAuthentication()
+        builder
+            .Services.AddAuthentication()
             .AddJwtBearer(
                 builder.Configuration["AuthenticationProviderKey"],
                 x =>

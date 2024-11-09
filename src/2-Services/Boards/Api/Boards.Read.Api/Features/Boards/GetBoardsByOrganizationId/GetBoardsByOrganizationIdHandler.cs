@@ -1,10 +1,10 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
 using MediatR;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Boards;
 using TaskoMask.Services.Boards.Read.Api.Infrastructure.DbContext;
@@ -38,8 +38,8 @@ public class GetBoardsByOrganizationIdHandler : BaseQueryHandler, IRequestHandle
     /// </summary>
     public async Task<IEnumerable<GetBoardDto>> Handle(GetBoardsByOrganizationIdRequest request, CancellationToken cancellationToken)
     {
-        var boards = await _boardReadDbContext.Boards
-            .AsQueryable()
+        var boards = await _boardReadDbContext
+            .Boards.AsQueryable()
             .Where(e => e.OrganizationId == request.OrganizationId)
             .ToListAsync(cancellationToken);
 

@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DI;

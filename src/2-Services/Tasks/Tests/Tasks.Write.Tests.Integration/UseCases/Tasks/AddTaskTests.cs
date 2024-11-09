@@ -1,7 +1,7 @@
-﻿using FluentAssertions;
-using MongoDB.Bson;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
+using MongoDB.Bson;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask;
 using TaskoMask.Services.Tasks.Write.Tests.Integration.Fixtures;

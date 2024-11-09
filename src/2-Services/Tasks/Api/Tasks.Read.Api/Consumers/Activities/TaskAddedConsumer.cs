@@ -1,6 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using MassTransit;
-using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Events;
@@ -37,7 +37,7 @@ public class TaskAddedConsumer : BaseConsumer<TaskAdded>
     {
         var card = await GetCardFromRpcClientAsync(context.Message.CardId);
 
-        var activity = new Domain.Activity() { TaskId = context.Message.Id, Description = $"Added to {card.Name}", };
+        var activity = new Domain.Activity() { TaskId = context.Message.Id, Description = $"Added to {card.Name}" };
 
         await _taskReadDbContext.Activities.InsertOneAsync(activity);
     }

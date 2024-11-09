@@ -1,5 +1,5 @@
-﻿using MongoDB.Bson;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using TaskoMask.BuildingBlocks.Contracts.Enums;
 using TaskoMask.BuildingBlocks.Test.TestData;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities;

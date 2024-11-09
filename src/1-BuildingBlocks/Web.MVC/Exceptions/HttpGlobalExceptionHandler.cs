@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Net;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using System.Net;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions;

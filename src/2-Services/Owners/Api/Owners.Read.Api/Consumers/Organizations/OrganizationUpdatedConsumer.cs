@@ -1,6 +1,6 @@
-﻿using MassTransit;
+﻿using System.Threading.Tasks;
+using MassTransit;
 using MongoDB.Driver;
-using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;

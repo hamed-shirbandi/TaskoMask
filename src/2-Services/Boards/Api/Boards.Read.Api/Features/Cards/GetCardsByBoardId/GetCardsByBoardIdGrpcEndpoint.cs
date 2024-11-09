@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using AutoMapper;
 using Grpc.Core;
-using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 

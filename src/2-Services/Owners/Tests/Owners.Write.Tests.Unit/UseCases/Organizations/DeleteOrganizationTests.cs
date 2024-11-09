@@ -1,10 +1,10 @@
-﻿using FluentAssertions;
-using MongoDB.Bson;
-using NSubstitute;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
+using MongoDB.Bson;
+using NSubstitute;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
 using TaskoMask.BuildingBlocks.Domain.Exceptions;

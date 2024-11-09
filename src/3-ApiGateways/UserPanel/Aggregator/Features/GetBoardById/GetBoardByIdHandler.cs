@@ -89,7 +89,7 @@ public class GetBoardByIdHandler : BaseQueryHandler, IRequestHandler<GetBoardByI
             var currentCardGrpcResponse = cardsGrpcCall.ResponseStream.Current;
 
             cards.Add(
-                new CardDetailsViewModel { Card = MapToCard(currentCardGrpcResponse), Tasks = await GetTasksAsync(currentCardGrpcResponse.Id), }
+                new CardDetailsViewModel { Card = MapToCard(currentCardGrpcResponse), Tasks = await GetTasksAsync(currentCardGrpcResponse.Id) }
             );
         }
 

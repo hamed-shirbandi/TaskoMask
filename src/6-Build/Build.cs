@@ -1,3 +1,4 @@
+using System.Linq;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
@@ -5,7 +6,6 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.Coverlet;
 using Nuke.Common.Tools.DotNet;
 using Serilog;
-using System.Linq;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 namespace TaskoMask.Build;
@@ -153,24 +153,23 @@ internal class Build : NukeBuild
                 {
                     var testProjects = Solution.AllProjects.Where(s => s.Name.EndsWith("Tests.Unit"));
 
-                    DotNetTest(
-                        a =>
-                            a.SetConfiguration(Configuration)
-                                .SetNoBuild(true)
-                                .SetNoRestore(true)
-                                .ResetVerbosity()
-                                .SetResultsDirectory(TestResultDirectory)
-                                .EnableCollectCoverage()
-                                .SetCoverletOutputFormat(CoverletOutputFormat.opencover)
-                                .SetExcludeByFile("*.Generated.cs")
-                                .EnableUseSourceLink()
-                                .CombineWith(
-                                    testProjects,
-                                    (b, z) =>
-                                        b.SetProjectFile(z)
-                                            .AddLoggers($"trx;LogFileName={z.Name}.trx")
-                                            .SetCoverletOutput(TestResultDirectory + $"{z.Name}.xml")
-                                )
+                    DotNetTest(a =>
+                        a.SetConfiguration(Configuration)
+                            .SetNoBuild(true)
+                            .SetNoRestore(true)
+                            .ResetVerbosity()
+                            .SetResultsDirectory(TestResultDirectory)
+                            .EnableCollectCoverage()
+                            .SetCoverletOutputFormat(CoverletOutputFormat.opencover)
+                            .SetExcludeByFile("*.Generated.cs")
+                            .EnableUseSourceLink()
+                            .CombineWith(
+                                testProjects,
+                                (b, z) =>
+                                    b.SetProjectFile(z)
+                                        .AddLoggers($"trx;LogFileName={z.Name}.trx")
+                                        .SetCoverletOutput(TestResultDirectory + $"{z.Name}.xml")
+                            )
                     );
                 });
 

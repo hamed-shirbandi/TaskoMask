@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
 using TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentById;
 using TaskoMask.Services.Tasks.Read.Tests.Integration.Fixtures;
 using TaskoMask.Services.Tasks.Read.Tests.Integration.TestData;

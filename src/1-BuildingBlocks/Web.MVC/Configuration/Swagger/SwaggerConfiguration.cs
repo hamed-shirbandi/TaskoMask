@@ -62,10 +62,10 @@ public static class SwaggerConfiguration
                     {
                         new OpenApiSecurityScheme
                         {
-                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" },
                         },
                         Array.Empty<string>()
-                    }
+                    },
                 }
             );
         });

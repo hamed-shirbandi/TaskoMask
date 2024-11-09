@@ -1,5 +1,5 @@
-﻿using MassTransit;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using MassTransit;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;

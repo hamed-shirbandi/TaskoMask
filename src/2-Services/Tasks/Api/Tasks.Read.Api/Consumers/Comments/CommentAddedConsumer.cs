@@ -22,7 +22,7 @@ public class CommentAddedConsumer : BaseConsumer<CommentAdded>
     {
         var task = await _taskReadDbContext.Tasks.Find(b => b.Id == context.Message.TaskId).FirstOrDefaultAsync();
 
-        var comment = new Comment(context.Message.Id) { Content = context.Message.Content, TaskId = context.Message.TaskId, };
+        var comment = new Comment(context.Message.Id) { Content = context.Message.Content, TaskId = context.Message.TaskId };
 
         await _taskReadDbContext.Comments.InsertOneAsync(comment);
     }

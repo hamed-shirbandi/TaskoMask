@@ -54,7 +54,7 @@ internal class UserBuilder
             UserName = UserName,
             Email = Email,
             IsActive = IsActive,
-            PasswordHash = Password
+            PasswordHash = Password,
         };
     }
 }

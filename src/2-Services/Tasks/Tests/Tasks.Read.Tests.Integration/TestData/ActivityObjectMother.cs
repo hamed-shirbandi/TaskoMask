@@ -8,6 +8,6 @@ internal static class ActivityObjectMother
 {
     public static Activity CreateActivity()
     {
-        return new Activity() { Description = TestDataGenerator.GetRandomString(20), TaskId = ObjectId.GenerateNewId().ToString(), };
+        return new Activity() { Description = TestDataGenerator.GetRandomString(20), TaskId = ObjectId.GenerateNewId().ToString() };
     }
 }

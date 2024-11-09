@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSubstitute;
-using System;
-using System.Collections.Generic;
 using TaskoMask.Services.Identity.Api.Domain.Entities;
 
 namespace TaskoMask.Services.Identity.Tests.Unit.Helpers;

@@ -1,8 +1,8 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
@@ -44,7 +44,7 @@ public class RegisterUserUseCase : BaseCommandHandler, IRequestHandler<RegisterU
         {
             Email = request.Email,
             UserName = request.Email,
-            IsActive = true
+            IsActive = true,
         };
 
         var result = await _userManager.CreateAsync(newUser, request.Password);

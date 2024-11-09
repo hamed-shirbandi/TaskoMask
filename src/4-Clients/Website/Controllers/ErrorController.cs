@@ -25,7 +25,7 @@ public class ErrorController : Controller
     /// </summary>
     public IActionResult Known(string message)
     {
-        var model = new ErrorViewModel { Message = message, };
+        var model = new ErrorViewModel { Message = message };
 
         return View("KnownError", model);
     }

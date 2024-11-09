@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByOrganizationId;
 using TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectId;

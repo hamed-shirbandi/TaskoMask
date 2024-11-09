@@ -1,6 +1,6 @@
+using System.IO;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace TaskoMask.Services.Identity.Api.Infrastructure.Data.DbContext;
 

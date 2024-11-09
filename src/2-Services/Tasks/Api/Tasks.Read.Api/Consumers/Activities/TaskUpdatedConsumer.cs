@@ -1,5 +1,5 @@
-﻿using MassTransit;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using MassTransit;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Web.MVC.Consumers;
@@ -19,7 +19,7 @@ public class TaskUpdatedConsumer : BaseConsumer<TaskUpdated>
 
     public override async Task ConsumeMessage(ConsumeContext<TaskUpdated> context)
     {
-        var activity = new Domain.Activity() { TaskId = context.Message.Id, Description = "Task Updated", };
+        var activity = new Domain.Activity() { TaskId = context.Message.Id, Description = "Task Updated" };
 
         await _taskReadDbContext.Activities.InsertOneAsync(activity);
     }

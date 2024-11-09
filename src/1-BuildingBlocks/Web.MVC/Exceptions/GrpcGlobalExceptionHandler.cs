@@ -1,7 +1,7 @@
+using System.Text.Json;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Microsoft.Extensions.Logging;
-using System.Text.Json;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 

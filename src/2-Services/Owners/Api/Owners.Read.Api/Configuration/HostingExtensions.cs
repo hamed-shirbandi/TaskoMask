@@ -24,6 +24,8 @@ internal static class HostingExtensions
 
         builder.Services.AddGrpcPreConfigured();
 
+        builder.Services.AddGrpcClients(builder.Configuration);
+
         return builder.Build();
     }
 

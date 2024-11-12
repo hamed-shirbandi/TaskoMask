@@ -4,6 +4,7 @@ using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByOrganizationId
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetBoardsByProjectIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetCardsByBoardIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetCommentsByTaskIdGrpcService;
+using static TaskoMask.BuildingBlocks.Contracts.Protos.GetOrganizationReportIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetOrganizationsByOwnerIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectByIdGrpcService;
 using static TaskoMask.BuildingBlocks.Contracts.Protos.GetProjectsByOrganizationIdGrpcService;
@@ -20,6 +21,11 @@ public static class GrpcExtensions
     public static void AddGrpcClients(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddGrpcClient<GetOrganizationsByOwnerIdGrpcServiceClient>(options =>
+        {
+            options.Address = new Uri(configuration["Url:Owner-Read-Service"]);
+        });
+
+        services.AddGrpcClient<GetOrganizationReportIdGrpcServiceClient>(options =>
         {
             options.Address = new Uri(configuration["Url:Owner-Read-Service"]);
         });

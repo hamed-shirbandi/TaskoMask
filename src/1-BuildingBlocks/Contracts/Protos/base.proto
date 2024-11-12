@@ -65,4 +65,14 @@ message GetCardGrpcResponse {
 	string ownerId = 8;
 }
 
+message GetOrganizationReportGrpcResponse {
 
+	CreationTimeGrpcResponse creationTime=1;
+	string projectsCount = 2;
+	string boardsCount = 3;
+	string toDoTasksCount = 4;
+	string doingTasksCount = 5;
+	string doneTasksCount = 6;
+	string backlogTasksCount = 7;
+	string id = 8;
+}

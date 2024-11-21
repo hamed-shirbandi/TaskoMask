@@ -38,7 +38,7 @@ public class UpdateCardTests
         await _fixture.SeedBoardAsync(expectedBoard);
 
         var request = new UpdateCardRequest(id: expectedCard.Id, name: "Test New Name", type: BoardCardType.Doing);
-        var updateCardUseCase = new UpdateCardUseCase(_fixture._boardAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var updateCardUseCase = new UpdateCardUseCase(_fixture._boardAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await updateCardUseCase.Handle(request, CancellationToken.None);

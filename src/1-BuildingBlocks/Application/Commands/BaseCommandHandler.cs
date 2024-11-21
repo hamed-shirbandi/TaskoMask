@@ -14,18 +14,18 @@ public abstract class BaseCommandHandler
     #region Fields
 
 
-    private readonly IMessageBus _messageBus;
-    private readonly IInMemoryBus _inMemoryBus;
+    private readonly IEventPublisher _eventPublisher;
+    private readonly IRequestDispatcher _requestDispatcher;
 
     #endregion
 
     #region Ctors
 
 
-    protected BaseCommandHandler(IMessageBus messageBus, IInMemoryBus inMemoryBus)
+    protected BaseCommandHandler(IEventPublisher eventPublisher, IRequestDispatcher requestDispatcher)
     {
-        _messageBus = messageBus;
-        _inMemoryBus = inMemoryBus;
+        _eventPublisher = eventPublisher;
+        _requestDispatcher = requestDispatcher;
     }
 
     #endregion
@@ -35,29 +35,29 @@ public abstract class BaseCommandHandler
 
 
     /// <summary>
-    /// publish domain events (in-process)
+    /// Publishes a collection of domain events (in-process).
     /// </summary>
     protected async Task PublishDomainEventsAsync(IReadOnlyCollection<DomainEvent> domainEvents)
     {
         foreach (var domainEvent in domainEvents)
-            await PublishDomainEventsAsync(domainEvent);
+            await PublishDomainEventAsync(domainEvent);
     }
 
     /// <summary>
-    /// publish domain events (in-process)
+    /// Publishes a single domain event (in-process).
     /// </summary>
-    protected async Task PublishDomainEventsAsync(DomainEvent domainEvent)
+    protected async Task PublishDomainEventAsync(DomainEvent domainEvent)
     {
-        await _inMemoryBus.PublishEvent(domainEvent);
+        await _requestDispatcher.PublishEvent(domainEvent);
     }
 
     /// <summary>
-    /// publish integration events (out-process)
+    /// Publishes an integration event (out-process).
     /// </summary>
     protected async Task PublishIntegrationEventAsync<TEvent>(TEvent @event)
         where TEvent : IIntegrationEvent
     {
-        await _messageBus.Publish(@event);
+        await _eventPublisher.Publish(@event);
     }
 
     #endregion

@@ -17,16 +17,16 @@ public abstract class TestsBaseFixture : IntegrationTestsBase
 {
     public readonly ITaskAggregateRepository _taskAggregateRepository;
     public readonly ITaskValidatorService _taskValidatorService;
-    public readonly IMessageBus _messageBus;
-    public readonly IInMemoryBus _inMemoryBus;
+    public readonly IEventPublisher _eventPublisher;
+    public readonly IRequestDispatcher _requestDispatcher;
 
     protected TestsBaseFixture(string dbNameSuffix)
         : base(dbNameSuffix)
     {
         _taskAggregateRepository = GetRequiredService<ITaskAggregateRepository>();
         _taskValidatorService = GetRequiredService<ITaskValidatorService>();
-        _messageBus = Substitute.For<IMessageBus>();
-        _inMemoryBus = Substitute.For<IInMemoryBus>();
+        _eventPublisher = Substitute.For<IEventPublisher>();
+        _requestDispatcher = Substitute.For<IRequestDispatcher>();
     }
 
     /// <summary>

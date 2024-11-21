@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 [Tags("Organizations")]
 public class GetOrganizationByIdEndpoint : BaseApiController
 {
-    public GetOrganizationByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetOrganizationByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get organization basic info
@@ -24,6 +24,6 @@ public class GetOrganizationByIdEndpoint : BaseApiController
     [Route("organizations/{id}")]
     public async Task<Result<GetOrganizationDto>> Get(string id)
     {
-        return await _inMemoryBus.SendQuery(new GetOrganizationByIdRequest(id));
+        return await _requestDispatcher.SendQuery(new GetOrganizationByIdRequest(id));
     }
 }

@@ -10,8 +10,8 @@ namespace TaskoMask.Services.Boards.Write.Tests.Unit.Fixtures;
 
 public abstract class TestsBaseFixture : UnitTestsBase
 {
-    protected IMessageBus MessageBus;
-    protected IInMemoryBus InMemoryBus;
+    protected IEventPublisher MessageBus;
+    protected IRequestDispatcher InMemoryBus;
     protected IBoardAggregateRepository BoardAggregateRepository;
     protected IBoardValidatorService BoardValidatorService;
     protected List<Board> Boards;
@@ -31,9 +31,9 @@ public abstract class TestsBaseFixture : UnitTestsBase
     /// </summary>
     private void CommonFixtureSetup()
     {
-        MessageBus = Substitute.For<IMessageBus>();
+        MessageBus = Substitute.For<IEventPublisher>();
 
-        InMemoryBus = Substitute.For<IInMemoryBus>();
+        InMemoryBus = Substitute.For<IRequestDispatcher>();
 
         Boards = GenerateBoardsList();
 

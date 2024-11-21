@@ -12,8 +12,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById;
 [Tags("Projects")]
 public class GetProjectByIdEndpoint : BaseApiController
 {
-    public GetProjectByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetProjectByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get project detail information
@@ -22,6 +22,6 @@ public class GetProjectByIdEndpoint : BaseApiController
     [Route("projects/{id}")]
     public async Task<Result<ProjectDetailsViewModel>> Get(string id)
     {
-        return await _inMemoryBus.SendQuery(new GetProjectByIdRequest(id));
+        return await _requestDispatcher.SendQuery(new GetProjectByIdRequest(id));
     }
 }

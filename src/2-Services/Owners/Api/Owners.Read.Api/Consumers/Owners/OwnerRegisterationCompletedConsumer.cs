@@ -12,8 +12,8 @@ public class OwnerRegisterationCompletedConsumer : BaseConsumer<OwnerRegisterati
 {
     private readonly OwnerReadDbContext _ownerReadDbContext;
 
-    public OwnerRegisterationCompletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-        : base(inMemoryBus)
+    public OwnerRegisterationCompletedConsumer(IRequestDispatcher requestDispatcher, OwnerReadDbContext ownerReadDbContext)
+        : base(requestDispatcher)
     {
         _ownerReadDbContext = ownerReadDbContext;
     }

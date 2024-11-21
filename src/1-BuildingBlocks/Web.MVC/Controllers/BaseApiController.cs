@@ -9,17 +9,17 @@ public abstract class BaseApiController : Controller
     #region Fields
 
     private readonly IAuthenticatedUserService _authenticatedUserService;
-    protected readonly IInMemoryBus _inMemoryBus;
+    protected readonly IRequestDispatcher _requestDispatcher;
 
     #endregion
 
     #region Ctors
 
 
-    public BaseApiController(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
+    public BaseApiController(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
     {
         _authenticatedUserService = authenticatedUserService;
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
     }
 
     #endregion

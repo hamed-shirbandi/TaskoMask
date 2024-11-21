@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment;
 [Tags("Comments")]
 public class AddCommentEndpoint : BaseApiController
 {
-    public AddCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public AddCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Add new comment to task
@@ -24,6 +24,6 @@ public class AddCommentEndpoint : BaseApiController
     [Route("comments")]
     public async Task<Result<CommandResult>> Post([FromBody] AddCommentDto input)
     {
-        return await _inMemoryBus.SendCommand<AddCommentRequest>(new(input.TaskId, input.Content));
+        return await _requestDispatcher.SendCommand<AddCommentRequest>(new(input.TaskId, input.Content));
     }
 }

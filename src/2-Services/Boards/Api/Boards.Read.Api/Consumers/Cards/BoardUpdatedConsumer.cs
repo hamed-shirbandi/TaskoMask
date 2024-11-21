@@ -12,8 +12,8 @@ public class BoardUpdatedConsumer : BaseConsumer<BoardUpdated>
 {
     private readonly BoardReadDbContext _boardReadDbContext;
 
-    public BoardUpdatedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
-        : base(inMemoryBus)
+    public BoardUpdatedConsumer(IRequestDispatcher requestDispatcher, BoardReadDbContext boardReadDbContext)
+        : base(requestDispatcher)
     {
         _boardReadDbContext = boardReadDbContext;
     }

@@ -38,7 +38,11 @@ public class UpdateProjectTests
         await _fixture.SeedOwnerAsync(expectedOwner);
 
         var request = new UpdateProjectRequest(id: expectedProject.Id, name: "Test New Name", description: "Test New Description");
-        var updateProjectUseCase = new UpdateProjectUseCase(_fixture._ownerAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var updateProjectUseCase = new UpdateProjectUseCase(
+            _fixture._ownerAggregateRepository,
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher
+        );
 
         //Act
         var result = await updateProjectUseCase.Handle(request, CancellationToken.None);

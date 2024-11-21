@@ -31,11 +31,11 @@ public class MoveTaskToAnotherCardUseCase : BaseCommandHandler, IRequestHandler<
 
     public MoveTaskToAnotherCardUseCase(
         ITaskAggregateRepository taskAggregateRepository,
-        IMessageBus messageBus,
-        IInMemoryBus inMemoryBus,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher,
         ITaskValidatorService taskValidatorService
     )
-        : base(messageBus, inMemoryBus)
+        : base(eventPublisher, requestDispatcher)
     {
         _taskAggregateRepository = taskAggregateRepository;
         _taskValidatorService = taskValidatorService;

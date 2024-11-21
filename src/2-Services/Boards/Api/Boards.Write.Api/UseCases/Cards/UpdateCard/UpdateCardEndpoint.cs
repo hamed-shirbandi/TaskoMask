@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard;
 [Tags("Cards")]
 public class UpdateCardEndpoint : BaseApiController
 {
-    public UpdateCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public UpdateCardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing card
@@ -24,6 +24,6 @@ public class UpdateCardEndpoint : BaseApiController
     [Route("cards/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateCardDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateCardRequest>(new(id: id, name: input.Name, type: input.Type));
+        return await _requestDispatcher.SendCommand<UpdateCardRequest>(new(id: id, name: input.Name, type: input.Type));
     }
 }

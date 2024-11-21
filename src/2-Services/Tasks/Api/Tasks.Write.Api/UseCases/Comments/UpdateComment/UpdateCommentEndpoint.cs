@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.UpdateComment;
 [Tags("Comments")]
 public class UpdateCommentEndpoint : BaseApiController
 {
-    public UpdateCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public UpdateCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing comment
@@ -24,6 +24,6 @@ public class UpdateCommentEndpoint : BaseApiController
     [Route("comments")]
     public async Task<Result<CommandResult>> Put([FromBody] UpdateCommentDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateCommentRequest>(new(input.Id, input.Content));
+        return await _requestDispatcher.SendCommand<UpdateCommentRequest>(new(input.Id, input.Content));
     }
 }

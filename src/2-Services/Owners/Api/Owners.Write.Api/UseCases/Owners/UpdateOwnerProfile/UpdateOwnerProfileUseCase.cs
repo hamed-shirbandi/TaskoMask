@@ -29,10 +29,10 @@ public class UpdateOwnerProfileUseCase : BaseCommandHandler, IRequestHandler<Upd
     public UpdateOwnerProfileUseCase(
         IOwnerAggregateRepository ownerAggregateRepository,
         IOwnerValidatorService ownerValidatorService,
-        IMessageBus messageBus,
-        IInMemoryBus inMemoryBus
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher
     )
-        : base(messageBus, inMemoryBus)
+        : base(eventPublisher, requestDispatcher)
     {
         _ownerAggregateRepository = ownerAggregateRepository;
         _ownerValidatorService = ownerValidatorService;

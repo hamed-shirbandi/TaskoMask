@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject;
 [Tags("Projects")]
 public class DeleteProjectEndpoint : BaseApiController
 {
-    public DeleteProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public DeleteProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Delete a project
@@ -23,6 +23,6 @@ public class DeleteProjectEndpoint : BaseApiController
     [Route("projects/{id}")]
     public async Task<Result<CommandResult>> Delete(string id)
     {
-        return await _inMemoryBus.SendCommand<DeleteProjectRequest>(new(id));
+        return await _requestDispatcher.SendCommand<DeleteProjectRequest>(new(id));
     }
 }

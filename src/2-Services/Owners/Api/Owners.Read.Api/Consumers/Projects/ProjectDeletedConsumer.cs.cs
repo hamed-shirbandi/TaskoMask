@@ -12,8 +12,8 @@ public class ProjectDeletedConsumer : BaseConsumer<ProjectDeleted>
 {
     private readonly OwnerReadDbContext _ownerReadDbContext;
 
-    public ProjectDeletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-        : base(inMemoryBus)
+    public ProjectDeletedConsumer(IRequestDispatcher requestDispatcher, OwnerReadDbContext ownerReadDbContext)
+        : base(requestDispatcher)
     {
         _ownerReadDbContext = ownerReadDbContext;
     }

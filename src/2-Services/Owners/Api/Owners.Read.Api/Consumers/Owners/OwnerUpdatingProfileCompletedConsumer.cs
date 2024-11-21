@@ -12,8 +12,8 @@ public class OwnerUpdatingProfileCompletedConsumer : BaseConsumer<OwnerUpdatingP
 {
     private readonly OwnerReadDbContext _ownerReadDbContext;
 
-    public OwnerUpdatingProfileCompletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-        : base(inMemoryBus)
+    public OwnerUpdatingProfileCompletedConsumer(IRequestDispatcher requestDispatcher, OwnerReadDbContext ownerReadDbContext)
+        : base(requestDispatcher)
     {
         _ownerReadDbContext = ownerReadDbContext;
     }

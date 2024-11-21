@@ -39,8 +39,8 @@ public class UpdateOrganizationTests
         var request = new UpdateOrganizationRequest(id: expectedOrganization.Id, name: "Test New Name", description: "Test New Description");
         var updateOrganizationUseCase = new UpdateOrganizationUseCase(
             _fixture._ownerAggregateRepository,
-            _fixture._messageBus,
-            _fixture._inMemoryBus
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher
         );
 
         //Act

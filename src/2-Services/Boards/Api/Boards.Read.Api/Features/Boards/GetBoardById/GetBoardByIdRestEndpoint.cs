@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById;
 [Tags("Boards")]
 public class GetBoardByIdRestEndpoint : BaseApiController
 {
-    public GetBoardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetBoardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get board info
@@ -23,6 +23,6 @@ public class GetBoardByIdRestEndpoint : BaseApiController
     [Route("boards/{id}")]
     public async Task<Result<GetBoardDto>> Get(string id)
     {
-        return await _inMemoryBus.SendQuery(new GetBoardByIdRequest(id));
+        return await _requestDispatcher.SendQuery(new GetBoardByIdRequest(id));
     }
 }

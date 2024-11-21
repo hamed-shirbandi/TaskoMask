@@ -8,12 +8,12 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 
 public class GetOrganizationsByOwnerIdGrpcEndpoint : GetOrganizationsByOwnerIdGrpcService.GetOrganizationsByOwnerIdGrpcServiceBase
 {
-    private readonly IInMemoryBus _inMemoryBus;
+    private readonly IRequestDispatcher _requestDispatcher;
     private readonly IMapper _mapper;
 
-    public GetOrganizationsByOwnerIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
+    public GetOrganizationsByOwnerIdGrpcEndpoint(IRequestDispatcher requestDispatcher, IMapper mapper)
     {
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
         _mapper = mapper;
     }
 
@@ -23,7 +23,7 @@ public class GetOrganizationsByOwnerIdGrpcEndpoint : GetOrganizationsByOwnerIdGr
         ServerCallContext context
     )
     {
-        var organizations = await _inMemoryBus.SendQuery(new GetOrganizationsByOwnerIdRequest(request.OwnerId));
+        var organizations = await _requestDispatcher.SendQuery(new GetOrganizationsByOwnerIdRequest(request.OwnerId));
         foreach (var organization in organizations.Value)
             await responseStream.WriteAsync(_mapper.Map<GetOrganizationGrpcResponse>(organization));
     }

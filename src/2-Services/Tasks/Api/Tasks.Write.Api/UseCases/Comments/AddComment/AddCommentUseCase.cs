@@ -28,8 +28,8 @@ public class AddCommentUseCase : BaseCommandHandler, IRequestHandler<AddCommentR
     #region Ctors
 
 
-    public AddCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public AddCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IEventPublisher eventPublisher, IRequestDispatcher requestDispatcher)
+        : base(eventPublisher, requestDispatcher)
     {
         _taskAggregateRepository = taskAggregateRepository;
     }

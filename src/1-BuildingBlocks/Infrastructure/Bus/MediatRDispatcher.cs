@@ -10,9 +10,9 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus;
 
 /// <summary>
-///
+/// Implementation of IRequestDispatcher using MediatR.
 /// </summary>
-public class InMemoryBus : IInMemoryBus
+public class MediatRDispatcher : IRequestDispatcher
 {
     #region Fields
 
@@ -23,7 +23,7 @@ public class InMemoryBus : IInMemoryBus
 
     #region Ctors
 
-    public InMemoryBus(IMediator mediator, INotificationHandler notifications)
+    public MediatRDispatcher(IMediator mediator, INotificationHandler notifications)
     {
         _mediator = mediator;
         _notifications = notifications;

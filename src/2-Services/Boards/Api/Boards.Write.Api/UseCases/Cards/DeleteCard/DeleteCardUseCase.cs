@@ -27,8 +27,8 @@ public class DeleteCardUseCase : BaseCommandHandler, IRequestHandler<DeleteCardR
     #region Ctors
 
 
-    public DeleteCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public DeleteCardUseCase(IBoardAggregateRepository boardAggregateRepository, IEventPublisher eventPublisher, IRequestDispatcher requestDispatcher)
+        : base(eventPublisher, requestDispatcher)
     {
         _boardAggregateRepository = boardAggregateRepository;
     }

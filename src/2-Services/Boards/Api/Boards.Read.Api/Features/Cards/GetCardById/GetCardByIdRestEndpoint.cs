@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById;
 [Tags("Cards")]
 public class GetCardByIdRestEndpoint : BaseApiController
 {
-    public GetCardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetCardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get card info
@@ -24,6 +24,6 @@ public class GetCardByIdRestEndpoint : BaseApiController
     [Route("cards/{id}")]
     public async Task<Result<GetCardDto>> Get(string id)
     {
-        return await _inMemoryBus.SendQuery(new GetCardByIdRequest(id));
+        return await _requestDispatcher.SendQuery(new GetCardByIdRequest(id));
     }
 }

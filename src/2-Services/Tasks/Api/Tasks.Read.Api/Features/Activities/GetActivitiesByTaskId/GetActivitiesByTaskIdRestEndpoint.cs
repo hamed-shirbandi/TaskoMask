@@ -15,8 +15,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Activities.GetActivitiesByT
 [Tags("Activities")]
 public class GetActivitiesByTaskIdRestEndpoint : BaseApiController
 {
-    public GetActivitiesByTaskIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetActivitiesByTaskIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get activities for a task
@@ -25,6 +25,6 @@ public class GetActivitiesByTaskIdRestEndpoint : BaseApiController
     [Route("tasks/{taskId}/activities")]
     public async Task<Result<IEnumerable<GetActivityDto>>> Get(string taskId)
     {
-        return await _inMemoryBus.SendQuery(new GetActivitiesByTaskIdRequest(taskId));
+        return await _requestDispatcher.SendQuery(new GetActivitiesByTaskIdRequest(taskId));
     }
 }

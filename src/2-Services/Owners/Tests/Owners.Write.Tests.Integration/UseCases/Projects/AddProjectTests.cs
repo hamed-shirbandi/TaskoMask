@@ -37,7 +37,7 @@ public class AddProjectTests
         await _fixture.SeedOwnerAsync(expectedOwner);
 
         var request = new AddProjectRequest(organizationId: expectedOrganization.Id, name: "Test Name", description: "Test Description");
-        var addProjectUseCase = new AddProjectUseCase(_fixture._ownerAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var addProjectUseCase = new AddProjectUseCase(_fixture._ownerAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await addProjectUseCase.Handle(request, CancellationToken.None);

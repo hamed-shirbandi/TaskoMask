@@ -8,12 +8,12 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentsByTaskI
 
 public class GetCommentsByTaskIdGrpcEndpoint : GetCommentsByTaskIdGrpcService.GetCommentsByTaskIdGrpcServiceBase
 {
-    private readonly IInMemoryBus _inMemoryBus;
+    private readonly IRequestDispatcher _requestDispatcher;
     private readonly IMapper _mapper;
 
-    public GetCommentsByTaskIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
+    public GetCommentsByTaskIdGrpcEndpoint(IRequestDispatcher requestDispatcher, IMapper mapper)
     {
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
         _mapper = mapper;
     }
 
@@ -23,7 +23,7 @@ public class GetCommentsByTaskIdGrpcEndpoint : GetCommentsByTaskIdGrpcService.Ge
         ServerCallContext context
     )
     {
-        var comments = await _inMemoryBus.SendQuery(new GetCommentsByTaskIdRequest(request.TaskId));
+        var comments = await _requestDispatcher.SendQuery(new GetCommentsByTaskIdRequest(request.TaskId));
         foreach (var comment in comments.Value)
             await responseStream.WriteAsync(_mapper.Map<GetCommentGrpcResponse>(comment));
     }

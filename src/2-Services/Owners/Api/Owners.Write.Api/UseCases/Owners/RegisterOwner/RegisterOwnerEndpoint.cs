@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 [Tags("Owners")]
 public class RegisterOwnerEndpoint : BaseApiController
 {
-    public RegisterOwnerEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public RegisterOwnerEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// register new owner
@@ -25,6 +25,8 @@ public class RegisterOwnerEndpoint : BaseApiController
     [AllowAnonymous]
     public async Task<Result<CommandResult>> Post([FromBody] RegisterOwnerDto input)
     {
-        return await _inMemoryBus.SendCommand<RegiserOwnerRequest>(new(displayName: input.DisplayName, email: input.Email, password: input.Password));
+        return await _requestDispatcher.SendCommand<RegiserOwnerRequest>(
+            new(displayName: input.DisplayName, email: input.Email, password: input.Password)
+        );
     }
 }

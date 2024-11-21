@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask;
 [Tags("Tasks")]
 public class DeleteTaskEndpoint : BaseApiController
 {
-    public DeleteTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public DeleteTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Delete an existing task
@@ -23,6 +23,6 @@ public class DeleteTaskEndpoint : BaseApiController
     [Route("tasks/{id}")]
     public async Task<Result<CommandResult>> Delete(string id)
     {
-        return await _inMemoryBus.SendCommand<DeleteTaskRequest>(new(id));
+        return await _requestDispatcher.SendCommand<DeleteTaskRequest>(new(id));
     }
 }

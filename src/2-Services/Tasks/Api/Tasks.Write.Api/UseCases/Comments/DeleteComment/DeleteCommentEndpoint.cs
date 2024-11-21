@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment;
 [Tags("Comments")]
 public class DeleteCommentEndpoint : BaseApiController
 {
-    public DeleteCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public DeleteCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Delete an existing comment
@@ -23,6 +23,6 @@ public class DeleteCommentEndpoint : BaseApiController
     [Route("comments/{id}")]
     public async Task<Result<CommandResult>> Delete(string id)
     {
-        return await _inMemoryBus.SendCommand<DeleteCommentRequest>(new(id));
+        return await _requestDispatcher.SendCommand<DeleteCommentRequest>(new(id));
     }
 }

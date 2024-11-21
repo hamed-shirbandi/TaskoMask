@@ -24,8 +24,13 @@ public class UpdateUserUseCase : BaseCommandHandler, IRequestHandler<UpdateUserR
     /// <summary>
     ///
     /// </summary>
-    public UpdateUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications)
-        : base(messageBus, inMemoryBus)
+    public UpdateUserUseCase(
+        UserManager<User> userManager,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher,
+        INotificationHandler notifications
+    )
+        : base(eventPublisher, requestDispatcher)
     {
         _userManager = userManager;
         _notifications = notifications;
@@ -50,7 +55,7 @@ public class UpdateUserUseCase : BaseCommandHandler, IRequestHandler<UpdateUserR
             throw new ApplicationException(ContractsMessages.Update_Failed);
         }
 
-        await PublishDomainEventsAsync(new UserUpdatedEvent(user.Id, user.Email));
+        await PublishDomainEventAsync(new UserUpdatedEvent(user.Id, user.Email));
 
         await PublishIntegrationEventAsync(new UserUpdated(user.Email));
 

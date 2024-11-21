@@ -8,12 +8,12 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Activities.GetActivitiesByT
 
 public class GetActivitiesByTaskIdGrpcEndpoint : GetActivitiesByTaskIdGrpcService.GetActivitiesByTaskIdGrpcServiceBase
 {
-    private readonly IInMemoryBus _inMemoryBus;
+    private readonly IRequestDispatcher _requestDispatcher;
     private readonly IMapper _mapper;
 
-    public GetActivitiesByTaskIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
+    public GetActivitiesByTaskIdGrpcEndpoint(IRequestDispatcher requestDispatcher, IMapper mapper)
     {
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
         _mapper = mapper;
     }
 
@@ -23,7 +23,7 @@ public class GetActivitiesByTaskIdGrpcEndpoint : GetActivitiesByTaskIdGrpcServic
         ServerCallContext context
     )
     {
-        var comments = await _inMemoryBus.SendQuery(new GetActivitiesByTaskIdRequest(request.TaskId));
+        var comments = await _requestDispatcher.SendQuery(new GetActivitiesByTaskIdRequest(request.TaskId));
         foreach (var comment in comments.Value)
             await responseStream.WriteAsync(_mapper.Map<GetActivityGrpcResponse>(comment));
     }

@@ -31,11 +31,11 @@ public class UpdateTaskUseCase : BaseCommandHandler, IRequestHandler<UpdateTaskR
 
     public UpdateTaskUseCase(
         ITaskAggregateRepository taskAggregateRepository,
-        IMessageBus messageBus,
-        IInMemoryBus inMemoryBus,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher,
         ITaskValidatorService taskValidatorService
     )
-        : base(messageBus, inMemoryBus)
+        : base(eventPublisher, requestDispatcher)
     {
         _taskAggregateRepository = taskAggregateRepository;
         _taskValidatorService = taskValidatorService;

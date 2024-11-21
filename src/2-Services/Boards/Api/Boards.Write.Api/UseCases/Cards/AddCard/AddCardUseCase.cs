@@ -28,8 +28,8 @@ public class AddCardUseCase : BaseCommandHandler, IRequestHandler<AddCardRequest
     #region Ctors
 
 
-    public AddCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public AddCardUseCase(IBoardAggregateRepository boardAggregateRepository, IEventPublisher eventPublisher, IRequestDispatcher requestDispatcher)
+        : base(eventPublisher, requestDispatcher)
     {
         _boardAggregateRepository = boardAggregateRepository;
     }

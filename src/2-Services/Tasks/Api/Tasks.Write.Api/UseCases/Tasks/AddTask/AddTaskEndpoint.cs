@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask;
 [Tags("Tasks")]
 public class AddTaskEndpoint : BaseApiController
 {
-    public AddTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public AddTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Add new task to board
@@ -24,7 +24,7 @@ public class AddTaskEndpoint : BaseApiController
     [Route("tasks")]
     public async Task<Result<CommandResult>> Post([FromBody] AddTaskDto input)
     {
-        return await _inMemoryBus.SendCommand<AddTaskRequest>(
+        return await _requestDispatcher.SendCommand<AddTaskRequest>(
             new(cardId: input.CardId, boardId: input.BoardId, title: input.Title, description: input.Description)
         );
     }

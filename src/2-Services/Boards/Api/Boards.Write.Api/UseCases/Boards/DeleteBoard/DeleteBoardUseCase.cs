@@ -27,8 +27,12 @@ public class DeleteBoardUseCase : BaseCommandHandler, IRequestHandler<DeleteBoar
     #region Ctors
 
 
-    public DeleteBoardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public DeleteBoardUseCase(
+        IBoardAggregateRepository boardAggregateRepository,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher
+    )
+        : base(eventPublisher, requestDispatcher)
     {
         _boardAggregateRepository = boardAggregateRepository;
     }

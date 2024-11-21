@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById;
 [Tags("Tasks")]
 public class GetTaskByIdRestEndpoint : BaseApiController
 {
-    public GetTaskByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetTaskByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get task info
@@ -24,6 +24,6 @@ public class GetTaskByIdRestEndpoint : BaseApiController
     [Route("tasks/{id}")]
     public async Task<Result<GetTaskDto>> Get(string id)
     {
-        return await _inMemoryBus.SendQuery(new GetTaskByIdRequest(id));
+        return await _requestDispatcher.SendQuery(new GetTaskByIdRequest(id));
     }
 }

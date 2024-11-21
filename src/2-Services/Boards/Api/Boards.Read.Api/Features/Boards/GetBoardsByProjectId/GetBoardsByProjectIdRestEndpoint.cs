@@ -15,8 +15,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectI
 [Tags("Boards")]
 public class GetBoardsByProjectIdRestEndpoint : BaseApiController
 {
-    public GetBoardsByProjectIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetBoardsByProjectIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get boards for a project
@@ -25,6 +25,6 @@ public class GetBoardsByProjectIdRestEndpoint : BaseApiController
     [Route("projects/{projectId}/boards")]
     public async Task<Result<IEnumerable<GetBoardDto>>> Get(string projectId)
     {
-        return await _inMemoryBus.SendQuery(new GetBoardsByProjectIdRequest(projectId));
+        return await _requestDispatcher.SendQuery(new GetBoardsByProjectIdRequest(projectId));
     }
 }

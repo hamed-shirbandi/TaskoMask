@@ -17,7 +17,7 @@ public static class BusExtensions
         //Load all handlers from given assemblies
         services.AddMediatR(handlerAssemblyMarkerType);
 
-        services.AddScoped<IInMemoryBus, InMemoryBus>();
+        services.AddScoped<IRequestDispatcher, MediatRDispatcher>();
     }
 
     /// <summary>
@@ -27,6 +27,6 @@ public static class BusExtensions
     {
         services.AddMassTransitWithRabbitMqTransport(configuration, consumerAssemblyMarkerType);
 
-        services.AddScoped<IMessageBus, MessageBus>();
+        services.AddScoped<IEventPublisher, MassTransitEventPublisher>();
     }
 }

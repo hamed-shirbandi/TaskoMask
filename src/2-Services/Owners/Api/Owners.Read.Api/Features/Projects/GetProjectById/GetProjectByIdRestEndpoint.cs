@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById;
 [Tags("Projects")]
 public class GetProjectByIdRestEndpoint : BaseApiController
 {
-    public GetProjectByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetProjectByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get project basic info
@@ -24,6 +24,6 @@ public class GetProjectByIdRestEndpoint : BaseApiController
     [Route("projects/{id}")]
     public async Task<Result<GetProjectDto>> Get(string id)
     {
-        return await _inMemoryBus.SendQuery(new GetProjectByIdRequest(id));
+        return await _requestDispatcher.SendQuery(new GetProjectByIdRequest(id));
     }
 }

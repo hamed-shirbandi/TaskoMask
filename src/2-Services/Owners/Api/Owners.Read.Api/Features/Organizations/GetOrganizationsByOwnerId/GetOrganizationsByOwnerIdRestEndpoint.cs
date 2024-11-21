@@ -15,8 +15,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 [Tags("Organizations")]
 public class GetOrganizationsByOwnerIdRestEndpoint : BaseApiController
 {
-    public GetOrganizationsByOwnerIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetOrganizationsByOwnerIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get organizations for current owner
@@ -25,6 +25,6 @@ public class GetOrganizationsByOwnerIdRestEndpoint : BaseApiController
     [Route("organizations")]
     public async Task<Result<IEnumerable<GetOrganizationDto>>> Get()
     {
-        return await _inMemoryBus.SendQuery(new GetOrganizationsByOwnerIdRequest(GetCurrentUserId()));
+        return await _requestDispatcher.SendQuery(new GetOrganizationsByOwnerIdRequest(GetCurrentUserId()));
     }
 }

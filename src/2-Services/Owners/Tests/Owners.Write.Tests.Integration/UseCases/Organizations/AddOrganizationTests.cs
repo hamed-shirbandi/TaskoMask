@@ -36,7 +36,11 @@ public class AddOrganizationTests
         await _fixture.SeedOwnerAsync(expectedOwner);
 
         var request = new AddOrganizationRequest(ownerId: expectedOwner.Id, name: "Test Name", description: "Test Description");
-        var addOrganizationUseCase = new AddOrganizationUseCase(_fixture._ownerAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var addOrganizationUseCase = new AddOrganizationUseCase(
+            _fixture._ownerAggregateRepository,
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher
+        );
 
         //Act
         var result = await addOrganizationUseCase.Handle(request, CancellationToken.None);

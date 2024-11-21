@@ -42,7 +42,11 @@ public class DeleteProjectTests
         var expectedProject = expectedOrganization.Projects.FirstOrDefault();
 
         var request = new DeleteProjectRequest(expectedProject.Id);
-        var deleteProjectUseCase = new DeleteProjectUseCase(_fixture._ownerAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var deleteProjectUseCase = new DeleteProjectUseCase(
+            _fixture._ownerAggregateRepository,
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher
+        );
 
         //Act
         var result = await deleteProjectUseCase.Handle(request, CancellationToken.None);

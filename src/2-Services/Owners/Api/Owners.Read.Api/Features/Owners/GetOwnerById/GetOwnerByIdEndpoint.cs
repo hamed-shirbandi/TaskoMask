@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById;
 [Tags("Owners")]
 public class GetOwnerByIdEndpoint : BaseApiController
 {
-    public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get current owner basic information
@@ -24,6 +24,6 @@ public class GetOwnerByIdEndpoint : BaseApiController
     [Route("owner")]
     public async Task<Result<GetOwnerDto>> Get()
     {
-        return await _inMemoryBus.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
+        return await _requestDispatcher.SendQuery(new GetOwnerByIdRequest(GetCurrentUserId()));
     }
 }

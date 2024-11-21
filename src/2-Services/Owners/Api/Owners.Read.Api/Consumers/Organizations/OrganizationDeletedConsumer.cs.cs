@@ -12,8 +12,8 @@ public class OrganizationDeletedConsumer : BaseConsumer<OrganizationDeleted>
 {
     private readonly OwnerReadDbContext _ownerReadDbContext;
 
-    public OrganizationDeletedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-        : base(inMemoryBus)
+    public OrganizationDeletedConsumer(IRequestDispatcher requestDispatcher, OwnerReadDbContext ownerReadDbContext)
+        : base(requestDispatcher)
     {
         _ownerReadDbContext = ownerReadDbContext;
     }

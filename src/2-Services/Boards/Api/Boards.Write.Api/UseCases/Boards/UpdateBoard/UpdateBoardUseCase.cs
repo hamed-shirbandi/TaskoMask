@@ -31,11 +31,11 @@ public class UpdateBoardUseCase : BaseCommandHandler, IRequestHandler<UpdateBoar
 
     public UpdateBoardUseCase(
         IBoardAggregateRepository boardAggregateRepository,
-        IMessageBus messageBus,
-        IInMemoryBus inMemoryBus,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher,
         IBoardValidatorService boardValidatorService
     )
-        : base(messageBus, inMemoryBus)
+        : base(eventPublisher, requestDispatcher)
     {
         _boardAggregateRepository = boardAggregateRepository;
         _boardValidatorService = boardValidatorService;

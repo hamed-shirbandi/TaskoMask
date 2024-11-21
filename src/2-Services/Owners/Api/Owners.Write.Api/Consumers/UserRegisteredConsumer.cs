@@ -16,8 +16,8 @@ public class UserRegisteredConsumer : BaseConsumer<UserRegistered>
 {
     private readonly IOwnerAggregateRepository _ownerAggregateRepository;
 
-    public UserRegisteredConsumer(IInMemoryBus inMemoryBus, IOwnerAggregateRepository ownerAggregateRepository)
-        : base(inMemoryBus)
+    public UserRegisteredConsumer(IRequestDispatcher requestDispatcher, IOwnerAggregateRepository ownerAggregateRepository)
+        : base(requestDispatcher)
     {
         _ownerAggregateRepository = ownerAggregateRepository;
     }

@@ -7,9 +7,9 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 namespace TaskoMask.BuildingBlocks.Application.Bus;
 
 /// <summary>
-/// It is used as a mediator to send and handle requests inside a service (in-process)
+/// Dispatches commands, queries, and domain events within the application (in-process).
 /// </summary>
-public interface IInMemoryBus
+public interface IRequestDispatcher
 {
     Task<Result<CommandResult>> SendCommand<TCommand>(TCommand cmd)
         where TCommand : BaseCommand;

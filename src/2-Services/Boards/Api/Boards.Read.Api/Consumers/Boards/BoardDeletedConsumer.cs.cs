@@ -12,8 +12,8 @@ public class BoardDeletedConsumer : BaseConsumer<BoardDeleted>
 {
     private readonly BoardReadDbContext _boardReadDbContext;
 
-    public BoardDeletedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
-        : base(inMemoryBus)
+    public BoardDeletedConsumer(IRequestDispatcher requestDispatcher, BoardReadDbContext boardReadDbContext)
+        : base(requestDispatcher)
     {
         _boardReadDbContext = boardReadDbContext;
     }

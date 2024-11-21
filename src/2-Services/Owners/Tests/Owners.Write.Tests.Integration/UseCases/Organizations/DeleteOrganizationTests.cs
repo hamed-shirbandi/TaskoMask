@@ -42,8 +42,8 @@ public class DeleteOrganizationTests
         var request = new DeleteOrganizationRequest(expectedOrganization.Id);
         var deleteOrganizationUseCase = new DeleteOrganizationUseCase(
             _fixture._ownerAggregateRepository,
-            _fixture._messageBus,
-            _fixture._inMemoryBus
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher
         );
 
         //Act

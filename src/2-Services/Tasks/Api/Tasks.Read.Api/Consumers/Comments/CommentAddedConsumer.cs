@@ -12,8 +12,8 @@ public class CommentAddedConsumer : BaseConsumer<CommentAdded>
 {
     private readonly TaskReadDbContext _taskReadDbContext;
 
-    public CommentAddedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
-        : base(inMemoryBus)
+    public CommentAddedConsumer(IRequestDispatcher requestDispatcher, TaskReadDbContext taskReadDbContext)
+        : base(requestDispatcher)
     {
         _taskReadDbContext = taskReadDbContext;
     }

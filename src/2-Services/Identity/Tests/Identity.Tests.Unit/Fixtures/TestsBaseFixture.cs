@@ -19,8 +19,8 @@ public abstract class TestsBaseFixture : UnitTestsBase
     public TestUserManager TestUserManager;
     public TestSignInManager TestSignInManager;
     public INotificationHandler NotificationHandler;
-    public IMessageBus MessageBus;
-    public IInMemoryBus InMemoryBus;
+    public IEventPublisher MessageBus;
+    public IRequestDispatcher InMemoryBus;
     public IMapper Mapper;
 
     public List<User> TestUsers;
@@ -46,8 +46,8 @@ public abstract class TestsBaseFixture : UnitTestsBase
         TestUsers = new List<User>();
         TestUserLogins = new List<UserLogin>();
         NotificationHandler = Substitute.For<INotificationHandler>();
-        MessageBus = Substitute.For<IMessageBus>();
-        InMemoryBus = Substitute.For<IInMemoryBus>();
+        MessageBus = Substitute.For<IEventPublisher>();
+        InMemoryBus = Substitute.For<IRequestDispatcher>();
         Mapper = Substitute.For<IMapper>();
 
         TestSignInManager

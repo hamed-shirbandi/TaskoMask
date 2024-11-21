@@ -45,7 +45,7 @@ public class DeleteCommentTests
         var expectedComment = expectedTask.Comments.FirstOrDefault();
 
         var request = new DeleteCommentRequest(expectedComment.Id);
-        var deleteCommentUseCase = new DeleteCommentUseCase(_fixture._taskAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var deleteCommentUseCase = new DeleteCommentUseCase(_fixture._taskAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await deleteCommentUseCase.Handle(request, CancellationToken.None);

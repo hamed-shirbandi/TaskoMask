@@ -13,13 +13,13 @@ namespace TaskoMask.Services.Identity.Api.Consumers;
 /// </summary>
 public class OwnerRegisteredConsumer : BaseConsumer<OwnerRegistered>
 {
-    public OwnerRegisteredConsumer(IInMemoryBus inMemoryBus)
-        : base(inMemoryBus) { }
+    public OwnerRegisteredConsumer(IRequestDispatcher requestDispatcher)
+        : base(requestDispatcher) { }
 
     public override async Task ConsumeMessage(ConsumeContext<OwnerRegistered> context)
     {
         var registerUser = new RegisterUserRequest(context.Message.Id, context.Message.Email, context.Message.Password);
-        var result = await _inMemoryBus.SendCommand(registerUser);
+        var result = await _requestDispatcher.SendCommand(registerUser);
         if (!result.IsSuccess)
             throw new MessageConsumerFaultException(result.Message); // Cause to publish Fault<OwnerRegistered> message
     }

@@ -29,8 +29,8 @@ public class UserCollectionFixture : TestsBaseFixture
     public UserManager<User> UserManager;
     public SignInManager<User> SignInManager;
     public INotificationHandler NotificationHandler;
-    public IMessageBus MessageBus;
-    public IInMemoryBus InMemoryBus;
+    public IEventPublisher MessageBus;
+    public IRequestDispatcher InMemoryBus;
     public IMapper Mapper;
     public IIdentityServerInteractionService InteractionService;
     public IEventService EventsService;
@@ -46,8 +46,8 @@ public class UserCollectionFixture : TestsBaseFixture
 
         InteractionService = Substitute.For<IIdentityServerInteractionService>();
         EventsService = Substitute.For<IEventService>();
-        MessageBus = Substitute.For<IMessageBus>();
-        InMemoryBus = Substitute.For<IInMemoryBus>();
+        MessageBus = Substitute.For<IEventPublisher>();
+        InMemoryBus = Substitute.For<IRequestDispatcher>();
     }
 
     /// <summary>

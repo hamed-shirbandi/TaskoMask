@@ -8,18 +8,18 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById;
 
 public class GetProjectByIdGrpcEndpoint : GetProjectByIdGrpcService.GetProjectByIdGrpcServiceBase
 {
-    private readonly IInMemoryBus _inMemoryBus;
+    private readonly IRequestDispatcher _requestDispatcher;
     private readonly IMapper _mapper;
 
-    public GetProjectByIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
+    public GetProjectByIdGrpcEndpoint(IRequestDispatcher requestDispatcher, IMapper mapper)
     {
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
         _mapper = mapper;
     }
 
     public override async Task<GetProjectGrpcResponse> Handle(GetProjectByIdGrpcRequest request, ServerCallContext context)
     {
-        var project = await _inMemoryBus.SendQuery(new GetProjectByIdRequest(request.Id));
+        var project = await _requestDispatcher.SendQuery(new GetProjectByIdRequest(request.Id));
         return _mapper.Map<GetProjectGrpcResponse>(project.Value);
     }
 }

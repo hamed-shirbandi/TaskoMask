@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.UpdateProject;
 [Tags("Projects")]
 public class UpdateProjectEndpoint : BaseApiController
 {
-    public UpdateProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public UpdateProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing project
@@ -24,6 +24,6 @@ public class UpdateProjectEndpoint : BaseApiController
     [Route("projects/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateProjectDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateProjectRequest>(new(id: id, name: input.Name, description: input.Description));
+        return await _requestDispatcher.SendCommand<UpdateProjectRequest>(new(id: id, name: input.Name, description: input.Description));
     }
 }

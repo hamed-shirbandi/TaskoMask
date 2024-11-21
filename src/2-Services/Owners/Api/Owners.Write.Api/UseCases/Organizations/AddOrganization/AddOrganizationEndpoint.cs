@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganiza
 [Tags("Organizations")]
 public class AddOrganizationEndpoint : BaseApiController
 {
-    public AddOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public AddOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Add new organization for current owner
@@ -25,6 +25,8 @@ public class AddOrganizationEndpoint : BaseApiController
     public async Task<Result<CommandResult>> Post([FromBody] AddOrganizationDto input)
     {
         input.OwnerId = GetCurrentUserId();
-        return await _inMemoryBus.SendCommand<AddOrganizationRequest>(new(ownerId: input.OwnerId, name: input.Name, description: input.Description));
+        return await _requestDispatcher.SendCommand<AddOrganizationRequest>(
+            new(ownerId: input.OwnerId, name: input.Name, description: input.Description)
+        );
     }
 }

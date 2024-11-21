@@ -39,8 +39,8 @@ public class UpdateOwnerProfileTests
         var updateOwnerProfileUseCase = new UpdateOwnerProfileUseCase(
             _fixture._ownerAggregateRepository,
             _fixture._ownerValidatorService,
-            _fixture._messageBus,
-            _fixture._inMemoryBus
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher
         );
 
         //Act

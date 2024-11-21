@@ -27,8 +27,12 @@ public class DeleteProjectUseCase : BaseCommandHandler, IRequestHandler<DeletePr
     #region Ctors
 
 
-    public DeleteProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public DeleteProjectUseCase(
+        IOwnerAggregateRepository ownerAggregateRepository,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher
+    )
+        : base(eventPublisher, requestDispatcher)
     {
         _ownerAggregateRepository = ownerAggregateRepository;
     }

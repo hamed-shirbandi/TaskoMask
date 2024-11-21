@@ -12,8 +12,8 @@ public class CommentDeletedConsumer : BaseConsumer<CommentDeleted>
 {
     private readonly TaskReadDbContext _taskReadDbContext;
 
-    public CommentDeletedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
-        : base(inMemoryBus)
+    public CommentDeletedConsumer(IRequestDispatcher requestDispatcher, TaskReadDbContext taskReadDbContext)
+        : base(requestDispatcher)
     {
         _taskReadDbContext = taskReadDbContext;
     }

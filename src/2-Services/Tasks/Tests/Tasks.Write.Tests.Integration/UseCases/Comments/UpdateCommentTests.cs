@@ -40,7 +40,7 @@ public class UpdateCommentTests
         await _fixture.SeedTaskAsync(expectedTask);
 
         var request = new UpdateCommentRequest(id: expectedComment.Id, content: "Test New Content");
-        var updateCommentUseCase = new UpdateCommentUseCase(_fixture._taskAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var updateCommentUseCase = new UpdateCommentUseCase(_fixture._taskAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await updateCommentUseCase.Handle(request, CancellationToken.None);

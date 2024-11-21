@@ -35,8 +35,8 @@ public class AddBoardTests
         var request = new AddBoardRequest(name: "Test Name", description: "Test Description", projectId: ObjectId.GenerateNewId().ToString());
         var addBoardUseCase = new AddBoardUseCase(
             _fixture._boardAggregateRepository,
-            _fixture._messageBus,
-            _fixture._inMemoryBus,
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher,
             _fixture._boardValidatorService
         );
 

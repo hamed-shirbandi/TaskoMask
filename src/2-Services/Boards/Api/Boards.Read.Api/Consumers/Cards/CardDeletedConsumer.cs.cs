@@ -12,8 +12,8 @@ public class CardDeletedConsumer : BaseConsumer<CardDeleted>
 {
     private readonly BoardReadDbContext _boardReadDbContext;
 
-    public CardDeletedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
-        : base(inMemoryBus)
+    public CardDeletedConsumer(IRequestDispatcher requestDispatcher, BoardReadDbContext boardReadDbContext)
+        : base(requestDispatcher)
     {
         _boardReadDbContext = boardReadDbContext;
     }

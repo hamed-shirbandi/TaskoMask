@@ -28,8 +28,12 @@ public class AddOrganizationUseCase : BaseCommandHandler, IRequestHandler<AddOrg
     #region Ctors
 
 
-    public AddOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public AddOrganizationUseCase(
+        IOwnerAggregateRepository ownerAggregateRepository,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher
+    )
+        : base(eventPublisher, requestDispatcher)
     {
         _ownerAggregateRepository = ownerAggregateRepository;
     }

@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject;
 [Tags("Projects")]
 public class AddProjectEndpoint : BaseApiController
 {
-    public AddProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public AddProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Add new project
@@ -24,7 +24,7 @@ public class AddProjectEndpoint : BaseApiController
     [Route("projects")]
     public async Task<Result<CommandResult>> Add([FromBody] AddProjectDto input)
     {
-        return await _inMemoryBus.SendCommand<AddProjectRequest>(
+        return await _requestDispatcher.SendCommand<AddProjectRequest>(
             new(organizationId: input.OrganizationId, name: input.Name, description: input.Description)
         );
     }

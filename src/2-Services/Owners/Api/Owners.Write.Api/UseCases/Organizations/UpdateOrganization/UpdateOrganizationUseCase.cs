@@ -27,8 +27,12 @@ public class UpdateOrganizationUseCase : BaseCommandHandler, IRequestHandler<Upd
     #region Ctors
 
 
-    public UpdateOrganizationUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public UpdateOrganizationUseCase(
+        IOwnerAggregateRepository ownerAggregateRepository,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher
+    )
+        : base(eventPublisher, requestDispatcher)
     {
         _ownerAggregateRepository = ownerAggregateRepository;
     }

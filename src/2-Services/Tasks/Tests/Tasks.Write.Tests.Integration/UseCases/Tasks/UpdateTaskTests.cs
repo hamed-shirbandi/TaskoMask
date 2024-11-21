@@ -40,8 +40,8 @@ public class UpdateTaskTests
         var request = new UpdateTaskRequest(id: expectedTask.Id, title: "Test New Title", description: "Test New Description");
         var updateTaskUseCase = new UpdateTaskUseCase(
             _fixture._taskAggregateRepository,
-            _fixture._messageBus,
-            _fixture._inMemoryBus,
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher,
             _fixture._taskValidatorService
         );
 

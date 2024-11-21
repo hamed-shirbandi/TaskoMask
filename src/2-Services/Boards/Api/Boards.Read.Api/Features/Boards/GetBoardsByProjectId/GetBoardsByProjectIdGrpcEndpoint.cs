@@ -8,12 +8,12 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectI
 
 public class GetBoardsByProjectIdGrpcEndpoint : GetBoardsByProjectIdGrpcService.GetBoardsByProjectIdGrpcServiceBase
 {
-    private readonly IInMemoryBus _inMemoryBus;
+    private readonly IRequestDispatcher _requestDispatcher;
     private readonly IMapper _mapper;
 
-    public GetBoardsByProjectIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
+    public GetBoardsByProjectIdGrpcEndpoint(IRequestDispatcher requestDispatcher, IMapper mapper)
     {
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
         _mapper = mapper;
     }
 
@@ -23,7 +23,7 @@ public class GetBoardsByProjectIdGrpcEndpoint : GetBoardsByProjectIdGrpcService.
         ServerCallContext context
     )
     {
-        var boards = await _inMemoryBus.SendQuery(new GetBoardsByProjectIdRequest(request.ProjectId));
+        var boards = await _requestDispatcher.SendQuery(new GetBoardsByProjectIdRequest(request.ProjectId));
         foreach (var board in boards.Value)
             await responseStream.WriteAsync(_mapper.Map<GetBoardGrpcResponse>(board));
     }

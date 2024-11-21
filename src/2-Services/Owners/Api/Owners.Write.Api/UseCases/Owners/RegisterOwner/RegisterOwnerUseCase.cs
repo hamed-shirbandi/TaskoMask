@@ -27,10 +27,10 @@ public class RegiserOwnerUseCase : BaseCommandHandler, IRequestHandler<RegiserOw
     public RegiserOwnerUseCase(
         IOwnerAggregateRepository ownerAggregateRepository,
         IOwnerValidatorService ownerValidatorService,
-        IMessageBus messageBus,
-        IInMemoryBus inMemoryBus
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher
     )
-        : base(messageBus, inMemoryBus)
+        : base(eventPublisher, requestDispatcher)
     {
         _ownerAggregateRepository = ownerAggregateRepository;
         _ownerValidatorService = ownerValidatorService;

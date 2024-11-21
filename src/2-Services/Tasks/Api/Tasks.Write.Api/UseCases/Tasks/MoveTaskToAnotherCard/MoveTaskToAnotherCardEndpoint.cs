@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCar
 [Tags("Tasks")]
 public class MoveTaskToAnotherCardEndpoint : BaseApiController
 {
-    public MoveTaskToAnotherCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public MoveTaskToAnotherCardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Move a task to another card
@@ -23,6 +23,6 @@ public class MoveTaskToAnotherCardEndpoint : BaseApiController
     [Route("tasks/{taskId}/moveto/{cardId}")]
     public async Task<Result<CommandResult>> Put(string taskId, string cardId)
     {
-        return await _inMemoryBus.SendCommand<MoveTaskToAnotherCardRequest>(new(taskId, cardId));
+        return await _requestDispatcher.SendCommand<MoveTaskToAnotherCardRequest>(new(taskId, cardId));
     }
 }

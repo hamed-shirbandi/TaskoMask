@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard;
 [Tags("Cards")]
 public class AddCardEndpoint : BaseApiController
 {
-    public AddCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public AddCardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Add new card
@@ -24,6 +24,6 @@ public class AddCardEndpoint : BaseApiController
     [Route("cards")]
     public async Task<Result<CommandResult>> Add([FromBody] AddCardDto input)
     {
-        return await _inMemoryBus.SendCommand<AddCardRequest>(new(boardId: input.BoardId, name: input.Name, type: input.Type));
+        return await _requestDispatcher.SendCommand<AddCardRequest>(new(boardId: input.BoardId, name: input.Name, type: input.Type));
     }
 }

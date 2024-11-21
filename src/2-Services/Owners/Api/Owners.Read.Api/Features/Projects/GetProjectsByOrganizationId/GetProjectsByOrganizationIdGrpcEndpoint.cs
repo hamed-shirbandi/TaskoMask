@@ -8,12 +8,12 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
 
 public class GetProjectsByOrganizationIdGrpcEndpoint : GetProjectsByOrganizationIdGrpcService.GetProjectsByOrganizationIdGrpcServiceBase
 {
-    private readonly IInMemoryBus _inMemoryBus;
+    private readonly IRequestDispatcher _requestDispatcher;
     private readonly IMapper _mapper;
 
-    public GetProjectsByOrganizationIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
+    public GetProjectsByOrganizationIdGrpcEndpoint(IRequestDispatcher requestDispatcher, IMapper mapper)
     {
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
         _mapper = mapper;
     }
 
@@ -23,7 +23,7 @@ public class GetProjectsByOrganizationIdGrpcEndpoint : GetProjectsByOrganization
         ServerCallContext context
     )
     {
-        var projects = await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdRequest(request.OrganizationId));
+        var projects = await _requestDispatcher.SendQuery(new GetProjectsByOrganizationIdRequest(request.OrganizationId));
         foreach (var project in projects.Value)
             await responseStream.WriteAsync(_mapper.Map<GetProjectGrpcResponse>(project));
     }

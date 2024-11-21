@@ -26,8 +26,8 @@ public class AddProjectUseCase : BaseCommandHandler, IRequestHandler<AddProjectR
     #region Ctors
 
 
-    public AddProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public AddProjectUseCase(IOwnerAggregateRepository ownerAggregateRepository, IEventPublisher eventPublisher, IRequestDispatcher requestDispatcher)
+        : base(eventPublisher, requestDispatcher)
     {
         _ownerAggregateRepository = ownerAggregateRepository;
     }

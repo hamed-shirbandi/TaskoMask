@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrgan
 [Tags("Organizations")]
 public class DeleteOrganizationEndpoint : BaseApiController
 {
-    public DeleteOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public DeleteOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Delete an organization
@@ -23,6 +23,6 @@ public class DeleteOrganizationEndpoint : BaseApiController
     [Route("organizations/{id}")]
     public async Task<Result<CommandResult>> Delete(string id)
     {
-        return await _inMemoryBus.SendCommand<DeleteOrganizationRequest>(new(id));
+        return await _requestDispatcher.SendCommand<DeleteOrganizationRequest>(new(id));
     }
 }

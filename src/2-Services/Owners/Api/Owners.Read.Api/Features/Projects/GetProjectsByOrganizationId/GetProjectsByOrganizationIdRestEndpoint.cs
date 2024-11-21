@@ -15,8 +15,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
 [Tags("Projects")]
 public class GetProjectsByOrganizationIdRestEndpoint : BaseApiController
 {
-    public GetProjectsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetProjectsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get projects for an organization
@@ -25,6 +25,6 @@ public class GetProjectsByOrganizationIdRestEndpoint : BaseApiController
     [Route("organizations/{organizationId}/projects")]
     public async Task<Result<IEnumerable<GetProjectDto>>> Get(string organizationId)
     {
-        return await _inMemoryBus.SendQuery(new GetProjectsByOrganizationIdRequest(organizationId));
+        return await _requestDispatcher.SendQuery(new GetProjectsByOrganizationIdRequest(organizationId));
     }
 }

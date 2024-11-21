@@ -12,8 +12,8 @@ public class OrganizationUpdatedConsumer : BaseConsumer<OrganizationUpdated>
 {
     private readonly OwnerReadDbContext _ownerReadDbContext;
 
-    public OrganizationUpdatedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-        : base(inMemoryBus)
+    public OrganizationUpdatedConsumer(IRequestDispatcher requestDispatcher, OwnerReadDbContext ownerReadDbContext)
+        : base(requestDispatcher)
     {
         _ownerReadDbContext = ownerReadDbContext;
     }

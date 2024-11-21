@@ -6,9 +6,9 @@ using TaskoMask.BuildingBlocks.Contracts.Events;
 namespace TaskoMask.BuildingBlocks.Infrastructure.Bus;
 
 /// <summary>
-///
+/// Implementation of IEventPublisher using MassTransit.
 /// </summary>
-public class MessageBus : IMessageBus
+public class MassTransitEventPublisher : IEventPublisher
 {
     #region Fields
 
@@ -18,7 +18,7 @@ public class MessageBus : IMessageBus
 
     #region Ctors
 
-    public MessageBus(IPublishEndpoint publishEndpoint)
+    public MassTransitEventPublisher(IPublishEndpoint publishEndpoint)
     {
         _publishEndpoint = publishEndpoint;
     }

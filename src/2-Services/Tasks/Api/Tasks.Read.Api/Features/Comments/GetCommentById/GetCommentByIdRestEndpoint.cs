@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentById;
 [Tags("Comments")]
 public class GetCommentByIdRestEndpoint : BaseApiController
 {
-    public GetCommentByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public GetCommentByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// get comment info
@@ -24,6 +24,6 @@ public class GetCommentByIdRestEndpoint : BaseApiController
     [Route("comments/{id}")]
     public async Task<Result<GetCommentDto>> Get(string id)
     {
-        return await _inMemoryBus.SendQuery(new GetCommentByIdRequest(id));
+        return await _requestDispatcher.SendQuery(new GetCommentByIdRequest(id));
     }
 }

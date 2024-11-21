@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard;
 [Tags("Boards")]
 public class DeleteBoardEndpoint : BaseApiController
 {
-    public DeleteBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public DeleteBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Delete a board
@@ -23,6 +23,6 @@ public class DeleteBoardEndpoint : BaseApiController
     [Route("boards/{id}")]
     public async Task<Result<CommandResult>> Delete(string id)
     {
-        return await _inMemoryBus.SendCommand<DeleteBoardRequest>(new(id));
+        return await _requestDispatcher.SendCommand<DeleteBoardRequest>(new(id));
     }
 }

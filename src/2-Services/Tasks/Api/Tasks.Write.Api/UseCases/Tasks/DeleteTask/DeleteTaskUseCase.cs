@@ -27,8 +27,8 @@ public class DeleteTaskUseCase : BaseCommandHandler, IRequestHandler<DeleteTaskR
     #region Ctors
 
 
-    public DeleteTaskUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public DeleteTaskUseCase(ITaskAggregateRepository taskAggregateRepository, IEventPublisher eventPublisher, IRequestDispatcher requestDispatcher)
+        : base(eventPublisher, requestDispatcher)
     {
         _taskAggregateRepository = taskAggregateRepository;
     }

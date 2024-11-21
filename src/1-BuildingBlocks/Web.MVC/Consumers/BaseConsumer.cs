@@ -8,7 +8,7 @@ public abstract class BaseConsumer<TEvent> : IConsumer<TEvent>
 {
     #region Fields
 
-    protected readonly IInMemoryBus _inMemoryBus;
+    protected readonly IRequestDispatcher _requestDispatcher;
 
     #endregion
 
@@ -16,9 +16,9 @@ public abstract class BaseConsumer<TEvent> : IConsumer<TEvent>
 
 
 
-    public BaseConsumer(IInMemoryBus inMemoryBus)
+    public BaseConsumer(IRequestDispatcher requestDispatcher)
     {
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
     }
 
     #endregion

@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrgan
 [Tags("Organizations")]
 public class UpdateOrganizationEndpoint : BaseApiController
 {
-    public UpdateOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public UpdateOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing organization
@@ -24,6 +24,6 @@ public class UpdateOrganizationEndpoint : BaseApiController
     [Route("organizations/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateOrganizationDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateOrganizationRequest>(new(id: id, name: input.Name, description: input.Description));
+        return await _requestDispatcher.SendCommand<UpdateOrganizationRequest>(new(id: id, name: input.Name, description: input.Description));
     }
 }

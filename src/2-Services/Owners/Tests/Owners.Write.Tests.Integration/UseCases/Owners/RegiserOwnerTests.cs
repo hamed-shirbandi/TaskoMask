@@ -35,8 +35,8 @@ public class RegiserOwnerTests
         var regiserOwnerUseCase = new RegiserOwnerUseCase(
             _fixture._ownerAggregateRepository,
             _fixture._ownerValidatorService,
-            _fixture._messageBus,
-            _fixture._inMemoryBus
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher
         );
 
         //Act

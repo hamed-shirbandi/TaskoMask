@@ -38,8 +38,8 @@ public class UpdateBoardTests
         var request = new UpdateBoardRequest(id: expectedBoard.Id, name: "Test New Name", description: "Test New Description");
         var updateBoardUseCase = new UpdateBoardUseCase(
             _fixture._boardAggregateRepository,
-            _fixture._messageBus,
-            _fixture._inMemoryBus,
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher,
             _fixture._boardValidatorService
         );
 

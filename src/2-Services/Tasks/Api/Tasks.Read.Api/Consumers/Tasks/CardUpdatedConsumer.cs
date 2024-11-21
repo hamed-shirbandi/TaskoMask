@@ -12,8 +12,8 @@ public class CardUpdatedConsumer : BaseConsumer<CardUpdated>
 {
     private readonly TaskReadDbContext _taskReadDbContext;
 
-    public CardUpdatedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
-        : base(inMemoryBus)
+    public CardUpdatedConsumer(IRequestDispatcher requestDispatcher, TaskReadDbContext taskReadDbContext)
+        : base(requestDispatcher)
     {
         _taskReadDbContext = taskReadDbContext;
     }

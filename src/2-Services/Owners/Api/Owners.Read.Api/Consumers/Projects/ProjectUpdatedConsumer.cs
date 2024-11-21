@@ -12,8 +12,8 @@ public class ProjectUpdatedConsumer : BaseConsumer<ProjectUpdated>
 {
     private readonly OwnerReadDbContext _ownerReadDbContext;
 
-    public ProjectUpdatedConsumer(IInMemoryBus inMemoryBus, OwnerReadDbContext ownerReadDbContext)
-        : base(inMemoryBus)
+    public ProjectUpdatedConsumer(IRequestDispatcher requestDispatcher, OwnerReadDbContext ownerReadDbContext)
+        : base(requestDispatcher)
     {
         _ownerReadDbContext = ownerReadDbContext;
     }

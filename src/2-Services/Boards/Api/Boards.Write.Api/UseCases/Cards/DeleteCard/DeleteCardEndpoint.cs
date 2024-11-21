@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard;
 [Tags("Cards")]
 public class DeleteCardEndpoint : BaseApiController
 {
-    public DeleteCardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public DeleteCardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Delete a card
@@ -23,6 +23,6 @@ public class DeleteCardEndpoint : BaseApiController
     [Route("cards/{id}")]
     public async Task<Result<CommandResult>> Delete(string id)
     {
-        return await _inMemoryBus.SendCommand<DeleteCardRequest>(new(id));
+        return await _requestDispatcher.SendCommand<DeleteCardRequest>(new(id));
     }
 }

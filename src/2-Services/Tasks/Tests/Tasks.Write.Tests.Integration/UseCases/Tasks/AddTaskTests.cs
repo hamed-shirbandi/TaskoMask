@@ -42,8 +42,8 @@ public class AddTaskTests
         );
         var addTaskUseCase = new AddTaskUseCase(
             _fixture._taskAggregateRepository,
-            _fixture._messageBus,
-            _fixture._inMemoryBus,
+            _fixture._eventPublisher,
+            _fixture._requestDispatcher,
             _fixture._taskValidatorService
         );
 

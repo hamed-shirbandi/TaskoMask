@@ -19,12 +19,12 @@ public class BoardAddedConsumer : BaseConsumer<BoardAdded>
     protected readonly IMapper _mapper;
 
     public BoardAddedConsumer(
-        IInMemoryBus inMemoryBus,
+        IRequestDispatcher requestDispatcher,
         BoardReadDbContext boardReadDbContext,
         GetProjectByIdGrpcServiceClient getProjectByIdGrpcServiceClient,
         IMapper mapper
     )
-        : base(inMemoryBus)
+        : base(requestDispatcher)
     {
         _boardReadDbContext = boardReadDbContext;
         _getProjectByIdGrpcServiceClient = getProjectByIdGrpcServiceClient;

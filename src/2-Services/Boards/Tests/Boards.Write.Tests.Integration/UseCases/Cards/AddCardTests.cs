@@ -37,7 +37,7 @@ public class AddCardTests
         await _fixture.SeedBoardAsync(expectedBoard);
 
         var request = new AddCardRequest(boardId: expectedBoard.Id, name: "Test Name", type: BoardCardType.ToDo);
-        var addCardUseCase = new AddCardUseCase(_fixture._boardAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var addCardUseCase = new AddCardUseCase(_fixture._boardAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await addCardUseCase.Handle(request, CancellationToken.None);

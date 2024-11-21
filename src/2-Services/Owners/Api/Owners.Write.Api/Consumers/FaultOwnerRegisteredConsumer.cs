@@ -16,8 +16,8 @@ public class FaultOwnerRegisteredConsumer : BaseConsumer<Fault<OwnerRegistered>>
 {
     private readonly IOwnerAggregateRepository _ownerAggregateRepository;
 
-    public FaultOwnerRegisteredConsumer(IInMemoryBus inMemoryBus, IOwnerAggregateRepository ownerAggregateRepository)
-        : base(inMemoryBus)
+    public FaultOwnerRegisteredConsumer(IRequestDispatcher requestDispatcher, IOwnerAggregateRepository ownerAggregateRepository)
+        : base(requestDispatcher)
     {
         _ownerAggregateRepository = ownerAggregateRepository;
     }

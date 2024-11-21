@@ -8,12 +8,12 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTasksByCardId;
 
 public class GetTasksByCardIdGrpcEndpoint : GetTasksByCardIdGrpcService.GetTasksByCardIdGrpcServiceBase
 {
-    private readonly IInMemoryBus _inMemoryBus;
+    private readonly IRequestDispatcher _requestDispatcher;
     private readonly IMapper _mapper;
 
-    public GetTasksByCardIdGrpcEndpoint(IInMemoryBus inMemoryBus, IMapper mapper)
+    public GetTasksByCardIdGrpcEndpoint(IRequestDispatcher requestDispatcher, IMapper mapper)
     {
-        _inMemoryBus = inMemoryBus;
+        _requestDispatcher = requestDispatcher;
         _mapper = mapper;
     }
 
@@ -23,7 +23,7 @@ public class GetTasksByCardIdGrpcEndpoint : GetTasksByCardIdGrpcService.GetTasks
         ServerCallContext context
     )
     {
-        var tasks = await _inMemoryBus.SendQuery(new GetTasksByCardIdRequest(request.CardId));
+        var tasks = await _requestDispatcher.SendQuery(new GetTasksByCardIdRequest(request.CardId));
         foreach (var task in tasks.Value)
             await responseStream.WriteAsync(_mapper.Map<GetTaskGrpcResponse>(task));
     }

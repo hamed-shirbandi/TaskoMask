@@ -24,8 +24,13 @@ public class RegisterUserUseCase : BaseCommandHandler, IRequestHandler<RegisterU
     /// <summary>
     ///
     /// </summary>
-    public RegisterUserUseCase(UserManager<User> userManager, IMessageBus messageBus, IInMemoryBus inMemoryBus, INotificationHandler notifications)
-        : base(messageBus, inMemoryBus)
+    public RegisterUserUseCase(
+        UserManager<User> userManager,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher,
+        INotificationHandler notifications
+    )
+        : base(eventPublisher, requestDispatcher)
     {
         _userManager = userManager;
         _notifications = notifications;
@@ -54,7 +59,7 @@ public class RegisterUserUseCase : BaseCommandHandler, IRequestHandler<RegisterU
             throw new ApplicationException(ContractsMessages.Create_Failed);
         }
 
-        await PublishDomainEventsAsync(new UserRegisteredEvent(newUser.Id, newUser.Email));
+        await PublishDomainEventAsync(new UserRegisteredEvent(newUser.Id, newUser.Email));
 
         await PublishIntegrationEventAsync(new UserRegistered(newUser.Email));
 

@@ -38,7 +38,7 @@ public class AddCommentTests
         await _fixture.SeedTaskAsync(expectedTask);
 
         var request = new AddCommentRequest(taskId: expectedTask.Id, content: "Test Content");
-        var addCommentUseCase = new AddCommentUseCase(_fixture._taskAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var addCommentUseCase = new AddCommentUseCase(_fixture._taskAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await addCommentUseCase.Handle(request, CancellationToken.None);

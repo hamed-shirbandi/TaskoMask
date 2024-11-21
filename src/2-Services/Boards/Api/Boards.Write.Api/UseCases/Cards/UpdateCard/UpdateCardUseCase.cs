@@ -27,8 +27,8 @@ public class UpdateCardUseCase : BaseCommandHandler, IRequestHandler<UpdateCardR
     #region Ctors
 
 
-    public UpdateCardUseCase(IBoardAggregateRepository boardAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public UpdateCardUseCase(IBoardAggregateRepository boardAggregateRepository, IEventPublisher eventPublisher, IRequestDispatcher requestDispatcher)
+        : base(eventPublisher, requestDispatcher)
     {
         _boardAggregateRepository = boardAggregateRepository;
     }

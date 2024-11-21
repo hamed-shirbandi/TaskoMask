@@ -36,7 +36,7 @@ public class DeleteBoardTests
         await _fixture.SeedBoardAsync(expectedBoard);
 
         var request = new DeleteBoardRequest(expectedBoard.Id);
-        var deleteBoardUseCase = new DeleteBoardUseCase(_fixture._boardAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var deleteBoardUseCase = new DeleteBoardUseCase(_fixture._boardAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await deleteBoardUseCase.Handle(request, CancellationToken.None);

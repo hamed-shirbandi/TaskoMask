@@ -18,12 +18,12 @@ public class TaskMovedToAnotherCardConsumer : BaseConsumer<TaskMovedToAnotherCar
     protected readonly IMapper _mapper;
 
     public TaskMovedToAnotherCardConsumer(
-        IInMemoryBus inMemoryBus,
+        IRequestDispatcher requestDispatcher,
         TaskReadDbContext taskReadDbContext,
         IMapper mapper,
         GetCardByIdGrpcServiceClient getCardByIdGrpcServiceClient
     )
-        : base(inMemoryBus)
+        : base(requestDispatcher)
     {
         _taskReadDbContext = taskReadDbContext;
         _mapper = mapper;

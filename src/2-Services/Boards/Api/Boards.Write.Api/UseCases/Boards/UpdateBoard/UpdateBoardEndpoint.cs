@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.UpdateBoard;
 [Tags("Boards")]
 public class UpdateBoardEndpoint : BaseApiController
 {
-    public UpdateBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public UpdateBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing board
@@ -24,6 +24,6 @@ public class UpdateBoardEndpoint : BaseApiController
     [Route("boards/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateBoardDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateBoardRequest>(new(id: id, name: input.Name, description: input.Description));
+        return await _requestDispatcher.SendCommand<UpdateBoardRequest>(new(id: id, name: input.Name, description: input.Description));
     }
 }

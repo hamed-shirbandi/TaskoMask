@@ -12,8 +12,8 @@ public class TaskUpdatedConsumer : BaseConsumer<TaskUpdated>
 {
     private readonly TaskReadDbContext _taskReadDbContext;
 
-    public TaskUpdatedConsumer(IInMemoryBus inMemoryBus, TaskReadDbContext taskReadDbContext)
-        : base(inMemoryBus)
+    public TaskUpdatedConsumer(IRequestDispatcher requestDispatcher, TaskReadDbContext taskReadDbContext)
+        : base(requestDispatcher)
     {
         _taskReadDbContext = taskReadDbContext;
     }

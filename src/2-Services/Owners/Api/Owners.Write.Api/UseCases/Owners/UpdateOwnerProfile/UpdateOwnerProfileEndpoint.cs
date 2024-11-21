@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
 [Tags("Owners")]
 public class UpdateOwnerProfileEndpoint : BaseApiController
 {
-    public UpdateOwnerProfileEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public UpdateOwnerProfileEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Update current owner
@@ -24,6 +24,6 @@ public class UpdateOwnerProfileEndpoint : BaseApiController
     [Route("owner")]
     public async Task<Result<CommandResult>> Put([FromBody] UpdateOwnerProfileDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateOwnerProfileRequest>(new(id: input.Id, displayName: input.DisplayName, email: input.Email));
+        return await _requestDispatcher.SendCommand<UpdateOwnerProfileRequest>(new(id: input.Id, displayName: input.DisplayName, email: input.Email));
     }
 }

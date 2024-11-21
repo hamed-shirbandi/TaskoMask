@@ -27,8 +27,12 @@ public class DeleteCommentUseCase : BaseCommandHandler, IRequestHandler<DeleteCo
     #region Ctors
 
 
-    public DeleteCommentUseCase(ITaskAggregateRepository taskAggregateRepository, IMessageBus messageBus, IInMemoryBus inMemoryBus)
-        : base(messageBus, inMemoryBus)
+    public DeleteCommentUseCase(
+        ITaskAggregateRepository taskAggregateRepository,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher
+    )
+        : base(eventPublisher, requestDispatcher)
     {
         _taskAggregateRepository = taskAggregateRepository;
     }

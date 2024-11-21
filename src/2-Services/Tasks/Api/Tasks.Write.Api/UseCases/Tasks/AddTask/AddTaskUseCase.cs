@@ -29,11 +29,11 @@ public class AddTaskUseCase : BaseCommandHandler, IRequestHandler<AddTaskRequest
 
     public AddTaskUseCase(
         ITaskAggregateRepository taskAggregateRepository,
-        IMessageBus messageBus,
-        IInMemoryBus inMemoryBus,
+        IEventPublisher eventPublisher,
+        IRequestDispatcher requestDispatcher,
         ITaskValidatorService taskValidatorService
     )
-        : base(messageBus, inMemoryBus)
+        : base(eventPublisher, requestDispatcher)
     {
         _taskAggregateRepository = taskAggregateRepository;
         _taskValidatorService = taskValidatorService;

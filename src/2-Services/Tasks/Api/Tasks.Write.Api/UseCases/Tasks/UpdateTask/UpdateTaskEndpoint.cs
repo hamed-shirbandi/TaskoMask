@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask;
 [Tags("Tasks")]
 public class UpdateTaskEndpoint : BaseApiController
 {
-    public UpdateTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IInMemoryBus inMemoryBus)
-        : base(authenticatedUserService, inMemoryBus) { }
+    public UpdateTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+        : base(authenticatedUserService, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing task
@@ -24,6 +24,6 @@ public class UpdateTaskEndpoint : BaseApiController
     [Route("tasks/{id}")]
     public async Task<Result<CommandResult>> Put(string id, [FromBody] UpdateTaskDto input)
     {
-        return await _inMemoryBus.SendCommand<UpdateTaskRequest>(new(id: id, title: input.Title, description: input.Description));
+        return await _requestDispatcher.SendCommand<UpdateTaskRequest>(new(id: id, title: input.Title, description: input.Description));
     }
 }

@@ -28,8 +28,12 @@ public class Index : BasePageModel
 
     #region Ctors
 
-    public Index(IInMemoryBus inMemoryBus, IIdentityServerInteractionService interactionService, IDNTCaptchaValidatorService validatorService)
-        : base(inMemoryBus)
+    public Index(
+        IRequestDispatcher requestDispatcher,
+        IIdentityServerInteractionService interactionService,
+        IDNTCaptchaValidatorService validatorService
+    )
+        : base(requestDispatcher)
     {
         _validatorService = validatorService;
         _interactionService = interactionService;
@@ -63,7 +67,7 @@ public class Index : BasePageModel
         if (!ModelState.IsValid)
             return await LoginFailedAsync();
 
-        var loginRespone = await _inMemoryBus.SendQuery(new UserLoginRequest(Input.UserName, Input.Password, Input.RememberLogin));
+        var loginRespone = await _requestDispatcher.SendQuery(new UserLoginRequest(Input.UserName, Input.Password, Input.RememberLogin));
         if (loginRespone.IsSuccess)
             return RedirectToReturnUrl(Input.ReturnUrl);
 

@@ -41,7 +41,7 @@ public class DeleteCardTests
         var expectedCard = expectedBoard.Cards.FirstOrDefault();
 
         var request = new DeleteCardRequest(expectedCard.Id);
-        var deleteCardUseCase = new DeleteCardUseCase(_fixture._boardAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var deleteCardUseCase = new DeleteCardUseCase(_fixture._boardAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await deleteCardUseCase.Handle(request, CancellationToken.None);

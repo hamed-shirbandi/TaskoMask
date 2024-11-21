@@ -13,8 +13,8 @@ public class CardAddedConsumer : BaseConsumer<CardAdded>
 {
     private readonly BoardReadDbContext _boardReadDbContext;
 
-    public CardAddedConsumer(IInMemoryBus inMemoryBus, BoardReadDbContext boardReadDbContext)
-        : base(inMemoryBus)
+    public CardAddedConsumer(IRequestDispatcher requestDispatcher, BoardReadDbContext boardReadDbContext)
+        : base(requestDispatcher)
     {
         _boardReadDbContext = boardReadDbContext;
     }

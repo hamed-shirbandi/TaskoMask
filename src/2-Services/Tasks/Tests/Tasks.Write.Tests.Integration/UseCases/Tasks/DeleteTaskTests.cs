@@ -38,7 +38,7 @@ public class DeleteTaskTests
         await _fixture.SeedTaskAsync(expectedTask);
 
         var request = new DeleteTaskRequest(expectedTask.Id);
-        var deleteTaskUseCase = new DeleteTaskUseCase(_fixture._taskAggregateRepository, _fixture._messageBus, _fixture._inMemoryBus);
+        var deleteTaskUseCase = new DeleteTaskUseCase(_fixture._taskAggregateRepository, _fixture._eventPublisher, _fixture._requestDispatcher);
 
         //Act
         var result = await deleteTaskUseCase.Handle(request, CancellationToken.None);

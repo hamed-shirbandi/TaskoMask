@@ -18,12 +18,12 @@ public class TaskAddedConsumer : BaseConsumer<TaskAdded>
     protected readonly IMapper _mapper;
 
     public TaskAddedConsumer(
-        IInMemoryBus inMemoryBus,
+        IRequestDispatcher requestDispatcher,
         TaskReadDbContext taskReadDbContext,
         IMapper mapper,
         GetCardByIdGrpcServiceClient getCardByIdGrpcServiceClient
     )
-        : base(inMemoryBus)
+        : base(requestDispatcher)
     {
         _taskReadDbContext = taskReadDbContext;
         _mapper = mapper;

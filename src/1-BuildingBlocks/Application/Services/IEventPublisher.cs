@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 
-namespace TaskoMask.BuildingBlocks.Application.Bus;
+namespace TaskoMask.BuildingBlocks.Application.Services;
 
 /// <summary>
 /// Publishes integration events for communication between microservices (out-process).

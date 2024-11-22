@@ -1,6 +1,6 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Comments;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Web.Services.Http;
+using TaskoMask.BuildingBlocks.Web.Services;
 
 namespace TaskoMask.Clients.UserPanel.Services.API;
 

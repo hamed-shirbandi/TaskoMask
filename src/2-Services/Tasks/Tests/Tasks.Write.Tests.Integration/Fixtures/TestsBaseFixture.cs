@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;

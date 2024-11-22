@@ -3,7 +3,6 @@ using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using NSubstitute;
-using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.Services.Identity.Api.Domain.Entities;
 using Xunit;

@@ -5,7 +5,7 @@ using DNTCaptcha.Core;
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Pages;
 using TaskoMask.Services.Identity.Api.Resources;
 using TaskoMask.Services.Identity.Api.UseCases.UserLogin;

@@ -1,7 +1,7 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Cards;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Models;
-using TaskoMask.BuildingBlocks.Web.Services.Http;
+using TaskoMask.BuildingBlocks.Web.Services;
 
 namespace TaskoMask.Clients.UserPanel.Services.API;
 

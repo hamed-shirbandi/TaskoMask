@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Web.Services.Http;
+﻿using TaskoMask.BuildingBlocks.Web.Services;
 using TaskoMask.Clients.UserPanel.Helpers;
 
 namespace TaskoMask.Clients.UserPanel.Services.API;

@@ -3,7 +3,6 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using NSubstitute;
-using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Identity.Api.Domain.Entities;

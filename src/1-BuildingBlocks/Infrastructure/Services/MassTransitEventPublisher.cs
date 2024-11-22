@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using MassTransit;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 
-namespace TaskoMask.BuildingBlocks.Infrastructure.Bus;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Services;
 
 /// <summary>
 /// Implementation of IEventPublisher using MassTransit.

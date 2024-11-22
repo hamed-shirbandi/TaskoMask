@@ -1,13 +1,12 @@
 ﻿using System.Threading.Tasks;
 using MediatR;
-using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Queries;
 using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Domain.Events;
 
-namespace TaskoMask.BuildingBlocks.Infrastructure.Bus;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Services;
 
 /// <summary>
 /// Implementation of IRequestDispatcher using MediatR.

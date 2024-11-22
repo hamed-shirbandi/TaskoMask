@@ -1,6 +1,6 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Dtos.Owners;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Web.Services.Http;
+using TaskoMask.BuildingBlocks.Web.Services;
 using TaskoMask.Clients.UserPanel.Helpers;
 
 namespace TaskoMask.Clients.UserPanel.Services.API;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Data;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities;

@@ -1,5 +1,5 @@
 ﻿using NSubstitute;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;

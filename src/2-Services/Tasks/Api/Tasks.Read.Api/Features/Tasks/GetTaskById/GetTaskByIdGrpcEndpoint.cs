@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Grpc.Core;
-using TaskoMask.BuildingBlocks.Application.Bus;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Contracts.Protos;
 
 namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById;

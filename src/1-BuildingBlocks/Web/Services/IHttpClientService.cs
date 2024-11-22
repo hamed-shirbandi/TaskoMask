@@ -1,6 +1,6 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
 
-namespace TaskoMask.BuildingBlocks.Web.Services.Http;
+namespace TaskoMask.BuildingBlocks.Web.Services;
 
 public interface IHttpClientService
 {

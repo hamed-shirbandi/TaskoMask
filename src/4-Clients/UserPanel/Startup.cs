@@ -1,6 +1,6 @@
 ﻿using Blazored.Modal;
 using Blazored.Toast;
-using TaskoMask.BuildingBlocks.Web.Configuration;
+using TaskoMask.BuildingBlocks.Web;
 using TaskoMask.Clients.UserPanel.Configuration;
 using TaskoMask.Clients.UserPanel.Helpers;
 using TaskoMask.Clients.UserPanel.Services.API;

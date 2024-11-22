@@ -11,7 +11,7 @@ internal static class IdentityServerExtensions
     /// <summary>
     ///
     /// </summary>
-    public static void AddIdentityServer(this IServiceCollection services)
+    public static void AddPreConfiguredIdentityServer(this IServiceCollection services)
     {
         services
             .AddIdentityServer(options =>

@@ -3,12 +3,12 @@ using Microsoft.Extensions.Configuration;
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.Services.Owners.Write.Api.Infrastructure.CrossCutting.DI;
-using TaskoMask.Services.Owners.Write.Api.Infrastructure.Data.DbContext;
+using TaskoMask.Services.Tasks.Write.Api.Infrastructure.CrossCutting.DI;
+using TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Owners.Write.Api.Configuration;
+namespace TaskoMask.Services.Tasks.Write.Api;
 
-internal static class HostingExtensions
+internal static class Startup
 {
     /// <summary>
     ///

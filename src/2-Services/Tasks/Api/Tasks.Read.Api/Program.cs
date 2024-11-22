@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Builder;
-using TaskoMask.Services.Tasks.Read.Api.Configuration;
 
 namespace TaskoMask.Services.Tasks.Read.Api;
 

@@ -1,15 +1,16 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Grpc;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext;
-using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DI;
+using TaskoMask.Services.Identity.Api.Configuration;
+using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.DI;
 
-namespace TaskoMask.Services.Tasks.Read.Api.Configuration;
+namespace TaskoMask.Services.Identity.Api;
 
-internal static class HostingExtensions
+internal static class Startup
 {
     /// <summary>
     ///
@@ -18,13 +19,15 @@ internal static class HostingExtensions
     {
         builder.AddCustomSerilog();
 
+        builder.Services.AddRazorPagesPreConfigured(builder.Configuration);
+
         builder.Services.AddModules(builder.Configuration);
 
-        builder.Services.AddWebApiPreConfigured(builder.Configuration);
+        builder.Services.AddPreConfiguredIdentityServer();
 
-        builder.Services.AddGrpcPreConfigured();
+        builder.Services.AddControllers();
 
-        builder.Services.AddGrpcClients(builder.Configuration);
+        builder.Services.AddCaptcha();
 
         return builder.Build();
     }
@@ -36,11 +39,13 @@ internal static class HostingExtensions
     {
         app.UseSerilogRequestLogging();
 
-        app.UseWebApiPreConfigured(app.Environment, configuration);
+        app.UseIdentityServer();
 
-        app.Services.InitialDatabase();
+        app.UseRazorPagesPreConfigured(app.Environment, configuration);
 
-        app.MapGrpcServices();
+        app.Services.InitialDatabasesAndSeedEssentialData();
+
+        app.MapRazorPages().RequireAuthorization();
 
         app.MapControllers();
 

@@ -4,12 +4,13 @@ using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Grpc;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.Services.Owners.Read.Api.Infrastructure.DbContext;
-using TaskoMask.Services.Owners.Read.Api.Infrastructure.DI;
+using TaskoMask.Services.Tasks.Read.Api.Configuration;
+using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext;
+using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DI;
 
-namespace TaskoMask.Services.Owners.Read.Api.Configuration;
+namespace TaskoMask.Services.Tasks.Read.Api;
 
-internal static class HostingExtensions
+internal static class Startup
 {
     /// <summary>
     ///
@@ -23,6 +24,8 @@ internal static class HostingExtensions
         builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
         builder.Services.AddGrpcPreConfigured();
+
+        builder.Services.AddGrpcClients(builder.Configuration);
 
         return builder.Build();
     }

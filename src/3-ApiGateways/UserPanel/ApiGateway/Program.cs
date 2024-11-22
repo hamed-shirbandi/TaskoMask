@@ -1,5 +1,3 @@
-using TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration;
-
 namespace TaskoMask.ApiGateways.UserPanel.ApiGateway;
 
 internal class Program

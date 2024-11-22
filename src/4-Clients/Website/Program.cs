@@ -1,5 +1,3 @@
-using TaskoMask.Clients.Website.Configuration;
-
 namespace TaskoMask.Clients.Website;
 
 internal class Program

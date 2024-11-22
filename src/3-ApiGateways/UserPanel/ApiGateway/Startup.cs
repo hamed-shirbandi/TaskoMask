@@ -6,9 +6,9 @@ using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
-namespace TaskoMask.ApiGateways.UserPanel.ApiGateway.Configuration;
+namespace TaskoMask.ApiGateways.UserPanel.ApiGateway;
 
-internal static class HostingExtensions
+internal static class Startup
 {
     /// <summary>
     ///

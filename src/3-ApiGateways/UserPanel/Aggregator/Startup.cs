@@ -1,14 +1,12 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Serilog;
+using TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration;
+using TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.DI;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
-using TaskoMask.Services.Tasks.Write.Api.Infrastructure.CrossCutting.DI;
-using TaskoMask.Services.Tasks.Write.Api.Infrastructure.Data.DbContext;
 
-namespace TaskoMask.Services.Tasks.Write.Api.Configuration;
+namespace TaskoMask.ApiGateways.UserPanel.Aggregator;
 
-internal static class HostingExtensions
+internal static class Startup
 {
     /// <summary>
     ///
@@ -21,6 +19,8 @@ internal static class HostingExtensions
 
         builder.Services.AddWebApiPreConfigured(builder.Configuration);
 
+        builder.Services.AddGrpcClients(builder.Configuration);
+
         return builder.Build();
     }
 
@@ -32,8 +32,6 @@ internal static class HostingExtensions
         app.UseSerilogRequestLogging();
 
         app.UseWebApiPreConfigured(app.Environment, configuration);
-
-        app.Services.InitialDatabasesAndSeedEssentialData();
 
         app.MapControllers();
 

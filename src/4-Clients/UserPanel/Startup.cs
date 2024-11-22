@@ -1,17 +1,18 @@
 ﻿using Blazored.Modal;
 using Blazored.Toast;
 using TaskoMask.BuildingBlocks.Web.Configuration;
+using TaskoMask.Clients.UserPanel.Configuration;
 using TaskoMask.Clients.UserPanel.Helpers;
 using TaskoMask.Clients.UserPanel.Services.API;
 using TaskoMask.Clients.UserPanel.Services.ComponentMessage;
 using TaskoMask.Clients.UserPanel.Services.DragDrop;
 
-namespace TaskoMask.Clients.UserPanel.Configuration;
+namespace TaskoMask.Clients.UserPanel;
 
 /// <summary>
 ///
 /// </summary>
-public static class HostingExtensions
+public static class Startup
 {
     /// <summary>
     ///

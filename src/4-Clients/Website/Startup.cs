@@ -2,9 +2,9 @@ using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
-namespace TaskoMask.Clients.Website.Configuration;
+namespace TaskoMask.Clients.Website;
 
-internal static class HostingExtensions
+internal static class Startup
 {
     /// <summary>
     ///

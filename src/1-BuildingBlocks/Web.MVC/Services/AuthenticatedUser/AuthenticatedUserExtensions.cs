@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.BuildingBlocks.Contracts.Services;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 

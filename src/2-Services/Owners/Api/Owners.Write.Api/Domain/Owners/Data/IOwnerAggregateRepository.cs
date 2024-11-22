@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using TaskoMask.BuildingBlocks.Domain.Data;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 
 namespace TaskoMask.Services.Owners.Write.Api.Domain.Owners.Data;

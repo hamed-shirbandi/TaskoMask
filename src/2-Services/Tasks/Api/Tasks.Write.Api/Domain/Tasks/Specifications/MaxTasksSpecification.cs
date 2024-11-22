@@ -1,5 +1,5 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Domain.Specifications;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 

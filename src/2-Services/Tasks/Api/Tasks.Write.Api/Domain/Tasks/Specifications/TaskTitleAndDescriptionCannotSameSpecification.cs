@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Domain.Specifications;
+﻿using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Entities;
 
 namespace TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Specifications;

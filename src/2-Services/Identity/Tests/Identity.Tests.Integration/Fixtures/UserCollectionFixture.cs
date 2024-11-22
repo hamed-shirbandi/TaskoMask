@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.Services.Identity.Api.Domain.Entities;
 using Xunit;
 
@@ -28,7 +28,7 @@ public class UserCollectionFixture : TestsBaseFixture
 {
     public UserManager<User> UserManager;
     public SignInManager<User> SignInManager;
-    public INotificationHandler NotificationHandler;
+    public INotificationService NotificationHandler;
     public IEventPublisher MessageBus;
     public IRequestDispatcher InMemoryBus;
     public IMapper Mapper;
@@ -41,7 +41,7 @@ public class UserCollectionFixture : TestsBaseFixture
         UserManager = GetRequiredService<UserManager<User>>();
         SignInManager = GetRequiredService<SignInManager<User>>();
         SignInManager.Context = new DefaultHttpContext { RequestServices = _serviceProvider };
-        NotificationHandler = GetRequiredService<INotificationHandler>();
+        NotificationHandler = GetRequiredService<INotificationService>();
         Mapper = GetRequiredService<IMapper>();
 
         InteractionService = Substitute.For<IIdentityServerInteractionService>();

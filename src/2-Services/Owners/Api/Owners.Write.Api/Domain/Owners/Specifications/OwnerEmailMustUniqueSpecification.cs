@@ -1,4 +1,4 @@
-﻿using TaskoMask.BuildingBlocks.Domain.Specifications;
+﻿using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Entities;
 using TaskoMask.Services.Owners.Write.Api.Domain.Owners.Services;
 

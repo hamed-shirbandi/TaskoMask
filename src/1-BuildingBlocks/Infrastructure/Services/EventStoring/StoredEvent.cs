@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskoMask.BuildingBlocks.Domain.Events;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Services.EventStoring;
 
 /// <summary>
 ///

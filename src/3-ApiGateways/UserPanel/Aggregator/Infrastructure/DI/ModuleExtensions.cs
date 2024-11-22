@@ -1,5 +1,5 @@
 ﻿using TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.Mapper;
-using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.BuildingBlocks.Infrastructure;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.DI;

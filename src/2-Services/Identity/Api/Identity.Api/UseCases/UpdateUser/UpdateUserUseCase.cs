@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
 using TaskoMask.BuildingBlocks.Application.Exceptions;
-using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Contracts.Events;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Contracts.Resources;
@@ -19,7 +19,7 @@ namespace TaskoMask.Services.Identity.Api.UseCases.UpdateUser;
 public class UpdateUserUseCase : BaseCommandHandler, IRequestHandler<UpdateUserRequest, CommandResult>
 {
     private readonly UserManager<User> _userManager;
-    private readonly INotificationHandler _notifications;
+    private readonly INotificationService _notifications;
 
     /// <summary>
     ///
@@ -28,7 +28,7 @@ public class UpdateUserUseCase : BaseCommandHandler, IRequestHandler<UpdateUserR
         UserManager<User> userManager,
         IEventPublisher eventPublisher,
         IRequestDispatcher requestDispatcher,
-        INotificationHandler notifications
+        INotificationService notifications
     )
         : base(eventPublisher, requestDispatcher)
     {
@@ -70,6 +70,6 @@ public class UpdateUserUseCase : BaseCommandHandler, IRequestHandler<UpdateUserR
         var errors = identityResult.Errors.Select(e => e.Description).ToList();
 
         foreach (var error in errors)
-            _notifications.Add(GetType().Name, error);
+            _notifications.Add(error);
     }
 }

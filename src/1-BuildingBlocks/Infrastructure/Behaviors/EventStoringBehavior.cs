@@ -2,13 +2,20 @@
 using System.Threading.Tasks;
 using MediatR;
 using TaskoMask.BuildingBlocks.Domain.Events;
+using TaskoMask.BuildingBlocks.Infrastructure.Services.EventStoring;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Behaviors;
 
 /// <summary>
-/// Each command must have at least one event to save its changes in event store
-/// So this notification handler act as a behavior and makes it easy to store events without repeating the creation of event handler
-/// However events can have other handlers to do other things like sending an email or update some other entities, etc.
+/// This behavior ensures that every command's resulting domain events are saved in the event store.
+///
+/// The EventStoringBehavior acts as a notification handler for domain events, abstracting the logic for
+/// persisting events. This prevents the need to repeatedly implement event storage logic in multiple places.
+///
+/// Additionally, domain events can have other handlers for various purposes, such as:
+/// - Sending notifications (e.g., emails)
+/// - Updating other entities or performing additional business logic
+/// This behavior specifically focuses on saving events to the event store.
 /// </summary>
 public class EventStoringBehavior : INotificationHandler<DomainEvent>
 {

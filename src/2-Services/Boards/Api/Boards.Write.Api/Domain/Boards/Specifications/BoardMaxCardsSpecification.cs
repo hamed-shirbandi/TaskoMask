@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
-using TaskoMask.BuildingBlocks.Domain.Specifications;
+using TaskoMask.BuildingBlocks.Domain.Services;
 using TaskoMask.Services.Boards.Write.Api.Domain.Boards.Entities;
 
 namespace TaskoMask.Services.Boards.Write.Api.Domain.Boards.Specifications;

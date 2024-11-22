@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskoMask.BuildingBlocks.Infrastructure.Extensions;
+using TaskoMask.BuildingBlocks.Infrastructure;
 using TaskoMask.BuildingBlocks.Infrastructure.Mapping;
 using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.AspNetIdentity;
 using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.Mapper;

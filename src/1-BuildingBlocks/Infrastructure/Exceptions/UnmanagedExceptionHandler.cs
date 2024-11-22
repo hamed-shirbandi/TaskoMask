@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
-using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Exceptions;
 
@@ -17,7 +17,7 @@ public class UnmanagedExceptionHandler<TRequest, TResponse, TException> : IReque
     #region Fields
 
 
-    private readonly INotificationHandler _notifications;
+    private readonly INotificationService _notifications;
     private readonly ILogger<UnmanagedExceptionHandler<TRequest, TResponse, TException>> _logger;
 
     #endregion
@@ -25,7 +25,7 @@ public class UnmanagedExceptionHandler<TRequest, TResponse, TException> : IReque
     #region Ctors
 
 
-    public UnmanagedExceptionHandler(INotificationHandler notifications, ILogger<UnmanagedExceptionHandler<TRequest, TResponse, TException>> logger)
+    public UnmanagedExceptionHandler(INotificationService notifications, ILogger<UnmanagedExceptionHandler<TRequest, TResponse, TException>> logger)
     {
         _notifications = notifications;
         _logger = logger;
@@ -42,7 +42,7 @@ public class UnmanagedExceptionHandler<TRequest, TResponse, TException> : IReque
     /// </summary>
     public Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
     {
-        _notifications.Add("Unknown Exception", "Unknown exception happened");
+        _notifications.Add("Unknown exception happened");
 
         _logger.LogError(exception, $"request : {JsonSerializer.Serialize(request)}");
 

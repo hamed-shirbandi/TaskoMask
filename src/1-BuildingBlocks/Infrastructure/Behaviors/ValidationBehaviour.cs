@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
 using TaskoMask.BuildingBlocks.Application.Commands;
-using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Contracts.Extensions;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Behaviors;
@@ -19,13 +19,13 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
     #region Fields
 
     private readonly IEnumerable<IValidator<TRequest>> _validators;
-    private readonly INotificationHandler _notifications;
+    private readonly INotificationService _notifications;
 
     #endregion
 
     #region Ctors
 
-    public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, INotificationHandler notifications)
+    public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, INotificationService notifications)
     {
         _validators = validators;
         _notifications = notifications;
@@ -72,7 +72,7 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
 
         // add data annotation errors to notifications
         foreach (var result in results)
-            NotifyValidationError(request, result.ErrorMessage);
+            NotifyValidationError(result.ErrorMessage);
 
         return false;
     }
@@ -90,7 +90,7 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
 
         // add data annotation errors to notifications
         foreach (var failure in failures)
-            NotifyValidationError(request, failure.ErrorMessage);
+            NotifyValidationError(failure.ErrorMessage);
 
         return false;
     }
@@ -98,9 +98,9 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
     /// <summary>
     /// add error to notifications
     /// </summary>
-    protected void NotifyValidationError(BaseCommand request, string error)
+    protected void NotifyValidationError(string error)
     {
-        _notifications.Add(request.GetType().Name, error);
+        _notifications.Add(error);
     }
 
     #endregion

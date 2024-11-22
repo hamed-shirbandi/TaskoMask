@@ -2,8 +2,8 @@
 using MediatR;
 using TaskoMask.BuildingBlocks.Application.Bus;
 using TaskoMask.BuildingBlocks.Application.Commands;
-using TaskoMask.BuildingBlocks.Application.Notifications;
 using TaskoMask.BuildingBlocks.Application.Queries;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Contracts.Helpers;
 using TaskoMask.BuildingBlocks.Domain.Events;
 
@@ -17,13 +17,13 @@ public class MediatRDispatcher : IRequestDispatcher
     #region Fields
 
     private readonly IMediator _mediator;
-    private readonly INotificationHandler _notifications;
+    private readonly INotificationService _notifications;
 
     #endregion
 
     #region Ctors
 
-    public MediatRDispatcher(IMediator mediator, INotificationHandler notifications)
+    public MediatRDispatcher(IMediator mediator, INotificationService notifications)
     {
         _mediator = mediator;
         _notifications = notifications;
@@ -47,7 +47,7 @@ public class MediatRDispatcher : IRequestDispatcher
         var result = await _mediator.Send(cmd);
 
         //get notification errors
-        var errors = _notifications.GetErrors();
+        var errors = _notifications.GetList();
 
         //result is null when throw application or domain exception
         if (result == null)
@@ -67,7 +67,7 @@ public class MediatRDispatcher : IRequestDispatcher
     {
         var result = await _mediator.Send(query);
         if (_notifications.HasAny())
-            return Result.Failure<TQueryResult>(_notifications.GetErrors());
+            return Result.Failure<TQueryResult>(_notifications.GetList());
 
         return Result.Success(result);
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Contracts.Services;
+using TaskoMask.BuildingBlocks.Application.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Controllers;
 

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using TaskoMask.BuildingBlocks.Domain.Data;
 using TaskoMask.BuildingBlocks.Domain.Entities;
+using TaskoMask.BuildingBlocks.Domain.Services;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.MongoDB;
 

@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using StackExchange.Redis;
-using TaskoMask.BuildingBlocks.Contracts.Services;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Domain.Events;
 
-namespace TaskoMask.BuildingBlocks.Infrastructure.EventSourcing;
+namespace TaskoMask.BuildingBlocks.Infrastructure.Services.EventStoring;
 
 /// <summary>
 ///

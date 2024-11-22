@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using NSubstitute;
 using TaskoMask.BuildingBlocks.Application.Bus;
-using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Test.TestBase;
 using TaskoMask.Services.Identity.Api.Domain.Entities;
 using TaskoMask.Services.Identity.Tests.Unit.Helpers;
@@ -18,7 +18,7 @@ public abstract class TestsBaseFixture : UnitTestsBase
 {
     public TestUserManager TestUserManager;
     public TestSignInManager TestSignInManager;
-    public INotificationHandler NotificationHandler;
+    public INotificationService NotificationHandler;
     public IEventPublisher MessageBus;
     public IRequestDispatcher InMemoryBus;
     public IMapper Mapper;
@@ -45,7 +45,7 @@ public abstract class TestsBaseFixture : UnitTestsBase
         TestSignInManager = Substitute.For<TestSignInManager>(TestUserManager);
         TestUsers = new List<User>();
         TestUserLogins = new List<UserLogin>();
-        NotificationHandler = Substitute.For<INotificationHandler>();
+        NotificationHandler = Substitute.For<INotificationService>();
         MessageBus = Substitute.For<IEventPublisher>();
         InMemoryBus = Substitute.For<IRequestDispatcher>();
         Mapper = Substitute.For<IMapper>();

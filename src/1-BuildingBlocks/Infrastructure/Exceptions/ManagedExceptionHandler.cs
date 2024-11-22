@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
-using TaskoMask.BuildingBlocks.Application.Notifications;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Contracts.Exceptions;
 
 namespace TaskoMask.BuildingBlocks.Infrastructure.Exceptions;
@@ -17,7 +17,7 @@ public class ManagedExceptionHandler<TRequest, TResponse, TException> : IRequest
     #region Fields
 
 
-    private readonly INotificationHandler _notifications;
+    private readonly INotificationService _notifications;
     private readonly ILogger<ManagedExceptionHandler<TRequest, TResponse, TException>> _logger;
 
     #endregion
@@ -25,7 +25,7 @@ public class ManagedExceptionHandler<TRequest, TResponse, TException> : IRequest
     #region Ctors
 
 
-    public ManagedExceptionHandler(INotificationHandler notifications, ILogger<ManagedExceptionHandler<TRequest, TResponse, TException>> logger)
+    public ManagedExceptionHandler(INotificationService notifications, ILogger<ManagedExceptionHandler<TRequest, TResponse, TException>> logger)
     {
         _notifications = notifications;
         _logger = logger;
@@ -42,11 +42,9 @@ public class ManagedExceptionHandler<TRequest, TResponse, TException> : IRequest
     /// </summary>
     public Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
     {
-        var exceptionType = exception.GetType();
-
         //notify exception message if any
         if (!string.IsNullOrEmpty(exception.Message))
-            _notifications.Add(exceptionType.Name, exception.Message);
+            _notifications.Add(exception.Message);
 
         _logger.LogWarning(exception, $"request : {JsonSerializer.Serialize(request)}");
 

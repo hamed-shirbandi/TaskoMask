@@ -1,6 +1,6 @@
 ﻿using TaskoMask.BuildingBlocks.Contracts.Models;
 
-namespace TaskoMask.BuildingBlocks.Contracts.Services;
+namespace TaskoMask.BuildingBlocks.Application.Services;
 
 public interface IAuthenticatedUserService
 {

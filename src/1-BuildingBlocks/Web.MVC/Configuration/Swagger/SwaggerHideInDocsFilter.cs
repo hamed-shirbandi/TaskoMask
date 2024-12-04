@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
 
 /// <summary>
-/// Hide methods from sowagger documentation
+/// Exclude unwanted APIs from swagger
 /// </summary>
 public class SwaggerHideInDocsFilter : IDocumentFilter
 {

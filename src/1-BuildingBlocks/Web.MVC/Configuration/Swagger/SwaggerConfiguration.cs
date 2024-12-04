@@ -9,11 +9,9 @@ public static class SwaggerConfiguration
 {
     public static IServiceCollection AddSwaggerPreConfigured(this IServiceCollection services, Action<SwaggerOptions> setupAction)
     {
-        if (services == null)
-            throw new ArgumentNullException(nameof(services));
+        ArgumentNullException.ThrowIfNull(services);
 
-        if (setupAction == null)
-            throw new ArgumentNullException(nameof(setupAction));
+        ArgumentNullException.ThrowIfNull(setupAction);
 
         services.Configure(setupAction);
 
@@ -67,12 +65,11 @@ public static class SwaggerConfiguration
     /// </summary>
     public static IApplicationBuilder UseSwaggerPreConfigured(this IApplicationBuilder app)
     {
-        if (app == null)
-            throw new ArgumentNullException(nameof(app));
+        ArgumentNullException.ThrowIfNull(app);
 
         var options = app.ApplicationServices.GetRequiredService<IOptions<SwaggerOptions>>();
-        if (options == null)
-            throw new ArgumentNullException(nameof(options));
+
+        ArgumentNullException.ThrowIfNull(options);
 
         // Enable middleware to serve generated Swagger as a JSON endpoint.
         app.UseSwagger();

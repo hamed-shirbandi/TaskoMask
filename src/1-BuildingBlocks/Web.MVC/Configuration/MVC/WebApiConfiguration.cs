@@ -21,8 +21,7 @@ public static class WebApiConfiguration
     /// </summary>
     public static void AddWebApiPreConfigured(this IServiceCollection services, IConfiguration configuration)
     {
-        if (services == null)
-            throw new ArgumentNullException(nameof(services));
+        ArgumentNullException.ThrowIfNull(services);
 
         services.AddControllers().WithPreventAutoValidation();
 
@@ -51,8 +50,7 @@ public static class WebApiConfiguration
     /// </summary>
     public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
     {
-        if (app == null)
-            throw new ArgumentNullException(nameof(app));
+        ArgumentNullException.ThrowIfNull(app);
 
         if (env.IsDevelopment())
             app.UseDeveloperExceptionPage();

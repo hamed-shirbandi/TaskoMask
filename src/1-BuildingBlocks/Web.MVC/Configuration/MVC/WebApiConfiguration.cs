@@ -4,7 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Jwt;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.OpenTelemetry;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
@@ -19,41 +20,45 @@ public static class WebApiConfiguration
     /// <summary>
     ///
     /// </summary>
-    public static void AddWebApiPreConfigured(this IServiceCollection services, IConfiguration configuration)
+    public static void AddWebApiPreConfigured(this WebApplicationBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(builder);
 
-        services.AddControllers().WithPreventAutoValidation();
+        builder.AddCustomSerilog();
 
-        services.AddSwaggerPreConfigured(options =>
+        builder.Services.AddControllers().WithPreventAutoValidation();
+
+        builder.Services.AddSwaggerPreConfigured(options =>
         {
-            configuration.GetSection("Swagger").Bind(options);
+            builder.Configuration.GetSection("Swagger").Bind(options);
         });
 
-        services.AddHttpContextAccessor();
+        builder.Services.AddHttpContextAccessor();
 
-        services.AddAuthenticatedUserService();
+        builder.Services.AddAuthenticatedUserService();
 
-        services.AddWebServerOptions();
+        builder.Services.AddWebServerOptions();
 
-        services.AddJwtAuthentication(configuration);
+        builder.Services.AddJwtAuthentication(builder.Configuration);
 
-        services.AddCors();
+        builder.Services.AddCors();
 
-        services.AddMetrics(configuration);
+        builder.AddOpenTelemetry();
 
-        services.AddGlobalExceptionHandler();
+        builder.Services.AddGlobalExceptionHandler();
     }
 
     /// <summary>
     ///
     /// </summary>
-    public static void UseWebApiPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
+    public static void UseWebApiPreConfigured(this WebApplication app)
     {
         ArgumentNullException.ThrowIfNull(app);
 
-        if (env.IsDevelopment())
+        if (app.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();
+
+        app.UseCustomSerilog();
 
         app.UseGlobalExceptionHandler();
 
@@ -64,8 +69,6 @@ public static class WebApiConfiguration
         app.UseRouting();
 
         app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-
-        app.UseMetrics(configuration);
 
         app.UseAuthentication();
 

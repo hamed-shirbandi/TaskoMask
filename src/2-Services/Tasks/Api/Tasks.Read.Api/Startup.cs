@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Grpc;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Tasks.Read.Api.Configuration;
 using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DbContext;
 using TaskoMask.Services.Tasks.Read.Api.Infrastructure.DI;
@@ -17,11 +15,9 @@ internal static class Startup
     /// </summary>
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.AddCustomSerilog();
-
         builder.Services.AddModules(builder.Configuration);
 
-        builder.Services.AddWebApiPreConfigured(builder.Configuration);
+        builder.AddWebApiPreConfigured();
 
         builder.Services.AddGrpcPreConfigured();
 
@@ -33,11 +29,11 @@ internal static class Startup
     /// <summary>
     ///
     /// </summary>
-    public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
+    public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         app.UseSerilogRequestLogging();
 
-        app.UseWebApiPreConfigured(app.Environment, configuration);
+        app.UseWebApiPreConfigured();
 
         app.Services.InitialDatabase();
 

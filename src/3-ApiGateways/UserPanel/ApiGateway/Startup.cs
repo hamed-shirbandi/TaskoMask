@@ -3,8 +3,6 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
 namespace TaskoMask.ApiGateways.UserPanel.ApiGateway;
 
@@ -15,8 +13,6 @@ internal static class Startup
     /// </summary>
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.AddCustomSerilog();
-
         //TODO : Swagger tries to initialize DNTCaptcha.Core built-in controller and throws an error if we remove the bellow lines
         // We need to ignore DNTCaptcha.Core during generating swagger docs
         builder.Services.AddControllers();
@@ -37,8 +33,6 @@ internal static class Startup
 
         builder.Services.AddCors();
 
-        builder.Services.AddMetrics(builder.Configuration);
-
         builder
             .Services.AddAuthentication()
             .AddJwtBearer(
@@ -56,7 +50,7 @@ internal static class Startup
     /// <summary>
     ///
     /// </summary>
-    public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
+    public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         app.UseSerilogRequestLogging();
 
@@ -68,8 +62,6 @@ internal static class Startup
         });
 
         app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-
-        app.UseMetrics(configuration);
 
         app.UseOcelot().Wait();
 

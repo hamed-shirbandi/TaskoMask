@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.OpenTelemetry;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
@@ -17,43 +17,43 @@ public static class MvcConfiguration
     /// <summary>
     ///
     /// </summary>
-    public static void AddMvcPreConfigured(this IServiceCollection services, IConfiguration configuration)
+    public static void AddMvcPreConfigured(this WebApplicationBuilder builder)
     {
-        if (services == null)
-            throw new ArgumentNullException(nameof(services));
+        ArgumentNullException.ThrowIfNull(builder);
 
-        services.AddControllersWithViews();
+        builder.AddCustomSerilog();
 
-        services.AddHttpContextAccessor();
+        builder.Services.AddControllersWithViews();
 
-        services.AddAuthenticatedUserService();
+        builder.Services.AddHttpContextAccessor();
 
-        services.AddWebServerOptions();
+        builder.Services.AddAuthenticatedUserService();
 
-        services.AddMetrics(configuration);
+        builder.Services.AddWebServerOptions();
+
+        builder.AddOpenTelemetry();
     }
 
     /// <summary>
     ///
     /// </summary>
-    public static void UseMvcPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
+    public static void UseMvcPreConfigured(this WebApplication app)
     {
-        if (app == null)
-            throw new ArgumentNullException(nameof(app));
+        ArgumentNullException.ThrowIfNull(app);
 
-        if (!env.IsDevelopment())
+        if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Error/Unknown");
             app.UseHsts();
         }
+
+        app.UseCustomSerilog();
 
         app.UseHttpsRedirection();
 
         app.UseStaticFiles();
 
         app.UseRouting();
-
-        app.UseMetrics(configuration);
 
         app.UseAuthentication();
 

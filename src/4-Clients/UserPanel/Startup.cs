@@ -19,8 +19,7 @@ public static class Startup
     /// </summary>
     public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
-        if (services == null)
-            throw new ArgumentNullException(nameof(services));
+        ArgumentNullException.ThrowIfNull(services);
 
         services.AddHttpServices(configuration);
         services.AddApiServices();

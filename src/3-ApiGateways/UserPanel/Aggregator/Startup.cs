@@ -2,7 +2,6 @@ using Serilog;
 using TaskoMask.ApiGateways.UserPanel.Aggregator.Configuration;
 using TaskoMask.ApiGateways.UserPanel.Aggregator.Infrastructure.DI;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
 namespace TaskoMask.ApiGateways.UserPanel.Aggregator;
 
@@ -13,11 +12,9 @@ internal static class Startup
     /// </summary>
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.AddCustomSerilog();
-
         builder.Services.AddModules(builder.Configuration);
 
-        builder.Services.AddWebApiPreConfigured(builder.Configuration);
+        builder.AddWebApiPreConfigured();
 
         builder.Services.AddGrpcClients(builder.Configuration);
 
@@ -27,11 +24,11 @@ internal static class Startup
     /// <summary>
     ///
     /// </summary>
-    public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
+    public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         app.UseSerilogRequestLogging();
 
-        app.UseWebApiPreConfigured(app.Environment, configuration);
+        app.UseWebApiPreConfigured();
 
         app.MapControllers();
 

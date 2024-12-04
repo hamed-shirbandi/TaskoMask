@@ -22,8 +22,12 @@
 		<PackageReference Include="Serilog.Exceptions" Version="8.1.0" />
 		<PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
 		<PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
-		<PackageReference Include="Grpc.Net.Client" Version="2.49.0" />
-		<PackageReference Include="prometheus-net.AspNetCore" Version="8.0.1" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
+		<PackageReference Include="OpenTelemetry" Version="1.10.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.10.0" />
+		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.10.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.10.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />

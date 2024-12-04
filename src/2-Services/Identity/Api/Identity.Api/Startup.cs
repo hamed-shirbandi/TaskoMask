@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Captcha;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 using TaskoMask.Services.Identity.Api.Configuration;
 using TaskoMask.Services.Identity.Api.Infrastructure.CrossCutting.DI;
 
@@ -17,9 +15,7 @@ internal static class Startup
     /// </summary>
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.AddCustomSerilog();
-
-        builder.Services.AddRazorPagesPreConfigured(builder.Configuration);
+        builder.AddRazorPagesPreConfigured();
 
         builder.Services.AddModules(builder.Configuration);
 
@@ -35,13 +31,13 @@ internal static class Startup
     /// <summary>
     ///
     /// </summary>
-    public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
+    public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         app.UseSerilogRequestLogging();
 
         app.UseIdentityServer();
 
-        app.UseRazorPagesPreConfigured(app.Environment, configuration);
+        app.UseRazorPagesPreConfigured();
 
         app.Services.InitialDatabasesAndSeedEssentialData();
 

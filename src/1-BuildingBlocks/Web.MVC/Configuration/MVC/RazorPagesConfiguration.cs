@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Metric;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.OpenTelemetry;
+using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
@@ -16,38 +16,38 @@ public static class RazorPagesConfiguration
     /// <summary>
     ///
     /// </summary>
-    public static void AddRazorPagesPreConfigured(this IServiceCollection services, IConfiguration configuration)
+    public static void AddRazorPagesPreConfigured(this WebApplicationBuilder builder)
     {
-        if (services == null)
-            throw new ArgumentNullException(nameof(services));
+        ArgumentNullException.ThrowIfNull(builder);
 
-        services.AddRazorPages();
+        builder.AddCustomSerilog();
 
-        services.AddAuthentication();
+        builder.Services.AddRazorPages();
 
-        services.AddHttpContextAccessor();
+        builder.Services.AddAuthentication();
 
-        services.AddAuthenticatedUserService();
+        builder.Services.AddHttpContextAccessor();
 
-        services.AddMetrics(configuration);
+        builder.Services.AddAuthenticatedUserService();
+
+        builder.AddOpenTelemetry();
     }
 
     /// <summary>
     ///
     /// </summary>
-    public static void UseRazorPagesPreConfigured(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
+    public static void UseRazorPagesPreConfigured(this WebApplication app)
     {
-        if (app == null)
-            throw new ArgumentNullException(nameof(app));
+        ArgumentNullException.ThrowIfNull(app);
 
-        if (env.IsDevelopment())
+        app.UseCustomSerilog();
+
+        if (app.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();
 
         app.UseStaticFiles();
 
         app.UseRouting();
-
-        app.UseMetrics(configuration);
 
         app.UseAuthorization();
     }

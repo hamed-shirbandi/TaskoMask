@@ -6,7 +6,7 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        var app = builder.ConfigureServices().ConfigurePipeline(builder.Configuration);
+        var app = builder.ConfigureServices().ConfigurePipeline();
 
         app.Run();
     }

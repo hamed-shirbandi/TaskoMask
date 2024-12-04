@@ -1,6 +1,5 @@
 using Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
-using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Serilog;
 
 namespace TaskoMask.Clients.Website;
 
@@ -11,9 +10,7 @@ internal static class Startup
     /// </summary>
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.AddCustomSerilog();
-
-        builder.Services.AddMvcPreConfigured(builder.Configuration);
+        builder.AddMvcPreConfigured();
 
         return builder.Build();
     }
@@ -21,11 +18,11 @@ internal static class Startup
     /// <summary>
     ///
     /// </summary>
-    public static WebApplication ConfigurePipeline(this WebApplication app, IConfiguration configuration)
+    public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         app.UseSerilogRequestLogging();
 
-        app.UseMvcPreConfigured(app.Environment, configuration);
+        app.UseMvcPreConfigured();
 
         app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 

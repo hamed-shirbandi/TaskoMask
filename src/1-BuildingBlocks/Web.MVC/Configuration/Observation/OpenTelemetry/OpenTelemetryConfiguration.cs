@@ -22,7 +22,7 @@ internal static class OpenTelemetryConfiguration
         if (openTelemetrySettings == null)
             return;
 
-        if (openTelemetrySettings.IsEnabled())
+        if (!openTelemetrySettings.IsEnabled())
             return;
 
         builder

@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.AddBoard;
 [Tags("Boards")]
 public class AddBoardEndpoint : BaseApiController
 {
-    public AddBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public AddBoardEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Add new board

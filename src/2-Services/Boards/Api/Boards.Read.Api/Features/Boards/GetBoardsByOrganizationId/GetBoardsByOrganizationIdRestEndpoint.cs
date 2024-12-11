@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByOrganiza
 [Tags("Boards")]
 public class GetBoardsByOrganizationIdRestEndpoint : BaseApiController
 {
-    public GetBoardsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetBoardsByOrganizationIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get boards for an organization

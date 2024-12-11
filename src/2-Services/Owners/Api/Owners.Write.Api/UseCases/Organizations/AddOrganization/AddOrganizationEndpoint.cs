@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.AddOrganiza
 [Tags("Organizations")]
 public class AddOrganizationEndpoint : BaseApiController
 {
-    public AddOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public AddOrganizationEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Add new organization for current owner

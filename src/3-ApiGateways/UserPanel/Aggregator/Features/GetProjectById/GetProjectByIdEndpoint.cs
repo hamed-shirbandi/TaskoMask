@@ -11,8 +11,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetProjectById;
 [Tags("Projects")]
 public class GetProjectByIdEndpoint : BaseApiController
 {
-    public GetProjectByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetProjectByIdEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get project detail information

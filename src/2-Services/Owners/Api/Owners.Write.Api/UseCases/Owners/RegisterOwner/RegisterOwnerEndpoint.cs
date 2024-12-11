@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.RegisterOwner;
 [Tags("Owners")]
 public class RegisterOwnerEndpoint : BaseApiController
 {
-    public RegisterOwnerEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public RegisterOwnerEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// register new owner

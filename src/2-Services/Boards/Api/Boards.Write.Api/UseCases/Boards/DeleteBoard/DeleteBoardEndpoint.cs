@@ -12,8 +12,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.DeleteBoard;
 [Tags("Boards")]
 public class DeleteBoardEndpoint : BaseApiController
 {
-    public DeleteBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public DeleteBoardEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Delete a board

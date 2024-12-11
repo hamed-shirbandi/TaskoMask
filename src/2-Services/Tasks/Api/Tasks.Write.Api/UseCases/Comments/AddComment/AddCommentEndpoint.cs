@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.AddComment;
 [Tags("Comments")]
 public class AddCommentEndpoint : BaseApiController
 {
-    public AddCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public AddCommentEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Add new comment to task

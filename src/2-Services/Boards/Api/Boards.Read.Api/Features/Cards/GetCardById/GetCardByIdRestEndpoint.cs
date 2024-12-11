@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Cards.GetCardById;
 [Tags("Cards")]
 public class GetCardByIdRestEndpoint : BaseApiController
 {
-    public GetCardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetCardByIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get card info

@@ -8,7 +8,6 @@ using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.OpenTelemetry;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.Serilog;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Swagger;
 using TaskoMask.BuildingBlocks.Web.MVC.Exceptions;
-using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 
@@ -35,7 +34,7 @@ public static class WebApiConfiguration
 
         builder.Services.AddHttpContextAccessor();
 
-        builder.Services.AddAuthenticatedUserService();
+        builder.Services.AddCurrentUserService();
 
         builder.Services.AddWebServerOptions();
 

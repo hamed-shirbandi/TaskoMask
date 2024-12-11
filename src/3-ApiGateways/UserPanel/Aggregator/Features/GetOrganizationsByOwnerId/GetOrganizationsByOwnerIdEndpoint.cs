@@ -11,8 +11,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetOrganizationsBy
 [Tags("Organizations")]
 public class GetOrganizationsByOwnerIdEndpoint : BaseApiController
 {
-    public GetOrganizationsByOwnerIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetOrganizationsByOwnerIdEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get organizations with detail information for current owner

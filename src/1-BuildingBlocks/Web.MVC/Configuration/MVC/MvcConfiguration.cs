@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TaskoMask.BuildingBlocks.Application.Services;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.OpenTelemetry;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
+using TaskoMask.BuildingBlocks.Web.MVC.Services;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 
@@ -27,7 +28,7 @@ public static class MvcConfiguration
 
         builder.Services.AddHttpContextAccessor();
 
-        builder.Services.AddAuthenticatedUserService();
+        builder.Services.AddCurrentUserService();
 
         builder.Services.AddWebServerOptions();
 
@@ -75,5 +76,10 @@ public static class MvcConfiguration
         {
             options.AllowSynchronousIO = true;
         });
+    }
+
+    public static IServiceCollection AddCurrentUserService(this IServiceCollection services)
+    {
+        return services.AddScoped<ICurrentUser, CurrentUser>();
     }
 }

@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Owners.GetOwnerById;
 [Tags("Owners")]
 public class GetOwnerByIdEndpoint : BaseApiController
 {
-    public GetOwnerByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetOwnerByIdEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get current owner basic information

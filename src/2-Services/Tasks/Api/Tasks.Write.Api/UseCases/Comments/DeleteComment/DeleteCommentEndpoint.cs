@@ -12,8 +12,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Comments.DeleteComment;
 [Tags("Comments")]
 public class DeleteCommentEndpoint : BaseApiController
 {
-    public DeleteCommentEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public DeleteCommentEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Delete an existing comment

@@ -12,8 +12,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.DeleteCard;
 [Tags("Cards")]
 public class DeleteCardEndpoint : BaseApiController
 {
-    public DeleteCardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public DeleteCardEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Delete a card

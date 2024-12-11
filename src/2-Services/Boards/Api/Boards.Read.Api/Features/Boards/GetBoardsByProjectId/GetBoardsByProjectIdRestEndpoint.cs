@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardsByProjectI
 [Tags("Boards")]
 public class GetBoardsByProjectIdRestEndpoint : BaseApiController
 {
-    public GetBoardsByProjectIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetBoardsByProjectIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get boards for a project

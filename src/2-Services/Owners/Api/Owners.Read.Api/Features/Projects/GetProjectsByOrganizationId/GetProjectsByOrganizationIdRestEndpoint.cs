@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectsByOrga
 [Tags("Projects")]
 public class GetProjectsByOrganizationIdRestEndpoint : BaseApiController
 {
-    public GetProjectsByOrganizationIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetProjectsByOrganizationIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get projects for an organization

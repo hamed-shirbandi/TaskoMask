@@ -11,8 +11,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetTaskById;
 [Tags("Tasks")]
 public class GetTaskByIdEndpoint : BaseApiController
 {
-    public GetTaskByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetTaskByIdEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get task detail information

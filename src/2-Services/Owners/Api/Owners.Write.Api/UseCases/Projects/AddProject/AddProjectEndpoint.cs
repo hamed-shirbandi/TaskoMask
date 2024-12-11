@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.AddProject;
 [Tags("Projects")]
 public class AddProjectEndpoint : BaseApiController
 {
-    public AddProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public AddProjectEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Add new project

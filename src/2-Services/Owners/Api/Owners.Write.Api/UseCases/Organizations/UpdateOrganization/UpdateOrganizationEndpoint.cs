@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.UpdateOrgan
 [Tags("Organizations")]
 public class UpdateOrganizationEndpoint : BaseApiController
 {
-    public UpdateOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public UpdateOrganizationEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing organization

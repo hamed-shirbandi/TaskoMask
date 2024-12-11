@@ -12,8 +12,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Projects.DeleteProject;
 [Tags("Projects")]
 public class DeleteProjectEndpoint : BaseApiController
 {
-    public DeleteProjectEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public DeleteProjectEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Delete a project

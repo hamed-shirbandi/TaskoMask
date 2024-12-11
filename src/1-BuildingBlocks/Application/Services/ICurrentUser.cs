@@ -2,10 +2,9 @@
 
 namespace TaskoMask.BuildingBlocks.Application.Services;
 
-public interface IAuthenticatedUserService
+public interface ICurrentUser
 {
     bool IsAuthenticated();
     string GetUserId();
     string GetUserName();
-    AuthenticatedUserModel GetAuthenticatedUser();
 }

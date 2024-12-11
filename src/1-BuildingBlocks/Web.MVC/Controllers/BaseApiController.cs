@@ -7,7 +7,7 @@ public abstract class BaseApiController : Controller
 {
     #region Fields
 
-    private readonly IAuthenticatedUserService _authenticatedUserService;
+    private readonly ICurrentUser _currentUser;
     protected readonly IRequestDispatcher _requestDispatcher;
 
     #endregion
@@ -15,9 +15,9 @@ public abstract class BaseApiController : Controller
     #region Ctors
 
 
-    public BaseApiController(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
+    public BaseApiController(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
     {
-        _authenticatedUserService = authenticatedUserService;
+        _currentUser = currentUser;
         _requestDispatcher = requestDispatcher;
     }
 
@@ -33,7 +33,7 @@ public abstract class BaseApiController : Controller
     /// </summary>
     protected string GetCurrentUserName()
     {
-        return _authenticatedUserService.GetUserName();
+        return _currentUser.GetUserName();
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public abstract class BaseApiController : Controller
     /// </summary>
     protected string GetCurrentUserId()
     {
-        return _authenticatedUserService.GetUserId();
+        return _currentUser.GetUserId();
     }
 
     #endregion

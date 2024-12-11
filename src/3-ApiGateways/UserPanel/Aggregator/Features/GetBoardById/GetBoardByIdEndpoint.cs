@@ -11,8 +11,8 @@ namespace TaskoMask.ApiGateways.UserPanel.Aggregator.Features.GetBoardById;
 [Tags("Boards")]
 public class GetBoardByIdEndpoint : BaseApiController
 {
-    public GetBoardByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetBoardByIdEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get board detail information

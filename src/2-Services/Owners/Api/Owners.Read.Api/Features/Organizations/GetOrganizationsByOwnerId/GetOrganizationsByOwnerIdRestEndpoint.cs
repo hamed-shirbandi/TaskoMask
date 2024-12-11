@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 [Tags("Organizations")]
 public class GetOrganizationsByOwnerIdRestEndpoint : BaseApiController
 {
-    public GetOrganizationsByOwnerIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetOrganizationsByOwnerIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get organizations for current owner

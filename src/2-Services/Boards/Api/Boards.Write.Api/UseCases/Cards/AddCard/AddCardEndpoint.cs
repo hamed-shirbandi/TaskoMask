@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.AddCard;
 [Tags("Cards")]
 public class AddCardEndpoint : BaseApiController
 {
-    public AddCardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public AddCardEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Add new card

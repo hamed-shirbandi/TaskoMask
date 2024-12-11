@@ -12,8 +12,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.DeleteTask;
 [Tags("Tasks")]
 public class DeleteTaskEndpoint : BaseApiController
 {
-    public DeleteTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public DeleteTaskEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Delete an existing task

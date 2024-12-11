@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.AddTask;
 [Tags("Tasks")]
 public class AddTaskEndpoint : BaseApiController
 {
-    public AddTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public AddTaskEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Add new task to board

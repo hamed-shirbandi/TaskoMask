@@ -12,8 +12,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Organizations.DeleteOrgan
 [Tags("Organizations")]
 public class DeleteOrganizationEndpoint : BaseApiController
 {
-    public DeleteOrganizationEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public DeleteOrganizationEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Delete an organization

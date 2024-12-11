@@ -18,7 +18,7 @@ public class RedisEventStoreService : IEventStoreService
     private readonly IConnectionMultiplexer _redisConnection;
     private readonly IConfiguration _configuration;
     private readonly IDatabase _redisDb;
-    private readonly IAuthenticatedUserService _authenticatedUserService;
+    private readonly ICurrentUser _currentUser;
 
     private readonly ConfigurationOptions _options;
 
@@ -27,13 +27,13 @@ public class RedisEventStoreService : IEventStoreService
     #region Ctors
 
 
-    public RedisEventStoreService(IConfiguration configuration, IAuthenticatedUserService authenticatedUserService)
+    public RedisEventStoreService(IConfiguration configuration, ICurrentUser currentUser)
     {
         _configuration = configuration;
         _options = GetRedisConfigurationOptions();
         _redisConnection = ConnectionMultiplexer.Connect(_options);
         _redisDb = _redisConnection.GetDatabase();
-        _authenticatedUserService = authenticatedUserService;
+        _currentUser = currentUser;
     }
 
     #endregion
@@ -125,7 +125,7 @@ public class RedisEventStoreService : IEventStoreService
     private StoredEvent GetEventDataToStore<TDomainEvent>(TDomainEvent @event)
         where TDomainEvent : DomainEvent
     {
-        var userId = _authenticatedUserService.GetUserId();
+        var userId = _currentUser.GetUserId();
         return new StoredEvent(entityId: @event.EntityId, entityType: @event.EntityType, eventType: @event.EventType, data: @event, userId: userId);
     }
 

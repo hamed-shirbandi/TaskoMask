@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Write.Api.UseCases.Owners.UpdateOwnerProfile
 [Tags("Owners")]
 public class UpdateOwnerProfileEndpoint : BaseApiController
 {
-    public UpdateOwnerProfileEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public UpdateOwnerProfileEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Update current owner

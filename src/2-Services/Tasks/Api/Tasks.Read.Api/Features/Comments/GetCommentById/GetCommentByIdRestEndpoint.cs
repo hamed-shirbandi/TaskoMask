@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Comments.GetCommentById;
 [Tags("Comments")]
 public class GetCommentByIdRestEndpoint : BaseApiController
 {
-    public GetCommentByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetCommentByIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get comment info

@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Projects.GetProjectById;
 [Tags("Projects")]
 public class GetProjectByIdRestEndpoint : BaseApiController
 {
-    public GetProjectByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetProjectByIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get project basic info

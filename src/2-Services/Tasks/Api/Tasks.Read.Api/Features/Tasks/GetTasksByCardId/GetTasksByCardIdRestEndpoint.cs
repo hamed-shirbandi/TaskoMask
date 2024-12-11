@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTasksByCardId;
 [Tags("Tasks")]
 public class GetTasksByCardIdRestEndpoint : BaseApiController
 {
-    public GetTasksByCardIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetTasksByCardIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get tasks for a card

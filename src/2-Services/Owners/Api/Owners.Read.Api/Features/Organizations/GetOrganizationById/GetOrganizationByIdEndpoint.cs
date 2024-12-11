@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Owners.Read.Api.Features.Organizations.GetOrganizat
 [Tags("Organizations")]
 public class GetOrganizationByIdEndpoint : BaseApiController
 {
-    public GetOrganizationByIdEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetOrganizationByIdEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get organization basic info

@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Tasks.GetTaskById;
 [Tags("Tasks")]
 public class GetTaskByIdRestEndpoint : BaseApiController
 {
-    public GetTaskByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetTaskByIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get task info

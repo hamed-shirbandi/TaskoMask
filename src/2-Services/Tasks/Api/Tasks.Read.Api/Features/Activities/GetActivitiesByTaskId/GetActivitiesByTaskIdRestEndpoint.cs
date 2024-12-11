@@ -14,8 +14,8 @@ namespace TaskoMask.Services.Tasks.Read.Api.Features.Activities.GetActivitiesByT
 [Tags("Activities")]
 public class GetActivitiesByTaskIdRestEndpoint : BaseApiController
 {
-    public GetActivitiesByTaskIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetActivitiesByTaskIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get activities for a task

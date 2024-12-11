@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.OpenTelemetry;
 using TaskoMask.BuildingBlocks.Web.MVC.Configuration.Observation.Serilog;
-using TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
 
 namespace TaskoMask.BuildingBlocks.Web.MVC.Configuration.MVC;
 
@@ -28,7 +27,7 @@ public static class RazorPagesConfiguration
 
         builder.Services.AddHttpContextAccessor();
 
-        builder.Services.AddAuthenticatedUserService();
+        builder.Services.AddCurrentUserService();
 
         builder.AddOpenTelemetry();
     }

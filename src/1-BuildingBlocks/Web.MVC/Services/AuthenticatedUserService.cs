@@ -1,11 +1,10 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using TaskoMask.BuildingBlocks.Application.Services;
-using TaskoMask.BuildingBlocks.Contracts.Models;
 
-namespace TaskoMask.BuildingBlocks.Web.MVC.Services.AuthenticatedUser;
+namespace TaskoMask.BuildingBlocks.Web.MVC.Services;
 
-public class AuthenticatedUserService : IAuthenticatedUserService
+public class CurrentUser : ICurrentUser
 {
     #region Fields
 
@@ -15,7 +14,7 @@ public class AuthenticatedUserService : IAuthenticatedUserService
 
     #region Ctors
 
-    public AuthenticatedUserService(IHttpContextAccessor httpContextAccessor)
+    public CurrentUser(IHttpContextAccessor httpContextAccessor)
     {
         _httpContextAccessor = httpContextAccessor;
     }
@@ -25,23 +24,6 @@ public class AuthenticatedUserService : IAuthenticatedUserService
     #region Public Methods
 
 
-
-    /// <summary>
-    ///
-    /// </summary>
-    public AuthenticatedUserModel GetAuthenticatedUser()
-    {
-        var user = _httpContextAccessor.HttpContext.User;
-        if (user == null)
-            return new AuthenticatedUserModel();
-
-        return new AuthenticatedUserModel
-        {
-            Id = user.FindFirstValue(ClaimTypes.NameIdentifier) ?? "",
-            Email = user.FindFirstValue(ClaimTypes.Email) ?? "",
-            UserName = user.FindFirstValue(ClaimTypes.Name) ?? "",
-        };
-    }
 
     /// <summary>
     ///

@@ -12,8 +12,8 @@ namespace TaskoMask.Services.Boards.Read.Api.Features.Boards.GetBoardById;
 [Tags("Boards")]
 public class GetBoardByIdRestEndpoint : BaseApiController
 {
-    public GetBoardByIdRestEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public GetBoardByIdRestEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// get board info

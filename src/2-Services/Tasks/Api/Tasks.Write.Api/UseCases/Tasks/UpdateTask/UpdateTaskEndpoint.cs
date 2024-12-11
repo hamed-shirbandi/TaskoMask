@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.UpdateTask;
 [Tags("Tasks")]
 public class UpdateTaskEndpoint : BaseApiController
 {
-    public UpdateTaskEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public UpdateTaskEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing task

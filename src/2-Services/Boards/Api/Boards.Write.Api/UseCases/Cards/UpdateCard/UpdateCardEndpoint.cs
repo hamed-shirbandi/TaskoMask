@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Cards.UpdateCard;
 [Tags("Cards")]
 public class UpdateCardEndpoint : BaseApiController
 {
-    public UpdateCardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public UpdateCardEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing card

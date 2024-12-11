@@ -12,8 +12,8 @@ namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCar
 [Tags("Tasks")]
 public class MoveTaskToAnotherCardEndpoint : BaseApiController
 {
-    public MoveTaskToAnotherCardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public MoveTaskToAnotherCardEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Move a task to another card

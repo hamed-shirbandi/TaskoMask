@@ -13,8 +13,8 @@ namespace TaskoMask.Services.Boards.Write.Api.UseCases.Boards.UpdateBoard;
 [Tags("Boards")]
 public class UpdateBoardEndpoint : BaseApiController
 {
-    public UpdateBoardEndpoint(IAuthenticatedUserService authenticatedUserService, IRequestDispatcher requestDispatcher)
-        : base(authenticatedUserService, requestDispatcher) { }
+    public UpdateBoardEndpoint(ICurrentUser currentUser, IRequestDispatcher requestDispatcher)
+        : base(currentUser, requestDispatcher) { }
 
     /// <summary>
     /// Update an existing board

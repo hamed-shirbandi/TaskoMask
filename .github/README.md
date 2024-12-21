@@ -9,8 +9,8 @@
 <a href="https://github.com/hamed-shirbandi/TaskoMask/issues">
 <img alt="GitHub issues" src="https://img.shields.io/github/issues/hamed-shirbandi/TaskoMask">
 </a>
-<a href="http://taskomask.ir">
-<img src="https://img.shields.io/website?url=http://taskomask.ir">
+<a href="http://taskomask.online">
+<img src="https://img.shields.io/website?url=http://taskomask.online">
 </a>
 <a href="https://github.com/hamed-shirbandi/TaskoMask/blob/master/LICENSE">
 <img src="https://img.shields.io/github/license/hamed-shirbandi/TaskoMask">
@@ -27,7 +27,7 @@ In many cases, the experience of applying these concepts to real-world software 
 
 We invite you to explore our project's [wiki](https://github.com/hamed-shirbandi/TaskoMask/wiki) for more information
 
-Try it [[online](http://taskomask.ir)]
+Try it [[online](http://taskomask.online)]
 
 ![taskomask website](https://github.com/hamed-shirbandi/TaskoMask/blob/master/docs/images/Shots/taskomask-all-in-one-mobile.jpg)
 # Documentation

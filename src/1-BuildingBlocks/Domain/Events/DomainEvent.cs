@@ -1,6 +1,5 @@
 ﻿using System;
 using MediatR;
-using Newtonsoft.Json;
 
 namespace TaskoMask.BuildingBlocks.Domain.Events;
 
@@ -17,23 +16,8 @@ public class DomainEvent : INotification
         OccurredOn = DateTime.Now;
     }
 
-    /// <summary>
-    /// Use JsonIgnore to prevent adding it to Data in StoredEvent. As it will be mapped to StoredEvent.EntityId and no need to have it in StoredEvent.Data
-    /// </summary>
-    [JsonIgnore]
     public string EntityId { get; }
-
-    /// <summary>
-    /// Use JsonIgnore to prevent adding it to Data in StoredEvent.
-    /// </summary>
-    [JsonIgnore]
     public string EntityType { get; }
-
-    /// <summary>
-    /// Use JsonIgnore to prevent adding it to Data in StoredEvent.
-    /// </summary>
-    [JsonIgnore]
     public string EventType { get; }
-
     public DateTime OccurredOn { get; }
 }

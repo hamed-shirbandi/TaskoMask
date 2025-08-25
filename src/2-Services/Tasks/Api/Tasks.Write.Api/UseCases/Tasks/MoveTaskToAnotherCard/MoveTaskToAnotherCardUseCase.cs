@@ -13,7 +13,6 @@ using TaskoMask.BuildingBlocks.Domain.Events;
 using TaskoMask.BuildingBlocks.Domain.Resources;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Data;
 using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Events.Tasks;
-using TaskoMask.Services.Tasks.Write.Api.Domain.Tasks.Services;
 
 namespace TaskoMask.Services.Tasks.Write.Api.UseCases.Tasks.MoveTaskToAnotherCard;
 
@@ -22,7 +21,6 @@ public class MoveTaskToAnotherCardUseCase : BaseCommandHandler, IRequestHandler<
     #region Fields
 
     private readonly ITaskAggregateRepository _taskAggregateRepository;
-    private readonly ITaskValidatorService _taskValidatorService;
 
     #endregion
 
@@ -32,13 +30,11 @@ public class MoveTaskToAnotherCardUseCase : BaseCommandHandler, IRequestHandler<
     public MoveTaskToAnotherCardUseCase(
         ITaskAggregateRepository taskAggregateRepository,
         IEventPublisher eventPublisher,
-        IRequestDispatcher requestDispatcher,
-        ITaskValidatorService taskValidatorService
+        IRequestDispatcher requestDispatcher
     )
         : base(eventPublisher, requestDispatcher)
     {
         _taskAggregateRepository = taskAggregateRepository;
-        _taskValidatorService = taskValidatorService;
     }
 
     #endregion

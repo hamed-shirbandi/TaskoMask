@@ -54,7 +54,7 @@ public class MoveTaskToAnotherCardTests : TestsBaseFixture
 
     protected override void TestClassFixtureSetup()
     {
-        moveTaskToAnotherCardUseCase = new MoveTaskToAnotherCardUseCase(TaskAggregateRepository, MessageBus, InMemoryBus, TaskValidatorService);
+        moveTaskToAnotherCardUseCase = new MoveTaskToAnotherCardUseCase(TaskAggregateRepository, MessageBus, InMemoryBus);
     }
 
     #endregion

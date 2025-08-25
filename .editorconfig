@@ -23,7 +23,10 @@ dotnet_diagnostic.IDE0290.severity = silent # Use primary constructor
 dotnet_diagnostic.IDE0028.severity = silent # Use collection initializers or expressions
 dotnet_diagnostic.IDE0301.severity = silent # Use collection expression for empty
 dotnet_diagnostic.IDE0300.severity = silent # Use collection expression for array
+dotnet_diagnostic.IDE0305.severity = silent # Collection initialization can be simplified
+dotnet_diagnostic.IDE0040.severity = silent # Accessibility modifiers required
 dotnet_diagnostic.CA1859.severity = silent # Use concrete types when possible for improved performance
+
 
 
 
